@@ -1,0 +1,36 @@
+name: Daily Chess Puzzle
+
+on:
+  schedule:
+    - cron: "0 9 * * *"   # 10:00 NL tijd
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Download Lichess puzzle database
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y zstd
+          curl -L https://database.lichess.org/lichess_db_puzzle.csv.zst -o puzzles.zst
+          zstd -d puzzles.zst
+
+      - name: Run bot
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        run: |
+          python bot.py
