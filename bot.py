@@ -1,16 +1,16 @@
 import discord
-import asyncio
 import os
 import requests
 import chess
 import chess.svg
 from io import BytesIO
 
-CHANNEL_ID = 1468320170891022417  # jouw #daily-puzzle
+CHANNEL_ID = 1468320170891022417  # #daily-puzzle
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 intents = discord.Intents.default()
 intents.guilds = True
+
 
 class ChessBot(discord.Client):
     async def on_ready(self):
@@ -18,7 +18,8 @@ class ChessBot(discord.Client):
 
         data = requests.get("https://lichess.org/api/puzzle/daily").json()
 
-        fen = data["puzzle"]["fen"]
+        # ✅ juiste FEN ophalen (API is inconsistent)
+        fen = data.get("puzzle", {}).get("fen") or data["game"]["fen"]
         solution = data["puzzle"]["solution"][0]
 
         board = chess.Board(fen)
@@ -40,11 +41,8 @@ class ChessBot(discord.Client):
 
         await channel.send(embed=embed, file=file)
 
-        # wacht 1 uur → antwoord
-        await asyncio.sleep(3600)
-        await channel.send(f"💡 **Answer:** ||{answer}||")
-
         await self.close()
+
 
 client = ChessBot(intents=intents)
 client.run(TOKEN)
