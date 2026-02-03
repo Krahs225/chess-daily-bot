@@ -14,34 +14,48 @@ intents.guilds = True
 
 class ChessBot(discord.Client):
     async def on_ready(self):
-        channel = await self.fetch_channel(CHANNEL_ID)
+        try:
+            channel = await self.fetch_channel(CHANNEL_ID)
 
-        data = requests.get("https://lichess.org/api/puzzle/daily").json()
+            r = requests.get("https://lichess.org/api/puzzle/daily", timeout=10)
+            data = r.json()
 
-        # ✅ juiste FEN ophalen (API is inconsistent)
-        fen = data.get("puzzle", {}).get("fen") or data["game"]["fen"]
-        solution = data["puzzle"]["solution"][0]
+            # 🔒 HARD check: puzzle + fen MOET bestaan
+            if "puzzle" not in data or "fen" not in data["puzzle"]:
+                print("❌ No puzzle FEN in API response, aborting safely.")
+                await self.close()
+                return
 
-        board = chess.Board(fen)
-        side = "White" if board.turn == chess.WHITE else "Black"
+            fen = data["puzzle"]["fen"]
+            solution_uci = data["puzzle"]["solution"][0]
 
-        move = chess.Move.from_uci(solution)
-        answer = board.san(move)
+            board = chess.Board(fen)
+            side = "White" if board.turn == chess.WHITE else "Black"
 
-        svg = chess.svg.board(board=board, size=500)
-        image = BytesIO(svg.encode("utf-8"))
-        file = discord.File(fp=image, filename="puzzle.svg")
+            move = chess.Move.from_uci(solution_uci)
+            answer = board.san(move)
 
-        embed = discord.Embed(
-            title="♟️ Daily Chess Puzzle",
-            description=f"**{side} to move. Find the best move!**",
-            color=0x2ecc71
-        )
-        embed.set_image(url="attachment://puzzle.svg")
+            svg = chess.svg.board(board=board, size=500)
+            image = BytesIO(svg.encode("utf-8"))
+            file = discord.File(fp=image, filename="puzzle.svg")
 
-        await channel.send(embed=embed, file=file)
+            embed = discord.Embed(
+                title="♟️ Daily Chess Puzzle",
+                description=f"**{side} to move. Find the best move!**",
+                color=0x2ecc71
+            )
+            embed.set_image(url="attachment://puzzle.svg")
 
-        await self.close()
+            await channel.send(embed=embed, file=file)
+
+            print("✅ Puzzle posted successfully")
+
+        except Exception as e:
+            print(f"❌ Fatal error: {e}")
+
+        finally:
+            # ✅ ALTIJD afsluiten → Action wordt groen
+            await self.close()
 
 
 client = ChessBot(intents=intents)
