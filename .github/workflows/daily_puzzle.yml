@@ -1,27 +1,19 @@
-name: Daily Chess Puzzle
+name: Daily Puzzle
 
 on:
   schedule:
-    - cron: "0 9 * * *"   # 10:00 NL tijd (GitHub = UTC)
+    - cron: "0 9 * * *"   # 10:00 NL (UTC+1)
   workflow_dispatch:
 
 jobs:
-  run-bot:
+  run:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run bot
+      - run: pip install -r requirements.txt
+      - run: python bot.py
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-        run: python bot.py
