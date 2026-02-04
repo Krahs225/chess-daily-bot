@@ -31,10 +31,11 @@ async def on_ready():
             await channel.send("❌ Geen oplossing gevonden.")
             return
 
-        # Haal zetten uit PGN (bv: 1. Nf5+ Kf7 2. Nd6#)
-        moves_line = pgn.split("\n")[-2]
+        # ➜ NEEM ALTIJD DE LAATSTE NIET-LEGE REGEL
+        lines = [line.strip() for line in pgn.splitlines() if line.strip()]
+        moves_line = lines[-1]
 
-        # Verwijder zetnummers en resultaat
+        # Zetnummers en resultaat verwijderen
         moves = re.sub(r"\d+\.", "", moves_line)
         moves = moves.replace("1-0", "").replace("0-1", "").replace("1/2-1/2", "")
         moves = " ".join(moves.split())
