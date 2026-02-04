@@ -4,9 +4,10 @@ import requests
 import chess
 import urllib.parse
 import time
+import json
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-CHANNEL_ID = 1468320170891022417  # jouw #daily-puzzle
+CHANNEL_ID = 1468320170891022417
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -16,11 +17,10 @@ async def on_ready():
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        # ── Chess.com daily puzzle ──
         headers = {"User-Agent": "DailyChessPuzzleBot/1.0"}
         r = requests.get("https://api.chess.com/pub/puzzle", headers=headers, timeout=10)
         if r.status_code != 200:
-            await channel.send("❌ Kon de dagelijkse puzzel niet laden.")
+            await channel.send("❌ Kon de puzzel niet laden.")
             return
 
         data = r.json()
@@ -28,20 +28,20 @@ async def on_ready():
         title = data.get("title", "Daily Chess Puzzle")
 
         if not fen:
-            await channel.send("❌ Kon de dagelijkse puzzel niet laden.")
+            await channel.send("❌ Kon de puzzel niet laden.")
             return
+
+        # 🔒 Puzzle opslaan voor answer.py
+        with open("puzzle.json", "w") as f:
+            json.dump(data, f)
 
         board = chess.Board(fen)
         side = "White" if board.turn else "Black"
 
-        # ── Externe FEN → image (betrouwbaar) ──
         fen_encoded = urllib.parse.quote(fen)
-        cache_bust = int(time.time())
-
-        # chessboardimage.com rendert FEN → PNG
         board_image_url = (
             f"https://chessboardimage.com/{fen_encoded}.png"
-            f"?size=512&coordinates=true&v={cache_bust}"
+            f"?size=512&coordinates=true&v={int(time.time())}"
         )
 
         embed = discord.Embed(
@@ -53,8 +53,6 @@ async def on_ready():
 
         await channel.send(embed=embed)
 
-    except Exception as e:
-        print("❌ Error:", e)
     finally:
         await client.close()
 
