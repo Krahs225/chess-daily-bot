@@ -1,7 +1,7 @@
 import discord
 import os
+import requests
 import json
-import asyncio
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1468320170891022417
@@ -14,28 +14,27 @@ async def on_ready():
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        await channel.send("⏱️ Antwoord wordt berekend…")
+        # Haal puzzle DIRECT van Chess.com
+        r = requests.get(
+            "https://api.chess.com/pub/puzzle",
+            headers={"User-Agent": "DailyChessPuzzleBot/1.0"},
+            timeout=10
+        )
 
-        await asyncio.sleep(2)
-
-        if not os.path.exists("puzzle.json"):
-            await channel.send("❌ Geen puzzeldata gevonden.")
+        if r.status_code != 200:
+            await channel.send("❌ Chess.com gaf geen 200 status")
             return
 
-        with open("puzzle.json", "r") as f:
-            data = json.load(f)
+        data = r.json()
 
-        # Gebruik UCI direct (NOOIT vastlopers)
-        uci_moves = data["solution"]
-
-        # Alleen wit-zetten tonen (0,2,4,…)
-        white_moves = [uci_moves[i] for i in range(0, len(uci_moves), 2)]
-
-        answer = " ".join(white_moves)
-
+        # Post rauwe data (ingekort)
         await channel.send(
-            f"💡 **The correct answer is:** ||{answer}||"
+            "🧪 **DEBUG – ruwe puzzle data:**\n"
+            f"```json\n{json.dumps(data, indent=2)[:1800]}\n```"
         )
+
+    except Exception as e:
+        await channel.send(f"❌ Exception: {e}")
 
     finally:
         await client.close()
