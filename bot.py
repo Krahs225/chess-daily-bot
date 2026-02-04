@@ -2,6 +2,7 @@ import discord
 import os
 import requests
 import chess
+import urllib.parse
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1468320170891022417
@@ -16,42 +17,30 @@ async def on_ready():
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        await channel.send("🧪 Fetching Chess.com daily puzzle...")
-
-        headers = {
-            "User-Agent": "DailyChessPuzzleBot/1.0"
-        }
-
+        headers = {"User-Agent": "DailyChessPuzzleBot/1.0"}
         r = requests.get(
             "https://api.chess.com/pub/puzzle",
             headers=headers,
             timeout=10
         )
-
-        print("🌐 Status:", r.status_code)
-        print("📦 Content-Type:", r.headers.get("Content-Type"))
-
-        if r.status_code != 200:
-            await channel.send("❌ Chess.com API returned non-200 status")
-            return
-
-        try:
-            data = r.json()
-        except Exception as e:
-            print("❌ JSON decode error:", e)
-            print("📦 Raw text:", r.text[:300])
-            await channel.send("❌ Chess.com response was not valid JSON")
-            return
+        data = r.json()
 
         fen = data.get("fen")
         title = data.get("title", "Daily Puzzle")
 
         if not fen:
-            await channel.send("❌ No FEN found in Chess.com response")
+            await channel.send("❌ Could not load today's puzzle.")
             return
 
         board = chess.Board(fen)
         side = "White" if board.turn else "Black"
+
+        # 🔹 Encode FEN voor URL
+        fen_encoded = urllib.parse.quote(fen)
+
+        board_image_url = (
+            f"https://api.chess.com/pub/board/{fen_encoded}.png"
+        )
 
         embed = discord.Embed(
             title="♟️ Daily Chess Puzzle",
@@ -59,14 +48,15 @@ async def on_ready():
             color=0x3498db
         )
 
+        embed.set_image(url=board_image_url)
+
         await channel.send(embed=embed)
-        print("✅ Puzzle posted")
+        print("✅ Puzzle with board posted")
 
     except Exception as e:
-        print("❌ Fatal error:", e)
+        print("❌ Error:", e)
 
     finally:
-        print("🔒 Closing bot")
         await client.close()
 
 client.run(TOKEN)
