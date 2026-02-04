@@ -1,9 +1,9 @@
-name: Daily Puzzle + Answer (TEST 16:19)
+name: Daily Puzzle + Answer (TEST 16:27)
 
 on:
   schedule:
-    # 16:19 NL (CEST) = 14:19 UTC
-    - cron: "19 14 * * *"
+    # 16:27 NL (CEST) = 14:27 UTC
+    - cron: "27 14 * * *"
   workflow_dispatch:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      # ── 16:19 → Puzzle posten ──
+      # ── 16:27 → Puzzle posten ──
       - name: Post puzzle
         run: python bot.py
         env:
@@ -28,7 +28,7 @@ jobs:
       - name: Wait 1 minute
         run: sleep 60
 
-      # ── 16:20 → Answer posten ──
+      # ── 16:28 → Answer posten ──
       - name: Post answer
         run: python answer.py
         env:
