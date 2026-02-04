@@ -2,7 +2,8 @@ name: Daily Puzzle + Answer
 
 on:
   schedule:
-    - cron: "0 9 * * *"   # 10:00 NL
+    # 14:00 NL = 13:00 UTC
+    - cron: "0 13 * * *"
   workflow_dispatch:
 
 jobs:
@@ -10,22 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - run: pip install -r requirements.txt
 
-      # 10:00 – Puzzle
+      # ── 14:00 → Puzzle posten ──
       - name: Post puzzle
         run: python bot.py
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
 
-      # Wacht tot 11:00 (1 uur)
-      - name: Wait 1 hour
-        run: sleep 60
+      # ── Wacht tot 18:00 (4 uur) ──
+      - name: Wait 4 hours
+        run: sleep 14400
 
-      # 11:00 – Answer
+      # ── 18:00 → Answer posten ──
       - name: Post answer
         run: python answer.py
         env:
