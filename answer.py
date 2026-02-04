@@ -32,16 +32,14 @@ async def on_ready():
             return
 
         board = chess.Board(data["fen"])
-        solution_moves = data["solution"]
-
         san_moves = []
 
-        for i, uci in enumerate(solution_moves):
+        for i, uci in enumerate(data["solution"]):
             move = chess.Move.from_uci(uci)
             san = board.san(move)
             board.push(move)
 
-            # Alleen WIT-zetten tonen (0, 2, 4, ...)
+            # alleen WIT-zetten tonen
             if i % 2 == 0:
                 san_moves.append(san)
 
