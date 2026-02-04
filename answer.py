@@ -1,6 +1,5 @@
 import discord
 import os
-import chess
 import json
 import asyncio
 
@@ -15,11 +14,9 @@ async def on_ready():
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        # 🔒 Bewijs dat answer.py echt draait
         await channel.send("⏱️ Antwoord wordt berekend…")
 
-        # 🔒 Discord even ademruimte geven
-        await asyncio.sleep(5)
+        await asyncio.sleep(2)
 
         if not os.path.exists("puzzle.json"):
             await channel.send("❌ Geen puzzeldata gevonden.")
@@ -28,25 +25,17 @@ async def on_ready():
         with open("puzzle.json", "r") as f:
             data = json.load(f)
 
-        board = chess.Board(data["fen"])
-        san_moves = []
+        # Gebruik UCI direct (NOOIT vastlopers)
+        uci_moves = data["solution"]
 
-        for i, uci in enumerate(data["solution"]):
-            move = chess.Move.from_uci(uci)
-            san = board.san(move)
-            board.push(move)
+        # Alleen wit-zetten tonen (0,2,4,…)
+        white_moves = [uci_moves[i] for i in range(0, len(uci_moves), 2)]
 
-            if i % 2 == 0:  # alleen wit
-                san_moves.append(san)
-
-        answer = " ".join(san_moves)
+        answer = " ".join(white_moves)
 
         await channel.send(
             f"💡 **The correct answer is:** ||{answer}||"
         )
-
-    except Exception as e:
-        print("❌ Error in answer.py:", e)
 
     finally:
         await client.close()
