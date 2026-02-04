@@ -11,17 +11,35 @@ client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    channel = await client.fetch_channel(CHANNEL_ID)
+    try:
+        channel = await client.fetch_channel(CHANNEL_ID)
 
-    data = requests.get("https://lichess.org/api/puzzle/daily").json()
-    fen = data["puzzle"]["fen"]
-    solution = data["puzzle"]["solution"][0]
+        # ── Chess.com puzzle ophalen ──
+        headers = {"User-Agent": "DailyChessPuzzleBot/1.0"}
+        r = requests.get("https://api.chess.com/pub/puzzle", headers=headers, timeout=10)
+        if r.status_code != 200:
+            await channel.send("❌ Kon het antwoord niet laden.")
+            return
 
-    board = chess.Board(fen)
-    move = chess.Move.from_uci(solution)
-    san = board.san(move)
+        data = r.json()
+        fen = data.get("fen")
+        solution = data.get("solution")
 
-    await channel.send(f"💡 **Answer:** ||{san}||")
-    await client.close()
+        if not fen or not solution:
+            await channel.send("❌ Kon het antwoord niet laden.")
+            return
+
+        board = chess.Board(fen)
+
+        # Eerste zet is het antwoord
+        move = chess.Move.from_uci(solution[0])
+        san = board.san(move)
+
+        await channel.send(f"💡 **Antwoord:** ||{san}||")
+
+    except Exception as e:
+        print("❌ Error:", e)
+    finally:
+        await client.close()
 
 client.run(TOKEN)
