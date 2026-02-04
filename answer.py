@@ -10,17 +10,15 @@ CHANNEL_ID = 1468320170891022417
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
-def fetch_puzzle_with_retry():
+def fetch_puzzle():
     headers = {"User-Agent": "DailyChessPuzzleBot/1.0"}
-
-    for _ in range(3):  # max 3 pogingen
+    for _ in range(3):
         r = requests.get("https://api.chess.com/pub/puzzle", headers=headers, timeout=10)
         if r.status_code == 200:
             data = r.json()
             if data.get("fen") and data.get("solution"):
                 return data
         time.sleep(2)
-
     return None
 
 @client.event
@@ -28,19 +26,30 @@ async def on_ready():
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        data = fetch_puzzle_with_retry()
+        data = fetch_puzzle()
         if not data:
             await channel.send("❌ Kon het antwoord niet laden.")
             return
 
-        fen = data["fen"]
-        solution = data["solution"]
+        board = chess.Board(data["fen"])
+        solution_moves = data["solution"]
 
-        board = chess.Board(fen)
-        move = chess.Move.from_uci(solution[0])
-        san = board.san(move)
+        san_moves = []
 
-        await channel.send(f"💡 **The correct answer is:** ||{san}||")
+        for i, uci in enumerate(solution_moves):
+            move = chess.Move.from_uci(uci)
+            san = board.san(move)
+            board.push(move)
+
+            # Alleen WIT-zetten tonen (0, 2, 4, ...)
+            if i % 2 == 0:
+                san_moves.append(san)
+
+        answer_text = " ".join(san_moves)
+
+        await channel.send(
+            f"💡 **The correct answer is:** ||{answer_text}||"
+        )
 
     except Exception as e:
         print("❌ Error:", e)
