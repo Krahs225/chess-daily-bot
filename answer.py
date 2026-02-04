@@ -4,7 +4,7 @@ import requests
 import chess
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-CHANNEL_ID = 1468320170891022417  # #daily-puzzle
+CHANNEL_ID = 1468320170891022417
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -14,9 +14,9 @@ async def on_ready():
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        # ── Chess.com puzzle ophalen ──
         headers = {"User-Agent": "DailyChessPuzzleBot/1.0"}
         r = requests.get("https://api.chess.com/pub/puzzle", headers=headers, timeout=10)
+
         if r.status_code != 200:
             await channel.send("❌ Kon het antwoord niet laden.")
             return
@@ -30,12 +30,10 @@ async def on_ready():
             return
 
         board = chess.Board(fen)
-
-        # Eerste zet is het antwoord
         move = chess.Move.from_uci(solution[0])
         san = board.san(move)
 
-        await channel.send(f"💡 **Antwoord:** ||{san}||")
+        await channel.send(f"💡 **The correct answer is:** ||{san}||")
 
     except Exception as e:
         print("❌ Error:", e)
