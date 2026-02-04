@@ -16,12 +16,24 @@ async def on_ready():
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        r = requests.get("https://lichess.org/api/puzzle/daily", timeout=10)
+        headers = {
+            "User-Agent": "DailyChessPuzzleBot/1.0 (GitHub Actions)"
+        }
+
+        r = requests.get(
+            "https://lichess.org/api/puzzle/daily",
+            headers=headers,
+            timeout=10
+        )
+
+        print("🔍 Lichess status:", r.status_code)
         data = r.json()
+        print("🔍 Lichess response keys:", data.keys())
+
         puzzle = data.get("puzzle")
 
         if not puzzle or "fen" not in puzzle:
-            await channel.send("❌ Could not load today's puzzle.")
+            await channel.send("❌ Could not load today's puzzle (Lichess API issue).")
             return
 
         board = chess.Board(puzzle["fen"])
@@ -34,12 +46,13 @@ async def on_ready():
         )
 
         await channel.send(embed=embed)
-        print("✅ Embed posted")
+        print("✅ Puzzle embed posted")
 
     except Exception as e:
         print("❌ Error:", e)
 
     finally:
+        print("🔒 Closing bot")
         await client.close()
 
 client.run(TOKEN)
