@@ -3,7 +3,7 @@ import os
 import requests
 import chess
 import urllib.parse
-import time
+from io import BytesIO
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1468320170891022417  # #daily-puzzle
@@ -16,10 +16,7 @@ async def on_ready():
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        # 🔴 FORCE Discord to treat this as new content
-        await channel.send("♟️ New daily chess puzzle incoming…")
-
-        # ── Fetch Chess.com puzzle ──
+        # ── Chess.com puzzle ophalen ──
         headers = {"User-Agent": "DailyChessPuzzleBot/1.0"}
         r = requests.get("https://api.chess.com/pub/puzzle", headers=headers, timeout=10)
         data = r.json()
@@ -28,31 +25,34 @@ async def on_ready():
         title = data.get("title", "Daily Chess Puzzle")
 
         if not fen:
-            await channel.send("❌ Failed to load puzzle.")
+            await channel.send("❌ Could not load today's puzzle.")
             return
 
         board = chess.Board(fen)
         side = "White" if board.turn else "Black"
 
-        # ── Lichess board image (always works) ──
+        # ── Bord ophalen als PNG (Lichess renderer) ──
         fen_encoded = urllib.parse.quote(fen)
-        unique = int(time.time())
-
-        board_image_url = (
+        image_url = (
             f"https://lichess.org/api/board/fen/{fen_encoded}.png"
             "?color=white&piece=cburnett&size=512"
-            f"&v={unique}"
         )
 
+        img_response = requests.get(image_url, timeout=10)
+        image_bytes = BytesIO(img_response.content)
+
+        file = discord.File(fp=image_bytes, filename="board.png")
+
+        # ── Embed ──
         embed = discord.Embed(
             title="♟️ Daily Chess Puzzle",
             description=f"**{title}**\n\n**{side} to move. Find the best move!**",
             color=0x2ecc71
         )
 
-        embed.set_image(url=board_image_url)
+        embed.set_image(url="attachment://board.png")
 
-        await channel.send(embed=embed)
+        await channel.send(embed=embed, file=file)
 
     except Exception as e:
         print("❌ Error:", e)
