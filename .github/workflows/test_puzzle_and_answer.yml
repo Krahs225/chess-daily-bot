@@ -1,0 +1,30 @@
+name: Test Puzzle + Answer (1 minute)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+
+      # Puzzle posten
+      - name: Post puzzle
+        run: python bot.py
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+
+      # 1 minuut wachten
+      - name: Wait 60 seconds
+        run: sleep 60
+
+      # Answer posten
+      - name: Post answer
+        run: python answer.py
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
