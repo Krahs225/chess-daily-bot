@@ -23,7 +23,7 @@ jobs:
 
       # Wacht tot 11:00 (1 uur)
       - name: Wait 1 hour
-        run: sleep 3600
+        run: sleep 60
 
       # 11:00 – Answer
       - name: Post answer
