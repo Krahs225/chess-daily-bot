@@ -35,17 +35,17 @@ async def on_ready():
         board = chess.Board(fen)
         side = "White" if board.turn else "Black"
 
-        # 🔹 Encode FEN voor URL
+        # 🔹 Lichess board image (STABIEL)
         fen_encoded = urllib.parse.quote(fen)
-
         board_image_url = (
-            f"https://api.chess.com/pub/board/{fen_encoded}.png"
+            f"https://lichess.org/api/board/fen/{fen_encoded}.png"
+            "?color=white&piece=cburnett&size=512"
         )
 
         embed = discord.Embed(
             title="♟️ Daily Chess Puzzle",
             description=f"**{title}**\n\n**{side} to move. Find the best move!**",
-            color=0x3498db
+            color=0x2ecc71
         )
 
         embed.set_image(url=board_image_url)
