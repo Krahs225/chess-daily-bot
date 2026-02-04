@@ -1,7 +1,7 @@
 import discord
 import os
 import requests
-import json
+import re
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1468320170891022417
@@ -14,7 +14,6 @@ async def on_ready():
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        # Haal puzzle DIRECT van Chess.com
         r = requests.get(
             "https://api.chess.com/pub/puzzle",
             headers={"User-Agent": "DailyChessPuzzleBot/1.0"},
@@ -22,19 +21,30 @@ async def on_ready():
         )
 
         if r.status_code != 200:
-            await channel.send("❌ Chess.com gaf geen 200 status")
+            await channel.send("❌ Kon het antwoord niet laden.")
             return
 
         data = r.json()
+        pgn = data.get("pgn")
 
-        # Post rauwe data (ingekort)
+        if not pgn:
+            await channel.send("❌ Geen oplossing gevonden.")
+            return
+
+        # Haal zetten uit PGN (bv: 1. Nf5+ Kf7 2. Nd6#)
+        moves_line = pgn.split("\n")[-2]
+
+        # Verwijder zetnummers en resultaat
+        moves = re.sub(r"\d+\.", "", moves_line)
+        moves = moves.replace("1-0", "").replace("0-1", "").replace("1/2-1/2", "")
+        moves = " ".join(moves.split())
+
         await channel.send(
-            "🧪 **DEBUG – ruwe puzzle data:**\n"
-            f"```json\n{json.dumps(data, indent=2)[:1800]}\n```"
+            f"💡 **The correct answer is:** ||{moves}||"
         )
 
     except Exception as e:
-        await channel.send(f"❌ Exception: {e}")
+        print("❌ Error:", e)
 
     finally:
         await client.close()
