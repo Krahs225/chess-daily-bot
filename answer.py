@@ -1,8 +1,7 @@
 import discord
 import os
-import requests
 import chess
-import time
+import json
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1468320170891022417
@@ -10,26 +9,17 @@ CHANNEL_ID = 1468320170891022417
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
-def fetch_puzzle():
-    headers = {"User-Agent": "DailyChessPuzzleBot/1.0"}
-    for _ in range(3):
-        r = requests.get("https://api.chess.com/pub/puzzle", headers=headers, timeout=10)
-        if r.status_code == 200:
-            data = r.json()
-            if data.get("fen") and data.get("solution"):
-                return data
-        time.sleep(2)
-    return None
-
 @client.event
 async def on_ready():
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        data = fetch_puzzle()
-        if not data:
-            await channel.send("❌ Kon het antwoord niet laden.")
+        if not os.path.exists("puzzle.json"):
+            await channel.send("❌ Geen puzzeldata gevonden.")
             return
+
+        with open("puzzle.json", "r") as f:
+            data = json.load(f)
 
         board = chess.Board(data["fen"])
         san_moves = []
@@ -39,18 +29,14 @@ async def on_ready():
             san = board.san(move)
             board.push(move)
 
-            # alleen WIT-zetten tonen
-            if i % 2 == 0:
+            if i % 2 == 0:  # alleen wit
                 san_moves.append(san)
 
-        answer_text = " ".join(san_moves)
+        answer = " ".join(san_moves)
 
         await channel.send(
-            f"💡 **The correct answer is:** ||{answer_text}||"
+            f"💡 **The correct answer is:** ||{answer}||"
         )
-
-    except Exception as e:
-        print("❌ Error:", e)
 
     finally:
         await client.close()
