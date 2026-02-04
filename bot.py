@@ -13,46 +13,37 @@ client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    print("🤖 Bot logged in")
-
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        # ── Chess.com puzzle ophalen ──
+        # 🔴 FORCE Discord to treat this as new content
+        await channel.send("♟️ New daily chess puzzle incoming…")
+
+        # ── Fetch Chess.com puzzle ──
         headers = {"User-Agent": "DailyChessPuzzleBot/1.0"}
-        r = requests.get(
-            "https://api.chess.com/pub/puzzle",
-            headers=headers,
-            timeout=10
-        )
-
-        if r.status_code != 200:
-            await channel.send("❌ Could not load today's puzzle.")
-            return
-
+        r = requests.get("https://api.chess.com/pub/puzzle", headers=headers, timeout=10)
         data = r.json()
 
         fen = data.get("fen")
         title = data.get("title", "Daily Chess Puzzle")
 
         if not fen:
-            await channel.send("❌ Could not load today's puzzle.")
+            await channel.send("❌ Failed to load puzzle.")
             return
 
         board = chess.Board(fen)
         side = "White" if board.turn else "Black"
 
-        # ── Lichess board image (PNG) ──
+        # ── Lichess board image (always works) ──
         fen_encoded = urllib.parse.quote(fen)
-        timestamp = int(time.time())  # cache-busting
+        unique = int(time.time())
 
         board_image_url = (
             f"https://lichess.org/api/board/fen/{fen_encoded}.png"
             "?color=white&piece=cburnett&size=512"
-            f"&v={timestamp}"
+            f"&v={unique}"
         )
 
-        # ── Discord embed ──
         embed = discord.Embed(
             title="♟️ Daily Chess Puzzle",
             description=f"**{title}**\n\n**{side} to move. Find the best move!**",
@@ -62,13 +53,11 @@ async def on_ready():
         embed.set_image(url=board_image_url)
 
         await channel.send(embed=embed)
-        print("✅ Puzzle with board posted")
 
     except Exception as e:
         print("❌ Error:", e)
 
     finally:
-        print("🔒 Closing bot")
         await client.close()
 
 client.run(TOKEN)
