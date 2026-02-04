@@ -1,9 +1,9 @@
-name: Daily Puzzle + Answer (TEST 16:27)
+name: Daily Puzzle + Answer
 
 on:
   schedule:
-    # 16:27 NL (CEST) = 14:27 UTC
-    - cron: "27 14 * * *"
+    # 14:00 NL (CEST) = 12:00 UTC
+    - cron: "0 12 * * *"
   workflow_dispatch:
 
 jobs:
@@ -18,17 +18,17 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      # ── 16:27 → Puzzle posten ──
+      # ── 14:00 → Puzzle ──
       - name: Post puzzle
         run: python bot.py
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
 
-      # ── Test: wacht 1 minuut ──
-      - name: Wait 1 minute
-        run: sleep 60
+      # ── Wacht 4 uur ──
+      - name: Wait 4 hours
+        run: sleep 14400
 
-      # ── 16:28 → Answer posten ──
+      # ── 18:00 → Answer ──
       - name: Post answer
         run: python answer.py
         env:
