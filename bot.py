@@ -2,11 +2,9 @@ import discord
 import os
 import requests
 import chess
-import urllib.parse
-import time
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-CHANNEL_ID = 1468320170891022417  # jouw Discord-kanaal
+CHANNEL_ID = 1468320170891022417
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -27,33 +25,25 @@ async def on_ready():
             return
 
         data = r.json()
+
         fen = data.get("fen")
         title = data.get("title", "Daily Chess Puzzle")
+        image_url = data.get("image")  # ✅ Chess.com image (correct orientation)
 
-        if not fen:
+        if not fen or not image_url:
             await channel.send("❌ Kon de puzzel niet laden.")
             return
 
         board = chess.Board(fen)
         side = "White" if board.turn else "Black"
 
-        fen_encoded = urllib.parse.quote(fen)
-
-        # ✅ flip bord als zwart aan zet is
-        flip = "true" if not board.turn else "false"
-
-        board_image_url = (
-            f"https://chessboardimage.com/{fen_encoded}.png"
-            f"?size=512&coordinates=true&flip={flip}"
-            f"&v={int(time.time())}"
-        )
-
         embed = discord.Embed(
             title="♟️ Daily Chess Puzzle",
             description=f"**{title}**\n\n**{side} to move. Find the best move!**",
             color=0x2ecc71
         )
-        embed.set_image(url=board_image_url)
+
+        embed.set_image(url=image_url)
 
         await channel.send(embed=embed)
 
