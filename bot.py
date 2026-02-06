@@ -4,7 +4,6 @@ import requests
 import chess
 import urllib.parse
 import time
-import json
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1468320170891022417
@@ -17,8 +16,12 @@ async def on_ready():
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
 
-        headers = {"User-Agent": "DailyChessPuzzleBot/1.0"}
-        r = requests.get("https://api.chess.com/pub/puzzle", headers=headers, timeout=10)
+        r = requests.get(
+            "https://api.chess.com/pub/puzzle",
+            headers={"User-Agent": "DailyChessPuzzleBot/1.0"},
+            timeout=10
+        )
+
         if r.status_code != 200:
             await channel.send("❌ Kon de puzzel niet laden.")
             return
@@ -31,17 +34,18 @@ async def on_ready():
             await channel.send("❌ Kon de puzzel niet laden.")
             return
 
-        # 🔒 Puzzle opslaan voor answer.py
-        with open("puzzle.json", "w") as f:
-            json.dump(data, f)
-
         board = chess.Board(fen)
         side = "White" if board.turn else "Black"
 
         fen_encoded = urllib.parse.quote(fen)
+
+        # 👉 flip bord als zwart aan zet is
+        orientation = "white" if board.turn else "black"
+
         board_image_url = (
             f"https://chessboardimage.com/{fen_encoded}.png"
-            f"?size=512&coordinates=true&v={int(time.time())}"
+            f"?size=512&coordinates=true&orientation={orientation}"
+            f"&v={int(time.time())}"
         )
 
         embed = discord.Embed(
