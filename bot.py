@@ -4,6 +4,7 @@ import requests
 import chess
 import chess.svg
 from io import BytesIO
+import cairosvg
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1468320170891022417
@@ -37,26 +38,27 @@ async def on_ready():
         board = chess.Board(fen)
         side = "White" if board.turn else "Black"
 
-        # ✅ ORIENTATIE: zwart onder als zwart aan zet
+        # 🔥 Zwart onder als zwart aan zet
         orientation = chess.WHITE if board.turn else chess.BLACK
 
-        svg = chess.svg.board(
+        svg_board = chess.svg.board(
             board=board,
             orientation=orientation,
             size=500,
             coordinates=True
         )
 
-        image_bytes = BytesIO(svg.encode("utf-8"))
-        file = discord.File(fp=image_bytes, filename="puzzle.svg")
+        png_bytes = cairosvg.svg2png(bytestring=svg_board.encode("utf-8"))
+        image = BytesIO(png_bytes)
+
+        file = discord.File(fp=image, filename="puzzle.png")
 
         embed = discord.Embed(
             title="♟️ Daily Chess Puzzle",
             description=f"**{title}**\n\n**{side} to move. Find the best move!**",
             color=0x2ecc71
         )
-
-        embed.set_image(url="attachment://puzzle.svg")
+        embed.set_image(url="attachment://puzzle.png")
 
         await channel.send(embed=embed, file=file)
 
