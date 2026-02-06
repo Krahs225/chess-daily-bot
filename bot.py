@@ -6,7 +6,7 @@ import urllib.parse
 import time
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-CHANNEL_ID = 1468320170891022417
+CHANNEL_ID = 1468320170891022417  # jouw Discord-kanaal
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -39,12 +39,12 @@ async def on_ready():
 
         fen_encoded = urllib.parse.quote(fen)
 
-        # 👉 flip bord als zwart aan zet is
-        orientation = "white" if board.turn else "black"
+        # ✅ flip bord als zwart aan zet is
+        flip = "true" if not board.turn else "false"
 
         board_image_url = (
             f"https://chessboardimage.com/{fen_encoded}.png"
-            f"?size=512&coordinates=true&orientation={orientation}"
+            f"?size=512&coordinates=true&flip={flip}"
             f"&v={int(time.time())}"
         )
 
