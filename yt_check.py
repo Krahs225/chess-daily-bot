@@ -6,7 +6,7 @@ import json
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
-DISCORD_CHANNEL_ID = 1466819168748704021  # #yt-notification channel ID
+DISCORD_CHANNEL_ID = 1466819168748704021  # #yt-notification
 YT_CHANNEL_ID = "UCN6iO2ziSemeP82WCgsvesA"
 
 STATE_FILE = "yt_state.json"
@@ -68,7 +68,7 @@ async def on_ready():
         last_video_id = load_last_video()
 
         if video_id == last_video_id:
-            print("No new video.")
+            print("No new upload.")
             await client.close()
             return
 
