@@ -6,7 +6,7 @@ import json
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
-DISCORD_CHANNEL_ID = 1468320170891022417  # #yt-notification channel ID
+DISCORD_CHANNEL_ID = 1466819168748704021  # #yt-notification channel ID
 YT_CHANNEL_ID = "UCN6iO2ziSemeP82WCgsvesA"
 
 STATE_FILE = "yt_state.json"
