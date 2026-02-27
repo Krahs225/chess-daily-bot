@@ -2,6 +2,7 @@ import os
 import requests
 import discord
 import json
+import isodate  # Needed to parse YouTube duration format
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
@@ -16,7 +17,7 @@ client = discord.Client(intents=intents)
 
 
 def get_latest_video():
-    url = (
+    search_url = (
         "https://www.googleapis.com/youtube/v3/search"
         "?part=snippet"
         f"&channelId={YT_CHANNEL_ID}"
@@ -26,7 +27,7 @@ def get_latest_video():
         f"&key={YOUTUBE_API_KEY}"
     )
 
-    r = requests.get(url, timeout=10)
+    r = requests.get(search_url, timeout=10)
     data = r.json()
 
     items = data.get("items", [])
@@ -39,6 +40,27 @@ def get_latest_video():
     thumbnail = item["snippet"]["thumbnails"]["high"]["url"]
 
     return video_id, title, thumbnail
+
+
+def get_video_duration(video_id):
+    details_url = (
+        "https://www.googleapis.com/youtube/v3/videos"
+        "?part=contentDetails"
+        f"&id={video_id}"
+        f"&key={YOUTUBE_API_KEY}"
+    )
+
+    r = requests.get(details_url, timeout=10)
+    data = r.json()
+
+    items = data.get("items", [])
+    if not items:
+        return None
+
+    duration_iso = items[0]["contentDetails"]["duration"]
+    duration_seconds = isodate.parse_duration(duration_iso).total_seconds()
+
+    return duration_seconds
 
 
 def load_last_video():
@@ -61,6 +83,7 @@ async def on_ready():
 
         latest = get_latest_video()
         if not latest:
+            print("Could not fetch video.")
             await client.close()
             return
 
@@ -72,18 +95,31 @@ async def on_ready():
             await client.close()
             return
 
+        duration = get_video_duration(video_id)
+
+        if duration is not None and duration <= 60:
+            embed_title = "🎬 New Short Uploaded!"
+        else:
+            embed_title = "📺 New YouTube Video Uploaded!"
+
         save_last_video(video_id)
 
         video_url = f"https://youtu.be/{video_id}"
 
         embed = discord.Embed(
-            title="📺 New YouTube Upload!",
+            title=embed_title,
             description=f"**{title}**",
             color=0xff0000
         )
 
-        embed.add_field(name="Watch here:", value=video_url, inline=False)
-        embed.set_thumbnail(url=thumbnail)
+        embed.add_field(
+            name="Watch here:",
+            value=video_url,
+            inline=False
+        )
+
+        embed.set_image(url=thumbnail)
+        embed.set_footer(text="Sh4rkmate YouTube Channel")
 
         await channel.send(embed=embed)
 
