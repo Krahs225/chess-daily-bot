@@ -2,14 +2,16 @@ name: YouTube Notifications
 
 on:
   schedule:
-    - cron: "0 * * * *"  # Every hour
+    - cron: "0 * * * *"   # Every hour
+  workflow_dispatch:       # Allows manual trigger
 
 jobs:
   youtube-check:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
