@@ -2,12 +2,12 @@ import os
 import requests
 import discord
 import json
-import isodate  # Needed to parse YouTube duration format
+import isodate
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
 
-DISCORD_CHANNEL_ID = 1466819168748704021  # #yt-notification
+DISCORD_CHANNEL_ID = 1466819168748704021
 YT_CHANNEL_ID = "UCN6iO2ziSemeP82WCgsvesA"
 
 STATE_FILE = "yt_state.json"
@@ -83,7 +83,6 @@ async def on_ready():
 
         latest = get_latest_video()
         if not latest:
-            print("Could not fetch video.")
             await client.close()
             return
 
@@ -112,12 +111,7 @@ async def on_ready():
             color=0xff0000
         )
 
-        embed.add_field(
-            name="Watch here:",
-            value=video_url,
-            inline=False
-        )
-
+        embed.add_field(name="Watch here:", value=video_url, inline=False)
         embed.set_image(url=thumbnail)
         embed.set_footer(text="Sh4rkmate YouTube Channel")
 
