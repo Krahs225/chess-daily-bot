@@ -1,0 +1,26 @@
+name: Random Puzzle Command
+
+on:
+  schedule:
+    - cron: "*/1 * * * *"
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install discord.py requests python-chess cairosvg
+
+      - name: Run script
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        run: python random_puzzle_check.py
