@@ -1,22 +1,27 @@
 import os
 import discord
+import asyncio
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 
 CHANNEL_ID = 1468320170891022417
 
 intents = discord.Intents.default()
+intents.message_content = True
+
 client = discord.Client(intents=intents)
 
 
 @client.event
 async def on_ready():
-    channel = client.get_channel(CHANNEL_ID)
+    await asyncio.sleep(2)
 
-    if channel is None:
-        channel = await client.fetch_channel(CHANNEL_ID)
+    channel = await client.fetch_channel(CHANNEL_ID)
 
-    await channel.send("bot reached channel")
+    async for message in channel.history(limit=50):
+        if "!randompuzzle" in message.content:
+            await channel.send("checked")
+            break
 
     await client.close()
 
