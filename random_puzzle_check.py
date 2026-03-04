@@ -7,7 +7,7 @@ import cairosvg
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 
-CHANNEL_ID = 1466819168748704021
+CHANNEL_ID = 1468320170891022417
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -42,7 +42,7 @@ async def post_puzzle(channel):
         color=0x00ff00
     )
 
-    embed.add_field(name="Puzzle link", value=url)
+    embed.add_field(name="Puzzle link", value=url, inline=False)
     embed.set_image(url="attachment://puzzle.png")
 
     await channel.send(file=file, embed=embed)
