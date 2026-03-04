@@ -17,12 +17,26 @@ client = discord.Client(intents=intents)
 
 async def post_puzzle(channel):
 
-    r = requests.get("https://api.chess.com/pub/puzzle", timeout=10)
-    data = r.json()
+    try:
+        r = requests.get("https://api.chess.com/pub/puzzle", timeout=10)
 
-    fen = data["fen"]
-    title = data["title"]
-    url = data["url"]
+        if r.status_code != 200:
+            print("Chess.com API error")
+            return
+
+        data = r.json()
+
+    except Exception as e:
+        print("Puzzle fetch failed:", e)
+        return
+
+    fen = data.get("fen")
+    title = data.get("title")
+    url = data.get("url")
+
+    if not fen:
+        print("Invalid puzzle data")
+        return
 
     board = chess.Board(fen)
 
@@ -61,7 +75,6 @@ async def on_ready():
             continue
 
         if msg.content.lower() == "!randompuzzle":
-
             await post_puzzle(channel)
             break
 
