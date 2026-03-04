@@ -13,7 +13,7 @@ async def on_ready():
 
     try:
         channel = await client.fetch_channel(CHANNEL_ID)
-        await channel.send("Oke")
+        await channel.send("I dont know what u mean")
         print("✅ Message sent")
     except Exception as e:
         print("❌ Error while sending message:", e)
