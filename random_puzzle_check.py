@@ -4,77 +4,77 @@ import discord
 import chess
 import chess.svg
 import cairosvg
+import io
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 
-CHANNEL_ID = 1468320170891022417
+DISCORD_CHANNEL_ID = 1468320170891022417
 
 intents = discord.Intents.default()
 intents.message_content = True
-
 client = discord.Client(intents=intents)
 
 
-async def post_puzzle(channel):
+def get_random_puzzle():
+    url = "https://api.chess.com/pub/puzzle/random"
+    r = requests.get(url)
 
-    try:
-        r = requests.get("https://api.chess.com/pub/puzzle", timeout=10)
+    if r.status_code != 200:
+        return None
 
-        if r.status_code != 200:
-            print("Chess.com API error")
-            return
+    data = r.json()
+    puzzle = data["puzzle"]
 
-        data = r.json()
+    fen = puzzle["fen"]
+    moves = puzzle["moves"]
+    title = puzzle.get("title", "Random Puzzle")
 
-    except Exception as e:
-        print("Puzzle fetch failed:", e)
-        return
+    return fen, moves, title
 
-    fen = data.get("fen")
-    title = data.get("title")
-    url = data.get("url")
 
-    if not fen:
-        print("Invalid puzzle data")
-        return
-
+def render_board(fen):
     board = chess.Board(fen)
 
-    orientation = chess.WHITE
     if board.turn == chess.BLACK:
         orientation = chess.BLACK
+    else:
+        orientation = chess.WHITE
 
-    svg_board = chess.svg.board(board=board, orientation=orientation)
+    svg = chess.svg.board(board=board, orientation=orientation)
+    png = cairosvg.svg2png(bytestring=svg.encode("utf-8"))
 
-    cairosvg.svg2png(bytestring=svg_board, write_to="puzzle.png")
+    return png
 
-    file = discord.File("puzzle.png")
+
+async def post_puzzle(channel):
+    puzzle = get_random_puzzle()
+
+    if not puzzle:
+        return
+
+    fen, moves, title = puzzle
+    image = render_board(fen)
+
+    file = discord.File(io.BytesIO(image), filename="puzzle.png")
 
     embed = discord.Embed(
         title="♟️ Random Chess Puzzle",
-        description=title,
+        description="Find the best move!",
         color=0x00ff00
     )
 
-    embed.add_field(name="Puzzle link", value=url, inline=False)
     embed.set_image(url="attachment://puzzle.png")
+    embed.set_footer(text="Source: Chess.com")
 
-    await channel.send(file=file, embed=embed)
+    await channel.send(embed=embed, file=file)
 
 
 @client.event
 async def on_ready():
+    channel = await client.fetch_channel(DISCORD_CHANNEL_ID)
 
-    channel = await client.fetch_channel(CHANNEL_ID)
-
-    messages = [msg async for msg in channel.history(limit=10)]
-
-    for msg in messages:
-
-        if msg.author.bot:
-            continue
-
-        if msg.content.lower() == "!randompuzzle":
+    async for message in channel.history(limit=50):
+        if "!randompuzzle" in message.content:
             await post_puzzle(channel)
             break
 
