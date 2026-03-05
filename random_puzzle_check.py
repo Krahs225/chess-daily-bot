@@ -17,6 +17,7 @@ client = discord.Client(intents=intents)
 def load_last_message():
     if not os.path.exists(STATE_FILE):
         return None
+
     with open(STATE_FILE, "r") as f:
         data = json.load(f)
         return data.get("last_message_id")
@@ -29,12 +30,16 @@ def save_last_message(message_id):
 
 @client.event
 async def on_ready():
-    await asyncio.sleep(2)
+
+    await asyncio.sleep(3)
 
     channel = await client.fetch_channel(CHANNEL_ID)
+
     last_message_id = load_last_message()
 
-    async for message in channel.history(limit=50):
+    messages = [msg async for msg in channel.history(limit=100)]
+
+    for message in messages:
 
         if "!randompuzzle" in message.content:
 
