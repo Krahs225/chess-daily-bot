@@ -2,16 +2,20 @@ name: Random Puzzle Command
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "* * * * *"
   workflow_dispatch:
 
 jobs:
   run:
     runs-on: ubuntu-latest
 
+    concurrency:
+      group: random-puzzle-check
+      cancel-in-progress: true
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install system dependencies
         run: |
@@ -19,12 +23,12 @@ jobs:
           sudo apt-get install -y libcairo2-dev libjpeg-dev libgif-dev librsvg2-dev
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install Python dependencies
-        run: pip install discord.py requests python-chess cairosvg
+        run: pip install -r requirements.txt
 
       - name: Run script
         env:
