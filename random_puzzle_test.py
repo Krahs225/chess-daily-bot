@@ -4,7 +4,7 @@ import requests
 import chess
 import chess.svg
 import chess.pgn
-from io import BytesIO
+from io import BytesIO, StringIO
 import cairosvg
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
@@ -27,10 +27,9 @@ async def post_puzzle(channel):
     rating = data["puzzle"]["rating"]
     pgn = data["game"]["pgn"]
 
-    game = chess.pgn.read_game(BytesIO(pgn.encode()))
+    game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
 
-    # speel eerste zet van de game zodat we puzzle positie krijgen
     move = next(game.mainline_moves())
     board.push(move)
 
