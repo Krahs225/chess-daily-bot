@@ -53,7 +53,6 @@ async def post_random_puzzle(channel):
     board = chess.Board(fen)
 
     side = "White" if board.turn else "Black"
-
     orientation = chess.WHITE if board.turn else chess.BLACK
 
     svg_board = chess.svg.board(
@@ -83,7 +82,7 @@ async def check_commands(channel):
 
     last_command_id = load_last_command()
 
-    messages = [msg async for msg in channel.history(limit=10)]
+    messages = [msg async for msg in channel.history(limit=20)]
 
     for message in messages:
 
@@ -109,12 +108,12 @@ async def on_ready():
 
     start_time = time.time()
 
-    # run ongeveer 5 minuten
-    while time.time() - start_time < 300:
+    # run ongeveer 6 minuten
+    while time.time() - start_time < 360:
 
         await check_commands(channel)
 
-        await asyncio.sleep(20)
+        await asyncio.sleep(30)
 
     await client.close()
 
