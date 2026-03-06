@@ -6,7 +6,6 @@ import chess.svg
 import chess.pgn
 from io import BytesIO
 import cairosvg
-import re
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1468320170891022417
@@ -28,11 +27,12 @@ async def post_puzzle(channel):
     rating = data["puzzle"]["rating"]
     pgn = data["game"]["pgn"]
 
-    # FEN uit PGN header halen
-    match = re.search(r'\[FEN "(.*?)"\]', pgn)
-    fen = match.group(1)
+    game = chess.pgn.read_game(BytesIO(pgn.encode()))
+    board = game.board()
 
-    board = chess.Board(fen)
+    # speel eerste zet van de game zodat we puzzle positie krijgen
+    move = next(game.mainline_moves())
+    board.push(move)
 
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
