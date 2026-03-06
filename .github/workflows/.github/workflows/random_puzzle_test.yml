@@ -1,0 +1,26 @@
+name: Random Puzzle Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y libcairo2-dev libjpeg-dev libgif-dev librsvg2-dev
+
+      - run: pip install discord.py python-chess cairosvg requests
+
+      - name: Run puzzle test
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        run: python random_puzzle_test.py
