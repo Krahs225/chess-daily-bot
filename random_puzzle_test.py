@@ -25,13 +25,16 @@ async def post_puzzle(channel):
     data = r.json()
 
     rating = data["puzzle"]["rating"]
+    initial_ply = data["puzzle"]["initialPly"]
     pgn = data["game"]["pgn"]
 
     game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
 
-    move = next(iter(game.mainline_moves()))
-    board.push(move)
+    moves = list(game.mainline_moves())
+
+    for i in range(initial_ply):
+        board.push(moves[i])
 
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
