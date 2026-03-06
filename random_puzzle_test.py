@@ -30,7 +30,7 @@ async def post_puzzle(channel):
     game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
 
-    move = next(game.mainline_moves())
+    move = next(iter(game.mainline_moves()))
     board.push(move)
 
     side = "White" if board.turn else "Black"
