@@ -3,11 +3,12 @@ import discord
 import requests
 import chess
 import chess.svg
+import chess.pgn
 from io import BytesIO
 import cairosvg
+import re
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-
 CHANNEL_ID = 1468320170891022417
 
 intents = discord.Intents.default()
@@ -24,8 +25,12 @@ async def post_puzzle(channel):
 
     data = r.json()
 
-    fen = data["game"]["fen"]
     rating = data["puzzle"]["rating"]
+    pgn = data["game"]["pgn"]
+
+    # FEN uit PGN header halen
+    match = re.search(r'\[FEN "(.*?)"\]', pgn)
+    fen = match.group(1)
 
     board = chess.Board(fen)
 
