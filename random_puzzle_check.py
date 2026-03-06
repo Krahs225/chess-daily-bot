@@ -2,6 +2,11 @@ import os
 import discord
 import asyncio
 import json
+import requests
+import chess
+import chess.svg
+from io import BytesIO
+import cairosvg
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 
@@ -27,18 +32,60 @@ def save_last_command(message_id):
         json.dump({"last_command_id": message_id}, f)
 
 
+async def post_random_puzzle(channel):
+
+    r = requests.get(
+        "https://lichess.org/api/puzzle/next",
+        headers={"Accept": "application/json"},
+        timeout=10
+    )
+
+    if r.status_code != 200:
+        await channel.send("❌ Kon random puzzel niet laden.")
+        return
+
+    data = r.json()
+
+    fen = data["game"]["fen"]
+    rating = data["puzzle"]["rating"]
+
+    board = chess.Board(fen)
+
+    side = "White" if board.turn else "Black"
+
+    orientation = chess.WHITE if board.turn else chess.BLACK
+
+    svg_board = chess.svg.board(
+        board=board,
+        orientation=orientation,
+        size=500,
+        coordinates=True
+    )
+
+    png_bytes = cairosvg.svg2png(bytestring=svg_board.encode("utf-8"))
+    image = BytesIO(png_bytes)
+
+    file = discord.File(fp=image, filename="puzzle.png")
+
+    embed = discord.Embed(
+        title="🎲 Random Chess Puzzle",
+        description=f"**Rating: {rating}**\n\n**{side} to move. Find the best move!**",
+        color=0x2ecc71
+    )
+
+    embed.set_image(url="attachment://puzzle.png")
+
+    await channel.send(embed=embed, file=file)
+
+
 @client.event
 async def on_ready():
-
-    print("Bot connected")
 
     await asyncio.sleep(3)
 
     channel = await client.fetch_channel(CHANNEL_ID)
 
     last_command_id = load_last_command()
-
-    print("Last command id:", last_command_id)
 
     messages = [msg async for msg in channel.history(limit=10)]
 
@@ -52,15 +99,11 @@ async def on_ready():
 
         if message.content.strip() == "!randompuzzle":
 
-            print("Command found")
-
-            await channel.send("checked2")
+            await post_random_puzzle(channel)
 
             save_last_command(message.id)
 
             break
-
-    print("Finished scan")
 
     await client.close()
 
