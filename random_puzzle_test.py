@@ -24,7 +24,7 @@ async def post_puzzle(channel):
 
     data = r.json()
 
-    fen = data["puzzle"]["fen"]
+    fen = data["game"]["fen"]
     rating = data["puzzle"]["rating"]
 
     board = chess.Board(fen)
