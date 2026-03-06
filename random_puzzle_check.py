@@ -7,6 +7,7 @@ import chess
 import chess.svg
 from io import BytesIO
 import cairosvg
+import time
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 
@@ -41,12 +42,11 @@ async def post_random_puzzle(channel):
     )
 
     if r.status_code != 200:
-        await channel.send("❌ Kon random puzzel niet laden.")
+        await channel.send("❌ Could not load random puzzle.")
         return
 
     data = r.json()
 
-    # juiste plek van FEN
     fen = data["game"]["fen"]
     rating = data["puzzle"]["rating"]
 
@@ -79,12 +79,7 @@ async def post_random_puzzle(channel):
     await channel.send(embed=embed, file=file)
 
 
-@client.event
-async def on_ready():
-
-    await asyncio.sleep(3)
-
-    channel = await client.fetch_channel(CHANNEL_ID)
+async def check_commands(channel):
 
     last_command_id = load_last_command()
 
@@ -104,7 +99,22 @@ async def on_ready():
 
             save_last_command(message.id)
 
-            break
+            return
+
+
+@client.event
+async def on_ready():
+
+    channel = await client.fetch_channel(CHANNEL_ID)
+
+    start_time = time.time()
+
+    # run ongeveer 5 minuten
+    while time.time() - start_time < 300:
+
+        await check_commands(channel)
+
+        await asyncio.sleep(20)
 
     await client.close()
 
