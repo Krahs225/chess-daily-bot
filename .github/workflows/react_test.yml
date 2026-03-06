@@ -25,3 +25,13 @@ jobs:
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
         run: python react_check.py
+
+      - name: Save state
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          if [ -f react_state.json ]; then
+            git add react_state.json
+            git commit -m "update react state" || echo "no changes"
+            git push
+          fi
