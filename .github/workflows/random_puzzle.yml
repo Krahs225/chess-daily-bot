@@ -31,10 +31,14 @@ jobs:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
         run: python random_puzzle_check.py
 
-      - name: Commit state
+      - name: Commit state if it exists
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add random_state.json
-          git commit -m "update random command state" || echo "no changes"
-          git push
+          if [ -f random_state.json ]; then
+            git add random_state.json
+            git commit -m "update random command state" || echo "no changes"
+            git push
+          else
+            echo "No state file yet"
+          fi
