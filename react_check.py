@@ -19,7 +19,8 @@ def load_last_id():
     if not os.path.exists(STATE_FILE):
         return 0
     with open(STATE_FILE, "r") as f:
-        return json.load(f).get("last_id", 0)
+        data = json.load(f)
+        return data.get("last_id", 0)
 
 
 def save_last_id(message_id):
@@ -54,6 +55,7 @@ async def on_ready():
 
     start_time = time.time()
 
+    # runner blijft 2 minuten actief
     while time.time() - start_time < 120:
 
         await check_messages(channel)
