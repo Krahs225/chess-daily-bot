@@ -56,9 +56,7 @@ async def on_ready():
     start_time = time.time()
 
     while time.time() - start_time < 180:
-
         await check_messages(channel)
-
         await asyncio.sleep(5)
 
     await client.close()
