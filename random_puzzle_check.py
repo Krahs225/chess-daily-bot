@@ -48,7 +48,7 @@ async def on_ready():
 
         if "!randompuzzle" in message.content:
 
-            await channel.send("checked")
+            await channel.send("checked2")
 
             save_last_command(message.id)
             break
