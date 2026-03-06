@@ -46,7 +46,8 @@ async def post_random_puzzle(channel):
 
     data = r.json()
 
-    fen = data["puzzle"]["fen"]
+    # juiste plek van FEN
+    fen = data["game"]["fen"]
     rating = data["puzzle"]["rating"]
 
     board = chess.Board(fen)
