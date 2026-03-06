@@ -32,7 +32,7 @@ async def check_messages(channel):
 
     last_id = load_last_id()
 
-    messages = [msg async for msg in channel.history(limit=10)]
+    messages = [msg async for msg in channel.history(limit=15)]
 
     for message in messages:
 
@@ -55,12 +55,11 @@ async def on_ready():
 
     start_time = time.time()
 
-    # runner blijft 2 minuten actief
-    while time.time() - start_time < 120:
+    while time.time() - start_time < 180:
 
         await check_messages(channel)
 
-        await asyncio.sleep(10)
+        await asyncio.sleep(5)
 
     await client.close()
 
