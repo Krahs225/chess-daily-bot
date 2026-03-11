@@ -30,8 +30,6 @@ def save_last_id(message_id):
 
 async def check_messages(channel):
 
-    last_id = load_last_id()
-
     messages = [msg async for msg in channel.history(limit=15)]
 
     for message in messages:
@@ -39,13 +37,20 @@ async def check_messages(channel):
         if message.author.bot:
             continue
 
-        if message.id <= last_id:
+        if message.content.strip() != "!react":
             continue
 
-        if message.content.strip() == "!react":
-            await channel.send("answer")
-            save_last_id(message.id)
+        # state opnieuw laden vlak voor antwoord
+        last_id = load_last_id()
+
+        if message.id <= last_id:
             return
+
+        await channel.send("answer")
+
+        save_last_id(message.id)
+
+        return
 
 
 @client.event
@@ -55,7 +60,7 @@ async def on_ready():
 
     start_time = time.time()
 
-    # runner blijft 45 minuten draaien
+    # runner 45 minuten actief
     while time.time() - start_time < 2700:
 
         await check_messages(channel)
