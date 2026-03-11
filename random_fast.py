@@ -50,8 +50,10 @@ async def post_puzzle(channel):
 
     rating = data["puzzle"]["rating"]
     initial_ply = data["puzzle"]["initialPly"]
-    solution = data["puzzle"]["solution"][0]
     pgn = data["game"]["pgn"]
+
+    # correcte solution (eerste zet van de speler)
+    solution = data["puzzle"]["solution"][1]
 
     game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
@@ -59,7 +61,7 @@ async def post_puzzle(channel):
     moves = list(game.mainline_moves())
 
     # juiste puzzelpositie
-    for i in range(initial_ply):
+    for i in range(initial_ply + 1):
         board.push(moves[i])
 
     side = "White" if board.turn else "Black"
