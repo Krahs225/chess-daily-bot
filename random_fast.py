@@ -6,7 +6,8 @@ import json
 import requests
 import chess
 import chess.svg
-from io import BytesIO
+import chess.pgn
+from io import BytesIO, StringIO
 import cairosvg
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
@@ -48,15 +49,18 @@ async def post_puzzle(channel):
     data = r.json()
 
     rating = data["puzzle"]["rating"]
+    initial_ply = data["puzzle"]["initialPly"]
     solution = data["puzzle"]["solution"][0]
+    pgn = data["game"]["pgn"]
 
-    # veilige FEN detectie
-    if "fen" in data["puzzle"]:
-        fen = data["puzzle"]["fen"]
-    else:
-        fen = data["game"]["fen"]
+    game = chess.pgn.read_game(StringIO(pgn))
+    board = game.board()
 
-    board = chess.Board(fen)
+    moves = list(game.mainline_moves())
+
+    # juiste puzzelpositie
+    for i in range(initial_ply):
+        board.push(moves[i])
 
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
