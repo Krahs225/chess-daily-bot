@@ -46,6 +46,7 @@ async def post_puzzle(channel):
 
     rating = data["puzzle"]["rating"]
     initial_ply = data["puzzle"]["initialPly"]
+    solution = data["puzzle"]["solution"][0]
     pgn = data["game"]["pgn"]
 
     game = chess.pgn.read_game(StringIO(pgn))
@@ -73,7 +74,7 @@ async def post_puzzle(channel):
 
     embed = discord.Embed(
         title="🎲 Random Chess Puzzle",
-        description=f"Rating: {rating}\n\n{side} to move",
+        description=f"Rating: {rating}\n\n{side} to move\n\nSolution: ||{solution}||",
         color=0x2ecc71
     )
 
@@ -103,7 +104,7 @@ async def check_messages(channel):
         # wacht zodat fast bot eerst kan reageren
         await asyncio.sleep(10)
 
-        # check of er al een puzzle door de bot is gestuurd
+        # check of er al een puzzle van de bot staat
         recent = [msg async for msg in channel.history(limit=5)]
 
         for msg in recent:
