@@ -31,16 +31,16 @@ def save_last_id(message_id):
 async def check_messages(channel):
 
     messages = [msg async for msg in channel.history(limit=15)]
+    messages.reverse()  # oud → nieuw
 
     for message in messages:
 
         if message.author.bot:
             continue
 
-        if message.content.strip() != "!react":
+        if message.content.strip().lower() != "!react":
             continue
 
-        # state opnieuw laden vlak voor antwoord
         last_id = load_last_id()
 
         if message.id <= last_id:
@@ -57,6 +57,14 @@ async def check_messages(channel):
 async def on_ready():
 
     channel = await client.fetch_channel(CHANNEL_ID)
+
+    # Bij start: laatste bericht opslaan zodat oude !react niet triggeren
+    last_id = load_last_id()
+
+    if last_id == 0:
+        messages = [msg async for msg in channel.history(limit=1)]
+        if messages:
+            save_last_id(messages[0].id)
 
     start_time = time.time()
 
