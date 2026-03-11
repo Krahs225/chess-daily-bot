@@ -1,1 +1,34 @@
-ddtest
+name: React Fast Bot
+
+on:
+  schedule:
+    - cron: "* * * * *"
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install discord.py
+
+      - name: Run fast bot
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        run: python react_fast.py
+
+      - name: Save state
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          if [ -f react_state.json ]; then
+            git add react_state.json
+            git commit -m "update react state" || echo "no changes"
+            git push
+          fi
