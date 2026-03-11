@@ -41,10 +41,14 @@ async def post_puzzle(channel):
         timeout=10
     )
 
+    if r.status_code != 200:
+        await channel.send("❌ Could not load random puzzle.")
+        return
+
     data = r.json()
 
     rating = data["puzzle"]["rating"]
-    fen = data["puzzle"]["fen"]
+    fen = data["game"]["fen"]
     solution = data["puzzle"]["solution"][0]
 
     board = chess.Board(fen)
