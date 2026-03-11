@@ -55,8 +55,11 @@ async def on_ready():
 
     start_time = time.time()
 
-    while time.time() - start_time < 180:
+    # runner blijft 45 minuten draaien
+    while time.time() - start_time < 2700:
+
         await check_messages(channel)
+
         await asyncio.sleep(5)
 
     await client.close()
