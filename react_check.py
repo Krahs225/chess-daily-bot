@@ -46,6 +46,15 @@ async def check_messages(channel):
         if message.id <= last_id:
             continue
 
+        # Wacht zodat andere runner eerst kan reageren
+        await asyncio.sleep(10)
+
+        # State opnieuw checken
+        last_id = load_last_id()
+
+        if message.id <= last_id:
+            return
+
         await channel.send("answer")
 
         save_last_id(message.id)
@@ -58,7 +67,7 @@ async def on_ready():
 
     channel = await client.fetch_channel(CHANNEL_ID)
 
-    # BIJ START ALTIJD nieuwste message opslaan
+    # Bij start: nieuwste bericht opslaan zodat oude !react niet triggeren
     messages = [msg async for msg in channel.history(limit=1)]
     if messages:
         save_last_id(messages[0].id)
