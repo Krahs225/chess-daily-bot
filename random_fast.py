@@ -48,8 +48,13 @@ async def post_puzzle(channel):
     data = r.json()
 
     rating = data["puzzle"]["rating"]
-    fen = data["game"]["fen"]
     solution = data["puzzle"]["solution"][0]
+
+    # veilige FEN detectie
+    if "fen" in data["puzzle"]:
+        fen = data["puzzle"]["fen"]
+    else:
+        fen = data["game"]["fen"]
 
     board = chess.Board(fen)
 
