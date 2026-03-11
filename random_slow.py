@@ -46,7 +46,7 @@ async def post_puzzle(channel):
 
     rating = data["puzzle"]["rating"]
     initial_ply = data["puzzle"]["initialPly"]
-    solution = data["puzzle"]["solution"][0]
+    solution = data["puzzle"]["solution"][1]
     pgn = data["game"]["pgn"]
 
     game = chess.pgn.read_game(StringIO(pgn))
@@ -54,7 +54,8 @@ async def post_puzzle(channel):
 
     moves = list(game.mainline_moves())
 
-    for i in range(initial_ply):
+    # juiste puzzelpositie
+    for i in range(initial_ply + 1):
         board.push(moves[i])
 
     side = "White" if board.turn else "Black"
@@ -104,7 +105,7 @@ async def check_messages(channel):
         # wacht zodat fast bot eerst kan reageren
         await asyncio.sleep(10)
 
-        # check of er al een puzzle van de bot staat
+        # check of er al een puzzle is gestuurd
         recent = [msg async for msg in channel.history(limit=5)]
 
         for msg in recent:
