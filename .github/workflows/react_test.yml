@@ -21,7 +21,7 @@ jobs:
       - name: Run bot
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-        run: python react_slow.py
+        run: python random_slow.py
 
       - name: Save state
         run: |
