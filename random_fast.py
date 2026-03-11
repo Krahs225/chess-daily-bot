@@ -46,6 +46,7 @@ async def post_puzzle(channel):
 
     rating = data["puzzle"]["rating"]
     initial_ply = data["puzzle"]["initialPly"]
+    solution = data["puzzle"]["solution"][0]
     pgn = data["game"]["pgn"]
 
     game = chess.pgn.read_game(StringIO(pgn))
@@ -73,7 +74,7 @@ async def post_puzzle(channel):
 
     embed = discord.Embed(
         title="🎲 Random Chess Puzzle",
-        description=f"Rating: {rating}\n\n{side} to move",
+        description=f"Rating: {rating}\n\n{side} to move\n\nSolution: ||{solution}||",
         color=0x2ecc71
     )
 
