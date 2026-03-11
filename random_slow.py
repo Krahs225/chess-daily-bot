@@ -6,8 +6,7 @@ import json
 import requests
 import chess
 import chess.svg
-import chess.pgn
-from io import BytesIO, StringIO
+from io import BytesIO
 import cairosvg
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
@@ -45,18 +44,10 @@ async def post_puzzle(channel):
     data = r.json()
 
     rating = data["puzzle"]["rating"]
-    initial_ply = data["puzzle"]["initialPly"]
-    solution = data["puzzle"]["solution"][1]
-    pgn = data["game"]["pgn"]
+    fen = data["puzzle"]["fen"]
+    solution = data["puzzle"]["solution"][0]
 
-    game = chess.pgn.read_game(StringIO(pgn))
-    board = game.board()
-
-    moves = list(game.mainline_moves())
-
-    # juiste puzzelpositie
-    for i in range(initial_ply + 1):
-        board.push(moves[i])
+    board = chess.Board(fen)
 
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
