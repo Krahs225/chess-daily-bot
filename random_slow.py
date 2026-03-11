@@ -100,12 +100,17 @@ async def check_messages(channel):
         if message.id <= last_id:
             continue
 
+        # wacht zodat fast bot eerst kan reageren
         await asyncio.sleep(10)
 
-        last_id = load_last_id()
+        # check of er al een puzzle door de bot is gestuurd
+        recent = [msg async for msg in channel.history(limit=5)]
 
-        if message.id <= last_id:
-            return
+        for msg in recent:
+            if msg.author.bot and msg.embeds:
+                if msg.embeds[0].title == "🎲 Random Chess Puzzle":
+                    save_last_id(message.id)
+                    return
 
         await post_puzzle(channel)
 
