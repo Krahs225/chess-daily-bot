@@ -2,7 +2,7 @@ name: React Slow Bot
 
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "30 * * * *"
   workflow_dispatch:
 
 jobs:
