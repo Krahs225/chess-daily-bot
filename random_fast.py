@@ -48,7 +48,7 @@ async def post_puzzle(channel):
     pgn = data["game"]["pgn"]
     solution_moves = data["puzzle"]["solution"]
 
-    # 🧠 CORRECTE PGN parsing (FIX)
+    # 🧠 CORRECTE BOARD (FIX)
     game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
     node = game
@@ -60,12 +60,10 @@ async def post_puzzle(channel):
         else:
             break
 
-    # engine zet uitvoeren
-    engine_move = chess.Move.from_uci(solution_moves[0])
-    board.push(engine_move)
+    # ❗ GEEN engine move hier
 
-    # speler zetten (optioneel, maar handig)
-    player_moves = solution_moves[1::2]
+    # speler zetten (nu begint puzzle meteen)
+    player_moves = solution_moves[0::2]
     solution = " ".join(player_moves)
 
     side = "White" if board.turn else "Black"
