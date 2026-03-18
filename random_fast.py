@@ -46,24 +46,27 @@ async def post_puzzle(channel):
     rating = data["puzzle"]["rating"]
     initial_ply = data["puzzle"]["initialPly"]
     pgn = data["game"]["pgn"]
-
     solution_moves = data["puzzle"]["solution"]
 
-    # 🧠 Bouw correcte board state
+    # 🧠 CORRECTE PGN parsing (FIX)
     game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
-    moves = list(game.mainline_moves())
+    node = game
 
-    # speel tot puzzle start
-    for move in moves[:initial_ply]:
-        board.push(move)
+    for _ in range(initial_ply):
+        if node.variations:
+            node = node.variations[0]
+            board.push(node.move)
+        else:
+            break
 
-    # engine zet uitvoeren (BELANGRIJK)
+    # engine zet uitvoeren
     engine_move = chess.Move.from_uci(solution_moves[0])
     board.push(engine_move)
 
-    # juiste oplossing (speler zet)
-    solution = solution_moves[1]
+    # speler zetten (optioneel, maar handig)
+    player_moves = solution_moves[1::2]
+    solution = " ".join(player_moves)
 
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
@@ -107,7 +110,7 @@ async def on_ready():
             if message.content.strip() == "!randompuzzle":
                 await post_puzzle(channel)
                 save_last_id(message.id)
-                return  # runner stoppen na 1 reactie
+                return
 
         await asyncio.sleep(5)
 
