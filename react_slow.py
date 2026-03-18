@@ -1,13 +1,18 @@
 import os
 import discord
 import asyncio
-import time
 import json
+import requests
+import chess
+import chess.svg
+import chess.pgn
+from io import BytesIO, StringIO
+import cairosvg
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 
 CHANNEL_ID = 1468320170891022417
-STATE_FILE = "react_state.json"
+STATE_FILE = "random_state.json"
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -19,8 +24,7 @@ def load_last_id():
     if not os.path.exists(STATE_FILE):
         return 0
     with open(STATE_FILE, "r") as f:
-        data = json.load(f)
-        return data.get("last_id", 0)
+        return json.load(f).get("last_id", 0)
 
 
 def save_last_id(message_id):
@@ -28,59 +32,110 @@ def save_last_id(message_id):
         json.dump({"last_id": message_id}, f)
 
 
-async def check_messages(channel):
+def uci_to_san_sequence(board, moves_uci):
+    temp_board = board.copy()
+    san_moves = []
 
-    messages = [msg async for msg in channel.history(limit=15)]
-    messages.reverse()
+    for move_uci in moves_uci:
+        move = chess.Move.from_uci(move_uci)
+        if move in temp_board.legal_moves:
+            san_moves.append(temp_board.san(move))
+            temp_board.push(move)
 
-    for message in messages:
+    return " ".join(san_moves)
 
-        if message.author.bot:
-            continue
 
-        if message.content.strip().lower() != "!react":
-            continue
+async def post_puzzle(channel):
 
-        last_id = load_last_id()
+    r = requests.get(
+        "https://lichess.org/api/puzzle/next",
+        headers={"Accept": "application/json"},
+        timeout=10
+    )
 
-        if message.id <= last_id:
-            continue
+    data = r.json()
 
-        # Wacht zodat andere runner eerst kan reageren
-        await asyncio.sleep(10)
+    rating = data["puzzle"]["rating"]
+    initial_ply = data["puzzle"]["initialPly"]
+    pgn = data["game"]["pgn"]
+    solution_moves = data["puzzle"]["solution"]
+    puzzle_id = data["puzzle"]["id"]
 
-        # State opnieuw checken
-        last_id = load_last_id()
+    game = chess.pgn.read_game(StringIO(pgn))
+    board = game.board()
+    node = game
 
-        if message.id <= last_id:
-            return
+    for _ in range(initial_ply):
+        if node.variations:
+            node = node.variations[0]
+            board.push(node.move)
+        else:
+            break
 
-        await channel.send("answer")
+    # 🔥 +1 move fix (BELANGRIJK)
+    if node.variations:
+        node = node.variations[0]
+        board.push(node.move)
 
-        save_last_id(message.id)
+    solution = uci_to_san_sequence(board, solution_moves)
 
-        return
+    side = "White" if board.turn else "Black"
+    orientation = chess.WHITE if board.turn else chess.BLACK
+
+    svg_board = chess.svg.board(
+        board=board,
+        orientation=orientation,
+        size=500,
+        coordinates=True
+    )
+
+    png_bytes = cairosvg.svg2png(bytestring=svg_board.encode())
+    image = BytesIO(png_bytes)
+
+    file = discord.File(fp=image, filename="puzzle.png")
+
+    puzzle_url = f"https://lichess.org/training/{puzzle_id}"
+    fen = board.fen()
+
+    embed = discord.Embed(
+        title="🎲 Random Chess Puzzle",
+        description=(
+            f"Rating: {rating}\n\n"
+            f"{side} to move\n\n"
+            f"Solution: ||{solution}||\n\n"
+            f"🔗 Puzzle: {puzzle_url}\n"
+            f"📄 FEN: `{fen}`"
+        ),
+        color=0x2ecc71
+    )
+
+    embed.set_image(url="attachment://puzzle.png")
+
+    await channel.send(embed=embed, file=file)
 
 
 @client.event
 async def on_ready():
+    channel = client.get_channel(CHANNEL_ID)
 
-    channel = await client.fetch_channel(CHANNEL_ID)
+    # ⏳ ENIGE verschil met fast bot
+    await asyncio.sleep(15)
 
-    # Bij start: nieuwste bericht opslaan zodat oude !react niet triggeren
-    messages = [msg async for msg in channel.history(limit=1)]
-    if messages:
-        save_last_id(messages[0].id)
+    last_id = load_last_id()
 
-    start_time = time.time()
+    while True:
+        messages = [msg async for msg in channel.history(limit=25)]
 
-    while time.time() - start_time < 2700:
+        for message in messages:
+            if message.id <= last_id:
+                continue
 
-        await check_messages(channel)
+            if message.content.strip() == "!randompuzzle":
+                await post_puzzle(channel)
+                save_last_id(message.id)
+                return
 
         await asyncio.sleep(5)
-
-    await client.close()
 
 
 client.run(DISCORD_TOKEN)
