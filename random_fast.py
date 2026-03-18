@@ -60,8 +60,9 @@ async def post_puzzle(channel):
     initial_ply = data["puzzle"]["initialPly"]
     pgn = data["game"]["pgn"]
     solution_moves = data["puzzle"]["solution"]
+    puzzle_id = data["puzzle"]["id"]
 
-    # 🧠 juiste PGN opbouw
+    # 🧠 PGN parsing
     game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
     node = game
@@ -73,11 +74,11 @@ async def post_puzzle(channel):
         else:
             break
 
-    # ✅ engine zet uitvoeren (nu klopt het)
+    # ✅ engine zet uitvoeren
     engine_move = chess.Move.from_uci(solution_moves[0])
     board.push(engine_move)
 
-    # ✅ volledige solution (beide kanten)
+    # ✅ volledige solution (beide kanten, SAN)
     solution = uci_to_san_sequence(board, solution_moves[1:])
 
     side = "White" if board.turn else "Black"
@@ -95,9 +96,19 @@ async def post_puzzle(channel):
 
     file = discord.File(fp=image, filename="puzzle.png")
 
+    # 🔗 link + FEN
+    puzzle_url = f"https://lichess.org/training/{puzzle_id}"
+    fen = board.fen()
+
     embed = discord.Embed(
         title="🎲 Random Chess Puzzle",
-        description=f"Rating: {rating}\n\n{side} to move\n\nSolution: ||{solution}||",
+        description=(
+            f"Rating: {rating}\n\n"
+            f"{side} to move\n\n"
+            f"Solution: ||{solution}||\n\n"
+            f"🔗 Puzzle: {puzzle_url}\n"
+            f"📄 FEN: `{fen}`"
+        ),
         color=0x2ecc71
     )
 
