@@ -33,6 +33,19 @@ def save_last_id(message_id):
         json.dump({"last_id": message_id}, f)
 
 
+def uci_to_san_sequence(board, moves_uci):
+    """Convert UCI moves to SAN based on board state"""
+    san_moves = []
+    temp_board = board.copy()
+
+    for move_uci in moves_uci:
+        move = chess.Move.from_uci(move_uci)
+        san_moves.append(temp_board.san(move))
+        temp_board.push(move)
+
+    return " ".join(san_moves)
+
+
 async def post_puzzle(channel):
 
     r = requests.get(
@@ -48,7 +61,7 @@ async def post_puzzle(channel):
     pgn = data["game"]["pgn"]
     solution_moves = data["puzzle"]["solution"]
 
-    # 🧠 CORRECTE BOARD (FIX)
+    # 🧠 juiste PGN opbouw
     game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
     node = game
@@ -60,11 +73,12 @@ async def post_puzzle(channel):
         else:
             break
 
-    # ❗ GEEN engine move hier
+    # ✅ engine zet uitvoeren (nu klopt het)
+    engine_move = chess.Move.from_uci(solution_moves[0])
+    board.push(engine_move)
 
-    # speler zetten (nu begint puzzle meteen)
-    player_moves = solution_moves[0::2]
-    solution = " ".join(player_moves)
+    # ✅ volledige solution (beide kanten)
+    solution = uci_to_san_sequence(board, solution_moves[1:])
 
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
