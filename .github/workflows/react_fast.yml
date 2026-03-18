@@ -2,7 +2,7 @@ name: React Fast Bot
 
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -22,3 +22,13 @@ jobs:
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
         run: python random_fast.py
+
+      - name: Save state
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          if [ -f random_state.json ]; then
+            git add random_state.json
+            git commit -m "update random state" || echo "no changes"
+            git push
+          fi
