@@ -101,6 +101,8 @@ def render_board(board):
 # ================= BOT =================
 
 intents = discord.Intents.default()
+intents.message_content = True  # 🔥 CRUCIALE FIX
+
 client = discord.Client(intents=intents)
 
 
@@ -124,6 +126,8 @@ async def on_ready():
 
             for message in reversed(messages):
 
+                print("DEBUG MESSAGE:", message.content)
+
                 # skip oude berichten
                 if message.id <= last_id:
                     continue
@@ -136,7 +140,7 @@ async def on_ready():
                 if message.content.strip() != "!randompuzzle":
                     continue
 
-                print("Command received!")
+                print("✅ COMMAND DETECTED")
 
                 data = fetch_puzzle()
                 if not data:
@@ -184,7 +188,7 @@ async def on_ready():
 
                 await message.channel.send(embed=embed, file=file)
 
-                # 🔥 update state (cruciaal)
+                # 🔥 update state
                 last_id = message.id
                 save_state(last_id)
 
