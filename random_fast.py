@@ -10,7 +10,7 @@ import cairosvg
 from io import BytesIO
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-CHANNEL_ID = 123456789012345678  # <-- jouw ID
+CHANNEL_ID = 123456789012345678  # jouw channel
 
 STATE_FILE = "random_state.json"
 
@@ -28,11 +28,8 @@ def save_state(last_id):
 
 
 def fetch_puzzle():
-    try:
-        res = requests.get("https://lichess.org/api/puzzle/next", timeout=10)
-        return res.json()
-    except:
-        return None
+    res = requests.get("https://lichess.org/api/puzzle/next")
+    return res.json()
 
 
 def build_board(data):
@@ -73,8 +70,6 @@ def render_board(board):
 
 
 intents = discord.Intents.default()
-intents.message_content = True  # ⚠️ moet AAN staan in portal
-
 client = discord.Client(intents=intents)
 
 
@@ -85,7 +80,6 @@ async def on_ready():
     channel = client.get_channel(CHANNEL_ID)
     last_id = load_state()
 
-    # skip oude berichten
     if last_id == 0:
         messages = [msg async for msg in channel.history(limit=1)]
         if messages:
@@ -97,24 +91,15 @@ async def on_ready():
 
         for message in reversed(messages):
 
-            print("MSG:", message.content)
-
             if message.id <= last_id:
                 continue
 
             if message.author.bot:
                 continue
 
-            # 🔥 command check
-            if "!randompuzzle" not in message.content.lower():
-                continue
-
-            print("COMMAND!")
+            # ❌ GEEN COMMAND CHECK → dit was jouw oude gedrag
 
             data = fetch_puzzle()
-            if not data:
-                continue
-
             board = build_board(data)
             solution = uci_to_san_sequence(board, data["puzzle"]["solution"])
             png = render_board(board)
