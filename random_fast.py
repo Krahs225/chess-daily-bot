@@ -47,7 +47,7 @@ async def get_random_puzzle():
     target = random.randint(500, 3000)
 
     async with aiohttp.ClientSession() as session:
-        while True:
+        for _ in range(25):
             try:
                 async with session.get(
                     "https://lichess.org/api/puzzle/next",
@@ -67,9 +67,20 @@ async def get_random_puzzle():
             except:
                 await asyncio.sleep(1)
 
+        async with session.get(
+            "https://lichess.org/api/puzzle/next",
+            headers={"Accept": "application/json"},
+            timeout=10
+        ) as resp:
+            return await resp.json()
+
 
 async def post_puzzle(channel):
     data = await get_random_puzzle()
+
+    if "puzzle" not in data:
+        await channel.send("Error fetching puzzle, try again.")
+        return
 
     rating = data["puzzle"]["rating"]
     initial_ply = data["puzzle"]["initialPly"]
