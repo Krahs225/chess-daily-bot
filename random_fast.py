@@ -44,12 +44,12 @@ def uci_to_san_sequence(board, moves_uci):
 
 
 def fetch_puzzle_blocking(target):
-    for _ in range(20):
+    for _ in range(10):  # minder retries = sneller
         try:
             r = requests.get(
                 "https://lichess.org/api/puzzle/next",
                 headers={"Accept": "application/json"},
-                timeout=10
+                timeout=5
             )
             data = r.json()
 
@@ -58,21 +58,26 @@ def fetch_puzzle_blocking(target):
 
             rating = data["puzzle"]["rating"]
 
-            if abs(rating - target) <= 150:
+            if abs(rating - target) <= 200:  # iets ruimer
                 return data
 
         except:
             continue
 
+    # fallback: gewoon random puzzle pakken
     try:
         r = requests.get(
             "https://lichess.org/api/puzzle/next",
             headers={"Accept": "application/json"},
-            timeout=10
+            timeout=5
         )
-        return r.json()
+        data = r.json()
+        if "puzzle" in data:
+            return data
     except:
-        return None
+        pass
+
+    return None
 
 
 async def get_random_puzzle():
@@ -83,7 +88,7 @@ async def get_random_puzzle():
 async def post_puzzle(channel):
     data = await get_random_puzzle()
 
-    if not data or "puzzle" not in data:
+    if not data:
         await channel.send("Error fetching puzzle, try again.")
         return
 
@@ -135,13 +140,11 @@ async def post_puzzle(channel):
 @client.event
 async def on_ready():
     channel = client.get_channel(CHANNEL_ID)
-    last_id = load_last_id()
 
-    if last_id == 0:
-        messages = [msg async for msg in channel.history(limit=1)]
-        if messages:
-            last_id = messages[0].id
-            save_last_id(last_id)
+    # 🔥 ALTijd laatste message pakken → geen oude triggers
+    messages = [msg async for msg in channel.history(limit=1)]
+    last_id = messages[0].id if messages else 0
+    save_last_id(last_id)
 
     while True:
         messages = [msg async for msg in channel.history(limit=25)]
@@ -151,6 +154,7 @@ async def on_ready():
                 continue
             if message.author.bot:
                 continue
+
             if message.content.strip() == "!randompuzzle":
                 await post_puzzle(channel)
                 last_id = message.id
