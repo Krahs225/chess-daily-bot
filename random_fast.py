@@ -7,6 +7,7 @@ import chess
 import chess.pgn
 import chess.svg
 import cairosvg
+import io
 from io import BytesIO
 
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -36,7 +37,7 @@ def build_board(data):
     pgn = data["game"]["pgn"]
     initial_ply = data["puzzle"]["initialPly"]
 
-    game = chess.pgn.read_game(BytesIO(pgn.encode()))
+    game = chess.pgn.read_game(io.StringIO(pgn))
     board = game.board()
 
     node = game
