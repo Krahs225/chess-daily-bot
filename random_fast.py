@@ -10,7 +10,7 @@ import cairosvg
 from io import BytesIO
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-CHANNEL_ID = 123456789012345678
+CHANNEL_ID = 1468320170891022417
 
 STATE_FILE = "random_state.json"
 
@@ -76,7 +76,13 @@ client = discord.Client(intents=intents)
 async def on_ready():
     print(f"Logged in as {client.user}")
 
-    channel = await client.fetch_channel(CHANNEL_ID)
+    await asyncio.sleep(5)
+
+    channel = client.get_channel(CHANNEL_ID)
+
+    if channel is None:
+        print("CHANNEL IS NONE")
+        return
 
     last_id = load_state()
 
