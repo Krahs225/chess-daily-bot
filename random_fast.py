@@ -9,19 +9,24 @@ import chess.svg
 import cairosvg
 from io import BytesIO
 
+# ================= CONFIG =================
+
 TOKEN = os.getenv("DISCORD_TOKEN")
-CHANNEL_ID = YOUR_CHANNEL_ID  # <-- vul dit in
+CHANNEL_ID = 123456789012345678  # 🔥 VUL DIT IN
 
 STATE_FILE = "random_state.json"
 
 
-# ---------------- STATE ----------------
+# ================= STATE =================
 
 def load_state():
     if not os.path.exists(STATE_FILE):
         return 0
-    with open(STATE_FILE, "r") as f:
-        return json.load(f).get("last_id", 0)
+    try:
+        with open(STATE_FILE, "r") as f:
+            return json.load(f).get("last_id", 0)
+    except:
+        return 0
 
 
 def save_state(last_id):
@@ -29,7 +34,7 @@ def save_state(last_id):
         json.dump({"last_id": last_id}, f)
 
 
-# ---------------- PUZZLE ----------------
+# ================= PUZZLE =================
 
 def fetch_puzzle():
     try:
@@ -41,35 +46,43 @@ def fetch_puzzle():
 
 
 def build_board(data):
-    pgn = data["game"]["pgn"]
-    initial_ply = data["puzzle"]["initialPly"]
+    try:
+        pgn = data["game"]["pgn"]
+        initial_ply = data["puzzle"]["initialPly"]
 
-    game = chess.pgn.read_game(BytesIO(pgn.encode()))
-    board = game.board()
+        game = chess.pgn.read_game(BytesIO(pgn.encode()))
+        board = game.board()
 
-    node = game
+        node = game
 
-    for _ in range(initial_ply):
+        for _ in range(initial_ply):
+            node = node.variations[0]
+            board.push(node.move)
+
+        # 🔥 CRUCIALE +1 FIX
         node = node.variations[0]
         board.push(node.move)
 
-    # 🔥 +1 FIX
-    node = node.variations[0]
-    board.push(node.move)
-
-    return board
+        return board
+    except Exception as e:
+        print("Board build error:", e)
+        return None
 
 
 def uci_to_san_sequence(board, moves):
-    temp = board.copy()
-    san_moves = []
+    try:
+        temp = board.copy()
+        san_moves = []
 
-    for move in moves:
-        m = chess.Move.from_uci(move)
-        san_moves.append(temp.san(m))
-        temp.push(m)
+        for move in moves:
+            m = chess.Move.from_uci(move)
+            san_moves.append(temp.san(m))
+            temp.push(m)
 
-    return " ".join(san_moves)
+        return " ".join(san_moves)
+    except Exception as e:
+        print("Solution error:", e)
+        return "Error"
 
 
 def render_board(board):
@@ -85,7 +98,7 @@ def render_board(board):
         return None
 
 
-# ---------------- BOT ----------------
+# ================= BOT =================
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -93,7 +106,7 @@ client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    print(f"Logged in as {client.user}")
+    print(f"[FAST BOT] Logged in as {client.user}")
 
     channel = client.get_channel(CHANNEL_ID)
     last_id = load_state()
@@ -111,21 +124,27 @@ async def on_ready():
 
             for message in reversed(messages):
 
+                # skip oude berichten
                 if message.id <= last_id:
                     continue
 
+                # skip bots
                 if message.author.bot:
                     continue
 
-                # ✅ BELANGRIJK: alleen op command reageren
+                # 🔥 ALLEEN reageren op command
                 if message.content.strip() != "!randompuzzle":
                     continue
+
+                print("Command received!")
 
                 data = fetch_puzzle()
                 if not data:
                     continue
 
                 board = build_board(data)
+                if not board:
+                    continue
 
                 solution_moves = data["puzzle"]["solution"]
                 solution = uci_to_san_sequence(board, solution_moves)
@@ -165,13 +184,14 @@ async def on_ready():
 
                 await message.channel.send(embed=embed, file=file)
 
+                # 🔥 update state (cruciaal)
                 last_id = message.id
                 save_state(last_id)
 
             await asyncio.sleep(5)
 
         except Exception as e:
-            print("Loop error:", e)
+            print("[FAST BOT] Loop error:", e)
             await asyncio.sleep(5)
 
 
