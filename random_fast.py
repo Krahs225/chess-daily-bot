@@ -33,15 +33,19 @@ def save_last_id(message_id):
         json.dump({"last_id": message_id}, f)
 
 
-def uci_to_san_sequence(board, moves_uci):
-    """Convert UCI moves to SAN based on board state"""
-    san_moves = []
+def safe_uci_to_san(board, moves_uci):
+    """Convert moves safely, skip illegal ones"""
     temp_board = board.copy()
+    san_moves = []
 
     for move_uci in moves_uci:
         move = chess.Move.from_uci(move_uci)
-        san_moves.append(temp_board.san(move))
-        temp_board.push(move)
+
+        if move in temp_board.legal_moves:
+            san_moves.append(temp_board.san(move))
+            temp_board.push(move)
+        else:
+            san_moves.append(f"[{move_uci}]")  # debug zichtbaar
 
     return " ".join(san_moves)
 
@@ -62,7 +66,7 @@ async def post_puzzle(channel):
     solution_moves = data["puzzle"]["solution"]
     puzzle_id = data["puzzle"]["id"]
 
-    # 🧠 PGN parsing
+    # 🧠 Bouw board
     game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
     node = game
@@ -74,12 +78,10 @@ async def post_puzzle(channel):
         else:
             break
 
-    # ✅ engine zet uitvoeren
-    engine_move = chess.Move.from_uci(solution_moves[0])
-    board.push(engine_move)
+    # ❗ GEEN engine move
 
-    # ✅ volledige solution (beide kanten, SAN)
-    solution = uci_to_san_sequence(board, solution_moves[1:])
+    # ✅ volledige solution vanaf begin
+    solution = safe_uci_to_san(board, solution_moves)
 
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
@@ -96,7 +98,6 @@ async def post_puzzle(channel):
 
     file = discord.File(fp=image, filename="puzzle.png")
 
-    # 🔗 link + FEN
     puzzle_url = f"https://lichess.org/training/{puzzle_id}"
     fen = board.fen()
 
