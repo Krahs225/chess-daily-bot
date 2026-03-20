@@ -9,24 +9,17 @@ import chess.svg
 import cairosvg
 from io import BytesIO
 
-# ================= CONFIG =================
-
 TOKEN = os.getenv("DISCORD_TOKEN")
-CHANNEL_ID = 123456789012345678  # 🔥 VUL DIT IN
+CHANNEL_ID = 123456789012345678  # <-- jouw ID
 
 STATE_FILE = "random_state.json"
 
 
-# ================= STATE =================
-
 def load_state():
     if not os.path.exists(STATE_FILE):
         return 0
-    try:
-        with open(STATE_FILE, "r") as f:
-            return json.load(f).get("last_id", 0)
-    except:
-        return 0
+    with open(STATE_FILE, "r") as f:
+        return json.load(f).get("last_id", 0)
 
 
 def save_state(last_id):
@@ -34,86 +27,65 @@ def save_state(last_id):
         json.dump({"last_id": last_id}, f)
 
 
-# ================= PUZZLE =================
-
 def fetch_puzzle():
     try:
         res = requests.get("https://lichess.org/api/puzzle/next", timeout=10)
         return res.json()
-    except Exception as e:
-        print("Lichess API error:", e)
+    except:
         return None
 
 
 def build_board(data):
-    try:
-        pgn = data["game"]["pgn"]
-        initial_ply = data["puzzle"]["initialPly"]
+    pgn = data["game"]["pgn"]
+    initial_ply = data["puzzle"]["initialPly"]
 
-        game = chess.pgn.read_game(BytesIO(pgn.encode()))
-        board = game.board()
+    game = chess.pgn.read_game(BytesIO(pgn.encode()))
+    board = game.board()
 
-        node = game
+    node = game
 
-        for _ in range(initial_ply):
-            node = node.variations[0]
-            board.push(node.move)
-
-        # 🔥 CRUCIALE +1 FIX
+    for _ in range(initial_ply):
         node = node.variations[0]
         board.push(node.move)
 
-        return board
-    except Exception as e:
-        print("Board build error:", e)
-        return None
+    # 🔥 +1 fix
+    node = node.variations[0]
+    board.push(node.move)
+
+    return board
 
 
 def uci_to_san_sequence(board, moves):
-    try:
-        temp = board.copy()
-        san_moves = []
+    temp = board.copy()
+    san_moves = []
 
-        for move in moves:
-            m = chess.Move.from_uci(move)
-            san_moves.append(temp.san(m))
-            temp.push(m)
+    for move in moves:
+        m = chess.Move.from_uci(move)
+        san_moves.append(temp.san(m))
+        temp.push(m)
 
-        return " ".join(san_moves)
-    except Exception as e:
-        print("Solution error:", e)
-        return "Error"
+    return " ".join(san_moves)
 
 
 def render_board(board):
-    try:
-        svg = chess.svg.board(
-            board=board,
-            orientation=board.turn
-        )
-        png = cairosvg.svg2png(bytestring=svg.encode())
-        return png
-    except Exception as e:
-        print("Render error:", e)
-        return None
+    svg = chess.svg.board(board=board, orientation=board.turn)
+    return cairosvg.svg2png(bytestring=svg.encode())
 
-
-# ================= BOT =================
 
 intents = discord.Intents.default()
-intents.message_content = True  # 🔥 CRUCIALE FIX
+intents.message_content = True  # ⚠️ moet AAN staan in portal
 
 client = discord.Client(intents=intents)
 
 
 @client.event
 async def on_ready():
-    print(f"[FAST BOT] Logged in as {client.user}")
+    print(f"Logged in as {client.user}")
 
     channel = client.get_channel(CHANNEL_ID)
     last_id = load_state()
 
-    # 🔥 eerste run → skip oude berichten
+    # skip oude berichten
     if last_id == 0:
         messages = [msg async for msg in channel.history(limit=1)]
         if messages:
@@ -121,82 +93,55 @@ async def on_ready():
             save_state(last_id)
 
     while True:
-        try:
-            messages = [msg async for msg in channel.history(limit=25)]
+        messages = [msg async for msg in channel.history(limit=25)]
 
-            for message in reversed(messages):
+        for message in reversed(messages):
 
-                print("DEBUG MESSAGE:", message.content)
+            print("MSG:", message.content)
 
-                # skip oude berichten
-                if message.id <= last_id:
-                    continue
+            if message.id <= last_id:
+                continue
 
-                # skip bots
-                if message.author.bot:
-                    continue
+            if message.author.bot:
+                continue
 
-                # 🔥 ALLEEN reageren op command
-                if message.content.strip() != "!randompuzzle":
-                    continue
+            # 🔥 command check
+            if "!randompuzzle" not in message.content.lower():
+                continue
 
-                print("✅ COMMAND DETECTED")
+            print("COMMAND!")
 
-                data = fetch_puzzle()
-                if not data:
-                    continue
+            data = fetch_puzzle()
+            if not data:
+                continue
 
-                board = build_board(data)
-                if not board:
-                    continue
+            board = build_board(data)
+            solution = uci_to_san_sequence(board, data["puzzle"]["solution"])
+            png = render_board(board)
 
-                solution_moves = data["puzzle"]["solution"]
-                solution = uci_to_san_sequence(board, solution_moves)
+            side = "White" if board.turn else "Black"
 
-                png = render_board(board)
-                if not png:
-                    continue
+            embed = discord.Embed(
+                title="♟ Chess Puzzle",
+                description=f"Rating: {data['puzzle']['rating']}\nSide: {side}",
+                color=0x2b2d31
+            )
 
-                side = "White" if board.turn else "Black"
+            file = discord.File(BytesIO(png), filename="board.png")
+            embed.set_image(url="attachment://board.png")
 
-                embed = discord.Embed(
-                    title="♟ Chess Puzzle",
-                    description=f"**Rating:** {data['puzzle']['rating']}\n**Side to move:** {side}",
-                    color=0x2b2d31
-                )
+            embed.add_field(
+                name="Solution",
+                value=f"||{solution}||",
+                inline=False
+            )
 
-                file = discord.File(BytesIO(png), filename="board.png")
-                embed.set_image(url="attachment://board.png")
+            await message.channel.send(embed=embed, file=file)
 
-                embed.add_field(
-                    name="Solution",
-                    value=f"||{solution}||",
-                    inline=False
-                )
+            last_id = message.id
+            save_state(last_id)
 
-                embed.add_field(
-                    name="Lichess",
-                    value=f"https://lichess.org/{data['game']['id']}",
-                    inline=False
-                )
-
-                embed.add_field(
-                    name="FEN",
-                    value=board.fen(),
-                    inline=False
-                )
-
-                await message.channel.send(embed=embed, file=file)
-
-                # 🔥 update state
-                last_id = message.id
-                save_state(last_id)
-
-            await asyncio.sleep(5)
-
-        except Exception as e:
-            print("[FAST BOT] Loop error:", e)
-            await asyncio.sleep(5)
+        await asyncio.sleep(5)
 
 
 client.run(TOKEN)
