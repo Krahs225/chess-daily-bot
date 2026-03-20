@@ -2,7 +2,7 @@ import os
 import discord
 import asyncio
 import json
-import requests
+import aiohttp
 import chess
 import chess.svg
 import chess.pgn
@@ -25,8 +25,7 @@ def load_last_id():
     if not os.path.exists(STATE_FILE):
         return 0
     with open(STATE_FILE, "r") as f:
-        data = json.load(f)
-        return data.get("last_id", 0)
+        return json.load(f).get("last_id", 0)
 
 
 def save_last_id(message_id):
@@ -35,45 +34,42 @@ def save_last_id(message_id):
 
 
 def uci_to_san_sequence(board, moves_uci):
-    san_moves = []
-    temp_board = board.copy()
-
-    for move_uci in moves_uci:
-        move = chess.Move.from_uci(move_uci)
-        san_moves.append(temp_board.san(move))
-        temp_board.push(move)
-
-    return " ".join(san_moves)
+    temp = board.copy()
+    san = []
+    for m in moves_uci:
+        move = chess.Move.from_uci(m)
+        san.append(temp.san(move))
+        temp.push(move)
+    return " ".join(san)
 
 
-def get_random_puzzle():
+async def get_random_puzzle():
     target = random.randint(500, 3000)
 
-    while True:
-        try:
-            r = requests.get(
-                "https://lichess.org/api/puzzle/next",
-                headers={"Accept": "application/json"},
-                timeout=10
-            )
+    async with aiohttp.ClientSession() as session:
+        while True:
+            try:
+                async with session.get(
+                    "https://lichess.org/api/puzzle/next",
+                    headers={"Accept": "application/json"},
+                    timeout=10
+                ) as resp:
+                    data = await resp.json()
 
-            data = r.json()
+                if "puzzle" not in data:
+                    continue
 
-            if "puzzle" not in data:
-                continue
+                rating = data["puzzle"]["rating"]
 
-            rating = data["puzzle"]["rating"]
+                if abs(rating - target) <= 150:
+                    return data
 
-            if abs(rating - target) <= 150:
-                return data
-
-        except:
-            continue
+            except:
+                await asyncio.sleep(1)
 
 
 async def post_puzzle(channel):
-
-    data = get_random_puzzle()
+    data = await get_random_puzzle()
 
     rating = data["puzzle"]["rating"]
     initial_ply = data["puzzle"]["initialPly"]
@@ -89,8 +85,6 @@ async def post_puzzle(channel):
         if node.variations:
             node = node.variations[0]
             board.push(node.move)
-        else:
-            break
 
     if node.variations:
         node = node.variations[0]
@@ -101,20 +95,10 @@ async def post_puzzle(channel):
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
 
-    svg_board = chess.svg.board(
-        board=board,
-        orientation=orientation,
-        size=500,
-        coordinates=True
-    )
+    svg = chess.svg.board(board=board, orientation=orientation, size=500)
+    png = cairosvg.svg2png(bytestring=svg.encode())
 
-    png_bytes = cairosvg.svg2png(bytestring=svg_board.encode())
-    image = BytesIO(png_bytes)
-
-    file = discord.File(fp=image, filename="puzzle.png")
-
-    puzzle_url = f"https://lichess.org/training/{puzzle_id}"
-    fen = board.fen()
+    file = discord.File(BytesIO(png), filename="puzzle.png")
 
     embed = discord.Embed(
         title="🎲 Random Chess Puzzle",
@@ -122,8 +106,7 @@ async def post_puzzle(channel):
             f"Rating: {rating}\n\n"
             f"{side} to move\n\n"
             f"Solution: ||{solution}||\n\n"
-            f"🔗 Puzzle: {puzzle_url}\n"
-            f"📄 FEN: `{fen}`"
+            f"https://lichess.org/training/{puzzle_id}"
         ),
         color=0x2ecc71
     )
@@ -136,10 +119,8 @@ async def post_puzzle(channel):
 @client.event
 async def on_ready():
     channel = client.get_channel(CHANNEL_ID)
-
     last_id = load_last_id()
 
-    # 🔥 skip oude berichten bij start
     if last_id == 0:
         messages = [msg async for msg in channel.history(limit=1)]
         if messages:
@@ -152,10 +133,8 @@ async def on_ready():
         for message in messages:
             if message.id <= last_id:
                 continue
-
             if message.author.bot:
                 continue
-
             if message.content.strip() == "!randompuzzle":
                 await post_puzzle(channel)
                 last_id = message.id
