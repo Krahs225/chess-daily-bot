@@ -10,7 +10,7 @@ import cairosvg
 from io import BytesIO
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-CHANNEL_ID = 123456789012345678  # jouw channel
+CHANNEL_ID = 123456789012345678
 
 STATE_FILE = "random_state.json"
 
@@ -45,7 +45,6 @@ def build_board(data):
         node = node.variations[0]
         board.push(node.move)
 
-    # 🔥 +1 fix
     node = node.variations[0]
     board.push(node.move)
 
@@ -77,7 +76,8 @@ client = discord.Client(intents=intents)
 async def on_ready():
     print(f"Logged in as {client.user}")
 
-    channel = client.get_channel(CHANNEL_ID)
+    channel = await client.fetch_channel(CHANNEL_ID)
+
     last_id = load_state()
 
     if last_id == 0:
@@ -96,8 +96,6 @@ async def on_ready():
 
             if message.author.bot:
                 continue
-
-            # ❌ GEEN COMMAND CHECK → dit was jouw oude gedrag
 
             data = fetch_puzzle()
             board = build_board(data)
