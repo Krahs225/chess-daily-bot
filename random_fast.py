@@ -2,7 +2,7 @@ import os
 import discord
 import asyncio
 import json
-import aiohttp
+import requests
 import chess
 import chess.svg
 import chess.pgn
@@ -43,42 +43,47 @@ def uci_to_san_sequence(board, moves_uci):
     return " ".join(san)
 
 
-async def get_random_puzzle():
-    target = random.randint(500, 3000)
+def fetch_puzzle_blocking(target):
+    for _ in range(20):
+        try:
+            r = requests.get(
+                "https://lichess.org/api/puzzle/next",
+                headers={"Accept": "application/json"},
+                timeout=10
+            )
+            data = r.json()
 
-    async with aiohttp.ClientSession() as session:
-        for _ in range(25):
-            try:
-                async with session.get(
-                    "https://lichess.org/api/puzzle/next",
-                    headers={"Accept": "application/json"},
-                    timeout=10
-                ) as resp:
-                    data = await resp.json()
+            if "puzzle" not in data:
+                continue
 
-                if "puzzle" not in data:
-                    continue
+            rating = data["puzzle"]["rating"]
 
-                rating = data["puzzle"]["rating"]
+            if abs(rating - target) <= 150:
+                return data
 
-                if abs(rating - target) <= 150:
-                    return data
+        except:
+            continue
 
-            except:
-                await asyncio.sleep(1)
-
-        async with session.get(
+    try:
+        r = requests.get(
             "https://lichess.org/api/puzzle/next",
             headers={"Accept": "application/json"},
             timeout=10
-        ) as resp:
-            return await resp.json()
+        )
+        return r.json()
+    except:
+        return None
+
+
+async def get_random_puzzle():
+    target = random.randint(500, 3000)
+    return await asyncio.to_thread(fetch_puzzle_blocking, target)
 
 
 async def post_puzzle(channel):
     data = await get_random_puzzle()
 
-    if "puzzle" not in data:
+    if not data or "puzzle" not in data:
         await channel.send("Error fetching puzzle, try again.")
         return
 
