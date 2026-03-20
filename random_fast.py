@@ -24,7 +24,8 @@ def load_last_id():
     if not os.path.exists(STATE_FILE):
         return 0
     with open(STATE_FILE, "r") as f:
-        return json.load(f).get("last_id", 0)
+        data = json.load(f)
+        return data.get("last_id", 0)
 
 
 def save_last_id(message_id):
@@ -33,14 +34,14 @@ def save_last_id(message_id):
 
 
 def uci_to_san_sequence(board, moves_uci):
-    temp_board = board.copy()
+    """Convert UCI moves to SAN based on board state"""
     san_moves = []
+    temp_board = board.copy()
 
     for move_uci in moves_uci:
         move = chess.Move.from_uci(move_uci)
-        if move in temp_board.legal_moves:
-            san_moves.append(temp_board.san(move))
-            temp_board.push(move)
+        san_moves.append(temp_board.san(move))
+        temp_board.push(move)
 
     return " ".join(san_moves)
 
@@ -59,9 +60,8 @@ async def post_puzzle(channel):
     initial_ply = data["puzzle"]["initialPly"]
     pgn = data["game"]["pgn"]
     solution_moves = data["puzzle"]["solution"]
-    puzzle_id = data["puzzle"]["id"]
 
-    # 🧠 Bouw board correct
+    # 🧠 juiste PGN opbouw
     game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
     node = game
@@ -73,13 +73,12 @@ async def post_puzzle(channel):
         else:
             break
 
-    # 🔥 CRUCIALE FIX: +1 move
-    if node.variations:
-        node = node.variations[0]
-        board.push(node.move)
+    # ✅ engine zet uitvoeren (nu klopt het)
+    engine_move = chess.Move.from_uci(solution_moves[0])
+    board.push(engine_move)
 
-    # solution vanaf hier
-    solution = uci_to_san_sequence(board, solution_moves)
+    # ✅ volledige solution (beide kanten)
+    solution = uci_to_san_sequence(board, solution_moves[1:])
 
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
@@ -96,18 +95,9 @@ async def post_puzzle(channel):
 
     file = discord.File(fp=image, filename="puzzle.png")
 
-    puzzle_url = f"https://lichess.org/training/{puzzle_id}"
-    fen = board.fen()
-
     embed = discord.Embed(
         title="🎲 Random Chess Puzzle",
-        description=(
-            f"Rating: {rating}\n\n"
-            f"{side} to move\n\n"
-            f"Solution: ||{solution}||\n\n"
-            f"🔗 Puzzle: {puzzle_url}\n"
-            f"📄 FEN: `{fen}`"
-        ),
+        description=f"Rating: {rating}\n\n{side} to move\n\nSolution: ||{solution}||",
         color=0x2ecc71
     )
 
