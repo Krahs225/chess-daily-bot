@@ -5,7 +5,8 @@ import json
 import requests
 import chess
 import chess.svg
-from io import BytesIO
+import chess.pgn
+from io import BytesIO, StringIO
 import cairosvg
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
@@ -55,14 +56,29 @@ async def post_puzzle(channel):
     data = r.json()
 
     rating = data["puzzle"]["rating"]
+    initial_ply = data["puzzle"]["initialPly"]
+    pgn = data["game"]["pgn"]
     solution_moves = data["puzzle"]["solution"]
     puzzle_id = data["puzzle"]["id"]
 
-    # 🔥 DE FIX: gebruik FEN direct
-    fen = data["game"]["fen"]
-    board = chess.Board(fen)
+    # 🧠 Bouw board correct
+    game = chess.pgn.read_game(StringIO(pgn))
+    board = game.board()
+    node = game
 
-    # solution vanaf huidige positie
+    for _ in range(initial_ply):
+        if node.variations:
+            node = node.variations[0]
+            board.push(node.move)
+        else:
+            break
+
+    # 🔥 CRUCIALE FIX: +1 move
+    if node.variations:
+        node = node.variations[0]
+        board.push(node.move)
+
+    # solution vanaf hier
     solution = uci_to_san_sequence(board, solution_moves)
 
     side = "White" if board.turn else "Black"
@@ -81,6 +97,7 @@ async def post_puzzle(channel):
     file = discord.File(fp=image, filename="puzzle.png")
 
     puzzle_url = f"https://lichess.org/training/{puzzle_id}"
+    fen = board.fen()
 
     embed = discord.Embed(
         title="🎲 Random Chess Puzzle",
