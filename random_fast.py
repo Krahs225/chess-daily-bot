@@ -33,19 +33,14 @@ def save_last_id(message_id):
         json.dump({"last_id": message_id}, f)
 
 
-def safe_uci_to_san(board, moves_uci):
-    """Convert moves safely, skip illegal ones"""
-    temp_board = board.copy()
+def uci_to_san_sequence(board, moves_uci):
     san_moves = []
+    temp_board = board.copy()
 
     for move_uci in moves_uci:
         move = chess.Move.from_uci(move_uci)
-
-        if move in temp_board.legal_moves:
-            san_moves.append(temp_board.san(move))
-            temp_board.push(move)
-        else:
-            san_moves.append(f"[{move_uci}]")  # debug zichtbaar
+        san_moves.append(temp_board.san(move))
+        temp_board.push(move)
 
     return " ".join(san_moves)
 
@@ -66,7 +61,6 @@ async def post_puzzle(channel):
     solution_moves = data["puzzle"]["solution"]
     puzzle_id = data["puzzle"]["id"]
 
-    # 🧠 Bouw board
     game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
     node = game
@@ -78,10 +72,10 @@ async def post_puzzle(channel):
         else:
             break
 
-    # ❗ GEEN engine move
+    engine_move = chess.Move.from_uci(solution_moves[0])
+    board.push(engine_move)
 
-    # ✅ volledige solution vanaf begin
-    solution = safe_uci_to_san(board, solution_moves)
+    solution = uci_to_san_sequence(board, solution_moves[1:])
 
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
@@ -133,8 +127,8 @@ async def on_ready():
 
             if message.content.strip() == "!randompuzzle":
                 await post_puzzle(channel)
-                save_last_id(message.id)
-                return
+                last_id = message.id
+                save_last_id(last_id)
 
         await asyncio.sleep(5)
 
