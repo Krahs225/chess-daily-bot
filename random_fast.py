@@ -5,8 +5,7 @@ import json
 import requests
 import chess
 import chess.svg
-import chess.pgn
-from io import BytesIO, StringIO
+from io import BytesIO
 import cairosvg
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
@@ -24,8 +23,7 @@ def load_last_id():
     if not os.path.exists(STATE_FILE):
         return 0
     with open(STATE_FILE, "r") as f:
-        data = json.load(f)
-        return data.get("last_id", 0)
+        return json.load(f).get("last_id", 0)
 
 
 def save_last_id(message_id):
@@ -33,19 +31,15 @@ def save_last_id(message_id):
         json.dump({"last_id": message_id}, f)
 
 
-def safe_uci_to_san(board, moves_uci):
-    """Convert moves safely, skip illegal ones"""
+def uci_to_san_sequence(board, moves_uci):
     temp_board = board.copy()
     san_moves = []
 
     for move_uci in moves_uci:
         move = chess.Move.from_uci(move_uci)
-
         if move in temp_board.legal_moves:
             san_moves.append(temp_board.san(move))
             temp_board.push(move)
-        else:
-            san_moves.append(f"[{move_uci}]")  # debug zichtbaar
 
     return " ".join(san_moves)
 
@@ -61,27 +55,15 @@ async def post_puzzle(channel):
     data = r.json()
 
     rating = data["puzzle"]["rating"]
-    initial_ply = data["puzzle"]["initialPly"]
-    pgn = data["game"]["pgn"]
     solution_moves = data["puzzle"]["solution"]
     puzzle_id = data["puzzle"]["id"]
 
-    # 🧠 Bouw board
-    game = chess.pgn.read_game(StringIO(pgn))
-    board = game.board()
-    node = game
+    # 🔥 DE FIX: gebruik FEN direct
+    fen = data["game"]["fen"]
+    board = chess.Board(fen)
 
-    for _ in range(initial_ply):
-        if node.variations:
-            node = node.variations[0]
-            board.push(node.move)
-        else:
-            break
-
-    # ❗ GEEN engine move
-
-    # ✅ volledige solution vanaf begin
-    solution = safe_uci_to_san(board, solution_moves)
+    # solution vanaf huidige positie
+    solution = uci_to_san_sequence(board, solution_moves)
 
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
@@ -99,7 +81,6 @@ async def post_puzzle(channel):
     file = discord.File(fp=image, filename="puzzle.png")
 
     puzzle_url = f"https://lichess.org/training/{puzzle_id}"
-    fen = board.fen()
 
     embed = discord.Embed(
         title="🎲 Random Chess Puzzle",
