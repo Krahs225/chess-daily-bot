@@ -1,137 +1,141 @@
+import os
 import discord
 import asyncio
-import os
 import json
 import requests
 import chess
-import chess.pgn
 import chess.svg
+import chess.pgn
+from io import BytesIO, StringIO
 import cairosvg
-import io
-from io import BytesIO
 
-TOKEN = os.getenv("DISCORD_TOKEN")
+DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
+
 CHANNEL_ID = 1468320170891022417
-
 STATE_FILE = "random_state.json"
 
+intents = discord.Intents.default()
+intents.message_content = True
 
-def load_state():
+client = discord.Client(intents=intents)
+
+
+def load_last_id():
     if not os.path.exists(STATE_FILE):
         return 0
     with open(STATE_FILE, "r") as f:
-        return json.load(f).get("last_id", 0)
+        data = json.load(f)
+        return data.get("last_id", 0)
 
 
-def save_state(last_id):
+def save_last_id(message_id):
     with open(STATE_FILE, "w") as f:
-        json.dump({"last_id": last_id}, f)
+        json.dump({"last_id": message_id}, f)
 
 
-def fetch_puzzle():
-    res = requests.get("https://lichess.org/api/puzzle/next")
-    return res.json()
-
-
-def build_board(data):
-    pgn = data["game"]["pgn"]
-    initial_ply = data["puzzle"]["initialPly"]
-
-    game = chess.pgn.read_game(io.StringIO(pgn))
-    board = game.board()
-
-    node = game
-
-    for _ in range(initial_ply):
-        node = node.variations[0]
-        board.push(node.move)
-
-    node = node.variations[0]
-    board.push(node.move)
-
-    return board
-
-
-def uci_to_san_sequence(board, moves):
-    temp = board.copy()
+def uci_to_san_sequence(board, moves_uci):
+    """Convert UCI moves to SAN based on board state"""
     san_moves = []
+    temp_board = board.copy()
 
-    for move in moves:
-        m = chess.Move.from_uci(move)
-        san_moves.append(temp.san(m))
-        temp.push(m)
+    for move_uci in moves_uci:
+        move = chess.Move.from_uci(move_uci)
+        san_moves.append(temp_board.san(move))
+        temp_board.push(move)
 
     return " ".join(san_moves)
 
 
-def render_board(board):
-    svg = chess.svg.board(board=board, orientation=board.turn)
-    return cairosvg.svg2png(bytestring=svg.encode())
+async def post_puzzle(channel):
 
+    r = requests.get(
+        "https://lichess.org/api/puzzle/next",
+        headers={"Accept": "application/json"},
+        timeout=10
+    )
 
-intents = discord.Intents.default()
-client = discord.Client(intents=intents)
+    data = r.json()
+
+    rating = data["puzzle"]["rating"]
+    initial_ply = data["puzzle"]["initialPly"]
+    pgn = data["game"]["pgn"]
+    solution_moves = data["puzzle"]["solution"]
+    puzzle_id = data["puzzle"]["id"]
+
+    # 🧠 PGN parsing
+    game = chess.pgn.read_game(StringIO(pgn))
+    board = game.board()
+    node = game
+
+    for _ in range(initial_ply):
+        if node.variations:
+            node = node.variations[0]
+            board.push(node.move)
+        else:
+            break
+
+    # ✅ engine zet uitvoeren
+    engine_move = chess.Move.from_uci(solution_moves[0])
+    board.push(engine_move)
+
+    # ✅ volledige solution (beide kanten, SAN)
+    solution = uci_to_san_sequence(board, solution_moves[1:])
+
+    side = "White" if board.turn else "Black"
+    orientation = chess.WHITE if board.turn else chess.BLACK
+
+    svg_board = chess.svg.board(
+        board=board,
+        orientation=orientation,
+        size=500,
+        coordinates=True
+    )
+
+    png_bytes = cairosvg.svg2png(bytestring=svg_board.encode())
+    image = BytesIO(png_bytes)
+
+    file = discord.File(fp=image, filename="puzzle.png")
+
+    # 🔗 link + FEN
+    puzzle_url = f"https://lichess.org/training/{puzzle_id}"
+    fen = board.fen()
+
+    embed = discord.Embed(
+        title="🎲 Random Chess Puzzle",
+        description=(
+            f"Rating: {rating}\n\n"
+            f"{side} to move\n\n"
+            f"Solution: ||{solution}||\n\n"
+            f"🔗 Puzzle: {puzzle_url}\n"
+            f"📄 FEN: `{fen}`"
+        ),
+        color=0x2ecc71
+    )
+
+    embed.set_image(url="attachment://puzzle.png")
+
+    await channel.send(embed=embed, file=file)
 
 
 @client.event
 async def on_ready():
-    print(f"Logged in as {client.user}")
-
-    await asyncio.sleep(5)
-
     channel = client.get_channel(CHANNEL_ID)
 
-    if channel is None:
-        print("CHANNEL IS NONE")
-        return
-
-    last_id = load_state()
-
-    if last_id == 0:
-        messages = [msg async for msg in channel.history(limit=1)]
-        if messages:
-            last_id = messages[0].id
-            save_state(last_id)
+    last_id = load_last_id()
 
     while True:
         messages = [msg async for msg in channel.history(limit=25)]
 
-        for message in reversed(messages):
-
+        for message in messages:
             if message.id <= last_id:
                 continue
 
-            if message.author.bot:
-                continue
-
-            data = fetch_puzzle()
-            board = build_board(data)
-            solution = uci_to_san_sequence(board, data["puzzle"]["solution"])
-            png = render_board(board)
-
-            side = "White" if board.turn else "Black"
-
-            embed = discord.Embed(
-                title="♟ Chess Puzzle",
-                description=f"Rating: {data['puzzle']['rating']}\nSide: {side}",
-                color=0x2b2d31
-            )
-
-            file = discord.File(BytesIO(png), filename="board.png")
-            embed.set_image(url="attachment://board.png")
-
-            embed.add_field(
-                name="Solution",
-                value=f"||{solution}||",
-                inline=False
-            )
-
-            await message.channel.send(embed=embed, file=file)
-
-            last_id = message.id
-            save_state(last_id)
+            if message.content.strip() == "!randompuzzle":
+                await post_puzzle(channel)
+                save_last_id(message.id)
+                return
 
         await asyncio.sleep(5)
 
 
-client.run(TOKEN)
+client.run(DISCORD_TOKEN)
