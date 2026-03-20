@@ -50,17 +50,25 @@ def get_random_puzzle():
     target = random.randint(500, 3000)
 
     while True:
-        r = requests.get(
-            "https://lichess.org/api/puzzle/next",
-            headers={"Accept": "application/json"},
-            timeout=10
-        )
+        try:
+            r = requests.get(
+                "https://lichess.org/api/puzzle/next",
+                headers={"Accept": "application/json"},
+                timeout=10
+            )
 
-        data = r.json()
-        rating = data["puzzle"]["rating"]
+            data = r.json()
 
-        if abs(rating - target) <= 150:
-            return data
+            if "puzzle" not in data:
+                continue
+
+            rating = data["puzzle"]["rating"]
+
+            if abs(rating - target) <= 150:
+                return data
+
+        except:
+            continue
 
 
 async def post_puzzle(channel):
@@ -131,11 +139,21 @@ async def on_ready():
 
     last_id = load_last_id()
 
+    # 🔥 skip oude berichten bij start
+    if last_id == 0:
+        messages = [msg async for msg in channel.history(limit=1)]
+        if messages:
+            last_id = messages[0].id
+            save_last_id(last_id)
+
     while True:
         messages = [msg async for msg in channel.history(limit=25)]
 
         for message in messages:
             if message.id <= last_id:
+                continue
+
+            if message.author.bot:
                 continue
 
             if message.content.strip() == "!randompuzzle":
