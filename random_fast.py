@@ -8,6 +8,7 @@ import chess.svg
 import chess.pgn
 from io import BytesIO, StringIO
 import cairosvg
+import random
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 
@@ -45,15 +46,26 @@ def uci_to_san_sequence(board, moves_uci):
     return " ".join(san_moves)
 
 
+def get_random_puzzle():
+    target = random.randint(500, 3000)
+
+    while True:
+        r = requests.get(
+            "https://lichess.org/api/puzzle/next",
+            headers={"Accept": "application/json"},
+            timeout=10
+        )
+
+        data = r.json()
+        rating = data["puzzle"]["rating"]
+
+        if abs(rating - target) <= 150:
+            return data
+
+
 async def post_puzzle(channel):
 
-    r = requests.get(
-        "https://lichess.org/api/puzzle/next",
-        headers={"Accept": "application/json"},
-        timeout=10
-    )
-
-    data = r.json()
+    data = get_random_puzzle()
 
     rating = data["puzzle"]["rating"]
     initial_ply = data["puzzle"]["initialPly"]
@@ -72,7 +84,6 @@ async def post_puzzle(channel):
         else:
             break
 
-    # 🔥 +1 FIX (cruciaal)
     if node.variations:
         node = node.variations[0]
         board.push(node.move)
