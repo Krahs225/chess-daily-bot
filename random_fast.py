@@ -72,10 +72,7 @@ async def post_puzzle(channel):
         else:
             break
 
-    engine_move = chess.Move.from_uci(solution_moves[0])
-    board.push(engine_move)
-
-    solution = uci_to_san_sequence(board, solution_moves[1:])
+    solution = uci_to_san_sequence(board, solution_moves)
 
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
