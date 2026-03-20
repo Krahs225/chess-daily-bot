@@ -72,6 +72,11 @@ async def post_puzzle(channel):
         else:
             break
 
+    # 🔥 +1 FIX (cruciaal)
+    if node.variations:
+        node = node.variations[0]
+        board.push(node.move)
+
     solution = uci_to_san_sequence(board, solution_moves)
 
     side = "White" if board.turn else "Black"
