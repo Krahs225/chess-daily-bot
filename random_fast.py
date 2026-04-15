@@ -11,21 +11,12 @@ import cairosvg
 import random
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-
-CHANNEL_ID = 1468320170891022417
 STATE_FILE = "random_state.json"
 
 intents = discord.Intents.default()
 intents.message_content = True
 
 client = discord.Client(intents=intents)
-
-
-def load_last_id():
-    if not os.path.exists(STATE_FILE):
-        return 0
-    with open(STATE_FILE, "r") as f:
-        return json.load(f).get("last_id", 0)
 
 
 def save_last_id(message_id):
@@ -43,8 +34,8 @@ def uci_to_san_sequence(board, moves_uci):
     return " ".join(san)
 
 
-def fetch_puzzle_blocking(target):
-    for _ in range(10):  # minder retries = sneller
+def fetch_puzzle():
+    while True:
         try:
             r = requests.get(
                 "https://lichess.org/api/puzzle/next",
@@ -53,44 +44,16 @@ def fetch_puzzle_blocking(target):
             )
             data = r.json()
 
-            if "puzzle" not in data:
-                continue
-
             rating = data["puzzle"]["rating"]
 
-            if abs(rating - target) <= 200:  # iets ruimer
+            if 1000 <= rating <= 3000:
                 return data
-
         except:
             continue
 
-    # fallback: gewoon random puzzle pakken
-    try:
-        r = requests.get(
-            "https://lichess.org/api/puzzle/next",
-            headers={"Accept": "application/json"},
-            timeout=5
-        )
-        data = r.json()
-        if "puzzle" in data:
-            return data
-    except:
-        pass
-
-    return None
-
-
-async def get_random_puzzle():
-    target = random.randint(500, 3000)
-    return await asyncio.to_thread(fetch_puzzle_blocking, target)
-
 
 async def post_puzzle(channel):
-    data = await get_random_puzzle()
-
-    if not data:
-        await channel.send("Error fetching puzzle, try again.")
-        return
+    data = await asyncio.to_thread(fetch_puzzle)
 
     rating = data["puzzle"]["rating"]
     initial_ply = data["puzzle"]["initialPly"]
@@ -138,29 +101,13 @@ async def post_puzzle(channel):
 
 
 @client.event
-async def on_ready():
-    channel = client.get_channel(CHANNEL_ID)
+async def on_message(message):
+    if message.author.bot:
+        return
 
-    # 🔥 ALTijd laatste message pakken → geen oude triggers
-    messages = [msg async for msg in channel.history(limit=1)]
-    last_id = messages[0].id if messages else 0
-    save_last_id(last_id)
-
-    while True:
-        messages = [msg async for msg in channel.history(limit=25)]
-
-        for message in messages:
-            if message.id <= last_id:
-                continue
-            if message.author.bot:
-                continue
-
-            if message.content.strip() == "!randompuzzle":
-                await post_puzzle(channel)
-                last_id = message.id
-                save_last_id(last_id)
-
-        await asyncio.sleep(5)
+    if message.content.strip() == "!randompuzzle":
+        await post_puzzle(message.channel)
+        save_last_id(message.id)
 
 
 client.run(DISCORD_TOKEN)
