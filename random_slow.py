@@ -8,23 +8,15 @@ import chess.svg
 import chess.pgn
 from io import BytesIO, StringIO
 import cairosvg
+import random
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-
-CHANNEL_ID = 1468320170891022417
 STATE_FILE = "random_state.json"
 
 intents = discord.Intents.default()
 intents.message_content = True
 
 client = discord.Client(intents=intents)
-
-
-def load_last_id():
-    if not os.path.exists(STATE_FILE):
-        return 0
-    with open(STATE_FILE, "r") as f:
-        return json.load(f).get("last_id", 0)
 
 
 def save_last_id(message_id):
@@ -109,42 +101,24 @@ async def post_puzzle(channel):
 
 
 @client.event
-async def on_ready():
-    channel = client.get_channel(CHANNEL_ID)
+async def on_message(message):
+    if message.author.bot:
+        return
 
-    messages = [msg async for msg in channel.history(limit=1)]
-    last_id = messages[0].id if messages else 0
-    save_last_id(last_id)
+    if message.content.strip() == "!randompuzzle":
 
-    while True:
-        messages = [msg async for msg in channel.history(limit=25)]
+        # ⏳ wacht zodat fast bot eerst kan reageren
+        await asyncio.sleep(15)
 
-        for message in messages:
-            if message.id <= last_id:
-                continue
+        # 👀 check of er al een bot heeft gereageerd
+        recent = [msg async for msg in message.channel.history(limit=5)]
 
-            if message.author.bot:
-                continue
+        for msg in recent:
+            if msg.author.bot:
+                return
 
-            if message.content.strip() == "!randompuzzle":
-
-                # ⏳ WACHT zodat fast bot eerst kan reageren
-                await asyncio.sleep(15)
-
-                # 👀 check of er al een bot heeft gereageerd
-                recent = [msg async for msg in channel.history(limit=5)]
-
-                for msg in recent:
-                    if msg.author.bot:
-                        last_id = message.id
-                        save_last_id(last_id)
-                        break
-                else:
-                    await post_puzzle(channel)
-                    last_id = message.id
-                    save_last_id(last_id)
-
-        await asyncio.sleep(5)
+        await post_puzzle(message.channel)
+        save_last_id(message.id)
 
 
 client.run(DISCORD_TOKEN)
