@@ -134,10 +134,9 @@ async def on_ready():
 
             # 🔍 check of er al een bot embed is
             recent = [msg async for msg in channel.history(limit=5)]
-
-            for msg in recent:
-                if msg.author == client.user:
-                    return  # fast bot heeft al gereageerd
+for msg in recent:
+    if msg.author.bot:
+        return
 
             # anders zelf posten
             await post_puzzle(channel)
