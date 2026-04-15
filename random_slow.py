@@ -10,8 +10,6 @@ from io import BytesIO, StringIO
 import cairosvg
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-
-CHANNEL_ID = 1468320170891022417
 STATE_FILE = "random_state.json"
 
 intents = discord.Intents.default()
@@ -46,7 +44,6 @@ def uci_to_san_sequence(board, moves_uci):
 
 
 async def post_puzzle(channel):
-
     r = requests.get(
         "https://lichess.org/api/puzzle/next",
         headers={"Accept": "application/json"},
@@ -81,31 +78,21 @@ async def post_puzzle(channel):
     side = "White" if board.turn else "Black"
     orientation = chess.WHITE if board.turn else chess.BLACK
 
-    svg_board = chess.svg.board(
-        board=board,
-        orientation=orientation,
-        size=500,
-        coordinates=True
-    )
-
+    svg_board = chess.svg.board(board=board, orientation=orientation, size=500)
     png_bytes = cairosvg.svg2png(bytestring=svg_board.encode())
     image = BytesIO(png_bytes)
 
     file = discord.File(fp=image, filename="puzzle.png")
 
-    puzzle_url = f"https://lichess.org/training/{puzzle_id}"
-    fen = board.fen()
-
     embed = discord.Embed(
-        title="🎲 Random Chess Puzzle",
+        title="🎲 Random Chess Puzzle (backup)",
         description=(
             f"Rating: {rating}\n\n"
             f"{side} to move\n\n"
             f"Solution: ||{solution}||\n\n"
-            f"🔗 Puzzle: {puzzle_url}\n"
-            f"📄 FEN: `{fen}`"
+            f"https://lichess.org/training/{puzzle_id}"
         ),
-        color=0x2ecc71
+        color=0xe67e22
     )
 
     embed.set_image(url="attachment://puzzle.png")
@@ -114,35 +101,29 @@ async def post_puzzle(channel):
 
 
 @client.event
-async def on_ready():
-    channel = client.get_channel(CHANNEL_ID)
+async def on_message(message):
+    if message.author.bot:
+        return
 
-    last_id = load_last_id()
+    if message.content.strip() == "!randompuzzle":
 
-    # wacht zodat fast bot eerst reageert
-    await asyncio.sleep(10)
+        last_id = load_last_id()
 
-    messages = [msg async for msg in channel.history(limit=10)]
-
-    for message in messages:
         if message.id <= last_id:
-            continue
-
-        if message.author.bot:
-            continue
-
-        if message.content.strip() == "!randompuzzle":
-
-            # check of er al een bot gereageerd heeft
-            recent = [msg async for msg in channel.history(limit=5)]
-
-            for msg in recent:
-                if msg.author.bot:
-                    return
-
-            await post_puzzle(channel)
-            save_last_id(message.id)
             return
+
+        # wacht zodat fast bot eerst kan reageren
+        await asyncio.sleep(15)
+
+        # check of er al een bot heeft gereageerd
+        recent = [msg async for msg in message.channel.history(limit=5)]
+
+        for msg in recent:
+            if msg.author.bot:
+                return
+
+        await post_puzzle(message.channel)
+        save_last_id(message.id)
 
 
 client.run(DISCORD_TOKEN)
