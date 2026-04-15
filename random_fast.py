@@ -35,6 +35,13 @@ def uci_to_san_sequence(board, moves_uci):
 
 
 def fetch_puzzle():
+    # kies random bucket (1000–3200 in stappen van 200)
+    buckets = list(range(1000, 3200, 200))
+    start = random.choice(buckets)
+    end = start + 200
+
+    print(f"Selected bucket: {start}-{end}")
+
     while True:
         try:
             r = requests.get(
@@ -46,8 +53,10 @@ def fetch_puzzle():
 
             rating = data["puzzle"]["rating"]
 
-            if 1000 <= rating <= 3000:
+            if start <= rating <= end:
+                print(f"Found puzzle: {rating}")
                 return data
+
         except:
             continue
 
