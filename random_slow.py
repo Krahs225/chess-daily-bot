@@ -85,14 +85,14 @@ async def post_puzzle(channel):
     file = discord.File(BytesIO(png), filename="puzzle.png")
 
     embed = discord.Embed(
-        title="Random Chess Puzzle",
+        title="Random Chess Puzzle (backup)",
         description=(
             f"Rating: {rating}\n\n"
             f"{side} to move\n\n"
             f"Solution: ||{solution}||\n\n"
             f"https://lichess.org/training/{puzzle_id}"
         ),
-        color=0x2ecc71
+        color=0xe67e22
     )
 
     embed.set_image(url="attachment://puzzle.png")
@@ -106,7 +106,18 @@ async def on_message(message):
         return
 
     if message.content.strip() == "!randompuzzle":
+
+        # wacht zodat fast eerst kan reageren
         await asyncio.sleep(10)
+
+        # check of er al een bot heeft gereageerd
+        recent = [msg async for msg in message.channel.history(limit=5)]
+
+        for msg in recent:
+            if msg.author.bot:
+                return
+
+        # alleen als geen bot heeft gereageerd
         await post_puzzle(message.channel)
         save_last_id(message.id)
 
