@@ -85,7 +85,7 @@ async def post_puzzle(channel):
     file = discord.File(BytesIO(png), filename="puzzle.png")
 
     embed = discord.Embed(
-        title="Random Chess Puzzle (backup)",
+        title="Random Chess Puzzle",
         description=(
             f"Rating: {rating}\n\n"
             f"{side} to move\n\n"
