@@ -107,17 +107,13 @@ async def on_message(message):
 
     if message.content.strip() == "!randompuzzle":
 
-        # wacht zodat fast eerst kan reageren
         await asyncio.sleep(10)
 
-        # check of er al een bot heeft gereageerd
-        recent = [msg async for msg in message.channel.history(limit=5)]
+        latest = [msg async for msg in message.channel.history(limit=1)]
 
-        for msg in recent:
-            if msg.author.bot:
-                return
+        if latest and latest[0].author.bot:
+            return
 
-        # alleen als geen bot heeft gereageerd
         await post_puzzle(message.channel)
         save_last_id(message.id)
 
