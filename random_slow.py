@@ -61,7 +61,6 @@ async def post_puzzle(channel):
     solution_moves = data["puzzle"]["solution"]
     puzzle_id = data["puzzle"]["id"]
 
-    # 🧠 juiste board (zelfde fix als fast)
     game = chess.pgn.read_game(StringIO(pgn))
     board = game.board()
     node = game
@@ -73,7 +72,6 @@ async def post_puzzle(channel):
         else:
             break
 
-    # 🔥 +1 move fix
     if node.variations:
         node = node.variations[0]
         board.push(node.move)
@@ -121,7 +119,7 @@ async def on_ready():
 
     last_id = load_last_id()
 
-    # ⏳ wacht zodat fast bot eerst kans krijgt
+    # wacht zodat fast bot eerst reageert
     await asyncio.sleep(10)
 
     messages = [msg async for msg in channel.history(limit=10)]
@@ -130,15 +128,18 @@ async def on_ready():
         if message.id <= last_id:
             continue
 
+        if message.author.bot:
+            continue
+
         if message.content.strip() == "!randompuzzle":
 
-            # 🔍 check of er al een bot embed is
+            # check of er al een bot gereageerd heeft
             recent = [msg async for msg in channel.history(limit=5)]
-for msg in recent:
-    if msg.author.bot:
-        return
 
-            # anders zelf posten
+            for msg in recent:
+                if msg.author.bot:
+                    return
+
             await post_puzzle(channel)
             save_last_id(message.id)
             return
