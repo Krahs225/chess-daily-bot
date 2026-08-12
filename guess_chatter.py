@@ -7,7 +7,7 @@ import asyncio
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1536769340970373241
 MIN_CHARACTERS = 20
-CHAT_FILE = "COMBINED CHATS.txt"
+CHAT_FILE = "SOLO chats"
 ANSWER_DELAY_SECONDS = 10
 
 intents = discord.Intents.default()
