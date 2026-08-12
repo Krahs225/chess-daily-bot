@@ -26,13 +26,22 @@ def load_quotes():
         if not line:
             continue
 
-        match = re.match(r"^.*?([A-Za-z0-9_]+):\s*(.*)$", line)
+        match = re.match(
+            r"^.*?Twitch Terugblik 2024(?P<username>[A-Za-z0-9_]+):\s*(?P<message>.*)$",
+            line
+        )
+
+        if not match:
+            match = re.match(
+                r"^.*?Niveau \d+(?P<username>[A-Za-z0-9_]+):\s*(?P<message>.*)$",
+                line
+            )
 
         if not match:
             continue
 
-        username = match.group(1).strip()
-        message = match.group(2).strip()
+        username = match.group("username").strip()
+        message = match.group("message").strip()
 
         if len(message) < MIN_CHARACTERS:
             continue
