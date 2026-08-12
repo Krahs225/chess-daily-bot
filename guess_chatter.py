@@ -6,7 +6,7 @@ import re
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1536769340970373241
 MIN_CHARACTERS = 20
-CHAT_FILE = "combined_chats.txt"
+CHAT_FILE = "COMBINED CHATS.txt"
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
