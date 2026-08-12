@@ -10,10 +10,8 @@ CHANNEL_ID = 1536769340970373241
 
 MIN_CHARACTERS = 20
 CHAT_DIR = "SOLO chats"
-
-QUOTE_INTERVAL_SECONDS = 5 * 60
-ANSWER_DELAY_SECONDS = 60
 POLL_OPTIONS = 5
+ANSWER_DELAY_SECONDS = 60
 
 CHATTERS = {
     "AZ": "az3d__",
@@ -154,11 +152,17 @@ def display_name_for(username):
     return username
 
 
-async def post_guess(channel, chatters):
+@client.event
+async def on_ready():
+    channel = await client.fetch_channel(CHANNEL_ID)
+
+    chatters = load_chatters()
+
     if len(chatters) < POLL_OPTIONS:
         await channel.send(
             "Not enough valid chatters for a 5-option poll."
         )
+        await client.close()
         return
 
     username = random.choice(list(chatters.keys()))
@@ -167,7 +171,8 @@ async def post_guess(channel, chatters):
     correct_display_name = display_name_for(username)
 
     wrong_usernames = [
-        name for name in chatters.keys()
+        name
+        for name in chatters.keys()
         if name != username
     ]
 
@@ -196,40 +201,18 @@ async def post_guess(channel, chatters):
         f"📅 **Date:** {date}"
     )
 
-    poll_message = await channel.send(
+    await channel.send(
         content=message_content,
         poll=poll
     )
 
     await asyncio.sleep(ANSWER_DELAY_SECONDS)
 
-    try:
-        await poll_message.end_poll()
-    except Exception:
-        pass
-
     await channel.send(
         f"🔓 **The answer was:** ||{correct_display_name}||"
     )
 
-
-@client.event
-async def on_ready():
-    channel = await client.fetch_channel(CHANNEL_ID)
-
-    chatters = load_chatters()
-
-    if not chatters:
-        await channel.send("No valid chatters found.")
-        await client.close()
-        return
-
-    while True:
-        await post_guess(channel, chatters)
-
-        await asyncio.sleep(
-            QUOTE_INTERVAL_SECONDS - ANSWER_DELAY_SECONDS
-        )
+    await client.close()
 
 
 client.run(TOKEN)
