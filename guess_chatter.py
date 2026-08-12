@@ -18,6 +18,7 @@ client = discord.Client(intents=intents)
 
 def load_quotes():
     chatters = {}
+    current_date = None
 
     chat_files = Path(CHAT_DIR).glob("*.txt")
 
@@ -34,12 +35,19 @@ def load_quotes():
             if not line:
                 continue
 
+            date_match = re.match(r"^(\d{1,2})-(\d{1,2})-(\d{4})$", line)
+
+            if date_match:
+                day, month, year = date_match.groups()
+                current_date = f"{day.zfill(2)}-{month.zfill(2)}-{year}"
+                continue
+
             match = re.match(
                 r"^\d{1,2}:\d{2}.*?([A-Za-z0-9_]+):\s*(.*)$",
                 line
             )
 
-            if not match:
+            if not match or not current_date:
                 continue
 
             username = match.group(1).strip()
@@ -51,7 +59,7 @@ def load_quotes():
             if username not in chatters:
                 chatters[username] = []
 
-            chatters[username].append(message)
+            chatters[username].append((message, current_date))
 
     return chatters
 
@@ -68,11 +76,12 @@ async def on_ready():
             return
 
         username = random.choice(list(chatters.keys()))
-        message = random.choice(chatters[username])
+        message, date = random.choice(chatters[username])
 
         await channel.send(
             f"💬 **Guess the Chatter**\n\n"
-            f"> {message}"
+            f"> {message}\n\n"
+            f"📅 **Date:** {date}"
         )
 
         await asyncio.sleep(ANSWER_DELAY_SECONDS)
