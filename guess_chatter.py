@@ -3,6 +3,7 @@ import os
 import random
 import re
 import asyncio
+from datetime import timedelta
 from pathlib import Path
 
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -67,7 +68,6 @@ def find_chatter(prefix):
         return None
 
     matches.sort(reverse=True)
-
     return matches[0][1], matches[0][2]
 
 
@@ -154,65 +154,71 @@ def display_name_for(username):
 
 @client.event
 async def on_ready():
-    channel = await client.fetch_channel(CHANNEL_ID)
+    try:
+        channel = await client.fetch_channel(CHANNEL_ID)
 
-    chatters = load_chatters()
+        chatters = load_chatters()
 
-    if len(chatters) < POLL_OPTIONS:
+        if len(chatters) < POLL_OPTIONS:
+            await channel.send(
+                "Not enough valid chatters for a 5-option poll."
+            )
+            return
+
+        username = random.choice(list(chatters.keys()))
+        message, date = random.choice(chatters[username])
+
+        correct_display_name = display_name_for(username)
+
+        wrong_usernames = [
+            name
+            for name in chatters.keys()
+            if name != username
+        ]
+
+        wrong_usernames = random.sample(
+            wrong_usernames,
+            POLL_OPTIONS - 1
+        )
+
+        options = wrong_usernames + [username]
+        random.shuffle(options)
+
+        poll = discord.Poll(
+            question="Who said this?",
+            duration=timedelta(hours=1),
+            multiple=False
+        )
+
+        for option in options:
+            poll.add_answer(
+                text=display_name_for(option)
+            )
+
+        message_content = (
+            f"💬 **Guess the Chatter**\n\n"
+            f"> {message}\n\n"
+            f"📅 **Date:** {date}"
+        )
+
+        poll_message = await channel.send(
+            content=message_content,
+            poll=poll
+        )
+
+        await asyncio.sleep(ANSWER_DELAY_SECONDS)
+
+        try:
+            await poll_message.end_poll()
+        except discord.HTTPException:
+            pass
+
         await channel.send(
-            "Not enough valid chatters for a 5-option poll."
+            f"🔓 **The answer was:** ||{correct_display_name}||"
         )
+
+    finally:
         await client.close()
-        return
-
-    username = random.choice(list(chatters.keys()))
-    message, date = random.choice(chatters[username])
-
-    correct_display_name = display_name_for(username)
-
-    wrong_usernames = [
-        name
-        for name in chatters.keys()
-        if name != username
-    ]
-
-    wrong_usernames = random.sample(
-        wrong_usernames,
-        POLL_OPTIONS - 1
-    )
-
-    options = wrong_usernames + [username]
-    random.shuffle(options)
-
-    poll = discord.Poll(
-        question="Who said this?",
-        duration=1,
-        multiple=False
-    )
-
-    for option in options:
-        poll.add_answer(
-            text=display_name_for(option)
-        )
-
-    message_content = (
-        f"💬 **Guess the Chatter**\n\n"
-        f"> {message}\n\n"
-        f"📅 **Date:** {date}"
-    )
-
-    await channel.send(
-        content=message_content,
-        poll=poll
-    )
-
-    await asyncio.sleep(ANSWER_DELAY_SECONDS)
-
-    await channel.send(
-        f"🔓 **The answer was:** ||{correct_display_name}||"
-    )
-
-    await client.close()
 
 
 client.run(TOKEN)
