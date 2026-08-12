@@ -10,7 +10,9 @@ CHANNEL_ID = 1536769340970373241
 
 MIN_CHARACTERS = 20
 CHAT_DIR = "SOLO chats"
-ANSWER_DELAY_SECONDS = 10
+
+QUOTE_INTERVAL_SECONDS = 5 * 60
+ANSWER_DELAY_SECONDS = 60
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -18,7 +20,6 @@ client = discord.Client(intents=intents)
 
 def load_quotes():
     chatters = {}
-    current_date = None
 
     chat_files = Path(CHAT_DIR).glob("*.txt")
 
@@ -28,6 +29,8 @@ def load_quotes():
                 lines = file.readlines()
         except Exception:
             continue
+
+        current_date = None
 
         for line in lines:
             line = line.strip()
@@ -64,34 +67,40 @@ def load_quotes():
     return chatters
 
 
+async def post_quote(channel, chatters):
+    username = random.choice(list(chatters.keys()))
+    message, date = random.choice(chatters[username])
+
+    await channel.send(
+        f"💬 **Guess the Chatter**\n\n"
+        f"> {message}\n\n"
+        f"📅 **Date:** {date}"
+    )
+
+    await asyncio.sleep(ANSWER_DELAY_SECONDS)
+
+    await channel.send(
+        f"🔓 **The answer was:** ||{username}||"
+    )
+
+
 @client.event
 async def on_ready():
-    try:
-        channel = await client.fetch_channel(CHANNEL_ID)
+    channel = await client.fetch_channel(CHANNEL_ID)
 
-        chatters = load_quotes()
+    chatters = load_quotes()
 
-        if not chatters:
-            await channel.send("No valid chatters found.")
-            return
-
-        username = random.choice(list(chatters.keys()))
-        message, date = random.choice(chatters[username])
-
-        await channel.send(
-            f"💬 **Guess the Chatter**\n\n"
-            f"> {message}\n\n"
-            f"📅 **Date:** {date}"
-        )
-
-        await asyncio.sleep(ANSWER_DELAY_SECONDS)
-
-        await channel.send(
-            f"🔓 **The answer was:** ||{username}||"
-        )
-
-    finally:
+    if not chatters:
+        await channel.send("No valid chatters found.")
         await client.close()
+        return
+
+    while True:
+        await post_quote(channel, chatters)
+
+        await asyncio.sleep(
+            QUOTE_INTERVAL_SECONDS - ANSWER_DELAY_SECONDS
+        )
 
 
 client.run(TOKEN)
