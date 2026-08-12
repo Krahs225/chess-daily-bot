@@ -45,6 +45,7 @@ CHATTERS = {
     "Sushi": "isolatedsushi11",
     "Thejazzdude": "thejazzdude_",
     "Kohl": "kohlkrow",
+    "Kingdev": "king_keegdev",
 }
 
 intents = discord.Intents.default()
@@ -60,7 +61,9 @@ def find_chatter(prefix):
         username_lower = username.lower()
 
         if prefix.endswith(username_lower):
-            matches.append((len(username_lower), display_name, username))
+            matches.append(
+                (len(username_lower), display_name, username)
+            )
 
     if not matches:
         return None
@@ -122,15 +125,15 @@ def load_chatters():
             if len(message) < MIN_CHARACTERS:
                 continue
 
+            if current_date is None:
+                continue
+
             chatter = find_chatter(prefix)
 
             if not chatter:
                 continue
 
             _, username = chatter
-
-            if current_date is None:
-                continue
 
             chatters[username].append(
                 (message, current_date)
@@ -176,12 +179,6 @@ async def post_guess(channel, chatters):
     options = wrong_usernames + [username]
     random.shuffle(options)
 
-    await channel.send(
-        f"💬 **Guess the Chatter**\n\n"
-        f"> {message}\n\n"
-        f"📅 **Date:** {date}"
-    )
-
     poll = discord.Poll(
         question="Who said this?",
         duration=1,
@@ -193,9 +190,23 @@ async def post_guess(channel, chatters):
             text=display_name_for(option)
         )
 
-    await channel.send(poll=poll)
+    message_content = (
+        f"💬 **Guess the Chatter**\n\n"
+        f"> {message}\n\n"
+        f"📅 **Date:** {date}"
+    )
+
+    poll_message = await channel.send(
+        content=message_content,
+        poll=poll
+    )
 
     await asyncio.sleep(ANSWER_DELAY_SECONDS)
+
+    try:
+        await poll_message.end_poll()
+    except Exception:
+        pass
 
     await channel.send(
         f"🔓 **The answer was:** ||{correct_display_name}||"
