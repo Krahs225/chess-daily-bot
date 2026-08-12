@@ -15,11 +15,9 @@ QUOTE_INTERVAL_SECONDS = 5 * 60
 ANSWER_DELAY_SECONDS = 60
 POLL_OPTIONS = 5
 
-
-# Display name -> exact Twitch username
 CHATTERS = {
     "AZ": "az3d__",
-    "Ben": "bcutter1",
+    "Ben": "benniru",
     "Cash": "cashojf3r",
     "Cien": "cien_223",
     "Geeflux": "geeflux",
@@ -49,7 +47,6 @@ CHATTERS = {
     "Kohl": "kohlkrow",
 }
 
-
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 
@@ -69,6 +66,7 @@ def find_chatter(prefix):
         return None
 
     matches.sort(reverse=True)
+
     return matches[0][1], matches[0][2]
 
 
@@ -93,7 +91,6 @@ def load_chatters():
             if not line:
                 continue
 
-            # Date line
             date_match = re.fullmatch(
                 r"(\d{1,2})-(\d{1,2})-(\d{4})",
                 line
@@ -104,7 +101,6 @@ def load_chatters():
                 current_date = f"{day.zfill(2)}-{month.zfill(2)}-{year}"
                 continue
 
-            # Message must start with a time
             time_match = re.match(
                 r"^\d{1,2}:\d{2}\s*(.*)$",
                 line
@@ -115,7 +111,6 @@ def load_chatters():
 
             rest = time_match.group(1)
 
-            # Find the first colon that separates sender from message
             colon_index = rest.find(":")
 
             if colon_index == -1:
@@ -141,14 +136,11 @@ def load_chatters():
                 (message, current_date)
             )
 
-    # Remove chatters with no valid messages
-    chatters = {
+    return {
         username: messages
         for username, messages in chatters.items()
         if messages
     }
-
-    return chatters
 
 
 def display_name_for(username):
@@ -166,15 +158,11 @@ async def post_guess(channel, chatters):
         )
         return
 
-    # Pick a random chatter first
     username = random.choice(list(chatters.keys()))
-
-    # Then pick a random message from that chatter
     message, date = random.choice(chatters[username])
 
     correct_display_name = display_name_for(username)
 
-    # Pick 4 wrong chatters
     wrong_usernames = [
         name for name in chatters.keys()
         if name != username
