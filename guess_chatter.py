@@ -2,11 +2,13 @@ import discord
 import os
 import random
 import re
+import asyncio
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1536769340970373241
 MIN_CHARACTERS = 20
 CHAT_FILE = "COMBINED CHATS.txt"
+ANSWER_DELAY_SECONDS = 10
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
@@ -24,13 +26,7 @@ def load_quotes():
         if not line:
             continue
 
-        if ":" not in line:
-            continue
-
-        match = re.match(r"^.*?Twitch Terugblik 2024(.+?):\s*(.*)$", line)
-
-        if not match:
-            match = re.match(r"^.*?Niveau \d+(.+?):\s*(.*)$", line)
+        match = re.match(r"^.*?([A-Za-z0-9_]+):\s*(.*)$", line)
 
         if not match:
             continue
@@ -62,6 +58,12 @@ async def on_ready():
         await channel.send(
             f"💬 **Guess the Chatter**\n\n"
             f"> {message}"
+        )
+
+        await asyncio.sleep(ANSWER_DELAY_SECONDS)
+
+        await channel.send(
+            f"🔓 **The answer was:** ||{username}||"
         )
 
     finally:
