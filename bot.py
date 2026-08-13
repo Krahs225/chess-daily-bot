@@ -26,16 +26,16 @@ PUZZLE_API = "https://api.chess.com/pub/puzzle"
 STATE_FILE = "daily_puzzle_state.json"
 LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
 
-# Check Chess.com every 5 minutes
+# Check for a new Daily Puzzle every 5 minutes
 PUZZLE_CHECK_INTERVAL = 5 * 60
 
-# Leaderboard every 10 minutes
+# Post leaderboard every 10 minutes
 LEADERBOARD_INTERVAL = 10 * 60
 
-# Answers accepted for 12 hours
+# Players have 12 hours to submit their answer
 ANSWER_WINDOW = 12 * 60 * 60
 
-# GitHub Action runs for less than 6 hours
+# End each GitHub Actions run before the 6-hour limit
 RUN_TIME = 5 * 60 * 60 + 50 * 60
 
 
@@ -167,7 +167,6 @@ def push_to_github():
             text=True
         )
 
-        # Nothing changed
         if commit.returncode != 0:
             return
 
@@ -189,7 +188,7 @@ def push_to_github():
         )
 
         print(
-            "Saved Daily Puzzle data to GitHub.",
+            "Daily Puzzle data saved.",
             flush=True
         )
 
@@ -292,11 +291,11 @@ def get_solution(data):
 
     first_uci = first_move.uci()
 
-    full_solution = []
+    solution_moves = []
 
     for move in moves:
 
-        full_solution.append(
+        solution_moves.append(
             board.san(move)
         )
 
@@ -305,7 +304,7 @@ def get_solution(data):
     return {
         "first_san": first_san,
         "first_uci": first_uci,
-        "solution": full_solution
+        "solution": solution_moves
     }
 
 
@@ -348,8 +347,6 @@ async def post_puzzle(
         else "Black"
     )
 
-    # Keep the same board orientation
-    # as your existing working bot.
     orientation = (
         chess.WHITE
         if board.turn
@@ -437,7 +434,7 @@ async def post_answer(
 
 
 # =========================================================
-# MOVE CHECK
+# CHECK MOVE
 # =========================================================
 
 def move_is_correct(
@@ -454,7 +451,7 @@ def move_is_correct(
         puzzle["fen"]
     )
 
-    # SAN:
+    # SAN
     # Bf2
     # Bf2+
     # Qh7#
@@ -472,7 +469,7 @@ def move_is_correct(
     except ValueError:
         pass
 
-    # UCI:
+    # UCI
     # e2e4
     try:
 
@@ -531,11 +528,13 @@ def puzzle_is_open(puzzle):
 
 
 # =========================================================
-# ADD POINT
+# SAVE LATEST ATTEMPT
 # =========================================================
 
-async def add_point(
-    user
+async def save_latest_attempt(
+    user,
+    move_text,
+    correct
 ):
 
     async with data_lock:
@@ -544,18 +543,9 @@ async def add_point(
             "current_puzzle"
         )
 
-        # No active Daily Puzzle
         if not puzzle:
             return False
 
-        # Answer already posted
-        if puzzle.get(
-            "answer_posted",
-            False
-        ):
-            return False
-
-        # 12 hours have passed
         if not puzzle_is_open(
             puzzle
         ):
@@ -565,42 +555,112 @@ async def add_point(
             user.id
         )
 
-        scored_users = puzzle.setdefault(
-            "scored_users",
-            []
+        latest_attempts = puzzle.setdefault(
+            "latest_attempts",
+            {}
         )
 
-        # Already got a point for this puzzle
-        if user_id in scored_users:
-            return False
+        # IMPORTANT:
+        # Every user has their OWN latest answer.
+        #
+        # Sharkmeister:
+        #     !Bf2
+        #
+        # Thice:
+        #     !Bf3
+        #
+        # They do not affect each other.
 
-        if user_id not in scores:
-
-            scores[user_id] = {
-                "name": user.display_name,
-                "points": 0
-            }
-
-        # Keep current Discord display name
-        scores[user_id]["name"] = (
-            user.display_name
-        )
-
-        scores[user_id]["points"] += 1
-
-        scored_users.append(
-            user_id
-        )
+        latest_attempts[user_id] = {
+            "name": user.display_name,
+            "move": move_text,
+            "correct": correct,
+            "timestamp": datetime.now(
+                timezone.utc
+            ).isoformat()
+        }
 
         await save_all()
 
         print(
-            f"+1 Daily Puzzle point: "
-            f"{user.display_name}",
+            f"Latest attempt: "
+            f"{user.display_name} -> "
+            f"{move_text} -> "
+            f"{'correct' if correct else 'wrong'}",
             flush=True
         )
 
         return True
+
+
+# =========================================================
+# FINALIZE POINTS
+# =========================================================
+
+async def finalize_puzzle(
+    puzzle
+):
+
+    async with data_lock:
+
+        latest_attempts = puzzle.get(
+            "latest_attempts",
+            {}
+        )
+
+        already_awarded = puzzle.get(
+            "points_awarded",
+            []
+        )
+
+        for user_id, attempt in latest_attempts.items():
+
+            # Already received a point
+            if user_id in already_awarded:
+                continue
+
+            # ONLY THE MOST RECENT ATTEMPT COUNTS
+            if not attempt.get(
+                "correct",
+                False
+            ):
+                continue
+
+            name = attempt.get(
+                "name",
+                "Unknown"
+            )
+
+            if user_id not in scores:
+
+                scores[user_id] = {
+                    "name": name,
+                    "points": 0
+                }
+
+            scores[user_id]["name"] = name
+
+            scores[user_id]["points"] += 1
+
+            already_awarded.append(
+                user_id
+            )
+
+            print(
+                f"+1 Daily Puzzle point: "
+                f"{name}",
+                flush=True
+            )
+
+        puzzle[
+            "points_awarded"
+        ] = already_awarded
+
+        puzzle[
+            "answer_posted"
+        ] = True
+
+        await save_all()
 
 
 # =========================================================
@@ -623,7 +683,10 @@ async def on_message(
     if not content.startswith("!"):
         return
 
-    # Only !MOVE
+    # Only accept:
+    # !Bf2
+    # !Bf2+
+    # !e2e4
     match = re.fullmatch(
         r"!\s*(\S+)",
         content
@@ -638,42 +701,33 @@ async def on_message(
         "current_puzzle"
     )
 
-    # Nothing active
     if not puzzle:
         return
 
-    # IMPORTANT:
-    # After the official answer, stop completely.
+    # After answer -> completely ignore
     if puzzle.get(
         "answer_posted",
         False
     ):
         return
 
-    # IMPORTANT:
-    # After 12 hours, stop completely.
+    # After 12 hours -> completely ignore
     if not puzzle_is_open(
         puzzle
     ):
         return
 
-    # Wrong move = nothing
-    if not move_is_correct(
+    correct = move_is_correct(
         move_text,
         puzzle
-    ):
-        return
-
-    awarded = await add_point(
-        message.author
     )
 
-    if awarded:
-
-        await message.channel.send(
-            f"✅ **{message.author.display_name} "
-            f"+1 Daily Puzzle point!**"
-        )
+    # SAVE THIS AS THIS USER'S LATEST ATTEMPT
+    await save_latest_attempt(
+        message.author,
+        move_text,
+        correct
+    )
 
 
 # =========================================================
@@ -701,8 +755,7 @@ def make_leaderboard():
         ""
     ]
 
-    # Keep all players for now.
-    # We can change this to Top 10 later.
+    # All players for now
     for rank, (_, player) in enumerate(
         ordered,
         start=1
@@ -772,7 +825,7 @@ async def check_for_new_puzzle(
         else None
     )
 
-    # Same puzzle
+    # Same puzzle -> do not post again
     if current_url == puzzle["url"]:
         return
 
@@ -781,7 +834,7 @@ async def check_for_new_puzzle(
         flush=True
     )
 
-    # Old puzzle answer
+    # Finish old puzzle first
     if current:
 
         if not current.get(
@@ -789,32 +842,59 @@ async def check_for_new_puzzle(
             False
         ):
 
-            try:
+            # If the 12-hour window ended,
+            # the latest attempts determine points.
+            if not puzzle_is_open(
+                current
+            ):
+
+                await finalize_puzzle(
+                    current
+                )
 
                 await post_answer(
                     channel,
                     current
                 )
 
-            except Exception as error:
+            else:
 
-                print(
-                    f"Could not post old answer: "
-                    f"{error}",
-                    flush=True
+                # A new Chess.com puzzle appeared
+                # unexpectedly before 12 hours.
+                #
+                # Finalize the old one anyway so
+                # nobody can answer it anymore.
+                await finalize_puzzle(
+                    current
                 )
 
-    # New puzzle starts now
+                await post_answer(
+                    channel,
+                    current
+                )
+
+    # New puzzle
     puzzle["posted_at"] = (
         datetime.now(
             timezone.utc
         ).isoformat()
     )
 
-    puzzle["answer_posted"] = False
-    puzzle["scored_users"] = []
+    puzzle[
+        "answer_posted"
+    ] = False
 
-    state["current_puzzle"] = puzzle
+    puzzle[
+        "latest_attempts"
+    ] = {}
+
+    puzzle[
+        "points_awarded"
+    ] = []
+
+    state[
+        "current_puzzle"
+    ] = puzzle
 
     await save_all()
 
@@ -871,7 +951,7 @@ async def maintenance_loop(
             )
 
             # -----------------------------------------
-            # 12-HOUR ANSWER
+            # 12-HOUR CLOSE
             # -----------------------------------------
 
             if puzzle:
@@ -885,20 +965,22 @@ async def maintenance_loop(
                         puzzle
                     ):
 
-                        await post_answer(
-                            channel,
+                        print(
+                            "12 hours reached. "
+                            "Finalizing latest answers.",
+                            flush=True
+                        )
+
+                        # First determine points
+                        # from everyone's latest attempt.
+                        await finalize_puzzle(
                             puzzle
                         )
 
-                        puzzle[
-                            "answer_posted"
-                        ] = True
-
-                        await save_all()
-
-                        print(
-                            "12-hour answer window closed.",
-                            flush=True
+                        # Then reveal the answer.
+                        await post_answer(
+                            channel,
+                            puzzle
                         )
 
             # -----------------------------------------
@@ -945,8 +1027,8 @@ async def run_timer():
     )
 
     print(
-        "Run time reached. "
-        "Ending cleanly for the next GitHub run.",
+        "Ending run cleanly before GitHub's "
+        "6-hour limit.",
         flush=True
     )
 
@@ -1007,8 +1089,7 @@ async def on_ready():
         flush=True
     )
 
-    # Immediately check whether
-    # there is a new Daily Puzzle.
+    # Check immediately on startup
     await check_for_new_puzzle(
         channel
     )
