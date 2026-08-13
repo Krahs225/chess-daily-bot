@@ -1,14 +1,22 @@
-name: Daily Puzzle + Answer
+name: Daily Puzzle
 
 on:
   schedule:
-    # 14:00 NL (CEST) = 12:00 UTC
-    - cron: "0 12 * * *"
+    - cron: "7 0,6,12,18 * * *"
+
   workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-puzzle
+  cancel-in-progress: false
 
 jobs:
   run:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -16,20 +24,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - run: pip install -r requirements.txt
+      - name: Install requirements
+        run: pip install -r requirements.txt
 
-      # ── 14:00 → Puzzle ──
-      - name: Post puzzle
+      - name: Run Daily Puzzle
         run: python bot.py
-        env:
-          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-
-      # ── Wacht 4 uur ──
-      - name: Wait 4 hours
-        run: sleep 14400
-
-      # ── 18:00 → Answer ──
-      - name: Post answer
-        run: python answer.py
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
