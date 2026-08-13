@@ -72,9 +72,8 @@ CHATTERS = {
 
 intents = discord.Intents.default()
 
-# Needed for poll vote events.
 intents.message_content = True
-intents.guild_polls = True
+intents.polls = True
 
 client = discord.Client(intents=intents)
 
@@ -93,7 +92,7 @@ def load_scores():
 
     if not path.exists():
         scores = {}
-        print("No leaderboard.json found. Starting with 0 points.", flush=True)
+        print("No leaderboard.json found. Starting at 0 points.", flush=True)
         return
 
     try:
@@ -120,7 +119,6 @@ def save_scores():
             "w",
             encoding="utf-8"
         ) as file:
-
             json.dump(
                 scores,
                 file,
@@ -136,12 +134,6 @@ def save_scores():
 
 
 def save_scores_to_github():
-    """
-    Save leaderboard.json back into the repository.
-
-    This runs outside the Discord event loop.
-    """
-
     try:
         subprocess.run(
             [
@@ -187,10 +179,8 @@ def save_scores_to_github():
         )
 
         if commit.returncode != 0:
-            # Nothing changed.
             return
 
-        # Push to the branch that triggered this workflow.
         branch = os.getenv(
             "GITHUB_REF_NAME",
             "main"
@@ -215,30 +205,31 @@ def save_scores_to_github():
 
     except Exception as error:
         print(
-            f"Could not push leaderboard to GitHub: {error}",
+            f"Could not push leaderboard: {error}",
             flush=True
         )
 
 
-def add_point(user_id, display_name):
-    user_id = str(user_id)
+def add_point(user):
+    user_id = str(user.id)
 
     if user_id not in scores:
         scores[user_id] = {
-            "name": display_name,
+            "name": user.display_name,
             "points": 0
         }
 
-    scores[user_id]["name"] = display_name
+    scores[user_id]["name"] = user.display_name
     scores[user_id]["points"] += 1
 
     print(
-        f"+1 point -> {display_name}",
+        f"+1 point: {user.display_name}",
         flush=True
     )
 
 
 def make_leaderboard():
+
     if not scores:
         return (
             "🏆 **Guess the Chatter — Leaderboard**\n\n"
@@ -273,24 +264,21 @@ def make_leaderboard():
         else:
             prefix = f"**{rank}.**"
 
-        point_word = (
-            "point"
-            if points == 1
-            else "points"
-        )
+        word = "point" if points == 1 else "points"
 
         lines.append(
-            f"{prefix} {name} — **{points} {point_word}**"
+            f"{prefix} {name} — **{points} {word}**"
         )
 
     return "\n".join(lines)
 
 
 # =========================================================
-# CHAT HISTORY
+# CHAT FILES
 # =========================================================
 
 def find_chatter(prefix):
+
     prefix = prefix.strip().lower()
 
     matches = []
@@ -332,34 +320,24 @@ def load_chatters():
         )
         return {}
 
-    files = list(
-        chat_path.glob("*.txt")
-    )
+    files = list(chat_path.glob("*.txt"))
 
     print(
-        f"Found {len(files)} chat history files.",
+        f"Found {len(files)} chat files.",
         flush=True
     )
 
     for chat_file in files:
 
         try:
-
             with open(
                 chat_file,
                 "r",
                 encoding="utf-8"
             ) as file:
-
                 lines = file.readlines()
 
-        except Exception as error:
-
-            print(
-                f"Could not read {chat_file}: {error}",
-                flush=True
-            )
-
+        except Exception:
             continue
 
         current_date = None
@@ -371,7 +349,6 @@ def load_chatters():
             if not line:
                 continue
 
-            # Date line
             date_match = re.fullmatch(
                 r"(\d{1,2})-(\d{1,2})-(\d{4})",
                 line
@@ -389,7 +366,6 @@ def load_chatters():
 
                 continue
 
-            # Message line
             time_match = re.match(
                 r"^\d{1,2}:\d{2}\s*(.*)$",
                 line
@@ -406,11 +382,7 @@ def load_chatters():
                 continue
 
             prefix = rest[:colon_index]
-
-            message = (
-                rest[colon_index + 1:]
-                .strip()
-            )
+            message = rest[colon_index + 1:].strip()
 
             if len(message) < MIN_CHARACTERS:
                 continue
@@ -466,21 +438,11 @@ def display_name_for(username):
 # ACTIVE POLLS
 # =========================================================
 
-# Example:
-#
-# active_polls[message_id] = {
-#     "correct_answer_id": 3,
-#     "votes": {
-#         "123456789": 3,
-#         "987654321": 1
-#     }
-# }
-
 active_polls = {}
 
 
 # =========================================================
-# RAW POLL VOTE EVENTS
+# POLL VOTE EVENTS
 # =========================================================
 
 @client.event
@@ -491,15 +453,14 @@ async def on_raw_poll_vote_add(payload):
     if message_id not in active_polls:
         return
 
-    active_polls[
-        message_id
-    ]["votes"][
-        str(payload.user_id)
-    ] = payload.answer_id
+    user_id = str(payload.user_id)
+
+    active_polls[message_id]["votes"][user_id] = (
+        payload.answer_id
+    )
 
     print(
-        f"Vote received: user={payload.user_id}, "
-        f"message={message_id}, "
+        f"Vote added: user={user_id}, "
         f"answer={payload.answer_id}",
         flush=True
     )
@@ -523,203 +484,200 @@ async def on_raw_poll_vote_remove(payload):
 
         del active_polls[
             message_id
-        ]["votes"][
-            user_id
-        ]
+        ]["votes"][user_id]
 
     print(
-        f"Vote removed: user={payload.user_id}, "
-        f"message={message_id}, "
+        f"Vote removed: user={user_id}, "
         f"answer={payload.answer_id}",
         flush=True
     )
 
 
 # =========================================================
-# POST ONE GUESS
+# ONE GUESS
 # =========================================================
 
-async def post_guess(
-    channel,
-    chatters
-):
+async def post_guess(channel, chatters):
 
-    if len(chatters) < POLL_OPTIONS:
-
-        await channel.send(
-            "Not enough valid chatters "
-            "for a 5-option poll."
-        )
-
-        return
-
-    # Pick chatter
-    username = random.choice(
-        list(chatters.keys())
-    )
-
-    # Pick message
-    message, date = random.choice(
-        chatters[username]
-    )
-
-    correct_display_name = (
-        display_name_for(username)
-    )
-
-    # Pick wrong answers
-    wrong_usernames = [
-        name
-        for name in chatters.keys()
-        if name != username
-    ]
-
-    wrong_usernames = random.sample(
-        wrong_usernames,
-        POLL_OPTIONS - 1
-    )
-
-    options = (
-        wrong_usernames
-        + [username]
-    )
-
-    random.shuffle(options)
-
-    # Create poll
-    poll = discord.Poll(
-        question="Who said this?",
-        duration=timedelta(hours=1),
-        multiple=False
-    )
-
-    correct_answer_id = None
-
-    for option in options:
-
-        answer = poll.add_answer(
-            text=display_name_for(option)
-        )
-
-        if option == username:
-            correct_answer_id = answer.id
-
-    content = (
-        f"💬 **Guess the Chatter**\n\n"
-        f"> {message}\n\n"
-        f"📅 **Date:** {date}"
-    )
-
-    print(
-        f"Posting quote from {correct_display_name}...",
-        flush=True
-    )
-
-    poll_message = await channel.send(
-        content=content,
-        poll=poll
-    )
-
-    print(
-        f"Poll posted successfully. "
-        f"Message ID: {poll_message.id}",
-        flush=True
-    )
-
-    # Register active poll
-    active_polls[
-        poll_message.id
-    ] = {
-        "correct_answer_id": correct_answer_id,
-        "votes": {}
-    }
-
-    # Wait 3 minutes
-    await asyncio.sleep(
-        ANSWER_DELAY_SECONDS
-    )
-
-    poll_data = active_polls.get(
-        poll_message.id
-    )
-
-    if poll_data:
-
-        correct_id = (
-            poll_data[
-                "correct_answer_id"
-            ]
-        )
-
-        votes = dict(
-            poll_data["votes"]
-        )
-
-        print(
-            f"Poll finished with "
-            f"{len(votes)} recorded voters.",
-            flush=True
-        )
-
-        # Award points
-        for user_id, answer_id in votes.items():
-
-            if answer_id != correct_id:
-                continue
-
-            try:
-
-                user = await client.fetch_user(
-                    int(user_id)
-                )
-
-                add_point(
-                    user.id,
-                    user.display_name
-                )
-
-            except Exception as error:
-
-                print(
-                    f"Could not fetch user "
-                    f"{user_id}: {error}",
-                    flush=True
-                )
-
-        save_scores()
-
-    # Close poll
     try:
 
-        await poll_message.end_poll()
+        if len(chatters) < POLL_OPTIONS:
+            await channel.send("⚠️ Error")
+            return
+
+        # Random chatter
+        username = random.choice(
+            list(chatters.keys())
+        )
+
+        # Random message from that chatter
+        message, date = random.choice(
+            chatters[username]
+        )
+
+        correct_display_name = (
+            display_name_for(username)
+        )
+
+        # Four wrong answers
+        wrong_usernames = [
+            name
+            for name in chatters.keys()
+            if name != username
+        ]
+
+        wrong_usernames = random.sample(
+            wrong_usernames,
+            POLL_OPTIONS - 1
+        )
+
+        options = (
+            wrong_usernames
+            + [username]
+        )
+
+        random.shuffle(options)
+
+        # Create poll
+        poll = discord.Poll(
+            question="Who said this?",
+            duration=timedelta(hours=1),
+            multiple=False
+        )
+
+        # Add all answers first
+        for option in options:
+
+            poll.add_answer(
+                text=display_name_for(option)
+            )
+
+        # Find the correct answer from poll.answers
+        correct_answer_id = None
+
+        for answer in poll.answers:
+
+            if answer.text == correct_display_name:
+                correct_answer_id = answer.id
+                break
+
+        if correct_answer_id is None:
+            print(
+                "ERROR: Could not find correct poll answer.",
+                flush=True
+            )
+            await channel.send("⚠️ Error")
+            return
+
+        content = (
+            f"💬 **Guess the Chatter**\n\n"
+            f"> {message}\n\n"
+            f"📅 **Date:** {date}"
+        )
 
         print(
-            "Poll closed.",
+            f"Posting quote from {correct_display_name}...",
             flush=True
         )
 
-    except discord.HTTPException as error:
+        poll_message = await channel.send(
+            content=content,
+            poll=poll
+        )
 
         print(
-            f"Could not close poll: {error}",
+            f"Poll posted: {poll_message.id}",
             flush=True
         )
 
-    # Reveal answer
-    await channel.send(
-        f"🔓 **The answer was:** "
-        f"||{correct_display_name}||"
-    )
+        # Remember poll
+        active_polls[poll_message.id] = {
+            "correct_answer_id": correct_answer_id,
+            "votes": {}
+        }
 
-    # Remove from active polls
-    active_polls.pop(
-        poll_message.id,
-        None
-    )
+        # Wait 3 minutes
+        await asyncio.sleep(
+            ANSWER_DELAY_SECONDS
+        )
+
+        poll_data = active_polls.get(
+            poll_message.id
+        )
+
+        if poll_data:
+
+            correct_id = (
+                poll_data["correct_answer_id"]
+            )
+
+            votes = dict(
+                poll_data["votes"]
+            )
+
+            print(
+                f"Poll finished. "
+                f"{len(votes)} votes recorded.",
+                flush=True
+            )
+
+            # Award points
+            for user_id, answer_id in votes.items():
+
+                if answer_id != correct_id:
+                    continue
+
+                try:
+
+                    user = await client.fetch_user(
+                        int(user_id)
+                    )
+
+                    add_point(user)
+
+                except Exception as error:
+
+                    print(
+                        f"Could not fetch voter: {error}",
+                        flush=True
+                    )
+
+            save_scores()
+
+        # End poll
+        try:
+
+            await poll_message.end_poll()
+
+        except discord.HTTPException:
+            pass
+
+        # Reveal answer
+        await channel.send(
+            f"🔓 **The answer was:** "
+            f"||{correct_display_name}||"
+        )
+
+        active_polls.pop(
+            poll_message.id,
+            None
+        )
+
+    except Exception as error:
+
+        print(
+            f"ERROR during guess: {error}",
+            flush=True
+        )
+
+        try:
+            await channel.send("⚠️ Error")
+        except Exception:
+            pass
 
 
 # =========================================================
-# LEADERBOARD LOOP
+# LEADERBOARD
 # =========================================================
 
 async def leaderboard_loop(channel):
@@ -737,31 +695,26 @@ async def leaderboard_loop(channel):
 
         save_scores()
 
-        # Push scores to GitHub
         await asyncio.to_thread(
             save_scores_to_github
         )
 
-        # New leaderboard message
         await channel.send(
             make_leaderboard()
         )
 
 
 # =========================================================
-# MAIN BOT LOOP
+# MAIN LOOP
 # =========================================================
 
-async def bot_loop(channel):
+async def main_loop(channel):
 
     chatters = load_chatters()
 
     if not chatters:
 
-        await channel.send(
-            "❌ No valid chatters found."
-        )
-
+        await channel.send("⚠️ Error")
         return
 
     while True:
@@ -770,30 +723,10 @@ async def bot_loop(channel):
             asyncio.get_running_loop().time()
         )
 
-        try:
-
-            await post_guess(
-                channel,
-                chatters
-            )
-
-        except Exception as error:
-
-            print(
-                f"ERROR during guess: {error}",
-                flush=True
-            )
-
-            try:
-
-                await channel.send(
-                    "⚠️ Guess the Chatter "
-                    "encountered an error. "
-                    "Check the GitHub Actions log."
-                )
-
-            except Exception:
-                pass
+        await post_guess(
+            channel,
+            chatters
+        )
 
         elapsed = (
             asyncio.get_running_loop().time()
@@ -806,14 +739,13 @@ async def bot_loop(channel):
         )
 
         if remaining > 0:
-
             await asyncio.sleep(
                 remaining
             )
 
 
 # =========================================================
-# CONNECTION EVENTS
+# DISCORD EVENTS
 # =========================================================
 
 @client.event
@@ -828,7 +760,6 @@ async def on_connect():
 @client.event
 async def on_ready():
 
-    # Prevent duplicate loops after reconnects
     if getattr(
         client,
         "started",
@@ -843,23 +774,18 @@ async def on_ready():
         flush=True
     )
 
+    load_scores()
+
     print(
         "Finding Discord channel...",
         flush=True
     )
 
-    # Try cached channel first
     channel = client.get_channel(
         CHANNEL_ID
     )
 
-    # If not cached, fetch it
     if channel is None:
-
-        print(
-            "Channel not cached. Fetching...",
-            flush=True
-        )
 
         try:
 
@@ -877,25 +803,19 @@ async def on_ready():
                 flush=True
             )
 
-            await client.close()
-
             return
 
     print(
-        f"Channel found: {channel}",
+        f"Channel found: {channel.name}",
         flush=True
     )
 
-    load_scores()
-
-    # Start leaderboard
     asyncio.create_task(
         leaderboard_loop(channel)
     )
 
-    # Start main game loop
     asyncio.create_task(
-        bot_loop(channel)
+        main_loop(channel)
     )
 
     print(
