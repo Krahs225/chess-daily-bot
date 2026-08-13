@@ -29,8 +29,9 @@ LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
 # Check for a new Daily Puzzle every 5 minutes
 PUZZLE_CHECK_INTERVAL = 5 * 60
 
-# Post leaderboard every 10 minutes
-LEADERBOARD_INTERVAL = 10 * 60
+# Post board every 10 minutes
+# Post leaderboard once every 24 hours
+LEADERBOARD_INTERVAL = 24 * 60 * 60
 
 # Players have 12 hours to submit their answer
 ANSWER_WINDOW = 12 * 60 * 60
