@@ -1,7 +1,14 @@
-name: Guess the Chatter Test
+name: Guess the Chatter
 
 on:
   workflow_dispatch:
+
+  schedule:
+    - cron: "5 0,6,12,18 * * *"
+
+concurrency:
+  group: guess-the-chatter
+  cancel-in-progress: false
 
 jobs:
   run:
@@ -16,7 +23,7 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Test Guess the Chatter
+      - name: Guess the Chatter
         run: python guess_chatter.py
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
