@@ -8,11 +8,17 @@ import subprocess
 from datetime import timedelta
 from pathlib import Path
 
+
+# =========================================================
+# SETTINGS
+# =========================================================
+
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1536769340970373241
 
 MIN_CHARACTERS = 20
 CHAT_DIR = "SOLO chats"
+
 POLL_OPTIONS = 5
 
 QUOTE_INTERVAL_SECONDS = 5 * 60
@@ -21,6 +27,10 @@ LEADERBOARD_INTERVAL_SECONDS = 10 * 60
 
 LEADERBOARD_FILE = "leaderboard.json"
 
+
+# =========================================================
+# CHATTERS
+# =========================================================
 
 CHATTERS = {
     "AZ": "az3d__",
@@ -56,22 +66,22 @@ CHATTERS = {
 }
 
 
-# ---------------------------------------------------------
+# =========================================================
 # DISCORD
-# ---------------------------------------------------------
+# =========================================================
 
 intents = discord.Intents.default()
 
-# Needed for poll vote events
+# Needed for poll vote events.
 intents.message_content = True
-intents.polls = True
+intents.guild_polls = True
 
 client = discord.Client(intents=intents)
 
 
-# ---------------------------------------------------------
-# LEADERBOARD DATA
-# ---------------------------------------------------------
+# =========================================================
+# LEADERBOARD
+# =========================================================
 
 scores = {}
 
@@ -83,37 +93,65 @@ def load_scores():
 
     if not path.exists():
         scores = {}
+        print("No leaderboard.json found. Starting with 0 points.", flush=True)
         return
 
     try:
         with open(path, "r", encoding="utf-8") as file:
             scores = json.load(file)
 
-    except Exception:
+        print(
+            f"Loaded leaderboard with {len(scores)} players.",
+            flush=True
+        )
+
+    except Exception as error:
+        print(
+            f"Could not load leaderboard: {error}",
+            flush=True
+        )
         scores = {}
 
 
 def save_scores():
-    with open(LEADERBOARD_FILE, "w", encoding="utf-8") as file:
-        json.dump(
-            scores,
-            file,
-            indent=2,
-            ensure_ascii=False
+    try:
+        with open(
+            LEADERBOARD_FILE,
+            "w",
+            encoding="utf-8"
+        ) as file:
+
+            json.dump(
+                scores,
+                file,
+                indent=2,
+                ensure_ascii=False
+            )
+
+    except Exception as error:
+        print(
+            f"Could not save leaderboard.json: {error}",
+            flush=True
         )
 
 
 def save_scores_to_github():
     """
-    Saves leaderboard.json to the repository.
+    Save leaderboard.json back into the repository.
 
-    GITHUB_TOKEN is provided automatically by GitHub Actions.
+    This runs outside the Discord event loop.
     """
 
     try:
         subprocess.run(
-            ["git", "config", "user.name", "Guess the Chatter Bot"],
-            check=True
+            [
+                "git",
+                "config",
+                "user.name",
+                "Guess the Chatter Bot"
+            ],
+            check=True,
+            capture_output=True
         )
 
         subprocess.run(
@@ -123,15 +161,21 @@ def save_scores_to_github():
                 "user.email",
                 "guess-chatter-bot@users.noreply.github.com"
             ],
-            check=True
+            check=True,
+            capture_output=True
         )
 
         subprocess.run(
-            ["git", "add", LEADERBOARD_FILE],
-            check=True
+            [
+                "git",
+                "add",
+                LEADERBOARD_FILE
+            ],
+            check=True,
+            capture_output=True
         )
 
-        result = subprocess.run(
+        commit = subprocess.run(
             [
                 "git",
                 "commit",
@@ -142,35 +186,59 @@ def save_scores_to_github():
             text=True
         )
 
-        # Nothing changed
-        if result.returncode != 0:
+        if commit.returncode != 0:
+            # Nothing changed.
             return
 
+        # Push to the branch that triggered this workflow.
+        branch = os.getenv(
+            "GITHUB_REF_NAME",
+            "main"
+        )
+
         subprocess.run(
-            ["git", "push"],
-            check=True
+            [
+                "git",
+                "push",
+                "origin",
+                f"HEAD:{branch}"
+            ],
+            check=True,
+            capture_output=True,
+            text=True
+        )
+
+        print(
+            "Leaderboard saved to GitHub.",
+            flush=True
         )
 
     except Exception as error:
-        print(f"Could not save leaderboard to GitHub: {error}")
+        print(
+            f"Could not push leaderboard to GitHub: {error}",
+            flush=True
+        )
 
 
-def add_point(user):
-    user_id = str(user.id)
+def add_point(user_id, display_name):
+    user_id = str(user_id)
 
     if user_id not in scores:
         scores[user_id] = {
-            "name": user.display_name,
+            "name": display_name,
             "points": 0
         }
 
-    # Always update the current Discord display name
-    scores[user_id]["name"] = user.display_name
-
+    scores[user_id]["name"] = display_name
     scores[user_id]["points"] += 1
 
+    print(
+        f"+1 point -> {display_name}",
+        flush=True
+    )
 
-def leaderboard_text():
+
+def make_leaderboard():
     if not scores:
         return (
             "🏆 **Guess the Chatter — Leaderboard**\n\n"
@@ -188,7 +256,10 @@ def leaderboard_text():
         ""
     ]
 
-    for rank, (_, data) in enumerate(sorted_scores, start=1):
+    for rank, (_, data) in enumerate(
+        sorted_scores,
+        start=1
+    ):
 
         name = data["name"]
         points = data["points"]
@@ -202,17 +273,22 @@ def leaderboard_text():
         else:
             prefix = f"**{rank}.**"
 
+        point_word = (
+            "point"
+            if points == 1
+            else "points"
+        )
+
         lines.append(
-            f"{prefix} {name} — **{points} point"
-            f"{'s' if points != 1 else ''}**"
+            f"{prefix} {name} — **{points} {point_word}**"
         )
 
     return "\n".join(lines)
 
 
-# ---------------------------------------------------------
-# CHAT PARSING
-# ---------------------------------------------------------
+# =========================================================
+# CHAT HISTORY
+# =========================================================
 
 def find_chatter(prefix):
     prefix = prefix.strip().lower()
@@ -220,11 +296,16 @@ def find_chatter(prefix):
     matches = []
 
     for display_name, username in CHATTERS.items():
+
         username_lower = username.lower()
 
         if prefix.endswith(username_lower):
             matches.append(
-                (len(username_lower), display_name, username)
+                (
+                    len(username_lower),
+                    display_name,
+                    username
+                )
             )
 
     if not matches:
@@ -242,13 +323,43 @@ def load_chatters():
         for username in CHATTERS.values()
     }
 
-    for chat_file in Path(CHAT_DIR).glob("*.txt"):
+    chat_path = Path(CHAT_DIR)
+
+    if not chat_path.exists():
+        print(
+            f"ERROR: {CHAT_DIR} folder not found.",
+            flush=True
+        )
+        return {}
+
+    files = list(
+        chat_path.glob("*.txt")
+    )
+
+    print(
+        f"Found {len(files)} chat history files.",
+        flush=True
+    )
+
+    for chat_file in files:
 
         try:
-            with open(chat_file, "r", encoding="utf-8") as file:
+
+            with open(
+                chat_file,
+                "r",
+                encoding="utf-8"
+            ) as file:
+
                 lines = file.readlines()
 
-        except Exception:
+        except Exception as error:
+
+            print(
+                f"Could not read {chat_file}: {error}",
+                flush=True
+            )
+
             continue
 
         current_date = None
@@ -260,6 +371,7 @@ def load_chatters():
             if not line:
                 continue
 
+            # Date line
             date_match = re.fullmatch(
                 r"(\d{1,2})-(\d{1,2})-(\d{4})",
                 line
@@ -277,6 +389,7 @@ def load_chatters():
 
                 continue
 
+            # Message line
             time_match = re.match(
                 r"^\d{1,2}:\d{2}\s*(.*)$",
                 line
@@ -293,7 +406,11 @@ def load_chatters():
                 continue
 
             prefix = rest[:colon_index]
-            message = rest[colon_index + 1:].strip()
+
+            message = (
+                rest[colon_index + 1:]
+                .strip()
+            )
 
             if len(message) < MIN_CHARACTERS:
                 continue
@@ -309,14 +426,30 @@ def load_chatters():
             _, username = chatter
 
             chatters[username].append(
-                (message, current_date)
+                (
+                    message,
+                    current_date
+                )
             )
 
-    return {
+    valid = {
         username: messages
         for username, messages in chatters.items()
         if messages
     }
+
+    total_messages = sum(
+        len(messages)
+        for messages in valid.values()
+    )
+
+    print(
+        f"Loaded {total_messages} valid 20+ character messages "
+        f"from {len(valid)} chatters.",
+        flush=True
+    )
+
+    return valid
 
 
 def display_name_for(username):
@@ -329,97 +462,112 @@ def display_name_for(username):
     return username
 
 
-# ---------------------------------------------------------
+# =========================================================
 # ACTIVE POLLS
-# ---------------------------------------------------------
+# =========================================================
 
-# Structure:
+# Example:
 #
 # active_polls[message_id] = {
-#     "correct_answer_id": int,
+#     "correct_answer_id": 3,
 #     "votes": {
-#         user_id: answer_id
+#         "123456789": 3,
+#         "987654321": 1
 #     }
 # }
 
 active_polls = {}
 
 
-# ---------------------------------------------------------
-# POLL VOTE EVENTS
-# ---------------------------------------------------------
+# =========================================================
+# RAW POLL VOTE EVENTS
+# =========================================================
 
 @client.event
-async def on_poll_vote_add(user, answer):
+async def on_raw_poll_vote_add(payload):
 
-    message = answer.poll.message
+    message_id = payload.message_id
 
-    if message is None:
+    if message_id not in active_polls:
         return
 
-    poll_data = active_polls.get(message.id)
+    active_polls[
+        message_id
+    ]["votes"][
+        str(payload.user_id)
+    ] = payload.answer_id
 
-    if poll_data is None:
-        return
-
-    user_id = str(user.id)
-
-    poll_data["votes"][user_id] = answer.id
-
-    # Store current Discord display name
-    if user_id in scores:
-        scores[user_id]["name"] = user.display_name
+    print(
+        f"Vote received: user={payload.user_id}, "
+        f"message={message_id}, "
+        f"answer={payload.answer_id}",
+        flush=True
+    )
 
 
 @client.event
-async def on_poll_vote_remove(user, answer):
+async def on_raw_poll_vote_remove(payload):
 
-    message = answer.poll.message
+    message_id = payload.message_id
 
-    if message is None:
+    if message_id not in active_polls:
         return
 
-    poll_data = active_polls.get(message.id)
+    user_id = str(payload.user_id)
 
-    if poll_data is None:
-        return
+    current_vote = active_polls[
+        message_id
+    ]["votes"].get(user_id)
 
-    user_id = str(user.id)
+    if current_vote == payload.answer_id:
 
-    # Only remove if this is still their current vote
-    if poll_data["votes"].get(user_id) == answer.id:
-        del poll_data["votes"][user_id]
+        del active_polls[
+            message_id
+        ]["votes"][
+            user_id
+        ]
+
+    print(
+        f"Vote removed: user={payload.user_id}, "
+        f"message={message_id}, "
+        f"answer={payload.answer_id}",
+        flush=True
+    )
 
 
-# ---------------------------------------------------------
-# CREATE ONE GUESS
-# ---------------------------------------------------------
+# =========================================================
+# POST ONE GUESS
+# =========================================================
 
-async def post_guess(channel, chatters):
+async def post_guess(
+    channel,
+    chatters
+):
 
     if len(chatters) < POLL_OPTIONS:
 
         await channel.send(
-            "Not enough valid chatters for a 5-option poll."
+            "Not enough valid chatters "
+            "for a 5-option poll."
         )
 
         return
 
-    # Pick random chatter
+    # Pick chatter
     username = random.choice(
         list(chatters.keys())
     )
 
-    # Pick random message
+    # Pick message
     message, date = random.choice(
         chatters[username]
     )
 
-    correct_display_name = display_name_for(
-        username
+    correct_display_name = (
+        display_name_for(username)
     )
 
-    # Pick four wrong answers
+    # Pick wrong answers
     wrong_usernames = [
         name
         for name in chatters.keys()
@@ -438,7 +586,7 @@ async def post_guess(channel, chatters):
 
     random.shuffle(options)
 
-    # Create Discord poll
+    # Create poll
     poll = discord.Poll(
         question="Who said this?",
         duration=timedelta(hours=1),
@@ -456,20 +604,32 @@ async def post_guess(channel, chatters):
         if option == username:
             correct_answer_id = answer.id
 
-    message_content = (
+    content = (
         f"💬 **Guess the Chatter**\n\n"
         f"> {message}\n\n"
         f"📅 **Date:** {date}"
     )
 
-    # Send quote + poll
+    print(
+        f"Posting quote from {correct_display_name}...",
+        flush=True
+    )
+
     poll_message = await channel.send(
-        content=message_content,
+        content=content,
         poll=poll
     )
 
-    # Remember this poll
-    active_polls[poll_message.id] = {
+    print(
+        f"Poll posted successfully. "
+        f"Message ID: {poll_message.id}",
+        flush=True
+    )
+
+    # Register active poll
+    active_polls[
+        poll_message.id
+    ] = {
         "correct_answer_id": correct_answer_id,
         "votes": {}
     }
@@ -485,49 +645,65 @@ async def post_guess(channel, chatters):
 
     if poll_data:
 
-        correct_id = poll_data[
-            "correct_answer_id"
-        ]
-
-        voters = list(
-            poll_data["votes"].items()
+        correct_id = (
+            poll_data[
+                "correct_answer_id"
+            ]
         )
 
-        # Give +1 to everyone whose FINAL vote
-        # was the correct answer
-        for user_id, answer_id in voters:
+        votes = dict(
+            poll_data["votes"]
+        )
+
+        print(
+            f"Poll finished with "
+            f"{len(votes)} recorded voters.",
+            flush=True
+        )
+
+        # Award points
+        for user_id, answer_id in votes.items():
 
             if answer_id != correct_id:
                 continue
 
             try:
+
                 user = await client.fetch_user(
                     int(user_id)
                 )
 
-                add_point(user)
+                add_point(
+                    user.id,
+                    user.display_name
+                )
 
             except Exception as error:
 
                 print(
-                    f"Could not award point "
-                    f"to {user_id}: {error}"
+                    f"Could not fetch user "
+                    f"{user_id}: {error}",
+                    flush=True
                 )
 
-        # Save updated scores
         save_scores()
-
-        # Save to GitHub
-        await asyncio.to_thread(
-            save_scores_to_github
-        )
 
     # Close poll
     try:
+
         await poll_message.end_poll()
 
-    except discord.HTTPException:
-        pass
+        print(
+            "Poll closed.",
+            flush=True
+        )
+
+    except discord.HTTPException as error:
+
+        print(
+            f"Could not close poll: {error}",
+            flush=True
+        )
 
     # Reveal answer
     await channel.send(
@@ -535,16 +711,16 @@ async def post_guess(channel, chatters):
         f"||{correct_display_name}||"
     )
 
-    # Remove finished poll
+    # Remove from active polls
     active_polls.pop(
         poll_message.id,
         None
     )
 
 
-# ---------------------------------------------------------
+# =========================================================
 # LEADERBOARD LOOP
-# ---------------------------------------------------------
+# =========================================================
 
 async def leaderboard_loop(channel):
 
@@ -554,56 +730,40 @@ async def leaderboard_loop(channel):
             LEADERBOARD_INTERVAL_SECONDS
         )
 
-        # Make sure latest scores are saved
+        print(
+            "Posting leaderboard...",
+            flush=True
+        )
+
         save_scores()
 
+        # Push scores to GitHub
         await asyncio.to_thread(
             save_scores_to_github
         )
 
-        # Send a NEW leaderboard message
+        # New leaderboard message
         await channel.send(
-            leaderboard_text()
+            make_leaderboard()
         )
 
 
-# ---------------------------------------------------------
-# BOT START
-# ---------------------------------------------------------
+# =========================================================
+# MAIN BOT LOOP
+# =========================================================
 
-@client.event
-async def on_ready():
-
-    print(
-        f"Logged in as {client.user}"
-    )
-
-    load_scores()
-
-    channel = await client.fetch_channel(
-        CHANNEL_ID
-    )
+async def bot_loop(channel):
 
     chatters = load_chatters()
 
     if not chatters:
 
         await channel.send(
-            "No valid chatters found."
+            "❌ No valid chatters found."
         )
-
-        await client.close()
 
         return
 
-    # Start leaderboard task only once
-    if not hasattr(client, "leaderboard_task"):
-
-        client.leaderboard_task = asyncio.create_task(
-            leaderboard_loop(channel)
-        )
-
-    # Main 5-minute loop
     while True:
 
         start_time = (
@@ -620,8 +780,20 @@ async def on_ready():
         except Exception as error:
 
             print(
-                f"Error during guess: {error}"
+                f"ERROR during guess: {error}",
+                flush=True
             )
+
+            try:
+
+                await channel.send(
+                    "⚠️ Guess the Chatter "
+                    "encountered an error. "
+                    "Check the GitHub Actions log."
+                )
+
+            except Exception:
+                pass
 
         elapsed = (
             asyncio.get_running_loop().time()
@@ -639,5 +811,111 @@ async def on_ready():
                 remaining
             )
 
+
+# =========================================================
+# CONNECTION EVENTS
+# =========================================================
+
+@client.event
+async def on_connect():
+
+    print(
+        "Discord Gateway connected.",
+        flush=True
+    )
+
+
+@client.event
+async def on_ready():
+
+    # Prevent duplicate loops after reconnects
+    if getattr(
+        client,
+        "started",
+        False
+    ):
+        return
+
+    client.started = True
+
+    print(
+        f"READY! Logged in as {client.user}",
+        flush=True
+    )
+
+    print(
+        "Finding Discord channel...",
+        flush=True
+    )
+
+    # Try cached channel first
+    channel = client.get_channel(
+        CHANNEL_ID
+    )
+
+    # If not cached, fetch it
+    if channel is None:
+
+        print(
+            "Channel not cached. Fetching...",
+            flush=True
+        )
+
+        try:
+
+            channel = await asyncio.wait_for(
+                client.fetch_channel(
+                    CHANNEL_ID
+                ),
+                timeout=15
+            )
+
+        except Exception as error:
+
+            print(
+                f"Could not fetch channel: {error}",
+                flush=True
+            )
+
+            await client.close()
+
+            return
+
+    print(
+        f"Channel found: {channel}",
+        flush=True
+    )
+
+    load_scores()
+
+    # Start leaderboard
+    asyncio.create_task(
+        leaderboard_loop(channel)
+    )
+
+    # Start main game loop
+    asyncio.create_task(
+        bot_loop(channel)
+    )
+
+    print(
+        "Guess the Chatter is now running!",
+        flush=True
+    )
+
+
+# =========================================================
+# START
+# =========================================================
+
+print(
+    "Starting Guess the Chatter...",
+    flush=True
+)
+
+print(
+    f"discord.py version: {discord.__version__}",
+    flush=True
+)
 
 client.run(TOKEN)
