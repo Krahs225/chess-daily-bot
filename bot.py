@@ -32,7 +32,7 @@ PUZZLE_CHECK_INTERVAL = 5 * 60
 # Full leaderboard every 10 minutes
 LEADERBOARD_INTERVAL = 10 * 60
 
-# Answers remain valid for 12 hours
+# Answer window
 ANSWER_WINDOW = 12 * 60 * 60
 RANDOM_ANSWER_WINDOW = 12 * 60 * 60
 
@@ -70,6 +70,7 @@ def load_json(filename, default):
         return default
 
     try:
+
         with open(
             filename,
             "r",
@@ -169,6 +170,7 @@ def push_to_github():
             text=True
         )
 
+        # Nothing changed
         if commit.returncode != 0:
             return
 
@@ -303,8 +305,7 @@ def fetch_random_puzzle():
 
 def get_solution(data):
 
-    # python-chess expects a text stream.
-    # StringIO fixes the previous PGN issue.
+    # python-chess requires a TEXT stream here.
     game = chess.pgn.read_game(
         StringIO(
             data["pgn"]
@@ -515,8 +516,7 @@ async def post_random_puzzle(
             "latest_random_puzzle"
         ] = puzzle
 
-        # This is now the globally
-        # most recent puzzle.
+        # Random is now the most recent puzzle.
         state[
             "latest_puzzle_type"
         ] = "random"
@@ -611,6 +611,28 @@ async def post_answer(
 # =========================================================
 # CHECK MOVE
 # =========================================================
+#
+# IMPORTANT:
+#
+# The comparison is CASE-INSENSITIVE.
+#
+# !Nc6  -> accepted
+# !nc6  -> accepted
+# !NC6  -> accepted
+#
+# !Bf2+ -> accepted
+# !bf2+ -> accepted
+# !BF2+ -> accepted
+#
+# Checkmate:
+# !Qh7# -> accepted
+# !qh7# -> accepted
+#
+# Castling:
+# !O-O -> accepted
+# !o-o -> accepted
+#
+# =========================================================
 
 def move_is_correct(
     text,
@@ -626,30 +648,47 @@ def move_is_correct(
         puzzle["fen"]
     )
 
-    # SAN
-    # Bf2
-    # Qh7+
-    # Qh7#
-    try:
+    # Normalize whitespace.
+    submitted = " ".join(
+        text.split()
+    ).casefold()
 
-        move = board.parse_san(
-            text
-        )
+    # Compare the user's move against every
+    # legal move in SAN, ignoring capitalization.
+    #
+    # This is better than simply doing
+    # parse_san(text), because parse_san is
+    # intentionally case-sensitive.
+    for legal_move in board.legal_moves:
 
-        return (
-            move.uci()
-            == puzzle["first_uci"]
-        )
+        try:
 
-    except ValueError:
-        pass
+            legal_san = board.san(
+                legal_move
+            ).casefold()
 
-    # UCI
-    # e2e4
+        except Exception:
+
+            continue
+
+        if submitted == legal_san:
+
+            return (
+                legal_move.uci()
+                == puzzle["first_uci"]
+            )
+
+    # Also allow UCI notation.
+    #
+    # Example:
+    # !e2e4
+    #
+    # UCI itself is technically lowercase,
+    # but we make it case-insensitive too.
     try:
 
         move = board.parse_uci(
-            text
+            submitted
         )
 
         return (
@@ -709,7 +748,9 @@ def puzzle_is_open(
 # PLAYER SCORE
 # =========================================================
 
-def get_player_score(user_id):
+def get_player_score(
+    user_id
+):
 
     user_id = str(
         user_id
@@ -782,6 +823,7 @@ def get_personal_ranking(
             break
 
     if player_index is None:
+
         return []
 
     start = max(
@@ -1057,7 +1099,7 @@ def help_message():
 `!daily <move>` — Answer the latest Daily Puzzle.
 
 **Random Puzzle**
-`!random` — Get a random chess puzzle.
+`!random` or `!rp` — Get a random chess puzzle.
 `!random <move>` — Answer the latest Random Puzzle.
 
 **Quick Answer**
@@ -1495,22 +1537,32 @@ async def on_message(
         return
 
     # =====================================================
-    # RANDOM
+    # RANDOM PUZZLE
     #
     # !random
-    #       -> new random puzzle
+    # !rp
+    # !randompuzzle
     #
-    # !random Qa5
-    #       -> answer latest random puzzle
+    # All three create a new random puzzle.
     # =====================================================
 
-    if command_lower == "!random":
+    if command_lower in (
+        "!random",
+        "!rp",
+        "!randompuzzle"
+    ):
 
         await post_random_puzzle(
             message.channel
         )
 
         return
+
+    # =====================================================
+    # RANDOM ANSWER
+    #
+    # !random Qa5
+    # =====================================================
 
     if command_lower.startswith(
         "!random "
@@ -1537,22 +1589,7 @@ async def on_message(
         return
 
     # =====================================================
-    # RANDOMPUZZLE
-    #
-    # Alternative command for creating
-    # a random puzzle.
-    # =====================================================
-
-    if command_lower == "!randompuzzle":
-
-        await post_random_puzzle(
-            message.channel
-        )
-
-        return
-
-    # =====================================================
-    # DAILY
+    # DAILY ANSWER
     #
     # !daily Bf2
     # =====================================================
@@ -1585,9 +1622,11 @@ async def on_message(
     # QUICK ANSWER
     #
     # !Bf2
+    # !bf2
+    # !Qh7+
+    # !qh7+
     #
-    # Anything beginning with ! that is NOT one
-    # of the commands above is treated as a chess move.
+    # Any unknown !command is treated as a move.
     # =====================================================
 
     move_text = content[1:].strip()
@@ -1700,7 +1739,7 @@ async def on_ready():
         maintenance_loop(channel)
     )
 
-    # Stop before Actions limit.
+    # Stop before GitHub Actions limit.
     asyncio.create_task(
         run_timer()
     )
