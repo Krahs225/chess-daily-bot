@@ -21,69 +21,62 @@
     "points_awarded": []
   },
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-10-24",
-    "title": "S.Karjakin - A.Grischuk, Tal Memorial Blitz Champ ",
-    "fen": "r5k1/pp4pR/6P1/2p1n3/8/3P2pK/PPP2q2/R2Q4 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/pp4pR/6P1/2p1n3/8/3P2pK/PPP2q2/R2Q4 w - - 0 1\"]\r\n\r\n1. Rh8+ Kxh8 2. Qh5+ Kg8 3. Qxe5\r\n*",
+    "url": "https://www.chess.com/daily/2017-06-04",
+    "title": "Unusual Thinking",
+    "fen": "2bqkb1r/2p1n1pp/p1p5/4p3/4P3/2NQB3/PrP2PPP/R3K2R w KQk - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2bqkb1r/2p1n1pp/p1p5/4p3/4P3/2NQB3/PrP2PPP/R3K2R w KQk - 0 1\"]\r\n\r\n1. Qxd8+ Kxd8 2. O-O-O+ Ke8 3. Kxb2\r\n*",
     "all_moves": [
       {
-        "uci": "h7h8",
-        "san": "Rh8+",
+        "uci": "d3d8",
+        "san": "Qxd8+",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kxh8",
+        "uci": "e8d8",
+        "san": "Kxd8",
         "color": "black"
       },
       {
-        "uci": "d1h5",
-        "san": "Qh5+",
+        "uci": "e1c1",
+        "san": "O-O-O+",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "d8e8",
+        "san": "Ke8",
         "color": "black"
       },
       {
-        "uci": "h5e5",
-        "san": "Qxe5",
+        "uci": "c1b2",
+        "san": "Kxb2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h7h8",
-        "san": "Rh8+",
+        "uci": "d3d8",
+        "san": "Qxd8+",
         "color": "white"
       },
       {
-        "uci": "d1h5",
-        "san": "Qh5+",
+        "uci": "e1c1",
+        "san": "O-O-O+",
         "color": "white"
       },
       {
-        "uci": "h5e5",
-        "san": "Qxe5",
+        "uci": "c1b2",
+        "san": "Kxb2",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-14T15:31:20.690459+00:00",
+    "posted_at": "2026-08-14T15:32:26.883697+00:00",
     "answer_posted": false,
-    "winner_user_id": "442597396195704832",
-    "winner_name": "Thice",
-    "latest_attempts": {
-      "442597396195704832": {
-        "name": "Thice",
-        "moves": "rh8 qh5 qxe5",
-        "correct": true,
-        "timestamp": "2026-08-14T15:32:19.065893+00:00"
-      }
-    },
-    "puzzle_id": "random_1786721480690"
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1786721546883"
   },
   "latest_puzzle_type": "random"
 }
