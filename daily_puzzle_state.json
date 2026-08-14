@@ -1,83 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-02-18",
-    "title": "Christiansen-Kovacevic, Nivi Sad 1990",
-    "fen": "3rr1k1/pp3ppb/4p1np/3p4/P1qP1bP1/2PN1P1P/1PB1RBK1/R3Q3 w - - 0 1",
-    "current_fen": "3rr1k1/pp3pp1/3bp1bp/2Np4/P1qP2P1/1PP2P1P/4RBK1/R3Q3 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3rr1k1/pp3ppb/4p1np/3p4/P1qP1bP1/2PN1P1P/1PB1RBK1/R3Q3 w - - 0 1\"]\r\n\r\n1. Nc5 Bd6 2. Bxg6 Bxg6 3. b3\r\n*",
+    "url": "https://www.chess.com/daily/2018-04-11",
+    "title": "One Lost, One Replaced",
+    "fen": "r2qkb1r/1pp1pp1p/4Pnp1/p2P3n/P2Q4/7P/1P3P2/RNB1KB1R w KQkq - 0 1",
+    "current_fen": "r2qkb1r/1pp1pp1p/4Pnp1/p2P3n/P2Q4/7P/1P3P2/RNB1KB1R w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qkb1r/1pp1pp1p/4Pnp1/p2P3n/P2Q4/7P/1P3P2/RNB1KB1R w KQkq - 0 1\"]\r\n\r\n1. Bb5+ c6 2. dxc6 Qxd4 3. cxb7+ Kd8 4. bxa8=Q+\r\n*",
     "all_moves": [
       {
-        "uci": "d3c5",
-        "san": "Nc5",
+        "uci": "f1b5",
+        "san": "Bb5+",
         "color": "white"
       },
       {
-        "uci": "f4d6",
-        "san": "Bd6",
+        "uci": "c7c6",
+        "san": "c6",
         "color": "black"
       },
       {
-        "uci": "c2g6",
-        "san": "Bxg6",
+        "uci": "d5c6",
+        "san": "dxc6",
         "color": "white"
       },
       {
-        "uci": "h7g6",
-        "san": "Bxg6",
+        "uci": "d8d4",
+        "san": "Qxd4",
         "color": "black"
       },
       {
-        "uci": "b2b3",
-        "san": "b3",
+        "uci": "c6b7",
+        "san": "cxb7+",
+        "color": "white"
+      },
+      {
+        "uci": "e8d8",
+        "san": "Kd8",
+        "color": "black"
+      },
+      {
+        "uci": "b7a8q",
+        "san": "bxa8=Q+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3c5",
-        "san": "Nc5",
+        "uci": "f1b5",
+        "san": "Bb5+",
         "color": "white"
       },
       {
-        "uci": "c2g6",
-        "san": "Bxg6",
+        "uci": "d5c6",
+        "san": "dxc6",
         "color": "white"
       },
       {
-        "uci": "b2b3",
-        "san": "b3",
+        "uci": "c6b7",
+        "san": "cxb7+",
+        "color": "white"
+      },
+      {
+        "uci": "b7a8q",
+        "san": "bxa8=Q+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-14T20:40:37.489968+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-14T20:41:50.839708+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786740037489",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1537923931988693053,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "b3",
-        "correct": true,
-        "timestamp": "2026-08-14T20:41:33.120743+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "b3",
-        "correct": false,
-        "timestamp": "2026-08-14T20:41:08.077560+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786740110839",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
