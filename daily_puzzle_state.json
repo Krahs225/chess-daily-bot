@@ -21,91 +21,69 @@
     "points_awarded": []
   },
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-10-14",
-    "title": "Magnetic Mayhem",
-    "fen": "1r4k1/5p2/2pn4/3pbNpQ/6q1/3B2P1/P1PK1P2/3R3R b - - 0 1",
-    "current_fen": "6k1/5p2/2pn4/3p1NpQ/8/2bB2P1/PqP2P2/2KR3R w - - 3 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"1r4k1/5p2/2pn4/3pbNpQ/6q1/3B2P1/P1PK1P2/3R3R b - - 0 1\"]\r\n\r\n1... Bc3+ 2. Kc1 Rb1+ 3. Kxb1 Qb4+ 4. Kc1 Qb2# *",
+    "url": "https://www.chess.com/daily/2007-09-26",
+    "title": "Unusual Ending",
+    "fen": "8/8/1k1P4/8/8/8/1r6/R3K3 w KQkq - 0 1",
+    "current_fen": "8/8/1k1P4/8/8/8/1r6/R3K3 w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/1k1P4/8/8/8/1r6/R3K3 w KQkq - 0 1\"]\r\n\r\n1. d7 (1. Rd1 Rh2 2. d7 Rh1+ 3. Ke2 Rxd1 4. Kxd1 Kc7) Kc7 2. d8=Q+ Kxd8 3. O-O-O+\r\n*",
     "all_moves": [
       {
-        "uci": "e5c3",
-        "san": "Bc3+",
-        "color": "black"
-      },
-      {
-        "uci": "d2c1",
-        "san": "Kc1",
+        "uci": "d6d7",
+        "san": "d7",
         "color": "white"
       },
       {
-        "uci": "b8b1",
-        "san": "Rb1+",
+        "uci": "b6c7",
+        "san": "Kc7",
         "color": "black"
       },
       {
-        "uci": "c1b1",
-        "san": "Kxb1",
+        "uci": "d7d8q",
+        "san": "d8=Q+",
         "color": "white"
       },
       {
-        "uci": "g4b4",
-        "san": "Qb4+",
+        "uci": "c7d8",
+        "san": "Kxd8",
         "color": "black"
       },
       {
-        "uci": "b1c1",
-        "san": "Kc1",
+        "uci": "e1c1",
+        "san": "O-O-O+",
         "color": "white"
-      },
-      {
-        "uci": "b4b2",
-        "san": "Qb2#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5c3",
-        "san": "Bc3+",
-        "color": "black"
+        "uci": "d6d7",
+        "san": "d7",
+        "color": "white"
       },
       {
-        "uci": "b8b1",
-        "san": "Rb1+",
-        "color": "black"
+        "uci": "d7d8q",
+        "san": "d8=Q+",
+        "color": "white"
       },
       {
-        "uci": "g4b4",
-        "san": "Qb4+",
-        "color": "black"
-      },
-      {
-        "uci": "b4b2",
-        "san": "Qb2#",
-        "color": "black"
+        "uci": "e1c1",
+        "san": "O-O-O+",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-14T17:30:07.729963+00:00",
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-14T17:32:56.239917+00:00",
     "answer_posted": false,
-    "winner_user_id": "442597396195704832",
-    "winner_name": "Thice",
+    "winner_user_id": null,
+    "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786728607729",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1537875993396650126,
-    "active_solver_id": "442597396195704832",
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qb2",
-        "correct": true,
-        "timestamp": "2026-08-14T17:30:38.236009+00:00"
-      }
-    }
+    "puzzle_id": "random_1786728776239",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "active_solver_id": null,
+    "attempted_users": {}
   },
   "latest_puzzle_type": "random"
 }
