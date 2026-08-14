@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-06-05",
     "title": "I Saric - V Malisauskas, European Team Championshi",
     "fen": "r5k1/p7/bb3Q2/3pP3/4qP2/B7/2P3PP/5R1K w KQkq - 0 1",
-    "current_fen": "r7/p5Q1/1b3B2/3pP2k/6q1/8/2P4P/5b1K w - - 0 9",
+    "current_fen": "r7/p6Q/1b3B2/3pP2k/6q1/8/2P4P/5b1K b - - 1 9",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/p7/bb3Q2/3pP3/4qP2/B7/2P3PP/5R1K w KQkq - 0 1\"]\r\n\r\n1. Be7 Bxf1 2. Qe6+ Kg7 3. Bf6+ Kg6 4. Qg4+ Kf7 5. Qd7+ Kg6 6. f5+ Qxf5 7. Qg7+ Kh5 8. g4+ Qxg4 9. Qh7#\r\n*",
     "all_moves": [
       {
@@ -147,9 +147,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786737377090",
-    "next_solution_index": 16,
-    "next_player_index": 8,
-    "solved": false,
+    "next_solution_index": 17,
+    "next_player_index": 9,
+    "solved": true,
     "message_id": 1537912774200664094,
     "attempted_users": {
       "601406103712170014": {
@@ -160,15 +160,17 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "g4",
+        "move": "qh7",
         "correct": true,
-        "timestamp": "2026-08-14T19:59:02.849701+00:00"
+        "timestamp": "2026-08-14T19:59:05.642090+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "442597396195704832"
+    ],
     "helper_candidate_users": [
       "442597396195704832"
     ]
