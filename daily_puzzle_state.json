@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-07-10",
     "title": "The Complexity of Endgames",
     "fen": "8/8/8/K7/4p2p/k7/bp3NQ1/8 w - - 0 1",
-    "current_fen": "8/8/8/K7/2b1p2p/k7/3Q4/1q1N4 w - - 2 3",
+    "current_fen": "8/8/3Q4/K7/2b1p2p/1k6/8/1q1N4 w - - 4 4",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/K7/4p2p/k7/bp3NQ1/8 w - - 0 1\"]\r\n\r\n1. Nd1 b1=Q 2. Qd2 Bc4 3. Qd6+ Kb3 4. Qb4+ Kc2 5. Ne3+ Kc1 6. Qc3+ Qc2 7. Qxc2#\r\n*",
     "all_moves": [
       {
@@ -117,16 +117,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786738077548",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "next_solution_index": 6,
+    "next_player_index": 3,
     "solved": false,
     "message_id": 1537915711802966089,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qc3",
-        "correct": false,
-        "timestamp": "2026-08-14T20:10:47.238130+00:00"
+        "move": "qd6",
+        "correct": true,
+        "timestamp": "2026-08-14T20:11:01.970814+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
