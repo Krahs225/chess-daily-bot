@@ -21,69 +21,62 @@
     "points_awarded": []
   },
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-01-25",
-    "title": "Overworking Piece",
-    "fen": "2rr2k1/1p3pp1/p1n4p/2Qq4/3P4/6P1/PP3P1P/3RR1K1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2rr2k1/1p3pp1/p1n4p/2Qq4/3P4/6P1/PP3P1P/3RR1K1 w - - 0 1\"]\r\n\r\n1. Re8+ Kh7 2. Qxd5 Rxd5 3. Rxc8\r\n*",
+    "url": "https://www.chess.com/daily/2012-02-16",
+    "title": "Gulko - Grigorian, USSR 1971",
+    "fen": "4r1k1/4P1p1/7p/1pp1N3/7P/4q2n/P5Q1/5R1K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/4P1p1/7p/1pp1N3/7P/4q2n/P5Q1/5R1K w - - 0 1\"]\r\n\r\n1. Rf8+ Rxf8 2. Qd5+ Rf7 3. Qxf7+\r\n*",
     "all_moves": [
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "f1f8",
+        "san": "Rf8+",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "e8f8",
+        "san": "Rxf8",
         "color": "black"
       },
       {
-        "uci": "c5d5",
-        "san": "Qxd5",
+        "uci": "g2d5",
+        "san": "Qd5+",
         "color": "white"
       },
       {
-        "uci": "d8d5",
-        "san": "Rxd5",
+        "uci": "f8f7",
+        "san": "Rf7",
         "color": "black"
       },
       {
-        "uci": "e8c8",
-        "san": "Rxc8",
+        "uci": "d5f7",
+        "san": "Qxf7+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "f1f8",
+        "san": "Rf8+",
         "color": "white"
       },
       {
-        "uci": "c5d5",
-        "san": "Qxd5",
+        "uci": "g2d5",
+        "san": "Qd5+",
         "color": "white"
       },
       {
-        "uci": "e8c8",
-        "san": "Rxc8",
+        "uci": "d5f7",
+        "san": "Qxf7+",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-14T15:27:22.934687+00:00",
+    "posted_at": "2026-08-14T15:27:46.171520+00:00",
     "answer_posted": false,
-    "winner_user_id": "442597396195704832",
-    "winner_name": "Thice",
-    "latest_attempts": {
-      "442597396195704832": {
-        "name": "Thice",
-        "moves": "re8 qxd5 rxc8",
-        "correct": true,
-        "timestamp": "2026-08-14T15:27:37.891578+00:00"
-      }
-    },
-    "puzzle_id": "random_1786721242934"
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1786721266171"
   },
   "latest_puzzle_type": "random"
 }
