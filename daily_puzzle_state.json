@@ -1,68 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-08-01",
-    "title": "About That Promotion...",
-    "fen": "8/6P1/1k2p3/p2pP3/P1pKnP2/2P4p/1P6/8 b - - 0 1",
-    "current_fen": "6Q1/8/1k2p3/p2pPn2/P1pK1P2/2P4p/1P6/8 w - - 1 3",
-    "pgn": "[White \"BryanCFB\"]\r\n[Black \"Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/6P1/1k2p3/p2pP3/P1pKnP2/2P4p/1P6/8 b - - 0 1\"]\r\n\r\n1... Ng3 2. g8=Q Nf5# 0-1",
+    "url": "https://www.chess.com/daily/2020-01-07",
+    "title": "I Play Against Pieces",
+    "fen": "4r3/8/2k2p2/p1p3p1/P1b3P1/2P2P1p/1R1B1K1P/8 b - - 1 32",
+    "current_fen": "4r3/8/2k2p2/p1p3p1/P1b3P1/2P2P1p/1R1B1K1P/8 b - - 1 32",
+    "pgn": "[Event \"EUR-chT (Men) 3rd\"]\r\n[Site \"Hamburg FRG\"]\r\n[Date \"1965.06.15\"]\r\n[Round \"9\"]\r\n[White \"Victor Ciocaltea\"]\r\n[Black \"Svetozar Gligoric\"]\r\n[Result \"0-1\"]\r\n[FEN \"4r3/8/2k2p2/p1p3p1/P1b3P1/2P2P1p/1R1B1K1P/8 b - - 1 32\"]\r\n\r\n32...Re2+ 33.Kg3 Rg2+ 34.Kxh3 Rg1 0-1",
     "all_moves": [
       {
-        "uci": "e4g3",
-        "san": "Ng3",
+        "uci": "e8e2",
+        "san": "Re2+",
         "color": "black"
       },
       {
-        "uci": "g7g8q",
-        "san": "g8=Q",
+        "uci": "f2g3",
+        "san": "Kg3",
         "color": "white"
       },
       {
-        "uci": "g3f5",
-        "san": "Nf5#",
+        "uci": "e2g2",
+        "san": "Rg2+",
+        "color": "black"
+      },
+      {
+        "uci": "g3h3",
+        "san": "Kxh3",
+        "color": "white"
+      },
+      {
+        "uci": "g2g1",
+        "san": "Rg1",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4g3",
-        "san": "Ng3",
+        "uci": "e8e2",
+        "san": "Re2+",
         "color": "black"
       },
       {
-        "uci": "g3f5",
-        "san": "Nf5#",
+        "uci": "e2g2",
+        "san": "Rg2+",
+        "color": "black"
+      },
+      {
+        "uci": "g2g1",
+        "san": "Rg1",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-14T19:47:56.714439+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-14T19:48:36.466993+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786736876714",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1537910676486496377,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "h2",
-        "correct": false,
-        "timestamp": "2026-08-14T19:48:09.410559+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nf5",
-        "correct": true,
-        "timestamp": "2026-08-14T19:48:27.298730+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786736916467",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
