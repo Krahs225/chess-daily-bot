@@ -1,105 +1,87 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-02-27",
-    "title": "A House Divided",
-    "fen": "2r3k1/pp3pp1/5n1p/3B1Q2/8/1P4P1/2q1PP1P/3R2K1 w - - 0 1",
-    "current_fen": "2QR4/pp3kp1/5n1p/8/8/1P4P1/2q1PP1P/6K1 b - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2r3k1/pp3pp1/5n1p/3B1Q2/8/1P4P1/2q1PP1P/3R2K1 w - - 0 1\"]\r\n\r\n1.Bxf7+ Kxf7 2.Rd7+ Kf8 3.Rd8+ Kf7 4.Qxc8 *",
+    "url": "https://www.chess.com/daily/2021-05-21",
+    "title": "Blast Area",
+    "fen": "5rk1/ppp3pp/4b2q/2b5/3r4/2NB1P2/PPP3PP/3RQK1R b - - 0 1",
+    "current_fen": "5rk1/ppp3pp/4b2q/2b5/3r4/2NB1P2/PPP3PP/3RQK1R b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"5rk1/ppp3pp/4b2q/2b5/3r4/2NB1P2/PPP3PP/3RQK1R b - - 0 1\"]\r\n\r\n1...Rxf3+ 2.gxf3 Bh3+ 3.Ke2 Re4+ 4.Bxe4 Qe3# *",
     "all_moves": [
       {
-        "uci": "d5f7",
-        "san": "Bxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8f7",
-        "san": "Kxf7",
+        "uci": "f8f3",
+        "san": "Rxf3+",
         "color": "black"
       },
       {
-        "uci": "d1d7",
-        "san": "Rd7+",
+        "uci": "g2f3",
+        "san": "gxf3",
         "color": "white"
       },
       {
-        "uci": "f7f8",
-        "san": "Kf8",
+        "uci": "e6h3",
+        "san": "Bh3+",
         "color": "black"
       },
       {
-        "uci": "d7d8",
-        "san": "Rd8+",
+        "uci": "f1e2",
+        "san": "Ke2",
         "color": "white"
       },
       {
-        "uci": "f8f7",
-        "san": "Kf7",
+        "uci": "d4e4",
+        "san": "Re4+",
         "color": "black"
       },
       {
-        "uci": "f5c8",
-        "san": "Qxc8",
+        "uci": "d3e4",
+        "san": "Bxe4",
         "color": "white"
+      },
+      {
+        "uci": "h6e3",
+        "san": "Qe3#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5f7",
-        "san": "Bxf7+",
-        "color": "white"
+        "uci": "f8f3",
+        "san": "Rxf3+",
+        "color": "black"
       },
       {
-        "uci": "d1d7",
-        "san": "Rd7+",
-        "color": "white"
+        "uci": "e6h3",
+        "san": "Bh3+",
+        "color": "black"
       },
       {
-        "uci": "d7d8",
-        "san": "Rd8+",
-        "color": "white"
+        "uci": "d4e4",
+        "san": "Re4+",
+        "color": "black"
       },
       {
-        "uci": "f5c8",
-        "san": "Qxc8",
-        "color": "white"
+        "uci": "h6e3",
+        "san": "Qe3#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 4,
-    "posted_at": "2026-08-14T19:25:01.764724+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-14T19:27:16.051011+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786735501764",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1537904907976314991,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bxf7",
-        "correct": true,
-        "timestamp": "2026-08-14T19:25:17.271695+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxc8",
-        "correct": true,
-        "timestamp": "2026-08-14T19:26:42.163894+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1786735636051",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
