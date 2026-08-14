@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-01-26",
     "title": "Unstoppable Force",
     "fen": "1r3rk1/bppqn1p1/p2pb3/5pnp/1PPPp3/P3P1PP/1BQ1NPBK/3R1RN1 w - - 0 1",
-    "current_fen": "1r3rk1/bppqn1p1/p2pb3/5pnp/1PPPp3/P3P1PP/1BQ1NPBK/3R1RN1 w - - 0 1",
+    "current_fen": "1r3rk1/bppqnbp1/p2p4/3P1pnp/1PP1p3/P3P1PP/1BQ1NPBK/3R1RN1 w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r3rk1/bppqn1p1/p2pb3/5pnp/1PPPp3/P3P1PP/1BQ1NPBK/3R1RN1 w - - 0 1\"]\r\n\r\n1. d5 Bf7 2. Qc3 \r\n*",
     "all_moves": [
       {
@@ -42,8 +42,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786731310552",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1537887329891651626,
     "attempted_users": {
@@ -52,11 +52,17 @@
         "move": "kh1",
         "correct": false,
         "timestamp": "2026-08-14T18:15:15.912163+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "d5",
+        "correct": true,
+        "timestamp": "2026-08-14T18:15:21.013446+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": []
   },
   "latest_puzzle_type": "random",
