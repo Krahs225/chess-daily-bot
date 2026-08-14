@@ -1,32 +1,47 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-10-11",
-    "title": "Invasion",
-    "fen": "r6k/1p4pp/2p4n/p2pP1b1/P2P3P/BP3BP1/5R2/6K1 b - - 0 1",
-    "current_fen": "r6k/1p4pp/2p4n/p2pP1b1/P2P3P/BP3BP1/5R2/6K1 b - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r6k/1p4pp/2p4n/p2pP1b1/P2P3P/BP3BP1/5R2/6K1 b - - 0 1\"]\r\n\r\n1...Be3\r\n*",
+    "url": "https://www.chess.com/daily/2011-03-19",
+    "title": "Challenging Mate in 2",
+    "fen": "8/8/3B2p1/6K1/1PPkp3/2RnN2Q/8/nN6 w KQkq - 0 1",
+    "current_fen": "8/8/3B2p1/6K1/1PPkp3/2RnN2Q/8/nN6 w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/3B2p1/6K1/1PPkp3/2RnN2Q/8/nN6 w KQkq - 0 1\"]\r\n\r\n1. Qh5 Ne5 2. Bc5#\r\n*",
     "all_moves": [
       {
-        "uci": "g5e3",
-        "san": "Be3",
+        "uci": "h3h5",
+        "san": "Qh5",
+        "color": "white"
+      },
+      {
+        "uci": "d3e5",
+        "san": "Ne5",
         "color": "black"
+      },
+      {
+        "uci": "d6c5",
+        "san": "Bc5#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5e3",
-        "san": "Be3",
-        "color": "black"
+        "uci": "h3h5",
+        "san": "Qh5",
+        "color": "white"
+      },
+      {
+        "uci": "d6c5",
+        "san": "Bc5#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 1,
-    "posted_at": "2026-08-14T17:46:07.428597+00:00",
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-14T17:47:50.466421+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786729567428",
+    "puzzle_id": "random_1786729670466",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
