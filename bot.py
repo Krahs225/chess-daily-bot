@@ -2595,7 +2595,29 @@ async def handle_random_answer(
             ):
                 first_user = message.author
 
-            elif first_user_id in scores:
+            else:
+                # The first mover may have zero points so far and
+                # therefore may not exist in `scores` yet. Recover
+                # their display name from the puzzle's recorded move
+                # history instead of requiring a leaderboard entry.
+                first_user_name = (
+                    puzzle.get(
+                        "first_move_user_name"
+                    )
+                    or puzzle.get(
+                        "attempted_users",
+                        {}
+                    )
+                    .get(
+                        str(first_user_id),
+                        {}
+                    )
+                    .get(
+                        "name",
+                        "Unknown"
+                    )
+                )
+
                 class StoredUser:
                     def __init__(self, user_id, name):
                         self.id = int(user_id)
@@ -2603,27 +2625,22 @@ async def handle_random_answer(
 
                 first_user = StoredUser(
                     first_user_id,
-                    puzzle.get(
-                        "first_move_user_name",
-                        "Unknown"
-                    )
+                    first_user_name
                 )
 
-            if first_user is not None:
-                # Prevent duplicate first-move points.
-                if not puzzle.get(
-                    "first_move_awarded",
-                    False
-                ):
-                    puzzle[
-                        "first_move_awarded"
-                    ] = True
+            if not puzzle.get(
+                "first_move_awarded",
+                False
+            ):
+                puzzle[
+                    "first_move_awarded"
+                ] = True
 
-                    await award_random_move_points(
-                        puzzle,
-                        first_user,
-                        first_move=True
-                    )
+                await award_random_move_points(
+                    puzzle,
+                    first_user,
+                    first_move=True
+                )
 
         # Helpers: +0.5 each, max once per puzzle.
         for helper_id in helper_users:
