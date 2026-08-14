@@ -24,7 +24,7 @@
     "url": "https://www.chess.com/daily/2010-04-11",
     "title": "Cornered Prey",
     "fen": "2b2k2/2p2pp1/3p1r1p/1p2B3/1P2P1Q1/1NP3P1/7R/1B2n2K b - - 0 1",
-    "current_fen": "2b2k2/2p2pp1/3p1r1p/1p2B3/1P2P1Q1/1NP3P1/7R/1B2n2K b - - 0 1",
+    "current_fen": "2b2k2/2p2pp1/3p3p/1p2B3/1P2P1Q1/1NP3P1/7R/1B2nr1K w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2b2k2/2p2pp1/3p1r1p/1p2B3/1P2P1Q1/1NP3P1/7R/1B2n2K b - - 0 1\"]\r\n\r\n1...Rf1#\r\n*",
     "all_moves": [
       {
@@ -44,16 +44,23 @@
     "player_move_count": 1,
     "posted_at": "2026-08-14T17:27:22.428675+00:00",
     "answer_posted": false,
-    "winner_user_id": null,
-    "winner_name": null,
+    "winner_user_id": "442597396195704832",
+    "winner_name": "Thice",
     "latest_attempts": {},
     "puzzle_id": "random_1786728442428",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
     "message_id": 1537875300304687174,
-    "active_solver_id": null,
-    "attempted_users": {}
+    "active_solver_id": "442597396195704832",
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rf1",
+        "correct": true,
+        "timestamp": "2026-08-14T17:27:35.118880+00:00"
+      }
+    }
   },
   "latest_puzzle_type": "random"
 }
