@@ -1,90 +1,83 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-05-25",
-    "title": "Double Jeopardy",
-    "fen": "8/4rkp1/6q1/ppRP1p2/1P6/P1Q4P/1B1n1PN1/6K1 b - - 0 1",
-    "current_fen": "8/5kp1/6q1/ppRP1p2/1P6/P1Q4P/1B3PN1/4rnK1 b - - 4 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/4rkp1/6q1/ppRP1p2/1P6/P1Q4P/1B1n1PN1/6K1 b - - 0 1\"]\r\n\r\n1... Re1+ 2. Kh2 Nf1+ 3. Kg1 Ne3+ 4. Qxe1 Qxg2# *",
+    "url": "https://www.chess.com/daily/2026-01-15",
+    "title": "Special Delivery",
+    "fen": "2r3k1/pr1b1p2/2nqpn1p/3p2N1/5P2/1PN3RR/P1P2PPP/1K6 w - - 0 23",
+    "current_fen": "2r3k1/pr1b1p2/2nqpn1p/3p2N1/5P2/1PN3RR/P1P2PPP/1K6 w - - 0 23",
+    "pgn": "[White \"Sam Copeland\"]\r\n[Black \"Blitz Game Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"2r3k1/pr1b1p2/2nqpn1p/3p2N1/5P2/1PN3RR/P1P2PPP/1K6 w - - 0 23\"]\r\n\r\n23. Nxe6+ Kh8 24. Rxh6+ Nh7 25. Rg7 Bxe6 26. Rhxh7# 1-0",
     "all_moves": [
       {
-        "uci": "e7e1",
-        "san": "Re1+",
-        "color": "black"
-      },
-      {
-        "uci": "g1h2",
-        "san": "Kh2",
+        "uci": "g5e6",
+        "san": "Nxe6+",
         "color": "white"
       },
       {
-        "uci": "d2f1",
-        "san": "Nf1+",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "h2g1",
-        "san": "Kg1",
+        "uci": "h3h6",
+        "san": "Rxh6+",
         "color": "white"
       },
       {
-        "uci": "f1e3",
-        "san": "Ne3+",
+        "uci": "f6h7",
+        "san": "Nh7",
         "color": "black"
       },
       {
-        "uci": "c3e1",
-        "san": "Qxe1",
+        "uci": "g3g7",
+        "san": "Rg7",
         "color": "white"
       },
       {
-        "uci": "g6g2",
-        "san": "Qxg2#",
+        "uci": "d7e6",
+        "san": "Bxe6",
         "color": "black"
+      },
+      {
+        "uci": "h6h7",
+        "san": "Rhxh7#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e7e1",
-        "san": "Re1+",
-        "color": "black"
+        "uci": "g5e6",
+        "san": "Nxe6+",
+        "color": "white"
       },
       {
-        "uci": "d2f1",
-        "san": "Nf1+",
-        "color": "black"
+        "uci": "h3h6",
+        "san": "Rxh6+",
+        "color": "white"
       },
       {
-        "uci": "f1e3",
-        "san": "Ne3+",
-        "color": "black"
+        "uci": "g3g7",
+        "san": "Rg7",
+        "color": "white"
       },
       {
-        "uci": "g6g2",
-        "san": "Qxg2#",
-        "color": "black"
+        "uci": "h6h7",
+        "san": "Rhxh7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-14T17:38:18.259735+00:00",
+    "posted_at": "2026-08-14T17:39:40.584875+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786729098259",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "puzzle_id": "random_1786729180584",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1537878050912337951,
-    "active_solver_id": "442597396195704832",
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "leaderboard",
-        "correct": false,
-        "timestamp": "2026-08-14T17:39:29.411383+00:00"
-      }
-    }
+    "message_id": null,
+    "active_solver_id": null,
+    "attempted_users": {}
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
