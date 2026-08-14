@@ -1,76 +1,54 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-12-28",
-    "title": "Rafael's Surprise Party 🥳",
-    "fen": "R2b1r1k/6p1/3p2Bp/1p1Qp3/1P6/2q3P1/5P2/7K w - - 0 44",
-    "current_fen": "R2b2rk/5Qp1/3p2Bp/1p2p3/1P6/2q3P1/5P2/7K w - - 2 45",
-    "pgn": "[Event \"Tripoli\"]\r\n[Date \"2004.??.??\"]\r\n[White \"Happy Birthday Rafael Leitão\"]\r\n[Black \"(Moved Kg1 to h1) Zhang Zhong\"]\r\n[Result \"1-0\"]\r\n[FEN \"R2b1r1k/6p1/3p2Bp/1p1Qp3/1P6/2q3P1/5P2/7K w - - 0 44\"]\r\n\r\n44. Qf7 Rg8 45. Qxg8+ Kxg8 46. Rxd8# 1-0",
+    "url": "https://www.chess.com/daily/2011-08-29",
+    "title": "Gurevich - Short, Rotterdam 1990",
+    "fen": "5r1k/6p1/p2p1rRp/2pPpq1Q/8/PPp1P3/5P1R/K7 w - - 0 1",
+    "current_fen": "5r1k/6p1/p2p1rRp/2pPpq1Q/8/PPp1P3/5P1R/K7 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r1k/6p1/p2p1rRp/2pPpq1Q/8/PPp1P3/5P1R/K7 w - - 0 1\"]\r\n\r\n1. Qxh6+ gxh6 2. Rhxh6#\r\n*",
     "all_moves": [
       {
-        "uci": "d5f7",
-        "san": "Qf7",
+        "uci": "h5h6",
+        "san": "Qxh6+",
         "color": "white"
       },
       {
-        "uci": "f8g8",
-        "san": "Rg8",
+        "uci": "g7h6",
+        "san": "gxh6",
         "color": "black"
       },
       {
-        "uci": "f7g8",
-        "san": "Qxg8+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g8",
-        "san": "Kxg8",
-        "color": "black"
-      },
-      {
-        "uci": "a8d8",
-        "san": "Rxd8#",
+        "uci": "h2h6",
+        "san": "Rhxh6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5f7",
-        "san": "Qf7",
+        "uci": "h5h6",
+        "san": "Qxh6+",
         "color": "white"
       },
       {
-        "uci": "f7g8",
-        "san": "Qxg8+",
-        "color": "white"
-      },
-      {
-        "uci": "a8d8",
-        "san": "Rxd8#",
+        "uci": "h2h6",
+        "san": "Rhxh6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-14T18:38:41.869608+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-14T18:38:48.805619+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786732721869",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "puzzle_id": "random_1786732728805",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1537893248977346590,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qf7",
-        "correct": true,
-        "timestamp": "2026-08-14T18:38:42.906262+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
