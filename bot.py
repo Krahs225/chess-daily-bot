@@ -336,157 +336,263 @@ def fetch_random_puzzle():
 
 
 # =========================================================
+# SAFE FEN / BOARD HELPERS
+# =========================================================
+
+def sanitize_fen(fen):
+    """
+    Chess.com sometimes returns perfectly valid-looking FEN data
+    that can expose compatibility issues in older python-chess builds.
+    Normalize the six FEN fields and keep castling rights explicit.
+    """
+    parts = str(fen).strip().split()
+
+    if len(parts) < 4:
+        raise RuntimeError("Random puzzle FEN is incomplete.")
+
+    # Fill optional FEN fields.
+    while len(parts) < 6:
+        if len(parts) == 4:
+            parts.append("0")
+        elif len(parts) == 5:
+            parts.append("1")
+
+    # Castling rights must always be a string consisting of KQkq or -.
+    castling = parts[2]
+    if castling == "" or castling == "-":
+        parts[2] = "-"
+    else:
+        cleaned = "".join(
+            c for c in "KQkq"
+            if c in castling
+        )
+        parts[2] = cleaned or "-"
+
+    # Normalize active color.
+    parts[1] = "b" if parts[1].lower() == "b" else "w"
+
+    # Normalize en-passant.
+    if parts[3] == "":
+        parts[3] = "-"
+
+    try:
+        return " ".join(parts[:6])
+    except Exception as error:
+        raise RuntimeError(
+            f"Could not normalize FEN: {error}"
+        )
+
+
+def board_from_fen_safe(fen):
+    """
+    Build a fresh board and explicitly set castling rights as a bitboard.
+    This avoids the str/bool XOR failure seen with some older
+    python-chess compatibility combinations.
+    """
+    clean_fen = sanitize_fen(fen)
+    board = chess.Board(clean_fen)
+
+    # Force castling_rights to the integer bitboard representation.
+    rights = 0
+    rights_map = {
+        "K": chess.parse_square("h1"),
+        "Q": chess.parse_square("a1"),
+        "k": chess.parse_square("h8"),
+        "q": chess.parse_square("a8"),
+    }
+
+    castling = clean_fen.split()[2]
+    if castling != "-":
+        for symbol, square in rights_map.items():
+            if symbol in castling:
+                rights |= chess.BB_SQUARES[square]
+
+    board.castling_rights = rights
+
+    # Ensure these are booleans/integers where python-chess expects them.
+    board.turn = chess.WHITE if clean_fen.split()[1] == "w" else chess.BLACK
+
+    return board
+
+
+# =========================================================
 # PARSE PUZZLE SOLUTION
 # =========================================================
 
 def get_solution(data):
 
-    game = chess.pgn.read_game(
-        StringIO(data["pgn"])
-    )
-
-    if game is None:
-
-        raise RuntimeError(
-            "Could not read puzzle PGN."
+    try:
+        game = chess.pgn.read_game(
+            StringIO(data["pgn"])
         )
 
-    target_board = chess.Board(
-        data["fen"]
-    )
+        if game is None:
+            raise RuntimeError(
+                "Could not read puzzle PGN."
+            )
 
-    board = game.board()
+        target_fen = sanitize_fen(
+            data["fen"]
+        )
 
-    mainline_moves = list(
-        game.mainline_moves()
-    )
+        target_board = board_from_fen_safe(
+            target_fen
+        )
 
-    start_index = None
+        mainline_moves = list(
+            game.mainline_moves()
+        )
 
-    # First try an exact position match.
-    # If castling/en-passant metadata differs between the API FEN and
-    # the PGN replay, fall back to the actual piece placement + side.
-    board_only_match = None
+        # -----------------------------------------------------
+        # Find the puzzle starting position in the PGN.
+        #
+        # Important: use a fresh normal board here rather than
+        # trusting game.board() castling state from the PGN tags.
+        # -----------------------------------------------------
 
-    for index, move in enumerate(
-        mainline_moves
-    ):
+        replay_board = chess.Board()
 
-        if (
-            board.board_fen()
-            == target_board.board_fen()
-            and board.turn
-            == target_board.turn
+        # Try to initialize the PGN starting position safely.
+        try:
+            if (
+                game.headers.get("SetUp") == "1"
+                and game.headers.get("FEN")
+            ):
+                replay_board = board_from_fen_safe(
+                    game.headers["FEN"]
+                )
+        except Exception:
+            # Fall back to standard chess if the PGN start
+            # position metadata is malformed.
+            replay_board = chess.Board()
+
+        start_index = None
+
+        for index, move in enumerate(
+            mainline_moves
         ):
 
             if (
-                board.castling_rights
-                == target_board.castling_rights
-                and board.ep_square
-                == target_board.ep_square
+                replay_board.board_fen()
+                == target_board.board_fen()
+                and replay_board.turn
+                == target_board.turn
             ):
                 start_index = index
                 break
 
-            if board_only_match is None:
-                board_only_match = index
+            try:
+                if move not in replay_board.legal_moves:
+                    break
 
-        board.push(move)
+                replay_board.push(move)
 
-    if start_index is None:
-        start_index = board_only_match
+            except (TypeError, ValueError) as error:
+                raise RuntimeError(
+                    f"Could not replay puzzle PGN at move "
+                    f"{index + 1}: {error}"
+                )
 
-    if start_index is None and (
-        board.board_fen()
-        == target_board.board_fen()
-        and board.turn
-        == target_board.turn
-    ):
-        start_index = len(mainline_moves)
+        # The puzzle position may be the final position.
+        if start_index is None:
+            if (
+                replay_board.board_fen()
+                == target_board.board_fen()
+                and replay_board.turn
+                == target_board.turn
+            ):
+                start_index = len(
+                    mainline_moves
+                )
 
-    if start_index is None:
+        if start_index is None:
+            raise RuntimeError(
+                "Could not find puzzle FEN inside PGN."
+            )
 
+        # -----------------------------------------------------
+        # Build the actual solution starting from the API FEN.
+        # -----------------------------------------------------
+
+        board = board_from_fen_safe(
+            target_fen
+        )
+
+        solution = []
+
+        for move in mainline_moves[
+            start_index:
+        ]:
+
+            try:
+                if move not in board.legal_moves:
+                    break
+
+                solution.append(
+                    {
+                        "uci":
+                            move.uci(),
+
+                        "san":
+                            board.san(move),
+
+                        "color":
+                            "white"
+                            if board.turn
+                            else "black"
+                    }
+                )
+
+                board.push(move)
+
+            except (TypeError, ValueError) as error:
+
+                raise RuntimeError(
+                    f"Could not apply puzzle move "
+                    f"{move.uci()}: {error}"
+                )
+
+        if not solution:
+            raise RuntimeError(
+                "Puzzle has no solution moves."
+            )
+
+        player_color = (
+            "white"
+            if target_board.turn
+            else "black"
+        )
+
+        player_moves = [
+            move
+            for move in solution
+            if move["color"] == player_color
+        ]
+
+        return {
+            "all_moves":
+                solution,
+
+            "player_moves":
+                player_moves,
+
+            "player_color":
+                player_color,
+
+            "player_move_count":
+                len(player_moves),
+
+            "first_uci":
+                solution[0]["uci"]
+        }
+
+    except RuntimeError:
+        raise
+
+    except Exception as error:
         raise RuntimeError(
-            "Could not find puzzle FEN "
-            "inside PGN."
+            f"Puzzle parsing failed: {error}"
         )
-
-    board = chess.Board(
-        data["fen"]
-    )
-
-    solution = []
-
-    for move in mainline_moves[
-        start_index:
-    ]:
-
-        if move not in board.legal_moves:
-            break
-
-        solution.append(
-            {
-                "uci":
-                    move.uci(),
-
-                "san":
-                    board.san(move),
-
-                # This is the side that makes
-                # this move.
-                "color":
-                    "white"
-                    if board.turn
-                    else "black"
-            }
-        )
-
-        board.push(move)
-
-    if not solution:
-
-        raise RuntimeError(
-            "Puzzle has no solution moves."
-        )
-
-    # The side to move in the puzzle FEN
-    # is the side the user must play.
-    player_color = (
-        "white"
-        if target_board.turn
-        else "black"
-    )
-
-    # IMPORTANT:
-    #
-    # Count ONLY the moves belonging to the
-    # player who is solving the puzzle.
-    #
-    # The opponent's moves are still stored,
-    # because the bot needs to automatically
-    # play them between the user's moves.
-    player_moves = [
-        move
-        for move in solution
-        if move["color"] == player_color
-    ]
-
-    return {
-        "all_moves":
-            solution,
-
-        "player_moves":
-            player_moves,
-
-        "player_color":
-            player_color,
-
-        "player_move_count":
-            len(player_moves),
-
-        "first_uci":
-            solution[0]["uci"]
-    }
 
 
 def build_puzzle(data):
@@ -563,7 +669,7 @@ async def make_board_file(
         puzzle["fen"]
     )
 
-    board = chess.Board(
+    board = board_from_fen_safe(
         current_fen
     )
 
@@ -709,7 +815,9 @@ async def post_random_puzzle(
         )
 
         # Interactive state.
-        puzzle["current_fen"] = puzzle["fen"]
+        puzzle["current_fen"] = sanitize_fen(
+            puzzle["fen"]
+        )
         puzzle["next_solution_index"] = 0
         puzzle["next_player_index"] = 0
         puzzle["solved"] = False
@@ -964,7 +1072,7 @@ def solution_is_correct(
 
         return False
 
-    board = chess.Board(
+    board = board_from_fen_safe(
         puzzle["fen"]
     )
 
