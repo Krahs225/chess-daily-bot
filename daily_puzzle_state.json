@@ -1,62 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-04-03",
-    "title": "Lolli's Mating Pattern",
-    "fen": "5rk1/5p2/7Q/5P2/8/8/8/6K1 w - - 0 1",
-    "current_fen": "r5k1/5pQ1/5P2/8/8/8/8/6K1 b - - 2 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/5p2/7Q/5P2/8/8/8/6K1 w - - 0 1\"]\r\n\r\n1. f6 Ra8 2. Qg7# \r\n*",
+    "url": "https://www.chess.com/daily/2016-06-04",
+    "title": "Marshall - Nimzovich, New York 1927 Analysis",
+    "fen": "3q4/pp4pk/2p3np/8/3r1B2/P4PP1/1PQ3KP/4R3 w - - 0 1",
+    "current_fen": "3q4/pp4pk/2p3np/8/3r1B2/P4PP1/1PQ3KP/4R3 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3q4/pp4pk/2p3np/8/3r1B2/P4PP1/1PQ3KP/4R3 w - - 0 1\"]\r\n\r\n1. Re6 Rd3 2. Bd6 Qd7 3. Rxg6 Qf5 4. Re6 Qxf3+ 5. Kg1\r\n*",
     "all_moves": [
       {
-        "uci": "f5f6",
-        "san": "f6",
+        "uci": "e1e6",
+        "san": "Re6",
         "color": "white"
       },
       {
-        "uci": "f8a8",
-        "san": "Ra8",
+        "uci": "d4d3",
+        "san": "Rd3",
         "color": "black"
       },
       {
-        "uci": "h6g7",
-        "san": "Qg7#",
+        "uci": "f4d6",
+        "san": "Bd6",
+        "color": "white"
+      },
+      {
+        "uci": "d8d7",
+        "san": "Qd7",
+        "color": "black"
+      },
+      {
+        "uci": "e6g6",
+        "san": "Rxg6",
+        "color": "white"
+      },
+      {
+        "uci": "d7f5",
+        "san": "Qf5",
+        "color": "black"
+      },
+      {
+        "uci": "g6e6",
+        "san": "Re6",
+        "color": "white"
+      },
+      {
+        "uci": "f5f3",
+        "san": "Qxf3+",
+        "color": "black"
+      },
+      {
+        "uci": "g2g1",
+        "san": "Kg1",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5f6",
-        "san": "f6",
+        "uci": "e1e6",
+        "san": "Re6",
         "color": "white"
       },
       {
-        "uci": "h6g7",
-        "san": "Qg7#",
+        "uci": "f4d6",
+        "san": "Bd6",
+        "color": "white"
+      },
+      {
+        "uci": "e6g6",
+        "san": "Rxg6",
+        "color": "white"
+      },
+      {
+        "uci": "g6e6",
+        "san": "Re6",
+        "color": "white"
+      },
+      {
+        "uci": "g2g1",
+        "san": "Kg1",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-14T20:12:08.915986+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-14T20:12:24.409322+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786738328916",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1537916766473420922,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qg7",
-        "correct": true,
-        "timestamp": "2026-08-14T20:12:16.561785+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786738344409",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
