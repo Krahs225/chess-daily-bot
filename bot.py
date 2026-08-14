@@ -258,35 +258,72 @@ def fetch_daily_puzzle():
 
 def fetch_random_puzzle():
 
-    response = requests.get(
-        RANDOM_PUZZLE_API,
-        headers={
-            "User-Agent":
-                "DailyChessPuzzleBot/1.0"
-        },
-        timeout=10
+    headers = {
+        "User-Agent":
+            "DailyChessPuzzleBot/2.0",
+        "Accept":
+            "application/json"
+    }
+
+    last_error = None
+
+    # Chess.com documents this endpoint as the random daily
+    # puzzle endpoint. Retry a few times because transient 429/5xx
+    # responses can happen, and the endpoint itself may be cached.
+    for attempt in range(1, 4):
+
+        try:
+            response = requests.get(
+                RANDOM_PUZZLE_API,
+                headers=headers,
+                timeout=15
+            )
+
+            if response.status_code == 200:
+                data = response.json()
+
+                if not data.get("fen"):
+                    raise RuntimeError(
+                        "Random puzzle response has no FEN."
+                    )
+
+                if not data.get("pgn"):
+                    raise RuntimeError(
+                        "Random puzzle response has no PGN."
+                    )
+
+                return data
+
+            retry_after = response.headers.get(
+                "Retry-After"
+            )
+
+            last_error = (
+                f"HTTP {response.status_code}"
+                + (
+                    f" (Retry-After {retry_after}s)"
+                    if retry_after else ""
+                )
+            )
+
+            if response.status_code == 429 and retry_after:
+                try:
+                    time.sleep(
+                        min(float(retry_after), 5.0)
+                    )
+                except ValueError:
+                    time.sleep(2)
+            else:
+                time.sleep(1.5)
+
+        except Exception as error:
+            last_error = str(error)
+            if attempt < 3:
+                time.sleep(1.5)
+
+    raise RuntimeError(
+        f"Could not fetch random puzzle after 3 attempts: {last_error}"
     )
-
-    if response.status_code != 200:
-
-        raise RuntimeError(
-            f"Chess.com random puzzle returned "
-            f"HTTP {response.status_code}"
-        )
-
-    data = response.json()
-
-    if not data.get("fen"):
-        raise RuntimeError(
-            "Random puzzle has no FEN."
-        )
-
-    if not data.get("pgn"):
-        raise RuntimeError(
-            "Random puzzle has no PGN."
-        )
-
-    return data
 
 
 # =========================================================
@@ -317,8 +354,11 @@ def get_solution(data):
 
     start_index = None
 
-    # Find the puzzle's starting position
-    # inside the complete PGN.
+    # First try an exact position match.
+    # If castling/en-passant metadata differs between the API FEN and
+    # the PGN replay, fall back to the actual piece placement + side.
+    board_only_match = None
+
     for index, move in enumerate(
         mainline_moves
     ):
@@ -328,29 +368,32 @@ def get_solution(data):
             == target_board.board_fen()
             and board.turn
             == target_board.turn
-            and board.castling_rights
-            == target_board.castling_rights
-            and board.ep_square
-            == target_board.ep_square
         ):
 
-            start_index = index
-            break
+            if (
+                board.castling_rights
+                == target_board.castling_rights
+                and board.ep_square
+                == target_board.ep_square
+            ):
+                start_index = index
+                break
+
+            if board_only_match is None:
+                board_only_match = index
 
         board.push(move)
 
     if start_index is None:
+        start_index = board_only_match
 
-        if (
-            board.board_fen()
-            == target_board.board_fen()
-            and board.turn
-            == target_board.turn
-        ):
-
-            start_index = len(
-                mainline_moves
-            )
+    if start_index is None and (
+        board.board_fen()
+        == target_board.board_fen()
+        and board.turn
+        == target_board.turn
+    ):
+        start_index = len(mainline_moves)
 
     if start_index is None:
 
@@ -742,8 +785,8 @@ async def post_random_puzzle(
         )
 
         await channel.send(
-            "❌ Could not load a random puzzle "
-            "right now. Try again."
+            "❌ Could not load a random puzzle right now. "
+            "Try again in a moment."
         )
 
 
