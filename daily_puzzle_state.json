@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-11-20",
     "title": "Troitsky's Pieces Outmatch the Pawns",
     "fen": "8/8/8/8/5N2/p1RK4/pk6/8 w - - 0 1",
-    "current_fen": "8/8/8/8/1N6/8/p7/k1K5 w - - 0 8",
+    "current_fen": "8/8/8/8/8/8/p1N5/k1K5 b - - 1 8",
     "pgn": "[White \"Troitsky\"]\r\n[Black \"Study\"]\r\n[Result \"1-0\"]\r\n[FEN \"8/8/8/8/5N2/p1RK4/pk6/8 w - - 0 1\"]\r\n\r\n1. Rc2+ Kb3 2. Rc1 Kb2 3. Kd2 a1=Q 4. Nd3+ Ka2 5. Nb4+ Kb2 6. Rxa1 Kxa1 7. Kc1\r\na2 8. Nc2# 1-0",
     "all_moves": [
       {
@@ -132,16 +132,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786737629448",
-    "next_solution_index": 14,
-    "next_player_index": 7,
-    "solved": false,
+    "next_solution_index": 15,
+    "next_player_index": 8,
+    "solved": true,
     "message_id": 1537913831630569566,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "kc1",
+        "move": "nc2",
         "correct": true,
-        "timestamp": "2026-08-14T20:02:40.427286+00:00"
+        "timestamp": "2026-08-14T20:02:42.635911+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -152,8 +152,10 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
