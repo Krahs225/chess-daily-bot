@@ -21,36 +21,29 @@
     "points_awarded": []
   },
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-08-31",
-    "title": "Two Steps Forward, One Step Back",
-    "fen": "r1b1r1k1/pp3p2/6p1/q1Pp3p/1n1P3P/1N3QP1/PP2NP2/R3KB1R b KQ - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r1b1r1k1/pp3p2/6p1/q1Pp3p/1n1P3P/1N3QP1/PP2NP2/R3KB1R b KQ - 0 1\"]\r\n\r\n1... Nd3+ 2. Kd1 Qe1+ 3. Kc2 Nb4# *",
-    "first_san": "Nd3+",
-    "first_uci": "b4d3",
+    "url": "https://www.chess.com/daily/2021-12-05",
+    "title": "Levy's Birthday Bashing The Defenses",
+    "fen": "r1b2rk1/pp2Qpp1/8/3pBP1p/8/1P1P1N1P/P2P1qP1/4R2K w - - 4 24",
+    "pgn": "[Event \"Live Chess\"]\r\n[Site \"Chess.com\"]\r\n[Date \"2021.05.27\"]\r\n[White \"GothamChess\"]\r\n[Black \"Oleg42YNWA\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2689\"]\r\n[BlackElo \"2622\"]\r\n[FEN \"r1b2rk1/pp2Qpp1/8/3pBP1p/8/1P1P1N1P/P2P1qP1/4R2K w - - 4 24\"]\r\n\r\n24.Qxf8+ Kxf8 25.Bd6+ Kg8 26.Re8+ Kh7 27.Ng5+ Kh6 28.Nxf7+ Kh7 29.Rh8# 1-0",
+    "first_san": "Qxf8+",
+    "first_uci": "e7f8",
     "solution": [
-      "Nd3+",
-      "Kd1",
-      "Qe1+",
-      "Kc2",
-      "Nb4#"
+      "Qxf8+",
+      "Kxf8",
+      "Bd6+",
+      "Kg8",
+      "Re8+",
+      "Kh7",
+      "Ng5+",
+      "Kh6",
+      "Nxf7+",
+      "Kh7",
+      "Rh8#"
     ],
-    "posted_at": "2026-08-14T15:02:20.793678+00:00",
+    "posted_at": "2026-08-14T15:04:34.899120+00:00",
     "answer_posted": false,
-    "latest_attempts": {
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "nd3+",
-        "correct": true,
-        "timestamp": "2026-08-14T15:03:50.821319+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Bg4",
-        "correct": false,
-        "timestamp": "2026-08-14T15:03:42.011496+00:00"
-      }
-    },
-    "puzzle_id": "random_1786719740793"
+    "latest_attempts": {},
+    "puzzle_id": "random_1786719874899"
   },
   "latest_puzzle_type": "random"
 }
