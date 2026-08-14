@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-10-28",
     "title": "Mate in 3",
     "fen": "8/1R3p2/3Nkpq1/1KP3p1/4p2p/4P1QP/8/8 w - - 0 1",
-    "current_fen": "8/1R3p2/3Nkpq1/1KP3p1/4p2p/4P1QP/8/8 w - - 0 1",
+    "current_fen": "2N5/1R3p2/4kpq1/1KP3p1/4p3/4P1pP/8/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1R3p2/3Nkpq1/1KP3p1/4p2p/4P1QP/8/8 w - - 0 1\"]\r\n\r\n1. Nc8 hxg3 2. Re7+ Kd5 3. Nb6#\r\n*",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786736658528",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1537909760165290015,
     "attempted_users": {
@@ -67,10 +67,16 @@
         "move": "nf5",
         "correct": false,
         "timestamp": "2026-08-14T19:44:38.371204+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nc8",
+        "correct": true,
+        "timestamp": "2026-08-14T19:44:43.573000+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
