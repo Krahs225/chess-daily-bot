@@ -505,9 +505,39 @@ def get_solution(data):
                     mainline_moves
                 )
 
+        # -----------------------------------------------------
+        # Some random-puzzle PGNs are already relative to the
+        # supplied puzzle FEN. In that case the FEN will not
+        # occur inside the PGN replay at all.
+        #
+        # If the first PGN move is legal from the puzzle FEN,
+        # treat the PGN as the puzzle solution and start at 0.
+        # -----------------------------------------------------
+        if start_index is None and mainline_moves:
+            try:
+                test_board = board_from_fen_safe(
+                    target_fen
+                )
+
+                first_move = mainline_moves[0]
+
+                if first_move in test_board.legal_moves:
+                    start_index = 0
+
+            except Exception:
+                pass
+
         if start_index is None:
+            first_move_text = (
+                mainline_moves[0].uci()
+                if mainline_moves
+                else "none"
+            )
+
             raise RuntimeError(
-                "Could not find puzzle FEN inside PGN."
+                "Could not match the puzzle FEN to the PGN, "
+                f"and the first PGN move ({first_move_text}) "
+                "is not legal from the puzzle position."
             )
 
         # -----------------------------------------------------
