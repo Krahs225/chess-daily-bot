@@ -9,7 +9,6 @@ import cairosvg
 import asyncio
 import json
 import subprocess
-import re
 import time
 from datetime import datetime, timezone
 
@@ -24,21 +23,20 @@ CHANNEL_ID = 1468320170891022417
 DAILY_PUZZLE_API = "https://api.chess.com/pub/puzzle"
 RANDOM_PUZZLE_API = "https://api.chess.com/pub/puzzle/random"
 
-# Keep the existing files so existing scores remain.
 STATE_FILE = "daily_puzzle_state.json"
 LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
 
-# Check Chess.com for a new Daily Puzzle
+# Check for a new Daily Puzzle every 5 minutes
 PUZZLE_CHECK_INTERVAL = 5 * 60
 
 # Full leaderboard every 10 minutes
 LEADERBOARD_INTERVAL = 10 * 60
 
-# Answer window
+# Answers remain valid for 12 hours
 ANSWER_WINDOW = 12 * 60 * 60
 RANDOM_ANSWER_WINDOW = 12 * 60 * 60
 
-# Stop GitHub Actions before the 6-hour limit
+# Stop before GitHub Actions reaches 6 hours
 RUN_TIME = 5 * 60 * 60 + 50 * 60
 
 
@@ -171,7 +169,6 @@ def push_to_github():
             text=True
         )
 
-        # Nothing changed
         if commit.returncode != 0:
             return
 
@@ -306,8 +303,8 @@ def fetch_random_puzzle():
 
 def get_solution(data):
 
-    # python-chess expects a TEXT stream.
-    # This fixes the previous BytesIO error.
+    # python-chess expects a text stream.
+    # StringIO fixes the previous PGN issue.
     game = chess.pgn.read_game(
         StringIO(
             data["pgn"]
@@ -502,22 +499,10 @@ async def post_random_puzzle(
             ).isoformat()
         )
 
-        puzzle[
-            "answer_posted"
-        ] = False
+        puzzle["answer_posted"] = False
+        puzzle["latest_attempts"] = {}
 
-        puzzle[
-            "latest_attempts"
-        ] = {}
-
-        puzzle[
-            "points_awarded"
-        ] = []
-
-        # Every random puzzle gets its own ID.
-        puzzle[
-            "puzzle_id"
-        ] = (
+        puzzle["puzzle_id"] = (
             "random_"
             + str(
                 int(
@@ -530,7 +515,8 @@ async def post_random_puzzle(
             "latest_random_puzzle"
         ] = puzzle
 
-        # This is now the most recently posted puzzle.
+        # This is now the globally
+        # most recent puzzle.
         state[
             "latest_puzzle_type"
         ] = "random"
@@ -640,9 +626,9 @@ def move_is_correct(
         puzzle["fen"]
     )
 
-    # SAN:
+    # SAN
     # Bf2
-    # Bf2+
+    # Qh7+
     # Qh7#
     try:
 
@@ -658,7 +644,7 @@ def move_is_correct(
     except ValueError:
         pass
 
-    # UCI:
+    # UCI
     # e2e4
     try:
 
@@ -720,12 +706,10 @@ def puzzle_is_open(
 
 
 # =========================================================
-# GET SCORE
+# PLAYER SCORE
 # =========================================================
 
-def get_player_score(
-    user_id
-):
+def get_player_score(user_id):
 
     user_id = str(
         user_id
@@ -756,28 +740,29 @@ def get_personal_ranking(
         user_id
     )
 
-    # Make sure every score has usable data.
     players = []
 
     for player_id, player in scores.items():
 
         players.append(
             {
-                "id": str(player_id),
+                "id":
+                    str(player_id),
 
-                "name": player.get(
-                    "name",
-                    "Unknown"
-                ),
+                "name":
+                    player.get(
+                        "name",
+                        "Unknown"
+                    ),
 
-                "points": player.get(
-                    "points",
-                    0
-                )
+                "points":
+                    player.get(
+                        "points",
+                        0
+                    )
             }
         )
 
-    # Highest points first.
     players.sort(
         key=lambda player: (
             -player["points"],
@@ -796,9 +781,7 @@ def get_personal_ranking(
             player_index = index
             break
 
-    # If somehow not found.
     if player_index is None:
-
         return []
 
     start = max(
@@ -822,9 +805,15 @@ def get_personal_ranking(
 
         result.append(
             {
-                "rank": index + 1,
-                "name": player["name"],
-                "points": player["points"],
+                "rank":
+                    index + 1,
+
+                "name":
+                    player["name"],
+
+                "points":
+                    player["points"],
+
                 "is_you":
                     player["id"] == user_id
             }
@@ -832,10 +821,6 @@ def get_personal_ranking(
 
     return result
 
-
-# =========================================================
-# PERSONAL RANKING MESSAGE
-# =========================================================
 
 def build_personal_ranking(
     user_id
@@ -858,9 +843,8 @@ def build_personal_ranking(
         rank = player["rank"]
         name = player["name"]
         points = player["points"]
-        is_you = player["is_you"]
 
-        if is_you:
+        if player["is_you"]:
 
             lines.append(
                 f"**#{rank} {name} — "
@@ -878,109 +862,7 @@ def build_personal_ranking(
 
 
 # =========================================================
-# AWARD / REMOVE POINT BASED ON LATEST ANSWER
-# =========================================================
-
-async def update_player_score_for_attempt(
-    puzzle,
-    user,
-    correct
-):
-
-    user_id = str(
-        user.id
-    )
-
-    old_attempts = puzzle.setdefault(
-        "latest_attempts",
-        {}
-    )
-
-    old_attempt = old_attempts.get(
-        user_id
-    )
-
-    old_correct = (
-        old_attempt.get(
-            "correct",
-            False
-        )
-        if old_attempt
-        else False
-    )
-
-    # Update latest attempt.
-    old_attempts[user_id] = {
-        "name":
-            user.display_name,
-
-        "move":
-            old_attempt.get(
-                "move",
-                ""
-            )
-            if old_attempt
-            else "",
-
-        "correct":
-            correct,
-
-        "timestamp":
-            datetime.now(
-                timezone.utc
-            ).isoformat()
-    }
-
-    # Keep the name and move updated by caller later.
-    old_attempts[user_id][
-        "name"
-    ] = user.display_name
-
-    # Determine score change.
-    score_change = 0
-
-    if not old_correct and correct:
-
-        # Wrong -> Correct
-        score_change = 1
-
-    elif old_correct and not correct:
-
-        # Correct -> Wrong
-        score_change = -1
-
-    # Ensure score object exists.
-    if user_id not in scores:
-
-        scores[user_id] = {
-            "name":
-                user.display_name,
-
-            "points":
-                0
-        }
-
-    scores[user_id][
-        "name"
-    ] = user.display_name
-
-    if score_change != 0:
-
-        scores[user_id][
-            "points"
-        ] = max(
-            0,
-            scores[user_id].get(
-                "points",
-                0
-            ) + score_change
-        )
-
-    return score_change
-
-
-# =========================================================
-# SAVE ANSWER
+# SAVE ANSWER + UPDATE SCORE
 # =========================================================
 
 async def save_attempt_and_update_score(
@@ -1014,7 +896,7 @@ async def save_attempt_and_update_score(
             else False
         )
 
-        # Store newest answer.
+        # Only the latest answer matters.
         attempts[user_id] = {
             "name":
                 user.display_name,
@@ -1031,7 +913,6 @@ async def save_attempt_and_update_score(
                 ).isoformat()
         }
 
-        # Create player if needed.
         if user_id not in scores:
 
             scores[user_id] = {
@@ -1046,18 +927,16 @@ async def save_attempt_and_update_score(
             "name"
         ] = user.display_name
 
-        # Determine point change.
         point_change = 0
 
+        # Wrong -> Correct
         if not previous_correct and correct:
 
-            # New correct answer
             point_change = 1
 
+        # Correct -> Wrong
         elif previous_correct and not correct:
 
-            # Player changed their latest answer
-            # from correct to wrong.
             point_change = -1
 
         if point_change != 0:
@@ -1072,7 +951,6 @@ async def save_attempt_and_update_score(
                 ) + point_change
             )
 
-        # Save copies AFTER changing data.
         save_json(
             STATE_FILE,
             state
@@ -1083,7 +961,6 @@ async def save_attempt_and_update_score(
             scores
         )
 
-    # Push outside the lock.
     await asyncio.to_thread(
         push_to_github
     )
@@ -1177,14 +1054,14 @@ def help_message():
     return """🧠 **Chess Puzzle Game**
 
 **Daily Puzzle**
-`!dailyzet <move>` — Answer the latest Daily Puzzle.
+`!daily <move>` — Answer the latest Daily Puzzle.
 
 **Random Puzzle**
-`!randompuzzle` — Get a random chess puzzle.
-`!randomzet <move>` — Answer the latest Random Puzzle.
+`!random` — Get a random chess puzzle.
+`!random <move>` — Answer the latest Random Puzzle.
 
 **Quick Answer**
-`!zet <move>` — Answer whichever puzzle was posted most recently.
+`!<move>` — Answer whichever puzzle was posted most recently.
 
 **Points**
 Correct answers are worth **+1 point**.
@@ -1216,8 +1093,6 @@ async def finalize_expired_puzzle(
     ):
         return
 
-    # Points are already updated immediately
-    # when answers are submitted.
     puzzle[
         "answer_posted"
     ] = True
@@ -1246,10 +1121,7 @@ async def check_expired_puzzles(
     channel
 ):
 
-    # -----------------------------
-    # DAILY
-    # -----------------------------
-
+    # Daily
     daily = state.get(
         "current_puzzle"
     )
@@ -1272,10 +1144,7 @@ async def check_expired_puzzles(
                     "daily"
                 )
 
-    # -----------------------------
-    # RANDOM
-    # -----------------------------
-
+    # Random
     random_puzzle = state.get(
         "latest_random_puzzle"
     )
@@ -1336,7 +1205,7 @@ async def check_for_new_puzzle(
         else None
     )
 
-    # Same Daily Puzzle -> nothing to do.
+    # Same Daily Puzzle
     if current_url == puzzle["url"]:
         return
 
@@ -1345,7 +1214,6 @@ async def check_for_new_puzzle(
         flush=True
     )
 
-    # Finish previous Daily Puzzle.
     if current:
 
         if not current.get(
@@ -1374,10 +1242,6 @@ async def check_for_new_puzzle(
     ] = {}
 
     puzzle[
-        "points_awarded"
-    ] = []
-
-    puzzle[
         "puzzle_id"
     ] = (
         "daily_"
@@ -1392,7 +1256,6 @@ async def check_for_new_puzzle(
         "current_puzzle"
     ] = puzzle
 
-    # Daily is now the most recent puzzle.
     state[
         "latest_puzzle_type"
     ] = "daily"
@@ -1406,7 +1269,7 @@ async def check_for_new_puzzle(
 
 
 # =========================================================
-# DAILY PUZZLE LOOP
+# DAILY LOOP
 # =========================================================
 
 async def puzzle_loop(
@@ -1447,7 +1310,6 @@ async def maintenance_loop(
 
         try:
 
-            # Check expired puzzles.
             await check_expired_puzzles(
                 channel
             )
@@ -1494,7 +1356,7 @@ async def run_timer():
 
     print(
         "Ending run cleanly before "
-        "GitHub's 6-hour limit.",
+        "GitHub Actions limit.",
         flush=True
     )
 
@@ -1502,13 +1364,12 @@ async def run_timer():
 
 
 # =========================================================
-# ANSWER HANDLER
+# HANDLE ANSWER
 # =========================================================
 
 async def handle_answer(
     message,
     puzzle,
-    puzzle_type,
     answer_window,
     move_text
 ):
@@ -1516,14 +1377,12 @@ async def handle_answer(
     if not puzzle:
         return
 
-    # Answer already revealed.
     if puzzle.get(
         "answer_posted",
         False
     ):
         return
 
-    # Answer window expired.
     if not puzzle_is_open(
         puzzle,
         answer_window
@@ -1535,12 +1394,18 @@ async def handle_answer(
         puzzle
     )
 
-    point_change = await save_attempt_and_update_score(
-        puzzle,
-        message.author,
-        move_text,
-        correct
+    point_change = (
+        await save_attempt_and_update_score(
+            puzzle,
+            message.author,
+            move_text,
+            correct
+        )
     )
+
+    # -----------------------------------------
+    # WRONG
+    # -----------------------------------------
 
     if not correct:
 
@@ -1551,7 +1416,10 @@ async def handle_answer(
 
         return
 
-    # Current score after the answer.
+    # -----------------------------------------
+    # CORRECT
+    # -----------------------------------------
+
     user_id = str(
         message.author.id
     )
@@ -1560,7 +1428,6 @@ async def handle_answer(
         user_id
     )
 
-    # Build the small personal leaderboard.
     personal_ranking = (
         build_personal_ranking(
             user_id
@@ -1569,39 +1436,23 @@ async def handle_answer(
 
     if point_change > 0:
 
-        point_text = (
-            f"+{point_change} point"
-            if point_change == 1
-            else f"+{point_change} points"
-        )
-
-        message_text = (
+        response = (
             f"✅ **Correct, "
             f"{message.author.display_name}!**\n"
-            f"{point_text} — you now have "
+            f"**+1 point** — you now have "
             f"**{current_points} points**."
         )
 
-    elif point_change == 0:
+    else:
 
-        # This means the player was already
-        # on a correct latest answer.
-        message_text = (
+        response = (
             f"✅ **Correct, "
             f"{message.author.display_name}!**\n"
             f"You have **{current_points} points**."
         )
 
-    else:
-
-        message_text = (
-            f"✅ **Correct, "
-            f"{message.author.display_name}!**\n"
-            f"You now have **{current_points} points**."
-        )
-
     await message.channel.send(
-        message_text
+        response
         + personal_ranking
     )
 
@@ -1644,14 +1495,55 @@ async def on_message(
         return
 
     # =====================================================
-    # RANDOM PUZZLE
+    # RANDOM
+    #
+    # !random
+    #       -> new random puzzle
+    #
+    # !random Qa5
+    #       -> answer latest random puzzle
     # =====================================================
 
-    if command_lower in (
-        "!random",
-        "!randompuzzle",
-        "!random puzzle"
+    if command_lower == "!random":
+
+        await post_random_puzzle(
+            message.channel
+        )
+
+        return
+
+    if command_lower.startswith(
+        "!random "
     ):
+
+        move_text = content[
+            len("!random "):
+        ].strip()
+
+        if not move_text:
+            return
+
+        puzzle = state.get(
+            "latest_random_puzzle"
+        )
+
+        await handle_answer(
+            message,
+            puzzle,
+            RANDOM_ANSWER_WINDOW,
+            move_text
+        )
+
+        return
+
+    # =====================================================
+    # RANDOMPUZZLE
+    #
+    # Alternative command for creating
+    # a random puzzle.
+    # =====================================================
+
+    if command_lower == "!randompuzzle":
 
         await post_random_puzzle(
             message.channel
@@ -1660,105 +1552,80 @@ async def on_message(
         return
 
     # =====================================================
-    # ANSWER COMMANDS
+    # DAILY
+    #
+    # !daily Bf2
     # =====================================================
 
-    parts = content.split(
-        maxsplit=1
-    )
+    if command_lower.startswith(
+        "!daily "
+    ):
 
-    command = parts[0].lower()
+        move_text = content[
+            len("!daily "):
+        ].strip()
 
-    if len(parts) < 2:
-        return
-
-    move_text = parts[1].strip()
-
-    if not move_text:
-        return
-
-    # =====================================================
-    # SELECT PUZZLE
-    # =====================================================
-
-    puzzle = None
-    puzzle_type = None
-    answer_window = None
-
-    # -----------------------------------------
-    # DAILY PUZZLE
-    # -----------------------------------------
-
-    if command == "!dailyzet":
+        if not move_text:
+            return
 
         puzzle = state.get(
             "current_puzzle"
         )
 
-        puzzle_type = "daily"
+        await handle_answer(
+            message,
+            puzzle,
+            ANSWER_WINDOW,
+            move_text
+        )
 
-        answer_window = ANSWER_WINDOW
+        return
 
-    # -----------------------------------------
-    # RANDOM PUZZLE
-    # -----------------------------------------
+    # =====================================================
+    # QUICK ANSWER
+    #
+    # !Bf2
+    #
+    # Anything beginning with ! that is NOT one
+    # of the commands above is treated as a chess move.
+    # =====================================================
 
-    elif command == "!randomzet":
+    move_text = content[1:].strip()
+
+    if not move_text:
+        return
+
+    latest_type = state.get(
+        "latest_puzzle_type"
+    )
+
+    if latest_type == "random":
 
         puzzle = state.get(
             "latest_random_puzzle"
         )
 
-        puzzle_type = "random"
-
-        answer_window = RANDOM_ANSWER_WINDOW
-
-    # -----------------------------------------
-    # MOST RECENT PUZZLE
-    # -----------------------------------------
-
-    elif command == "!zet":
-
-        latest_type = state.get(
-            "latest_puzzle_type"
+        answer_window = (
+            RANDOM_ANSWER_WINDOW
         )
 
-        if latest_type == "random":
+    elif latest_type == "daily":
 
-            puzzle = state.get(
-                "latest_random_puzzle"
-            )
+        puzzle = state.get(
+            "current_puzzle"
+        )
 
-            puzzle_type = "random"
-
-            answer_window = RANDOM_ANSWER_WINDOW
-
-        elif latest_type == "daily":
-
-            puzzle = state.get(
-                "current_puzzle"
-            )
-
-            puzzle_type = "daily"
-
-            answer_window = ANSWER_WINDOW
-
-        else:
-
-            return
+        answer_window = (
+            ANSWER_WINDOW
+        )
 
     else:
 
         return
 
-    # =====================================================
-    # HANDLE ANSWER
-    # =====================================================
-
     await handle_answer(
         message,
         puzzle,
-        puzzle_type,
         answer_window,
         move_text
     )
@@ -1818,22 +1685,22 @@ async def on_ready():
         flush=True
     )
 
-    # Immediately check Daily Puzzle.
+    # Check Daily immediately.
     await check_for_new_puzzle(
         channel
     )
 
-    # Keep checking for new Daily Puzzles.
+    # Daily Puzzle loop.
     asyncio.create_task(
         puzzle_loop(channel)
     )
 
-    # Answers + leaderboard.
+    # Answer checking + leaderboard.
     asyncio.create_task(
         maintenance_loop(channel)
     )
 
-    # Stop before GitHub Actions limit.
+    # Stop before Actions limit.
     asyncio.create_task(
         run_timer()
     )
