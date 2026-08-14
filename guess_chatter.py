@@ -5,7 +5,7 @@ import re
 import asyncio
 import json
 import subprocess
-from datetime import timedelta, datetime
+from datetime import timedelta, datetime, date
 from pathlib import Path
 
 
@@ -33,7 +33,7 @@ LEADERBOARD_INTERVAL_SECONDS = 10 * 60
 # Permanent leaderboard
 SCORES_FILE = "guess_chatter_scores.json"
 
-# Context shown with the answer
+# Context
 CONTEXT_BEFORE = 2
 CONTEXT_AFTER = 2
 
@@ -92,10 +92,12 @@ client = discord.Client(intents=intents)
 # =========================================================
 
 scores = {}
-
 active_polls = {}
 
 scores_lock = asyncio.Lock()
+
+last_leaderboard_order = []
+last_quote_of_day = None
 
 
 # =========================================================
@@ -123,6 +125,23 @@ def load_scores():
         ) as file:
 
             data = json.load(file)
+
+        for user_id, player in data.items():
+
+            if "points" not in player:
+                player["points"] = 0
+
+            if "correct" not in player:
+                player["correct"] = 0
+
+            if "attempts" not in player:
+                player["attempts"] = 0
+
+            if "streak" not in player:
+                player["streak"] = 0
+
+            if "best_streak" not in player:
+                player["best_streak"] = 0
 
         print(
             f"Loaded leaderboard with "
@@ -302,7 +321,7 @@ def parse_date(date_string):
 
 
 # =========================================================
-# PARSE CHAT FILE
+# CHAT PARSER
 # =========================================================
 
 def load_chatters():
@@ -339,7 +358,6 @@ def load_chatters():
             if not line:
                 continue
 
-            # Date line
             date_match = re.fullmatch(
                 r"(\d{1,2})-(\d{1,2})-(\d{4})",
                 line
@@ -359,7 +377,6 @@ def load_chatters():
 
                 continue
 
-            # Message line
             time_match = re.match(
                 r"^(\d{1,2}:\d{2})\s*(.*)$",
                 line
@@ -368,22 +385,15 @@ def load_chatters():
             if not time_match:
                 continue
 
-            message_time = (
-                time_match.group(1)
-            )
-
-            rest = (
-                time_match.group(2)
-            )
+            message_time = time_match.group(1)
+            rest = time_match.group(2)
 
             colon_index = rest.find(":")
 
             if colon_index == -1:
                 continue
 
-            prefix = rest[
-                :colon_index
-            ]
+            prefix = rest[:colon_index]
 
             message = rest[
                 colon_index + 1:
@@ -422,7 +432,7 @@ def load_chatters():
 
 
 # =========================================================
-# ALL CHAT MESSAGES
+# ALL MESSAGES
 # =========================================================
 
 def build_all_messages(chatters):
@@ -449,24 +459,26 @@ def build_all_messages(chatters):
 
     def sort_key(item):
 
-        date = parse_date(
+        parsed_date = parse_date(
             item["date"]
         )
 
         try:
 
-            time_value = datetime.strptime(
+            parsed_time = datetime.strptime(
                 item["time"],
                 "%H:%M"
             ).time()
 
         except ValueError:
 
-            time_value = datetime.min.time()
+            parsed_time = datetime.min.time()
 
         return (
-            date if date else datetime.min.date(),
-            time_value
+            parsed_date
+            if parsed_date
+            else date.min,
+            parsed_time
         )
 
     all_messages.sort(
@@ -495,10 +507,7 @@ def build_active_periods(chatters):
             )
 
             if parsed:
-
-                dates.append(
-                    parsed
-                )
+                dates.append(parsed)
 
         if not dates:
             continue
@@ -518,7 +527,7 @@ def build_active_periods(chatters):
 
 
 # =========================================================
-# ACTIVE CHATTERS ON QUOTE DATE
+# ACTIVE CHATTERS ON DATE
 # =========================================================
 
 def get_active_chatters(
@@ -551,9 +560,7 @@ def get_active_chatters(
             <= period["last"]
         ):
 
-            eligible.append(
-                username
-            )
+            eligible.append(username)
 
     return eligible
 
@@ -577,7 +584,7 @@ def display_name_for(username):
 
 
 # =========================================================
-# FIND CONTEXT
+# CONTEXT
 # =========================================================
 
 def find_context(
@@ -595,32 +602,21 @@ def find_context(
 
         return [], [], []
 
-    before_start = max(
-        0,
-        quote_index - CONTEXT_BEFORE
-    )
-
     before = all_messages[
-        before_start:
+        max(
+            0,
+            quote_index - 2
+        ):
         quote_index
     ]
 
-    after_end = min(
-        len(all_messages),
-        quote_index + 1 + CONTEXT_AFTER
-    )
-
     after = all_messages[
         quote_index + 1:
-        after_end
+        quote_index + 3
     ]
 
     return before, [quote], after
 
-
-# =========================================================
-# FORMAT CONTEXT MESSAGE
-# =========================================================
 
 def format_context_line(item):
 
@@ -632,8 +628,65 @@ def format_context_line(item):
 
 
 # =========================================================
+# TIME MACHINE
+# =========================================================
+
+def days_ago(date_string):
+
+    parsed = parse_date(
+        date_string
+    )
+
+    if not parsed:
+        return None
+
+    return (
+        date.today() - parsed
+    ).days
+
+
+def time_machine_text(date_string):
+
+    days = days_ago(
+        date_string
+    )
+
+    if days is None:
+        return ""
+
+    if days == 0:
+
+        return (
+            "🕰️ **This quote was today.**"
+        )
+
+    if days == 1:
+
+        return (
+            "🕰️ **This quote was 1 day ago.**"
+        )
+
+    return (
+        f"🕰️ **This quote was "
+        f"{days:,} days ago.**"
+    )
+
+
+# =========================================================
 # LEADERBOARD
 # =========================================================
+
+def get_ordered_scores():
+
+    return sorted(
+        scores.items(),
+        key=lambda item: (
+            item[1].get("points", 0),
+            item[1].get("best_streak", 0)
+        ),
+        reverse=True
+    )
+
 
 def make_leaderboard():
 
@@ -644,12 +697,7 @@ def make_leaderboard():
             "No points yet!"
         )
 
-    ordered = sorted(
-        scores.items(),
-        key=lambda item:
-            item[1]["points"],
-        reverse=True
-    )
+    ordered = get_ordered_scores()
 
     lines = [
         "🏆 **Guess the Chatter — Leaderboard**",
@@ -661,8 +709,15 @@ def make_leaderboard():
         start=1
     ):
 
-        name = player["name"]
-        points = player["points"]
+        name = player.get(
+            "name",
+            "Unknown"
+        )
+
+        points = player.get(
+            "points",
+            0
+        )
 
         if rank == 1:
             prefix = "🥇"
@@ -687,7 +742,38 @@ def make_leaderboard():
     return "\n".join(lines)
 
 
-async def post_leaderboard(channel):
+async def post_leaderboard(
+    channel
+):
+
+    global last_leaderboard_order
+
+    ordered = get_ordered_scores()
+
+    new_order = [
+        user_id
+        for user_id, _ in ordered
+    ]
+
+    if (
+        last_leaderboard_order
+        and new_order
+        and new_order[0]
+        != last_leaderboard_order[0]
+    ):
+
+        new_leader = ordered[0][1].get(
+            "name",
+            "Unknown"
+        )
+
+        await channel.send(
+            f"👑 **NEW #1!** "
+            f"{new_leader} has taken "
+            f"the lead!"
+        )
+
+    last_leaderboard_order = new_order
 
     await channel.send(
         make_leaderboard()
@@ -719,22 +805,194 @@ async def add_point(user):
 
             scores[user_id] = {
                 "name": display_name,
-                "points": 0
+                "points": 0,
+                "correct": 0,
+                "attempts": 0,
+                "streak": 0,
+                "best_streak": 0
             }
 
-        scores[user_id]["name"] = (
-            display_name
+        player = scores[
+            user_id
+        ]
+
+        player["name"] = display_name
+
+        player["points"] = (
+            player.get("points", 0)
+            + 1
         )
 
-        scores[user_id]["points"] += 1
+        player["correct"] = (
+            player.get("correct", 0)
+            + 1
+        )
 
-        print(
-            f"+1 point: {display_name} "
-            f"= {scores[user_id]['points']}",
-            flush=True
+        player["attempts"] = (
+            player.get("attempts", 0)
+            + 1
+        )
+
+        player["streak"] = (
+            player.get("streak", 0)
+            + 1
+        )
+
+        player["best_streak"] = max(
+            player.get("best_streak", 0),
+            player["streak"]
         )
 
         await save_scores_permanently()
+
+        return {
+            "points": player["points"],
+            "streak": player["streak"],
+            "best_streak":
+                player["best_streak"]
+        }
+
+
+# =========================================================
+# RECORD WRONG ANSWER
+# =========================================================
+
+async def record_wrong_answer(
+    user
+):
+
+    user_id = str(
+        user.id
+    )
+
+    display_name = (
+        user.display_name
+    )
+
+    async with scores_lock:
+
+        if user_id not in scores:
+
+            scores[user_id] = {
+                "name": display_name,
+                "points": 0,
+                "correct": 0,
+                "attempts": 0,
+                "streak": 0,
+                "best_streak": 0
+            }
+
+        player = scores[
+            user_id
+        ]
+
+        player["name"] = display_name
+
+        player["attempts"] = (
+            player.get("attempts", 0)
+            + 1
+        )
+
+        player["streak"] = 0
+
+        await save_scores_permanently()
+
+
+# =========================================================
+# STATS
+# =========================================================
+
+async def send_stats(
+    message
+):
+
+    user_id = str(
+        message.author.id
+    )
+
+    player = scores.get(
+        user_id
+    )
+
+    if not player:
+
+        await message.channel.send(
+            f"📊 **{message.author.display_name}**\n\n"
+            "You haven't scored any points yet!"
+        )
+
+        return
+
+    points = player.get(
+        "points",
+        0
+    )
+
+    correct = player.get(
+        "correct",
+        0
+    )
+
+    attempts = player.get(
+        "attempts",
+        0
+    )
+
+    streak = player.get(
+        "streak",
+        0
+    )
+
+    best_streak = player.get(
+        "best_streak",
+        0
+    )
+
+    accuracy = (
+        (correct / attempts) * 100
+        if attempts > 0
+        else 0
+    )
+
+    await message.channel.send(
+        f"📊 **{message.author.display_name}**\n\n"
+        f"🏆 Points: **{points}**\n"
+        f"✅ Correct: **{correct}**\n"
+        f"🎯 Accuracy: **{accuracy:.0f}%**\n"
+        f"🔥 Current streak: **{streak}**\n"
+        f"🏅 Best streak: **{best_streak}**"
+    )
+
+
+# =========================================================
+# QUOTE OF THE DAY
+# =========================================================
+
+async def post_quote_of_day(
+    channel,
+    all_messages
+):
+
+    if not all_messages:
+        return
+
+    quote = random.choice(
+        all_messages
+    )
+
+    await channel.send(
+        "🌟 **Quote of the Day**\n\n"
+        f"> {quote['message']}\n\n"
+        f"— **{quote['display_name']}**, "
+        f"{quote['date']} at "
+        f"{quote['time']}\n\n"
+        f"{time_machine_text(quote['date'])}"
+    )
+
+    print(
+        "Quote of the Day posted.",
+        flush=True
+    )
 
 
 # =========================================================
@@ -755,31 +1013,40 @@ async def post_guess(
         for item in messages:
 
             message = item["message"]
-            date = item["date"]
+            quote_date = item["date"]
 
             eligible = get_active_chatters(
-                date,
+                quote_date,
                 chatters,
                 active_periods
             )
 
-            if len(eligible) >= POLL_OPTIONS:
+            if len(eligible) < POLL_OPTIONS:
+                continue
 
-                quote = {
-                    "username": username,
-                    "display_name":
-                        display_name_for(username),
-                    "message": message,
-                    "date": date,
-                    "time": item["time"]
-                }
+            quote = {
+                "username":
+                    username,
 
-                possible_quotes.append(
-                    (
-                        quote,
-                        eligible
-                    )
+                "display_name":
+                    display_name_for(username),
+
+                "message":
+                    message,
+
+                "date":
+                    quote_date,
+
+                "time":
+                    item["time"]
+            }
+
+            possible_quotes.append(
+                (
+                    quote,
+                    eligible
                 )
+            )
 
     if not possible_quotes:
 
@@ -796,8 +1063,8 @@ async def post_guess(
 
     username = quote["username"]
     message = quote["message"]
-    date = quote["date"]
-    time_value = quote["time"]
+    quote_date = quote["date"]
+    quote_time = quote["time"]
 
     correct_display_name = (
         display_name_for(username)
@@ -836,16 +1103,14 @@ async def post_guess(
     for option in options:
 
         poll.add_answer(
-            text=display_name_for(
-                option
-            )
+            text=display_name_for(option)
         )
 
     message_content = (
         f"💬 **Guess the Chatter**\n\n"
         f"> {message}\n\n"
-        f"📅 **Date:** {date}\n"
-        f"🕒 **Time:** {time_value}"
+        f"📅 **Date:** {quote_date}\n"
+        f"🕒 **Time:** {quote_time}"
     )
 
     poll_message = await channel.send(
@@ -857,7 +1122,10 @@ async def post_guess(
 
     for answer in poll.answers:
 
-        if answer.text == correct_display_name:
+        if (
+            answer.text
+            == correct_display_name
+        ):
 
             correct_answer_id = (
                 answer.id
@@ -881,9 +1149,9 @@ async def post_guess(
     }
 
     print(
-        f"Poll created: {poll_message.id} | "
-        f"quote date={date} | "
-        f"quote time={time_value} | "
+        f"Poll created: "
+        f"{poll_message.id} | "
+        f"{quote_date} {quote_time} | "
         f"correct={correct_display_name}",
         flush=True
     )
@@ -905,125 +1173,184 @@ async def post_guess(
         pass
 
     # =====================================================
-    # AWARD POINTS
+    # PROCESS VOTES
     # =====================================================
 
     poll_data = active_polls.get(
         poll_message.id
     )
 
-    if poll_data:
+    if not poll_data:
+        return
 
-        correct_answer_id = (
-            poll_data[
-                "correct_answer_id"
-            ]
-        )
-
-        votes = poll_data[
-            "votes"
+    correct_answer_id = (
+        poll_data[
+            "correct_answer_id"
         ]
+    )
 
-        for user_id, answer_id in (
-            votes.items()
-        ):
+    votes = poll_data[
+        "votes"
+    ]
 
-            if answer_id != correct_answer_id:
-                continue
+    correct_count = 0
+    total_count = len(votes)
 
-            try:
+    for user_id, answer_id in (
+        votes.items()
+    ):
 
-                user = client.get_user(
+        try:
+
+            user = client.get_user(
+                int(user_id)
+            )
+
+            if user is None:
+
+                user = await client.fetch_user(
                     int(user_id)
                 )
 
-                if user is None:
+        except Exception:
 
-                    user = await client.fetch_user(
-                        int(user_id)
-                    )
+            continue
 
-                await add_point(
-                    user
+        if (
+            answer_id
+            == correct_answer_id
+        ):
+
+            correct_count += 1
+
+            stats = await add_point(
+                user
+            )
+
+            if stats["streak"] >= 3:
+
+                await channel.send(
+                    f"🔥 **{user.display_name} "
+                    f"is on a {stats['streak']}"
+                    f"-streak!**"
                 )
 
-            except Exception as error:
+        else:
 
-                print(
-                    f"Could not award point "
-                    f"to {user_id}: {error}",
-                    flush=True
-                )
+            await record_wrong_answer(
+                user
+            )
 
-        # =================================================
-        # CONTEXT
-        # =================================================
+    # =====================================================
+    # PERCENTAGE / CLOSE CALL
+    # =====================================================
 
-        quote_for_context = {
-            "username":
-                quote["username"],
-            "display_name":
-                quote["display_name"],
-            "message":
-                quote["message"],
-            "date":
-                quote["date"],
-            "time":
-                quote["time"]
-        }
+    percentage = (
+        round(
+            (
+                correct_count
+                / total_count
+            ) * 100
+        )
+        if total_count > 0
+        else 0
+    )
 
-        before, _, after = find_context(
-            all_messages,
+    close_call = ""
+
+    if (
+        total_count >= 2
+        and correct_count > 0
+        and correct_count < total_count
+        and percentage <= 60
+    ):
+
+        close_call = (
+            "\n🔥 **Close call!**"
+        )
+
+    if (
+        total_count >= 3
+        and correct_count == 1
+    ):
+
+        close_call = (
+            "\n💀 **Nobody saw that coming.** "
+            "Only 1 person got it right."
+        )
+
+    # =====================================================
+    # CONTEXT
+    # =====================================================
+
+    quote_for_context = {
+        "username":
+            quote["username"],
+
+        "display_name":
+            quote["display_name"],
+
+        "message":
+            quote["message"],
+
+        "date":
+            quote["date"],
+
+        "time":
+            quote["time"]
+    }
+
+    before, _, after = find_context(
+        all_messages,
+        quote_for_context
+    )
+
+    context_lines = []
+
+    for item in before:
+
+        context_lines.append(
+            format_context_line(item)
+        )
+
+    context_lines.append(
+        format_context_line(
             quote_for_context
         )
+    )
 
-        context_lines = []
+    for item in after:
 
-        for item in before:
-
-            context_lines.append(
-                format_context_line(item)
-            )
-
-        # The actual quote
         context_lines.append(
-            format_context_line(
-                quote_for_context
-            )
+            format_context_line(item)
         )
 
-        for item in after:
+    # =====================================================
+    # ANSWER
+    # =====================================================
 
-            context_lines.append(
-                format_context_line(item)
-            )
+    # NO SPOILER TAGS:
+    # The answer is immediately visible.
 
-        # =================================================
-        # ANSWER MESSAGE
-        # =================================================
+    answer_text = (
+        f"🔓 **The answer was: "
+        f"{correct_display_name}**\n\n"
+        f"📊 **{correct_count}/{total_count}** "
+        f"people got it right "
+        f"(**{percentage}%**)."
+        f"{close_call}\n\n"
+        f"{time_machine_text(quote_date)}\n\n"
+        f"💬 **Context:**\n"
+        + "\n".join(context_lines)
+    )
 
-        answer_text = (
-            f"🔓 **The answer was:** "
-            f"||{correct_display_name}||"
-        )
+    await channel.send(
+        answer_text
+    )
 
-        if context_lines:
-
-            answer_text += (
-                "\n\n"
-                "💬 **Context:**\n"
-                + "\n".join(
-                    context_lines
-                )
-            )
-
-        await channel.send(
-            answer_text
-        )
-
-        del active_polls[
-            poll_message.id
-        ]
+    del active_polls[
+        poll_message.id
+    ]
 
 
 # =========================================================
@@ -1046,7 +1373,6 @@ async def on_raw_poll_vote_add(
         payload.user_id
     )
 
-    # Store latest vote
     poll_data[
         "votes"
     ][user_id] = payload.answer_id
@@ -1080,7 +1406,10 @@ async def on_raw_poll_vote_remove(
         ].get(user_id)
     )
 
-    if current_answer == payload.answer_id:
+    if (
+        current_answer
+        == payload.answer_id
+    ):
 
         del poll_data[
             "votes"
@@ -1090,6 +1419,30 @@ async def on_raw_poll_vote_remove(
         f"Vote removed: user={user_id}",
         flush=True
     )
+
+
+# =========================================================
+# MESSAGE COMMANDS
+# =========================================================
+
+@client.event
+async def on_message(
+    message
+):
+
+    if message.author.bot:
+        return
+
+    if message.channel.id != CHANNEL_ID:
+        return
+
+    content = message.content.strip().lower()
+
+    if content == "!stats":
+
+        await send_stats(
+            message
+        )
 
 
 # =========================================================
@@ -1139,12 +1492,10 @@ async def on_ready():
 
         return
 
-    # Build exact active periods
     active_periods = build_active_periods(
         chatters
     )
 
-    # Build chronological list of every message
     all_messages = build_all_messages(
         chatters
     )
@@ -1162,6 +1513,15 @@ async def on_ready():
     print(
         "Guess the Chatter is running.",
         flush=True
+    )
+
+    # =====================================================
+    # QUOTE OF DAY
+    # =====================================================
+
+    await post_quote_of_day(
+        channel,
+        all_messages
     )
 
     # =====================================================
