@@ -10,6 +10,7 @@ import asyncio
 import json
 import subprocess
 import time
+import traceback
 import random
 from datetime import datetime, timezone
 
@@ -298,11 +299,19 @@ def fetch_random_puzzle():
                 "Retry-After"
             )
 
+            body_preview = response.text.strip().replace("\n", " ")
+            if len(body_preview) > 300:
+                body_preview = body_preview[:300] + "..."
+
             last_error = (
                 f"HTTP {response.status_code}"
                 + (
                     f" (Retry-After {retry_after}s)"
                     if retry_after else ""
+                )
+                + (
+                    f" | Response: {body_preview}"
+                    if body_preview else ""
                 )
             )
 
@@ -780,13 +789,20 @@ async def post_random_puzzle(
 
     except Exception as error:
         print(
-            f"Random puzzle error: {error}",
+            "RANDOM PUZZLE ERROR:",
             flush=True
         )
+        traceback.print_exc()
+
+        # Show the real error in Discord so a failed request or
+        # PGN/FEN parsing problem can be diagnosed immediately.
+        error_text = str(error).strip() or repr(error)
+        if len(error_text) > 1400:
+            error_text = error_text[:1400] + "..."
 
         await channel.send(
-            "❌ Could not load a random puzzle right now. "
-            "Try again in a moment."
+            "❌ **Random Puzzle Error**\n"
+            f"```{error_text}```"
         )
 
 
