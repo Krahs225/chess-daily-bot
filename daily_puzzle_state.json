@@ -1,75 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-08-29",
-    "title": "Gurevich - Short, Rotterdam 1990",
-    "fen": "5r1k/6p1/p2p1rRp/2pPpq1Q/8/PPp1P3/5P1R/K7 w - - 0 1",
-    "current_fen": "5r1k/8/p2p1rRR/2pPpq2/8/PPp1P3/5P2/K7 b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r1k/6p1/p2p1rRp/2pPpq1Q/8/PPp1P3/5P1R/K7 w - - 0 1\"]\r\n\r\n1. Qxh6+ gxh6 2. Rhxh6#\r\n*",
+    "url": "https://www.chess.com/daily/2011-10-25",
+    "title": "S Larsen-Laveryd, Hallsberg 1987",
+    "fen": "3rrnk1/p4p1R/1p4p1/3p1b2/3P2q1/2NB4/PP5Q/1K5R w - - 0 1",
+    "current_fen": "3rrnk1/p4p1R/1p4p1/3p1b2/3P2q1/2NB4/PP5Q/1K5R w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3rrnk1/p4p1R/1p4p1/3p1b2/3P2q1/2NB4/PP5Q/1K5R w - - 0 1\"]\r\n\r\n1. Rg7+ Kxg7 2. Qh8#\r\n*",
     "all_moves": [
       {
-        "uci": "h5h6",
-        "san": "Qxh6+",
+        "uci": "h7g7",
+        "san": "Rg7+",
         "color": "white"
       },
       {
-        "uci": "g7h6",
-        "san": "gxh6",
+        "uci": "g8g7",
+        "san": "Kxg7",
         "color": "black"
       },
       {
-        "uci": "h2h6",
-        "san": "Rhxh6#",
+        "uci": "h2h8",
+        "san": "Qh8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5h6",
-        "san": "Qxh6+",
+        "uci": "h7g7",
+        "san": "Rg7+",
         "color": "white"
       },
       {
-        "uci": "h2h6",
-        "san": "Rhxh6#",
+        "uci": "h2h8",
+        "san": "Qh8#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-08-14T18:38:48.805619+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-14T18:39:57.741605+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786732728805",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1537893278211510343,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxh6",
-        "correct": true,
-        "timestamp": "2026-08-14T18:38:56.134555+00:00"
-      },
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "rhxh6",
-        "correct": true,
-        "timestamp": "2026-08-14T18:39:38.646253+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "362606514764251137",
-      "362606514764251137"
-    ],
-    "helper_candidate_users": [
-      "362606514764251137"
-    ]
+    "puzzle_id": "random_1786732797741",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
