@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-02-21",
     "title": "B.Fleissig vs Carl Schlecter, Vienna 1893",
     "fen": "r1k2bnr/2p1p1pp/p1P1b3/4N3/3Q4/4P3/PP1NKP1P/q7 w - - 0 1",
-    "current_fen": "r1k2bnr/2p1pbpp/p1P5/8/3Q4/4P3/PP1NKP1P/q7 w - - 0 2",
+    "current_fen": "rk3bnr/2pQpbpp/p1P5/8/8/4P3/PP1NKP1P/q7 w - - 2 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1k2bnr/2p1p1pp/p1P1b3/4N3/3Q4/4P3/PP1NKP1P/q7 w - - 0 1\"]\r\n\r\n1. Nf7 Bxf7 2. Qd7+ Kb8 3. Qd8+ Ka7 4. Qxc7#\r\n*",
     "all_moves": [
       {
@@ -72,8 +72,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786740169312",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1537924486949765141,
     "attempted_users": {
@@ -85,16 +85,18 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "nf7",
-        "correct": false,
-        "timestamp": "2026-08-14T20:43:05.730867+00:00"
+        "move": "qd7",
+        "correct": true,
+        "timestamp": "2026-08-14T20:43:08.101862+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
