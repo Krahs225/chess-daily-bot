@@ -21,32 +21,23 @@
     "points_awarded": []
   },
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-01-30",
-    "title": "White Draws",
-    "fen": "6rk/3PbRp1/6Qp/8/3p4/q2P4/6KP/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6rk/3PbRp1/6Qp/8/3p4/q2P4/6KP/8 w - - 0 1\"]\r\n\r\n1. Kh3 Qd6 2. d8=Q Qxg6 3. Qxg8+ Kxg8 4. Rxg7+\r\n*",
-    "first_san": "Kh3",
-    "first_uci": "g2h3",
+    "url": "https://www.chess.com/daily/2023-08-31",
+    "title": "Two Steps Forward, One Step Back",
+    "fen": "r1b1r1k1/pp3p2/6p1/q1Pp3p/1n1P3P/1N3QP1/PP2NP2/R3KB1R b KQ - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r1b1r1k1/pp3p2/6p1/q1Pp3p/1n1P3P/1N3QP1/PP2NP2/R3KB1R b KQ - 0 1\"]\r\n\r\n1... Nd3+ 2. Kd1 Qe1+ 3. Kc2 Nb4# *",
+    "first_san": "Nd3+",
+    "first_uci": "b4d3",
     "solution": [
-      "Kh3",
-      "Qd6",
-      "d8=Q",
-      "Qxg6",
-      "Qxg8+",
-      "Kxg8",
-      "Rxg7+"
+      "Nd3+",
+      "Kd1",
+      "Qe1+",
+      "Kc2",
+      "Nb4#"
     ],
-    "posted_at": "2026-08-14T14:56:36.291243+00:00",
+    "posted_at": "2026-08-14T15:02:20.793678+00:00",
     "answer_posted": false,
-    "latest_attempts": {
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "kh3",
-        "correct": true,
-        "timestamp": "2026-08-14T14:59:46.594077+00:00"
-      }
-    },
-    "puzzle_id": "random_1786719396291"
+    "latest_attempts": {},
+    "puzzle_id": "random_1786719740793"
   },
   "latest_puzzle_type": "random"
 }
