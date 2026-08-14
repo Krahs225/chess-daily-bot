@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-03-10",
     "title": "Multiple Attacks",
     "fen": "r2qk2r/1p6/p1bpp1p1/8/2B1n2b/2N1B3/PPPQ4/2KR2R1 w - - 0 1",
-    "current_fen": "r2qk2r/1p6/p1bpp1p1/8/2B1n2b/2N1B3/PPPQ4/2KR2R1 w - - 0 1",
+    "current_fen": "r2qk2r/1p6/p2pp1p1/8/2B1b2b/4B3/PPPQ4/2KR2R1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qk2r/1p6/p1bpp1p1/8/2B1n2b/2N1B3/PPPQ4/2KR2R1 w - - 0 1\"]\r\n\r\n1. Nxe4 Bxe4 2. Qd4\r\n*",
     "all_moves": [
       {
@@ -42,14 +42,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786731185305",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "message_id": 1537886815841685607,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nxe4",
+        "correct": true,
+        "timestamp": "2026-08-14T18:13:52.191556+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": []
   },
   "latest_puzzle_type": "random",
