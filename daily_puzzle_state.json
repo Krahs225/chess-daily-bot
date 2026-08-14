@@ -21,92 +21,47 @@
     "points_awarded": []
   },
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-06-24",
-    "title": "Playing the Long Game",
-    "fen": "3r2k1/pp3ppp/1q2rn2/8/2N4Q/8/PP3PPP/4RRK1 b - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3r2k1/pp3ppp/1q2rn2/8/2N4Q/8/PP3PPP/4RRK1 b - - 0 1\"]\r\n\r\n1... Rxe1 2. Nxb6 Rdd1 3. Qc4 Rxf1+ 4. Qxf1 Rxf1+ 5. Kxf1 axb6 *",
+    "url": "https://www.chess.com/daily/2009-04-15",
+    "title": "Defending Everything",
+    "fen": "2r5/2p1b2k/R1n5/1p1p3p/1P3B2/2P5/2b2PPP/4R1K1 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r5/2p1b2k/R1n5/1p1p3p/1P3B2/2P5/2b2PPP/4R1K1 b - - 0 1\"]\r\n\r\n1...Bd6 2. Bxd6 cxd6\r\n*",
     "all_moves": [
       {
-        "uci": "e6e1",
-        "san": "Rxe1",
+        "uci": "e7d6",
+        "san": "Bd6",
         "color": "black"
       },
       {
-        "uci": "c4b6",
-        "san": "Nxb6",
+        "uci": "f4d6",
+        "san": "Bxd6",
         "color": "white"
       },
       {
-        "uci": "d8d1",
-        "san": "Rdd1",
-        "color": "black"
-      },
-      {
-        "uci": "h4c4",
-        "san": "Qc4",
-        "color": "white"
-      },
-      {
-        "uci": "e1f1",
-        "san": "Rxf1+",
-        "color": "black"
-      },
-      {
-        "uci": "c4f1",
-        "san": "Qxf1",
-        "color": "white"
-      },
-      {
-        "uci": "d1f1",
-        "san": "Rxf1+",
-        "color": "black"
-      },
-      {
-        "uci": "g1f1",
-        "san": "Kxf1",
-        "color": "white"
-      },
-      {
-        "uci": "a7b6",
-        "san": "axb6",
+        "uci": "c7d6",
+        "san": "cxd6",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e6e1",
-        "san": "Rxe1",
+        "uci": "e7d6",
+        "san": "Bd6",
         "color": "black"
       },
       {
-        "uci": "d8d1",
-        "san": "Rdd1",
-        "color": "black"
-      },
-      {
-        "uci": "e1f1",
-        "san": "Rxf1+",
-        "color": "black"
-      },
-      {
-        "uci": "d1f1",
-        "san": "Rxf1+",
-        "color": "black"
-      },
-      {
-        "uci": "a7b6",
-        "san": "axb6",
+        "uci": "c7d6",
+        "san": "cxd6",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 5,
-    "posted_at": "2026-08-14T15:29:10.806575+00:00",
+    "player_move_count": 2,
+    "posted_at": "2026-08-14T15:30:29.967261+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786721350806"
+    "puzzle_id": "random_1786721429967"
   },
   "latest_puzzle_type": "random"
 }
