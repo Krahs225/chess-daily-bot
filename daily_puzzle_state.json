@@ -1,74 +1,52 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-11-04",
-    "title": "Putting it All Together",
-    "fen": "2r1r1k1/1Q4p1/2Rq1p2/p2p4/N2P3p/3b3P/PP3PP1/2R3K1 b - - 0 1",
-    "current_fen": "6k1/6p1/2q2p2/p2p4/N2P3p/3b3P/PP3PP1/4R1K1 w - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1r1k1/1Q4p1/2Rq1p2/p2p4/N2P3p/3b3P/PP3PP1/2R3K1 b - - 0 1\"]\r\n\r\n1...Rxc6 2. Qxc6 Re1+ 3. Rxe1 Qxc6\r\n*",
+    "url": "https://www.chess.com/daily/2015-02-18",
+    "title": "Mate in 2",
+    "fen": "r2q1r2/pp2np2/1bp4p/3p2pk/1P1N2b1/2PB2B1/P5PP/R2QK2R w KQq - 0 1",
+    "current_fen": "r2q1r2/pp2np2/1bp4p/3p2pk/1P1N2b1/2PB2B1/P5PP/R2QK2R w KQq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q1r2/pp2np2/1bp4p/3p2pk/1P1N2b1/2PB2B1/P5PP/R2QK2R w KQq - 0 1\"]\r\n\r\n1. Qxg4+ Kxg4 2. Be2#\r\n*",
     "all_moves": [
       {
-        "uci": "c8c6",
-        "san": "Rxc6",
-        "color": "black"
-      },
-      {
-        "uci": "b7c6",
-        "san": "Qxc6",
+        "uci": "d1g4",
+        "san": "Qxg4+",
         "color": "white"
       },
       {
-        "uci": "e8e1",
-        "san": "Re1+",
+        "uci": "h5g4",
+        "san": "Kxg4",
         "color": "black"
       },
       {
-        "uci": "c1e1",
-        "san": "Rxe1",
+        "uci": "d3e2",
+        "san": "Be2#",
         "color": "white"
-      },
-      {
-        "uci": "d6c6",
-        "san": "Qxc6",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c8c6",
-        "san": "Rxc6",
-        "color": "black"
+        "uci": "d1g4",
+        "san": "Qxg4+",
+        "color": "white"
       },
       {
-        "uci": "e8e1",
-        "san": "Re1+",
-        "color": "black"
-      },
-      {
-        "uci": "d6c6",
-        "san": "Qxc6",
-        "color": "black"
+        "uci": "d3e2",
+        "san": "Be2#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-14T18:03:55.878063+00:00",
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-14T18:04:48.276273+00:00",
     "answer_posted": false,
-    "winner_user_id": "442597396195704832",
-    "winner_name": "Thice",
+    "winner_user_id": null,
+    "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786730635878",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1537884498421747827,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxc6",
-        "correct": true,
-        "timestamp": "2026-08-14T18:04:19.374157+00:00"
-      }
-    }
+    "puzzle_id": "random_1786730688276",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {}
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
