@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-05-25",
     "title": "Double Jeopardy",
     "fen": "8/4rkp1/6q1/ppRP1p2/1P6/P1Q4P/1B1n1PN1/6K1 b - - 0 1",
-    "current_fen": "8/5kp1/6q1/ppRP1p2/1P6/P1Q4P/1B1n1PNK/4r3 b - - 2 2",
+    "current_fen": "8/5kp1/6q1/ppRP1p2/1P6/P1Q4P/1B3PN1/4rnK1 b - - 4 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/4rkp1/6q1/ppRP1p2/1P6/P1Q4P/1B1n1PN1/6K1 b - - 0 1\"]\r\n\r\n1... Re1+ 2. Kh2 Nf1+ 3. Kg1 Ne3+ 4. Qxe1 Qxg2# *",
     "all_moves": [
       {
@@ -72,17 +72,17 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786729098259",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1537878050912337951,
     "active_solver_id": "442597396195704832",
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nf3",
-        "correct": false,
-        "timestamp": "2026-08-14T17:38:28.017500+00:00"
+        "move": "nf1",
+        "correct": true,
+        "timestamp": "2026-08-14T17:38:29.508104+00:00"
       }
     }
   },
