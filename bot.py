@@ -1553,10 +1553,10 @@ async def award_random_move_points(
 ):
     """
     Random puzzle scoring:
-    - First correct player move: +1.0, once.
-    - Later correct move by a different player: +0.5, once.
-    - The first mover can never also receive the helper 0.5.
-    - Each helper can receive at most 0.5 on this puzzle.
+    - First-move player gets +1.0 exactly once, but ONLY when
+      the complete puzzle has been solved.
+    - A different player who supplied a correct later move gets
+      +0.5 exactly once, also ONLY when the puzzle is solved.
     """
 
     user_id = str(user.id)
@@ -1568,82 +1568,104 @@ async def award_random_move_points(
             "first_move_user_id",
             None
         )
+
         puzzle.setdefault(
             "first_move_user_name",
             None
         )
+
         puzzle.setdefault(
             "first_move_awarded",
             False
         )
+
         puzzle.setdefault(
             "helper_awarded_users",
             []
         )
 
-        # First player move.
         if first_move:
 
-            if puzzle["first_move_user_id"] is None:
+            # The first-move player was already recorded when
+            # their move was made. At completion, award +1.
+            if not puzzle.get(
+                "first_move_awarded",
+                False
+            ):
 
-                puzzle[
+                if puzzle.get(
                     "first_move_user_id"
-                ] = user_id
+                ) is None:
 
-                puzzle[
-                    "first_move_user_name"
-                ] = user.display_name
+                    puzzle[
+                        "first_move_user_id"
+                    ] = user_id
 
-                puzzle[
-                    "first_move_awarded"
-                ] = True
+                    puzzle[
+                        "first_move_user_name"
+                    ] = user.display_name
 
-                if user_id not in scores:
-                    scores[user_id] = {
-                        "name": user.display_name,
-                        "points": 0
-                    }
-
-                scores[user_id]["name"] = (
-                    user.display_name
+                first_user_id = str(
+                    puzzle[
+                        "first_move_user_id"
+                    ]
                 )
 
-                scores[user_id]["points"] = round(
-                    float(
-                        scores[user_id].get(
-                            "points",
-                            0
-                        )
-                    ) + 1.0,
-                    2
-                )
+                # Award only to the recorded first-move user.
+                if user_id == first_user_id:
 
-                score_kind = "first"
+                    if user_id not in scores:
+                        scores[user_id] = {
+                            "name":
+                                user.display_name,
+                            "points":
+                                0
+                        }
 
-        # Helper move.
+                    scores[user_id]["name"] = (
+                        user.display_name
+                    )
+
+                    scores[user_id]["points"] = round(
+                        float(
+                            scores[user_id].get(
+                                "points",
+                                0
+                            )
+                        ) + 1.0,
+                        2
+                    )
+
+                    puzzle[
+                        "first_move_awarded"
+                    ] = True
+
+                    score_kind = "first"
+
         else:
 
-            first_user_id = puzzle.get(
-                "first_move_user_id"
+            first_user_id = str(
+                puzzle.get(
+                    "first_move_user_id"
+                )
             )
+
+            # First-move player can never also be the helper.
+            if user_id == first_user_id:
+                return "none"
 
             helper_users = puzzle[
                 "helper_awarded_users"
             ]
 
-            if (
-                user_id != first_user_id
-                and user_id not in helper_users
-            ):
-
-                helper_users.append(
-                    user_id
-                )
+            if user_id not in helper_users:
 
                 if user_id not in scores:
                     scores[user_id] = {
-                        "name": user.display_name,
-                        "points": 0
+                        "name":
+                            user.display_name,
+                        "points":
+                            0
                     }
 
                 scores[user_id]["name"] = (
@@ -1658,6 +1680,10 @@ async def award_random_move_points(
                         )
                     ) + 0.5,
                     2
+                )
+
+                helper_users.append(
+                    user_id
                 )
 
                 score_kind = "helper"
@@ -1675,6 +1701,7 @@ async def award_random_move_points(
             )
 
     if score_kind != "none":
+
         asyncio.create_task(
             asyncio.to_thread(
                 push_to_github
@@ -2632,10 +2659,6 @@ async def handle_random_answer(
                 "first_move_awarded",
                 False
             ):
-                puzzle[
-                    "first_move_awarded"
-                ] = True
-
                 await award_random_move_points(
                     puzzle,
                     first_user,
@@ -2776,6 +2799,23 @@ async def handle_random_answer(
         await message.channel.send(
             score_message
         )
+
+        # If the finisher was not the first-move player, separately
+        # notify the first-move player that their +1 was awarded.
+        if (
+            first_user_id
+            and str(message.author.id)
+            != str(first_user_id)
+        ):
+            first_name = puzzle.get(
+                "first_move_user_name",
+                "First solver"
+            )
+
+            await message.channel.send(
+                f"🏆 **{first_name} found the first move!** "
+                f"**+1 point**."
+            )
 
         if ranking:
             await message.channel.send(
