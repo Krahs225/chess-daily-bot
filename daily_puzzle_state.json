@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-01-31",
-    "title": "Weaving the Mating Net",
-    "fen": "r6k/p3n2P/6p1/3p4/1n1P1B2/5N2/1KP1qPQP/8 w - - 0 1",
-    "current_fen": "r6Q/p3nk2/6p1/3pB1N1/1n1P4/8/1KP1qP1P/8 b - - 5 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r6k/p3n2P/6p1/3p4/1n1P1B2/5N2/1KP1qPQP/8 w - - 0 1\"]\r\n\r\n1. Be5+ Kxh7 2. Qh3+ Kg8 3. Qh8+ Kf7 4. Ng5#\r\n*",
+    "url": "https://www.chess.com/daily/2023-03-07",
+    "title": "Targeting a Stranded Piece",
+    "fen": "1k4q1/1pp5/1b1np1r1/3p3P/Q2P1P2/1PB1P3/2P1B2R/K7 b - - 0 1",
+    "current_fen": "1k4q1/1pp5/1b1np1r1/3p3P/Q2P1P2/1PB1P3/2P1B2R/K7 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1k4q1/1pp5/1b1np1r1/3p3P/Q2P1P2/1PB1P3/2P1B2R/K7 b - - 0 1\"]\r\n\r\n1... Rg1+ 2. Kb2 Qg3 3. h6 Qxh2 *",
     "all_moves": [
       {
-        "uci": "f4e5",
-        "san": "Be5+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h7",
-        "san": "Kxh7",
+        "uci": "g6g1",
+        "san": "Rg1+",
         "color": "black"
       },
       {
-        "uci": "g2h3",
-        "san": "Qh3+",
+        "uci": "a1b2",
+        "san": "Kb2",
         "color": "white"
       },
       {
-        "uci": "h7g8",
-        "san": "Kg8",
+        "uci": "g8g3",
+        "san": "Qg3",
         "color": "black"
       },
       {
-        "uci": "h3h8",
-        "san": "Qh8+",
+        "uci": "h5h6",
+        "san": "h6",
         "color": "white"
       },
       {
-        "uci": "g8f7",
-        "san": "Kf7",
+        "uci": "g3h2",
+        "san": "Qxh2",
         "color": "black"
-      },
-      {
-        "uci": "f3g5",
-        "san": "Ng5#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4e5",
-        "san": "Be5+",
-        "color": "white"
+        "uci": "g6g1",
+        "san": "Rg1+",
+        "color": "black"
       },
       {
-        "uci": "g2h3",
-        "san": "Qh3+",
-        "color": "white"
+        "uci": "g8g3",
+        "san": "Qg3",
+        "color": "black"
       },
       {
-        "uci": "h3h8",
-        "san": "Qh8+",
-        "color": "white"
-      },
-      {
-        "uci": "f3g5",
-        "san": "Ng5#",
-        "color": "white"
+        "uci": "g3h2",
+        "san": "Qxh2",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-14T20:26:42.721791+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-14T20:27:18.154851+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786739202721",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1537920430390771775,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ng5",
-        "correct": true,
-        "timestamp": "2026-08-14T20:27:10.880518+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786739238154",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
