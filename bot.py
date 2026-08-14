@@ -385,32 +385,57 @@ def sanitize_fen(fen):
 
 def board_from_fen_safe(fen):
     """
-    Build a fresh board and explicitly set castling rights as a bitboard.
-    This avoids the str/bool XOR failure seen with some older
-    python-chess compatibility combinations.
+    Build a board manually instead of letting python-chess parse the
+    complete FEN in one step. This avoids the str/bool XOR bug that can
+    occur in some python-chess/FEN combinations.
     """
     clean_fen = sanitize_fen(fen)
-    board = chess.Board(clean_fen)
+    parts = clean_fen.split()
 
-    # Force castling_rights to the integer bitboard representation.
+    board = chess.Board(None)
+
+    # Piece placement.
+    board.set_board_fen(parts[0])
+
+    # Side to move.
+    board.turn = (
+        chess.BLACK
+        if parts[1].lower() == "b"
+        else chess.WHITE
+    )
+
+    # Castling rights as an integer bitboard.
     rights = 0
-    rights_map = {
-        "K": chess.parse_square("h1"),
-        "Q": chess.parse_square("a1"),
-        "k": chess.parse_square("h8"),
-        "q": chess.parse_square("a8"),
-    }
 
-    castling = clean_fen.split()[2]
-    if castling != "-":
-        for symbol, square in rights_map.items():
-            if symbol in castling:
-                rights |= chess.BB_SQUARES[square]
+    if parts[2] != "-":
+        if "K" in parts[2]:
+            rights |= chess.BB_SQUARES[chess.H1]
+        if "Q" in parts[2]:
+            rights |= chess.BB_SQUARES[chess.A1]
+        if "k" in parts[2]:
+            rights |= chess.BB_SQUARES[chess.H8]
+        if "q" in parts[2]:
+            rights |= chess.BB_SQUARES[chess.A8]
 
-    board.castling_rights = rights
+    board.castling_rights = int(rights)
 
-    # Ensure these are booleans/integers where python-chess expects them.
-    board.turn = chess.WHITE if clean_fen.split()[1] == "w" else chess.BLACK
+    # En-passant square.
+    ep = parts[3]
+    if ep == "-":
+        board.ep_square = None
+    else:
+        board.ep_square = chess.parse_square(ep)
+
+    # Move counters.
+    try:
+        board.halfmove_clock = int(parts[4])
+    except Exception:
+        board.halfmove_clock = 0
+
+    try:
+        board.fullmove_number = int(parts[5])
+    except Exception:
+        board.fullmove_number = 1
 
     return board
 
@@ -2116,7 +2141,7 @@ async def handle_random_answer(
 
         expected = all_moves[next_index]
 
-        board = chess.Board(
+        board = board_from_fen_safe(
             puzzle.get(
                 "current_fen",
                 puzzle["fen"]
