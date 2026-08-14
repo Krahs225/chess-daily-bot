@@ -1,126 +1,82 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-07-26",
-    "title": "Precise Play",
-    "fen": "rr4k1/1b1p1p2/4pnp1/1P5p/Nn1q4/7P/1P1B1PP1/R1RQ1BK1 w - - 0 1",
-    "current_fen": "rr4k1/1b1p1p2/4pnp1/1P5p/Nn1q4/7P/1P1B1PP1/R1RQ1BK1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rr4k1/1b1p1p2/4pnp1/1P5p/Nn1q4/7P/1P1B1PP1/R1RQ1BK1 w - - 0 1\"]\r\n\r\n1. Rc4 Qd6 2. Rxb4\r\n*",
+    "url": "https://www.chess.com/daily/2010-01-07",
+    "title": "Not So Obvious Moves",
+    "fen": "2k5/ppp2ppp/3r3q/8/2r5/P1Q2P2/1P1R3P/2KR4 w - - 0 1",
+    "current_fen": "2k5/ppp2ppp/3r3q/8/2r5/P1Q2P2/1P1R3P/2KR4 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k5/ppp2ppp/3r3q/8/2r5/P1Q2P2/1P1R3P/2KR4 w - - 0 1\"]\r\n\r\n1. Qxc4 Rc6 2. Kb1 Qxd2 3. Qg4+ Re6 4. Rxd2\r\n*",
     "all_moves": [
       {
-        "uci": "c1c4",
-        "san": "Rc4",
+        "uci": "c3c4",
+        "san": "Qxc4",
         "color": "white"
       },
       {
-        "uci": "d4d6",
-        "san": "Qd6",
+        "uci": "d6c6",
+        "san": "Rc6",
         "color": "black"
       },
       {
-        "uci": "c4b4",
-        "san": "Rxb4",
+        "uci": "c1b1",
+        "san": "Kb1",
+        "color": "white"
+      },
+      {
+        "uci": "h6d2",
+        "san": "Qxd2",
+        "color": "black"
+      },
+      {
+        "uci": "c4g4",
+        "san": "Qg4+",
+        "color": "white"
+      },
+      {
+        "uci": "c6e6",
+        "san": "Re6",
+        "color": "black"
+      },
+      {
+        "uci": "d1d2",
+        "san": "Rxd2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1c4",
-        "san": "Rc4",
+        "uci": "c3c4",
+        "san": "Qxc4",
         "color": "white"
       },
       {
-        "uci": "c4b4",
-        "san": "Rxb4",
+        "uci": "c1b1",
+        "san": "Kb1",
+        "color": "white"
+      },
+      {
+        "uci": "c4g4",
+        "san": "Qg4+",
+        "color": "white"
+      },
+      {
+        "uci": "d1d2",
+        "san": "Rxd2",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-14T17:54:56.311005+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-14T17:57:06.963410+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786730096311",
+    "puzzle_id": "random_1786730226963",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
     "message_id": null,
     "attempted_users": {}
   },
-  "latest_puzzle_type": "daily",
-  "current_puzzle": {
-    "url": "https://www.chess.com/daily/2026-08-14",
-    "title": "Zig, Zag, in the Bag!",
-    "fen": "2r4k/1b6/1p1q3p/3P1B2/1P4P1/4Q3/r6P/5RK1 w - - 0 1",
-    "current_fen": "2r4k/1b6/1p1q3p/3P1B2/1P4P1/4Q3/r6P/5RK1 w - - 0 1",
-    "pgn": "[Result \"1-0\"]\n[FEN \"2r4k/1b6/1p1q3p/3P1B2/1P4P1/4Q3/r6P/5RK1 w - - 0 1\"]\n\n1. Qd4+ Kg8 2. Bh7+ Kxh7 3. Rf7+ Kg8 4. Qg7# 1-0",
-    "all_moves": [
-      {
-        "uci": "e3d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "f5h7",
-        "san": "Bh7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h7",
-        "san": "Kxh7",
-        "color": "black"
-      },
-      {
-        "uci": "f1f7",
-        "san": "Rf7+",
-        "color": "white"
-      },
-      {
-        "uci": "h7g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "d4g7",
-        "san": "Qg7#",
-        "color": "white"
-      }
-    ],
-    "player_moves": [
-      {
-        "uci": "e3d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "f5h7",
-        "san": "Bh7+",
-        "color": "white"
-      },
-      {
-        "uci": "f1f7",
-        "san": "Rf7+",
-        "color": "white"
-      },
-      {
-        "uci": "d4g7",
-        "san": "Qg7#",
-        "color": "white"
-      }
-    ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-14T17:54:57.817254+00:00",
-    "answer_posted": false,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "daily_1786730097817"
-  }
+  "latest_puzzle_type": "random"
 }
