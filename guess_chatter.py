@@ -97,7 +97,6 @@ active_polls = {}
 scores_lock = asyncio.Lock()
 
 last_leaderboard_order = []
-last_quote_of_day = None
 
 
 # =========================================================
@@ -605,14 +604,14 @@ def find_context(
     before = all_messages[
         max(
             0,
-            quote_index - 2
+            quote_index - CONTEXT_BEFORE
         ):
         quote_index
     ]
 
     after = all_messages[
         quote_index + 1:
-        quote_index + 3
+        quote_index + 1 + CONTEXT_AFTER
     ]
 
     return before, [quote], after
@@ -621,7 +620,6 @@ def find_context(
 def format_context_line(item):
 
     return (
-        f"`{item['time']}` "
         f"**{item['display_name']}:** "
         f"{item['message']}"
     )
@@ -984,8 +982,7 @@ async def post_quote_of_day(
         "🌟 **Quote of the Day**\n\n"
         f"> {quote['message']}\n\n"
         f"— **{quote['display_name']}**, "
-        f"{quote['date']} at "
-        f"{quote['time']}\n\n"
+        f"{quote['date']}\n\n"
         f"{time_machine_text(quote['date'])}"
     )
 
@@ -1064,7 +1061,6 @@ async def post_guess(
     username = quote["username"]
     message = quote["message"]
     quote_date = quote["date"]
-    quote_time = quote["time"]
 
     correct_display_name = (
         display_name_for(username)
@@ -1109,8 +1105,7 @@ async def post_guess(
     message_content = (
         f"💬 **Guess the Chatter**\n\n"
         f"> {message}\n\n"
-        f"📅 **Date:** {quote_date}\n"
-        f"🕒 **Time:** {quote_time}"
+        f"📅 **Date:** {quote_date}"
     )
 
     poll_message = await channel.send(
@@ -1151,7 +1146,7 @@ async def post_guess(
     print(
         f"Poll created: "
         f"{poll_message.id} | "
-        f"{quote_date} {quote_time} | "
+        f"{quote_date} | "
         f"correct={correct_display_name}",
         flush=True
     )
@@ -1328,9 +1323,6 @@ async def post_guess(
     # =====================================================
     # ANSWER
     # =====================================================
-
-    # NO SPOILER TAGS:
-    # The answer is immediately visible.
 
     answer_text = (
         f"🔓 **The answer was: "
