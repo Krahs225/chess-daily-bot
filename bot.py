@@ -455,6 +455,11 @@ def build_puzzle(data):
         "fen":
             data["fen"],
 
+        # Runtime state for interactive random puzzles.
+        # Daily puzzles continue to use the original FEN.
+        "current_fen":
+            data["fen"],
+
         "pgn":
             data["pgn"],
 
@@ -498,11 +503,18 @@ async def make_board_file(
     puzzle,
     filename
 ):
-
-    board = chess.Board(
+    # For interactive random puzzles, render the CURRENT position.
+    # For daily puzzles, this remains the original FEN.
+    current_fen = puzzle.get(
+        "current_fen",
         puzzle["fen"]
     )
 
+    board = chess.Board(
+        current_fen
+    )
+
+    # Put the side to move at the bottom.
     orientation = (
         chess.WHITE
         if board.turn
@@ -611,9 +623,7 @@ async def post_daily_puzzle(
 async def post_random_puzzle(
     channel
 ):
-
     try:
-
         data = await asyncio.to_thread(
             fetch_random_puzzle
         )
@@ -636,6 +646,15 @@ async def post_random_puzzle(
                 )
             )
         )
+
+        # Interactive state.
+        puzzle["current_fen"] = puzzle["fen"]
+        puzzle["next_solution_index"] = 0
+        puzzle["next_player_index"] = 0
+        puzzle["solved"] = False
+        puzzle["message_id"] = None
+        puzzle["active_solver_id"] = None
+        puzzle["attempted_users"] = {}
 
         state[
             "latest_random_puzzle"
@@ -666,14 +685,25 @@ async def post_random_puzzle(
             "title"
         ]
 
+        if count == 1:
+            move_description = (
+                "Find the best move."
+            )
+        else:
+            move_description = (
+                f"Find the best line in "
+                f"**{count} {move_word(count)}**."
+            )
+
         embed = discord.Embed(
             title=(
                 f"🎲 Random Puzzle — {title}"
             ),
             description=(
                 f"**{side} to move.**\n"
-                f"Find the best line in "
-                f"**{count} {move_word(count)}**."
+                f"{move_description}\n\n"
+                f"You only enter **your own moves**. "
+                f"The opponent's replies will be played automatically."
             ),
             color=0x3498db
         )
@@ -682,10 +712,14 @@ async def post_random_puzzle(
             url="attachment://random_puzzle.png"
         )
 
-        await channel.send(
+        message = await channel.send(
             embed=embed,
             file=file
         )
+
+        puzzle["message_id"] = message.id
+
+        await save_all()
 
         print(
             f"Random Puzzle posted "
@@ -694,7 +728,6 @@ async def post_random_puzzle(
         )
 
     except Exception as error:
-
         print(
             f"Random puzzle error: {error}",
             flush=True
@@ -1317,12 +1350,12 @@ def help_message():
 
 **Random Puzzle**
 `!random` or `!rp` — Get a random chess puzzle.
-`!random <moves>` — Answer the latest Random Puzzle.
+`!random <move>` — Make the next move in the latest Random Puzzle.
 
 **Quick Answer**
 `!<moves>` — Answer whichever puzzle was posted most recently.
 
-Only your own moves are required. The opponent's moves are automatically played.
+Only your own moves are required. The opponent's replies are automatically played between your moves.
 
 **Points**
 Correct answers are worth **+1 point**.
@@ -1645,6 +1678,392 @@ async def run_timer():
 
 
 # =========================================================
+# FUN WRONG-ANSWER MESSAGES
+# =========================================================
+
+def wrong_message(user):
+    name = user.display_name
+    lower = name.casefold()
+
+    if lower == "thice":
+        return (
+            f"❌ **Wrong again, {name}.**"
+        )
+
+    if "sharkmeister" in lower:
+        return (
+            f"❌ **So close, {name}... "
+            f"you almost had it there.**"
+        )
+
+    return (
+        f"❌ **Wrong, {name}.**"
+    )
+
+
+# =========================================================
+# RANDOM PUZZLE — STEP BY STEP
+# =========================================================
+
+async def update_random_puzzle_message(
+    channel,
+    puzzle,
+    message_text=None
+):
+    message_id = puzzle.get(
+        "message_id"
+    )
+
+    if not message_id:
+        return
+
+    file, board = await make_board_file(
+        puzzle,
+        "random_puzzle.png"
+    )
+
+    remaining = (
+        puzzle["player_move_count"]
+        - puzzle.get("next_player_index", 0)
+    )
+
+    side = (
+        "White"
+        if board.turn
+        else "Black"
+    )
+
+    if puzzle.get("solved", False):
+        description = (
+            "🎉 **Puzzle solved!**"
+        )
+    elif remaining == 1:
+        description = (
+            f"**{side} to move.**\n"
+            f"**Final move.**"
+        )
+    else:
+        description = (
+            f"**{side} to move.**\n"
+            f"**{remaining} {move_word(remaining)} remaining.**"
+        )
+
+    if message_text:
+        description = (
+            f"{message_text}\n\n"
+            + description
+        )
+
+    embed = discord.Embed(
+        title=(
+            f"🎲 Random Puzzle — "
+            f"{puzzle['title']}"
+        ),
+        description=description,
+        color=0x3498db
+    )
+
+    embed.set_image(
+        url="attachment://random_puzzle.png"
+    )
+
+    try:
+        message = await channel.fetch_message(
+            message_id
+        )
+
+        await message.edit(
+            embed=embed,
+            attachments=[file]
+        )
+
+    except Exception as error:
+        print(
+            f"Could not update random puzzle message: {error}",
+            flush=True
+        )
+
+
+async def handle_random_answer(
+    message,
+    puzzle,
+    move_text
+):
+    if not puzzle:
+        return
+
+    if puzzle.get(
+        "answer_posted",
+        False
+    ):
+        return
+
+    if not puzzle_is_open(
+        puzzle,
+        RANDOM_ANSWER_WINDOW
+    ):
+        return
+
+    if puzzle.get(
+        "solved",
+        False
+    ):
+        return
+
+    player_color = puzzle[
+        "player_color"
+    ]
+
+    next_index = puzzle.get(
+        "next_solution_index",
+        0
+    )
+
+    all_moves = puzzle.get(
+        "all_moves",
+        []
+    )
+
+    player_moves = puzzle.get(
+        "player_moves",
+        []
+    )
+
+    if next_index >= len(all_moves):
+        return
+
+    # -----------------------------------------------------
+    # IMPORTANT:
+    #
+    # The board is shared by everyone in Discord.
+    # Once somebody starts a random puzzle, they become
+    # the solver for that round. This prevents two users
+    # from changing the same board position at once.
+    # -----------------------------------------------------
+
+    user_id = str(
+        message.author.id
+    )
+
+    active_solver = puzzle.get(
+        "active_solver_id"
+    )
+
+    if active_solver is None:
+        puzzle["active_solver_id"] = user_id
+
+    elif active_solver != user_id:
+        await message.channel.send(
+            f"❌ **{message.author.display_name}, "
+            f"someone is already solving this random puzzle.**"
+        )
+        return
+
+    submitted = move_text.strip()
+
+    # One move at a time.
+    if len(submitted.split()) != 1:
+        await message.channel.send(
+            f"❌ **One move at a time, "
+            f"{message.author.display_name}.**"
+        )
+        return
+
+    expected = all_moves[next_index]
+
+    board = chess.Board(
+        puzzle.get(
+            "current_fen",
+            puzzle["fen"]
+        )
+    )
+
+    # The next solution move must belong to the player.
+    if expected["color"] != player_color:
+        await message.channel.send(
+            "❌ **The puzzle state got out of sync. "
+            "Please start a new random puzzle.**"
+        )
+        return
+
+    correct = san_matches_move(
+        board,
+        submitted,
+        expected
+    )
+
+    puzzle.setdefault(
+        "attempted_users",
+        {}
+    )[user_id] = {
+        "name": message.author.display_name,
+        "move": submitted,
+        "correct": correct,
+        "timestamp": datetime.now(
+            timezone.utc
+        ).isoformat()
+    }
+
+    if not correct:
+        await save_all()
+        await message.channel.send(
+            wrong_message(message.author)
+        )
+        return
+
+    # -----------------------------------------------------
+    # PLAY THE USER'S CORRECT MOVE
+    # -----------------------------------------------------
+
+    move = chess.Move.from_uci(
+        expected["uci"]
+    )
+
+    if move not in board.legal_moves:
+        await message.channel.send(
+            "❌ **The puzzle position could not be updated.**"
+        )
+        return
+
+    board.push(move)
+
+    next_index += 1
+    next_player_index = (
+        puzzle.get(
+            "next_player_index",
+            0
+        ) + 1
+    )
+
+    opponent_replies = []
+
+    # -----------------------------------------------------
+    # AUTOMATICALLY PLAY THE OPPONENT'S REPLY
+    # -----------------------------------------------------
+
+    while next_index < len(all_moves):
+        reply = all_moves[next_index]
+
+        if reply["color"] == player_color:
+            break
+
+        reply_move = chess.Move.from_uci(
+            reply["uci"]
+        )
+
+        if reply_move not in board.legal_moves:
+            break
+
+        board.push(reply_move)
+
+        opponent_replies.append(
+            reply["san"]
+        )
+
+        next_index += 1
+
+    puzzle["current_fen"] = board.fen()
+    puzzle["next_solution_index"] = next_index
+    puzzle["next_player_index"] = next_player_index
+
+    # -----------------------------------------------------
+    # PUZZLE COMPLETE
+    # -----------------------------------------------------
+
+    if next_player_index >= len(player_moves):
+        puzzle["solved"] = True
+
+        got_point = await award_point(
+            puzzle,
+            message.author
+        )
+
+        points = get_player_score(
+            message.author.id
+        )
+
+        ranking = build_personal_ranking(
+            message.author.id
+        )
+
+        if got_point:
+            result = (
+                f"✅ **Correct, {message.author.display_name}!**\n"
+                f"🎉 **Puzzle solved!**\n"
+                f"**+1 point** — you now have **{points} points.**"
+            )
+        else:
+            result = (
+                f"✅ **Correct, {message.author.display_name}!**\n"
+                f"🎉 **Puzzle solved!**\n"
+                f"Someone else got the point first.\n"
+                f"You have **{points} points.**"
+            )
+
+        if opponent_replies:
+            result += (
+                "\n"
+                f"**Opponent:** {' '.join(opponent_replies)}"
+            )
+
+        await save_all()
+
+        await update_random_puzzle_message(
+            message.channel,
+            puzzle,
+            result
+        )
+
+        await post_answer(
+            message.channel,
+            puzzle,
+            "random"
+        )
+
+        return
+
+    # -----------------------------------------------------
+    # MORE PLAYER MOVES TO GO
+    # -----------------------------------------------------
+
+    remaining = (
+        len(player_moves)
+        - next_player_index
+    )
+
+    if opponent_replies:
+        reply_text = (
+            f"↩️ **Opponent replies:** "
+            f"{' '.join(opponent_replies)}"
+        )
+    else:
+        reply_text = ""
+
+    if remaining == 1:
+        progress = (
+            "**Correct! Now make your final move.**"
+        )
+    else:
+        progress = (
+            f"**Correct! {remaining} "
+            f"{move_word(remaining)} remaining.**"
+        )
+
+    await save_all()
+
+    await update_random_puzzle_message(
+        message.channel,
+        puzzle,
+        progress
+        + (
+            f"\n{reply_text}"
+            if reply_text
+            else ""
+        )
+    )
+
+
+# =========================================================
 # HANDLE ANSWER
 # =========================================================
 
@@ -1654,10 +2073,22 @@ async def handle_answer(
     answer_window,
     move_text
 ):
-
     if not puzzle:
         return
 
+    # Random puzzles are solved interactively:
+    # one user move -> automatic opponent reply -> next user move.
+    if str(
+        puzzle.get("puzzle_id", "")
+    ).startswith("random_"):
+        await handle_random_answer(
+            message,
+            puzzle,
+            move_text
+        )
+        return
+
+    # Daily puzzle: user submits the complete sequence of THEIR moves.
     if puzzle.get(
         "answer_posted",
         False
@@ -1679,19 +2110,13 @@ async def handle_answer(
         move_text.strip().split()
     )
 
-    # Give a useful response if they didn't
-    # provide enough of their own moves.
     if len(submitted_moves) != required:
-
         await message.channel.send(
             f"❌ **Not quite, "
             f"{message.author.display_name}.**\n"
-            f"This puzzle requires "
-            f"**{required} "
-            f"{move_word(required)}** "
-            f"from your side."
+            f"This puzzle requires **{required} "
+            f"{move_word(required)}** from your side."
         )
-
         return
 
     correct = solution_is_correct(
@@ -1706,22 +2131,11 @@ async def handle_answer(
         correct
     )
 
-    # =====================================================
-    # WRONG
-    # =====================================================
-
     if not correct:
-
         await message.channel.send(
-            f"❌ **Wrong, "
-            f"{message.author.display_name}.**"
+            wrong_message(message.author)
         )
-
         return
-
-    # =====================================================
-    # CORRECT
-    # =====================================================
 
     got_point = await award_point(
         puzzle,
@@ -1732,23 +2146,18 @@ async def handle_answer(
         message.author.id
     )
 
-    personal_ranking = (
-        build_personal_ranking(
-            message.author.id
-        )
+    personal_ranking = build_personal_ranking(
+        message.author.id
     )
 
     if got_point:
-
         response = (
             f"✅ **Correct, "
             f"{message.author.display_name}!**\n"
             f"**+1 point** — you now have "
             f"**{current_points} points**."
         )
-
     else:
-
         response = (
             f"✅ **Correct, "
             f"{message.author.display_name}!**\n"
@@ -1875,8 +2284,8 @@ async def on_message(
     # QUICK ANSWER
     #
     # !Bf2
-    # !Bf2 Qxf2 Kh1
-    # !bf2 qxf2 kh1
+    # !Bf2
+    # !bf2
     # =====================================================
 
     move_text = content[1:].strip()
@@ -1948,6 +2357,37 @@ async def on_ready():
         LEADERBOARD_FILE,
         {}
     )
+
+    # Restore the current random puzzle position after a restart.
+    random_puzzle = state.get(
+        "latest_random_puzzle"
+    )
+
+    if random_puzzle:
+        random_puzzle.setdefault(
+            "current_fen",
+            random_puzzle.get("fen")
+        )
+        random_puzzle.setdefault(
+            "next_solution_index",
+            0
+        )
+        random_puzzle.setdefault(
+            "next_player_index",
+            0
+        )
+        random_puzzle.setdefault(
+            "solved",
+            False
+        )
+        random_puzzle.setdefault(
+            "active_solver_id",
+            None
+        )
+        random_puzzle.setdefault(
+            "attempted_users",
+            {}
+        )
 
     print(
         f"READY! Logged in as {client.user}",
