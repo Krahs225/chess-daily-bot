@@ -32,7 +32,7 @@ PUZZLE_CHECK_INTERVAL = 5 * 60
 # Full leaderboard every 10 minutes
 LEADERBOARD_INTERVAL = 10 * 60
 
-# Answer window
+# Answer windows
 ANSWER_WINDOW = 12 * 60 * 60
 RANDOM_ANSWER_WINDOW = 12 * 60 * 60
 
@@ -70,7 +70,6 @@ def load_json(filename, default):
         return default
 
     try:
-
         with open(
             filename,
             "r",
@@ -305,7 +304,7 @@ def fetch_random_puzzle():
 
 def get_solution(data):
 
-    # python-chess requires a TEXT stream here.
+    # python-chess requires a TEXT stream.
     game = chess.pgn.read_game(
         StringIO(
             data["pgn"]
@@ -501,7 +500,14 @@ async def post_random_puzzle(
         )
 
         puzzle["answer_posted"] = False
+
+        # Stores attempts, but DOES NOT
+        # determine who gets the point.
         puzzle["latest_attempts"] = {}
+
+        # The first correct person gets the point.
+        puzzle["winner_user_id"] = None
+        puzzle["winner_name"] = None
 
         puzzle["puzzle_id"] = (
             "random_"
@@ -516,7 +522,6 @@ async def post_random_puzzle(
             "latest_random_puzzle"
         ] = puzzle
 
-        # Random is now the most recent puzzle.
         state[
             "latest_puzzle_type"
         ] = "random"
@@ -609,29 +614,54 @@ async def post_answer(
 
 
 # =========================================================
-# CHECK MOVE
+# NORMALIZE CHESS MOVE
 # =========================================================
-#
-# IMPORTANT:
-#
-# The comparison is CASE-INSENSITIVE.
-#
-# !Nc6  -> accepted
-# !nc6  -> accepted
-# !NC6  -> accepted
-#
-# !Bf2+ -> accepted
-# !bf2+ -> accepted
-# !BF2+ -> accepted
-#
-# Checkmate:
-# !Qh7# -> accepted
-# !qh7# -> accepted
-#
-# Castling:
-# !O-O -> accepted
-# !o-o -> accepted
-#
+
+def normalize_move(text):
+
+    """
+    Makes the user's move case-insensitive and
+    ignores check/checkmate markers.
+
+    Examples:
+
+        Nc6   -> nc6
+        nc6   -> nc6
+        NC6   -> nc6
+
+        Bf2+  -> bf2
+        bf2   -> bf2
+        BF2+  -> bf2
+
+        Qh7#  -> qh7
+        qh7   -> qh7
+
+    This means + and # do not make a difference.
+    """
+
+    text = text.strip()
+
+    # Remove whitespace
+    text = "".join(
+        text.split()
+    )
+
+    # Case-insensitive
+    text = text.casefold()
+
+    # Remove check/checkmate markers.
+    #
+    # We remove all trailing + and # characters
+    # so both forms are accepted.
+    while text.endswith("+") or text.endswith("#"):
+
+        text = text[:-1]
+
+    return text
+
+
+# =========================================================
+# CHECK MOVE
 # =========================================================
 
 def move_is_correct(
@@ -639,52 +669,52 @@ def move_is_correct(
     puzzle
 ):
 
-    text = text.strip()
+    submitted = normalize_move(
+        text
+    )
 
-    if not text:
+    if not submitted:
         return False
 
     board = chess.Board(
         puzzle["fen"]
     )
 
-    # Normalize whitespace.
-    submitted = " ".join(
-        text.split()
-    ).casefold()
-
-    # Compare the user's move against every
-    # legal move in SAN, ignoring capitalization.
+    # Compare against every legal move.
     #
-    # This is better than simply doing
-    # parse_san(text), because parse_san is
-    # intentionally case-sensitive.
+    # This means we generate the correct SAN
+    # ourselves instead of trusting the user's
+    # capitalization or +/#.
     for legal_move in board.legal_moves:
 
         try:
 
             legal_san = board.san(
                 legal_move
-            ).casefold()
+            )
 
         except Exception:
 
             continue
 
-        if submitted == legal_san:
+        normalized_legal = normalize_move(
+            legal_san
+        )
+
+        if submitted == normalized_legal:
 
             return (
                 legal_move.uci()
                 == puzzle["first_uci"]
             )
 
-    # Also allow UCI notation.
+    # Also support UCI notation.
     #
     # Example:
     # !e2e4
     #
-    # UCI itself is technically lowercase,
-    # but we make it case-insensitive too.
+    # UCI does not use +/#, but we still
+    # make the text case-insensitive.
     try:
 
         move = board.parse_uci(
@@ -823,7 +853,6 @@ def get_personal_ranking(
             break
 
     if player_index is None:
-
         return []
 
     start = max(
@@ -904,10 +933,95 @@ def build_personal_ranking(
 
 
 # =========================================================
-# SAVE ANSWER + UPDATE SCORE
+# AWARD POINT
 # =========================================================
 
-async def save_attempt_and_update_score(
+async def award_point(
+    puzzle,
+    user
+):
+
+    """
+    IMPORTANT:
+
+    Only the FIRST correct person gets a point.
+
+    Once winner_user_id is set, nobody else
+    can receive a point for this puzzle.
+
+    Spamming the correct answer therefore
+    cannot generate more points.
+    """
+
+    user_id = str(
+        user.id
+    )
+
+    async with data_lock:
+
+        # Someone already got the point.
+        if puzzle.get(
+            "winner_user_id"
+        ) is not None:
+
+            return False
+
+        # Lock the winner immediately.
+        puzzle[
+            "winner_user_id"
+        ] = user_id
+
+        puzzle[
+            "winner_name"
+        ] = user.display_name
+
+        # Create score entry.
+        if user_id not in scores:
+
+            scores[user_id] = {
+                "name":
+                    user.display_name,
+
+                "points":
+                    0
+            }
+
+        scores[user_id][
+            "name"
+        ] = user.display_name
+
+        scores[user_id][
+            "points"
+        ] = (
+            scores[user_id].get(
+                "points",
+                0
+            ) + 1
+        )
+
+        save_json(
+            STATE_FILE,
+            state
+        )
+
+        save_json(
+            LEADERBOARD_FILE,
+            scores
+        )
+
+    # Push after releasing the lock.
+    await asyncio.to_thread(
+        push_to_github
+    )
+
+    return True
+
+
+# =========================================================
+# SAVE ATTEMPT
+# =========================================================
+
+async def save_attempt(
     puzzle,
     user,
     move_text,
@@ -925,20 +1039,6 @@ async def save_attempt_and_update_score(
             {}
         )
 
-        previous = attempts.get(
-            user_id
-        )
-
-        previous_correct = (
-            previous.get(
-                "correct",
-                False
-            )
-            if previous
-            else False
-        )
-
-        # Only the latest answer matters.
         attempts[user_id] = {
             "name":
                 user.display_name,
@@ -955,59 +1055,14 @@ async def save_attempt_and_update_score(
                 ).isoformat()
         }
 
-        if user_id not in scores:
-
-            scores[user_id] = {
-                "name":
-                    user.display_name,
-
-                "points":
-                    0
-            }
-
-        scores[user_id][
-            "name"
-        ] = user.display_name
-
-        point_change = 0
-
-        # Wrong -> Correct
-        if not previous_correct and correct:
-
-            point_change = 1
-
-        # Correct -> Wrong
-        elif previous_correct and not correct:
-
-            point_change = -1
-
-        if point_change != 0:
-
-            scores[user_id][
-                "points"
-            ] = max(
-                0,
-                scores[user_id].get(
-                    "points",
-                    0
-                ) + point_change
-            )
-
         save_json(
             STATE_FILE,
             state
         )
 
-        save_json(
-            LEADERBOARD_FILE,
-            scores
-        )
-
     await asyncio.to_thread(
         push_to_github
     )
-
-    return point_change
 
 
 # =========================================================
@@ -1107,7 +1162,7 @@ def help_message():
 
 **Points**
 Correct answers are worth **+1 point**.
-Only your **most recent answer** to a puzzle counts.
+Only the **first correct answer** gets the point.
 
 **Other**
 `!help` or `!info` — Show this message.
@@ -1247,7 +1302,7 @@ async def check_for_new_puzzle(
         else None
     )
 
-    # Same Daily Puzzle
+    # Same puzzle -> nothing to do.
     if current_url == puzzle["url"]:
         return
 
@@ -1256,6 +1311,7 @@ async def check_for_new_puzzle(
         flush=True
     )
 
+    # Finalize previous puzzle.
     if current:
 
         if not current.get(
@@ -1282,6 +1338,15 @@ async def check_for_new_puzzle(
     puzzle[
         "latest_attempts"
     ] = {}
+
+    # No winner yet.
+    puzzle[
+        "winner_user_id"
+    ] = None
+
+    puzzle[
+        "winner_name"
+    ] = None
 
     puzzle[
         "puzzle_id"
@@ -1436,18 +1501,19 @@ async def handle_answer(
         puzzle
     )
 
-    point_change = (
-        await save_attempt_and_update_score(
-            puzzle,
-            message.author,
-            move_text,
-            correct
-        )
+    # Always save the attempt,
+    # but NEVER let an attempt remove
+    # a previously awarded point.
+    await save_attempt(
+        puzzle,
+        message.author,
+        move_text,
+        correct
     )
 
-    # -----------------------------------------
+    # =====================================================
     # WRONG
-    # -----------------------------------------
+    # =====================================================
 
     if not correct:
 
@@ -1458,25 +1524,29 @@ async def handle_answer(
 
         return
 
-    # -----------------------------------------
+    # =====================================================
     # CORRECT
-    # -----------------------------------------
+    # =====================================================
 
-    user_id = str(
-        message.author.id
+    # Try to award the point.
+    #
+    # Only the first correct answer can succeed.
+    got_point = await award_point(
+        puzzle,
+        message.author
     )
 
     current_points = get_player_score(
-        user_id
+        message.author.id
     )
 
     personal_ranking = (
         build_personal_ranking(
-            user_id
+            message.author.id
         )
     )
 
-    if point_change > 0:
+    if got_point:
 
         response = (
             f"✅ **Correct, "
@@ -1487,10 +1557,12 @@ async def handle_answer(
 
     else:
 
+        # Someone else already got the point.
         response = (
             f"✅ **Correct, "
             f"{message.author.display_name}!**\n"
-            f"You have **{current_points} points**."
+            f"Someone else got the point first."
+            f"\nYou have **{current_points} points**."
         )
 
     await message.channel.send(
@@ -1542,8 +1614,6 @@ async def on_message(
     # !random
     # !rp
     # !randompuzzle
-    #
-    # All three create a new random puzzle.
     # =====================================================
 
     if command_lower in (
@@ -1626,7 +1696,8 @@ async def on_message(
     # !Qh7+
     # !qh7+
     #
-    # Any unknown !command is treated as a move.
+    # Everything else beginning with ! is
+    # interpreted as a chess move.
     # =====================================================
 
     move_text = content[1:].strip()
