@@ -21,69 +21,62 @@
     "points_awarded": []
   },
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-07-22",
-    "title": "Solve or Become the Puzzle",
-    "fen": "1k6/pp3p2/r3b1p1/n2p3p/q2P1NnP/4P3/1PQN1PPB/1KR4R b - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"1k6/pp3p2/r3b1p1/n2p3p/q2P1NnP/4P3/1PQN1PPB/1KR4R b - - 0 1\"]\r\n\r\n1...Qa1+ 2.Kxa1 Nb3+ 3.Kb1 Ra1# *",
+    "url": "https://www.chess.com/daily/2010-11-24",
+    "title": "Double Threats",
+    "fen": "6k1/3n1p2/1p2pnpp/p7/b2P3q/4PP2/3N2P1/3QBBK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/3n1p2/1p2pnpp/p7/b2P3q/4PP2/3N2P1/3QBBK1 w - - 0 1\"]\r\n\r\n1. Qa1 Qg5 2. f4 Qh5 3. Qxa4\r\n*",
     "all_moves": [
       {
-        "uci": "a4a1",
-        "san": "Qa1+",
-        "color": "black"
-      },
-      {
-        "uci": "b1a1",
-        "san": "Kxa1",
+        "uci": "d1a1",
+        "san": "Qa1",
         "color": "white"
       },
       {
-        "uci": "a5b3",
-        "san": "Nb3+",
+        "uci": "h4g5",
+        "san": "Qg5",
         "color": "black"
       },
       {
-        "uci": "a1b1",
-        "san": "Kb1",
+        "uci": "f3f4",
+        "san": "f4",
         "color": "white"
       },
       {
-        "uci": "a6a1",
-        "san": "Ra1#",
+        "uci": "g5h5",
+        "san": "Qh5",
         "color": "black"
+      },
+      {
+        "uci": "a1a4",
+        "san": "Qxa4",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a4a1",
-        "san": "Qa1+",
-        "color": "black"
+        "uci": "d1a1",
+        "san": "Qa1",
+        "color": "white"
       },
       {
-        "uci": "a5b3",
-        "san": "Nb3+",
-        "color": "black"
+        "uci": "f3f4",
+        "san": "f4",
+        "color": "white"
       },
       {
-        "uci": "a6a1",
-        "san": "Ra1#",
-        "color": "black"
+        "uci": "a1a4",
+        "san": "Qxa4",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-14T15:16:33.914202+00:00",
+    "posted_at": "2026-08-14T15:18:22.848960+00:00",
     "answer_posted": false,
-    "winner_user_id": "362606514764251137",
-    "winner_name": "Sharkmeister",
-    "latest_attempts": {
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "moves": "qa1 nb3 ra1",
-        "correct": true,
-        "timestamp": "2026-08-14T15:17:48.695769+00:00"
-      }
-    },
-    "puzzle_id": "random_1786720593914"
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1786720702848"
   },
   "latest_puzzle_type": "random"
 }
