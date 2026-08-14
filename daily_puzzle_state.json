@@ -1,62 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-03-03",
-    "title": "Recognizing Strength, Revealing Weakness",
-    "fen": "2r4k/1pq3p1/2b2pnp/p1Q1p2B/P7/1Pn3PP/5P1N/R4RK1 b - - 0 1",
-    "current_fen": "2r4k/1pQ3p1/5pnp/p3p2B/P7/1P3bPP/4nP1N/R4RK1 w - - 1 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2r4k/1pq3p1/2b2pnp/p1Q1p2B/P7/1Pn3PP/5P1N/R4RK1 b - - 0 1\"]\r\n\r\n1... Bf3 2. Qxc7 Ne2# *",
+    "url": "https://www.chess.com/daily/2009-05-22",
+    "title": "Find the Draw",
+    "fen": "4r3/Kp6/5P2/1k2P3/8/8/8/8 w - - 0 1",
+    "current_fen": "4r3/Kp6/5P2/1k2P3/8/8/8/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r3/Kp6/5P2/1k2P3/8/8/8/8 w - - 0 1\"]\r\n\r\n1. f7 Rf8 2. e6 b6 3. Kb7 Kc5 4. e7 Rxf7 5. Ka6\r\n*",
     "all_moves": [
       {
-        "uci": "c6f3",
-        "san": "Bf3",
-        "color": "black"
-      },
-      {
-        "uci": "c5c7",
-        "san": "Qxc7",
+        "uci": "f6f7",
+        "san": "f7",
         "color": "white"
       },
       {
-        "uci": "c3e2",
-        "san": "Ne2#",
+        "uci": "e8f8",
+        "san": "Rf8",
         "color": "black"
+      },
+      {
+        "uci": "e5e6",
+        "san": "e6",
+        "color": "white"
+      },
+      {
+        "uci": "b7b6",
+        "san": "b6",
+        "color": "black"
+      },
+      {
+        "uci": "a7b7",
+        "san": "Kb7",
+        "color": "white"
+      },
+      {
+        "uci": "b5c5",
+        "san": "Kc5",
+        "color": "black"
+      },
+      {
+        "uci": "e6e7",
+        "san": "e7",
+        "color": "white"
+      },
+      {
+        "uci": "f8f7",
+        "san": "Rxf7",
+        "color": "black"
+      },
+      {
+        "uci": "b7a6",
+        "san": "Ka6",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c6f3",
-        "san": "Bf3",
-        "color": "black"
+        "uci": "f6f7",
+        "san": "f7",
+        "color": "white"
       },
       {
-        "uci": "c3e2",
-        "san": "Ne2#",
-        "color": "black"
+        "uci": "e5e6",
+        "san": "e6",
+        "color": "white"
+      },
+      {
+        "uci": "a7b7",
+        "san": "Kb7",
+        "color": "white"
+      },
+      {
+        "uci": "e6e7",
+        "san": "e7",
+        "color": "white"
+      },
+      {
+        "uci": "b7a6",
+        "san": "Ka6",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-14T19:38:04.303628+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 5,
+    "posted_at": "2026-08-14T19:38:47.880934+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786736284303",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1537908190207807550,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ne2",
-        "correct": true,
-        "timestamp": "2026-08-14T19:38:22.383494+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786736327880",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
