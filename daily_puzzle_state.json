@@ -21,61 +21,39 @@
     "points_awarded": []
   },
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-11-06",
-    "title": "King's Deserted Island",
-    "fen": "r1b1qbr1/pp2n2p/6p1/2Qpp1NP/k7/8/2P2P2/2K4R w - - 0 1",
-    "current_fen": "r1b2br1/pp2n2p/6p1/1qQpp1NP/k7/8/2PK1P2/R7 b - - 3 2",
-    "pgn": "[White \"d_jinny\"]\r\n[Black \"Community Daily Puzzle Week!\"]\r\n[Result \"1-0\"]\r\n[FEN \"r1b1qbr1/pp2n2p/6p1/2Qpp1NP/k7/8/2P2P2/2K4R w - - 0 1\"]\r\n\r\n1. Kd2 Qb5 2. Ra1# 1-0",
+    "url": "https://www.chess.com/daily/2010-04-11",
+    "title": "Cornered Prey",
+    "fen": "2b2k2/2p2pp1/3p1r1p/1p2B3/1P2P1Q1/1NP3P1/7R/1B2n2K b - - 0 1",
+    "current_fen": "2b2k2/2p2pp1/3p1r1p/1p2B3/1P2P1Q1/1NP3P1/7R/1B2n2K b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2b2k2/2p2pp1/3p1r1p/1p2B3/1P2P1Q1/1NP3P1/7R/1B2n2K b - - 0 1\"]\r\n\r\n1...Rf1#\r\n*",
     "all_moves": [
       {
-        "uci": "c1d2",
-        "san": "Kd2",
-        "color": "white"
-      },
-      {
-        "uci": "e8b5",
-        "san": "Qb5",
+        "uci": "f6f1",
+        "san": "Rf1#",
         "color": "black"
-      },
-      {
-        "uci": "h1a1",
-        "san": "Ra1#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1d2",
-        "san": "Kd2",
-        "color": "white"
-      },
-      {
-        "uci": "h1a1",
-        "san": "Ra1#",
-        "color": "white"
+        "uci": "f6f1",
+        "san": "Rf1#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-14T17:25:51.300693+00:00",
+    "player_color": "black",
+    "player_move_count": 1,
+    "posted_at": "2026-08-14T17:27:22.428675+00:00",
     "answer_posted": false,
-    "winner_user_id": "442597396195704832",
-    "winner_name": "Thice",
+    "winner_user_id": null,
+    "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786728351300",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1537874918203457578,
-    "active_solver_id": "442597396195704832",
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ra1",
-        "correct": true,
-        "timestamp": "2026-08-14T17:26:48.384990+00:00"
-      }
-    }
+    "puzzle_id": "random_1786728442428",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "active_solver_id": null,
+    "attempted_users": {}
   },
   "latest_puzzle_type": "random"
 }
