@@ -1,74 +1,112 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-05-14",
-    "title": "Leveling the Playing Field",
-    "fen": "2r3k1/2rbppbp/pq1p2p1/1p1P4/1P1NP3/4B3/P2QB1PP/2RR2K1 b - - 0 1",
-    "current_fen": "6k1/3bpp1p/pq1p2p1/1p1P4/1P1bP3/4B3/P3B1PP/2Q3K1 w - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/2rbppbp/pq1p2p1/1p1P4/1P1NP3/4B3/P2QB1PP/2RR2K1 b - - 0 1\"]\r\n\r\n1...Rxc1 2. Rxc1 Rxc1+ 3. Qxc1 Bxd4\r\n*",
+    "url": "https://www.chess.com/daily/2016-06-24",
+    "title": "Precision and Accuracy",
+    "fen": "3r4/7p/p5pk/1p2Qp2/3n1P2/1P1qN1P1/P6P/4R1K1 w - - 0 1",
+    "current_fen": "3r4/7p/p5pk/1p2Qp2/3n1P2/1P1qN1P1/P6P/4R1K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r4/7p/p5pk/1p2Qp2/3n1P2/1P1qN1P1/P6P/4R1K1 w - - 0 1\"]\r\n\r\n1. Ng4+ fxg4 2. Qg5+ Kg7 3. Qe7+ Kh6 4. Qh4+ Kg7 5. Re7+ Kg8 6. Qxh7+\r\n*",
     "all_moves": [
       {
-        "uci": "c7c1",
-        "san": "Rxc1",
-        "color": "black"
-      },
-      {
-        "uci": "d1c1",
-        "san": "Rxc1",
+        "uci": "e3g4",
+        "san": "Ng4+",
         "color": "white"
       },
       {
-        "uci": "c8c1",
-        "san": "Rxc1+",
+        "uci": "f5g4",
+        "san": "fxg4",
         "color": "black"
       },
       {
-        "uci": "d2c1",
-        "san": "Qxc1",
+        "uci": "e5g5",
+        "san": "Qg5+",
         "color": "white"
       },
       {
-        "uci": "g7d4",
-        "san": "Bxd4",
+        "uci": "h6g7",
+        "san": "Kg7",
         "color": "black"
+      },
+      {
+        "uci": "g5e7",
+        "san": "Qe7+",
+        "color": "white"
+      },
+      {
+        "uci": "g7h6",
+        "san": "Kh6",
+        "color": "black"
+      },
+      {
+        "uci": "e7h4",
+        "san": "Qh4+",
+        "color": "white"
+      },
+      {
+        "uci": "h6g7",
+        "san": "Kg7",
+        "color": "black"
+      },
+      {
+        "uci": "e1e7",
+        "san": "Re7+",
+        "color": "white"
+      },
+      {
+        "uci": "g7g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "h4h7",
+        "san": "Qxh7+",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c7c1",
-        "san": "Rxc1",
-        "color": "black"
+        "uci": "e3g4",
+        "san": "Ng4+",
+        "color": "white"
       },
       {
-        "uci": "c8c1",
-        "san": "Rxc1+",
-        "color": "black"
+        "uci": "e5g5",
+        "san": "Qg5+",
+        "color": "white"
       },
       {
-        "uci": "g7d4",
-        "san": "Bxd4",
-        "color": "black"
+        "uci": "g5e7",
+        "san": "Qe7+",
+        "color": "white"
+      },
+      {
+        "uci": "e7h4",
+        "san": "Qh4+",
+        "color": "white"
+      },
+      {
+        "uci": "e1e7",
+        "san": "Re7+",
+        "color": "white"
+      },
+      {
+        "uci": "h4h7",
+        "san": "Qxh7+",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-14T18:06:34.176539+00:00",
+    "player_color": "white",
+    "player_move_count": 6,
+    "posted_at": "2026-08-14T18:06:55.830117+00:00",
     "answer_posted": false,
-    "winner_user_id": "442597396195704832",
-    "winner_name": "Thice",
+    "winner_user_id": null,
+    "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786730794176",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1537885162673799219,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxd4",
-        "correct": true,
-        "timestamp": "2026-08-14T18:06:47.324328+00:00"
-      }
-    }
+    "puzzle_id": "random_1786730815830",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {}
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
