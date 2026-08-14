@@ -1,77 +1,47 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-10-07",
-    "title": "The Middle of Nowhere",
-    "fen": "rn2kb1r/1b1n1pp1/p3N3/1p2q1Bp/6Q1/8/PPP3PP/2KR1B1R w kq - 0 1",
-    "current_fen": "rn2kb1r/1b1n1pp1/p3N3/1p2q1Bp/6Q1/8/PPP3PP/2KR1B1R w kq - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"rn2kb1r/1b1n1pp1/p3N3/1p2q1Bp/6Q1/8/PPP3PP/2KR1B1R w kq - 0 1\"]\r\n\r\n1.Nc7+ Qxc7 2.Qe2+ Ne5 3.Qxe5+ Qxe5 4.Rd8# *",
+    "url": "https://www.chess.com/daily/2008-06-16",
+    "title": "Brute Force",
+    "fen": "6k1/r3bpP1/p5R1/1p1Qp3/4P3/P7/1PP1q3/1K6 w - - 0 1",
+    "current_fen": "6k1/r3bpP1/p5R1/1p1Qp3/4P3/P7/1PP1q3/1K6 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/r3bpP1/p5R1/1p1Qp3/4P3/P7/1PP1q3/1K6 w - - 0 1\"]\r\n\r\n1. Qxf7+ Kxf7 2. g8=Q#\r\n*",
     "all_moves": [
       {
-        "uci": "e6c7",
-        "san": "Nc7+",
+        "uci": "d5f7",
+        "san": "Qxf7+",
         "color": "white"
       },
       {
-        "uci": "e5c7",
-        "san": "Qxc7",
+        "uci": "g8f7",
+        "san": "Kxf7",
         "color": "black"
       },
       {
-        "uci": "g4e2",
-        "san": "Qe2+",
-        "color": "white"
-      },
-      {
-        "uci": "d7e5",
-        "san": "Ne5",
-        "color": "black"
-      },
-      {
-        "uci": "e2e5",
-        "san": "Qxe5+",
-        "color": "white"
-      },
-      {
-        "uci": "c7e5",
-        "san": "Qxe5",
-        "color": "black"
-      },
-      {
-        "uci": "d1d8",
-        "san": "Rd8#",
+        "uci": "g7g8q",
+        "san": "g8=Q#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e6c7",
-        "san": "Nc7+",
+        "uci": "d5f7",
+        "san": "Qxf7+",
         "color": "white"
       },
       {
-        "uci": "g4e2",
-        "san": "Qe2+",
-        "color": "white"
-      },
-      {
-        "uci": "e2e5",
-        "san": "Qxe5+",
-        "color": "white"
-      },
-      {
-        "uci": "d1d8",
-        "san": "Rd8#",
+        "uci": "g7g8q",
+        "san": "g8=Q#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-14T17:44:08.416602+00:00",
+    "player_move_count": 2,
+    "posted_at": "2026-08-14T17:45:53.267465+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786729448416",
+    "puzzle_id": "random_1786729553267",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
