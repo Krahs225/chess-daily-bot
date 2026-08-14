@@ -1,155 +1,52 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-08-12",
-    "title": "Famous Puzzle",
-    "fen": "k7/P7/P7/P7/P7/P7/P7/R3K3 w Q - 0 1",
-    "current_fen": "k7/P7/P7/P7/P7/P7/P7/R3K3 w Q - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k7/P7/P7/P7/P7/P7/P7/R3K3 w Q - 0 1\"]\r\n\r\n1. O-O-O Kxa7 2. Rd8 Kxa6 3. Rd7 Kxa5 4. Rd6 Kxa4 5. Rd5 Kxa3 6. Rd4 Kxa2 7. Rd3 Ka1 8. Ra3#\r\n*",
+    "url": "https://www.chess.com/daily/2011-12-12",
+    "title": "Mate in 2",
+    "fen": "rn6/k1p5/b1P2Q2/8/8/8/2q5/7K w - - 0 1",
+    "current_fen": "rn6/k1p5/b1P2Q2/8/8/8/2q5/7K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn6/k1p5/b1P2Q2/8/8/8/2q5/7K w - - 0 1\"]\r\n\r\n1. Qd4+ Qc5 2. Qxc5#\r\n*",
     "all_moves": [
       {
-        "uci": "e1c1",
-        "san": "O-O-O",
+        "uci": "f6d4",
+        "san": "Qd4+",
         "color": "white"
       },
       {
-        "uci": "a8a7",
-        "san": "Kxa7",
+        "uci": "c2c5",
+        "san": "Qc5",
         "color": "black"
       },
       {
-        "uci": "d1d8",
-        "san": "Rd8",
-        "color": "white"
-      },
-      {
-        "uci": "a7a6",
-        "san": "Kxa6",
-        "color": "black"
-      },
-      {
-        "uci": "d8d7",
-        "san": "Rd7",
-        "color": "white"
-      },
-      {
-        "uci": "a6a5",
-        "san": "Kxa5",
-        "color": "black"
-      },
-      {
-        "uci": "d7d6",
-        "san": "Rd6",
-        "color": "white"
-      },
-      {
-        "uci": "a5a4",
-        "san": "Kxa4",
-        "color": "black"
-      },
-      {
-        "uci": "d6d5",
-        "san": "Rd5",
-        "color": "white"
-      },
-      {
-        "uci": "a4a3",
-        "san": "Kxa3",
-        "color": "black"
-      },
-      {
-        "uci": "d5d4",
-        "san": "Rd4",
-        "color": "white"
-      },
-      {
-        "uci": "a3a2",
-        "san": "Kxa2",
-        "color": "black"
-      },
-      {
-        "uci": "d4d3",
-        "san": "Rd3",
-        "color": "white"
-      },
-      {
-        "uci": "a2a1",
-        "san": "Ka1",
-        "color": "black"
-      },
-      {
-        "uci": "d3a3",
-        "san": "Ra3#",
+        "uci": "d4c5",
+        "san": "Qxc5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1c1",
-        "san": "O-O-O",
+        "uci": "f6d4",
+        "san": "Qd4+",
         "color": "white"
       },
       {
-        "uci": "d1d8",
-        "san": "Rd8",
-        "color": "white"
-      },
-      {
-        "uci": "d8d7",
-        "san": "Rd7",
-        "color": "white"
-      },
-      {
-        "uci": "d7d6",
-        "san": "Rd6",
-        "color": "white"
-      },
-      {
-        "uci": "d6d5",
-        "san": "Rd5",
-        "color": "white"
-      },
-      {
-        "uci": "d5d4",
-        "san": "Rd4",
-        "color": "white"
-      },
-      {
-        "uci": "d4d3",
-        "san": "Rd3",
-        "color": "white"
-      },
-      {
-        "uci": "d3a3",
-        "san": "Ra3#",
+        "uci": "d4c5",
+        "san": "Qxc5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 8,
-    "posted_at": "2026-08-14T18:28:39.479434+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-14T18:30:23.689935+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786732119479",
+    "puzzle_id": "random_1786732223689",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1537890723041378347,
-    "attempted_users": {
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "rd1",
-        "correct": false,
-        "timestamp": "2026-08-14T18:30:13.893415+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "kc1",
-        "correct": false,
-        "timestamp": "2026-08-14T18:30:18.357495+00:00"
-      }
-    },
+    "message_id": null,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
