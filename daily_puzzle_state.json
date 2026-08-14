@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-01-06",
-    "title": "Zig and Zug",
-    "fen": "8/3B2k1/6p1/2P3Kp/1P5P/b4N2/5P2/8 b - - 0 1",
-    "current_fen": "8/3B2k1/6p1/2P2PKp/1P5P/8/3b4/8 w - - 1 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/3B2k1/6p1/2P3Kp/1P5P/b4N2/5P2/8 b - - 0 1\"]\r\n\r\n1... Bc1+ 2. Nd2 Bxd2+ 3. f4 Bc3 4. f5 Bd2# *",
+    "url": "https://www.chess.com/daily/2024-02-04",
+    "title": "Stuk in a Mating Nyzhnet",
+    "fen": "1q1r1k2/5P1Q/2p2bBp/p2P4/1pP3P1/1P3p2/P4P2/6K1 w - - 0 40",
+    "current_fen": "1q1r1k2/5P1Q/2p2bBp/p2P4/1pP3P1/1P3p2/P4P2/6K1 w - - 0 40",
+    "pgn": "[Event \"Pan-Am Intercollegiate\"]\r\n[Site \"Kenner USA\"]\r\n[Date \"2016.12.30\"]\r\n[Round \"?\"]\r\n[White \"Andrey Stukopin\"]\r\n[Black \"Illya Nyzhnyk\"]\r\n[Result \"1-0\"]\r\n[FEN \"1q1r1k2/5P1Q/2p2bBp/p2P4/1pP3P1/1P3p2/P4P2/6K1 w - - 0 40\"]\r\n\r\n40. d6 Qxd6 41. Qg8+ Ke7 42. Qe8+ Rxe8 43. fxe8=Q# 1-0",
     "all_moves": [
       {
-        "uci": "a3c1",
-        "san": "Bc1+",
-        "color": "black"
-      },
-      {
-        "uci": "f3d2",
-        "san": "Nd2",
+        "uci": "d5d6",
+        "san": "d6",
         "color": "white"
       },
       {
-        "uci": "c1d2",
-        "san": "Bxd2+",
+        "uci": "b8d6",
+        "san": "Qxd6",
         "color": "black"
       },
       {
-        "uci": "f2f4",
-        "san": "f4",
+        "uci": "h7g8",
+        "san": "Qg8+",
         "color": "white"
       },
       {
-        "uci": "d2c3",
-        "san": "Bc3",
+        "uci": "f8e7",
+        "san": "Ke7",
         "color": "black"
       },
       {
-        "uci": "f4f5",
-        "san": "f5",
+        "uci": "g8e8",
+        "san": "Qe8+",
         "color": "white"
       },
       {
-        "uci": "c3d2",
-        "san": "Bd2#",
+        "uci": "d8e8",
+        "san": "Rxe8",
         "color": "black"
+      },
+      {
+        "uci": "f7e8q",
+        "san": "fxe8=Q#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a3c1",
-        "san": "Bc1+",
-        "color": "black"
+        "uci": "d5d6",
+        "san": "d6",
+        "color": "white"
       },
       {
-        "uci": "c1d2",
-        "san": "Bxd2+",
-        "color": "black"
+        "uci": "h7g8",
+        "san": "Qg8+",
+        "color": "white"
       },
       {
-        "uci": "d2c3",
-        "san": "Bc3",
-        "color": "black"
+        "uci": "g8e8",
+        "san": "Qe8+",
+        "color": "white"
       },
       {
-        "uci": "c3d2",
-        "san": "Bd2#",
-        "color": "black"
+        "uci": "f7e8q",
+        "san": "fxe8=Q#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-14T20:05:46.235270+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-14T20:06:13.822610+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786737946235",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1537915160809701409,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bd2",
-        "correct": true,
-        "timestamp": "2026-08-14T20:06:07.664979+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786737973822",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
