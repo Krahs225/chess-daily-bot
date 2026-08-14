@@ -5,7 +5,7 @@ import re
 import asyncio
 import json
 import subprocess
-from datetime import timedelta
+from datetime import timedelta, datetime
 from pathlib import Path
 
 
@@ -30,7 +30,7 @@ ANSWER_DELAY_SECONDS = 3 * 60
 # Leaderboard every 10 minutes
 LEADERBOARD_INTERVAL_SECONDS = 10 * 60
 
-# Persistent leaderboard file
+# Permanent leaderboard
 SCORES_FILE = "guess_chatter_scores.json"
 
 
@@ -89,14 +89,7 @@ client = discord.Client(intents=intents)
 
 scores = {}
 
-# Active polls:
-# message_id -> {
-#     "correct_username": "...",
-#     "correct_display_name": "...",
-#     "votes": {
-#         "discord_user_id": answer_id
-#     }
-# }
+# Active polls
 active_polls = {}
 
 scores_lock = asyncio.Lock()
@@ -211,7 +204,6 @@ def push_scores_to_github():
             text=True
         )
 
-        # No changes to commit
         if commit.returncode != 0:
             return
 
@@ -233,14 +225,14 @@ def push_scores_to_github():
         )
 
         print(
-            "Leaderboard saved permanently to GitHub.",
+            "Leaderboard saved permanently.",
             flush=True
         )
 
     except Exception as error:
 
         print(
-            f"Could not save leaderboard to GitHub: {error}",
+            f"Could not save leaderboard: {error}",
             flush=True
         )
 
@@ -255,7 +247,7 @@ async def save_scores_permanently():
 
 
 # =========================================================
-# CHATTER PARSING
+# CHATTER MATCHING
 # =========================================================
 
 def find_chatter(prefix):
@@ -285,6 +277,28 @@ def find_chatter(prefix):
 
     return matches[0][1], matches[0][2]
 
+
+# =========================================================
+# DATE PARSING
+# =========================================================
+
+def parse_date(date_string):
+
+    try:
+
+        return datetime.strptime(
+            date_string,
+            "%d-%m-%Y"
+        ).date()
+
+    except ValueError:
+
+        return None
+
+
+# =========================================================
+# LOAD CHATTERS + THEIR ACTIVE PERIOD
+# =========================================================
 
 def load_chatters():
 
@@ -393,6 +407,94 @@ def load_chatters():
     }
 
 
+# =========================================================
+# GET ACTIVE PERIOD FOR EACH CHATTER
+# =========================================================
+
+def build_active_periods(chatters):
+
+    periods = {}
+
+    for username, messages in chatters.items():
+
+        dates = []
+
+        for _, date_string in messages:
+
+            parsed = parse_date(
+                date_string
+            )
+
+            if parsed:
+                dates.append(parsed)
+
+        if not dates:
+            continue
+
+        periods[username] = {
+            "first": min(dates),
+            "last": max(dates)
+        }
+
+        print(
+            f"{display_name_for(username)}: "
+            f"{min(dates)} -> {max(dates)}",
+            flush=True
+        )
+
+    return periods
+
+
+# =========================================================
+# FIND CHATTERS ACTIVE ON A DATE
+# =========================================================
+
+def get_active_chatters(
+    quote_date,
+    chatters,
+    active_periods
+):
+
+    parsed_quote_date = parse_date(
+        quote_date
+    )
+
+    if parsed_quote_date is None:
+        return []
+
+    eligible = []
+
+    for username in chatters.keys():
+
+        period = active_periods.get(
+            username
+        )
+
+        if not period:
+            continue
+
+        first_date = period["first"]
+        last_date = period["last"]
+
+        # The chatter must have been active
+        # during the date of the quote.
+        if (
+            first_date
+            <= parsed_quote_date
+            <= last_date
+        ):
+
+            eligible.append(
+                username
+            )
+
+    return eligible
+
+
+# =========================================================
+# DISPLAY NAME
+# =========================================================
+
 def display_name_for(username):
 
     for display_name, exact_username in CHATTERS.items():
@@ -431,7 +533,6 @@ def make_leaderboard():
         ""
     ]
 
-    # Keep all players for now
     for rank, (_, player) in enumerate(
         ordered,
         start=1
@@ -498,7 +599,6 @@ async def add_point(user):
                 "points": 0
             }
 
-        # Always keep the current Discord name
         scores[user_id]["name"] = (
             display_name
         )
@@ -520,33 +620,67 @@ async def add_point(user):
 
 async def post_guess(
     channel,
-    chatters
+    chatters,
+    active_periods
 ):
 
-    if len(chatters) < POLL_OPTIONS:
+    # Try several random quotes until we find
+    # one with at least 5 eligible people.
+    possible_quotes = []
+
+    for username, messages in chatters.items():
+
+        for message, date in messages:
+
+            eligible = get_active_chatters(
+                date,
+                chatters,
+                active_periods
+            )
+
+            if len(eligible) >= POLL_OPTIONS:
+
+                possible_quotes.append(
+                    (
+                        username,
+                        message,
+                        date,
+                        eligible
+                    )
+                )
+
+    if not possible_quotes:
 
         await channel.send(
-            "Not enough valid chatters "
-            "for a 5-option poll."
+            "⚠️ Not enough time-period-matched "
+            "chatters for a 5-option poll."
         )
 
         return
 
-    username = random.choice(
-        list(chatters.keys())
-    )
-
-    message, date = random.choice(
-        chatters[username]
+    # Pick a random quote that has
+    # at least 5 valid candidates.
+    (
+        username,
+        message,
+        date,
+        eligible
+    ) = random.choice(
+        possible_quotes
     )
 
     correct_display_name = (
         display_name_for(username)
     )
 
+    # We already know the correct chatter
+    # is active during this date.
+    #
+    # Choose exactly 4 other people
+    # from the same active period.
     wrong_usernames = [
         name
-        for name in chatters.keys()
+        for name in eligible
         if name != username
     ]
 
@@ -589,8 +723,6 @@ async def post_guess(
         poll=poll
     )
 
-    # Find the answer ID belonging
-    # to the correct chatter.
     correct_answer_id = None
 
     for answer in poll.answers:
@@ -616,18 +748,18 @@ async def post_guess(
     }
 
     print(
-        f"Poll created: {poll_message.id} "
-        f"correct answer = "
-        f"{correct_display_name}",
+        f"Poll created: {poll_message.id} | "
+        f"quote date={date} | "
+        f"correct={correct_display_name} | "
+        f"eligible={len(eligible)}",
         flush=True
     )
 
-    # Wait 3 minutes
+    # Close after 3 minutes
     await asyncio.sleep(
         ANSWER_DELAY_SECONDS
     )
 
-    # End poll
     try:
 
         await poll_message.end_poll()
@@ -636,7 +768,7 @@ async def post_guess(
 
         pass
 
-    # Give points based on the votes
+    # Award points
     poll_data = active_polls.get(
         poll_message.id
     )
@@ -688,7 +820,6 @@ async def post_guess(
             poll_message.id
         ]
 
-    # Answer message
     await channel.send(
         f"🔓 **The answer was:** "
         f"||{correct_display_name}||"
@@ -696,7 +827,7 @@ async def post_guess(
 
 
 # =========================================================
-# POLL VOTE EVENTS
+# POLL VOTES
 # =========================================================
 
 @client.event
@@ -715,10 +846,7 @@ async def on_raw_poll_vote_add(
         payload.user_id
     )
 
-    # Store the user's current vote.
-    #
-    # If they change their vote,
-    # the latest answer replaces the old one.
+    # Latest vote is always stored.
     poll_data[
         "votes"
     ][user_id] = payload.answer_id
@@ -782,8 +910,6 @@ async def on_ready():
 
     global scores
 
-    # IMPORTANT:
-    # Load old points instead of starting from 0.
     scores = load_scores()
 
     try:
@@ -813,17 +939,27 @@ async def on_ready():
 
         return
 
+    # Build the active period for
+    # every chatter ONCE at startup.
+    active_periods = build_active_periods(
+        chatters
+    )
+
     print(
         f"Loaded {len(chatters)} chatters.",
         flush=True
     )
 
     print(
-        "Guess the Chatter is running.",
+        "Guess the Chatter is running "
+        "with time-period filtering.",
         flush=True
     )
 
-    # Leaderboard task
+    # =====================================================
+    # LEADERBOARD LOOP
+    # =====================================================
+
     async def leaderboard_loop():
 
         while True:
@@ -849,7 +985,10 @@ async def on_ready():
         leaderboard_loop()
     )
 
-    # Main quote loop
+    # =====================================================
+    # QUOTE LOOP
+    # =====================================================
+
     while True:
 
         start_time = (
@@ -861,7 +1000,8 @@ async def on_ready():
 
             await post_guess(
                 channel,
-                chatters
+                chatters,
+                active_periods
             )
 
         except Exception as error:
