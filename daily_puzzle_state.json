@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-08-12",
     "title": "Famous Puzzle",
     "fen": "k7/P7/P7/P7/P7/P7/P7/R3K3 w Q - 0 1",
-    "current_fen": "k7/P7/P7/P7/P7/P7/P7/R3K3 w Q - 0 1",
+    "current_fen": "8/k7/P7/P7/P7/P7/P7/2KR4 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k7/P7/P7/P7/P7/P7/P7/R3K3 w Q - 0 1\"]\r\n\r\n1. O-O-O Kxa7 2. Rd8 Kxa6 3. Rd7 Kxa5 4. Rd6 Kxa4 5. Rd5 Kxa3 6. Rd4 Kxa2 7. Rd3 Ka1 8. Ra3#\r\n*",
     "all_moves": [
       {
@@ -132,13 +132,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786735109893",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1537903264505536524,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "e1c1",
+        "correct": true,
+        "timestamp": "2026-08-14T19:18:36.612087+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
