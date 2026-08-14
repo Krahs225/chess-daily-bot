@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-07-02",
     "title": "Contents Under Pressure",
     "fen": "5rk1/4npp1/2pn2qp/p1pNp1b1/1rB1P3/1PQ2PN1/2PR2PP/3R2K1 w - - 0 1",
-    "current_fen": "8/4Nppk/2pr2qp/p1p1p3/1rB1P3/1PQ2P2/2P3PP/6K1 w - - 2 6",
+    "current_fen": "8/5ppk/2pr2Np/p1p1p3/1rB1P3/1PQ2P2/2P3PP/6K1 b - - 0 6",
     "pgn": "[Result \"*\"]\r\n[FEN \"5rk1/4npp1/2pn2qp/p1pNp1b1/1rB1P3/1PQ2PN1/2PR2PP/3R2K1 w - - 0 1\"]\r\n\r\n1.Nxe7+ Bxe7 2.Rxd6 Bxd6 3.Nf5 Rd8 4.Rxd6 Rxd6 5.Ne7+ Kh7 6.Nxg6 *",
     "all_moves": [
       {
@@ -102,16 +102,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786737865203",
-    "next_solution_index": 10,
-    "next_player_index": 5,
-    "solved": false,
+    "next_solution_index": 11,
+    "next_player_index": 6,
+    "solved": true,
     "message_id": 1537914821218140182,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "ne7",
+        "move": "nxg6",
         "correct": true,
-        "timestamp": "2026-08-14T20:05:20.832814+00:00"
+        "timestamp": "2026-08-14T20:05:23.227882+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -122,8 +122,10 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
