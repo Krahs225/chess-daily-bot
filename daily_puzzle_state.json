@@ -48,5 +48,79 @@
     "message_id": null,
     "attempted_users": {}
   },
-  "latest_puzzle_type": "random"
+  "latest_puzzle_type": "daily",
+  "current_puzzle": {
+    "url": "https://www.chess.com/daily/2026-08-14",
+    "title": "Zig, Zag, in the Bag!",
+    "fen": "2r4k/1b6/1p1q3p/3P1B2/1P4P1/4Q3/r6P/5RK1 w - - 0 1",
+    "current_fen": "2r4k/1b6/1p1q3p/3P1B2/1P4P1/4Q3/r6P/5RK1 w - - 0 1",
+    "pgn": "[Result \"1-0\"]\n[FEN \"2r4k/1b6/1p1q3p/3P1B2/1P4P1/4Q3/r6P/5RK1 w - - 0 1\"]\n\n1. Qd4+ Kg8 2. Bh7+ Kxh7 3. Rf7+ Kg8 4. Qg7# 1-0",
+    "all_moves": [
+      {
+        "uci": "e3d4",
+        "san": "Qd4+",
+        "color": "white"
+      },
+      {
+        "uci": "h8g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "f5h7",
+        "san": "Bh7+",
+        "color": "white"
+      },
+      {
+        "uci": "g8h7",
+        "san": "Kxh7",
+        "color": "black"
+      },
+      {
+        "uci": "f1f7",
+        "san": "Rf7+",
+        "color": "white"
+      },
+      {
+        "uci": "h7g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "d4g7",
+        "san": "Qg7#",
+        "color": "white"
+      }
+    ],
+    "player_moves": [
+      {
+        "uci": "e3d4",
+        "san": "Qd4+",
+        "color": "white"
+      },
+      {
+        "uci": "f5h7",
+        "san": "Bh7+",
+        "color": "white"
+      },
+      {
+        "uci": "f1f7",
+        "san": "Rf7+",
+        "color": "white"
+      },
+      {
+        "uci": "d4g7",
+        "san": "Qg7#",
+        "color": "white"
+      }
+    ],
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-14T17:54:57.817254+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "daily_1786730097817"
+  }
 }
