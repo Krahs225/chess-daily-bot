@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-09-25",
     "title": "Closing Squares, Opening Lanes",
     "fen": "r3k2r/1b1n1pb1/p2p2pn/q2P3p/Npp3P1/1P2BN1P/P1PQBP2/2KR2R1 b kq - 0 13",
-    "current_fen": "r3k2r/1b1n1pb1/p2p2pn/q2P3p/Npp3P1/1P2BN1P/P1PQBP2/2KR2R1 b kq - 0 13",
+    "current_fen": "r3k2r/1b1n1p2/p2p2pn/q2P3p/1pp3P1/1PN1BN1P/P1PQBP2/2KR2R1 b kq - 0 14",
     "pgn": "[Event \"?\"]\r\n[Site \"Chess.com\"]\r\n[Date \"????.??.??\"]\r\n[White \"Daily Puzzle Inspiration\"]\r\n[Black \"Wouter Bik\"]\r\n[Result \"0-1\"]\r\n[FEN \"r3k2r/1b1n1pb1/p2p2pn/q2P3p/Npp3P1/1P2BN1P/P1PQBP2/2KR2R1 b kq - 0 13\"]\r\n\r\n13... Bc3 14. Nxc3 bxc3 15. Qd4 Qa3+ 16. Kb1 Qb2# 0-1",
     "all_moves": [
       {
@@ -72,20 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786740650683",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1537926504472772669,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bb2",
-        "correct": false,
-        "timestamp": "2026-08-14T20:50:58.160782+00:00"
+        "move": "bc3",
+        "correct": true,
+        "timestamp": "2026-08-14T20:51:11.402573+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
