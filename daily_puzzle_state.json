@@ -1,51 +1,66 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-09-29",
-    "title": "Olympiad Fever",
-    "fen": "2r1r1k1/4bppp/pq1p1nb1/1p2n3/4PPP1/4N2P/PPBN4/R1BQR1K1 b - - 0 1",
-    "current_fen": "2r1r1k1/4bppp/pq1p1nb1/1p2n3/4PPP1/4N2P/PPBN4/R1BQR1K1 b - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1r1k1/4bppp/pq1p1nb1/1p2n3/4PPP1/4N2P/PPBN4/R1BQR1K1 b - - 0 1\"]\r\n\r\n1...Nd5 2. exd5 Bxc2\r\n*",
+    "url": "https://www.chess.com/daily/2017-02-19",
+    "title": "Forward And Reverse",
+    "fen": "1r4k1/5np1/5p2/8/8/1B6/4Q3/6KR w K - 0 1",
+    "current_fen": "1r4k1/5np1/5p2/8/8/1B6/4Q3/6KR w K - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r4k1/5np1/5p2/8/8/1B6/4Q3/6KR w K - 0 1\"]\r\n\r\n1. Qe6 Rf8 2. Qh3 Rb8 3. Qh8#\r\n*",
     "all_moves": [
       {
-        "uci": "f6d5",
-        "san": "Nd5",
-        "color": "black"
-      },
-      {
-        "uci": "e4d5",
-        "san": "exd5",
+        "uci": "e2e6",
+        "san": "Qe6",
         "color": "white"
       },
       {
-        "uci": "g6c2",
-        "san": "Bxc2",
+        "uci": "b8f8",
+        "san": "Rf8",
         "color": "black"
+      },
+      {
+        "uci": "e6h3",
+        "san": "Qh3",
+        "color": "white"
+      },
+      {
+        "uci": "f8b8",
+        "san": "Rb8",
+        "color": "black"
+      },
+      {
+        "uci": "h3h8",
+        "san": "Qh8#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f6d5",
-        "san": "Nd5",
-        "color": "black"
+        "uci": "e2e6",
+        "san": "Qe6",
+        "color": "white"
       },
       {
-        "uci": "g6c2",
-        "san": "Bxc2",
-        "color": "black"
+        "uci": "e6h3",
+        "san": "Qh3",
+        "color": "white"
+      },
+      {
+        "uci": "h3h8",
+        "san": "Qh8#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-14T18:33:36.899558+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-14T18:34:14.043665+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786732416899",
+    "puzzle_id": "random_1786732454043",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1537891971392208926,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
