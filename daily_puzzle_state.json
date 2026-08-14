@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-01-08",
     "title": "Mate in 3",
     "fen": "Q7/1P3p2/2k1n3/2N5/3P3b/4P3/1r2b3/7K b - - 0 1",
-    "current_fen": "Q7/1P3p2/2k1n3/2N5/3P3b/4Pb2/1r6/6K1 b - - 2 2",
+    "current_fen": "Q7/1P3p2/2k1n3/2N5/3P3b/4Pb2/7K/1r6 b - - 4 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"Q7/1P3p2/2k1n3/2N5/3P3b/4P3/1r2b3/7K b - - 0 1\"]\r\n\r\n1... Bf3+ 2. Kg1 Rb1+ 3. Kh2 Rh1# *",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786735227928",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1537903759940780053,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bf2",
-        "correct": false,
-        "timestamp": "2026-08-14T19:20:57.253655+00:00"
+        "move": "rb1",
+        "correct": true,
+        "timestamp": "2026-08-14T19:21:02.864679+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
