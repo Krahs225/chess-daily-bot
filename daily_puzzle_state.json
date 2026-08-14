@@ -1,81 +1,81 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-04-04",
-    "title": "Bailing Out",
-    "fen": "6k1/5p2/6p1/6P1/2Bp4/4bP1K/2p5/1qB1Q3 w - - 0 1",
-    "current_fen": "6k1/5p2/6p1/6P1/2Bp4/4bP1K/2p5/1qB1Q3 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/5p2/6p1/6P1/2Bp4/4bP1K/2p5/1qB1Q3 w - - 0 1\"]\r\n\r\n1. Qa5 Qxc1 2. Bxf7+ Kxf7 3. Qd5+ Ke7 4. Qe5+\r\n*",
+    "url": "https://www.chess.com/daily/2023-05-06",
+    "title": "Give Squares to Get Squares",
+    "fen": "2bq1rk1/4bpp1/1p5p/2p3nQ/PnPp4/1N1P3P/PB2BPP1/R3R1K1 b - - 0 1",
+    "current_fen": "2bq1rk1/4bpp1/1p5p/2p3nQ/PnPp4/1N1P3P/PB2BPP1/R3R1K1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2bq1rk1/4bpp1/1p5p/2p3nQ/PnPp4/1N1P3P/PB2BPP1/R3R1K1 b - - 0 1\"]\r\n\r\n1... g6 2. Qxh6 Nxh3+ 3. gxh3 Bg5 4. Bc1 Bxh6 *",
     "all_moves": [
       {
-        "uci": "e1a5",
-        "san": "Qa5",
-        "color": "white"
-      },
-      {
-        "uci": "b1c1",
-        "san": "Qxc1",
+        "uci": "g7g6",
+        "san": "g6",
         "color": "black"
       },
       {
-        "uci": "c4f7",
-        "san": "Bxf7+",
+        "uci": "h5h6",
+        "san": "Qxh6",
         "color": "white"
       },
       {
-        "uci": "g8f7",
-        "san": "Kxf7",
+        "uci": "g5h3",
+        "san": "Nxh3+",
         "color": "black"
       },
       {
-        "uci": "a5d5",
-        "san": "Qd5+",
+        "uci": "g2h3",
+        "san": "gxh3",
         "color": "white"
       },
       {
-        "uci": "f7e7",
-        "san": "Ke7",
+        "uci": "e7g5",
+        "san": "Bg5",
         "color": "black"
       },
       {
-        "uci": "d5e5",
-        "san": "Qe5+",
+        "uci": "b2c1",
+        "san": "Bc1",
         "color": "white"
+      },
+      {
+        "uci": "g5h6",
+        "san": "Bxh6",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1a5",
-        "san": "Qa5",
-        "color": "white"
+        "uci": "g7g6",
+        "san": "g6",
+        "color": "black"
       },
       {
-        "uci": "c4f7",
-        "san": "Bxf7+",
-        "color": "white"
+        "uci": "g5h3",
+        "san": "Nxh3+",
+        "color": "black"
       },
       {
-        "uci": "a5d5",
-        "san": "Qd5+",
-        "color": "white"
+        "uci": "e7g5",
+        "san": "Bg5",
+        "color": "black"
       },
       {
-        "uci": "d5e5",
-        "san": "Qe5+",
-        "color": "white"
+        "uci": "g5h6",
+        "san": "Bxh6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 4,
-    "posted_at": "2026-08-14T18:42:10.308175+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-14T18:42:35.249894+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786732930308",
+    "puzzle_id": "random_1786732955249",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1537894123431002143,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
