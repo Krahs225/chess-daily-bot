@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-11-06",
-    "title": "Sink or Swim",
-    "fen": "2r2r2/1p4kp/5bp1/p2B4/nn2Pp2/3q1PN1/1P5Q/K5R1 w - - 0 2",
-    "current_fen": "2r2r2/1p5k/6p1/p2B1N2/nn2Pp1R/3q1P2/1P6/K7 b - - 0 5",
-    "pgn": "[Result \"1-0\"]\r\n[FEN \"2r2r2/1p4kp/5bp1/p2B4/nn2Pp2/3q1PN1/1P5Q/K5R1 w - - 0 2\"]\r\n\r\n2. Nf5+ Kh8 3. Qxh7+ Kxh7 4. Rh1+ Bh4 5. Rxh4# 1-0",
+    "url": "https://www.chess.com/daily/2012-03-24",
+    "title": "Tal - NN, simul Stuttgart 1958",
+    "fen": "2r1k3/1p1bppb1/p2p1np1/q3n1P1/3NP3/2N1BP2/PPPQB3/1K1R3r w - - 0 1",
+    "current_fen": "2r1k3/1p1bppb1/p2p1np1/q3n1P1/3NP3/2N1BP2/PPPQB3/1K1R3r w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1k3/1p1bppb1/p2p1np1/q3n1P1/3NP3/2N1BP2/PPPQB3/1K1R3r w - - 0 1\"]\r\n\r\n1. gxf6 Rxd1+ 2. Nxd1 Qxd2 3. fxg7\r\n*",
     "all_moves": [
       {
-        "uci": "g3f5",
-        "san": "Nf5+",
+        "uci": "g5f6",
+        "san": "gxf6",
         "color": "white"
       },
       {
-        "uci": "g7h8",
-        "san": "Kh8",
+        "uci": "h1d1",
+        "san": "Rxd1+",
         "color": "black"
       },
       {
-        "uci": "h2h7",
-        "san": "Qxh7+",
+        "uci": "c3d1",
+        "san": "Nxd1",
         "color": "white"
       },
       {
-        "uci": "h8h7",
-        "san": "Kxh7",
+        "uci": "a5d2",
+        "san": "Qxd2",
         "color": "black"
       },
       {
-        "uci": "g1h1",
-        "san": "Rh1+",
-        "color": "white"
-      },
-      {
-        "uci": "f6h4",
-        "san": "Bh4",
-        "color": "black"
-      },
-      {
-        "uci": "h1h4",
-        "san": "Rxh4#",
+        "uci": "f6g7",
+        "san": "fxg7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g3f5",
-        "san": "Nf5+",
+        "uci": "g5f6",
+        "san": "gxf6",
         "color": "white"
       },
       {
-        "uci": "h2h7",
-        "san": "Qxh7+",
+        "uci": "c3d1",
+        "san": "Nxd1",
         "color": "white"
       },
       {
-        "uci": "g1h1",
-        "san": "Rh1+",
-        "color": "white"
-      },
-      {
-        "uci": "h1h4",
-        "san": "Rxh4#",
+        "uci": "f6g7",
+        "san": "fxg7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-14T19:15:15.901607+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-14T19:16:18.439798+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786734915901",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1537902450999304283,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxh4",
-        "correct": true,
-        "timestamp": "2026-08-14T19:15:32.321314+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786734978439",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
