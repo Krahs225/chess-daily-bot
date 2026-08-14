@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-10-15",
     "title": "A Vulnerable Rank",
     "fen": "6k1/Q1R4p/p2b1pp1/3br3/6N1/4P2P/P5PK/3q4 w - - 0 43",
-    "current_fen": "6k1/Q1R4p/p2b1pp1/3br3/6N1/4P2P/P5PK/3q4 w - - 0 43",
+    "current_fen": "5k2/Q1R4p/p2b1ppN/3br3/8/4P2P/P5PK/3q4 w - - 2 44",
     "pgn": "[Event \"Acasusso Valle op\"]\r\n[Site \"Acasusso\"]\r\n[Date \"1991.??.??\"]\r\n[Round \"5\"]\r\n[White \"Justo, Damian\"]\r\n[Black \"Filgueira, Hernan\"]\r\n[Result \"1-0\"]\r\n[ECO \"E61\"]\r\n[WhiteElo \"2310\"]\r\n[BlackElo \"2290\"]\r\n[FEN \"6k1/Q1R4p/p2b1pp1/3br3/6N1/4P2P/P5PK/3q4 w - - 0 43\"]\r\n\r\n43. Nh6+ Kf8 44. Rf7+ Bxf7 45. Qxf7# 1-0",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786737065016",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1537911466362011801,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nxf6",
-        "correct": false,
-        "timestamp": "2026-08-14T19:51:16.007579+00:00"
+        "move": "nh6",
+        "correct": true,
+        "timestamp": "2026-08-14T19:51:20.966508+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
