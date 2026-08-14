@@ -21,62 +21,77 @@
     "points_awarded": []
   },
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-11-24",
-    "title": "Double Threats",
-    "fen": "6k1/3n1p2/1p2pnpp/p7/b2P3q/4PP2/3N2P1/3QBBK1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/3n1p2/1p2pnpp/p7/b2P3q/4PP2/3N2P1/3QBBK1 w - - 0 1\"]\r\n\r\n1. Qa1 Qg5 2. f4 Qh5 3. Qxa4\r\n*",
+    "url": "https://www.chess.com/daily/2026-06-18",
+    "title": "Circle Dance",
+    "fen": "3rrq1k/1p1b2p1/pn2p1Q1/3pP3/3P3P/P4N2/1P1B1PP1/4K2R w K - 0 1",
+    "pgn": "[Result \"*\"]\n[FEN \"3rrq1k/1p1b2p1/pn2p1Q1/3pP3/3P3P/P4N2/1P1B1PP1/4K2R w K - 0 1\"]\n\n1. Ng5 Qf5 2. Nf7+ Kg8 3. Nh6+ Kh8 4. Nxf5 *",
     "all_moves": [
       {
-        "uci": "d1a1",
-        "san": "Qa1",
+        "uci": "f3g5",
+        "san": "Ng5",
         "color": "white"
       },
       {
-        "uci": "h4g5",
-        "san": "Qg5",
+        "uci": "f8f5",
+        "san": "Qf5",
         "color": "black"
       },
       {
-        "uci": "f3f4",
-        "san": "f4",
+        "uci": "g5f7",
+        "san": "Nf7+",
         "color": "white"
       },
       {
-        "uci": "g5h5",
-        "san": "Qh5",
+        "uci": "h8g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "a1a4",
-        "san": "Qxa4",
+        "uci": "f7h6",
+        "san": "Nh6+",
+        "color": "white"
+      },
+      {
+        "uci": "g8h8",
+        "san": "Kh8",
+        "color": "black"
+      },
+      {
+        "uci": "h6f5",
+        "san": "Nxf5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1a1",
-        "san": "Qa1",
+        "uci": "f3g5",
+        "san": "Ng5",
         "color": "white"
       },
       {
-        "uci": "f3f4",
-        "san": "f4",
+        "uci": "g5f7",
+        "san": "Nf7+",
         "color": "white"
       },
       {
-        "uci": "a1a4",
-        "san": "Qxa4",
+        "uci": "f7h6",
+        "san": "Nh6+",
+        "color": "white"
+      },
+      {
+        "uci": "h6f5",
+        "san": "Nxf5",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-14T15:18:22.848960+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-14T15:24:58.563285+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786720702848"
+    "puzzle_id": "random_1786721098563"
   },
   "latest_puzzle_type": "random"
 }
