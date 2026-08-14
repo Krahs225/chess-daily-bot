@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-09-24",
     "title": "Your Own Worst Enemy",
     "fen": "6k1/R4r1p/2b5/2rp2p1/P4p2/KP6/2P2R1P/8 w - - 0 1",
-    "current_fen": "8/5k1p/2b5/2rp2p1/P4p2/KP6/2P2R1P/8 w - - 0 2",
+    "current_fen": "8/5k1p/2b5/3p2p1/PKr2p2/1P6/2P2R1P/8 w - - 2 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/R4r1p/2b5/2rp2p1/P4p2/KP6/2P2R1P/8 w - - 0 1\"]\r\n\r\n1. Rxf7 Kxf7 2. Kb4 Rc4+ 3. bxc4\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,22 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786736703414",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1537909948502245446,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rxf7",
+        "move": "Kb4",
         "correct": true,
-        "timestamp": "2026-08-14T19:45:18.723799+00:00"
+        "timestamp": "2026-08-14T19:45:24.010150+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "kb4",
+        "correct": false,
+        "timestamp": "2026-08-14T19:45:24.012234+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
