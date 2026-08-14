@@ -19,21 +19,22 @@ CHANNEL_ID = 1536769340970373241
 MIN_CHARACTERS = 20
 CHAT_DIR = "SOLO chats"
 
-POLL_OPTIONS = 5
+NORMAL_POLL_OPTIONS = 5
+HARD_POLL_OPTIONS = 6
 
-# New quote every 5 minutes
+# One quote every 5 minutes
 QUOTE_INTERVAL_SECONDS = 5 * 60
 
-# Answer after 3 minutes
+# Reveal answer after 3 minutes
 ANSWER_DELAY_SECONDS = 3 * 60
 
 # Leaderboard every 10 minutes
 LEADERBOARD_INTERVAL_SECONDS = 10 * 60
 
-# Permanent all-time leaderboard
+# Permanent leaderboard
 SCORES_FILE = "guess_chatter_scores.json"
 
-# Separate persistent weekly data
+# Weekly statistics
 WEEKLY_FILE = "guess_chatter_weekly.json"
 
 # Context
@@ -80,6 +81,142 @@ CHATTERS = {
 
 
 # =========================================================
+# CHATTER DESCRIPTIONS
+# =========================================================
+
+CHATTER_DESCRIPTIONS = {
+
+    "AZ":
+        "Competitive and pretty opinionated. "
+        "Usually writes short, confident messages "
+        "and likes arguing the point.",
+
+    "Ben":
+        "Mostly appears for GeoGuessr. "
+        "Writes quickly and casually, usually keeping "
+        "messages short.",
+
+    "Cash":
+        "Very direct and doesn't really sugarcoat things. "
+        "Messages are usually short and straight to the point.",
+
+    "Cien":
+        "More laid-back and conversational. "
+        "Tends to write naturally rather than in a very "
+        "distinctive format.",
+
+    "Geeflux":
+        "Direct, blunt and occasionally a little savage. "
+        "Usually writes short messages without much filtering.",
+
+    "George":
+        "Small in height, but not in personality. "
+        "Writes casually and often joins in with jokes "
+        "and reactions.",
+
+    "Grumpymonk":
+        "The Swedish chatter. Usually relaxed and "
+        "conversational, with a fairly straightforward "
+        "writing style.",
+
+    "Jessebrawlstars":
+        "The Dutch chatter. Writes casually and tends "
+        "to keep things simple and direct.",
+
+    "Kurupt":
+        "Plays all sorts of games, especially Poker and CS2. "
+        "Messages often revolve around whatever game is happening.",
+
+    "Martin":
+        "Completely random. Messages can jump from one "
+        "topic to another with absolutely no warning.",
+
+    "Melvin":
+        "Usually relaxed and conversational. Messages feel "
+        "natural and spontaneous rather than overly structured.",
+
+    "MH":
+        "Into some seriously questionable anime. Writes casually "
+        "and often mixes normal conversation with random anime references.",
+
+    "Mohammad":
+        "Has a fairly calm conversational style. Often reacts "
+        "to what's happening rather than writing huge messages.",
+
+    "Mr_thice":
+        "Also known as Mr_thick. Writes casually, uses things "
+        "like xD, and often reacts to whatever is happening in the moment.",
+
+    "Nairyaaa":
+        "Somehow manages to turn almost everything into a question. "
+        "The writing style is very curious and question-heavy.",
+
+    "Pabu":
+        "Has been to Peru. Usually writes casually and reacts "
+        "naturally to the conversation.",
+
+    "Pandarou":
+        "The German chatter. Has a fairly relaxed, "
+        "conversational writing style.",
+
+    "Pindametdemensie":
+        "Dutch and pretty straightforward. Usually keeps "
+        "messages casual and easy to read.",
+
+    "Pospos":
+        "Mostly appears for GeoGuessr. Tends to write "
+        "short, game-focused messages.",
+
+    "Rubriek":
+        "Another GeoGuessr regular. Usually keeps messages "
+        "concise and focused on what's happening in-game.",
+
+    "Sativahibread":
+        "More of a casual conversational chatter. Messages "
+        "tend to blend into the ongoing conversation naturally.",
+
+    "Screamingcat":
+        "Loves Australia. Usually writes casually, with "
+        "occasional enthusiastic reactions.",
+
+    "Sh4rkmate is the best":
+        "The name is already a personality trait. "
+        "Writes with maximum confidence in the self.",
+
+    "Soyadelson":
+        "Very energetic and chaotic. Uses jokes, teasing "
+        "and exaggerated messages a lot.",
+
+    "Stefan":
+        "Usually relaxed and conversational. Tends to "
+        "respond naturally to whatever is happening.",
+
+    "Stepu":
+        "Casual and unpredictable. Often jumps into "
+        "conversations without needing much setup.",
+
+    "Sushi":
+        "Sarcastic, analytical and occasionally completely "
+        "unhinged. Often writes longer thoughts, jokes, irony "
+        "and random observations; the logs show a lot of dry "
+        "humour and wordplay.",
+
+    "Thejazzdude":
+        "The Dutch jazz guy. Relaxed and conversational, "
+        "with a fairly casual writing style.",
+
+    "Kohl":
+        "Very conversational and curious. Uses lots of short "
+        "messages, questions, reactions and sudden topic changes; "
+        "also likes joking around and experimenting with wording.",
+
+    "Kingdev":
+        "Loves coding. The style is generally technical, "
+        "direct and focused when talking about something being worked on.",
+}
+
+
+# =========================================================
 # DISCORD
 # =========================================================
 
@@ -102,6 +239,13 @@ active_polls = {}
 scores_lock = asyncio.Lock()
 
 last_leaderboard_order = []
+
+# Number of rounds in the current run
+run_round_number = 0
+
+# Special rounds are selected when the run starts
+hard_mode_rounds = set()
+double_points_round = None
 
 
 # =========================================================
@@ -188,7 +332,6 @@ def save_scores():
 def get_current_week_key():
 
     today = date.today()
-
     iso = today.isocalendar()
 
     return f"{iso.year}-W{iso.week:02d}"
@@ -199,12 +342,6 @@ def load_weekly_data():
     current_week = get_current_week_key()
 
     if not os.path.exists(WEEKLY_FILE):
-
-        print(
-            f"Starting weekly data for "
-            f"{current_week}.",
-            flush=True
-        )
 
         return {
             "week": current_week,
@@ -223,12 +360,6 @@ def load_weekly_data():
             data = json.load(file)
 
         if data.get("week") != current_week:
-
-            print(
-                f"New week detected: "
-                f"{current_week}",
-                flush=True
-            )
 
             return {
                 "week": current_week,
@@ -270,7 +401,7 @@ def save_weekly_data():
 
 
 # =========================================================
-# SAVE FILES TO GITHUB
+# SAVE TO GITHUB
 # =========================================================
 
 def push_data_to_github():
@@ -339,11 +470,6 @@ def push_data_to_github():
             check=True,
             capture_output=True,
             text=True
-        )
-
-        print(
-            "Leaderboard data saved permanently.",
-            flush=True
         )
 
     except Exception as error:
@@ -611,12 +737,6 @@ def build_active_periods(chatters):
             "last": max(dates)
         }
 
-        print(
-            f"{display_name_for(username)}: "
-            f"{min(dates)} -> {max(dates)}",
-            flush=True
-        )
-
     return periods
 
 
@@ -675,6 +795,25 @@ def display_name_for(username):
             return display_name
 
     return username
+
+
+# =========================================================
+# CHATTER COMMAND NORMALIZATION
+# =========================================================
+
+def normalize_command_name(name):
+
+    return re.sub(
+        r"[^a-z0-9]",
+        "",
+        name.lower()
+    )
+
+
+CHATTER_COMMANDS = {
+    normalize_command_name(name): name
+    for name in CHATTERS.keys()
+}
 
 
 # =========================================================
@@ -778,17 +917,9 @@ def ancient_quote_text(date_string):
     if days is None:
         return ""
 
-    # About 2 years or older
     if days >= 730:
 
         years = days / 365.25
-
-        if years >= 3:
-
-            return (
-                f"🏺 **ANCIENT QUOTE** — "
-                f"over {years:.1f} years old!"
-            )
 
         return (
             f"🏺 **ANCIENT QUOTE** — "
@@ -905,17 +1036,15 @@ async def post_leaderboard(
         make_leaderboard()
     )
 
-    print(
-        "Leaderboard posted.",
-        flush=True
-    )
-
 
 # =========================================================
 # ADD POINT
 # =========================================================
 
-async def add_point(user):
+async def add_point(
+    user,
+    points_to_add=1
+):
 
     user_id = str(
         user.id
@@ -946,7 +1075,7 @@ async def add_point(user):
 
         player["points"] = (
             player.get("points", 0)
-            + 1
+            + points_to_add
         )
 
         player["correct"] = (
@@ -1001,7 +1130,7 @@ async def add_point(user):
 
         weekly_player["points"] = (
             weekly_player.get("points", 0)
-            + 1
+            + points_to_add
         )
 
         weekly_player["best_streak"] = max(
@@ -1021,7 +1150,6 @@ async def add_point(user):
         if player["streak"] == 5:
 
             player["points"] += 1
-
             weekly_player["points"] += 1
 
             streak_bonus = True
@@ -1083,7 +1211,6 @@ async def record_wrong_answer(
             + 1
         )
 
-        # Wrong answer breaks current streak
         player["streak"] = 0
 
         await save_all_data()
@@ -1156,6 +1283,80 @@ async def send_stats(
 
 
 # =========================================================
+# HELP / INFO
+# =========================================================
+
+def make_help_message():
+
+    return (
+        "🦈 **Guess the Chatter**\n\n"
+
+        "**How to play**\n"
+        "💬 A quote from the chat appears in a poll.\n"
+        "🗳️ Choose who you think said it.\n"
+        "✅ Correct = **+1 point**\n"
+        "❌ Wrong = **0 points** and your streak resets.\n"
+        "🔥 Build streaks by getting answers correct.\n"
+        "🏆 Points are permanent and count toward "
+        "the all-time leaderboard.\n\n"
+
+        "**Special rounds**\n"
+        "🧠 Hard Mode can appear during the run.\n"
+        "🎰 Double Points Round can appear during the run.\n\n"
+
+        "**Commands**\n"
+        "`!help` / `!info` — Show this guide\n"
+        "`!stats` — Show your statistics\n"
+        "`!name` — Show that chatter's description\n\n"
+
+        "**Example:**\n"
+        "`!kohl` → Kohl's personality and writing style"
+    )
+
+
+async def send_help(
+    message
+):
+
+    await message.channel.send(
+        make_help_message()
+    )
+
+
+async def send_chatter_info(
+    message,
+    command_name
+):
+
+    normalized = normalize_command_name(
+        command_name
+    )
+
+    display_name = CHATTER_COMMANDS.get(
+        normalized
+    )
+
+    if not display_name:
+
+        await message.channel.send(
+            "❌ I don't know that chatter. "
+            "Try `!help`."
+        )
+
+        return
+
+    description = CHATTER_DESCRIPTIONS.get(
+        display_name,
+        "No description available yet."
+    )
+
+    await message.channel.send(
+        f"👤 **{display_name}**\n"
+        f"{description}"
+    )
+
+
+# =========================================================
 # WEEKLY REPORT
 # =========================================================
 
@@ -1165,7 +1366,6 @@ async def post_weekly_report(
 
     current_week = get_current_week_key()
 
-    # Don't post twice for the same week
     if (
         weekly_data.get(
             "last_reported_week"
@@ -1180,8 +1380,6 @@ async def post_weekly_report(
         {}
     )
 
-    # If this is a completely fresh weekly file,
-    # initialize it without posting a fake empty report.
     if not players:
 
         weekly_data[
@@ -1192,10 +1390,6 @@ async def post_weekly_report(
 
         return
 
-    # =====================================================
-    # MOST IMPROVED
-    # =====================================================
-
     ordered_points = sorted(
         players.items(),
         key=lambda item:
@@ -1205,10 +1399,6 @@ async def post_weekly_report(
             ),
         reverse=True
     )
-
-    # =====================================================
-    # TOP 5 LONGEST STREAKS
-    # =====================================================
 
     ordered_streaks = sorted(
         players.items(),
@@ -1268,7 +1458,7 @@ async def post_weekly_report(
 
     shown = 0
 
-    for user_id, player in ordered_streaks:
+    for _, player in ordered_streaks:
 
         streak = player.get(
             "best_streak",
@@ -1304,7 +1494,6 @@ async def post_weekly_report(
         "\n".join(lines)
     )
 
-    # Mark report as posted
     weekly_data[
         "last_reported_week"
     ] = current_week
@@ -1315,9 +1504,64 @@ async def post_weekly_report(
         push_data_to_github
     )
 
+
+# =========================================================
+# SPECIAL ROUND SETUP
+# =========================================================
+
+def setup_special_rounds():
+
+    global hard_mode_rounds
+    global double_points_round
+
+    # There are approximately 72 rounds in a 6-hour run
+    # when one round is posted every 5 minutes.
+
+    total_rounds = 72
+
+    all_rounds = list(
+        range(
+            1,
+            total_rounds + 1
+        )
+    )
+
+    selected = random.sample(
+        all_rounds,
+        3
+    )
+
+    hard_mode_rounds = {
+        selected[0],
+        selected[1]
+    }
+
+    double_points_round = selected[2]
+
+    # If the double-points round accidentally overlaps
+    # with hard mode, move it to another round.
+    while (
+        double_points_round
+        in hard_mode_rounds
+    ):
+
+        double_points_round = random.choice(
+            [
+                r
+                for r in all_rounds
+                if r not in hard_mode_rounds
+            ]
+        )
+
     print(
-        f"Weekly report posted for "
-        f"{current_week}.",
+        f"Hard Mode rounds: "
+        f"{sorted(hard_mode_rounds)}",
+        flush=True
+    )
+
+    print(
+        f"Double Points round: "
+        f"{double_points_round}",
         flush=True
     )
 
@@ -1330,93 +1574,192 @@ async def post_guess(
     channel,
     chatters,
     active_periods,
-    all_messages
+    all_messages,
+    is_hard_mode=False,
+    is_double_points=False
 ):
 
     possible_quotes = []
 
-    for username, messages in chatters.items():
+    # =====================================================
+    # HARD MODE
+    # =====================================================
 
-        for item in messages:
+    if is_hard_mode:
 
-            message = item["message"]
-            quote_date = item["date"]
+        for username, messages in chatters.items():
 
-            eligible = get_active_chatters(
-                quote_date,
-                chatters,
-                active_periods
-            )
+            for item in messages:
 
-            if len(eligible) < POLL_OPTIONS:
-                continue
+                if len(
+                    item["message"]
+                ) < MIN_CHARACTERS:
+                    continue
 
-            quote = {
-                "username":
-                    username,
+                possible_quotes.append(
+                    {
+                        "username":
+                            username,
 
-                "display_name":
-                    display_name_for(username),
+                        "display_name":
+                            display_name_for(
+                                username
+                            ),
 
-                "message":
-                    message,
+                        "message":
+                            item["message"],
 
-                "date":
-                    quote_date,
+                        "date":
+                            item["date"],
 
-                "time":
-                    item["time"]
-            }
-
-            possible_quotes.append(
-                (
-                    quote,
-                    eligible
+                        "time":
+                            item["time"]
+                    }
                 )
-            )
 
-    if not possible_quotes:
+        if not possible_quotes:
 
-        await channel.send(
-            "⚠️ Not enough time-period-matched "
-            "chatters for a 5-option poll."
+            return
+
+        quote = random.choice(
+            possible_quotes
         )
 
-        return
+        eligible = list(
+            chatters.keys()
+        )
 
-    quote, eligible = random.choice(
-        possible_quotes
-    )
+        random.shuffle(
+            eligible
+        )
 
-    username = quote["username"]
-    message = quote["message"]
-    quote_date = quote["date"]
+        correct_username = (
+            quote["username"]
+        )
+
+        eligible = [
+            username
+            for username in eligible
+            if username != correct_username
+        ][:HARD_POLL_OPTIONS - 1]
+
+        eligible.append(
+            correct_username
+        )
+
+        random.shuffle(
+            eligible
+        )
+
+        possible_chatter_count = (
+            len(eligible)
+        )
+
+    # =====================================================
+    # NORMAL MODE
+    # =====================================================
+
+    else:
+
+        for username, messages in chatters.items():
+
+            for item in messages:
+
+                message = item["message"]
+                quote_date = item["date"]
+
+                eligible = get_active_chatters(
+                    quote_date,
+                    chatters,
+                    active_periods
+                )
+
+                if len(
+                    eligible
+                ) < NORMAL_POLL_OPTIONS:
+                    continue
+
+                quote = {
+                    "username":
+                        username,
+
+                    "display_name":
+                        display_name_for(username),
+
+                    "message":
+                        message,
+
+                    "date":
+                        quote_date,
+
+                    "time":
+                        item["time"]
+                }
+
+                possible_quotes.append(
+                    (
+                        quote,
+                        eligible
+                    )
+                )
+
+        if not possible_quotes:
+
+            await channel.send(
+                "⚠️ Not enough "
+                "time-period-matched chatters "
+                "for a 5-option poll."
+            )
+
+            return
+
+        quote, eligible = random.choice(
+            possible_quotes
+        )
+
+        correct_username = (
+            quote["username"]
+        )
+
+        wrong_usernames = [
+            name
+            for name in eligible
+            if name != correct_username
+        ]
+
+        wrong_usernames = random.sample(
+            wrong_usernames,
+            NORMAL_POLL_OPTIONS - 1
+        )
+
+        eligible = (
+            wrong_usernames
+            + [correct_username]
+        )
+
+        random.shuffle(
+            eligible
+        )
+
+        possible_chatter_count = (
+            len(
+                get_active_chatters(
+                    quote["date"],
+                    chatters,
+                    active_periods
+                )
+            )
+        )
+
+    # =====================================================
+    # VARIABLES
+    # =====================================================
 
     correct_display_name = (
-        display_name_for(username)
+        display_name_for(
+            correct_username
+        )
     )
-
-    # =====================================================
-    # CHOOSE 4 WRONG OPTIONS
-    # =====================================================
-
-    wrong_usernames = [
-        name
-        for name in eligible
-        if name != username
-    ]
-
-    wrong_usernames = random.sample(
-        wrong_usernames,
-        POLL_OPTIONS - 1
-    )
-
-    options = (
-        wrong_usernames
-        + [username]
-    )
-
-    random.shuffle(options)
 
     # =====================================================
     # POLL
@@ -1430,22 +1773,58 @@ async def post_guess(
         multiple=False
     )
 
-    for option in options:
+    for option in eligible:
 
         poll.add_answer(
             text=display_name_for(option)
         )
 
+    # =====================================================
+    # ROUND LABEL
+    # =====================================================
+
+    if is_hard_mode:
+
+        round_label = (
+            "🧠 **HARD MODE — 2 POINTS**\n"
+            "⚠️ **NO DATE**\n\n"
+        )
+
+    elif is_double_points:
+
+        round_label = (
+            "🎰 **DOUBLE POINTS ROUND**\n\n"
+        )
+
+    else:
+
+        round_label = ""
+
+    # =====================================================
+    # MESSAGE
+    # =====================================================
+
     message_content = (
+        f"{round_label}"
         f"💬 **Guess the Chatter**\n\n"
-        f"> {message}\n\n"
-        f"📅 **Date:** {quote_date}"
+        f"> {quote['message']}"
     )
+
+    if not is_hard_mode:
+
+        message_content += (
+            f"\n\n📅 **Date:** "
+            f"{quote['date']}"
+        )
 
     poll_message = await channel.send(
         content=message_content,
         poll=poll
     )
+
+    # =====================================================
+    # FIND CORRECT ANSWER ID
+    # =====================================================
 
     correct_answer_id = None
 
@@ -1471,26 +1850,32 @@ async def post_guess(
         "correct_display_name":
             correct_display_name,
 
-        "votes": {},
+        "votes":
+            {},
 
         "quote":
             quote,
 
         "possible_chatter_count":
-            len(eligible)
+            possible_chatter_count,
+
+        "is_hard_mode":
+            is_hard_mode,
+
+        "is_double_points":
+            is_double_points
     }
 
     print(
         f"Poll created: "
         f"{poll_message.id} | "
-        f"{quote_date} | "
-        f"correct={correct_display_name} | "
-        f"possible={len(eligible)}",
+        f"hard={is_hard_mode} | "
+        f"double={is_double_points}",
         flush=True
     )
 
     # =====================================================
-    # WAIT 3 MINUTES
+    # WAIT
     # =====================================================
 
     await asyncio.sleep(
@@ -1556,13 +1941,20 @@ async def post_guess(
 
             correct_count += 1
 
-            stats = await add_point(
-                user
-            )
+            points = 1
 
-            # ============================================
-            # STREAK MESSAGE
-            # ============================================
+            if is_hard_mode:
+
+                points = 2
+
+            elif is_double_points:
+
+                points = 2
+
+            stats = await add_point(
+                user,
+                points
+            )
 
             if stats["streak"] >= 3:
 
@@ -1571,10 +1963,6 @@ async def post_guess(
                     f"is on a {stats['streak']}"
                     f"-streak!**"
                 )
-
-            # ============================================
-            # 5-STREAK BONUS
-            # ============================================
 
             if stats["streak_bonus"]:
 
@@ -1591,7 +1979,7 @@ async def post_guess(
             )
 
     # =====================================================
-    # PERCENTAGE / CLOSE CALL
+    # PERCENTAGE
     # =====================================================
 
     percentage = (
@@ -1675,42 +2063,37 @@ async def post_guess(
         )
 
     # =====================================================
-    # EXTRA INFORMATION
+    # EXTRA INFO
     # =====================================================
-
-    possible_count = poll_data.get(
-        "possible_chatter_count",
-        0
-    )
-
-    ancient_text = ancient_quote_text(
-        quote_date
-    )
-
-    time_text = time_machine_text(
-        quote_date
-    )
 
     extra_lines = []
 
-    if possible_count > 0:
+    if not is_hard_mode:
 
         extra_lines.append(
-            f"👥 **{possible_count} "
+            f"👥 **{possible_chatter_count} "
             f"possible chatters on this date.**"
         )
 
-    if ancient_text:
-
-        extra_lines.append(
-            ancient_text
+        ancient_text = ancient_quote_text(
+            quote["date"]
         )
 
-    if time_text:
+        if ancient_text:
 
-        extra_lines.append(
-            time_text
+            extra_lines.append(
+                ancient_text
+            )
+
+        time_text = time_machine_text(
+            quote["date"]
         )
+
+        if time_text:
+
+            extra_lines.append(
+                time_text
+            )
 
     extra_text = ""
 
@@ -1735,7 +2118,9 @@ async def post_guess(
         f"{close_call}"
         f"{extra_text}\n"
         f"💬 **Context:**\n"
-        + "\n".join(context_lines)
+        + "\n".join(
+            context_lines
+        )
     )
 
     await channel.send(
@@ -1771,12 +2156,6 @@ async def on_raw_poll_vote_add(
         "votes"
     ][user_id] = payload.answer_id
 
-    print(
-        f"Vote added: user={user_id} "
-        f"answer={payload.answer_id}",
-        flush=True
-    )
-
 
 @client.event
 async def on_raw_poll_vote_remove(
@@ -1809,11 +2188,6 @@ async def on_raw_poll_vote_remove(
             "votes"
         ][user_id]
 
-    print(
-        f"Vote removed: user={user_id}",
-        flush=True
-    )
-
 
 # =========================================================
 # MESSAGE COMMANDS
@@ -1830,13 +2204,55 @@ async def on_message(
     if message.channel.id != CHANNEL_ID:
         return
 
-    content = message.content.strip().lower()
+    content = message.content.strip()
 
-    if content == "!stats":
+    if not content.startswith("!"):
+        return
+
+    command = content[
+        1:
+    ].strip()
+
+    if not command:
+        return
+
+    command_lower = command.lower()
+
+    # ================================================
+    # HELP
+    # ================================================
+
+    if command_lower in (
+        "help",
+        "info"
+    ):
+
+        await send_help(
+            message
+        )
+
+        return
+
+    # ================================================
+    # STATS
+    # ================================================
+
+    if command_lower == "stats":
 
         await send_stats(
             message
         )
+
+        return
+
+    # ================================================
+    # CHATTER INFO
+    # ================================================
+
+    await send_chatter_info(
+        message,
+        command
+    )
 
 
 # =========================================================
@@ -1851,6 +2267,7 @@ async def on_ready():
         "started",
         False
     ):
+
         return
 
     client.started = True
@@ -1860,6 +2277,16 @@ async def on_ready():
 
     scores = load_scores()
     weekly_data = load_weekly_data()
+
+    # ================================================
+    # SPECIAL ROUNDS
+    # ================================================
+
+    setup_special_rounds()
+
+    # ================================================
+    # CHANNEL
+    # ================================================
 
     try:
 
@@ -1875,6 +2302,10 @@ async def on_ready():
         )
 
         return
+
+    # ================================================
+    # CHAT DATA
+    # ================================================
 
     chatters = load_chatters()
 
@@ -1911,9 +2342,17 @@ async def on_ready():
         flush=True
     )
 
-    # =====================================================
+    # ================================================
+    # INFO ONCE PER RUN
+    # ================================================
+
+    await channel.send(
+        make_help_message()
+    )
+
+    # ================================================
     # LEADERBOARD LOOP
-    # =====================================================
+    # ================================================
 
     async def leaderboard_loop():
 
@@ -1940,9 +2379,9 @@ async def on_ready():
         leaderboard_loop()
     )
 
-    # =====================================================
+    # ================================================
     # WEEKLY REPORT LOOP
-    # =====================================================
+    # ================================================
 
     async def weekly_report_loop():
 
@@ -1969,11 +2408,29 @@ async def on_ready():
         weekly_report_loop()
     )
 
-    # =====================================================
+    # ================================================
     # QUOTE LOOP
-    # =====================================================
+    # ================================================
+
+    global run_round_number
 
     while True:
+
+        run_round_number += 1
+
+        is_hard_mode = (
+            run_round_number
+            in hard_mode_rounds
+        )
+
+        is_double_points = (
+            run_round_number
+            == double_points_round
+        )
+
+        # Hard Mode and Double Points are separate.
+        if is_hard_mode:
+            is_double_points = False
 
         start_time = (
             asyncio.get_running_loop()
@@ -1986,7 +2443,9 @@ async def on_ready():
                 channel,
                 chatters,
                 active_periods,
-                all_messages
+                all_messages,
+                is_hard_mode,
+                is_double_points
             )
 
         except Exception as error:
