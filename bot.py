@@ -86,6 +86,7 @@ def load_json(filename, default):
 def save_json(filename, data):
 
     try:
+
         with open(
             filename,
             "w",
@@ -288,28 +289,17 @@ def fetch_random_puzzle():
 
 
 # =========================================================
-# FIND PUZZLE SOLUTION
+# PARSE PUZZLE SOLUTION
 # =========================================================
 
 def get_solution(data):
-
-    """
-    Chess.com gives us:
-        - FEN = position where the puzzle starts
-        - PGN = game containing the moves
-
-    We replay the PGN until we reach the FEN.
-    Everything after that position is the puzzle line.
-
-    This is important because the PGN can contain
-    the complete original game, not just the puzzle moves.
-    """
 
     game = chess.pgn.read_game(
         StringIO(data["pgn"])
     )
 
     if game is None:
+
         raise RuntimeError(
             "Could not read puzzle PGN."
         )
@@ -326,41 +316,35 @@ def get_solution(data):
 
     start_index = None
 
-    # Find the exact position from which
-    # the Chess.com puzzle starts.
+    # Find the puzzle's starting position
+    # inside the complete PGN.
     for index, move in enumerate(
         mainline_moves
     ):
 
-        if board.board_fen() == target_board.board_fen():
+        if (
+            board.board_fen()
+            == target_board.board_fen()
+            and board.turn
+            == target_board.turn
+            and board.castling_rights
+            == target_board.castling_rights
+            and board.ep_square
+            == target_board.ep_square
+        ):
 
-            if (
-                board.turn
-                == target_board.turn
-            ):
-
-                if (
-                    board.castling_rights
-                    == target_board.castling_rights
-                ):
-
-                    if (
-                        board.ep_square
-                        == target_board.ep_square
-                    ):
-
-                        start_index = index
-                        break
+            start_index = index
+            break
 
         board.push(move)
 
-    # In case the puzzle position is
-    # the final position in some unusual PGN.
     if start_index is None:
 
         if (
             board.board_fen()
             == target_board.board_fen()
+            and board.turn
+            == target_board.turn
         ):
 
             start_index = len(
@@ -371,44 +355,85 @@ def get_solution(data):
 
         raise RuntimeError(
             "Could not find puzzle FEN "
-            "inside the PGN."
+            "inside PGN."
         )
 
-    # Rebuild the board at the puzzle position.
     board = chess.Board(
         data["fen"]
     )
 
-    solution_moves = []
+    solution = []
 
     for move in mainline_moves[
         start_index:
     ]:
 
-        # Make sure this move is legal
-        # from the puzzle position.
         if move not in board.legal_moves:
             break
 
-        solution_moves.append(
+        solution.append(
             {
                 "uci":
                     move.uci(),
 
                 "san":
-                    board.san(move)
+                    board.san(move),
+
+                # This is the side that makes
+                # this move.
+                "color":
+                    "white"
+                    if board.turn
+                    else "black"
             }
         )
 
         board.push(move)
 
-    if not solution_moves:
+    if not solution:
 
         raise RuntimeError(
             "Puzzle has no solution moves."
         )
 
-    return solution_moves
+    # The side to move in the puzzle FEN
+    # is the side the user must play.
+    player_color = (
+        "white"
+        if target_board.turn
+        else "black"
+    )
+
+    # IMPORTANT:
+    #
+    # Count ONLY the moves belonging to the
+    # player who is solving the puzzle.
+    #
+    # The opponent's moves are still stored,
+    # because the bot needs to automatically
+    # play them between the user's moves.
+    player_moves = [
+        move
+        for move in solution
+        if move["color"] == player_color
+    ]
+
+    return {
+        "all_moves":
+            solution,
+
+        "player_moves":
+            player_moves,
+
+        "player_color":
+            player_color,
+
+        "player_move_count":
+            len(player_moves),
+
+        "first_uci":
+            solution[0]["uci"]
+    }
 
 
 def build_puzzle(data):
@@ -433,11 +458,17 @@ def build_puzzle(data):
         "pgn":
             data["pgn"],
 
-        "solution":
-            solution,
+        "all_moves":
+            solution["all_moves"],
 
-        "solution_length":
-            len(solution),
+        "player_moves":
+            solution["player_moves"],
+
+        "player_color":
+            solution["player_color"],
+
+        "player_move_count":
+            solution["player_move_count"],
 
         "posted_at":
             None,
@@ -505,15 +536,16 @@ async def make_board_file(
 
 
 # =========================================================
-# MOVE TEXT
+# MOVE WORD
 # =========================================================
 
 def move_word(count):
 
-    if count == 1:
-        return "move"
-
-    return "moves"
+    return (
+        "move"
+        if count == 1
+        else "moves"
+    )
 
 
 # =========================================================
@@ -537,16 +569,21 @@ async def post_daily_puzzle(
     )
 
     count = puzzle[
-        "solution_length"
+        "player_move_count"
+    ]
+
+    title = puzzle[
+        "title"
     ]
 
     embed = discord.Embed(
-        title="♟️ Daily Chess Puzzle",
+        title=(
+            f"♟️ Daily Puzzle — {title}"
+        ),
         description=(
-            f"**{puzzle['title']}**\n\n"
-            f"**{side} to move. "
+            f"**{side} to move.**\n"
             f"Find the best line in "
-            f"{count} {move_word(count)}.**"
+            f"**{count} {move_word(count)}**."
         ),
         color=0x2ecc71
     )
@@ -562,7 +599,7 @@ async def post_daily_puzzle(
 
     print(
         f"Daily Puzzle posted "
-        f"({count} moves).",
+        f"({count} player moves).",
         flush=True
     )
 
@@ -622,18 +659,21 @@ async def post_random_puzzle(
         )
 
         count = puzzle[
-            "solution_length"
+            "player_move_count"
+        ]
+
+        title = puzzle[
+            "title"
         ]
 
         embed = discord.Embed(
             title=(
-                f"🎲 Random Puzzle — "
-                f"{puzzle['title']}"
+                f"🎲 Random Puzzle — {title}"
             ),
             description=(
-                f"**{side} to move. "
+                f"**{side} to move.**\n"
                 f"Find the best line in "
-                f"{count} {move_word(count)}.**"
+                f"**{count} {move_word(count)}**."
             ),
             color=0x3498db
         )
@@ -649,7 +689,7 @@ async def post_random_puzzle(
 
         print(
             f"Random Puzzle posted "
-            f"({count} moves).",
+            f"({count} player moves).",
             flush=True
         )
 
@@ -673,9 +713,9 @@ async def post_random_puzzle(
 def normalize_move(text):
 
     """
-    Makes SAN case-insensitive.
+    Case-insensitive.
 
-    Also makes + and # optional.
+    + and # are optional.
 
     Examples:
 
@@ -698,7 +738,6 @@ def normalize_move(text):
 
     text = text.casefold()
 
-    # + and # should not matter.
     while (
         text.endswith("+")
         or text.endswith("#")
@@ -710,7 +749,7 @@ def normalize_move(text):
 
 
 # =========================================================
-# CHECK ONE MOVE
+# MATCH ONE MOVE
 # =========================================================
 
 def san_matches_move(
@@ -726,8 +765,6 @@ def san_matches_move(
     if not submitted_normalized:
         return False
 
-    # Check every legal move and compare
-    # normalized SAN.
     for legal_move in board.legal_moves:
 
         san = board.san(
@@ -744,7 +781,7 @@ def san_matches_move(
                 == expected_move["uci"]
             )
 
-    # UCI support too.
+    # UCI support
     try:
 
         move = board.parse_uci(
@@ -762,7 +799,7 @@ def san_matches_move(
 
 
 # =========================================================
-# CHECK FULL SOLUTION
+# CHECK PLAYER'S FULL LINE
 # =========================================================
 
 def solution_is_correct(
@@ -771,42 +808,58 @@ def solution_is_correct(
 ):
 
     """
-    The user must provide the COMPLETE line.
+    IMPORTANT:
 
-    Example solution:
+    The user ONLY enters their own moves.
 
-        Bf2 Qxf2+ Kh1
+    Example:
 
-    Then:
+        Puzzle starts with White.
 
-        !Bf2 Qxf2 Kh1      -> correct
-        !bf2 qxf2 kh1      -> correct
-        !Bf2 Qxf2+ Kh1    -> correct
+        Actual puzzle line:
 
-    But:
+        White: Qh7+
+        Black: Kg8
+        White: Qh8+
+        Black: Kf7
+        White: Qg7+
+        Black: Ke6
+        White: Qe7#
 
-        !Bf2               -> not enough
-        !Bf2 Qxf2          -> not enough
-        !Bf2 Qh4           -> wrong
+        User enters:
+
+        !Qh7+ Qh8+ Qg7+ Qe7#
+
+    The bot automatically plays:
+
+        Kg8
+        Kf7
+        Ke6
+
+    The user never enters Black's moves.
     """
 
     if not submitted_text:
         return False
 
-    # Split into separate moves.
     submitted_moves = (
         submitted_text.strip().split()
     )
 
-    solution = puzzle.get(
-        "solution",
+    player_moves = puzzle.get(
+        "player_moves",
         []
     )
 
-    # Must have EXACTLY the same number
-    # of moves as the puzzle solution.
+    all_moves = puzzle.get(
+        "all_moves",
+        []
+    )
+
+    # Must enter exactly the number of
+    # moves belonging to the player.
     if len(submitted_moves) != len(
-        solution
+        player_moves
     ):
 
         return False
@@ -815,27 +868,49 @@ def solution_is_correct(
         puzzle["fen"]
     )
 
-    for submitted, expected in zip(
-        submitted_moves,
-        solution
-    ):
+    submitted_index = 0
 
-        if not san_matches_move(
-            board,
-            submitted,
-            expected
+    for expected in all_moves:
+
+        # This is the user's move.
+        if (
+            expected["color"]
+            == puzzle["player_color"]
         ):
 
-            return False
+            submitted = submitted_moves[
+                submitted_index
+            ]
 
-        # Push the expected move.
+            if not san_matches_move(
+                board,
+                submitted,
+                expected
+            ):
+
+                return False
+
+            submitted_index += 1
+
+        # This is the opponent's move.
+        #
+        # We don't ask the user for it.
+        # We simply play the exact move from
+        # the puzzle solution.
         move = chess.Move.from_uci(
             expected["uci"]
         )
 
+        if move not in board.legal_moves:
+
+            return False
+
         board.push(move)
 
-    return True
+    return (
+        submitted_index
+        == len(submitted_moves)
+    )
 
 
 # =========================================================
@@ -1087,21 +1162,13 @@ async def save_attempt(
 
 
 # =========================================================
-# AWARD FIRST POINT ONLY
+# FIRST CORRECT ANSWER GETS POINT
 # =========================================================
 
 async def award_point(
     puzzle,
     user
 ):
-
-    """
-    Only the FIRST correct person gets +1.
-
-    This is protected by data_lock so two
-    nearly simultaneous correct answers
-    cannot both receive the point.
-    """
 
     user_id = str(
         user.id
@@ -1255,6 +1322,8 @@ def help_message():
 **Quick Answer**
 `!<moves>` — Answer whichever puzzle was posted most recently.
 
+Only your own moves are required. The opponent's moves are automatically played.
+
 **Points**
 Correct answers are worth **+1 point**.
 Only the **first complete correct answer** gets the point.
@@ -1276,17 +1345,17 @@ async def post_answer(
     puzzle_type
 ):
 
-    solution = puzzle.get(
-        "solution",
+    player_moves = puzzle.get(
+        "player_moves",
         []
     )
 
-    if not solution:
+    if not player_moves:
         return
 
     solution_text = " ".join(
         move["san"]
-        for move in solution
+        for move in player_moves
     )
 
     if puzzle_type == "daily":
@@ -1299,7 +1368,7 @@ async def post_answer(
 
     await channel.send(
         f"{title}\n\n"
-        f"**The correct line is:** "
+        f"**Your moves:** "
         f"||{solution_text}||"
     )
 
@@ -1601,7 +1670,30 @@ async def handle_answer(
     ):
         return
 
-    # Check the COMPLETE line.
+    required = puzzle.get(
+        "player_move_count",
+        1
+    )
+
+    submitted_moves = (
+        move_text.strip().split()
+    )
+
+    # Give a useful response if they didn't
+    # provide enough of their own moves.
+    if len(submitted_moves) != required:
+
+        await message.channel.send(
+            f"❌ **Not quite, "
+            f"{message.author.display_name}.**\n"
+            f"This puzzle requires "
+            f"**{required} "
+            f"{move_word(required)}** "
+            f"from your side."
+        )
+
+        return
+
     correct = solution_is_correct(
         move_text,
         puzzle
@@ -1614,30 +1706,22 @@ async def handle_answer(
         correct
     )
 
-    # -----------------------------------------------------
-    # WRONG / INCOMPLETE
-    # -----------------------------------------------------
+    # =====================================================
+    # WRONG
+    # =====================================================
 
     if not correct:
 
-        required = puzzle.get(
-            "solution_length",
-            1
-        )
-
         await message.channel.send(
             f"❌ **Wrong, "
-            f"{message.author.display_name}.**\n"
-            f"You need to give the complete "
-            f"**{required} "
-            f"{move_word(required)}**."
+            f"{message.author.display_name}.**"
         )
 
         return
 
-    # -----------------------------------------------------
+    # =====================================================
     # CORRECT
-    # -----------------------------------------------------
+    # =====================================================
 
     got_point = await award_point(
         puzzle,
@@ -1890,7 +1974,6 @@ async def on_ready():
         flush=True
     )
 
-    # Check Daily immediately.
     await check_for_new_puzzle(
         channel
     )
