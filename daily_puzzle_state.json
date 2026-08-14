@@ -1,83 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-08-14",
-    "title": "Kamsky-Akobian, US Championship 2009",
-    "fen": "5k1r/1bq2ppp/1r1bpn2/pp2N3/3R1B2/1B5Q/PPP2PPP/2K1R3 w - - 0 1",
-    "current_fen": "7r/1bq2kpp/3rRn2/pp6/5B2/1B5Q/PPP2PPP/2K5 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5k1r/1bq2ppp/1r1bpn2/pp2N3/3R1B2/1B5Q/PPP2PPP/2K1R3 w - - 0 1\"]\r\n\r\n1. Rxd6 Rxd6 2. Nxf7 Kxf7 3. Rxe6\r\n*",
+    "url": "https://www.chess.com/daily/2011-10-28",
+    "title": "Mate in 3",
+    "fen": "8/1R3p2/3Nkpq1/1KP3p1/4p2p/4P1QP/8/8 w - - 0 1",
+    "current_fen": "8/1R3p2/3Nkpq1/1KP3p1/4p2p/4P1QP/8/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1R3p2/3Nkpq1/1KP3p1/4p2p/4P1QP/8/8 w - - 0 1\"]\r\n\r\n1. Nc8 hxg3 2. Re7+ Kd5 3. Nb6#\r\n*",
     "all_moves": [
       {
-        "uci": "d4d6",
-        "san": "Rxd6",
+        "uci": "d6c8",
+        "san": "Nc8",
         "color": "white"
       },
       {
-        "uci": "b6d6",
-        "san": "Rxd6",
+        "uci": "h4g3",
+        "san": "hxg3",
         "color": "black"
       },
       {
-        "uci": "e5f7",
-        "san": "Nxf7",
+        "uci": "b7e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "f8f7",
-        "san": "Kxf7",
+        "uci": "e6d5",
+        "san": "Kd5",
         "color": "black"
       },
       {
-        "uci": "e1e6",
-        "san": "Rxe6",
+        "uci": "c8b6",
+        "san": "Nb6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4d6",
-        "san": "Rxd6",
+        "uci": "d6c8",
+        "san": "Nc8",
         "color": "white"
       },
       {
-        "uci": "e5f7",
-        "san": "Nxf7",
+        "uci": "b7e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "e1e6",
-        "san": "Rxe6",
+        "uci": "c8b6",
+        "san": "Nb6#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-14T19:43:32.423095+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-14T19:44:18.528310+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786736612423",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1537909566262612031,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxe6",
-        "correct": true,
-        "timestamp": "2026-08-14T19:44:13.622507+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "ng6",
-        "correct": false,
-        "timestamp": "2026-08-14T19:43:46.616602+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786736658528",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
