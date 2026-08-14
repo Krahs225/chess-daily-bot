@@ -21,84 +21,47 @@
     "points_awarded": []
   },
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-06-18",
-    "title": "Circle Dance",
-    "fen": "3rrq1k/1p1b2p1/pn2p1Q1/3pP3/3P3P/P4N2/1P1B1PP1/4K2R w K - 0 1",
-    "pgn": "[Result \"*\"]\n[FEN \"3rrq1k/1p1b2p1/pn2p1Q1/3pP3/3P3P/P4N2/1P1B1PP1/4K2R w K - 0 1\"]\n\n1. Ng5 Qf5 2. Nf7+ Kg8 3. Nh6+ Kh8 4. Nxf5 *",
+    "url": "https://www.chess.com/daily/2020-08-16",
+    "title": "Straight and Narrow",
+    "fen": "r5k1/1p3q1p/4N2p/b2Q1p2/p3p1b1/4P1P1/PP2N3/3K1R1B b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r5k1/1p3q1p/4N2p/b2Q1p2/p3p1b1/4P1P1/PP2N3/3K1R1B b - - 0 1\"]\r\n\r\n1...Rd8 2.Qxd8+ Bxd8 *",
     "all_moves": [
       {
-        "uci": "f3g5",
-        "san": "Ng5",
-        "color": "white"
-      },
-      {
-        "uci": "f8f5",
-        "san": "Qf5",
+        "uci": "a8d8",
+        "san": "Rd8",
         "color": "black"
       },
       {
-        "uci": "g5f7",
-        "san": "Nf7+",
+        "uci": "d5d8",
+        "san": "Qxd8+",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "a5d8",
+        "san": "Bxd8",
         "color": "black"
-      },
-      {
-        "uci": "f7h6",
-        "san": "Nh6+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "h6f5",
-        "san": "Nxf5",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3g5",
-        "san": "Ng5",
-        "color": "white"
+        "uci": "a8d8",
+        "san": "Rd8",
+        "color": "black"
       },
       {
-        "uci": "g5f7",
-        "san": "Nf7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7h6",
-        "san": "Nh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h6f5",
-        "san": "Nxf5",
-        "color": "white"
+        "uci": "a5d8",
+        "san": "Bxd8",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-14T15:24:58.563285+00:00",
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-14T15:26:50.503431+00:00",
     "answer_posted": false,
-    "winner_user_id": "442597396195704832",
-    "winner_name": "Thice",
-    "latest_attempts": {
-      "442597396195704832": {
-        "name": "Thice",
-        "moves": "Ng5 nf7 nh6 nxf5",
-        "correct": true,
-        "timestamp": "2026-08-14T15:26:32.503255+00:00"
-      }
-    },
-    "puzzle_id": "random_1786721098563"
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1786721210503"
   },
   "latest_puzzle_type": "random"
 }
