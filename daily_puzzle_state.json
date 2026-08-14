@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-11-06",
     "title": "Sink or Swim",
     "fen": "2r2r2/1p4kp/5bp1/p2B4/nn2Pp2/3q1PN1/1P5Q/K5R1 w - - 0 2",
-    "current_fen": "2r2r2/1p4kp/5bp1/p2B4/nn2Pp2/3q1PN1/1P5Q/K5R1 w - - 0 2",
+    "current_fen": "2r2r1k/1p5p/5bp1/p2B1N2/nn2Pp2/3q1P2/1P5Q/K5R1 w - - 2 3",
     "pgn": "[Result \"1-0\"]\r\n[FEN \"2r2r2/1p4kp/5bp1/p2B4/nn2Pp2/3q1PN1/1P5Q/K5R1 w - - 0 2\"]\r\n\r\n2. Nf5+ Kh8 3. Qxh7+ Kxh7 4. Rh1+ Bh4 5. Rxh4# 1-0",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786734915901",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1537902450999304283,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nf5",
+        "correct": true,
+        "timestamp": "2026-08-14T19:15:24.352413+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
