@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-04-10",
     "title": "Enterprising Moves",
     "fen": "2k1r2r/ppp2pp1/3p4/2b4p/N1P3nq/1P2P2P/PB2QPP1/R4R1K b - - 0 1",
-    "current_fen": "2k1r2r/ppp2pp1/3p4/2b4p/N1P3nq/1P2P2P/PB2QPP1/R4R1K b - - 0 1",
+    "current_fen": "2k4r/ppp2pp1/3p4/2b4p/N1P3nq/1P2P2P/PB2Q1P1/R4R1K b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k1r2r/ppp2pp1/3p4/2b4p/N1P3nq/1P2P2P/PB2QPP1/R4R1K b - - 0 1\"]\r\n\r\n1...Rxe3 2. fxe3 Qg3 3. hxg4 hxg4+ 4. Kg1 Bxe3+ 5. Rf2 Qh2+ 6. Kf1 Qh1#\r\n*",
     "all_moves": [
       {
@@ -102,13 +102,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786737586787",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1537913652881915952,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rxe3",
+        "correct": true,
+        "timestamp": "2026-08-14T19:59:57.151143+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
