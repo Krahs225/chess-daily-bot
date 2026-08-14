@@ -1,62 +1,340 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-02-10",
-    "title": "Check I Can!",
-    "fen": "5r1k/p5pp/1p6/2q5/1n2P2P/4QP2/PP2NK2/6R1 b - - 0 1",
-    "current_fen": "5r1k/p5pp/1p6/8/4P2P/3nqP2/PP2N3/5KR1 w - - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"5r1k/p5pp/1p6/2q5/1n2P2P/4QP2/PP2NK2/6R1 b - - 0 1\"]\r\n\r\n1... Nd3+ 2. Kf1 Qxe3 *",
+    "url": "https://www.chess.com/daily/2011-06-03",
+    "title": "Filipp S. Bondarenko, Feenschach 1960",
+    "fen": "8/7Q/2r1p3/2rkr3/2rrr2Q/7K/8/8 w KQkq - 0 1",
+    "current_fen": "8/7Q/2r1p3/2rkr3/2rrr2Q/7K/8/8 w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/7Q/2r1p3/2rkr3/2rrr2Q/7K/8/8 w KQkq - 0 1\"]\r\n\r\n1. Qd8+ Rd6 2. Qb7+ Rc6 3. Qa5+ Rc5 4. Qb3+ Rc4 5. Qd2+ Rd4 6. Qf3+ Re4 7. Qg5+ e5 8. Qf7+ Re6 9. Qd8+ Rd6 10. Qb7+ Rc6 11. Qa5+ Rc5 12. Qb3+ Rc4 13. Qd2+ Rd4 14. Qf3+ e4 15. Qg5+ Re5 16. Qf7+ Re6 17. Qd8+ Rd6 18. Qb7+ Rc6 19. Qa5+ Rc5 20. Qb3+ Rc4 21. Qd2#\r\n*",
     "all_moves": [
       {
-        "uci": "b4d3",
-        "san": "Nd3+",
-        "color": "black"
-      },
-      {
-        "uci": "f2f1",
-        "san": "Kf1",
+        "uci": "h4d8",
+        "san": "Qd8+",
         "color": "white"
       },
       {
-        "uci": "c5e3",
-        "san": "Qxe3",
+        "uci": "c6d6",
+        "san": "Rd6",
         "color": "black"
+      },
+      {
+        "uci": "h7b7",
+        "san": "Qb7+",
+        "color": "white"
+      },
+      {
+        "uci": "c5c6",
+        "san": "Rc6",
+        "color": "black"
+      },
+      {
+        "uci": "d8a5",
+        "san": "Qa5+",
+        "color": "white"
+      },
+      {
+        "uci": "c4c5",
+        "san": "Rc5",
+        "color": "black"
+      },
+      {
+        "uci": "b7b3",
+        "san": "Qb3+",
+        "color": "white"
+      },
+      {
+        "uci": "d4c4",
+        "san": "Rc4",
+        "color": "black"
+      },
+      {
+        "uci": "a5d2",
+        "san": "Qd2+",
+        "color": "white"
+      },
+      {
+        "uci": "e4d4",
+        "san": "Rd4",
+        "color": "black"
+      },
+      {
+        "uci": "b3f3",
+        "san": "Qf3+",
+        "color": "white"
+      },
+      {
+        "uci": "e5e4",
+        "san": "Re4",
+        "color": "black"
+      },
+      {
+        "uci": "d2g5",
+        "san": "Qg5+",
+        "color": "white"
+      },
+      {
+        "uci": "e6e5",
+        "san": "e5",
+        "color": "black"
+      },
+      {
+        "uci": "f3f7",
+        "san": "Qf7+",
+        "color": "white"
+      },
+      {
+        "uci": "d6e6",
+        "san": "Re6",
+        "color": "black"
+      },
+      {
+        "uci": "g5d8",
+        "san": "Qd8+",
+        "color": "white"
+      },
+      {
+        "uci": "c6d6",
+        "san": "Rd6",
+        "color": "black"
+      },
+      {
+        "uci": "f7b7",
+        "san": "Qb7+",
+        "color": "white"
+      },
+      {
+        "uci": "c5c6",
+        "san": "Rc6",
+        "color": "black"
+      },
+      {
+        "uci": "d8a5",
+        "san": "Qa5+",
+        "color": "white"
+      },
+      {
+        "uci": "c4c5",
+        "san": "Rc5",
+        "color": "black"
+      },
+      {
+        "uci": "b7b3",
+        "san": "Qb3+",
+        "color": "white"
+      },
+      {
+        "uci": "d4c4",
+        "san": "Rc4",
+        "color": "black"
+      },
+      {
+        "uci": "a5d2",
+        "san": "Qd2+",
+        "color": "white"
+      },
+      {
+        "uci": "e4d4",
+        "san": "Rd4",
+        "color": "black"
+      },
+      {
+        "uci": "b3f3",
+        "san": "Qf3+",
+        "color": "white"
+      },
+      {
+        "uci": "e5e4",
+        "san": "e4",
+        "color": "black"
+      },
+      {
+        "uci": "d2g5",
+        "san": "Qg5+",
+        "color": "white"
+      },
+      {
+        "uci": "e6e5",
+        "san": "Re5",
+        "color": "black"
+      },
+      {
+        "uci": "f3f7",
+        "san": "Qf7+",
+        "color": "white"
+      },
+      {
+        "uci": "d6e6",
+        "san": "Re6",
+        "color": "black"
+      },
+      {
+        "uci": "g5d8",
+        "san": "Qd8+",
+        "color": "white"
+      },
+      {
+        "uci": "c6d6",
+        "san": "Rd6",
+        "color": "black"
+      },
+      {
+        "uci": "f7b7",
+        "san": "Qb7+",
+        "color": "white"
+      },
+      {
+        "uci": "c5c6",
+        "san": "Rc6",
+        "color": "black"
+      },
+      {
+        "uci": "d8a5",
+        "san": "Qa5+",
+        "color": "white"
+      },
+      {
+        "uci": "c4c5",
+        "san": "Rc5",
+        "color": "black"
+      },
+      {
+        "uci": "b7b3",
+        "san": "Qb3+",
+        "color": "white"
+      },
+      {
+        "uci": "d4c4",
+        "san": "Rc4",
+        "color": "black"
+      },
+      {
+        "uci": "a5d2",
+        "san": "Qd2#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b4d3",
-        "san": "Nd3+",
-        "color": "black"
+        "uci": "h4d8",
+        "san": "Qd8+",
+        "color": "white"
       },
       {
-        "uci": "c5e3",
-        "san": "Qxe3",
-        "color": "black"
+        "uci": "h7b7",
+        "san": "Qb7+",
+        "color": "white"
+      },
+      {
+        "uci": "d8a5",
+        "san": "Qa5+",
+        "color": "white"
+      },
+      {
+        "uci": "b7b3",
+        "san": "Qb3+",
+        "color": "white"
+      },
+      {
+        "uci": "a5d2",
+        "san": "Qd2+",
+        "color": "white"
+      },
+      {
+        "uci": "b3f3",
+        "san": "Qf3+",
+        "color": "white"
+      },
+      {
+        "uci": "d2g5",
+        "san": "Qg5+",
+        "color": "white"
+      },
+      {
+        "uci": "f3f7",
+        "san": "Qf7+",
+        "color": "white"
+      },
+      {
+        "uci": "g5d8",
+        "san": "Qd8+",
+        "color": "white"
+      },
+      {
+        "uci": "f7b7",
+        "san": "Qb7+",
+        "color": "white"
+      },
+      {
+        "uci": "d8a5",
+        "san": "Qa5+",
+        "color": "white"
+      },
+      {
+        "uci": "b7b3",
+        "san": "Qb3+",
+        "color": "white"
+      },
+      {
+        "uci": "a5d2",
+        "san": "Qd2+",
+        "color": "white"
+      },
+      {
+        "uci": "b3f3",
+        "san": "Qf3+",
+        "color": "white"
+      },
+      {
+        "uci": "d2g5",
+        "san": "Qg5+",
+        "color": "white"
+      },
+      {
+        "uci": "f3f7",
+        "san": "Qf7+",
+        "color": "white"
+      },
+      {
+        "uci": "g5d8",
+        "san": "Qd8+",
+        "color": "white"
+      },
+      {
+        "uci": "f7b7",
+        "san": "Qb7+",
+        "color": "white"
+      },
+      {
+        "uci": "d8a5",
+        "san": "Qa5+",
+        "color": "white"
+      },
+      {
+        "uci": "b7b3",
+        "san": "Qb3+",
+        "color": "white"
+      },
+      {
+        "uci": "a5d2",
+        "san": "Qd2#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-14T19:28:45.701892+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 21,
+    "posted_at": "2026-08-14T19:29:04.552564+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786735725701",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1537905847336706078,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxe3",
-        "correct": true,
-        "timestamp": "2026-08-14T19:28:54.474000+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786735744552",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
