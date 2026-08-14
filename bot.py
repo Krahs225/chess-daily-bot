@@ -11,7 +11,7 @@ import json
 import subprocess
 import re
 import time
-from datetime import datetime, timezone
+from datetime import timedelta, datetime, timezone
 
 
 # =========================================================
@@ -21,22 +21,22 @@ from datetime import datetime, timezone
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1468320170891022417
 
-PUZZLE_API = "https://api.chess.com/pub/puzzle"
+DAILY_PUZZLE_API = "https://api.chess.com/pub/puzzle"
+RANDOM_PUZZLE_API = "https://api.chess.com/pub/puzzle/random"
 
 STATE_FILE = "daily_puzzle_state.json"
-LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
+LEADERBOARD_FILE = "leaderboard.json"
 
-# Check for a new Daily Puzzle every 5 minutes
+# Check for a new Daily Puzzle
 PUZZLE_CHECK_INTERVAL = 5 * 60
 
-# Post board every 10 minutes
-# Post leaderboard once every 24 hours
+# Leaderboard once per day
 LEADERBOARD_INTERVAL = 24 * 60 * 60
 
-# Players have 12 hours to submit their answer
+# Answers are accepted for 12 hours
 ANSWER_WINDOW = 12 * 60 * 60
 
-# End each GitHub Actions run before the 6-hour limit
+# GitHub Actions run should end before 6 hours
 RUN_TIME = 5 * 60 * 60 + 50 * 60
 
 
@@ -51,7 +51,7 @@ client = discord.Client(intents=intents)
 
 
 # =========================================================
-# DATA
+# GLOBAL DATA
 # =========================================================
 
 state = {}
@@ -75,6 +75,7 @@ def load_json(filename, default):
             "r",
             encoding="utf-8"
         ) as file:
+
             return json.load(file)
 
     except Exception as error:
@@ -117,7 +118,7 @@ def save_json(filename, data):
 
 
 # =========================================================
-# GITHUB PERSISTENCE
+# GITHUB SAVE
 # =========================================================
 
 def push_to_github():
@@ -188,11 +189,6 @@ def push_to_github():
             text=True
         )
 
-        print(
-            "Daily Puzzle data saved.",
-            flush=True
-        )
-
     except Exception as error:
 
         print(
@@ -219,13 +215,13 @@ async def save_all():
 
 
 # =========================================================
-# CHESS.COM DAILY PUZZLE
+# DAILY PUZZLE
 # =========================================================
 
 def fetch_daily_puzzle():
 
     response = requests.get(
-        PUZZLE_API,
+        DAILY_PUZZLE_API,
         headers={
             "User-Agent":
                 "DailyChessPuzzleBot/1.0"
@@ -234,6 +230,7 @@ def fetch_daily_puzzle():
     )
 
     if response.status_code != 200:
+
         raise RuntimeError(
             f"Chess.com returned HTTP "
             f"{response.status_code}"
@@ -255,7 +252,44 @@ def fetch_daily_puzzle():
 
 
 # =========================================================
-# PUZZLE SOLUTION
+# RANDOM PUZZLE
+# =========================================================
+
+def fetch_random_puzzle():
+
+    response = requests.get(
+        RANDOM_PUZZLE_API,
+        headers={
+            "User-Agent":
+                "DailyChessPuzzleBot/1.0"
+        },
+        timeout=10
+    )
+
+    if response.status_code != 200:
+
+        raise RuntimeError(
+            f"Chess.com random puzzle returned "
+            f"HTTP {response.status_code}"
+        )
+
+    data = response.json()
+
+    if not data.get("fen"):
+        raise RuntimeError(
+            "Random puzzle has no FEN."
+        )
+
+    if not data.get("pgn"):
+        raise RuntimeError(
+            "Random puzzle has no PGN."
+        )
+
+    return data
+
+
+# =========================================================
+# SOLUTION
 # =========================================================
 
 def get_solution(data):
@@ -311,9 +345,7 @@ def get_solution(data):
 
 def build_puzzle(data):
 
-    solution = get_solution(
-        data
-    )
+    solution = get_solution(data)
 
     return {
         "url": data.get("url"),
@@ -330,22 +362,16 @@ def build_puzzle(data):
 
 
 # =========================================================
-# POST PUZZLE
+# BOARD IMAGE
 # =========================================================
 
-async def post_puzzle(
-    channel,
-    puzzle
+async def make_board_file(
+    puzzle,
+    filename
 ):
 
     board = chess.Board(
         puzzle["fen"]
-    )
-
-    side = (
-        "White"
-        if board.turn
-        else "Black"
     )
 
     orientation = (
@@ -361,19 +387,39 @@ async def post_puzzle(
         coordinates=True
     )
 
-    png_bytes = cairosvg.svg2png(
-        bytestring=svg_board.encode(
-            "utf-8"
-        )
+    png_bytes = await asyncio.to_thread(
+        cairosvg.svg2png,
+        bytestring=svg_board.encode("utf-8")
     )
 
     image = BytesIO(
         png_bytes
     )
 
-    file = discord.File(
+    return discord.File(
         fp=image,
-        filename="puzzle.png"
+        filename=filename
+    ), board
+
+
+# =========================================================
+# POST DAILY PUZZLE
+# =========================================================
+
+async def post_puzzle(
+    channel,
+    puzzle
+):
+
+    file, board = await make_board_file(
+        puzzle,
+        "puzzle.png"
+    )
+
+    side = (
+        "White"
+        if board.turn
+        else "Black"
     )
 
     embed = discord.Embed(
@@ -395,10 +441,73 @@ async def post_puzzle(
         file=file
     )
 
-    print(
-        "Daily Puzzle posted.",
-        flush=True
-    )
+
+# =========================================================
+# POST RANDOM PUZZLE
+# =========================================================
+
+async def post_random_puzzle(
+    channel
+):
+
+    try:
+
+        # IMPORTANT:
+        # The HTTP request runs in a background thread,
+        # so Discord does not freeze while waiting for Chess.com.
+
+        data = await asyncio.to_thread(
+            fetch_random_puzzle
+        )
+
+        puzzle = build_puzzle(data)
+
+        file, board = await make_board_file(
+            puzzle,
+            "random_puzzle.png"
+        )
+
+        side = (
+            "White"
+            if board.turn
+            else "Black"
+        )
+
+        embed = discord.Embed(
+            title="🎲 Random Chess Puzzle",
+            description=(
+                f"**{puzzle['title']}**\n\n"
+                f"**{side} to move. "
+                f"Find the best move!**"
+            ),
+            color=0x3498db
+        )
+
+        embed.set_image(
+            url="attachment://random_puzzle.png"
+        )
+
+        await channel.send(
+            embed=embed,
+            file=file
+        )
+
+        print(
+            "Random puzzle posted.",
+            flush=True
+        )
+
+    except Exception as error:
+
+        print(
+            f"Random puzzle error: {error}",
+            flush=True
+        )
+
+        await channel.send(
+            "❌ Could not load a random puzzle "
+            "right now. Try again."
+        )
 
 
 # =========================================================
@@ -423,14 +532,8 @@ async def post_answer(
     )
 
     await channel.send(
-        "♟️ **Daily Chess Puzzle — Answer**\n\n"
-        f"**First move:** `{puzzle['first_san']}`\n\n"
-        f"**Full solution:** `{solution_text}`"
-    )
-
-    print(
-        "Daily Puzzle answer posted.",
-        flush=True
+        "💡 **The correct answer is:** "
+        f"||{solution_text}||"
     )
 
 
@@ -453,9 +556,6 @@ def move_is_correct(
     )
 
     # SAN
-    # Bf2
-    # Bf2+
-    # Qh7#
     try:
 
         move = board.parse_san(
@@ -471,7 +571,6 @@ def move_is_correct(
         pass
 
     # UCI
-    # e2e4
     try:
 
         move = board.parse_uci(
@@ -489,7 +588,7 @@ def move_is_correct(
 
 
 # =========================================================
-# PUZZLE STILL OPEN?
+# PUZZLE OPEN?
 # =========================================================
 
 def puzzle_is_open(puzzle):
@@ -556,40 +655,29 @@ async def save_latest_attempt(
             user.id
         )
 
-        latest_attempts = puzzle.setdefault(
+        attempts = puzzle.setdefault(
             "latest_attempts",
             {}
         )
 
-        # IMPORTANT:
-        # Every user has their OWN latest answer.
-        #
-        # Sharkmeister:
-        #     !Bf2
-        #
-        # Thice:
-        #     !Bf3
-        #
-        # They do not affect each other.
+        # ONLY THIS USER'S MOST RECENT ANSWER
+        attempts[user_id] = {
+            "name":
+                user.display_name,
 
-        latest_attempts[user_id] = {
-            "name": user.display_name,
-            "move": move_text,
-            "correct": correct,
-            "timestamp": datetime.now(
-                timezone.utc
-            ).isoformat()
+            "move":
+                move_text,
+
+            "correct":
+                correct,
+
+            "timestamp":
+                datetime.now(
+                    timezone.utc
+                ).isoformat()
         }
 
         await save_all()
-
-        print(
-            f"Latest attempt: "
-            f"{user.display_name} -> "
-            f"{move_text} -> "
-            f"{'correct' if correct else 'wrong'}",
-            flush=True
-        )
 
         return True
 
@@ -604,7 +692,7 @@ async def finalize_puzzle(
 
     async with data_lock:
 
-        latest_attempts = puzzle.get(
+        attempts = puzzle.get(
             "latest_attempts",
             {}
         )
@@ -614,13 +702,13 @@ async def finalize_puzzle(
             []
         )
 
-        for user_id, attempt in latest_attempts.items():
+        for user_id, attempt in attempts.items():
 
-            # Already received a point
+            # Never award twice
             if user_id in already_awarded:
                 continue
 
-            # ONLY THE MOST RECENT ATTEMPT COUNTS
+            # Only the user's MOST RECENT attempt counts
             if not attempt.get(
                 "correct",
                 False
@@ -647,12 +735,6 @@ async def finalize_puzzle(
                 user_id
             )
 
-            print(
-                f"+1 Daily Puzzle point: "
-                f"{name}",
-                flush=True
-            )
-
         puzzle[
             "points_awarded"
         ] = already_awarded
@@ -662,73 +744,6 @@ async def finalize_puzzle(
         ] = True
 
         await save_all()
-
-
-# =========================================================
-# DISCORD ANSWERS
-# =========================================================
-
-@client.event
-async def on_message(
-    message
-):
-
-    if message.author.bot:
-        return
-
-    if message.channel.id != CHANNEL_ID:
-        return
-
-    content = message.content.strip()
-
-    if not content.startswith("!"):
-        return
-
-    # Only accept:
-    # !Bf2
-    # !Bf2+
-    # !e2e4
-    match = re.fullmatch(
-        r"!\s*(\S+)",
-        content
-    )
-
-    if not match:
-        return
-
-    move_text = match.group(1)
-
-    puzzle = state.get(
-        "current_puzzle"
-    )
-
-    if not puzzle:
-        return
-
-    # After answer -> completely ignore
-    if puzzle.get(
-        "answer_posted",
-        False
-    ):
-        return
-
-    # After 12 hours -> completely ignore
-    if not puzzle_is_open(
-        puzzle
-    ):
-        return
-
-    correct = move_is_correct(
-        move_text,
-        puzzle
-    )
-
-    # SAVE THIS AS THIS USER'S LATEST ATTEMPT
-    await save_latest_attempt(
-        message.author,
-        move_text,
-        correct
-    )
 
 
 # =========================================================
@@ -747,7 +762,10 @@ def make_leaderboard():
     ordered = sorted(
         scores.items(),
         key=lambda item:
-            item[1]["points"],
+            item[1].get(
+                "points",
+                0
+            ),
         reverse=True
     )
 
@@ -756,14 +774,20 @@ def make_leaderboard():
         ""
     ]
 
-    # All players for now
     for rank, (_, player) in enumerate(
         ordered,
         start=1
     ):
 
-        name = player["name"]
-        points = player["points"]
+        name = player.get(
+            "name",
+            "Unknown"
+        )
+
+        points = player.get(
+            "points",
+            0
+        )
 
         if rank == 1:
             prefix = "🥇"
@@ -774,22 +798,16 @@ def make_leaderboard():
         else:
             prefix = f"**{rank}.**"
 
-        word = (
-            "point"
-            if points == 1
-            else "points"
-        )
-
         lines.append(
             f"{prefix} {name} — "
-            f"**{points} {word}**"
+            f"**{points} points**"
         )
 
     return "\n".join(lines)
 
 
 # =========================================================
-# FIND NEW DAILY PUZZLE
+# CHECK NEW DAILY
 # =========================================================
 
 async def check_for_new_puzzle(
@@ -809,8 +827,7 @@ async def check_for_new_puzzle(
     except Exception as error:
 
         print(
-            f"Could not load Daily Puzzle: "
-            f"{error}",
+            f"Daily puzzle error: {error}",
             flush=True
         )
 
@@ -826,16 +843,11 @@ async def check_for_new_puzzle(
         else None
     )
 
-    # Same puzzle -> do not post again
+    # Same daily puzzle
     if current_url == puzzle["url"]:
         return
 
-    print(
-        "NEW DAILY PUZZLE DETECTED.",
-        flush=True
-    )
-
-    # Finish old puzzle first
+    # Finalize previous puzzle if necessary
     if current:
 
         if not current.get(
@@ -843,36 +855,14 @@ async def check_for_new_puzzle(
             False
         ):
 
-            # If the 12-hour window ended,
-            # the latest attempts determine points.
-            if not puzzle_is_open(
+            await finalize_puzzle(
                 current
-            ):
+            )
 
-                await finalize_puzzle(
-                    current
-                )
-
-                await post_answer(
-                    channel,
-                    current
-                )
-
-            else:
-
-                # A new Chess.com puzzle appeared
-                # unexpectedly before 12 hours.
-                #
-                # Finalize the old one anyway so
-                # nobody can answer it anymore.
-                await finalize_puzzle(
-                    current
-                )
-
-                await post_answer(
-                    channel,
-                    current
-                )
+            await post_answer(
+                channel,
+                current
+            )
 
     # New puzzle
     puzzle["posted_at"] = (
@@ -906,7 +896,7 @@ async def check_for_new_puzzle(
 
 
 # =========================================================
-# PUZZLE LOOP
+# DAILY PUZZLE LOOP
 # =========================================================
 
 async def puzzle_loop(
@@ -934,7 +924,7 @@ async def puzzle_loop(
 
 
 # =========================================================
-# ANSWER + LEADERBOARD LOOP
+# MAINTENANCE LOOP
 # =========================================================
 
 async def maintenance_loop(
@@ -951,10 +941,7 @@ async def maintenance_loop(
                 "current_puzzle"
             )
 
-            # -----------------------------------------
-            # 12-HOUR CLOSE
-            # -----------------------------------------
-
+            # 12-hour answer deadline
             if puzzle:
 
                 if not puzzle.get(
@@ -966,28 +953,16 @@ async def maintenance_loop(
                         puzzle
                     ):
 
-                        print(
-                            "12 hours reached. "
-                            "Finalizing latest answers.",
-                            flush=True
-                        )
-
-                        # First determine points
-                        # from everyone's latest attempt.
                         await finalize_puzzle(
                             puzzle
                         )
 
-                        # Then reveal the answer.
                         await post_answer(
                             channel,
                             puzzle
                         )
 
-            # -----------------------------------------
-            # LEADERBOARD
-            # -----------------------------------------
-
+            # Daily leaderboard
             if (
                 time.monotonic()
                 - last_leaderboard
@@ -1000,11 +975,6 @@ async def maintenance_loop(
 
                 last_leaderboard = (
                     time.monotonic()
-                )
-
-                print(
-                    "Leaderboard posted.",
-                    flush=True
                 )
 
         except Exception as error:
@@ -1028,12 +998,99 @@ async def run_timer():
     )
 
     print(
-        "Ending run cleanly before GitHub's "
-        "6-hour limit.",
+        "Ending run cleanly.",
         flush=True
     )
 
     await client.close()
+
+
+# =========================================================
+# DISCORD COMMANDS
+# =========================================================
+
+@client.event
+async def on_message(
+    message
+):
+
+    if message.author.bot:
+        return
+
+    if message.channel.id != CHANNEL_ID:
+        return
+
+    content = message.content.strip()
+
+    # =====================================================
+    # RANDOM PUZZLE
+    # =====================================================
+
+    command = content.lower()
+
+    if command in (
+        "!random",
+        "!randompuzzle",
+        "!random puzzle"
+    ):
+
+        await post_random_puzzle(
+            message.channel
+        )
+
+        return
+
+    # =====================================================
+    # DAILY PUZZLE ANSWER
+    # =====================================================
+
+    if not content.startswith("!"):
+        return
+
+    match = re.fullmatch(
+        r"!\s*(\S+)",
+        content
+    )
+
+    if not match:
+        return
+
+    move_text = match.group(1)
+
+    puzzle = state.get(
+        "current_puzzle"
+    )
+
+    if not puzzle:
+        return
+
+    # IMPORTANT:
+    # After the official answer has been posted,
+    # commands are completely ignored.
+    if puzzle.get(
+        "answer_posted",
+        False
+    ):
+        return
+
+    # IMPORTANT:
+    # After 12 hours, commands are completely ignored.
+    if not puzzle_is_open(
+        puzzle
+    ):
+        return
+
+    correct = move_is_correct(
+        move_text,
+        puzzle
+    )
+
+    # Save ONLY this user's latest answer.
+    await save_latest_attempt(
+        message.author,
+        move_text,
+        correct
+    )
 
 
 # =========================================================
@@ -1085,30 +1142,28 @@ async def on_ready():
 
         return
 
-    print(
-        f"Channel found: {channel.name}",
-        flush=True
-    )
-
-    # Check immediately on startup
+    # Immediately check Daily Puzzle
     await check_for_new_puzzle(
         channel
     )
 
+    # Keep checking for next Daily Puzzle
     asyncio.create_task(
         puzzle_loop(channel)
     )
 
+    # Handle 12-hour answer + leaderboard
     asyncio.create_task(
         maintenance_loop(channel)
     )
 
+    # End GitHub Actions run safely
     asyncio.create_task(
         run_timer()
     )
 
     print(
-        "Daily Puzzle system is running.",
+        "Daily Puzzle Bot is running.",
         flush=True
     )
 
