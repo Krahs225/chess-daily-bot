@@ -1674,8 +1674,10 @@ async def award_random_move_points(
             )
 
     if score_kind != "none":
-        await asyncio.to_thread(
-            push_to_github
+        asyncio.create_task(
+            asyncio.to_thread(
+                push_to_github
+            )
         )
 
     return score_kind
@@ -1749,11 +1751,18 @@ async def award_point(
             scores
         )
 
-    await asyncio.to_thread(
-        push_to_github
+    asyncio.create_task(
+        asyncio.to_thread(
+            push_to_github
+        )
     )
 
     return True
+
+
+def format_points(points):
+    value = float(points)
+    return str(int(value)) if value.is_integer() else f"{value:.1f}"
 
 
 # =========================================================
@@ -1919,6 +1928,12 @@ async def finalize_expired_puzzle(
     ):
         return
 
+    await post_answer(
+        channel,
+        puzzle,
+        puzzle_type
+    )
+
     puzzle[
         "answer_posted"
     ] = True
@@ -1928,14 +1943,10 @@ async def finalize_expired_puzzle(
         state
     )
 
-    await asyncio.to_thread(
-        push_to_github
-    )
-
-    await post_answer(
-        channel,
-        puzzle,
-        puzzle_type
+    asyncio.create_task(
+        asyncio.to_thread(
+            push_to_github
+        )
     )
 
 
@@ -2522,11 +2533,6 @@ async def handle_random_answer(
     if next_player_index >= len(player_moves):
         puzzle["solved"] = True
 
-        got_point = await award_point(
-            puzzle,
-            message.author
-        )
-
         points = get_player_score(
             message.author.id
         )
@@ -2535,10 +2541,8 @@ async def handle_random_answer(
             message.author.id
         )
 
-        # The embed is ONLY for the board/progress.
-        # Points and ranking are sent as a separate message.
         embed_progress = (
-            f"🎉 **Puzzle solved!**"
+            "🎉 **Puzzle solved!**"
         )
 
         if opponent_replies:
@@ -2548,13 +2552,16 @@ async def handle_random_answer(
                 f"{' '.join(opponent_replies)}"
             )
 
-        await save_all()
-
+        # Update the board FIRST so the user immediately sees
+        # the final position. Persistence follows.
         await update_random_puzzle_message(
             message.channel,
             puzzle,
             embed_progress
         )
+
+        # Save the shared puzzle state locally.
+        await save_all()
 
         if score_kind == "first":
             score_message = (
@@ -2563,7 +2570,6 @@ async def handle_random_answer(
                 f"**+1 point** — you now have "
                 f"**{format_points(points)} points.**"
             )
-
         elif score_kind == "helper":
             score_message = (
                 f"✅ **Correct, {message.author.display_name}!**\n"
@@ -2572,27 +2578,31 @@ async def handle_random_answer(
                 f"you now have "
                 f"**{format_points(points)} points.**"
             )
-
         else:
             score_message = (
                 f"✅ **Correct, {message.author.display_name}!**\n"
                 f"🎉 **Puzzle solved!**\n"
-                f"No additional points this move.\n"
                 f"You have **{format_points(points)} points.**"
             )
 
-        # Score is a separate message; the puzzle embed never contains points.
-        await message.channel.send(score_message)
+        await message.channel.send(
+            score_message
+        )
 
-        # Small personal leaderboard: one above, you, one below.
         if ranking:
-            await message.channel.send(ranking)
+            await message.channel.send(
+                ranking
+            )
 
         await post_answer(
             message.channel,
             puzzle,
             "random"
         )
+
+        # Mark it solved only after the answer message is posted.
+        puzzle["answer_posted"] = True
+        await save_all()
 
         return
 
@@ -2623,8 +2633,7 @@ async def handle_random_answer(
             f"{move_word(remaining)} remaining.**"
         )
 
-    await save_all()
-
+    # Update the board immediately.
     await update_random_puzzle_message(
         message.channel,
         puzzle,
@@ -2636,9 +2645,10 @@ async def handle_random_answer(
         )
     )
 
-    # Points are always a separate message, never part of the embed.
-    if score_kind in ("first", "helper"):
+    # Then persist state.
+    await save_all()
 
+    if score_kind in ("first", "helper"):
         current_points = get_player_score(
             message.author.id
         )
@@ -2650,7 +2660,6 @@ async def handle_random_answer(
                 f"**+1 point** — you now have "
                 f"**{format_points(current_points)} points.**"
             )
-
         else:
             score_text = (
                 f"🤝 **{message.author.display_name} "
@@ -2790,185 +2799,204 @@ async def on_message(
     message
 ):
 
-    if message.author.bot:
-        return
+    try:
 
-    if message.channel.id != CHANNEL_ID:
-        return
 
-    content = message.content.strip()
 
-    if not content.startswith("!"):
-        return
+        if message.author.bot:
+            return
 
-    command_lower = content.lower()
+        if message.channel.id != CHANNEL_ID:
+            return
 
-    # =====================================================
-    # HELP / INFO
-    # =====================================================
+        content = message.content.strip()
 
-    if command_lower in (
-        "!help",
-        "!info"
-    ):
+        if not content.startswith("!"):
+            return
 
-        await message.channel.send(
-            help_message()
-        )
+        command_lower = content.lower()
 
-        return
-
-    # =====================================================
-    # FULL LEADERBOARD
-    # =====================================================
-
-    if command_lower in ("!leaderboard", "!lb", "!l"):
-        await message.channel.send(
-            make_leaderboard()
-        )
-        return
-
-    # =====================================================
-    # RANDOM PUZZLE
-    # =====================================================
-
-    if command_lower in (
-        "!random",
-        "!rp",
-        "!r",
-        "!randompuzzle"
-    ):
-
-        previous_random = state.get(
-            "latest_random_puzzle"
-        )
-
-        if (
-            previous_random
-            and not previous_random.get(
-                "answer_posted",
-                False
-            )
-            and not previous_random.get(
-                "solved",
-                False
-            )
+        # Fast exact aliases. Handle these before any puzzle logic.
+        if command_lower in (
+            "!leaderboard",
+            "!lb",
+            "!l"
         ):
-            await finalize_expired_puzzle(
-                message.channel,
-                previous_random,
-                "random"
+            await message.channel.send(
+                make_leaderboard()
+            )
+            return
+
+        # =====================================================
+        # HELP / INFO
+        # =====================================================
+
+        if command_lower in (
+            "!help",
+            "!info"
+        ):
+
+            await message.channel.send(
+                help_message()
             )
 
-        await post_random_puzzle(
-            message.channel
-        )
+            return
 
-        return
+        # =====================================================
+        # RANDOM PUZZLE
+        # =====================================================
 
-    # =====================================================
-    # RANDOM ANSWER
-    # =====================================================
+        if command_lower in (
+            "!random",
+            "!rp",
+            "!r",
+            "!randompuzzle"
+        ):
 
-    if command_lower.startswith(
-        "!random "
-    ):
+            previous_random = state.get(
+                "latest_random_puzzle"
+            )
 
-        move_text = content[
-            len("!random "):
-        ].strip()
+            if (
+                previous_random
+                and not previous_random.get(
+                    "answer_posted",
+                    False
+                )
+                and not previous_random.get(
+                    "solved",
+                    False
+                )
+            ):
+                await finalize_expired_puzzle(
+                    message.channel,
+                    previous_random,
+                    "random"
+                )
+
+            await post_random_puzzle(
+                message.channel
+            )
+
+            return
+
+        # =====================================================
+        # RANDOM ANSWER
+        # =====================================================
+
+        if command_lower.startswith(
+            "!random "
+        ):
+
+            move_text = content[
+                len("!random "):
+            ].strip()
+
+            if not move_text:
+                return
+
+            puzzle = state.get(
+                "latest_random_puzzle"
+            )
+
+            await handle_answer(
+                message,
+                puzzle,
+                RANDOM_ANSWER_WINDOW,
+                move_text
+            )
+
+            return
+
+        # =====================================================
+        # DAILY ANSWER
+        # =====================================================
+
+        if command_lower.startswith(
+            "!daily "
+        ):
+
+            move_text = content[
+                len("!daily "):
+            ].strip()
+
+            if not move_text:
+                return
+
+            puzzle = state.get(
+                "current_puzzle"
+            )
+
+            await handle_answer(
+                message,
+                puzzle,
+                ANSWER_WINDOW,
+                move_text
+            )
+
+            return
+
+        # =====================================================
+        # QUICK ANSWER
+        #
+        # !Bf2
+        # !Bf2
+        # !bf2
+        # =====================================================
+
+        move_text = content[1:].strip()
 
         if not move_text:
             return
 
-        puzzle = state.get(
-            "latest_random_puzzle"
+        latest_type = state.get(
+            "latest_puzzle_type"
         )
 
-        await handle_answer(
-            message,
-            puzzle,
-            RANDOM_ANSWER_WINDOW,
-            move_text
-        )
+        if latest_type == "random":
 
-        return
+            puzzle = state.get(
+                "latest_random_puzzle"
+            )
 
-    # =====================================================
-    # DAILY ANSWER
-    # =====================================================
+            answer_window = (
+                RANDOM_ANSWER_WINDOW
+            )
 
-    if command_lower.startswith(
-        "!daily "
-    ):
+        elif latest_type == "daily":
 
-        move_text = content[
-            len("!daily "):
-        ].strip()
+            puzzle = state.get(
+                "current_puzzle"
+            )
 
-        if not move_text:
+            answer_window = (
+                ANSWER_WINDOW
+            )
+
+        else:
+
             return
 
-        puzzle = state.get(
-            "current_puzzle"
-        )
-
         await handle_answer(
             message,
             puzzle,
-            ANSWER_WINDOW,
+            answer_window,
             move_text
         )
 
-        return
-
-    # =====================================================
-    # QUICK ANSWER
-    #
-    # !Bf2
-    # !Bf2
-    # !bf2
-    # =====================================================
-
-    move_text = content[1:].strip()
-
-    if not move_text:
-        return
-
-    latest_type = state.get(
-        "latest_puzzle_type"
-    )
-
-    if latest_type == "random":
-
-        puzzle = state.get(
-            "latest_random_puzzle"
+    except Exception as error:
+        print(
+            f"COMMAND ERROR: {error}",
+            flush=True
         )
+        traceback.print_exc()
 
-        answer_window = (
-            RANDOM_ANSWER_WINDOW
-        )
-
-    elif latest_type == "daily":
-
-        puzzle = state.get(
-            "current_puzzle"
-        )
-
-        answer_window = (
-            ANSWER_WINDOW
-        )
-
-    else:
-
-        return
-
-    await handle_answer(
-        message,
-        puzzle,
-        answer_window,
-        move_text
-    )
+        try:
+            await message.channel.send(
+                f"❌ **Bot error:** `{str(error)[:1000]}`"
+            )
+        except Exception:
+            pass
 
 
 # =========================================================
