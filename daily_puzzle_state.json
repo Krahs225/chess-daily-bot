@@ -21,32 +21,29 @@
     "points_awarded": []
   },
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-10-23",
-    "title": "Mate in 4",
-    "fen": "r1n1rk2/1q2p1bp/p1p1Bnp1/2p1N3/5B2/2P5/PPQ2PPP/R3R1K1 w KQkq - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1n1rk2/1q2p1bp/p1p1Bnp1/2p1N3/5B2/2P5/PPQ2PPP/R3R1K1 w KQkq - 0 1\"]\r\n\r\n1. Qxg6 Nd6 2. Bh6 Nh5 3. Qxh7 Red8 4. Qg8#\r\n*",
-    "first_san": "Qxg6",
-    "first_uci": "c2g6",
+    "url": "https://www.chess.com/daily/2009-09-02",
+    "title": "Forcing the Opponent Into Checkmate",
+    "fen": "8/2p5/p7/2p5/kNK5/p7/P7/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/2p5/p7/2p5/kNK5/p7/P7/8 w - - 0 1\"]\r\n\r\n1. Nc6 a5 2. Na7 c6 3. Nb5 cxb5+ 4. Kxc5 b4 5. Kc4 b3 6. axb3#\r\n*",
+    "first_san": "Nc6",
+    "first_uci": "b4c6",
     "solution": [
-      "Qxg6",
-      "Nd6",
-      "Bh6",
-      "Nh5",
-      "Qxh7",
-      "Red8",
-      "Qg8#"
+      "Nc6",
+      "a5",
+      "Na7",
+      "c6",
+      "Nb5",
+      "cxb5+",
+      "Kxc5",
+      "b4",
+      "Kc4",
+      "b3",
+      "axb3#"
     ],
-    "posted_at": "2026-08-14T14:51:09.565983+00:00",
+    "posted_at": "2026-08-14T14:52:04.485847+00:00",
     "answer_posted": false,
-    "latest_attempts": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxg6",
-        "correct": false,
-        "timestamp": "2026-08-14T14:51:26.349492+00:00"
-      }
-    },
-    "puzzle_id": "random_1786719069565"
+    "latest_attempts": {},
+    "puzzle_id": "random_1786719124485"
   },
   "latest_puzzle_type": "random"
 }
