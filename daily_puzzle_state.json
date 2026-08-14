@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-01-04",
     "title": "Dark Square Prelude, Light Square Finale",
     "fen": "r1b2rk1/pp1q1p1p/1B1p4/R5bP/8/1BP3P1/1P5K/3R4 w - - 0 1",
-    "current_fen": "r1b4k/pp1q3p/3p1r2/6RP/8/1BP3P1/1P5K/3R4 w - - 0 4",
+    "current_fen": "r1b3Rk/pp1q3p/3p1r2/7P/8/1BP3P1/1P5K/3R4 b - - 1 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"r1b2rk1/pp1q1p1p/1B1p4/R5bP/8/1BP3P1/1P5K/3R4 w - - 0 1\"]\r\n\r\n1. Rxg5+ Kh8 2. Bd4+ f6 3. Bxf6+ Rxf6 4. Rg8# *",
     "all_moves": [
       {
@@ -72,16 +72,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786738827554",
-    "next_solution_index": 6,
-    "next_player_index": 3,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1537918857082052709,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bxf6",
+        "move": "rg8",
         "correct": true,
-        "timestamp": "2026-08-14T20:20:50.832300+00:00"
+        "timestamp": "2026-08-14T20:20:58.749933+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -92,7 +92,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
