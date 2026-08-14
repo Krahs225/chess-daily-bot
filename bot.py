@@ -1,5 +1,6 @@
 import discord
 import os
+import re
 import requests
 import chess
 import chess.svg
@@ -444,18 +445,143 @@ def board_from_fen_safe(fen):
 # PARSE PUZZLE SOLUTION
 # =========================================================
 
+
+def _strip_pgn_headers_and_noise(pgn_text):
+    """
+    Extract SAN move tokens without invoking chess.pgn.read_game().
+    This avoids python-chess PGN parser compatibility issues with some
+    Chess.com puzzle FEN headers.
+    """
+    text = str(pgn_text)
+
+    # Remove tag pairs such as [FEN "..."] and [SetUp "1"].
+    text = re.sub(
+        r'(?m)^\s*\[[^\]]*\]\s*$',
+        ' ',
+        text
+    )
+
+    # Remove comments.
+    text = re.sub(
+        r'\{.*?\}',
+        ' ',
+        text,
+        flags=re.DOTALL
+    )
+
+    # Remove semicolon comments.
+    text = re.sub(
+        r';[^\n]*',
+        ' ',
+        text
+    )
+
+    # Remove recursive parenthesized variations. A small loop is enough
+    # for normal Chess.com PGNs and avoids pulling alternative lines in.
+    for _ in range(8):
+        new_text = re.sub(
+            r'\([^()]*\)',
+            ' ',
+            text
+        )
+        if new_text == text:
+            break
+        text = new_text
+
+    # Remove NAGs.
+    text = re.sub(
+        r'\$\d+',
+        ' ',
+        text
+    )
+
+    # Protect move numbers such as 1... and 12.
+    tokens = text.replace("\n", " ").split()
+
+    result = []
+
+    for token in tokens:
+        token = token.strip()
+
+        if not token:
+            continue
+
+        # Move numbers: 1. 12. 12... etc.
+        if re.fullmatch(r'\d+\.(\.\.)?', token):
+            continue
+
+        # Game results.
+        if token in {
+            "1-0",
+            "0-1",
+            "1/2-1/2",
+            "*"
+        }:
+            continue
+
+        # Occasionally a move number is attached to SAN:
+        # 12.Qxe5 or 12...Qxe5.
+        token = re.sub(
+            r'^\d+\.(\.\.)?',
+            '',
+            token
+        )
+
+        if token:
+            result.append(token)
+
+    return result
+
+
+def _parse_san_sequence(
+    board,
+    tokens
+):
+    """
+    Parse SAN tokens from a starting board and return the moves with
+    UCI/SAN/color. No PGN parser is used.
+    """
+    parsed = []
+
+    for token in tokens:
+
+        try:
+            move = board.parse_san(token)
+        except Exception:
+            return None
+
+        parsed.append(
+            {
+                "uci": move.uci(),
+                "san": board.san(move),
+                "color": (
+                    "white"
+                    if board.turn
+                    else "black"
+                )
+            }
+        )
+
+        board.push(move)
+
+    return parsed
+
+
+def _extract_header_fen(pgn_text):
+    match = re.search(
+        r'(?mi)^\s*\[FEN\s+"([^"]+)"\]\s*$',
+        str(pgn_text)
+    )
+
+    if not match:
+        return None
+
+    return match.group(1)
+
+
 def get_solution(data):
 
     try:
-        game = chess.pgn.read_game(
-            StringIO(data["pgn"])
-        )
-
-        if game is None:
-            raise RuntimeError(
-                "Could not read puzzle PGN."
-            )
-
         target_fen = sanitize_fen(
             data["fen"]
         )
@@ -464,153 +590,112 @@ def get_solution(data):
             target_fen
         )
 
-        mainline_moves = list(
-            game.mainline_moves()
+        tokens = _strip_pgn_headers_and_noise(
+            data["pgn"]
         )
 
-        # -----------------------------------------------------
-        # Find the puzzle starting position in the PGN.
-        #
-        # Important: use a fresh normal board here rather than
-        # trusting game.board() castling state from the PGN tags.
-        # -----------------------------------------------------
-
-        replay_board = chess.Board()
-
-        # Try to initialize the PGN starting position safely.
-        try:
-            if (
-                game.headers.get("SetUp") == "1"
-                and game.headers.get("FEN")
-            ):
-                replay_board = board_from_fen_safe(
-                    game.headers["FEN"]
-                )
-        except Exception:
-            # Fall back to standard chess if the PGN start
-            # position metadata is malformed.
-            replay_board = chess.Board()
-
-        start_index = None
-
-        for index, move in enumerate(
-            mainline_moves
-        ):
-
-            if (
-                replay_board.board_fen()
-                == target_board.board_fen()
-                and replay_board.turn
-                == target_board.turn
-            ):
-                start_index = index
-                break
-
-            try:
-                if move not in replay_board.legal_moves:
-                    break
-
-                replay_board.push(move)
-
-            except (TypeError, ValueError) as error:
-                raise RuntimeError(
-                    f"Could not replay puzzle PGN at move "
-                    f"{index + 1}: {error}"
-                )
-
-        # The puzzle position may be the final position.
-        if start_index is None:
-            if (
-                replay_board.board_fen()
-                == target_board.board_fen()
-                and replay_board.turn
-                == target_board.turn
-            ):
-                start_index = len(
-                    mainline_moves
-                )
-
-        # -----------------------------------------------------
-        # Some random-puzzle PGNs are already relative to the
-        # supplied puzzle FEN. In that case the FEN will not
-        # occur inside the PGN replay at all.
-        #
-        # If the first PGN move is legal from the puzzle FEN,
-        # treat the PGN as the puzzle solution and start at 0.
-        # -----------------------------------------------------
-        if start_index is None and mainline_moves:
-            try:
-                test_board = board_from_fen_safe(
-                    target_fen
-                )
-
-                first_move = mainline_moves[0]
-
-                if first_move in test_board.legal_moves:
-                    start_index = 0
-
-            except Exception:
-                pass
-
-        if start_index is None:
-            first_move_text = (
-                mainline_moves[0].uci()
-                if mainline_moves
-                else "none"
-            )
-
+        if not tokens:
             raise RuntimeError(
-                "Could not match the puzzle FEN to the PGN, "
-                f"and the first PGN move ({first_move_text}) "
-                "is not legal from the puzzle position."
+                "Random puzzle PGN contains no SAN moves."
             )
 
-        # -----------------------------------------------------
-        # Build the actual solution starting from the API FEN.
-        # -----------------------------------------------------
+        # ---------------------------------------------------------
+        # MODE 1: The PGN starts directly from the puzzle FEN.
+        # This is the normal form for Chess.com puzzle API data.
+        # ---------------------------------------------------------
 
-        board = board_from_fen_safe(
+        puzzle_board = board_from_fen_safe(
             target_fen
         )
 
-        solution = []
+        solution = _parse_san_sequence(
+            puzzle_board,
+            tokens
+        )
 
-        for move in mainline_moves[
-            start_index:
-        ]:
+        if solution:
+            start_index = 0
 
-            try:
-                if move not in board.legal_moves:
+        else:
+            # -----------------------------------------------------
+            # MODE 2: The PGN contains the original game from an
+            # earlier position. Replay it from the PGN header FEN
+            # (or standard chess) until the API puzzle FEN appears.
+            # -----------------------------------------------------
+
+            header_fen = _extract_header_fen(
+                data["pgn"]
+            )
+
+            if header_fen:
+                replay_board = board_from_fen_safe(
+                    sanitize_fen(header_fen)
+                )
+            else:
+                replay_board = chess.Board()
+
+            parsed_before_puzzle = []
+
+            start_index = None
+
+            for index, token in enumerate(tokens):
+
+                if (
+                    replay_board.board_fen()
+                    == target_board.board_fen()
+                    and replay_board.turn
+                    == target_board.turn
+                ):
+                    start_index = index
                     break
 
-                solution.append(
-                    {
-                        "uci":
-                            move.uci(),
+                try:
+                    move = replay_board.parse_san(
+                        token
+                    )
+                except Exception:
+                    break
 
-                        "san":
-                            board.san(move),
-
-                        "color":
-                            "white"
-                            if board.turn
-                            else "black"
-                    }
+                parsed_before_puzzle.append(
+                    move
                 )
 
-                board.push(move)
+                replay_board.push(
+                    move
+                )
 
-            except (TypeError, ValueError) as error:
+            if start_index is None:
 
+                if (
+                    replay_board.board_fen()
+                    == target_board.board_fen()
+                    and replay_board.turn
+                    == target_board.turn
+                ):
+                    start_index = len(tokens)
+
+            if start_index is None:
                 raise RuntimeError(
-                    f"Could not apply puzzle move "
-                    f"{move.uci()}: {error}"
+                    "Could not match the puzzle FEN to the "
+                    "random puzzle PGN. The PGN is neither a "
+                    "solution line starting from the puzzle "
+                    "position nor a replayable full-game line."
                 )
 
-        if not solution:
-            raise RuntimeError(
-                "Puzzle has no solution moves."
+            solution_board = board_from_fen_safe(
+                target_fen
             )
+
+            solution = _parse_san_sequence(
+                solution_board,
+                tokens[start_index:]
+            )
+
+            if not solution:
+                raise RuntimeError(
+                    "The random puzzle PGN contains no legal "
+                    "solution moves after the puzzle position."
+                )
 
         player_color = (
             "white"
@@ -624,21 +709,17 @@ def get_solution(data):
             if move["color"] == player_color
         ]
 
+        if not player_moves:
+            raise RuntimeError(
+                "Random puzzle has no moves for the side to solve."
+            )
+
         return {
-            "all_moves":
-                solution,
-
-            "player_moves":
-                player_moves,
-
-            "player_color":
-                player_color,
-
-            "player_move_count":
-                len(player_moves),
-
-            "first_uci":
-                solution[0]["uci"]
+            "all_moves": solution,
+            "player_moves": player_moves,
+            "player_color": player_color,
+            "player_move_count": len(player_moves),
+            "first_uci": solution[0]["uci"]
         }
 
     except RuntimeError:
@@ -646,7 +727,7 @@ def get_solution(data):
 
     except Exception as error:
         raise RuntimeError(
-            f"Puzzle parsing failed: {error}"
+            f"Random puzzle solution parsing failed: {error}"
         )
 
 
