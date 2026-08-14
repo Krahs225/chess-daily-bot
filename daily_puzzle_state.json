@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-02-22",
     "title": "Corralling Royalty",
     "fen": "5r1k/1PB3pp/3p1r2/7q/4Bn2/5P2/4QP1P/1R4RK b - - 0 1",
-    "current_fen": "5r1k/1PB3p1/3pn1K1/7p/4B3/5P1r/4QP2/1R4R1 b - - 3 6",
+    "current_fen": "7k/1PB3p1/3pnrK1/7p/4B3/5P1r/4QP2/1R4R1 w - - 4 7",
     "pgn": "[White \"PWP_Bruce\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"5r1k/1PB3pp/3p1r2/7q/4Bn2/5P2/4QP1P/1R4RK b - - 0 1\"]\r\n\r\n1... Qxh2+ 2. Kxh2 Rh6+ 3. Kg3 Rh3+ 4. Kg4 h5+ 5. Kg5 Ne6+ 6. Kg6 Rf6# 0-1",
     "all_moves": [
       {
@@ -102,16 +102,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786735677548",
-    "next_solution_index": 10,
-    "next_player_index": 5,
-    "solved": false,
+    "next_solution_index": 11,
+    "next_player_index": 6,
+    "solved": true,
     "message_id": 1537905645204938946,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "ne6",
+        "move": "rf6",
         "correct": true,
-        "timestamp": "2026-08-14T19:28:35.139565+00:00"
+        "timestamp": "2026-08-14T19:28:35.920090+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -122,8 +122,10 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
