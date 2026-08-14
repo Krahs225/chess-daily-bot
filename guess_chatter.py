@@ -33,6 +33,10 @@ LEADERBOARD_INTERVAL_SECONDS = 10 * 60
 # Permanent leaderboard
 SCORES_FILE = "guess_chatter_scores.json"
 
+# Context shown with the answer
+CONTEXT_BEFORE = 2
+CONTEXT_AFTER = 2
+
 
 # =========================================================
 # CHATTERS
@@ -89,7 +93,6 @@ client = discord.Client(intents=intents)
 
 scores = {}
 
-# Active polls
 active_polls = {}
 
 scores_lock = asyncio.Lock()
@@ -102,11 +105,13 @@ scores_lock = asyncio.Lock()
 def load_scores():
 
     if not os.path.exists(SCORES_FILE):
+
         print(
             "No existing leaderboard found. "
             "Starting with 0 points.",
             flush=True
         )
+
         return {}
 
     try:
@@ -279,7 +284,7 @@ def find_chatter(prefix):
 
 
 # =========================================================
-# DATE PARSING
+# DATE
 # =========================================================
 
 def parse_date(date_string):
@@ -297,7 +302,7 @@ def parse_date(date_string):
 
 
 # =========================================================
-# LOAD CHATTERS + THEIR ACTIVE PERIOD
+# PARSE CHAT FILE
 # =========================================================
 
 def load_chatters():
@@ -334,6 +339,7 @@ def load_chatters():
             if not line:
                 continue
 
+            # Date line
             date_match = re.fullmatch(
                 r"(\d{1,2})-(\d{1,2})-(\d{4})",
                 line
@@ -353,15 +359,22 @@ def load_chatters():
 
                 continue
 
+            # Message line
             time_match = re.match(
-                r"^\d{1,2}:\d{2}\s*(.*)$",
+                r"^(\d{1,2}:\d{2})\s*(.*)$",
                 line
             )
 
             if not time_match:
                 continue
 
-            rest = time_match.group(1)
+            message_time = (
+                time_match.group(1)
+            )
+
+            rest = (
+                time_match.group(2)
+            )
 
             colon_index = rest.find(":")
 
@@ -394,10 +407,11 @@ def load_chatters():
             chatters[
                 username
             ].append(
-                (
-                    message,
-                    current_date
-                )
+                {
+                    "message": message,
+                    "date": current_date,
+                    "time": message_time
+                }
             )
 
     return {
@@ -408,7 +422,62 @@ def load_chatters():
 
 
 # =========================================================
-# GET ACTIVE PERIOD FOR EACH CHATTER
+# ALL CHAT MESSAGES
+# =========================================================
+
+def build_all_messages(chatters):
+
+    all_messages = []
+
+    for username, messages in chatters.items():
+
+        for item in messages:
+
+            all_messages.append(
+                {
+                    "username": username,
+                    "display_name":
+                        display_name_for(username),
+                    "message":
+                        item["message"],
+                    "date":
+                        item["date"],
+                    "time":
+                        item["time"]
+                }
+            )
+
+    def sort_key(item):
+
+        date = parse_date(
+            item["date"]
+        )
+
+        try:
+
+            time_value = datetime.strptime(
+                item["time"],
+                "%H:%M"
+            ).time()
+
+        except ValueError:
+
+            time_value = datetime.min.time()
+
+        return (
+            date if date else datetime.min.date(),
+            time_value
+        )
+
+    all_messages.sort(
+        key=sort_key
+    )
+
+    return all_messages
+
+
+# =========================================================
+# ACTIVE PERIODS
 # =========================================================
 
 def build_active_periods(chatters):
@@ -419,14 +488,17 @@ def build_active_periods(chatters):
 
         dates = []
 
-        for _, date_string in messages:
+        for item in messages:
 
             parsed = parse_date(
-                date_string
+                item["date"]
             )
 
             if parsed:
-                dates.append(parsed)
+
+                dates.append(
+                    parsed
+                )
 
         if not dates:
             continue
@@ -446,7 +518,7 @@ def build_active_periods(chatters):
 
 
 # =========================================================
-# FIND CHATTERS ACTIVE ON A DATE
+# ACTIVE CHATTERS ON QUOTE DATE
 # =========================================================
 
 def get_active_chatters(
@@ -473,15 +545,10 @@ def get_active_chatters(
         if not period:
             continue
 
-        first_date = period["first"]
-        last_date = period["last"]
-
-        # The chatter must have been active
-        # during the date of the quote.
         if (
-            first_date
+            period["first"]
             <= parsed_quote_date
-            <= last_date
+            <= period["last"]
         ):
 
             eligible.append(
@@ -510,6 +577,61 @@ def display_name_for(username):
 
 
 # =========================================================
+# FIND CONTEXT
+# =========================================================
+
+def find_context(
+    all_messages,
+    quote
+):
+
+    try:
+
+        quote_index = all_messages.index(
+            quote
+        )
+
+    except ValueError:
+
+        return [], [], []
+
+    before_start = max(
+        0,
+        quote_index - CONTEXT_BEFORE
+    )
+
+    before = all_messages[
+        before_start:
+        quote_index
+    ]
+
+    after_end = min(
+        len(all_messages),
+        quote_index + 1 + CONTEXT_AFTER
+    )
+
+    after = all_messages[
+        quote_index + 1:
+        after_end
+    ]
+
+    return before, [quote], after
+
+
+# =========================================================
+# FORMAT CONTEXT MESSAGE
+# =========================================================
+
+def format_context_line(item):
+
+    return (
+        f"`{item['time']}` "
+        f"**{item['display_name']}:** "
+        f"{item['message']}"
+    )
+
+
+# =========================================================
 # LEADERBOARD
 # =========================================================
 
@@ -524,7 +646,8 @@ def make_leaderboard():
 
     ordered = sorted(
         scores.items(),
-        key=lambda item: item[1]["points"],
+        key=lambda item:
+            item[1]["points"],
         reverse=True
     )
 
@@ -621,16 +744,18 @@ async def add_point(user):
 async def post_guess(
     channel,
     chatters,
-    active_periods
+    active_periods,
+    all_messages
 ):
 
-    # Try several random quotes until we find
-    # one with at least 5 eligible people.
     possible_quotes = []
 
     for username, messages in chatters.items():
 
-        for message, date in messages:
+        for item in messages:
+
+            message = item["message"]
+            date = item["date"]
 
             eligible = get_active_chatters(
                 date,
@@ -640,11 +765,18 @@ async def post_guess(
 
             if len(eligible) >= POLL_OPTIONS:
 
+                quote = {
+                    "username": username,
+                    "display_name":
+                        display_name_for(username),
+                    "message": message,
+                    "date": date,
+                    "time": item["time"]
+                }
+
                 possible_quotes.append(
                     (
-                        username,
-                        message,
-                        date,
+                        quote,
                         eligible
                     )
                 )
@@ -658,26 +790,19 @@ async def post_guess(
 
         return
 
-    # Pick a random quote that has
-    # at least 5 valid candidates.
-    (
-        username,
-        message,
-        date,
-        eligible
-    ) = random.choice(
+    quote, eligible = random.choice(
         possible_quotes
     )
+
+    username = quote["username"]
+    message = quote["message"]
+    date = quote["date"]
+    time_value = quote["time"]
 
     correct_display_name = (
         display_name_for(username)
     )
 
-    # We already know the correct chatter
-    # is active during this date.
-    #
-    # Choose exactly 4 other people
-    # from the same active period.
     wrong_usernames = [
         name
         for name in eligible
@@ -695,6 +820,10 @@ async def post_guess(
     )
 
     random.shuffle(options)
+
+    # =====================================================
+    # POLL
+    # =====================================================
 
     poll = discord.Poll(
         question="Who said this?",
@@ -715,7 +844,8 @@ async def post_guess(
     message_content = (
         f"💬 **Guess the Chatter**\n\n"
         f"> {message}\n\n"
-        f"📅 **Date:** {date}"
+        f"📅 **Date:** {date}\n"
+        f"🕒 **Time:** {time_value}"
     )
 
     poll_message = await channel.send(
@@ -744,18 +874,24 @@ async def post_guess(
         "correct_display_name":
             correct_display_name,
 
-        "votes": {}
+        "votes": {},
+
+        "quote":
+            quote
     }
 
     print(
         f"Poll created: {poll_message.id} | "
         f"quote date={date} | "
-        f"correct={correct_display_name} | "
-        f"eligible={len(eligible)}",
+        f"quote time={time_value} | "
+        f"correct={correct_display_name}",
         flush=True
     )
 
-    # Close after 3 minutes
+    # =====================================================
+    # WAIT 3 MINUTES
+    # =====================================================
+
     await asyncio.sleep(
         ANSWER_DELAY_SECONDS
     )
@@ -768,7 +904,10 @@ async def post_guess(
 
         pass
 
-    # Award points
+    # =====================================================
+    # AWARD POINTS
+    # =====================================================
+
     poll_data = active_polls.get(
         poll_message.id
     )
@@ -816,14 +955,75 @@ async def post_guess(
                     flush=True
                 )
 
+        # =================================================
+        # CONTEXT
+        # =================================================
+
+        quote_for_context = {
+            "username":
+                quote["username"],
+            "display_name":
+                quote["display_name"],
+            "message":
+                quote["message"],
+            "date":
+                quote["date"],
+            "time":
+                quote["time"]
+        }
+
+        before, _, after = find_context(
+            all_messages,
+            quote_for_context
+        )
+
+        context_lines = []
+
+        for item in before:
+
+            context_lines.append(
+                format_context_line(item)
+            )
+
+        # The actual quote
+        context_lines.append(
+            format_context_line(
+                quote_for_context
+            )
+        )
+
+        for item in after:
+
+            context_lines.append(
+                format_context_line(item)
+            )
+
+        # =================================================
+        # ANSWER MESSAGE
+        # =================================================
+
+        answer_text = (
+            f"🔓 **The answer was:** "
+            f"||{correct_display_name}||"
+        )
+
+        if context_lines:
+
+            answer_text += (
+                "\n\n"
+                "💬 **Context:**\n"
+                + "\n".join(
+                    context_lines
+                )
+            )
+
+        await channel.send(
+            answer_text
+        )
+
         del active_polls[
             poll_message.id
         ]
-
-    await channel.send(
-        f"🔓 **The answer was:** "
-        f"||{correct_display_name}||"
-    )
 
 
 # =========================================================
@@ -846,7 +1046,7 @@ async def on_raw_poll_vote_add(
         payload.user_id
     )
 
-    # Latest vote is always stored.
+    # Store latest vote
     poll_data[
         "votes"
     ][user_id] = payload.answer_id
@@ -939,9 +1139,13 @@ async def on_ready():
 
         return
 
-    # Build the active period for
-    # every chatter ONCE at startup.
+    # Build exact active periods
     active_periods = build_active_periods(
+        chatters
+    )
+
+    # Build chronological list of every message
+    all_messages = build_all_messages(
         chatters
     )
 
@@ -951,8 +1155,12 @@ async def on_ready():
     )
 
     print(
-        "Guess the Chatter is running "
-        "with time-period filtering.",
+        f"Loaded {len(all_messages)} messages.",
+        flush=True
+    )
+
+    print(
+        "Guess the Chatter is running.",
         flush=True
     )
 
@@ -1001,7 +1209,8 @@ async def on_ready():
             await post_guess(
                 channel,
                 chatters,
-                active_periods
+                active_periods,
+                all_messages
             )
 
         except Exception as error:
