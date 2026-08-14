@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: guess-the-chess-chatter
@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install discord.py requests python-chess cairosvg
+          pip install "discord.py>=2.6" requests python-chess cairosvg
 
       - name: Run Guess the Chess Chatter
         env:
