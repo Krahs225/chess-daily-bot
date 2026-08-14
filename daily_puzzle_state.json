@@ -1,77 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-06-06",
-    "title": "Mate in 4",
-    "fen": "2Q5/pp1B2p1/1b3p2/k3p3/4P3/P1P3P1/KP1q3P/8 w - - 0 1",
-    "current_fen": "2Q5/pp1B2p1/1b3p2/k3p3/4P3/P1P3P1/KP1q3P/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2Q5/pp1B2p1/1b3p2/k3p3/4P3/P1P3P1/KP1q3P/8 w - - 0 1\"]\r\n\r\n1. Qc4 Qxd7 2. b4+ Ka4 3. b5+ Ka5 4. Qb4#\r\n*",
+    "url": "https://www.chess.com/daily/2020-10-18",
+    "title": "When in Riga...",
+    "fen": "5Bk1/1p3pp1/2p2n1p/4rq2/P3p3/2Q2nP1/BPP1RPKP/5R2 b - - 0 24",
+    "current_fen": "5Bk1/1p3pp1/2p2n1p/4rq2/P3p3/2Q2nP1/BPP1RPKP/5R2 b - - 0 24",
+    "pgn": "[Event \"Riga Technical University Open\"]\r\n[Site \"Riga LAT\"]\r\n[Date \"2014.08.23\"]\r\n[Round \"8.2\"]\r\n[White \"Benjamin Bok\"]\r\n[Black \"Richard Rapport\"]\r\n[Result \"*\"]\r\n[FEN \"5Bk1/1p3pp1/2p2n1p/4rq2/P3p3/2Q2nP1/BPP1RPKP/5R2 b - - 0 24\"]\r\n\r\n24...Qh3+ 25.Kxh3 Rh5+ 26.Kg2 Rxh2# *",
     "all_moves": [
       {
-        "uci": "c8c4",
-        "san": "Qc4",
-        "color": "white"
-      },
-      {
-        "uci": "d2d7",
-        "san": "Qxd7",
+        "uci": "f5h3",
+        "san": "Qh3+",
         "color": "black"
       },
       {
-        "uci": "b2b4",
-        "san": "b4+",
+        "uci": "g2h3",
+        "san": "Kxh3",
         "color": "white"
       },
       {
-        "uci": "a5a4",
-        "san": "Ka4",
+        "uci": "e5h5",
+        "san": "Rh5+",
         "color": "black"
       },
       {
-        "uci": "b4b5",
-        "san": "b5+",
+        "uci": "h3g2",
+        "san": "Kg2",
         "color": "white"
       },
       {
-        "uci": "a4a5",
-        "san": "Ka5",
+        "uci": "h5h2",
+        "san": "Rxh2#",
         "color": "black"
-      },
-      {
-        "uci": "c4b4",
-        "san": "Qb4#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c8c4",
-        "san": "Qc4",
-        "color": "white"
+        "uci": "f5h3",
+        "san": "Qh3+",
+        "color": "black"
       },
       {
-        "uci": "b2b4",
-        "san": "b4+",
-        "color": "white"
+        "uci": "e5h5",
+        "san": "Rh5+",
+        "color": "black"
       },
       {
-        "uci": "b4b5",
-        "san": "b5+",
-        "color": "white"
-      },
-      {
-        "uci": "c4b4",
-        "san": "Qb4#",
-        "color": "white"
+        "uci": "h5h2",
+        "san": "Rxh2#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-14T17:35:32.608103+00:00",
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-14T17:35:43.512566+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786728932608",
+    "puzzle_id": "random_1786728943512",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
@@ -79,7 +64,7 @@
     "active_solver_id": null,
     "attempted_users": {}
   },
-  "latest_puzzle_type": "daily",
+  "latest_puzzle_type": "random",
   "current_puzzle": {
     "url": "https://www.chess.com/daily/2026-08-14",
     "title": "Zig, Zag, in the Bag!",
