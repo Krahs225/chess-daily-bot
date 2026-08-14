@@ -399,24 +399,34 @@ def board_from_fen_safe(fen):
     board.set_board_fen(parts[0])
 
     # Side to move.
+    # IMPORTANT:
+    # python-chess represents colors internally as booleans:
+    # True = White, False = Black.
+    #
+    # Use literal booleans here instead of chess.WHITE/chess.BLACK
+    # so this still works if a conflicting "chess" package exposes
+    # those names as strings.
     board.turn = (
-        chess.BLACK
+        False
         if parts[1].lower() == "b"
-        else chess.WHITE
+        else True
     )
 
     # Castling rights as an integer bitboard.
+    #
+    # Square indexes are:
+    # a1=0, h1=7, a8=56, h8=63.
     rights = 0
 
     if parts[2] != "-":
         if "K" in parts[2]:
-            rights |= chess.BB_SQUARES[chess.H1]
+            rights |= chess.BB_SQUARES[7]   # h1
         if "Q" in parts[2]:
-            rights |= chess.BB_SQUARES[chess.A1]
+            rights |= chess.BB_SQUARES[0]   # a1
         if "k" in parts[2]:
-            rights |= chess.BB_SQUARES[chess.H8]
+            rights |= chess.BB_SQUARES[63]  # h8
         if "q" in parts[2]:
-            rights |= chess.BB_SQUARES[chess.A8]
+            rights |= chess.BB_SQUARES[56]  # a8
 
     board.castling_rights = int(rights)
 
@@ -632,7 +642,10 @@ def get_solution(data):
                     sanitize_fen(header_fen)
                 )
             else:
-                replay_board = chess.Board()
+                replay_board = board_from_fen_safe(
+                    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/"
+                    "RNBQKBNR w KQkq - 0 1"
+                )
 
             parsed_before_puzzle = []
 
@@ -813,16 +826,18 @@ async def make_board_file(
     # the final move, so the board never flips when the puzzle
     # is finished. Daily puzzles keep their normal orientation.
     if str(puzzle.get("puzzle_id", "")).startswith("random_"):
-        orientation = puzzle.get(
+        player_color = puzzle.get(
             "player_color",
-            chess.WHITE
+            "white"
+        )
+        orientation = (
+            True
+            if str(player_color).lower() == "white"
+            else False
         )
     else:
-        orientation = (
-            chess.WHITE
-            if board.turn
-            else chess.BLACK
-        )
+        # board.turn is guaranteed to be a real bool.
+        orientation = bool(board.turn)
 
     svg_board = chess.svg.board(
         board=board,
