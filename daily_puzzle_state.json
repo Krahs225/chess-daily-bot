@@ -1,77 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-12-19",
-    "title": "Bologan-Dolmatov, Sochi tt 2004",
-    "fen": "1r6/2p3kp/p1Pr2b1/P2p4/3NpPpP/4K1P1/4R3/3R4 w - - 0 1",
-    "current_fen": "1r6/2p4p/p1PN1k2/P2p3b/4pPp1/4K1P1/4R3/3R4 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"1r6/2p3kp/p1Pr2b1/P2p4/3NpPpP/4K1P1/4R3/3R4 w - - 0 1\"]\r\n\r\n1. h5 Bxh5 2. Nf5+ Kf6 3. Nxd6\r\n*",
+    "url": "https://www.chess.com/daily/2025-06-29",
+    "title": "Sacrificial Clockwork",
+    "fen": "3r1rk1/pbp3pp/1p1b4/3N1p2/3Qq3/1BP1P1n1/PP1K3P/4R2R w - - 0 1",
+    "current_fen": "3r1rk1/pbp3pp/1p1b4/3N1p2/3Qq3/1BP1P1n1/PP1K3P/4R2R w - - 0 1",
+    "pgn": "[White \"JohanVA\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"3r1rk1/pbp3pp/1p1b4/3N1p2/3Qq3/1BP1P1n1/PP1K3P/4R2R w - - 0 1\"]\r\n\r\n1. Ne7+ Kh8 2. Ng6+ hxg6 3. hxg3+ Qxh1 4. Rxh1+ Bxh1 5. Qh4# 1-0",
     "all_moves": [
       {
-        "uci": "h4h5",
-        "san": "h5",
+        "uci": "d5e7",
+        "san": "Ne7+",
         "color": "white"
       },
       {
-        "uci": "g6h5",
-        "san": "Bxh5",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "d4f5",
-        "san": "Nf5+",
+        "uci": "e7g6",
+        "san": "Ng6+",
         "color": "white"
       },
       {
-        "uci": "g7f6",
-        "san": "Kf6",
+        "uci": "h7g6",
+        "san": "hxg6",
         "color": "black"
       },
       {
-        "uci": "f5d6",
-        "san": "Nxd6",
+        "uci": "h2g3",
+        "san": "hxg3+",
+        "color": "white"
+      },
+      {
+        "uci": "e4h1",
+        "san": "Qxh1",
+        "color": "black"
+      },
+      {
+        "uci": "e1h1",
+        "san": "Rxh1+",
+        "color": "white"
+      },
+      {
+        "uci": "b7h1",
+        "san": "Bxh1",
+        "color": "black"
+      },
+      {
+        "uci": "d4h4",
+        "san": "Qh4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h4h5",
-        "san": "h5",
+        "uci": "d5e7",
+        "san": "Ne7+",
         "color": "white"
       },
       {
-        "uci": "d4f5",
-        "san": "Nf5+",
+        "uci": "e7g6",
+        "san": "Ng6+",
         "color": "white"
       },
       {
-        "uci": "f5d6",
-        "san": "Nxd6",
+        "uci": "h2g3",
+        "san": "hxg3+",
+        "color": "white"
+      },
+      {
+        "uci": "e1h1",
+        "san": "Rxh1+",
+        "color": "white"
+      },
+      {
+        "uci": "d4h4",
+        "san": "Qh4#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-14T20:19:30.825703+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-14T20:20:00.330185+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786738770825",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1537918619625849013,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nxd6",
-        "correct": true,
-        "timestamp": "2026-08-14T20:19:44.748043+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786738800330",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
