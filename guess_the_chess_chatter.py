@@ -6,7 +6,7 @@ import chess.svg
 import cairosvg
 
 from io import StringIO, BytesIO
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import asyncio
 import random
 import os
@@ -19,22 +19,20 @@ import traceback
 # =========================================================
 
 TOKEN = os.getenv("DISCORD_TOKEN")
-
 CHANNEL_ID = 1537837944193417300
 
 ROUND_SECONDS = 10 * 60
-
 MIN_FULL_MOVES = 10
 
 SCORES_FILE = "chess_chatter_scores.json"
 
 HEADERS = {
-    "User-Agent": "GuessTheChessChatter/4.0"
+    "User-Agent": "GuessTheChessChatter/5.0"
 }
 
 
 # =========================================================
-# CHESS.COM PLAYERS
+# PLAYERS
 # =========================================================
 
 PLAYERS = {
@@ -42,47 +40,38 @@ PLAYERS = {
         "username": "Sharkmeister",
         "start_date": "2026-01-01"
     },
-
     "Lars": {
         "username": "Lars11111",
         "start_date": "2024-10-31"
     },
-
     "Mohammad": {
         "username": "Moh979xx",
         "start_date": "2026-01-01"
     },
-
     "Stepu": {
         "username": "T-VoltioS",
         "start_date": "2026-01-01"
     },
-
     "Thice": {
         "username": "Thice",
         "start_date": "2026-01-01"
     },
-
     "Adelson": {
         "username": "Adelson7",
         "start_date": "2026-01-01"
     },
-
     "Nairyaaa": {
         "username": "Naiiiraaa",
         "start_date": "2026-01-01"
     },
-
     "Pospos": {
         "username": "pospos12",
         "start_date": "2026-01-01"
     },
-
     "Pandarou": {
         "username": "iAmPandaro",
         "start_date": "2026-01-01"
     },
-
     "Sushi": {
         "username": "IsolatedSushi",
         "start_date": "2026-01-01"
@@ -91,11 +80,10 @@ PLAYERS = {
 
 
 # =========================================================
-# DISCORD INTENTS
+# DISCORD
 # =========================================================
 
 intents = discord.Intents.default()
-
 intents.message_content = True
 
 try:
@@ -108,31 +96,26 @@ try:
 except Exception:
     pass
 
-
 client = discord.Client(
     intents=intents
 )
 
 
 # =========================================================
-# GLOBAL STATE
+# STATE
 # =========================================================
 
 scores = {}
-
 active_round = None
-
 round_lock = asyncio.Lock()
-
 round_started = False
 
 
 # =========================================================
-# LOGGING
+# LOG
 # =========================================================
 
 def log(message):
-
     print(
         f"[ChessChatter] {message}",
         flush=True
@@ -145,34 +128,27 @@ def log(message):
 
 def load_scores():
 
-    if not os.path.exists(
-        SCORES_FILE
-    ):
+    if not os.path.exists(SCORES_FILE):
         return {}
 
     try:
-
         with open(
             SCORES_FILE,
             "r",
             encoding="utf-8"
         ) as f:
-
             return json.load(f)
 
     except Exception as error:
-
         log(
             f"Could not load scores: {error}"
         )
-
         return {}
 
 
 def save_scores():
 
     try:
-
         with open(
             SCORES_FILE,
             "w",
@@ -186,10 +162,7 @@ def save_scores():
                 ensure_ascii=False
             )
 
-        log("Scores saved.")
-
     except Exception as error:
-
         log(
             f"Could not save scores: {error}"
         )
@@ -229,10 +202,6 @@ def get_json(url):
         return None
 
 
-# =========================================================
-# ARCHIVES
-# =========================================================
-
 def get_archives(username):
 
     url = (
@@ -258,14 +227,11 @@ def archive_year_month(archive):
     ).split("/")
 
     try:
-
         return (
             int(parts[-2]),
             int(parts[-1])
         )
-
     except Exception:
-
         return None
 
 
@@ -295,10 +261,6 @@ def archive_allowed(
     return True
 
 
-# =========================================================
-# MONTHLY GAMES
-# =========================================================
-
 def get_games(archive):
 
     data = get_json(
@@ -327,12 +289,10 @@ def get_game_date(game):
     if timestamp:
 
         try:
-
             return datetime.fromtimestamp(
                 int(timestamp),
                 timezone.utc
             ).date()
-
         except Exception:
             pass
 
@@ -378,20 +338,11 @@ def is_suitable_game(
     start_date
 ):
 
-    # -----------------------------------------------------
-    # RATED ONLY
-    # -----------------------------------------------------
-
-    if game.get(
-        "rated"
-    ) is not True:
-
+    # Rated only
+    if game.get("rated") is not True:
         return False
 
-    # -----------------------------------------------------
-    # RAPID OR BLITZ
-    # -----------------------------------------------------
-
+    # Rapid or Blitz
     time_class = str(
         game.get(
             "time_class",
@@ -403,16 +354,10 @@ def is_suitable_game(
         "rapid",
         "blitz"
     ):
-
         return False
 
-    # -----------------------------------------------------
-    # DATE
-    # -----------------------------------------------------
-
-    date = get_game_date(
-        game
-    )
+    # Date
+    date = get_game_date(game)
 
     if date is None:
         return False
@@ -420,23 +365,15 @@ def is_suitable_game(
     if date < start_date:
         return False
 
-    # Lars:
-    # 31 October 2024 onward.
-    #
-    # Everyone else:
-    # 2026 only.
+    # Lars: from 31 October 2024
+    # Everyone else: 2026
     if chatter != "Lars":
 
         if date.year != 2026:
             return False
 
-    # -----------------------------------------------------
-    # PGN + MINIMUM LENGTH
-    # -----------------------------------------------------
-
-    pgn_text = game.get(
-        "pgn"
-    )
+    # PGN
+    pgn_text = game.get("pgn")
 
     if not pgn_text:
         return False
@@ -454,22 +391,18 @@ def is_suitable_game(
             parsed.mainline_moves()
         )
 
-        # 10 full moves = 20 plies.
-        if len(moves) < (
-            MIN_FULL_MOVES * 2
-        ):
-
+        # At least 10 full moves
+        if len(moves) < MIN_FULL_MOVES * 2:
             return False
 
     except Exception:
-
         return False
 
     return True
 
 
 # =========================================================
-# FIND GAMES FOR PLAYER
+# FIND GAMES
 # =========================================================
 
 def find_games_for_player(
@@ -477,9 +410,7 @@ def find_games_for_player(
     config
 ):
 
-    username = config[
-        "username"
-    ]
+    username = config["username"]
 
     start_date = datetime.strptime(
         config["start_date"],
@@ -496,11 +427,6 @@ def find_games_for_player(
     )
 
     if not archives:
-
-        log(
-            f"No archives for {username}"
-        )
-
         return []
 
     allowed_archives = [
@@ -512,31 +438,24 @@ def find_games_for_player(
         )
     ]
 
-    # Newest first.
     allowed_archives.sort(
         reverse=True
     )
 
-    # Keep the search reasonably fast.
     if chatter == "Lars":
 
-        # Try recent games first,
-        # then older games.
         archives_to_check = (
             allowed_archives[:20]
         )
 
     else:
 
-        # Everyone else only has 2026.
         archives_to_check = [
             archive
             for archive in allowed_archives
-            if (
-                archive_year_month(
-                    archive
-                )[0] == 2026
-            )
+            if archive_year_month(
+                archive
+            )[0] == 2026
         ][:12]
 
     random.shuffle(
@@ -571,7 +490,6 @@ def find_games_for_player(
                 )
 
                 if len(suitable) >= 20:
-
                     return suitable
 
     log(
@@ -581,10 +499,6 @@ def find_games_for_player(
 
     return suitable
 
-
-# =========================================================
-# CHOOSE RANDOM GAME
-# =========================================================
 
 def choose_game_sync():
 
@@ -620,8 +534,8 @@ def choose_game_sync():
         except Exception as error:
 
             log(
-                f"Error searching "
-                f"{chatter}: {error}"
+                f"Error searching {chatter}: "
+                f"{error}"
             )
 
     if not candidates:
@@ -631,25 +545,16 @@ def choose_game_sync():
             "games found."
         )
 
-    selected = random.choice(
+    return random.choice(
         candidates
     )
 
-    log(
-        f"Selected player: "
-        f"{selected[0]}"
-    )
-
-    return selected
-
 
 # =========================================================
-# BUILD GAME
+# BUILD ROUND
 # =========================================================
 
-def build_round(
-    selected
-):
+def build_round(selected):
 
     chatter, config, game = selected
 
@@ -660,7 +565,6 @@ def build_round(
     )
 
     if parsed is None:
-
         raise RuntimeError(
             "Could not parse PGN."
         )
@@ -669,10 +573,7 @@ def build_round(
         parsed.mainline_moves()
     )
 
-    if len(moves) < (
-        MIN_FULL_MOVES * 2
-    ):
-
+    if len(moves) < MIN_FULL_MOVES * 2:
         raise RuntimeError(
             "Selected game is too short."
         )
@@ -691,9 +592,7 @@ def build_round(
             board.copy()
         )
 
-    username = config[
-        "username"
-    ]
+    username = config["username"]
 
     white = game.get(
         "white",
@@ -718,10 +617,6 @@ def build_round(
             ""
         )
     )
-
-    # -----------------------------------------------------
-    # FIND PLAYER COLOR
-    # -----------------------------------------------------
 
     if (
         white_username.lower()
@@ -763,57 +658,30 @@ def build_round(
         )
 
     return {
-        "answer":
-            chatter,
-
-        "username":
-            username,
-
-        "positions":
-            positions,
-
-        "moves":
-            moves,
-
-        "move_count":
-            len(moves),
-
-        "player_color":
-            player_color,
-
-        "opponent_name":
-            opponent_name,
-
-        "opponent_rating":
-            opponent_rating,
-
-        "game_type":
-            str(
-                game.get(
-                    "time_class",
-                    ""
-                )
-            ).upper(),
-
-        "winner_user_id":
-            None,
-
-        "winner_name":
-            None,
-
-        "answered_users":
-            set(),
-
-        "poll_message_id":
-            None,
-
-        "rendered_boards":
-            []
+        "answer": chatter,
+        "username": username,
+        "positions": positions,
+        "moves": moves,
+        "move_count": len(moves),
+        "player_color": player_color,
+        "opponent_name": opponent_name,
+        "opponent_rating": opponent_rating,
+        "game_type": str(
+            game.get(
+                "time_class",
+                ""
+            )
+        ).upper(),
+        "winner_user_id": None,
+        "winner_name": None,
+        "answered_users": set(),
+        "poll_message_id": None,
+        "rendered_boards": []
     }
 
 
 # =========================================================
-# RENDER BOARD
+# RENDER BOARDS
 # =========================================================
 
 def render_board_sync(
@@ -835,13 +703,7 @@ def render_board_sync(
     )
 
 
-# =========================================================
-# PRE-RENDER ALL POSITIONS
-# =========================================================
-
-async def prerender_boards(
-    game
-):
+async def prerender_boards(game):
 
     total = len(
         game["positions"]
@@ -864,8 +726,7 @@ async def prerender_boards(
         batch = game[
             "positions"
         ][
-            start:
-            start + batch_size
+            start:start + batch_size
         ]
 
         results = await asyncio.gather(
@@ -961,10 +822,7 @@ class BoardView(
     discord.ui.View
 ):
 
-    def __init__(
-        self,
-        game
-    ):
+    def __init__(self, game):
 
         super().__init__(
             timeout=ROUND_SECONDS
@@ -976,9 +834,7 @@ class BoardView(
 
         self.update_buttons()
 
-    def update_buttons(
-        self
-    ):
+    def update_buttons(self):
 
         self.previous.disabled = (
             self.move_index <= 0
@@ -1069,33 +925,26 @@ class BoardView(
             interaction
         )
 
-    async def on_timeout(
-        self
-    ):
+    async def on_timeout(self):
 
         for item in self.children:
-
             item.disabled = True
 
         if self.message:
 
             try:
-
                 await self.message.edit(
                     view=self
                 )
-
             except Exception:
                 pass
 
 
 # =========================================================
-# POLL OPTIONS
+# POLL
 # =========================================================
 
-def make_options(
-    correct
-):
+def make_options(correct):
 
     others = [
         name
@@ -1119,31 +968,25 @@ def make_options(
     return options
 
 
-# =========================================================
-# CREATE DISCORD POLL
-# =========================================================
-
-def make_poll(
-    options
-):
+def make_poll(options):
 
     # IMPORTANT:
     #
-    # Discord expects an integer number of HOURS here.
-    # We use 1 hour as the technical poll duration,
-    # then the bot explicitly ends the poll after
-    # ROUND_SECONDS (10 minutes).
+    # discord.py expects a timedelta here.
     #
-    # This fixes:
+    # A 10-minute timedelta is converted to 0 hours
+    # internally by Discord, which causes:
     #
-    # 400 Bad Request
-    # Invalid Form Body
-    # In poll.duration:
-    # int32 value should be >= 1
+    # 400 Invalid Form Body
+    # poll.duration must be >= 1
+    #
+    # Therefore the technical Discord poll lasts 1 hour.
+    # OUR GAME still lasts exactly 10 minutes because
+    # end_round() calls message.end_poll() after 10 minutes.
 
     poll = discord.Poll(
         question="Who played this game?",
-        duration=1,
+        duration=timedelta(hours=1),
         multiple=False
     )
 
@@ -1157,12 +1000,10 @@ def make_poll(
 
 
 # =========================================================
-# SCORE HELPERS
+# SCORES
 # =========================================================
 
-def ensure_player(
-    user
-):
+def ensure_player(user):
 
     user_id = str(
         user.id
@@ -1171,11 +1012,8 @@ def ensure_player(
     if user_id not in scores:
 
         scores[user_id] = {
-            "name":
-                user.display_name,
-
-            "points":
-                0
+            "name": user.display_name,
+            "points": 0
         }
 
     else:
@@ -1187,9 +1025,7 @@ def ensure_player(
     return user_id
 
 
-def get_score(
-    user_id
-):
+def get_score(user_id):
 
     return scores.get(
         str(user_id),
@@ -1200,36 +1036,23 @@ def get_score(
     )
 
 
-# =========================================================
-# PERSONAL RANKING
-# =========================================================
-
-def personal_leaderboard(
-    user_id
-):
+def personal_leaderboard(user_id):
 
     players = []
 
     for uid, data in scores.items():
 
-        players.append(
-            {
-                "id":
-                    str(uid),
-
-                "name":
-                    data.get(
-                        "name",
-                        "Unknown"
-                    ),
-
-                "points":
-                    data.get(
-                        "points",
-                        0
-                    )
-            }
-        )
+        players.append({
+            "id": str(uid),
+            "name": data.get(
+                "name",
+                "Unknown"
+            ),
+            "points": data.get(
+                "points",
+                0
+            )
+        })
 
     players.sort(
         key=lambda p: (
@@ -1297,14 +1120,8 @@ def personal_leaderboard(
                 f"{player['points']} points"
             )
 
-    return "\n".join(
-        lines
-    )
+    return "\n".join(lines)
 
-
-# =========================================================
-# FULL LEADERBOARD
-# =========================================================
 
 def full_leaderboard():
 
@@ -1319,10 +1136,7 @@ def full_leaderboard():
     players = sorted(
         scores.values(),
         key=lambda p: (
-            -p.get(
-                "points",
-                0
-            ),
+            -p.get("points", 0),
             p.get(
                 "name",
                 "Unknown"
@@ -1347,13 +1161,11 @@ def full_leaderboard():
             f"**{player.get('points', 0)} points**"
         )
 
-    return "\n".join(
-        lines
-    )
+    return "\n".join(lines)
 
 
 # =========================================================
-# PROCESS POLL VOTE
+# POLL VOTES
 # =========================================================
 
 async def process_vote(
@@ -1368,30 +1180,19 @@ async def process_vote(
 
     game = active_round
 
-    # Make sure this is the current poll.
-    poll_message_id = game.get(
+    if game.get(
         "poll_message_id"
-    )
-
-    if poll_message_id is None:
+    ) is None:
         return
 
     user_id = ensure_player(
         user
     )
 
-    # -----------------------------------------------------
-    # IMPORTANT:
-    #
-    # A user can only be processed once.
-    # This prevents spamming / changing votes
-    # from giving multiple points.
-    # -----------------------------------------------------
-
+    # Only process a user once per round.
     if user_id in game[
         "answered_users"
     ]:
-
         return
 
     game[
@@ -1418,10 +1219,7 @@ async def process_vote(
         f"-> {selected_name}"
     )
 
-    # -----------------------------------------------------
-    # WRONG
-    # -----------------------------------------------------
-
+    # Wrong answer
     if selected_name != game[
         "answer"
     ]:
@@ -1433,18 +1231,13 @@ async def process_vote(
             )
 
         except Exception:
-
             pass
 
         return
 
-    # -----------------------------------------------------
-    # CORRECT
-    # -----------------------------------------------------
-
+    # Only first correct user gets point.
     async with round_lock:
 
-        # Someone else already got the point.
         if game[
             "winner_user_id"
         ] is not None:
@@ -1484,8 +1277,6 @@ async def process_vote(
         f"\n{ranking}"
     )
 
-    # Prefer DM so the personal ranking
-    # doesn't spam the public channel.
     try:
 
         await user.send(
@@ -1504,10 +1295,6 @@ async def process_vote(
                 result
             )
 
-
-# =========================================================
-# POLL EVENTS
-# =========================================================
 
 @client.event
 async def on_poll_vote_add(
@@ -1537,15 +1324,12 @@ async def on_poll_vote_remove(
     answer
 ):
 
-    # Do NOT remove points.
-    #
-    # Once someone has correctly answered,
-    # their point stays.
+    # Never remove awarded points.
     pass
 
 
 # =========================================================
-# HELP / INFO
+# HELP
 # =========================================================
 
 HELP_TEXT = """♟️ **Guess the Chess Chatter**
@@ -1596,17 +1380,9 @@ async def post_round(
         selected
     )
 
-    # -----------------------------------------------------
-    # PRE-RENDER
-    # -----------------------------------------------------
-
     await prerender_boards(
         game
     )
-
-    # -----------------------------------------------------
-    # POLL
-    # -----------------------------------------------------
 
     options = make_options(
         game["answer"]
@@ -1616,17 +1392,9 @@ async def post_round(
         options
     )
 
-    # -----------------------------------------------------
-    # BOARD VIEW
-    # -----------------------------------------------------
-
     view = BoardView(
         game
     )
-
-    # -----------------------------------------------------
-    # FIRST IMAGE
-    # -----------------------------------------------------
 
     image = game[
         "rendered_boards"
@@ -1646,7 +1414,6 @@ async def post_round(
         url="attachment://board.png"
     )
 
-    # Make round active BEFORE sending.
     active_round = game
 
     try:
@@ -1660,9 +1427,7 @@ async def post_round(
 
     except Exception:
 
-        # Don't leave a broken active round.
         active_round = None
-
         raise
 
     view.message = message
@@ -1700,10 +1465,6 @@ async def end_round(
         "Ending round..."
     )
 
-    # -----------------------------------------------------
-    # END DISCORD POLL
-    # -----------------------------------------------------
-
     poll_message_id = game.get(
         "poll_message_id"
     )
@@ -1721,7 +1482,7 @@ async def end_round(
                 await message.end_poll()
 
                 log(
-                    "Poll ended."
+                    "Poll ended successfully."
                 )
 
         except Exception as error:
@@ -1729,10 +1490,6 @@ async def end_round(
             log(
                 f"Could not end poll: {error}"
             )
-
-    # -----------------------------------------------------
-    # RESULT
-    # -----------------------------------------------------
 
     winner = game.get(
         "winner_name"
@@ -1754,10 +1511,6 @@ async def end_round(
             f"**{game['answer']}**."
         )
 
-    # -----------------------------------------------------
-    # FULL LEADERBOARD
-    # -----------------------------------------------------
-
     await channel.send(
         full_leaderboard()
     )
@@ -1773,13 +1526,15 @@ async def automatic_round(
     channel
 ):
 
+    global active_round
+
     try:
 
         await post_round(
             channel
         )
 
-        # Exactly 10 minutes.
+        # EXACTLY 10 MINUTES
         await asyncio.sleep(
             ROUND_SECONDS
         )
@@ -1796,8 +1551,6 @@ async def automatic_round(
 
         traceback.print_exc()
 
-        global active_round
-
         active_round = None
 
         try:
@@ -1808,12 +1561,10 @@ async def automatic_round(
             )
 
         except Exception:
-
             pass
 
     finally:
 
-        # This GitHub Actions run is finished.
         await client.close()
 
 
@@ -1907,7 +1658,6 @@ async def on_ready():
     )
 
     if round_started:
-
         return
 
     round_started = True
