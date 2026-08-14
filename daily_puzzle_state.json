@@ -1,122 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-07-06",
-    "title": "Lots of Work to Win a Rook!",
-    "fen": "rn2k2r/pp3p1p/3b4/qNpPpN2/8/8/PPP3PP/R2QK2R w KQkq - 0 1",
-    "current_fen": "Nn5r/pp1kbp1p/8/2pPpN2/8/2P5/P3K1PP/R6R b - - 0 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn2k2r/pp3p1p/3b4/qNpPpN2/8/8/PPP3PP/R2QK2R w KQkq - 0 1\"]\r\n\r\n1. b4 ( 1. Qd2 Bc7 { And everything holds... }  ) Qxb4+ ( 1... Qxb5 2. Nxd6+ Ke7 3. Nxb5 ) 2. c3 Qe4+ { Has to keep checking - the bishop is in trouble! }  3. Qe2 Qxe2+ ( 3... Qxf5 4. Nxd6+ Kf8 5. Nxf5 ) 4. Kxe2 Be7 5. Nc7+ Kd7 6. Nxa8 { And white is up a rook! }\r\n*",
+    "url": "https://www.chess.com/daily/2024-12-28",
+    "title": "Rafael's Surprise Party 🥳",
+    "fen": "R2b1r1k/6p1/3p2Bp/1p1Qp3/1P6/2q3P1/5P2/7K w - - 0 44",
+    "current_fen": "R2b1r1k/6p1/3p2Bp/1p1Qp3/1P6/2q3P1/5P2/7K w - - 0 44",
+    "pgn": "[Event \"Tripoli\"]\r\n[Date \"2004.??.??\"]\r\n[White \"Happy Birthday Rafael Leitão\"]\r\n[Black \"(Moved Kg1 to h1) Zhang Zhong\"]\r\n[Result \"1-0\"]\r\n[FEN \"R2b1r1k/6p1/3p2Bp/1p1Qp3/1P6/2q3P1/5P2/7K w - - 0 44\"]\r\n\r\n44. Qf7 Rg8 45. Qxg8+ Kxg8 46. Rxd8# 1-0",
     "all_moves": [
       {
-        "uci": "b2b4",
-        "san": "b4",
+        "uci": "d5f7",
+        "san": "Qf7",
         "color": "white"
       },
       {
-        "uci": "a5b4",
-        "san": "Qxb4+",
+        "uci": "f8g8",
+        "san": "Rg8",
         "color": "black"
       },
       {
-        "uci": "c2c3",
-        "san": "c3",
+        "uci": "f7g8",
+        "san": "Qxg8+",
         "color": "white"
       },
       {
-        "uci": "b4e4",
-        "san": "Qe4+",
+        "uci": "h8g8",
+        "san": "Kxg8",
         "color": "black"
       },
       {
-        "uci": "d1e2",
-        "san": "Qe2",
-        "color": "white"
-      },
-      {
-        "uci": "e4e2",
-        "san": "Qxe2+",
-        "color": "black"
-      },
-      {
-        "uci": "e1e2",
-        "san": "Kxe2",
-        "color": "white"
-      },
-      {
-        "uci": "d6e7",
-        "san": "Be7",
-        "color": "black"
-      },
-      {
-        "uci": "b5c7",
-        "san": "Nc7+",
-        "color": "white"
-      },
-      {
-        "uci": "e8d7",
-        "san": "Kd7",
-        "color": "black"
-      },
-      {
-        "uci": "c7a8",
-        "san": "Nxa8",
+        "uci": "a8d8",
+        "san": "Rxd8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b2b4",
-        "san": "b4",
+        "uci": "d5f7",
+        "san": "Qf7",
         "color": "white"
       },
       {
-        "uci": "c2c3",
-        "san": "c3",
+        "uci": "f7g8",
+        "san": "Qxg8+",
         "color": "white"
       },
       {
-        "uci": "d1e2",
-        "san": "Qe2",
-        "color": "white"
-      },
-      {
-        "uci": "e1e2",
-        "san": "Kxe2",
-        "color": "white"
-      },
-      {
-        "uci": "b5c7",
-        "san": "Nc7+",
-        "color": "white"
-      },
-      {
-        "uci": "c7a8",
-        "san": "Nxa8",
+        "uci": "a8d8",
+        "san": "Rxd8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-14T18:37:43.764026+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-14T18:38:33.754053+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786732663764",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1537893004566863903,
-    "attempted_users": {
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "nxa8",
-        "correct": true,
-        "timestamp": "2026-08-14T18:38:25.345110+00:00"
-      }
-    },
-    "first_move_user_id": "362606514764251137",
-    "first_move_user_name": "Sharkmeister",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786732713754",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
