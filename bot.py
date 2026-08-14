@@ -24,23 +24,21 @@ CHANNEL_ID = 1468320170891022417
 DAILY_PUZZLE_API = "https://api.chess.com/pub/puzzle"
 RANDOM_PUZZLE_API = "https://api.chess.com/pub/puzzle/random"
 
-# KEEP THE EXISTING SCORE FILE
+# Keep the existing files so existing scores remain.
 STATE_FILE = "daily_puzzle_state.json"
 LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
 
-# Daily puzzle checking
+# Check Chess.com for a new Daily Puzzle
 PUZZLE_CHECK_INTERVAL = 5 * 60
 
-# TEMPORARILY 5 MINUTES
-LEADERBOARD_INTERVAL = 5 * 60
+# Full leaderboard every 10 minutes
+LEADERBOARD_INTERVAL = 10 * 60
 
-# 12 hours for Daily answers
+# Answer window
 ANSWER_WINDOW = 12 * 60 * 60
-
-# 12 hours for Random answers
 RANDOM_ANSWER_WINDOW = 12 * 60 * 60
 
-# GitHub Actions run ends before 6 hours
+# Stop GitHub Actions before the 6-hour limit
 RUN_TIME = 5 * 60 * 60 + 50 * 60
 
 
@@ -74,7 +72,6 @@ def load_json(filename, default):
         return default
 
     try:
-
         with open(
             filename,
             "r",
@@ -174,6 +171,7 @@ def push_to_github():
             text=True
         )
 
+        # Nothing changed
         if commit.returncode != 0:
             return
 
@@ -249,11 +247,13 @@ def fetch_daily_puzzle():
     data = response.json()
 
     if not data.get("fen"):
+
         raise RuntimeError(
             "Daily puzzle has no FEN."
         )
 
     if not data.get("pgn"):
+
         raise RuntimeError(
             "Daily puzzle has no PGN."
         )
@@ -286,11 +286,13 @@ def fetch_random_puzzle():
     data = response.json()
 
     if not data.get("fen"):
+
         raise RuntimeError(
             "Random puzzle has no FEN."
         )
 
     if not data.get("pgn"):
+
         raise RuntimeError(
             "Random puzzle has no PGN."
         )
@@ -299,13 +301,13 @@ def fetch_random_puzzle():
 
 
 # =========================================================
-# PARSE SOLUTION
+# PARSE PUZZLE
 # =========================================================
 
 def get_solution(data):
 
-    # IMPORTANT:
-    # python-chess expects a TEXT stream here.
+    # python-chess expects a TEXT stream.
+    # This fixes the previous BytesIO error.
     game = chess.pgn.read_game(
         StringIO(
             data["pgn"]
@@ -387,7 +389,7 @@ def build_puzzle(data):
 
 
 # =========================================================
-# CREATE BOARD IMAGE
+# BOARD IMAGE
 # =========================================================
 
 async def make_board_file(
@@ -494,8 +496,6 @@ async def post_random_puzzle(
             data
         )
 
-        # Store latest random puzzle separately
-        # from the Daily Puzzle.
         puzzle["posted_at"] = (
             datetime.now(
                 timezone.utc
@@ -514,11 +514,23 @@ async def post_random_puzzle(
             "points_awarded"
         ] = []
 
+        # Every random puzzle gets its own ID.
+        puzzle[
+            "puzzle_id"
+        ] = (
+            "random_"
+            + str(
+                int(
+                    time.time() * 1000
+                )
+            )
+        )
+
         state[
             "latest_random_puzzle"
         ] = puzzle
 
-        # This is the globally most recent puzzle.
+        # This is now the most recently posted puzzle.
         state[
             "latest_puzzle_type"
         ] = "random"
@@ -541,8 +553,7 @@ async def post_random_puzzle(
             description=(
                 f"**{puzzle['title']}**\n\n"
                 f"**{side} to move. "
-                f"Find the best move!**\n\n"
-                "Use `!randomzet <move>` to answer."
+                f"Find the best move!**"
             ),
             color=0x3498db
         )
@@ -629,7 +640,10 @@ def move_is_correct(
         puzzle["fen"]
     )
 
-    # SAN
+    # SAN:
+    # Bf2
+    # Bf2+
+    # Qh7#
     try:
 
         move = board.parse_san(
@@ -644,7 +658,8 @@ def move_is_correct(
     except ValueError:
         pass
 
-    # UCI
+    # UCI:
+    # e2e4
     try:
 
         move = board.parse_uci(
@@ -662,7 +677,7 @@ def move_is_correct(
 
 
 # =========================================================
-# IS PUZZLE OPEN?
+# PUZZLE OPEN?
 # =========================================================
 
 def puzzle_is_open(
@@ -705,38 +720,301 @@ def puzzle_is_open(
 
 
 # =========================================================
-# SAVE LATEST ATTEMPT
+# GET SCORE
 # =========================================================
 
-async def save_latest_attempt(
+def get_player_score(
+    user_id
+):
+
+    user_id = str(
+        user_id
+    )
+
+    if user_id not in scores:
+
+        scores[user_id] = {
+            "name": "Unknown",
+            "points": 0
+        }
+
+    return scores[user_id].get(
+        "points",
+        0
+    )
+
+
+# =========================================================
+# PERSONAL RANKING
+# =========================================================
+
+def get_personal_ranking(
+    user_id
+):
+
+    user_id = str(
+        user_id
+    )
+
+    # Make sure every score has usable data.
+    players = []
+
+    for player_id, player in scores.items():
+
+        players.append(
+            {
+                "id": str(player_id),
+
+                "name": player.get(
+                    "name",
+                    "Unknown"
+                ),
+
+                "points": player.get(
+                    "points",
+                    0
+                )
+            }
+        )
+
+    # Highest points first.
+    players.sort(
+        key=lambda player: (
+            -player["points"],
+            player["name"].lower()
+        )
+    )
+
+    player_index = None
+
+    for index, player in enumerate(
+        players
+    ):
+
+        if player["id"] == user_id:
+
+            player_index = index
+            break
+
+    # If somehow not found.
+    if player_index is None:
+
+        return []
+
+    start = max(
+        0,
+        player_index - 1
+    )
+
+    end = min(
+        len(players),
+        player_index + 2
+    )
+
+    result = []
+
+    for index in range(
+        start,
+        end
+    ):
+
+        player = players[index]
+
+        result.append(
+            {
+                "rank": index + 1,
+                "name": player["name"],
+                "points": player["points"],
+                "is_you":
+                    player["id"] == user_id
+            }
+        )
+
+    return result
+
+
+# =========================================================
+# PERSONAL RANKING MESSAGE
+# =========================================================
+
+def build_personal_ranking(
+    user_id
+):
+
+    ranking = get_personal_ranking(
+        user_id
+    )
+
+    if not ranking:
+        return ""
+
+    lines = [
+        "",
+        "📊 **Your ranking**"
+    ]
+
+    for player in ranking:
+
+        rank = player["rank"]
+        name = player["name"]
+        points = player["points"]
+        is_you = player["is_you"]
+
+        if is_you:
+
+            lines.append(
+                f"**#{rank} {name} — "
+                f"{points} points ← you**"
+            )
+
+        else:
+
+            lines.append(
+                f"#{rank} {name} — "
+                f"{points} points"
+            )
+
+    return "\n".join(lines)
+
+
+# =========================================================
+# AWARD / REMOVE POINT BASED ON LATEST ANSWER
+# =========================================================
+
+async def update_player_score_for_attempt(
+    puzzle,
+    user,
+    correct
+):
+
+    user_id = str(
+        user.id
+    )
+
+    old_attempts = puzzle.setdefault(
+        "latest_attempts",
+        {}
+    )
+
+    old_attempt = old_attempts.get(
+        user_id
+    )
+
+    old_correct = (
+        old_attempt.get(
+            "correct",
+            False
+        )
+        if old_attempt
+        else False
+    )
+
+    # Update latest attempt.
+    old_attempts[user_id] = {
+        "name":
+            user.display_name,
+
+        "move":
+            old_attempt.get(
+                "move",
+                ""
+            )
+            if old_attempt
+            else "",
+
+        "correct":
+            correct,
+
+        "timestamp":
+            datetime.now(
+                timezone.utc
+            ).isoformat()
+    }
+
+    # Keep the name and move updated by caller later.
+    old_attempts[user_id][
+        "name"
+    ] = user.display_name
+
+    # Determine score change.
+    score_change = 0
+
+    if not old_correct and correct:
+
+        # Wrong -> Correct
+        score_change = 1
+
+    elif old_correct and not correct:
+
+        # Correct -> Wrong
+        score_change = -1
+
+    # Ensure score object exists.
+    if user_id not in scores:
+
+        scores[user_id] = {
+            "name":
+                user.display_name,
+
+            "points":
+                0
+        }
+
+    scores[user_id][
+        "name"
+    ] = user.display_name
+
+    if score_change != 0:
+
+        scores[user_id][
+            "points"
+        ] = max(
+            0,
+            scores[user_id].get(
+                "points",
+                0
+            ) + score_change
+        )
+
+    return score_change
+
+
+# =========================================================
+# SAVE ANSWER
+# =========================================================
+
+async def save_attempt_and_update_score(
     puzzle,
     user,
     move_text,
     correct
 ):
 
-    async with data_lock:
+    user_id = str(
+        user.id
+    )
 
-        user_id = str(
-            user.id
-        )
+    async with data_lock:
 
         attempts = puzzle.setdefault(
             "latest_attempts",
             {}
         )
 
-        # IMPORTANT:
-        # Each player has their OWN latest answer.
-        #
-        # Player A:
-        # !dailyzet Bf2
-        #
-        # Player B:
-        # !dailyzet Bf3
-        #
-        # They do not overwrite each other.
+        previous = attempts.get(
+            user_id
+        )
 
+        previous_correct = (
+            previous.get(
+                "correct",
+                False
+            )
+            if previous
+            else False
+        )
+
+        # Store newest answer.
         attempts[user_id] = {
             "name":
                 user.display_name,
@@ -753,82 +1031,68 @@ async def save_latest_attempt(
                 ).isoformat()
         }
 
-        await save_all()
+        # Create player if needed.
+        if user_id not in scores:
 
-        return True
+            scores[user_id] = {
+                "name":
+                    user.display_name,
 
+                "points":
+                    0
+            }
 
-# =========================================================
-# FINALIZE PUZZLE
-# =========================================================
+        scores[user_id][
+            "name"
+        ] = user.display_name
 
-async def finalize_puzzle(
-    puzzle
-):
+        # Determine point change.
+        point_change = 0
 
-    async with data_lock:
+        if not previous_correct and correct:
 
-        attempts = puzzle.get(
-            "latest_attempts",
-            {}
+            # New correct answer
+            point_change = 1
+
+        elif previous_correct and not correct:
+
+            # Player changed their latest answer
+            # from correct to wrong.
+            point_change = -1
+
+        if point_change != 0:
+
+            scores[user_id][
+                "points"
+            ] = max(
+                0,
+                scores[user_id].get(
+                    "points",
+                    0
+                ) + point_change
+            )
+
+        # Save copies AFTER changing data.
+        save_json(
+            STATE_FILE,
+            state
         )
 
-        already_awarded = puzzle.get(
-            "points_awarded",
-            []
+        save_json(
+            LEADERBOARD_FILE,
+            scores
         )
 
-        for user_id, attempt in attempts.items():
+    # Push outside the lock.
+    await asyncio.to_thread(
+        push_to_github
+    )
 
-            # Never award twice
-            if user_id in already_awarded:
-                continue
-
-            # Only latest answer counts
-            if not attempt.get(
-                "correct",
-                False
-            ):
-                continue
-
-            name = attempt.get(
-                "name",
-                "Unknown"
-            )
-
-            if user_id not in scores:
-
-                scores[user_id] = {
-                    "name": name,
-                    "points": 0
-                }
-
-            scores[user_id]["name"] = name
-
-            scores[user_id]["points"] += 1
-
-            already_awarded.append(
-                user_id
-            )
-
-            print(
-                f"+1 point: {name}",
-                flush=True
-            )
-
-        puzzle[
-            "points_awarded"
-        ] = already_awarded
-
-        puzzle[
-            "answer_posted"
-        ] = True
-
-        await save_all()
+    return point_change
 
 
 # =========================================================
-# LEADERBOARD
+# FULL LEADERBOARD
 # =========================================================
 
 def make_leaderboard():
@@ -842,12 +1106,16 @@ def make_leaderboard():
 
     ordered = sorted(
         scores.items(),
-        key=lambda item:
-            item[1].get(
+        key=lambda item: (
+            -item[1].get(
                 "points",
                 0
             ),
-        reverse=True
+            item[1].get(
+                "name",
+                "Unknown"
+            ).lower()
+        )
     )
 
     lines = [
@@ -925,12 +1193,53 @@ Only your **most recent answer** to a puzzle counts.
 **Other**
 `!help` or `!info` — Show this message.
 
-🏆 The leaderboard is posted automatically every 5 minutes for now.
+🏆 The leaderboard is posted automatically every 10 minutes.
 """
 
 
 # =========================================================
-# FINALIZE EXPIRED PUZZLES
+# FINALIZE EXPIRED PUZZLE
+# =========================================================
+
+async def finalize_expired_puzzle(
+    channel,
+    puzzle,
+    puzzle_type
+):
+
+    if not puzzle:
+        return
+
+    if puzzle.get(
+        "answer_posted",
+        False
+    ):
+        return
+
+    # Points are already updated immediately
+    # when answers are submitted.
+    puzzle[
+        "answer_posted"
+    ] = True
+
+    save_json(
+        STATE_FILE,
+        state
+    )
+
+    await asyncio.to_thread(
+        push_to_github
+    )
+
+    await post_answer(
+        channel,
+        puzzle,
+        puzzle_type
+    )
+
+
+# =========================================================
+# CHECK EXPIRED PUZZLES
 # =========================================================
 
 async def check_expired_puzzles(
@@ -957,11 +1266,7 @@ async def check_expired_puzzles(
                 ANSWER_WINDOW
             ):
 
-                await finalize_puzzle(
-                    daily
-                )
-
-                await post_answer(
+                await finalize_expired_puzzle(
                     channel,
                     daily,
                     "daily"
@@ -987,11 +1292,7 @@ async def check_expired_puzzles(
                 RANDOM_ANSWER_WINDOW
             ):
 
-                await finalize_puzzle(
-                    random_puzzle
-                )
-
-                await post_answer(
+                await finalize_expired_puzzle(
                     channel,
                     random_puzzle,
                     "random"
@@ -1035,7 +1336,7 @@ async def check_for_new_puzzle(
         else None
     )
 
-    # Same puzzle -> do nothing
+    # Same Daily Puzzle -> nothing to do.
     if current_url == puzzle["url"]:
         return
 
@@ -1044,7 +1345,7 @@ async def check_for_new_puzzle(
         flush=True
     )
 
-    # Finish previous Daily Puzzle
+    # Finish previous Daily Puzzle.
     if current:
 
         if not current.get(
@@ -1052,11 +1353,7 @@ async def check_for_new_puzzle(
             False
         ):
 
-            await finalize_puzzle(
-                current
-            )
-
-            await post_answer(
+            await finalize_expired_puzzle(
                 channel,
                 current,
                 "daily"
@@ -1080,11 +1377,22 @@ async def check_for_new_puzzle(
         "points_awarded"
     ] = []
 
+    puzzle[
+        "puzzle_id"
+    ] = (
+        "daily_"
+        + str(
+            int(
+                time.time() * 1000
+            )
+        )
+    )
+
     state[
         "current_puzzle"
     ] = puzzle
 
-    # Latest globally posted puzzle is now Daily
+    # Daily is now the most recent puzzle.
     state[
         "latest_puzzle_type"
     ] = "daily"
@@ -1098,7 +1406,7 @@ async def check_for_new_puzzle(
 
 
 # =========================================================
-# DAILY LOOP
+# DAILY PUZZLE LOOP
 # =========================================================
 
 async def puzzle_loop(
@@ -1139,15 +1447,12 @@ async def maintenance_loop(
 
         try:
 
-            # Expire Daily + Random puzzles
+            # Check expired puzzles.
             await check_expired_puzzles(
                 channel
             )
 
-            # -----------------------------
-            # LEADERBOARD EVERY 5 MINUTES
-            # -----------------------------
-
+            # Full leaderboard every 10 minutes.
             if (
                 time.monotonic()
                 - last_leaderboard
@@ -1163,7 +1468,7 @@ async def maintenance_loop(
                 )
 
                 print(
-                    "Leaderboard posted.",
+                    "Full leaderboard posted.",
                     flush=True
                 )
 
@@ -1197,6 +1502,111 @@ async def run_timer():
 
 
 # =========================================================
+# ANSWER HANDLER
+# =========================================================
+
+async def handle_answer(
+    message,
+    puzzle,
+    puzzle_type,
+    answer_window,
+    move_text
+):
+
+    if not puzzle:
+        return
+
+    # Answer already revealed.
+    if puzzle.get(
+        "answer_posted",
+        False
+    ):
+        return
+
+    # Answer window expired.
+    if not puzzle_is_open(
+        puzzle,
+        answer_window
+    ):
+        return
+
+    correct = move_is_correct(
+        move_text,
+        puzzle
+    )
+
+    point_change = await save_attempt_and_update_score(
+        puzzle,
+        message.author,
+        move_text,
+        correct
+    )
+
+    if not correct:
+
+        await message.channel.send(
+            f"❌ **Wrong, "
+            f"{message.author.display_name}.**"
+        )
+
+        return
+
+    # Current score after the answer.
+    user_id = str(
+        message.author.id
+    )
+
+    current_points = get_player_score(
+        user_id
+    )
+
+    # Build the small personal leaderboard.
+    personal_ranking = (
+        build_personal_ranking(
+            user_id
+        )
+    )
+
+    if point_change > 0:
+
+        point_text = (
+            f"+{point_change} point"
+            if point_change == 1
+            else f"+{point_change} points"
+        )
+
+        message_text = (
+            f"✅ **Correct, "
+            f"{message.author.display_name}!**\n"
+            f"{point_text} — you now have "
+            f"**{current_points} points**."
+        )
+
+    elif point_change == 0:
+
+        # This means the player was already
+        # on a correct latest answer.
+        message_text = (
+            f"✅ **Correct, "
+            f"{message.author.display_name}!**\n"
+            f"You have **{current_points} points**."
+        )
+
+    else:
+
+        message_text = (
+            f"✅ **Correct, "
+            f"{message.author.display_name}!**\n"
+            f"You now have **{current_points} points**."
+        )
+
+    await message.channel.send(
+        message_text
+        + personal_ranking
+    )
+
+
+# =========================================================
 # MESSAGE HANDLER
 # =========================================================
 
@@ -1216,11 +1626,13 @@ async def on_message(
     if not content.startswith("!"):
         return
 
+    command_lower = content.lower()
+
     # =====================================================
     # HELP / INFO
     # =====================================================
 
-    if content.lower() in (
+    if command_lower in (
         "!help",
         "!info"
     ):
@@ -1235,7 +1647,7 @@ async def on_message(
     # RANDOM PUZZLE
     # =====================================================
 
-    if content.lower() in (
+    if command_lower in (
         "!random",
         "!randompuzzle",
         "!random puzzle"
@@ -1248,16 +1660,8 @@ async def on_message(
         return
 
     # =====================================================
-    # PARSE ANSWER COMMAND
+    # ANSWER COMMANDS
     # =====================================================
-
-    # Commands:
-    #
-    # !dailyzet Bf2
-    # !randomzet Bf2
-    # !zet Bf2
-    #
-    # The move is everything after the command.
 
     parts = content.split(
         maxsplit=1
@@ -1282,7 +1686,7 @@ async def on_message(
     answer_window = None
 
     # -----------------------------------------
-    # DAILY
+    # DAILY PUZZLE
     # -----------------------------------------
 
     if command == "!dailyzet":
@@ -1296,7 +1700,7 @@ async def on_message(
         answer_window = ANSWER_WINDOW
 
     # -----------------------------------------
-    # RANDOM
+    # RANDOM PUZZLE
     # -----------------------------------------
 
     elif command == "!randomzet":
@@ -1348,56 +1752,16 @@ async def on_message(
         return
 
     # =====================================================
-    # VALIDATE PUZZLE
+    # HANDLE ANSWER
     # =====================================================
 
-    if not puzzle:
-        return
-
-    if puzzle.get(
-        "answer_posted",
-        False
-    ):
-        return
-
-    if not puzzle_is_open(
+    await handle_answer(
+        message,
         puzzle,
-        answer_window
-    ):
-        return
-
-    # =====================================================
-    # CHECK ANSWER
-    # =====================================================
-
-    correct = move_is_correct(
-        move_text,
-        puzzle
+        puzzle_type,
+        answer_window,
+        move_text
     )
-
-    # =====================================================
-    # SAVE LATEST ANSWER FOR THIS USER
-    # =====================================================
-
-    await save_latest_attempt(
-        puzzle,
-        message.author,
-        move_text,
-        correct
-    )
-
-    # Give immediate feedback
-    if correct:
-
-        await message.channel.send(
-            f"✅ **Correct, {message.author.display_name}!**"
-        )
-
-    else:
-
-        await message.channel.send(
-            f"❌ **Wrong, {message.author.display_name}.**"
-        )
 
 
 # =========================================================
@@ -1454,22 +1818,22 @@ async def on_ready():
         flush=True
     )
 
-    # Check Daily Puzzle immediately
+    # Immediately check Daily Puzzle.
     await check_for_new_puzzle(
         channel
     )
 
-    # Check Daily continuously
+    # Keep checking for new Daily Puzzles.
     asyncio.create_task(
         puzzle_loop(channel)
     )
 
-    # Handle answers + leaderboard
+    # Answers + leaderboard.
     asyncio.create_task(
         maintenance_loop(channel)
     )
 
-    # Stop before GitHub 6-hour limit
+    # Stop before GitHub Actions limit.
     asyncio.create_task(
         run_timer()
     )
