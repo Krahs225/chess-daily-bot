@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-05-13",
     "title": "Opening Knight",
     "fen": "5rk1/1bp2rp1/1p1p2QP/2p1p3/4qbN1/P1P4R/1P4P1/6K1 w - - 0 1",
-    "current_fen": "5rk1/1bp2rp1/1p1p2QP/2p1p3/4qbN1/P1P4R/1P4P1/6K1 w - - 0 1",
+    "current_fen": "5r1k/1bp2rp1/1p1p1NQP/2p1p3/4qb2/P1P4R/1P4P1/6K1 w - - 2 2",
     "pgn": "[White \"Pepe\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"5rk1/1bp2rp1/1p1p2QP/2p1p3/4qbN1/P1P4R/1P4P1/6K1 w - - 0 1\"]\r\n\r\n1. Nf6+ Kh8 2. hxg7# 1-0",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786734139040",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1537899192926863421,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nf6",
+        "correct": true,
+        "timestamp": "2026-08-14T19:02:30.834901+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
