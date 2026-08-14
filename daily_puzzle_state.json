@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-10-31",
     "title": "Meaningless Promotion",
     "fen": "5b2/1p3k1K/p1n2p2/4pP2/PB1pP2N/NP1p4/2P5/8 w - - 0 1",
-    "current_fen": "5b2/1p3k1K/p1n2p2/4pP2/PB1pP2N/NP1p4/2P5/8 w - - 0 1",
+    "current_fen": "5B2/1p3k1K/p1n2p2/4pP2/P2pP2N/NP6/2Pp4/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5b2/1p3k1K/p1n2p2/4pP2/PB1pP2N/NP1p4/2P5/8 w - - 0 1\"]\r\n\r\n1. Bxf8 d2 2. Nc4 d1=Q 3. Nd6+ Kxf8 4. Ng6#\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786736733583",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1537910074394026095,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "bxf8",
+        "correct": true,
+        "timestamp": "2026-08-14T19:45:52.239700+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
