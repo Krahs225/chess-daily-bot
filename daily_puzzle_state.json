@@ -1,47 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-03-19",
-    "title": "Challenging Mate in 2",
-    "fen": "8/8/3B2p1/6K1/1PPkp3/2RnN2Q/8/nN6 w KQkq - 0 1",
-    "current_fen": "8/8/3B2p1/6K1/1PPkp3/2RnN2Q/8/nN6 w KQkq - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/3B2p1/6K1/1PPkp3/2RnN2Q/8/nN6 w KQkq - 0 1\"]\r\n\r\n1. Qh5 Ne5 2. Bc5#\r\n*",
+    "url": "https://www.chess.com/daily/2013-03-08",
+    "title": "Mate in 5",
+    "fen": "r1bq2rk/5p1p/1nn2PpQ/pp1pP3/2pP4/P1P5/2BBN1PP/R4RK1 w Qq - 0 1",
+    "current_fen": "r1bq2rk/5p1p/1nn2PpQ/pp1pP3/2pP4/P1P5/2BBN1PP/R4RK1 w Qq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bq2rk/5p1p/1nn2PpQ/pp1pP3/2pP4/P1P5/2BBN1PP/R4RK1 w Qq - 0 1\"]\r\n\r\n1. Rf4 Bg4 2. Rxg4 Qf8 3. Qxh7+ Kxh7 4. Rh4+ Qh6 5. Rxh6#\r\n*",
     "all_moves": [
       {
-        "uci": "h3h5",
-        "san": "Qh5",
+        "uci": "f1f4",
+        "san": "Rf4",
         "color": "white"
       },
       {
-        "uci": "d3e5",
-        "san": "Ne5",
+        "uci": "c8g4",
+        "san": "Bg4",
         "color": "black"
       },
       {
-        "uci": "d6c5",
-        "san": "Bc5#",
+        "uci": "f4g4",
+        "san": "Rxg4",
+        "color": "white"
+      },
+      {
+        "uci": "d8f8",
+        "san": "Qf8",
+        "color": "black"
+      },
+      {
+        "uci": "h6h7",
+        "san": "Qxh7+",
+        "color": "white"
+      },
+      {
+        "uci": "h8h7",
+        "san": "Kxh7",
+        "color": "black"
+      },
+      {
+        "uci": "g4h4",
+        "san": "Rh4+",
+        "color": "white"
+      },
+      {
+        "uci": "f8h6",
+        "san": "Qh6",
+        "color": "black"
+      },
+      {
+        "uci": "h4h6",
+        "san": "Rxh6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h3h5",
-        "san": "Qh5",
+        "uci": "f1f4",
+        "san": "Rf4",
         "color": "white"
       },
       {
-        "uci": "d6c5",
-        "san": "Bc5#",
+        "uci": "f4g4",
+        "san": "Rxg4",
+        "color": "white"
+      },
+      {
+        "uci": "h6h7",
+        "san": "Qxh7+",
+        "color": "white"
+      },
+      {
+        "uci": "g4h4",
+        "san": "Rh4+",
+        "color": "white"
+      },
+      {
+        "uci": "h4h6",
+        "san": "Rxh6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-14T17:47:50.466421+00:00",
+    "player_move_count": 5,
+    "posted_at": "2026-08-14T17:49:49.003410+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786729670466",
+    "puzzle_id": "random_1786729789003",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
