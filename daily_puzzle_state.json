@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-05-21",
     "title": "The Most Powerful Knight",
     "fen": "r1b2r1k/ppp3qp/2n3pQ/3p4/1P2p2N/2P5/P3BPPP/R4RK1 w - - 0 1",
-    "current_fen": "r1b2r2/ppp3kp/2n3N1/3p4/1P2p3/2P5/P3BPPP/R4RK1 w - - 0 3",
+    "current_fen": "r1b2N2/ppp3kp/2n5/3p4/1P2p3/2P5/P3BPPP/R4RK1 b - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2r1k/ppp3qp/2n3pQ/3p4/1P2p2N/2P5/P3BPPP/R4RK1 w - - 0 1\"]\r\n\r\n1. Nxg6+ Kg8 2. Qxg7+ Kxg7 3. Nxf8\r\n*",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786736419736",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1537908758720811178,
     "attempted_users": {
       "442597396195704832": {
@@ -70,15 +70,17 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qxg7",
+        "move": "nxf8",
         "correct": true,
-        "timestamp": "2026-08-14T19:40:37.515915+00:00"
+        "timestamp": "2026-08-14T19:40:44.501808+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
