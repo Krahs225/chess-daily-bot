@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-04-11",
     "title": "One Lost, One Replaced",
     "fen": "r2qkb1r/1pp1pp1p/4Pnp1/p2P3n/P2Q4/7P/1P3P2/RNB1KB1R w KQkq - 0 1",
-    "current_fen": "r2k1b1r/1P2pp1p/4Pnp1/pB5n/P2q4/7P/1P3P2/RNB1K2R w KQ - 1 4",
+    "current_fen": "Q2k1b1r/4pp1p/4Pnp1/pB5n/P2q4/7P/1P3P2/RNB1K2R b KQ - 0 4",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qkb1r/1pp1pp1p/4Pnp1/p2P3n/P2Q4/7P/1P3P2/RNB1KB1R w KQkq - 0 1\"]\r\n\r\n1. Bb5+ c6 2. dxc6 Qxd4 3. cxb7+ Kd8 4. bxa8=Q+\r\n*",
     "all_moves": [
       {
@@ -72,16 +72,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786740110839",
-    "next_solution_index": 6,
-    "next_player_index": 3,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1537924239997272065,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "cxb7",
+        "move": "Bxa8=Q",
         "correct": true,
-        "timestamp": "2026-08-14T20:42:29.579768+00:00"
+        "timestamp": "2026-08-14T20:42:38.032609+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -92,7 +92,7 @@
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
