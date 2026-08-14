@@ -975,6 +975,11 @@ async def post_random_puzzle(
         puzzle["message_id"] = None
         puzzle["attempted_users"] = {}
 
+        puzzle["first_move_user_id"] = None
+        puzzle["first_move_user_name"] = None
+        puzzle["first_move_awarded"] = False
+        puzzle["helper_awarded_users"] = []
+
         state[
             "latest_random_puzzle"
         ] = puzzle
@@ -1477,14 +1482,16 @@ def build_personal_ranking(
 
             lines.append(
                 f"**#{rank} {name} — "
-                f"{points} points ← you**"
+                f"{format_points(points)} "
+                f"{'point' if float(points) == 1 else 'points'} ← you**"
             )
 
         else:
 
             lines.append(
                 f"#{rank} {name} — "
-                f"{points} points"
+                f"{format_points(points)} "
+                f"{'point' if float(points) == 1 else 'points'}"
             )
 
     return "\n".join(lines)
@@ -1535,13 +1542,156 @@ async def save_attempt(
 
 
 # =========================================================
-# FIRST CORRECT ANSWER GETS POINT
+# RANDOM PUZZLE SCORING
+# =========================================================
+
+async def award_random_move_points(
+    puzzle,
+    user,
+    first_move
+):
+    """
+    Random puzzle scoring:
+    - First correct player move: +1.0, once.
+    - Later correct move by a different player: +0.5, once.
+    - The first mover can never also receive the helper 0.5.
+    - Each helper can receive at most 0.5 on this puzzle.
+    """
+
+    user_id = str(user.id)
+    score_kind = "none"
+
+    async with data_lock:
+
+        puzzle.setdefault(
+            "first_move_user_id",
+            None
+        )
+        puzzle.setdefault(
+            "first_move_user_name",
+            None
+        )
+        puzzle.setdefault(
+            "first_move_awarded",
+            False
+        )
+        puzzle.setdefault(
+            "helper_awarded_users",
+            []
+        )
+
+        # First player move.
+        if first_move:
+
+            if puzzle["first_move_user_id"] is None:
+
+                puzzle[
+                    "first_move_user_id"
+                ] = user_id
+
+                puzzle[
+                    "first_move_user_name"
+                ] = user.display_name
+
+                puzzle[
+                    "first_move_awarded"
+                ] = True
+
+                if user_id not in scores:
+                    scores[user_id] = {
+                        "name": user.display_name,
+                        "points": 0
+                    }
+
+                scores[user_id]["name"] = (
+                    user.display_name
+                )
+
+                scores[user_id]["points"] = round(
+                    float(
+                        scores[user_id].get(
+                            "points",
+                            0
+                        )
+                    ) + 1.0,
+                    2
+                )
+
+                score_kind = "first"
+
+        # Helper move.
+        else:
+
+            first_user_id = puzzle.get(
+                "first_move_user_id"
+            )
+
+            helper_users = puzzle[
+                "helper_awarded_users"
+            ]
+
+            if (
+                user_id != first_user_id
+                and user_id not in helper_users
+            ):
+
+                helper_users.append(
+                    user_id
+                )
+
+                if user_id not in scores:
+                    scores[user_id] = {
+                        "name": user.display_name,
+                        "points": 0
+                    }
+
+                scores[user_id]["name"] = (
+                    user.display_name
+                )
+
+                scores[user_id]["points"] = round(
+                    float(
+                        scores[user_id].get(
+                            "points",
+                            0
+                        )
+                    ) + 0.5,
+                    2
+                )
+
+                score_kind = "helper"
+
+        if score_kind != "none":
+
+            save_json(
+                STATE_FILE,
+                state
+            )
+
+            save_json(
+                LEADERBOARD_FILE,
+                scores
+            )
+
+    if score_kind != "none":
+        await asyncio.to_thread(
+            push_to_github
+        )
+
+    return score_kind
+
+
+# =========================================================
+# LEGACY DAILY SCORING
 # =========================================================
 
 async def award_point(
     puzzle,
     user
 ):
+    """
+    Daily puzzle keeps its existing +1 first-correct system.
+    """
 
     user_id = str(
         user.id
@@ -1549,7 +1699,6 @@ async def award_point(
 
     async with data_lock:
 
-        # Someone already won.
         if puzzle.get(
             "winner_user_id"
         ) is not None:
@@ -1580,11 +1729,14 @@ async def award_point(
 
         scores[user_id][
             "points"
-        ] = (
-            scores[user_id].get(
-                "points",
-                0
-            ) + 1
+        ] = round(
+            float(
+                scores[user_id].get(
+                    "points",
+                    0
+                )
+            ) + 1.0,
+            2
         )
 
         save_json(
@@ -1665,13 +1817,13 @@ def make_leaderboard():
 
         word = (
             "point"
-            if points == 1
+            if float(points) == 1
             else "points"
         )
 
         lines.append(
             f"{prefix} {name} — "
-            f"**{points} {word}**"
+            f"**{format_points(points)} {word}**"
         )
 
     return "\n".join(lines)
@@ -1689,7 +1841,7 @@ def help_message():
 `!daily <moves>` — Answer the latest Daily Puzzle.
 
 **Random Puzzle**
-`!random` or `!rp` — Get a random chess puzzle.
+`!random`, `!rp` or `!r` — Get a random chess puzzle.
 `!random <move>` — Make the next move in the latest Random Puzzle.
 
 **Quick Answer**
@@ -1698,12 +1850,14 @@ def help_message():
 Only your own moves are required. The opponent's replies are automatically played between your moves.
 
 **Points**
-Correct answers are worth **+1 point**.
-Only the **first complete correct answer** gets the point.
+• First correct move in a Random Puzzle: **+1 point**
+• Correct later move that helps: **+0.5 point**
+• First-move player can never earn more than **+1**
+• A helper can never earn more than **+0.5** per puzzle
 
 **Other**
 `!help` or `!info` — Show this message.
-`!leaderboard` — Show the full leaderboard.
+`!leaderboard`, `!lb` or `!l` — Show the full leaderboard.
 
 🏆 The leaderboard is posted automatically every 10 minutes.
 """
@@ -1742,8 +1896,7 @@ async def post_answer(
 
     await channel.send(
         f"{title}\n\n"
-        f"**Your moves:** "
-        f"||{solution_text}||"
+        f"**Your moves:** {solution_text}"
     )
 
 
@@ -2247,6 +2400,11 @@ async def handle_random_answer(
 
     # Serialize state changes so two people cannot both
     # advance the same shared position at exactly the same time.
+    # Capture this BEFORE advancing the shared state.
+    move_was_first = (
+        next_index == 0
+    )
+
     async with data_lock:
 
         expected = all_moves[next_index]
@@ -2348,6 +2506,16 @@ async def handle_random_answer(
         return
 
     # -----------------------------------------------------
+    # SCORE THIS CORRECT PLAYER MOVE
+    # -----------------------------------------------------
+
+    score_kind = await award_random_move_points(
+        puzzle,
+        message.author,
+        first_move=move_was_first
+    )
+
+    # -----------------------------------------------------
     # PUZZLE COMPLETE
     # -----------------------------------------------------
 
@@ -2388,18 +2556,29 @@ async def handle_random_answer(
             embed_progress
         )
 
-        if got_point:
+        if score_kind == "first":
             score_message = (
                 f"✅ **Correct, {message.author.display_name}!**\n"
                 f"🎉 **Puzzle solved!**\n"
-                f"**+1 point** — you now have **{points} points.**"
+                f"**+1 point** — you now have "
+                f"**{format_points(points)} points.**"
             )
+
+        elif score_kind == "helper":
+            score_message = (
+                f"✅ **Correct, {message.author.display_name}!**\n"
+                f"🎉 **Puzzle solved!**\n"
+                f"**+0.5 point** for helping — "
+                f"you now have "
+                f"**{format_points(points)} points.**"
+            )
+
         else:
             score_message = (
                 f"✅ **Correct, {message.author.display_name}!**\n"
                 f"🎉 **Puzzle solved!**\n"
-                f"Someone else got the point first.\n"
-                f"You have **{points} points.**"
+                f"No additional points this move.\n"
+                f"You have **{format_points(points)} points.**"
             )
 
         # Score is a separate message; the puzzle embed never contains points.
@@ -2456,6 +2635,42 @@ async def handle_random_answer(
             else ""
         )
     )
+
+    # Points are always a separate message, never part of the embed.
+    if score_kind in ("first", "helper"):
+
+        current_points = get_player_score(
+            message.author.id
+        )
+
+        if score_kind == "first":
+            score_text = (
+                f"✅ **{message.author.display_name} "
+                f"found the first move!**\n"
+                f"**+1 point** — you now have "
+                f"**{format_points(current_points)} points.**"
+            )
+
+        else:
+            score_text = (
+                f"🤝 **{message.author.display_name} "
+                f"helped solve the puzzle!**\n"
+                f"**+0.5 point** — you now have "
+                f"**{format_points(current_points)} points.**"
+            )
+
+        await message.channel.send(
+            score_text
+        )
+
+        ranking = build_personal_ranking(
+            message.author.id
+        )
+
+        if ranking:
+            await message.channel.send(
+                ranking
+            )
 
 
 # =========================================================
@@ -2607,7 +2822,7 @@ async def on_message(
     # FULL LEADERBOARD
     # =====================================================
 
-    if command_lower == "!leaderboard":
+    if command_lower in ("!leaderboard", "!lb", "!l"):
         await message.channel.send(
             make_leaderboard()
         )
@@ -2620,8 +2835,30 @@ async def on_message(
     if command_lower in (
         "!random",
         "!rp",
+        "!r",
         "!randompuzzle"
     ):
+
+        previous_random = state.get(
+            "latest_random_puzzle"
+        )
+
+        if (
+            previous_random
+            and not previous_random.get(
+                "answer_posted",
+                False
+            )
+            and not previous_random.get(
+                "solved",
+                False
+            )
+        ):
+            await finalize_expired_puzzle(
+                message.channel,
+                previous_random,
+                "random"
+            )
 
         await post_random_puzzle(
             message.channel
@@ -2788,6 +3025,26 @@ async def on_ready():
         random_puzzle.setdefault(
             "attempted_users",
             {}
+        )
+
+        random_puzzle.setdefault(
+            "first_move_user_id",
+            None
+        )
+
+        random_puzzle.setdefault(
+            "first_move_user_name",
+            None
+        )
+
+        random_puzzle.setdefault(
+            "first_move_awarded",
+            False
+        )
+
+        random_puzzle.setdefault(
+            "helper_awarded_users",
+            []
         )
 
     print(
