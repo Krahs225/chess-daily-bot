@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-08-18",
     "title": "Goodbye, Hello!",
     "fen": "3r2k1/3P2pp/8/1p6/1P2Q3/P1P4r/q6P/2K5 w - - 0 1",
-    "current_fen": "3r2k1/3P2pp/8/1p6/1P2Q3/P1P4r/q6P/2K5 w - - 0 1",
+    "current_fen": "4r1k1/3P2pp/8/1p6/1P6/P1P4r/q6P/2K5 w - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"3r2k1/3P2pp/8/1p6/1P2Q3/P1P4r/q6P/2K5 w - - 0 1\"]\r\n\r\n1. Qe8+ Rxe8 2. dxe8=Q# *",
     "all_moves": [
       {
@@ -42,13 +42,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786739474350",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1537921569987371099,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qe8",
+        "correct": true,
+        "timestamp": "2026-08-14T20:31:20.566401+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qe8",
+        "correct": false,
+        "timestamp": "2026-08-14T20:31:21.147607+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
