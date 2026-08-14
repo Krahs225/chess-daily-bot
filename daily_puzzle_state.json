@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-08-27",
     "title": "When A Draw Is Enough",
     "fen": "8/8/8/3p1p2/3Pp1k1/6q1/3Q4/7K w - f6 0 1",
-    "current_fen": "8/8/8/3p1p2/3Pp1k1/6q1/3Q4/7K w - f6 0 1",
+    "current_fen": "8/8/8/3p1pQ1/3Pp3/5kq1/8/7K w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[FEN \"8/8/8/3p1p2/3Pp1k1/6q1/3Q4/7K w - f6 0 1\"]\r\n\r\n1. Qg5+ Kf3 2. Qe3+ Kg4 3. Qg5+ Kh3 4. Qg4+ Qxg4\r\n*",
     "all_moves": [
       {
@@ -77,13 +77,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786736190238",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1537907796052418651,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qg5",
+        "correct": true,
+        "timestamp": "2026-08-14T19:36:55.518122+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qf2",
+        "correct": false,
+        "timestamp": "2026-08-14T19:36:56.298179+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
