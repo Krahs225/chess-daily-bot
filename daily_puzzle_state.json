@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-10-12",
-    "title": "Pawn Corralling",
-    "fen": "8/1k6/8/1K2P3/P3p1p1/8/5P2/8 w - - 0 1",
-    "current_fen": "8/1k6/8/4P3/P5p1/8/4Kp2/8 b - - 1 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1k6/8/1K2P3/P3p1p1/8/5P2/8 w - - 0 1\"]\r\n\r\n1. Kc4 e3 2. Kd3 exf2 3. Ke2\r\n*",
+    "url": "https://www.chess.com/daily/2015-08-13",
+    "title": "The Round Up",
+    "fen": "2R2r2/3p1ppp/p2kp3/1p6/4bP2/1P2BB2/Pq2N1PP/5RK1 w - - 0 1",
+    "current_fen": "2R2r2/3p1ppp/p2kp3/1p6/4bP2/1P2BB2/Pq2N1PP/5RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2R2r2/3p1ppp/p2kp3/1p6/4bP2/1P2BB2/Pq2N1PP/5RK1 w - - 0 1\"]\r\n\r\n1. Bc5+ Kd5 2. Rd1+ Qd4+ 3. Rxd4#\r\n*",
     "all_moves": [
       {
-        "uci": "b5c4",
-        "san": "Kc4",
+        "uci": "e3c5",
+        "san": "Bc5+",
         "color": "white"
       },
       {
-        "uci": "e4e3",
-        "san": "e3",
+        "uci": "d6d5",
+        "san": "Kd5",
         "color": "black"
       },
       {
-        "uci": "c4d3",
-        "san": "Kd3",
+        "uci": "f1d1",
+        "san": "Rd1+",
         "color": "white"
       },
       {
-        "uci": "e3f2",
-        "san": "exf2",
+        "uci": "b2d4",
+        "san": "Qd4+",
         "color": "black"
       },
       {
-        "uci": "d3e2",
-        "san": "Ke2",
+        "uci": "d1d4",
+        "san": "Rxd4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b5c4",
-        "san": "Kc4",
+        "uci": "e3c5",
+        "san": "Bc5+",
         "color": "white"
       },
       {
-        "uci": "c4d3",
-        "san": "Kd3",
+        "uci": "f1d1",
+        "san": "Rd1+",
         "color": "white"
       },
       {
-        "uci": "d3e2",
-        "san": "Ke2",
+        "uci": "d1d4",
+        "san": "Rxd4#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-14T18:17:09.322524+00:00",
+    "posted_at": "2026-08-14T18:21:21.116807+00:00",
     "answer_posted": false,
-    "winner_user_id": "442597396195704832",
-    "winner_name": "Thice",
+    "winner_user_id": null,
+    "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786731429322",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1537887828946587699,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ke2",
-        "correct": true,
-        "timestamp": "2026-08-14T18:17:57.777522+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786731681116",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": []
   },
   "latest_puzzle_type": "random",
