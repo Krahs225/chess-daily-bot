@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-01-18",
     "title": "Shambala",
     "fen": "5K2/7k/8/6P1/p7/pr1N3N/8/3B4 w - - 0 1",
-    "current_fen": "5K2/7k/8/6P1/p7/pr1N3N/8/3B4 w - - 0 1",
+    "current_fen": "5K2/7k/8/6P1/8/pp1N3N/8/8 w - - 0 2",
     "pgn": "[Result \"1-0\"]\r\n[FEN \"5K2/7k/8/6P1/p7/pr1N3N/8/3B4 w - - 0 1\"]\r\n\r\n1.Bxb3 axb3 2.Ndf4 b2 3.g6+ Kh6 4.g7 b1=Q 5.g8=N+ Kh7 6.Ng5+ Kh8 7.Nf7+ Kh7 8.Nf6# 1-0",
     "all_moves": [
       {
@@ -132,13 +132,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786738637557",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1537918060059697255,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "bxb3",
+        "correct": true,
+        "timestamp": "2026-08-14T20:17:27.387501+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
