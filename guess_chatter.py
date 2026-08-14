@@ -30,8 +30,11 @@ ANSWER_DELAY_SECONDS = 3 * 60
 # Leaderboard every 10 minutes
 LEADERBOARD_INTERVAL_SECONDS = 10 * 60
 
-# Permanent leaderboard
+# Permanent all-time leaderboard
 SCORES_FILE = "guess_chatter_scores.json"
+
+# Separate persistent weekly data
+WEEKLY_FILE = "guess_chatter_weekly.json"
 
 # Context
 CONTEXT_BEFORE = 2
@@ -92,6 +95,8 @@ client = discord.Client(intents=intents)
 # =========================================================
 
 scores = {}
+weekly_data = {}
+
 active_polls = {}
 
 scores_lock = asyncio.Lock()
@@ -177,10 +182,98 @@ def save_scores():
 
 
 # =========================================================
-# SAVE SCORES TO GITHUB
+# WEEKLY DATA
 # =========================================================
 
-def push_scores_to_github():
+def get_current_week_key():
+
+    today = date.today()
+
+    iso = today.isocalendar()
+
+    return f"{iso.year}-W{iso.week:02d}"
+
+
+def load_weekly_data():
+
+    current_week = get_current_week_key()
+
+    if not os.path.exists(WEEKLY_FILE):
+
+        print(
+            f"Starting weekly data for "
+            f"{current_week}.",
+            flush=True
+        )
+
+        return {
+            "week": current_week,
+            "players": {},
+            "last_reported_week": None
+        }
+
+    try:
+
+        with open(
+            WEEKLY_FILE,
+            "r",
+            encoding="utf-8"
+        ) as file:
+
+            data = json.load(file)
+
+        if data.get("week") != current_week:
+
+            print(
+                f"New week detected: "
+                f"{current_week}",
+                flush=True
+            )
+
+            return {
+                "week": current_week,
+                "players": {},
+                "last_reported_week":
+                    data.get("last_reported_week")
+            }
+
+        return data
+
+    except Exception as error:
+
+        print(
+            f"Could not load weekly data: {error}",
+            flush=True
+        )
+
+        return {
+            "week": current_week,
+            "players": {},
+            "last_reported_week": None
+        }
+
+
+def save_weekly_data():
+
+    with open(
+        WEEKLY_FILE,
+        "w",
+        encoding="utf-8"
+    ) as file:
+
+        json.dump(
+            weekly_data,
+            file,
+            indent=2,
+            ensure_ascii=False
+        )
+
+
+# =========================================================
+# SAVE FILES TO GITHUB
+# =========================================================
+
+def push_data_to_github():
 
     try:
 
@@ -210,7 +303,8 @@ def push_scores_to_github():
             [
                 "git",
                 "add",
-                SCORES_FILE
+                SCORES_FILE,
+                WEEKLY_FILE
             ],
             check=True,
             capture_output=True
@@ -248,24 +342,25 @@ def push_scores_to_github():
         )
 
         print(
-            "Leaderboard saved permanently.",
+            "Leaderboard data saved permanently.",
             flush=True
         )
 
     except Exception as error:
 
         print(
-            f"Could not save leaderboard: {error}",
+            f"Could not save leaderboard data: {error}",
             flush=True
         )
 
 
-async def save_scores_permanently():
+async def save_all_data():
 
     save_scores()
+    save_weekly_data()
 
     await asyncio.to_thread(
-        push_scores_to_github
+        push_data_to_github
     )
 
 
@@ -671,6 +766,39 @@ def time_machine_text(date_string):
 
 
 # =========================================================
+# ANCIENT QUOTE
+# =========================================================
+
+def ancient_quote_text(date_string):
+
+    days = days_ago(
+        date_string
+    )
+
+    if days is None:
+        return ""
+
+    # About 2 years or older
+    if days >= 730:
+
+        years = days / 365.25
+
+        if years >= 3:
+
+            return (
+                f"🏺 **ANCIENT QUOTE** — "
+                f"over {years:.1f} years old!"
+            )
+
+        return (
+            f"🏺 **ANCIENT QUOTE** — "
+            f"over {years:.1f} years old!"
+        )
+
+    return ""
+
+
+# =========================================================
 # LEADERBOARD
 # =========================================================
 
@@ -841,13 +969,77 @@ async def add_point(user):
             player["streak"]
         )
 
-        await save_scores_permanently()
+        # ================================================
+        # WEEKLY DATA
+        # ================================================
+
+        current_week = get_current_week_key()
+
+        if (
+            weekly_data.get("week")
+            != current_week
+        ):
+
+            weekly_data["week"] = current_week
+            weekly_data["players"] = {}
+
+        if user_id not in weekly_data["players"]:
+
+            weekly_data["players"][user_id] = {
+                "name": display_name,
+                "points": 0,
+                "best_streak": 0
+            }
+
+        weekly_player = (
+            weekly_data["players"][user_id]
+        )
+
+        weekly_player["name"] = (
+            display_name
+        )
+
+        weekly_player["points"] = (
+            weekly_player.get("points", 0)
+            + 1
+        )
+
+        weekly_player["best_streak"] = max(
+            weekly_player.get(
+                "best_streak",
+                0
+            ),
+            player["streak"]
+        )
+
+        # ================================================
+        # 5-STREAK BONUS
+        # ================================================
+
+        streak_bonus = False
+
+        if player["streak"] == 5:
+
+            player["points"] += 1
+
+            weekly_player["points"] += 1
+
+            streak_bonus = True
+
+        await save_all_data()
 
         return {
-            "points": player["points"],
-            "streak": player["streak"],
+            "points":
+                player["points"],
+
+            "streak":
+                player["streak"],
+
             "best_streak":
-                player["best_streak"]
+                player["best_streak"],
+
+            "streak_bonus":
+                streak_bonus
         }
 
 
@@ -891,9 +1083,10 @@ async def record_wrong_answer(
             + 1
         )
 
+        # Wrong answer breaks current streak
         player["streak"] = 0
 
-        await save_scores_permanently()
+        await save_all_data()
 
 
 # =========================================================
@@ -963,31 +1156,168 @@ async def send_stats(
 
 
 # =========================================================
-# QUOTE OF THE DAY
+# WEEKLY REPORT
 # =========================================================
 
-async def post_quote_of_day(
-    channel,
-    all_messages
+async def post_weekly_report(
+    channel
 ):
 
-    if not all_messages:
+    current_week = get_current_week_key()
+
+    # Don't post twice for the same week
+    if (
+        weekly_data.get(
+            "last_reported_week"
+        )
+        == current_week
+    ):
+
         return
 
-    quote = random.choice(
-        all_messages
+    players = weekly_data.get(
+        "players",
+        {}
     )
 
+    # If this is a completely fresh weekly file,
+    # initialize it without posting a fake empty report.
+    if not players:
+
+        weekly_data[
+            "last_reported_week"
+        ] = current_week
+
+        save_weekly_data()
+
+        return
+
+    # =====================================================
+    # MOST IMPROVED
+    # =====================================================
+
+    ordered_points = sorted(
+        players.items(),
+        key=lambda item:
+            item[1].get(
+                "points",
+                0
+            ),
+        reverse=True
+    )
+
+    # =====================================================
+    # TOP 5 LONGEST STREAKS
+    # =====================================================
+
+    ordered_streaks = sorted(
+        players.items(),
+        key=lambda item:
+            item[1].get(
+                "best_streak",
+                0
+            ),
+        reverse=True
+    )
+
+    lines = [
+        "📅 **WEEKLY GUESS THE CHATTER REPORT**",
+        "",
+        "📈 **Most Improved**"
+    ]
+
+    if ordered_points:
+
+        top_user = ordered_points[0][1]
+
+        top_name = top_user.get(
+            "name",
+            "Unknown"
+        )
+
+        top_points = top_user.get(
+            "points",
+            0
+        )
+
+        lines.append(
+            f"🏆 **{top_name}** — "
+            f"+{top_points} points this week"
+        )
+
+    else:
+
+        lines.append(
+            "No points this week."
+        )
+
+    lines.extend(
+        [
+            "",
+            "🔥 **Top 5 Longest Streaks**"
+        ]
+    )
+
+    medals = [
+        "🥇",
+        "🥈",
+        "🥉",
+        "4️⃣",
+        "5️⃣"
+    ]
+
+    shown = 0
+
+    for user_id, player in ordered_streaks:
+
+        streak = player.get(
+            "best_streak",
+            0
+        )
+
+        if streak <= 0:
+            continue
+
+        name = player.get(
+            "name",
+            "Unknown"
+        )
+
+        lines.append(
+            f"{medals[shown]} "
+            f"**{name}** — "
+            f"{streak} streak"
+        )
+
+        shown += 1
+
+        if shown >= 5:
+            break
+
+    if shown == 0:
+
+        lines.append(
+            "No streaks yet."
+        )
+
     await channel.send(
-        "🌟 **Quote of the Day**\n\n"
-        f"> {quote['message']}\n\n"
-        f"— **{quote['display_name']}**, "
-        f"{quote['date']}\n\n"
-        f"{time_machine_text(quote['date'])}"
+        "\n".join(lines)
+    )
+
+    # Mark report as posted
+    weekly_data[
+        "last_reported_week"
+    ] = current_week
+
+    save_weekly_data()
+
+    await asyncio.to_thread(
+        push_data_to_github
     )
 
     print(
-        "Quote of the Day posted.",
+        f"Weekly report posted for "
+        f"{current_week}.",
         flush=True
     )
 
@@ -1066,6 +1396,10 @@ async def post_guess(
         display_name_for(username)
     )
 
+    # =====================================================
+    # CHOOSE 4 WRONG OPTIONS
+    # =====================================================
+
     wrong_usernames = [
         name
         for name in eligible
@@ -1140,14 +1474,18 @@ async def post_guess(
         "votes": {},
 
         "quote":
-            quote
+            quote,
+
+        "possible_chatter_count":
+            len(eligible)
     }
 
     print(
         f"Poll created: "
         f"{poll_message.id} | "
         f"{quote_date} | "
-        f"correct={correct_display_name}",
+        f"correct={correct_display_name} | "
+        f"possible={len(eligible)}",
         flush=True
     )
 
@@ -1222,12 +1560,28 @@ async def post_guess(
                 user
             )
 
+            # ============================================
+            # STREAK MESSAGE
+            # ============================================
+
             if stats["streak"] >= 3:
 
                 await channel.send(
                     f"🔥 **{user.display_name} "
                     f"is on a {stats['streak']}"
                     f"-streak!**"
+                )
+
+            # ============================================
+            # 5-STREAK BONUS
+            # ============================================
+
+            if stats["streak_bonus"]:
+
+                await channel.send(
+                    f"🔥 **5-STREAK BONUS!** "
+                    f"{user.display_name} gets "
+                    f"an extra point!"
                 )
 
         else:
@@ -1321,6 +1675,54 @@ async def post_guess(
         )
 
     # =====================================================
+    # EXTRA INFORMATION
+    # =====================================================
+
+    possible_count = poll_data.get(
+        "possible_chatter_count",
+        0
+    )
+
+    ancient_text = ancient_quote_text(
+        quote_date
+    )
+
+    time_text = time_machine_text(
+        quote_date
+    )
+
+    extra_lines = []
+
+    if possible_count > 0:
+
+        extra_lines.append(
+            f"👥 **{possible_count} "
+            f"possible chatters on this date.**"
+        )
+
+    if ancient_text:
+
+        extra_lines.append(
+            ancient_text
+        )
+
+    if time_text:
+
+        extra_lines.append(
+            time_text
+        )
+
+    extra_text = ""
+
+    if extra_lines:
+
+        extra_text = (
+            "\n"
+            + "\n".join(extra_lines)
+            + "\n"
+        )
+
+    # =====================================================
     # ANSWER
     # =====================================================
 
@@ -1330,8 +1732,8 @@ async def post_guess(
         f"📊 **{correct_count}/{total_count}** "
         f"people got it right "
         f"(**{percentage}%**)."
-        f"{close_call}\n\n"
-        f"{time_machine_text(quote_date)}\n\n"
+        f"{close_call}"
+        f"{extra_text}\n"
         f"💬 **Context:**\n"
         + "\n".join(context_lines)
     )
@@ -1454,8 +1856,10 @@ async def on_ready():
     client.started = True
 
     global scores
+    global weekly_data
 
     scores = load_scores()
+    weekly_data = load_weekly_data()
 
     try:
 
@@ -1508,15 +1912,6 @@ async def on_ready():
     )
 
     # =====================================================
-    # QUOTE OF DAY
-    # =====================================================
-
-    await post_quote_of_day(
-        channel,
-        all_messages
-    )
-
-    # =====================================================
     # LEADERBOARD LOOP
     # =====================================================
 
@@ -1543,6 +1938,35 @@ async def on_ready():
 
     asyncio.create_task(
         leaderboard_loop()
+    )
+
+    # =====================================================
+    # WEEKLY REPORT LOOP
+    # =====================================================
+
+    async def weekly_report_loop():
+
+        while True:
+
+            await asyncio.sleep(
+                LEADERBOARD_INTERVAL_SECONDS
+            )
+
+            try:
+
+                await post_weekly_report(
+                    channel
+                )
+
+            except Exception as error:
+
+                print(
+                    f"Weekly report error: {error}",
+                    flush=True
+                )
+
+    asyncio.create_task(
+        weekly_report_loop()
     )
 
     # =====================================================
