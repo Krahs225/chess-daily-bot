@@ -1,62 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-10-06",
-    "title": "Pushing Forward",
-    "fen": "1k6/pp1q3p/3P2p1/5b2/5B2/8/1P2Q1P1/K7 w - - 0 1",
-    "current_fen": "1kq1Q3/pp1P3p/6p1/5b2/5B2/8/1P4P1/K7 b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1k6/pp1q3p/3P2p1/5b2/5B2/8/1P2Q1P1/K7 w - - 0 1\"]\r\n\r\n1. Qe8+ Qc8 2. d7+\r\n*",
+    "url": "https://www.chess.com/daily/2025-07-24",
+    "title": "Hanging on by a Light Square",
+    "fen": "3r2k1/q5p1/p7/Npb3Qp/1P3Pn1/P2r3P/1B4P1/1R1N1R1K b - - 0 1",
+    "current_fen": "3r2k1/q5p1/p7/Npb3Qp/1P3Pn1/P2r3P/1B4P1/1R1N1R1K b - - 0 1",
+    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"geelse_zot\"]\r\n[Result \"0-1\"]\r\n[FEN \"3r2k1/q5p1/p7/Npb3Qp/1P3Pn1/P2r3P/1B4P1/1R1N1R1K b - - 0 1\"]\r\n\r\n1... Rxh3+ 2. gxh3 Qa8+ 3. Rf3 Qxf3# 0-1",
     "all_moves": [
       {
-        "uci": "e2e8",
-        "san": "Qe8+",
-        "color": "white"
-      },
-      {
-        "uci": "d7c8",
-        "san": "Qc8",
+        "uci": "d3h3",
+        "san": "Rxh3+",
         "color": "black"
       },
       {
-        "uci": "d6d7",
-        "san": "d7+",
+        "uci": "g2h3",
+        "san": "gxh3",
         "color": "white"
+      },
+      {
+        "uci": "a7a8",
+        "san": "Qa8+",
+        "color": "black"
+      },
+      {
+        "uci": "f1f3",
+        "san": "Rf3",
+        "color": "white"
+      },
+      {
+        "uci": "a8f3",
+        "san": "Qxf3#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e2e8",
-        "san": "Qe8+",
-        "color": "white"
+        "uci": "d3h3",
+        "san": "Rxh3+",
+        "color": "black"
       },
       {
-        "uci": "d6d7",
-        "san": "d7+",
-        "color": "white"
+        "uci": "a7a8",
+        "san": "Qa8+",
+        "color": "black"
+      },
+      {
+        "uci": "a8f3",
+        "san": "Qxf3#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-14T21:20:59.567642+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-14T21:21:25.812539+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786742459567",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1537934091733962793,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "d7",
-        "correct": true,
-        "timestamp": "2026-08-14T21:21:16.027314+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786742485812",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
