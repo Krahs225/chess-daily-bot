@@ -1,51 +1,111 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-01-06",
-    "title": "Nemo's Birthday Checkmate 🎁",
-    "fen": "6k1/pp3p1p/1q3bp1/2nr4/2p2Q2/P1P2P2/1PN3PP/2B1R2K w - - 0 28",
-    "current_fen": "6k1/pp3p1p/1q3bp1/2nr4/2p2Q2/P1P2P2/1PN3PP/2B1R2K w - - 0 28",
-    "pgn": "[Event \"Live Chess\"]\r\n[Site \"Chess.com\"]\r\n[Date \"2024.12.15\"]\r\n[White \"Nemsko Happy Birthday!\"]\r\n[Black \"Caterpiller35 (Queen moved)\"]\r\n[Result \"1-0\"]\r\n[ECO \"B35\"]\r\n[WhiteElo \"2310\"]\r\n[BlackElo \"2373\"]\r\n[FEN \"6k1/pp3p1p/1q3bp1/2nr4/2p2Q2/P1P2P2/1PN3PP/2B1R2K w - - 0 28\"]\r\n\r\n28. Re8+ Kg7 29. Qh6# 1-0",
+    "url": "https://www.chess.com/daily/2007-07-06",
+    "title": "Lots of Work to Win a Rook!",
+    "fen": "rn2k2r/pp3p1p/3b4/qNpPpN2/8/8/PPP3PP/R2QK2R w KQkq - 0 1",
+    "current_fen": "rn2k2r/pp3p1p/3b4/qNpPpN2/8/8/PPP3PP/R2QK2R w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn2k2r/pp3p1p/3b4/qNpPpN2/8/8/PPP3PP/R2QK2R w KQkq - 0 1\"]\r\n\r\n1. b4 ( 1. Qd2 Bc7 { And everything holds... }  ) Qxb4+ ( 1... Qxb5 2. Nxd6+ Ke7 3. Nxb5 ) 2. c3 Qe4+ { Has to keep checking - the bishop is in trouble! }  3. Qe2 Qxe2+ ( 3... Qxf5 4. Nxd6+ Kf8 5. Nxf5 ) 4. Kxe2 Be7 5. Nc7+ Kd7 6. Nxa8 { And white is up a rook! }\r\n*",
     "all_moves": [
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "b2b4",
+        "san": "b4",
         "color": "white"
       },
       {
-        "uci": "g8g7",
-        "san": "Kg7",
+        "uci": "a5b4",
+        "san": "Qxb4+",
         "color": "black"
       },
       {
-        "uci": "f4h6",
-        "san": "Qh6#",
+        "uci": "c2c3",
+        "san": "c3",
+        "color": "white"
+      },
+      {
+        "uci": "b4e4",
+        "san": "Qe4+",
+        "color": "black"
+      },
+      {
+        "uci": "d1e2",
+        "san": "Qe2",
+        "color": "white"
+      },
+      {
+        "uci": "e4e2",
+        "san": "Qxe2+",
+        "color": "black"
+      },
+      {
+        "uci": "e1e2",
+        "san": "Kxe2",
+        "color": "white"
+      },
+      {
+        "uci": "d6e7",
+        "san": "Be7",
+        "color": "black"
+      },
+      {
+        "uci": "b5c7",
+        "san": "Nc7+",
+        "color": "white"
+      },
+      {
+        "uci": "e8d7",
+        "san": "Kd7",
+        "color": "black"
+      },
+      {
+        "uci": "c7a8",
+        "san": "Nxa8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "b2b4",
+        "san": "b4",
         "color": "white"
       },
       {
-        "uci": "f4h6",
-        "san": "Qh6#",
+        "uci": "c2c3",
+        "san": "c3",
+        "color": "white"
+      },
+      {
+        "uci": "d1e2",
+        "san": "Qe2",
+        "color": "white"
+      },
+      {
+        "uci": "e1e2",
+        "san": "Kxe2",
+        "color": "white"
+      },
+      {
+        "uci": "b5c7",
+        "san": "Nc7+",
+        "color": "white"
+      },
+      {
+        "uci": "c7a8",
+        "san": "Nxa8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-14T18:37:23.947172+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-14T18:37:33.885515+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786732643947",
+    "puzzle_id": "random_1786732653885",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1537892921813245957,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
