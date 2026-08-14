@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-08-30",
     "title": "King in the Corner",
     "fen": "5r1k/6pp/p7/1pnP3q/2p1P3/2P4b/PPB4Q/4R1NK b - - 0 1",
-    "current_fen": "5r1k/6pp/p7/1pnP3q/2p1P3/2P4b/PPB4Q/4R1NK b - - 0 1",
+    "current_fen": "5r1k/6pp/p7/1pnP3q/2p1P3/2P5/PPB3KQ/4R1N1 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r1k/6pp/p7/1pnP3q/2p1P3/2P4b/PPB4Q/4R1NK b - - 0 1\"]\r\n\r\n1... Bg2+ 2. Kxg2 Rf2+ 3. Kxf2 ( 3. Kh1 Qxh2# ) Qxh2+ 4. Kf1 Qxc2\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786735960837",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1537906834118152202,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "bg2",
+        "correct": true,
+        "timestamp": "2026-08-14T19:32:50.758490+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
