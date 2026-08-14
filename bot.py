@@ -942,13 +942,27 @@ async def post_random_puzzle(
 
         puzzle["message_id"] = message.id
 
-        await save_all()
+        # Persist the message ID locally.
+        # Do NOT run the GitHub push immediately after sending.
+        # The random puzzle is already successfully posted, and
+        # the extra push was causing the command to report an
+        # error after the message had appeared.
+        save_json(
+            STATE_FILE,
+            state
+        )
 
         print(
             f"Random Puzzle posted "
             f"({count} player moves).",
             flush=True
         )
+
+        # IMPORTANT:
+        # A successful Discord post is a successful random-puzzle
+        # command. Do not turn a post-send persistence issue into
+        # a visible "Random Puzzle Error" message.
+        return
 
     except Exception as error:
         print(
