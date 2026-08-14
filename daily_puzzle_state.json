@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-10-31",
     "title": "Meaningless Promotion",
     "fen": "5b2/1p3k1K/p1n2p2/4pP2/PB1pP2N/NP1p4/2P5/8 w - - 0 1",
-    "current_fen": "5B2/1p3k1K/p1n2p2/4pP2/P1NpP2N/1P6/2P5/3q4 w - - 0 3",
+    "current_fen": "5k2/1p5K/p1nN1pN1/4pP2/P2pP3/1P6/2P5/3q4 b - - 1 4",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5b2/1p3k1K/p1n2p2/4pP2/PB1pP2N/NP1p4/2P5/8 w - - 0 1\"]\r\n\r\n1. Bxf8 d2 2. Nc4 d1=Q 3. Nd6+ Kxf8 4. Ng6#\r\n*",
     "all_moves": [
       {
@@ -72,9 +72,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786736733583",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1537910074394026095,
     "attempted_users": {
       "601406103712170014": {
@@ -85,15 +85,17 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "nc4",
+        "move": "ng6",
         "correct": true,
-        "timestamp": "2026-08-14T19:46:12.892698+00:00"
+        "timestamp": "2026-08-14T19:46:16.335372+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "442597396195704832"
+    ],
     "helper_candidate_users": [
       "442597396195704832"
     ]
