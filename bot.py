@@ -123,10 +123,7 @@ def save_json(filename, data):
 # =========================================================
 
 def push_to_github():
-    """
-    Serialize GitHub writes so an older/stale state cannot overwrite
-    a newer leaderboard because two syncs race each other.
-    """
+
     with github_push_lock:
 
         try:
@@ -153,33 +150,6 @@ def push_to_github():
                 capture_output=True
             )
 
-            branch = os.getenv(
-                "GITHUB_REF_NAME",
-                "main"
-            )
-
-            # The workflow already serializes runs, but this protects
-            # against a stale checkout or another writer.
-            pull = subprocess.run(
-                [
-                    "git",
-                    "pull",
-                    "--rebase",
-                    "origin",
-                    branch
-                ],
-                capture_output=True,
-                text=True
-            )
-
-            if pull.returncode != 0:
-                print(
-                    "Could not update checkout before saving: "
-                    + pull.stderr[-1200:],
-                    flush=True
-                )
-                return
-
             subprocess.run(
                 [
                     "git",
@@ -204,6 +174,11 @@ def push_to_github():
 
             if commit.returncode != 0:
                 return
+
+            branch = os.getenv(
+                "GITHUB_REF_NAME",
+                "main"
+            )
 
             subprocess.run(
                 [
@@ -231,9 +206,7 @@ def push_to_github():
 
 
 def queue_github_sync():
-    """
-    Only one GitHub sync task may run at a time in this bot process.
-    """
+
     global github_sync_task
 
     if (
@@ -242,7 +215,28 @@ def queue_github_sync():
     ):
         return
 
-    github_sync_task = queue_github_sync()
+    github_sync_task = asyncio.create_task(
+        asyncio.to_thread(
+            push_to_github
+        )
+    )
+
+
+
+
+async def save_all():
+
+    save_json(
+        STATE_FILE,
+        state
+    )
+
+    save_json(
+        LEADERBOARD_FILE,
+        scores
+    )
+
+    queue_github_sync()
 
 
 
@@ -1731,7 +1725,11 @@ async def award_random_move_points(
 
     if score_kind != "none":
 
-        queue_github_sync()
+        asyncio.create_task(
+            asyncio.to_thread(
+                push_to_github
+            )
+        )
 
     return score_kind
 
@@ -1804,7 +1802,11 @@ async def award_point(
             scores
         )
 
-    queue_github_sync()
+    asyncio.create_task(
+        asyncio.to_thread(
+            push_to_github
+        )
+    )
 
     return True
 
@@ -1993,7 +1995,11 @@ async def finalize_expired_puzzle(
         state
     )
 
-    queue_github_sync()
+    asyncio.create_task(
+        asyncio.to_thread(
+            push_to_github
+        )
+    )
 
 
 # =========================================================
@@ -2184,9 +2190,6 @@ async def maintenance_loop(
                 channel
             )
 
-            # Full leaderboard: at most once per UTC calendar day.
-            # The date is stored in state, so restarts do not post
-            # another leaderboard on the same day.
             today = datetime.now(
                 timezone.utc
             ).date().isoformat()
