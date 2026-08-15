@@ -314,7 +314,7 @@ async def post_guess(
     poll = discord.Poll(
         question="Who said this?",
         duration=timedelta(
-            minutes=POLL_DURATION_MINUTES
+            hours=1
         ),
         multiple=False
     )
