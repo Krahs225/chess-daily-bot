@@ -402,11 +402,12 @@ def answer_details(
         quote_index
     )
 
+    answer_name = display_name_for(
+        all_entries[quote_index]["username"]
+    )
+
     lines = [
-        f"**The answer was: "
-        f"{display_name_for(
-            all_entries[quote_index]["username"]
-        )}**",
+        f"**The answer was: {answer_name}**",
         "",
         f"**{correct_count}/{total_votes}** "
         f"people got it right "
