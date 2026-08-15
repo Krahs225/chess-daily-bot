@@ -407,15 +407,13 @@ def answer_details(
     )
 
     lines = [
-        f"**The answer was: {answer_name}**",
+        f"🔓 **The answer was: {answer_name}**",
         "",
-        f"**{correct_count}/{total_votes}** "
+        f"📊 **{correct_count}/{total_votes}** "
         f"people got it right "
         f"(**{percentage}%**).",
-        f"**{possible_chatters} possible "
+        f"👥 **{possible_chatters} possible "
         f"chatters on this date.**",
-        f"**This quote was "
-        f"{days_ago(quote_date)} days ago.**",
     ]
 
     if context:
@@ -620,7 +618,7 @@ async def post_guess(
 
             await channel.send(
                 f"✅ **Correct, "
-                f"{voter.display_name}!**\n"
+                f"{voter.display_name}!** 🎉\n"
                 f"**+1 point** — you now have "
                 f"**{total:g} points.**"
             )
