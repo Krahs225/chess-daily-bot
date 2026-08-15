@@ -11,6 +11,15 @@ import chess.svg
 import discord
 import requests
 
+
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+client = discord.Client(
+    intents=intents
+)
+
 from shared_leaderboard import (
     add_points,
     full_leaderboard,
@@ -171,13 +180,23 @@ def is_qualifying_game(
     game
 ):
 
-    if str(
-        game.get(
-            "rated",
-            ""
-        )
-    ).casefold() != "rated":
+    rated_value = game.get(
+        "rated",
+        False
+    )
 
+    is_rated = (
+        rated_value is True
+        or str(
+            rated_value
+        ).casefold() in {
+            "true",
+            "rated",
+            "1"
+        }
+    )
+
+    if not is_rated:
         return False
 
     time_class = str(
@@ -838,10 +857,18 @@ async def on_message(
     }:
 
         await message.channel.send(
-            "**Guess the Chess Chatter**\n"
-            "`!leaderboard`, `!lb`, `!l` "
-            "— shared leaderboard\n"
-            "`!help`, `!info` — this message"
+            "🧠 **Games**\n\n"
+            "💬 **Guess the Chatter**\n"
+            "A quote is shown with a 5-option poll. "
+            "Vote for who said it.\n\n"
+            "♟️ **Guess the Chess Chatter**\n"
+            "A rated Chess.com rapid/blitz game is shown. "
+            "Use the ◀ ▶ buttons to look through the game, "
+            "then vote for who played it.\n\n"
+            "🏆 **Leaderboard**\n"
+            "`!leaderboard`, `!lb` or `!l` — show the full shared leaderboard.\n"
+            "Correct guesses give **+1 point**. Both games use the same leaderboard.\n\n"
+            "ℹ️ `!help` or `!info` — show this message."
         )
 
 
