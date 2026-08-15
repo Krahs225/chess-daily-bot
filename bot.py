@@ -11,6 +11,7 @@ import asyncio
 import json
 import subprocess
 import time
+import threading
 import traceback
 import random
 from datetime import datetime, timezone
@@ -30,7 +31,7 @@ STATE_FILE = "daily_puzzle_state.json"
 LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
 
 PUZZLE_CHECK_INTERVAL = 5 * 60
-LEADERBOARD_INTERVAL = 10 * 60
+LEADERBOARD_INTERVAL = 24 * 60 * 60
 
 ANSWER_WINDOW = 12 * 60 * 60
 RANDOM_ANSWER_WINDOW = 12 * 60 * 60
@@ -56,6 +57,8 @@ state = {}
 scores = {}
 
 data_lock = asyncio.Lock()
+github_push_lock = threading.Lock()
+github_sync_task = None
 
 
 # =========================================================
@@ -120,101 +123,127 @@ def save_json(filename, data):
 # =========================================================
 
 def push_to_github():
+    """
+    Serialize GitHub writes so an older/stale state cannot overwrite
+    a newer leaderboard because two syncs race each other.
+    """
+    with github_push_lock:
 
-    try:
+        try:
 
-        subprocess.run(
-            [
-                "git",
-                "config",
-                "user.name",
-                "Daily Puzzle Bot"
-            ],
-            check=True,
-            capture_output=True
-        )
+            subprocess.run(
+                [
+                    "git",
+                    "config",
+                    "user.name",
+                    "Daily Puzzle Bot"
+                ],
+                check=True,
+                capture_output=True
+            )
 
-        subprocess.run(
-            [
-                "git",
-                "config",
-                "user.email",
-                "daily-puzzle-bot@users.noreply.github.com"
-            ],
-            check=True,
-            capture_output=True
-        )
+            subprocess.run(
+                [
+                    "git",
+                    "config",
+                    "user.email",
+                    "daily-puzzle-bot@users.noreply.github.com"
+                ],
+                check=True,
+                capture_output=True
+            )
 
-        subprocess.run(
-            [
-                "git",
-                "add",
-                STATE_FILE,
-                LEADERBOARD_FILE
-            ],
-            check=True,
-            capture_output=True
-        )
+            branch = os.getenv(
+                "GITHUB_REF_NAME",
+                "main"
+            )
 
-        commit = subprocess.run(
-            [
-                "git",
-                "commit",
-                "-m",
-                "Update Daily Puzzle data"
-            ],
-            capture_output=True,
-            text=True
-        )
+            # The workflow already serializes runs, but this protects
+            # against a stale checkout or another writer.
+            pull = subprocess.run(
+                [
+                    "git",
+                    "pull",
+                    "--rebase",
+                    "origin",
+                    branch
+                ],
+                capture_output=True,
+                text=True
+            )
 
-        if commit.returncode != 0:
-            return
+            if pull.returncode != 0:
+                print(
+                    "Could not update checkout before saving: "
+                    + pull.stderr[-1200:],
+                    flush=True
+                )
+                return
 
-        branch = os.getenv(
-            "GITHUB_REF_NAME",
-            "main"
-        )
+            subprocess.run(
+                [
+                    "git",
+                    "add",
+                    STATE_FILE,
+                    LEADERBOARD_FILE
+                ],
+                check=True,
+                capture_output=True
+            )
 
-        subprocess.run(
-            [
-                "git",
-                "push",
-                "origin",
-                f"HEAD:{branch}"
-            ],
-            check=True,
-            capture_output=True,
-            text=True
-        )
+            commit = subprocess.run(
+                [
+                    "git",
+                    "commit",
+                    "-m",
+                    "Update Daily Puzzle data"
+                ],
+                capture_output=True,
+                text=True
+            )
 
-        print(
-            "Data saved to GitHub.",
-            flush=True
-        )
+            if commit.returncode != 0:
+                return
 
-    except Exception as error:
+            subprocess.run(
+                [
+                    "git",
+                    "push",
+                    "origin",
+                    f"HEAD:{branch}"
+                ],
+                check=True,
+                capture_output=True,
+                text=True
+            )
 
-        print(
-            f"Could not push data to GitHub: {error}",
-            flush=True
-        )
+            print(
+                "Data saved to GitHub.",
+                flush=True
+            )
+
+        except Exception as error:
+
+            print(
+                f"Could not push data to GitHub: {error}",
+                flush=True
+            )
 
 
-async def save_all():
+def queue_github_sync():
+    """
+    Only one GitHub sync task may run at a time in this bot process.
+    """
+    global github_sync_task
 
-    save_json(
-        STATE_FILE,
-        state
-    )
+    if (
+        github_sync_task is not None
+        and not github_sync_task.done()
+    ):
+        return
 
-    save_json(
-        LEADERBOARD_FILE,
-        scores
-    )
+    github_sync_task = queue_github_sync()
 
-    await asyncio.to_thread(
-        push_to_github
-    )
 
 
 # =========================================================
@@ -1702,11 +1731,7 @@ async def award_random_move_points(
 
     if score_kind != "none":
 
-        asyncio.create_task(
-            asyncio.to_thread(
-                push_to_github
-            )
-        )
+        queue_github_sync()
 
     return score_kind
 
@@ -1779,11 +1804,7 @@ async def award_point(
             scores
         )
 
-    asyncio.create_task(
-        asyncio.to_thread(
-            push_to_github
-        )
-    )
+    queue_github_sync()
 
     return True
 
@@ -1897,7 +1918,7 @@ Only your own moves are required. The opponent's replies are automatically playe
 `!help` or `!info` — Show this message.
 `!leaderboard`, `!lb` or `!l` — Show the full leaderboard.
 
-🏆 The leaderboard is posted automatically every 10 minutes.
+🏆 The leaderboard is posted automatically once per day.
 """
 
 
@@ -1972,11 +1993,7 @@ async def finalize_expired_puzzle(
         state
     )
 
-    asyncio.create_task(
-        asyncio.to_thread(
-            push_to_github
-        )
-    )
+    queue_github_sync()
 
 
 # =========================================================
@@ -2159,8 +2176,6 @@ async def maintenance_loop(
     channel
 ):
 
-    last_leaderboard = time.monotonic()
-
     while True:
 
         try:
@@ -2169,19 +2184,31 @@ async def maintenance_loop(
                 channel
             )
 
-            if (
-                time.monotonic()
-                - last_leaderboard
-                >= LEADERBOARD_INTERVAL
-            ):
+            # Full leaderboard: at most once per UTC calendar day.
+            # The date is stored in state, so restarts do not post
+            # another leaderboard on the same day.
+            today = datetime.now(
+                timezone.utc
+            ).date().isoformat()
+
+            if state.get(
+                "leaderboard_last_posted_date"
+            ) != today:
 
                 await channel.send(
                     make_leaderboard()
                 )
 
-                last_leaderboard = (
-                    time.monotonic()
+                state[
+                    "leaderboard_last_posted_date"
+                ] = today
+
+                save_json(
+                    STATE_FILE,
+                    state
                 )
+
+                queue_github_sync()
 
         except Exception as error:
 
@@ -3241,6 +3268,11 @@ async def on_ready():
     scores = load_json(
         LEADERBOARD_FILE,
         {}
+    )
+
+    state.setdefault(
+        "leaderboard_last_posted_date",
+        None
     )
 
     # Restore the current random puzzle position after a restart.
