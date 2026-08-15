@@ -33,7 +33,7 @@ TOKEN = os.getenv(
 CHANNEL_ID = 1536769340970373241
 
 POLL_OPTIONS = 5
-POLL_DURATION_MINUTES = 15
+POLL_DURATION_MINUTES = 2
 
 # The players supplied for Guess the Chess Chatter.
 PLAYERS = [
@@ -816,12 +816,12 @@ class ChessView(
         )
 
         embed.description = (
-            f"**Move "
-            f"{self.move_index} / "
-            f"{total}**\n"
             f"POV: **"
             f"{'White' if self.owner_is_white else 'Black'}"
             f"**\n"
+            f"Move **"
+            f"{self.move_index} / "
+            f"{total}**\n"
             f"Jump to move: **"
             f"{page_start}-{page_end}**"
         )
@@ -957,10 +957,7 @@ async def post_chess_round(
             "♟️ **Guess the Chess Chatter**"
         ),
         description=(
-            f"Opponent: **{opponent}** "
-            f"({opponent_rating or 'unknown'} Elo)\n"
-            f"Type: **{game_type}**\n"
-            f"Your POV: **"
+            f"POV: **"
             f"{'White' if owner_is_white else 'Black'}"
             f"**\n"
             f"Move **0 / {total_moves}**"
@@ -998,34 +995,55 @@ async def post_chess_round(
         POLL_DURATION_MINUTES * 60 + 3
     )
 
+    # End the poll, but NEVER let a poll API problem prevent the
+    # answer message from being posted.
     try:
         await poll_message.end_poll()
-    except discord.HTTPException:
-        pass
+    except Exception as error:
+        print(
+            f"Chess poll end error: "
+            f"{error}",
+            flush=True
+        )
+
+    # Reveal the answer immediately after the poll closes.
+    # This must happen before any leaderboard/GitHub work.
+    await channel.send(
+        f"🔓 **The answer was:** "
+        f"||{owner}||"
+    )
+
+    voters_by_answer = []
 
     try:
 
-        voters_by_answer = []
+        async def collect_poll_voters():
+            result = []
 
-        for answer in poll.answers:
+            for answer in poll.answers:
 
-            answer_voters = []
+                answer_voters = []
 
-            async for voter in (
-                answer.voters()
-            ):
+                async for voter in (
+                    answer.voters()
+                ):
 
-                answer_voters.append(
-                    voter
+                    answer_voters.append(
+                        voter
+                    )
+
+                result.append(
+                    answer_voters
                 )
 
-            voters_by_answer.append(
-                answer_voters
-            )
+            return result
+
+        voters_by_answer = await asyncio.wait_for(
+            collect_poll_voters(),
+            timeout=15
+        )
 
     except Exception as error:
-
-        voters_by_answer = []
 
         print(
             f"Chess poll result "
@@ -1079,10 +1097,6 @@ async def post_chess_round(
                     ranking
                 )
 
-    await channel.send(
-        f"🔓 **The answer was:** "
-        f"||{owner}||"
-    )
 
 
 async def chess_chatter_loop():
