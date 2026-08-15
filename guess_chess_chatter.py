@@ -1013,24 +1013,34 @@ async def post_chess_round(
         f"||{owner}||"
     )
 
+    # Fetch the finished poll again so we read the final voter state.
     voters_by_answer = []
 
     try:
 
+        finished_message = await channel.fetch_message(
+            poll_message.id
+        )
+
+        finished_poll = (
+            finished_message.poll
+            if finished_message.poll is not None
+            else poll
+        )
+
         async def collect_poll_voters():
             result = []
 
-            for answer in poll.answers:
+            for answer in finished_poll.answers:
 
                 answer_voters = []
 
-                async for voter in (
-                    answer.voters()
-                ):
+                async for voter in answer.voters():
 
-                    answer_voters.append(
-                        voter
-                    )
+                    if not voter.bot:
+                        answer_voters.append(
+                            voter
+                        )
 
                 result.append(
                     answer_voters
@@ -1046,25 +1056,22 @@ async def post_chess_round(
     except Exception as error:
 
         print(
-            f"Chess poll result "
-            f"error: {error}",
+            f"Chess poll result error: "
+            f"{error}",
             flush=True
         )
 
+    rewarded = []
+    seen = set()
+
     if (
         voters_by_answer
-        and correct_index
-        < len(voters_by_answer)
+        and correct_index < len(voters_by_answer)
     ):
-
-        seen = set()
 
         for voter in voters_by_answer[
             correct_index
         ]:
-
-            if voter.bot:
-                continue
 
             if voter.id in seen:
                 continue
@@ -1073,29 +1080,40 @@ async def post_chess_round(
                 voter.id
             )
 
-            total = add_points(
-                voter.id,
-                voter.display_name,
-                1
-            )
+            try:
 
-            await channel.send(
-                f"✅ **Correct, "
-                f"{voter.display_name}!**\n"
-                f"**+1 point** — you now have "
-                f"**{total:g} points.**"
-            )
-
-            ranking = (
-                personal_ranking(
-                    voter.id
+                total = add_points(
+                    voter.id,
+                    voter.display_name,
+                    1
                 )
-            )
 
-            if ranking:
-                await channel.send(
-                    ranking
+                rewarded.append(
+                    (
+                        voter.display_name,
+                        total
+                    )
                 )
+
+            except Exception as error:
+
+                print(
+                    f"Chess leaderboard error "
+                    f"for {voter.display_name}: "
+                    f"{error}",
+                    flush=True
+                )
+
+    if rewarded:
+
+        names = " • ".join(
+            f"**{name} +1**"
+            for name, _ in rewarded
+        )
+
+        await channel.send(
+            f"🎉 {names}"
+        )
 
 
 
