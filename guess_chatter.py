@@ -461,10 +461,20 @@ async def command_handler(
     }:
 
         await message.channel.send(
-            "**Guess the Chatter**\n"
-            "`!leaderboard`, `!lb`, `!l` "
-            "— shared leaderboard\n"
-            "`!help`, `!info` — this message"
+            "🧠 **Games**\n\n"
+            "💬 **Guess the Chatter**\n"
+            "Every **20 minutes** at :00, :20 and :40.\n"
+            "A quote is shown with a 5-option poll. "
+            "Vote for who said it.\n\n"
+            "♟️ **Guess the Chess Chatter**\n"
+            "Every **20 minutes** at :10, :30 and :50.\n"
+            "A rated Chess.com rapid/blitz game is shown. "
+            "Use the ◀ ▶ buttons to look through the game, "
+            "then vote for who played it.\n\n"
+            "🏆 **Leaderboard**\n"
+            "`!leaderboard`, `!lb` or `!l` — show the full shared leaderboard.\n"
+            "Correct guesses give **+1 point**. Both games use the same leaderboard.\n\n"
+            "ℹ️ `!help` or `!info` — show this message."
         )
 
 
