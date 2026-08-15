@@ -1009,8 +1009,7 @@ async def post_chess_round(
     # Reveal the answer immediately after the poll closes.
     # This must happen before any leaderboard/GitHub work.
     await channel.send(
-        f"🔓 **The answer was:** "
-        f"||{owner}||"
+        f"🔓 **The answer was: {owner}**"
     )
 
     # Fetch the finished poll again so we read the final voter state.
