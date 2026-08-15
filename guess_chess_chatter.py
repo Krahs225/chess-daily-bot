@@ -482,7 +482,7 @@ class ChessView(
     discord.ui.View
 ):
 
-    MOVES_PER_PAGE = 20
+    MOVES_PER_PAGE = 16
 
     def __init__(
         self,
