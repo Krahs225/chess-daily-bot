@@ -106,118 +106,158 @@ def find_chatter(
     )
 
 
+def _parse_chat_file(chat_file):
+    entries = []
+    current_date = None
+
+    try:
+        lines = chat_file.read_text(
+            encoding="utf-8"
+        ).splitlines()
+    except Exception:
+        return entries
+
+    for raw_line in lines:
+
+        line = raw_line.strip()
+
+        if not line:
+            continue
+
+        date_match = re.fullmatch(
+            r"(\d{1,2})-(\d{1,2})-(\d{4})",
+            line
+        )
+
+        if date_match:
+
+            day, month, year = (
+                date_match.groups()
+            )
+
+            current_date = (
+                f"{day.zfill(2)}-"
+                f"{month.zfill(2)}-"
+                f"{year}"
+            )
+
+            continue
+
+        time_match = re.match(
+            r"^(\d{1,2}):(\d{2})\s*(.*)$",
+            line
+        )
+
+        if not time_match or current_date is None:
+            continue
+
+        hour, minute, rest = (
+            time_match.groups()
+        )
+
+        colon_index = rest.find(":")
+
+        if colon_index == -1:
+            continue
+
+        prefix = rest[:colon_index]
+        message = rest[colon_index + 1:].strip()
+
+        if len(message) < MIN_CHARACTERS:
+            continue
+
+        chatter = find_chatter(prefix)
+
+        if not chatter:
+            continue
+
+        entries.append(
+            {
+                "date": current_date,
+                "time": (
+                    f"{hour.zfill(2)}:"
+                    f"{minute}"
+                ),
+                "username": chatter[1],
+                "display_name": chatter[0],
+                "message": message,
+            }
+        )
+
+    return entries
+
+
 def load_chatters():
 
-    chatters = {
-        username: []
-        for username in CHATTERS.values()
-    }
+    chatters = {}
+    all_entries = []
 
     chat_path = Path(
         CHAT_DIR
     )
 
     if not chat_path.exists():
-        return {}
+        return {}, []
 
-    for chat_file in chat_path.glob(
-        "*.txt"
+    for chat_file in sorted(
+        chat_path.glob("*.txt")
     ):
 
-        try:
-            lines = chat_file.read_text(
-                encoding="utf-8"
-            ).splitlines()
-        except Exception:
-            continue
+        entries = _parse_chat_file(
+            chat_file
+        )
 
-        current_date = None
+        all_entries.extend(
+            entries
+        )
 
-        for raw_line in lines:
+        for global_index, entry in enumerate(
+            entries
+        ):
 
-            line = raw_line.strip()
-
-            if not line:
-                continue
-
-            date_match = re.fullmatch(
-                r"(\d{1,2})-(\d{1,2})-(\d{4})",
-                line
-            )
-
-            if date_match:
-
-                day, month, year = (
-                    date_match.groups()
-                )
-
-                current_date = (
-                    f"{day.zfill(2)}-"
-                    f"{month.zfill(2)}-"
-                    f"{year}"
-                )
-
-                continue
-
-            time_match = re.match(
-                r"^\d{1,2}:\d{2}\s*(.*)$",
-                line
-            )
-
-            if not time_match:
-                continue
-
-            rest = (
-                time_match.group(1)
-            )
-
-            colon_index = (
-                rest.find(":")
-            )
-
-            if colon_index == -1:
-                continue
-
-            prefix = (
-                rest[:colon_index]
-            )
-
-            message_text = (
-                rest[colon_index + 1:]
-                .strip()
-            )
-
-            if (
-                len(message_text)
-                < MIN_CHARACTERS
-                or current_date is None
-            ):
-                continue
-
-            chatter = find_chatter(
-                prefix
-            )
-
-            if not chatter:
-                continue
-
-            _, username = chatter
-
-            chatters[
-                username
-            ].append(
+            chatters.setdefault(
+                entry["username"],
+                []
+            ).append(
                 (
-                    message_text,
-                    current_date
+                    entry["message"],
+                    entry["date"],
+                    sum(
+                        len(
+                            _parse_chat_file(
+                                f
+                            )
+                        )
+                        for f in []
+                    ) + global_index,
                 )
             )
 
-    return {
-        username: values
-        for username, values
-        in chatters.items()
-        if values
-    }
+    # The global index above is local to the file. Rebuild it cleanly.
+    rebuilt = {}
+    for index, entry in enumerate(
+        all_entries
+    ):
+        rebuilt.setdefault(
+            entry["username"],
+            []
+        ).append(
+            (
+                entry["message"],
+                entry["date"],
+                index,
+            )
+        )
+
+    return (
+        {
+            username: values
+            for username, values
+            in rebuilt.items()
+            if values
+        },
+        all_entries,
+    )
 
 
 def display_name_for(
@@ -233,6 +273,169 @@ def display_name_for(
             return display_name
 
     return username
+
+
+def days_ago(date_text):
+    try:
+
+        date_value = datetime.strptime(
+            date_text,
+            "%d-%m-%Y"
+        ).date()
+
+        today = datetime.now(
+            timezone.utc
+        ).date()
+
+        return (
+            today - date_value
+        ).days
+
+    except Exception:
+        return 0
+
+
+def context_for_quote(
+    all_entries,
+    quote_index,
+    max_lines=5
+):
+
+    if not all_entries:
+        return []
+
+    if (
+        quote_index < 0
+        or quote_index >= len(all_entries)
+    ):
+        return []
+
+    target = all_entries[
+        quote_index
+    ]
+
+    same_date = [
+        index
+        for index, entry
+        in enumerate(all_entries)
+        if entry["date"] == target["date"]
+    ]
+
+    if not same_date:
+        return [target]
+
+    local_index = min(
+        range(len(same_date)),
+        key=lambda i:
+            abs(
+                same_date[i]
+                - quote_index
+            )
+    )
+
+    start_index = max(
+        0,
+        local_index - 2
+    )
+
+    end_index = min(
+        len(same_date),
+        start_index + max_lines
+    )
+
+    return [
+        all_entries[index]
+        for index
+        in same_date[
+            start_index:end_index
+        ]
+    ]
+
+
+def answer_details(
+    all_entries,
+    correct_index,
+    voters_by_answer,
+    quote_date,
+    quote_index
+):
+
+    correct_count = 0
+    total_votes = 0
+
+    if voters_by_answer:
+
+        total_votes = sum(
+            len(voters)
+            for voters in voters_by_answer
+        )
+
+        if (
+            correct_index
+            < len(voters_by_answer)
+        ):
+
+            correct_count = len(
+                voters_by_answer[
+                    correct_index
+                ]
+            )
+
+    percentage = (
+        round(
+            correct_count
+            / total_votes
+            * 100
+        )
+        if total_votes
+        else 0
+    )
+
+    possible_chatters = len({
+        entry["username"]
+        for entry in all_entries
+        if entry["date"] == quote_date
+    })
+
+    context = context_for_quote(
+        all_entries,
+        quote_index
+    )
+
+    lines = [
+        f"**The answer was: "
+        f"{display_name_for(
+            all_entries[quote_index]["username"]
+        )}**",
+        "",
+        f"**{correct_count}/{total_votes}** "
+        f"people got it right "
+        f"(**{percentage}%**).",
+        f"**{possible_chatters} possible "
+        f"chatters on this date.**",
+        f"**This quote was "
+        f"{days_ago(quote_date)} days ago.**",
+    ]
+
+    if context:
+
+        lines.extend(
+            [
+                "",
+                "**Context:**"
+            ]
+        )
+
+        for entry in context:
+
+            lines.append(
+                f"**{entry['display_name']}:** "
+                f"{entry['message']}"
+            )
+
+    return "\n".join(
+        lines
+    )
 
 
 async def wait_and_finish_poll(
@@ -253,7 +456,7 @@ async def post_guess(
     channel
 ):
 
-    chatters = load_chatters()
+    chatters, all_entries = load_chatters()
 
     if len(chatters) < POLL_OPTIONS:
 
@@ -268,12 +471,8 @@ async def post_guess(
         list(chatters.keys())
     )
 
-    quote, date = random.choice(
+    quote, date, quote_index = random.choice(
         chatters[username]
-    )
-
-    correct_display_name = (
-        display_name_for(username)
     )
 
     wrong_usernames = [
@@ -338,11 +537,17 @@ async def post_guess(
         poll=poll
     )
 
-    await wait_and_finish_poll(
-        poll_message
+    await asyncio.sleep(
+        POLL_DURATION_MINUTES * 60 + 2
     )
 
-    # Read the final poll results.
+    try:
+
+        await poll_message.end_poll()
+
+    except discord.HTTPException:
+        pass
+
     try:
 
         voters_by_answer = []
@@ -355,9 +560,10 @@ async def post_guess(
                 answer.voters()
             ):
 
-                answer_voters.append(
-                    voter
-                )
+                if not voter.bot:
+                    answer_voters.append(
+                        voter
+                    )
 
             voters_by_answer.append(
                 answer_voters
@@ -365,18 +571,30 @@ async def post_guess(
 
     except Exception as error:
 
-        voters_by_answer = []
-
         print(
-            f"Guess Chatter poll "
-            f"result error: {error}",
+            f"Guess Chatter poll result error: "
+            f"{error}",
             flush=True
         )
 
+        voters_by_answer = []
+
+    # Restore the rich answer message:
+    # answer, percentage, possible chatters,
+    # age of quote, and context.
+    await channel.send(
+        answer_details(
+            all_entries,
+            correct_index,
+            voters_by_answer,
+            date,
+            quote_index
+        )
+    )
+
     # Every correct voter gets +1.
     if (
-        voters_by_answer
-        and correct_index
+        correct_index
         < len(voters_by_answer)
     ):
 
@@ -385,9 +603,6 @@ async def post_guess(
         for voter in voters_by_answer[
             correct_index
         ]:
-
-            if voter.bot:
-                continue
 
             if voter.id in seen:
                 continue
@@ -414,14 +629,12 @@ async def post_guess(
             )
 
             if ranking:
+
                 await channel.send(
                     ranking
                 )
 
-    await channel.send(
-        f"🔓 **The answer was:** "
-        f"||{correct_display_name}||"
-    )
+
 
 
 async def command_handler(
@@ -463,7 +676,7 @@ async def command_handler(
         await message.channel.send(
             "🧠 **Games**\n\n"
             "💬 **Guess the Chatter**\n"
-            "A quote is shown with a 5-option poll. "
+                        "A quote is shown with a 5-option poll. "
             "Vote for who said it.\n\n"
             "♟️ **Guess the Chess Chatter**\n"
             "A rated Chess.com rapid/blitz game is shown. "
