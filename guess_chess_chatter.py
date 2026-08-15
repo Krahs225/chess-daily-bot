@@ -11,15 +11,6 @@ import chess.svg
 import discord
 import requests
 
-
-
-intents = discord.Intents.default()
-intents.message_content = True
-
-client = discord.Client(
-    intents=intents
-)
-
 from shared_leaderboard import (
     add_points,
     full_leaderboard,
@@ -682,7 +673,7 @@ async def post_chess_round(
     poll = discord.Poll(
         question="Who played this game?",
         duration=timedelta(
-            minutes=POLL_DURATION_MINUTES
+            hours=1
         ),
         multiple=False
     )
@@ -857,18 +848,59 @@ async def on_message(
     }:
 
         await message.channel.send(
-            "🧠 **Games**\n\n"
-            "💬 **Guess the Chatter**\n"
-            "A quote is shown with a 5-option poll. "
-            "Vote for who said it.\n\n"
-            "♟️ **Guess the Chess Chatter**\n"
-            "A rated Chess.com rapid/blitz game is shown. "
-            "Use the ◀ ▶ buttons to look through the game, "
-            "then vote for who played it.\n\n"
-            "🏆 **Leaderboard**\n"
-            "`!leaderboard`, `!lb` or `!l` — show the full shared leaderboard.\n"
-            "Correct guesses give **+1 point**. Both games use the same leaderboard.\n\n"
-            "ℹ️ `!help` or `!info` — show this message."
+            "**Guess the Chess Chatter**\n"
+            "`!leaderboard`, `!lb`, `!l` "
+            "— shared leaderboard\n"
+            "`!help`, `!info` — this message"
+        )
+
+
+async def chess_chatter_loop():
+
+    channel = await client.fetch_channel(
+        CHANNEL_ID
+    )
+
+    while True:
+
+        started = asyncio.get_running_loop().time()
+
+        try:
+
+            print(
+                "Starting Chess Chatter round...",
+                flush=True
+            )
+
+            await post_chess_round(
+                channel
+            )
+
+            print(
+                "Chess Chatter round finished.",
+                flush=True
+            )
+
+        except Exception as error:
+
+            print(
+                f"Guess Chess Chatter round error: "
+                f"{error}",
+                flush=True
+            )
+
+        elapsed = (
+            asyncio.get_running_loop().time()
+            - started
+        )
+
+        wait_seconds = max(
+            5,
+            20 * 60 - elapsed
+        )
+
+        await asyncio.sleep(
+            wait_seconds
         )
 
 
@@ -881,30 +913,16 @@ async def on_ready():
         flush=True
     )
 
-    try:
+    if not hasattr(
+        client,
+        "_chess_chatter_task"
+    ) or client._chess_chatter_task.done():
 
-        channel = await client.fetch_channel(
-            CHANNEL_ID
+        client._chess_chatter_task = (
+            asyncio.create_task(
+                chess_chatter_loop()
+            )
         )
-
-        # One Action run = one game.
-        # The workflow schedule starts
-        # the next one.
-        await post_chess_round(
-            channel
-        )
-
-    except Exception as error:
-
-        print(
-            f"Guess Chess Chatter error: "
-            f"{error}",
-            flush=True
-        )
-
-    finally:
-
-        await client.close()
 
 
 client.run(
