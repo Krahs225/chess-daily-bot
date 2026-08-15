@@ -12,6 +12,7 @@ import discord
 import requests
 
 
+
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -718,21 +719,28 @@ async def post_chess_round(
         total_moves
     )
 
-    message = await channel.send(
-        embed=embed,
-        file=file,
-        view=view,
+    poll_message = await channel.send(
+        content=(
+            "♟️ **Guess the Chess Chatter** — "
+            "vote in the poll above."
+        ),
         poll=poll
     )
 
-    view.message = message
+    board_message = await channel.send(
+        embed=embed,
+        file=file,
+        view=view
+    )
+
+    view.message = board_message
 
     await asyncio.sleep(
         POLL_DURATION_MINUTES * 60 + 3
     )
 
     try:
-        await message.end_poll()
+        await poll_message.end_poll()
     except discord.HTTPException:
         pass
 
@@ -816,51 +824,6 @@ async def post_chess_round(
         f"🔓 **The answer was:** "
         f"||{owner}||"
     )
-
-
-@client.event
-async def on_message(
-    message
-):
-
-    if (
-        message.author.bot
-        or message.channel.id
-        != CHANNEL_ID
-    ):
-        return
-
-    command = (
-        message.content
-        .strip()
-        .casefold()
-    )
-
-    if command in {
-        "!leaderboard",
-        "!lb",
-        "!l"
-    }:
-
-        await message.channel.send(
-            full_leaderboard(
-                "🏆 **Shared Leaderboard**"
-            )
-        )
-
-        return
-
-    if command in {
-        "!help",
-        "!info"
-    }:
-
-        await message.channel.send(
-            "**Guess the Chess Chatter**\n"
-            "`!leaderboard`, `!lb`, `!l` "
-            "— shared leaderboard\n"
-            "`!help`, `!info` — this message"
-        )
 
 
 async def chess_chatter_loop():
