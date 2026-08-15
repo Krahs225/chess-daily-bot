@@ -11,6 +11,14 @@ import chess.svg
 import discord
 import requests
 
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+client = discord.Client(
+    intents=intents
+)
+
 from shared_leaderboard import (
     add_points,
     full_leaderboard,
