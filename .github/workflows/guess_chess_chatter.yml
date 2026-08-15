@@ -1,0 +1,36 @@
+name: Guess Chess Chatter
+
+on:
+  schedule:
+    - cron: "10,30,50 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: guess-chess-chatter
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install requirements
+        run: |
+          pip install discord.py
+          pip install python-chess
+          pip install requests
+          pip install cairosvg
+
+      - name: Run Guess Chess Chatter
+        run: python guess_chess_chatter.py
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
