@@ -33,7 +33,7 @@ TOKEN = os.getenv(
 CHANNEL_ID = 1536769340970373241
 
 POLL_OPTIONS = 5
-POLL_DURATION_MINUTES = 1
+POLL_DURATION_MINUTES = 15
 
 # The players supplied for Guess the Chess Chatter.
 PLAYERS = [
@@ -482,6 +482,8 @@ class ChessView(
     discord.ui.View
 ):
 
+    MOVES_PER_PAGE = 20
+
     def __init__(
         self,
         pgn,
@@ -494,17 +496,290 @@ class ChessView(
         )
 
         self.pgn = pgn
-        self.owner_is_white = (
-            owner_is_white
-        )
-
-        self.total_moves = (
-            total_moves
-        )
-
+        self.owner_is_white = owner_is_white
+        self.total_moves = total_moves
         self.move_index = 0
-
+        self.page = 0
         self.message = None
+
+        self._build_buttons()
+
+    @property
+    def page_count(self):
+        return max(
+            1,
+            (
+                self.total_moves
+                + self.MOVES_PER_PAGE
+                - 1
+            )
+            // self.MOVES_PER_PAGE
+        )
+
+    def _build_buttons(self):
+
+        self.clear_items()
+
+        # Row 0: single-move navigation + move-number page navigation.
+        previous_button = discord.ui.Button(
+            label="◀",
+            style=discord.ButtonStyle.secondary,
+            row=0
+        )
+
+        next_button = discord.ui.Button(
+            label="▶",
+            style=discord.ButtonStyle.secondary,
+            row=0
+        )
+
+        previous_page = discord.ui.Button(
+            label="◀ Page",
+            style=discord.ButtonStyle.primary,
+            row=0
+        )
+
+        next_page = discord.ui.Button(
+            label="Page ▶",
+            style=discord.ButtonStyle.primary,
+            row=0
+        )
+
+        previous_button.callback = (
+            self._previous_move
+        )
+
+        next_button.callback = (
+            self._next_move
+        )
+
+        previous_page.callback = (
+            self._previous_page
+        )
+
+        next_page.callback = (
+            self._next_page
+        )
+
+        self.add_item(
+            previous_button
+        )
+
+        self.add_item(
+            next_button
+        )
+
+        self.add_item(
+            previous_page
+        )
+
+        self.add_item(
+            next_page
+        )
+
+        # Rows 1-5: up to 20 direct move buttons.
+        start_move = (
+            self.page
+            * self.MOVES_PER_PAGE
+            + 1
+        )
+
+        end_move = min(
+            self.total_moves,
+            start_move
+            + self.MOVES_PER_PAGE
+            - 1
+        )
+
+        for move_number in range(
+            start_move,
+            end_move + 1
+        ):
+
+            button = discord.ui.Button(
+                label=str(move_number),
+                style=(
+                    discord.ButtonStyle.success
+                    if move_number == self.move_index
+                    else discord.ButtonStyle.secondary
+                ),
+                row=(
+                    1
+                    + (
+                        (
+                            move_number
+                            - start_move
+                        )
+                        // 4
+                    )
+                )
+            )
+
+            button.callback = (
+                self._make_move_callback(
+                    move_number
+                )
+            )
+
+            self.add_item(
+                button
+            )
+
+        self._sync_disabled_states()
+
+    def _sync_disabled_states(self):
+
+        # First 4 children are the navigation controls.
+        self.children[0].disabled = (
+            self.move_index <= 0
+        )
+
+        self.children[1].disabled = (
+            self.move_index >= self.total_moves
+        )
+
+        self.children[2].disabled = (
+            self.page <= 0
+        )
+
+        self.children[3].disabled = (
+            self.page >= self.page_count - 1
+        )
+
+    def _make_move_callback(
+        self,
+        move_number
+    ):
+
+        async def callback(
+            interaction
+        ):
+
+            self.move_index = move_number
+
+            self.page = (
+                (move_number - 1)
+                // self.MOVES_PER_PAGE
+            )
+
+            await self.redraw(
+                interaction
+            )
+
+        return callback
+
+    async def _previous_move(
+        self,
+        interaction
+    ):
+
+        if self.move_index > 0:
+
+            self.move_index -= 1
+
+        self.page = (
+            self.move_index
+            // self.MOVES_PER_PAGE
+        )
+
+        await self.redraw(
+            interaction
+        )
+
+    async def _next_move(
+        self,
+        interaction
+    ):
+
+        if (
+            self.move_index
+            < self.total_moves
+        ):
+
+            self.move_index += 1
+
+        self.page = (
+            max(
+                0,
+                (
+                    self.move_index
+                    - 1
+                )
+                // self.MOVES_PER_PAGE
+            )
+        )
+
+        await self.redraw(
+            interaction
+        )
+
+    async def _previous_page(
+        self,
+        interaction
+    ):
+
+        if self.page > 0:
+
+            self.page -= 1
+
+        page_first_move = (
+            self.page
+            * self.MOVES_PER_PAGE
+        )
+
+        # Keep the current position if it is still
+        # on the selected page; otherwise jump to the
+        # first move on that page.
+        page_start = (
+            page_first_move + 1
+        )
+
+        page_end = min(
+            self.total_moves,
+            page_first_move
+            + self.MOVES_PER_PAGE
+        )
+
+        if not (
+            page_start
+            <= self.move_index
+            <= page_end
+        ):
+
+            self.move_index = page_start - 1
+
+        await self.redraw(
+            interaction
+        )
+
+    async def _next_page(
+        self,
+        interaction
+    ):
+
+        if self.page < (
+            self.page_count - 1
+        ):
+
+            self.page += 1
+
+        page_start = (
+            self.page
+            * self.MOVES_PER_PAGE
+            + 1
+        )
+
+        if self.move_index < (
+            page_start - 1
+        ):
+
+            self.move_index = (
+                page_start - 1
+            )
+
+        await self.redraw(
+            interaction
+        )
 
     async def redraw(
         self,
@@ -519,20 +794,25 @@ class ChessView(
 
         self.total_moves = total
 
-        back_button = self.children[0]
-        forward_button = self.children[1]
-
-        back_button.disabled = (
-            self.move_index <= 0
-        )
-
-        forward_button.disabled = (
-            self.move_index >= total
-        )
+        self._build_buttons()
 
         embed = (
             self.message.embeds[0]
             .copy()
+        )
+
+        page_start = (
+            self.page
+            * self.MOVES_PER_PAGE
+            + 1
+        )
+
+        page_end = min(
+            self.total_moves,
+            (
+                self.page + 1
+            )
+            * self.MOVES_PER_PAGE
         )
 
         embed.description = (
@@ -541,7 +821,9 @@ class ChessView(
             f"{total}**\n"
             f"POV: **"
             f"{'White' if self.owner_is_white else 'Black'}"
-            f"**"
+            f"**\n"
+            f"Jump to move: **"
+            f"{page_start}-{page_end}**"
         )
 
         embed.set_image(
@@ -554,45 +836,6 @@ class ChessView(
             attachments=[
                 file
             ]
-        )
-
-    @discord.ui.button(
-        label="◀",
-        style=discord.ButtonStyle.secondary
-    )
-    async def back(
-        self,
-        interaction,
-        button
-    ):
-
-        if self.move_index > 0:
-
-            self.move_index -= 1
-
-        await self.redraw(
-            interaction
-        )
-
-    @discord.ui.button(
-        label="▶",
-        style=discord.ButtonStyle.secondary
-    )
-    async def forward(
-        self,
-        interaction,
-        button
-    ):
-
-        if (
-            self.move_index
-            < self.total_moves
-        ):
-
-            self.move_index += 1
-
-        await self.redraw(
-            interaction
         )
 
 
