@@ -591,24 +591,19 @@ async def post_guess(
         )
     )
 
-    # Every correct voter gets +1.
-    if (
-        correct_index
-        < len(voters_by_answer)
-    ):
+    # Award +1 to every correct voter, but send ONE compact message
+    # instead of a long chain of messages.
+    rewarded = []
+    seen = set()
 
-        seen = set()
+    if correct_index < len(voters_by_answer):
 
-        for voter in voters_by_answer[
-            correct_index
-        ]:
+        for voter in voters_by_answer[correct_index]:
 
             if voter.id in seen:
                 continue
 
-            seen.add(
-                voter.id
-            )
+            seen.add(voter.id)
 
             total = add_points(
                 voter.id,
@@ -616,23 +611,23 @@ async def post_guess(
                 1
             )
 
-            await channel.send(
-                f"✅ **Correct, "
-                f"{voter.display_name}!** 🎉\n"
-                f"**+1 point** — you now have "
-                f"**{total:g} points.**"
-            )
-
-            ranking = personal_ranking(
-                voter.id
-            )
-
-            if ranking:
-
-                await channel.send(
-                    ranking
+            rewarded.append(
+                (
+                    voter.display_name,
+                    total
                 )
+            )
 
+    if rewarded:
+
+        names = " • ".join(
+            f"**{name} +1**"
+            for name, _ in rewarded
+        )
+
+        await channel.send(
+            f"🎉 {names}"
+        )
 
 
 
@@ -718,6 +713,51 @@ async def on_message(
             pass
 
 
+async def guess_chatter_loop():
+
+    channel = await client.fetch_channel(
+        CHANNEL_ID
+    )
+
+    first_round = True
+
+    while True:
+
+        started = asyncio.get_running_loop().time()
+
+        try:
+
+            await post_guess(
+                channel
+            )
+
+        except Exception as error:
+
+            print(
+                f"Guess Chatter round error: "
+                f"{error}",
+                flush=True
+            )
+
+        # Keep exactly one round every 20 minutes,
+        # while the bot remains online for commands.
+        elapsed = (
+            asyncio.get_running_loop().time()
+            - started
+        )
+
+        wait_seconds = max(
+            5,
+            20 * 60 - elapsed
+        )
+
+        await asyncio.sleep(
+            wait_seconds
+        )
+
+        first_round = False
+
+
 @client.event
 async def on_ready():
 
@@ -727,30 +767,16 @@ async def on_ready():
         flush=True
     )
 
-    try:
+    if not hasattr(
+        client,
+        "_guess_chatter_task"
+    ) or client._guess_chatter_task.done():
 
-        channel = await client.fetch_channel(
-            CHANNEL_ID
+        client._guess_chatter_task = (
+            asyncio.create_task(
+                guess_chatter_loop()
+            )
         )
-
-        # This Action is deliberately a
-        # one-round process. The GitHub Action
-        # schedule starts the next round.
-        await post_guess(
-            channel
-        )
-
-    except Exception as error:
-
-        print(
-            f"Guess Chatter startup error: "
-            f"{error}",
-            flush=True
-        )
-
-    finally:
-
-        await client.close()
 
 
 client.run(
