@@ -33,7 +33,7 @@ TOKEN = os.getenv(
 CHANNEL_ID = 1536769340970373241
 
 POLL_OPTIONS = 5
-POLL_DURATION_MINUTES = 15
+POLL_DURATION_MINUTES = 1
 
 # The players supplied for Guess the Chess Chatter.
 PLAYERS = [
@@ -426,9 +426,9 @@ def make_board_file(
         )
     )
 
-    for move in moves[
-        :move_index
-    ]:
+    played_moves = moves[:move_index]
+
+    for move in played_moves:
 
         board.push(
             move
@@ -440,11 +440,27 @@ def make_board_file(
         else chess.BLACK
     )
 
+    arrows = []
+
+    # Highlight the move that was just played directly on the board.
+    # This is drawn into the PNG/SVG itself, so it remains visible
+    # while browsing with the left/right buttons.
+    if played_moves:
+        latest_move = played_moves[-1]
+
+        arrows.append(
+            chess.svg.Arrow(
+                latest_move.from_square,
+                latest_move.to_square
+            )
+        )
+
     svg = chess.svg.board(
         board=board,
         orientation=orientation,
         coordinates=True,
-        size=600
+        size=600,
+        arrows=arrows
     )
 
     png = cairosvg.svg2png(
