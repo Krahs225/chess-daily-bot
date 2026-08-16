@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-03-07",
     "title": "Saved at the Last Minute",
     "fen": "8/8/5k2/5n2/6K1/8/6Q1/8 b - - 0 1",
-    "current_fen": "8/8/5k2/8/8/4nK2/6Q1/8 b - - 2 2",
+    "current_fen": "8/8/5k2/8/8/5K2/6n1/8 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/5k2/5n2/6K1/8/6Q1/8 b - - 0 1\"]\r\n\r\n1...Ne3+ 2. Kf3 Nxg2\r\n*",
     "all_moves": [
       {
@@ -42,16 +42,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786882783658",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1538522649011949708,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "ne3",
+        "move": "nxg2",
         "correct": true,
-        "timestamp": "2026-08-16T12:19:56.197245+00:00"
+        "timestamp": "2026-08-16T12:20:00.180608+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -62,7 +62,7 @@
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
