@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-10-07",
     "title": "Timing Is Everything",
     "fen": "8/8/8/8/8/P4p2/k6K/8 w - - 0 1",
-    "current_fen": "8/8/8/P7/3k4/5p2/8/6K1 w - - 3 4",
+    "current_fen": "8/8/P7/8/8/4kp2/8/5K2 b - - 2 5",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/8/8/P4p2/k6K/8 w - - 0 1\"]\r\n\r\n1. a4 Kb3 2. a5 Kc3 3. Kg1 Kd4 4. a6 Ke3 5. Kf1 \r\n*",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786887444133",
-    "next_solution_index": 6,
-    "next_player_index": 3,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1538542196498890982,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "kg3",
-        "correct": false,
-        "timestamp": "2026-08-16T13:37:37.487245+00:00"
+        "move": "kf1",
+        "correct": true,
+        "timestamp": "2026-08-16T13:37:50.091489+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -107,8 +107,10 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
