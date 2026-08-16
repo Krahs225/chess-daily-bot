@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-07-19",
     "title": "Pesky Piece",
     "fen": "B5k1/4qpb1/1p4pp/1b2n3/P4Q2/2N3P1/1PP2P1P/4R1K1 b - - 0 1",
-    "current_fen": "B5k1/4qpb1/1p4pp/1b6/P4Q2/2N2nP1/1PP2PKP/4R3 b - - 2 2",
+    "current_fen": "B5k1/4qpb1/1p4pp/1b6/P4Q2/2N3P1/1PP2PKP/4n3 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"B5k1/4qpb1/1p4pp/1b2n3/P4Q2/2N3P1/1PP2P1P/4R1K1 b - - 0 1\"]\r\n\r\n1...Nf3+ 2. Kg2 Nxe1+\r\n*",
     "all_moves": [
       {
@@ -42,21 +42,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786880824092",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1538514431204655114,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nf3",
+        "move": "nxe1",
         "correct": true,
-        "timestamp": "2026-08-16T11:47:07.621957+00:00"
+        "timestamp": "2026-08-16T11:47:12.065320+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
