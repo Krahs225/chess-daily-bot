@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-11-11",
     "title": "When the Yoyo Stops",
     "fen": "8/p1p5/4k3/1q6/1P6/1K4R1/3P2P1/3B4 w - - 0 1",
-    "current_fen": "8/p1p2k2/Bq4R1/8/1P6/1K6/3P2P1/8 w - - 8 5",
+    "current_fen": "8/p1p2k2/BR6/8/1P6/1K6/3P2P1/8 b - - 0 5",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/p1p5/4k3/1q6/1P6/1K4R1/3P2P1/3B4 w - - 0 1\"]\r\n\r\n1.Be2 Qb8 2.Rg8 Qb7 3.Ba6 Qb6 4.Rg6+ Kf7 5.Rxb6 *",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786887059274",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1538540581901308025,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rg6",
+        "move": "rxb6",
         "correct": true,
-        "timestamp": "2026-08-16T13:31:31.358436+00:00"
+        "timestamp": "2026-08-16T13:31:34.207323+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -107,7 +107,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
