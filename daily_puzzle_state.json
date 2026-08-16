@@ -1,120 +1,42 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-02-22",
-    "title": "Bon Voyage",
-    "fen": "8/b6Q/8/2q1k2p/2b1B1P1/3P1K2/8/8 w - - 0 1",
-    "current_fen": "8/b7/4b3/6kp/3qBQ2/5K2/8/8 b - - 1 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/b6Q/8/2q1k2p/2b1B1P1/3P1K2/8/8 w - - 0 1\"]\r\n\r\n1.d4+ Qxd4 2.Qe7+ Be6 3.Qc7+ Kf6 4.g5+ Kxg5 5.Qf4# *",
+    "url": "https://www.chess.com/daily/2018-02-25",
+    "title": "Discovering Rewards",
+    "fen": "r2q3r/p1ppn1np/bp2kp2/b3N2Q/8/2P5/P4PPP/RN2R1K1 w Q - 0 1",
+    "current_fen": "r2q3r/p1ppn1np/bp2kp2/b3N2Q/8/2P5/P4PPP/RN2R1K1 w Q - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q3r/p1ppn1np/bp2kp2/b3N2Q/8/2P5/P4PPP/RN2R1K1 w Q - 0 1\"]\r\n\r\n1. Nc4#\r\n*",
     "all_moves": [
       {
-        "uci": "d3d4",
-        "san": "d4+",
-        "color": "white"
-      },
-      {
-        "uci": "c5d4",
-        "san": "Qxd4",
-        "color": "black"
-      },
-      {
-        "uci": "h7e7",
-        "san": "Qe7+",
-        "color": "white"
-      },
-      {
-        "uci": "c4e6",
-        "san": "Be6",
-        "color": "black"
-      },
-      {
-        "uci": "e7c7",
-        "san": "Qc7+",
-        "color": "white"
-      },
-      {
-        "uci": "e5f6",
-        "san": "Kf6",
-        "color": "black"
-      },
-      {
-        "uci": "g4g5",
-        "san": "g5+",
-        "color": "white"
-      },
-      {
-        "uci": "f6g5",
-        "san": "Kxg5",
-        "color": "black"
-      },
-      {
-        "uci": "c7f4",
-        "san": "Qf4#",
+        "uci": "e5c4",
+        "san": "Nc4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3d4",
-        "san": "d4+",
-        "color": "white"
-      },
-      {
-        "uci": "h7e7",
-        "san": "Qe7+",
-        "color": "white"
-      },
-      {
-        "uci": "e7c7",
-        "san": "Qc7+",
-        "color": "white"
-      },
-      {
-        "uci": "g4g5",
-        "san": "g5+",
-        "color": "white"
-      },
-      {
-        "uci": "c7f4",
-        "san": "Qf4#",
+        "uci": "e5c4",
+        "san": "Nc4#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-16T11:47:40.513744+00:00",
-    "answer_posted": true,
+    "player_move_count": 1,
+    "posted_at": "2026-08-16T11:49:51.462208+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786880860513",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1538514582736212088,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "g5",
-        "correct": true,
-        "timestamp": "2026-08-16T11:49:28.420918+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qf4",
-        "correct": true,
-        "timestamp": "2026-08-16T11:49:30.568904+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1786880991462",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
