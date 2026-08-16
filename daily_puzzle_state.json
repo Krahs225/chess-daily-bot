@@ -83,80 +83,110 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "random",
+  "latest_puzzle_type": "daily",
   "current_puzzle": {
-    "url": "https://www.chess.com/daily/2026-08-15",
-    "title": "I'll Huff & I'll Puff...",
-    "fen": "5rk1/1p3p1p/q4Qp1/3pPbN1/3P3P/5R2/P5P1/6K1 w - - 0 1",
-    "current_fen": "5rk1/1p3p1p/q4Qp1/3pPbN1/3P3P/5R2/P5P1/6K1 w - - 0 1",
-    "pgn": "[White \"chesstiger787\"]\n[Black \"Daily Puzzle Inspiration\"]\n[Result \"1-0\"]\n[FEN \"5rk1/1p3p1p/q4Qp1/3pPbN1/3P3P/5R2/P5P1/6K1 w - - 0 1\"]\n\n1. Rxf5 gxf5 2. e6 fxe6 3. Qe7 Qe2 4. Qxh7# 1-0",
+    "url": "https://www.chess.com/daily/2026-08-16",
+    "title": "Drop the Anchor⚓",
+    "fen": "8/R6p/5p1k/1p3Pp1/2b3P1/4K2P/p7/8 b - - 0 38",
+    "current_fen": "8/R6p/5p1k/1p3Pp1/2b3P1/4K2P/p7/8 b - - 0 38",
+    "pgn": "[Result \"*\"]\n[FEN \"8/R6p/5p1k/1p3Pp1/2b3P1/4K2P/p7/8 b - - 0 38\"]\n\n38... Bb3 39. Ra3 b4 40. Ra7 Ba4 41. Rxa4 b3 42. Kd2 b2 43. Rxa2 b1=Q *",
     "all_moves": [
       {
-        "uci": "f3f5",
-        "san": "Rxf5",
-        "color": "white"
-      },
-      {
-        "uci": "g6f5",
-        "san": "gxf5",
+        "uci": "c4b3",
+        "san": "Bb3",
         "color": "black"
       },
       {
-        "uci": "e5e6",
-        "san": "e6",
+        "uci": "a7a3",
+        "san": "Ra3",
         "color": "white"
       },
       {
-        "uci": "f7e6",
-        "san": "fxe6",
+        "uci": "b5b4",
+        "san": "b4",
         "color": "black"
       },
       {
-        "uci": "f6e7",
-        "san": "Qe7",
+        "uci": "a3a7",
+        "san": "Ra7",
         "color": "white"
       },
       {
-        "uci": "a6e2",
-        "san": "Qe2",
+        "uci": "b3a4",
+        "san": "Ba4",
         "color": "black"
       },
       {
-        "uci": "e7h7",
-        "san": "Qxh7#",
+        "uci": "a7a4",
+        "san": "Rxa4",
         "color": "white"
+      },
+      {
+        "uci": "b4b3",
+        "san": "b3",
+        "color": "black"
+      },
+      {
+        "uci": "e3d2",
+        "san": "Kd2",
+        "color": "white"
+      },
+      {
+        "uci": "b3b2",
+        "san": "b2",
+        "color": "black"
+      },
+      {
+        "uci": "a4a2",
+        "san": "Rxa2",
+        "color": "white"
+      },
+      {
+        "uci": "b2b1q",
+        "san": "b1=Q",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3f5",
-        "san": "Rxf5",
-        "color": "white"
+        "uci": "c4b3",
+        "san": "Bb3",
+        "color": "black"
       },
       {
-        "uci": "e5e6",
-        "san": "e6",
-        "color": "white"
+        "uci": "b5b4",
+        "san": "b4",
+        "color": "black"
       },
       {
-        "uci": "f6e7",
-        "san": "Qe7",
-        "color": "white"
+        "uci": "b3a4",
+        "san": "Ba4",
+        "color": "black"
       },
       {
-        "uci": "e7h7",
-        "san": "Qxh7#",
-        "color": "white"
+        "uci": "b4b3",
+        "san": "b3",
+        "color": "black"
+      },
+      {
+        "uci": "b3b2",
+        "san": "b2",
+        "color": "black"
+      },
+      {
+        "uci": "b2b1q",
+        "san": "b1=Q",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-15T11:42:48.809311+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 6,
+    "posted_at": "2026-08-16T11:04:17.923081+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "daily_1786794168809"
+    "puzzle_id": "daily_1786878257923"
   },
   "leaderboard_last_posted_date": "2026-08-16"
 }
