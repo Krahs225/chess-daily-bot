@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-12-13",
     "title": "Troitsky 1909",
     "fen": "b1q5/5p2/1Q6/P2k4/2p5/4K3/6N1/8 w - - 0 1",
-    "current_fen": "b1q5/5p2/1Q6/P2k4/2p5/4K3/6N1/8 w - - 0 1",
+    "current_fen": "b1q5/5p2/1Q6/P3k3/2p2N2/4K3/8/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"b1q5/5p2/1Q6/P2k4/2p5/4K3/6N1/8 w - - 0 1\"]\r\n\r\n1. Nf4+ Ke5 2. Ng6+ fxg6 3. Qd4+ Ke6 4. Qg4+ Kd5 5. Qxc8\r\n*",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786886775718",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1538539393219039312,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nf4",
+        "correct": true,
+        "timestamp": "2026-08-16T13:26:22.900561+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
