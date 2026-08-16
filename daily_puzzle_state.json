@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-12-10",
     "title": "Unplugged",
     "fen": "2kr2r1/1pp2p1p/p4n2/3p4/1n1P4/BP3B1q/P1P2PPP/R2Q1RK1 b - - 0 1",
-    "current_fen": "2k3r1/1pp2p1p/p4n2/3p4/1n1P4/BP3Q1q/P1P2PBP/R4RK1 b - - 2 3",
+    "current_fen": "2k3r1/1pp2p1p/p4n2/3p4/1n1P4/BP3q2/P1P2PBP/R4RK1 w - - 0 4",
     "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"KingsBishop\"]\r\n[Result \"0-1\"]\r\n[FEN \"2kr2r1/1pp2p1p/p4n2/3p4/1n1P4/BP3B1q/P1P2PPP/R2Q1RK1 b - - 0 1\"]\r\n\r\n1... Rxg2+ 2. Bxg2 Rg8 3. Qf3 Qxf3 0-1",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786886757882",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1538539318119764119,
     "attempted_users": {
       "601406103712170014": {
@@ -70,15 +70,17 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "rg8",
+        "move": "qxf3",
         "correct": true,
-        "timestamp": "2026-08-16T13:26:06.371923+00:00"
+        "timestamp": "2026-08-16T13:26:11.785300+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "442597396195704832"
+    ],
     "helper_candidate_users": [
       "442597396195704832"
     ]
