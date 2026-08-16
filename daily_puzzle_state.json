@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-01-24",
     "title": "Back Rank Problems",
     "fen": "3r2k1/2qr3p/5PpB/3n4/ppnP4/5Q1P/P5P1/4RR1K w - - 0 1",
-    "current_fen": "3r2k1/5r1p/3q1RpB/8/pp1P4/7P/P5P1/4R2K w - - 0 6",
+    "current_fen": "3r2k1/5r1p/3R2pB/8/pp1P4/7P/P5P1/4R2K b - - 0 6",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r2k1/2qr3p/5PpB/3n4/ppnP4/5Q1P/P5P1/4RR1K w - - 0 1\"]\r\n\r\n1. f7+ Rxf7 2. Qxd5 Nd6 (2... Rxd5 3. Re8+ Rf8 4. Rexf8#) 3. Rf6 Nb7 4. Qe6 Nd6 5. Qxd6 Qxd6 6. Rxd6\r\n*",
     "all_moves": [
       {
@@ -102,9 +102,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786886887820",
-    "next_solution_index": 10,
-    "next_player_index": 5,
-    "solved": false,
+    "next_solution_index": 11,
+    "next_player_index": 6,
+    "solved": true,
     "message_id": 1538539863010312305,
     "attempted_users": {
       "442597396195704832": {
@@ -115,15 +115,17 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qxd6",
+        "move": "rxd6",
         "correct": true,
-        "timestamp": "2026-08-16T13:30:45.351633+00:00"
+        "timestamp": "2026-08-16T13:30:50.802572+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
