@@ -1,53 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-02-25",
-    "title": "Discovering Rewards",
-    "fen": "r2q3r/p1ppn1np/bp2kp2/b3N2Q/8/2P5/P4PPP/RN2R1K1 w Q - 0 1",
-    "current_fen": "r2q3r/p1ppn1np/bp2kp2/b6Q/2N5/2P5/P4PPP/RN2R1K1 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q3r/p1ppn1np/bp2kp2/b3N2Q/8/2P5/P4PPP/RN2R1K1 w Q - 0 1\"]\r\n\r\n1. Nc4#\r\n*",
+    "url": "https://www.chess.com/daily/2024-07-01",
+    "title": "A Minor Communication Issue",
+    "fen": "r1b2rk1/1pp2pp1/1p1p2qp/8/3NPPn1/P1P3P1/1P2B2P/R2Q1RK1 w - - 0 1",
+    "current_fen": "r1b2rk1/1pp2pp1/1p1p2qp/8/3NPPn1/P1P3P1/1P2B2P/R2Q1RK1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r1b2rk1/1pp2pp1/1p1p2qp/8/3NPPn1/P1P3P1/1P2B2P/R2Q1RK1 w - - 0 1\"]\r\n\r\n1. f5 Qg5 2. Bxg4 *",
     "all_moves": [
       {
-        "uci": "e5c4",
-        "san": "Nc4#",
+        "uci": "f4f5",
+        "san": "f5",
+        "color": "white"
+      },
+      {
+        "uci": "g6g5",
+        "san": "Qg5",
+        "color": "black"
+      },
+      {
+        "uci": "e2g4",
+        "san": "Bxg4",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5c4",
-        "san": "Nc4#",
+        "uci": "f4f5",
+        "san": "f5",
+        "color": "white"
+      },
+      {
+        "uci": "e2g4",
+        "san": "Bxg4",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-16T11:49:51.462208+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-16T11:50:14.791615+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786880991462",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1538515132009811999,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nc4",
-        "correct": true,
-        "timestamp": "2026-08-16T11:50:04.165577+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nc6",
-        "correct": false,
-        "timestamp": "2026-08-16T11:50:00.998601+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786881014791",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
