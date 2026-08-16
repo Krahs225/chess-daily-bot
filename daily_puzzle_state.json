@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-07-20",
     "title": "Clearing the Way",
     "fen": "3q3k/4Nprp/p7/3bp1Q1/4rp2/8/PP3PPP/5RK1 w - - 0 1",
-    "current_fen": "3q3k/4Nprp/p7/3bp1Q1/4rp2/8/PP3PPP/5RK1 w - - 0 1",
+    "current_fen": "3q3k/6rp/p5p1/3bp1Q1/4rp2/8/PP3PPP/5RK1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3q3k/4Nprp/p7/3bp1Q1/4rp2/8/PP3PPP/5RK1 w - - 0 1\"]\r\n\r\n1. Ng6+ fxg6 2. Qxd8+\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786886644460",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1538538842884280410,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "ng6",
+        "correct": true,
+        "timestamp": "2026-08-16T13:24:08.773827+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
