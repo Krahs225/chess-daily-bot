@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-06-02",
     "title": "The Long Journey",
     "fen": "r2q4/1b2n2r/1p1b1Rp1/pN1kp1P1/4N3/2PP4/P5BP/R5K1 w - - 0 1",
-    "current_fen": "r2q4/1b2n2r/1p1N1Rp1/pNk1p1P1/8/2PP4/P5BP/R5K1 w - - 1 2",
+    "current_fen": "r2q4/1b2n2r/1p1N1Rp1/pNk3P1/3p4/2P5/P5BP/R5K1 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q4/1b2n2r/1p1b1Rp1/pN1kp1P1/4N3/2PP4/P5BP/R5K1 w - - 0 1\"]\r\n\r\n1. Nexd6+ Kc5 2. d4+ exd4 3. cxd4+ Kb4 4. Rb1+ Ka4 5. Nc3+\r\n*",
     "all_moves": [
       {
@@ -87,8 +87,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786883213820",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1538524453653319702,
     "attempted_users": {
@@ -97,13 +97,21 @@
         "move": "nexd6",
         "correct": true,
         "timestamp": "2026-08-16T12:27:08.416500+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "d4",
+        "correct": true,
+        "timestamp": "2026-08-16T12:27:14.624699+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
