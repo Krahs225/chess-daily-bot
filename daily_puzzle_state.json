@@ -1,75 +1,109 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-03-08",
-    "title": "Leading The King Astray",
-    "fen": "7K/4r3/5N1R/6k1/4PN2/4p1r1/8/8 w - - 0 1",
-    "current_fen": "7K/4r3/5N2/5R2/4Pk2/4p1r1/8/8 b - - 1 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7K/4r3/5N1R/6k1/4PN2/4p1r1/8/8 w - - 0 1\"]\r\n\r\n1. Rh5+ Kxf4 2. Rf5#\r\n*",
+    "url": "https://www.chess.com/daily/2011-11-12",
+    "title": "Mate in 5",
+    "fen": "r1b2q2/pppp1Bb1/2n3Rp/3Npk2/5p2/3P4/PPP2PP1/R1B3K1 w - - 0 1",
+    "current_fen": "r1b2q2/pppp1Bb1/2n3Rp/4p3/5k2/3PN1p1/PPP2P2/R1B3K1 w - - 2 3",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2q2/pppp1Bb1/2n3Rp/3Npk2/5p2/3P4/PPP2PP1/R1B3K1 w - - 0 1\"]\r\n\r\n1. g4+ fxg3 2. Ne3+ Kf4 3. Ng2+ Kf3 4. Kf1 Qb4 5. Rxg3#\r\n*",
     "all_moves": [
       {
-        "uci": "h6h5",
-        "san": "Rh5+",
+        "uci": "g2g4",
+        "san": "g4+",
         "color": "white"
       },
       {
-        "uci": "g5f4",
-        "san": "Kxf4",
+        "uci": "f4g3",
+        "san": "fxg3",
         "color": "black"
       },
       {
-        "uci": "h5f5",
-        "san": "Rf5#",
+        "uci": "d5e3",
+        "san": "Ne3+",
+        "color": "white"
+      },
+      {
+        "uci": "f5f4",
+        "san": "Kf4",
+        "color": "black"
+      },
+      {
+        "uci": "e3g2",
+        "san": "Ng2+",
+        "color": "white"
+      },
+      {
+        "uci": "f4f3",
+        "san": "Kf3",
+        "color": "black"
+      },
+      {
+        "uci": "g1f1",
+        "san": "Kf1",
+        "color": "white"
+      },
+      {
+        "uci": "f8b4",
+        "san": "Qb4",
+        "color": "black"
+      },
+      {
+        "uci": "g6g3",
+        "san": "Rxg3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6h5",
-        "san": "Rh5+",
+        "uci": "g2g4",
+        "san": "g4+",
         "color": "white"
       },
       {
-        "uci": "h5f5",
-        "san": "Rf5#",
+        "uci": "d5e3",
+        "san": "Ne3+",
+        "color": "white"
+      },
+      {
+        "uci": "e3g2",
+        "san": "Ng2+",
+        "color": "white"
+      },
+      {
+        "uci": "g1f1",
+        "san": "Kf1",
+        "color": "white"
+      },
+      {
+        "uci": "g6g3",
+        "san": "Rxg3#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-16T12:46:09.811926+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-16T12:48:01.225722+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786884369811",
-    "next_solution_index": 3,
+    "puzzle_id": "random_1786884481225",
+    "next_solution_index": 4,
     "next_player_index": 2,
-    "solved": true,
-    "message_id": 1538529302268612669,
+    "solved": false,
+    "message_id": 1538529769472270356,
     "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rf5",
-        "correct": true,
-        "timestamp": "2026-08-16T12:47:55.708027+00:00"
-      },
       "442597396195704832": {
         "name": "Thice",
-        "move": "rh5",
+        "move": "ne3",
         "correct": true,
-        "timestamp": "2026-08-16T12:47:45.554329+00:00"
+        "timestamp": "2026-08-16T12:48:09.860931+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
