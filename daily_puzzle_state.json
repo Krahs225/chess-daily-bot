@@ -1,77 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-10-07",
-    "title": "Mate in 4 ",
-    "fen": "5K1k/8/8/2p3p1/2B3P1/8/1N6/8 w - - 0 1",
-    "current_fen": "5K1k/8/8/2p3p1/2B3P1/8/1N6/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5K1k/8/8/2p3p1/2B3P1/8/1N6/8 w - - 0 1\"]\r\n\r\n1. Nd3 Kh7 2. Ne5 Kh6 3. Bd3 c4 4. Nf7#\r\n*",
+    "url": "https://www.chess.com/daily/2026-03-28",
+    "title": "Road Closed? Not Today!",
+    "fen": "2q2r1k/1b3ppp/1b2p3/1p2N1B1/2nP2Q1/2R5/rP3PPP/2R3K1 w - - 0 1",
+    "current_fen": "2q2r1k/1b3ppp/1b2p3/1p2N1B1/2nP2Q1/2R5/rP3PPP/2R3K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2q2r1k/1b3ppp/1b2p3/1p2N1B1/2nP2Q1/2R5/rP3PPP/2R3K1 w - - 0 1\"]\r\n\r\n1. Bf6 gxf6 2. Rg3 Rg8 3. Nxf7# *",
     "all_moves": [
       {
-        "uci": "b2d3",
-        "san": "Nd3",
+        "uci": "g5f6",
+        "san": "Bf6",
         "color": "white"
       },
       {
-        "uci": "h8h7",
-        "san": "Kh7",
+        "uci": "g7f6",
+        "san": "gxf6",
         "color": "black"
       },
       {
-        "uci": "d3e5",
-        "san": "Ne5",
+        "uci": "c3g3",
+        "san": "Rg3",
         "color": "white"
       },
       {
-        "uci": "h7h6",
-        "san": "Kh6",
-        "color": "black"
-      },
-      {
-        "uci": "c4d3",
-        "san": "Bd3",
-        "color": "white"
-      },
-      {
-        "uci": "c5c4",
-        "san": "c4",
+        "uci": "f8g8",
+        "san": "Rg8",
         "color": "black"
       },
       {
         "uci": "e5f7",
-        "san": "Nf7#",
+        "san": "Nxf7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b2d3",
-        "san": "Nd3",
+        "uci": "g5f6",
+        "san": "Bf6",
         "color": "white"
       },
       {
-        "uci": "d3e5",
-        "san": "Ne5",
-        "color": "white"
-      },
-      {
-        "uci": "c4d3",
-        "san": "Bd3",
+        "uci": "c3g3",
+        "san": "Rg3",
         "color": "white"
       },
       {
         "uci": "e5f7",
-        "san": "Nf7#",
+        "san": "Nxf7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-15T11:42:53.871341+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-16T11:05:50.031681+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786794173871",
+    "puzzle_id": "random_1786878350031",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
@@ -83,7 +68,7 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "daily",
+  "latest_puzzle_type": "random",
   "current_puzzle": {
     "url": "https://www.chess.com/daily/2026-08-16",
     "title": "Drop the Anchor⚓",
