@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-04-01",
     "title": "Taking Squares",
     "fen": "3r4/r2P3p/p2R4/1p2k3/2p5/6P1/PP3P1P/3R2K1 w - - 0 1",
-    "current_fen": "3r4/r2P3p/p2R4/1p2k3/2p5/6P1/PP3P1P/3R2K1 w - - 0 1",
+    "current_fen": "3r4/3r3p/p2R4/1p2k3/2p5/5PP1/PP5P/3R2K1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r4/r2P3p/p2R4/1p2k3/2p5/6P1/PP3P1P/3R2K1 w - - 0 1\"]\r\n\r\n1. f3 Raxd7 2. R1d5# \r\n*",
     "all_moves": [
       {
@@ -42,20 +42,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786883866056",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1538527188792647752,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "f4",
+        "move": "f3",
+        "correct": true,
+        "timestamp": "2026-08-16T12:38:04.108563+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "r1d5",
         "correct": false,
-        "timestamp": "2026-08-16T12:38:01.368744+00:00"
+        "timestamp": "2026-08-16T12:38:01.544155+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
