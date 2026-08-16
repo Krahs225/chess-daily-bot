@@ -1,77 +1,40 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-11-28",
-    "title": "White To Draw",
-    "fen": "4rrk1/pp3p2/2p4p/4N1p1/3PQ3/P5qP/1P4P1/5RK1 w - - 0 1",
-    "current_fen": "4Q1k1/pp4r1/2p4p/4N1p1/3P4/P5qP/1P4P1/6K1 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4rrk1/pp3p2/2p4p/4N1p1/3PQ3/P5qP/1P4P1/5RK1 w - - 0 1\"]\r\n\r\n1. Rxf7 Rxf7 2. Qg6+ Rg7 3. Qxe8+\r\n*",
+    "url": "https://www.chess.com/daily/2011-08-07",
+    "title": "Famous Opening Trap",
+    "fen": "r1bqkb1r/pp1npppp/2p2n2/8/3PN3/8/PPP1QPPP/R1B1KBNR w KQkq - 0 1",
+    "current_fen": "r1bqkb1r/pp1npppp/2p2n2/8/3PN3/8/PPP1QPPP/R1B1KBNR w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqkb1r/pp1npppp/2p2n2/8/3PN3/8/PPP1QPPP/R1B1KBNR w KQkq - 0 1\"]\r\n\r\n1. Nd6#\r\n*",
     "all_moves": [
       {
-        "uci": "f1f7",
-        "san": "Rxf7",
-        "color": "white"
-      },
-      {
-        "uci": "f8f7",
-        "san": "Rxf7",
-        "color": "black"
-      },
-      {
-        "uci": "e4g6",
-        "san": "Qg6+",
-        "color": "white"
-      },
-      {
-        "uci": "f7g7",
-        "san": "Rg7",
-        "color": "black"
-      },
-      {
-        "uci": "g6e8",
-        "san": "Qxe8+",
+        "uci": "e4d6",
+        "san": "Nd6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f1f7",
-        "san": "Rxf7",
-        "color": "white"
-      },
-      {
-        "uci": "e4g6",
-        "san": "Qg6+",
-        "color": "white"
-      },
-      {
-        "uci": "g6e8",
-        "san": "Qxe8+",
+        "uci": "e4d6",
+        "san": "Nd6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-16T12:28:09.070544+00:00",
-    "answer_posted": true,
+    "player_move_count": 1,
+    "posted_at": "2026-08-16T12:29:08.364986+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786883289070",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1538524769241272400,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxe8",
-        "correct": true,
-        "timestamp": "2026-08-16T12:28:24.302185+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786883348364",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
