@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-11-02",
     "title": "Counterfeit Counterplay",
     "fen": "7q/2R2r1p/r6k/3B2p1/8/4P1P1/5P2/2Q2K2 w - - 0 1",
-    "current_fen": "7q/2R2r1p/r6k/3B2p1/8/4P1P1/5P2/2Q2K2 w - - 0 1",
+    "current_fen": "7q/5Bkp/2R5/6p1/8/4P1P1/5P2/r1Q2K2 w - - 3 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"7q/2R2r1p/r6k/3B2p1/8/4P1P1/5P2/2Q2K2 w - - 0 1\"]\r\n\r\n1. Bxf7 Ra1 2. Rc6+ Kg7 3. Qxa1+ *",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786884999913",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1538531944416018473,
     "attempted_users": {
@@ -67,10 +67,16 @@
         "move": "rc6",
         "correct": false,
         "timestamp": "2026-08-16T12:56:57.032043+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rc6",
+        "correct": true,
+        "timestamp": "2026-08-16T12:57:19.306417+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
