@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-01-20",
     "title": "A Grand Entrance",
     "fen": "r4rk1/p1p2ppp/2b5/Q2NB3/2P5/1p4Pq/5P1P/4R1K1 w - - 0 1",
-    "current_fen": "r4rk1/p1p2ppp/2b5/Q2NB3/2P5/1p4Pq/5P1P/4R1K1 w - - 0 1",
+    "current_fen": "r4r1k/p1p1Nppp/2b5/Q3B3/2P5/1p4Pq/5P1P/4R1K1 w - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"r4rk1/p1p2ppp/2b5/Q2NB3/2P5/1p4Pq/5P1P/4R1K1 w - - 0 1\"]\r\n\r\n1. Ne7+ Kh8 2. Bxg7+ Kxg7 3. Qg5+ Kh8 4. Qf6# *",
     "all_moves": [
       {
@@ -72,8 +72,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786882553557",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1538521684296863784,
     "attempted_users": {
@@ -85,13 +85,13 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nf4",
-        "correct": false,
-        "timestamp": "2026-08-16T12:18:00.207131+00:00"
+        "move": "ne7",
+        "correct": true,
+        "timestamp": "2026-08-16T12:18:06.157608+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
