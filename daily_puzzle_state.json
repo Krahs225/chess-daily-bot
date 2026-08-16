@@ -1,120 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-10-07",
-    "title": "Timing Is Everything",
-    "fen": "8/8/8/8/8/P4p2/k6K/8 w - - 0 1",
-    "current_fen": "8/8/P7/8/8/4kp2/8/5K2 b - - 2 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/8/8/P4p2/k6K/8 w - - 0 1\"]\r\n\r\n1. a4 Kb3 2. a5 Kc3 3. Kg1 Kd4 4. a6 Ke3 5. Kf1 \r\n*",
+    "url": "https://www.chess.com/daily/2017-11-03",
+    "title": "The Art of Equalizing",
+    "fen": "2k3r1/1pp1q3/1p5p/5P2/4Q1pP/6Pn/PPPr1P1N/R3RK2 w - - 0 1",
+    "current_fen": "2k3r1/1pp1q3/1p5p/5P2/4Q1pP/6Pn/PPPr1P1N/R3RK2 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k3r1/1pp1q3/1p5p/5P2/4Q1pP/6Pn/PPPr1P1N/R3RK2 w - - 0 1\"]\r\n\r\n1. Nxg4 Rxg4 2. Qf3\r\n*",
     "all_moves": [
       {
-        "uci": "a3a4",
-        "san": "a4",
+        "uci": "h2g4",
+        "san": "Nxg4",
         "color": "white"
       },
       {
-        "uci": "a2b3",
-        "san": "Kb3",
+        "uci": "g8g4",
+        "san": "Rxg4",
         "color": "black"
       },
       {
-        "uci": "a4a5",
-        "san": "a5",
-        "color": "white"
-      },
-      {
-        "uci": "b3c3",
-        "san": "Kc3",
-        "color": "black"
-      },
-      {
-        "uci": "h2g1",
-        "san": "Kg1",
-        "color": "white"
-      },
-      {
-        "uci": "c3d4",
-        "san": "Kd4",
-        "color": "black"
-      },
-      {
-        "uci": "a5a6",
-        "san": "a6",
-        "color": "white"
-      },
-      {
-        "uci": "d4e3",
-        "san": "Ke3",
-        "color": "black"
-      },
-      {
-        "uci": "g1f1",
-        "san": "Kf1",
+        "uci": "e4f3",
+        "san": "Qf3",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a3a4",
-        "san": "a4",
+        "uci": "h2g4",
+        "san": "Nxg4",
         "color": "white"
       },
       {
-        "uci": "a4a5",
-        "san": "a5",
-        "color": "white"
-      },
-      {
-        "uci": "h2g1",
-        "san": "Kg1",
-        "color": "white"
-      },
-      {
-        "uci": "a5a6",
-        "san": "a6",
-        "color": "white"
-      },
-      {
-        "uci": "g1f1",
-        "san": "Kf1",
+        "uci": "e4f3",
+        "san": "Qf3",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-16T13:37:24.133330+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-16T13:37:58.332925+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786887444133",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1538542196498890982,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "kf1",
-        "correct": true,
-        "timestamp": "2026-08-16T13:37:50.091489+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "kg1",
-        "correct": true,
-        "timestamp": "2026-08-16T13:37:37.918661+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1786887478332",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
