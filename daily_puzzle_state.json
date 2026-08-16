@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-01-15",
     "title": "Recent Story, New Ending",
     "fen": "r1b1kbnr/pp2ppp1/n1p4p/qN5Q/2B4P/B7/P1PP1PP1/R3K1NR b KQkq - 0 1",
-    "current_fen": "r1bk1b1r/pp2pQp1/n1p2n1p/q7/2BN3P/B7/P1PP1PP1/R3K1NR b KQ - 2 3",
+    "current_fen": "r1bk1b1r/pp2pQp1/n1p2n1p/8/2BN3P/q7/P1PP1PP1/R3K1NR w KQ - 0 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"r1b1kbnr/pp2ppp1/n1p4p/qN5Q/2B4P/B7/P1PP1PP1/R3K1NR b KQkq - 0 1\"]\r\n\r\n1... Kd8 2. Qxf7 Nf6 3. Nd4 Qxa3 *",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786886180423",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1538536896211189771,
     "attempted_users": {
       "601406103712170014": {
@@ -70,16 +70,20 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "nf6",
-        "correct": false,
-        "timestamp": "2026-08-16T13:19:24.054710+00:00"
+        "move": "qxa3",
+        "correct": true,
+        "timestamp": "2026-08-16T13:19:30.827255+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "442597396195704832"
+    ],
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
