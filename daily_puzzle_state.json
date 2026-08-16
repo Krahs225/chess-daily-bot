@@ -1,62 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-01-22",
-    "title": "Mate in 2",
-    "fen": "r7/pp1bqr1k/2n1p1Rp/2pnP2N/3p1p1N/3P2QB/PPP2P1K/R7 w - - 0 1",
-    "current_fen": "r7/pp1bqr2/2n1p1Qk/2pnP2N/3p1p1N/3P3B/PPP2P1K/R7 b - - 1 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/pp1bqr1k/2n1p1Rp/2pnP2N/3p1p1N/3P2QB/PPP2P1K/R7 w - - 0 1\"]\r\n\r\n1. Rxh6+ Kxh6 2. Qg6#\r\n*",
+    "url": "https://www.chess.com/daily/2015-10-12",
+    "title": "No Escape",
+    "fen": "8/4KP1k/8/p6p/P4N1P/8/8/8 w - - 0 1",
+    "current_fen": "8/4KP1k/8/p6p/P4N1P/8/8/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/4KP1k/8/p6p/P4N1P/8/8/8 w - - 0 1\"]\r\n\r\n1. Kf6 Kh6 2. f8=Q+ Kh7 3. Qg7# \r\n*",
     "all_moves": [
       {
-        "uci": "g6h6",
-        "san": "Rxh6+",
+        "uci": "e7f6",
+        "san": "Kf6",
         "color": "white"
       },
       {
         "uci": "h7h6",
-        "san": "Kxh6",
+        "san": "Kh6",
         "color": "black"
       },
       {
-        "uci": "g3g6",
-        "san": "Qg6#",
+        "uci": "f7f8q",
+        "san": "f8=Q+",
+        "color": "white"
+      },
+      {
+        "uci": "h6h7",
+        "san": "Kh7",
+        "color": "black"
+      },
+      {
+        "uci": "f8g7",
+        "san": "Qg7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g6h6",
-        "san": "Rxh6+",
+        "uci": "e7f6",
+        "san": "Kf6",
         "color": "white"
       },
       {
-        "uci": "g3g6",
-        "san": "Qg6#",
+        "uci": "f7f8q",
+        "san": "f8=Q+",
+        "color": "white"
+      },
+      {
+        "uci": "f8g7",
+        "san": "Qg7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-16T13:14:41.599057+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-16T13:15:20.060746+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786886081599",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1538536481705169077,
+    "puzzle_id": "random_1786886120060",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1538536642980347955,
     "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qg6",
-        "correct": true,
-        "timestamp": "2026-08-16T13:15:16.218538+00:00"
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "f8=B",
+        "correct": false,
+        "timestamp": "2026-08-16T13:15:34.425677+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
