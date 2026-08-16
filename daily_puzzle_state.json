@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-05-29",
     "title": "Freezing a Moving Target",
     "fen": "4k2r/pp1q1ppp/3b1n2/3p2B1/P2Pp1bP/1P6/3NBPQ1/5K1R w k - 0 1",
-    "current_fen": "4k2r/pp1q1ppp/3b1n2/3p2B1/P2Pp1bP/1P6/3NBPQ1/5K1R w k - 0 1",
+    "current_fen": "5rk1/pp1q1ppp/3b1n2/1B1p2B1/P2Pp1bP/1P6/3N1PQ1/5K1R w - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"4k2r/pp1q1ppp/3b1n2/3p2B1/P2Pp1bP/1P6/3NBPQ1/5K1R w k - 0 1\"]\r\n\r\n1. Bb5 O-O 2. Bxd7 *",
     "all_moves": [
       {
@@ -42,8 +42,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786884940587",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1538531696247443456,
     "attempted_users": {
@@ -52,10 +52,16 @@
         "move": "bxf6",
         "correct": false,
         "timestamp": "2026-08-16T12:55:52.384209+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "bb5",
+        "correct": true,
+        "timestamp": "2026-08-16T12:55:59.405351+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
