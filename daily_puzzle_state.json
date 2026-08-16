@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-03-28",
     "title": "Road Closed? Not Today!",
     "fen": "2q2r1k/1b3ppp/1b2p3/1p2N1B1/2nP2Q1/2R5/rP3PPP/2R3K1 w - - 0 1",
-    "current_fen": "2q2r1k/1b3ppp/1b2p3/1p2N1B1/2nP2Q1/2R5/rP3PPP/2R3K1 w - - 0 1",
+    "current_fen": "2q2r1k/1b3p1p/1b2pp2/1p2N3/2nP2Q1/2R5/rP3PPP/2R3K1 w - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"2q2r1k/1b3ppp/1b2p3/1p2N1B1/2nP2Q1/2R5/rP3PPP/2R3K1 w - - 0 1\"]\r\n\r\n1. Bf6 gxf6 2. Rg3 Rg8 3. Nxf7# *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786878350031",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1538504054244773918,
+    "attempted_users": {
+      "1110650885509500928": {
+        "name": "Miloo",
+        "move": "bf6",
+        "correct": true,
+        "timestamp": "2026-08-16T11:06:23.151932+00:00"
+      }
+    },
+    "first_move_user_id": "1110650885509500928",
+    "first_move_user_name": "Miloo",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
