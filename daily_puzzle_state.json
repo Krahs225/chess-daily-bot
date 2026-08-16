@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-11-12",
     "title": "Mate in 5",
     "fen": "r1b2q2/pppp1Bb1/2n3Rp/3Npk2/5p2/3P4/PPP2PP1/R1B3K1 w - - 0 1",
-    "current_fen": "r1b5/pppp1Bb1/2n3Rp/4p3/1q6/3P1kp1/PPP2PN1/R1B2K2 w - - 6 5",
+    "current_fen": "r1b5/pppp1Bb1/2n4p/4p3/1q6/3P1kR1/PPP2PN1/R1B2K2 b - - 0 5",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2q2/pppp1Bb1/2n3Rp/3Npk2/5p2/3P4/PPP2PP1/R1B3K1 w - - 0 1\"]\r\n\r\n1. g4+ fxg3 2. Ne3+ Kf4 3. Ng2+ Kf3 4. Kf1 Qb4 5. Rxg3#\r\n*",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786884481225",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1538529769472270356,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "ne1",
-        "correct": false,
-        "timestamp": "2026-08-16T12:49:04.950068+00:00"
+        "move": "rxg3",
+        "correct": true,
+        "timestamp": "2026-08-16T12:49:15.629651+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -107,8 +107,10 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
