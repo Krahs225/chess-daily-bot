@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-08-03",
     "title": "Piecemeal",
     "fen": "4k3/R7/p4K2/7p/2bB3P/r1P5/8/8 w - - 0 1",
-    "current_fen": "2k5/4R3/pB3K2/7p/2b4P/r1P5/8/8 w - - 4 3",
+    "current_fen": "1k6/8/pB3K2/7p/2R4P/r1P5/8/8 b - - 0 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"4k3/R7/p4K2/7p/2bB3P/r1P5/8/8 w - - 0 1\"]\r\n\r\n1.Re7+ Kd8 2.Bb6+ Kc8 3.Rc7+ Kb8 4.Rxc4 *",
     "all_moves": [
       {
@@ -72,21 +72,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786887560835",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1538542686502527066,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bb6",
+        "move": "rxc4",
         "correct": true,
-        "timestamp": "2026-08-16T13:39:43.784498+00:00"
+        "timestamp": "2026-08-16T13:39:48.077995+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
