@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-02-16",
     "title": "Pinning and Winning",
     "fen": "r1bqr1k1/1p3nbp/2pp2p1/2n2P2/p1PN1P2/2N1B1PP/PPQ3B1/R3R1K1 b - - 0 1",
-    "current_fen": "r1bqr1k1/1p3nbp/2pp2p1/2n2P2/p1PN1P2/2N1B1PP/PPQ3B1/R3R1K1 b - - 0 1",
+    "current_fen": "r1bq2k1/1p3n1p/2pp2p1/2n2P2/p1Pb1P2/2N1R1PP/PPQ3B1/R5K1 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqr1k1/1p3nbp/2pp2p1/2n2P2/p1PN1P2/2N1B1PP/PPQ3B1/R3R1K1 b - - 0 1\"]\r\n\r\n1...Rxe3 2. Rxe3 Bxd4\r\n*",
     "all_moves": [
       {
@@ -42,14 +42,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786885561002",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
+    "message_id": 1538534298360217651,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "bxd4",
+        "correct": true,
+        "timestamp": "2026-08-16T13:06:08.181003+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
