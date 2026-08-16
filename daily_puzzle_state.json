@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-03-15",
     "title": "Mate in 3",
     "fen": "r1b1kr2/2pp1Npp/pp6/8/2Bn4/2NP4/PPP5/R1B1qQKR b q - 0 1",
-    "current_fen": "r1b1kr2/2pp1Npp/pp6/8/2Bn4/2NP4/PPP5/R1B1qQKR b q - 0 1",
+    "current_fen": "r1b1kr2/2pp1Npp/pp6/8/2Bn4/2NP2q1/PPP3Q1/R1B3KR b q - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"r1b1kr2/2pp1Npp/pp6/8/2Bn4/2NP4/PPP5/R1B1qQKR b q - 0 1\"]\r\n\r\n1... Qg3+ 2. Qg2 Nf3+ 3. Kf1 Qe1# *",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786882858787",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1538522964461363230,
     "attempted_users": {
@@ -67,10 +67,16 @@
         "move": "ne2",
         "correct": false,
         "timestamp": "2026-08-16T12:21:11.597539+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qg3",
+        "correct": true,
+        "timestamp": "2026-08-16T12:21:12.719125+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
