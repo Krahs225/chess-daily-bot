@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-01-25",
     "title": "Short On Squares",
     "fen": "2rk4/1p3bQ1/pq1p4/1B1PnPP1/3N4/1PP5/1K6/8 w - - 0 1",
-    "current_fen": "2r5/1p2kn2/pq1pN3/1B1P1PP1/8/1PP5/1K6/8 w - - 2 3",
+    "current_fen": "2r5/1p2kn2/pq1pNP2/1B1P2P1/8/1PP5/1K6/8 b - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2rk4/1p3bQ1/pq1p4/1B1PnPP1/3N4/1PP5/1K6/8 w - - 0 1\"]\r\n\r\n1. Qxf7 Nxf7 2. Ne6+ Ke7 3. f6# \r\n*",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786883180409",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1538524312850403440,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "ne6",
-        "correct": false,
-        "timestamp": "2026-08-16T12:26:38.640378+00:00"
+        "move": "f6",
+        "correct": true,
+        "timestamp": "2026-08-16T12:26:43.358749+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -77,9 +77,13 @@
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "442597396195704832"
+    ],
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
