@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-09-18",
     "title": "Mate in 4",
     "fen": "5r2/p1Q2pkp/1p2p1p1/bq1bN3/4BP2/6P1/1B5P/R5K1 w - - 0 1",
-    "current_fen": "5r2/p1Q2pkp/1p2p1p1/bq1bN3/4BP2/6P1/1B5P/R5K1 w - - 0 1",
+    "current_fen": "5r2/p1Q2Nkp/1p2p1p1/b2b4/4BP2/6P1/1q5P/R5K1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r2/p1Q2pkp/1p2p1p1/bq1bN3/4BP2/6P1/1B5P/R5K1 w - - 0 1\"]\r\n\r\n1. Nxf7+ Qxb2 2. Ng5+ Rf7 3. Qxf7+ Kh6 4. Qxh7# \r\n*",
     "all_moves": [
       {
@@ -72,16 +72,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786886520048",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1538538320248963185,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nxg6",
-        "correct": false,
-        "timestamp": "2026-08-16T13:22:16.023686+00:00"
+        "move": "nxf7",
+        "correct": true,
+        "timestamp": "2026-08-16T13:22:27.543362+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -90,8 +90,8 @@
         "timestamp": "2026-08-16T13:22:26.790930+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
