@@ -1,77 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-10-15",
-    "title": "A Vulnerable Rank",
-    "fen": "6k1/Q1R4p/p2b1pp1/3br3/6N1/4P2P/P5PK/3q4 w - - 0 43",
-    "current_fen": "5k2/5Q1p/p2b1ppN/4r3/8/4P2P/P5PK/3q4 b - - 0 45",
-    "pgn": "[Event \"Acasusso Valle op\"]\r\n[Site \"Acasusso\"]\r\n[Date \"1991.??.??\"]\r\n[Round \"5\"]\r\n[White \"Justo, Damian\"]\r\n[Black \"Filgueira, Hernan\"]\r\n[Result \"1-0\"]\r\n[ECO \"E61\"]\r\n[WhiteElo \"2310\"]\r\n[BlackElo \"2290\"]\r\n[FEN \"6k1/Q1R4p/p2b1pp1/3br3/6N1/4P2P/P5PK/3q4 w - - 0 43\"]\r\n\r\n43. Nh6+ Kf8 44. Rf7+ Bxf7 45. Qxf7# 1-0",
+    "url": "https://www.chess.com/daily/2013-11-02",
+    "title": "Fischer - Benko, Candidates Tournament 1959",
+    "fen": "r1b2rk1/p3bp1p/4pp2/n3p3/1p1qNP2/1B4N1/PPP3PP/R2Q1R1K w - - 0 1",
+    "current_fen": "r1b2rk1/p3bp1p/4pp2/n3p3/1p1qNP2/1B4N1/PPP3PP/R2Q1R1K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2rk1/p3bp1p/4pp2/n3p3/1p1qNP2/1B4N1/PPP3PP/R2Q1R1K w - - 0 1\"]\r\n\r\n1. Qh5 exf4 2. Nf5 exf5 3. Rxf4 fxe4 4. Rh4\r\n*",
     "all_moves": [
       {
-        "uci": "g4h6",
-        "san": "Nh6+",
+        "uci": "d1h5",
+        "san": "Qh5",
         "color": "white"
       },
       {
-        "uci": "g8f8",
-        "san": "Kf8",
+        "uci": "e5f4",
+        "san": "exf4",
         "color": "black"
       },
       {
-        "uci": "c7f7",
-        "san": "Rf7+",
+        "uci": "g3f5",
+        "san": "Nf5",
         "color": "white"
       },
       {
-        "uci": "d5f7",
-        "san": "Bxf7",
+        "uci": "e6f5",
+        "san": "exf5",
         "color": "black"
       },
       {
-        "uci": "a7f7",
-        "san": "Qxf7#",
+        "uci": "f1f4",
+        "san": "Rxf4",
+        "color": "white"
+      },
+      {
+        "uci": "f5e4",
+        "san": "fxe4",
+        "color": "black"
+      },
+      {
+        "uci": "f4h4",
+        "san": "Rh4",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g4h6",
-        "san": "Nh6+",
+        "uci": "d1h5",
+        "san": "Qh5",
         "color": "white"
       },
       {
-        "uci": "c7f7",
-        "san": "Rf7+",
+        "uci": "g3f5",
+        "san": "Nf5",
         "color": "white"
       },
       {
-        "uci": "a7f7",
-        "san": "Qxf7#",
+        "uci": "f1f4",
+        "san": "Rxf4",
+        "color": "white"
+      },
+      {
+        "uci": "f4h4",
+        "san": "Rh4",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-16T12:32:18.689201+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-16T12:33:09.515249+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786883538689",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1538525816458059907,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxf7",
-        "correct": true,
-        "timestamp": "2026-08-16T12:33:02.507220+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786883589515",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
