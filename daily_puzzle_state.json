@@ -1,113 +1,160 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-11-11",
-    "title": "When the Yoyo Stops",
-    "fen": "8/p1p5/4k3/1q6/1P6/1K4R1/3P2P1/3B4 w - - 0 1",
-    "current_fen": "8/p1p2k2/BR6/8/1P6/1K6/3P2P1/8 b - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/p1p5/4k3/1q6/1P6/1K4R1/3P2P1/3B4 w - - 0 1\"]\r\n\r\n1.Be2 Qb8 2.Rg8 Qb7 3.Ba6 Qb6 4.Rg6+ Kf7 5.Rxb6 *",
+    "url": "https://www.chess.com/daily/2015-04-10",
+    "title": "Last Resort Draw",
+    "fen": "2n5/3pB3/p3p3/2Q2n2/3p1kb1/1r6/q4PBK/3r4 w - - 0 1",
+    "current_fen": "2n5/3pB3/p3p3/2Q2n2/3p1kb1/1r6/q4PBK/3r4 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2n5/3pB3/p3p3/2Q2n2/3p1kb1/1r6/q4PBK/3r4 w - - 0 1\"]\r\n\r\n1. Qe5+ Kxe5 2. f4+ Kxf4 3. Bg5+ Ke5 4. Bf6+ Kd6 5. Be7+ Kc7 6. Bd8+ Kb8 7. Bc7+ Ka7 8. Bb6+ Kb8 9. Bc7+\r\n*",
     "all_moves": [
       {
-        "uci": "d1e2",
-        "san": "Be2",
+        "uci": "c5e5",
+        "san": "Qe5+",
         "color": "white"
       },
       {
-        "uci": "b5b8",
-        "san": "Qb8",
+        "uci": "f4e5",
+        "san": "Kxe5",
         "color": "black"
       },
       {
-        "uci": "g3g8",
-        "san": "Rg8",
+        "uci": "f2f4",
+        "san": "f4+",
         "color": "white"
       },
       {
-        "uci": "b8b7",
-        "san": "Qb7",
+        "uci": "e5f4",
+        "san": "Kxf4",
         "color": "black"
       },
       {
-        "uci": "e2a6",
-        "san": "Ba6",
+        "uci": "e7g5",
+        "san": "Bg5+",
         "color": "white"
       },
       {
-        "uci": "b7b6",
-        "san": "Qb6",
+        "uci": "f4e5",
+        "san": "Ke5",
         "color": "black"
       },
       {
-        "uci": "g8g6",
-        "san": "Rg6+",
+        "uci": "g5f6",
+        "san": "Bf6+",
         "color": "white"
       },
       {
-        "uci": "e6f7",
-        "san": "Kf7",
+        "uci": "e5d6",
+        "san": "Kd6",
         "color": "black"
       },
       {
-        "uci": "g6b6",
-        "san": "Rxb6",
+        "uci": "f6e7",
+        "san": "Be7+",
+        "color": "white"
+      },
+      {
+        "uci": "d6c7",
+        "san": "Kc7",
+        "color": "black"
+      },
+      {
+        "uci": "e7d8",
+        "san": "Bd8+",
+        "color": "white"
+      },
+      {
+        "uci": "c7b8",
+        "san": "Kb8",
+        "color": "black"
+      },
+      {
+        "uci": "d8c7",
+        "san": "Bc7+",
+        "color": "white"
+      },
+      {
+        "uci": "b8a7",
+        "san": "Ka7",
+        "color": "black"
+      },
+      {
+        "uci": "c7b6",
+        "san": "Bb6+",
+        "color": "white"
+      },
+      {
+        "uci": "a7b8",
+        "san": "Kb8",
+        "color": "black"
+      },
+      {
+        "uci": "b6c7",
+        "san": "Bc7+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1e2",
-        "san": "Be2",
+        "uci": "c5e5",
+        "san": "Qe5+",
         "color": "white"
       },
       {
-        "uci": "g3g8",
-        "san": "Rg8",
+        "uci": "f2f4",
+        "san": "f4+",
         "color": "white"
       },
       {
-        "uci": "e2a6",
-        "san": "Ba6",
+        "uci": "e7g5",
+        "san": "Bg5+",
         "color": "white"
       },
       {
-        "uci": "g8g6",
-        "san": "Rg6+",
+        "uci": "g5f6",
+        "san": "Bf6+",
         "color": "white"
       },
       {
-        "uci": "g6b6",
-        "san": "Rxb6",
+        "uci": "f6e7",
+        "san": "Be7+",
+        "color": "white"
+      },
+      {
+        "uci": "e7d8",
+        "san": "Bd8+",
+        "color": "white"
+      },
+      {
+        "uci": "d8c7",
+        "san": "Bc7+",
+        "color": "white"
+      },
+      {
+        "uci": "c7b6",
+        "san": "Bb6+",
+        "color": "white"
+      },
+      {
+        "uci": "b6c7",
+        "san": "Bc7+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-16T13:30:59.274185+00:00",
-    "answer_posted": true,
+    "player_move_count": 9,
+    "posted_at": "2026-08-16T13:31:54.152235+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786887059274",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1538540581901308025,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxb6",
-        "correct": true,
-        "timestamp": "2026-08-16T13:31:34.207323+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bc4",
-        "correct": false,
-        "timestamp": "2026-08-16T13:31:24.216937+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786887114152",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
