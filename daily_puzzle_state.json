@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-05-09",
     "title": "For the Cause",
     "fen": "r3k3/1b2b3/p1nqQ3/1pp1n1B1/8/1B1P4/PPP3PP/5RK1 w - - 0 1",
-    "current_fen": "r3k3/1b2b3/p1nqQ3/1pp1n1B1/8/1B1P4/PPP3PP/5RK1 w - - 0 1",
+    "current_fen": "r4k2/1b2b3/p1nqQ3/1pp1n1B1/8/1B1P4/PPP3PP/6K1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3k3/1b2b3/p1nqQ3/1pp1n1B1/8/1B1P4/PPP3PP/5RK1 w - - 0 1\"]\r\n\r\n1. Rf8+ Kxf8 2. Qg8#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786883087715",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1538523924197937274,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rf8",
+        "correct": true,
+        "timestamp": "2026-08-16T12:24:52.639761+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rf8",
+        "correct": false,
+        "timestamp": "2026-08-16T12:24:53.082605+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
