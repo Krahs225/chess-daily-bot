@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-05-24",
     "title": "Chessbrah Birthday Bash",
     "fen": "5bk1/5p2/p1r3p1/Qp2P2p/1P5P/6P1/P2BqPK1/2R5 b - - 4 33",
-    "current_fen": "5bk1/5p2/p1R3p1/Qp2P2p/1P5P/6P1/P2q1PK1/8 b - - 0 34",
+    "current_fen": "5bk1/5p2/p1R3p1/Qp1qP2p/1P5P/6P1/P4P1K/8 b - - 2 35",
     "pgn": "[Event \"Canadian op\"]\r\n[Site \"Edmonton\"]\r\n[Date \"2009.07.15\"]\r\n[Round \"5\"]\r\n[White \"Sundar, Avinash\"]\r\n[Black \"Hansen, Eric\"]\r\n[Result \"0-1\"]\r\n[WhiteElo \"2093\"]\r\n[BlackElo \"2423\"]\r\n[ECO \"D79\"]\r\n[Plycount \"72\"]\r\n[FEN \"5bk1/5p2/p1r3p1/Qp2P2p/1P5P/6P1/P2BqPK1/2R5 b - - 4 33\"]\r\n\r\n33...Qxd2 34.Rxc6 Qd5+ 35.Kh2 Qxc6 0-1",
     "all_moves": [
       {
@@ -57,16 +57,22 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786883054436",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1538523785043378266,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxd2",
+        "move": "qd5",
         "correct": true,
-        "timestamp": "2026-08-16T12:24:20.919088+00:00"
+        "timestamp": "2026-08-16T12:24:22.955987+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxd2",
+        "correct": false,
+        "timestamp": "2026-08-16T12:24:22.084482+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
