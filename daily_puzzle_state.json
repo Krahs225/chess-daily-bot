@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-11-03",
     "title": "The Art of Equalizing",
     "fen": "2k3r1/1pp1q3/1p5p/5P2/4Q1pP/6Pn/PPPr1P1N/R3RK2 w - - 0 1",
-    "current_fen": "2k3r1/1pp1q3/1p5p/5P2/4Q1pP/6Pn/PPPr1P1N/R3RK2 w - - 0 1",
+    "current_fen": "2k5/1pp1q3/1p5p/5P2/4Q1rP/6Pn/PPPr1P2/R3RK2 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k3r1/1pp1q3/1p5p/5P2/4Q1pP/6Pn/PPPr1P1N/R3RK2 w - - 0 1\"]\r\n\r\n1. Nxg4 Rxg4 2. Qf3\r\n*",
     "all_moves": [
       {
@@ -42,8 +42,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786887478332",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1538542339734372535,
     "attempted_users": {
@@ -52,10 +52,16 @@
         "move": "qxb7",
         "correct": false,
         "timestamp": "2026-08-16T13:38:28.812060+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nxg4",
+        "correct": true,
+        "timestamp": "2026-08-16T13:38:44.661264+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
