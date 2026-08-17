@@ -1,92 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-05-30",
-    "title": "Engels-Maroczy Dresden 1936",
-    "fen": "2r3k1/1p3p2/pn1P2pp/4p3/6Q1/6B1/1bq2PPP/1R3RK1 w - - 0 1",
-    "current_fen": "3Q2k1/1p3p2/pn4pp/4p3/8/6B1/1q3PPP/5RK1 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/1p3p2/pn1P2pp/4p3/6Q1/6B1/1bq2PPP/1R3RK1 w - - 0 1\"]\r\n\r\n1. Rxb2 Qxb2 2. Qxc8+ Nxc8 3. d7 Nb6 4. d8=Q+\r\n*",
+    "url": "https://www.chess.com/daily/2019-06-01",
+    "title": "Approaching The Corner",
+    "fen": "2r3k1/2r2ppp/8/8/p7/1p6/PP3RPP/1K3R2 b - - 0 1",
+    "current_fen": "2r3k1/5ppp/8/8/p7/1p6/PP3RPP/1KR5 b - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/2r2ppp/8/8/p7/1p6/PP3RPP/1K3R2 b - - 0 1\"]\r\n\r\n1...Rc1+ 2. Rxc1 Rxc1 3. Kxc1 bxa2\r\n*",
     "all_moves": [
       {
-        "uci": "b1b2",
-        "san": "Rxb2",
-        "color": "white"
-      },
-      {
-        "uci": "c2b2",
-        "san": "Qxb2",
+        "uci": "c7c1",
+        "san": "Rc1+",
         "color": "black"
       },
       {
-        "uci": "g4c8",
-        "san": "Qxc8+",
+        "uci": "f1c1",
+        "san": "Rxc1",
         "color": "white"
       },
       {
-        "uci": "b6c8",
-        "san": "Nxc8",
+        "uci": "c8c1",
+        "san": "Rxc1+",
         "color": "black"
       },
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "b1c1",
+        "san": "Kxc1",
         "color": "white"
       },
       {
-        "uci": "c8b6",
-        "san": "Nb6",
+        "uci": "b3a2",
+        "san": "bxa2",
         "color": "black"
-      },
-      {
-        "uci": "d7d8q",
-        "san": "d8=Q+",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b1b2",
-        "san": "Rxb2",
-        "color": "white"
+        "uci": "c7c1",
+        "san": "Rc1+",
+        "color": "black"
       },
       {
-        "uci": "g4c8",
-        "san": "Qxc8+",
-        "color": "white"
+        "uci": "c8c1",
+        "san": "Rxc1+",
+        "color": "black"
       },
       {
-        "uci": "d6d7",
-        "san": "d7",
-        "color": "white"
-      },
-      {
-        "uci": "d7d8q",
-        "san": "d8=Q+",
-        "color": "white"
+        "uci": "b3a2",
+        "san": "bxa2",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-17T22:15:51.606699+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-17T22:16:35.887619+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787004951606",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1539035058172858460,
+    "puzzle_id": "random_1787004995887",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1539035244085125232,
     "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "d8=Q",
+      "550338389535227926": {
+        "name": "Nairyaaa",
+        "move": "rc1+",
         "correct": true,
-        "timestamp": "2026-08-17T22:16:31.389937+00:00"
+        "timestamp": "2026-08-17T22:23:25.833751+00:00"
       }
     },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_user_id": "550338389535227926",
+    "first_move_user_name": "Nairyaaa",
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
