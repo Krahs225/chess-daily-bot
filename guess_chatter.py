@@ -608,7 +608,11 @@ async def post_guess(
             total = add_points(
                 voter.id,
                 voter.display_name,
-                1
+                1,
+                transaction_id=(
+                    f"guess:{poll_message.id}:{voter.id}"
+                ),
+                source="guess-chatter",
             )
 
             rewarded.append(
