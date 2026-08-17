@@ -1,122 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-07-12",
-    "title": "One-Two Punch 🥊",
-    "fen": "8/2p5/8/2k2P1P/3p4/8/7p/7K w - - 0 1",
-    "current_fen": "5k1Q/2p5/8/8/8/8/3p3p/7K b - - 0 6",
-    "pgn": "[White \"Grigoriev\"]\n[Black \"Daily Puzzle Inspiration\"]\n[Result \"*\"]\n[FEN \"8/2p5/8/2k2P1P/3p4/8/7p/7K w - - 0 1\"]\n\n1. f6 Kd6 2. h6 d3 3. f7 Ke7 4. h7 d2 5. f8=Q+ Kxf8 6. h8=Q+ *",
+    "url": "https://www.chess.com/daily/2024-07-22",
+    "title": "The Rook's Secret Admirers",
+    "fen": "3rk1r1/5p2/Q1p1pP2/8/P2q4/5bB1/1PP1B2P/3RK3 b - - 0 1",
+    "current_fen": "3rk1r1/5p2/Q1p1pP2/8/P2q4/5bB1/1PP1B2P/3RK3 b - - 0 1",
+    "pgn": "[Result \"0-1\"]\r\n[FEN \"3rk1r1/5p2/Q1p1pP2/8/P2q4/5bB1/1PP1B2P/3RK3 b - - 0 1\"]\r\n\r\n1... Qg1+ 2. Bf1 Rxd1# 0-1",
     "all_moves": [
       {
-        "uci": "f5f6",
-        "san": "f6",
-        "color": "white"
-      },
-      {
-        "uci": "c5d6",
-        "san": "Kd6",
+        "uci": "d4g1",
+        "san": "Qg1+",
         "color": "black"
       },
       {
-        "uci": "h5h6",
-        "san": "h6",
+        "uci": "e2f1",
+        "san": "Bf1",
         "color": "white"
       },
       {
-        "uci": "d4d3",
-        "san": "d3",
+        "uci": "d8d1",
+        "san": "Rxd1#",
         "color": "black"
-      },
-      {
-        "uci": "f6f7",
-        "san": "f7",
-        "color": "white"
-      },
-      {
-        "uci": "d6e7",
-        "san": "Ke7",
-        "color": "black"
-      },
-      {
-        "uci": "h6h7",
-        "san": "h7",
-        "color": "white"
-      },
-      {
-        "uci": "d3d2",
-        "san": "d2",
-        "color": "black"
-      },
-      {
-        "uci": "f7f8q",
-        "san": "f8=Q+",
-        "color": "white"
-      },
-      {
-        "uci": "e7f8",
-        "san": "Kxf8",
-        "color": "black"
-      },
-      {
-        "uci": "h7h8q",
-        "san": "h8=Q+",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5f6",
-        "san": "f6",
-        "color": "white"
+        "uci": "d4g1",
+        "san": "Qg1+",
+        "color": "black"
       },
       {
-        "uci": "h5h6",
-        "san": "h6",
-        "color": "white"
-      },
-      {
-        "uci": "f6f7",
-        "san": "f7",
-        "color": "white"
-      },
-      {
-        "uci": "h6h7",
-        "san": "h7",
-        "color": "white"
-      },
-      {
-        "uci": "f7f8q",
-        "san": "f8=Q+",
-        "color": "white"
-      },
-      {
-        "uci": "h7h8q",
-        "san": "h8=Q+",
-        "color": "white"
+        "uci": "d8d1",
+        "san": "Rxd1#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-17T08:59:03.745560+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-17T09:02:27.173849+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786957143745",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1538834537801318450,
-    "attempted_users": {
-      "550338389535227926": {
-        "name": "Nairyaaa",
-        "move": "h8=Q+",
-        "correct": true,
-        "timestamp": "2026-08-17T09:02:00.301244+00:00"
-      }
-    },
-    "first_move_user_id": "550338389535227926",
-    "first_move_user_name": "Nairyaaa",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786957347173",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
