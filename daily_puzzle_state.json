@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-01-10",
     "title": "Unstoppable Mate",
     "fen": "8/8/8/6R1/5K2/5N2/8/3r3k w - - 0 1",
-    "current_fen": "8/8/8/6R1/5K2/5N2/8/3r3k w - - 0 1",
+    "current_fen": "8/8/8/3r2R1/8/5NK1/8/7k w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/6R1/5K2/5N2/8/3r3k w - - 0 1\"]\r\n\r\n1. Kg3 Rd5 2. Rg4 Rh5 3. Kf2 Rh2+ 4. Nxh2 Kxh2 5. Rh4#\r\n*",
     "all_moves": [
       {
@@ -87,20 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787004767668",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1539034286735495291,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rh5",
-        "correct": false,
-        "timestamp": "2026-08-17T22:12:56.260302+00:00"
+        "move": "kg3",
+        "correct": true,
+        "timestamp": "2026-08-17T22:13:01.993712+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
