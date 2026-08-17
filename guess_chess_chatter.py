@@ -1072,7 +1072,7 @@ async def post_chess_round(
             correct_index
         ]:
 
-            if voter.bot or voter.id in seen:
+            if voter.id in seen:
                 continue
 
             seen.add(
@@ -1080,27 +1080,35 @@ async def post_chess_round(
             )
 
             try:
+
                 total = add_points(
                     voter.id,
                     voter.display_name,
                     1,
+                    transaction_id=(
+                        f"chess:{poll_message.id}:{voter.id}"
+                    ),
+                    source="guess-chess-chatter",
                 )
 
                 rewarded.append(
                     (
                         voter.display_name,
-                        total,
+                        total
                     )
                 )
 
             except Exception as error:
+
                 print(
                     f"Chess leaderboard error "
-                    f"for {voter.display_name}: {error}",
-                    flush=True,
+                    f"for {voter.display_name}: "
+                    f"{error}",
+                    flush=True
                 )
 
     if rewarded:
+
         names = " • ".join(
             f"**{name} +1**"
             for name, _ in rewarded
