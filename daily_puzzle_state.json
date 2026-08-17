@@ -1,62 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-12-12",
-    "title": "Mate in 2",
-    "fen": "rn6/k1p5/b1P2Q2/8/8/8/2q5/7K w - - 0 1",
-    "current_fen": "rn6/k1p5/b1P5/2Q5/8/8/8/7K b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn6/k1p5/b1P2Q2/8/8/8/2q5/7K w - - 0 1\"]\r\n\r\n1. Qd4+ Qc5 2. Qxc5#\r\n*",
+    "url": "https://www.chess.com/daily/2024-01-30",
+    "title": "Capturing on the Edge",
+    "fen": "r1q1r1k1/5pp1/pn5p/8/Q7/6PN/5P1P/1RR3K1 w - - 0 33",
+    "current_fen": "r1q1r1k1/5pp1/pn5p/8/Q7/6PN/5P1P/1RR3K1 w - - 0 33",
+    "pgn": "[Event \"Vlissingen HZ op 02nd\"]\r\n[Site \"Vlissingen\"]\r\n[Date \"1998.07.15\"]\r\n[Round \"5\"]\r\n[White \"Mikhalevski, Victor\"]\r\n[Black \"Ikonnikov, Vyacheslav\"]\r\n[Result \"1-0\"]\r\n[ECO \"E01\"]\r\n[WhiteElo \"2540\"]\r\n[BlackElo \"2555\"]\r\n[FEN \"r1q1r1k1/5pp1/pn5p/8/Q7/6PN/5P1P/1RR3K1 w - - 0 33\"]\r\n\r\n33. Rxc8 Nxa4 34. Rc4 Rab8 35. Rxb8 Rxb8 36. Rxa4 *",
     "all_moves": [
       {
-        "uci": "f6d4",
-        "san": "Qd4+",
+        "uci": "c1c8",
+        "san": "Rxc8",
         "color": "white"
       },
       {
-        "uci": "c2c5",
-        "san": "Qc5",
+        "uci": "b6a4",
+        "san": "Nxa4",
         "color": "black"
       },
       {
-        "uci": "d4c5",
-        "san": "Qxc5#",
+        "uci": "c8c4",
+        "san": "Rc4",
+        "color": "white"
+      },
+      {
+        "uci": "a8b8",
+        "san": "Rab8",
+        "color": "black"
+      },
+      {
+        "uci": "b1b8",
+        "san": "Rxb8",
+        "color": "white"
+      },
+      {
+        "uci": "e8b8",
+        "san": "Rxb8",
+        "color": "black"
+      },
+      {
+        "uci": "c4a4",
+        "san": "Rxa4",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f6d4",
-        "san": "Qd4+",
+        "uci": "c1c8",
+        "san": "Rxc8",
         "color": "white"
       },
       {
-        "uci": "d4c5",
-        "san": "Qxc5#",
+        "uci": "c8c4",
+        "san": "Rc4",
+        "color": "white"
+      },
+      {
+        "uci": "b1b8",
+        "san": "Rxb8",
+        "color": "white"
+      },
+      {
+        "uci": "c4a4",
+        "san": "Rxa4",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-17T22:14:47.106649+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-17T22:14:59.430996+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787004887106",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1539034787711426642,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxc5",
-        "correct": true,
-        "timestamp": "2026-08-17T22:14:55.052872+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787004899431",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
