@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-06-09",
     "title": "Mate in 4",
     "fen": "1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 0 1",
-    "current_fen": "1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 0 1",
+    "current_fen": "1r3qkr/1bpn2b1/2np1pBp/1p2pPp1/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r3q1r/1bpn2bk/2np1p1p/1p2pPpB/pP1PP1N1/P1PRB1NP/5QP1/3R2K1 w - - 0 1\"]\r\n\r\n1. Bg6+ Kg8 2. Qa2+ d5 3. Qxd5+ Qf7 4. Qxf7#\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1786957612412",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1538836503138930769,
+    "attempted_users": {
+      "550338389535227926": {
+        "name": "Nairyaaa",
+        "move": "bg6+",
+        "correct": true,
+        "timestamp": "2026-08-17T09:07:52.027152+00:00"
+      }
+    },
+    "first_move_user_id": "550338389535227926",
+    "first_move_user_name": "Nairyaaa",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
