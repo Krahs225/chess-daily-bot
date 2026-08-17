@@ -75,110 +75,65 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "random",
+  "latest_puzzle_type": "daily",
   "current_puzzle": {
-    "url": "https://www.chess.com/daily/2026-08-16",
-    "title": "Drop the Anchor⚓",
-    "fen": "8/R6p/5p1k/1p3Pp1/2b3P1/4K2P/p7/8 b - - 0 38",
-    "current_fen": "8/R6p/5p1k/1p3Pp1/2b3P1/4K2P/p7/8 b - - 0 38",
-    "pgn": "[Result \"*\"]\n[FEN \"8/R6p/5p1k/1p3Pp1/2b3P1/4K2P/p7/8 b - - 0 38\"]\n\n38... Bb3 39. Ra3 b4 40. Ra7 Ba4 41. Rxa4 b3 42. Kd2 b2 43. Rxa2 b1=Q *",
+    "url": "https://www.chess.com/daily/2026-08-17",
+    "title": "Check for Treasure",
+    "fen": "8/8/7p/8/q7/4k3/7R/4K3 w - - 0 1",
+    "current_fen": "8/8/7p/8/q7/4k3/7R/4K3 w - - 0 1",
+    "pgn": "[Result \"*\"]\n[FEN \"8/8/7p/8/q7/4k3/7R/4K3 w - - 0 1\"]\n\n1. Rh3+ Kd4 2. Rh4+ Kc5 3. Rxa4 *",
     "all_moves": [
       {
-        "uci": "c4b3",
-        "san": "Bb3",
-        "color": "black"
-      },
-      {
-        "uci": "a7a3",
-        "san": "Ra3",
+        "uci": "h2h3",
+        "san": "Rh3+",
         "color": "white"
       },
       {
-        "uci": "b5b4",
-        "san": "b4",
+        "uci": "e3d4",
+        "san": "Kd4",
         "color": "black"
       },
       {
-        "uci": "a3a7",
-        "san": "Ra7",
+        "uci": "h3h4",
+        "san": "Rh4+",
         "color": "white"
       },
       {
-        "uci": "b3a4",
-        "san": "Ba4",
+        "uci": "d4c5",
+        "san": "Kc5",
         "color": "black"
       },
       {
-        "uci": "a7a4",
+        "uci": "h4a4",
         "san": "Rxa4",
         "color": "white"
-      },
-      {
-        "uci": "b4b3",
-        "san": "b3",
-        "color": "black"
-      },
-      {
-        "uci": "e3d2",
-        "san": "Kd2",
-        "color": "white"
-      },
-      {
-        "uci": "b3b2",
-        "san": "b2",
-        "color": "black"
-      },
-      {
-        "uci": "a4a2",
-        "san": "Rxa2",
-        "color": "white"
-      },
-      {
-        "uci": "b2b1q",
-        "san": "b1=Q",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4b3",
-        "san": "Bb3",
-        "color": "black"
+        "uci": "h2h3",
+        "san": "Rh3+",
+        "color": "white"
       },
       {
-        "uci": "b5b4",
-        "san": "b4",
-        "color": "black"
+        "uci": "h3h4",
+        "san": "Rh4+",
+        "color": "white"
       },
       {
-        "uci": "b3a4",
-        "san": "Ba4",
-        "color": "black"
-      },
-      {
-        "uci": "b4b3",
-        "san": "b3",
-        "color": "black"
-      },
-      {
-        "uci": "b3b2",
-        "san": "b2",
-        "color": "black"
-      },
-      {
-        "uci": "b2b1q",
-        "san": "b1=Q",
-        "color": "black"
+        "uci": "h4a4",
+        "san": "Rxa4",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 6,
-    "posted_at": "2026-08-16T11:04:17.923081+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-17T07:50:16.081963+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "daily_1786878257923"
+    "puzzle_id": "daily_1786953016081"
   },
   "leaderboard_last_posted_date": "2026-08-17"
 }
