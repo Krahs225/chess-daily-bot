@@ -3,601 +3,337 @@ import os
 import subprocess
 import threading
 import time
+from pathlib import Path
 
 LEADERBOARD_FILE = "shared_leaderboard.json"
-
-# Only protects concurrent calls inside ONE bot process.
-_LOCAL_LOCK = threading.Lock()
-
-PUSH_RETRIES = 8
+_LOCK = threading.Lock()
+MAX_RETRIES = 10
 
 
-def _run_git(args, check=False):
+def _run(args):
     return subprocess.run(
         args,
         capture_output=True,
         text=True,
-        check=check,
     )
 
 
 def _branch():
-    return os.getenv(
-        "GITHUB_REF_NAME",
-        "main",
-    )
+    return os.getenv("GITHUB_REF_NAME", "main")
 
 
-def _read_json_file():
-    path = Path(
-        LEADERBOARD_FILE
-    )
-
+def _load_local():
+    path = Path(LEADERBOARD_FILE)
     if not path.exists():
         return {}
 
     try:
-        with path.open(
-            "r",
-            encoding="utf-8",
-        ) as file:
-            data = json.load(file)
-
+        with path.open("r", encoding="utf-8") as f:
+            data = json.load(f)
         return data if isinstance(data, dict) else {}
-
     except Exception as error:
-        print(
-            f"[shared leaderboard] local read error: {error}",
-            flush=True,
-        )
+        print(f"[leaderboard] local read failed: {error}", flush=True)
         return {}
 
 
-def _write_json_file(scores):
-    path = Path(
-        LEADERBOARD_FILE
-    )
+def _write_local(scores):
+    path = Path(LEADERBOARD_FILE)
+    tmp = path.with_suffix(".tmp")
 
-    temp = path.with_suffix(
-        ".json.tmp"
-    )
-
-    with temp.open(
-        "w",
-        encoding="utf-8",
-    ) as file:
+    with tmp.open("w", encoding="utf-8") as f:
         json.dump(
             scores,
-            file,
+            f,
             indent=2,
             ensure_ascii=False,
             sort_keys=True,
         )
-        file.write("\n")
+        f.write("\n")
 
-    temp.replace(
-        path
-    )
+    tmp.replace(path)
 
 
-def _read_remote_scores():
-    """
-    Read the current leaderboard directly from origin without
-    changing the working tree.
-    """
+def _configure_git():
+    _run(["git", "config", "user.name", "Shared Chatter Bot"])
+    _run([
+        "git",
+        "config",
+        "user.email",
+        "shared-chatter-bot@users.noreply.github.com",
+    ])
+
+
+def _fetch_origin():
     branch = _branch()
-
-    result = _run_git(
-        [
-            "git",
-            "fetch",
-            "origin",
-            branch,
-        ]
-    )
+    result = _run(["git", "fetch", "origin", branch])
 
     if result.returncode != 0:
         print(
-            "[shared leaderboard] git fetch failed:",
-            result.stderr[-1000:],
+            "[leaderboard] git fetch failed: "
+            + result.stderr[-1000:],
             flush=True,
         )
-        return None
+        return False
 
-    result = _run_git(
-        [
-            "git",
-            "show",
-            f"origin/{branch}:{LEADERBOARD_FILE}",
-        ]
-    )
+    return True
+
+
+def _remote_scores():
+    branch = _branch()
+
+    result = _run([
+        "git",
+        "show",
+        f"origin/{branch}:{LEADERBOARD_FILE}",
+    ])
 
     if result.returncode != 0:
-        # File may not exist on origin yet.
         return {}
 
     try:
-        data = json.loads(
-            result.stdout
-        )
+        data = json.loads(result.stdout)
         return data if isinstance(data, dict) else {}
     except Exception as error:
         print(
-            f"[shared leaderboard] remote JSON error: {error}",
+            f"[leaderboard] remote JSON failed: {error}",
             flush=True,
         )
         return {}
 
 
-def _set_git_identity():
-    _run_git(
-        [
-            "git",
-            "config",
-            "user.name",
-            "Shared Chatter Bot",
-        ],
-    )
+def _reset_to_origin():
+    branch = _branch()
 
-    _run_git(
-        [
-            "git",
-            "config",
-            "user.email",
-            "shared-chatter-bot@users.noreply.github.com",
-        ],
-    )
+    result = _run([
+        "git",
+        "reset",
+        "--hard",
+        f"origin/{branch}",
+    ])
+
+    if result.returncode != 0:
+        print(
+            "[leaderboard] git reset failed: "
+            + result.stderr[-1000:],
+            flush=True,
+        )
+        return False
+
+    return True
 
 
 def _commit_push():
-    """
-    Push the current local leaderboard.
-
-    Returns:
-      True  = push succeeded or nothing needed pushing
-      False = push failed
-    """
     branch = _branch()
 
-    for _ in range(
-        PUSH_RETRIES
-    ):
-        _set_git_identity()
+    _configure_git()
 
-        _run_git(
-            [
-                "git",
-                "add",
-                LEADERBOARD_FILE,
-            ]
-        )
+    add = _run([
+        "git",
+        "add",
+        LEADERBOARD_FILE,
+    ])
 
-        commit = _run_git(
-            [
-                "git",
-                "commit",
-                "-m",
-                "Update shared leaderboard",
-            ]
-        )
+    if add.returncode != 0:
+        return False
 
-        if commit.returncode != 0:
-            # Usually: nothing to commit.
-            return True
+    commit = _run([
+        "git",
+        "commit",
+        "-m",
+        "Update shared leaderboard",
+    ])
 
-        push = _run_git(
-            [
-                "git",
-                "push",
-                "origin",
-                f"HEAD:{branch}",
-            ]
-        )
+    if commit.returncode != 0:
+        return False
 
-        if push.returncode == 0:
-            return True
+    push = _run([
+        "git",
+        "push",
+        "origin",
+        f"HEAD:{branch}",
+    ])
 
-        # Another Action pushed first.
-        # Rebase our commit on top of the new remote.
-        fetch = _run_git(
-            [
-                "git",
-                "fetch",
-                "origin",
-                branch,
-            ]
-        )
-
-        if fetch.returncode != 0:
-            time.sleep(0.5)
-            continue
-
-        rebase = _run_git(
-            [
-                "git",
-                "rebase",
-                f"origin/{branch}",
-            ]
-        )
-
-        if rebase.returncode == 0:
-            continue
-
-        # The leaderboard is JSON and should not normally conflict
-        # when the transaction logic below is used. If an old conflict
-        # does happen, abort safely and let the transaction retry from
-        # the latest remote data.
-        _run_git(
-            [
-                "git",
-                "rebase",
-                "--abort",
-            ]
-        )
-
-        time.sleep(0.5)
-
-    return False
+    return push.returncode == 0
 
 
-def _merge_increment(
-    remote_scores,
+def _add_points_transaction(
     user_id,
     display_name,
     amount,
 ):
-    """
-    Apply ONE point transaction to the latest remote snapshot.
-    Points never decrease.
-    """
-    scores = dict(
-        remote_scores or {}
+    amount = float(amount)
+
+    if amount < 0:
+        raise ValueError(
+            "Negative point changes are not allowed."
+        )
+
+    local_fallback = _load_local()
+
+    for attempt in range(1, MAX_RETRIES + 1):
+
+        if not _fetch_origin():
+            time.sleep(min(2, attempt * 0.25))
+            continue
+
+        remote = _remote_scores()
+
+        if not _reset_to_origin():
+            time.sleep(min(2, attempt * 0.25))
+            continue
+
+        # Only use the local copy when the remote leaderboard is truly empty.
+        if not remote and local_fallback:
+            scores = dict(local_fallback)
+        else:
+            scores = dict(remote)
+
+        key = str(user_id)
+        entry = scores.get(key, {})
+
+        old_points = float(
+            entry.get("points", 0)
+        )
+
+        new_points = round(
+            old_points + amount,
+            2,
+        )
+
+        scores[key] = {
+            "name": display_name,
+            "points": new_points,
+        }
+
+        _write_local(scores)
+
+        if _commit_push():
+            return float(new_points)
+
+        # Another bot pushed between our fetch and push.
+        time.sleep(min(2, attempt * 0.25))
+
+    raise RuntimeError(
+        "Could not safely update shared leaderboard."
     )
 
-    key = str(
-        user_id
-    )
 
-    old_entry = scores.get(
-        key,
-        {},
-    )
+def add_points(user_id, display_name, amount):
+    with _LOCK:
+        return _add_points_transaction(
+            user_id,
+            display_name,
+            amount,
+        )
 
-    old_points = float(
-        old_entry.get(
+
+def _current_scores():
+    local = _load_local()
+
+    if not _fetch_origin():
+        return local
+
+    remote = _remote_scores()
+
+    _write_local(remote)
+
+    return remote
+
+
+def get_score(user_id):
+    with _LOCK:
+        scores = _current_scores()
+
+    return float(
+        scores.get(
+            str(user_id),
+            {},
+        ).get(
             "points",
             0,
         )
     )
 
-    increment = float(
-        amount
+
+def format_points(value):
+    value = float(value)
+    return (
+        str(int(value))
+        if value.is_integer()
+        else f"{value:.1f}"
     )
 
-    if increment < 0:
-        raise ValueError(
-            "Negative point changes are not allowed."
-        )
 
-    new_points = round(
-        old_points + increment,
-        2,
-    )
-
-    scores[key] = {
-        "name": display_name,
-        "points": new_points,
-    }
-
-    return scores, new_points
-
-
-def add_points(
-    user_id,
-    display_name,
-    amount,
-):
-    """
-    Atomically add points to the shared leaderboard across separate
-    GitHub Actions.
-
-    If another bot pushes between our read and push, the transaction
-    retries from the newest remote score and applies the increment
-    again. This prevents a +1 from being lost or an older score from
-    overwriting a newer score.
-    """
-    with _LOCAL_LOCK:
-
-        last_error = None
-
-        for _ in range(
-            PUSH_RETRIES
-        ):
-            remote_scores = _read_remote_scores()
-
-            if remote_scores is None:
-                # Temporary fetch failure: fall back to the local
-                # snapshot, but still retry the push.
-                remote_scores = _read_json_file()
-
-            new_scores, new_total = _merge_increment(
-                remote_scores,
-                user_id,
-                display_name,
-                amount,
-            )
-
-            _write_json_file(
-                new_scores
-            )
-
-            if _commit_push():
-                return float(
-                    new_total
-                )
-
-            # The push was rejected because another Action changed
-            # origin. Reset the working tree to the newest origin and
-            # retry the SAME increment against the newest score.
-            branch = _branch()
-
-            _run_git(
-                [
-                    "fetch",
-                    "origin",
-                    branch,
-                ]
-            )
-
-            reset = _run_git(
-                [
-                    "git",
-                    "reset",
-                    "--hard",
-                    f"origin/{branch}",
-                ]
-            )
-
-            if reset.returncode != 0:
-                last_error = reset.stderr
-                time.sleep(0.5)
-
-        # Local persistence is still better than losing the user's
-        # point if GitHub is temporarily unavailable.
-        raise RuntimeError(
-            "Could not safely save shared leaderboard after "
-            f"{PUSH_RETRIES} retries: {last_error or 'unknown error'}"
-        )
-
-
-def _current_scores():
-    """
-    Prefer origin's current leaderboard. Fall back to local.
-    """
-    remote = _read_remote_scores()
-
-    if remote is not None:
-        _write_json_file(
-            remote
-        )
-        return remote
-
-    return _read_json_file()
-
-
-
-def _current_scores():
-    """
-    The bots stay online for a long time, so their local JSON can become
-    stale after the other bot awards points. Always prefer the newest
-    leaderboard from origin for read-only operations.
-    """
-    branch = _branch()
-
-    fetch = _run(
-        [
-            "git",
-            "fetch",
-            "origin",
-            branch,
-        ]
-    )
-
-    if fetch.returncode == 0:
-        remote = _remote_scores(
-            branch
-        )
-
-        if remote is not None:
-            _write_local(
-                remote
-            )
-            return remote
-
-    return _load_local()
-
-
-def get_score(
-    user_id,
-):
-    with _LOCK:
-        scores = _current_scores()
-
-        return float(
-            scores.get(
-                str(user_id),
-                {},
-            ).get(
-                "points",
-                0,
-            )
-        )
-
-
-def format_points(
-    value,
-):
-    value = float(
-        value
-    )
-
-    if value.is_integer():
-        return str(
-            int(value)
-        )
-
-    return f"{value:.1f}"
-
-
-def _ordered_scores(
-    scores,
-):
+def _ordered(scores):
     return sorted(
         scores.items(),
         key=lambda item: (
-            -float(
-                item[1].get(
-                    "points",
-                    0,
-                )
-            ),
+            -float(item[1].get("points", 0)),
             str(
-                item[1].get(
-                    "name",
-                    "Unknown",
-                )
+                item[1].get("name", "Unknown")
             ).casefold(),
         ),
     )
 
 
-def personal_ranking(
-    user_id,
-):
-    with _LOCAL_LOCK:
+def personal_ranking(user_id):
+    with _LOCK:
         scores = _current_scores()
 
-    ordered = _ordered_scores(
-        scores
+    ordered = _ordered(scores)
+
+    position = next(
+        (
+            i
+            for i, (uid, _) in enumerate(ordered)
+            if str(uid) == str(user_id)
+        ),
+        None,
     )
-
-    position = None
-
-    for index, (
-        uid,
-        _entry,
-    ) in enumerate(
-        ordered
-    ):
-        if str(uid) == str(
-            user_id
-        ):
-            position = index
-            break
 
     if position is None:
         return ""
 
-    start = max(
-        0,
-        position - 1,
-    )
+    start = max(0, position - 1)
+    end = min(len(ordered), position + 2)
 
-    end = min(
-        len(ordered),
-        position + 2,
-    )
+    lines = ["🏆 **Your ranking**"]
 
-    lines = [
-        "🏆 **Your ranking**"
-    ]
+    for i in range(start, end):
+        uid, entry = ordered[i]
+        points = float(entry.get("points", 0))
+        word = "point" if points == 1 else "points"
+        marker = " ← you" if str(uid) == str(user_id) else ""
 
-    for index in range(
-        start,
-        end,
-    ):
-        uid, entry = ordered[index]
-
-        points = float(
-            entry.get(
-                "points",
-                0,
-            )
+        lines.append(
+            f"**#{i + 1} "
+            f"{entry.get('name', 'Unknown')} — "
+            f"{format_points(points)} "
+            f"{word}{marker}**"
         )
 
-        word = (
-            "point"
-            if points == 1
-            else "points"
-        )
-
-        name = entry.get(
-            "name",
-            "Unknown",
-        )
-
-        if str(uid) == str(
-            user_id
-        ):
-            lines.append(
-                f"**#{index + 1} "
-                f"{name} — "
-                f"{format_points(points)} "
-                f"{word} ← you**"
-            )
-        else:
-            lines.append(
-                f"#{index + 1} "
-                f"{name} — "
-                f"{format_points(points)} "
-                f"{word}"
-            )
-
-    return "\n".join(
-        lines
-    )
+    return "\n".join(lines)
 
 
 def full_leaderboard(
     title="🏆 **Shared Leaderboard**",
 ):
-    with _LOCAL_LOCK:
+    with _LOCK:
         scores = _current_scores()
 
-    ordered = _ordered_scores(
-        scores
-    )
+    ordered = _ordered(scores)
 
     if not ordered:
-        return (
-            f"{title}\n\n"
-            "No points yet!"
-        )
+        return f"{title}\n\nNo points yet!"
 
-    lines = [
-        title,
-        "",
-    ]
+    lines = [title, ""]
 
-    for rank, (
-        _uid,
-        entry,
-    ) in enumerate(
+    for rank, (_, entry) in enumerate(
         ordered,
         start=1,
     ):
-        points = float(
-            entry.get(
-                "points",
-                0,
-            )
-        )
-
-        word = (
-            "point"
-            if points == 1
-            else "points"
-        )
+        points = float(entry.get("points", 0))
+        word = "point" if points == 1 else "points"
 
         if rank == 1:
             prefix = "🥇"
@@ -611,10 +347,7 @@ def full_leaderboard(
         lines.append(
             f"{prefix} "
             f"{entry.get('name', 'Unknown')} — "
-            f"**{format_points(points)} "
-            f"{word}**"
+            f"**{format_points(points)} {word}**"
         )
 
-    return "\n".join(
-        lines
-    )
+    return "\n".join(lines)
