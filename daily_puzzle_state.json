@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-06-01",
-    "title": "Approaching The Corner",
-    "fen": "2r3k1/2r2ppp/8/8/p7/1p6/PP3RPP/1K3R2 b - - 0 1",
-    "current_fen": "6k1/5ppp/8/8/p7/8/pP3RPP/2K5 w - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/2r2ppp/8/8/p7/1p6/PP3RPP/1K3R2 b - - 0 1\"]\r\n\r\n1...Rc1+ 2. Rxc1 Rxc1 3. Kxc1 bxa2\r\n*",
+    "url": "https://www.chess.com/daily/2023-10-10",
+    "title": "The Birthday Boy's Checkmate Bash",
+    "fen": "2r1kb1r/p2n1p1p/1p1Q2p1/q1nNP3/8/5N2/PPP3PP/1K1RR3 w - - 0 19",
+    "current_fen": "2r1kb1r/p2n1p1p/1p1Q2p1/q1nNP3/8/5N2/PPP3PP/1K1RR3 w - - 0 19",
+    "pgn": "[Event \"Live Chess\"]\r\n[Site \"Chess.com\"]\r\n[Date \"2015.04.30\"]\r\n[Round \"?\"]\r\n[White \"DanielRensch\"]\r\n[Black \"grandmastergauri\"]\r\n[Result \"1-0\"]\r\n[ECO \"B06\"]\r\n[WhiteElo \"2486\"]\r\n[BlackElo \"2394\"]\r\n[SetUp \"1\"]\r\n[FEN \"2r1kb1r/p2n1p1p/1p1Q2p1/q1nNP3/8/5N2/PPP3PP/1K1RR3 w - - 0 19\"]\r\n[PlyCount \"5\"]\r\n\r\n19. Nf6+ Kd8 20. Qxd7+ Nxd7 21. Rxd7# 1-0",
     "all_moves": [
       {
-        "uci": "c7c1",
-        "san": "Rc1+",
-        "color": "black"
-      },
-      {
-        "uci": "f1c1",
-        "san": "Rxc1",
+        "uci": "d5f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "c8c1",
-        "san": "Rxc1+",
+        "uci": "e8d8",
+        "san": "Kd8",
         "color": "black"
       },
       {
-        "uci": "b1c1",
-        "san": "Kxc1",
+        "uci": "d6d7",
+        "san": "Qxd7+",
         "color": "white"
       },
       {
-        "uci": "b3a2",
-        "san": "bxa2",
+        "uci": "c5d7",
+        "san": "Nxd7",
         "color": "black"
+      },
+      {
+        "uci": "d1d7",
+        "san": "Rxd7#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c7c1",
-        "san": "Rc1+",
-        "color": "black"
+        "uci": "d5f6",
+        "san": "Nf6+",
+        "color": "white"
       },
       {
-        "uci": "c8c1",
-        "san": "Rxc1+",
-        "color": "black"
+        "uci": "d6d7",
+        "san": "Qxd7+",
+        "color": "white"
       },
       {
-        "uci": "b3a2",
-        "san": "bxa2",
-        "color": "black"
+        "uci": "d1d7",
+        "san": "Rxd7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-17T22:16:35.887619+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-17T22:24:49.409054+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787004995887",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1539035244085125232,
-    "attempted_users": {
-      "550338389535227926": {
-        "name": "Nairyaaa",
-        "move": "bxa2",
-        "correct": true,
-        "timestamp": "2026-08-17T22:24:06.034673+00:00"
-      }
-    },
-    "first_move_user_id": "550338389535227926",
-    "first_move_user_name": "Nairyaaa",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787005489409",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
