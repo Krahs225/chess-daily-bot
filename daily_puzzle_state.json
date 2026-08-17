@@ -1,92 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-01-30",
-    "title": "Capturing on the Edge",
-    "fen": "r1q1r1k1/5pp1/pn5p/8/Q7/6PN/5P1P/1RR3K1 w - - 0 33",
-    "current_fen": "1r4k1/5pp1/p6p/8/R7/6PN/5P1P/6K1 b - - 0 36",
-    "pgn": "[Event \"Vlissingen HZ op 02nd\"]\r\n[Site \"Vlissingen\"]\r\n[Date \"1998.07.15\"]\r\n[Round \"5\"]\r\n[White \"Mikhalevski, Victor\"]\r\n[Black \"Ikonnikov, Vyacheslav\"]\r\n[Result \"1-0\"]\r\n[ECO \"E01\"]\r\n[WhiteElo \"2540\"]\r\n[BlackElo \"2555\"]\r\n[FEN \"r1q1r1k1/5pp1/pn5p/8/Q7/6PN/5P1P/1RR3K1 w - - 0 33\"]\r\n\r\n33. Rxc8 Nxa4 34. Rc4 Rab8 35. Rxb8 Rxb8 36. Rxa4 *",
+    "url": "https://www.chess.com/daily/2013-08-25",
+    "title": "Bishop Pair Power",
+    "fen": "2r4k/1p2b2p/NB4p1/3B4/8/6PP/P6K/8 w - - 0 1",
+    "current_fen": "2r4k/1p5p/N4bp1/3B4/3B4/6PP/P6K/8 w - - 2 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r4k/1p2b2p/NB4p1/3B4/8/6PP/P6K/8 w - - 0 1\"]\r\n\r\n1. Bd4+ Bf6 2. Bxf6# \r\n*",
     "all_moves": [
       {
-        "uci": "c1c8",
-        "san": "Rxc8",
+        "uci": "b6d4",
+        "san": "Bd4+",
         "color": "white"
       },
       {
-        "uci": "b6a4",
-        "san": "Nxa4",
+        "uci": "e7f6",
+        "san": "Bf6",
         "color": "black"
       },
       {
-        "uci": "c8c4",
-        "san": "Rc4",
-        "color": "white"
-      },
-      {
-        "uci": "a8b8",
-        "san": "Rab8",
-        "color": "black"
-      },
-      {
-        "uci": "b1b8",
-        "san": "Rxb8",
-        "color": "white"
-      },
-      {
-        "uci": "e8b8",
-        "san": "Rxb8",
-        "color": "black"
-      },
-      {
-        "uci": "c4a4",
-        "san": "Rxa4",
+        "uci": "d4f6",
+        "san": "Bxf6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1c8",
-        "san": "Rxc8",
+        "uci": "b6d4",
+        "san": "Bd4+",
         "color": "white"
       },
       {
-        "uci": "c8c4",
-        "san": "Rc4",
-        "color": "white"
-      },
-      {
-        "uci": "b1b8",
-        "san": "Rxb8",
-        "color": "white"
-      },
-      {
-        "uci": "c4a4",
-        "san": "Rxa4",
+        "uci": "d4f6",
+        "san": "Bxf6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-17T22:14:59.430996+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-17T22:15:40.566773+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787004899431",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1539034839653679176,
+    "puzzle_id": "random_1787004940566",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1539035012459143230,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rxa4",
+        "move": "bd4",
         "correct": true,
-        "timestamp": "2026-08-17T22:15:34.757100+00:00"
+        "timestamp": "2026-08-17T22:15:44.615722+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
