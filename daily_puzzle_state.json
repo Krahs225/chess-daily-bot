@@ -1,107 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-03-08",
-    "title": "Fine Tuning Your Endgame Technique",
-    "fen": "8/8/8/5K2/7k/6pp/8/R7 w - - 0 1",
-    "current_fen": "8/6k1/8/5K2/8/6R1/6p1/8 b - - 1 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/5K2/7k/6pp/8/R7 w - - 0 1\"]\r\n\r\n1. Ra4+ Kh5 2. Ra8 Kh6 3. Rh8+ Kg7 4. Rxh3 g2 5. Rg3+\r\n*",
+    "url": "https://www.chess.com/daily/2015-07-13",
+    "title": "Boxed In",
+    "fen": "8/8/8/8/6p1/6Q1/3B4/3K1k2 w - - 0 1",
+    "current_fen": "8/8/8/8/6p1/6Q1/3B4/3K1k2 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/8/6p1/6Q1/3B4/3K1k2 w - - 0 1\"]\r\n\r\n1. Kc2 Ke2 2. Qg2#\r\n*",
     "all_moves": [
       {
-        "uci": "a1a4",
-        "san": "Ra4+",
+        "uci": "d1c2",
+        "san": "Kc2",
         "color": "white"
       },
       {
-        "uci": "h4h5",
-        "san": "Kh5",
+        "uci": "f1e2",
+        "san": "Ke2",
         "color": "black"
-      },
-      {
-        "uci": "a4a8",
-        "san": "Ra8",
-        "color": "white"
-      },
-      {
-        "uci": "h5h6",
-        "san": "Kh6",
-        "color": "black"
-      },
-      {
-        "uci": "a8h8",
-        "san": "Rh8+",
-        "color": "white"
-      },
-      {
-        "uci": "h6g7",
-        "san": "Kg7",
-        "color": "black"
-      },
-      {
-        "uci": "h8h3",
-        "san": "Rxh3",
-        "color": "white"
       },
       {
         "uci": "g3g2",
-        "san": "g2",
-        "color": "black"
-      },
-      {
-        "uci": "h3g3",
-        "san": "Rg3+",
+        "san": "Qg2#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a1a4",
-        "san": "Ra4+",
+        "uci": "d1c2",
+        "san": "Kc2",
         "color": "white"
       },
       {
-        "uci": "a4a8",
-        "san": "Ra8",
-        "color": "white"
-      },
-      {
-        "uci": "a8h8",
-        "san": "Rh8+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h3",
-        "san": "Rxh3",
-        "color": "white"
-      },
-      {
-        "uci": "h3g3",
-        "san": "Rg3+",
+        "uci": "g3g2",
+        "san": "Qg2#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-17T09:03:26.037763+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-17T09:05:10.805889+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1786957406037",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1538835637573132299,
-    "attempted_users": {
-      "550338389535227926": {
-        "name": "Nairyaaa",
-        "move": "rg3+",
-        "correct": true,
-        "timestamp": "2026-08-17T09:04:59.109471+00:00"
-      }
-    },
-    "first_move_user_id": "550338389535227926",
-    "first_move_user_name": "Nairyaaa",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1786957510805",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
