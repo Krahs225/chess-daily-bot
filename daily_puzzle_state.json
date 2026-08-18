@@ -1,65 +1,51 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-05-18",
-    "title": "Winning Simplification",
-    "fen": "r5k1/2R3pp/1b2P3/p1p1P3/Pp6/1Pp1pPqP/2Q1P3/5K1R w Kq - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/2R3pp/1b2P3/p1p1P3/Pp6/1Pp1pPqP/2Q1P3/5K1R w Kq - 0 1\"]\r\n\r\n1. Rxg7+ Kxg7 2. Rg1 Qxg1+ 3. Kxg1\r\n*",
+    "url": "https://www.chess.com/daily/2013-07-24",
+    "title": "Surprise Mate",
+    "fen": "n6n/1Kpp3q/8/2pkPp1P/P5Q1/2B3p1/1PP1P1Nb/7r w - - 0 1",
+    "current_fen": "n6n/1Kpp3q/8/2pkPp1P/P5Q1/2B3p1/1PP1P1Nb/7r w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"n6n/1Kpp3q/8/2pkPp1P/P5Q1/2B3p1/1PP1P1Nb/7r w - - 0 1\"]\r\n\r\n1. Qc4+ Kxc4 2. Ne3#\r\n*",
     "all_moves": [
       {
-        "uci": "c7g7",
-        "san": "Rxg7+",
+        "uci": "g4c4",
+        "san": "Qc4+",
         "color": "white"
       },
       {
-        "uci": "g8g7",
-        "san": "Kxg7",
+        "uci": "d5c4",
+        "san": "Kxc4",
         "color": "black"
       },
       {
-        "uci": "h1g1",
-        "san": "Rg1",
-        "color": "white"
-      },
-      {
-        "uci": "g3g1",
-        "san": "Qxg1+",
-        "color": "black"
-      },
-      {
-        "uci": "f1g1",
-        "san": "Kxg1",
+        "uci": "g2e3",
+        "san": "Ne3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c7g7",
-        "san": "Rxg7+",
+        "uci": "g4c4",
+        "san": "Qc4+",
         "color": "white"
       },
       {
-        "uci": "h1g1",
-        "san": "Rg1",
-        "color": "white"
-      },
-      {
-        "uci": "f1g1",
-        "san": "Kxg1",
+        "uci": "g2e3",
+        "san": "Ne3#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-18T11:57:21.252256+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-18T12:21:26.206484+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787054241252",
-    "current_fen": "r5k1/2R3pp/1b2P3/p1p1P3/Pp6/1Pp1pPqP/2Q1P3/5K1R w Kq - 0 1",
+    "puzzle_id": "random_1787055686206",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
