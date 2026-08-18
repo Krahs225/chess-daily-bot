@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-02-22",
     "title": "Assult on the King!",
     "fen": "r4bk1/pbq2pp1/1pn1p2p/8/4N3/1P2P1P1/PB2QPBP/3R2K1 w - - 0 1",
-    "current_fen": "r4bk1/pbq2p2/1pn1pp1p/8/8/1P2P1P1/PB2QPBP/3R2K1 w - - 0 2",
+    "current_fen": "r4b2/pbq2p1k/1pn1pp1p/8/6Q1/1P2P1P1/PB3PBP/3R2K1 w - - 2 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4bk1/pbq2pp1/1pn1p2p/8/4N3/1P2P1P1/PB2QPBP/3R2K1 w - - 0 1\"]\r\n\r\n1. Nf6+ gxf6 2. Qg4+ Kh7 3. Be4+ f5 4. Bxf5+ exf5 5. Qxf5+ Kg8 6. Qg4+ Kh7 7. Rd7\r\n*",
     "all_moves": [
       {
@@ -117,8 +117,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787056769454",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1539252400702103703,
     "attempted_users": {
@@ -127,13 +127,21 @@
         "move": "Nf6",
         "correct": true,
         "timestamp": "2026-08-18T12:39:41.602779+00:00"
+      },
+      "362606514764251137": {
+        "name": "Sharkmeister",
+        "move": "qg4",
+        "correct": true,
+        "timestamp": "2026-08-18T12:40:04.040214+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "362606514764251137"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
