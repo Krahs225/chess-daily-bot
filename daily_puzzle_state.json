@@ -75,72 +75,65 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "random",
+  "latest_puzzle_type": "daily",
   "current_puzzle": {
-    "url": "https://www.chess.com/daily/2026-08-17",
-    "title": "Check for Treasure",
-    "fen": "8/8/7p/8/q7/4k3/7R/4K3 w - - 0 1",
-    "current_fen": "8/8/7p/8/q7/4k3/7R/4K3 w - - 0 1",
-    "pgn": "[Result \"*\"]\n[FEN \"8/8/7p/8/q7/4k3/7R/4K3 w - - 0 1\"]\n\n1. Rh3+ Kd4 2. Rh4+ Kc5 3. Rxa4 *",
+    "url": "https://www.chess.com/daily/2026-08-18",
+    "title": "Shake and Bake",
+    "fen": "5n1r/p5pk/R7/2b5/1p2r3/1P4qP/6P1/2BQ1R1K w - - 0 1",
+    "current_fen": "5n1r/p5pk/R7/2b5/1p2r3/1P4qP/6P1/2BQ1R1K w - - 0 1",
+    "pgn": "[Result \"1-0\"]\n[FEN \"5n1r/p5pk/R7/2b5/1p2r3/1P4qP/6P1/2BQ1R1K w - - 0 1\"]\n\n1. Qh5+ Kg8 2. Qf7+ Kh7 3. Rh6# 1-0",
     "all_moves": [
       {
-        "uci": "h2h3",
-        "san": "Rh3+",
+        "uci": "d1h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "e3d4",
-        "san": "Kd4",
+        "uci": "h7g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "h3h4",
-        "san": "Rh4+",
+        "uci": "h5f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "d4c5",
-        "san": "Kc5",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "h4a4",
-        "san": "Rxa4",
+        "uci": "a6h6",
+        "san": "Rh6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h2h3",
-        "san": "Rh3+",
+        "uci": "d1h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "h3h4",
-        "san": "Rh4+",
+        "uci": "h5f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "h4a4",
-        "san": "Rxa4",
+        "uci": "a6h6",
+        "san": "Rh6#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-17T07:50:16.081963+00:00",
-    "answer_posted": true,
-    "winner_user_id": "550338389535227926",
-    "winner_name": "Nairyaaa",
-    "latest_attempts": {
-      "550338389535227926": {
-        "name": "Nairyaaa",
-        "moves": "rh3+ rh4+ rxa4",
-        "correct": true,
-        "timestamp": "2026-08-17T08:55:00.667043+00:00"
-      }
-    },
-    "puzzle_id": "daily_1786953016081"
+    "posted_at": "2026-08-18T07:56:54.911505+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "daily_1787039814911"
   },
   "leaderboard_last_posted_date": "2026-08-18"
 }
