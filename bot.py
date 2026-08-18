@@ -3394,17 +3394,49 @@ async def on_message(
         # Moves accept both forms:
         #   !Qh6
         #   Qh6
-        move_text = (
+        candidate_move = (
             content[1:].strip()
             if content.startswith("!")
             else content.strip()
         )
 
-        if not move_text:
+        if not candidate_move:
             return
 
-        # Plain non-command text is treated as a move. The existing
-        # chess validation remains unchanged.
+        # Do NOT treat normal chat as a chess move.
+        #
+        # A move candidate must:
+        # - be short (<= 12 chars), and
+        # - consist only of chess-move-looking tokens.
+        #
+        # This keeps messages such as:
+        #   "what can the answer be?"
+        # from triggering the puzzle.
+        move_tokens = candidate_move.split()
+
+        if len(candidate_move) > 12:
+            return
+
+        chess_move_pattern = re.compile(
+            r"^(?:"
+            r"[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8][+#]?"
+            r"|O-O-O[+#]?"
+            r"|O-O[+#]?"
+            r"|0-0-0[+#]?"
+            r"|0-0[+#]?"
+            r")$",
+            re.IGNORECASE,
+        )
+
+        if not move_tokens or not all(
+            chess_move_pattern.fullmatch(
+                token
+            )
+            for token in move_tokens
+        ):
+            return
+
+        # Plain chess-like text is now treated as a move.
         latest_type = state.get(
             "latest_puzzle_type"
         )
