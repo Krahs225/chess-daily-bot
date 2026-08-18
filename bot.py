@@ -3469,7 +3469,7 @@ async def on_message(
             message,
             puzzle,
             answer_window,
-            move_text
+            candidate_move
         )
 
     except Exception as error:
