@@ -947,9 +947,11 @@ def board_after_player_progress(
     progress_count,
 ):
     """
-    Rebuild the board from the puzzle FEN after exactly
-    `progress_count` correct player moves, automatically playing
-    every opponent response in between.
+    Return the exact board state that the player should see
+    before making their next move.
+
+    progress_count = number of the player's moves already completed.
+    Opponent replies after those completed moves are played automatically.
     """
     board = chess.Board(
         puzzle["fen"]
@@ -960,11 +962,15 @@ def board_after_player_progress(
     ]
 
     player_moves_seen = 0
-
-    for expected in puzzle.get(
+    moves = puzzle.get(
         "all_moves",
-        [],
-    ):
+        []
+    )
+
+    if progress_count <= 0:
+        return board
+
+    for index, expected in enumerate(moves):
 
         move = chess.Move.from_uci(
             expected["uci"]
@@ -977,61 +983,36 @@ def board_after_player_progress(
             move
         )
 
-        if expected["color"] == player_color:
-            player_moves_seen += 1
+        if expected["color"] != player_color:
+            continue
 
-            if player_moves_seen >= progress_count:
-                # Automatically apply the opponent's response(s) until
-                # the next player move, so the next embed is ready.
-                continue
+        player_moves_seen += 1
 
-    # The loop above pushes the entire solution, which is not what we want
-    # for intermediate states. Rebuild properly, stopping after the requested
-    # player move and then automatically playing subsequent opponent moves.
-    board = chess.Board(
-        puzzle["fen"]
-    )
+        if player_moves_seen >= progress_count:
 
-    player_moves_seen = 0
-    moves = puzzle.get(
-        "all_moves",
-        [],
-    )
+            # After the player's successful move, automatically play
+            # the next opponent move(s), stopping before the next
+            # player move.
+            for following in moves[index + 1:]:
 
-    for index, expected in enumerate(moves):
+                if following["color"] == player_color:
+                    break
 
-        move = chess.Move.from_uci(
-            expected["uci"]
-        )
+                reply = chess.Move.from_uci(
+                    following["uci"]
+                )
 
-        if move not in board.legal_moves:
+                if reply not in board.legal_moves:
+                    break
+
+                board.push(
+                    reply
+                )
+
             break
 
-        board.push(move)
-
-        if expected["color"] == player_color:
-            player_moves_seen += 1
-
-            if player_moves_seen >= progress_count:
-
-                # Play all immediately-following opponent moves until it
-                # becomes the player's turn again or the solution ends.
-                for following in moves[index + 1:]:
-                    if following["color"] == player_color:
-                        break
-
-                    reply = chess.Move.from_uci(
-                        following["uci"]
-                    )
-
-                    if reply not in board.legal_moves:
-                        break
-
-                    board.push(reply)
-
-                break
-
     return board
+
 
 
 async def make_progress_board_file(
