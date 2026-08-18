@@ -1,5 +1,6 @@
 import discord
 import os
+import re
 import requests
 import chess
 import chess.svg
@@ -9,10 +10,11 @@ import cairosvg
 import asyncio
 import json
 import subprocess
-import re
 import time
+import threading
+import traceback
+import random
 from datetime import datetime, timezone
-
 
 
 # =========================================================
@@ -26,11 +28,10 @@ DAILY_PUZZLE_API = "https://api.chess.com/pub/puzzle"
 RANDOM_PUZZLE_API = "https://api.chess.com/pub/puzzle/random"
 
 STATE_FILE = "daily_puzzle_state.json"
-DAILY_LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
-DAILY_EVENTS_FILE = "daily_puzzle_score_events.json"
+LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
 
 PUZZLE_CHECK_INTERVAL = 5 * 60
-LEADERBOARD_INTERVAL = 10 * 60
+LEADERBOARD_INTERVAL = 24 * 60 * 60
 
 ANSWER_WINDOW = 12 * 60 * 60
 RANDOM_ANSWER_WINDOW = 12 * 60 * 60
@@ -56,7 +57,8 @@ state = {}
 scores = {}
 
 data_lock = asyncio.Lock()
-score_lock = asyncio.Lock()
+github_push_lock = threading.Lock()
+github_sync_task = None
 
 
 # =========================================================
@@ -117,489 +119,109 @@ def save_json(filename, data):
 
 
 # =========================================================
-# SOLID DAILY-ONLY SCORE LEDGER
-# =========================================================
-
-def load_daily_scores():
-    """
-    Daily has its own leaderboard.
-
-    The old daily_puzzle_leaderboard.json is the starting balance.
-    After migration, every new +1 is also recorded as an immutable
-    transaction in daily_puzzle_score_events.json.
-
-    A transaction ID prevents the same puzzle winner from ever
-    receiving the same point twice.
-    """
-    legacy = load_json(
-        DAILY_LEADERBOARD_FILE,
-        {}
-    )
-
-    events = load_json(
-        DAILY_EVENTS_FILE,
-        []
-    )
-
-    if not isinstance(events, list):
-        events = []
-
-    # One-time migration of the old Daily leaderboard.
-    if not events and isinstance(legacy, dict):
-        for user_id, entry in legacy.items():
-            try:
-                points = float(
-                    entry.get("points", 0)
-                )
-            except Exception:
-                points = 0.0
-
-            if points <= 0:
-                continue
-
-            events.append(
-                {
-                    "transaction_id":
-                        f"baseline:{user_id}:{points:g}",
-                    "user_id":
-                        str(user_id),
-                    "name":
-                        entry.get("name", "Unknown"),
-                    "points":
-                        points,
-                    "source":
-                        "legacy-daily-baseline",
-                }
-            )
-
-    totals = {}
-
-    for event in events:
-
-        user_id = str(
-            event.get(
-                "user_id",
-                ""
-            )
-        )
-
-        if not user_id:
-            continue
-
-        try:
-            amount = float(
-                event.get(
-                    "points",
-                    0
-                )
-            )
-        except Exception:
-            continue
-
-        entry = totals.setdefault(
-            user_id,
-            {
-                "name":
-                    event.get(
-                        "name",
-                        "Unknown"
-                    ),
-                "points":
-                    0.0,
-            }
-        )
-
-        entry["points"] = round(
-            entry["points"] + amount,
-            3,
-        )
-
-        if event.get("name"):
-            entry["name"] = event["name"]
-
-    return totals, events
-
-
-def daily_leaderboard_text():
-    global scores
-
-    scores, _ = load_daily_scores()
-
-    if not scores:
-        return (
-            "🏆 **Leaderboard**\n\n"
-            "No points yet!"
-        )
-
-    ordered = sorted(
-        scores.items(),
-        key=lambda item: (
-            -float(
-                item[1].get("points", 0)
-            ),
-            str(
-                item[1].get(
-                    "name",
-                    "Unknown"
-                )
-            ).casefold(),
-        ),
-    )
-
-    lines = [
-        "🏆 **Leaderboard**",
-        "",
-    ]
-
-    for rank, (_, entry) in enumerate(
-        ordered,
-        start=1,
-    ):
-        points = float(
-            entry.get(
-                "points",
-                0,
-            )
-        )
-
-        if points.is_integer():
-            point_text = str(
-                int(points)
-            )
-        else:
-            point_text = f"{points:g}"
-
-        word = (
-            "point"
-            if points == 1
-            else "points"
-        )
-
-        if rank == 1:
-            prefix = "🥇"
-        elif rank == 2:
-            prefix = "🥈"
-        elif rank == 3:
-            prefix = "🥉"
-        else:
-            prefix = f"**{rank}.**"
-
-        lines.append(
-            f"{prefix} "
-            f"{entry.get('name', 'Unknown')} — "
-            f"**{point_text} {word}**"
-        )
-
-    return "\n".join(lines)
-
-
-def daily_score_for(user_id):
-    scores, _ = load_daily_scores()
-
-    return float(
-        scores.get(
-            str(user_id),
-            {},
-        ).get(
-            "points",
-            0,
-        )
-    )
-
-
-def daily_personal_ranking(user_id):
-    scores, _ = load_daily_scores()
-
-    ordered = sorted(
-        scores.items(),
-        key=lambda item: (
-            -float(
-                item[1].get("points", 0)
-            ),
-            str(
-                item[1].get(
-                    "name",
-                    "Unknown"
-                )
-            ).casefold(),
-        ),
-    )
-
-    position = next(
-        (
-            i
-            for i, (uid, _) in enumerate(
-                ordered
-            )
-            if str(uid) == str(user_id)
-        ),
-        None,
-    )
-
-    if position is None:
-        return ""
-
-    start = max(
-        0,
-        position - 1,
-    )
-
-    end = min(
-        len(ordered),
-        position + 2,
-    )
-
-    lines = [
-        "",
-        "📊 **Your ranking**",
-    ]
-
-    for i in range(
-        start,
-        end,
-    ):
-        uid, entry = ordered[i]
-        points = float(
-            entry.get(
-                "points",
-                0,
-            )
-        )
-
-        point_text = (
-            str(int(points))
-            if points.is_integer()
-            else f"{points:g}"
-        )
-
-        marker = (
-            " ← you"
-            if str(uid) == str(user_id)
-            else ""
-        )
-
-        lines.append(
-            f"**#{i + 1} "
-            f"{entry.get('name', 'Unknown')} — "
-            f"{point_text} "
-            f"points{marker}**"
-        )
-
-    return "\n".join(lines)
-
-
-def record_daily_point(
-    user_id,
-    display_name,
-    transaction_id,
-):
-    """
-    One Daily point, exactly once.
-
-    The transaction file is the source of truth for new awards.
-    The legacy leaderboard becomes a one-time baseline.
-    """
-    global scores
-
-    with score_lock:
-
-        scores, events = load_daily_scores()
-
-        existing_ids = {
-            str(
-                event.get(
-                    "transaction_id",
-                    ""
-                )
-            )
-            for event in events
-        }
-
-        if transaction_id in existing_ids:
-            return (
-                False,
-                daily_score_for(user_id),
-            )
-
-        events.append(
-            {
-                "transaction_id":
-                    transaction_id,
-                "user_id":
-                    str(user_id),
-                "name":
-                    str(display_name),
-                "points":
-                    1,
-                "source":
-                    "daily-puzzle",
-            }
-        )
-
-        # Recalculate totals from the immutable event list.
-        totals = {}
-
-        for event in events:
-
-            uid = str(
-                event.get(
-                    "user_id",
-                    ""
-                )
-            )
-
-            if not uid:
-                continue
-
-            entry = totals.setdefault(
-                uid,
-                {
-                    "name":
-                        event.get(
-                            "name",
-                            "Unknown"
-                        ),
-                    "points":
-                        0.0,
-                }
-            )
-
-            entry["points"] = round(
-                entry["points"]
-                + float(
-                    event.get(
-                        "points",
-                        0
-                    )
-                ),
-                3,
-            )
-
-            if event.get("name"):
-                entry["name"] = event["name"]
-
-        scores = totals
-
-        save_json(
-            DAILY_EVENTS_FILE,
-            events
-        )
-
-        save_json(
-            DAILY_LEADERBOARD_FILE,
-            scores
-        )
-
-        # Push these two files together. If another Daily instance
-        # races us, the concurrency lock normally prevents it, and the
-        # transaction ID makes repeated awards idempotent.
-        try:
-            push_to_github()
-        except Exception as error:
-            print(
-                f"Daily leaderboard push error: {error}",
-                flush=True,
-            )
-            raise
-
-        return (
-            True,
-            float(
-                scores.get(
-                    str(user_id),
-                    {},
-                ).get(
-                    "points",
-                    0,
-                )
-            ),
-        )
-
-
-# =========================================================
 # GITHUB SAVE
 # =========================================================
 
 def push_to_github():
 
-    try:
+    with github_push_lock:
 
-        subprocess.run(
-            [
-                "git",
-                "config",
-                "user.name",
-                "Daily Puzzle Bot"
-            ],
-            check=True,
-            capture_output=True
+        try:
+
+            subprocess.run(
+                [
+                    "git",
+                    "config",
+                    "user.name",
+                    "Daily Puzzle Bot"
+                ],
+                check=True,
+                capture_output=True
+            )
+
+            subprocess.run(
+                [
+                    "git",
+                    "config",
+                    "user.email",
+                    "daily-puzzle-bot@users.noreply.github.com"
+                ],
+                check=True,
+                capture_output=True
+            )
+
+            subprocess.run(
+                [
+                    "git",
+                    "add",
+                    STATE_FILE,
+                    LEADERBOARD_FILE
+                ],
+                check=True,
+                capture_output=True
+            )
+
+            commit = subprocess.run(
+                [
+                    "git",
+                    "commit",
+                    "-m",
+                    "Update Daily Puzzle data"
+                ],
+                capture_output=True,
+                text=True
+            )
+
+            if commit.returncode != 0:
+                return
+
+            branch = os.getenv(
+                "GITHUB_REF_NAME",
+                "main"
+            )
+
+            subprocess.run(
+                [
+                    "git",
+                    "push",
+                    "origin",
+                    f"HEAD:{branch}"
+                ],
+                check=True,
+                capture_output=True,
+                text=True
+            )
+
+            print(
+                "Data saved to GitHub.",
+                flush=True
+            )
+
+        except Exception as error:
+
+            print(
+                f"Could not push data to GitHub: {error}",
+                flush=True
+            )
+
+
+def queue_github_sync():
+
+    global github_sync_task
+
+    if (
+        github_sync_task is not None
+        and not github_sync_task.done()
+    ):
+        return
+
+    github_sync_task = asyncio.create_task(
+        asyncio.to_thread(
+            push_to_github
         )
+    )
 
-        subprocess.run(
-            [
-                "git",
-                "config",
-                "user.email",
-                "daily-puzzle-bot@users.noreply.github.com"
-            ],
-            check=True,
-            capture_output=True
-        )
 
-        subprocess.run(
-            [
-                "git",
-                "add",
-                STATE_FILE,
-                DAILY_LEADERBOARD_FILE,
-                DAILY_EVENTS_FILE
-            ],
-            check=True,
-            capture_output=True
-        )
-
-        commit = subprocess.run(
-            [
-                "git",
-                "commit",
-                "-m",
-                "Update Daily Puzzle data"
-            ],
-            capture_output=True,
-            text=True
-        )
-
-        if commit.returncode != 0:
-            return
-
-        branch = os.getenv(
-            "GITHUB_REF_NAME",
-            "main"
-        )
-
-        subprocess.run(
-            [
-                "git",
-                "push",
-                "origin",
-                f"HEAD:{branch}"
-            ],
-            check=True,
-            capture_output=True,
-            text=True
-        )
-
-        print(
-            "Data saved to GitHub.",
-            flush=True
-        )
-
-    except Exception as error:
-
-        print(
-            f"Could not push data to GitHub: {error}",
-            flush=True
-        )
 
 
 async def save_all():
@@ -609,9 +231,13 @@ async def save_all():
         state
     )
 
-    await asyncio.to_thread(
-        push_to_github
+    save_json(
+        LEADERBOARD_FILE,
+        scores
     )
+
+    queue_github_sync()
+
 
 
 # =========================================================
@@ -657,183 +283,488 @@ def fetch_daily_puzzle():
 
 def fetch_random_puzzle():
 
-    response = requests.get(
-        RANDOM_PUZZLE_API,
-        headers={
-            "User-Agent":
-                "DailyChessPuzzleBot/1.0"
-        },
-        timeout=10
+    headers = {
+        "User-Agent":
+            "DailyChessPuzzleBot/2.0",
+        "Accept":
+            "application/json"
+    }
+
+    last_error = None
+
+    # Chess.com documents this endpoint as the random daily
+    # puzzle endpoint. Retry a few times because transient 429/5xx
+    # responses can happen, and the endpoint itself may be cached.
+    for attempt in range(1, 4):
+
+        try:
+            response = requests.get(
+                RANDOM_PUZZLE_API,
+                headers=headers,
+                timeout=15
+            )
+
+            if response.status_code == 200:
+                data = response.json()
+
+                if not data.get("fen"):
+                    raise RuntimeError(
+                        "Random puzzle response has no FEN."
+                    )
+
+                if not data.get("pgn"):
+                    raise RuntimeError(
+                        "Random puzzle response has no PGN."
+                    )
+
+                return data
+
+            retry_after = response.headers.get(
+                "Retry-After"
+            )
+
+            body_preview = response.text.strip().replace("\n", " ")
+            if len(body_preview) > 300:
+                body_preview = body_preview[:300] + "..."
+
+            last_error = (
+                f"HTTP {response.status_code}"
+                + (
+                    f" (Retry-After {retry_after}s)"
+                    if retry_after else ""
+                )
+                + (
+                    f" | Response: {body_preview}"
+                    if body_preview else ""
+                )
+            )
+
+            if response.status_code == 429 and retry_after:
+                try:
+                    time.sleep(
+                        min(float(retry_after), 5.0)
+                    )
+                except ValueError:
+                    time.sleep(2)
+            else:
+                time.sleep(1.5)
+
+        except Exception as error:
+            last_error = str(error)
+            if attempt < 3:
+                time.sleep(1.5)
+
+    raise RuntimeError(
+        f"Could not fetch random puzzle after 3 attempts: {last_error}"
     )
 
-    if response.status_code != 200:
 
+# =========================================================
+# SAFE FEN / BOARD HELPERS
+# =========================================================
+
+def sanitize_fen(fen):
+    """
+    Chess.com sometimes returns perfectly valid-looking FEN data
+    that can expose compatibility issues in older python-chess builds.
+    Normalize the six FEN fields and keep castling rights explicit.
+    """
+    parts = str(fen).strip().split()
+
+    if len(parts) < 4:
+        raise RuntimeError("Random puzzle FEN is incomplete.")
+
+    # Fill optional FEN fields.
+    while len(parts) < 6:
+        if len(parts) == 4:
+            parts.append("0")
+        elif len(parts) == 5:
+            parts.append("1")
+
+    # Castling rights must always be a string consisting of KQkq or -.
+    castling = parts[2]
+    if castling == "" or castling == "-":
+        parts[2] = "-"
+    else:
+        cleaned = "".join(
+            c for c in "KQkq"
+            if c in castling
+        )
+        parts[2] = cleaned or "-"
+
+    # Normalize active color.
+    parts[1] = "b" if parts[1].lower() == "b" else "w"
+
+    # Normalize en-passant.
+    if parts[3] == "":
+        parts[3] = "-"
+
+    try:
+        return " ".join(parts[:6])
+    except Exception as error:
         raise RuntimeError(
-            f"Chess.com random puzzle returned "
-            f"HTTP {response.status_code}"
+            f"Could not normalize FEN: {error}"
         )
 
-    data = response.json()
 
-    if not data.get("fen"):
-        raise RuntimeError(
-            "Random puzzle has no FEN."
-        )
+def board_from_fen_safe(fen):
+    """
+    Build a board manually instead of letting python-chess parse the
+    complete FEN in one step. This avoids the str/bool XOR bug that can
+    occur in some python-chess/FEN combinations.
+    """
+    clean_fen = sanitize_fen(fen)
+    parts = clean_fen.split()
 
-    if not data.get("pgn"):
-        raise RuntimeError(
-            "Random puzzle has no PGN."
-        )
+    board = chess.Board(None)
 
-    return data
+    # Piece placement.
+    board.set_board_fen(parts[0])
+
+    # Side to move.
+    # IMPORTANT:
+    # python-chess represents colors internally as booleans:
+    # True = White, False = Black.
+    #
+    # Use literal booleans here instead of chess.WHITE/chess.BLACK
+    # so this still works if a conflicting "chess" package exposes
+    # those names as strings.
+    board.turn = (
+        False
+        if parts[1].lower() == "b"
+        else True
+    )
+
+    # Castling rights as an integer bitboard.
+    #
+    # Square indexes are:
+    # a1=0, h1=7, a8=56, h8=63.
+    rights = 0
+
+    if parts[2] != "-":
+        if "K" in parts[2]:
+            rights |= chess.BB_SQUARES[7]   # h1
+        if "Q" in parts[2]:
+            rights |= chess.BB_SQUARES[0]   # a1
+        if "k" in parts[2]:
+            rights |= chess.BB_SQUARES[63]  # h8
+        if "q" in parts[2]:
+            rights |= chess.BB_SQUARES[56]  # a8
+
+    board.castling_rights = int(rights)
+
+    # En-passant square.
+    ep = parts[3]
+    if ep == "-":
+        board.ep_square = None
+    else:
+        board.ep_square = chess.parse_square(ep)
+
+    # Move counters.
+    try:
+        board.halfmove_clock = int(parts[4])
+    except Exception:
+        board.halfmove_clock = 0
+
+    try:
+        board.fullmove_number = int(parts[5])
+    except Exception:
+        board.fullmove_number = 1
+
+    return board
 
 
 # =========================================================
 # PARSE PUZZLE SOLUTION
 # =========================================================
 
-def get_solution(data):
 
-    game = chess.pgn.read_game(
-        StringIO(data["pgn"])
+def _strip_pgn_headers_and_noise(pgn_text):
+    """
+    Extract SAN move tokens without invoking chess.pgn.read_game().
+    This avoids python-chess PGN parser compatibility issues with some
+    Chess.com puzzle FEN headers.
+    """
+    text = str(pgn_text)
+
+    # Remove tag pairs such as [FEN "..."] and [SetUp "1"].
+    text = re.sub(
+        r'(?m)^\s*\[[^\]]*\]\s*$',
+        ' ',
+        text
     )
 
-    if game is None:
+    # Remove comments.
+    text = re.sub(
+        r'\{.*?\}',
+        ' ',
+        text,
+        flags=re.DOTALL
+    )
 
-        raise RuntimeError(
-            "Could not read puzzle PGN."
+    # Remove semicolon comments.
+    text = re.sub(
+        r';[^\n]*',
+        ' ',
+        text
+    )
+
+    # Remove recursive parenthesized variations. A small loop is enough
+    # for normal Chess.com PGNs and avoids pulling alternative lines in.
+    for _ in range(8):
+        new_text = re.sub(
+            r'\([^()]*\)',
+            ' ',
+            text
+        )
+        if new_text == text:
+            break
+        text = new_text
+
+    # Remove NAGs.
+    text = re.sub(
+        r'\$\d+',
+        ' ',
+        text
+    )
+
+    # Protect move numbers such as 1... and 12.
+    tokens = text.replace("\n", " ").split()
+
+    result = []
+
+    for token in tokens:
+        token = token.strip()
+
+        if not token:
+            continue
+
+        # Move numbers: 1. 12. 12... etc.
+        if re.fullmatch(r'\d+\.(\.\.)?', token):
+            continue
+
+        # Game results.
+        if token in {
+            "1-0",
+            "0-1",
+            "1/2-1/2",
+            "*"
+        }:
+            continue
+
+        # Occasionally a move number is attached to SAN:
+        # 12.Qxe5 or 12...Qxe5.
+        token = re.sub(
+            r'^\d+\.(\.\.)?',
+            '',
+            token
         )
 
-    target_board = chess.Board(
-        data["fen"]
-    )
+        if token:
+            result.append(token)
 
-    board = game.board()
+    return result
 
-    mainline_moves = list(
-        game.mainline_moves()
-    )
 
-    start_index = None
+def _parse_san_sequence(
+    board,
+    tokens
+):
+    """
+    Parse SAN tokens from a starting board and return the moves with
+    UCI/SAN/color. No PGN parser is used.
+    """
+    parsed = []
 
-    # Find the puzzle's starting position
-    # inside the complete PGN.
-    for index, move in enumerate(
-        mainline_moves
-    ):
+    for token in tokens:
 
-        if (
-            board.board_fen()
-            == target_board.board_fen()
-            and board.turn
-            == target_board.turn
-            and board.castling_rights
-            == target_board.castling_rights
-            and board.ep_square
-            == target_board.ep_square
-        ):
+        try:
+            move = board.parse_san(token)
+        except Exception:
+            return None
 
-            start_index = index
-            break
-
-        board.push(move)
-
-    if start_index is None:
-
-        if (
-            board.board_fen()
-            == target_board.board_fen()
-            and board.turn
-            == target_board.turn
-        ):
-
-            start_index = len(
-                mainline_moves
-            )
-
-    if start_index is None:
-
-        raise RuntimeError(
-            "Could not find puzzle FEN "
-            "inside PGN."
-        )
-
-    board = chess.Board(
-        data["fen"]
-    )
-
-    solution = []
-
-    for move in mainline_moves[
-        start_index:
-    ]:
-
-        if move not in board.legal_moves:
-            break
-
-        solution.append(
+        parsed.append(
             {
-                "uci":
-                    move.uci(),
-
-                "san":
-                    board.san(move),
-
-                # This is the side that makes
-                # this move.
-                "color":
+                "uci": move.uci(),
+                "san": board.san(move),
+                "color": (
                     "white"
                     if board.turn
                     else "black"
+                )
             }
         )
 
         board.push(move)
 
-    if not solution:
+    return parsed
 
-        raise RuntimeError(
-            "Puzzle has no solution moves."
-        )
 
-    # The side to move in the puzzle FEN
-    # is the side the user must play.
-    player_color = (
-        "white"
-        if target_board.turn
-        else "black"
+def _extract_header_fen(pgn_text):
+    match = re.search(
+        r'(?mi)^\s*\[FEN\s+"([^"]+)"\]\s*$',
+        str(pgn_text)
     )
 
-    # IMPORTANT:
-    #
-    # Count ONLY the moves belonging to the
-    # player who is solving the puzzle.
-    #
-    # The opponent's moves are still stored,
-    # because the bot needs to automatically
-    # play them between the user's moves.
-    player_moves = [
-        move
-        for move in solution
-        if move["color"] == player_color
-    ]
+    if not match:
+        return None
 
-    return {
-        "all_moves":
-            solution,
+    return match.group(1)
 
-        "player_moves":
-            player_moves,
 
-        "player_color":
-            player_color,
+def get_solution(data):
 
-        "player_move_count":
-            len(player_moves),
+    try:
+        target_fen = sanitize_fen(
+            data["fen"]
+        )
 
-        "first_uci":
-            solution[0]["uci"]
-    }
+        target_board = board_from_fen_safe(
+            target_fen
+        )
+
+        tokens = _strip_pgn_headers_and_noise(
+            data["pgn"]
+        )
+
+        if not tokens:
+            raise RuntimeError(
+                "Random puzzle PGN contains no SAN moves."
+            )
+
+        # ---------------------------------------------------------
+        # MODE 1: The PGN starts directly from the puzzle FEN.
+        # This is the normal form for Chess.com puzzle API data.
+        # ---------------------------------------------------------
+
+        puzzle_board = board_from_fen_safe(
+            target_fen
+        )
+
+        solution = _parse_san_sequence(
+            puzzle_board,
+            tokens
+        )
+
+        if solution:
+            start_index = 0
+
+        else:
+            # -----------------------------------------------------
+            # MODE 2: The PGN contains the original game from an
+            # earlier position. Replay it from the PGN header FEN
+            # (or standard chess) until the API puzzle FEN appears.
+            # -----------------------------------------------------
+
+            header_fen = _extract_header_fen(
+                data["pgn"]
+            )
+
+            if header_fen:
+                replay_board = board_from_fen_safe(
+                    sanitize_fen(header_fen)
+                )
+            else:
+                replay_board = board_from_fen_safe(
+                    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/"
+                    "RNBQKBNR w KQkq - 0 1"
+                )
+
+            parsed_before_puzzle = []
+
+            start_index = None
+
+            for index, token in enumerate(tokens):
+
+                if (
+                    replay_board.board_fen()
+                    == target_board.board_fen()
+                    and replay_board.turn
+                    == target_board.turn
+                ):
+                    start_index = index
+                    break
+
+                try:
+                    move = replay_board.parse_san(
+                        token
+                    )
+                except Exception:
+                    break
+
+                parsed_before_puzzle.append(
+                    move
+                )
+
+                replay_board.push(
+                    move
+                )
+
+            if start_index is None:
+
+                if (
+                    replay_board.board_fen()
+                    == target_board.board_fen()
+                    and replay_board.turn
+                    == target_board.turn
+                ):
+                    start_index = len(tokens)
+
+            if start_index is None:
+                raise RuntimeError(
+                    "Could not match the puzzle FEN to the "
+                    "random puzzle PGN. The PGN is neither a "
+                    "solution line starting from the puzzle "
+                    "position nor a replayable full-game line."
+                )
+
+            solution_board = board_from_fen_safe(
+                target_fen
+            )
+
+            solution = _parse_san_sequence(
+                solution_board,
+                tokens[start_index:]
+            )
+
+            if not solution:
+                raise RuntimeError(
+                    "The random puzzle PGN contains no legal "
+                    "solution moves after the puzzle position."
+                )
+
+        player_color = (
+            "white"
+            if target_board.turn
+            else "black"
+        )
+
+        player_moves = [
+            move
+            for move in solution
+            if move["color"] == player_color
+        ]
+
+        if not player_moves:
+            raise RuntimeError(
+                "Random puzzle has no moves for the side to solve."
+            )
+
+        return {
+            "all_moves": solution,
+            "player_moves": player_moves,
+            "player_color": player_color,
+            "player_move_count": len(player_moves),
+            "first_uci": solution[0]["uci"]
+        }
+
+    except RuntimeError:
+        raise
+
+    except Exception as error:
+        raise RuntimeError(
+            f"Random puzzle solution parsing failed: {error}"
+        )
 
 
 def build_puzzle(data):
@@ -853,6 +784,11 @@ def build_puzzle(data):
             ),
 
         "fen":
+            data["fen"],
+
+        # Runtime state for interactive random puzzles.
+        # Daily puzzles continue to use the original FEN.
+        "current_fen":
             data["fen"],
 
         "pgn":
@@ -885,9 +821,6 @@ def build_puzzle(data):
         "latest_attempts":
             {},
 
-        "player_progress":
-            {},
-
         "puzzle_id":
             None
     }
@@ -901,16 +834,33 @@ async def make_board_file(
     puzzle,
     filename
 ):
-
-    board = chess.Board(
+    # For interactive random puzzles, render the CURRENT position.
+    # For daily puzzles, this remains the original FEN.
+    current_fen = puzzle.get(
+        "current_fen",
         puzzle["fen"]
     )
 
-    orientation = (
-        chess.WHITE
-        if board.turn
-        else chess.BLACK
+    board = board_from_fen_safe(
+        current_fen
     )
+
+    # Random puzzle: keep the player's POV fixed even after
+    # the final move, so the board never flips when the puzzle
+    # is finished. Daily puzzles keep their normal orientation.
+    if str(puzzle.get("puzzle_id", "")).startswith("random_"):
+        player_color = puzzle.get(
+            "player_color",
+            "white"
+        )
+        orientation = (
+            True
+            if str(player_color).lower() == "white"
+            else False
+        )
+    else:
+        # board.turn is guaranteed to be a real bool.
+        orientation = bool(board.turn)
 
     svg_board = chess.svg.board(
         board=board,
@@ -941,145 +891,6 @@ async def make_board_file(
 # =========================================================
 # MOVE WORD
 # =========================================================
-
-def board_after_player_progress(
-    puzzle,
-    progress_count,
-):
-    """
-    Return the exact board state that the player should see
-    before making their next move.
-
-    progress_count = number of the player's moves already completed.
-    Opponent replies after those completed moves are played automatically.
-    """
-    board = chess.Board(
-        puzzle["fen"]
-    )
-
-    player_color = puzzle[
-        "player_color"
-    ]
-
-    player_moves_seen = 0
-    moves = puzzle.get(
-        "all_moves",
-        []
-    )
-
-    if progress_count <= 0:
-        return board
-
-    for index, expected in enumerate(moves):
-
-        move = chess.Move.from_uci(
-            expected["uci"]
-        )
-
-        if move not in board.legal_moves:
-            break
-
-        board.push(
-            move
-        )
-
-        if expected["color"] != player_color:
-            continue
-
-        player_moves_seen += 1
-
-        if player_moves_seen >= progress_count:
-
-            # After the player's successful move, automatically play
-            # the next opponent move(s), stopping before the next
-            # player move.
-            for following in moves[index + 1:]:
-
-                if following["color"] == player_color:
-                    break
-
-                reply = chess.Move.from_uci(
-                    following["uci"]
-                )
-
-                if reply not in board.legal_moves:
-                    break
-
-                board.push(
-                    reply
-                )
-
-            break
-
-    return board
-
-
-
-async def make_progress_board_file(
-    puzzle,
-    progress_count,
-    filename,
-):
-    board = board_after_player_progress(
-        puzzle,
-        progress_count,
-    )
-
-    orientation = (
-        chess.WHITE
-        if board.turn
-        else chess.BLACK
-    )
-
-    last_move = None
-
-    if progress_count > 0:
-        player_seen = 0
-        for expected in puzzle.get(
-            "all_moves",
-            [],
-        ):
-            if expected["color"] == puzzle["player_color"]:
-                player_seen += 1
-                last_move = expected
-                if player_seen >= progress_count:
-                    break
-
-    svg_kwargs = {
-        "board": board,
-        "orientation": orientation,
-        "size": 500,
-        "coordinates": True,
-    }
-
-    if last_move is not None:
-        svg_kwargs["lastmove"] = chess.Move.from_uci(
-            last_move["uci"]
-        )
-
-    svg_board = chess.svg.board(
-        **svg_kwargs
-    )
-
-    png_bytes = await asyncio.to_thread(
-        cairosvg.svg2png,
-        bytestring=svg_board.encode(
-            "utf-8"
-        )
-    )
-
-    image = BytesIO(
-        png_bytes
-    )
-
-    return (
-        discord.File(
-            fp=image,
-            filename=filename,
-        ),
-        board,
-    )
-
 
 def move_word(count):
 
@@ -1153,9 +964,7 @@ async def post_daily_puzzle(
 async def post_random_puzzle(
     channel
 ):
-
     try:
-
         data = await asyncio.to_thread(
             fetch_random_puzzle
         )
@@ -1178,6 +987,22 @@ async def post_random_puzzle(
                 )
             )
         )
+
+        # Interactive state.
+        puzzle["current_fen"] = sanitize_fen(
+            puzzle["fen"]
+        )
+        puzzle["next_solution_index"] = 0
+        puzzle["next_player_index"] = 0
+        puzzle["solved"] = False
+        puzzle["message_id"] = None
+        puzzle["attempted_users"] = {}
+
+        puzzle["first_move_user_id"] = None
+        puzzle["first_move_user_name"] = None
+        puzzle["first_move_awarded"] = False
+        puzzle["helper_awarded_users"] = []
+        puzzle["helper_candidate_users"] = []
 
         state[
             "latest_random_puzzle"
@@ -1208,14 +1033,25 @@ async def post_random_puzzle(
             "title"
         ]
 
+        if count == 1:
+            move_description = (
+                "Find the best move."
+            )
+        else:
+            move_description = (
+                f"Find the best line in "
+                f"**{count} {move_word(count)}**."
+            )
+
         embed = discord.Embed(
             title=(
                 f"🎲 Random Puzzle — {title}"
             ),
             description=(
                 f"**{side} to move.**\n"
-                "Enter **one move at a time**. "
-                "The board updates after each correct move."
+                f"{move_description}\n\n"
+                f"You only enter **your own moves**. "
+                f"The opponent's replies will be played automatically."
             ),
             color=0x3498db
         )
@@ -1224,9 +1060,21 @@ async def post_random_puzzle(
             url="attachment://random_puzzle.png"
         )
 
-        await channel.send(
+        message = await channel.send(
             embed=embed,
             file=file
+        )
+
+        puzzle["message_id"] = message.id
+
+        # Persist the message ID locally.
+        # Do NOT run the GitHub push immediately after sending.
+        # The random puzzle is already successfully posted, and
+        # the extra push was causing the command to report an
+        # error after the message had appeared.
+        save_json(
+            STATE_FILE,
+            state
         )
 
         print(
@@ -1235,16 +1083,28 @@ async def post_random_puzzle(
             flush=True
         )
 
-    except Exception as error:
+        # IMPORTANT:
+        # A successful Discord post is a successful random-puzzle
+        # command. Do not turn a post-send persistence issue into
+        # a visible "Random Puzzle Error" message.
+        return
 
+    except Exception as error:
         print(
-            f"Random puzzle error: {error}",
+            "RANDOM PUZZLE ERROR:",
             flush=True
         )
+        traceback.print_exc()
+
+        # Show the real error in Discord so a failed request or
+        # PGN/FEN parsing problem can be diagnosed immediately.
+        error_text = str(error).strip() or repr(error)
+        if len(error_text) > 1400:
+            error_text = error_text[:1400] + "..."
 
         await channel.send(
-            "❌ Could not load a random puzzle "
-            "right now. Try again."
+            "❌ **Random Puzzle Error**\n"
+            f"```{error_text}```"
         )
 
 
@@ -1406,7 +1266,7 @@ def solution_is_correct(
 
         return False
 
-    board = chess.Board(
+    board = board_from_fen_safe(
         puzzle["fen"]
     )
 
@@ -1505,18 +1365,160 @@ def puzzle_is_open(
 def get_player_score(
     user_id
 ):
-    return daily_score_for(
+
+    user_id = str(
         user_id
     )
+
+    if user_id not in scores:
+
+        scores[user_id] = {
+            "name":
+                "Unknown",
+
+            "points":
+                0
+        }
+
+    return scores[user_id].get(
+        "points",
+        0
+    )
+
+
+# =========================================================
+# PERSONAL RANKING
+# =========================================================
+
+def get_personal_ranking(
+    user_id
+):
+
+    user_id = str(
+        user_id
+    )
+
+    players = []
+
+    for player_id, player in scores.items():
+
+        players.append(
+            {
+                "id":
+                    str(player_id),
+
+                "name":
+                    player.get(
+                        "name",
+                        "Unknown"
+                    ),
+
+                "points":
+                    player.get(
+                        "points",
+                        0
+                    )
+            }
+        )
+
+    players.sort(
+        key=lambda player: (
+            -player["points"],
+            player["name"].lower()
+        )
+    )
+
+    player_index = None
+
+    for index, player in enumerate(
+        players
+    ):
+
+        if player["id"] == user_id:
+
+            player_index = index
+            break
+
+    if player_index is None:
+        return []
+
+    start = max(
+        0,
+        player_index - 1
+    )
+
+    end = min(
+        len(players),
+        player_index + 2
+    )
+
+    result = []
+
+    for index in range(
+        start,
+        end
+    ):
+
+        player = players[index]
+
+        result.append(
+            {
+                "rank":
+                    index + 1,
+
+                "name":
+                    player["name"],
+
+                "points":
+                    player["points"],
+
+                "is_you":
+                    player["id"] == user_id
+            }
+        )
+
+    return result
 
 
 def build_personal_ranking(
     user_id
 ):
-    return daily_personal_ranking(
+
+    ranking = get_personal_ranking(
         user_id
     )
 
+    if not ranking:
+        return ""
+
+    lines = [
+        "",
+        "📊 **Your ranking**"
+    ]
+
+    for player in ranking:
+
+        rank = player["rank"]
+        name = player["name"]
+        points = player["points"]
+
+        if player["is_you"]:
+
+            lines.append(
+                f"**#{rank} {name} — "
+                f"{format_points(points)} "
+                f"{'point' if float(points) == 1 else 'points'} ← you**"
+            )
+
+        else:
+
+            lines.append(
+                f"#{rank} {name} — "
+                f"{format_points(points)} "
+                f"{'point' if float(points) == 1 else 'points'}"
+            )
+
+    return "\n".join(lines)
 
 
 # =========================================================
@@ -1564,29 +1566,188 @@ async def save_attempt(
 
 
 # =========================================================
-# FIRST CORRECT ANSWER GETS POINT
+# RANDOM PUZZLE SCORING
+# =========================================================
+
+async def award_random_move_points(
+    puzzle,
+    user,
+    first_move
+):
+    """
+    Random puzzle scoring:
+    - First-move player gets +1.0 exactly once, but ONLY when
+      the complete puzzle has been solved.
+    - A different player who supplied a correct later move gets
+      +0.5 exactly once, also ONLY when the puzzle is solved.
+    """
+
+    user_id = str(user.id)
+    score_kind = "none"
+
+    async with data_lock:
+
+        puzzle.setdefault(
+            "first_move_user_id",
+            None
+        )
+
+        puzzle.setdefault(
+            "first_move_user_name",
+            None
+        )
+
+        puzzle.setdefault(
+            "first_move_awarded",
+            False
+        )
+
+        puzzle.setdefault(
+            "helper_awarded_users",
+            []
+        )
+
+        if first_move:
+
+            # The first-move player was already recorded when
+            # their move was made. At completion, award +1.
+            if not puzzle.get(
+                "first_move_awarded",
+                False
+            ):
+
+                if puzzle.get(
+                    "first_move_user_id"
+                ) is None:
+
+                    puzzle[
+                        "first_move_user_id"
+                    ] = user_id
+
+                    puzzle[
+                        "first_move_user_name"
+                    ] = user.display_name
+
+                first_user_id = str(
+                    puzzle[
+                        "first_move_user_id"
+                    ]
+                )
+
+                # Award only to the recorded first-move user.
+                if user_id == first_user_id:
+
+                    if user_id not in scores:
+                        scores[user_id] = {
+                            "name":
+                                user.display_name,
+                            "points":
+                                0
+                        }
+
+                    scores[user_id]["name"] = (
+                        user.display_name
+                    )
+
+                    scores[user_id]["points"] = round(
+                        float(
+                            scores[user_id].get(
+                                "points",
+                                0
+                            )
+                        ) + 1.0,
+                        2
+                    )
+
+                    puzzle[
+                        "first_move_awarded"
+                    ] = True
+
+                    score_kind = "first"
+
+        else:
+
+            first_user_id = str(
+                puzzle.get(
+                    "first_move_user_id"
+                )
+            )
+
+            # First-move player can never also be the helper.
+            if user_id == first_user_id:
+                return "none"
+
+            helper_users = puzzle[
+                "helper_awarded_users"
+            ]
+
+            if user_id not in helper_users:
+
+                if user_id not in scores:
+                    scores[user_id] = {
+                        "name":
+                            user.display_name,
+                        "points":
+                            0
+                    }
+
+                scores[user_id]["name"] = (
+                    user.display_name
+                )
+
+                scores[user_id]["points"] = round(
+                    float(
+                        scores[user_id].get(
+                            "points",
+                            0
+                        )
+                    ) + 0.5,
+                    2
+                )
+
+                helper_users.append(
+                    user_id
+                )
+
+                score_kind = "helper"
+
+        if score_kind != "none":
+
+            save_json(
+                STATE_FILE,
+                state
+            )
+
+            save_json(
+                LEADERBOARD_FILE,
+                scores
+            )
+
+    if score_kind != "none":
+
+        asyncio.create_task(
+            asyncio.to_thread(
+                push_to_github
+            )
+        )
+
+    return score_kind
+
+
+# =========================================================
+# LEGACY DAILY SCORING
 # =========================================================
 
 async def award_point(
     puzzle,
     user
 ):
+    """
+    Daily puzzle keeps its existing +1 first-correct system.
+    """
+
     user_id = str(
         user.id
-    )
-
-    puzzle_id = str(
-        puzzle.get(
-            "puzzle_id",
-            puzzle.get(
-                "url",
-                "unknown-puzzle"
-            )
-        )
-    )
-
-    transaction_id = (
-        f"daily:{puzzle_id}:winner:{user_id}"
     )
 
     async with data_lock:
@@ -1594,19 +1755,8 @@ async def award_point(
         if puzzle.get(
             "winner_user_id"
         ) is not None:
-            return (
-                False,
-                daily_score_for(
-                    user.id
-                )
-            )
 
-        got_point, total = await asyncio.to_thread(
-            record_daily_point,
-            user.id,
-            user.display_name,
-            transaction_id,
-        )
+            return False
 
         puzzle[
             "winner_user_id"
@@ -1616,20 +1766,54 @@ async def award_point(
             "winner_name"
         ] = user.display_name
 
+        if user_id not in scores:
+
+            scores[user_id] = {
+                "name":
+                    user.display_name,
+
+                "points":
+                    0
+            }
+
+        scores[user_id][
+            "name"
+        ] = user.display_name
+
+        scores[user_id][
+            "points"
+        ] = round(
+            float(
+                scores[user_id].get(
+                    "points",
+                    0
+                )
+            ) + 1.0,
+            2
+        )
+
         save_json(
             STATE_FILE,
             state
         )
 
-        await asyncio.to_thread(
+        save_json(
+            LEADERBOARD_FILE,
+            scores
+        )
+
+    asyncio.create_task(
+        asyncio.to_thread(
             push_to_github
         )
+    )
 
-        return (
-            got_point,
-            total,
-        )
+    return True
 
+
+def format_points(points):
+    value = float(points)
+    return str(int(value)) if value.is_integer() else f"{value:.1f}"
 
 
 # =========================================================
@@ -1637,8 +1821,72 @@ async def award_point(
 # =========================================================
 
 def make_leaderboard():
-    return daily_leaderboard_text()
 
+    if not scores:
+
+        return (
+            "🏆 **Leaderboard**\n\n"
+            "No points yet!"
+        )
+
+    ordered = sorted(
+        scores.items(),
+        key=lambda item: (
+            -item[1].get(
+                "points",
+                0
+            ),
+            item[1].get(
+                "name",
+                "Unknown"
+            ).lower()
+        )
+    )
+
+    lines = [
+        "🏆 **Leaderboard**",
+        ""
+    ]
+
+    for rank, (_, player) in enumerate(
+        ordered,
+        start=1
+    ):
+
+        name = player.get(
+            "name",
+            "Unknown"
+        )
+
+        points = player.get(
+            "points",
+            0
+        )
+
+        if rank == 1:
+            prefix = "🥇"
+
+        elif rank == 2:
+            prefix = "🥈"
+
+        elif rank == 3:
+            prefix = "🥉"
+
+        else:
+            prefix = f"**{rank}.**"
+
+        word = (
+            "point"
+            if float(points) == 1
+            else "points"
+        )
+
+        lines.append(
+            f"{prefix} {name} — "
+            f"**{format_points(points)} {word}**"
+        )
+
+    return "\n".join(lines)
 
 
 # =========================================================
@@ -1646,31 +1894,34 @@ def make_leaderboard():
 # =========================================================
 
 def help_message():
+
     return """🧠 **Chess Puzzle Game**
 
 **Daily Puzzle**
-`Kh1` or `!Kh1` — answer the latest Daily Puzzle.
+`!daily <moves>` — Answer the latest Daily Puzzle.
 
 **Random Puzzle**
-`rp` or `!rp` — get a random chess puzzle.
-Then answer with moves as `Kh1` or `!Kh1`.
+`!random`, `!rp` or `!r` — Get a random chess puzzle.
+`!random <move>` — Make the next move in the latest Random Puzzle.
 
 **Quick Answer**
-You can enter moves with or without `!`.
-The `!` is optional for moves only.
+`!<moves>` — Answer whichever puzzle was posted most recently.
 
-**Commands**
-`!random`, `!randompuzzle` — new random puzzle.
-`!leaderboard`, `!lb`, `!l` — Daily Puzzle leaderboard.
-`!help` or `!info` — show this message.
-
-Only your own moves are required. The opponent's moves are automatically played.
+Only your own moves are required. The opponent's replies are automatically played between your moves.
 
 **Points**
-The first complete correct answer gets **+1 point**.
-Daily Puzzle has its **own separate leaderboard**.
-"""
+• Points are awarded **only when the whole puzzle is solved**
+• First-move player: **+1 point**
+• Helper: **+0.5 point**
+• First-move player can never earn more than **+1**
+• A helper can never earn more than **+0.5** per puzzle
 
+**Other**
+`!help` or `!info` — Show this message.
+`!leaderboard`, `!lb` or `!l` — Show the full leaderboard.
+
+🏆 The leaderboard is posted automatically once per day.
+"""
 
 
 # =========================================================
@@ -1706,8 +1957,7 @@ async def post_answer(
 
     await channel.send(
         f"{title}\n\n"
-        f"**Your moves:** "
-        f"||{solution_text}||"
+        f"**Your moves:** {solution_text}"
     )
 
 
@@ -1730,6 +1980,12 @@ async def finalize_expired_puzzle(
     ):
         return
 
+    await post_answer(
+        channel,
+        puzzle,
+        puzzle_type
+    )
+
     puzzle[
         "answer_posted"
     ] = True
@@ -1739,14 +1995,10 @@ async def finalize_expired_puzzle(
         state
     )
 
-    await asyncio.to_thread(
-        push_to_github
-    )
-
-    await post_answer(
-        channel,
-        puzzle,
-        puzzle_type
+    asyncio.create_task(
+        asyncio.to_thread(
+            push_to_github
+        )
     )
 
 
@@ -1930,8 +2182,6 @@ async def maintenance_loop(
     channel
 ):
 
-    last_leaderboard = time.monotonic()
-
     while True:
 
         try:
@@ -1940,19 +2190,28 @@ async def maintenance_loop(
                 channel
             )
 
-            if (
-                time.monotonic()
-                - last_leaderboard
-                >= LEADERBOARD_INTERVAL
-            ):
+            today = datetime.now(
+                timezone.utc
+            ).date().isoformat()
+
+            if state.get(
+                "leaderboard_last_posted_date"
+            ) != today:
 
                 await channel.send(
                     make_leaderboard()
                 )
 
-                last_leaderboard = (
-                    time.monotonic()
+                state[
+                    "leaderboard_last_posted_date"
+                ] = today
+
+                save_json(
+                    STATE_FILE,
+                    state
                 )
+
+                queue_github_sync()
 
         except Exception as error:
 
@@ -1983,6 +2242,692 @@ async def run_timer():
 
 
 # =========================================================
+# FUN WRONG-ANSWER MESSAGES
+# =========================================================
+
+def wrong_message(user):
+    name = user.display_name
+    lower = name.casefold()
+
+    if lower == "thice":
+        thice_lines = [
+            f"❌ **Wrong again, {name}.**",
+            f"❌ **Nope, {name}.**",
+            f"❌ **Not that one, {name}.**",
+            f"❌ **Still wrong, {name}.**",
+            f"❌ **Absolutely not, {name}.**",
+            f"❌ **That ain't it, {name}.**",
+            f"❌ **Wrong move, {name}.**",
+            f"❌ **Nice try, {name}.**",
+            f"❌ **No chance, {name}.**",
+            f"❌ **Try again, {name}.**",
+            f"❌ **The board says no, {name}.**",
+            f"❌ **Incorrect, {name}.**",
+            f"❌ **Another miss, {name}.**",
+            f"❌ **Not even close, {name}.**",
+            f"❌ **So wrong, {name}.**",
+            f"❌ **That was brave, {name}.**",
+            f"❌ **Bold choice, {name}.**",
+            f"❌ **The pieces disagree, {name}.**",
+            f"❌ **The king says no, {name}.**",
+            f"❌ **The engine says no, {name}.**",
+            f"❌ **Chess says no, {name}.**",
+            f"❌ **That move is cursed, {name}.**",
+            f"❌ **Please reconsider, {name}.**",
+            f"❌ **The puzzle rejects that, {name}.**",
+            f"❌ **That was not the plan, {name}.**",
+            f"❌ **Wrong direction, {name}.**",
+            f"❌ **Wrong idea, {name}.**",
+            f"❌ **Wrong square, {name}.**",
+            f"❌ **Wrong again, obviously, {name}.**",
+            f"❌ **The answer is elsewhere, {name}.**",
+            f"❌ **The tactics disagree, {name}.**",
+            f"❌ **The board remains undefeated, {name}.**",
+            f"❌ **That move had issues, {name}.**",
+            f"❌ **That was not the one, {name}.**",
+            f"❌ **Nope, try another, {name}.**",
+            f"❌ **You found the anti-move, {name}.**",
+            f"❌ **The position is unimpressed, {name}.**",
+            f"❌ **That move did not cook, {name}.**",
+            f"❌ **The pieces are disappointed, {name}.**",
+            f"❌ **The puzzle is laughing, {name}.**",
+            f"❌ **Still not it, {name}.**",
+            f"❌ **Another tactical disaster, {name}.**",
+            f"❌ **That was aggressively wrong, {name}.**",
+            f"❌ **The knight saw it coming, {name}.**",
+            f"❌ **The bishop disagrees, {name}.**",
+            f"❌ **The rook is judging, {name}.**",
+            f"❌ **The king is concerned, {name}.**",
+            f"❌ **The engine facepalms, {name}.**",
+            f"❌ **That move belongs nowhere, {name}.**",
+        ]
+        return random.choice(thice_lines)
+
+    if "sharkmeister" in lower:
+        shark_lines = [
+            f"❌ **So close, {name}... you almost had it there.**",
+            f"❌ **Almost, {name}. You were right on the edge.**",
+            f"❌ **So close, {name}. One tiny detail off.**",
+            f"❌ **Nearly, {name}. The idea was there.**",
+            f"❌ **Oof, {name}. That was almost it.**",
+        ]
+        return random.choice(shark_lines)
+
+    return f"❌ **Wrong, {name}.**"
+
+
+# =========================================================
+# RANDOM PUZZLE — STEP BY STEP
+# =========================================================
+
+async def update_random_puzzle_message(
+    channel,
+    puzzle,
+    message_text=None
+):
+    message_id = puzzle.get(
+        "message_id"
+    )
+
+    if not message_id:
+        return
+
+    file, board = await make_board_file(
+        puzzle,
+        "random_puzzle.png"
+    )
+
+    remaining = (
+        puzzle["player_move_count"]
+        - puzzle.get("next_player_index", 0)
+    )
+
+    side = (
+        "White"
+        if puzzle.get("player_color") == "white"
+        or puzzle.get("player_color") == chess.WHITE
+        else "Black"
+    )
+
+    if puzzle.get("solved", False):
+        description = (
+            "🎉 **Puzzle solved!**"
+        )
+    elif remaining == 1:
+        description = (
+            f"**{side} to move.**\n"
+            f"**Final move.**"
+        )
+    else:
+        description = (
+            f"**{side} to move.**\n"
+            f"**{remaining} {move_word(remaining)} remaining.**"
+        )
+
+    if message_text:
+        description = (
+            f"{message_text}\n\n"
+            + description
+        )
+
+    embed = discord.Embed(
+        title=(
+            f"🎲 Random Puzzle — "
+            f"{puzzle['title']}"
+        ),
+        description=description,
+        color=0x3498db
+    )
+
+    embed.set_image(
+        url="attachment://random_puzzle.png"
+    )
+
+    try:
+        message = await channel.fetch_message(
+            message_id
+        )
+
+        await message.edit(
+            embed=embed,
+            attachments=[file]
+        )
+
+    except Exception as error:
+        print(
+            f"Could not update random puzzle message: {error}",
+            flush=True
+        )
+
+
+async def handle_random_answer(
+    message,
+    puzzle,
+    move_text
+):
+    if not puzzle:
+        return
+
+    if puzzle.get(
+        "answer_posted",
+        False
+    ):
+        return
+
+    if not puzzle_is_open(
+        puzzle,
+        RANDOM_ANSWER_WINDOW
+    ):
+        return
+
+    if puzzle.get(
+        "solved",
+        False
+    ):
+        return
+
+    player_color = puzzle[
+        "player_color"
+    ]
+
+    next_index = puzzle.get(
+        "next_solution_index",
+        0
+    )
+
+    all_moves = puzzle.get(
+        "all_moves",
+        []
+    )
+
+    player_moves = puzzle.get(
+        "player_moves",
+        []
+    )
+
+    if next_index >= len(all_moves):
+        return
+
+    # -----------------------------------------------------
+    # SHARED PUZZLE:
+    # Everyone can attempt the current move. The first
+    # correct move advances the shared position.
+    # -----------------------------------------------------
+
+    user_id = str(
+        message.author.id
+    )
+
+    submitted = move_text.strip()
+
+    # One move at a time.
+    if len(submitted.split()) != 1:
+        await message.channel.send(
+            f"❌ **One move at a time, "
+            f"{message.author.display_name}.**"
+        )
+        return
+
+    # Serialize state changes so two people cannot both
+    # advance the same shared position at exactly the same time.
+    # Capture this BEFORE advancing the shared state.
+    move_was_first = (
+        next_index == 0
+    )
+
+    async with data_lock:
+
+        expected = all_moves[next_index]
+
+        board = board_from_fen_safe(
+            puzzle.get(
+                "current_fen",
+                puzzle["fen"]
+            )
+        )
+
+        # The next solution move must belong to the player.
+        if expected["color"] != player_color:
+            await message.channel.send(
+                "❌ **The puzzle state got out of sync. "
+                "Please start a new random puzzle.**"
+            )
+            return
+
+        correct = san_matches_move(
+            board,
+            submitted,
+            expected
+        )
+
+        puzzle.setdefault(
+            "attempted_users",
+            {}
+        )[user_id] = {
+            "name": message.author.display_name,
+            "move": submitted,
+            "correct": correct,
+            "timestamp": datetime.now(
+                timezone.utc
+            ).isoformat()
+        }
+
+        if not correct:
+            # Do not hold the lock while sending to Discord.
+            pass
+        else:
+            # -------------------------------------------------
+            # PLAY THE USER'S CORRECT MOVE
+            # -------------------------------------------------
+
+            move = chess.Move.from_uci(
+                expected["uci"]
+            )
+
+            if move not in board.legal_moves:
+                correct = False
+            else:
+                board.push(move)
+
+                next_index += 1
+                next_player_index = (
+                    puzzle.get(
+                        "next_player_index",
+                        0
+                    ) + 1
+                )
+
+                opponent_replies = []
+
+                # ---------------------------------------------
+                # AUTOMATICALLY PLAY OPPONENT REPLIES
+                # ---------------------------------------------
+
+                while next_index < len(all_moves):
+                    reply = all_moves[next_index]
+
+                    if reply["color"] == player_color:
+                        break
+
+                    reply_move = chess.Move.from_uci(
+                        reply["uci"]
+                    )
+
+                    if reply_move not in board.legal_moves:
+                        break
+
+                    board.push(reply_move)
+
+                    opponent_replies.append(
+                        reply["san"]
+                    )
+
+                    next_index += 1
+
+                puzzle["current_fen"] = board.fen()
+                puzzle["next_solution_index"] = next_index
+                puzzle["next_player_index"] = next_player_index
+
+    if not correct:
+        await save_all()
+        await message.channel.send(
+            wrong_message(message.author)
+        )
+        return
+
+    # -----------------------------------------------------
+    # PUZZLE COMPLETE
+    #
+    # IMPORTANT:
+    # No points are awarded yet. We only record the first
+    # move solver and helpers while the puzzle is in progress.
+    # Points are awarded ONLY when the full puzzle is solved.
+    # -----------------------------------------------------
+
+    if move_was_first and puzzle.get(
+        "first_move_user_id"
+    ) is None:
+        puzzle["first_move_user_id"] = str(
+            message.author.id
+        )
+        puzzle["first_move_user_name"] = (
+            message.author.display_name
+        )
+
+    # Record a helper candidate after a later correct move.
+    # We only award +0.5 after the puzzle is completely solved.
+    if (
+        not move_was_first
+        and str(message.author.id)
+        != str(
+            puzzle.get(
+                "first_move_user_id"
+            )
+        )
+    ):
+        helpers = puzzle.setdefault(
+            "helper_candidate_users",
+            []
+        )
+
+        user_id = str(
+            message.author.id
+        )
+
+        if user_id not in helpers:
+            helpers.append(
+                user_id
+            )
+
+    # -----------------------------------------------------
+    # PUZZLE COMPLETE
+    # -----------------------------------------------------
+
+    if next_player_index >= len(player_moves):
+        puzzle["solved"] = True
+
+        # -----------------------------------------------------
+        # NOW, AND ONLY NOW, AWARD POINTS
+        # -----------------------------------------------------
+
+        first_user_id = puzzle.get(
+            "first_move_user_id"
+        )
+
+        helper_users = [
+            uid
+            for uid in puzzle.get(
+                "helper_candidate_users",
+                []
+            )
+            if str(uid) != str(first_user_id)
+        ]
+
+        # First mover: +1
+        if first_user_id:
+            first_user = None
+
+            if str(first_user_id) == str(
+                message.author.id
+            ):
+                first_user = message.author
+
+            else:
+                # The first mover may have zero points so far and
+                # therefore may not exist in `scores` yet. Recover
+                # their display name from the puzzle's recorded move
+                # history instead of requiring a leaderboard entry.
+                first_user_name = (
+                    puzzle.get(
+                        "first_move_user_name"
+                    )
+                    or puzzle.get(
+                        "attempted_users",
+                        {}
+                    )
+                    .get(
+                        str(first_user_id),
+                        {}
+                    )
+                    .get(
+                        "name",
+                        "Unknown"
+                    )
+                )
+
+                class StoredUser:
+                    def __init__(self, user_id, name):
+                        self.id = int(user_id)
+                        self.display_name = name
+
+                first_user = StoredUser(
+                    first_user_id,
+                    first_user_name
+                )
+
+            if not puzzle.get(
+                "first_move_awarded",
+                False
+            ):
+                await award_random_move_points(
+                    puzzle,
+                    first_user,
+                    first_move=True
+                )
+
+        # Helpers: +0.5 each, max once per puzzle.
+        for helper_id in helper_users:
+            if helper_id in puzzle.get(
+                "helper_awarded_users",
+                []
+            ):
+                continue
+
+            if helper_id == first_user_id:
+                continue
+
+            helper_name = (
+                puzzle.get(
+                    "attempted_users",
+                    {}
+                )
+                .get(
+                    helper_id,
+                    {}
+                )
+                .get(
+                    "name",
+                    "Unknown"
+                )
+            )
+
+            class StoredHelper:
+                def __init__(self, user_id, name):
+                    self.id = int(user_id)
+                    self.display_name = name
+
+            helper_user = StoredHelper(
+                helper_id,
+                helper_name
+            )
+
+            result = await award_random_move_points(
+                puzzle,
+                helper_user,
+                first_move=False
+            )
+
+            if result == "helper":
+                puzzle.setdefault(
+                    "helper_awarded_users",
+                    []
+                ).append(
+                    helper_id
+                )
+
+        points = get_player_score(
+            message.author.id
+        )
+
+        ranking = build_personal_ranking(
+            message.author.id
+        )
+
+        embed_progress = (
+            "🎉 **Puzzle solved!**"
+        )
+
+        if opponent_replies:
+            embed_progress += (
+                "\n"
+                f"↩️ **Opponent:** "
+                f"{' '.join(opponent_replies)}"
+            )
+
+        # The final board is now a NEW message too.
+        final_file, final_board = await make_board_file(
+            puzzle,
+            "random_puzzle_final.png"
+        )
+
+        final_embed = discord.Embed(
+            title=(
+                f"🎲 Random Puzzle — "
+                f"{puzzle['title']}"
+            ),
+            description=embed_progress,
+            color=0x3498db
+        )
+
+        final_embed.set_image(
+            url="attachment://random_puzzle_final.png"
+        )
+
+        await message.channel.send(
+            embed=final_embed,
+            file=final_file
+        )
+
+        await save_all()
+
+        # Score message for the person who solved it.
+        awarded_for_solver = 0.0
+
+        if str(
+            message.author.id
+        ) == str(first_user_id):
+            awarded_for_solver = 1.0
+        elif str(
+            message.author.id
+        ) in helper_users:
+            awarded_for_solver = 0.5
+
+        if awarded_for_solver == 1.0:
+            score_message = (
+                f"✅ **Correct, {message.author.display_name}!**\n"
+                f"🎉 **Puzzle solved!**\n"
+                f"**+1 point** — you now have "
+                f"**{format_points(points)} points.**"
+            )
+
+        elif awarded_for_solver == 0.5:
+            score_message = (
+                f"✅ **Correct, {message.author.display_name}!**\n"
+                f"🎉 **Puzzle solved!**\n"
+                f"**+0.5 point** for helping — "
+                f"you now have "
+                f"**{format_points(points)} points.**"
+            )
+
+        else:
+            score_message = (
+                f"✅ **Correct, {message.author.display_name}!**\n"
+                f"🎉 **Puzzle solved!**\n"
+                f"You have **{format_points(points)} points.**"
+            )
+
+        await message.channel.send(
+            score_message
+        )
+
+        # If the finisher was not the first-move player, separately
+        # notify the first-move player that their +1 was awarded.
+        if (
+            first_user_id
+            and str(message.author.id)
+            != str(first_user_id)
+        ):
+            first_name = puzzle.get(
+                "first_move_user_name",
+                "First solver"
+            )
+
+            await message.channel.send(
+                f"🏆 **{first_name} found the first move!** "
+                f"**+1 point**."
+            )
+
+        if ranking:
+            await message.channel.send(
+                ranking
+            )
+
+        puzzle["answer_posted"] = True
+
+        await post_answer(
+            message.channel,
+            puzzle,
+            "random"
+        )
+
+        await save_all()
+
+        return
+
+    # -----------------------------------------------------
+    # MORE PLAYER MOVES TO GO
+    # -----------------------------------------------------
+
+    remaining = (
+        len(player_moves)
+        - next_player_index
+    )
+
+    if opponent_replies:
+        reply_text = (
+            f"↩️ **Opponent replies:** "
+            f"{' '.join(opponent_replies)}"
+        )
+    else:
+        reply_text = ""
+
+    if remaining == 1:
+        progress = (
+            "**✅ Correct! Now make your final move.**"
+        )
+    else:
+        progress = (
+            f"**✅ Correct! {remaining} "
+            f"{move_word(remaining)} remaining.**"
+        )
+
+    if reply_text:
+        progress += (
+            f"\n{reply_text}"
+        )
+
+    # -----------------------------------------------------
+    # NEW MESSAGE instead of editing the previous one.
+    # This keeps every solved step visible in chat.
+    # -----------------------------------------------------
+
+    step_file, step_board = await make_board_file(
+        puzzle,
+        "random_puzzle_step.png"
+    )
+
+    step_embed = discord.Embed(
+        title=(
+            f"🎲 Random Puzzle — "
+            f"{puzzle['title']}"
+        ),
+        description=progress,
+        color=0x3498db
+    )
+
+    step_embed.set_image(
+        url="attachment://random_puzzle_step.png"
+    )
+
+    await message.channel.send(
+        embed=step_embed,
+        file=step_file
+    )
+
+    await save_all()
+
+
+# =========================================================
 # HANDLE ANSWER
 # =========================================================
 
@@ -1992,10 +2937,22 @@ async def handle_answer(
     answer_window,
     move_text
 ):
-
     if not puzzle:
         return
 
+    # Random puzzles are solved interactively:
+    # one user move -> automatic opponent reply -> next user move.
+    if str(
+        puzzle.get("puzzle_id", "")
+    ).startswith("random_"):
+        await handle_random_answer(
+            message,
+            puzzle,
+            move_text
+        )
+        return
+
+    # Daily puzzle: user submits the complete sequence of THEIR moves.
     if puzzle.get(
         "answer_posted",
         False
@@ -2008,197 +2965,74 @@ async def handle_answer(
     ):
         return
 
+    required = puzzle.get(
+        "player_move_count",
+        1
+    )
+
     submitted_moves = (
         move_text.strip().split()
     )
 
-    # Exactly ONE player move per message.
-    if len(submitted_moves) != 1:
+    if len(submitted_moves) != required:
         await message.channel.send(
-            f"❌ **One move at a time, "
-            f"{message.author.display_name}.**"
+            f"❌ **Not quite, "
+            f"{message.author.display_name}.**\n"
+            f"This puzzle requires **{required} "
+            f"{move_word(required)}** from your side."
         )
         return
 
-    user_id = str(
-        message.author.id
-    )
-
-    progress_map = puzzle.setdefault(
-        "player_progress",
-        {}
-    )
-
-    progress = int(
-        progress_map.get(
-            user_id,
-            0
-        )
-    )
-
-    player_moves = puzzle.get(
-        "player_moves",
-        []
-    )
-
-    total_player_moves = len(
-        player_moves
-    )
-
-    if progress >= total_player_moves:
-        return
-
-    # Rebuild the board at this user's current point in the puzzle.
-    board = board_after_player_progress(
-        puzzle,
-        progress,
-    )
-
-    expected = player_moves[
-        progress
-    ]
-
-    correct = san_matches_move(
-        board,
-        submitted_moves[0],
-        expected,
+    correct = solution_is_correct(
+        move_text,
+        puzzle
     )
 
     await save_attempt(
         puzzle,
         message.author,
-        submitted_moves[0],
-        correct,
+        move_text,
+        correct
     )
 
     if not correct:
-
-        wrong_replies = [
-            (
-                f"❌ **Not quite, "
-                f"{message.author.display_name}.** "
-                "The board has respectfully rejected that move."
-            ),
-            (
-                f"❌ **Nope, "
-                f"{message.author.display_name}.** "
-                "The pieces have seen enough."
-            ),
-            (
-                f"❌ **Wrong move.** "
-                "Your knight would like to speak to management."
-            ),
-            (
-                f"❌ **Close.** "
-                "Unfortunately the chess gods said no."
-            ),
-            (
-                f"❌ **That ain't it.** "
-                "The engine has filed a complaint."
-            ),
-        ]
-
         await message.channel.send(
-            random.choice(
-                wrong_replies
-            )
+            wrong_message(message.author)
         )
-
         return
 
-    # Correct single move.
-    progress += 1
-    progress_map[user_id] = progress
-
-    puzzle.setdefault(
-        "player_move_history",
-        {}
-    ).setdefault(
-        user_id,
-        []
-    ).append(
-        expected["san"]
-    )
-
-    save_json(
-        STATE_FILE,
-        state
-    )
-
-    # Final move: award +1 and finish.
-    if progress >= total_player_moves:
-
-        got_point, current_points = await award_point(
-            puzzle,
-            message.author
-        )
-
-        if got_point:
-            await message.channel.send(
-                f"🎉 **{message.author.display_name} +1**"
-            )
-        else:
-            await message.channel.send(
-                f"✅ **Correct, "
-                f"{message.author.display_name}!** "
-                "Someone else got the point first."
-            )
-
-        return
-
-    # Intermediate move: show a fresh board/embed and wait for the next
-    # player's move. The opponent's response is already played on the board.
-    file, board = await make_progress_board_file(
+    got_point = await award_point(
         puzzle,
-        progress,
-        f"daily_progress_{user_id}.png",
+        message.author
     )
 
-    side = (
-        "White"
-        if board.turn
-        else "Black"
+    current_points = get_player_score(
+        message.author.id
     )
 
-    history = puzzle.get(
-        "player_move_history",
-        {}
-    ).get(
-        user_id,
-        []
+    personal_ranking = build_personal_ranking(
+        message.author.id
     )
 
-    last_move_text = (
-        history[-1]
-        if history
-        else expected["san"]
-    )
+    if got_point:
+        response = (
+            f"✅ **Correct, "
+            f"{message.author.display_name}!**\n"
+            f"**+1 point** — you now have "
+            f"**{current_points} points**."
+        )
+    else:
+        response = (
+            f"✅ **Correct, "
+            f"{message.author.display_name}!**\n"
+            f"Someone else got the point first.\n"
+            f"You have **{current_points} points**."
+        )
 
-    embed = discord.Embed(
-        title="♟️ Daily Puzzle — Good move!",
-        description=(
-            f"✅ **{last_move_text}**\n"
-            f"**Move {progress}/{total_player_moves}.**\n"
-            f"**{side} to move.**\n\n"
-            f"Your next move?"
-        ),
-    )
+    await message.channel.send(response)
 
-    embed.set_image(
-        url=f"attachment://daily_progress_{user_id}.png"
-    )
-
-    await message.channel.send(
-        embed=embed,
-        file=file,
-    )
-
-    print(
-        f"{message.author.display_name} got "
-        f"Daily Puzzle move {progress}/{total_player_moves} correct.",
-        flush=True,
-    )
-
+    if personal_ranking:
+        await message.channel.send(personal_ranking)
 
 
 # =========================================================
@@ -2210,151 +3044,204 @@ async def on_message(
     message
 ):
 
-    if message.author.bot:
-        return
+    try:
 
-    if message.channel.id != CHANNEL_ID:
-        return
 
-    content = message.content.strip()
 
-    if not content:
-        return
+        if message.author.bot:
+            return
 
-    command_lower = content.casefold()
+        if message.channel.id != CHANNEL_ID:
+            return
 
-    # Commands keep their ! prefix.
-    if command_lower in (
-        "!help",
-        "!info",
-    ):
-        await message.channel.send(
-            help_message()
-        )
-        return
+        content = message.content.strip()
 
-    if command_lower in (
-        "!leaderboard",
-        "!lb",
-        "!l",
-    ):
-        await message.channel.send(
-            make_leaderboard()
-        )
-        return
+        if not content.startswith("!"):
+            return
 
-    # New random puzzle: rp and !rp both work.
-    if command_lower in (
-        "rp",
-        "!rp",
-        "random",
-        "!random",
-        "randompuzzle",
-        "!randompuzzle",
-    ):
-        await post_random_puzzle(
-            message.channel
-        )
-        return
+        command_lower = content.lower()
 
-    # Explicit random answer commands.
-    if command_lower.startswith(
-        "!random "
-    ) or command_lower.startswith(
-        "random "
-    ):
+        # Fast exact aliases. Handle these before any puzzle logic.
+        if command_lower in (
+            "!leaderboard",
+            "!lb",
+            "!l"
+        ):
+            await message.channel.send(
+                make_leaderboard()
+            )
+            return
 
-        prefix = (
+        # =====================================================
+        # HELP / INFO
+        # =====================================================
+
+        if command_lower in (
+            "!help",
+            "!info"
+        ):
+
+            await message.channel.send(
+                help_message()
+            )
+
+            return
+
+        # =====================================================
+        # RANDOM PUZZLE
+        # =====================================================
+
+        if command_lower in (
+            "!random",
+            "!rp",
+            "!r",
+            "!randompuzzle"
+        ):
+
+            previous_random = state.get(
+                "latest_random_puzzle"
+            )
+
+            if (
+                previous_random
+                and not previous_random.get(
+                    "answer_posted",
+                    False
+                )
+                and not previous_random.get(
+                    "solved",
+                    False
+                )
+            ):
+                await finalize_expired_puzzle(
+                    message.channel,
+                    previous_random,
+                    "random"
+                )
+
+            await post_random_puzzle(
+                message.channel
+            )
+
+            return
+
+        # =====================================================
+        # RANDOM ANSWER
+        # =====================================================
+
+        if command_lower.startswith(
             "!random "
-            if command_lower.startswith("!random ")
-            else "random "
-        )
+        ):
 
-        move_text = content[
-            len(prefix):
-        ].strip()
+            move_text = content[
+                len("!random "):
+            ].strip()
 
-        if move_text:
+            if not move_text:
+                return
+
+            puzzle = state.get(
+                "latest_random_puzzle"
+            )
+
             await handle_answer(
                 message,
-                state.get(
-                    "latest_random_puzzle"
-                ),
+                puzzle,
                 RANDOM_ANSWER_WINDOW,
-                move_text,
+                move_text
             )
 
-        return
+            return
 
-    # Explicit daily answer commands remain supported.
-    if command_lower.startswith(
-        "!daily "
-    ) or command_lower.startswith(
-        "daily "
-    ):
+        # =====================================================
+        # DAILY ANSWER
+        # =====================================================
 
-        prefix = (
+        if command_lower.startswith(
             "!daily "
-            if command_lower.startswith("!daily ")
-            else "daily "
-        )
+        ):
 
-        move_text = content[
-            len(prefix):
-        ].strip()
+            move_text = content[
+                len("!daily "):
+            ].strip()
 
-        if move_text:
+            if not move_text:
+                return
+
+            puzzle = state.get(
+                "current_puzzle"
+            )
+
             await handle_answer(
                 message,
-                state.get(
-                    "current_puzzle"
-                ),
+                puzzle,
                 ANSWER_WINDOW,
-                move_text,
+                move_text
             )
 
-        return
+            return
 
-    # Plain move OR !move.
-    # Do not require a leading ! anymore.
-    move_text = (
-        content[1:].strip()
-        if content.startswith("!")
-        else content
-    )
+        # =====================================================
+        # QUICK ANSWER
+        #
+        # !Bf2
+        # !Bf2
+        # !bf2
+        # =====================================================
 
-    # This channel is the Daily bot's chess channel, so once the
-    # message is not a command, pass it directly to the active puzzle.
-    # The chess parser itself decides whether the move is legal/correct.
-    latest_type = state.get(
-        "latest_puzzle_type"
-    )
+        move_text = content[1:].strip()
 
-    if latest_type == "random":
-        puzzle = state.get(
-            "latest_random_puzzle"
+        if not move_text:
+            return
+
+        latest_type = state.get(
+            "latest_puzzle_type"
         )
-        answer_window = RANDOM_ANSWER_WINDOW
 
-    else:
-        # Daily is the normal/default active puzzle.
-        puzzle = state.get(
-            "current_puzzle"
+        if latest_type == "random":
+
+            puzzle = state.get(
+                "latest_random_puzzle"
+            )
+
+            answer_window = (
+                RANDOM_ANSWER_WINDOW
+            )
+
+        elif latest_type == "daily":
+
+            puzzle = state.get(
+                "current_puzzle"
+            )
+
+            answer_window = (
+                ANSWER_WINDOW
+            )
+
+        else:
+
+            return
+
+        await handle_answer(
+            message,
+            puzzle,
+            answer_window,
+            move_text
         )
-        answer_window = ANSWER_WINDOW
 
-    if puzzle is None:
-        return
+    except Exception as error:
+        print(
+            f"COMMAND ERROR: {error}",
+            flush=True
+        )
+        traceback.print_exc()
 
-    await handle_answer(
-        message,
-        puzzle,
-        answer_window,
-        move_text,
-    )
-
-
-
+        try:
+            await message.channel.send(
+                f"❌ **Bot error:** `{str(error)[:1000]}`"
+            )
+        except Exception:
+            pass
 
 
 # =========================================================
@@ -2381,9 +3268,67 @@ async def on_ready():
         {}
     )
 
-    # Legacy local scores are deliberately ignored.
-    # Shared leaderboard is the only score authority.
-    scores = {}
+    scores = load_json(
+        LEADERBOARD_FILE,
+        {}
+    )
+
+    state.setdefault(
+        "leaderboard_last_posted_date",
+        None
+    )
+
+    # Restore the current random puzzle position after a restart.
+    random_puzzle = state.get(
+        "latest_random_puzzle"
+    )
+
+    if random_puzzle:
+        random_puzzle.setdefault(
+            "current_fen",
+            random_puzzle.get("fen")
+        )
+        random_puzzle.setdefault(
+            "next_solution_index",
+            0
+        )
+        random_puzzle.setdefault(
+            "next_player_index",
+            0
+        )
+        random_puzzle.setdefault(
+            "solved",
+            False
+        )
+        random_puzzle.setdefault(
+            "attempted_users",
+            {}
+        )
+
+        random_puzzle.setdefault(
+            "first_move_user_id",
+            None
+        )
+
+        random_puzzle.setdefault(
+            "first_move_user_name",
+            None
+        )
+
+        random_puzzle.setdefault(
+            "first_move_awarded",
+            False
+        )
+
+        random_puzzle.setdefault(
+            "helper_awarded_users",
+            []
+        )
+
+        random_puzzle.setdefault(
+            "helper_candidate_users",
+            []
+        )
 
     print(
         f"READY! Logged in as {client.user}",
