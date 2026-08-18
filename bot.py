@@ -885,6 +885,9 @@ def build_puzzle(data):
         "latest_attempts":
             {},
 
+        "player_progress":
+            {},
+
         "puzzle_id":
             None
     }
@@ -938,6 +941,164 @@ async def make_board_file(
 # =========================================================
 # MOVE WORD
 # =========================================================
+
+def board_after_player_progress(
+    puzzle,
+    progress_count,
+):
+    """
+    Rebuild the board from the puzzle FEN after exactly
+    `progress_count` correct player moves, automatically playing
+    every opponent response in between.
+    """
+    board = chess.Board(
+        puzzle["fen"]
+    )
+
+    player_color = puzzle[
+        "player_color"
+    ]
+
+    player_moves_seen = 0
+
+    for expected in puzzle.get(
+        "all_moves",
+        [],
+    ):
+
+        move = chess.Move.from_uci(
+            expected["uci"]
+        )
+
+        if move not in board.legal_moves:
+            break
+
+        board.push(
+            move
+        )
+
+        if expected["color"] == player_color:
+            player_moves_seen += 1
+
+            if player_moves_seen >= progress_count:
+                # Automatically apply the opponent's response(s) until
+                # the next player move, so the next embed is ready.
+                continue
+
+    # The loop above pushes the entire solution, which is not what we want
+    # for intermediate states. Rebuild properly, stopping after the requested
+    # player move and then automatically playing subsequent opponent moves.
+    board = chess.Board(
+        puzzle["fen"]
+    )
+
+    player_moves_seen = 0
+    moves = puzzle.get(
+        "all_moves",
+        [],
+    )
+
+    for index, expected in enumerate(moves):
+
+        move = chess.Move.from_uci(
+            expected["uci"]
+        )
+
+        if move not in board.legal_moves:
+            break
+
+        board.push(move)
+
+        if expected["color"] == player_color:
+            player_moves_seen += 1
+
+            if player_moves_seen >= progress_count:
+
+                # Play all immediately-following opponent moves until it
+                # becomes the player's turn again or the solution ends.
+                for following in moves[index + 1:]:
+                    if following["color"] == player_color:
+                        break
+
+                    reply = chess.Move.from_uci(
+                        following["uci"]
+                    )
+
+                    if reply not in board.legal_moves:
+                        break
+
+                    board.push(reply)
+
+                break
+
+    return board
+
+
+async def make_progress_board_file(
+    puzzle,
+    progress_count,
+    filename,
+):
+    board = board_after_player_progress(
+        puzzle,
+        progress_count,
+    )
+
+    orientation = (
+        chess.WHITE
+        if board.turn
+        else chess.BLACK
+    )
+
+    last_move = None
+
+    if progress_count > 0:
+        player_seen = 0
+        for expected in puzzle.get(
+            "all_moves",
+            [],
+        ):
+            if expected["color"] == puzzle["player_color"]:
+                player_seen += 1
+                last_move = expected
+                if player_seen >= progress_count:
+                    break
+
+    svg_kwargs = {
+        "board": board,
+        "orientation": orientation,
+        "size": 500,
+        "coordinates": True,
+    }
+
+    if last_move is not None:
+        svg_kwargs["lastmove"] = chess.Move.from_uci(
+            last_move["uci"]
+        )
+
+    svg_board = chess.svg.board(
+        **svg_kwargs
+    )
+
+    png_bytes = await asyncio.to_thread(
+        cairosvg.svg2png,
+        bytestring=svg_board.encode(
+            "utf-8"
+        )
+    )
+
+    image = BytesIO(
+        png_bytes
+    )
+
+    return (
+        discord.File(
+            fp=image,
+            filename=filename,
+        ),
+        board,
+    )
+
 
 def move_word(count):
 
@@ -1072,8 +1233,8 @@ async def post_random_puzzle(
             ),
             description=(
                 f"**{side} to move.**\n"
-                f"Find the best line in "
-                f"**{count} {move_word(count)}**."
+                "Enter **one move at a time**. "
+                "The board updates after each correct move."
             ),
             color=0x3498db
         )
@@ -1866,45 +2027,68 @@ async def handle_answer(
     ):
         return
 
-    required = puzzle.get(
-        "player_move_count",
-        1
-    )
-
     submitted_moves = (
         move_text.strip().split()
     )
 
-    # Give a useful response if they didn't
-    # provide enough of their own moves.
-    if len(submitted_moves) != required:
-
+    # Exactly ONE player move per message.
+    if len(submitted_moves) != 1:
         await message.channel.send(
-            f"❌ **Not quite, "
-            f"{message.author.display_name}.**\n"
-            f"This puzzle requires "
-            f"**{required} "
-            f"{move_word(required)}** "
-            f"from your side."
+            f"❌ **One move at a time, "
+            f"{message.author.display_name}.**"
         )
-
         return
 
-    correct = solution_is_correct(
-        move_text,
-        puzzle
+    user_id = str(
+        message.author.id
+    )
+
+    progress_map = puzzle.setdefault(
+        "player_progress",
+        {}
+    )
+
+    progress = int(
+        progress_map.get(
+            user_id,
+            0
+        )
+    )
+
+    player_moves = puzzle.get(
+        "player_moves",
+        []
+    )
+
+    total_player_moves = len(
+        player_moves
+    )
+
+    if progress >= total_player_moves:
+        return
+
+    # Rebuild the board at this user's current point in the puzzle.
+    board = board_after_player_progress(
+        puzzle,
+        progress,
+    )
+
+    expected = player_moves[
+        progress
+    ]
+
+    correct = san_matches_move(
+        board,
+        submitted_moves[0],
+        expected,
     )
 
     await save_attempt(
         puzzle,
         message.author,
-        move_text,
-        correct
+        submitted_moves[0],
+        correct,
     )
-
-    # =====================================================
-    # WRONG
-    # =====================================================
 
     if not correct:
 
@@ -1920,18 +2104,15 @@ async def handle_answer(
                 "The pieces have seen enough."
             ),
             (
-                f"❌ **Wrong line, "
-                f"{message.author.display_name}.** "
+                f"❌ **Wrong move.** "
                 "Your knight would like to speak to management."
             ),
             (
-                f"❌ **Close, "
-                f"{message.author.display_name}.** "
+                f"❌ **Close.** "
                 "Unfortunately the chess gods said no."
             ),
             (
-                f"❌ **That ain't it, "
-                f"{message.author.display_name}.** "
+                f"❌ **That ain't it.** "
                 "The engine has filed a complaint."
             ),
         ]
@@ -1944,26 +2125,99 @@ async def handle_answer(
 
         return
 
-    # =====================================================
-    # CORRECT
-    # =====================================================
+    # Correct single move.
+    progress += 1
+    progress_map[user_id] = progress
 
-    got_point, current_points = await award_point(
-        puzzle,
-        message.author
+    puzzle.setdefault(
+        "player_move_history",
+        {}
+    ).setdefault(
+        user_id,
+        []
+    ).append(
+        expected["san"]
     )
 
-    if got_point:
-        await message.channel.send(
-            f"🎉 **{message.author.display_name} +1**"
+    save_json(
+        STATE_FILE,
+        state
+    )
+
+    # Final move: award +1 and finish.
+    if progress >= total_player_moves:
+
+        got_point, current_points = await award_point(
+            puzzle,
+            message.author
         )
 
-    else:
-        await message.channel.send(
-            f"✅ **Correct, "
-            f"{message.author.display_name}!** "
-            "Someone else got the point first."
-        )
+        if got_point:
+            await message.channel.send(
+                f"🎉 **{message.author.display_name} +1**"
+            )
+        else:
+            await message.channel.send(
+                f"✅ **Correct, "
+                f"{message.author.display_name}!** "
+                "Someone else got the point first."
+            )
+
+        return
+
+    # Intermediate move: show a fresh board/embed and wait for the next
+    # player's move. The opponent's response is already played on the board.
+    file, board = await make_progress_board_file(
+        puzzle,
+        progress,
+        f"daily_progress_{user_id}.png",
+    )
+
+    side = (
+        "White"
+        if board.turn
+        else "Black"
+    )
+
+    history = puzzle.get(
+        "player_move_history",
+        {}
+    ).get(
+        user_id,
+        []
+    )
+
+    last_move_text = (
+        history[-1]
+        if history
+        else expected["san"]
+    )
+
+    embed = discord.Embed(
+        title="♟️ Daily Puzzle — Good move!",
+        description=(
+            f"✅ **{last_move_text}**\n"
+            f"**Move {progress}/{total_player_moves}.**\n"
+            f"**{side} to move.**\n\n"
+            f"Your next move?"
+        ),
+    )
+
+    embed.set_image(
+        url=f"attachment://daily_progress_{user_id}.png"
+    )
+
+    await message.channel.send(
+        embed=embed,
+        file=file,
+    )
+
+    print(
+        f"{message.author.display_name} got "
+        f"Daily Puzzle move {progress}/{total_player_moves} correct.",
+        flush=True,
+    )
+
 
 
 # =========================================================
