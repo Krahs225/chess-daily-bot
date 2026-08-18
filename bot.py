@@ -13,11 +13,6 @@ import re
 import time
 from datetime import datetime, timezone
 
-from shared_leaderboard import (
-    add_points,
-    full_leaderboard,
-    personal_ranking,
-)
 
 
 # =========================================================
@@ -31,7 +26,8 @@ DAILY_PUZZLE_API = "https://api.chess.com/pub/puzzle"
 RANDOM_PUZZLE_API = "https://api.chess.com/pub/puzzle/random"
 
 STATE_FILE = "daily_puzzle_state.json"
-LEGACY_LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
+DAILY_LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
+DAILY_EVENTS_FILE = "daily_puzzle_score_events.json"
 
 PUZZLE_CHECK_INTERVAL = 5 * 60
 LEADERBOARD_INTERVAL = 10 * 60
@@ -60,6 +56,7 @@ state = {}
 scores = {}
 
 data_lock = asyncio.Lock()
+score_lock = asyncio.Lock()
 
 
 # =========================================================
@@ -120,6 +117,406 @@ def save_json(filename, data):
 
 
 # =========================================================
+# SOLID DAILY-ONLY SCORE LEDGER
+# =========================================================
+
+def load_daily_scores():
+    """
+    Daily has its own leaderboard.
+
+    The old daily_puzzle_leaderboard.json is the starting balance.
+    After migration, every new +1 is also recorded as an immutable
+    transaction in daily_puzzle_score_events.json.
+
+    A transaction ID prevents the same puzzle winner from ever
+    receiving the same point twice.
+    """
+    legacy = load_json(
+        DAILY_LEADERBOARD_FILE,
+        {}
+    )
+
+    events = load_json(
+        DAILY_EVENTS_FILE,
+        []
+    )
+
+    if not isinstance(events, list):
+        events = []
+
+    # One-time migration of the old Daily leaderboard.
+    if not events and isinstance(legacy, dict):
+        for user_id, entry in legacy.items():
+            try:
+                points = float(
+                    entry.get("points", 0)
+                )
+            except Exception:
+                points = 0.0
+
+            if points <= 0:
+                continue
+
+            events.append(
+                {
+                    "transaction_id":
+                        f"baseline:{user_id}:{points:g}",
+                    "user_id":
+                        str(user_id),
+                    "name":
+                        entry.get("name", "Unknown"),
+                    "points":
+                        points,
+                    "source":
+                        "legacy-daily-baseline",
+                }
+            )
+
+    totals = {}
+
+    for event in events:
+
+        user_id = str(
+            event.get(
+                "user_id",
+                ""
+            )
+        )
+
+        if not user_id:
+            continue
+
+        try:
+            amount = float(
+                event.get(
+                    "points",
+                    0
+                )
+            )
+        except Exception:
+            continue
+
+        entry = totals.setdefault(
+            user_id,
+            {
+                "name":
+                    event.get(
+                        "name",
+                        "Unknown"
+                    ),
+                "points":
+                    0.0,
+            }
+        )
+
+        entry["points"] = round(
+            entry["points"] + amount,
+            3,
+        )
+
+        if event.get("name"):
+            entry["name"] = event["name"]
+
+    return totals, events
+
+
+def daily_leaderboard_text():
+    global scores
+
+    scores, _ = load_daily_scores()
+
+    if not scores:
+        return (
+            "🏆 **Leaderboard**\n\n"
+            "No points yet!"
+        )
+
+    ordered = sorted(
+        scores.items(),
+        key=lambda item: (
+            -float(
+                item[1].get("points", 0)
+            ),
+            str(
+                item[1].get(
+                    "name",
+                    "Unknown"
+                )
+            ).casefold(),
+        ),
+    )
+
+    lines = [
+        "🏆 **Leaderboard**",
+        "",
+    ]
+
+    for rank, (_, entry) in enumerate(
+        ordered,
+        start=1,
+    ):
+        points = float(
+            entry.get(
+                "points",
+                0,
+            )
+        )
+
+        if points.is_integer():
+            point_text = str(
+                int(points)
+            )
+        else:
+            point_text = f"{points:g}"
+
+        word = (
+            "point"
+            if points == 1
+            else "points"
+        )
+
+        if rank == 1:
+            prefix = "🥇"
+        elif rank == 2:
+            prefix = "🥈"
+        elif rank == 3:
+            prefix = "🥉"
+        else:
+            prefix = f"**{rank}.**"
+
+        lines.append(
+            f"{prefix} "
+            f"{entry.get('name', 'Unknown')} — "
+            f"**{point_text} {word}**"
+        )
+
+    return "\n".join(lines)
+
+
+def daily_score_for(user_id):
+    scores, _ = load_daily_scores()
+
+    return float(
+        scores.get(
+            str(user_id),
+            {},
+        ).get(
+            "points",
+            0,
+        )
+    )
+
+
+def daily_personal_ranking(user_id):
+    scores, _ = load_daily_scores()
+
+    ordered = sorted(
+        scores.items(),
+        key=lambda item: (
+            -float(
+                item[1].get("points", 0)
+            ),
+            str(
+                item[1].get(
+                    "name",
+                    "Unknown"
+                )
+            ).casefold(),
+        ),
+    )
+
+    position = next(
+        (
+            i
+            for i, (uid, _) in enumerate(
+                ordered
+            )
+            if str(uid) == str(user_id)
+        ),
+        None,
+    )
+
+    if position is None:
+        return ""
+
+    start = max(
+        0,
+        position - 1,
+    )
+
+    end = min(
+        len(ordered),
+        position + 2,
+    )
+
+    lines = [
+        "",
+        "📊 **Your ranking**",
+    ]
+
+    for i in range(
+        start,
+        end,
+    ):
+        uid, entry = ordered[i]
+        points = float(
+            entry.get(
+                "points",
+                0,
+            )
+        )
+
+        point_text = (
+            str(int(points))
+            if points.is_integer()
+            else f"{points:g}"
+        )
+
+        marker = (
+            " ← you"
+            if str(uid) == str(user_id)
+            else ""
+        )
+
+        lines.append(
+            f"**#{i + 1} "
+            f"{entry.get('name', 'Unknown')} — "
+            f"{point_text} "
+            f"points{marker}**"
+        )
+
+    return "\n".join(lines)
+
+
+def record_daily_point(
+    user_id,
+    display_name,
+    transaction_id,
+):
+    """
+    One Daily point, exactly once.
+
+    The transaction file is the source of truth for new awards.
+    The legacy leaderboard becomes a one-time baseline.
+    """
+    global scores
+
+    with score_lock:
+
+        scores, events = load_daily_scores()
+
+        existing_ids = {
+            str(
+                event.get(
+                    "transaction_id",
+                    ""
+                )
+            )
+            for event in events
+        }
+
+        if transaction_id in existing_ids:
+            return (
+                False,
+                daily_score_for(user_id),
+            )
+
+        events.append(
+            {
+                "transaction_id":
+                    transaction_id,
+                "user_id":
+                    str(user_id),
+                "name":
+                    str(display_name),
+                "points":
+                    1,
+                "source":
+                    "daily-puzzle",
+            }
+        )
+
+        # Recalculate totals from the immutable event list.
+        totals = {}
+
+        for event in events:
+
+            uid = str(
+                event.get(
+                    "user_id",
+                    ""
+                )
+            )
+
+            if not uid:
+                continue
+
+            entry = totals.setdefault(
+                uid,
+                {
+                    "name":
+                        event.get(
+                            "name",
+                            "Unknown"
+                        ),
+                    "points":
+                        0.0,
+                }
+            )
+
+            entry["points"] = round(
+                entry["points"]
+                + float(
+                    event.get(
+                        "points",
+                        0
+                    )
+                ),
+                3,
+            )
+
+            if event.get("name"):
+                entry["name"] = event["name"]
+
+        scores = totals
+
+        save_json(
+            DAILY_EVENTS_FILE,
+            events
+        )
+
+        save_json(
+            DAILY_LEADERBOARD_FILE,
+            scores
+        )
+
+        # Push these two files together. If another Daily instance
+        # races us, the concurrency lock normally prevents it, and the
+        # transaction ID makes repeated awards idempotent.
+        try:
+            push_to_github()
+        except Exception as error:
+            print(
+                f"Daily leaderboard push error: {error}",
+                flush=True,
+            )
+            raise
+
+        return (
+            True,
+            float(
+                scores.get(
+                    str(user_id),
+                    {},
+                ).get(
+                    "points",
+                    0,
+                )
+            ),
+        )
+
+
+# =========================================================
 # GITHUB SAVE
 # =========================================================
 
@@ -153,7 +550,9 @@ def push_to_github():
             [
                 "git",
                 "add",
-                STATE_FILE
+                STATE_FILE,
+                DAILY_LEADERBOARD_FILE,
+                DAILY_EVENTS_FILE
             ],
             check=True,
             capture_output=True
@@ -205,8 +604,6 @@ def push_to_github():
 
 async def save_all():
 
-    # Puzzle state is persisted here.
-    # Scores are stored only in shared_leaderboard.py.
     save_json(
         STATE_FILE,
         state
@@ -966,23 +1363,15 @@ def puzzle_is_open(
 def get_player_score(
     user_id
 ):
-    # Compatibility helper. The actual score source is the shared ledger.
-    from shared_leaderboard import get_score
-
-    return get_score(
+    return daily_score_for(
         user_id
     )
 
 
-
-# =========================================================
-# PERSONAL RANKING
-# =========================================================
-
 def build_personal_ranking(
     user_id
 ):
-    return personal_ranking(
+    return daily_personal_ranking(
         user_id
     )
 
@@ -1063,19 +1452,18 @@ async def award_point(
         if puzzle.get(
             "winner_user_id"
         ) is not None:
-            return False, get_player_score(
-                user.id
+            return (
+                False,
+                daily_score_for(
+                    user.id
+                )
             )
 
-        # Record the point in the append-only shared ledger FIRST.
-        # The transaction_id makes retries idempotent.
-        total = await asyncio.to_thread(
-            add_points,
+        got_point, total = await asyncio.to_thread(
+            record_daily_point,
             user.id,
             user.display_name,
-            1,
             transaction_id,
-            "daily-puzzle",
         )
 
         puzzle[
@@ -1095,7 +1483,10 @@ async def award_point(
             push_to_github
         )
 
-        return True, total
+        return (
+            got_point,
+            total,
+        )
 
 
 
@@ -1104,9 +1495,7 @@ async def award_point(
 # =========================================================
 
 def make_leaderboard():
-    return full_leaderboard(
-        "🏆 **Shared Leaderboard**"
-    )
+    return daily_leaderboard_text()
 
 
 
@@ -1130,14 +1519,14 @@ The `!` is optional for moves only.
 
 **Commands**
 `!random`, `!randompuzzle` — new random puzzle.
-`!leaderboard`, `!lb`, `!l` — shared leaderboard.
+`!leaderboard`, `!lb`, `!l` — Daily Puzzle leaderboard.
 `!help` or `!info` — show this message.
 
 Only your own moves are required. The opponent's moves are automatically played.
 
 **Points**
 The first complete correct answer gets **+1 point**.
-Daily uses the same shared leaderboard as the two Chatter games.
+Daily Puzzle has its **own separate leaderboard**.
 """
 
 
