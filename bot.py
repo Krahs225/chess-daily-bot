@@ -2242,18 +2242,14 @@ async def on_message(
 
     command_lower = content.casefold()
 
-    # -------------------------
-    # ! commands stay !-based
-    # -------------------------
+    # Commands keep their ! prefix.
     if command_lower in (
         "!help",
         "!info",
     ):
-
         await message.channel.send(
             help_message()
         )
-
         return
 
     if command_lower in (
@@ -2261,17 +2257,12 @@ async def on_message(
         "!lb",
         "!l",
     ):
-
         await message.channel.send(
             make_leaderboard()
         )
-
         return
 
-    # -------------------------
-    # Random puzzle:
-    # both rp and !rp work.
-    # -------------------------
+    # New random puzzle: rp and !rp both work.
     if command_lower in (
         "rp",
         "!rp",
@@ -2280,128 +2271,80 @@ async def on_message(
         "randompuzzle",
         "!randompuzzle",
     ):
-
         await post_random_puzzle(
             message.channel
         )
-
         return
 
+    # Explicit random answer commands.
     if command_lower.startswith(
         "!random "
-    ):
-
-        move_text = content[
-            len("!random "):
-        ].strip()
-
-        if move_text:
-            puzzle = state.get(
-                "latest_random_puzzle"
-            )
-
-            await handle_answer(
-                message,
-                puzzle,
-                RANDOM_ANSWER_WINDOW,
-                move_text,
-            )
-
-        return
-
-    if command_lower.startswith(
+    ) or command_lower.startswith(
         "random "
     ):
 
+        prefix = (
+            "!random "
+            if command_lower.startswith("!random ")
+            else "random "
+        )
+
         move_text = content[
-            len("random "):
+            len(prefix):
         ].strip()
 
         if move_text:
-            puzzle = state.get(
-                "latest_random_puzzle"
-            )
-
             await handle_answer(
                 message,
-                puzzle,
+                state.get(
+                    "latest_random_puzzle"
+                ),
                 RANDOM_ANSWER_WINDOW,
                 move_text,
             )
 
         return
 
-    # -------------------------
-    # Daily prefix commands:
-    # !daily moves and daily moves
-    # remain available.
-    # -------------------------
+    # Explicit daily answer commands remain supported.
     if command_lower.startswith(
         "!daily "
-    ):
-
-        move_text = content[
-            len("!daily "):
-        ].strip()
-
-        if move_text:
-            puzzle = state.get(
-                "current_puzzle"
-            )
-
-            await handle_answer(
-                message,
-                puzzle,
-                ANSWER_WINDOW,
-                move_text,
-            )
-
-        return
-
-    if command_lower.startswith(
+    ) or command_lower.startswith(
         "daily "
     ):
 
+        prefix = (
+            "!daily "
+            if command_lower.startswith("!daily ")
+            else "daily "
+        )
+
         move_text = content[
-            len("daily "):
+            len(prefix):
         ].strip()
 
         if move_text:
-            puzzle = state.get(
-                "current_puzzle"
-            )
-
             await handle_answer(
                 message,
-                puzzle,
+                state.get(
+                    "current_puzzle"
+                ),
                 ANSWER_WINDOW,
                 move_text,
             )
 
         return
 
-    # -------------------------
-    # Moves can now be submitted
-    # with OR without !.
-    # We only treat a plain message as
-    # a move when it resembles chess SAN/UCI.
-    # -------------------------
-    move_text = content[1:].strip() if content.startswith("!") else content
-
-    looks_like_move = bool(
-        re.fullmatch(
-            r"(?:[KQRBN]?[a-h]?[1-8]?(?:x[a-h][1-8])?[a-h][1-8][+#]?|"
-            r"[a-h][1-8](?:[+#])?)(?:\s+"
-            r"(?:[KQRBN]?[a-h]?[1-8]?(?:x[a-h][1-8])?[a-h][1-8][+#]?|"
-            r"[a-h][1-8](?:[+#])?))*",
-            move_text,
-            flags=re.IGNORECASE,
-        )
+    # Plain move OR !move.
+    # Do not require a leading ! anymore.
+    move_text = (
+        content[1:].strip()
+        if content.startswith("!")
+        else content
     )
 
-    if not looks_like_move:
-        return
-
+    # This channel is the Daily bot's chess channel, so once the
+    # message is not a command, pass it directly to the active puzzle.
+    # The chess parser itself decides whether the move is legal/correct.
     latest_type = state.get(
         "latest_puzzle_type"
     )
@@ -2412,13 +2355,14 @@ async def on_message(
         )
         answer_window = RANDOM_ANSWER_WINDOW
 
-    elif latest_type == "daily":
+    else:
+        # Daily is the normal/default active puzzle.
         puzzle = state.get(
             "current_puzzle"
         )
         answer_window = ANSWER_WINDOW
 
-    else:
+    if puzzle is None:
         return
 
     await handle_answer(
@@ -2427,6 +2371,8 @@ async def on_message(
         answer_window,
         move_text,
     )
+
+
 
 
 
