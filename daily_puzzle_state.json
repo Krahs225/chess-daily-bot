@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-10-15",
     "title": "Boxed In",
     "fen": "7k/1p2r2q/4QR2/6p1/6K1/6P1/8/8 w - - 0 1",
-    "current_fen": "7k/1p2r2q/4QR2/6p1/6K1/6P1/8/8 w - - 0 1",
+    "current_fen": "5Rqk/1p2r3/4Q3/6p1/6K1/6P1/8/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7k/1p2r2q/4QR2/6p1/6K1/6P1/8/8 w - - 0 1\"]\r\n\r\n1. Rf8+ Qg8 2. Qxg8#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787045946334",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1539207002503520347,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rf8",
+        "correct": true,
+        "timestamp": "2026-08-18T09:39:16.221986+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
