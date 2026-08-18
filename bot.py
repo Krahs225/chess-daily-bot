@@ -29,6 +29,7 @@ RANDOM_PUZZLE_API = "https://api.chess.com/pub/puzzle/random"
 
 STATE_FILE = "daily_puzzle_state.json"
 LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
+SCORE_EVENTS_FILE = "daily_puzzle_score_events.json"
 
 PUZZLE_CHECK_INTERVAL = 5 * 60
 LEADERBOARD_INTERVAL = 24 * 60 * 60
@@ -59,6 +60,7 @@ scores = {}
 data_lock = asyncio.Lock()
 github_push_lock = threading.Lock()
 github_sync_task = None
+score_file_lock = threading.Lock()
 
 
 # =========================================================
@@ -118,6 +120,268 @@ def save_json(filename, data):
         return False
 
 
+
+def load_score_ledger():
+    """
+    Daily-only append-only score ledger.
+
+    The existing daily_puzzle_leaderboard.json is treated as the one-time
+    starting balance. After that, every new +1 / +0.5 is recorded as a
+    unique transaction in daily_puzzle_score_events.json.
+
+    Replaying the same transaction_id never changes the score twice.
+    """
+    legacy_scores = load_json(
+        LEADERBOARD_FILE,
+        {}
+    )
+
+    events = load_json(
+        SCORE_EVENTS_FILE,
+        []
+    )
+
+    if not isinstance(events, list):
+        events = []
+
+    # Migrate the existing Daily leaderboard exactly once in memory.
+    if not events and isinstance(legacy_scores, dict):
+        for user_id, entry in legacy_scores.items():
+
+            try:
+                points = float(
+                    entry.get(
+                        "points",
+                        0
+                    )
+                )
+            except Exception:
+                points = 0.0
+
+            if points == 0:
+                continue
+
+            events.append(
+                {
+                    "transaction_id":
+                        f"baseline:{user_id}:{points:g}",
+                    "user_id":
+                        str(user_id),
+                    "name":
+                        entry.get(
+                            "name",
+                            "Unknown"
+                        ),
+                    "points":
+                        points,
+                    "source":
+                        "legacy-daily-baseline",
+                }
+            )
+
+    totals = {}
+
+    for event in events:
+
+        user_id = str(
+            event.get(
+                "user_id",
+                ""
+            )
+        )
+
+        if not user_id:
+            continue
+
+        try:
+            amount = float(
+                event.get(
+                    "points",
+                    0
+                )
+            )
+        except Exception:
+            continue
+
+        entry = totals.setdefault(
+            user_id,
+            {
+                "name":
+                    event.get(
+                        "name",
+                        "Unknown"
+                    ),
+                "points":
+                    0.0,
+            }
+        )
+
+        entry["points"] = round(
+            float(
+                entry["points"]
+            ) + amount,
+            2
+        )
+
+        if event.get("name"):
+            entry["name"] = event["name"]
+
+    return totals, events
+
+
+def append_score_transaction(
+    user_id,
+    display_name,
+    points,
+    transaction_id,
+    source,
+):
+    """
+    Add one Daily score transaction exactly once.
+    Returns (added, new_total).
+    """
+    global scores
+
+    try:
+        points = float(points)
+    except Exception as error:
+        raise ValueError(
+            f"Invalid point amount: {error}"
+        )
+
+    if points < 0:
+        raise ValueError(
+            "Negative point changes are not allowed."
+        )
+
+    with score_file_lock:
+        current_scores, events = load_score_ledger()
+
+        existing_ids = {
+            str(
+                event.get(
+                    "transaction_id",
+                    ""
+                )
+            )
+            for event in events
+        }
+
+        if str(transaction_id) in existing_ids:
+            scores = current_scores
+
+            return (
+                False,
+                float(
+                    current_scores.get(
+                        str(user_id),
+                        {}
+                    ).get(
+                        "points",
+                        0
+                    )
+                )
+            )
+
+        events.append(
+            {
+                "transaction_id":
+                    str(transaction_id),
+                "user_id":
+                    str(user_id),
+                "name":
+                    str(display_name),
+                "points":
+                    points,
+                "source":
+                    source,
+            }
+        )
+
+        totals, _ = rebuild_scores_from_events(
+            events
+        )
+
+        scores = totals
+
+        save_json(
+            SCORE_EVENTS_FILE,
+            events
+        )
+
+        save_json(
+            LEADERBOARD_FILE,
+            scores
+        )
+
+        return (
+            True,
+            float(
+                scores.get(
+                    str(user_id),
+                    {}
+                ).get(
+                    "points",
+                    0
+                )
+            )
+        )
+
+
+def rebuild_scores_from_events(
+    events
+):
+    totals = {}
+
+    for event in events:
+
+        user_id = str(
+            event.get(
+                "user_id",
+                ""
+            )
+        )
+
+        if not user_id:
+            continue
+
+        try:
+            amount = float(
+                event.get(
+                    "points",
+                    0
+                )
+            )
+        except Exception:
+            continue
+
+        entry = totals.setdefault(
+            user_id,
+            {
+                "name":
+                    event.get(
+                        "name",
+                        "Unknown"
+                    ),
+                "points":
+                    0.0,
+            }
+        )
+
+        entry["points"] = round(
+            float(
+                entry["points"]
+            ) + amount,
+            2
+        )
+
+        if event.get("name"):
+            entry["name"] = event["name"]
+
+    return totals, events
+
+
+
 # =========================================================
 # GITHUB SAVE
 # =========================================================
@@ -155,7 +419,8 @@ def push_to_github():
                     "git",
                     "add",
                     STATE_FILE,
-                    LEADERBOARD_FILE
+                    LEADERBOARD_FILE,
+                    SCORE_EVENTS_FILE
                 ],
                 check=True,
                 capture_output=True
@@ -1576,220 +1841,104 @@ async def award_random_move_points(
 ):
     """
     Random puzzle scoring:
-    - First-move player gets +1.0 exactly once, but ONLY when
-      the complete puzzle has been solved.
-    - A different player who supplied a correct later move gets
-      +0.5 exactly once, also ONLY when the puzzle is solved.
+    - first move: +1
+    - helper: +0.5
+    - awarded only when the whole puzzle is solved
+    - every reward has a unique transaction ID
     """
+    user_id = str(
+        user.id
+    )
 
-    user_id = str(user.id)
-    score_kind = "none"
-
-    async with data_lock:
-
-        puzzle.setdefault(
-            "first_move_user_id",
-            None
-        )
-
-        puzzle.setdefault(
-            "first_move_user_name",
-            None
-        )
+    if first_move:
 
         puzzle.setdefault(
             "first_move_awarded",
             False
         )
 
-        puzzle.setdefault(
-            "helper_awarded_users",
-            []
-        )
+        if puzzle.get(
+            "first_move_awarded",
+            False
+        ):
+            return "none"
 
-        if first_move:
-
-            # The first-move player was already recorded when
-            # their move was made. At completion, award +1.
-            if not puzzle.get(
-                "first_move_awarded",
-                False
-            ):
-
-                if puzzle.get(
-                    "first_move_user_id"
-                ) is None:
-
-                    puzzle[
-                        "first_move_user_id"
-                    ] = user_id
-
-                    puzzle[
-                        "first_move_user_name"
-                    ] = user.display_name
-
-                first_user_id = str(
-                    puzzle[
-                        "first_move_user_id"
-                    ]
-                )
-
-                # Award only to the recorded first-move user.
-                if user_id == first_user_id:
-
-                    if user_id not in scores:
-                        scores[user_id] = {
-                            "name":
-                                user.display_name,
-                            "points":
-                                0
-                        }
-
-                    scores[user_id]["name"] = (
-                        user.display_name
-                    )
-
-                    scores[user_id]["points"] = round(
-                        float(
-                            scores[user_id].get(
-                                "points",
-                                0
-                            )
-                        ) + 1.0,
-                        2
-                    )
-
-                    puzzle[
-                        "first_move_awarded"
-                    ] = True
-
-                    score_kind = "first"
-
-        else:
-
-            first_user_id = str(
-                puzzle.get(
-                    "first_move_user_id"
-                )
-            )
-
-            # First-move player can never also be the helper.
-            if user_id == first_user_id:
-                return "none"
-
-            helper_users = puzzle[
-                "helper_awarded_users"
-            ]
-
-            if user_id not in helper_users:
-
-                if user_id not in scores:
-                    scores[user_id] = {
-                        "name":
-                            user.display_name,
-                        "points":
-                            0
-                    }
-
-                scores[user_id]["name"] = (
-                    user.display_name
-                )
-
-                scores[user_id]["points"] = round(
-                    float(
-                        scores[user_id].get(
-                            "points",
-                            0
-                        )
-                    ) + 0.5,
-                    2
-                )
-
-                helper_users.append(
-                    user_id
-                )
-
-                score_kind = "helper"
-
-        if score_kind != "none":
-
-            save_json(
-                STATE_FILE,
-                state
-            )
-
-            save_json(
-                LEADERBOARD_FILE,
-                scores
-            )
-
-    if score_kind != "none":
-
-        asyncio.create_task(
-            asyncio.to_thread(
-                push_to_github
+        first_user_id = str(
+            puzzle.get(
+                "first_move_user_id",
+                user_id
             )
         )
 
-    return score_kind
+        if user_id != first_user_id:
+            return "none"
 
+        transaction_id = (
+            f"daily-random:"
+            f"{puzzle.get('puzzle_id', 'unknown')}:"
+            f"first:{user_id}"
+        )
 
-# =========================================================
-# LEGACY DAILY SCORING
-# =========================================================
+        added, _total = await asyncio.to_thread(
+            append_score_transaction,
+            user.id,
+            user.display_name,
+            1.0,
+            transaction_id,
+            "daily-random-first",
+        )
 
-async def award_point(
-    puzzle,
-    user
-):
-    """
-    Daily puzzle keeps its existing +1 first-correct system.
-    """
+        puzzle[
+            "first_move_awarded"
+        ] = True
 
-    user_id = str(
-        user.id
+        save_json(
+            STATE_FILE,
+            state
+        )
+
+        await asyncio.to_thread(
+            push_to_github
+        )
+
+        return "first" if added else "none"
+
+    first_user_id = str(
+        puzzle.get(
+            "first_move_user_id",
+            ""
+        )
     )
 
-    async with data_lock:
+    if user_id == first_user_id:
+        return "none"
 
-        if puzzle.get(
-            "winner_user_id"
-        ) is not None:
+    helper_users = puzzle.setdefault(
+        "helper_awarded_users",
+        []
+    )
 
-            return False
+    transaction_id = (
+        f"daily-random:"
+        f"{puzzle.get('puzzle_id', 'unknown')}:"
+        f"helper:{user_id}"
+    )
 
-        puzzle[
-            "winner_user_id"
-        ] = user_id
+    if user_id in helper_users:
+        return "none"
 
-        puzzle[
-            "winner_name"
-        ] = user.display_name
+    added, _total = await asyncio.to_thread(
+        append_score_transaction,
+        user.id,
+        user.display_name,
+        0.5,
+        transaction_id,
+        "daily-random-helper",
+    )
 
-        if user_id not in scores:
-
-            scores[user_id] = {
-                "name":
-                    user.display_name,
-
-                "points":
-                    0
-            }
-
-        scores[user_id][
-            "name"
-        ] = user.display_name
-
-        scores[user_id][
-            "points"
-        ] = round(
-            float(
-                scores[user_id].get(
-                    "points",
-                    0
-                )
-            ) + 1.0,
-            2
+    if added:
+        helper_users.append(
+            user_id
         )
 
         save_json(
@@ -1797,18 +1946,73 @@ async def award_point(
             state
         )
 
-        save_json(
-            LEADERBOARD_FILE,
-            scores
-        )
-
-    asyncio.create_task(
-        asyncio.to_thread(
+        await asyncio.to_thread(
             push_to_github
         )
+
+        return "helper"
+
+    return "none"
+
+
+# =========================================================
+# DAILY PUZZLE +1
+# =========================================================
+
+async def award_point(
+    puzzle,
+    user
+):
+    """
+    Daily puzzle: first complete correct answer gets +1 exactly once.
+    """
+    user_id = str(
+        user.id
+    )
+
+    if puzzle.get(
+        "winner_user_id"
+    ) is not None:
+        return False
+
+    transaction_id = (
+        f"daily:"
+        f"{puzzle.get('puzzle_id', puzzle.get('url', 'unknown'))}:"
+        f"winner:{user_id}"
+    )
+
+    added, _total = await asyncio.to_thread(
+        append_score_transaction,
+        user.id,
+        user.display_name,
+        1.0,
+        transaction_id,
+        "daily-puzzle-first-correct",
+    )
+
+    if not added:
+        return False
+
+    puzzle[
+        "winner_user_id"
+    ] = user_id
+
+    puzzle[
+        "winner_name"
+    ] = user.display_name
+
+    save_json(
+        STATE_FILE,
+        state
+    )
+
+    await asyncio.to_thread(
+        push_to_github
     )
 
     return True
+
+
 
 
 def format_points(points):
@@ -1901,11 +2105,11 @@ def help_message():
 `!daily <moves>` — Answer the latest Daily Puzzle.
 
 **Random Puzzle**
-`!random`, `!rp` or `!r` — Get a random chess puzzle.
+`rp` or `!rp` — Get a random chess puzzle.
 `!random <move>` — Make the next move in the latest Random Puzzle.
 
 **Quick Answer**
-`!<moves>` — Answer whichever puzzle was posted most recently.
+`<moves>` or `!<moves>` — Answer whichever puzzle was posted most recently.
 
 Only your own moves are required. The opponent's replies are automatically played between your moves.
 
@@ -3056,10 +3260,7 @@ async def on_message(
 
         content = message.content.strip()
 
-        if not content.startswith("!"):
-            return
-
-        command_lower = content.lower()
+        command_lower = content.casefold()
 
         # Fast exact aliases. Handle these before any puzzle logic.
         if command_lower in (
@@ -3095,7 +3296,8 @@ async def on_message(
             "!random",
             "!rp",
             "!r",
-            "!randompuzzle"
+            "!randompuzzle",
+            "rp",
         ):
 
             previous_random = state.get(
@@ -3189,11 +3391,20 @@ async def on_message(
         # !bf2
         # =====================================================
 
-        move_text = content[1:].strip()
+        # Moves accept both forms:
+        #   !Qh6
+        #   Qh6
+        move_text = (
+            content[1:].strip()
+            if content.startswith("!")
+            else content.strip()
+        )
 
         if not move_text:
             return
 
+        # Plain non-command text is treated as a move. The existing
+        # chess validation remains unchanged.
         latest_type = state.get(
             "latest_puzzle_type"
         )
@@ -3268,9 +3479,20 @@ async def on_ready():
         {}
     )
 
-    scores = load_json(
+    global scores
+
+    scores, _events = load_score_ledger()
+
+    # Keep the migrated baseline/events on disk immediately so the
+    # transition is persistent before the next point is awarded.
+    save_json(
+        SCORE_EVENTS_FILE,
+        _events
+    )
+
+    save_json(
         LEADERBOARD_FILE,
-        {}
+        scores
     )
 
     state.setdefault(
