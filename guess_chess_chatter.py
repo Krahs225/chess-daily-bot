@@ -33,7 +33,10 @@ TOKEN = os.getenv(
 CHANNEL_ID = 1536769340970373241
 
 POLL_OPTIONS = 5
-POLL_DURATION_MINUTES = 2
+POLL_DURATION_MINUTES = 8
+ROUND_SLOT_MINUTES = 20
+CHESS_SLOT_OFFSET = 10
+TIME_ZONE = "Europe/Amsterdam"
 
 # The players supplied for Guess the Chess Chatter.
 PLAYERS = [
@@ -992,7 +995,7 @@ async def post_chess_round(
     view.message = board_message
 
     await asyncio.sleep(
-        POLL_DURATION_MINUTES * 60 + 3
+        POLL_DURATION_MINUTES * 60 + 2
     )
 
     # End the poll, but NEVER let a poll API problem prevent the
@@ -1120,6 +1123,59 @@ async def post_chess_round(
 
 
 
+def current_local_time():
+    from zoneinfo import ZoneInfo
+
+    return datetime.now(
+        ZoneInfo(
+            TIME_ZONE
+        )
+    )
+
+
+def next_chess_slot():
+    now = current_local_time()
+
+    total_minutes = (
+        now.hour * 60
+        + now.minute
+    )
+
+    remainder = (
+        total_minutes
+        - CHESS_SLOT_OFFSET
+    ) % ROUND_SLOT_MINUTES
+
+    wait_minutes = (
+        ROUND_SLOT_MINUTES
+        - remainder
+    )
+
+    if (
+        remainder == 0
+        and now.second == 0
+        and now.microsecond == 0
+    ):
+        wait_minutes = 0
+
+    target = (
+        now
+        + timedelta(
+            minutes=wait_minutes
+        )
+    ).replace(
+        second=0,
+        microsecond=0,
+    )
+
+    if target <= now:
+        target += timedelta(
+            minutes=ROUND_SLOT_MINUTES
+        )
+
+    return target
+
+
 async def chess_chatter_loop():
 
     channel = await client.fetch_channel(
@@ -1128,13 +1184,28 @@ async def chess_chatter_loop():
 
     while True:
 
-        started = asyncio.get_running_loop().time()
+        target = next_chess_slot()
+
+        now = current_local_time()
+
+        wait_seconds = (
+            target - now
+        ).total_seconds()
+
+        if wait_seconds > 0:
+            print(
+                f"Next Chess Chatter round: "
+                f"{target.isoformat()}",
+                flush=True,
+            )
+            await asyncio.sleep(
+                wait_seconds
+            )
 
         try:
-
             print(
                 "Starting Chess Chatter round...",
-                flush=True
+                flush=True,
             )
 
             await post_chess_round(
@@ -1143,30 +1214,17 @@ async def chess_chatter_loop():
 
             print(
                 "Chess Chatter round finished.",
-                flush=True
+                flush=True,
             )
 
         except Exception as error:
-
             print(
                 f"Guess Chess Chatter round error: "
                 f"{error}",
-                flush=True
+                flush=True,
             )
 
-        elapsed = (
-            asyncio.get_running_loop().time()
-            - started
-        )
-
-        wait_seconds = max(
-            5,
-            20 * 60 - elapsed
-        )
-
-        await asyncio.sleep(
-            wait_seconds
-        )
+        # Always re-align to the next exact Chess slot.
 
 
 @client.event
