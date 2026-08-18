@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-08-24",
     "title": "Pawn Lamentations",
     "fen": "rnbk1b1r/1p2p3/p2p1qpp/1BpP1p2/5N1P/2N1P3/PPPQ1PP1/2KR3R w - - 0 1",
-    "current_fen": "rnbk1b1r/1p2p3/3p1qpp/1ppP1p2/4NN1P/4P3/PPPQ1PP1/2KR3R w - - 0 2",
+    "current_fen": "rnbk1b1r/1p2p3/3p1Npp/1ppP1p2/5N1P/4P3/PPPQ1PP1/2KR3R b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"rnbk1b1r/1p2p3/p2p1qpp/1BpP1p2/5N1P/2N1P3/PPPQ1PP1/2KR3R w - - 0 1\"]\r\n\r\n1.Ne4 axb5 2.Nxf6 *",
     "all_moves": [
       {
@@ -42,16 +42,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787057046219",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1539253559055622234,
     "attempted_users": {
       "362606514764251137": {
         "name": "Sharkmeister",
-        "move": "kh1",
-        "correct": false,
-        "timestamp": "2026-08-18T12:44:10.914614+00:00"
+        "move": "nxf6",
+        "correct": true,
+        "timestamp": "2026-08-18T12:44:58.274662+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -62,9 +62,11 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "362606514764251137"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
