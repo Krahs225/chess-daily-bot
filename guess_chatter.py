@@ -55,8 +55,8 @@ CHATTERS = {
     "Thejazzdude": "thejazzdude_",
 }
 
-# Chatter eligibility is date-based. A chatter can only be selected
-# on a date inside their supplied active window.
+
+# A quote/option is valid only inside this chatter's active window.
 CHATTER_ACTIVE_DATES = {
     "az3d__": ("01-06-2025", "14-08-2026"),
     "benniru": ("09-09-2025", "13-08-2026"),
@@ -82,6 +82,7 @@ CHATTER_ACTIVE_DATES = {
     "isolatedsushi11": ("06-05-2024", "15-08-2026"),
     "thejazzdude_": ("12-05-2026", "16-08-2026"),
 }
+
 
 
 def chatter_active_on_date(
@@ -231,6 +232,12 @@ def _parse_chat_file(chat_file):
         chatter = find_chatter(prefix)
 
         if not chatter:
+            continue
+
+        if not chatter_active_on_date(
+            chatter[1],
+            current_date,
+        ):
             continue
 
         if not chatter_active_on_date(
@@ -647,8 +654,14 @@ async def post_guess(
 
     wrong_usernames = [
         name
-        for name in chatters.keys()
-        if name != username
+        for name, entries in chatters.items()
+        if (
+            name != username
+            and any(
+                entry_date == date
+                for _quote, entry_date, _index in entries
+            )
+        )
     ]
 
     if len(wrong_usernames) < (
