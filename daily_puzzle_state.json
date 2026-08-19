@@ -1,137 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-06-12",
-    "title": "Winning Sequence",
-    "fen": "8/3q1p2/3k1P2/2p1r3/p6Q/P7/1P6/K4R2 w - - 0 1",
-    "current_fen": "8/1k3p2/5P2/2pR4/8/P7/1P6/K7 b - - 0 7",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/3q1p2/3k1P2/2p1r3/p6Q/P7/1P6/K4R2 w - - 0 1\"]\r\n\r\n1. Rd1+ Rd5 2. Qf4+ Kc6 3. Qxa4+ Kc7 4. Qa7+ Kc6 5. Qa8+ Qb7 6. Qxb7+ Kxb7 7. Rxd5\r\n*",
+    "url": "https://www.chess.com/daily/2023-03-06",
+    "title": "The Fork is Mightier Than the Queen",
+    "fen": "5k2/7p/R2N4/8/3q1P2/n5P1/P4PKP/2r5 w - - 0 1",
+    "current_fen": "R7/4k2p/3N4/8/3q1P2/n5P1/P4PKP/2r5 w - - 2 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"5k2/7p/R2N4/8/3q1P2/n5P1/P4PKP/2r5 w - - 0 1\"]\r\n\r\n1. Ra8+ Ke7 2. Nf5+ Kf7 3. Nxd4 *",
     "all_moves": [
       {
-        "uci": "f1d1",
-        "san": "Rd1+",
+        "uci": "a6a8",
+        "san": "Ra8+",
         "color": "white"
       },
       {
-        "uci": "e5d5",
-        "san": "Rd5",
+        "uci": "f8e7",
+        "san": "Ke7",
         "color": "black"
       },
       {
-        "uci": "h4f4",
-        "san": "Qf4+",
+        "uci": "d6f5",
+        "san": "Nf5+",
         "color": "white"
       },
       {
-        "uci": "d6c6",
-        "san": "Kc6",
+        "uci": "e7f7",
+        "san": "Kf7",
         "color": "black"
       },
       {
-        "uci": "f4a4",
-        "san": "Qxa4+",
-        "color": "white"
-      },
-      {
-        "uci": "c6c7",
-        "san": "Kc7",
-        "color": "black"
-      },
-      {
-        "uci": "a4a7",
-        "san": "Qa7+",
-        "color": "white"
-      },
-      {
-        "uci": "c7c6",
-        "san": "Kc6",
-        "color": "black"
-      },
-      {
-        "uci": "a7a8",
-        "san": "Qa8+",
-        "color": "white"
-      },
-      {
-        "uci": "d7b7",
-        "san": "Qb7",
-        "color": "black"
-      },
-      {
-        "uci": "a8b7",
-        "san": "Qxb7+",
-        "color": "white"
-      },
-      {
-        "uci": "c6b7",
-        "san": "Kxb7",
-        "color": "black"
-      },
-      {
-        "uci": "d1d5",
-        "san": "Rxd5",
+        "uci": "f5d4",
+        "san": "Nxd4",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f1d1",
-        "san": "Rd1+",
+        "uci": "a6a8",
+        "san": "Ra8+",
         "color": "white"
       },
       {
-        "uci": "h4f4",
-        "san": "Qf4+",
+        "uci": "d6f5",
+        "san": "Nf5+",
         "color": "white"
       },
       {
-        "uci": "f4a4",
-        "san": "Qxa4+",
-        "color": "white"
-      },
-      {
-        "uci": "a4a7",
-        "san": "Qa7+",
-        "color": "white"
-      },
-      {
-        "uci": "a7a8",
-        "san": "Qa8+",
-        "color": "white"
-      },
-      {
-        "uci": "a8b7",
-        "san": "Qxb7+",
-        "color": "white"
-      },
-      {
-        "uci": "d1d5",
-        "san": "Rxd5",
+        "uci": "f5d4",
+        "san": "Nxd4",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-08-19T06:42:50.911293+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-19T06:47:07.823327+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787121770911",
-    "next_solution_index": 13,
-    "next_player_index": 7,
-    "solved": true,
-    "message_id": 1539525034073129030,
+    "puzzle_id": "random_1787122027823",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1539526112122765424,
     "attempted_users": {
       "550338389535227926": {
         "name": "Nairyaaa",
-        "move": "rxd5",
+        "move": "ra8",
         "correct": true,
-        "timestamp": "2026-08-19T06:47:01.766823+00:00"
+        "timestamp": "2026-08-19T06:47:47.770110+00:00"
       }
     },
     "first_move_user_id": "550338389535227926",
     "first_move_user_name": "Nairyaaa",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
