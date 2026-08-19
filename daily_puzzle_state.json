@@ -75,72 +75,50 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "random",
+  "latest_puzzle_type": "daily",
   "current_puzzle": {
-    "url": "https://www.chess.com/daily/2026-08-18",
-    "title": "Shake and Bake",
-    "fen": "5n1r/p5pk/R7/2b5/1p2r3/1P4qP/6P1/2BQ1R1K w - - 0 1",
-    "current_fen": "5n1r/p5pk/R7/2b5/1p2r3/1P4qP/6P1/2BQ1R1K w - - 0 1",
-    "pgn": "[Result \"1-0\"]\n[FEN \"5n1r/p5pk/R7/2b5/1p2r3/1P4qP/6P1/2BQ1R1K w - - 0 1\"]\n\n1. Qh5+ Kg8 2. Qf7+ Kh7 3. Rh6# 1-0",
+    "url": "https://www.chess.com/daily/2026-08-19",
+    "title": "Pass the Rock!",
+    "fen": "6k1/6Pp/8/N3B1NP/1p6/1P2p1R1/PK6/r6r b - - 0 34",
+    "current_fen": "6k1/6Pp/8/N3B1NP/1p6/1P2p1R1/PK6/r6r b - - 0 34",
+    "pgn": "[White \"Daily Puzzle Inspiration\"]\n[Black \"JohanVA\"]\n[Result \"0-1\"]\n[FEN \"6k1/6Pp/8/N3B1NP/1p6/1P2p1R1/PK6/r6r b - - 0 34\"]\n\n34... Rhc1 35. a4 bxa3# 0-1",
     "all_moves": [
       {
-        "uci": "d1h5",
-        "san": "Qh5+",
-        "color": "white"
-      },
-      {
-        "uci": "h7g8",
-        "san": "Kg8",
+        "uci": "h1c1",
+        "san": "Rhc1",
         "color": "black"
       },
       {
-        "uci": "h5f7",
-        "san": "Qf7+",
+        "uci": "a2a4",
+        "san": "a4",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "b4a3",
+        "san": "bxa3#",
         "color": "black"
-      },
-      {
-        "uci": "a6h6",
-        "san": "Rh6#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1h5",
-        "san": "Qh5+",
-        "color": "white"
+        "uci": "h1c1",
+        "san": "Rhc1",
+        "color": "black"
       },
       {
-        "uci": "h5f7",
-        "san": "Qf7+",
-        "color": "white"
-      },
-      {
-        "uci": "a6h6",
-        "san": "Rh6#",
-        "color": "white"
+        "uci": "b4a3",
+        "san": "bxa3#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-18T07:56:54.911505+00:00",
-    "answer_posted": true,
-    "winner_user_id": "442597396195704832",
-    "winner_name": "Thice",
-    "latest_attempts": {
-      "442597396195704832": {
-        "name": "Thice",
-        "moves": "qh5 qf7 rh6",
-        "correct": true,
-        "timestamp": "2026-08-18T08:38:42.426359+00:00"
-      }
-    },
-    "puzzle_id": "daily_1787039814911"
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-19T07:59:59.479573+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "daily_1787126399479"
   },
   "leaderboard_last_posted_date": "2026-08-19"
 }
