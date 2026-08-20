@@ -108,7 +108,7 @@
         "started_at": "2026-08-20T12:35:11.825849+00:00",
         "last_activity": 1787229426.4322596,
         "paused_reason": null,
-        "puzzle_number": 2,
+        "puzzle_number": 3,
         "strikes": 1,
         "best_difficulty": 1325,
         "used_puzzle_ids": [
@@ -127,41 +127,9 @@
             "wrong": 1
           }
         },
-        "puzzle": {
-          "id": "8M9q8",
-          "rating": 1325,
-          "themes": "crushing endgame short skewer",
-          "url": "https://lichess.org/training/8M9q8",
-          "start_fen": "8/7p/6p1/Rp1k1p2/8/2KP1P2/5b1P/8 b - - 1 36",
-          "current_fen": "8/7p/6p1/bp1k1p2/8/3P1P2/1K5P/8 w - - 0 38",
-          "solution": [
-            {
-              "uci": "f2e1",
-              "san": "Be1+",
-              "color": "black"
-            },
-            {
-              "uci": "c3b2",
-              "san": "Kb2",
-              "color": "white"
-            },
-            {
-              "uci": "e1a5",
-              "san": "Bxa5",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Bxa5"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
