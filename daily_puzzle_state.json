@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-12-19",
     "title": "Levitsky - Marshall, Kongress 1912",
     "fen": "5rk1/p1p2ppp/Q6R/3N4/2rP2q1/2P2R2/P1P3PP/6K1 w - - 0 1",
-    "current_fen": "5rk1/p1p2ppp/Q6R/3N4/2rP2q1/2P2R2/P1P3PP/6K1 w - - 0 1",
+    "current_fen": "5rk1/p1p2ppp/6qR/3N4/2rP4/2P2R2/P1P3PP/6K1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/p1p2ppp/Q6R/3N4/2rP2q1/2P2R2/P1P3PP/6K1 w - - 0 1\"]\r\n\r\n1. Qg6 Qxg6 2. Ne7+ Kh8 3. Nxg6+ Kg8 4. Ne7+ Kh8 5. Rxh7+ Kxh7 6. Rh3#\r\n*",
     "all_moves": [
       {
@@ -102,13 +102,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787266305972",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540131257726402613,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qg6",
+        "correct": true,
+        "timestamp": "2026-08-20T22:52:01.337125+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
