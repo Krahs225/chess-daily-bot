@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787247405.2257528,
+        "last_activity": 1787247458.3176043,
         "paused_reason": "manually stopped",
         "puzzle_number": 47,
         "strikes": 1,
@@ -72,7 +72,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 20,
+            "correct": 21,
             "wrong": 5
           }
         },
@@ -82,7 +82,7 @@
           "themes": "advantage long middlegame",
           "url": "https://lichess.org/training/G2mGN",
           "start_fen": "2brr1k1/2q2ppp/p1nb1n2/1p1p1PP1/2pP1B2/2N3NP/PPPQ2B1/4RR1K b - - 0 20",
-          "current_fen": "2brr1k1/2q2ppp/p1nb1n2/1p1p1PP1/2pP1B2/2N3NP/PPPQ2B1/4RR1K b - - 0 20",
+          "current_fen": "2br2k1/2q2ppp/p1nb1n2/1p1p1PP1/2pP1B2/2N3NP/PPP3B1/4QR1K b - - 0 21",
           "solution": [
             {
               "uci": "e8e1",
@@ -111,17 +111,29 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Rxe1",
+          "accepted_moves": [
+            {
+              "san": "Rxe1",
+              "uci": "e8e1",
+              "accepted_at": 1787247458.317483,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "e8e1",
+          "last_accepted_move_san": "Rxe1",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787247458.3174822,
+          "position_before_last_move": "2brr1k1/2q2ppp/p1nb1n2/1p1p1PP1/2pP1B2/2N3NP/PPPQ2B1/4RR1K b - - 0 20"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
