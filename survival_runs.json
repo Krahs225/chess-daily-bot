@@ -173,7 +173,8 @@
           "IDV5g",
           "FVGs7",
           "fFOy5",
-          "nr9JB"
+          "nr9JB",
+          "bJ235"
         ],
         "members": {
           "442597396195704832": {
@@ -182,7 +183,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "bJ235",
+          "rating": 1270,
+          "themes": "crushing endgame short",
+          "url": "https://lichess.org/training/bJ235",
+          "start_fen": "2b5/pN6/P1pk4/3p1p1p/1P1P1Pp1/2P3P1/5K2/8 b - - 2 46",
+          "current_fen": "2b5/pN6/P1pk4/3p1p1p/1P1P1Pp1/2P3P1/5K2/8 b - - 2 46",
+          "solution": [
+            {
+              "uci": "c8b7",
+              "san": "Bxb7",
+              "color": "black"
+            },
+            {
+              "uci": "a6b7",
+              "san": "axb7",
+              "color": "white"
+            },
+            {
+              "uci": "d6c7",
+              "san": "Kc7",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
