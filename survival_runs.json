@@ -256,7 +256,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-08-20T21:45:45.650556+00:00",
-        "last_activity": 1787262506.8545215,
+        "last_activity": 1787262530.4781218,
         "paused_reason": null,
         "puzzle_number": 3,
         "strikes": 0,
@@ -269,7 +269,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 4,
+            "correct": 5,
             "wrong": 0
           }
         },
@@ -279,7 +279,7 @@
           "themes": "crushing endgame pawnEndgame short zugzwang",
           "url": "https://lichess.org/training/7BZcW",
           "start_fen": "8/1p5p/1P2k3/2p3pP/p1P1K1P1/8/1P6/8 w - - 0 45",
-          "current_fen": "8/1p5p/1P2k3/2p3pP/p1P1K1P1/8/1P6/8 w - - 0 45",
+          "current_fen": "8/1p5p/1P1k3P/2p3p1/p1P1K1P1/8/1P6/8 w - - 1 46",
           "solution": [
             {
               "uci": "h5h6",
@@ -298,17 +298,29 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "h6",
+          "accepted_moves": [
+            {
+              "san": "h6",
+              "uci": "h5h6",
+              "accepted_at": 1787262530.4779832,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "h5h6",
+          "last_accepted_move_san": "h6",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787262530.4779828,
+          "position_before_last_move": "8/1p5p/1P2k3/2p3pP/p1P1K1P1/8/1P6/8 w - - 0 45"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       },
