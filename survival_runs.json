@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787230501.4973617,
+        "last_activity": 1787230533.574605,
         "paused_reason": "manually stopped",
         "puzzle_number": 16,
         "strikes": 1,
@@ -41,7 +41,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 3,
+            "correct": 4,
             "wrong": 2
           }
         },
@@ -51,7 +51,7 @@
           "themes": "crushing middlegame short",
           "url": "https://lichess.org/training/uBwMi",
           "start_fen": "r2r2k1/1p2q2p/1p1nP1p1/1Pp5/P3Q3/R6P/1B3P2/5BK1 w - - 1 30",
-          "current_fen": "r2r2k1/1p2q2p/1p1nP1p1/1Pp5/P3Q3/R6P/1B3P2/5BK1 w - - 1 30",
+          "current_fen": "r2r2k1/1p5p/1p1nP1p1/1Pp1Q1q1/P7/R6P/1B3P2/5BK1 w - - 3 31",
           "solution": [
             {
               "uci": "e4e5",
@@ -70,16 +70,20 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null
+          "last_move_san": "Qe5",
+          "last_accepted_move_uci": "e4e5",
+          "last_accepted_move_san": "Qe5",
+          "last_accepted_move_index": 0,
+          "position_before_last_move": "r2r2k1/1p2q2p/1p1nP1p1/1Pp5/P3Q3/R6P/1B3P2/5BK1 w - - 1 30"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
