@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 57,
+      "best_puzzle": 58,
       "best_difficulty": 2246,
-      "best_completed_at": "2026-08-20T18:03:33.287852+00:00",
+      "best_completed_at": "2026-08-20T18:04:52.904955+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -72,7 +72,8 @@
           "rvxGZ",
           "nu1gL",
           "CZ3gJ",
-          "pIIbm"
+          "pIIbm",
+          "nLGPZ"
         ],
         "members": {
           "601406103712170014": {
@@ -86,7 +87,60 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "nLGPZ",
+          "rating": 2216,
+          "themes": "advantage attraction middlegame sacrifice veryLong",
+          "url": "https://lichess.org/training/nLGPZ",
+          "start_fen": "r6r/bbqpk3/p3pn2/1p3P2/5B2/P1NP1BP1/1PP1Q1K1/3R1R2 b - - 2 25",
+          "current_fen": "r6r/bbqpk3/p3pn2/1p3P2/5B2/P1NP1BP1/1PP1Q1K1/3R1R2 b - - 2 25",
+          "solution": [
+            {
+              "uci": "c7f4",
+              "san": "Qxf4",
+              "color": "black"
+            },
+            {
+              "uci": "f3b7",
+              "san": "Bxb7",
+              "color": "white"
+            },
+            {
+              "uci": "f4g3",
+              "san": "Qxg3+",
+              "color": "black"
+            },
+            {
+              "uci": "g2g3",
+              "san": "Kxg3",
+              "color": "white"
+            },
+            {
+              "uci": "a8g8",
+              "san": "Rag8+",
+              "color": "black"
+            },
+            {
+              "uci": "g3f4",
+              "san": "Kf4",
+              "color": "white"
+            },
+            {
+              "uci": "h8h4",
+              "san": "Rh4+",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
