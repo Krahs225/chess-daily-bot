@@ -1,47 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2012-11-11",
-    "title": "Mate in 1",
-    "fen": "rnbq1r1k/pp4pp/1bP5/8/2Bpp1PN/8/PPP2PP1/R1BQK2R w KQ - 0 1",
-    "current_fen": "rnbq1r1k/pp4pp/1bP3N1/8/2Bpp1P1/8/PPP2PP1/R1BQK2R b KQ - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rnbq1r1k/pp4pp/1bP5/8/2Bpp1PN/8/PPP2PP1/R1BQK2R w KQ - 0 1\"]\r\n\r\n1. Ng6#\r\n*",
+    "url": "https://www.chess.com/daily/2010-04-13",
+    "title": "Unexpected Surprise",
+    "fen": "r5k1/p1p2p1q/6rp/4BQ2/bR6/1N2P3/P5PP/R5K1 b - - 0 1",
+    "current_fen": "r5k1/p1p2p1q/6rp/4BQ2/bR6/1N2P3/P5PP/R5K1 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/p1p2p1q/6rp/4BQ2/bR6/1N2P3/P5PP/R5K1 b - - 0 1\"]\r\n\r\n1...Rxg2 2. Kxg2 Qxf5\r\n*",
     "all_moves": [
       {
-        "uci": "h4g6",
-        "san": "Ng6#",
+        "uci": "g6g2",
+        "san": "Rxg2+",
+        "color": "black"
+      },
+      {
+        "uci": "g1g2",
+        "san": "Kxg2",
         "color": "white"
+      },
+      {
+        "uci": "h7f5",
+        "san": "Qxf5",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h4g6",
-        "san": "Ng6#",
-        "color": "white"
+        "uci": "g6g2",
+        "san": "Rxg2+",
+        "color": "black"
+      },
+      {
+        "uci": "h7f5",
+        "san": "Qxf5",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-20T22:55:55.294570+00:00",
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-20T22:56:02.987595+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787266555294",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1540132304318365880,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "ng6",
-        "correct": true,
-        "timestamp": "2026-08-20T22:55:58.729486+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787266562987",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
