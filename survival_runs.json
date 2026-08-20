@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787247965.4964602,
+        "last_activity": 1787248076.7321749,
         "paused_reason": "manually stopped",
         "puzzle_number": 51,
         "strikes": 1,
@@ -71,7 +71,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 92,
+            "correct": 93,
             "wrong": 3
           },
           "442597396195704832": {
@@ -86,7 +86,7 @@
           "themes": "crushing endgame pawnEndgame short",
           "url": "https://lichess.org/training/WVqx2",
           "start_fen": "8/p2k3p/5p2/4p3/K3P3/5PP1/7P/8 b - - 0 36",
-          "current_fen": "8/p2k3p/5p2/4p3/K3P3/5PP1/7P/8 b - - 0 36",
+          "current_fen": "8/p6p/2k2p2/4p3/1K2P3/5PP1/7P/8 b - - 2 37",
           "solution": [
             {
               "uci": "d7c6",
@@ -105,17 +105,29 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Kc6",
+          "accepted_moves": [
+            {
+              "san": "Kc6",
+              "uci": "d7c6",
+              "accepted_at": 1787248076.732042,
+              "solver_id": "601406103712170014"
+            }
+          ],
+          "last_accepted_move_uci": "d7c6",
+          "last_accepted_move_san": "Kc6",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787248076.7320411,
+          "position_before_last_move": "8/p2k3p/5p2/4p3/K3P3/5PP1/7P/8 b - - 0 36"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       }
