@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787232148.5818675,
+        "last_activity": 1787232190.541049,
         "paused_reason": null,
         "puzzle_number": 37,
         "strikes": 0,
@@ -57,7 +57,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 77,
+            "correct": 78,
             "wrong": 0
           },
           "442597396195704832": {
@@ -72,7 +72,7 @@
           "themes": "advantage exposedKing kingsideAttack long master middlegame",
           "url": "https://lichess.org/training/WEJHi",
           "start_fen": "6kq/1b1n2b1/pp2p1B1/3p4/P2N1rP1/2P5/1P4Q1/R4RK1 b - - 0 28",
-          "current_fen": "6kq/1b1n2b1/pp2p1B1/3p4/P2N1rP1/2P5/1P4Q1/R4RK1 b - - 0 28",
+          "current_fen": "6kq/1b1n4/pp2p1B1/3p4/P2P1rP1/8/1P4Q1/R4RK1 b - - 0 29",
           "solution": [
             {
               "uci": "g7d4",
@@ -101,16 +101,21 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null
+          "last_move_san": "Bxd4+",
+          "last_accepted_move_uci": "g7d4",
+          "last_accepted_move_san": "Bxd4+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787232190.5409591,
+          "position_before_last_move": "6kq/1b1n2b1/pp2p1B1/3p4/P2N1rP1/2P5/1P4Q1/R4RK1 b - - 0 28"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       }
