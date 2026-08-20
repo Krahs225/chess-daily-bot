@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 37,
+      "best_puzzle": 38,
       "best_difficulty": 1847,
-      "best_completed_at": "2026-08-20T13:22:36.107664+00:00",
+      "best_completed_at": "2026-08-20T13:24:09.934913+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -52,7 +52,8 @@
           "Y9Wh6",
           "0Rihv",
           "GQFda",
-          "WEJHi"
+          "WEJHi",
+          "3RLWN"
         ],
         "members": {
           "601406103712170014": {
@@ -66,7 +67,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "3RLWN",
+          "rating": 1809,
+          "themes": "crushing endgame rookEndgame short",
+          "url": "https://lichess.org/training/3RLWN",
+          "start_fen": "8/6k1/6r1/5R2/8/1P1P1pP1/2P5/1K6 b - - 1 39",
+          "current_fen": "8/6k1/6r1/5R2/8/1P1P1pP1/2P5/1K6 b - - 1 39",
+          "solution": [
+            {
+              "uci": "g6f6",
+              "san": "Rf6",
+              "color": "black"
+            },
+            {
+              "uci": "f5f3",
+              "san": "Rxf3",
+              "color": "white"
+            },
+            {
+              "uci": "f6f3",
+              "san": "Rxf3",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
