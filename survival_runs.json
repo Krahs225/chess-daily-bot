@@ -12,7 +12,7 @@
         "started_at": "2026-08-20T12:22:23.121644+00:00",
         "last_activity": 1787231336.0993717,
         "paused_reason": null,
-        "puzzle_number": 30,
+        "puzzle_number": 31,
         "strikes": 0,
         "best_difficulty": 1687,
         "used_puzzle_ids": [
@@ -59,65 +59,9 @@
             "wrong": 4
           }
         },
-        "puzzle": {
-          "id": "ietXI",
-          "rating": 1619,
-          "themes": "advantage discoveredAttack fork middlegame sacrifice veryLong",
-          "url": "https://lichess.org/training/ietXI",
-          "start_fen": "r3nr2/1bq1ppkp/p5p1/2p5/7Q/2N2N2/PPP3PP/R4R1K w - - 2 21",
-          "current_fen": "r3n1k1/1bN1pr2/p5p1/2p4p/7Q/2N5/PPP3PP/R6K b - - 0 24",
-          "solution": [
-            {
-              "uci": "f3g5",
-              "san": "Ng5",
-              "color": "white"
-            },
-            {
-              "uci": "h7h5",
-              "san": "h5",
-              "color": "black"
-            },
-            {
-              "uci": "f1f7",
-              "san": "Rxf7+",
-              "color": "white"
-            },
-            {
-              "uci": "f8f7",
-              "san": "Rxf7",
-              "color": "black"
-            },
-            {
-              "uci": "g5e6",
-              "san": "Ne6+",
-              "color": "white"
-            },
-            {
-              "uci": "g7g8",
-              "san": "Kg8",
-              "color": "black"
-            },
-            {
-              "uci": "e6c7",
-              "san": "Nxc7",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 7,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Nxc7",
-          "last_accepted_move_uci": "e6c7",
-          "last_accepted_move_san": "Nxc7",
-          "last_accepted_move_index": 6,
-          "position_before_last_move": "r3n1k1/1bq1pr2/p3N1p1/2p4p/7Q/2N5/PPP3PP/R6K w - - 2 24"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
