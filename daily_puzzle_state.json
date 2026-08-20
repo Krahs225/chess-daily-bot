@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-03-30",
     "title": "Quietly into the Night",
     "fen": "2kr3r/1pp1nqp1/p3pp2/bb1pP2p/3P3P/PQN1BNR1/1PP2PP1/2KR4 b - - 0 1",
-    "current_fen": "2kr3r/1pp1nqp1/p3pp2/bb1pP2p/3P3P/PQN1BNR1/1PP2PP1/2KR4 b - - 0 1",
+    "current_fen": "2kr3r/1pp1nqp1/p3pp2/b2pP2p/Q1bP3P/P1N1BNR1/1PP2PP1/2KR4 b - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"2kr3r/1pp1nqp1/p3pp2/bb1pP2p/3P3P/PQN1BNR1/1PP2PP1/2KR4 b - - 0 1\"]\r\n\r\n1...Bc4 2.Qa4 Nc6 3.b4 b5 *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787266813624",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540133387128283223,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "bc4",
+        "correct": true,
+        "timestamp": "2026-08-20T23:00:46.145356+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
