@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 22,
-      "best_difficulty": 1606,
-      "best_completed_at": "2026-08-20T13:00:05.824855+00:00",
+      "best_puzzle": 23,
+      "best_difficulty": 1639,
+      "best_completed_at": "2026-08-20T13:00:35.756398+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -14,7 +14,7 @@
         "paused_reason": null,
         "puzzle_number": 23,
         "strikes": 0,
-        "best_difficulty": 1639,
+        "best_difficulty": 1672,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
@@ -37,7 +37,8 @@
           "4uM2q",
           "vhYQd",
           "woaKY",
-          "Fc97v"
+          "Fc97v",
+          "9MYLd"
         ],
         "members": {
           "601406103712170014": {
@@ -51,7 +52,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "9MYLd",
+          "rating": 1672,
+          "themes": "advantage deflection endgame fork master short",
+          "url": "https://lichess.org/training/9MYLd",
+          "start_fen": "8/p5kp/3q2p1/3n1p2/1pBp4/1P5P/P2Q1PP1/r4NK1 w - - 4 28",
+          "current_fen": "8/p5kp/3q2p1/3n1p2/1pBp4/1P5P/P2Q1PP1/r4NK1 w - - 4 28",
+          "solution": [
+            {
+              "uci": "d2d4",
+              "san": "Qxd4+",
+              "color": "white"
+            },
+            {
+              "uci": "d6f6",
+              "san": "Qf6",
+              "color": "black"
+            },
+            {
+              "uci": "d4d5",
+              "san": "Qxd5",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
