@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-07-01",
     "title": "The Great Divide",
     "fen": "1b1r1rk1/1p3pp1/1p3qbp/4n3/3NpB2/P1R1P3/BP2QPPP/5RK1 b - - 0 1",
-    "current_fen": "1b3rk1/1p3pp1/1p3qbp/8/3PpB2/P4R2/BP2QPPP/5RK1 b - - 0 3",
+    "current_fen": "1b3rk1/1p3pp1/1p3qbp/8/3P1B2/P4p2/BP2QPPP/5RK1 w - - 0 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"1b1r1rk1/1p3pp1/1p3qbp/4n3/3NpB2/P1R1P3/BP2QPPP/5RK1 b - - 0 1\"]\r\n\r\n1...Rxd4 2.exd4 Nf3+ 3.Rxf3 exf3 *",
     "all_moves": [
       {
@@ -57,21 +57,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787266915457",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1540133814087721151,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nf3",
+        "move": "exf3",
         "correct": true,
-        "timestamp": "2026-08-20T23:02:42.089852+00:00"
+        "timestamp": "2026-08-20T23:02:47.013609+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
