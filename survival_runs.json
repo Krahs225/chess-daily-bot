@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-08-20T12:12:52.885213+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1337,
+      "best_completed_at": "2026-08-20T12:43:02.473919+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -16,7 +16,8 @@
         "strikes": 0,
         "best_difficulty": 1337,
         "used_puzzle_ids": [
-          "g6cbI"
+          "g6cbI",
+          "c5wsm"
         ],
         "members": {
           "601406103712170014": {
@@ -25,7 +26,39 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "c5wsm",
+          "rating": 1330,
+          "themes": "advantage endgame pin short",
+          "url": "https://lichess.org/training/c5wsm",
+          "start_fen": "k2r4/pR3R2/4n3/8/3P4/3KP2P/P2B2r1/8 b - - 3 32",
+          "current_fen": "k2r4/pR3R2/4n3/8/3P4/3KP2P/P2B2r1/8 b - - 3 32",
+          "solution": [
+            {
+              "uci": "e6c5",
+              "san": "Nc5+",
+              "color": "black"
+            },
+            {
+              "uci": "d3c4",
+              "san": "Kc4",
+              "color": "white"
+            },
+            {
+              "uci": "c5b7",
+              "san": "Nxb7",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
