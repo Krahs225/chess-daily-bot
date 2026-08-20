@@ -172,7 +172,8 @@
         "strikes": 0,
         "best_difficulty": 1342,
         "used_puzzle_ids": [
-          "rY4jq"
+          "rY4jq",
+          "kigMs"
         ],
         "members": {
           "442597396195704832": {
@@ -181,7 +182,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "kigMs",
+          "rating": 1309,
+          "themes": "mate mateIn2 middlegame short",
+          "url": "https://lichess.org/training/kigMs",
+          "start_fen": "r6k/pp3qpp/4Q3/2b5/2P5/5r1P/PP3P2/3RRKB1 b - - 3 26",
+          "current_fen": "r6k/pp3qpp/4Q3/2b5/2P5/5r1P/PP3P2/3RRKB1 b - - 3 26",
+          "solution": [
+            {
+              "uci": "f3f2",
+              "san": "Rxf2+",
+              "color": "black"
+            },
+            {
+              "uci": "g1f2",
+              "san": "Bxf2",
+              "color": "white"
+            },
+            {
+              "uci": "f7f2",
+              "san": "Qxf2#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
