@@ -42,12 +42,20 @@ CHANNEL_ID = 1468320170891022417
 
 SURVIVAL_STATE_FILE = "survival_runs.json"
 
-LICHESS_BATCH_URL = (
-    "https://lichess.org/api/puzzle/batch/mix"
+# The official Lichess puzzle collection is published as the
+# CC0 Lichess/chess-puzzles dataset. The Hugging Face Dataset Viewer
+# can filter that dataset server-side by the exact puzzle Rating, so
+# Survival does not need an 871 MB download on every GitHub Action run.
+HF_FILTER_URL = (
+    "https://datasets-server.huggingface.co/filter"
 )
 
+HF_DATASET = "Lichess/chess-puzzles"
+HF_CONFIG = "default"
+HF_SPLIT = "train"
+
 REQUEST_TIMEOUT = 20
-BATCH_SIZE = 50
+BATCH_SIZE = 25
 
 INACTIVITY_SECONDS = 10 * 60
 PENDING_TEAM_SECONDS = 60
@@ -500,114 +508,285 @@ def sanitize_puzzle(
     }
 
 
-def fetch_lichess_batch():
-    response = requests.get(
-        LICHESS_BATCH_URL,
+def fetch_lichess_batch(
+    minimum_rating,
+    maximum_rating,
+):
+    """
+    Fetch a random-ish slice of the official Lichess puzzle dataset,
+    filtered by exact Rating range.
+
+    The official dataset has 6M+ rated/tagged puzzles and exposes
+    Rating/FEN/Moves directly through the public Dataset Viewer.
+    """
+    where = (
+        f'"Rating">={int(minimum_rating)} '
+        f'AND "Rating"<={int(maximum_rating)}'
+    )
+
+    # First ask for the matching-row count. This is cheap and lets us
+    # choose a random offset so repeated calls do not always begin at row 0.
+    stats_response = requests.get(
+        HF_FILTER_URL,
         params={
-            "nb":
+            "dataset":
+                HF_DATASET,
+            "config":
+                HF_CONFIG,
+            "split":
+                HF_SPLIT,
+            "where":
+                where,
+            "offset":
+                0,
+            "length":
+                1,
+        },
+        headers={
+            "Accept":
+                "application/json",
+            "User-Agent":
+                "Discord-Survival-Mode/2.0",
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+
+    stats_response.raise_for_status()
+
+    meta = stats_response.json()
+
+    total_matches = int(
+        meta.get(
+            "num_rows_total",
+            0,
+        )
+    )
+
+    if total_matches <= 0:
+        return []
+
+    max_offset = max(
+        0,
+        total_matches - BATCH_SIZE,
+    )
+
+    # Deterministic per run/puzzle but different between puzzles.
+    random_offset = random.randint(
+        0,
+        max_offset,
+    )
+
+    response = requests.get(
+        HF_FILTER_URL,
+        params={
+            "dataset":
+                HF_DATASET,
+            "config":
+                HF_CONFIG,
+            "split":
+                HF_SPLIT,
+            "where":
+                where,
+            "offset":
+                random_offset,
+            "length":
                 BATCH_SIZE,
         },
         headers={
             "Accept":
                 "application/json",
             "User-Agent":
-                "Discord-Survival-Mode/1.0",
+                "Discord-Survival-Mode/2.0",
         },
         timeout=REQUEST_TIMEOUT,
     )
 
     response.raise_for_status()
 
-    try:
-        data = response.json()
-    except ValueError:
-        # Some clients/proxies may return one JSON object per line.
-        items = []
+    payload = response.json()
 
-        for line in response.text.splitlines():
-            line = line.strip()
+    rows = payload.get(
+        "rows",
+        [],
+    )
 
-            if not line:
-                continue
+    result = []
 
-            try:
-                items.append(
-                    json.loads(
-                        line
-                    )
-                )
-            except Exception:
-                continue
+    for item in rows:
 
-        return items
+        row = item.get(
+            "row",
+            item,
+        )
 
-    if isinstance(
-        data,
+        if not isinstance(
+            row,
+            dict,
+        ):
+            continue
+
+        result.append(
+            {
+                "PuzzleId":
+                    row.get(
+                        "PuzzleId",
+                    ),
+                "FEN":
+                    row.get(
+                        "FEN",
+                    ),
+                "Moves":
+                    row.get(
+                        "Moves",
+                    ),
+                "Rating":
+                    row.get(
+                        "Rating",
+                    ),
+                "Themes":
+                    row.get(
+                        "Themes",
+                    ),
+                "GameUrl":
+                    row.get(
+                        "GameId",
+                    ),
+            }
+        )
+
+    return result
+
+
+def sanitize_puzzle(
+    item
+):
+    if not isinstance(
+        item,
         dict,
     ):
-        for key in (
-            "puzzles",
-            "data",
-            "items",
-        ):
-            value = data.get(
-                key
-            )
+        return None
 
-            if isinstance(
-                value,
-                list,
-            ):
-                return value
+    puzzle_id = item.get(
+        "PuzzleId",
+    )
 
-        return [
-            data
-        ]
+    fen = item.get(
+        "FEN",
+    )
+
+    moves = item.get(
+        "Moves",
+    )
+
+    rating = item.get(
+        "Rating",
+    )
+
+    if not puzzle_id or not fen or not moves:
+        return None
+
+    try:
+        rating = int(
+            rating
+        )
+    except Exception:
+        return None
 
     if isinstance(
-        data,
-        list,
+        moves,
+        str,
     ):
-        return data
+        moves = moves.split()
 
-    return []
+    if not isinstance(
+        moves,
+        list,
+    ) or len(moves) < 2:
+        return None
+
+    return {
+        "id":
+            str(puzzle_id),
+        "fen":
+            str(fen),
+        "moves":
+            [
+                str(move)
+                for move in moves
+            ],
+        "rating":
+            rating,
+        "themes":
+            (
+                " ".join(item["Themes"])
+                if isinstance(
+                    item.get("Themes"),
+                    list,
+                )
+                else str(
+                    item.get(
+                        "Themes",
+                        "",
+                    )
+                )
+            ),
+        "url":
+            (
+                f"https://lichess.org/training/"
+                f"{puzzle_id}"
+            ),
+    }
 
 
 def choose_puzzle_for_number(
     puzzle_number,
     used_ids,
 ):
-    minimum, maximum = difficulty_target(
-        puzzle_number
+    minimum, maximum = (
+        difficulty_target(
+            puzzle_number
+        )
     )
 
-    for _attempt in range(12):
-        items = awaitable_fetch_batch()
+    for _attempt in range(8):
+
+        items = fetch_lichess_batch(
+            minimum,
+            maximum,
+        )
+
         candidates = []
 
         for raw in items:
-            puzzle = sanitize_puzzle(raw)
-            if not puzzle or puzzle["id"] in used_ids:
+
+            puzzle = sanitize_puzzle(
+                raw
+            )
+
+            if not puzzle:
                 continue
-            if minimum <= puzzle["rating"] <= maximum:
-                candidates.append(puzzle)
+
+            if puzzle["id"] in used_ids:
+                continue
+
+            if (
+                minimum
+                <= puzzle["rating"]
+                <= maximum
+            ):
+                candidates.append(
+                    puzzle
+                )
 
         if candidates:
-            return random.choice(candidates)
-
-    if minimum >= 2600:
-        raise RuntimeError(
-            "Could not find a fresh 2600+ Survival puzzle right now."
-        )
+            return random.choice(
+                candidates
+            )
 
     raise RuntimeError(
-        f"Could not find a Survival puzzle in the required "
-        f"{minimum}-{maximum} rating band right now."
+        "Could not find a fresh Lichess puzzle "
+        f"in the required {minimum}-{maximum} rating band."
     )
-
-
-def awaitable_fetch_batch():
-    return fetch_lichess_batch()
 
 
 def build_runtime_puzzle(
