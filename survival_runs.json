@@ -106,7 +106,7 @@
         "started_by_id": "1539976092155256853",
         "status": "active",
         "started_at": "2026-08-20T12:35:11.825849+00:00",
-        "last_activity": 1787229341.9026139,
+        "last_activity": 1787229376.774658,
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 1,
@@ -122,7 +122,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 0,
+            "correct": 1,
             "wrong": 1
           }
         },
@@ -132,7 +132,7 @@
           "themes": "advantage long middlegame",
           "url": "https://lichess.org/training/eKLsw",
           "start_fen": "2kr3r/ppp1qppp/2p1bn2/2b3B1/4P1B1/3P4/PPP2PPP/RN1Q1RK1 b - - 8 9",
-          "current_fen": "2kr3r/ppp1qppp/2p2n2/2b3B1/4P1Q1/3P4/PPP2PPP/RN3RK1 b - - 0 10",
+          "current_fen": "2kr3r/ppp1Bppp/2p5/2b5/4P1n1/3P4/PPP2PPP/RN3RK1 b - - 0 11",
           "solution": [
             {
               "uci": "e6g4",
@@ -161,7 +161,7 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 2,
+          "next_solution_index": 4,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -169,11 +169,13 @@
           "wrong_users": [
             "442597396195704832"
           ],
-          "last_move_san": "Bxg4"
+          "last_move_san": "Nxg4"
         },
         "first_solver_id": "601406103712170014",
         "first_solver_name": "TheMakina",
-        "helper_candidates": {},
+        "helper_candidates": {
+          "442597396195704832": "Thice"
+        },
         "helper_awarded": []
       }
     }
