@@ -170,10 +170,45 @@
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 0,
-        "best_difficulty": 0,
-        "used_puzzle_ids": [],
+        "best_difficulty": 1342,
+        "used_puzzle_ids": [
+          "rY4jq"
+        ],
         "members": {},
-        "puzzle": null,
+        "puzzle": {
+          "id": "rY4jq",
+          "rating": 1342,
+          "themes": "advantage endgame master rookEndgame short",
+          "url": "https://lichess.org/training/rY4jq",
+          "start_fen": "8/3k4/3p4/3Kp1R1/2P5/2P2r2/8/8 b - - 0 58",
+          "current_fen": "8/3k4/3p4/3Kp1R1/2P5/2P2r2/8/8 b - - 0 58",
+          "solution": [
+            {
+              "uci": "f3d3",
+              "san": "Rd3+",
+              "color": "black"
+            },
+            {
+              "uci": "d5e4",
+              "san": "Ke4",
+              "color": "white"
+            },
+            {
+              "uci": "d3c3",
+              "san": "Rxc3",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
