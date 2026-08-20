@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 52,
+      "best_puzzle": 53,
       "best_difficulty": 2185,
-      "best_completed_at": "2026-08-20T17:49:56.888381+00:00",
+      "best_completed_at": "2026-08-20T17:52:43.690738+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -14,7 +14,7 @@
         "paused_reason": "manually stopped",
         "puzzle_number": 53,
         "strikes": 1,
-        "best_difficulty": 2185,
+        "best_difficulty": 2188,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
@@ -67,7 +67,8 @@
           "AX6N8",
           "rEksh",
           "WVqx2",
-          "roCII"
+          "roCII",
+          "pePLr"
         ],
         "members": {
           "601406103712170014": {
@@ -81,7 +82,40 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "pePLr",
+          "rating": 2188,
+          "themes": "crushing discoveredAttack discoveredCheck kingsideAttack middlegame sacrifice short",
+          "url": "https://lichess.org/training/pePLr",
+          "start_fen": "r3k2r/1pp2ppp/8/pP2N2n/P1B1Pn2/2PP2qb/R5P1/2BQ1RK1 b kq - 0 19",
+          "current_fen": "r3k2r/1pp2ppp/8/pP2N2n/P1B1Pn2/2PP2qb/R5P1/2BQ1RK1 b kq - 0 19",
+          "solution": [
+            {
+              "uci": "h3g2",
+              "san": "Bxg2",
+              "color": "black"
+            },
+            {
+              "uci": "f1f4",
+              "san": "Rxf4",
+              "color": "white"
+            },
+            {
+              "uci": "g2f3",
+              "san": "Bf3+",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
