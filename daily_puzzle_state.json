@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-09-15",
     "title": "Open King",
     "fen": "5rk1/pp6/2pp4/2q3p1/2P1QPn1/1P6/PN4K1/3RR3 b - - 0 1",
-    "current_fen": "5rk1/pp6/2pp4/2q3p1/2P1QPn1/1P6/PN4K1/3RR3 b - - 0 1",
+    "current_fen": "5rk1/pp6/2pp4/6p1/2P1QPn1/1P5K/PN3q2/3RR3 b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/pp6/2pp4/2q3p1/2P1QPn1/1P6/PN4K1/3RR3 b - - 0 1\"]\r\n\r\n1...Qf2+ 2. Kh3 Qh4+ 3. Kg2 Qh2+ 4. Kf3 Rxf4+\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787265837329",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540129292216832171,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qf2",
+        "correct": true,
+        "timestamp": "2026-08-20T22:44:08.146915+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
