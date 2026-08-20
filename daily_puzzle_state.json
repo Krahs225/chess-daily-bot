@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-05-17",
     "title": "Don't Be Too Quick",
     "fen": "7Q/1p2qp1p/k5p1/3P1b2/8/8/P4P1P/2R3K1 b - - 0 1",
-    "current_fen": "7Q/1p3p1p/k5p1/3P1bq1/8/8/P4P1P/2R2K2 b - - 2 2",
+    "current_fen": "7Q/1p3p1p/k5p1/3P2q1/8/3b4/P4P1P/2R1K3 b - - 4 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7Q/1p2qp1p/k5p1/3P1b2/8/8/P4P1P/2R3K1 b - - 0 1\"]\r\n\r\n1...Qg5+ 2. Kf1 Bd3+ 3. Ke1 Qxc1#\r\n*",
     "all_moves": [
       {
@@ -57,29 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787260623661",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1540107424336191560,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxc1",
+        "move": "bd3",
         "correct": false,
-        "timestamp": "2026-08-20T21:17:09.378809+00:00"
+        "timestamp": "2026-08-20T21:17:20.354256+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qxc1",
-        "correct": false,
-        "timestamp": "2026-08-20T21:17:11.450605+00:00"
+        "move": "bd3",
+        "correct": true,
+        "timestamp": "2026-08-20T21:17:20.318246+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
