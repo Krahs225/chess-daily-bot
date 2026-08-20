@@ -1377,93 +1377,235 @@ def build_puzzle(data):
 
 
 
-def fetch_exact_lichess_puzzle(
+def _extract_exact_rating_row(
+    wrapper,
     rating,
 ):
-    """Return one exact-rating Lichess puzzle or None."""
-    rating = int(rating)
+    item = (
+        wrapper.get(
+            "row",
+            wrapper,
+        )
+        if isinstance(wrapper, dict)
+        else None
+    )
 
-    params = {
-        "dataset": LICHESS_DATASET,
-        "config": LICHESS_CONFIG,
-        "split": LICHESS_SPLIT,
-        "where": f'"Rating"={rating}',
-        "offset": 0,
-        "length": 100,
+    if not isinstance(
+        item,
+        dict,
+    ):
+        return None
+
+    try:
+        row_rating = int(
+            item.get(
+                "Rating"
+            )
+        )
+    except Exception:
+        return None
+
+    if row_rating != int(
+        rating
+    ):
+        return None
+
+    puzzle_id = item.get(
+        "PuzzleId"
+    )
+    fen = item.get(
+        "FEN"
+    )
+    moves = item.get(
+        "Moves"
+    )
+
+    if not puzzle_id or not fen or not moves:
+        return None
+
+    if isinstance(
+        moves,
+        str,
+    ):
+        moves = moves.split()
+
+    if not isinstance(
+        moves,
+        list,
+    ) or len(moves) < 2:
+        return None
+
+    return {
+        "PuzzleId":
+            str(puzzle_id),
+        "FEN":
+            str(fen),
+        "Moves":
+            [
+                str(move)
+                for move in moves
+            ],
+        "Rating":
+            row_rating,
+        "Themes":
+            item.get(
+                "Themes",
+                "",
+            ),
     }
 
+
+def _request_lichess_filter(
+    where,
+    rating,
+):
     response = requests.get(
         LICHESS_FILTER_URL,
-        params=params,
+        params={
+            "dataset":
+                LICHESS_DATASET,
+            "config":
+                LICHESS_CONFIG,
+            "split":
+                LICHESS_SPLIT,
+            "where":
+                where,
+            "offset":
+                0,
+            "length":
+                100,
+        },
         headers={
-            "Accept": "application/json",
-            "User-Agent": "Chess-Puzzle-Bot/1.1",
+            "Accept":
+                "application/json",
+            "User-Agent":
+                "Chess-Puzzle-Bot/1.2",
         },
         timeout=LICHESS_FILTER_TIMEOUT,
     )
+
     response.raise_for_status()
 
-    payload = response.json()
-    rows = payload.get(
+    rows = response.json().get(
         "rows",
         [],
     )
 
     for wrapper in rows:
-        item = wrapper.get(
-            "row",
+        row = _extract_exact_rating_row(
             wrapper,
+            rating,
         )
 
-        if not isinstance(item, dict):
-            continue
+        if row:
+            return row
 
+    return None
+
+
+def fetch_exact_lichess_puzzle(
+    rating,
+):
+    """
+    Find a Lichess puzzle with an exact integer puzzle rating.
+
+    The Dataset Viewer currently supports comparison predicates, so try
+    both direct equality and an equivalent >= / <= composite predicate.
+    If that service is temporarily returning 5xx errors, fall back to
+    sampling /rows slices rather than failing immediately.
+    """
+    rating = int(
+        rating
+    )
+
+    last_error = None
+
+    predicates = [
+        f'"Rating"={rating}',
+        f'"Rating">={rating} AND "Rating"<={rating}',
+    ]
+
+    for where in predicates:
         try:
-            row_rating = int(
-                item.get("Rating")
+            found = _request_lichess_filter(
+                where,
+                rating,
             )
+
+            if found:
+                return found
+
+        except Exception as error:
+            last_error = error
+
+    # Fallback: sample many 100-row slices from the indexed Parquet viewer.
+    # This is slower than /filter but does not require downloading the
+    # 6M-row dataset.
+    total_rows = 6_057_356
+    offsets = set()
+
+    # Deterministic spread + random samples; never request duplicate slices.
+    for i in range(80):
+        offsets.add(
+            int(
+                (total_rows - 100)
+                * i
+                / 79
+            )
+        )
+
+    for _ in range(40):
+        offsets.add(
+            random.randint(
+                0,
+                total_rows - 100,
+            )
+        )
+
+    for offset in offsets:
+        try:
+            response = requests.get(
+                "https://datasets-server.huggingface.co/rows",
+                params={
+                    "dataset":
+                        LICHESS_DATASET,
+                    "config":
+                        LICHESS_CONFIG,
+                    "split":
+                        LICHESS_SPLIT,
+                    "offset":
+                        offset,
+                    "length":
+                        100,
+                },
+                headers={
+                    "Accept":
+                        "application/json",
+                    "User-Agent":
+                        "Chess-Puzzle-Bot/1.2",
+                },
+                timeout=LICHESS_FILTER_TIMEOUT,
+            )
+
+            response.raise_for_status()
+
+            for wrapper in response.json().get(
+                "rows",
+                [],
+            ):
+                found = _extract_exact_rating_row(
+                    wrapper,
+                    rating,
+                )
+
+                if found:
+                    return found
+
         except Exception:
             continue
 
-        if row_rating != rating:
-            continue
-
-        puzzle_id = item.get("PuzzleId")
-        fen = item.get("FEN")
-        moves = item.get("Moves")
-
-        if (
-            not puzzle_id
-            or not fen
-            or not moves
-        ):
-            continue
-
-        if isinstance(
-            moves,
-            str,
-        ):
-            moves = moves.split()
-
-        if (
-            not isinstance(moves, list)
-            or len(moves) < 2
-        ):
-            continue
-
-        return {
-            "PuzzleId": str(puzzle_id),
-            "FEN": str(fen),
-            "Moves": [
-                str(move)
-                for move in moves
-            ],
-            "Rating": row_rating,
-            "Themes": item.get(
-                "Themes",
-                "",
-            ),
-        }
+    if last_error:
+        raise last_error
 
     return None
 
@@ -3926,7 +4068,8 @@ async def on_message(
 
         if command_lower in (
             "!help",
-            "!info"
+            "!info",
+            "!i",
         ):
 
             await message.channel.send(
