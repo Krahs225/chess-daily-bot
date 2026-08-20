@@ -56,9 +56,9 @@
     },
     "team shark": {
       "name": "TEAM SHARK",
-      "best_puzzle": 5,
-      "best_difficulty": 1361,
-      "best_completed_at": "2026-08-20T12:31:21.813507+00:00",
+      "best_puzzle": 6,
+      "best_difficulty": 1395,
+      "best_completed_at": "2026-08-20T12:32:20.722300+00:00",
       "current": {
         "run_id": "team shark:1787228881",
         "started_by_id": "1539974287128137739",
@@ -74,7 +74,8 @@
           "i2sxF",
           "keexY",
           "mEITc",
-          "giHpp"
+          "giHpp",
+          "SGTfw"
         ],
         "members": {
           "601406103712170014": {
@@ -83,7 +84,49 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "SGTfw",
+          "rating": 1350,
+          "themes": "attraction kingsideAttack long mate mateIn3 middlegame sacrifice",
+          "url": "https://lichess.org/training/SGTfw",
+          "start_fen": "1r3qrk/5p1p/p1bppPpQ/4n1P1/2P1PR2/2p4P/PP4B1/R6K w - - 6 28",
+          "current_fen": "1r3qrk/5p1p/p1bppPpQ/4n1P1/2P1PR2/2p4P/PP4B1/R6K w - - 6 28",
+          "solution": [
+            {
+              "uci": "h6h7",
+              "san": "Qxh7+",
+              "color": "white"
+            },
+            {
+              "uci": "h8h7",
+              "san": "Kxh7",
+              "color": "black"
+            },
+            {
+              "uci": "f4h4",
+              "san": "Rh4+",
+              "color": "white"
+            },
+            {
+              "uci": "f8h6",
+              "san": "Qh6",
+              "color": "black"
+            },
+            {
+              "uci": "h4h6",
+              "san": "Rxh6#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
