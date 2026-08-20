@@ -1,62 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-07-28",
-    "title": "Art of Attack",
-    "fen": "3r1rk1/1pb2p1p/2p3p1/p4N2/P3p2q/1P6/1BP2PPP/3Q1B1K w - - 0 1",
-    "current_fen": "3r1rk1/1pb2p1p/2p4N/p6p/P3p2q/1P6/1BP2PPP/5B1K b - - 1 2",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3r1rk1/1pb2p1p/2p3p1/p4N2/P3p2q/1P6/1BP2PPP/3Q1B1K w - - 0 1\"]\r\n\r\n1. Qh5 gxh5 2. Nh6# *",
+    "url": "https://www.chess.com/daily/2014-06-10",
+    "title": "Look Both Ways Before Crossing",
+    "fen": "r4rk1/pp3pp1/2n1b3/2b5/8/2BB1P2/qPPQN2P/2KR3R w - - 0 1",
+    "current_fen": "r4rk1/pp3pp1/2n1b3/2b5/8/2BB1P2/qPPQN2P/2KR3R w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/pp3pp1/2n1b3/2b5/8/2BB1P2/qPPQN2P/2KR3R w - - 0 1\"]\r\n\r\n1. Qg5 f6 2. Qxc5\r\n*",
     "all_moves": [
       {
-        "uci": "d1h5",
-        "san": "Qh5",
+        "uci": "d2g5",
+        "san": "Qg5",
         "color": "white"
       },
       {
-        "uci": "g6h5",
-        "san": "gxh5",
+        "uci": "f7f6",
+        "san": "f6",
         "color": "black"
       },
       {
-        "uci": "f5h6",
-        "san": "Nh6#",
+        "uci": "g5c5",
+        "san": "Qxc5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1h5",
-        "san": "Qh5",
+        "uci": "d2g5",
+        "san": "Qg5",
         "color": "white"
       },
       {
-        "uci": "f5h6",
-        "san": "Nh6#",
+        "uci": "g5c5",
+        "san": "Qxc5",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-08-20T22:53:29.782045+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-20T22:54:03.274570+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787266409782",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1540131693170528297,
+    "puzzle_id": "random_1787266443274",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1540131835445772349,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nh6",
-        "correct": true,
-        "timestamp": "2026-08-20T22:53:57.723180+00:00"
+        "move": "qh6",
+        "correct": false,
+        "timestamp": "2026-08-20T22:54:31.079733+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
