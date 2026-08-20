@@ -2,15 +2,15 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 45,
+      "best_puzzle": 46,
       "best_difficulty": 2016,
-      "best_completed_at": "2026-08-20T13:44:40.381849+00:00",
+      "best_completed_at": "2026-08-20T13:46:24.829895+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787233561.5896287,
+        "last_activity": 1787233563.7486086,
         "paused_reason": "manually stopped",
         "puzzle_number": 46,
         "strikes": 0,
@@ -60,7 +60,8 @@
           "TbzyP",
           "4V89k",
           "3LFr7",
-          "v3Ite"
+          "v3Ite",
+          "X3wBJ"
         ],
         "members": {
           "601406103712170014": {
@@ -74,7 +75,69 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "X3wBJ",
+          "rating": 1914,
+          "themes": "crushing defensiveMove hangingPiece middlegame skewer veryLong",
+          "url": "https://lichess.org/training/X3wBJ",
+          "start_fen": "r3k2r/1np1b3/pp1p4/3P1q2/PPP1p1p1/2QBB1Pp/5P1K/2R2N2 w kq - 0 37",
+          "current_fen": "r3k2r/1np1b3/pp1p4/3P1q2/PPP1p1p1/2QBB1Pp/5P1K/2R2N2 w kq - 0 37",
+          "solution": [
+            {
+              "uci": "c3h8",
+              "san": "Qxh8+",
+              "color": "white"
+            },
+            {
+              "uci": "e8d7",
+              "san": "Kd7",
+              "color": "black"
+            },
+            {
+              "uci": "h8a8",
+              "san": "Qxa8",
+              "color": "white"
+            },
+            {
+              "uci": "f5f3",
+              "san": "Qf3",
+              "color": "black"
+            },
+            {
+              "uci": "d3e4",
+              "san": "Bxe4",
+              "color": "white"
+            },
+            {
+              "uci": "f3e4",
+              "san": "Qxe4",
+              "color": "black"
+            },
+            {
+              "uci": "f2f3",
+              "san": "f3",
+              "color": "white"
+            },
+            {
+              "uci": "e4f3",
+              "san": "Qxf3",
+              "color": "black"
+            },
+            {
+              "uci": "c1c2",
+              "san": "Rc2",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
