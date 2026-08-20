@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-08-02",
     "title": "Do I Need to React?",
     "fen": "3r1rk1/pb2qppp/1pn1pb2/7R/4B3/3Q1N2/P1P2PPP/3R2K1 w - - 0 1",
-    "current_fen": "3r1rk1/pb2qppp/1pn1pb2/7R/4B3/3Q1N2/P1P2PPP/3R2K1 w - - 0 1",
+    "current_fen": "3r1rk1/pb2qpp1/1pn1pb2/7R/8/3Q1N2/P1P2PPP/3R2K1 w - - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"3r1rk1/pb2qppp/1pn1pb2/7R/4B3/3Q1N2/P1P2PPP/3R2K1 w - - 0 1\"]\r\n\r\n1.Bxh7+ Kh8 2.Bg8+ Kxg8 3.Qh7# *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787266898423",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540133743019430018,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "bg8",
+        "correct": true,
+        "timestamp": "2026-08-20T23:01:45.766014+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
