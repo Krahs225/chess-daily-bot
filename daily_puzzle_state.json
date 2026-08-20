@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "1200 • 03Msh",
     "fen": "3r2r1/2p2R2/3p4/1p6/p5k1/P1P5/1P3K2/4R3 w - - 2 43",
-    "current_fen": "3r2r1/2p2R2/3p4/1p6/p5k1/P1P5/1P3K2/4R3 w - - 2 43",
+    "current_fen": "3r2r1/2p2R2/3p4/1p5k/p7/P1P5/1P3K2/6R1 w - - 4 44",
     "all_moves": [
       {
         "uci": "e1g1",
@@ -38,13 +38,20 @@
     "url": "https://lichess.org/training/03Msh",
     "posted_at": "2026-08-20T16:03:43.159634+00:00",
     "puzzle_id": "random_lichess_1200_03Msh_1787241823159",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rg1",
+        "correct": true,
+        "timestamp": "2026-08-20T16:04:13.709159+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
