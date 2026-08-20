@@ -1507,107 +1507,142 @@ def fetch_exact_lichess_puzzle(
     rating,
 ):
     """
-    Find a Lichess puzzle with an exact integer puzzle rating.
+    Find one Lichess puzzle with the exact integer puzzle rating.
 
-    The Dataset Viewer currently supports comparison predicates, so try
-    both direct equality and an equivalent >= / <= composite predicate.
-    If that service is temporarily returning 5xx errors, fall back to
-    sampling /rows slices rather than failing immediately.
+    The Dataset Viewer /filter endpoint supports comparison predicates
+    such as `"Rating"=1000` and returns up to 100 matching rows.
+    We use a short retry loop so a transient Hugging Face 5xx/timeout
+    does not create a long backlog of delayed Discord replies.
     """
     rating = int(
         rating
     )
 
+    params = {
+        "dataset":
+            LICHESS_DATASET,
+        "config":
+            LICHESS_CONFIG,
+        "split":
+            LICHESS_SPLIT,
+        "where":
+            f'"Rating"={rating}',
+        "orderby":
+            '"PuzzleId"',
+        "offset":
+            0,
+        "length":
+            1,
+    }
+
     last_error = None
 
-    predicates = [
-        f'"Rating"={rating}',
-        f'"Rating">={rating} AND "Rating"<={rating}',
-    ]
-
-    for where in predicates:
-        try:
-            found = _request_lichess_filter(
-                where,
-                rating,
-            )
-
-            if found:
-                return found
-
-        except Exception as error:
-            last_error = error
-
-    # Fallback: sample many 100-row slices from the indexed Parquet viewer.
-    # This is slower than /filter but does not require downloading the
-    # 6M-row dataset.
-    total_rows = 6_057_356
-    offsets = set()
-
-    # Deterministic spread + random samples; never request duplicate slices.
-    for i in range(80):
-        offsets.add(
-            int(
-                (total_rows - 100)
-                * i
-                / 79
-            )
-        )
-
-    for _ in range(40):
-        offsets.add(
-            random.randint(
-                0,
-                total_rows - 100,
-            )
-        )
-
-    for offset in offsets:
+    for attempt in range(3):
         try:
             response = requests.get(
-                "https://datasets-server.huggingface.co/rows",
-                params={
-                    "dataset":
-                        LICHESS_DATASET,
-                    "config":
-                        LICHESS_CONFIG,
-                    "split":
-                        LICHESS_SPLIT,
-                    "offset":
-                        offset,
-                    "length":
-                        100,
-                },
+                LICHESS_FILTER_URL,
+                params=params,
                 headers={
                     "Accept":
                         "application/json",
                     "User-Agent":
-                        "Chess-Puzzle-Bot/1.2",
+                        "Chess-Puzzle-Bot/1.3",
                 },
-                timeout=LICHESS_FILTER_TIMEOUT,
+                timeout=12,
             )
 
             response.raise_for_status()
 
-            for wrapper in response.json().get(
+            rows = response.json().get(
                 "rows",
                 [],
-            ):
-                found = _extract_exact_rating_row(
-                    wrapper,
-                    rating,
+            )
+
+            for wrapper in rows:
+                item = (
+                    wrapper.get(
+                        "row",
+                        wrapper,
+                    )
+                    if isinstance(
+                        wrapper,
+                        dict,
+                    )
+                    else None
                 )
 
-                if found:
-                    return found
+                if not isinstance(
+                    item,
+                    dict,
+                ):
+                    continue
 
-        except Exception:
-            continue
+                try:
+                    row_rating = int(
+                        item.get(
+                            "Rating"
+                        )
+                    )
+                except Exception:
+                    continue
 
-    if last_error:
-        raise last_error
+                if row_rating != rating:
+                    continue
 
-    return None
+                moves = item.get(
+                    "Moves"
+                )
+
+                if isinstance(
+                    moves,
+                    str,
+                ):
+                    moves = moves.split()
+
+                if (
+                    not item.get("PuzzleId")
+                    or not item.get("FEN")
+                    or not isinstance(
+                        moves,
+                        list,
+                    )
+                    or len(moves) < 2
+                ):
+                    continue
+
+                return {
+                    "PuzzleId":
+                        str(item["PuzzleId"]),
+                    "FEN":
+                        str(item["FEN"]),
+                    "Moves":
+                        [
+                            str(move)
+                            for move in moves
+                        ],
+                    "Rating":
+                        row_rating,
+                    "Themes":
+                        item.get(
+                            "Themes",
+                            "",
+                        ),
+                }
+
+            return None
+
+        except Exception as error:
+            last_error = error
+
+            if attempt < 2:
+                time.sleep(
+                    0.8 * (attempt + 1)
+                )
+
+    raise RuntimeError(
+        f"Lichess exact-rating service unavailable: "
+        f"{last_error}"
+    )
 
 
 async def post_exact_lichess_puzzle(
@@ -4032,10 +4067,21 @@ async def on_message(
         command_lower = content.casefold()
 
         # Exact Lichess puzzle rating, e.g. !400 or !2552.
-        if re.fullmatch(r"!([0-9]{3,4})", command_lower):
+        if re.fullmatch(
+            r"!\d+",
+            command_lower,
+        ):
             rating = int(
                 command_lower[1:]
             )
+
+            if not (
+                100 <= rating <= 4000
+            ):
+                await message.channel.send(
+                    "❌ Lichess puzzle rating must be between **100 and 4000**."
+                )
+                return
 
             if is_survival_active():
                 team = active_team() or "another team"
