@@ -166,8 +166,10 @@
         "paused_reason": "manually stopped",
         "puzzle_number": 1,
         "strikes": 0,
-        "best_difficulty": 0,
-        "used_puzzle_ids": [],
+        "best_difficulty": 1252,
+        "used_puzzle_ids": [
+          "Nzp5Z"
+        ],
         "members": {
           "442597396195704832": {
             "name": "Thice",
@@ -175,7 +177,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "Nzp5Z",
+          "rating": 1252,
+          "themes": "crushing deflection endgame short",
+          "url": "https://lichess.org/training/Nzp5Z",
+          "start_fen": "5rk1/p4pp1/2p4p/4p3/4P2P/1P2P3/1PPKQq2/R6R b - - 2 21",
+          "current_fen": "5rk1/p4pp1/2p4p/4p3/4P2P/1P2P3/1PPKQq2/R6R b - - 2 21",
+          "solution": [
+            {
+              "uci": "f8d8",
+              "san": "Rd8+",
+              "color": "black"
+            },
+            {
+              "uci": "d2c1",
+              "san": "Kc1",
+              "color": "white"
+            },
+            {
+              "uci": "f2e2",
+              "san": "Qxe2",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
