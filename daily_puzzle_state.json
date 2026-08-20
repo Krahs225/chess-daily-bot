@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-01-29",
     "title": "Beyond the Fork",
     "fen": "2r1r1k1/pp1R1p1p/n5pB/2P1p3/1PB1n3/P6P/7P/2K5 w - - 2 19",
-    "current_fen": "2r1r1k1/pp1R1p1p/n5pB/2P1p3/1PB1n3/P6P/7P/2K5 w - - 2 19",
+    "current_fen": "2r1r1k1/pp3R1p/n2n2pB/2P1p3/1PB5/P6P/7P/2K5 w - - 1 20",
     "pgn": "[White \"rlefko\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"2r1r1k1/pp1R1p1p/n5pB/2P1p3/1PB1n3/P6P/7P/2K5 w - - 2 19\"]\r\n\r\n19. Rxf7 Nd6 20. Rf8# 1-0",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787257232907",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540093203888472135,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rxf7",
+        "correct": true,
+        "timestamp": "2026-08-20T20:21:09.651531+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
