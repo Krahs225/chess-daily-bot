@@ -98,9 +98,9 @@
     },
     "but... i made the team😭": {
       "name": "but... i made the team😭",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-08-20T12:35:11.825865+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1308,
+      "best_completed_at": "2026-08-20T12:36:53.105254+00:00",
       "current": {
         "run_id": "but... i made the team😭:1787229311",
         "started_by_id": "1539976092155256853",
@@ -110,9 +110,10 @@
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 1,
-        "best_difficulty": 1308,
+        "best_difficulty": 1325,
         "used_puzzle_ids": [
-          "eKLsw"
+          "eKLsw",
+          "8M9q8"
         ],
         "members": {
           "601406103712170014": {
@@ -126,7 +127,39 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "8M9q8",
+          "rating": 1325,
+          "themes": "crushing endgame short skewer",
+          "url": "https://lichess.org/training/8M9q8",
+          "start_fen": "8/7p/6p1/Rp1k1p2/8/2KP1P2/5b1P/8 b - - 1 36",
+          "current_fen": "8/7p/6p1/Rp1k1p2/8/2KP1P2/5b1P/8 b - - 1 36",
+          "solution": [
+            {
+              "uci": "f2e1",
+              "san": "Be1+",
+              "color": "black"
+            },
+            {
+              "uci": "c3b2",
+              "san": "Kb2",
+              "color": "white"
+            },
+            {
+              "uci": "e1a5",
+              "san": "Bxa5",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
