@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 13,
+      "best_puzzle": 14,
       "best_difficulty": 1503,
-      "best_completed_at": "2026-08-20T12:49:08.077312+00:00",
+      "best_completed_at": "2026-08-20T12:49:37.750760+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -28,7 +28,8 @@
           "wQtHg",
           "9Hv1n",
           "ZfvWh",
-          "JSj9h"
+          "JSj9h",
+          "cvtLS"
         ],
         "members": {
           "601406103712170014": {
@@ -42,7 +43,49 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "cvtLS",
+          "rating": 1492,
+          "themes": "crushing kingsideAttack long middlegame sacrifice",
+          "url": "https://lichess.org/training/cvtLS",
+          "start_fen": "r4rk1/5p2/p1pqpnpp/1p1p4/1P1P4/2PQ1P2/P1B2P1P/R5RK w - - 0 21",
+          "current_fen": "r4rk1/5p2/p1pqpnpp/1p1p4/1P1P4/2PQ1P2/P1B2P1P/R5RK w - - 0 21",
+          "solution": [
+            {
+              "uci": "g1g6",
+              "san": "Rxg6+",
+              "color": "white"
+            },
+            {
+              "uci": "f7g6",
+              "san": "fxg6",
+              "color": "black"
+            },
+            {
+              "uci": "d3g6",
+              "san": "Qxg6+",
+              "color": "white"
+            },
+            {
+              "uci": "g8h8",
+              "san": "Kh8",
+              "color": "black"
+            },
+            {
+              "uci": "g6h6",
+              "san": "Qxh6+",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
