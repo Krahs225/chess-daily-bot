@@ -1,120 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-08-23",
-    "title": "Forcing a Losing Move",
-    "fen": "4KBkr/7p/6PP/4P3/8/3P1p2/8/8 w - - 0 1",
-    "current_fen": "4K1kq/7p/7P/4P3/3P4/8/8/8 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4KBkr/7p/6PP/4P3/8/3P1p2/8/8 w - - 0 1\"]\r\n\r\n1. g7 f2 2. Be7 f1=Q 3. Bf6 Qxf6 4. gxh8=Q+ Qxh8 5. d4\r\n*",
+    "url": "https://www.chess.com/daily/2022-08-06",
+    "title": "Discovering Counterplay",
+    "fen": "r3kb1r/2pn1p1p/p3p1p1/1P1q2NQ/2pP4/2P3P1/5P1P/R1B1R1K1 w kq - 0 18",
+    "current_fen": "r3kb1r/2pn1p1p/p3N1p1/1P5q/2pP4/2P3P1/5P1P/R1B1R1K1 w kq - 0 19",
+    "pgn": "[Event \"Tallinn\"]\r\n[Site \"Tallinn\"]\r\n[Date \"1986.??.??\"]\r\n[White \"Evgeny Bareev\"]\r\n[Black \"Yuri Yakovich\"]\r\n[Result \"1-0\"]\r\n[FEN \"r3kb1r/2pn1p1p/p3p1p1/1P1q2NQ/2pP4/2P3P1/5P1P/R1B1R1K1 w kq - 0 18\"]\r\n\r\n18. Nxe6 Qxh5 19. Ng7+ Kd8 20. Re8# 1-0",
     "all_moves": [
       {
-        "uci": "g6g7",
-        "san": "g7",
+        "uci": "g5e6",
+        "san": "Nxe6",
         "color": "white"
       },
       {
-        "uci": "f3f2",
-        "san": "f2",
+        "uci": "d5h5",
+        "san": "Qxh5",
         "color": "black"
       },
       {
-        "uci": "f8e7",
-        "san": "Be7",
+        "uci": "e6g7",
+        "san": "Ng7+",
         "color": "white"
       },
       {
-        "uci": "f2f1q",
-        "san": "f1=Q",
+        "uci": "e8d8",
+        "san": "Kd8",
         "color": "black"
       },
       {
-        "uci": "e7f6",
-        "san": "Bf6",
-        "color": "white"
-      },
-      {
-        "uci": "f1f6",
-        "san": "Qxf6",
-        "color": "black"
-      },
-      {
-        "uci": "g7h8q",
-        "san": "gxh8=Q+",
-        "color": "white"
-      },
-      {
-        "uci": "f6h8",
-        "san": "Qxh8",
-        "color": "black"
-      },
-      {
-        "uci": "d3d4",
-        "san": "d4",
+        "uci": "e1e8",
+        "san": "Re8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g6g7",
-        "san": "g7",
+        "uci": "g5e6",
+        "san": "Nxe6",
         "color": "white"
       },
       {
-        "uci": "f8e7",
-        "san": "Be7",
+        "uci": "e6g7",
+        "san": "Ng7+",
         "color": "white"
       },
       {
-        "uci": "e7f6",
-        "san": "Bf6",
-        "color": "white"
-      },
-      {
-        "uci": "g7h8q",
-        "san": "gxh8=Q+",
-        "color": "white"
-      },
-      {
-        "uci": "d3d4",
-        "san": "d4",
+        "uci": "e1e8",
+        "san": "Re8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-20T21:27:50.278848+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-20T21:28:47.315034+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787261270278",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1540110136842920058,
+    "puzzle_id": "random_1787261327315",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1540110376320897175,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bf6",
+        "move": "nxe6",
         "correct": true,
-        "timestamp": "2026-08-20T21:28:29.126068+00:00"
+        "timestamp": "2026-08-20T21:28:53.514471+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "d4",
-        "correct": true,
-        "timestamp": "2026-08-20T21:28:36.734783+00:00"
+        "move": "rxe6",
+        "correct": false,
+        "timestamp": "2026-08-20T21:28:54.950438+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
