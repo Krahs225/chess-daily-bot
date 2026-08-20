@@ -56,9 +56,9 @@
     },
     "team shark": {
       "name": "TEAM SHARK",
-      "best_puzzle": 4,
+      "best_puzzle": 5,
       "best_difficulty": 1361,
-      "best_completed_at": "2026-08-20T12:30:45.286313+00:00",
+      "best_completed_at": "2026-08-20T12:31:21.813507+00:00",
       "current": {
         "run_id": "team shark:1787228881",
         "started_by_id": "1539974287128137739",
@@ -68,12 +68,13 @@
         "paused_reason": null,
         "puzzle_number": 5,
         "strikes": 0,
-        "best_difficulty": 1361,
+        "best_difficulty": 1395,
         "used_puzzle_ids": [
           "oze2W",
           "i2sxF",
           "keexY",
-          "mEITc"
+          "mEITc",
+          "giHpp"
         ],
         "members": {
           "601406103712170014": {
@@ -82,7 +83,39 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "giHpp",
+          "rating": 1395,
+          "themes": "kingsideAttack mate mateIn2 middlegame sacrifice short",
+          "url": "https://lichess.org/training/giHpp",
+          "start_fen": "r1b1rqk1/ppbn1p2/2p1pn1Q/8/NP2R3/P2B1N2/2P2PPP/R5K1 w - - 3 18",
+          "current_fen": "r1b1rqk1/ppbn1p2/2p1pn1Q/8/NP2R3/P2B1N2/2P2PPP/R5K1 w - - 3 18",
+          "solution": [
+            {
+              "uci": "e4g4",
+              "san": "Rg4+",
+              "color": "white"
+            },
+            {
+              "uci": "f6g4",
+              "san": "Nxg4",
+              "color": "black"
+            },
+            {
+              "uci": "h6h7",
+              "san": "Qh7#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
