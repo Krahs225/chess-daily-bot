@@ -1,77 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-08-06",
-    "title": "Barking Up the Right Tree",
-    "fen": "7k/Q5bp/2p1r2p/1p6/2p1bq1P/P1N3N1/1P3PP1/K1R5 w - - 0 1",
-    "current_fen": "8/5k1p/2p1r2p/1p6/2p1bN1P/P1N5/1P3PP1/K1R5 b - - 0 3",
-    "pgn": "[White \"GuyLemieux\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"7k/Q5bp/2p1r2p/1p6/2p1bq1P/P1N3N1/1P3PP1/K1R5 w - - 0 1\"]\r\n\r\n1. Qxg7+ Kxg7 2. Nh5+ Kf7 3. Nxf4 1-0",
+    "url": "https://www.chess.com/daily/2022-10-05",
+    "title": "King Safety Blues",
+    "fen": "4k3/1N2n1p1/p3Qp1p/7P/8/P4PK1/6P1/2q5 b - - 0 1",
+    "current_fen": "4k3/2q1n1p1/p2NQp1p/7P/8/P4PK1/6P1/8 b - - 2 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"4k3/1N2n1p1/p3Qp1p/7P/8/P4PK1/6P1/2q5 b - - 0 1\"]\r\n\r\n1... Qc7+ 2. Nd6+ Qxd6+ 3. Qxd6 Nf5+ 4. Kf4 Nxd6 *",
     "all_moves": [
       {
-        "uci": "a7g7",
-        "san": "Qxg7+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g7",
-        "san": "Kxg7",
+        "uci": "c1c7",
+        "san": "Qc7+",
         "color": "black"
       },
       {
-        "uci": "g3h5",
-        "san": "Nh5+",
+        "uci": "b7d6",
+        "san": "Nd6+",
         "color": "white"
       },
       {
-        "uci": "g7f7",
-        "san": "Kf7",
+        "uci": "c7d6",
+        "san": "Qxd6+",
         "color": "black"
       },
       {
-        "uci": "h5f4",
-        "san": "Nxf4",
+        "uci": "e6d6",
+        "san": "Qxd6",
         "color": "white"
+      },
+      {
+        "uci": "e7f5",
+        "san": "Nf5+",
+        "color": "black"
+      },
+      {
+        "uci": "g3f4",
+        "san": "Kf4",
+        "color": "white"
+      },
+      {
+        "uci": "f5d6",
+        "san": "Nxd6",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "a7g7",
-        "san": "Qxg7+",
-        "color": "white"
+        "uci": "c1c7",
+        "san": "Qc7+",
+        "color": "black"
       },
       {
-        "uci": "g3h5",
-        "san": "Nh5+",
-        "color": "white"
+        "uci": "c7d6",
+        "san": "Qxd6+",
+        "color": "black"
       },
       {
-        "uci": "h5f4",
-        "san": "Nxf4",
-        "color": "white"
+        "uci": "e7f5",
+        "san": "Nf5+",
+        "color": "black"
+      },
+      {
+        "uci": "f5d6",
+        "san": "Nxd6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-20T20:13:36.398457+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-20T20:13:57.950678+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787256816398",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1540091456017145878,
+    "puzzle_id": "random_1787256837950",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1540091546261782528,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nxf4",
+        "move": "qc7",
         "correct": true,
-        "timestamp": "2026-08-20T20:13:50.625278+00:00"
+        "timestamp": "2026-08-20T20:14:12.436668+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
