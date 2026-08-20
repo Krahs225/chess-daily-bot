@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 55,
-      "best_difficulty": 2188,
-      "best_completed_at": "2026-08-20T17:57:00.501802+00:00",
+      "best_puzzle": 56,
+      "best_difficulty": 2246,
+      "best_completed_at": "2026-08-20T17:59:53.365659+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -70,7 +70,8 @@
           "roCII",
           "pePLr",
           "rvxGZ",
-          "nu1gL"
+          "nu1gL",
+          "CZ3gJ"
         ],
         "members": {
           "601406103712170014": {
@@ -84,7 +85,50 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "CZ3gJ",
+          "rating": 2227,
+          "themes": "crushing defensiveMove endgame long",
+          "url": "https://lichess.org/training/CZ3gJ",
+          "start_fen": "3k4/1b4r1/p3pN2/1p2Pp2/3p4/8/P1R3PP/B6K b - - 1 30",
+          "current_fen": "3k4/1b4r1/p3pN2/1p2Pp2/3p4/8/P1R3PP/B6K b - - 1 30",
+          "solution": [
+            {
+              "uci": "d4d3",
+              "san": "d3",
+              "color": "black"
+            },
+            {
+              "uci": "c2d2",
+              "san": "Rd2",
+              "color": "white"
+            },
+            {
+              "uci": "g7g2",
+              "san": "Rxg2",
+              "color": "black"
+            },
+            {
+              "uci": "d2d3",
+              "san": "Rxd3+",
+              "color": "white"
+            },
+            {
+              "uci": "d8c8",
+              "san": "Kc8",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
