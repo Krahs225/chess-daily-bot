@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787229900.0438006,
+        "last_activity": 1787229912.6680105,
         "paused_reason": "puzzle fetch error",
         "puzzle_number": 5,
         "strikes": 1,
@@ -30,7 +30,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 0,
+            "correct": 1,
             "wrong": 1
           }
         },
@@ -40,7 +40,7 @@
           "themes": "advancedPawn endgame knightEndgame mate mateIn2 short",
           "url": "https://lichess.org/training/iKB3c",
           "start_fen": "6k1/6P1/p6P/6K1/8/8/1n1p4/8 w - - 0 58",
-          "current_fen": "6k1/6P1/p6P/6K1/8/8/1n1p4/8 w - - 0 58",
+          "current_fen": "6k1/6P1/6KP/p7/8/8/1n1p4/8 w - - 0 59",
           "solution": [
             {
               "uci": "g5g6",
@@ -59,16 +59,16 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null
+          "last_move_san": "Kg6"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
