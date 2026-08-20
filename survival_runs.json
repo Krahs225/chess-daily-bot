@@ -2,15 +2,15 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 47,
+      "best_puzzle": 48,
       "best_difficulty": 2016,
-      "best_completed_at": "2026-08-20T17:37:09.302873+00:00",
+      "best_completed_at": "2026-08-20T17:38:32.933567+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787247470.5199192,
+        "last_activity": 1787247473.0119886,
         "paused_reason": "manually stopped",
         "puzzle_number": 48,
         "strikes": 1,
@@ -62,7 +62,8 @@
           "3LFr7",
           "v3Ite",
           "X3wBJ",
-          "G2mGN"
+          "G2mGN",
+          "KxObB"
         ],
         "members": {
           "601406103712170014": {
@@ -76,7 +77,70 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "KxObB",
+          "rating": 1956,
+          "themes": "attraction crushing deflection endgame sacrifice veryLong",
+          "url": "https://lichess.org/training/KxObB",
+          "start_fen": "7k/5rp1/p2p3p/2qNp3/PQP4P/6P1/4bPB1/6K1 w - - 0 33",
+          "current_fen": "7k/5rp1/p2p3p/2qNp3/PQP4P/6P1/4bPB1/6K1 w - - 0 33",
+          "solution": [
+            {
+              "uci": "b4b8",
+              "san": "Qb8+",
+              "color": "white"
+            },
+            {
+              "uci": "h8h7",
+              "san": "Kh7",
+              "color": "black"
+            },
+            {
+              "uci": "g2e4",
+              "san": "Be4+",
+              "color": "white"
+            },
+            {
+              "uci": "g7g6",
+              "san": "g6",
+              "color": "black"
+            },
+            {
+              "uci": "e4g6",
+              "san": "Bxg6+",
+              "color": "white"
+            },
+            {
+              "uci": "h7g6",
+              "san": "Kxg6",
+              "color": "black"
+            },
+            {
+              "uci": "b8g8",
+              "san": "Qg8+",
+              "color": "white"
+            },
+            {
+              "uci": "g6f5",
+              "san": "Kf5",
+              "color": "black"
+            },
+            {
+              "uci": "g8f7",
+              "san": "Qxf7+",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
