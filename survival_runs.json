@@ -56,9 +56,9 @@
     },
     "team shark": {
       "name": "TEAM SHARK",
-      "best_puzzle": 3,
-      "best_difficulty": 1329,
-      "best_completed_at": "2026-08-20T12:29:50.082988+00:00",
+      "best_puzzle": 4,
+      "best_difficulty": 1361,
+      "best_completed_at": "2026-08-20T12:30:45.286313+00:00",
       "current": {
         "run_id": "team shark:1787228881",
         "started_by_id": "1539974287128137739",
@@ -72,7 +72,8 @@
         "used_puzzle_ids": [
           "oze2W",
           "i2sxF",
-          "keexY"
+          "keexY",
+          "mEITc"
         ],
         "members": {
           "601406103712170014": {
@@ -81,7 +82,29 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "mEITc",
+          "rating": 1210,
+          "themes": "mate mateIn1 middlegame oneMove",
+          "url": "https://lichess.org/training/mEITc",
+          "start_fen": "2kr1bnr/1p2p1p1/p1n2p2/3p4/1Pp2P1p/P1NPPN1q/1BP1BK2/R2Q1R2 b - - 1 14",
+          "current_fen": "2kr1bnr/1p2p1p1/p1n2p2/3p4/1Pp2P1p/P1NPPN1q/1BP1BK2/R2Q1R2 b - - 1 14",
+          "solution": [
+            {
+              "uci": "h3g3",
+              "san": "Qg3#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
