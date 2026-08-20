@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-11-02",
     "title": "Setting the Tactical Stage",
     "fen": "k1r4r/pq2bp2/2p1p2p/Qp2P1p1/3P4/2N4b/PP1B1P1P/2R1RNK1 b - - 0 1",
-    "current_fen": "k1r4r/pq3p2/2p1p2p/1p2P1p1/1Q1P4/2N4b/PP1B1P1P/2R1RNK1 b - - 0 2",
+    "current_fen": "k1r4r/pq3p2/4p2p/1Qp1P1p1/3P4/2N4b/PP1B1P1P/2R1RNK1 b - - 0 3",
     "pgn": "[Result \"0-1\"]\r\n[FEN \"k1r4r/pq2bp2/2p1p2p/Qp2P1p1/3P4/2N4b/PP1B1P1P/2R1RNK1 b - - 0 1\"]\r\n\r\n1... Bb4 2. Qxb4 c5 3. Qxb5 Qg2# 0-1",
     "all_moves": [
       {
@@ -57,29 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787246201371",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1540046933807206461,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Bb4",
-        "correct": true,
-        "timestamp": "2026-08-20T17:17:04.585831+00:00"
+        "move": "C5",
+        "correct": false,
+        "timestamp": "2026-08-20T17:17:08.824421+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "bb4",
-        "correct": false,
-        "timestamp": "2026-08-20T17:17:04.790667+00:00"
+        "move": "c5",
+        "correct": true,
+        "timestamp": "2026-08-20T17:17:07.598211+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
