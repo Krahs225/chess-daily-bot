@@ -162,7 +162,7 @@
         "started_by_id": "1540006473709391903",
         "status": "active",
         "started_at": "2026-08-20T14:35:58.668682+00:00",
-        "last_activity": 1787236752.4690936,
+        "last_activity": 1787236792.3823957,
         "paused_reason": null,
         "puzzle_number": 4,
         "strikes": 0,
@@ -176,7 +176,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 7,
+            "correct": 8,
             "wrong": 0
           }
         },
@@ -186,7 +186,7 @@
           "themes": "endgame long mate mateIn3 pillsburysMate sacrifice",
           "url": "https://lichess.org/training/FVGs7",
           "start_fen": "1b2Q3/6pk/p3Rr1p/8/3P3q/1PP4P/P4PP1/4R1K1 b - - 0 39",
-          "current_fen": "1b2Q3/6pk/p3Rr1p/8/3P3q/1PP4P/P4PP1/4R1K1 b - - 0 39",
+          "current_fen": "1b2Q3/6pk/p3Rr1p/8/3P4/1PP4P/P4qP1/4R2K b - - 1 40",
           "solution": [
             {
               "uci": "h4f2",
@@ -215,17 +215,29 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qxf2+",
+          "accepted_moves": [
+            {
+              "san": "Qxf2+",
+              "uci": "h4f2",
+              "accepted_at": 1787236792.382269,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "h4f2",
+          "last_accepted_move_san": "Qxf2+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787236792.3822682,
+          "position_before_last_move": "1b2Q3/6pk/p3Rr1p/8/3P3q/1PP4P/P4PP1/4R1K1 b - - 0 39"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
