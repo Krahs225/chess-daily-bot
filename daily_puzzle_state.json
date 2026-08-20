@@ -1,68 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-01-03",
-    "title": "Setting The Trap",
-    "fen": "8/p3N2k/5R1p/1p1BP1pP/2p5/1P4P1/P7/6K1 w - - 0 1",
-    "current_fen": "8/p6k/7R/1p1BPNpP/8/1Pp3P1/P7/6K1 b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/p3N2k/5R1p/1p1BP1pP/2p5/1P4P1/P7/6K1 w - - 0 1\"]\r\n\r\n1. Nf5 c3 2. Rxh6#\r\n*",
+    "url": "https://www.chess.com/daily/2022-01-31",
+    "title": "Bareev Blinks",
+    "fen": "5k1r/4npp1/p3p2p/3nP2P/3P3Q/3N4/qB2KPP1/2R5 w - - 5 28",
+    "current_fen": "5k1r/4npp1/p3p2p/3nP2P/3P3Q/3N4/qB2KPP1/2R5 w - - 5 28",
+    "pgn": "[Event \"Kremlin Stars Rapid\"]\r\n[Site \"Moscow RUS\"]\r\n[Date \"1996.04.27\"]\r\n[Round \"1.1\"]\r\n[White \"Judit Polgar\"]\r\n[Black \"Evgeny Ilgizovich Bareev\"]\r\n[Result \"1-0\"]\r\n[ECO \"C18\"]\r\n[PlyCount \"55\"]\r\n[FEN \"5k1r/4npp1/p3p2p/3nP2P/3P3Q/3N4/qB2KPP1/2R5 w - - 5 28\"]\r\n\r\n28.Rc8+ Nxc8 29.Qd8# 1-0",
     "all_moves": [
       {
-        "uci": "e7f5",
-        "san": "Nf5",
+        "uci": "c1c8",
+        "san": "Rc8+",
         "color": "white"
       },
       {
-        "uci": "c4c3",
-        "san": "c3",
+        "uci": "e7c8",
+        "san": "Nxc8",
         "color": "black"
       },
       {
-        "uci": "f6h6",
-        "san": "Rxh6#",
+        "uci": "h4d8",
+        "san": "Qd8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e7f5",
-        "san": "Nf5",
+        "uci": "c1c8",
+        "san": "Rc8+",
         "color": "white"
       },
       {
-        "uci": "f6h6",
-        "san": "Rxh6#",
+        "uci": "h4d8",
+        "san": "Qd8#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-08-20T21:25:53.728600+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-20T21:27:01.435512+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787261153728",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1540109647891922982,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "be4",
-        "correct": false,
-        "timestamp": "2026-08-20T21:26:14.533948+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxh6",
-        "correct": true,
-        "timestamp": "2026-08-20T21:26:31.135668+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787261221435",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
