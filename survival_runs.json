@@ -172,7 +172,8 @@
           "440Tp",
           "IDV5g",
           "FVGs7",
-          "fFOy5"
+          "fFOy5",
+          "nr9JB"
         ],
         "members": {
           "442597396195704832": {
@@ -181,7 +182,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "nr9JB",
+          "rating": 1216,
+          "themes": "advantage endgame fork master short",
+          "url": "https://lichess.org/training/nr9JB",
+          "start_fen": "2r4k/pp5p/8/4qbN1/1P2p2P/4Q3/6K1/8 w - - 5 42",
+          "current_fen": "2r4k/pp5p/8/4qbN1/1P2p2P/4Q3/6K1/8 w - - 5 42",
+          "solution": [
+            {
+              "uci": "g5f7",
+              "san": "Nf7+",
+              "color": "white"
+            },
+            {
+              "uci": "h8g7",
+              "san": "Kg7",
+              "color": "black"
+            },
+            {
+              "uci": "f7e5",
+              "san": "Nxe5",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
