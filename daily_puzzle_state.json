@@ -1,134 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-04-27",
-    "title": "Checkmatemaster7's Checkmate Puzzle",
-    "fen": "6k1/ppp3p1/3bq1r1/4n3/2PBp3/1P6/P3BPPN/2RQ1RK1 b - - 0 24",
-    "current_fen": "6k1/ppp3p1/8/8/2PBp1r1/1P3N2/P5q1/2RQ1R1K w - - 2 30",
-    "pgn": "[White \"Checkmatemaster7\"]\r\n[Black \"Daily Puzzle\"]\r\n[Result \"0-1\"]\r\n[FEN \"6k1/ppp3p1/3bq1r1/4n3/2PBp3/1P6/P3BPPN/2RQ1RK1 b - - 0 24\"]\r\n\r\n24... Qh3 25. Bg4 Nf3+ 26. Nxf3 Rxg4 27. g3 Bxg3 28. fxg3 Qxg3+ 29. Kh1 Qg2#\r\n0-1",
+    "url": "https://www.chess.com/daily/2024-11-02",
+    "title": "Setting the Tactical Stage",
+    "fen": "k1r4r/pq2bp2/2p1p2p/Qp2P1p1/3P4/2N4b/PP1B1P1P/2R1RNK1 b - - 0 1",
+    "current_fen": "k1r4r/pq2bp2/2p1p2p/Qp2P1p1/3P4/2N4b/PP1B1P1P/2R1RNK1 b - - 0 1",
+    "pgn": "[Result \"0-1\"]\r\n[FEN \"k1r4r/pq2bp2/2p1p2p/Qp2P1p1/3P4/2N4b/PP1B1P1P/2R1RNK1 b - - 0 1\"]\r\n\r\n1... Bb4 2. Qxb4 c5 3. Qxb5 Qg2# 0-1",
     "all_moves": [
       {
-        "uci": "e6h3",
-        "san": "Qh3",
+        "uci": "e7b4",
+        "san": "Bb4",
         "color": "black"
       },
       {
-        "uci": "e2g4",
-        "san": "Bg4",
+        "uci": "a5b4",
+        "san": "Qxb4",
         "color": "white"
       },
       {
-        "uci": "e5f3",
-        "san": "Nf3+",
+        "uci": "c6c5",
+        "san": "c5",
         "color": "black"
       },
       {
-        "uci": "h2f3",
-        "san": "Nxf3",
+        "uci": "b4b5",
+        "san": "Qxb5",
         "color": "white"
       },
       {
-        "uci": "g6g4",
-        "san": "Rxg4",
-        "color": "black"
-      },
-      {
-        "uci": "g2g3",
-        "san": "g3",
-        "color": "white"
-      },
-      {
-        "uci": "d6g3",
-        "san": "Bxg3",
-        "color": "black"
-      },
-      {
-        "uci": "f2g3",
-        "san": "fxg3",
-        "color": "white"
-      },
-      {
-        "uci": "h3g3",
-        "san": "Qxg3+",
-        "color": "black"
-      },
-      {
-        "uci": "g1h1",
-        "san": "Kh1",
-        "color": "white"
-      },
-      {
-        "uci": "g3g2",
+        "uci": "b7g2",
         "san": "Qg2#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e6h3",
-        "san": "Qh3",
+        "uci": "e7b4",
+        "san": "Bb4",
         "color": "black"
       },
       {
-        "uci": "e5f3",
-        "san": "Nf3+",
+        "uci": "c6c5",
+        "san": "c5",
         "color": "black"
       },
       {
-        "uci": "g6g4",
-        "san": "Rxg4",
-        "color": "black"
-      },
-      {
-        "uci": "d6g3",
-        "san": "Bxg3",
-        "color": "black"
-      },
-      {
-        "uci": "h3g3",
-        "san": "Qxg3+",
-        "color": "black"
-      },
-      {
-        "uci": "g3g2",
+        "uci": "b7g2",
         "san": "Qg2#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 6,
-    "posted_at": "2026-08-20T17:15:34.813262+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-08-20T17:16:41.371468+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787246134813",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1540046654135214121,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qg2",
-        "correct": true,
-        "timestamp": "2026-08-20T17:16:32.220930+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nxg4",
-        "correct": false,
-        "timestamp": "2026-08-20T17:16:12.073716+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787246201371",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
