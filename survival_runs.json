@@ -174,7 +174,8 @@
           "FVGs7",
           "fFOy5",
           "nr9JB",
-          "bJ235"
+          "bJ235",
+          "KjNyr"
         ],
         "members": {
           "442597396195704832": {
@@ -183,7 +184,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "KjNyr",
+          "rating": 1270,
+          "themes": "crushing middlegame short",
+          "url": "https://lichess.org/training/KjNyr",
+          "start_fen": "r4rk1/ppp5/1bnp1q1Q/1B3b2/3P4/2N2P1P/PP3P2/R3R1K1 w - - 1 17",
+          "current_fen": "r4rk1/ppp5/1bnp1q1Q/1B3b2/3P4/2N2P1P/PP3P2/R3R1K1 w - - 1 17",
+          "solution": [
+            {
+              "uci": "b5c4",
+              "san": "Bc4+",
+              "color": "white"
+            },
+            {
+              "uci": "d6d5",
+              "san": "d5",
+              "color": "black"
+            },
+            {
+              "uci": "c4d5",
+              "san": "Bxd5+",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
