@@ -10,10 +10,10 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787232519.8638277,
+        "last_activity": 1787232523.7419083,
         "paused_reason": null,
         "puzzle_number": 41,
-        "strikes": 0,
+        "strikes": 1,
         "best_difficulty": 1973,
         "used_puzzle_ids": [
           "g6cbI",
@@ -62,7 +62,7 @@
           "601406103712170014": {
             "name": "TheMakina",
             "correct": 84,
-            "wrong": 1
+            "wrong": 2
           },
           "442597396195704832": {
             "name": "Thice",
@@ -100,7 +100,9 @@
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
-          "wrong_users": [],
+          "wrong_users": [
+            "601406103712170014"
+          ],
           "last_move_san": "Nc6",
           "last_accepted_move_uci": "d4c6",
           "last_accepted_move_san": "Nc6",
