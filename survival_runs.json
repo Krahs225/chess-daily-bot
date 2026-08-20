@@ -12,7 +12,7 @@
         "started_at": "2026-08-20T12:22:23.121644+00:00",
         "last_activity": 1787230059.0974364,
         "paused_reason": "puzzle fetch error",
-        "puzzle_number": 9,
+        "puzzle_number": 10,
         "strikes": 1,
         "best_difficulty": 1400,
         "used_puzzle_ids": [
@@ -38,31 +38,9 @@
             "wrong": 1
           }
         },
-        "puzzle": {
-          "id": "8SWTs",
-          "rating": 1335,
-          "themes": "mate mateIn1 oneMove opening",
-          "url": "https://lichess.org/training/8SWTs",
-          "start_fen": "r1bqkb1r/pp2np1p/2n1p1p1/1B1N4/3P4/5N2/PP1B1PPP/R2QK2R w KQkq - 4 11",
-          "current_fen": "r1bqkb1r/pp2np1p/2n1pNp1/1B6/3P4/5N2/PP1B1PPP/R2QK2R b KQkq - 5 11",
-          "solution": [
-            {
-              "uci": "d5f6",
-              "san": "Nf6#",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 1,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Nf6#"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
