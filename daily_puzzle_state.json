@@ -77,48 +77,63 @@
   },
   "latest_puzzle_type": "daily",
   "current_puzzle": {
-    "url": "https://www.chess.com/daily/2026-08-19",
-    "title": "Pass the Rock!",
-    "fen": "6k1/6Pp/8/N3B1NP/1p6/1P2p1R1/PK6/r6r b - - 0 34",
-    "current_fen": "6k1/6Pp/8/N3B1NP/1p6/1P2p1R1/PK6/r6r b - - 0 34",
-    "pgn": "[White \"Daily Puzzle Inspiration\"]\n[Black \"JohanVA\"]\n[Result \"0-1\"]\n[FEN \"6k1/6Pp/8/N3B1NP/1p6/1P2p1R1/PK6/r6r b - - 0 34\"]\n\n34... Rhc1 35. a4 bxa3# 0-1",
+    "url": "https://www.chess.com/daily/2026-08-20",
+    "title": "Fatal Attraction",
+    "fen": "8/p4bk1/3p3p/3P2p1/PP2B3/3PqQ1K/7P/8 b - - 0 43",
+    "current_fen": "8/p4bk1/3p3p/3P2p1/PP2B3/3PqQ1K/7P/8 b - - 0 43",
+    "pgn": "[Event \"Linares-03\"]\n[Site \"Linares\"]\n[Date \"1981.01.21\"]\n[Round \"4\"]\n[White \"Larsen, Bent\"]\n[Black \"Spassky, Boris Vasilievich\"]\n[Result \"0-1\"]\n[FEN \"8/p4bk1/3p3p/3P2p1/PP2B3/3PqQ1K/7P/8 b - - 0 43\"]\n[WhiteElo \"2610\"]\n[BlackElo \"2635\"]\n\n43... g4+ 44. Kxg4 Bh5+ 45. Kxh5 Qg5# 0-1",
     "all_moves": [
       {
-        "uci": "h1c1",
-        "san": "Rhc1",
+        "uci": "g5g4",
+        "san": "g4+",
         "color": "black"
       },
       {
-        "uci": "a2a4",
-        "san": "a4",
+        "uci": "h3g4",
+        "san": "Kxg4",
         "color": "white"
       },
       {
-        "uci": "b4a3",
-        "san": "bxa3#",
+        "uci": "f7h5",
+        "san": "Bh5+",
+        "color": "black"
+      },
+      {
+        "uci": "g4h5",
+        "san": "Kxh5",
+        "color": "white"
+      },
+      {
+        "uci": "e3g5",
+        "san": "Qg5#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h1c1",
-        "san": "Rhc1",
+        "uci": "g5g4",
+        "san": "g4+",
         "color": "black"
       },
       {
-        "uci": "b4a3",
-        "san": "bxa3#",
+        "uci": "f7h5",
+        "san": "Bh5+",
+        "color": "black"
+      },
+      {
+        "uci": "e3g5",
+        "san": "Qg5#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-19T07:59:59.479573+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-20T07:06:38.659103+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "daily_1787126399479"
+    "puzzle_id": "daily_1787209598659"
   },
   "leaderboard_last_posted_date": "2026-08-20"
 }
