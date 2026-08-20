@@ -513,148 +513,212 @@ def fetch_lichess_batch(
     maximum_rating,
 ):
     """
-    Fetch a random-ish slice of the official Lichess puzzle dataset,
-    filtered by exact Rating range.
+    Fetch a random slice of Lichess puzzles from the official
+    Lichess/chess-puzzles dataset through the public Dataset Viewer.
 
-    The official dataset has 6M+ rated/tagged puzzles and exposes
-    Rating/FEN/Moves directly through the public Dataset Viewer.
+    The Viewer supports server-side comparison predicates on Rating,
+    which lets Survival request exactly the desired difficulty band.
     """
     where = (
         f'"Rating">={int(minimum_rating)} '
         f'AND "Rating"<={int(maximum_rating)}'
     )
 
-    # First ask for the matching-row count. This is cheap and lets us
-    # choose a random offset so repeated calls do not always begin at row 0.
-    stats_response = requests.get(
-        HF_FILTER_URL,
-        params={
-            "dataset":
-                HF_DATASET,
-            "config":
-                HF_CONFIG,
-            "split":
-                HF_SPLIT,
-            "where":
-                where,
-            "offset":
-                0,
-            "length":
-                1,
-        },
-        headers={
-            "Accept":
-                "application/json",
-            "User-Agent":
-                "Discord-Survival-Mode/2.0",
-        },
-        timeout=REQUEST_TIMEOUT,
-    )
-
-    stats_response.raise_for_status()
-
-    meta = stats_response.json()
-
-    total_matches = int(
-        meta.get(
-            "num_rows_total",
-            0,
-        )
-    )
-
-    if total_matches <= 0:
-        return []
+    # Randomize the offset over the known 6.05M-row train split.
+    # Hugging Face caps /filter length at 100.
+    total_rows = 6_057_356
 
     max_offset = max(
         0,
-        total_matches - BATCH_SIZE,
+        total_rows - BATCH_SIZE,
     )
 
-    # Deterministic per run/puzzle but different between puzzles.
-    random_offset = random.randint(
+    offset = random.randint(
         0,
         max_offset,
     )
 
-    response = requests.get(
-        HF_FILTER_URL,
-        params={
+    params = {
+        "dataset":
+            HF_DATASET,
+        "config":
+            HF_CONFIG,
+        "split":
+            HF_SPLIT,
+        "where":
+            where,
+        "offset":
+            offset,
+        "length":
+            min(BATCH_SIZE, 100),
+    }
+
+    try:
+        response = requests.get(
+            HF_FILTER_URL,
+            params=params,
+            headers={
+                "Accept":
+                    "application/json",
+                "User-Agent":
+                    "Discord-Survival-Mode/2.1",
+            },
+            timeout=REQUEST_TIMEOUT,
+        )
+
+        response.raise_for_status()
+
+        payload = response.json()
+
+        rows = payload.get(
+            "rows",
+            [],
+        )
+
+        result = []
+
+        for item in rows:
+
+            row = item.get(
+                "row",
+                item,
+            )
+
+            if not isinstance(
+                row,
+                dict,
+            ):
+                continue
+
+            result.append(
+                {
+                    "PuzzleId":
+                        row.get(
+                            "PuzzleId",
+                        ),
+                    "FEN":
+                        row.get(
+                            "FEN",
+                        ),
+                    "Moves":
+                        row.get(
+                            "Moves",
+                        ),
+                    "Rating":
+                        row.get(
+                            "Rating",
+                        ),
+                    "Themes":
+                        row.get(
+                            "Themes",
+                        ),
+                }
+            )
+
+        return result
+
+    except Exception as error:
+        print(
+            f"Lichess dataset filter error: {error}",
+            flush=True,
+        )
+
+        # Fallback: use the Dataset Viewer /rows endpoint and filter
+        # locally. This keeps Survival usable if /filter is temporarily
+        # unavailable.
+        rows_url = (
+            "https://datasets-server.huggingface.co/rows"
+        )
+
+        rows_params = {
             "dataset":
                 HF_DATASET,
             "config":
                 HF_CONFIG,
             "split":
                 HF_SPLIT,
-            "where":
-                where,
             "offset":
-                random_offset,
+                offset,
             "length":
-                BATCH_SIZE,
-        },
-        headers={
-            "Accept":
-                "application/json",
-            "User-Agent":
-                "Discord-Survival-Mode/2.0",
-        },
-        timeout=REQUEST_TIMEOUT,
-    )
+                100,
+        }
 
-    response.raise_for_status()
-
-    payload = response.json()
-
-    rows = payload.get(
-        "rows",
-        [],
-    )
-
-    result = []
-
-    for item in rows:
-
-        row = item.get(
-            "row",
-            item,
+        fallback = requests.get(
+            rows_url,
+            params=rows_params,
+            headers={
+                "Accept":
+                    "application/json",
+                "User-Agent":
+                    "Discord-Survival-Mode/2.1",
+            },
+            timeout=REQUEST_TIMEOUT,
         )
 
-        if not isinstance(
-            row,
-            dict,
+        fallback.raise_for_status()
+
+        payload = fallback.json()
+
+        result = []
+
+        for item in payload.get(
+            "rows",
+            [],
         ):
-            continue
 
-        result.append(
-            {
-                "PuzzleId":
-                    row.get(
-                        "PuzzleId",
-                    ),
-                "FEN":
-                    row.get(
-                        "FEN",
-                    ),
-                "Moves":
-                    row.get(
-                        "Moves",
-                    ),
-                "Rating":
-                    row.get(
-                        "Rating",
-                    ),
-                "Themes":
-                    row.get(
-                        "Themes",
-                    ),
-                "GameUrl":
-                    row.get(
-                        "GameId",
-                    ),
-            }
-        )
+            row = item.get(
+                "row",
+                item,
+            )
 
-    return result
+            if not isinstance(
+                row,
+                dict,
+            ):
+                continue
+
+            rating = row.get(
+                "Rating"
+            )
+
+            try:
+                rating = int(
+                    rating
+                )
+            except Exception:
+                continue
+
+            if not (
+                minimum_rating
+                <= rating
+                <= maximum_rating
+            ):
+                continue
+
+            result.append(
+                {
+                    "PuzzleId":
+                        row.get(
+                            "PuzzleId",
+                        ),
+                    "FEN":
+                        row.get(
+                            "FEN",
+                        ),
+                    "Moves":
+                        row.get(
+                            "Moves",
+                        ),
+                    "Rating":
+                        rating,
+                    "Themes":
+                        row.get(
+                            "Themes",
+                        ),
+                }
+            )
+
+        return result
 
 
 def sanitize_puzzle(
