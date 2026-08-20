@@ -1,179 +1,97 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-08-21",
-    "title": "A. Herbstman, Akhalgazrda Komunisti, 1954",
-    "fen": "8/3R1P2/1ppP1p2/3r4/8/K7/p4k2/8 w - - 0 1",
-    "current_fen": "8/3R1P2/1ppP1p2/3r4/8/K7/p4k2/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/3R1P2/1ppP1p2/3r4/8/K7/p4k2/8 w - - 0 1\"]\r\n\r\n1. Kb2 a1=Q+ 2. Kxa1 Ra5+ 3. Kb2 Rb5+ 4. Kc3 Rc5+ 5. Kd4 f5 6. Ra7 Rd5+ 7. Kc3 Rc5+ 8. Kb2 Rb5+ 9. Ka1 Re5 10. Ra2+\r\n*",
+    "url": "https://www.chess.com/daily/2014-10-09",
+    "title": "Mate in 5",
+    "fen": "5r1k/pp4p1/2p1Q1Pq/4R3/P2P3P/2P3K1/6P1/8 w - f6 0 1",
+    "current_fen": "5r1k/pp4p1/2p1Q1Pq/4R3/P2P3P/2P3K1/6P1/8 w - f6 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r1k/pp4p1/2p1Q1Pq/4R3/P2P3P/2P3K1/6P1/8 w - f6 0 1\"]\r\n\r\n1. Qf7 Qf4+ 2. Qxf4 Kg8 3. Re8 Rxe8 4. Qf7+ Kh8 5. Qxe8#\r\n*",
     "all_moves": [
       {
-        "uci": "a3b2",
-        "san": "Kb2",
+        "uci": "e6f7",
+        "san": "Qf7",
         "color": "white"
       },
       {
-        "uci": "a2a1q",
-        "san": "a1=Q+",
+        "uci": "h6f4",
+        "san": "Qf4+",
         "color": "black"
       },
       {
-        "uci": "b2a1",
-        "san": "Kxa1",
+        "uci": "f7f4",
+        "san": "Qxf4",
         "color": "white"
       },
       {
-        "uci": "d5a5",
-        "san": "Ra5+",
+        "uci": "h8g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "a1b2",
-        "san": "Kb2",
+        "uci": "e5e8",
+        "san": "Re8",
         "color": "white"
       },
       {
-        "uci": "a5b5",
-        "san": "Rb5+",
+        "uci": "f8e8",
+        "san": "Rxe8",
         "color": "black"
       },
       {
-        "uci": "b2c3",
-        "san": "Kc3",
+        "uci": "f4f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "b5c5",
-        "san": "Rc5+",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "c3d4",
-        "san": "Kd4",
-        "color": "white"
-      },
-      {
-        "uci": "f6f5",
-        "san": "f5",
-        "color": "black"
-      },
-      {
-        "uci": "d7a7",
-        "san": "Ra7",
-        "color": "white"
-      },
-      {
-        "uci": "c5d5",
-        "san": "Rd5+",
-        "color": "black"
-      },
-      {
-        "uci": "d4c3",
-        "san": "Kc3",
-        "color": "white"
-      },
-      {
-        "uci": "d5c5",
-        "san": "Rc5+",
-        "color": "black"
-      },
-      {
-        "uci": "c3b2",
-        "san": "Kb2",
-        "color": "white"
-      },
-      {
-        "uci": "c5b5",
-        "san": "Rb5+",
-        "color": "black"
-      },
-      {
-        "uci": "b2a1",
-        "san": "Ka1",
-        "color": "white"
-      },
-      {
-        "uci": "b5e5",
-        "san": "Re5",
-        "color": "black"
-      },
-      {
-        "uci": "a7a2",
-        "san": "Ra2+",
+        "uci": "f7e8",
+        "san": "Qxe8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a3b2",
-        "san": "Kb2",
+        "uci": "e6f7",
+        "san": "Qf7",
         "color": "white"
       },
       {
-        "uci": "b2a1",
-        "san": "Kxa1",
+        "uci": "f7f4",
+        "san": "Qxf4",
         "color": "white"
       },
       {
-        "uci": "a1b2",
-        "san": "Kb2",
+        "uci": "e5e8",
+        "san": "Re8",
         "color": "white"
       },
       {
-        "uci": "b2c3",
-        "san": "Kc3",
+        "uci": "f4f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "c3d4",
-        "san": "Kd4",
-        "color": "white"
-      },
-      {
-        "uci": "d7a7",
-        "san": "Ra7",
-        "color": "white"
-      },
-      {
-        "uci": "d4c3",
-        "san": "Kc3",
-        "color": "white"
-      },
-      {
-        "uci": "c3b2",
-        "san": "Kb2",
-        "color": "white"
-      },
-      {
-        "uci": "b2a1",
-        "san": "Ka1",
-        "color": "white"
-      },
-      {
-        "uci": "a7a2",
-        "san": "Ra2+",
+        "uci": "f7e8",
+        "san": "Qxe8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 10,
-    "posted_at": "2026-08-20T22:45:28.327967+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-20T22:45:51.748543+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787265928327",
+    "puzzle_id": "random_1787265951748",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1540129673814736989,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "ra7",
-        "correct": false,
-        "timestamp": "2026-08-20T22:45:48.360050+00:00"
-      }
-    },
+    "message_id": 1540129772087152662,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
