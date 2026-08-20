@@ -12,7 +12,7 @@
         "started_at": "2026-08-20T12:22:23.121644+00:00",
         "last_activity": 1787229864.182373,
         "paused_reason": "puzzle fetch error",
-        "puzzle_number": 3,
+        "puzzle_number": 4,
         "strikes": 0,
         "best_difficulty": 1337,
         "used_puzzle_ids": [
@@ -27,51 +27,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "UW5iq",
-          "rating": 1309,
-          "themes": "advantage intermezzo long middlegame",
-          "url": "https://lichess.org/training/UW5iq",
-          "start_fen": "2k4r/pppr2q1/2n3B1/2Pp1p2/Q2P1P2/2P1PK1R/P5P1/7R b - - 0 25",
-          "current_fen": "2kr3R/ppp5/2n3q1/2Pp1p2/Q2P1P2/2P1PK2/P5P1/8 w - - 2 28",
-          "solution": [
-            {
-              "uci": "h8h3",
-              "san": "Rxh3+",
-              "color": "black"
-            },
-            {
-              "uci": "h1h3",
-              "san": "Rxh3",
-              "color": "white"
-            },
-            {
-              "uci": "g7g6",
-              "san": "Qxg6",
-              "color": "black"
-            },
-            {
-              "uci": "h3h8",
-              "san": "Rh8+",
-              "color": "white"
-            },
-            {
-              "uci": "d7d8",
-              "san": "Rd8",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Rd8"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
