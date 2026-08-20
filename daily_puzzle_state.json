@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-04-01",
     "title": "Double Attack",
     "fen": "r1r3k1/1b1n1ppp/p1q1pb2/P3B2n/Np2P3/3B1N2/1P2QPPP/R2R2K1 w - - 0 1",
-    "current_fen": "r1r3k1/1b1n1ppp/p1q1pb2/P3B2n/Np2P3/3B1N2/1P2QPPP/R2R2K1 w - - 0 1",
+    "current_fen": "r1r3k1/1b1n1ppp/p1q1pb2/P3B2n/Np1NP3/3B4/1P2QPPP/R2R2K1 b - - 1 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1r3k1/1b1n1ppp/p1q1pb2/P3B2n/Np2P3/3B1N2/1P2QPPP/R2R2K1 w - - 0 1\"]\r\n\r\n1. Nd4\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787267224259",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1540135110022799473,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nd4",
+        "correct": true,
+        "timestamp": "2026-08-20T23:07:48.695007+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
