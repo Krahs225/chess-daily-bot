@@ -1,90 +1,79 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-07-20",
-    "title": "Grigory Serper vs Kenneth Wallach, Oakbrook, 1996",
-    "fen": "r7/2p4n/4P1pk/4Q2p/4P2P/q7/1P6/1KR3R1 w - - 0 1",
-    "current_fen": "r7/2p4n/4P1k1/4Q2p/4P2P/6R1/1P6/1K6 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/2p4n/4P1pk/4Q2p/4P2P/q7/1P6/1KR3R1 w - - 0 1\"]\r\n\r\n1. Rxg6+ Kxg6 2. Rg1+ Qg3 3. Rxg3+\r\n*",
+    "url": "https://www.chess.com/daily/2018-11-25",
+    "title": "Vlacil - Seplak, Brno 1987",
+    "fen": "r1bq1rk1/p3bppp/1p2pn2/6B1/8/3B1N2/PPP1QPPP/R4RK1 w - - 0 1",
+    "current_fen": "Q1bq1rk1/p4p1p/1p2pbp1/8/8/3B1N2/PPP2PPP/R4RK1 b - - 0 3",
+    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"r1bq1rk1/p3bppp/1p2pn2/6B1/8/3B1N2/PPP1QPPP/R4RK1 w - - 0 1\"]\r\n\r\n1. Bxf6 Bxf6 2. Qe4 g6 3. Qxa8\r\n*",
     "all_moves": [
       {
-        "uci": "g1g6",
-        "san": "Rxg6+",
+        "uci": "g5f6",
+        "san": "Bxf6",
         "color": "white"
       },
       {
-        "uci": "h6g6",
-        "san": "Kxg6",
+        "uci": "e7f6",
+        "san": "Bxf6",
         "color": "black"
       },
       {
-        "uci": "c1g1",
-        "san": "Rg1+",
+        "uci": "e2e4",
+        "san": "Qe4",
         "color": "white"
       },
       {
-        "uci": "a3g3",
-        "san": "Qg3",
+        "uci": "g7g6",
+        "san": "g6",
         "color": "black"
       },
       {
-        "uci": "g1g3",
-        "san": "Rxg3+",
+        "uci": "e4a8",
+        "san": "Qxa8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g1g6",
-        "san": "Rxg6+",
+        "uci": "g5f6",
+        "san": "Bxf6",
         "color": "white"
       },
       {
-        "uci": "c1g1",
-        "san": "Rg1+",
+        "uci": "e2e4",
+        "san": "Qe4",
         "color": "white"
       },
       {
-        "uci": "g1g3",
-        "san": "Rxg3+",
+        "uci": "e4a8",
+        "san": "Qxa8",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-20T17:32:52.136708+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-20T19:47:34.869514+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787247172136",
+    "puzzle_id": "random_1787255254869",
     "next_solution_index": 5,
     "next_player_index": 3,
     "solved": true,
-    "message_id": 1540051005117436055,
+    "message_id": 1540084906636607508,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Rxh3",
-        "correct": false,
-        "timestamp": "2026-08-20T17:33:09.478120+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxg3",
+        "move": "Qxa8",
         "correct": true,
-        "timestamp": "2026-08-20T17:33:12.044467+00:00"
+        "timestamp": "2026-08-20T19:47:50.574744+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -140,7 +129,7 @@
     "player_color": "black",
     "player_move_count": 3,
     "posted_at": "2026-08-20T07:06:38.659103+00:00",
-    "answer_posted": false,
+    "answer_posted": true,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
@@ -157,6 +146,9 @@
     ],
     "1050": [
       "2fw4B"
+    ],
+    "2500": [
+      "3UpEH"
     ]
   }
 }
