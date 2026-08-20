@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 6,
+      "best_puzzle": 7,
       "best_difficulty": 1400,
-      "best_completed_at": "2026-08-20T12:45:44.474870+00:00",
+      "best_completed_at": "2026-08-20T12:46:34.407580+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -21,7 +21,8 @@
           "UW5iq",
           "RJflk",
           "iKB3c",
-          "iRn25"
+          "iRn25",
+          "EUIXJ"
         ],
         "members": {
           "601406103712170014": {
@@ -35,7 +36,39 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "EUIXJ",
+          "rating": 1284,
+          "themes": "crushing discoveredAttack middlegame short",
+          "url": "https://lichess.org/training/EUIXJ",
+          "start_fen": "r1r3k1/1b3pp1/p2qpn1p/8/RPp5/3BP2P/4QPP1/1N1R2K1 w - - 0 25",
+          "current_fen": "r1r3k1/1b3pp1/p2qpn1p/8/RPp5/3BP2P/4QPP1/1N1R2K1 w - - 0 25",
+          "solution": [
+            {
+              "uci": "d3h7",
+              "san": "Bh7+",
+              "color": "white"
+            },
+            {
+              "uci": "g8h7",
+              "san": "Kxh7",
+              "color": "black"
+            },
+            {
+              "uci": "d1d6",
+              "san": "Rxd6",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
