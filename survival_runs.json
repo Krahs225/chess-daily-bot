@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 16,
+      "best_puzzle": 17,
       "best_difficulty": 1540,
-      "best_completed_at": "2026-08-20T12:55:10.145356+00:00",
+      "best_completed_at": "2026-08-20T12:56:35.915622+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -31,7 +31,8 @@
           "JSj9h",
           "cvtLS",
           "LSDrX",
-          "uBwMi"
+          "uBwMi",
+          "hmlbb"
         ],
         "members": {
           "601406103712170014": {
@@ -45,7 +46,39 @@
             "wrong": 3
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "hmlbb",
+          "rating": 1426,
+          "themes": "anastasiaMate attraction kingsideAttack mate mateIn2 middlegame sacrifice short",
+          "url": "https://lichess.org/training/hmlbb",
+          "start_fen": "4rr1k/1p2Nppp/p3b3/q3Pp2/3Q4/7R/P1P3PP/5R1K w - - 5 23",
+          "current_fen": "4rr1k/1p2Nppp/p3b3/q3Pp2/3Q4/7R/P1P3PP/5R1K w - - 5 23",
+          "solution": [
+            {
+              "uci": "h3h7",
+              "san": "Rxh7+",
+              "color": "white"
+            },
+            {
+              "uci": "h8h7",
+              "san": "Kxh7",
+              "color": "black"
+            },
+            {
+              "uci": "d4h4",
+              "san": "Qh4#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
