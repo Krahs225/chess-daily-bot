@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787232986.9790795,
+        "last_activity": 1787233180.2271845,
         "paused_reason": "manually stopped",
         "puzzle_number": 44,
         "strikes": 0,
@@ -64,7 +64,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 86,
+            "correct": 87,
             "wrong": 2
           },
           "442597396195704832": {
@@ -79,7 +79,7 @@
           "themes": "advantage endgame exposedKing fork long",
           "url": "https://lichess.org/training/3LFr7",
           "start_fen": "b5r1/p2k4/3bp3/2P5/2P4p/4B2K/PP3PP1/R4R2 b - - 0 23",
-          "current_fen": "b5r1/p2k4/3bp3/2P5/2P4p/4B2K/PP3PP1/R4R2 b - - 0 23",
+          "current_fen": "6r1/p2k4/3bp3/2P5/2P4K/4B3/PP3Pb1/R4R2 b - - 0 24",
           "solution": [
             {
               "uci": "a8g2",
@@ -108,16 +108,21 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null
+          "last_move_san": "Bxg2+",
+          "last_accepted_move_uci": "a8g2",
+          "last_accepted_move_san": "Bxg2+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787233180.2270532,
+          "position_before_last_move": "b5r1/p2k4/3bp3/2P5/2P4p/4B2K/PP3PP1/R4R2 b - - 0 23"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       }
