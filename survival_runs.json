@@ -166,11 +166,12 @@
         "paused_reason": null,
         "puzzle_number": 4,
         "strikes": 0,
-        "best_difficulty": 1386,
+        "best_difficulty": 1392,
         "used_puzzle_ids": [
           "etXTY",
           "440Tp",
-          "IDV5g"
+          "IDV5g",
+          "FVGs7"
         ],
         "members": {
           "442597396195704832": {
@@ -179,7 +180,50 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "FVGs7",
+          "rating": 1392,
+          "themes": "endgame long mate mateIn3 pillsburysMate sacrifice",
+          "url": "https://lichess.org/training/FVGs7",
+          "start_fen": "1b2Q3/6pk/p3Rr1p/8/3P3q/1PP4P/P4PP1/4R1K1 b - - 0 39",
+          "current_fen": "1b2Q3/6pk/p3Rr1p/8/3P3q/1PP4P/P4PP1/4R1K1 b - - 0 39",
+          "solution": [
+            {
+              "uci": "h4f2",
+              "san": "Qxf2+",
+              "color": "black"
+            },
+            {
+              "uci": "g1h1",
+              "san": "Kh1",
+              "color": "white"
+            },
+            {
+              "uci": "f2f1",
+              "san": "Qf1+",
+              "color": "black"
+            },
+            {
+              "uci": "e1f1",
+              "san": "Rxf1",
+              "color": "white"
+            },
+            {
+              "uci": "f6f1",
+              "san": "Rxf1#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
