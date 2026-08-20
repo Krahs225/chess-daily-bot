@@ -160,9 +160,9 @@
       "current": {
         "run_id": "thice:1787236558",
         "started_by_id": "1540006473709391903",
-        "status": "active",
+        "status": "paused",
         "started_at": "2026-08-20T14:35:58.668682+00:00",
-        "last_activity": 1787239330.47985,
+        "last_activity": 1787239357.6114497,
         "paused_reason": "manually stopped",
         "puzzle_number": 10,
         "strikes": 1,
@@ -176,7 +176,8 @@
           "nr9JB",
           "bJ235",
           "KjNyr",
-          "BqlIJ"
+          "BqlIJ",
+          "fQ7lw"
         ],
         "members": {
           "442597396195704832": {
@@ -190,7 +191,40 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "fQ7lw",
+          "rating": 1280,
+          "themes": "endgame mate mateIn2 short",
+          "url": "https://lichess.org/training/fQ7lw",
+          "start_fen": "6r1/2B2k1p/p2Qppq1/8/2p2P2/8/P5PP/6K1 w - - 2 30",
+          "current_fen": "6r1/2B2k1p/p2Qppq1/8/2p2P2/8/P5PP/6K1 w - - 2 30",
+          "solution": [
+            {
+              "uci": "d6d7",
+              "san": "Qd7+",
+              "color": "white"
+            },
+            {
+              "uci": "f7f8",
+              "san": "Kf8",
+              "color": "black"
+            },
+            {
+              "uci": "c7d6",
+              "san": "Bd6#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
