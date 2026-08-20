@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-12-02",
     "title": "GM Sutovsky - GM Svidler, 17th European Team Champ",
     "fen": "4r1k1/pbpR3p/1p2Ppp1/8/8/1P2P1KP/PQ4P1/B6q w - - 0 1",
-    "current_fen": "4r2k/pbp3Rp/1p2Ppp1/8/8/1P2P1KP/PQ4P1/B6q w - - 2 2",
+    "current_fen": "4r2k/pbp3Rp/1p2PQp1/8/8/1P2P1KP/P5q1/B7 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/pbpR3p/1p2Ppp1/8/8/1P2P1KP/PQ4P1/B6q w - - 0 1\"]\r\n\r\n1. Rg7+ Kh8 2. Qxf6 Qxg2+ 3. Kh4 Qe4+ 4. Qf4 Qxf4+ 5. exf4 h5 6. Re7+ Kg8 7. Rxe8+ Kh7 8. Rh8# \r\n*",
     "all_moves": [
       {
@@ -132,23 +132,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787260992261",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1540108971002822719,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rg7",
+        "move": "qxf6",
+        "correct": false,
+        "timestamp": "2026-08-20T21:23:18.643413+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxf6",
         "correct": true,
-        "timestamp": "2026-08-20T21:23:17.358061+00:00"
+        "timestamp": "2026-08-20T21:23:18.626375+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
