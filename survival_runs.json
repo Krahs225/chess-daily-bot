@@ -256,7 +256,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-08-20T21:45:45.650556+00:00",
-        "last_activity": 1787262535.4165344,
+        "last_activity": 1787262577.772179,
         "paused_reason": null,
         "puzzle_number": 4,
         "strikes": 0,
@@ -270,7 +270,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 6,
+            "correct": 7,
             "wrong": 0
           }
         },
@@ -280,7 +280,7 @@
           "themes": "attraction deflection endgame master mate mateIn2 queensideAttack short",
           "url": "https://lichess.org/training/mVCIc",
           "start_fen": "r4k2/1p3p2/6Rp/2q1pQpP/1n2P1P1/1P6/5P2/1KR5 b - - 3 30",
-          "current_fen": "r4k2/1p3p2/6Rp/2q1pQpP/1n2P1P1/1P6/5P2/1KR5 b - - 3 30",
+          "current_fen": "5k2/1p3p2/6Rp/2q1pQpP/1n2P1P1/1P6/5P2/K1R5 b - - 0 31",
           "solution": [
             {
               "uci": "a8a1",
@@ -299,17 +299,29 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Ra1+",
+          "accepted_moves": [
+            {
+              "san": "Ra1+",
+              "uci": "a8a1",
+              "accepted_at": 1787262577.772022,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "a8a1",
+          "last_accepted_move_san": "Ra1+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787262577.772021,
+          "position_before_last_move": "r4k2/1p3p2/6Rp/2q1pQpP/1n2P1P1/1P6/5P2/1KR5 b - - 3 30"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       },
