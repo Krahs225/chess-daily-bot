@@ -1,111 +1,54 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-11-21",
-    "title": "Bern After Solving",
-    "fen": "8/8/p7/q1kbN3/P3P3/2N5/PPK5/8 w - - 0 1",
-    "current_fen": "8/8/p7/q1kNN3/P3P3/8/P1K5/8 w - - 1 3",
-    "pgn": "[White \"Horwitz, Bernhard\"]\r\n[Black \"Study\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/p7/q1kbN3/P3P3/2N5/PPK5/8 w - - 0 1\"]\r\n\r\n1.b4+ Kxb4 2.Nxd5+ Kc5 3.Nb6 Qxb6 4.Nd7+ Kc6 5.Nxb6 Kxb6 *",
+    "url": "https://www.chess.com/daily/2023-07-28",
+    "title": "Art of Attack",
+    "fen": "3r1rk1/1pb2p1p/2p3p1/p4N2/P3p2q/1P6/1BP2PPP/3Q1B1K w - - 0 1",
+    "current_fen": "3r1rk1/1pb2p1p/2p3p1/p4N2/P3p2q/1P6/1BP2PPP/3Q1B1K w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3r1rk1/1pb2p1p/2p3p1/p4N2/P3p2q/1P6/1BP2PPP/3Q1B1K w - - 0 1\"]\r\n\r\n1. Qh5 gxh5 2. Nh6# *",
     "all_moves": [
       {
-        "uci": "b2b4",
-        "san": "b4+",
+        "uci": "d1h5",
+        "san": "Qh5",
         "color": "white"
       },
       {
-        "uci": "c5b4",
-        "san": "Kxb4",
+        "uci": "g6h5",
+        "san": "gxh5",
         "color": "black"
       },
       {
-        "uci": "c3d5",
-        "san": "Nxd5+",
+        "uci": "f5h6",
+        "san": "Nh6#",
         "color": "white"
-      },
-      {
-        "uci": "b4c5",
-        "san": "Kc5",
-        "color": "black"
-      },
-      {
-        "uci": "d5b6",
-        "san": "Nb6",
-        "color": "white"
-      },
-      {
-        "uci": "a5b6",
-        "san": "Qxb6",
-        "color": "black"
-      },
-      {
-        "uci": "e5d7",
-        "san": "Nd7+",
-        "color": "white"
-      },
-      {
-        "uci": "c5c6",
-        "san": "Kc6",
-        "color": "black"
-      },
-      {
-        "uci": "d7b6",
-        "san": "Nxb6",
-        "color": "white"
-      },
-      {
-        "uci": "c6b6",
-        "san": "Kxb6",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b2b4",
-        "san": "b4+",
+        "uci": "d1h5",
+        "san": "Qh5",
         "color": "white"
       },
       {
-        "uci": "c3d5",
-        "san": "Nxd5+",
-        "color": "white"
-      },
-      {
-        "uci": "d5b6",
-        "san": "Nb6",
-        "color": "white"
-      },
-      {
-        "uci": "e5d7",
-        "san": "Nd7+",
-        "color": "white"
-      },
-      {
-        "uci": "d7b6",
-        "san": "Nxb6",
+        "uci": "f5h6",
+        "san": "Nh6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-20T22:52:45.089509+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-20T22:53:29.782045+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787266365089",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "puzzle_id": "random_1787266409782",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1540131505903374468,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nxd5",
-        "correct": true,
-        "timestamp": "2026-08-20T22:53:10.229993+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": 1540131693170528297,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
