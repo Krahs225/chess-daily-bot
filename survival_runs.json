@@ -12,7 +12,7 @@
         "started_at": "2026-08-20T12:22:23.121644+00:00",
         "last_activity": 1787232344.0048535,
         "paused_reason": null,
-        "puzzle_number": 39,
+        "puzzle_number": 40,
         "strikes": 0,
         "best_difficulty": 1847,
         "used_puzzle_ids": [
@@ -68,46 +68,9 @@
             "wrong": 4
           }
         },
-        "puzzle": {
-          "id": "8lW4Y",
-          "rating": 1745,
-          "themes": "crushing discoveredAttack middlegame queensideAttack short",
-          "url": "https://lichess.org/training/8lW4Y",
-          "start_fen": "3r1rk1/6pp/4p3/p2nP3/2p1Bn2/1pP1NP2/PP1R1P1P/1K2R3 b - - 1 24",
-          "current_fen": "5rk1/6pp/4p3/p3P3/2p1Bn2/1pP1NP2/P2r1P1P/1K2R3 w - - 0 26",
-          "solution": [
-            {
-              "uci": "d5c3",
-              "san": "Nxc3+",
-              "color": "black"
-            },
-            {
-              "uci": "b2c3",
-              "san": "bxc3",
-              "color": "white"
-            },
-            {
-              "uci": "d8d2",
-              "san": "Rxd2",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Rxd2",
-          "last_accepted_move_uci": "d8d2",
-          "last_accepted_move_san": "Rxd2",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787232344.0047922,
-          "position_before_last_move": "3r1rk1/6pp/4p3/p3P3/2p1Bn2/1pP1NP2/P2R1P1P/1K2R3 b - - 0 25"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
