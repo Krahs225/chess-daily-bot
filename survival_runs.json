@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 32,
+      "best_puzzle": 33,
       "best_difficulty": 1761,
-      "best_completed_at": "2026-08-20T13:13:06.978983+00:00",
+      "best_completed_at": "2026-08-20T13:16:52.780051+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -14,7 +14,7 @@
         "paused_reason": null,
         "puzzle_number": 33,
         "strikes": 0,
-        "best_difficulty": 1761,
+        "best_difficulty": 1824,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
@@ -47,7 +47,8 @@
           "VF7YH",
           "ietXI",
           "BxOGA",
-          "la1oF"
+          "la1oF",
+          "Gg4MY"
         ],
         "members": {
           "601406103712170014": {
@@ -61,7 +62,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "Gg4MY",
+          "rating": 1824,
+          "themes": "advancedPawn crushing endgame queenEndgame short",
+          "url": "https://lichess.org/training/Gg4MY",
+          "start_fen": "8/1Q4pk/P6p/4K3/3p4/4q1PP/8/8 w - - 23 60",
+          "current_fen": "8/1Q4pk/P6p/4K3/3p4/4q1PP/8/8 w - - 23 60",
+          "solution": [
+            {
+              "uci": "b7e4",
+              "san": "Qe4+",
+              "color": "white"
+            },
+            {
+              "uci": "g7g6",
+              "san": "g6",
+              "color": "black"
+            },
+            {
+              "uci": "a6a7",
+              "san": "a7",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
