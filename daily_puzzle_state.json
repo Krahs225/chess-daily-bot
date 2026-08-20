@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-05-04",
     "title": "Pin Trouble",
     "fen": "2r3k1/1b1nqpp1/r3p2p/8/P1B5/2Q1PN2/5PPP/R1R3K1 b - - 0 1",
-    "current_fen": "2r3k1/1b1nqpp1/r3p2p/8/P1B5/2Q1PN2/5PPP/R1R3K1 b - - 0 1",
+    "current_fen": "2r3k1/3nqpp1/r3p2p/8/P1B5/2Q1PP2/5P1P/R1R3K1 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/1b1nqpp1/r3p2p/8/P1B5/2Q1PN2/5PPP/R1R3K1 b - - 0 1\"]\r\n\r\n1...Bxf3 2. gxf3 Rac6 3. Qd4 Nb6\r\n*",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787266203468",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540130828162437231,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rac6",
-        "correct": false,
-        "timestamp": "2026-08-20T22:50:34.089606+00:00"
+        "move": "bxf3",
+        "correct": true,
+        "timestamp": "2026-08-20T22:50:45.038377+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
