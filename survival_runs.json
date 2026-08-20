@@ -57,7 +57,8 @@
           "8lW4Y",
           "yFEPz",
           "haqWD",
-          "TbzyP"
+          "TbzyP",
+          "4V89k"
         ],
         "members": {
           "601406103712170014": {
@@ -71,7 +72,49 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "4V89k",
+          "rating": 1999,
+          "themes": "advantage attraction fork long middlegame sacrifice",
+          "url": "https://lichess.org/training/4V89k",
+          "start_fen": "4r2k/p5p1/bp3pQp/3p4/3P1qPP/1P2rPN1/P1RR1K2/8 w - - 15 32",
+          "current_fen": "4r2k/p5p1/bp3pQp/3p4/3P1qPP/1P2rPN1/P1RR1K2/8 w - - 15 32",
+          "solution": [
+            {
+              "uci": "g6g7",
+              "san": "Qxg7+",
+              "color": "white"
+            },
+            {
+              "uci": "h8g7",
+              "san": "Kxg7",
+              "color": "black"
+            },
+            {
+              "uci": "g3h5",
+              "san": "Nh5+",
+              "color": "white"
+            },
+            {
+              "uci": "g7g8",
+              "san": "Kg8",
+              "color": "black"
+            },
+            {
+              "uci": "h5f4",
+              "san": "Nxf4",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
