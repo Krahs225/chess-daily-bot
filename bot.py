@@ -1383,69 +1383,89 @@ def fetch_exact_lichess_puzzle(
     """Return one exact-rating Lichess puzzle or None."""
     rating = int(rating)
 
+    params = {
+        "dataset": LICHESS_DATASET,
+        "config": LICHESS_CONFIG,
+        "split": LICHESS_SPLIT,
+        "where": f'"Rating"={rating}',
+        "offset": 0,
+        "length": 100,
+    }
+
     response = requests.get(
         LICHESS_FILTER_URL,
-        params={
-            "dataset": LICHESS_DATASET,
-            "config": LICHESS_CONFIG,
-            "split": LICHESS_SPLIT,
-            "where": f'"Rating"={rating}',
-            "offset": 0,
-            "length": 100,
-        },
+        params=params,
         headers={
             "Accept": "application/json",
-            "User-Agent": "Chess-Puzzle-Bot/1.0",
+            "User-Agent": "Chess-Puzzle-Bot/1.1",
         },
         timeout=LICHESS_FILTER_TIMEOUT,
     )
     response.raise_for_status()
 
-    rows = response.json().get(
+    payload = response.json()
+    rows = payload.get(
         "rows",
         [],
     )
 
-    if not rows:
-        return None
+    for wrapper in rows:
+        item = wrapper.get(
+            "row",
+            wrapper,
+        )
 
-    item = rows[0].get(
-        "row",
-        rows[0],
-    )
+        if not isinstance(item, dict):
+            continue
 
-    if not isinstance(item, dict):
-        return None
+        try:
+            row_rating = int(
+                item.get("Rating")
+            )
+        except Exception:
+            continue
 
-    puzzle_id = item.get("PuzzleId")
-    fen = item.get("FEN")
-    moves = item.get("Moves")
-    puzzle_rating = item.get("Rating")
+        if row_rating != rating:
+            continue
 
-    if not puzzle_id or not fen or not moves:
-        return None
+        puzzle_id = item.get("PuzzleId")
+        fen = item.get("FEN")
+        moves = item.get("Moves")
 
-    if isinstance(moves, str):
-        moves = moves.split()
+        if (
+            not puzzle_id
+            or not fen
+            or not moves
+        ):
+            continue
 
-    if not isinstance(moves, list) or len(moves) < 2:
-        return None
+        if isinstance(
+            moves,
+            str,
+        ):
+            moves = moves.split()
 
-    try:
-        puzzle_rating = int(puzzle_rating)
-    except Exception:
-        return None
+        if (
+            not isinstance(moves, list)
+            or len(moves) < 2
+        ):
+            continue
 
-    if puzzle_rating != rating:
-        return None
+        return {
+            "PuzzleId": str(puzzle_id),
+            "FEN": str(fen),
+            "Moves": [
+                str(move)
+                for move in moves
+            ],
+            "Rating": row_rating,
+            "Themes": item.get(
+                "Themes",
+                "",
+            ),
+        }
 
-    return {
-        "PuzzleId": str(puzzle_id),
-        "FEN": str(fen),
-        "Moves": moves,
-        "Rating": puzzle_rating,
-        "Themes": item.get("Themes", ""),
-    }
+    return None
 
 
 async def post_exact_lichess_puzzle(
@@ -1489,7 +1509,7 @@ async def post_exact_lichess_puzzle(
             datetime.now(timezone.utc).isoformat()
         )
         puzzle["puzzle_id"] = (
-            f"lichess_{rating}_"
+            f"random_lichess_{rating}_"
             f"{raw['PuzzleId']}_"
             f"{int(time.time() * 1000)}"
         )
@@ -1556,8 +1576,21 @@ async def post_exact_lichess_puzzle(
             f"Exact Lichess rating puzzle error: {error}",
             flush=True,
         )
+
+        error_text = (
+            str(error).strip()
+            or repr(error)
+        )
+
+        if len(error_text) > 900:
+            error_text = (
+                error_text[:900]
+                + "..."
+            )
+
         await channel.send(
-            f"❌ **Could not load Lichess rating {rating}.**"
+            f"❌ **Could not load Lichess rating {rating}.**\n"
+            f"`{error_text}`"
         )
 
 
@@ -1568,63 +1601,98 @@ async def post_exact_lichess_puzzle(
 def build_puzzle_from_lichess(
     data,
 ):
-    board = chess.Board(data["fen"])
+    """
+    Lichess dataset:
+    FEN is the position before the puzzle's first (opponent) move.
+    Moves contains that first move followed by the solution line.
+    """
+    start_board = chess.Board(
+        data["fen"]
+    )
 
-    first = chess.Move.from_uci(
+    first_move = chess.Move.from_uci(
         data["moves"][0]
     )
 
-    if first not in board.legal_moves:
+    if first_move not in start_board.legal_moves:
         raise ValueError(
-            "Invalid Lichess first move."
+            "Lichess puzzle has an illegal first move."
         )
 
-    board.push(first)
+    start_board.push(
+        first_move
+    )
+
+    player_color = (
+        "white"
+        if start_board.turn
+        else "black"
+    )
 
     solution = []
-    player_color = "white" if board.turn else "black"
+    board = start_board.copy()
 
-    # Include the complete solution line after Lichess' automatic first move.
     for uci in data["moves"][1:]:
-        move = chess.Move.from_uci(uci)
+        move = chess.Move.from_uci(
+            uci
+        )
+
         if move not in board.legal_moves:
             raise ValueError(
-                "Invalid Lichess solution move."
+                "Lichess puzzle solution contains "
+                "an illegal move."
             )
 
-        solution.append({
-            "uci": uci,
-            "san": board.san(move),
-            "color": "white" if board.turn else "black",
-        })
-        board.push(move)
+        solution.append(
+            {
+                "uci": uci,
+                "san": board.san(move),
+                "color": (
+                    "white"
+                    if board.turn
+                    else "black"
+                ),
+            }
+        )
+
+        board.push(
+            move
+        )
+
+    player_moves = [
+        move
+        for move in solution
+        if move["color"] == player_color
+    ]
+
+    starting_fen = (
+        start_board.fen()
+    )
 
     return {
-        "title": f"{data['rating']} • {data['id']}",
-        "fen": board_fen_after_lichess_first(
-            data
-        ),
-        "all_moves": solution,
-        "player_moves": [
-            move
-            for move in solution
-            if move["color"] == player_color
-        ],
-        "player_color": player_color,
-        "player_move_count": len(
-            [
-                move for move in solution
-                if move["color"] == player_color
-            ]
-        ),
-        "current_fen": board_fen_after_lichess_first(
-            data
-        ),
-        "pgn": "",
-        "url": data.get(
-            "url",
-            f"https://lichess.org/training/{data['id']}",
-        ),
+        "title":
+            f"{data['rating']} • "
+            f"{data['id']}",
+        "fen":
+            starting_fen,
+        "current_fen":
+            starting_fen,
+        "all_moves":
+            solution,
+        "player_moves":
+            player_moves,
+        "player_color":
+            player_color,
+        "player_move_count":
+            len(player_moves),
+        "pgn":
+            "",
+        "url":
+            data.get(
+                "url",
+                f"https://lichess.org/training/"
+                f"{data['id']}",
+            ),
     }
 
 
@@ -3858,8 +3926,7 @@ async def on_message(
 
         if command_lower in (
             "!help",
-            "!info",
-            "!i",
+            "!info"
         ):
 
             await message.channel.send(
