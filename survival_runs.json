@@ -162,7 +162,7 @@
         "started_by_id": "1540006473709391903",
         "status": "active",
         "started_at": "2026-08-20T14:35:58.668682+00:00",
-        "last_activity": 1787236558.6686938,
+        "last_activity": 1787236647.0990412,
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 0,
@@ -170,14 +170,20 @@
         "used_puzzle_ids": [
           "etXTY"
         ],
-        "members": {},
+        "members": {
+          "442597396195704832": {
+            "name": "Thice",
+            "correct": 1,
+            "wrong": 0
+          }
+        },
         "puzzle": {
           "id": "etXTY",
           "rating": 1345,
           "themes": "advantage endgame fork short",
           "url": "https://lichess.org/training/etXTY",
           "start_fen": "5rk1/p5pp/2R5/3Pp3/2pq1PB1/P5PP/2P5/2Q4K b - - 0 29",
-          "current_fen": "5rk1/p5pp/2R5/3Pp3/2pq1PB1/P5PP/2P5/2Q4K b - - 0 29",
+          "current_fen": "5rk1/p5pp/2R5/3qp3/2p2PB1/P5PP/2P5/2Q3K1 b - - 1 30",
           "solution": [
             {
               "uci": "d4d5",
@@ -196,17 +202,29 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qxd5+",
+          "accepted_moves": [
+            {
+              "san": "Qxd5+",
+              "uci": "d4d5",
+              "accepted_at": 1787236647.0989015,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "d4d5",
+          "last_accepted_move_san": "Qxd5+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787236647.0989003,
+          "position_before_last_move": "5rk1/p5pp/2R5/3Pp3/2pq1PB1/P5PP/2P5/2Q4K b - - 0 29"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
