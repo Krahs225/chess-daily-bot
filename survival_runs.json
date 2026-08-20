@@ -162,7 +162,7 @@
         "started_by_id": "1540006473709391903",
         "status": "active",
         "started_at": "2026-08-20T14:35:58.668682+00:00",
-        "last_activity": 1787236909.3218257,
+        "last_activity": 1787236936.2517052,
         "paused_reason": null,
         "puzzle_number": 5,
         "strikes": 0,
@@ -177,7 +177,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 12,
+            "correct": 13,
             "wrong": 0
           }
         },
@@ -187,7 +187,7 @@
           "themes": "advancedPawn advantage endgame long pin promotion sacrifice",
           "url": "https://lichess.org/training/fFOy5",
           "start_fen": "8/p6p/1p2RP2/2k5/3rn2P/6K1/P7/8 w - - 1 44",
-          "current_fen": "8/p3rP1p/1p6/2k5/7P/6K1/P7/8 w - - 1 46",
+          "current_fen": "5Q2/p3r2p/1p6/2k5/7P/6K1/P7/8 b - - 0 46",
           "solution": [
             {
               "uci": "e6e4",
@@ -216,13 +216,13 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 4,
+          "next_solution_index": 5,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "f7",
+          "last_move_san": "f8=Q",
           "accepted_moves": [
             {
               "san": "Rxe4",
@@ -235,13 +235,19 @@
               "uci": "f6f7",
               "accepted_at": 1787236909.3217292,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "f8=Q",
+              "uci": "f7f8q",
+              "accepted_at": 1787236936.25162,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "f6f7",
-          "last_accepted_move_san": "f7",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787236909.3217282,
-          "position_before_last_move": "8/p6p/1p3P2/2k5/4r2P/6K1/P7/8 w - - 0 45"
+          "last_accepted_move_uci": "f7f8q",
+          "last_accepted_move_san": "f8=Q",
+          "last_accepted_move_index": 4,
+          "last_accepted_at": 1787236936.2516186,
+          "position_before_last_move": "8/p3rP1p/1p6/2k5/7P/6K1/P7/8 w - - 1 46"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
