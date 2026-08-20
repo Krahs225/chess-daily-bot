@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-07-06",
     "title": "Square Repulsion",
     "fen": "1k1r1R1B/pp6/8/q4Q1p/2B1P2P/4b1P1/2P1NnPK/4r3 w - - 0 1",
-    "current_fen": "k1r2R2/pp6/8/q3B2p/2B1P2P/4b1P1/2P1NnPK/4r3 w - - 0 3",
+    "current_fen": "k1R5/pp6/8/q3B2p/2B1P2P/4b1P1/2P1NnPK/4r3 b - - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"1k1r1R1B/pp6/8/q4Q1p/2B1P2P/4b1P1/2P1NnPK/4r3 w - - 0 1\"]\r\n\r\n1. Be5+ Ka8 2. Qc8+ Rxc8 3. Rxc8# *",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787246541995",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1540048361774653562,
     "attempted_users": {
       "601406103712170014": {
@@ -70,15 +70,17 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "Qc8",
-        "correct": false,
-        "timestamp": "2026-08-20T17:22:38.773934+00:00"
+        "move": "Rxc8",
+        "correct": true,
+        "timestamp": "2026-08-20T17:22:40.355817+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
