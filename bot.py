@@ -1,6 +1,7 @@
 import discord
 
 from shared_leaderboard import (
+    admin_set_points as shared_admin_set_points,
     add_points as shared_add_points,
     get_score as shared_get_score,
     personal_ranking as shared_personal_ranking,
@@ -2719,6 +2720,7 @@ Helper: **+0.5 point**
 **Commands**
 `!info` / `!help` / `!i` — show this info.
 `!leaderboard` / `!lb` / `!l` — show the shared leaderboard.
+`!edit <name> <points>` — Sharkmeister-only shared leaderboard correction.
 
 🔥 **Survival Mode**
 `!survival` — Start or resume a team Survival run.
@@ -4149,6 +4151,81 @@ async def on_message(
         content = message.content.strip()
 
         command_lower = content.casefold()
+
+        # Sharkmeister-only shared leaderboard correction:
+        # !edit <name> <points>
+        if command_lower.startswith("!edit "):
+            if (
+                message.author.display_name.casefold()
+                != "sharkmeister"
+            ):
+                await message.channel.send(
+                    "❌ Only **Sharkmeister** can edit the shared leaderboard."
+                )
+                return
+
+            parts = content.split()
+            if len(parts) < 3:
+                await message.channel.send(
+                    "❌ Usage: `!edit <name> <points>`"
+                )
+                return
+
+            points_text = parts[-1]
+            name = " ".join(
+                parts[1:-1]
+            ).strip()
+
+            try:
+                target_points = float(
+                    points_text
+                )
+
+                if target_points < 0:
+                    raise ValueError(
+                        "negative"
+                    )
+
+                if target_points.is_integer():
+                    target_points = int(
+                        target_points
+                    )
+
+            except Exception:
+                await message.channel.send(
+                    "❌ Points must be a non-negative number, "
+                    "for example `200` or `57.5`."
+                )
+                return
+
+            transaction_id = (
+                "admin-edit:"
+                f"{message.id}:"
+                f"{name.casefold()}:"
+                f"{target_points}"
+            )
+
+            try:
+                new_score = await asyncio.to_thread(
+                    shared_admin_set_points,
+                    name,
+                    target_points,
+                    transaction_id,
+                )
+
+            except Exception as error:
+                await message.channel.send(
+                    f"❌ Could not edit the shared leaderboard: "
+                    f"`{str(error)[:900]}`"
+                )
+                return
+
+            await message.channel.send(
+                f"✅ **{name}** is now on "
+                f"**{format_points(new_score)} points** "
+                "on the shared leaderboard."
+            )
+            return
 
         # Exact Lichess puzzle rating, e.g. !400 or !2552.
         if re.fullmatch(
