@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "500 • Hcd18",
     "fen": "1r3rk1/5ppp/1np1bp2/3q3P/p2P4/P2QB3/1PB2PP1/1K1R3R w - - 2 20",
-    "current_fen": "1r3rk1/5ppp/1np1bp2/3q3P/p2P4/P2QB3/1PB2PP1/1K1R3R w - - 2 20",
+    "current_fen": "1r3rk1/5ppQ/1np1bp2/3q3P/p2P4/P3B3/1PB2PP1/1K1R3R b - - 0 20",
     "all_moves": [
       {
         "uci": "d3h7",
@@ -23,13 +23,20 @@
     "url": "https://lichess.org/training/Hcd18",
     "posted_at": "2026-08-20T17:10:10.539917+00:00",
     "puzzle_id": "random_lichess_500_Hcd18_1787245810539",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "362606514764251137": {
+        "name": "Sharkmeister",
+        "move": "qxh7",
+        "correct": true,
+        "timestamp": "2026-08-20T17:10:21.724600+00:00"
+      }
+    },
+    "first_move_user_id": "362606514764251137",
+    "first_move_user_name": "Sharkmeister",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
