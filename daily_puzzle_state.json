@@ -1,46 +1,38 @@
 {
   "latest_random_puzzle": {
-    "title": "500 • 0CZbg",
-    "fen": "r1b1k1nr/pp1p2pp/3b1p2/4q3/2B1P3/2NQ4/PP3PPP/R1B2RK1 b kq - 5 11",
-    "current_fen": "r1b1k1nr/pp1p2pp/3b1p2/8/2B1P3/2NQ4/PP3PPq/R1B2RK1 w kq - 0 12",
+    "title": "500 • Hcd18",
+    "fen": "1r3rk1/5ppp/1np1bp2/3q3P/p2P4/P2QB3/1PB2PP1/1K1R3R w - - 2 20",
+    "current_fen": "1r3rk1/5ppp/1np1bp2/3q3P/p2P4/P2QB3/1PB2PP1/1K1R3R w - - 2 20",
     "all_moves": [
       {
-        "uci": "e5h2",
-        "san": "Qxh2#",
-        "color": "black"
+        "uci": "d3h7",
+        "san": "Qxh7#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5h2",
-        "san": "Qxh2#",
-        "color": "black"
+        "uci": "d3h7",
+        "san": "Qxh7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 1,
     "pgn": "",
-    "url": "https://lichess.org/training/0CZbg",
-    "posted_at": "2026-08-20T17:05:26.316954+00:00",
-    "puzzle_id": "random_lichess_500_0CZbg_1787245526316",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
+    "url": "https://lichess.org/training/Hcd18",
+    "posted_at": "2026-08-20T17:10:10.539917+00:00",
+    "puzzle_id": "random_lichess_500_Hcd18_1787245810539",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "qxh2",
-        "correct": true,
-        "timestamp": "2026-08-20T17:05:37.203922+00:00"
-      }
-    },
-    "first_move_user_id": "362606514764251137",
-    "first_move_user_name": "Sharkmeister",
-    "first_move_awarded": true,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -102,5 +94,10 @@
     "latest_attempts": {},
     "puzzle_id": "daily_1787209598659"
   },
-  "leaderboard_last_posted_date": "2026-08-20"
+  "leaderboard_last_posted_date": "2026-08-20",
+  "lichess_rating_used": {
+    "500": [
+      "Hcd18"
+    ]
+  }
 }
