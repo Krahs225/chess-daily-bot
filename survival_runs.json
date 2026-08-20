@@ -166,10 +166,45 @@
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 0,
-        "best_difficulty": 0,
-        "used_puzzle_ids": [],
+        "best_difficulty": 1345,
+        "used_puzzle_ids": [
+          "etXTY"
+        ],
         "members": {},
-        "puzzle": null,
+        "puzzle": {
+          "id": "etXTY",
+          "rating": 1345,
+          "themes": "advantage endgame fork short",
+          "url": "https://lichess.org/training/etXTY",
+          "start_fen": "5rk1/p5pp/2R5/3Pp3/2pq1PB1/P5PP/2P5/2Q4K b - - 0 29",
+          "current_fen": "5rk1/p5pp/2R5/3Pp3/2pq1PB1/P5PP/2P5/2Q4K b - - 0 29",
+          "solution": [
+            {
+              "uci": "d4d5",
+              "san": "Qxd5+",
+              "color": "black"
+            },
+            {
+              "uci": "h1g1",
+              "san": "Kg1",
+              "color": "white"
+            },
+            {
+              "uci": "d5c6",
+              "san": "Qxc6",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
