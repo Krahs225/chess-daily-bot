@@ -16,6 +16,8 @@ import traceback
 import random
 from datetime import datetime, timezone
 
+from puzzle_mode_lock import is_survival_active, active_team
+
 
 # =========================================================
 # SETTINGS
@@ -1229,6 +1231,14 @@ async def post_daily_puzzle(
 async def post_random_puzzle(
     channel
 ):
+    if is_survival_active():
+        team = active_team() or "another team"
+        await channel.send(
+            f"⚠️ **Survival Mode is active for {team}.** "
+            "Random Puzzle is unavailable until Survival is paused."
+        )
+        return
+
     try:
         data = await asyncio.to_thread(
             fetch_random_puzzle
@@ -2266,6 +2276,13 @@ async def check_expired_puzzles(
 async def check_for_new_puzzle(
     channel
 ):
+    if is_survival_active():
+        print(
+            "Survival Mode is active; Daily Puzzle posting is paused.",
+            flush=True,
+        )
+        return
+
 
     try:
 
@@ -3315,6 +3332,9 @@ async def handle_random_answer(
 # HANDLE ANSWER
 # =========================================================
 
+    if is_survival_active():
+        return
+
 async def handle_answer(
     message,
     puzzle,
@@ -3479,6 +3499,14 @@ async def on_message(
             "!randompuzzle",
             "rp",
         ):
+
+            if is_survival_active():
+                team = active_team() or "another team"
+                await message.channel.send(
+                    f"⚠️ **Survival Mode is active for {team}.** "
+                    "Random Puzzle is unavailable until Survival is paused."
+                )
+                return
 
             previous_random = state.get(
                 "latest_random_puzzle"
