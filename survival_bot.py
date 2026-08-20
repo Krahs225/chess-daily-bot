@@ -2101,7 +2101,7 @@ class SurvivalBot(
                 next_index
             ]
 
-            correct = san_matches_move(
+            correct, accepted_move = parse_survival_move(
                 board,
                 submitted,
                 expected,
@@ -2267,25 +2267,26 @@ class SurvivalBot(
                     user.display_name
                 )
 
-            move = chess.Move.from_uci(
-                expected["uci"]
-            )
+            # Use the actual move the user entered. This matters for
+            # alternative valid checkmates that are not the single move
+            # stored in the Lichess principal variation.
+            move = accepted_move
 
-            if move not in board.legal_moves:
+            if move is None:
                 return
+
+            accepted_san = board.san(
+                move
+            )
 
             # Store the exact accepted move BEFORE advancing the position.
             puzzle[
                 "last_accepted_move_uci"
-            ] = expected[
-                "uci"
-            ]
+            ] = move.uci()
 
             puzzle[
                 "last_accepted_move_san"
-            ] = expected[
-                "san"
-            ]
+            ] = accepted_san
 
             puzzle[
                 "last_accepted_move_index"
@@ -2301,9 +2302,9 @@ class SurvivalBot(
             ).append(
                 {
                     "san":
-                        expected["san"],
+                        accepted_san,
                     "uci":
-                        expected["uci"],
+                        move.uci(),
                     "accepted_at":
                         epoch_now(),
                     "solver_id":
@@ -2326,8 +2327,17 @@ class SurvivalBot(
                 move
             )
 
+            # If the submitted move itself checkmates, the puzzle is
+            # solved even when Lichess stored a different mate line.
+            alternative_checkmate = board.is_checkmate()
+
             next_index += 1
             opponent_replies = []
+
+            if alternative_checkmate:
+                next_index = len(
+                    solution
+                )
 
             while next_index < len(
                 solution
@@ -2475,7 +2485,7 @@ class SurvivalBot(
                     f"{team.get('name', team_key)}**"
                 ),
                 description=(
-                    f"✅ **{expected['san']}**\n"
+                    f"✅ **{accepted_san}**\n"
                     + (
                         f"↩️ Opponent: "
                         f"{' '.join(opponent_replies)}\n"
@@ -3175,6 +3185,84 @@ def chess_move_like(
             text
         )
     )
+
+
+def parse_survival_move(
+    board,
+    submitted,
+    expected,
+):
+    """
+    Return (accepted, legal_move).
+
+    Normally the move must match the Lichess solution move.
+    Exception: if the submitted move is a legal move that immediately
+    checkmates, accept it even when Lichess supplied a different mating
+    move. This handles puzzles with multiple mate-in-one solutions.
+    """
+    submitted = submitted.strip()
+
+    if not submitted:
+        return False, None
+
+    normalized = (
+        submitted.casefold()
+    )
+
+    while normalized.endswith(
+        ("+", "#")
+    ):
+        normalized = normalized[:-1]
+
+    for legal_move in board.legal_moves:
+
+        san = board.san(
+            legal_move
+        )
+
+        san_normalized = san.casefold()
+
+        while san_normalized.endswith(
+            ("+", "#")
+        ):
+            san_normalized = san_normalized[:-1]
+
+        if san_normalized != normalized:
+            continue
+
+        # Official solution move.
+        if legal_move.uci() == expected["uci"]:
+            return True, legal_move
+
+        # Alternative legal move that immediately checkmates.
+        test_board = board.copy()
+        test_board.push(
+            legal_move
+        )
+
+        if test_board.is_checkmate():
+            return True, legal_move
+
+        return False, None
+
+    # UCI input.
+    try:
+        move = board.parse_uci(
+            normalized
+        )
+    except Exception:
+        return False, None
+
+    if move.uci() == expected["uci"]:
+        return True, move
+
+    test_board = board.copy()
+    test_board.push(move)
+
+    if test_board.is_checkmate():
+        return True, move
+
+    return False, None
 
 
 def san_matches_move(
