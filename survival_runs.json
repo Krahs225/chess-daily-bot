@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787230914.38499,
+        "last_activity": 1787230947.8803399,
         "paused_reason": null,
         "puzzle_number": 25,
         "strikes": 0,
@@ -45,7 +45,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 43,
+            "correct": 44,
             "wrong": 0
           },
           "442597396195704832": {
@@ -60,7 +60,7 @@
           "themes": "crushing endgame fork long",
           "url": "https://lichess.org/training/jw7dm",
           "start_fen": "2r3k1/R4p1p/5Qp1/8/8/4P2P/2q2PP1/6K1 b - - 2 29",
-          "current_fen": "2r3k1/R4p1p/5Qp1/8/8/4P2P/2q2PP1/6K1 b - - 2 29",
+          "current_fen": "2r3k1/R4p1p/5Qp1/8/8/4P2P/5PPK/1q6 b - - 4 30",
           "solution": [
             {
               "uci": "c2b1",
@@ -89,16 +89,20 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null
+          "last_move_san": "Qb1+",
+          "last_accepted_move_uci": "c2b1",
+          "last_accepted_move_san": "Qb1+",
+          "last_accepted_move_index": 0,
+          "position_before_last_move": "2r3k1/R4p1p/5Qp1/8/8/4P2P/2q2PP1/6K1 b - - 2 29"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       }
