@@ -258,7 +258,7 @@
         "started_at": "2026-08-20T21:45:45.650556+00:00",
         "last_activity": 1787262415.898396,
         "paused_reason": null,
-        "puzzle_number": 1,
+        "puzzle_number": 2,
         "strikes": 0,
         "best_difficulty": 1220,
         "used_puzzle_ids": [
@@ -271,60 +271,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "6j9Vv",
-          "rating": 1220,
-          "themes": "crushing endgame rookEndgame short",
-          "url": "https://lichess.org/training/6j9Vv",
-          "start_fen": "8/8/3k4/pp1p4/3P4/P5r1/1PR5/2K5 b - - 3 45",
-          "current_fen": "8/8/3k4/pp1p4/3P4/P7/1PRK2r1/8 w - - 6 47",
-          "solution": [
-            {
-              "uci": "g3g1",
-              "san": "Rg1+",
-              "color": "black"
-            },
-            {
-              "uci": "c1d2",
-              "san": "Kd2",
-              "color": "white"
-            },
-            {
-              "uci": "g1g2",
-              "san": "Rg2+",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Rg2+",
-          "accepted_moves": [
-            {
-              "san": "Rg1+",
-              "uci": "g3g1",
-              "accepted_at": 1787262396.907228,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Rg2+",
-              "uci": "g1g2",
-              "accepted_at": 1787262415.898315,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "g1g2",
-          "last_accepted_move_san": "Rg2+",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787262415.898314,
-          "position_before_last_move": "8/8/3k4/pp1p4/3P4/P7/1PRK4/6r1 b - - 5 46"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       },
