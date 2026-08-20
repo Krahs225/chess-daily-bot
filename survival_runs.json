@@ -162,7 +162,7 @@
         "started_by_id": "1539971538290216980",
         "status": "active",
         "started_at": "2026-08-20T12:17:06.074723+00:00",
-        "last_activity": 1787234474.8081996,
+        "last_activity": 1787234481.5116842,
         "paused_reason": "manually stopped",
         "puzzle_number": 3,
         "strikes": 0,
@@ -175,7 +175,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 7,
+            "correct": 8,
             "wrong": 0
           }
         },
@@ -185,7 +185,7 @@
           "themes": "advantage attraction deflection endgame long",
           "url": "https://lichess.org/training/rqCK7",
           "start_fen": "2kr3r/ppp2Rp1/8/8/4P3/1Q1Pq1P1/PP4KP/3R4 b - - 0 22",
-          "current_fen": "2kr3r/ppp3p1/8/8/4P3/1Q1P2P1/PP2qRKP/3R4 b - - 2 23",
+          "current_fen": "2kr4/ppp3p1/8/8/4P3/1Q1P2P1/PP2qR1K/3R4 b - - 0 24",
           "solution": [
             {
               "uci": "e3e2",
@@ -214,26 +214,32 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 2,
+          "next_solution_index": 4,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "Qe2+",
+          "last_move_san": "Rxh2+",
           "accepted_moves": [
             {
               "san": "Qe2+",
               "uci": "e3e2",
               "accepted_at": 1787234474.8081255,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Rxh2+",
+              "uci": "h8h2",
+              "accepted_at": 1787234481.51161,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "e3e2",
-          "last_accepted_move_san": "Qe2+",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1787234474.8081253,
-          "position_before_last_move": "2kr3r/ppp2Rp1/8/8/4P3/1Q1Pq1P1/PP4KP/3R4 b - - 0 22"
+          "last_accepted_move_uci": "h8h2",
+          "last_accepted_move_san": "Rxh2+",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1787234481.5116096,
+          "position_before_last_move": "2kr3r/ppp3p1/8/8/4P3/1Q1P2P1/PP2qRKP/3R4 b - - 2 23"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
