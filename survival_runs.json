@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 4,
+      "best_puzzle": 5,
       "best_difficulty": 1337,
-      "best_completed_at": "2026-08-20T12:44:33.070524+00:00",
+      "best_completed_at": "2026-08-20T12:45:06.558087+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -14,12 +14,13 @@
         "paused_reason": "puzzle fetch error",
         "puzzle_number": 5,
         "strikes": 1,
-        "best_difficulty": 1337,
+        "best_difficulty": 1400,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
           "UW5iq",
-          "RJflk"
+          "RJflk",
+          "iKB3c"
         ],
         "members": {
           "601406103712170014": {
@@ -33,7 +34,39 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "iKB3c",
+          "rating": 1400,
+          "themes": "advancedPawn endgame knightEndgame mate mateIn2 short",
+          "url": "https://lichess.org/training/iKB3c",
+          "start_fen": "6k1/6P1/p6P/6K1/8/8/1n1p4/8 w - - 0 58",
+          "current_fen": "6k1/6P1/p6P/6K1/8/8/1n1p4/8 w - - 0 58",
+          "solution": [
+            {
+              "uci": "g5g6",
+              "san": "Kg6",
+              "color": "white"
+            },
+            {
+              "uci": "a6a5",
+              "san": "a5",
+              "color": "black"
+            },
+            {
+              "uci": "h6h7",
+              "san": "h7#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
