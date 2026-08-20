@@ -12,7 +12,7 @@
         "started_at": "2026-08-20T12:22:23.121644+00:00",
         "last_activity": 1787231057.3821323,
         "paused_reason": null,
-        "puzzle_number": 27,
+        "puzzle_number": 28,
         "strikes": 0,
         "best_difficulty": 1687,
         "used_puzzle_ids": [
@@ -56,45 +56,9 @@
             "wrong": 4
           }
         },
-        "puzzle": {
-          "id": "2dgyY",
-          "rating": 1664,
-          "themes": "crushing discoveredAttack discoveredCheck middlegame short",
-          "url": "https://lichess.org/training/2dgyY",
-          "start_fen": "3r3k/p5p1/1pp5/3p2r1/3P1q1p/2P1N2K/P3QPP1/4RR2 b - - 1 30",
-          "current_fen": "3r3k/p5p1/1pp5/3p4/3P1q1p/2P1r3/P3QPPK/4RR2 w - - 0 32",
-          "solution": [
-            {
-              "uci": "g5g3",
-              "san": "Rg3+",
-              "color": "black"
-            },
-            {
-              "uci": "h3h2",
-              "san": "Kh2",
-              "color": "white"
-            },
-            {
-              "uci": "g3e3",
-              "san": "Rxe3+",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Rxe3+",
-          "last_accepted_move_uci": "g3e3",
-          "last_accepted_move_san": "Rxe3+",
-          "last_accepted_move_index": 2,
-          "position_before_last_move": "3r3k/p5p1/1pp5/3p4/3P1q1p/2P1N1r1/P3QPPK/4RR2 b - - 3 31"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
