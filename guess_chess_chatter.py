@@ -24,7 +24,7 @@ TOKEN = os.getenv(
 CHANNEL_ID = 1536769340970373241
 
 POLL_OPTIONS = 5
-POLL_DURATION_MINUTES = 8
+POLL_DURATION_MINUTES = 15
 
 # The players supplied for Guess the Chess Chatter.
 PLAYERS = [
