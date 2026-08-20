@@ -1,52 +1,117 @@
 {
   "latest_random_puzzle": {
-    "title": "800 • GjkJs",
-    "fen": "r3r1k1/ppp2ppp/2nb4/6Bq/3P4/2P2B2/P2Q1PPP/R4RK1 b - - 0 16",
-    "current_fen": "r3r1k1/ppp2ppp/2nb4/6B1/3P4/2P2B2/P2Q1PPq/R4RK1 w - - 0 17",
+    "url": "https://www.chess.com/daily/2024-04-27",
+    "title": "Checkmatemaster7's Checkmate Puzzle",
+    "fen": "6k1/ppp3p1/3bq1r1/4n3/2PBp3/1P6/P3BPPN/2RQ1RK1 b - - 0 24",
+    "current_fen": "6k1/ppp3p1/3bq1r1/4n3/2PBp3/1P6/P3BPPN/2RQ1RK1 b - - 0 24",
+    "pgn": "[White \"Checkmatemaster7\"]\r\n[Black \"Daily Puzzle\"]\r\n[Result \"0-1\"]\r\n[FEN \"6k1/ppp3p1/3bq1r1/4n3/2PBp3/1P6/P3BPPN/2RQ1RK1 b - - 0 24\"]\r\n\r\n24... Qh3 25. Bg4 Nf3+ 26. Nxf3 Rxg4 27. g3 Bxg3 28. fxg3 Qxg3+ 29. Kh1 Qg2#\r\n0-1",
     "all_moves": [
       {
-        "uci": "h5h2",
-        "san": "Qxh2#",
+        "uci": "e6h3",
+        "san": "Qh3",
+        "color": "black"
+      },
+      {
+        "uci": "e2g4",
+        "san": "Bg4",
+        "color": "white"
+      },
+      {
+        "uci": "e5f3",
+        "san": "Nf3+",
+        "color": "black"
+      },
+      {
+        "uci": "h2f3",
+        "san": "Nxf3",
+        "color": "white"
+      },
+      {
+        "uci": "g6g4",
+        "san": "Rxg4",
+        "color": "black"
+      },
+      {
+        "uci": "g2g3",
+        "san": "g3",
+        "color": "white"
+      },
+      {
+        "uci": "d6g3",
+        "san": "Bxg3",
+        "color": "black"
+      },
+      {
+        "uci": "f2g3",
+        "san": "fxg3",
+        "color": "white"
+      },
+      {
+        "uci": "h3g3",
+        "san": "Qxg3+",
+        "color": "black"
+      },
+      {
+        "uci": "g1h1",
+        "san": "Kh1",
+        "color": "white"
+      },
+      {
+        "uci": "g3g2",
+        "san": "Qg2#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5h2",
-        "san": "Qxh2#",
+        "uci": "e6h3",
+        "san": "Qh3",
+        "color": "black"
+      },
+      {
+        "uci": "e5f3",
+        "san": "Nf3+",
+        "color": "black"
+      },
+      {
+        "uci": "g6g4",
+        "san": "Rxg4",
+        "color": "black"
+      },
+      {
+        "uci": "d6g3",
+        "san": "Bxg3",
+        "color": "black"
+      },
+      {
+        "uci": "h3g3",
+        "san": "Qxg3+",
+        "color": "black"
+      },
+      {
+        "uci": "g3g2",
+        "san": "Qg2#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 1,
-    "pgn": "",
-    "url": "https://lichess.org/training/GjkJs",
-    "posted_at": "2026-08-20T17:15:06.209771+00:00",
-    "puzzle_id": "random_lichess_800_GjkJs_1787246106209",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-20T17:15:34.813262+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1787246134813",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxh2",
-        "correct": true,
-        "timestamp": "2026-08-20T17:15:11.271238+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bh8",
-        "correct": false,
-        "timestamp": "2026-08-20T17:15:09.546602+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
