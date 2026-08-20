@@ -1189,6 +1189,25 @@ def ensure_member(
     return member
 
 
+def run_is_dead(
+    run
+):
+    if not run:
+        return False
+
+    return (
+        int(
+            run.get(
+                "strikes",
+                0,
+            )
+        ) >= THREE_STRIKES
+        and run.get(
+            "paused_reason"
+        ) == "three strikes"
+    )
+
+
 def run_status_text(
     team,
     run,
@@ -1578,6 +1597,25 @@ class SurvivalBot(
         )
 
         if existing and not force:
+
+            if run_is_dead(existing):
+                view = ContinueOrRestartView(
+                    self,
+                    requester.id,
+                    team_key,
+                )
+
+                await requester.channel.send(
+                    f"💀 **{display_name}'s Survival run is finished.**\n\n"
+                    f"Reached **Puzzle #{existing.get('puzzle_number', 0)}**\n"
+                    f"Strikes: **3/3**\n"
+                    f"Best difficulty: **{existing.get('best_difficulty', 0)}**\n\n"
+                    f"You cannot continue this run because it has no hearts left. "
+                    f"Use `!addheart {display_name}` first, or start a new run.",
+                    view=view,
+                )
+                return
+
             if existing.get(
                 "status"
             ) == "active":
@@ -1605,6 +1643,7 @@ class SurvivalBot(
             return
 
         run = {
+
             "run_id":
                 f"{team_key}:{int(time.time())}",
             "started_by_id":
@@ -1680,6 +1719,15 @@ class SurvivalBot(
         if not run:
             await interaction.response.send_message(
                 "No saved run.",
+                ephemeral=True,
+            )
+            return
+
+        if run_is_dead(run):
+            await interaction.response.send_message(
+                "💀 This Survival run is finished at "
+                f"Puzzle #{run.get('puzzle_number', 0)} with "
+                "3/3 strikes. Add a heart first or start a new run.",
                 ephemeral=True,
             )
             return
