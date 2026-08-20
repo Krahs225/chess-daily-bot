@@ -162,7 +162,7 @@
         "started_by_id": "1539971538290216980",
         "status": "active",
         "started_at": "2026-08-20T12:17:06.074723+00:00",
-        "last_activity": 1787235851.4942596,
+        "last_activity": 1787235893.6333284,
         "paused_reason": null,
         "puzzle_number": 11,
         "strikes": 1,
@@ -183,7 +183,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 25,
+            "correct": 26,
             "wrong": 3
           }
         },
@@ -193,7 +193,7 @@
           "themes": "crushing endgame fork interference long skewer",
           "url": "https://lichess.org/training/jXZA3",
           "start_fen": "6r1/1pp4k/3p1b1p/pP1Pp3/2P1Pp2/P4K1R/1B3P2/6rR w - - 11 34",
-          "current_fen": "6r1/1pp4k/3p1b1p/pP1Pp3/2P1Pp2/P4K1R/1B3P2/6rR w - - 11 34",
+          "current_fen": "6r1/1pp3k1/3p1b1R/pP1Pp3/2P1Pp2/P4K2/1B3P2/6rR w - - 1 35",
           "solution": [
             {
               "uci": "h3h6",
@@ -222,17 +222,29 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Rxh6+",
+          "accepted_moves": [
+            {
+              "san": "Rxh6+",
+              "uci": "h3h6",
+              "accepted_at": 1787235893.6331723,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "h3h6",
+          "last_accepted_move_san": "Rxh6+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787235893.6331708,
+          "position_before_last_move": "6r1/1pp4k/3p1b1p/pP1Pp3/2P1Pp2/P4K1R/1B3P2/6rR w - - 11 34"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
