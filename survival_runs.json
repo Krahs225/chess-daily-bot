@@ -154,9 +154,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 17,
+      "best_puzzle": 18,
       "best_difficulty": 1511,
-      "best_completed_at": "2026-08-20T14:29:45.931299+00:00",
+      "best_completed_at": "2026-08-20T14:30:58.659526+00:00",
       "current": {
         "run_id": "thice:1787228226",
         "started_by_id": "1539971538290216980",
@@ -184,7 +184,8 @@
           "HjpuK",
           "ky0Xd",
           "91alr",
-          "JY44i"
+          "JY44i",
+          "BBSPC"
         ],
         "members": {
           "442597396195704832": {
@@ -193,7 +194,40 @@
             "wrong": 6
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "BBSPC",
+          "rating": 1449,
+          "themes": "crushing middlegame short",
+          "url": "https://lichess.org/training/BBSPC",
+          "start_fen": "1b3r2/5pk1/p6p/1ppq4/6PQ/P2P1RP1/2P5/4rR1K w - - 5 29",
+          "current_fen": "1b3r2/5pk1/p6p/1ppq4/6PQ/P2P1RP1/2P5/4rR1K w - - 5 29",
+          "solution": [
+            {
+              "uci": "h4f6",
+              "san": "Qf6+",
+              "color": "white"
+            },
+            {
+              "uci": "g7g8",
+              "san": "Kg8",
+              "color": "black"
+            },
+            {
+              "uci": "f1e1",
+              "san": "Rxe1",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
