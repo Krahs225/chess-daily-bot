@@ -674,10 +674,13 @@ async def post_chess_round(
         owner
     )
 
+    # Discord native polls require a duration of at least 1 hour.
+    # We end the poll ourselves after POLL_DURATION_MINUTES, so the
+    # actual game remains 15 minutes long while the API payload is valid.
     poll = discord.Poll(
         question="Who played this game?",
         duration=timedelta(
-            minutes=POLL_DURATION_MINUTES
+            hours=1
         ),
         multiple=False
     )
