@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 9,
+      "best_puzzle": 10,
       "best_difficulty": 1400,
-      "best_completed_at": "2026-08-20T12:47:29.128489+00:00",
+      "best_completed_at": "2026-08-20T12:47:49.438135+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -24,7 +24,8 @@
           "iRn25",
           "EUIXJ",
           "Sae1k",
-          "8SWTs"
+          "8SWTs",
+          "wQtHg"
         ],
         "members": {
           "601406103712170014": {
@@ -38,7 +39,39 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "wQtHg",
+          "rating": 1334,
+          "themes": "advantage master middlegame short",
+          "url": "https://lichess.org/training/wQtHg",
+          "start_fen": "4r1k1/3q2p1/p5r1/1p4p1/2pPP2Q/P1P1B1Kb/8/R3R3 w - - 0 34",
+          "current_fen": "4r1k1/3q2p1/p5r1/1p4p1/2pPP2Q/P1P1B1Kb/8/R3R3 w - - 0 34",
+          "solution": [
+            {
+              "uci": "h4h3",
+              "san": "Qxh3",
+              "color": "white"
+            },
+            {
+              "uci": "d7h3",
+              "san": "Qxh3+",
+              "color": "black"
+            },
+            {
+              "uci": "g3h3",
+              "san": "Kxh3",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
