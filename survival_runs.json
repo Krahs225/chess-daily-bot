@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 26,
-      "best_difficulty": 1672,
-      "best_completed_at": "2026-08-20T13:02:58.920200+00:00",
+      "best_puzzle": 27,
+      "best_difficulty": 1687,
+      "best_completed_at": "2026-08-20T13:03:41.298873+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -41,7 +41,8 @@
           "9MYLd",
           "5NZP0",
           "jw7dm",
-          "mCQnl"
+          "mCQnl",
+          "2dgyY"
         ],
         "members": {
           "601406103712170014": {
@@ -55,7 +56,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "2dgyY",
+          "rating": 1664,
+          "themes": "crushing discoveredAttack discoveredCheck middlegame short",
+          "url": "https://lichess.org/training/2dgyY",
+          "start_fen": "3r3k/p5p1/1pp5/3p2r1/3P1q1p/2P1N2K/P3QPP1/4RR2 b - - 1 30",
+          "current_fen": "3r3k/p5p1/1pp5/3p2r1/3P1q1p/2P1N2K/P3QPP1/4RR2 b - - 1 30",
+          "solution": [
+            {
+              "uci": "g5g3",
+              "san": "Rg3+",
+              "color": "black"
+            },
+            {
+              "uci": "h3h2",
+              "san": "Kh2",
+              "color": "white"
+            },
+            {
+              "uci": "g3e3",
+              "san": "Rxe3+",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
