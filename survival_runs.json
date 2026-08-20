@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 49,
+      "best_puzzle": 50,
       "best_difficulty": 2016,
-      "best_completed_at": "2026-08-20T17:43:19.219260+00:00",
+      "best_completed_at": "2026-08-20T17:45:20.300006+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -64,7 +64,8 @@
           "X3wBJ",
           "G2mGN",
           "KxObB",
-          "AX6N8"
+          "AX6N8",
+          "rEksh"
         ],
         "members": {
           "601406103712170014": {
@@ -78,7 +79,40 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "rEksh",
+          "rating": 1932,
+          "themes": "crushing endgame short",
+          "url": "https://lichess.org/training/rEksh",
+          "start_fen": "6k1/q2n1p1p/p5p1/1p1R4/3r4/2N2Q1P/PP3PP1/6K1 w - - 0 29",
+          "current_fen": "6k1/q2n1p1p/p5p1/1p1R4/3r4/2N2Q1P/PP3PP1/6K1 w - - 0 29",
+          "solution": [
+            {
+              "uci": "f3e3",
+              "san": "Qe3",
+              "color": "white"
+            },
+            {
+              "uci": "d4d5",
+              "san": "Rxd5",
+              "color": "black"
+            },
+            {
+              "uci": "e3a7",
+              "san": "Qxa7",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
