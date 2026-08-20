@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787230572.0976894,
+        "last_activity": 1787230602.1647263,
         "paused_reason": null,
         "puzzle_number": 17,
         "strikes": 0,
@@ -37,7 +37,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 28,
+            "correct": 29,
             "wrong": 0
           },
           "442597396195704832": {
@@ -52,7 +52,7 @@
           "themes": "anastasiaMate attraction kingsideAttack mate mateIn2 middlegame sacrifice short",
           "url": "https://lichess.org/training/hmlbb",
           "start_fen": "4rr1k/1p2Nppp/p3b3/q3Pp2/3Q4/7R/P1P3PP/5R1K w - - 5 23",
-          "current_fen": "4rr1k/1p2Nppp/p3b3/q3Pp2/3Q4/7R/P1P3PP/5R1K w - - 5 23",
+          "current_fen": "4rr2/1p2Nppk/p3b3/q3Pp2/3Q4/8/P1P3PP/5R1K w - - 0 24",
           "solution": [
             {
               "uci": "h3h7",
@@ -71,16 +71,20 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null
+          "last_move_san": "Rxh7+",
+          "last_accepted_move_uci": "h3h7",
+          "last_accepted_move_san": "Rxh7+",
+          "last_accepted_move_index": 0,
+          "position_before_last_move": "4rr1k/1p2Nppp/p3b3/q3Pp2/3Q4/7R/P1P3PP/5R1K w - - 5 23"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       }
