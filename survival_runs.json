@@ -66,7 +66,7 @@
         "started_at": "2026-08-20T12:28:01.540198+00:00",
         "last_activity": 1787228964.5845654,
         "paused_reason": null,
-        "puzzle_number": 2,
+        "puzzle_number": 3,
         "strikes": 0,
         "best_difficulty": 1329,
         "used_puzzle_ids": [
@@ -80,51 +80,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "i2sxF",
-          "rating": 1232,
-          "themes": "advantage long middlegame",
-          "url": "https://lichess.org/training/i2sxF",
-          "start_fen": "4rrk1/ppnq2pp/2pb1p2/3p4/3P1n2/P1P1BNNP/1P1QRPP1/R5K1 w - - 5 18",
-          "current_fen": "5rk1/ppnq2pp/2p2p2/3p4/3P1Q2/P1P2N1P/1P2NPP1/R5K1 b - - 0 20",
-          "solution": [
-            {
-              "uci": "e3f4",
-              "san": "Bxf4",
-              "color": "white"
-            },
-            {
-              "uci": "d6f4",
-              "san": "Bxf4",
-              "color": "black"
-            },
-            {
-              "uci": "d2f4",
-              "san": "Qxf4",
-              "color": "white"
-            },
-            {
-              "uci": "e8e2",
-              "san": "Rxe2",
-              "color": "black"
-            },
-            {
-              "uci": "g3e2",
-              "san": "Nxe2",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Nxe2"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
