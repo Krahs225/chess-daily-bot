@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-11-10",
     "title": "X-Ray Harmony",
     "fen": "4r1k1/5pbp/3p4/2pP2Np/pqP2P2/R4B2/1PQ3P1/1K6 b - - 0 1",
-    "current_fen": "6k1/5pbp/3p4/2pP2Np/p1P2P2/P4B2/K1Q3P1/4r3 b - - 0 3",
+    "current_fen": "6k1/5pbp/3p4/2pP2Np/p1P2P2/P4B2/K1Q3P1/r7 w - - 1 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"4r1k1/5pbp/3p4/2pP2Np/pqP2P2/R4B2/1PQ3P1/1K6 b - - 0 1\"]\r\n\r\n1... Re1+ 2. Ka2 Qxa3+ 3. bxa3 Ra1# *",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787257558721",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1540094569205473321,
     "attempted_users": {
       "442597396195704832": {
@@ -70,16 +70,18 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "re1",
-        "correct": false,
-        "timestamp": "2026-08-20T20:26:13.604778+00:00"
+        "move": "ra1",
+        "correct": true,
+        "timestamp": "2026-08-20T20:26:21.271473+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
