@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787247473.0119886,
+        "last_activity": 1787247649.0818167,
         "paused_reason": "manually stopped",
         "puzzle_number": 48,
         "strikes": 1,
@@ -73,7 +73,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 23,
+            "correct": 24,
             "wrong": 5
           }
         },
@@ -83,7 +83,7 @@
           "themes": "attraction crushing deflection endgame sacrifice veryLong",
           "url": "https://lichess.org/training/KxObB",
           "start_fen": "7k/5rp1/p2p3p/2qNp3/PQP4P/6P1/4bPB1/6K1 w - - 0 33",
-          "current_fen": "7k/5rp1/p2p3p/2qNp3/PQP4P/6P1/4bPB1/6K1 w - - 0 33",
+          "current_fen": "1Q6/5rpk/p2p3p/2qNp3/P1P4P/6P1/4bPB1/6K1 w - - 2 34",
           "solution": [
             {
               "uci": "b4b8",
@@ -132,17 +132,29 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qb8+",
+          "accepted_moves": [
+            {
+              "san": "Qb8+",
+              "uci": "b4b8",
+              "accepted_at": 1787247649.081693,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "b4b8",
+          "last_accepted_move_san": "Qb8+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787247649.0816922,
+          "position_before_last_move": "7k/5rp1/p2p3p/2qNp3/PQP4P/6P1/4bPB1/6K1 w - - 0 33"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
