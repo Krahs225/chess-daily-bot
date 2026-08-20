@@ -162,10 +162,10 @@
         "started_by_id": "1540006473709391903",
         "status": "active",
         "started_at": "2026-08-20T14:35:58.668682+00:00",
-        "last_activity": 1787239299.0741413,
+        "last_activity": 1787239315.9291368,
         "paused_reason": "manually stopped",
         "puzzle_number": 9,
-        "strikes": 0,
+        "strikes": 1,
         "best_difficulty": 1392,
         "used_puzzle_ids": [
           "etXTY",
@@ -183,6 +183,11 @@
             "name": "Thice",
             "correct": 20,
             "wrong": 0
+          },
+          "601406103712170014": {
+            "name": "TheMakina",
+            "correct": 0,
+            "wrong": 1
           }
         },
         "puzzle": {
@@ -225,7 +230,9 @@
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
-          "wrong_users": [],
+          "wrong_users": [
+            "601406103712170014"
+          ],
           "last_move_san": "Bxe2",
           "accepted_moves": [
             {
