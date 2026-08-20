@@ -154,9 +154,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 3,
+      "best_puzzle": 4,
       "best_difficulty": 1374,
-      "best_completed_at": "2026-08-20T13:59:42.029706+00:00",
+      "best_completed_at": "2026-08-20T14:01:36.918368+00:00",
       "current": {
         "run_id": "thice:1787228226",
         "started_by_id": "1539971538290216980",
@@ -170,7 +170,8 @@
         "used_puzzle_ids": [
           "Nzp5Z",
           "IJq5Q",
-          "rqCK7"
+          "rqCK7",
+          "yjB2o"
         ],
         "members": {
           "442597396195704832": {
@@ -179,7 +180,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "yjB2o",
+          "rating": 1280,
+          "themes": "mate mateIn2 middlegame queensideAttack short",
+          "url": "https://lichess.org/training/yjB2o",
+          "start_fen": "1rb2rkb/5p1p/4p1pP/p1qp4/6P1/1P2BP2/P1PQ4/2KR1B1R b - - 2 20",
+          "current_fen": "1rb2rkb/5p1p/4p1pP/p1qp4/6P1/1P2BP2/P1PQ4/2KR1B1R b - - 2 20",
+          "solution": [
+            {
+              "uci": "c5a3",
+              "san": "Qa3+",
+              "color": "black"
+            },
+            {
+              "uci": "c1b1",
+              "san": "Kb1",
+              "color": "white"
+            },
+            {
+              "uci": "a3b2",
+              "san": "Qb2#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
