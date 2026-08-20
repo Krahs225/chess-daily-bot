@@ -1767,6 +1767,67 @@ class SurvivalBot(
             "current"
         ] = None
 
+    async def start_or_show_team(
+        self,
+        message,
+        team_name,
+    ):
+        key = normalize_team_name(
+            team_name
+        )
+
+        active = active_current_run(
+            self.state
+        )
+
+        if active:
+            await message.channel.send(
+                f"⚠️ **{active[1].get('name', active[0])}** "
+                "already has an active Survival run."
+            )
+            return
+
+        team = self.state["teams"].get(
+            key
+        )
+
+        if (
+            team
+            and team.get("current")
+        ):
+            view = ContinueOrRestartView(
+                self,
+                message.author.id,
+                key,
+            )
+
+            captain = await self.get_captain_display(
+                team["current"]
+            )
+
+            await message.channel.send(
+                f"♻️ **{team.get('name', team_name)}** "
+                "has a saved Survival run.\n"
+                f"👑 **Captain:** {captain}\n\n"
+                + run_status_text(
+                    team.get(
+                        "name",
+                        team_name,
+                    ),
+                    team["current"],
+                )
+                + "\n\n"
+                "Continue it or start a new run?",
+                view=view,
+            )
+            return
+
+        await self.start_new_run(
+            key,
+            team_name,
+            message,
+        )
+
     async def start_new_run(
         self,
         team_key,
@@ -3097,6 +3158,87 @@ class SurvivalBot(
             )
             return
 
+        if lower.startswith("!survival ") and len(
+            content.split(None, 1)
+        ) == 2:
+
+            team_name = content.split(
+                None,
+                1,
+            )[1].strip()
+
+            if not valid_team_name(
+                team_name
+            ):
+                await message.channel.send(
+                    "❌ Team name must be 2–32 characters."
+                )
+                return
+
+            active = active_current_run(
+                self.state
+            )
+
+            if active:
+                await message.channel.send(
+                    f"⚠️ **{active[1].get('name', active[0])}** "
+                    "already has an active Survival run."
+                )
+                return
+
+            try:
+                await self.start_or_show_team(
+                    message,
+                    team_name,
+                )
+            except AttributeError:
+                # Backwards-compatible direct path.
+                key = normalize_team_name(
+                    team_name
+                )
+                team = self.state["teams"].get(
+                    key
+                )
+
+                if (
+                    team
+                    and team.get("current")
+                ):
+                    view = ContinueOrRestartView(
+                        self,
+                        message.author.id,
+                        key,
+                    )
+
+                    captain = await self.get_captain_display(
+                        team["current"]
+                    )
+
+                    await message.channel.send(
+                        f"♻️ **{team.get('name', team_name)}** "
+                        "has a saved Survival run.\n"
+                        f"👑 **Captain:** {captain}\n\n"
+                        + run_status_text(
+                            team.get(
+                                "name",
+                                team_name,
+                            ),
+                            team["current"],
+                        )
+                        + "\n\n"
+                        "Continue it or start a new run?",
+                        view=view,
+                    )
+                    return
+
+                await self.start_new_run(
+                    key,
+                    team_name,
+                    message,
+                )
+
+            return
+
         if lower == "!survival":
             self.pending_team = {
                 "user_id":
@@ -3177,48 +3319,23 @@ class SurvivalBot(
                 )
                 return
 
-            team = self.state["teams"].get(
-                key
-            )
-
-            if (
-                team
-                and team.get(
-                    "current"
-                )
-            ):
-                view = ContinueOrRestartView(
-                    self,
-                    message.author.id,
-                    key,
+            try:
+                await self.start_or_show_team(
+                    message,
+                    team_name,
                 )
 
-                captain = await self.get_captain_display(
-                    team["current"]
+            except Exception as error:
+                print(
+                    f"Survival team start error: {error}",
+                    flush=True,
                 )
+                traceback.print_exc()
 
                 await message.channel.send(
-                    f"♻️ **{team.get('name', team_name)}** "
-                    "has a saved Survival run.\n"
-                    f"👑 **Captain:** {captain}\n\n"
-                    + run_status_text(
-                        team.get(
-                            "name",
-                            team_name,
-                        ),
-                        team["current"],
-                    )
-                    + "\n\n"
-                    "Continue it or start a new run?",
-                    view=view,
+                    f"❌ **Could not start/load team {team_name}.**\n"
+                    f"`{str(error)[:900]}`"
                 )
-                return
-
-            await self.start_new_run(
-                key,
-                team_name,
-                message,
-            )
 
             return
 
