@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787247464.6236956,
+        "last_activity": 1787247470.5199192,
         "paused_reason": "manually stopped",
         "puzzle_number": 47,
         "strikes": 1,
@@ -72,7 +72,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 22,
+            "correct": 23,
             "wrong": 5
           }
         },
@@ -82,7 +82,7 @@
           "themes": "advantage long middlegame",
           "url": "https://lichess.org/training/G2mGN",
           "start_fen": "2brr1k1/2q2ppp/p1nb1n2/1p1p1PP1/2pP1B2/2N3NP/PPPQ2B1/4RR1K b - - 0 20",
-          "current_fen": "2br2k1/2q2ppp/p1n2P2/1p1p1P2/2pP1b2/2N3NP/PPP3B1/4QR1K b - - 0 22",
+          "current_fen": "2br2k1/2q2ppp/p1n2P2/1p1p1P2/2pP4/2N3bP/PPP3B1/4QR1K w - - 0 23",
           "solution": [
             {
               "uci": "e8e1",
@@ -111,13 +111,13 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 4,
+          "next_solution_index": 5,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "Bxf4",
+          "last_move_san": "Bxg3",
           "accepted_moves": [
             {
               "san": "Rxe1",
@@ -130,13 +130,19 @@
               "uci": "d6f4",
               "accepted_at": 1787247464.6235774,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Bxg3",
+              "uci": "f4g3",
+              "accepted_at": 1787247470.5198288,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "d6f4",
-          "last_accepted_move_san": "Bxf4",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787247464.6235764,
-          "position_before_last_move": "2br2k1/2q2ppp/p1nb1n2/1p1p1PP1/2pP1B2/2N3NP/PPP3B1/4QR1K b - - 0 21"
+          "last_accepted_move_uci": "f4g3",
+          "last_accepted_move_san": "Bxg3",
+          "last_accepted_move_index": 4,
+          "last_accepted_at": 1787247470.5198276,
+          "position_before_last_move": "2br2k1/2q2ppp/p1n2P2/1p1p1P2/2pP1b2/2N3NP/PPP3B1/4QR1K b - - 0 22"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
