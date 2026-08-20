@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "500 • 0CZbg",
     "fen": "r1b1k1nr/pp1p2pp/3b1p2/4q3/2B1P3/2NQ4/PP3PPP/R1B2RK1 b kq - 5 11",
-    "current_fen": "r1b1k1nr/pp1p2pp/3b1p2/4q3/2B1P3/2NQ4/PP3PPP/R1B2RK1 b kq - 5 11",
+    "current_fen": "r1b1k1nr/pp1p2pp/3b1p2/8/2B1P3/2NQ4/PP3PPq/R1B2RK1 w kq - 0 12",
     "all_moves": [
       {
         "uci": "e5h2",
@@ -23,14 +23,21 @@
     "url": "https://lichess.org/training/0CZbg",
     "posted_at": "2026-08-20T17:05:26.316954+00:00",
     "puzzle_id": "random_lichess_500_0CZbg_1787245526316",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "attempted_users": {
+      "362606514764251137": {
+        "name": "Sharkmeister",
+        "move": "qxh2",
+        "correct": true,
+        "timestamp": "2026-08-20T17:05:37.203922+00:00"
+      }
+    },
+    "first_move_user_id": "362606514764251137",
+    "first_move_user_name": "Sharkmeister",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
