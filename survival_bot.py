@@ -1849,13 +1849,6 @@ class SurvivalBot(
             run["last_activity"],
         )
 
-        await requester.channel.send(
-            f"👑 **{display_name}** has been created.\n"
-            f"**Captain:** {requester.display_name}\n"
-            f"**Mode:** CO-OP\n"
-            f"Everyone can help!"
-        )
-
         await self.post_next_puzzle(
             requester.channel,
             team_key,
@@ -2201,27 +2194,12 @@ class SurvivalBot(
         self,
         run,
     ):
-        captain_id = run.get(
-            "captain_id"
-        )
-
-        if captain_id:
-            return str(
-                captain_id
+        return str(
+            run.get(
+                "captain_id",
+                run.get("started_by_id", ""),
             )
-
-        # Backwards compatibility for old runs:
-        # original starter becomes captain.
-        starter = run.get(
-            "started_by_id"
         )
-
-        if starter:
-            return str(
-                starter
-            )
-
-        return None
 
     def is_run_captain(
         self,
@@ -2231,11 +2209,9 @@ class SurvivalBot(
         captain_id = self.get_run_captain_id(
             run
         )
-
         return (
-            captain_id is not None
-            and str(user.id)
-            == captain_id
+            captain_id
+            and str(user.id) == captain_id
         )
 
     async def set_run_mode(
@@ -2254,29 +2230,17 @@ class SurvivalBot(
             )
             return
 
-        run = team.get(
-            "current"
-        )
+        run = team.get("current")
 
-        if not run:
+        if not run or run.get("status") != "active":
             await message.channel.send(
-                f"❌ **{team.get('name', team_key)}** has no active run."
+                f"❌ **{team.get('name', team_key)}** does not have an active run."
             )
             return
 
-        # Dead/finished runs can never be modified.
         if run_is_dead(run):
             await message.channel.send(
-                f"💀 **{team.get('name', team_key)}** is a finished run. "
-                "Solo/Co-op cannot be changed."
-            )
-            return
-
-        if run.get(
-            "status"
-        ) != "active":
-            await message.channel.send(
-                f"⏸️ **{team.get('name', team_key)}** is not currently active."
+                f"💀 **{team.get('name', team_key)}** is a dead run."
             )
             return
 
@@ -2285,19 +2249,13 @@ class SurvivalBot(
             run,
         ):
             await message.channel.send(
-                f"❌ Only the captain "
-                f"(**{run.get('captain_name', 'captain')}**) "
-                "can change this run's mode."
+                f"❌ Only captain **{run.get('captain_name', 'the captain')}** "
+                "can change the run mode."
             )
             return
 
-        run[
-            "mode"
-        ] = mode
-
-        run[
-            "last_activity"
-        ] = epoch_now()
+        run["mode"] = mode
+        run["last_activity"] = epoch_now()
 
         save_state(
             self.state,
@@ -2306,13 +2264,13 @@ class SurvivalBot(
 
         if mode == "solo":
             await message.channel.send(
-                f"🔒 **{team.get('name', team_key)} is now SOLO.**\n"
+                f"🔒 **{team.get('name', team_key)} is now SOLO.** "
                 f"Only captain **{run.get('captain_name', message.author.display_name)}** "
-                "can answer this run."
+                "can answer."
             )
         else:
             await message.channel.send(
-                f"🤝 **{team.get('name', team_key)} is now CO-OP.**\n"
+                f"🤝 **{team.get('name', team_key)} is now CO-OP.** "
                 "Everyone can answer again."
             )
 
@@ -2350,21 +2308,16 @@ class SurvivalBot(
                 return
 
             if (
-                run.get("mode", "coop")
-                == "solo"
+                run.get("mode", "coop") == "solo"
                 and not self.is_run_captain(
                     message.author,
                     run,
                 )
             ):
-                captain_name = run.get(
-                    "captain_name",
-                    "the captain",
-                )
-
                 await message.channel.send(
                     f"🔒 **Solo mode is active.** "
-                    f"Only **{captain_name}** can answer this run."
+                    f"Only captain **{run.get('captain_name', 'the captain')}** "
+                    "can answer."
                 )
                 return
 
@@ -2914,38 +2867,6 @@ class SurvivalBot(
 
         lower = content.casefold()
 
-        if lower.startswith("!solo "):
-            team_name = content[len("!solo "):].strip()
-
-            if not team_name:
-                await message.channel.send(
-                    "❌ Usage: `!solo <team name>`"
-                )
-                return
-
-            await self.set_run_mode(
-                message,
-                normalize_team_name(team_name),
-                "solo",
-            )
-            return
-
-        if lower.startswith("!coop "):
-            team_name = content[len("!coop "):].strip()
-
-            if not team_name:
-                await message.channel.send(
-                    "❌ Usage: `!coop <team name>`"
-                )
-                return
-
-            await self.set_run_mode(
-                message,
-                normalize_team_name(team_name),
-                "coop",
-            )
-            return
-
         if await self.handle_admin_command(
             message,
             lower,
@@ -3344,8 +3265,6 @@ class SurvivalBot(
         return (
             f"👥 **{team.get('name', team_key)} — Run**\n"
             f"**Status:** {status}\n"
-            f"**Mode:** {str(run.get('mode', 'coop')).upper()}\n"
-            f"**Captain:** {run.get('captain_name', 'Unknown')}\n"
             f"**Puzzle:** #{run.get('puzzle_number', 0)}\n"
             f"**Best difficulty:** {run.get('best_difficulty', 0)}\n"
             f"**Strikes:** {run.get('strikes', 0)}/3\n\n"
