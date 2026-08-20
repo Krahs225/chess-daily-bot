@@ -619,6 +619,173 @@ def _current_snapshot():
         )
 
 
+def admin_set_points(
+    display_name,
+    target_points,
+    transaction_id,
+    source="admin-edit",
+):
+    """
+    Set a user's absolute shared-leaderboard score.
+
+    This does NOT rewrite history. It records one immutable adjustment
+    event equal to (target - current). Only the Discord bot should expose
+    this function to the authorized administrator.
+    """
+    target_points = float(
+        target_points
+    )
+
+    if target_points < 0:
+        raise ValueError(
+            "Leaderboard points cannot be negative."
+        )
+
+    if not transaction_id:
+        raise ValueError(
+            "A unique transaction_id is required."
+        )
+
+    wanted = str(
+        display_name
+    ).casefold().strip()
+
+    with _LOCK:
+        if not _fetch():
+            raise RuntimeError(
+                "Could not read the shared leaderboard from GitHub."
+            )
+
+        events = _origin_events()
+        legacy = _origin_legacy_scores()
+        snapshot = _snapshot(
+            events,
+            legacy,
+        )
+
+        matches = []
+
+        for uid, entry in snapshot.items():
+            name = str(
+                entry.get(
+                    "name",
+                    "Unknown",
+                )
+            ).casefold().strip()
+
+            if name == wanted:
+                matches.append(
+                    (
+                        str(uid),
+                        entry,
+                    )
+                )
+
+        if not matches:
+            raise ValueError(
+                f"No shared-leaderboard player named "
+                f"'{display_name}' was found."
+            )
+
+        if len(matches) > 1:
+            raise ValueError(
+                f"More than one shared-leaderboard player matches "
+                f"'{display_name}'. Use the exact display name."
+            )
+
+        uid, entry = matches[0]
+
+        current = float(
+            entry.get(
+                "points",
+                0,
+            )
+        )
+
+        delta = round(
+            target_points - current,
+            3,
+        )
+
+        if delta == 0:
+            return target_points
+
+        path = _event_filename(
+            transaction_id
+        )
+
+        # Idempotency: if the exact admin transaction was already recorded,
+        # return the current logical score instead of changing it twice.
+        event_exists = False
+
+        for event in events.values():
+            if str(
+                event.get(
+                    "transaction_id",
+                    "",
+                )
+            ) == str(
+                transaction_id
+            ):
+                event_exists = True
+                break
+
+        if event_exists:
+            snapshot = _snapshot(
+                events,
+                legacy,
+            )
+
+            return float(
+                snapshot.get(
+                    uid,
+                    {},
+                ).get(
+                    "points",
+                    0,
+                )
+            )
+
+        baseline_paths = []
+
+        if not events:
+            if legacy:
+                baseline_paths = _ensure_legacy_baselines(
+                    events,
+                    legacy,
+                )
+
+        payload = _event_payload(
+            transaction_id,
+            uid,
+            entry.get(
+                "name",
+                display_name,
+            ),
+            delta,
+            source,
+        )
+
+        _write_event(
+            path,
+            payload,
+        )
+
+        commit_paths = baseline_paths + [
+            path
+        ]
+
+        if _commit_push(
+            commit_paths
+        ):
+            return target_points
+
+    raise RuntimeError(
+        "Could not safely set the shared leaderboard score."
+    )
+
+
+
 def get_score(
     user_id,
 ):
