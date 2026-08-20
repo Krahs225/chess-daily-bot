@@ -2628,7 +2628,7 @@ async def award_point(
 
 
 def format_points(points):
-    value = float(points)
+    value = max(0.0, float(points))
     return str(int(value)) if value.is_integer() else f"{value:.1f}"
 
 
@@ -3756,7 +3756,7 @@ async def handle_random_answer(
             message.author.id
         )
 
-        ranking = build_personal_ranking(
+        ranking = get_personal_ranking(
             message.author.id
         )
 
@@ -4028,7 +4028,7 @@ async def handle_answer(
         message.author.id
     )
 
-    personal_ranking = build_personal_ranking(
+    personal_ranking = get_personal_ranking(
         message.author.id
     )
 
