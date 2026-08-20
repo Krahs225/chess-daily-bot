@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 51,
-      "best_difficulty": 2016,
-      "best_completed_at": "2026-08-20T17:46:29.316046+00:00",
+      "best_puzzle": 52,
+      "best_difficulty": 2185,
+      "best_completed_at": "2026-08-20T17:49:56.888381+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -66,7 +66,8 @@
           "KxObB",
           "AX6N8",
           "rEksh",
-          "WVqx2"
+          "WVqx2",
+          "roCII"
         ],
         "members": {
           "601406103712170014": {
@@ -80,7 +81,40 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "roCII",
+          "rating": 2170,
+          "themes": "bishopEndgame crushing defensiveMove endgame quietMove short zugzwang",
+          "url": "https://lichess.org/training/roCII",
+          "start_fen": "8/8/2p5/4kpK1/3p4/3B4/8/8 b - - 4 42",
+          "current_fen": "8/8/2p5/4kpK1/3p4/3B4/8/8 b - - 4 42",
+          "solution": [
+            {
+              "uci": "c6c5",
+              "san": "c5",
+              "color": "black"
+            },
+            {
+              "uci": "d3b5",
+              "san": "Bb5",
+              "color": "white"
+            },
+            {
+              "uci": "e5e4",
+              "san": "Ke4",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
