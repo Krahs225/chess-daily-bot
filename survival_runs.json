@@ -162,7 +162,7 @@
         "started_by_id": "1540006473709391903",
         "status": "active",
         "started_at": "2026-08-20T14:35:58.668682+00:00",
-        "last_activity": 1787236809.6246526,
+        "last_activity": 1787236816.0525496,
         "paused_reason": null,
         "puzzle_number": 4,
         "strikes": 0,
@@ -176,7 +176,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 9,
+            "correct": 10,
             "wrong": 0
           }
         },
@@ -186,7 +186,7 @@
           "themes": "endgame long mate mateIn3 pillsburysMate sacrifice",
           "url": "https://lichess.org/training/FVGs7",
           "start_fen": "1b2Q3/6pk/p3Rr1p/8/3P3q/1PP4P/P4PP1/4R1K1 b - - 0 39",
-          "current_fen": "1b2Q3/6pk/p3Rr1p/8/3P4/1PP4P/P5P1/5R1K b - - 0 41",
+          "current_fen": "1b2Q3/6pk/p3R2p/8/3P4/1PP4P/P5P1/5r1K w - - 0 42",
           "solution": [
             {
               "uci": "h4f2",
@@ -215,13 +215,13 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 4,
+          "next_solution_index": 5,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "Qf1+",
+          "last_move_san": "Rxf1#",
           "accepted_moves": [
             {
               "san": "Qxf2+",
@@ -234,13 +234,19 @@
               "uci": "f2f1",
               "accepted_at": 1787236809.6245286,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Rxf1#",
+              "uci": "f6f1",
+              "accepted_at": 1787236816.0524158,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "f2f1",
-          "last_accepted_move_san": "Qf1+",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787236809.6245277,
-          "position_before_last_move": "1b2Q3/6pk/p3Rr1p/8/3P4/1PP4P/P4qP1/4R2K b - - 1 40"
+          "last_accepted_move_uci": "f6f1",
+          "last_accepted_move_san": "Rxf1#",
+          "last_accepted_move_index": 4,
+          "last_accepted_at": 1787236816.052415,
+          "position_before_last_move": "1b2Q3/6pk/p3Rr1p/8/3P4/1PP4P/P5P1/5R1K b - - 0 41"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
