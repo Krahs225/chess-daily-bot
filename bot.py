@@ -18,6 +18,165 @@ from datetime import datetime, timezone
 
 from puzzle_mode_lock import is_survival_active, active_team
 
+# Direct remote Survival-state check used by Daily/Random guards.
+# This is intentionally independent of puzzle_mode_lock.py so an old/stale
+# lock file cannot allow the Daily bot to consume a Survival move.
+_survival_check_cache = {
+    "time": 0.0,
+    "active": False,
+    "team": None,
+}
+
+
+def remote_survival_status():
+    now = time.time()
+
+    # Tiny cache prevents doing git work more than once per second.
+    if now - _survival_check_cache["time"] < 1.0:
+        return (
+            _survival_check_cache["active"],
+            _survival_check_cache["team"],
+        )
+
+    try:
+        branch = os.getenv(
+            "GITHUB_REF_NAME",
+            "main",
+        )
+
+        subprocess.run(
+            [
+                "git",
+                "fetch",
+                "origin",
+                branch,
+            ],
+            capture_output=True,
+            text=True,
+            timeout=8,
+        )
+
+        result = subprocess.run(
+            [
+                "git",
+                "show",
+                f"origin/{branch}:survival_runs.json",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=8,
+        )
+
+        if result.returncode != 0:
+            raise RuntimeError(
+                "survival_runs.json not available remotely"
+            )
+
+        data = json.loads(
+            result.stdout
+        )
+
+        if not isinstance(
+            data,
+            dict,
+        ):
+            raise RuntimeError(
+                "invalid survival_runs.json"
+            )
+
+        teams = data.get(
+            "teams",
+            {},
+        )
+
+        active_team_name = None
+
+        if isinstance(
+            teams,
+            dict,
+        ):
+            for team_data in teams.values():
+
+                if not isinstance(
+                    team_data,
+                    dict,
+                ):
+                    continue
+
+                run = team_data.get(
+                    "current"
+                )
+
+                if not isinstance(
+                    run,
+                    dict,
+                ):
+                    continue
+
+                if run.get(
+                    "status"
+                ) == "active":
+
+                    active_team_name = (
+                        team_data.get(
+                            "name",
+                            "Survival",
+                        )
+                    )
+
+                    break
+
+        active = (
+            active_team_name
+            is not None
+        )
+
+        _survival_check_cache[
+            "time"
+        ] = now
+
+        _survival_check_cache[
+            "active"
+        ] = active
+
+        _survival_check_cache[
+            "team"
+        ] = active_team_name
+
+        return (
+            active,
+            active_team_name,
+        )
+
+    except Exception as error:
+        # Fail CLOSED for chess-puzzle handling:
+        # if we cannot verify that Survival is inactive, do not let
+        # Daily/Random consume a chess move.
+        print(
+            f"Could not verify Survival state; blocking Daily/Random "
+            f"chess handling: {error}",
+            flush=True,
+        )
+
+        _survival_check_cache[
+            "time"
+        ] = now
+
+        _survival_check_cache[
+            "active"
+        ] = True
+
+        _survival_check_cache[
+            "team"
+        ] = "Survival"
+
+        return (
+            True,
+            "Survival",
+        )
+
+
+
 
 # =========================================================
 # SETTINGS
@@ -40,6 +199,116 @@ ANSWER_WINDOW = 12 * 60 * 60
 RANDOM_ANSWER_WINDOW = 12 * 60 * 60
 
 RUN_TIME = 5 * 60 * 60 + 50 * 60
+
+
+def survival_info_text():
+    return """🔥 **SURVIVAL MODE — INFO**
+
+**Start a run**
+`!survival`
+→ The bot asks for a team name.
+
+The person who starts the run is the **captain**.
+
+**Team / run system**
+- Every new run gets its own saved run record.
+- The same team name can have multiple runs.
+- A run can be active, paused, or dead.
+- `!teamname` (for example `!thice`) lets you choose which saved run of that team you want to view.
+- Team details show the run's puzzle number, status, difficulty, hearts, captain and contributors.
+
+**Co-op / Solo**
+`!solo <team name>`
+→ Captain-only. Only the captain may answer an active run.
+
+`!coop <team name>`
+→ Captain-only. Everyone may answer again.
+
+Solo/Co-op can only be changed on an **active** run. Dead runs cannot be changed.
+
+**Stopping / resuming**
+`!stopsurvival`
+→ Saves and pauses the active run.
+
+After inactivity, Survival automatically pauses after **10 minutes without activity**.
+
+`!survival` + the same team name
+→ If that team has saved runs, choose which run to continue or start a new one.
+
+A run that died at **3/3 strikes cannot be continued** unless Sharkmeister gives it a heart first.
+
+**Hearts / strikes**
+Everyone starts with **❤️❤️❤️**.
+
+A wrong answer costs **1 strike**.
+
+At **3/3 strikes**, the run is **DEAD** and cannot continue normally.
+
+**Puzzle difficulty**
+- #1–10: 1200–1400
+- #11–20: 1400–1550
+- #21–30: 1550–1700
+- #31–40: 1700–1850
+- #41–50: 1850–2050
+- #51–60: 2050–2250
+- #61–70: 2250–2400
+- #71–80: 2400–2600
+- **#81+: 2600+**
+
+**How answering works**
+Everyone may answer in co-op mode.
+
+Send one chess move at a time, such as:
+`Qh6`
+`Qh6+`
+`f1=Q`
+`O-O`
+`!Qh6`
+
+The bot automatically plays the opponent's replies.
+
+If two people submit the same correct move at almost the same time, the duplicate is ignored and **does not cost a heart**.
+
+Some puzzles can have multiple correct mating moves; legal alternative checkmates are accepted.
+
+**Team leaderboard**
+`!survivallb`
+`!survivalboard`
+`!slb`
+
+These show **all saved Survival runs**, so the same team name can appear more than once.
+
+**Team run details**
+Use:
+`!<team name>`
+
+Example:
+`!thice`
+
+If there are multiple Thice runs, the bot lets you choose which run you want to view.
+
+You can then see:
+- puzzle number
+- status
+- mode (SOLO/CO-OP)
+- captain
+- hearts / strikes
+- best difficulty
+- contributors and how many correct/wrong answers they gave
+
+**Sharkmeister-only admin commands**
+`!delete <team name>`
+→ Permanently removes that team's saved runs.
+
+`!addheart <team name>`
+→ Adds 1 heart to that team's current/dead run so it can be resumed.
+
+Only **Sharkmeister** can use these two commands.
+
+**Shared points**
+Survival itself does **not** award points to the shared leaderboard.
+Survival is a separate team competition.
+"""
 
 
 # =========================================================
@@ -1231,8 +1500,10 @@ async def post_daily_puzzle(
 async def post_random_puzzle(
     channel
 ):
-    if is_survival_active():
-        team = active_team() or "another team"
+    survival_active, survival_team = remote_survival_status()
+
+    if survival_active:
+        team = survival_team or active_team() or "another team"
         await channel.send(
             f"⚠️ **Survival Mode is active for {team}.** "
             "Random Puzzle is unavailable until Survival is paused."
@@ -2119,23 +2390,62 @@ def help_message():
 `!random <move>` — Make the next move in the latest Random Puzzle.
 
 **Quick Answer**
-`<moves>` or `!<moves>` — Answer whichever puzzle was posted most recently.
+`<moves>` or `!<moves>` — Answer the latest active Daily/Random puzzle.
+Normal chat is ignored unless it looks like a chess move.
 
-Only your own moves are required. The opponent's replies are automatically played between your moves.
+Only your own moves are required. Opponent replies are played automatically.
 
-**Points**
-• Points are awarded **only when the whole puzzle is solved**
-• First-move player: **+1 point**
+**Daily/Random points**
+• Daily Puzzle has its **own leaderboard**.
+• Random Puzzle uses the **shared leaderboard**.
+• First Random solver: **+1 point**
 • Helper: **+0.5 point**
-• First-move player can never earn more than **+1**
-• A helper can never earn more than **+0.5** per puzzle
+• Duplicate rewards are prevented.
 
-**Other**
-`!help` or `!info` — Show this message.
-`!leaderboard`, `!lb` or `!l` — Show the full leaderboard.
+**Survival Mode**
+`!survival` — Start or resume a team Survival run.
+The person who starts the run is the **captain**.
 
-🏆 The leaderboard is posted automatically once per day.
+`!slb` / `!survivallb` / `!survivalboard` — show all saved Survival runs.
+`!<team>` such as `!thice` — choose/view a saved run for that team.
+
+`!stopsurvival` — pause and save the active run.
+`!solo <team>` — captain only; only the captain may answer.
+`!coop <team>` — captain only; everyone may answer again.
+
+Survival starts with **3 hearts**.
+A wrong answer costs **1 strike**.
+At **3/3 strikes**, that run is **DEAD**.
+After **10 minutes without activity**, an active run is automatically paused.
+
+Difficulty:
+• #1–10: 1200–1400
+• #11–20: 1400–1550
+• #21–30: 1550–1700
+• #31–40: 1700–1850
+• #41–50: 1850–2050
+• #51–60: 2050–2250
+• #61–70: 2250–2400
+• #71–80: 2400–2600
+• **#81+: 2600+**
+
+Everyone may answer in co-op mode.
+Duplicate simultaneous correct answers do **not** cost a heart.
+Some puzzles can have multiple correct mating moves.
+Promotion moves such as `f1=Q`, `f1=Q+` and `f1=Q#` are accepted.
+
+The Survival leaderboard tracks **runs**, so the same team name can appear multiple times.
+Survival does **not** award shared leaderboard points.
+
+**Sharkmeister-only**
+`!delete <team>` — delete a team and its saved runs.
+`!addheart <team>` — give a heart back to a saved run.
+
+**Commands**
+`!info` / `!help` — show this combined Daily + Survival info.
+`!leaderboard` / `!lb` / `!l` — Daily/shared leaderboard depending on the bot mode.
 """
+
 
 
 # =========================================================
@@ -2276,7 +2586,16 @@ async def check_expired_puzzles(
 async def check_for_new_puzzle(
     channel
 ):
-    if is_survival_active():
+    survival_active, survival_team = remote_survival_status()
+
+    if survival_active:
+        print(
+            f"Survival Mode is active for {survival_team or 'Survival'}; "
+            "Daily Puzzle posting is paused.",
+            flush=True,
+        )
+        return
+
         print(
             "Survival Mode is active; Daily Puzzle posting is paused.",
             flush=True,
@@ -3341,7 +3660,9 @@ async def handle_answer(
     answer_window,
     move_text
 ):
-    if is_survival_active():
+    survival_active, _survival_team = remote_survival_status()
+
+    if survival_active:
         return
 
     if not puzzle:
@@ -3540,7 +3861,9 @@ async def on_message(
 
         # Survival owns all chess-puzzle messages while it is active.
         # Do this AFTER !rp so !rp can show the user why it is blocked.
-        if is_survival_active():
+        survival_active, survival_team = remote_survival_status()
+
+        if survival_active:
             return
 
         # =====================================================
