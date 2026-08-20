@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "1500 • 013Jo",
     "fen": "rnb2rk1/ppp3pp/3bpq2/4N3/2BPQB2/8/PPP2PPP/R3K2R b KQ - 0 12",
-    "current_fen": "rnb2rk1/ppp3pp/3bpq2/4N3/2BPQB2/8/PPP2PPP/R3K2R b KQ - 0 12",
+    "current_fen": "rnb2rk1/ppp3pp/3bp3/4N3/2BP1Q2/8/PPP2PPP/R3K2R b KQ - 0 13",
     "all_moves": [
       {
         "uci": "f6f4",
@@ -38,13 +38,20 @@
     "url": "https://lichess.org/training/013Jo",
     "posted_at": "2026-08-20T16:42:24.148070+00:00",
     "puzzle_id": "random_lichess_1500_013Jo_1787244144148",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxf4",
+        "correct": true,
+        "timestamp": "2026-08-20T16:42:35.718915+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
