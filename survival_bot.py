@@ -59,7 +59,6 @@ BATCH_SIZE = 25
 
 INACTIVITY_SECONDS = 10 * 60
 PENDING_TEAM_SECONDS = 60
-DUPLICATE_MOVE_WINDOW_SECONDS = 3.0
 
 THREE_STRIKES = 3
 SHARK_ADMIN_NAME = "sharkmeister"
@@ -2076,14 +2075,11 @@ class SurvivalBot(
                 return
 
             # IMPORTANT:
-            # If two people submit the same correct move almost
-            # simultaneously, the second message arrives after the first
-            # has already advanced the shared position. That second message
-            # must be treated as the same move, NOT as a wrong move on the
-            # new position.
-            #
-            # We therefore deduplicate the immediately previous accepted
-            # move by normalized SAN + a short race window.
+            # Two people can submit the same correct move almost at once.
+            # We first test the move against the CURRENT position. Only if
+            # it is wrong in the current position do we check whether it is
+            # the immediately previous accepted move. That makes duplicates
+            # harmless without blocking a genuinely repeated move later.
             last_accepted_uci = puzzle.get(
                 "last_accepted_move_uci"
             )
@@ -2094,36 +2090,13 @@ class SurvivalBot(
                 )
             ).casefold().rstrip("+#")
 
-            try:
-                last_accepted_at = float(
-                    puzzle.get(
-                        "last_accepted_at",
-                        0,
-                    )
-                )
-            except Exception:
-                last_accepted_at = 0.0
+            last_accepted_index = puzzle.get(
+                "last_accepted_move_index"
+            )
 
             normalized_submitted = (
                 submitted.casefold().rstrip("+#")
             )
-
-            if (
-                last_accepted_uci
-                and last_accepted_san
-                and normalized_submitted
-                == last_accepted_san
-                and (
-                    epoch_now()
-                    - last_accepted_at
-                    <= DUPLICATE_MOVE_WINDOW_SECONDS
-                )
-            ):
-                await message.channel.send(
-                    f"✅ **That move was already accepted, "
-                    f"{user.display_name}.**"
-                )
-                return
 
             board = chess.Board(
                 puzzle["current_fen"]
@@ -2138,6 +2111,28 @@ class SurvivalBot(
                 submitted,
                 expected,
             )
+
+            # If it is not a valid move for the NEW position, but it is
+            # exactly the move that just advanced the position, it is a
+            # simultaneous duplicate from another player. Never count it
+            # as a strike.
+            if (
+                not correct
+                and last_accepted_uci
+                and last_accepted_san
+                and last_accepted_index is not None
+                and int(
+                    last_accepted_index
+                )
+                == next_index - 1
+                and normalized_submitted
+                == last_accepted_san
+            ):
+                await message.channel.send(
+                    f"✅ **That move was already accepted, "
+                    f"{user.display_name}.**"
+                )
+                return
 
             if not correct:
 
