@@ -162,10 +162,10 @@
         "started_by_id": "1539971538290216980",
         "status": "active",
         "started_at": "2026-08-20T12:17:06.074723+00:00",
-        "last_activity": 1787236248.8020234,
+        "last_activity": 1787236476.2674663,
         "paused_reason": "three strikes",
         "puzzle_number": 18,
-        "strikes": 3,
+        "strikes": 4,
         "best_difficulty": 1511,
         "used_puzzle_ids": [
           "Nzp5Z",
@@ -191,7 +191,7 @@
           "442597396195704832": {
             "name": "Thice",
             "correct": 39,
-            "wrong": 6
+            "wrong": 7
           }
         },
         "puzzle": {
@@ -224,7 +224,9 @@
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
-          "wrong_users": [],
+          "wrong_users": [
+            "442597396195704832"
+          ],
           "last_move_san": null,
           "accepted_moves": []
         },
