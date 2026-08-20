@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 28,
+      "best_puzzle": 29,
       "best_difficulty": 1687,
-      "best_completed_at": "2026-08-20T13:04:24.334327+00:00",
+      "best_completed_at": "2026-08-20T13:05:34.420505+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -43,7 +43,8 @@
           "jw7dm",
           "mCQnl",
           "2dgyY",
-          "v0BTg"
+          "v0BTg",
+          "VF7YH"
         ],
         "members": {
           "601406103712170014": {
@@ -57,7 +58,49 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "VF7YH",
+          "rating": 1648,
+          "themes": "advancedPawn crushing defensiveMove endgame long rookEndgame",
+          "url": "https://lichess.org/training/VF7YH",
+          "start_fen": "1r6/2R2pp1/6k1/r7/4PPP1/1p4K1/8/7R b - - 2 38",
+          "current_fen": "1r6/2R2pp1/6k1/r7/4PPP1/1p4K1/8/7R b - - 2 38",
+          "solution": [
+            {
+              "uci": "b3b2",
+              "san": "b2",
+              "color": "black"
+            },
+            {
+              "uci": "c7c6",
+              "san": "Rc6+",
+              "color": "white"
+            },
+            {
+              "uci": "f7f6",
+              "san": "f6",
+              "color": "black"
+            },
+            {
+              "uci": "f4f5",
+              "san": "f5+",
+              "color": "white"
+            },
+            {
+              "uci": "g6f7",
+              "san": "Kf7",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
