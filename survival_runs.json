@@ -68,10 +68,54 @@
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 0,
-        "best_difficulty": 0,
-        "used_puzzle_ids": [],
+        "best_difficulty": 1329,
+        "used_puzzle_ids": [
+          "oze2W"
+        ],
         "members": {},
-        "puzzle": null,
+        "puzzle": {
+          "id": "oze2W",
+          "rating": 1329,
+          "themes": "advantage long middlegame",
+          "url": "https://lichess.org/training/oze2W",
+          "start_fen": "r2qk2r/p2bbppp/8/1B1p4/5B2/6P1/PP2QP1P/R3K2R b KQkq - 5 14",
+          "current_fen": "r2qk2r/p2bbppp/8/1B1p4/5B2/6P1/PP2QP1P/R3K2R b KQkq - 5 14",
+          "solution": [
+            {
+              "uci": "d8a5",
+              "san": "Qa5+",
+              "color": "black"
+            },
+            {
+              "uci": "f4d2",
+              "san": "Bd2",
+              "color": "white"
+            },
+            {
+              "uci": "a5b5",
+              "san": "Qxb5",
+              "color": "black"
+            },
+            {
+              "uci": "e2b5",
+              "san": "Qxb5",
+              "color": "white"
+            },
+            {
+              "uci": "d7b5",
+              "san": "Bxb5",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
