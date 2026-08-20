@@ -1923,6 +1923,9 @@ class SurvivalBot(
         Score only after the whole Lichess puzzle is solved.
         First solver +1.
         Each unique helper who was correct later +0.5.
+
+        Both rewards use unique transaction IDs in the same shared
+        transaction ledger as Guess Chatter / Guess Chess Chatter.
         """
         first_id = run.get(
             "first_solver_id"
@@ -1947,7 +1950,7 @@ class SurvivalBot(
                 first_name,
                 1.0,
                 tx_id,
-                "survival-first",
+                source="survival-first",
             )
 
         for helper_id, helper_name in (
@@ -1974,7 +1977,7 @@ class SurvivalBot(
                 helper_name,
                 0.5,
                 tx_id,
-                "survival-helper",
+                source="survival-helper",
             )
 
         run[
