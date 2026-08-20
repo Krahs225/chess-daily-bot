@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-03-10",
     "title": "Pogosyants, 1961",
     "fen": "8/2kP4/8/1P3K2/8/8/8/8 w KQkq - 0 1",
-    "current_fen": "8/kP6/2K5/8/8/8/8/8 w - - 1 7",
+    "current_fen": "8/kPK5/8/8/8/8/8/8 b - - 2 7",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/2kP4/8/1P3K2/8/8/8/8 w KQkq - 0 1\"]\r\n\r\n1. Ke6 Kd8 2. Kd5 Kxd7 3. b6 Kd8 4. Kd6 Kc8 5. Kc6 Kb8 6. b7 Ka7 7. Kc7\r\n*",
     "all_moves": [
       {
@@ -117,16 +117,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787260659926",
-    "next_solution_index": 12,
-    "next_player_index": 6,
-    "solved": false,
+    "next_solution_index": 13,
+    "next_player_index": 7,
+    "solved": true,
     "message_id": 1540107578070270042,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "b7",
+        "move": "kc7",
         "correct": true,
-        "timestamp": "2026-08-20T21:18:08.953561+00:00"
+        "timestamp": "2026-08-20T21:18:10.965146+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -137,8 +137,10 @@
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "442597396195704832"
+    ],
     "helper_candidate_users": [
       "442597396195704832"
     ]
