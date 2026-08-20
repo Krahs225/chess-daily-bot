@@ -164,7 +164,7 @@
         "started_at": "2026-08-20T14:35:58.668682+00:00",
         "last_activity": 1787236655.2735217,
         "paused_reason": null,
-        "puzzle_number": 1,
+        "puzzle_number": 2,
         "strikes": 0,
         "best_difficulty": 1345,
         "used_puzzle_ids": [
@@ -177,60 +177,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "etXTY",
-          "rating": 1345,
-          "themes": "advantage endgame fork short",
-          "url": "https://lichess.org/training/etXTY",
-          "start_fen": "5rk1/p5pp/2R5/3Pp3/2pq1PB1/P5PP/2P5/2Q4K b - - 0 29",
-          "current_fen": "5rk1/p5pp/2q5/4p3/2p2PB1/P5PP/2P5/2Q3K1 w - - 0 31",
-          "solution": [
-            {
-              "uci": "d4d5",
-              "san": "Qxd5+",
-              "color": "black"
-            },
-            {
-              "uci": "h1g1",
-              "san": "Kg1",
-              "color": "white"
-            },
-            {
-              "uci": "d5c6",
-              "san": "Qxc6",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Qxc6",
-          "accepted_moves": [
-            {
-              "san": "Qxd5+",
-              "uci": "d4d5",
-              "accepted_at": 1787236647.0989015,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Qxc6",
-              "uci": "d5c6",
-              "accepted_at": 1787236655.273384,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "d5c6",
-          "last_accepted_move_san": "Qxc6",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787236655.2733827,
-          "position_before_last_move": "5rk1/p5pp/2R5/3qp3/2p2PB1/P5PP/2P5/2Q3K1 b - - 1 30"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
