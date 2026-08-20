@@ -12,7 +12,7 @@
         "started_at": "2026-08-20T12:22:23.121644+00:00",
         "last_activity": 1787247775.1529202,
         "paused_reason": "manually stopped",
-        "puzzle_number": 48,
+        "puzzle_number": 49,
         "strikes": 1,
         "best_difficulty": 2016,
         "used_puzzle_ids": [
@@ -77,108 +77,9 @@
             "wrong": 5
           }
         },
-        "puzzle": {
-          "id": "KxObB",
-          "rating": 1956,
-          "themes": "attraction crushing deflection endgame sacrifice veryLong",
-          "url": "https://lichess.org/training/KxObB",
-          "start_fen": "7k/5rp1/p2p3p/2qNp3/PQP4P/6P1/4bPB1/6K1 w - - 0 33",
-          "current_fen": "8/5Q2/p2p3p/2qNpk2/P1P4P/6P1/4bP2/6K1 b - - 0 37",
-          "solution": [
-            {
-              "uci": "b4b8",
-              "san": "Qb8+",
-              "color": "white"
-            },
-            {
-              "uci": "h8h7",
-              "san": "Kh7",
-              "color": "black"
-            },
-            {
-              "uci": "g2e4",
-              "san": "Be4+",
-              "color": "white"
-            },
-            {
-              "uci": "g7g6",
-              "san": "g6",
-              "color": "black"
-            },
-            {
-              "uci": "e4g6",
-              "san": "Bxg6+",
-              "color": "white"
-            },
-            {
-              "uci": "h7g6",
-              "san": "Kxg6",
-              "color": "black"
-            },
-            {
-              "uci": "b8g8",
-              "san": "Qg8+",
-              "color": "white"
-            },
-            {
-              "uci": "g6f5",
-              "san": "Kf5",
-              "color": "black"
-            },
-            {
-              "uci": "g8f7",
-              "san": "Qxf7+",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 9,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Qxf7+",
-          "accepted_moves": [
-            {
-              "san": "Qb8+",
-              "uci": "b4b8",
-              "accepted_at": 1787247649.081693,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Be4+",
-              "uci": "g2e4",
-              "accepted_at": 1787247682.6574233,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Bxg6+",
-              "uci": "e4g6",
-              "accepted_at": 1787247763.8844073,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Qg8+",
-              "uci": "b8g8",
-              "accepted_at": 1787247769.9085803,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Qxf7+",
-              "uci": "g8f7",
-              "accepted_at": 1787247775.1528244,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "g8f7",
-          "last_accepted_move_san": "Qxf7+",
-          "last_accepted_move_index": 8,
-          "last_accepted_at": 1787247775.1528232,
-          "position_before_last_move": "6Q1/5r2/p2p3p/2qNpk2/P1P4P/6P1/4bP2/6K1 w - - 2 37"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
