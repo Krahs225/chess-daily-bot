@@ -1,47 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-09-28",
-    "title": "Checkmate!",
-    "fen": "8/p7/1p2P2p/1P1K3k/P3QP2/q7/8/8 b - - 0 1",
-    "current_fen": "8/p7/1p2P2p/1PqK3k/P3QP2/8/8/8 w - - 1 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/p7/1p2P2p/1P1K3k/P3QP2/q7/8/8 b - - 0 1\"]\r\n\r\n1...Qc5#\r\n*",
+    "url": "https://www.chess.com/daily/2018-10-22",
+    "title": "Gyorgy BAKCSI, Jubilli de Finlande 1966",
+    "fen": "2b4r/6N1/4Rp2/4n1bQ/5k2/3rN2p/5P1K/6BB w k - 0 1",
+    "current_fen": "2b4r/6N1/4Rp2/4n1bQ/5k2/3rN2p/5P1K/6BB w k - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"2b4r/6N1/4Rp2/4n1bQ/5k2/3rN2p/5P1K/6BB w k - 0 1\"]\r\n\r\n1. Kxh3 Bxe6+ 2. Nxe6#\r\n*",
     "all_moves": [
       {
-        "uci": "a3c5",
-        "san": "Qc5#",
+        "uci": "h2h3",
+        "san": "Kxh3",
+        "color": "white"
+      },
+      {
+        "uci": "c8e6",
+        "san": "Bxe6+",
         "color": "black"
+      },
+      {
+        "uci": "g7e6",
+        "san": "Nxe6#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a3c5",
-        "san": "Qc5#",
-        "color": "black"
+        "uci": "h2h3",
+        "san": "Kxh3",
+        "color": "white"
+      },
+      {
+        "uci": "g7e6",
+        "san": "Nxe6#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 1,
-    "posted_at": "2026-08-20T22:42:28.754297+00:00",
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-20T22:42:39.710411+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787265748754",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1540128922044338208,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qc5",
-        "correct": true,
-        "timestamp": "2026-08-20T22:42:34.264707+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787265759710",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
