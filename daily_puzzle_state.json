@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-10-09",
     "title": "Mate in 5",
     "fen": "5r1k/pp4p1/2p1Q1Pq/4R3/P2P3P/2P3K1/6P1/8 w - f6 0 1",
-    "current_fen": "5r1k/pp4p1/2p1Q1Pq/4R3/P2P3P/2P3K1/6P1/8 w - f6 0 1",
+    "current_fen": "5r1k/pp3Qp1/2p3P1/4R3/P2P1q1P/2P3K1/6P1/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r1k/pp4p1/2p1Q1Pq/4R3/P2P3P/2P3K1/6P1/8 w - f6 0 1\"]\r\n\r\n1. Qf7 Qf4+ 2. Qxf4 Kg8 3. Re8 Rxe8 4. Qf7+ Kh8 5. Qxe8#\r\n*",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787265951748",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540129772087152662,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qf7",
+        "correct": true,
+        "timestamp": "2026-08-20T22:46:02.325393+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
