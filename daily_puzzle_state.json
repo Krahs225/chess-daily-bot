@@ -1,47 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-04-06",
-    "title": "King as an Attacking Force",
-    "fen": "5k2/6p1/4N1R1/5p2/2K5/2P3P1/3r1r2/8 b - - 0 1",
-    "current_fen": "8/5kp1/4N1R1/5p2/2K5/2P3P1/3r1r2/8 w - - 1 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5k2/6p1/4N1R1/5p2/2K5/2P3P1/3r1r2/8 b - - 0 1\"]\r\n\r\n1...Kf7\r\n*",
+    "url": "https://www.chess.com/daily/2016-04-29",
+    "title": "Bird's Opening, From's Gambit Analysis",
+    "fen": "rn2k2r/ppp3pp/7P/2bp4/4pP2/2P3qb/PP2B1R1/RNBQ1KN1 w kq - 0 1",
+    "current_fen": "rn2k2r/ppp3pp/7P/2bp4/4pP2/2P3qb/PP2B1R1/RNBQ1KN1 w kq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn2k2r/ppp3pp/7P/2bp4/4pP2/2P3qb/PP2B1R1/RNBQ1KN1 w kq - 0 1\"]\r\n\r\n1. Bb5+ c6 2. Qh5+ g6 3. Qxh3 Qxh3 4. Nxh3\r\n*",
     "all_moves": [
       {
-        "uci": "f8f7",
-        "san": "Kf7",
+        "uci": "e2b5",
+        "san": "Bb5+",
+        "color": "white"
+      },
+      {
+        "uci": "c7c6",
+        "san": "c6",
         "color": "black"
+      },
+      {
+        "uci": "d1h5",
+        "san": "Qh5+",
+        "color": "white"
+      },
+      {
+        "uci": "g7g6",
+        "san": "g6",
+        "color": "black"
+      },
+      {
+        "uci": "h5h3",
+        "san": "Qxh3",
+        "color": "white"
+      },
+      {
+        "uci": "g3h3",
+        "san": "Qxh3",
+        "color": "black"
+      },
+      {
+        "uci": "g1h3",
+        "san": "Nxh3",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f8f7",
-        "san": "Kf7",
-        "color": "black"
+        "uci": "e2b5",
+        "san": "Bb5+",
+        "color": "white"
+      },
+      {
+        "uci": "d1h5",
+        "san": "Qh5+",
+        "color": "white"
+      },
+      {
+        "uci": "h5h3",
+        "san": "Qxh3",
+        "color": "white"
+      },
+      {
+        "uci": "g1h3",
+        "san": "Nxh3",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 1,
-    "posted_at": "2026-08-20T20:00:22.221069+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-20T20:00:57.468627+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787256022221",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1540088124879667210,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "kf7",
-        "correct": true,
-        "timestamp": "2026-08-20T20:00:51.153517+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787256057468",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
