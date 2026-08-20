@@ -164,7 +164,7 @@
         "started_at": "2026-08-20T14:35:58.668682+00:00",
         "last_activity": 1787236936.2517052,
         "paused_reason": null,
-        "puzzle_number": 5,
+        "puzzle_number": 6,
         "strikes": 0,
         "best_difficulty": 1392,
         "used_puzzle_ids": [
@@ -181,76 +181,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "fFOy5",
-          "rating": 1380,
-          "themes": "advancedPawn advantage endgame long pin promotion sacrifice",
-          "url": "https://lichess.org/training/fFOy5",
-          "start_fen": "8/p6p/1p2RP2/2k5/3rn2P/6K1/P7/8 w - - 1 44",
-          "current_fen": "5Q2/p3r2p/1p6/2k5/7P/6K1/P7/8 b - - 0 46",
-          "solution": [
-            {
-              "uci": "e6e4",
-              "san": "Rxe4",
-              "color": "white"
-            },
-            {
-              "uci": "d4e4",
-              "san": "Rxe4",
-              "color": "black"
-            },
-            {
-              "uci": "f6f7",
-              "san": "f7",
-              "color": "white"
-            },
-            {
-              "uci": "e4e7",
-              "san": "Re7",
-              "color": "black"
-            },
-            {
-              "uci": "f7f8q",
-              "san": "f8=Q",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "f8=Q",
-          "accepted_moves": [
-            {
-              "san": "Rxe4",
-              "uci": "e6e4",
-              "accepted_at": 1787236905.5462317,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "f7",
-              "uci": "f6f7",
-              "accepted_at": 1787236909.3217292,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "f8=Q",
-              "uci": "f7f8q",
-              "accepted_at": 1787236936.25162,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "f7f8q",
-          "last_accepted_move_san": "f8=Q",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1787236936.2516186,
-          "position_before_last_move": "8/p3rP1p/1p6/2k5/7P/6K1/P7/8 w - - 1 46"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
