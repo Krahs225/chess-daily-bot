@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787232911.4935563,
+        "last_activity": 1787232975.496213,
         "paused_reason": "manually stopped",
         "puzzle_number": 43,
         "strikes": 0,
@@ -68,7 +68,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 12,
+            "correct": 13,
             "wrong": 4
           }
         },
@@ -78,7 +78,7 @@
           "themes": "advantage attraction fork long middlegame sacrifice",
           "url": "https://lichess.org/training/4V89k",
           "start_fen": "4r2k/p5p1/bp3pQp/3p4/3P1qPP/1P2rPN1/P1RR1K2/8 w - - 15 32",
-          "current_fen": "4r2k/p5p1/bp3pQp/3p4/3P1qPP/1P2rPN1/P1RR1K2/8 w - - 15 32",
+          "current_fen": "4r3/p5k1/bp3p1p/3p4/3P1qPP/1P2rPN1/P1RR1K2/8 w - - 0 33",
           "solution": [
             {
               "uci": "g6g7",
@@ -107,16 +107,21 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null
+          "last_move_san": "Qxg7+",
+          "last_accepted_move_uci": "g6g7",
+          "last_accepted_move_san": "Qxg7+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787232975.4960434,
+          "position_before_last_move": "4r2k/p5p1/bp3pQp/3p4/3P1qPP/1P2rPN1/P1RR1K2/8 w - - 15 32"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
