@@ -12,7 +12,7 @@
         "started_at": "2026-08-20T12:22:23.121644+00:00",
         "last_activity": 1787233561.5896287,
         "paused_reason": "manually stopped",
-        "puzzle_number": 45,
+        "puzzle_number": 46,
         "strikes": 0,
         "best_difficulty": 2016,
         "used_puzzle_ids": [
@@ -74,56 +74,9 @@
             "wrong": 4
           }
         },
-        "puzzle": {
-          "id": "v3Ite",
-          "rating": 1907,
-          "themes": "advantage fork long middlegame",
-          "url": "https://lichess.org/training/v3Ite",
-          "start_fen": "5r2/pp4bk/2q4B/2p1p2Q/2Pn4/6P1/PP3P1R/6KR b - - 0 33",
-          "current_fen": "5r2/pp5k/2q4b/2p1p3/2P5/6P1/PP3P1Q/5K1R w - - 0 36",
-          "solution": [
-            {
-              "uci": "d4f3",
-              "san": "Nf3+",
-              "color": "black"
-            },
-            {
-              "uci": "g1f1",
-              "san": "Kf1",
-              "color": "white"
-            },
-            {
-              "uci": "f3h2",
-              "san": "Nxh2+",
-              "color": "black"
-            },
-            {
-              "uci": "h5h2",
-              "san": "Qxh2",
-              "color": "white"
-            },
-            {
-              "uci": "g7h6",
-              "san": "Bxh6",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Bxh6",
-          "last_accepted_move_uci": "g7h6",
-          "last_accepted_move_san": "Bxh6",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1787233561.58955,
-          "position_before_last_move": "5r2/pp4bk/2q4B/2p1p3/2P5/6P1/PP3P1Q/5K1R b - - 0 35"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
