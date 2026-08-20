@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-08-04",
     "title": "Advancement In The Endgame",
     "fen": "8/8/1kr1nR2/5P2/pK1p2p1/P5P1/8/8 w - - 0 1",
-    "current_fen": "8/8/1kr1nR2/5P2/pK1p2p1/P5P1/8/8 w - - 0 1",
+    "current_fen": "8/8/1kr1PR2/8/pK4p1/P2p2P1/8/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/1kr1nR2/5P2/pK1p2p1/P5P1/8/8 w - - 0 1\"]\r\n\r\n1. fxe6 d3 2. e7 Rxf6 3. e8=Q\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787267311501",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540135476122620006,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "fxe6",
+        "correct": true,
+        "timestamp": "2026-08-20T23:08:44.158573+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
