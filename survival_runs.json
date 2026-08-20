@@ -66,7 +66,7 @@
         "started_at": "2026-08-20T12:28:01.540198+00:00",
         "last_activity": 1787229029.745847,
         "paused_reason": null,
-        "puzzle_number": 3,
+        "puzzle_number": 4,
         "strikes": 0,
         "best_difficulty": 1361,
         "used_puzzle_ids": [
@@ -81,51 +81,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "keexY",
-          "rating": 1361,
-          "themes": "advantage clearance long middlegame pin",
-          "url": "https://lichess.org/training/keexY",
-          "start_fen": "1R1r2k1/3P1pp1/1R1Qnq1p/2r5/p7/P6P/6P1/7K w - - 4 33",
-          "current_fen": "1Q4k1/3P1pp1/4n2p/2r5/p7/P6P/6P1/7K b - - 0 35",
-          "solution": [
-            {
-              "uci": "b8d8",
-              "san": "Rxd8+",
-              "color": "white"
-            },
-            {
-              "uci": "f6d8",
-              "san": "Qxd8",
-              "color": "black"
-            },
-            {
-              "uci": "b6b8",
-              "san": "Rb8",
-              "color": "white"
-            },
-            {
-              "uci": "d8b8",
-              "san": "Qxb8",
-              "color": "black"
-            },
-            {
-              "uci": "d6b8",
-              "san": "Qxb8+",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Qxb8+"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
