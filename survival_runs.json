@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 41,
-      "best_difficulty": 1847,
-      "best_completed_at": "2026-08-20T13:27:31.265042+00:00",
+      "best_puzzle": 42,
+      "best_difficulty": 1973,
+      "best_completed_at": "2026-08-20T13:29:06.785934+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -14,7 +14,7 @@
         "paused_reason": null,
         "puzzle_number": 42,
         "strikes": 1,
-        "best_difficulty": 1973,
+        "best_difficulty": 2016,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
@@ -56,7 +56,8 @@
           "3RLWN",
           "8lW4Y",
           "yFEPz",
-          "haqWD"
+          "haqWD",
+          "TbzyP"
         ],
         "members": {
           "601406103712170014": {
@@ -70,7 +71,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "TbzyP",
+          "rating": 2016,
+          "themes": "advancedPawn advantage endgame master rookEndgame sacrifice short",
+          "url": "https://lichess.org/training/TbzyP",
+          "start_fen": "8/p2k4/1p1P4/8/8/2P3Pp/PP1r1P2/1R2K3 b - - 4 33",
+          "current_fen": "8/p2k4/1p1P4/8/8/2P3Pp/PP1r1P2/1R2K3 b - - 4 33",
+          "solution": [
+            {
+              "uci": "d2b2",
+              "san": "Rxb2",
+              "color": "black"
+            },
+            {
+              "uci": "b1b2",
+              "san": "Rxb2",
+              "color": "white"
+            },
+            {
+              "uci": "h3h2",
+              "san": "h2",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
