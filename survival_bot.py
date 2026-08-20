@@ -59,6 +59,7 @@ BATCH_SIZE = 25
 
 INACTIVITY_SECONDS = 10 * 60
 PENDING_TEAM_SECONDS = 60
+DUPLICATE_MOVE_WINDOW_SECONDS = 3.0
 
 THREE_STRIKES = 3
 SHARK_ADMIN_NAME = "sharkmeister"
@@ -2075,16 +2076,54 @@ class SurvivalBot(
                 return
 
             # IMPORTANT:
-            # If a second user sent the exact same correct move while the
-            # first user's message was already being processed, that move
-            # belongs to the position that just advanced. It is a duplicate
-            # and must NOT become a strike.
+            # If two people submit the same correct move almost
+            # simultaneously, the second message arrives after the first
+            # has already advanced the shared position. That second message
+            # must be treated as the same move, NOT as a wrong move on the
+            # new position.
+            #
+            # We therefore deduplicate the immediately previous accepted
+            # move by normalized SAN + a short race window.
             last_accepted_uci = puzzle.get(
                 "last_accepted_move_uci"
             )
-            last_accepted_index = puzzle.get(
-                "last_accepted_move_index"
+            last_accepted_san = str(
+                puzzle.get(
+                    "last_accepted_move_san",
+                    ""
+                )
+            ).casefold().rstrip("+#")
+
+            try:
+                last_accepted_at = float(
+                    puzzle.get(
+                        "last_accepted_at",
+                        0,
+                    )
+                )
+            except Exception:
+                last_accepted_at = 0.0
+
+            normalized_submitted = (
+                submitted.casefold().rstrip("+#")
             )
+
+            if (
+                last_accepted_uci
+                and last_accepted_san
+                and normalized_submitted
+                == last_accepted_san
+                and (
+                    epoch_now()
+                    - last_accepted_at
+                    <= DUPLICATE_MOVE_WINDOW_SECONDS
+                )
+            ):
+                await message.channel.send(
+                    f"✅ **That move was already accepted, "
+                    f"{user.display_name}.**"
+                )
+                return
 
             board = chess.Board(
                 puzzle["current_fen"]
@@ -2101,63 +2140,6 @@ class SurvivalBot(
             )
 
             if not correct:
-                if (
-                    last_accepted_uci
-                    and last_accepted_index
-                    == next_index - 1
-                ):
-                    try:
-                        normalized_submitted = (
-                            submitted.casefold()
-                        )
-
-                        previous = chess.Move.from_uci(
-                            last_accepted_uci
-                        )
-
-                        # Compare against the SAN of the move that was just
-                        # accepted, with +/# ignored, just like the normal
-                        # move matcher.
-                        previous_board = chess.Board(
-                            puzzle.get(
-                                "position_before_last_move",
-                                puzzle["current_fen"],
-                            )
-                        )
-                    except Exception:
-                        normalized_submitted = None
-                        previous = None
-
-                    # A simpler exact-notation check using the stored
-                    # accepted SAN is the authoritative duplicate test.
-                    previous_san = str(
-                        puzzle.get(
-                            "last_accepted_move_san",
-                            "",
-                        )
-                    ).casefold()
-
-                    while previous_san.endswith(
-                        ("+", "#")
-                    ):
-                        previous_san = previous_san[:-1]
-
-                    if normalized_submitted:
-                        normalized_submitted = (
-                            normalized_submitted
-                            .rstrip("+#")
-                        )
-
-                    if (
-                        normalized_submitted
-                        and normalized_submitted
-                        == previous_san
-                    ):
-                        await message.channel.send(
-                            f"✅ **That move was already accepted, "
-                            f"{user.display_name}.**"
-                        )
-                        return
 
                 wrong_users = puzzle.setdefault(
                     "wrong_users",
@@ -2318,6 +2300,10 @@ class SurvivalBot(
             puzzle[
                 "last_accepted_move_index"
             ] = next_index
+
+            puzzle[
+                "last_accepted_at"
+            ] = epoch_now()
 
             puzzle[
                 "position_before_last_move"
