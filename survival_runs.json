@@ -164,7 +164,7 @@
         "started_at": "2026-08-20T12:17:06.074723+00:00",
         "last_activity": 1787235431.7383096,
         "paused_reason": "manually stopped",
-        "puzzle_number": 8,
+        "puzzle_number": 9,
         "strikes": 0,
         "best_difficulty": 1374,
         "used_puzzle_ids": [
@@ -184,60 +184,9 @@
             "wrong": 1
           }
         },
-        "puzzle": {
-          "id": "KSKyc",
-          "rating": 1302,
-          "themes": "crushing endgame short",
-          "url": "https://lichess.org/training/KSKyc",
-          "start_fen": "2kr4/1p3p2/p5pp/2pq4/2PB4/Pn3PP1/2Q1P2P/3R2K1 b - - 0 27",
-          "current_fen": "2kr4/1p3p2/p5pp/2pP4/8/P4PP1/2n1P2P/3R2K1 w - - 0 29",
-          "solution": [
-            {
-              "uci": "b3d4",
-              "san": "Nxd4",
-              "color": "black"
-            },
-            {
-              "uci": "c4d5",
-              "san": "cxd5",
-              "color": "white"
-            },
-            {
-              "uci": "d4c2",
-              "san": "Nxc2",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Nxc2",
-          "accepted_moves": [
-            {
-              "san": "Nxd4",
-              "uci": "b3d4",
-              "accepted_at": 1787235421.9348338,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Nxc2",
-              "uci": "d4c2",
-              "accepted_at": 1787235431.7382274,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "d4c2",
-          "last_accepted_move_san": "Nxc2",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787235431.7382264,
-          "position_before_last_move": "2kr4/1p3p2/p5pp/2pP4/3n4/P4PP1/2Q1P2P/3R2K1 b - - 0 28"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
