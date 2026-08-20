@@ -164,7 +164,7 @@
         "started_at": "2026-08-20T12:17:06.074723+00:00",
         "last_activity": 1787235942.3803177,
         "paused_reason": null,
-        "puzzle_number": 11,
+        "puzzle_number": 12,
         "strikes": 1,
         "best_difficulty": 1408,
         "used_puzzle_ids": [
@@ -187,76 +187,9 @@
             "wrong": 3
           }
         },
-        "puzzle": {
-          "id": "jXZA3",
-          "rating": 1408,
-          "themes": "crushing endgame fork interference long skewer",
-          "url": "https://lichess.org/training/jXZA3",
-          "start_fen": "6r1/1pp4k/3p1b1p/pP1Pp3/2P1Pp2/P4K1R/1B3P2/6rR w - - 11 34",
-          "current_fen": "6R1/1pp5/3p1b1k/pP1Pp3/2P1Pp2/P4K2/1B3P2/8 b - - 0 36",
-          "solution": [
-            {
-              "uci": "h3h6",
-              "san": "Rxh6+",
-              "color": "white"
-            },
-            {
-              "uci": "h7g7",
-              "san": "Kg7",
-              "color": "black"
-            },
-            {
-              "uci": "h1g1",
-              "san": "Rxg1+",
-              "color": "white"
-            },
-            {
-              "uci": "g7h6",
-              "san": "Kxh6",
-              "color": "black"
-            },
-            {
-              "uci": "g1g8",
-              "san": "Rxg8",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Rxg8",
-          "accepted_moves": [
-            {
-              "san": "Rxh6+",
-              "uci": "h3h6",
-              "accepted_at": 1787235893.6331723,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Rxg1+",
-              "uci": "h1g1",
-              "accepted_at": 1787235904.3096824,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Rxg8",
-              "uci": "g1g8",
-              "accepted_at": 1787235942.3802104,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "g1g8",
-          "last_accepted_move_san": "Rxg8",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1787235942.3802094,
-          "position_before_last_move": "6r1/1pp5/3p1b1k/pP1Pp3/2P1Pp2/P4K2/1B3P2/6R1 w - - 0 36"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
