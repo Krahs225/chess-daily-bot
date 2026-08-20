@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787248588.6841123,
+        "last_activity": 1787248596.5344899,
         "paused_reason": "manually stopped",
         "puzzle_number": 54,
         "strikes": 1,
@@ -74,7 +74,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 96,
+            "correct": 97,
             "wrong": 3
           },
           "442597396195704832": {
@@ -89,7 +89,7 @@
           "themes": "advantage endgame long quietMove",
           "url": "https://lichess.org/training/rvxGZ",
           "start_fen": "8/q4p1p/3R2pk/4p3/1P2Pn1P/1Q3N2/P4PPK/2r5 b - - 2 30",
-          "current_fen": "8/5p1p/6pk/4p3/1P2P2P/1Q3N2/P3RqPK/2r5 b - - 0 32",
+          "current_fen": "8/5p1p/6pk/4p3/1P2P2P/1Q3N2/P3q1PK/2r5 w - - 0 33",
           "solution": [
             {
               "uci": "a7f2",
@@ -118,13 +118,13 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 4,
+          "next_solution_index": 5,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "Ne2",
+          "last_move_san": "Qxe2",
           "accepted_moves": [
             {
               "san": "Qxf2",
@@ -137,13 +137,19 @@
               "uci": "f4e2",
               "accepted_at": 1787248588.683974,
               "solver_id": "601406103712170014"
+            },
+            {
+              "san": "Qxe2",
+              "uci": "f2e2",
+              "accepted_at": 1787248596.5344138,
+              "solver_id": "601406103712170014"
             }
           ],
-          "last_accepted_move_uci": "f4e2",
-          "last_accepted_move_san": "Ne2",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787248588.683973,
-          "position_before_last_move": "8/5p1p/6pk/4p3/1P2Pn1P/1Q3N2/P2R1qPK/2r5 b - - 1 31"
+          "last_accepted_move_uci": "f2e2",
+          "last_accepted_move_san": "Qxe2",
+          "last_accepted_move_index": 4,
+          "last_accepted_at": 1787248596.5344129,
+          "position_before_last_move": "8/5p1p/6pk/4p3/1P2P2P/1Q3N2/P3RqPK/2r5 b - - 0 32"
         },
         "first_solver_id": "601406103712170014",
         "first_solver_name": "TheMakina",
