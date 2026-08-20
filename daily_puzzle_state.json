@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-04-10",
     "title": "Mate in 3",
     "fen": "3q3r/p4p1n/2Q3p1/P2N3p/3PPBk1/8/1n4P1/5RK1 w - - 0 1",
-    "current_fen": "3q3r/p4p1n/2Q3p1/P2N3p/3PPBk1/8/1n4P1/5RK1 w - - 0 1",
+    "current_fen": "3q3r/p4p1n/6p1/P2N3p/3PPBk1/2Qn4/6P1/5RK1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3q3r/p4p1n/2Q3p1/P2N3p/3PPBk1/8/1n4P1/5RK1 w - - 0 1\"]\r\n\r\n1. Qc3 Nd3 2. Qxd3 h4 3. Qf3#\r\n*",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787266114986",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540130457004281958,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "ne3",
-        "correct": false,
-        "timestamp": "2026-08-20T22:48:54.553303+00:00"
+        "move": "qc3",
+        "correct": true,
+        "timestamp": "2026-08-20T22:49:47.782596+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
