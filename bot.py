@@ -1554,6 +1554,7 @@ def fetch_lichess_parquet_urls():
 
 def fetch_exact_lichess_puzzle(
     rating,
+    excluded_ids=None,
 ):
     """
     Query the current Lichess puzzle Parquet shards directly with DuckDB.
@@ -1593,6 +1594,22 @@ def fetch_exact_lichess_puzzle(
             for url in urls
         )
 
+        excluded_ids = [
+            str(value)
+            for value in (excluded_ids or [])
+        ][-100:]
+
+        exclusion_sql = ""
+
+        if excluded_ids:
+            literals = ", ".join(
+                "'" + value.replace("'", "''") + "'"
+                for value in excluded_ids
+            )
+            exclusion_sql = (
+                f" AND PuzzleId NOT IN ({literals})"
+            )
+
         query = f"""
             SELECT
                 PuzzleId,
@@ -1605,6 +1622,8 @@ def fetch_exact_lichess_puzzle(
                 union_by_name=true
             )
             WHERE Rating = ?
+            {exclusion_sql}
+            ORDER BY random()
             LIMIT 1
         """
 
@@ -1660,9 +1679,22 @@ async def post_exact_lichess_puzzle(
     rating,
 ):
     try:
+        used_by_rating = state.setdefault(
+            "lichess_rating_used",
+            {}
+        )
+
+        used_ids = list(
+            used_by_rating.get(
+                str(rating),
+                []
+            )
+        )
+
         raw = await asyncio.to_thread(
             fetch_exact_lichess_puzzle,
             rating,
+            used_ids,
         )
 
         if raw is None:
@@ -1700,6 +1732,14 @@ async def post_exact_lichess_puzzle(
             f"{raw['PuzzleId']}_"
             f"{int(time.time() * 1000)}"
         )
+
+        used_ids.append(
+            str(raw["PuzzleId"])
+        )
+
+        used_by_rating[
+            str(rating)
+        ] = used_ids[-100:]
 
         # Exact-rating puzzles use the same interactive state machine
         # as Daily/Random.
@@ -2516,6 +2556,16 @@ async def award_random_move_points(
     user,
     first_move
 ):
+    if str(
+        puzzle.get(
+            "puzzle_id",
+            ""
+        )
+    ).startswith(
+        "random_lichess_"
+    ):
+        return "none"
+
     user_id = str(user.id)
 
     if first_move:
@@ -2628,7 +2678,7 @@ async def award_point(
 
 
 def format_points(points):
-    value = max(0.0, float(points))
+    value = float(points)
     return str(int(value)) if value.is_integer() else f"{value:.1f}"
 
 
@@ -3752,12 +3802,25 @@ async def handle_random_answer(
                     helper_id
                 )
 
+        practice_only = str(
+            puzzle.get(
+                "puzzle_id",
+                "",
+            )
+        ).startswith(
+            "random_lichess_"
+        )
+
         points = get_player_score(
             message.author.id
         )
 
-        ranking = get_personal_ranking(
-            message.author.id
+        ranking = (
+            ""
+            if practice_only
+            else get_personal_ranking(
+                message.author.id
+            )
         )
 
         embed_progress = (
@@ -3797,26 +3860,37 @@ async def handle_random_answer(
 
         await save_all()
 
-        # Score message for the person who solved it.
         awarded_for_solver = 0.0
 
-        if str(
-            message.author.id
-        ) == str(first_user_id):
+        if (
+            not practice_only
+            and str(
+                message.author.id
+            ) == str(first_user_id)
+        ):
             awarded_for_solver = 1.0
-        elif str(
-            message.author.id
-        ) in helper_users:
+
+        elif (
+            not practice_only
+            and str(
+                message.author.id
+            ) in helper_users
+        ):
             awarded_for_solver = 0.5
 
-        if awarded_for_solver == 1.0:
+        if practice_only:
+            score_message = (
+                f"✅ **Correct, {message.author.display_name}!**\n"
+                f"🎉 **Puzzle solved!**\n"
+                f"Practice puzzle — **no shared leaderboard points**."
+            )
+        elif awarded_for_solver == 1.0:
             score_message = (
                 f"✅ **Correct, {message.author.display_name}!**\n"
                 f"🎉 **Puzzle solved!**\n"
                 f"**+1 point** — you now have "
                 f"**{format_points(points)} points.**"
             )
-
         elif awarded_for_solver == 0.5:
             score_message = (
                 f"✅ **Correct, {message.author.display_name}!**\n"
@@ -3825,7 +3899,6 @@ async def handle_random_answer(
                 f"you now have "
                 f"**{format_points(points)} points.**"
             )
-
         else:
             score_message = (
                 f"✅ **Correct, {message.author.display_name}!**\n"
@@ -3840,7 +3913,8 @@ async def handle_random_answer(
         # If the finisher was not the first-move player, separately
         # notify the first-move player that their +1 was awarded.
         if (
-            first_user_id
+            not practice_only
+            and first_user_id
             and str(message.author.id)
             != str(first_user_id)
         ):
