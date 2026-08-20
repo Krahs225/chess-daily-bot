@@ -162,7 +162,7 @@
         "started_by_id": "1540006473709391903",
         "status": "active",
         "started_at": "2026-08-20T14:35:58.668682+00:00",
-        "last_activity": 1787238752.8089972,
+        "last_activity": 1787238756.8371766,
         "paused_reason": "10-minute inactivity",
         "puzzle_number": 7,
         "strikes": 0,
@@ -179,7 +179,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 16,
+            "correct": 17,
             "wrong": 0
           }
         },
@@ -189,7 +189,7 @@
           "themes": "crushing endgame short",
           "url": "https://lichess.org/training/bJ235",
           "start_fen": "2b5/pN6/P1pk4/3p1p1p/1P1P1Pp1/2P3P1/5K2/8 b - - 2 46",
-          "current_fen": "8/pP6/2pk4/3p1p1p/1P1P1Pp1/2P3P1/5K2/8 b - - 0 47",
+          "current_fen": "8/pPk5/2p5/3p1p1p/1P1P1Pp1/2P3P1/5K2/8 w - - 1 48",
           "solution": [
             {
               "uci": "c8b7",
@@ -208,26 +208,32 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 2,
+          "next_solution_index": 3,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "Bxb7",
+          "last_move_san": "Kc7",
           "accepted_moves": [
             {
               "san": "Bxb7",
               "uci": "c8b7",
               "accepted_at": 1787238752.808869,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Kc7",
+              "uci": "d6c7",
+              "accepted_at": 1787238756.837107,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "c8b7",
-          "last_accepted_move_san": "Bxb7",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1787238752.808868,
-          "position_before_last_move": "2b5/pN6/P1pk4/3p1p1p/1P1P1Pp1/2P3P1/5K2/8 b - - 2 46"
+          "last_accepted_move_uci": "d6c7",
+          "last_accepted_move_san": "Kc7",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1787238756.8371058,
+          "position_before_last_move": "8/pP6/2pk4/3p1p1p/1P1P1Pp1/2P3P1/5K2/8 b - - 0 47"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
