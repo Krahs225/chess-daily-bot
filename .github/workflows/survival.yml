@@ -1,0 +1,33 @@
+name: Survival Mode
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: survival-mode-bot
+  cancel-in-progress: false
+
+jobs:
+  survival:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install discord.py requests python-chess cairosvg
+
+      - name: Run Survival Bot
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        run: python survival_bot.py
