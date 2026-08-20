@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 38,
+      "best_puzzle": 39,
       "best_difficulty": 1847,
-      "best_completed_at": "2026-08-20T13:24:09.934913+00:00",
+      "best_completed_at": "2026-08-20T13:25:20.598491+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -53,7 +53,8 @@
           "0Rihv",
           "GQFda",
           "WEJHi",
-          "3RLWN"
+          "3RLWN",
+          "8lW4Y"
         ],
         "members": {
           "601406103712170014": {
@@ -67,7 +68,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "8lW4Y",
+          "rating": 1745,
+          "themes": "crushing discoveredAttack middlegame queensideAttack short",
+          "url": "https://lichess.org/training/8lW4Y",
+          "start_fen": "3r1rk1/6pp/4p3/p2nP3/2p1Bn2/1pP1NP2/PP1R1P1P/1K2R3 b - - 1 24",
+          "current_fen": "3r1rk1/6pp/4p3/p2nP3/2p1Bn2/1pP1NP2/PP1R1P1P/1K2R3 b - - 1 24",
+          "solution": [
+            {
+              "uci": "d5c3",
+              "san": "Nxc3+",
+              "color": "black"
+            },
+            {
+              "uci": "b2c3",
+              "san": "bxc3",
+              "color": "white"
+            },
+            {
+              "uci": "d8d2",
+              "san": "Rxd2",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
