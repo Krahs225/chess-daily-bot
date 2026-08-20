@@ -3171,7 +3171,11 @@ def chess_move_like(
 
     pattern = re.compile(
         r"^(?:"
+        # Normal SAN/UCI-like moves.
         r"[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8][+#]?"
+        # Pawn promotions, including captures and check/mate.
+        r"|[a-h](?:x[a-h])?[18]=[QRBN][+#]?"
+        # Castling.
         r"|O-O-O[+#]?"
         r"|O-O[+#]?"
         r"|0-0-0[+#]?"
