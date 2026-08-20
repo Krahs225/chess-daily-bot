@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 19,
+      "best_puzzle": 20,
       "best_difficulty": 1540,
-      "best_completed_at": "2026-08-20T12:57:43.981474+00:00",
+      "best_completed_at": "2026-08-20T12:58:31.484281+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -34,7 +34,8 @@
           "uBwMi",
           "hmlbb",
           "8kOiq",
-          "4uM2q"
+          "4uM2q",
+          "vhYQd"
         ],
         "members": {
           "601406103712170014": {
@@ -48,7 +49,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "vhYQd",
+          "rating": 1520,
+          "themes": "advantage middlegame short",
+          "url": "https://lichess.org/training/vhYQd",
+          "start_fen": "rn1q1rk1/4ppbp/p2p1np1/1p2P3/8/2NB1b2/PPPBQPPP/2KR3R w - - 0 12",
+          "current_fen": "rn1q1rk1/4ppbp/p2p1np1/1p2P3/8/2NB1b2/PPPBQPPP/2KR3R w - - 0 12",
+          "solution": [
+            {
+              "uci": "e2f3",
+              "san": "Qxf3",
+              "color": "white"
+            },
+            {
+              "uci": "b8d7",
+              "san": "Nbd7",
+              "color": "black"
+            },
+            {
+              "uci": "e5f6",
+              "san": "exf6",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
