@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 39,
+      "best_puzzle": 40,
       "best_difficulty": 1847,
-      "best_completed_at": "2026-08-20T13:25:20.598491+00:00",
+      "best_completed_at": "2026-08-20T13:25:58.811926+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -54,7 +54,8 @@
           "GQFda",
           "WEJHi",
           "3RLWN",
-          "8lW4Y"
+          "8lW4Y",
+          "yFEPz"
         ],
         "members": {
           "601406103712170014": {
@@ -68,7 +69,49 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "yFEPz",
+          "rating": 1767,
+          "themes": "crushing endgame long pawnEndgame zugzwang",
+          "url": "https://lichess.org/training/yFEPz",
+          "start_fen": "8/4p1k1/3p4/3P1P2/5K2/8/8/8 b - - 6 70",
+          "current_fen": "8/4p1k1/3p4/3P1P2/5K2/8/8/8 b - - 6 70",
+          "solution": [
+            {
+              "uci": "g7f6",
+              "san": "Kf6",
+              "color": "black"
+            },
+            {
+              "uci": "f4e4",
+              "san": "Ke4",
+              "color": "white"
+            },
+            {
+              "uci": "f6g5",
+              "san": "Kg5",
+              "color": "black"
+            },
+            {
+              "uci": "f5f6",
+              "san": "f6",
+              "color": "white"
+            },
+            {
+              "uci": "e7f6",
+              "san": "exf6",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
