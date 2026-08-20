@@ -2076,13 +2076,13 @@ class SurvivalBot(
 
             # IMPORTANT:
             # Two people can submit the same correct move almost at once.
-            # We first test the move against the CURRENT position. Only if
-            # it is wrong in the current position do we check whether it is
-            # the immediately previous accepted move. That makes duplicates
-            # harmless without blocking a genuinely repeated move later.
-            last_accepted_uci = puzzle.get(
-                "last_accepted_move_uci"
-            )
+            # Automatic opponent replies may advance next_solution_index by
+            # several positions, so an index comparison is NOT sufficient.
+            #
+            # Instead, when a move was just accepted, remember its normalized
+            # SAN and a short duplicate window. If another player submits the
+            # exact same move during that window, it is the same simultaneous
+            # answer and must never cost a strike.
             last_accepted_san = str(
                 puzzle.get(
                     "last_accepted_move_san",
@@ -2090,9 +2090,15 @@ class SurvivalBot(
                 )
             ).casefold().rstrip("+#")
 
-            last_accepted_index = puzzle.get(
-                "last_accepted_move_index"
-            )
+            try:
+                last_accepted_at = float(
+                    puzzle.get(
+                        "last_accepted_at",
+                        0,
+                    )
+                )
+            except Exception:
+                last_accepted_at = 0.0
 
             normalized_submitted = (
                 submitted.casefold().rstrip("+#")
@@ -2112,21 +2118,16 @@ class SurvivalBot(
                 expected,
             )
 
-            # If it is not a valid move for the NEW position, but it is
-            # exactly the move that just advanced the position, it is a
-            # simultaneous duplicate from another player. Never count it
-            # as a strike.
             if (
                 not correct
-                and last_accepted_uci
                 and last_accepted_san
-                and last_accepted_index is not None
-                and int(
-                    last_accepted_index
-                )
-                == next_index - 1
                 and normalized_submitted
                 == last_accepted_san
+                and (
+                    epoch_now()
+                    - last_accepted_at
+                    <= 15.0
+                )
             ):
                 await message.channel.send(
                     f"✅ **That move was already accepted, "
