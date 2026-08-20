@@ -162,7 +162,7 @@
         "started_by_id": "1539971538290216980",
         "status": "active",
         "started_at": "2026-08-20T12:17:06.074723+00:00",
-        "last_activity": 1787236224.852351,
+        "last_activity": 1787236240.8231518,
         "paused_reason": "three strikes",
         "puzzle_number": 17,
         "strikes": 3,
@@ -189,7 +189,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 37,
+            "correct": 38,
             "wrong": 6
           }
         },
@@ -199,7 +199,7 @@
           "themes": "advantage capturingDefender middlegame short",
           "url": "https://lichess.org/training/JY44i",
           "start_fen": "r2q1rk1/pp3p1p/1n1bb1p1/3p2N1/1P1Q2n1/P2BP3/3N1PPP/R1B1K2R w KQ - 3 16",
-          "current_fen": "r2q1rk1/pp3p1p/1n1bb1p1/3p2N1/1P1Q2n1/P2BP3/3N1PPP/R1B1K2R w KQ - 3 16",
+          "current_fen": "r2q1rk1/pp5p/1n1bp1p1/3p4/1P1Q2n1/P2BP3/3N1PPP/R1B1K2R w KQ - 0 17",
           "solution": [
             {
               "uci": "g5e6",
@@ -218,7 +218,7 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -226,11 +226,23 @@
           "wrong_users": [
             "442597396195704832"
           ],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Nxe6",
+          "accepted_moves": [
+            {
+              "san": "Nxe6",
+              "uci": "g5e6",
+              "accepted_at": 1787236240.8229945,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "g5e6",
+          "last_accepted_move_san": "Nxe6",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787236240.8229935,
+          "position_before_last_move": "r2q1rk1/pp3p1p/1n1bb1p1/3p2N1/1P1Q2n1/P2BP3/3N1PPP/R1B1K2R w KQ - 3 16"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
