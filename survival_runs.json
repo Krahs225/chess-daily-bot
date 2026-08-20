@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 18,
+      "best_puzzle": 19,
       "best_difficulty": 1540,
-      "best_completed_at": "2026-08-20T12:57:04.560303+00:00",
+      "best_completed_at": "2026-08-20T12:57:43.981474+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -33,7 +33,8 @@
           "LSDrX",
           "uBwMi",
           "hmlbb",
-          "8kOiq"
+          "8kOiq",
+          "4uM2q"
         ],
         "members": {
           "601406103712170014": {
@@ -47,7 +48,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "4uM2q",
+          "rating": 1507,
+          "themes": "crushing endgame short",
+          "url": "https://lichess.org/training/4uM2q",
+          "start_fen": "7k/1Bp3pp/8/p1P1p3/3q3P/6PK/P4rQ1/5R2 b - - 1 32",
+          "current_fen": "7k/1Bp3pp/8/p1P1p3/3q3P/6PK/P4rQ1/5R2 b - - 1 32",
+          "solution": [
+            {
+              "uci": "d4d7",
+              "san": "Qd7+",
+              "color": "black"
+            },
+            {
+              "uci": "h3h2",
+              "san": "Kh2",
+              "color": "white"
+            },
+            {
+              "uci": "f2g2",
+              "san": "Rxg2+",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
