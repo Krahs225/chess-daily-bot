@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 56,
+      "best_puzzle": 57,
       "best_difficulty": 2246,
-      "best_completed_at": "2026-08-20T17:59:53.365659+00:00",
+      "best_completed_at": "2026-08-20T18:03:33.287852+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -71,7 +71,8 @@
           "pePLr",
           "rvxGZ",
           "nu1gL",
-          "CZ3gJ"
+          "CZ3gJ",
+          "pIIbm"
         ],
         "members": {
           "601406103712170014": {
@@ -85,7 +86,40 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "pIIbm",
+          "rating": 2192,
+          "themes": "crushing deflection kingsideAttack middlegame sacrifice short",
+          "url": "https://lichess.org/training/pIIbm",
+          "start_fen": "r3k2r/pppq1p2/3p1n1p/2b1p1pb/2BnP3/P1NP2BP/1PPQNPP1/R4RK1 b kq - 4 12",
+          "current_fen": "r3k2r/pppq1p2/3p1n1p/2b1p1pb/2BnP3/P1NP2BP/1PPQNPP1/R4RK1 b kq - 4 12",
+          "solution": [
+            {
+              "uci": "d4f3",
+              "san": "Nf3+",
+              "color": "black"
+            },
+            {
+              "uci": "g2f3",
+              "san": "gxf3",
+              "color": "white"
+            },
+            {
+              "uci": "d7h3",
+              "san": "Qxh3",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
