@@ -56,9 +56,9 @@
     },
     "team shark": {
       "name": "TEAM SHARK",
-      "best_puzzle": 2,
+      "best_puzzle": 3,
       "best_difficulty": 1329,
-      "best_completed_at": "2026-08-20T12:28:54.241726+00:00",
+      "best_completed_at": "2026-08-20T12:29:50.082988+00:00",
       "current": {
         "run_id": "team shark:1787228881",
         "started_by_id": "1539974287128137739",
@@ -68,10 +68,11 @@
         "paused_reason": null,
         "puzzle_number": 3,
         "strikes": 0,
-        "best_difficulty": 1329,
+        "best_difficulty": 1361,
         "used_puzzle_ids": [
           "oze2W",
-          "i2sxF"
+          "i2sxF",
+          "keexY"
         ],
         "members": {
           "601406103712170014": {
@@ -80,7 +81,49 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "keexY",
+          "rating": 1361,
+          "themes": "advantage clearance long middlegame pin",
+          "url": "https://lichess.org/training/keexY",
+          "start_fen": "1R1r2k1/3P1pp1/1R1Qnq1p/2r5/p7/P6P/6P1/7K w - - 4 33",
+          "current_fen": "1R1r2k1/3P1pp1/1R1Qnq1p/2r5/p7/P6P/6P1/7K w - - 4 33",
+          "solution": [
+            {
+              "uci": "b8d8",
+              "san": "Rxd8+",
+              "color": "white"
+            },
+            {
+              "uci": "f6d8",
+              "san": "Qxd8",
+              "color": "black"
+            },
+            {
+              "uci": "b6b8",
+              "san": "Rb8",
+              "color": "white"
+            },
+            {
+              "uci": "d8b8",
+              "san": "Qxb8",
+              "color": "black"
+            },
+            {
+              "uci": "d6b8",
+              "san": "Qxb8+",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
