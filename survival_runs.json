@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 43,
+      "best_puzzle": 44,
       "best_difficulty": 2016,
-      "best_completed_at": "2026-08-20T13:34:32.049413+00:00",
+      "best_completed_at": "2026-08-20T13:36:30.355744+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -58,7 +58,8 @@
           "yFEPz",
           "haqWD",
           "TbzyP",
-          "4V89k"
+          "4V89k",
+          "3LFr7"
         ],
         "members": {
           "601406103712170014": {
@@ -72,7 +73,49 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "3LFr7",
+          "rating": 1966,
+          "themes": "advantage endgame exposedKing fork long",
+          "url": "https://lichess.org/training/3LFr7",
+          "start_fen": "b5r1/p2k4/3bp3/2P5/2P4p/4B2K/PP3PP1/R4R2 b - - 0 23",
+          "current_fen": "b5r1/p2k4/3bp3/2P5/2P4p/4B2K/PP3PP1/R4R2 b - - 0 23",
+          "solution": [
+            {
+              "uci": "a8g2",
+              "san": "Bxg2+",
+              "color": "black"
+            },
+            {
+              "uci": "h3h4",
+              "san": "Kxh4",
+              "color": "white"
+            },
+            {
+              "uci": "d6e7",
+              "san": "Be7+",
+              "color": "black"
+            },
+            {
+              "uci": "h4h5",
+              "san": "Kh5",
+              "color": "white"
+            },
+            {
+              "uci": "g2f3",
+              "san": "Bf3+",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
