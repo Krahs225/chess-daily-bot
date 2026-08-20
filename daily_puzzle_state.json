@@ -1,105 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-09-29",
-    "title": "Occupying The Escape Square",
-    "fen": "3r2b1/1pp1r1pp/p4p2/3Pk3/4P1B1/qP5P/P1Q2PP1/1KRR4 w - - 0 1",
-    "current_fen": "3r2b1/2p1r1pp/p1Rk4/3Pp3/6B1/qP5P/P4PP1/1K1R4 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r2b1/1pp1r1pp/p4p2/3Pk3/4P1B1/qP5P/P1Q2PP1/1KRR4 w - - 0 1\"]\r\n\r\n1. Qc3+ Kd6 2. e5+ fxe5 3. Qc6+ bxc6 4. Rxc6# \r\n*",
+    "url": "https://www.chess.com/daily/2007-08-26",
+    "title": "Q Q Q",
+    "fen": "7k/5r2/1p3q2/p1pQ4/2P3R1/4P2P/7K/8 w - - 0 1",
+    "current_fen": "7k/5r2/1p3q2/p1pQ4/2P3R1/4P2P/7K/8 w - - 0 1",
+    "pgn": "[FEN \"7k/5r2/1p3q2/p1pQ4/2P3R1/4P2P/7K/8 w - - 0 1\"]\r\n[PlyCount \"5\"]\r\n[Result \"*\"]\r\n\r\n1. Qh5+ Rh7 2. Qe8+ Qf8 $8 3. Qxf8#\r\n*",
     "all_moves": [
       {
-        "uci": "c2c3",
-        "san": "Qc3+",
+        "uci": "d5h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "e5d6",
-        "san": "Kd6",
+        "uci": "f7h7",
+        "san": "Rh7",
         "color": "black"
       },
       {
-        "uci": "e4e5",
-        "san": "e5+",
+        "uci": "h5e8",
+        "san": "Qe8+",
         "color": "white"
       },
       {
-        "uci": "f6e5",
-        "san": "fxe5",
+        "uci": "f6f8",
+        "san": "Qf8",
         "color": "black"
       },
       {
-        "uci": "c3c6",
-        "san": "Qc6+",
-        "color": "white"
-      },
-      {
-        "uci": "b7c6",
-        "san": "bxc6",
-        "color": "black"
-      },
-      {
-        "uci": "c1c6",
-        "san": "Rxc6#",
+        "uci": "e8f8",
+        "san": "Qxf8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c2c3",
-        "san": "Qc3+",
+        "uci": "d5h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "e4e5",
-        "san": "e5+",
+        "uci": "h5e8",
+        "san": "Qe8+",
         "color": "white"
       },
       {
-        "uci": "c3c6",
-        "san": "Qc6+",
-        "color": "white"
-      },
-      {
-        "uci": "c1c6",
-        "san": "Rxc6#",
+        "uci": "e8f8",
+        "san": "Qxf8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-20T17:18:47.249372+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-20T17:19:30.612471+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787246327249",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540047461114978416,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qc3",
-        "correct": true,
-        "timestamp": "2026-08-20T17:18:53.235674+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxc6",
-        "correct": true,
-        "timestamp": "2026-08-20T17:19:07.482790+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787246370612",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
