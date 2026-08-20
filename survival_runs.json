@@ -2,15 +2,15 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 8,
+      "best_puzzle": 9,
       "best_difficulty": 1400,
-      "best_completed_at": "2026-08-20T12:46:54.986073+00:00",
+      "best_completed_at": "2026-08-20T12:47:29.128489+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787230024.0484676,
+        "last_activity": 1787230027.5500066,
         "paused_reason": "puzzle fetch error",
         "puzzle_number": 9,
         "strikes": 1,
@@ -23,7 +23,8 @@
           "iKB3c",
           "iRn25",
           "EUIXJ",
-          "Sae1k"
+          "Sae1k",
+          "8SWTs"
         ],
         "members": {
           "601406103712170014": {
@@ -37,7 +38,29 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "8SWTs",
+          "rating": 1335,
+          "themes": "mate mateIn1 oneMove opening",
+          "url": "https://lichess.org/training/8SWTs",
+          "start_fen": "r1bqkb1r/pp2np1p/2n1p1p1/1B1N4/3P4/5N2/PP1B1PPP/R2QK2R w KQkq - 4 11",
+          "current_fen": "r1bqkb1r/pp2np1p/2n1p1p1/1B1N4/3P4/5N2/PP1B1PPP/R2QK2R w KQkq - 4 11",
+          "solution": [
+            {
+              "uci": "d5f6",
+              "san": "Nf6#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
