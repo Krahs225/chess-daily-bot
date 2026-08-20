@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 35,
+      "best_puzzle": 36,
       "best_difficulty": 1847,
-      "best_completed_at": "2026-08-20T13:19:52.953463+00:00",
+      "best_completed_at": "2026-08-20T13:21:15.240606+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -50,7 +50,8 @@
           "la1oF",
           "Gg4MY",
           "Y9Wh6",
-          "0Rihv"
+          "0Rihv",
+          "GQFda"
         ],
         "members": {
           "601406103712170014": {
@@ -64,7 +65,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "GQFda",
+          "rating": 1737,
+          "themes": "endgame mate mateIn2 pillsburysMate short",
+          "url": "https://lichess.org/training/GQFda",
+          "start_fen": "8/5k2/1p1pR2K/p1pPbBP1/P1Pn3P/1P6/6r1/8 w - - 9 42",
+          "current_fen": "8/5k2/1p1pR2K/p1pPbBP1/P1Pn3P/1P6/6r1/8 w - - 9 42",
+          "solution": [
+            {
+              "uci": "f5g6",
+              "san": "Bg6+",
+              "color": "white"
+            },
+            {
+              "uci": "f7g8",
+              "san": "Kg8",
+              "color": "black"
+            },
+            {
+              "uci": "e6e8",
+              "san": "Re8#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
