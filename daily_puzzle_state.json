@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-03-30",
-    "title": "Quietly into the Night",
-    "fen": "2kr3r/1pp1nqp1/p3pp2/bb1pP2p/3P3P/PQN1BNR1/1PP2PP1/2KR4 b - - 0 1",
-    "current_fen": "2kr3r/2p2qp1/p1n1pp2/bp1pP2p/QPbP3P/P1N1BNR1/2P2PP1/2KR4 w - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2kr3r/1pp1nqp1/p3pp2/bb1pP2p/3P3P/PQN1BNR1/1PP2PP1/2KR4 b - - 0 1\"]\r\n\r\n1...Bc4 2.Qa4 Nc6 3.b4 b5 *",
+    "url": "https://www.chess.com/daily/2021-08-02",
+    "title": "Do I Need to React?",
+    "fen": "3r1rk1/pb2qppp/1pn1pb2/7R/4B3/3Q1N2/P1P2PPP/3R2K1 w - - 0 1",
+    "current_fen": "3r1rk1/pb2qppp/1pn1pb2/7R/4B3/3Q1N2/P1P2PPP/3R2K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3r1rk1/pb2qppp/1pn1pb2/7R/4B3/3Q1N2/P1P2PPP/3R2K1 w - - 0 1\"]\r\n\r\n1.Bxh7+ Kh8 2.Bg8+ Kxg8 3.Qh7# *",
     "all_moves": [
       {
-        "uci": "b5c4",
-        "san": "Bc4",
-        "color": "black"
-      },
-      {
-        "uci": "b3a4",
-        "san": "Qa4",
+        "uci": "e4h7",
+        "san": "Bxh7+",
         "color": "white"
       },
       {
-        "uci": "e7c6",
-        "san": "Nc6",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "b2b4",
-        "san": "b4",
+        "uci": "h7g8",
+        "san": "Bg8+",
         "color": "white"
       },
       {
-        "uci": "b7b5",
-        "san": "b5",
+        "uci": "h8g8",
+        "san": "Kxg8",
         "color": "black"
+      },
+      {
+        "uci": "d3h7",
+        "san": "Qh7#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b5c4",
-        "san": "Bc4",
-        "color": "black"
+        "uci": "e4h7",
+        "san": "Bxh7+",
+        "color": "white"
       },
       {
-        "uci": "e7c6",
-        "san": "Nc6",
-        "color": "black"
+        "uci": "h7g8",
+        "san": "Bg8+",
+        "color": "white"
       },
       {
-        "uci": "b7b5",
-        "san": "b5",
-        "color": "black"
+        "uci": "d3h7",
+        "san": "Qh7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-20T23:00:13.624300+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-20T23:01:38.423524+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787266813624",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1540133387128283223,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "b5",
-        "correct": true,
-        "timestamp": "2026-08-20T23:01:32.780325+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787266898423",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
