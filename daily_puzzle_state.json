@@ -1,39 +1,87 @@
 {
   "latest_random_puzzle": {
-    "title": "800 • 7txFW",
-    "fen": "r1b1R3/ppp3pk/2nb1r1p/5p2/5Nq1/PQ6/1PPB1PPP/RN4K1 w - - 8 19",
-    "current_fen": "r1b1R3/ppp3pk/2nb1r1p/5p2/5Nq1/PQ6/1PPB1PPP/RN4K1 w - - 8 19",
+    "url": "https://www.chess.com/daily/2022-09-07",
+    "title": "Pawn Chain Reaction",
+    "fen": "r2q1rk1/1b2npbp/ppnpp1p1/2p5/2B1P3/P1NPBN1P/1PP2PP1/R2Q1RK1 b - - 0 1",
+    "current_fen": "r2q1rk1/1b2npbp/ppnpp1p1/2p5/2B1P3/P1NPBN1P/1PP2PP1/R2Q1RK1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r2q1rk1/1b2npbp/ppnpp1p1/2p5/2B1P3/P1NPBN1P/1PP2PP1/R2Q1RK1 b - - 0 1\"]\r\n\r\n1... d5 2. exd5 exd5 3. Ba2 d4 4. Bg5 dxc3 *",
     "all_moves": [
       {
-        "uci": "b3g8",
-        "san": "Qg8#",
+        "uci": "d6d5",
+        "san": "d5",
+        "color": "black"
+      },
+      {
+        "uci": "e4d5",
+        "san": "exd5",
         "color": "white"
+      },
+      {
+        "uci": "e6d5",
+        "san": "exd5",
+        "color": "black"
+      },
+      {
+        "uci": "c4a2",
+        "san": "Ba2",
+        "color": "white"
+      },
+      {
+        "uci": "d5d4",
+        "san": "d4",
+        "color": "black"
+      },
+      {
+        "uci": "e3g5",
+        "san": "Bg5",
+        "color": "white"
+      },
+      {
+        "uci": "d4c3",
+        "san": "dxc3",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b3g8",
-        "san": "Qg8#",
-        "color": "white"
+        "uci": "d6d5",
+        "san": "d5",
+        "color": "black"
+      },
+      {
+        "uci": "e6d5",
+        "san": "exd5",
+        "color": "black"
+      },
+      {
+        "uci": "d5d4",
+        "san": "d4",
+        "color": "black"
+      },
+      {
+        "uci": "d4c3",
+        "san": "dxc3",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 1,
-    "pgn": "",
-    "url": "https://lichess.org/training/7txFW",
-    "posted_at": "2026-08-20T17:13:50.745678+00:00",
-    "puzzle_id": "random_lichess_800_7txFW_1787246030745",
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-20T17:13:54.504960+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1787246034504",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": null,
+    "message_id": 1540046233241002025,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
