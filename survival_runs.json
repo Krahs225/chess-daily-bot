@@ -2,15 +2,15 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 48,
+      "best_puzzle": 49,
       "best_difficulty": 2016,
-      "best_completed_at": "2026-08-20T17:38:32.933567+00:00",
+      "best_completed_at": "2026-08-20T17:43:19.219260+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787247775.1529202,
+        "last_activity": 1787247777.5970058,
         "paused_reason": "manually stopped",
         "puzzle_number": 49,
         "strikes": 1,
@@ -63,7 +63,8 @@
           "v3Ite",
           "X3wBJ",
           "G2mGN",
-          "KxObB"
+          "KxObB",
+          "AX6N8"
         ],
         "members": {
           "601406103712170014": {
@@ -77,7 +78,40 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "AX6N8",
+          "rating": 1985,
+          "themes": "advantage hangingPiece middlegame short",
+          "url": "https://lichess.org/training/AX6N8",
+          "start_fen": "1rb3k1/pp3rpp/2B5/4q3/2Pp1p2/3P2P1/P2QPP1P/1R3RK1 b - - 0 22",
+          "current_fen": "1rb3k1/pp3rpp/2B5/4q3/2Pp1p2/3P2P1/P2QPP1P/1R3RK1 b - - 0 22",
+          "solution": [
+            {
+              "uci": "b7c6",
+              "san": "bxc6",
+              "color": "black"
+            },
+            {
+              "uci": "b1b8",
+              "san": "Rxb8",
+              "color": "white"
+            },
+            {
+              "uci": "e5b8",
+              "san": "Qxb8",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
