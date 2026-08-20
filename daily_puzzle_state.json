@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-03-26",
     "title": "Supercharge!",
     "fen": "5r1k/p2q1p1p/5b2/5N1Q/Pr1npP2/R7/1PP3PP/5R1K w - - 0 28",
-    "current_fen": "5r1k/p2q1p1p/5b2/5N1Q/Pr1npP2/R7/1PP3PP/5R1K w - - 0 28",
+    "current_fen": "3q1r1k/p4p1p/5b1Q/5N2/Pr1npP2/R7/1PP3PP/5R1K w - - 2 29",
     "pgn": "[White \"geelse_zot\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"5r1k/p2q1p1p/5b2/5N1Q/Pr1npP2/R7/1PP3PP/5R1K w - - 0 28\"]\r\n\r\n28. Qh6 Qd8 29. Rh3 Nxf5 30. Qxh7# 1-0",
     "all_moves": [
       {
@@ -57,20 +57,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787246300139",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540047347768238252,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rh3",
+        "move": "qh6",
+        "correct": true,
+        "timestamp": "2026-08-20T17:18:29.087253+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rh3",
         "correct": false,
-        "timestamp": "2026-08-20T17:18:25.194922+00:00"
+        "timestamp": "2026-08-20T17:18:26.362103+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
