@@ -64,7 +64,7 @@
         "started_by_id": "1539974287128137739",
         "status": "active",
         "started_at": "2026-08-20T12:28:01.540198+00:00",
-        "last_activity": 1787228881.540211,
+        "last_activity": 1787228901.2824361,
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 0,
@@ -72,14 +72,20 @@
         "used_puzzle_ids": [
           "oze2W"
         ],
-        "members": {},
+        "members": {
+          "601406103712170014": {
+            "name": "TheMakina",
+            "correct": 1,
+            "wrong": 0
+          }
+        },
         "puzzle": {
           "id": "oze2W",
           "rating": 1329,
           "themes": "advantage long middlegame",
           "url": "https://lichess.org/training/oze2W",
           "start_fen": "r2qk2r/p2bbppp/8/1B1p4/5B2/6P1/PP2QP1P/R3K2R b KQkq - 5 14",
-          "current_fen": "r2qk2r/p2bbppp/8/1B1p4/5B2/6P1/PP2QP1P/R3K2R b KQkq - 5 14",
+          "current_fen": "r3k2r/p2bbppp/8/qB1p4/8/6P1/PP1BQP1P/R3K2R b KQkq - 7 15",
           "solution": [
             {
               "uci": "d8a5",
@@ -108,16 +114,16 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null
+          "last_move_san": "Qa5+"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       }
