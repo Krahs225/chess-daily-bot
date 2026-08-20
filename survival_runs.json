@@ -162,7 +162,7 @@
         "started_by_id": "1539971538290216980",
         "status": "active",
         "started_at": "2026-08-20T12:17:06.074723+00:00",
-        "last_activity": 1787236026.8336186,
+        "last_activity": 1787236034.0131817,
         "paused_reason": null,
         "puzzle_number": 13,
         "strikes": 2,
@@ -185,7 +185,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 30,
+            "correct": 31,
             "wrong": 4
           }
         },
@@ -195,7 +195,7 @@
           "themes": "endgame",
           "url": "https://lichess.org/training/nDeOr",
           "start_fen": "8/3k4/1R2bP2/4P3/3K1r2/8/8/8 w - - 5 61",
-          "current_fen": "8/3k4/1R2br2/4P3/8/4K3/8/8 w - - 0 62",
+          "current_fen": "8/3k4/1R2bP2/8/8/4K3/8/8 b - - 0 62",
           "solution": [
             {
               "uci": "d4e3",
@@ -214,7 +214,7 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 2,
+          "next_solution_index": 3,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -222,20 +222,26 @@
           "wrong_users": [
             "442597396195704832"
           ],
-          "last_move_san": "Ke3",
+          "last_move_san": "exf6",
           "accepted_moves": [
             {
               "san": "Ke3",
               "uci": "d4e3",
               "accepted_at": 1787236015.7321784,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "exf6",
+              "uci": "e5f6",
+              "accepted_at": 1787236034.0131133,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "d4e3",
-          "last_accepted_move_san": "Ke3",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1787236015.7321775,
-          "position_before_last_move": "8/3k4/1R2bP2/4P3/3K1r2/8/8/8 w - - 5 61"
+          "last_accepted_move_uci": "e5f6",
+          "last_accepted_move_san": "exf6",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1787236034.0131123,
+          "position_before_last_move": "8/3k4/1R2br2/4P3/8/4K3/8/8 w - - 0 62"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
