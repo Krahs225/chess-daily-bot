@@ -164,7 +164,7 @@
         "started_at": "2026-08-20T12:17:06.074723+00:00",
         "last_activity": 1787236118.4143443,
         "paused_reason": null,
-        "puzzle_number": 15,
+        "puzzle_number": 16,
         "strikes": 1,
         "best_difficulty": 1511,
         "used_puzzle_ids": [
@@ -191,60 +191,9 @@
             "wrong": 4
           }
         },
-        "puzzle": {
-          "id": "ky0Xd",
-          "rating": 1451,
-          "themes": "advantage middlegame short",
-          "url": "https://lichess.org/training/ky0Xd",
-          "start_fen": "2kr3r/pb1p1p2/1p2p2p/2b5/7N/6qP/P1Q1BPP1/1R1R2K1 w - - 7 20",
-          "current_fen": "2kr3r/pb1p1p2/4p2p/2p5/7N/6PP/P3B1P1/1R1R2K1 b - - 0 21",
-          "solution": [
-            {
-              "uci": "c2c5",
-              "san": "Qxc5+",
-              "color": "white"
-            },
-            {
-              "uci": "b6c5",
-              "san": "bxc5",
-              "color": "black"
-            },
-            {
-              "uci": "f2g3",
-              "san": "fxg3",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "fxg3",
-          "accepted_moves": [
-            {
-              "san": "Qxc5+",
-              "uci": "c2c5",
-              "accepted_at": 1787236091.01653,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "fxg3",
-              "uci": "f2g3",
-              "accepted_at": 1787236118.4142468,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "f2g3",
-          "last_accepted_move_san": "fxg3",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787236118.414246,
-          "position_before_last_move": "2kr3r/pb1p1p2/4p2p/2p5/7N/6qP/P3BPP1/1R1R2K1 w - - 0 21"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
