@@ -164,7 +164,7 @@
         "started_at": "2026-08-20T14:35:58.668682+00:00",
         "last_activity": 1787236976.5023649,
         "paused_reason": null,
-        "puzzle_number": 6,
+        "puzzle_number": 7,
         "strikes": 0,
         "best_difficulty": 1392,
         "used_puzzle_ids": [
@@ -182,60 +182,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "nr9JB",
-          "rating": 1216,
-          "themes": "advantage endgame fork master short",
-          "url": "https://lichess.org/training/nr9JB",
-          "start_fen": "2r4k/pp5p/8/4qbN1/1P2p2P/4Q3/6K1/8 w - - 5 42",
-          "current_fen": "2r5/pp4kp/8/4Nb2/1P2p2P/4Q3/6K1/8 b - - 0 43",
-          "solution": [
-            {
-              "uci": "g5f7",
-              "san": "Nf7+",
-              "color": "white"
-            },
-            {
-              "uci": "h8g7",
-              "san": "Kg7",
-              "color": "black"
-            },
-            {
-              "uci": "f7e5",
-              "san": "Nxe5",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Nxe5",
-          "accepted_moves": [
-            {
-              "san": "Nf7+",
-              "uci": "g5f7",
-              "accepted_at": 1787236970.2778401,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Nxe5",
-              "uci": "f7e5",
-              "accepted_at": 1787236976.5022655,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "f7e5",
-          "last_accepted_move_san": "Nxe5",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787236976.5022643,
-          "position_before_last_move": "2r5/pp3Nkp/8/4qb2/1P2p2P/4Q3/6K1/8 w - - 7 43"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
