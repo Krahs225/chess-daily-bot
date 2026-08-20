@@ -12,7 +12,7 @@
         "started_at": "2026-08-20T12:22:23.121644+00:00",
         "last_activity": 1787232225.8596532,
         "paused_reason": null,
-        "puzzle_number": 37,
+        "puzzle_number": 38,
         "strikes": 0,
         "best_difficulty": 1847,
         "used_puzzle_ids": [
@@ -66,59 +66,10 @@
             "wrong": 4
           }
         },
-        "puzzle": {
-          "id": "WEJHi",
-          "rating": 1744,
-          "themes": "advantage exposedKing kingsideAttack long master middlegame",
-          "url": "https://lichess.org/training/WEJHi",
-          "start_fen": "6kq/1b1n2b1/pp2p1B1/3p4/P2N1rP1/2P5/1P4Q1/R4RK1 b - - 0 28",
-          "current_fen": "6k1/1b1n4/pp2p1B1/3p4/P2q2r1/8/1P4QK/R4R2 w - - 0 31",
-          "solution": [
-            {
-              "uci": "g7d4",
-              "san": "Bxd4+",
-              "color": "black"
-            },
-            {
-              "uci": "c3d4",
-              "san": "cxd4",
-              "color": "white"
-            },
-            {
-              "uci": "h8d4",
-              "san": "Qxd4+",
-              "color": "black"
-            },
-            {
-              "uci": "g1h2",
-              "san": "Kh2",
-              "color": "white"
-            },
-            {
-              "uci": "f4g4",
-              "san": "Rxg4",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Rxg4",
-          "last_accepted_move_uci": "f4g4",
-          "last_accepted_move_san": "Rxg4",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1787232225.859598,
-          "position_before_last_move": "6k1/1b1n4/pp2p1B1/3p4/P2q1rP1/8/1P4QK/R4R2 b - - 1 30"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
-        "helper_candidates": {
-          "442597396195704832": "Thice"
-        },
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
         "helper_awarded": []
       }
     },
