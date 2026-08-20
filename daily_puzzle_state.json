@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-08-21",
     "title": "The All Important First Move of a Sequence",
     "fen": "2kq3r/1p6/2pr3p/6p1/3B1P2/PP6/7P/2KR2Q1 w - - 0 1",
-    "current_fen": "2kq3r/1p6/2pr3p/6p1/3B1P2/PP6/7P/2KR2Q1 w - - 0 1",
+    "current_fen": "2k4r/1p1q4/2pr3p/6p1/3B1PQ1/PP6/7P/2KR4 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kq3r/1p6/2pr3p/6p1/3B1P2/PP6/7P/2KR2Q1 w - - 0 1\"]\r\n\r\n1. Qg4+ Qd7 2. Qxd7+ Rxd7 3. Bxh8\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787266667723",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540132775578050630,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qg4",
+        "correct": true,
+        "timestamp": "2026-08-20T22:58:10.010084+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
