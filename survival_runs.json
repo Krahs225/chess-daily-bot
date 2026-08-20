@@ -164,7 +164,7 @@
         "started_at": "2026-08-20T12:17:06.074723+00:00",
         "last_activity": 1787235477.8102622,
         "paused_reason": "manually stopped",
-        "puzzle_number": 9,
+        "puzzle_number": 10,
         "strikes": 1,
         "best_difficulty": 1374,
         "used_puzzle_ids": [
@@ -185,62 +185,9 @@
             "wrong": 2
           }
         },
-        "puzzle": {
-          "id": "4zu0C",
-          "rating": 1332,
-          "themes": "endgame mate mateIn2 short",
-          "url": "https://lichess.org/training/4zu0C",
-          "start_fen": "r1k4r/p1p3pp/2p2q2/8/2B1p3/3Q4/P4PPP/1N4K1 w - - 0 21",
-          "current_fen": "rk5r/p1p3pp/B1p2q2/8/4p3/1Q6/P4PPP/1N4K1 b - - 3 22",
-          "solution": [
-            {
-              "uci": "c4a6",
-              "san": "Ba6+",
-              "color": "white"
-            },
-            {
-              "uci": "c8b8",
-              "san": "Kb8",
-              "color": "black"
-            },
-            {
-              "uci": "d3b3",
-              "san": "Qb3#",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [
-            "442597396195704832"
-          ],
-          "last_move_san": "Qb3#",
-          "accepted_moves": [
-            {
-              "san": "Ba6+",
-              "uci": "c4a6",
-              "accepted_at": 1787235467.0636384,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Qb3#",
-              "uci": "d3b3",
-              "accepted_at": 1787235477.810158,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "d3b3",
-          "last_accepted_move_san": "Qb3#",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787235477.8101573,
-          "position_before_last_move": "rk5r/p1p3pp/B1p2q2/8/4p3/3Q4/P4PPP/1N4K1 w - - 2 22"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
