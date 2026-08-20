@@ -162,7 +162,7 @@
         "started_by_id": "1539971538290216980",
         "status": "active",
         "started_at": "2026-08-20T12:17:06.074723+00:00",
-        "last_activity": 1787236169.0592651,
+        "last_activity": 1787236178.9894252,
         "paused_reason": null,
         "puzzle_number": 16,
         "strikes": 2,
@@ -188,7 +188,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 36,
+            "correct": 37,
             "wrong": 5
           }
         },
@@ -198,7 +198,7 @@
           "themes": "advantage endgame rookEndgame short",
           "url": "https://lichess.org/training/91alr",
           "start_fen": "1r5k/5p1p/8/3P1P2/r1P2p2/2R2P1P/p5PK/R7 b - - 0 33",
-          "current_fen": "7k/5p1p/8/3P1P2/r1P2p2/5P1P/p5PK/RrR5 b - - 2 34",
+          "current_fen": "7k/5p1p/8/3P1P2/r1P2p2/5P1P/p5PK/R1r5 w - - 0 35",
           "solution": [
             {
               "uci": "b8b1",
@@ -217,7 +217,7 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 2,
+          "next_solution_index": 3,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -225,20 +225,26 @@
           "wrong_users": [
             "442597396195704832"
           ],
-          "last_move_san": "Rb1",
+          "last_move_san": "Rxc1",
           "accepted_moves": [
             {
               "san": "Rb1",
               "uci": "b8b1",
               "accepted_at": 1787236169.059163,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Rxc1",
+              "uci": "b1c1",
+              "accepted_at": 1787236178.9893386,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "b8b1",
-          "last_accepted_move_san": "Rb1",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1787236169.0591621,
-          "position_before_last_move": "1r5k/5p1p/8/3P1P2/r1P2p2/2R2P1P/p5PK/R7 b - - 0 33"
+          "last_accepted_move_uci": "b1c1",
+          "last_accepted_move_san": "Rxc1",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1787236178.9893377,
+          "position_before_last_move": "7k/5p1p/8/3P1P2/r1P2p2/5P1P/p5PK/RrR5 b - - 2 34"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
