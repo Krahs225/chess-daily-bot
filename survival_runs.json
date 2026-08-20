@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787248988.503808,
+        "last_activity": 1787249073.5176623,
         "paused_reason": "manually stopped",
         "puzzle_number": 57,
         "strikes": 1,
@@ -77,7 +77,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 100,
+            "correct": 101,
             "wrong": 3
           },
           "442597396195704832": {
@@ -92,7 +92,7 @@
           "themes": "crushing deflection kingsideAttack middlegame sacrifice short",
           "url": "https://lichess.org/training/pIIbm",
           "start_fen": "r3k2r/pppq1p2/3p1n1p/2b1p1pb/2BnP3/P1NP2BP/1PPQNPP1/R4RK1 b kq - 4 12",
-          "current_fen": "r3k2r/pppq1p2/3p1n1p/2b1p1pb/2BnP3/P1NP2BP/1PPQNPP1/R4RK1 b kq - 4 12",
+          "current_fen": "r3k2r/pppq1p2/3p1n1p/2b1p1pb/2B1P3/P1NP1PBP/1PPQNP2/R4RK1 b kq - 0 13",
           "solution": [
             {
               "uci": "d4f3",
@@ -111,17 +111,29 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Nf3+",
+          "accepted_moves": [
+            {
+              "san": "Nf3+",
+              "uci": "d4f3",
+              "accepted_at": 1787249073.5175154,
+              "solver_id": "601406103712170014"
+            }
+          ],
+          "last_accepted_move_uci": "d4f3",
+          "last_accepted_move_san": "Nf3+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787249073.5175147,
+          "position_before_last_move": "r3k2r/pppq1p2/3p1n1p/2b1p1pb/2BnP3/P1NP2BP/1PPQNPP1/R4RK1 b kq - 4 12"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       }
