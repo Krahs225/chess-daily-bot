@@ -154,9 +154,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-08-20T12:17:06.074741+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1252,
+      "best_completed_at": "2026-08-20T13:59:08.552752+00:00",
       "current": {
         "run_id": "thice:1787228226",
         "started_by_id": "1539971538290216980",
@@ -166,9 +166,10 @@
         "paused_reason": "manually stopped",
         "puzzle_number": 2,
         "strikes": 0,
-        "best_difficulty": 1252,
+        "best_difficulty": 1374,
         "used_puzzle_ids": [
-          "Nzp5Z"
+          "Nzp5Z",
+          "IJq5Q"
         ],
         "members": {
           "442597396195704832": {
@@ -177,7 +178,60 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "IJq5Q",
+          "rating": 1374,
+          "themes": "crushing endgame pawnEndgame quietMove veryLong zugzwang",
+          "url": "https://lichess.org/training/IJq5Q",
+          "start_fen": "8/8/7p/p1p1p1pk/P1P1Pp2/5P1P/5P1K/8 b - - 12 59",
+          "current_fen": "8/8/7p/p1p1p1pk/P1P1Pp2/5P1P/5P1K/8 b - - 12 59",
+          "solution": [
+            {
+              "uci": "h5h4",
+              "san": "Kh4",
+              "color": "black"
+            },
+            {
+              "uci": "h2g2",
+              "san": "Kg2",
+              "color": "white"
+            },
+            {
+              "uci": "h6h5",
+              "san": "h5",
+              "color": "black"
+            },
+            {
+              "uci": "g2h2",
+              "san": "Kh2",
+              "color": "white"
+            },
+            {
+              "uci": "g5g4",
+              "san": "g4",
+              "color": "black"
+            },
+            {
+              "uci": "f3g4",
+              "san": "fxg4",
+              "color": "white"
+            },
+            {
+              "uci": "h5g4",
+              "san": "hxg4",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
