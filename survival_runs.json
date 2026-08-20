@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 24,
+      "best_puzzle": 25,
       "best_difficulty": 1672,
-      "best_completed_at": "2026-08-20T13:01:17.914042+00:00",
+      "best_completed_at": "2026-08-20T13:02:17.619782+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -39,7 +39,8 @@
           "woaKY",
           "Fc97v",
           "9MYLd",
-          "5NZP0"
+          "5NZP0",
+          "jw7dm"
         ],
         "members": {
           "601406103712170014": {
@@ -53,7 +54,49 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "jw7dm",
+          "rating": 1632,
+          "themes": "crushing endgame fork long",
+          "url": "https://lichess.org/training/jw7dm",
+          "start_fen": "2r3k1/R4p1p/5Qp1/8/8/4P2P/2q2PP1/6K1 b - - 2 29",
+          "current_fen": "2r3k1/R4p1p/5Qp1/8/8/4P2P/2q2PP1/6K1 b - - 2 29",
+          "solution": [
+            {
+              "uci": "c2b1",
+              "san": "Qb1+",
+              "color": "black"
+            },
+            {
+              "uci": "g1h2",
+              "san": "Kh2",
+              "color": "white"
+            },
+            {
+              "uci": "b1b8",
+              "san": "Qb8+",
+              "color": "black"
+            },
+            {
+              "uci": "g2g3",
+              "san": "g3",
+              "color": "white"
+            },
+            {
+              "uci": "b8a7",
+              "san": "Qxa7",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
