@@ -64,7 +64,7 @@
         "started_by_id": "1539974287128137739",
         "status": "active",
         "started_at": "2026-08-20T12:28:01.540198+00:00",
-        "last_activity": 1787229126.557051,
+        "last_activity": 1787229151.206698,
         "paused_reason": null,
         "puzzle_number": 6,
         "strikes": 0,
@@ -82,6 +82,11 @@
             "name": "TheMakina",
             "correct": 12,
             "wrong": 0
+          },
+          "442597396195704832": {
+            "name": "Thice",
+            "correct": 1,
+            "wrong": 0
           }
         },
         "puzzle": {
@@ -90,7 +95,7 @@
           "themes": "attraction kingsideAttack long mate mateIn3 middlegame sacrifice",
           "url": "https://lichess.org/training/SGTfw",
           "start_fen": "1r3qrk/5p1p/p1bppPpQ/4n1P1/2P1PR2/2p4P/PP4B1/R6K w - - 6 28",
-          "current_fen": "1r3qrk/5p1p/p1bppPpQ/4n1P1/2P1PR2/2p4P/PP4B1/R6K w - - 6 28",
+          "current_fen": "1r3qr1/5p1k/p1bppPp1/4n1P1/2P1PR2/2p4P/PP4B1/R6K w - - 0 29",
           "solution": [
             {
               "uci": "h6h7",
@@ -119,16 +124,16 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null
+          "last_move_san": "Qxh7+"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
