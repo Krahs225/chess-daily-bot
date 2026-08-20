@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-06-22",
     "title": "Getting In Prime Position",
     "fen": "2r3k1/p6p/5R2/8/1Bn1p3/3R4/P1r3PP/6K1 w - - 0 1",
-    "current_fen": "2r3k1/p6p/5R2/8/1Bn1p3/3R4/P1r3PP/6K1 w - - 0 1",
+    "current_fen": "2r4k/p6p/5R2/8/1Bn1p3/6R1/P1r3PP/6K1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/p6p/5R2/8/1Bn1p3/3R4/P1r3PP/6K1 w - - 0 1\"]\r\n\r\n1. Rg3+ Kh8 2. Bc3 Rxc3 3. Rxc3\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787267819495",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540137606015230055,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rg3",
+        "correct": true,
+        "timestamp": "2026-08-20T23:17:10.398629+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
