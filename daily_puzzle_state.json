@@ -1,122 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-02-02",
-    "title": "I.Bondar, Special Prize, Simkhovich-100MT, 1995",
-    "fen": "8/8/7n/8/5Qn1/7K/4p1p1/7k w - - 0 1",
-    "current_fen": "8/8/8/8/4Q1n1/6n1/4p3/4K1nk b - - 9 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/7n/8/5Qn1/7K/4p1p1/7k w - - 0 1\"]\r\n\r\n1. Qc1+ g1=N+ 2. Kg3 Nh2 3. Qb1 Nf1+ 4. Kf2 Ng4+ 5. Ke1 Ng3 6. Qe4+\r\n*",
+    "url": "https://www.chess.com/daily/2020-10-07",
+    "title": "The Middle of Nowhere",
+    "fen": "rn2kb1r/1b1n1pp1/p3N3/1p2q1Bp/6Q1/8/PPP3PP/2KR1B1R w kq - 0 1",
+    "current_fen": "rn2kb1r/1bqn1pp1/p7/1p4Bp/6Q1/8/PPP3PP/2KR1B1R w kq - 0 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"rn2kb1r/1b1n1pp1/p3N3/1p2q1Bp/6Q1/8/PPP3PP/2KR1B1R w kq - 0 1\"]\r\n\r\n1.Nc7+ Qxc7 2.Qe2+ Ne5 3.Qxe5+ Qxe5 4.Rd8# *",
     "all_moves": [
       {
-        "uci": "f4c1",
-        "san": "Qc1+",
+        "uci": "e6c7",
+        "san": "Nc7+",
         "color": "white"
       },
       {
-        "uci": "g2g1n",
-        "san": "g1=N+",
+        "uci": "e5c7",
+        "san": "Qxc7",
         "color": "black"
       },
       {
-        "uci": "h3g3",
-        "san": "Kg3",
+        "uci": "g4e2",
+        "san": "Qe2+",
         "color": "white"
       },
       {
-        "uci": "g4h2",
-        "san": "Nh2",
+        "uci": "d7e5",
+        "san": "Ne5",
         "color": "black"
       },
       {
-        "uci": "c1b1",
-        "san": "Qb1",
+        "uci": "e2e5",
+        "san": "Qxe5+",
         "color": "white"
       },
       {
-        "uci": "h2f1",
-        "san": "Nf1+",
+        "uci": "c7e5",
+        "san": "Qxe5",
         "color": "black"
       },
       {
-        "uci": "g3f2",
-        "san": "Kf2",
-        "color": "white"
-      },
-      {
-        "uci": "h6g4",
-        "san": "Ng4+",
-        "color": "black"
-      },
-      {
-        "uci": "f2e1",
-        "san": "Ke1",
-        "color": "white"
-      },
-      {
-        "uci": "f1g3",
-        "san": "Ng3",
-        "color": "black"
-      },
-      {
-        "uci": "b1e4",
-        "san": "Qe4+",
+        "uci": "d1d8",
+        "san": "Rd8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4c1",
-        "san": "Qc1+",
+        "uci": "e6c7",
+        "san": "Nc7+",
         "color": "white"
       },
       {
-        "uci": "h3g3",
-        "san": "Kg3",
+        "uci": "g4e2",
+        "san": "Qe2+",
         "color": "white"
       },
       {
-        "uci": "c1b1",
-        "san": "Qb1",
+        "uci": "e2e5",
+        "san": "Qxe5+",
         "color": "white"
       },
       {
-        "uci": "g3f2",
-        "san": "Kf2",
-        "color": "white"
-      },
-      {
-        "uci": "f2e1",
-        "san": "Ke1",
-        "color": "white"
-      },
-      {
-        "uci": "b1e4",
-        "san": "Qe4+",
+        "uci": "d1d8",
+        "san": "Rd8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-20T23:02:56.573697+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-20T23:03:54.120914+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787266976573",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1540134071605141587,
+    "puzzle_id": "random_1787267034120",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1540134312358314065,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qe4",
+        "move": "nc7",
         "correct": true,
-        "timestamp": "2026-08-20T23:03:49.577527+00:00"
+        "timestamp": "2026-08-20T23:04:21.376815+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
