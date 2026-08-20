@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787232321.8148758,
+        "last_activity": 1787232338.0594711,
         "paused_reason": null,
         "puzzle_number": 39,
         "strikes": 0,
@@ -59,7 +59,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 79,
+            "correct": 80,
             "wrong": 1
           },
           "442597396195704832": {
@@ -74,7 +74,7 @@
           "themes": "crushing discoveredAttack middlegame queensideAttack short",
           "url": "https://lichess.org/training/8lW4Y",
           "start_fen": "3r1rk1/6pp/4p3/p2nP3/2p1Bn2/1pP1NP2/PP1R1P1P/1K2R3 b - - 1 24",
-          "current_fen": "3r1rk1/6pp/4p3/p2nP3/2p1Bn2/1pP1NP2/PP1R1P1P/1K2R3 b - - 1 24",
+          "current_fen": "3r1rk1/6pp/4p3/p3P3/2p1Bn2/1pP1NP2/P2R1P1P/1K2R3 b - - 0 25",
           "solution": [
             {
               "uci": "d5c3",
@@ -93,16 +93,21 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null
+          "last_move_san": "Nxc3+",
+          "last_accepted_move_uci": "d5c3",
+          "last_accepted_move_san": "Nxc3+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787232338.0593932,
+          "position_before_last_move": "3r1rk1/6pp/4p3/p2nP3/2p1Bn2/1pP1NP2/PP1R1P1P/1K2R3 b - - 1 24"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       }
