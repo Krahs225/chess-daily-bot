@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787247913.250958,
+        "last_activity": 1787247960.3138103,
         "paused_reason": "manually stopped",
         "puzzle_number": 50,
         "strikes": 1,
@@ -75,7 +75,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 30,
+            "correct": 31,
             "wrong": 5
           }
         },
@@ -85,7 +85,7 @@
           "themes": "crushing endgame short",
           "url": "https://lichess.org/training/rEksh",
           "start_fen": "6k1/q2n1p1p/p5p1/1p1R4/3r4/2N2Q1P/PP3PP1/6K1 w - - 0 29",
-          "current_fen": "6k1/q2n1p1p/p5p1/1p1R4/3r4/2N2Q1P/PP3PP1/6K1 w - - 0 29",
+          "current_fen": "6k1/q2n1p1p/p5p1/1p1r4/8/2N1Q2P/PP3PP1/6K1 w - - 0 30",
           "solution": [
             {
               "uci": "f3e3",
@@ -104,17 +104,29 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qe3",
+          "accepted_moves": [
+            {
+              "san": "Qe3",
+              "uci": "f3e3",
+              "accepted_at": 1787247960.3137064,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "f3e3",
+          "last_accepted_move_san": "Qe3",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787247960.3137057,
+          "position_before_last_move": "6k1/q2n1p1p/p5p1/1p1R4/3r4/2N2Q1P/PP3PP1/6K1 w - - 0 29"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
