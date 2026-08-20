@@ -334,6 +334,12 @@ client = discord.Client(intents=intents)
 # =========================================================
 
 state = {}
+LICHESS_FILTER_URL = "https://datasets-server.huggingface.co/filter"
+LICHESS_DATASET = "Lichess/chess-puzzles"
+LICHESS_CONFIG = "default"
+LICHESS_SPLIT = "train"
+LICHESS_FILTER_TIMEOUT = 20
+
 scores = {}
 
 data_lock = asyncio.Lock()
@@ -1370,6 +1376,270 @@ def build_puzzle(data):
     }
 
 
+
+def fetch_exact_lichess_puzzle(
+    rating,
+):
+    """Return one exact-rating Lichess puzzle or None."""
+    rating = int(rating)
+
+    response = requests.get(
+        LICHESS_FILTER_URL,
+        params={
+            "dataset": LICHESS_DATASET,
+            "config": LICHESS_CONFIG,
+            "split": LICHESS_SPLIT,
+            "where": f'"Rating"={rating}',
+            "offset": 0,
+            "length": 100,
+        },
+        headers={
+            "Accept": "application/json",
+            "User-Agent": "Chess-Puzzle-Bot/1.0",
+        },
+        timeout=LICHESS_FILTER_TIMEOUT,
+    )
+    response.raise_for_status()
+
+    rows = response.json().get(
+        "rows",
+        [],
+    )
+
+    if not rows:
+        return None
+
+    item = rows[0].get(
+        "row",
+        rows[0],
+    )
+
+    if not isinstance(item, dict):
+        return None
+
+    puzzle_id = item.get("PuzzleId")
+    fen = item.get("FEN")
+    moves = item.get("Moves")
+    puzzle_rating = item.get("Rating")
+
+    if not puzzle_id or not fen or not moves:
+        return None
+
+    if isinstance(moves, str):
+        moves = moves.split()
+
+    if not isinstance(moves, list) or len(moves) < 2:
+        return None
+
+    try:
+        puzzle_rating = int(puzzle_rating)
+    except Exception:
+        return None
+
+    if puzzle_rating != rating:
+        return None
+
+    return {
+        "PuzzleId": str(puzzle_id),
+        "FEN": str(fen),
+        "Moves": moves,
+        "Rating": puzzle_rating,
+        "Themes": item.get("Themes", ""),
+    }
+
+
+async def post_exact_lichess_puzzle(
+    channel,
+    rating,
+):
+    try:
+        raw = await asyncio.to_thread(
+            fetch_exact_lichess_puzzle,
+            rating,
+        )
+
+        if raw is None:
+            await channel.send(
+                f"❌ No Lichess puzzle with **exact rating {rating}** was found."
+            )
+            return
+
+        # Reuse the existing Lichess -> internal puzzle structure.
+        puzzle_source = {
+            "id": raw["PuzzleId"],
+            "fen": raw["FEN"],
+            "moves": raw["Moves"],
+            "rating": raw["Rating"],
+            "themes": (
+                " ".join(raw["Themes"])
+                if isinstance(raw["Themes"], list)
+                else str(raw["Themes"])
+            ),
+            "url": (
+                f"https://lichess.org/training/"
+                f"{raw['PuzzleId']}"
+            ),
+        }
+
+        puzzle = build_puzzle_from_lichess(
+            puzzle_source
+        )
+
+        puzzle["posted_at"] = (
+            datetime.now(timezone.utc).isoformat()
+        )
+        puzzle["puzzle_id"] = (
+            f"lichess_{rating}_"
+            f"{raw['PuzzleId']}_"
+            f"{int(time.time() * 1000)}"
+        )
+
+        # Exact-rating puzzles use the same interactive state machine
+        # as Daily/Random.
+        puzzle["current_fen"] = sanitize_fen(
+            puzzle["fen"]
+        )
+        puzzle["next_solution_index"] = 0
+        puzzle["next_player_index"] = 0
+        puzzle["solved"] = False
+        puzzle["message_id"] = None
+        puzzle["attempted_users"] = {}
+        puzzle["first_move_user_id"] = None
+        puzzle["first_move_user_name"] = None
+        puzzle["first_move_awarded"] = False
+        puzzle["helper_awarded_users"] = []
+        puzzle["helper_candidate_users"] = []
+
+        state["latest_random_puzzle"] = puzzle
+        state["latest_puzzle_type"] = "random"
+
+        await save_all()
+
+        file, board = await make_board_file(
+            puzzle,
+            "lichess_rating_puzzle.png",
+        )
+
+        side = "White" if board.turn else "Black"
+
+        if puzzle["player_move_count"] == 1:
+            move_description = "Find the best move."
+        else:
+            move_description = (
+                f"Find the best line in **"
+                f"{puzzle['player_move_count']} "
+                f"{move_word(puzzle['player_move_count'])}**."
+            )
+
+        embed = discord.Embed(
+            title=(
+                f"♟️ Lichess Puzzle — {rating}"
+            ),
+            description=(
+                f"**{side} to move.**\n"
+                f"{move_description}\n\n"
+                f"Play one move at a time."
+            ),
+        )
+
+        embed.set_image(
+            url="attachment://lichess_rating_puzzle.png"
+        )
+
+        await channel.send(
+            embed=embed,
+            file=file,
+        )
+
+    except Exception as error:
+        print(
+            f"Exact Lichess rating puzzle error: {error}",
+            flush=True,
+        )
+        await channel.send(
+            f"❌ **Could not load Lichess rating {rating}.**"
+        )
+
+
+# =========================================================
+# BUILD LICHESS PUZZLE
+# =========================================================
+
+def build_puzzle_from_lichess(
+    data,
+):
+    board = chess.Board(data["fen"])
+
+    first = chess.Move.from_uci(
+        data["moves"][0]
+    )
+
+    if first not in board.legal_moves:
+        raise ValueError(
+            "Invalid Lichess first move."
+        )
+
+    board.push(first)
+
+    solution = []
+    player_color = "white" if board.turn else "black"
+
+    # Include the complete solution line after Lichess' automatic first move.
+    for uci in data["moves"][1:]:
+        move = chess.Move.from_uci(uci)
+        if move not in board.legal_moves:
+            raise ValueError(
+                "Invalid Lichess solution move."
+            )
+
+        solution.append({
+            "uci": uci,
+            "san": board.san(move),
+            "color": "white" if board.turn else "black",
+        })
+        board.push(move)
+
+    return {
+        "title": f"{data['rating']} • {data['id']}",
+        "fen": board_fen_after_lichess_first(
+            data
+        ),
+        "all_moves": solution,
+        "player_moves": [
+            move
+            for move in solution
+            if move["color"] == player_color
+        ],
+        "player_color": player_color,
+        "player_move_count": len(
+            [
+                move for move in solution
+                if move["color"] == player_color
+            ]
+        ),
+        "current_fen": board_fen_after_lichess_first(
+            data
+        ),
+        "pgn": "",
+        "url": data.get(
+            "url",
+            f"https://lichess.org/training/{data['id']}",
+        ),
+    }
+
+
+def board_fen_after_lichess_first(
+    data,
+):
+    board = chess.Board(data["fen"])
+    board.push(
+        chess.Move.from_uci(
+            data["moves"][0]
+        )
+    )
+    return board.fen()
+
+
 # =========================================================
 # BOARD IMAGE
 # =========================================================
@@ -2127,11 +2397,14 @@ def help_message():
 
 **Daily Puzzle**
 `!daily <move>` — Play the Chess.com Daily Puzzle one move at a time.
-`<move>` or `!<move>` works too, exactly like Random Puzzle.
+`<move>` or `!<move>` works too.
 
 **Random Puzzle**
 `rp` or `!rp` — Start a random Chess.com puzzle.
 Play it one move at a time.
+
+**Lichess Rating Puzzle**
+`!400`, `!2500`, `!2552`, etc. — load a Lichess puzzle with that **exact puzzle rating**.
 
 **Shared Points**
 Daily and Random use the **shared leaderboard**.
@@ -2139,7 +2412,7 @@ First solver: **+1 point**
 Helper: **+0.5 point**
 
 **Commands**
-`!info` / `!help` — show this info.
+`!info` / `!help` / `!i` — show this info.
 `!leaderboard` / `!lb` / `!l` — show the shared leaderboard.
 
 🔥 **Survival Mode**
@@ -3547,6 +3820,26 @@ async def on_message(
         content = message.content.strip()
 
         command_lower = content.casefold()
+
+        # Exact Lichess puzzle rating, e.g. !400 or !2552.
+        if re.fullmatch(r"!([0-9]{3,4})", command_lower):
+            rating = int(
+                command_lower[1:]
+            )
+
+            if is_survival_active():
+                team = active_team() or "another team"
+                await message.channel.send(
+                    f"⚠️ **Survival Mode is active for {team}.** "
+                    "Lichess rating puzzles are unavailable until Survival is paused."
+                )
+                return
+
+            await post_exact_lichess_puzzle(
+                message.channel,
+                rating,
+            )
+            return
 
         # Fast exact aliases. Handle these before any puzzle logic.
         if command_lower in (
