@@ -66,7 +66,7 @@
         "started_at": "2026-08-20T12:28:01.540198+00:00",
         "last_activity": 1787229126.557051,
         "paused_reason": null,
-        "puzzle_number": 5,
+        "puzzle_number": 6,
         "strikes": 0,
         "best_difficulty": 1395,
         "used_puzzle_ids": [
@@ -83,41 +83,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "giHpp",
-          "rating": 1395,
-          "themes": "kingsideAttack mate mateIn2 middlegame sacrifice short",
-          "url": "https://lichess.org/training/giHpp",
-          "start_fen": "r1b1rqk1/ppbn1p2/2p1pn1Q/8/NP2R3/P2B1N2/2P2PPP/R5K1 w - - 3 18",
-          "current_fen": "r1b1rqk1/ppbn1p1Q/2p1p3/8/NP4n1/P2B1N2/2P2PPP/R5K1 b - - 1 19",
-          "solution": [
-            {
-              "uci": "e4g4",
-              "san": "Rg4+",
-              "color": "white"
-            },
-            {
-              "uci": "f6g4",
-              "san": "Nxg4",
-              "color": "black"
-            },
-            {
-              "uci": "h6h7",
-              "san": "Qh7#",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Qh7#"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
