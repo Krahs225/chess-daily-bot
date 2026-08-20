@@ -164,7 +164,7 @@
         "started_at": "2026-08-20T12:17:06.074723+00:00",
         "last_activity": 1787234744.176304,
         "paused_reason": "manually stopped",
-        "puzzle_number": 5,
+        "puzzle_number": 6,
         "strikes": 0,
         "best_difficulty": 1374,
         "used_puzzle_ids": [
@@ -181,76 +181,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "QxmfQ",
-          "rating": 1204,
-          "themes": "crushing defensiveMove endgame long queenEndgame",
-          "url": "https://lichess.org/training/QxmfQ",
-          "start_fen": "8/6pk/7p/3q4/8/8/P2KQ3/8 w - - 2 46",
-          "current_fen": "8/6p1/6kp/8/P7/3K4/8/8 b - - 0 48",
-          "solution": [
-            {
-              "uci": "e2d3",
-              "san": "Qd3+",
-              "color": "white"
-            },
-            {
-              "uci": "d5d3",
-              "san": "Qxd3+",
-              "color": "black"
-            },
-            {
-              "uci": "d2d3",
-              "san": "Kxd3",
-              "color": "white"
-            },
-            {
-              "uci": "h7g6",
-              "san": "Kg6",
-              "color": "black"
-            },
-            {
-              "uci": "a2a4",
-              "san": "a4",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "a4",
-          "accepted_moves": [
-            {
-              "san": "Qd3+",
-              "uci": "e2d3",
-              "accepted_at": 1787234734.2038894,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Kxd3",
-              "uci": "d2d3",
-              "accepted_at": 1787234738.6632676,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "a4",
-              "uci": "a2a4",
-              "accepted_at": 1787234744.1762524,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "a2a4",
-          "last_accepted_move_san": "a4",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1787234744.176252,
-          "position_before_last_move": "8/6p1/6kp/8/8/3K4/P7/8 w - - 1 48"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
