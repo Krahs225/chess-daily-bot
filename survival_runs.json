@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 3,
+      "best_puzzle": 4,
       "best_difficulty": 1337,
-      "best_completed_at": "2026-08-20T12:43:51.921404+00:00",
+      "best_completed_at": "2026-08-20T12:44:33.070524+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -18,7 +18,8 @@
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
-          "UW5iq"
+          "UW5iq",
+          "RJflk"
         ],
         "members": {
           "601406103712170014": {
@@ -27,7 +28,39 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "RJflk",
+          "rating": 1292,
+          "themes": "crushing endgame short skewer",
+          "url": "https://lichess.org/training/RJflk",
+          "start_fen": "7k/8/4Np1p/p2p1PpQ/P2P4/5K1P/6P1/6q1 b - - 2 47",
+          "current_fen": "7k/8/4Np1p/p2p1PpQ/P2P4/5K1P/6P1/6q1 b - - 2 47",
+          "solution": [
+            {
+              "uci": "g1d1",
+              "san": "Qd1+",
+              "color": "black"
+            },
+            {
+              "uci": "f3g3",
+              "san": "Kg3",
+              "color": "white"
+            },
+            {
+              "uci": "d1h5",
+              "san": "Qxh5",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
