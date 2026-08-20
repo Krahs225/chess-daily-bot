@@ -162,7 +162,7 @@
         "started_by_id": "1540006473709391903",
         "status": "active",
         "started_at": "2026-08-20T14:35:58.668682+00:00",
-        "last_activity": 1787239315.9291368,
+        "last_activity": 1787239324.2336023,
         "paused_reason": "manually stopped",
         "puzzle_number": 9,
         "strikes": 1,
@@ -186,7 +186,7 @@
           },
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 0,
+            "correct": 1,
             "wrong": 1
           }
         },
@@ -196,7 +196,7 @@
           "themes": "advantage kingsideAttack long middlegame pin",
           "url": "https://lichess.org/training/BqlIJ",
           "start_fen": "r2r1b2/4kp2/pq2p3/1b2P2Q/1p1N1P2/1P6/1PP1N1P1/R2R2K1 b - - 2 23",
-          "current_fen": "r2r1b2/4kp2/pq2p3/4P3/1p1N1P2/1P6/1PP1Q1P1/R2R2K1 b - - 0 24",
+          "current_fen": "r4b2/4kp2/pq2p3/4P3/1p1R1P2/1P6/1PP1Q1P1/R5K1 b - - 0 25",
           "solution": [
             {
               "uci": "b5e2",
@@ -225,7 +225,7 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 2,
+          "next_solution_index": 4,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -233,24 +233,32 @@
           "wrong_users": [
             "601406103712170014"
           ],
-          "last_move_san": "Bxe2",
+          "last_move_san": "Rxd4",
           "accepted_moves": [
             {
               "san": "Bxe2",
               "uci": "b5e2",
               "accepted_at": 1787238874.889697,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Rxd4",
+              "uci": "d8d4",
+              "accepted_at": 1787239324.233475,
+              "solver_id": "601406103712170014"
             }
           ],
-          "last_accepted_move_uci": "b5e2",
-          "last_accepted_move_san": "Bxe2",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1787238874.889696,
-          "position_before_last_move": "r2r1b2/4kp2/pq2p3/1b2P2Q/1p1N1P2/1P6/1PP1N1P1/R2R2K1 b - - 2 23"
+          "last_accepted_move_uci": "d8d4",
+          "last_accepted_move_san": "Rxd4",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1787239324.2334743,
+          "position_before_last_move": "r2r1b2/4kp2/pq2p3/4P3/1p1N1P2/1P6/1PP1Q1P1/R2R2K1 b - - 0 24"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
-        "helper_candidates": {},
+        "helper_candidates": {
+          "601406103712170014": "TheMakina"
+        },
         "helper_awarded": []
       }
     },
