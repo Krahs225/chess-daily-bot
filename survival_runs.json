@@ -245,9 +245,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 3,
-      "best_difficulty": 1220,
-      "best_completed_at": "2026-08-20T21:48:38.784279+00:00",
+      "best_puzzle": 4,
+      "best_difficulty": 1371,
+      "best_completed_at": "2026-08-20T21:48:59.681514+00:00",
       "current": {
         "run_id": "thice:1787262345",
         "started_by_id": "442597396195704832",
@@ -264,7 +264,8 @@
         "used_puzzle_ids": [
           "6j9Vv",
           "Y7Gdp",
-          "7BZcW"
+          "7BZcW",
+          "mVCIc"
         ],
         "members": {
           "442597396195704832": {
@@ -273,7 +274,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "mVCIc",
+          "rating": 1290,
+          "themes": "attraction deflection endgame master mate mateIn2 queensideAttack short",
+          "url": "https://lichess.org/training/mVCIc",
+          "start_fen": "r4k2/1p3p2/6Rp/2q1pQpP/1n2P1P1/1P6/5P2/1KR5 b - - 3 30",
+          "current_fen": "r4k2/1p3p2/6Rp/2q1pQpP/1n2P1P1/1P6/5P2/1KR5 b - - 3 30",
+          "solution": [
+            {
+              "uci": "a8a1",
+              "san": "Ra1+",
+              "color": "black"
+            },
+            {
+              "uci": "b1a1",
+              "san": "Kxa1",
+              "color": "white"
+            },
+            {
+              "uci": "c5c1",
+              "san": "Qxc1#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
