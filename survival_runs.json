@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 12,
-      "best_difficulty": 1437,
-      "best_completed_at": "2026-08-20T12:48:40.792497+00:00",
+      "best_puzzle": 13,
+      "best_difficulty": 1503,
+      "best_completed_at": "2026-08-20T12:49:08.077312+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -27,7 +27,8 @@
           "8SWTs",
           "wQtHg",
           "9Hv1n",
-          "ZfvWh"
+          "ZfvWh",
+          "JSj9h"
         ],
         "members": {
           "601406103712170014": {
@@ -41,7 +42,39 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "JSj9h",
+          "rating": 1476,
+          "themes": "fork mate mateIn2 middlegame short",
+          "url": "https://lichess.org/training/JSj9h",
+          "start_fen": "2R4b/pp2pp1k/1q1p3p/3n2pN/1P3Pn1/P5P1/3B2BP/5R1K w - - 1 25",
+          "current_fen": "2R4b/pp2pp1k/1q1p3p/3n2pN/1P3Pn1/P5P1/3B2BP/5R1K w - - 1 25",
+          "solution": [
+            {
+              "uci": "g2e4",
+              "san": "Be4+",
+              "color": "white"
+            },
+            {
+              "uci": "f7f5",
+              "san": "f5",
+              "color": "black"
+            },
+            {
+              "uci": "e4f5",
+              "san": "Bxf5#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
