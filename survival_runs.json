@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 17,
+      "best_puzzle": 18,
       "best_difficulty": 1540,
-      "best_completed_at": "2026-08-20T12:56:35.915622+00:00",
+      "best_completed_at": "2026-08-20T12:57:04.560303+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -32,7 +32,8 @@
           "cvtLS",
           "LSDrX",
           "uBwMi",
-          "hmlbb"
+          "hmlbb",
+          "8kOiq"
         ],
         "members": {
           "601406103712170014": {
@@ -46,7 +47,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "8kOiq",
+          "rating": 1455,
+          "themes": "kingsideAttack mate mateIn2 middlegame short",
+          "url": "https://lichess.org/training/8kOiq",
+          "start_fen": "r2qrbk1/6p1/p6P/1p2n3/2pp3P/PP3RQ1/B1P5/R1B3K1 w - - 0 24",
+          "current_fen": "r2qrbk1/6p1/p6P/1p2n3/2pp3P/PP3RQ1/B1P5/R1B3K1 w - - 0 24",
+          "solution": [
+            {
+              "uci": "f3f8",
+              "san": "Rxf8+",
+              "color": "white"
+            },
+            {
+              "uci": "e8f8",
+              "san": "Rxf8",
+              "color": "black"
+            },
+            {
+              "uci": "g3g7",
+              "san": "Qxg7#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
