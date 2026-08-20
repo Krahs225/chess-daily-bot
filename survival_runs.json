@@ -154,9 +154,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 14,
-      "best_difficulty": 1424,
-      "best_completed_at": "2026-08-20T14:27:37.197084+00:00",
+      "best_puzzle": 15,
+      "best_difficulty": 1511,
+      "best_completed_at": "2026-08-20T14:27:53.768099+00:00",
       "current": {
         "run_id": "thice:1787228226",
         "started_by_id": "1539971538290216980",
@@ -181,7 +181,8 @@
           "jXZA3",
           "sMhIJ",
           "nDeOr",
-          "HjpuK"
+          "HjpuK",
+          "ky0Xd"
         ],
         "members": {
           "442597396195704832": {
@@ -190,7 +191,40 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "ky0Xd",
+          "rating": 1451,
+          "themes": "advantage middlegame short",
+          "url": "https://lichess.org/training/ky0Xd",
+          "start_fen": "2kr3r/pb1p1p2/1p2p2p/2b5/7N/6qP/P1Q1BPP1/1R1R2K1 w - - 7 20",
+          "current_fen": "2kr3r/pb1p1p2/1p2p2p/2b5/7N/6qP/P1Q1BPP1/1R1R2K1 w - - 7 20",
+          "solution": [
+            {
+              "uci": "c2c5",
+              "san": "Qxc5+",
+              "color": "white"
+            },
+            {
+              "uci": "b6c5",
+              "san": "bxc5",
+              "color": "black"
+            },
+            {
+              "uci": "f2g3",
+              "san": "fxg3",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
