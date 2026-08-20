@@ -106,9 +106,9 @@
         "started_by_id": "1539976092155256853",
         "status": "active",
         "started_at": "2026-08-20T12:35:11.825849+00:00",
-        "last_activity": 1787229457.4118097,
+        "last_activity": 1787229459.5637758,
         "paused_reason": null,
-        "puzzle_number": 3,
+        "puzzle_number": 4,
         "strikes": 1,
         "best_difficulty": 1325,
         "used_puzzle_ids": [
@@ -128,41 +128,9 @@
             "wrong": 1
           }
         },
-        "puzzle": {
-          "id": "kJgyW",
-          "rating": 1282,
-          "themes": "advantage middlegame short",
-          "url": "https://lichess.org/training/kJgyW",
-          "start_fen": "5rk1/1pq2ppp/1np1p3/p3P3/rPP5/P6P/2Q2PP1/R3R1K1 w - - 0 22",
-          "current_fen": "5rk1/1pq2ppp/2p1p3/p1PnP3/QP6/P6P/5PP1/R3R1K1 b - - 0 23",
-          "solution": [
-            {
-              "uci": "c4c5",
-              "san": "c5",
-              "color": "white"
-            },
-            {
-              "uci": "b6d5",
-              "san": "Nd5",
-              "color": "black"
-            },
-            {
-              "uci": "c2a4",
-              "san": "Qxa4",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Qxa4"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
