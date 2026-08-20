@@ -339,6 +339,10 @@ LICHESS_DATASET = "Lichess/chess-puzzles"
 LICHESS_CONFIG = "default"
 LICHESS_SPLIT = "train"
 LICHESS_FILTER_TIMEOUT = 20
+PARQUET_LIST_URL = (
+    "https://datasets-server.huggingface.co/parquet"
+)
+PARQUET_QUERY_TIMEOUT = 45
 
 scores = {}
 
@@ -1503,146 +1507,152 @@ def _request_lichess_filter(
     return None
 
 
+def fetch_lichess_parquet_urls():
+    response = requests.get(
+        PARQUET_LIST_URL,
+        params={
+            "dataset":
+                LICHESS_DATASET,
+        },
+        headers={
+            "Accept":
+                "application/json",
+            "User-Agent":
+                "Chess-Puzzle-Bot/1.4",
+        },
+        timeout=15,
+    )
+
+    response.raise_for_status()
+
+    payload = response.json()
+
+    urls = []
+
+    for item in payload.get(
+        "parquet_files",
+        [],
+    ):
+        if (
+            item.get("split")
+            == LICHESS_SPLIT
+            and item.get("config")
+            == LICHESS_CONFIG
+            and item.get("url")
+        ):
+            urls.append(
+                item["url"]
+            )
+
+    if not urls:
+        raise RuntimeError(
+            "No Lichess puzzle Parquet files were returned."
+        )
+
+    return urls
+
+
 def fetch_exact_lichess_puzzle(
     rating,
 ):
     """
-    Find one Lichess puzzle with the exact integer puzzle rating.
+    Query the current Lichess puzzle Parquet shards directly with DuckDB.
 
-    The Dataset Viewer /filter endpoint supports comparison predicates
-    such as `"Rating"=1000` and returns up to 100 matching rows.
-    We use a short retry loop so a transient Hugging Face 5xx/timeout
-    does not create a long backlog of delayed Discord replies.
+    This avoids the Dataset Viewer /filter service, which has been returning
+    intermittent 500s/timeouts for the bot. DuckDB can query remote Parquet
+    files over HTTP and only returns the matching puzzle row.
     """
     rating = int(
         rating
     )
 
-    params = {
-        "dataset":
-            LICHESS_DATASET,
-        "config":
-            LICHESS_CONFIG,
-        "split":
-            LICHESS_SPLIT,
-        "where":
-            f'"Rating"={rating}',
-        "orderby":
-            '"PuzzleId"',
-        "offset":
-            0,
-        "length":
-            1,
-    }
+    try:
+        import duckdb
+    except ImportError as error:
+        raise RuntimeError(
+            "DuckDB is not installed. Add `duckdb` to requirements.txt."
+        ) from error
 
-    last_error = None
+    urls = fetch_lichess_parquet_urls()
 
-    for attempt in range(3):
-        try:
-            response = requests.get(
-                LICHESS_FILTER_URL,
-                params=params,
-                headers={
-                    "Accept":
-                        "application/json",
-                    "User-Agent":
-                        "Chess-Puzzle-Bot/1.3",
-                },
-                timeout=12,
+    con = duckdb.connect(
+        database=":memory:"
+    )
+
+    try:
+        con.execute(
+            "INSTALL httpfs"
+        )
+        con.execute(
+            "LOAD httpfs"
+        )
+
+        # Query all three current shards in one statement.
+        parquet_list = ", ".join(
+            "'" + url.replace("'", "''") + "'"
+            for url in urls
+        )
+
+        query = f"""
+            SELECT
+                PuzzleId,
+                FEN,
+                Moves,
+                Rating,
+                Themes
+            FROM read_parquet(
+                [{parquet_list}],
+                union_by_name=true
             )
+            WHERE Rating = ?
+            LIMIT 1
+        """
 
-            response.raise_for_status()
+        result = con.execute(
+            query,
+            [rating],
+        ).fetchone()
 
-            rows = response.json().get(
-                "rows",
-                [],
-            )
-
-            for wrapper in rows:
-                item = (
-                    wrapper.get(
-                        "row",
-                        wrapper,
-                    )
-                    if isinstance(
-                        wrapper,
-                        dict,
-                    )
-                    else None
-                )
-
-                if not isinstance(
-                    item,
-                    dict,
-                ):
-                    continue
-
-                try:
-                    row_rating = int(
-                        item.get(
-                            "Rating"
-                        )
-                    )
-                except Exception:
-                    continue
-
-                if row_rating != rating:
-                    continue
-
-                moves = item.get(
-                    "Moves"
-                )
-
-                if isinstance(
-                    moves,
-                    str,
-                ):
-                    moves = moves.split()
-
-                if (
-                    not item.get("PuzzleId")
-                    or not item.get("FEN")
-                    or not isinstance(
-                        moves,
-                        list,
-                    )
-                    or len(moves) < 2
-                ):
-                    continue
-
-                return {
-                    "PuzzleId":
-                        str(item["PuzzleId"]),
-                    "FEN":
-                        str(item["FEN"]),
-                    "Moves":
-                        [
-                            str(move)
-                            for move in moves
-                        ],
-                    "Rating":
-                        row_rating,
-                    "Themes":
-                        item.get(
-                            "Themes",
-                            "",
-                        ),
-                }
-
+        if not result:
             return None
 
-        except Exception as error:
-            last_error = error
+        puzzle_id, fen, moves, row_rating, themes = result
 
-            if attempt < 2:
-                time.sleep(
-                    0.8 * (attempt + 1)
-                )
+        if isinstance(
+            moves,
+            str,
+        ):
+            moves = moves.split()
 
-    raise RuntimeError(
-        f"Lichess exact-rating service unavailable: "
-        f"{last_error}"
-    )
+        if (
+            not puzzle_id
+            or not fen
+            or not isinstance(
+                moves,
+                list,
+            )
+            or len(moves) < 2
+        ):
+            return None
+
+        return {
+            "PuzzleId":
+                str(puzzle_id),
+            "FEN":
+                str(fen),
+            "Moves":
+                [
+                    str(move)
+                    for move in moves
+                ],
+            "Rating":
+                int(row_rating),
+            "Themes":
+                themes or "",
+        }
+
+    finally:
+        con.close()
 
 
 async def post_exact_lichess_puzzle(
