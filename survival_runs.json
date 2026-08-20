@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 30,
+      "best_puzzle": 31,
       "best_difficulty": 1687,
-      "best_completed_at": "2026-08-20T13:07:33.466415+00:00",
+      "best_completed_at": "2026-08-20T13:09:19.991754+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -14,7 +14,7 @@
         "paused_reason": null,
         "puzzle_number": 31,
         "strikes": 0,
-        "best_difficulty": 1687,
+        "best_difficulty": 1761,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
@@ -45,7 +45,8 @@
           "2dgyY",
           "v0BTg",
           "VF7YH",
-          "ietXI"
+          "ietXI",
+          "BxOGA"
         ],
         "members": {
           "601406103712170014": {
@@ -59,7 +60,59 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "BxOGA",
+          "rating": 1761,
+          "themes": "crushing endgame exposedKing master veryLong",
+          "url": "https://lichess.org/training/BxOGA",
+          "start_fen": "8/p5rp/3k1p2/1pNb4/2pP1K2/2P5/1P5P/R7 w - - 9 38",
+          "current_fen": "8/p5rp/3k1p2/1pNb4/2pP1K2/2P5/1P5P/R7 w - - 9 38",
+          "solution": [
+            {
+              "uci": "a1a6",
+              "san": "Ra6+",
+              "color": "white"
+            },
+            {
+              "uci": "d5c6",
+              "san": "Bc6",
+              "color": "black"
+            },
+            {
+              "uci": "c5e4",
+              "san": "Ne4+",
+              "color": "white"
+            },
+            {
+              "uci": "d6c7",
+              "san": "Kc7",
+              "color": "black"
+            },
+            {
+              "uci": "a6a7",
+              "san": "Rxa7+",
+              "color": "white"
+            },
+            {
+              "uci": "c6b7",
+              "san": "Bb7",
+              "color": "black"
+            },
+            {
+              "uci": "e4c5",
+              "san": "Nc5",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
