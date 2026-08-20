@@ -3858,7 +3858,8 @@ async def on_message(
 
         if command_lower in (
             "!help",
-            "!info"
+            "!info",
+            "!i",
         ):
 
             await message.channel.send(
