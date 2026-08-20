@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 21,
-      "best_difficulty": 1540,
-      "best_completed_at": "2026-08-20T12:59:03.708026+00:00",
+      "best_puzzle": 22,
+      "best_difficulty": 1606,
+      "best_completed_at": "2026-08-20T13:00:05.824855+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -14,7 +14,7 @@
         "paused_reason": null,
         "puzzle_number": 22,
         "strikes": 0,
-        "best_difficulty": 1606,
+        "best_difficulty": 1639,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
@@ -36,7 +36,8 @@
           "8kOiq",
           "4uM2q",
           "vhYQd",
-          "woaKY"
+          "woaKY",
+          "Fc97v"
         ],
         "members": {
           "601406103712170014": {
@@ -50,7 +51,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "Fc97v",
+          "rating": 1639,
+          "themes": "endgame mate mateIn2 short",
+          "url": "https://lichess.org/training/Fc97v",
+          "start_fen": "2R5/kp6/pq1p4/3P4/5QP1/4r3/2R3P1/3K4 b - - 0 45",
+          "current_fen": "2R5/kp6/pq1p4/3P4/5QP1/4r3/2R3P1/3K4 b - - 0 45",
+          "solution": [
+            {
+              "uci": "b6b1",
+              "san": "Qb1+",
+              "color": "black"
+            },
+            {
+              "uci": "c2c1",
+              "san": "Rc1",
+              "color": "white"
+            },
+            {
+              "uci": "b1d3",
+              "san": "Qd3#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
