@@ -162,7 +162,7 @@
         "started_by_id": "1539971538290216980",
         "status": "active",
         "started_at": "2026-08-20T12:17:06.074723+00:00",
-        "last_activity": 1787235504.0260403,
+        "last_activity": 1787235508.516223,
         "paused_reason": "manually stopped",
         "puzzle_number": 10,
         "strikes": 1,
@@ -182,7 +182,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 22,
+            "correct": 23,
             "wrong": 2
           }
         },
@@ -192,7 +192,7 @@
           "themes": "advancedPawn crushing endgame pawnEndgame promotion veryLong",
           "url": "https://lichess.org/training/triT6",
           "start_fen": "8/8/6K1/8/5p1P/8/6k1/8 b - - 2 58",
-          "current_fen": "8/8/6K1/7P/8/5p2/6k1/8 b - - 0 59",
+          "current_fen": "8/6K1/8/7P/8/8/5pk1/8 b - - 1 60",
           "solution": [
             {
               "uci": "f4f3",
@@ -231,26 +231,32 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 2,
+          "next_solution_index": 4,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "f3",
+          "last_move_san": "f2",
           "accepted_moves": [
             {
               "san": "f3",
               "uci": "f4f3",
               "accepted_at": 1787235504.0259285,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "f2",
+              "uci": "f3f2",
+              "accepted_at": 1787235508.5161278,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "f4f3",
-          "last_accepted_move_san": "f3",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1787235504.025927,
-          "position_before_last_move": "8/8/6K1/8/5p1P/8/6k1/8 b - - 2 58"
+          "last_accepted_move_uci": "f3f2",
+          "last_accepted_move_san": "f2",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1787235508.5161266,
+          "position_before_last_move": "8/8/6K1/7P/8/5p2/6k1/8 b - - 0 59"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
