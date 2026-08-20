@@ -1883,9 +1883,18 @@ class SurvivalBot(
                 )
                 return
 
+            requester_user = (
+                requester.author
+                if hasattr(
+                    requester,
+                    "author",
+                )
+                else requester
+            )
+
             view = ContinueOrRestartView(
                 self,
-                requester.id,
+                requester_user.id,
                 team_key,
             )
 
@@ -1903,15 +1912,24 @@ class SurvivalBot(
                 team
             )
 
+        requester_user = (
+            requester.author
+            if hasattr(
+                requester,
+                "author",
+            )
+            else requester
+        )
+
         run = {
             "run_id":
                 f"{team_key}:{int(time.time())}",
             "started_by_id":
-                str(requester.id),
+                str(requester_user.id),
             "captain_id":
-                str(requester.id),
+                str(requester_user.id),
             "captain_name":
-                requester.display_name,
+                requester_user.display_name,
             "mode":
                 "coop",
             "status":
@@ -1966,7 +1984,7 @@ class SurvivalBot(
 
         await requester.channel.send(
             f"👑 **{display_name}** — Captain: "
-            f"**{run.get('captain_name', requester.display_name)}**\n"
+            f"**{run.get('captain_name', requester_user.display_name)}**\n"
             f"Mode: **CO-OP** — everyone can help."
         )
 
