@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 33,
-      "best_difficulty": 1761,
-      "best_completed_at": "2026-08-20T13:16:52.780051+00:00",
+      "best_puzzle": 34,
+      "best_difficulty": 1824,
+      "best_completed_at": "2026-08-20T13:18:35.688654+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -14,7 +14,7 @@
         "paused_reason": null,
         "puzzle_number": 34,
         "strikes": 0,
-        "best_difficulty": 1824,
+        "best_difficulty": 1847,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
@@ -48,7 +48,8 @@
           "ietXI",
           "BxOGA",
           "la1oF",
-          "Gg4MY"
+          "Gg4MY",
+          "Y9Wh6"
         ],
         "members": {
           "601406103712170014": {
@@ -62,7 +63,39 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "Y9Wh6",
+          "rating": 1847,
+          "themes": "advantage opening short",
+          "url": "https://lichess.org/training/Y9Wh6",
+          "start_fen": "r2q1k1r/pp1bbp1p/5n2/1n1p3N/8/1P1Q4/P1P2PPP/RNB1K2R w KQ - 1 13",
+          "current_fen": "r2q1k1r/pp1bbp1p/5n2/1n1p3N/8/1P1Q4/P1P2PPP/RNB1K2R w KQ - 1 13",
+          "solution": [
+            {
+              "uci": "c1h6",
+              "san": "Bh6+",
+              "color": "white"
+            },
+            {
+              "uci": "f8e8",
+              "san": "Ke8",
+              "color": "black"
+            },
+            {
+              "uci": "h5g7",
+              "san": "Ng7+",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
