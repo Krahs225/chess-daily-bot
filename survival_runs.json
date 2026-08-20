@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 15,
+      "best_puzzle": 16,
       "best_difficulty": 1540,
-      "best_completed_at": "2026-08-20T12:50:24.341236+00:00",
+      "best_completed_at": "2026-08-20T12:55:10.145356+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -30,7 +30,8 @@
           "ZfvWh",
           "JSj9h",
           "cvtLS",
-          "LSDrX"
+          "LSDrX",
+          "uBwMi"
         ],
         "members": {
           "601406103712170014": {
@@ -44,7 +45,39 @@
             "wrong": 2
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "uBwMi",
+          "rating": 1497,
+          "themes": "crushing middlegame short",
+          "url": "https://lichess.org/training/uBwMi",
+          "start_fen": "r2r2k1/1p2q2p/1p1nP1p1/1Pp5/P3Q3/R6P/1B3P2/5BK1 w - - 1 30",
+          "current_fen": "r2r2k1/1p2q2p/1p1nP1p1/1Pp5/P3Q3/R6P/1B3P2/5BK1 w - - 1 30",
+          "solution": [
+            {
+              "uci": "e4e5",
+              "san": "Qe5",
+              "color": "white"
+            },
+            {
+              "uci": "e7g5",
+              "san": "Qg5+",
+              "color": "black"
+            },
+            {
+              "uci": "e5g5",
+              "san": "Qxg5",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
