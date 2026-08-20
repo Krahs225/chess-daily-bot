@@ -154,9 +154,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 2,
-      "best_difficulty": 1252,
-      "best_completed_at": "2026-08-20T13:59:08.552752+00:00",
+      "best_puzzle": 3,
+      "best_difficulty": 1374,
+      "best_completed_at": "2026-08-20T13:59:42.029706+00:00",
       "current": {
         "run_id": "thice:1787228226",
         "started_by_id": "1539971538290216980",
@@ -169,7 +169,8 @@
         "best_difficulty": 1374,
         "used_puzzle_ids": [
           "Nzp5Z",
-          "IJq5Q"
+          "IJq5Q",
+          "rqCK7"
         ],
         "members": {
           "442597396195704832": {
@@ -178,7 +179,50 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "rqCK7",
+          "rating": 1324,
+          "themes": "advantage attraction deflection endgame long",
+          "url": "https://lichess.org/training/rqCK7",
+          "start_fen": "2kr3r/ppp2Rp1/8/8/4P3/1Q1Pq1P1/PP4KP/3R4 b - - 0 22",
+          "current_fen": "2kr3r/ppp2Rp1/8/8/4P3/1Q1Pq1P1/PP4KP/3R4 b - - 0 22",
+          "solution": [
+            {
+              "uci": "e3e2",
+              "san": "Qe2+",
+              "color": "black"
+            },
+            {
+              "uci": "f7f2",
+              "san": "Rf2",
+              "color": "white"
+            },
+            {
+              "uci": "h8h2",
+              "san": "Rxh2+",
+              "color": "black"
+            },
+            {
+              "uci": "g2h2",
+              "san": "Kxh2",
+              "color": "white"
+            },
+            {
+              "uci": "e2f2",
+              "san": "Qxf2+",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
