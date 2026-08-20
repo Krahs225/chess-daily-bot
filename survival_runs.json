@@ -12,7 +12,7 @@
         "started_at": "2026-08-20T12:22:23.121644+00:00",
         "last_activity": 1787249278.1065505,
         "paused_reason": "manually stopped",
-        "puzzle_number": 58,
+        "puzzle_number": 59,
         "strikes": 1,
         "best_difficulty": 2246,
         "used_puzzle_ids": [
@@ -87,92 +87,9 @@
             "wrong": 5
           }
         },
-        "puzzle": {
-          "id": "nLGPZ",
-          "rating": 2216,
-          "themes": "advantage attraction middlegame sacrifice veryLong",
-          "url": "https://lichess.org/training/nLGPZ",
-          "start_fen": "r6r/bbqpk3/p3pn2/1p3P2/5B2/P1NP1BP1/1PP1Q1K1/3R1R2 b - - 2 25",
-          "current_fen": "6r1/bB1pk3/p3pn2/1p3P2/5K1r/P1NP4/1PP1Q3/3R1R2 w - - 3 29",
-          "solution": [
-            {
-              "uci": "c7f4",
-              "san": "Qxf4",
-              "color": "black"
-            },
-            {
-              "uci": "f3b7",
-              "san": "Bxb7",
-              "color": "white"
-            },
-            {
-              "uci": "f4g3",
-              "san": "Qxg3+",
-              "color": "black"
-            },
-            {
-              "uci": "g2g3",
-              "san": "Kxg3",
-              "color": "white"
-            },
-            {
-              "uci": "a8g8",
-              "san": "Rag8+",
-              "color": "black"
-            },
-            {
-              "uci": "g3f4",
-              "san": "Kf4",
-              "color": "white"
-            },
-            {
-              "uci": "h8h4",
-              "san": "Rh4+",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 7,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Rh4+",
-          "accepted_moves": [
-            {
-              "san": "Qxf4",
-              "uci": "c7f4",
-              "accepted_at": 1787249203.8870428,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Qxg3+",
-              "uci": "f4g3",
-              "accepted_at": 1787249250.166941,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Rag8+",
-              "uci": "a8g8",
-              "accepted_at": 1787249261.6864223,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Rh4+",
-              "uci": "h8h4",
-              "accepted_at": 1787249278.1064537,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "h8h4",
-          "last_accepted_move_san": "Rh4+",
-          "last_accepted_move_index": 6,
-          "last_accepted_at": 1787249278.1064527,
-          "position_before_last_move": "6rr/bB1pk3/p3pn2/1p3P2/5K2/P1NP4/1PP1Q3/3R1R2 b - - 2 28"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
