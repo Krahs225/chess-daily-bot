@@ -1,4 +1,12 @@
 import discord
+
+from shared_leaderboard import (
+    add_points as shared_add_points,
+    get_score as shared_get_score,
+    personal_ranking as shared_personal_ranking,
+    full_leaderboard as shared_full_leaderboard,
+    format_points as shared_format_points,
+)
 import os
 import re
 import requests
@@ -1911,24 +1919,10 @@ def puzzle_is_open(
 def get_player_score(
     user_id
 ):
-
-    user_id = str(
-        user_id
-    )
-
-    if user_id not in scores:
-
-        scores[user_id] = {
-            "name":
-                "Unknown",
-
-            "points":
-                0
-        }
-
-    return scores[user_id].get(
-        "points",
-        0
+    return float(
+        shared_get_score(
+            user_id
+        )
     )
 
 
@@ -1939,132 +1933,9 @@ def get_player_score(
 def get_personal_ranking(
     user_id
 ):
-
-    user_id = str(
+    return shared_personal_ranking(
         user_id
     )
-
-    players = []
-
-    for player_id, player in scores.items():
-
-        players.append(
-            {
-                "id":
-                    str(player_id),
-
-                "name":
-                    player.get(
-                        "name",
-                        "Unknown"
-                    ),
-
-                "points":
-                    player.get(
-                        "points",
-                        0
-                    )
-            }
-        )
-
-    players.sort(
-        key=lambda player: (
-            -player["points"],
-            player["name"].lower()
-        )
-    )
-
-    player_index = None
-
-    for index, player in enumerate(
-        players
-    ):
-
-        if player["id"] == user_id:
-
-            player_index = index
-            break
-
-    if player_index is None:
-        return []
-
-    start = max(
-        0,
-        player_index - 1
-    )
-
-    end = min(
-        len(players),
-        player_index + 2
-    )
-
-    result = []
-
-    for index in range(
-        start,
-        end
-    ):
-
-        player = players[index]
-
-        result.append(
-            {
-                "rank":
-                    index + 1,
-
-                "name":
-                    player["name"],
-
-                "points":
-                    player["points"],
-
-                "is_you":
-                    player["id"] == user_id
-            }
-        )
-
-    return result
-
-
-def build_personal_ranking(
-    user_id
-):
-
-    ranking = get_personal_ranking(
-        user_id
-    )
-
-    if not ranking:
-        return ""
-
-    lines = [
-        "",
-        "📊 **Your ranking**"
-    ]
-
-    for player in ranking:
-
-        rank = player["rank"]
-        name = player["name"]
-        points = player["points"]
-
-        if player["is_you"]:
-
-            lines.append(
-                f"**#{rank} {name} — "
-                f"{format_points(points)} "
-                f"{'point' if float(points) == 1 else 'points'} ← you**"
-            )
-
-        else:
-
-            lines.append(
-                f"#{rank} {name} — "
-                f"{format_points(points)} "
-                f"{'point' if float(points) == 1 else 'points'}"
-            )
-
-    return "\n".join(lines)
 
 
 # =========================================================
@@ -2120,74 +1991,51 @@ async def award_random_move_points(
     user,
     first_move
 ):
-    """
-    Random puzzle scoring:
-    - first move: +1
-    - helper: +0.5
-    - awarded only when the whole puzzle is solved
-    - every reward has a unique transaction ID
-    """
-    user_id = str(
-        user.id
-    )
+    user_id = str(user.id)
 
     if first_move:
-
-        puzzle.setdefault(
-            "first_move_awarded",
-            False
-        )
-
-        if puzzle.get(
-            "first_move_awarded",
-            False
-        ):
-            return "none"
-
         first_user_id = str(
             puzzle.get(
                 "first_move_user_id",
-                user_id
+                user_id,
             )
         )
 
         if user_id != first_user_id:
             return "none"
 
+        if puzzle.get(
+            "first_move_awarded",
+            False,
+        ):
+            return "none"
+
         transaction_id = (
-            f"daily-random:"
+            f"puzzle:"
             f"{puzzle.get('puzzle_id', 'unknown')}:"
             f"first:{user_id}"
         )
 
-        added, _total = await asyncio.to_thread(
-            append_score_transaction,
+        await asyncio.to_thread(
+            shared_add_points,
             user.id,
             user.display_name,
             1.0,
             transaction_id,
-            "daily-random-first",
+            source="puzzle-first",
         )
 
         puzzle[
             "first_move_awarded"
         ] = True
 
-        save_json(
-            STATE_FILE,
-            state
-        )
-
-        await asyncio.to_thread(
-            push_to_github
-        )
-
-        return "first" if added else "none"
+        await save_all()
+        return "first"
 
     first_user_id = str(
         puzzle.get(
             "first_move_user_id",
-            ""
+            "",
         )
     )
 
@@ -2199,41 +2047,30 @@ async def award_random_move_points(
         []
     )
 
+    if user_id in helper_users:
+        return "none"
+
     transaction_id = (
-        f"daily-random:"
+        f"puzzle:"
         f"{puzzle.get('puzzle_id', 'unknown')}:"
         f"helper:{user_id}"
     )
 
-    if user_id in helper_users:
-        return "none"
-
-    added, _total = await asyncio.to_thread(
-        append_score_transaction,
+    await asyncio.to_thread(
+        shared_add_points,
         user.id,
         user.display_name,
         0.5,
         transaction_id,
-        "daily-random-helper",
+        source="puzzle-helper",
     )
 
-    if added:
-        helper_users.append(
-            user_id
-        )
+    helper_users.append(
+        user_id
+    )
 
-        save_json(
-            STATE_FILE,
-            state
-        )
-
-        await asyncio.to_thread(
-            push_to_github
-        )
-
-        return "helper"
-
-    return "none"
+    await save_all()
+    return "helper"
 
 
 # =========================================================
@@ -2244,55 +2081,24 @@ async def award_point(
     puzzle,
     user
 ):
-    """
-    Daily puzzle: first complete correct answer gets +1 exactly once.
-    """
-    user_id = str(
-        user.id
+    result = await award_random_move_points(
+        puzzle,
+        user,
+        first_move=True,
     )
 
-    if puzzle.get(
-        "winner_user_id"
-    ) is not None:
-        return False
-
-    transaction_id = (
-        f"daily:"
-        f"{puzzle.get('puzzle_id', puzzle.get('url', 'unknown'))}:"
-        f"winner:{user_id}"
-    )
-
-    added, _total = await asyncio.to_thread(
-        append_score_transaction,
-        user.id,
-        user.display_name,
-        1.0,
-        transaction_id,
-        "daily-puzzle-first-correct",
-    )
-
-    if not added:
+    if result != "first":
         return False
 
     puzzle[
         "winner_user_id"
-    ] = user_id
+    ] = str(user.id)
 
     puzzle[
         "winner_name"
     ] = user.display_name
 
-    save_json(
-        STATE_FILE,
-        state
-    )
-
-    await asyncio.to_thread(
-        push_to_github
-    )
-
     return True
-
 
 
 
@@ -2306,72 +2112,9 @@ def format_points(points):
 # =========================================================
 
 def make_leaderboard():
-
-    if not scores:
-
-        return (
-            "🏆 **Leaderboard**\n\n"
-            "No points yet!"
-        )
-
-    ordered = sorted(
-        scores.items(),
-        key=lambda item: (
-            -item[1].get(
-                "points",
-                0
-            ),
-            item[1].get(
-                "name",
-                "Unknown"
-            ).lower()
-        )
+    return shared_full_leaderboard(
+        "🏆 **Shared Leaderboard**"
     )
-
-    lines = [
-        "🏆 **Leaderboard**",
-        ""
-    ]
-
-    for rank, (_, player) in enumerate(
-        ordered,
-        start=1
-    ):
-
-        name = player.get(
-            "name",
-            "Unknown"
-        )
-
-        points = player.get(
-            "points",
-            0
-        )
-
-        if rank == 1:
-            prefix = "🥇"
-
-        elif rank == 2:
-            prefix = "🥈"
-
-        elif rank == 3:
-            prefix = "🥉"
-
-        else:
-            prefix = f"**{rank}.**"
-
-        word = (
-            "point"
-            if float(points) == 1
-            else "points"
-        )
-
-        lines.append(
-            f"{prefix} {name} — "
-            f"**{format_points(points)} {word}**"
-        )
-
-    return "\n".join(lines)
 
 
 # =========================================================
@@ -2383,64 +2126,45 @@ def help_message():
     return """🧠 **Chess Puzzle Game**
 
 **Daily Puzzle**
-`!daily <moves>` — Answer the latest Daily Puzzle.
+`!daily <move>` — Play the Chess.com Daily Puzzle one move at a time.
+`<move>` or `!<move>` works too, exactly like Random Puzzle.
 
 **Random Puzzle**
-`rp` or `!rp` — Get a random chess puzzle.
-`!random <move>` — Make the next move in the latest Random Puzzle.
+`rp` or `!rp` — Start a random Chess.com puzzle.
+Play it one move at a time.
 
-**Quick Answer**
-`<moves>` or `!<moves>` — Answer the latest active Daily/Random puzzle.
-Normal chat is ignored unless it looks like a chess move.
-
-**Points**
-• Daily Puzzle has its **own leaderboard**.
-• Random Puzzle uses the **shared leaderboard**.
-• First solver: **+1 point**
-• Helper: **+0.5 point**
-• Duplicate rewards are prevented.
+**Shared Points**
+Daily and Random use the **shared leaderboard**.
+First solver: **+1 point**
+Helper: **+0.5 point**
 
 **Commands**
 `!info` / `!help` — show this info.
-`!leaderboard` / `!lb` / `!l` — show the leaderboard.
+`!leaderboard` / `!lb` / `!l` — show the shared leaderboard.
 
 🔥 **Survival Mode**
 `!survival` — Start or resume a team Survival run.
-The person who starts the run is the **captain**.
+The person who starts the run is the captain.
 
-`!slb` / `!survivallb` / `!survivalboard` — show all saved Survival runs.
-`!<team>` such as `!thice` — choose/view a saved run.
+`!slb` / `!survivallb` / `!survivalboard` — show saved Survival runs.
+`!<team>` — choose/view a saved run.
 
 `!stopsurvival` — pause and save the active run.
 `!solo <team>` — captain only; only the captain may answer.
 `!coop <team>` — captain only; everyone may answer again.
 
-Survival starts with **3 hearts**. A wrong answer costs 1 strike.
+Survival starts with **3 hearts**.
+A wrong answer costs 1 strike.
 At **3/3 strikes**, the run is **DEAD**.
-After **10 minutes without activity**, an active run is paused.
+After 10 minutes without activity, an active run is paused.
 
-Difficulty:
-#1–10 **1200–1400**
-#11–20 **1400–1550**
-#21–30 **1550–1700**
-#31–40 **1700–1850**
-#41–50 **1850–2050**
-#51–60 **2050–2250**
-#61–70 **2250–2400**
-#71–80 **2400–2600**
-#81+ **2600+**
-
-Everyone may answer in co-op mode.
-Duplicate simultaneous correct answers do **not** cost a heart.
+Everyone can help in co-op mode.
+Duplicate simultaneous correct answers do not cost a heart.
 Some puzzles can have multiple correct mating moves.
 Promotions such as `f1=Q`, `f1=Q+`, `f1=Q#` are accepted.
 
 The Survival leaderboard tracks **runs**, so the same team name can appear multiple times.
 Survival does **not** award shared leaderboard points.
-
-**Sharkmeister-only**
-`!delete <team>` — delete a team and its saved runs.
-`!addheart <team>` — give a heart back to a saved run.
 """
 
 
@@ -2666,6 +2390,20 @@ async def check_for_new_puzzle(
             )
         )
     )
+
+    puzzle["current_fen"] = sanitize_fen(
+        puzzle["fen"]
+    )
+    puzzle["next_solution_index"] = 0
+    puzzle["next_player_index"] = 0
+    puzzle["solved"] = False
+    puzzle["message_id"] = None
+    puzzle["attempted_users"] = {}
+    puzzle["first_move_user_id"] = None
+    puzzle["first_move_user_name"] = None
+    puzzle["first_move_awarded"] = False
+    puzzle["helper_awarded_users"] = []
+    puzzle["helper_candidate_users"] = []
 
     state[
         "current_puzzle"
@@ -3131,9 +2869,20 @@ async def handle_random_answer(
     ):
         return
 
+    answer_window = (
+        RANDOM_ANSWER_WINDOW
+        if str(
+            puzzle.get(
+                "puzzle_id",
+                "",
+            )
+        ).startswith("random_")
+        else ANSWER_WINDOW
+    )
+
     if not puzzle_is_open(
         puzzle,
-        RANDOM_ANSWER_WINDOW
+        answer_window
     ):
         return
 
@@ -3146,6 +2895,19 @@ async def handle_random_answer(
     player_color = puzzle[
         "player_color"
     ]
+
+    is_daily = str(
+        puzzle.get(
+            "puzzle_id",
+            "",
+        )
+    ).startswith("daily_")
+
+    puzzle_label = (
+        "♟️ Daily Puzzle"
+        if is_daily
+        else "🎲 Random Puzzle"
+    )
 
     next_index = puzzle.get(
         "next_solution_index",
@@ -3489,7 +3251,7 @@ async def handle_random_answer(
 
         final_embed = discord.Embed(
             title=(
-                f"🎲 Random Puzzle — "
+                f"{puzzle_label} — "
                 f"{puzzle['title']}"
             ),
             description=embed_progress,
@@ -3574,7 +3336,7 @@ async def handle_random_answer(
         await post_answer(
             message.channel,
             puzzle,
-            "random"
+            "daily" if is_daily else "random"
         )
 
         await save_all()
@@ -3625,7 +3387,7 @@ async def handle_random_answer(
 
     step_embed = discord.Embed(
         title=(
-            f"🎲 Random Puzzle — "
+            f"{puzzle_label} — "
             f"{puzzle['title']}"
         ),
         description=progress,
@@ -3669,7 +3431,10 @@ async def handle_answer(
     # one user move -> automatic opponent reply -> next user move.
     if str(
         puzzle.get("puzzle_id", "")
-    ).startswith("random_"):
+    ).startswith((
+        "random_",
+        "daily_",
+    )):
         await handle_random_answer(
             message,
             puzzle,
@@ -3677,7 +3442,7 @@ async def handle_answer(
         )
         return
 
-    # Daily puzzle: user submits the complete sequence of THEIR moves.
+    # Legacy/non-interactive fallback.
     if puzzle.get(
         "answer_posted",
         False
@@ -3956,6 +3721,7 @@ async def on_message(
         chess_move_pattern = re.compile(
             r"^(?:"
             r"[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8][+#]?"
+            r"|[a-h](?:x[a-h])?[18]=[QRBN][+#]?"
             r"|O-O-O[+#]?"
             r"|O-O[+#]?"
             r"|0-0-0[+#]?"
