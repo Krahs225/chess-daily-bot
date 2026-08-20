@@ -1,47 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-12-25",
-    "title": "The Sweet Spot",
-    "fen": "1q1r1k2/7p/p2brB2/1p2ppNQ/7P/PP1PP1P1/5P2/2R1R1K1 w - - 0 1",
-    "current_fen": "1q1r1k2/5Q1p/p2brB2/1p2ppN1/7P/PP1PP1P1/5P2/2R1R1K1 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1q1r1k2/7p/p2brB2/1p2ppNQ/7P/PP1PP1P1/5P2/2R1R1K1 w - - 0 1\"]\r\n\r\n1. Qf7#\r\n*",
+    "url": "https://www.chess.com/daily/2021-11-03",
+    "title": "Clearing the Cobwebs",
+    "fen": "3k4/1b1nb2R/2p5/1p1Pprp1/pP6/P4NP1/BP2N1K1/8 w - - 0 1",
+    "current_fen": "3k4/1b1nb2R/2p5/1p1Pprp1/pP6/P4NP1/BP2N1K1/8 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3k4/1b1nb2R/2p5/1p1Pprp1/pP6/P4NP1/BP2N1K1/8 w - - 0 1\"]\r\n\r\n1.d6 Bxd6 2.Be6 Nf8 3.Bxf5 Nxh7 4.Bxh7 *",
     "all_moves": [
       {
-        "uci": "h5f7",
-        "san": "Qf7#",
+        "uci": "d5d6",
+        "san": "d6",
+        "color": "white"
+      },
+      {
+        "uci": "e7d6",
+        "san": "Bxd6",
+        "color": "black"
+      },
+      {
+        "uci": "a2e6",
+        "san": "Be6",
+        "color": "white"
+      },
+      {
+        "uci": "d7f8",
+        "san": "Nf8",
+        "color": "black"
+      },
+      {
+        "uci": "e6f5",
+        "san": "Bxf5",
+        "color": "white"
+      },
+      {
+        "uci": "f8h7",
+        "san": "Nxh7",
+        "color": "black"
+      },
+      {
+        "uci": "f5h7",
+        "san": "Bxh7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5f7",
-        "san": "Qf7#",
+        "uci": "d5d6",
+        "san": "d6",
+        "color": "white"
+      },
+      {
+        "uci": "a2e6",
+        "san": "Be6",
+        "color": "white"
+      },
+      {
+        "uci": "e6f5",
+        "san": "Bxf5",
+        "color": "white"
+      },
+      {
+        "uci": "f5h7",
+        "san": "Bxh7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-20T19:48:04.563777+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-20T19:48:20.003710+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787255284563",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1540085030670442559,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qf7",
-        "correct": true,
-        "timestamp": "2026-08-20T19:48:11.710136+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787255300003",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
