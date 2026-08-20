@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 14,
+      "best_puzzle": 15,
       "best_difficulty": 1503,
-      "best_completed_at": "2026-08-20T12:49:37.750760+00:00",
+      "best_completed_at": "2026-08-20T12:50:24.341236+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -14,7 +14,7 @@
         "paused_reason": "puzzle fetch error",
         "puzzle_number": 15,
         "strikes": 1,
-        "best_difficulty": 1503,
+        "best_difficulty": 1540,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
@@ -29,7 +29,8 @@
           "9Hv1n",
           "ZfvWh",
           "JSj9h",
-          "cvtLS"
+          "cvtLS",
+          "LSDrX"
         ],
         "members": {
           "601406103712170014": {
@@ -43,7 +44,49 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "LSDrX",
+          "rating": 1540,
+          "themes": "advantage attraction capturingDefender exposedKing fork long middlegame sacrifice",
+          "url": "https://lichess.org/training/LSDrX",
+          "start_fen": "r4rk1/3bppBp/pq1p1np1/1p2n3/3NP1P1/PBN2P2/1PPQ4/R3K2R b KQ - 0 16",
+          "current_fen": "r4rk1/3bppBp/pq1p1np1/1p2n3/3NP1P1/PBN2P2/1PPQ4/R3K2R b KQ - 0 16",
+          "solution": [
+            {
+              "uci": "b6d4",
+              "san": "Qxd4",
+              "color": "black"
+            },
+            {
+              "uci": "d2d4",
+              "san": "Qxd4",
+              "color": "white"
+            },
+            {
+              "uci": "e5f3",
+              "san": "Nxf3+",
+              "color": "black"
+            },
+            {
+              "uci": "e1f1",
+              "san": "Kf1",
+              "color": "white"
+            },
+            {
+              "uci": "f3d4",
+              "san": "Nxd4",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
