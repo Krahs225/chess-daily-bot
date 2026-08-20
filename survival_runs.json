@@ -162,10 +162,10 @@
         "started_by_id": "1539971538290216980",
         "status": "active",
         "started_at": "2026-08-20T12:17:06.074723+00:00",
-        "last_activity": 1787234744.176304,
+        "last_activity": 1787234978.4568887,
         "paused_reason": "manually stopped",
         "puzzle_number": 6,
-        "strikes": 0,
+        "strikes": 1,
         "best_difficulty": 1374,
         "used_puzzle_ids": [
           "Nzp5Z",
@@ -178,8 +178,8 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 14,
-            "wrong": 0
+            "correct": 15,
+            "wrong": 1
           }
         },
         "puzzle": {
@@ -188,7 +188,7 @@
           "themes": "mate mateIn2 middlegame queensideAttack short",
           "url": "https://lichess.org/training/moPpo",
           "start_fen": "r1r4k/p5p1/4QbP1/2q3Np/1p5P/4P3/PP6/1K1R3R b - - 1 26",
-          "current_fen": "r1r4k/p5p1/4QbP1/2q3Np/1p5P/4P3/PP6/1K1R3R b - - 1 26",
+          "current_fen": "r1r4k/p5p1/4QbP1/6Np/1p5P/4P3/PPq5/K2R3R b - - 3 27",
           "solution": [
             {
               "uci": "c5c2",
@@ -207,17 +207,31 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "wrong_users": [
+            "442597396195704832"
+          ],
+          "last_move_san": "Qc2+",
+          "accepted_moves": [
+            {
+              "san": "Qc2+",
+              "uci": "c5c2",
+              "accepted_at": 1787234965.4508212,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "c5c2",
+          "last_accepted_move_san": "Qc2+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787234965.450821,
+          "position_before_last_move": "r1r4k/p5p1/4QbP1/2q3Np/1p5P/4P3/PP6/1K1R3R b - - 1 26"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
