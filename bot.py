@@ -2393,46 +2393,47 @@ def help_message():
 `<moves>` or `!<moves>` — Answer the latest active Daily/Random puzzle.
 Normal chat is ignored unless it looks like a chess move.
 
-Only your own moves are required. Opponent replies are played automatically.
-
-**Daily/Random points**
+**Points**
 • Daily Puzzle has its **own leaderboard**.
 • Random Puzzle uses the **shared leaderboard**.
-• First Random solver: **+1 point**
+• First solver: **+1 point**
 • Helper: **+0.5 point**
 • Duplicate rewards are prevented.
 
-**Survival Mode**
+**Commands**
+`!info` / `!help` — show this info.
+`!leaderboard` / `!lb` / `!l` — show the leaderboard.
+
+🔥 **Survival Mode**
 `!survival` — Start or resume a team Survival run.
 The person who starts the run is the **captain**.
 
 `!slb` / `!survivallb` / `!survivalboard` — show all saved Survival runs.
-`!<team>` such as `!thice` — choose/view a saved run for that team.
+`!<team>` such as `!thice` — choose/view a saved run.
 
 `!stopsurvival` — pause and save the active run.
 `!solo <team>` — captain only; only the captain may answer.
 `!coop <team>` — captain only; everyone may answer again.
 
-Survival starts with **3 hearts**.
-A wrong answer costs **1 strike**.
-At **3/3 strikes**, that run is **DEAD**.
-After **10 minutes without activity**, an active run is automatically paused.
+Survival starts with **3 hearts**. A wrong answer costs 1 strike.
+At **3/3 strikes**, the run is **DEAD**.
+After **10 minutes without activity**, an active run is paused.
 
 Difficulty:
-• #1–10: 1200–1400
-• #11–20: 1400–1550
-• #21–30: 1550–1700
-• #31–40: 1700–1850
-• #41–50: 1850–2050
-• #51–60: 2050–2250
-• #61–70: 2250–2400
-• #71–80: 2400–2600
-• **#81+: 2600+**
+#1–10 **1200–1400**
+#11–20 **1400–1550**
+#21–30 **1550–1700**
+#31–40 **1700–1850**
+#41–50 **1850–2050**
+#51–60 **2050–2250**
+#61–70 **2250–2400**
+#71–80 **2400–2600**
+#81+ **2600+**
 
 Everyone may answer in co-op mode.
 Duplicate simultaneous correct answers do **not** cost a heart.
 Some puzzles can have multiple correct mating moves.
-Promotion moves such as `f1=Q`, `f1=Q+` and `f1=Q#` are accepted.
+Promotions such as `f1=Q`, `f1=Q+`, `f1=Q#` are accepted.
 
 The Survival leaderboard tracks **runs**, so the same team name can appear multiple times.
 Survival does **not** award shared leaderboard points.
@@ -2440,10 +2441,6 @@ Survival does **not** award shared leaderboard points.
 **Sharkmeister-only**
 `!delete <team>` — delete a team and its saved runs.
 `!addheart <team>` — give a heart back to a saved run.
-
-**Commands**
-`!info` / `!help` — show this combined Daily + Survival info.
-`!leaderboard` / `!lb` / `!l` — Daily/shared leaderboard depending on the bot mode.
 """
 
 
