@@ -2462,10 +2462,22 @@ class SurvivalBot(
         run["mode"] = mode
         run["last_activity"] = epoch_now()
 
-        save_state(
-            self.state,
-            push=True,
-        )
+        try:
+            save_state(
+                self.state,
+                push=True,
+            )
+        except Exception as error:
+            run["mode"] = (
+                "coop"
+                if mode == "solo"
+                else "solo"
+            )
+            await message.channel.send(
+                f"❌ Could not save the mode change: "
+                f"`{str(error)[:700]}`"
+            )
+            return
 
         if mode == "solo":
             await message.channel.send(
@@ -3077,6 +3089,49 @@ class SurvivalBot(
             lower,
             content,
         ):
+            return
+
+        # Captain-only mode commands.
+        if lower.startswith("!solo"):
+            parts = content.split(
+                None,
+                1,
+            )
+
+            if len(parts) != 2:
+                await message.channel.send(
+                    "❌ Usage: `!solo <team name>`"
+                )
+                return
+
+            await self.set_run_mode(
+                message,
+                normalize_team_name(
+                    parts[1].strip()
+                ),
+                "solo",
+            )
+            return
+
+        if lower.startswith("!coop"):
+            parts = content.split(
+                None,
+                1,
+            )
+
+            if len(parts) != 2:
+                await message.channel.send(
+                    "❌ Usage: `!coop <team name>`"
+                )
+                return
+
+            await self.set_run_mode(
+                message,
+                normalize_team_name(
+                    parts[1].strip()
+                ),
+                "coop",
+            )
             return
 
         # Team information command:
