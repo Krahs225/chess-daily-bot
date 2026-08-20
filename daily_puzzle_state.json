@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-10-05",
     "title": "Suprise Lane",
     "fen": "8/p3k3/1p2b2p/8/3N4/1PK1R2r/P7/8 w - - 0 1",
-    "current_fen": "8/p3k3/1p2b2p/8/3N4/1PK1R2r/P7/8 w - - 0 1",
+    "current_fen": "8/p7/1p2bk1p/5N2/8/1PK1R2r/P7/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/p3k3/1p2b2p/8/3N4/1PK1R2r/P7/8 w - - 0 1\"]\r\n\r\n1. Nf5+ Kf6 2. Rxh3\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787267292145",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540135394170110074,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nf5",
+        "correct": true,
+        "timestamp": "2026-08-20T23:08:25.373973+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
