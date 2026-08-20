@@ -1,62 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-07-21",
-    "title": "Important Tactic",
-    "fen": "3r2k1/p4pb1/6b1/2pq3p/6pP/P1P3B1/1P1Q1PP1/4R1K1 w - - 0 1",
-    "current_fen": "3R4/p4pbk/6b1/2pq3p/6pP/P1P3B1/1P1Q1PP1/6K1 b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r2k1/p4pb1/6b1/2pq3p/6pP/P1P3B1/1P1Q1PP1/4R1K1 w - - 0 1\"]\r\n\r\n1. Re8+ Kh7 2. Rxd8\r\n*",
+    "url": "https://www.chess.com/daily/2015-02-03",
+    "title": "Too Much To Handle",
+    "fen": "5k1r/4npp1/p3p2p/3nP2P/3P3Q/3N4/qB2KPP1/2R5 w k - 0 1",
+    "current_fen": "5k1r/4npp1/p3p2p/3nP2P/3P3Q/3N4/qB2KPP1/2R5 w k - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5k1r/4npp1/p3p2p/3nP2P/3P3Q/3N4/qB2KPP1/2R5 w k - 0 1\"]\r\n\r\n1. Rc8+ Nxc8 2. Qd8#\r\n*",
     "all_moves": [
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "c1c8",
+        "san": "Rc8+",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "e7c8",
+        "san": "Nxc8",
         "color": "black"
       },
       {
-        "uci": "e8d8",
-        "san": "Rxd8",
+        "uci": "h4d8",
+        "san": "Qd8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "c1c8",
+        "san": "Rc8+",
         "color": "white"
       },
       {
-        "uci": "e8d8",
-        "san": "Rxd8",
+        "uci": "h4d8",
+        "san": "Qd8#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-08-20T22:59:38.535506+00:00",
+    "posted_at": "2026-08-20T22:59:56.680757+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787266778535",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1540133239824318515,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxd8",
-        "correct": true,
-        "timestamp": "2026-08-20T22:59:49.492517+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787266796680",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
