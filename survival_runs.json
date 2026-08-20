@@ -154,9 +154,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 8,
+      "best_puzzle": 9,
       "best_difficulty": 1374,
-      "best_completed_at": "2026-08-20T14:16:52.671064+00:00",
+      "best_completed_at": "2026-08-20T14:17:35.765278+00:00",
       "current": {
         "run_id": "thice:1787228226",
         "started_by_id": "1539971538290216980",
@@ -175,7 +175,8 @@
           "QxmfQ",
           "moPpo",
           "jyHAg",
-          "KSKyc"
+          "KSKyc",
+          "4zu0C"
         ],
         "members": {
           "442597396195704832": {
@@ -184,7 +185,40 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "4zu0C",
+          "rating": 1332,
+          "themes": "endgame mate mateIn2 short",
+          "url": "https://lichess.org/training/4zu0C",
+          "start_fen": "r1k4r/p1p3pp/2p2q2/8/2B1p3/3Q4/P4PPP/1N4K1 w - - 0 21",
+          "current_fen": "r1k4r/p1p3pp/2p2q2/8/2B1p3/3Q4/P4PPP/1N4K1 w - - 0 21",
+          "solution": [
+            {
+              "uci": "c4a6",
+              "san": "Ba6+",
+              "color": "white"
+            },
+            {
+              "uci": "c8b8",
+              "san": "Kb8",
+              "color": "black"
+            },
+            {
+              "uci": "d3b3",
+              "san": "Qb3#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
