@@ -1,62 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-01-29",
-    "title": "Beyond the Fork",
-    "fen": "2r1r1k1/pp1R1p1p/n5pB/2P1p3/1PB1n3/P6P/7P/2K5 w - - 2 19",
-    "current_fen": "2r1rRk1/pp5p/n2n2pB/2P1p3/1PB5/P6P/7P/2K5 b - - 2 20",
-    "pgn": "[White \"rlefko\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"2r1r1k1/pp1R1p1p/n5pB/2P1p3/1PB1n3/P6P/7P/2K5 w - - 2 19\"]\r\n\r\n19. Rxf7 Nd6 20. Rf8# 1-0",
+    "url": "https://www.chess.com/daily/2026-07-04",
+    "title": "Major 🎆 Pawn Finale 🎇",
+    "fen": "8/8/2pp4/Q1rkpK2/2b4R/4P3/3n4/4b1q1 w - - 0 1",
+    "current_fen": "8/8/2pp4/Q1rkpK2/2b4R/4P3/3n4/4b1q1 w - - 0 1",
+    "pgn": "[Result \"*\"]\n[FEN \"8/8/2pp4/Q1rkpK2/2b4R/4P3/3n4/4b1q1 w - - 0 1\"]\n\n1. Qxd2+ Bxd2 2. Rd4+ exd4 3. e4# *",
     "all_moves": [
       {
-        "uci": "d7f7",
-        "san": "Rxf7",
+        "uci": "a5d2",
+        "san": "Qxd2+",
         "color": "white"
       },
       {
-        "uci": "e4d6",
-        "san": "Nd6",
+        "uci": "e1d2",
+        "san": "Bxd2",
         "color": "black"
       },
       {
-        "uci": "f7f8",
-        "san": "Rf8#",
+        "uci": "h4d4",
+        "san": "Rd4+",
+        "color": "white"
+      },
+      {
+        "uci": "e5d4",
+        "san": "exd4",
+        "color": "black"
+      },
+      {
+        "uci": "e3e4",
+        "san": "e4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d7f7",
-        "san": "Rxf7",
+        "uci": "a5d2",
+        "san": "Qxd2+",
         "color": "white"
       },
       {
-        "uci": "f7f8",
-        "san": "Rf8#",
+        "uci": "h4d4",
+        "san": "Rd4+",
+        "color": "white"
+      },
+      {
+        "uci": "e3e4",
+        "san": "e4#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-20T20:20:32.906989+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-08-20T20:21:23.227869+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787257232907",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1540093203888472135,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rf8",
-        "correct": true,
-        "timestamp": "2026-08-20T20:21:17.152840+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787257283227",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
