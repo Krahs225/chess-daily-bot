@@ -1,42 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-07-30",
-    "title": "Double Trouble",
-    "fen": "8/pQ4pp/p7/8/k7/7P/P2Q1PPK/1q6 w - - 0 1",
-    "current_fen": "8/p5pp/Q7/8/k7/7P/P2Q1PPK/1q6 b - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/pQ4pp/p7/8/k7/7P/P2Q1PPK/1q6 w - - 0 1\"]\r\n\r\n1. Qxa6#\r\n*",
+    "url": "https://www.chess.com/daily/2007-10-07",
+    "title": "The Brave One",
+    "fen": "2kr1r2/ppp3pp/3q4/3p1p2/3Pn1P1/2PQ4/PP1N1bPP/RNB2R1K b - - 0 1",
+    "current_fen": "2kr1r2/ppp3pp/7q/3p1p2/3P2P1/2PQ2P1/PP1N1bP1/RNB2R1K w - - 1 3",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr1r2/ppp3pp/3q4/3p1p2/3Pn1P1/2PQ4/PP1N1bPP/RNB2R1K b - - 0 1\"]\r\n\r\n1... Ng3+ 2. hxg3 (2. Qxg3 Bxg3) Qh6#\r\n*",
     "all_moves": [
       {
-        "uci": "b7a6",
-        "san": "Qxa6#",
+        "uci": "e4g3",
+        "san": "Ng3+",
+        "color": "black"
+      },
+      {
+        "uci": "h2g3",
+        "san": "hxg3",
         "color": "white"
+      },
+      {
+        "uci": "d6h6",
+        "san": "Qh6#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b7a6",
-        "san": "Qxa6#",
-        "color": "white"
+        "uci": "e4g3",
+        "san": "Ng3+",
+        "color": "black"
+      },
+      {
+        "uci": "d6h6",
+        "san": "Qh6#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-20T23:14:40.476241+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-20T23:15:33.950399+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787267680476",
-    "next_solution_index": 1,
-    "next_player_index": 1,
+    "puzzle_id": "random_1787267733950",
+    "next_solution_index": 3,
+    "next_player_index": 2,
     "solved": true,
-    "message_id": 1540137022721626163,
+    "message_id": 1540137247431462925,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qxa6",
+        "move": "qh6",
         "correct": true,
-        "timestamp": "2026-08-20T23:14:48.188234+00:00"
+        "timestamp": "2026-08-20T23:15:44.568745+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
@@ -116,22 +131,6 @@
     ],
     "1050": [
       "2fw4B"
-    ],
-    "2500": [
-      "3UpEH"
-    ],
-    "2400": [
-      "goRNw"
-    ],
-    "3000": [
-      "XSag1"
-    ],
-    "2347": [
-      "5ieYR"
-    ],
-    "2300": [
-      "9LgQv",
-      "qJdUn"
     ]
   }
 }
