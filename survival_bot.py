@@ -7,6 +7,7 @@ import re
 import subprocess
 import time
 import traceback
+import copy
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -304,10 +305,16 @@ def team_record(
                 None,
             "current":
                 None,
+            "history":
+                [],
         },
     )
 
     team["name"] = display_name
+    team.setdefault(
+        "history",
+        [],
+    )
 
     return team
 
@@ -1189,25 +1196,6 @@ def ensure_member(
     return member
 
 
-def run_is_dead(
-    run
-):
-    if not run:
-        return False
-
-    return (
-        int(
-            run.get(
-                "strikes",
-                0,
-            )
-        ) >= THREE_STRIKES
-        and run.get(
-            "paused_reason"
-        ) == "three strikes"
-    )
-
-
 def run_status_text(
     team,
     run,
@@ -1237,6 +1225,34 @@ def run_status_text(
     )
 
 
+def team_saved_runs(
+    team
+):
+    runs = []
+
+    history = team.get(
+        "history",
+        []
+    )
+
+    for run in history:
+        if isinstance(run, dict):
+            runs.append(
+                run
+            )
+
+    current = team.get(
+        "current"
+    )
+
+    if isinstance(current, dict):
+        runs.append(
+            current
+        )
+
+    return runs
+
+
 def survival_leaderboard(
     state
 ):
@@ -1245,32 +1261,56 @@ def survival_leaderboard(
     for team_key, team in (
         state["teams"].items()
     ):
-        rows.append(
-            (
-                team.get(
-                    "name",
-                    team_key,
-                ),
-                int(
-                    team.get(
-                        "best_puzzle",
-                        0,
-                    )
-                ),
-                int(
-                    team.get(
-                        "best_difficulty",
-                        0,
-                    )
-                ),
+        for run in team_saved_runs(
+            team
+        ):
+            rows.append(
+                {
+                    "team":
+                        team.get(
+                            "name",
+                            team_key,
+                        ),
+                    "run_id":
+                        run.get(
+                            "run_id",
+                            f"{team_key}:{len(rows)}",
+                        ),
+                    "puzzle":
+                        int(
+                            run.get(
+                                "puzzle_number",
+                                0,
+                            )
+                        ),
+                    "difficulty":
+                        int(
+                            run.get(
+                                "best_difficulty",
+                                0,
+                            )
+                        ),
+                    "status":
+                        run.get(
+                            "status",
+                            "paused",
+                        ),
+                    "strikes":
+                        int(
+                            run.get(
+                                "strikes",
+                                0,
+                            )
+                        ),
+                }
             )
-        )
 
     rows.sort(
         key=lambda row: (
-            -row[1],
-            -row[2],
-            row[0].casefold(),
+            -row["puzzle"],
+            -row["difficulty"],
+            row["team"].casefold(),
+            row["run_id"],
         )
     )
 
@@ -1285,15 +1325,10 @@ def survival_leaderboard(
         "",
     ]
 
-    for rank, (
-        name,
-        best,
-        difficulty,
-    ) in enumerate(
+    for rank, row in enumerate(
         rows,
         start=1,
     ):
-
         if rank == 1:
             prefix = "🥇"
         elif rank == 2:
@@ -1303,15 +1338,111 @@ def survival_leaderboard(
         else:
             prefix = f"**{rank}.**"
 
+        if row["status"] == "active":
+            status = "🟢 ACTIVE"
+        elif row["strikes"] >= THREE_STRIKES:
+            status = "💀 DEAD"
+        else:
+            status = "⏸️ PAUSED"
+
         lines.append(
-            f"{prefix} **{name}** — "
-            f"Puzzle **#{best}** "
-            f"(best difficulty **{difficulty}**)"
+            f"{prefix} **{row['team']}** — "
+            f"Puzzle **#{row['puzzle']}** — "
+            f"{status} — "
+            f"best difficulty **{row['difficulty']}**"
         )
 
     return "\n".join(
         lines
     )
+
+
+
+class TeamRunSelectView(
+    discord.ui.View
+):
+    def __init__(
+        self,
+        bot,
+        requester_id,
+        team_key,
+        runs,
+    ):
+        super().__init__(
+            timeout=60
+        )
+        self.bot = bot
+        self.requester_id = requester_id
+        self.team_key = team_key
+        self.runs = runs
+
+        options = []
+
+        for index, run in enumerate(
+            runs[:25]
+        ):
+            status = run.get(
+                "status",
+                "paused",
+            )
+
+            if run.get("strikes", 0) >= THREE_STRIKES:
+                status_text = "DEAD"
+            elif status == "active":
+                status_text = "ACTIVE"
+            else:
+                status_text = "PAUSED"
+
+            options.append(
+                discord.SelectOption(
+                    label=(
+                        f"#{run.get('puzzle_number', 0)} — "
+                        f"{status_text}"
+                    )[:100],
+                    description=(
+                        f"Best difficulty "
+                        f"{run.get('best_difficulty', 0)}"
+                    )[:100],
+                    value=str(index),
+                )
+            )
+
+        select = discord.ui.Select(
+            placeholder="Choose a Survival run...",
+            options=options,
+            min_values=1,
+            max_values=1,
+        )
+
+        async def callback(
+            interaction,
+        ):
+            if interaction.user.id != self.requester_id:
+                await interaction.response.send_message(
+                    "Only the person who requested the team info can choose.",
+                    ephemeral=True,
+                )
+                return
+
+            index = int(
+                select.values[0]
+            )
+
+            run = self.runs[
+                index
+            ]
+
+            await self.bot.show_run_details(
+                interaction,
+                self.team_key,
+                run,
+            )
+
+        select.callback = callback
+
+        self.add_item(
+            select
+        )
 
 
 class ContinueOrRestartView(
@@ -1376,6 +1507,115 @@ class ContinueOrRestartView(
             self.team_key,
         )
 
+
+def survival_info_text():
+    return """🔥 **SURVIVAL MODE — INFO**
+
+**Start a run**
+`!survival`
+→ The bot asks for a team name.
+
+The person who starts the run is the **captain**.
+
+**Team / run system**
+- Every new run gets its own saved run record.
+- The same team name can have multiple runs.
+- A run can be active, paused, or dead.
+- `!teamname` (for example `!thice`) lets you choose which saved run of that team you want to view.
+- Team details show the run's puzzle number, status, difficulty, hearts, captain and contributors.
+
+**Co-op / Solo**
+`!solo <team name>`
+→ Captain-only. Only the captain may answer an active run.
+
+`!coop <team name>`
+→ Captain-only. Everyone may answer again.
+
+Solo/Co-op can only be changed on an **active** run. Dead runs cannot be changed.
+
+**Stopping / resuming**
+`!stopsurvival`
+→ Saves and pauses the active run.
+
+After inactivity, Survival automatically pauses after **10 minutes without activity**.
+
+`!survival` + the same team name
+→ If that team has saved runs, choose which run to continue or start a new one.
+
+A run that died at **3/3 strikes cannot be continued** unless Sharkmeister gives it a heart first.
+
+**Hearts / strikes**
+Everyone starts with **❤️❤️❤️**.
+
+A wrong answer costs **1 strike**.
+
+At **3/3 strikes**, the run is **DEAD** and cannot continue normally.
+
+**Puzzle difficulty**
+- #1–10: 1200–1400
+- #11–20: 1400–1550
+- #21–30: 1550–1700
+- #31–40: 1700–1850
+- #41–50: 1850–2050
+- #51–60: 2050–2250
+- #61–70: 2250–2400
+- #71–80: 2400–2600
+- **#81+: 2600+**
+
+**How answering works**
+Everyone may answer in co-op mode.
+
+Send one chess move at a time, such as:
+`Qh6`
+`Qh6+`
+`f1=Q`
+`O-O`
+`!Qh6`
+
+The bot automatically plays the opponent's replies.
+
+If two people submit the same correct move at almost the same time, the duplicate is ignored and **does not cost a heart**.
+
+Some puzzles can have multiple correct mating moves; legal alternative checkmates are accepted.
+
+**Team leaderboard**
+`!survivallb`
+`!survivalboard`
+`!slb`
+
+These show **all saved Survival runs**, so the same team name can appear more than once.
+
+**Team run details**
+Use:
+`!<team name>`
+
+Example:
+`!thice`
+
+If there are multiple Thice runs, the bot lets you choose which run you want to view.
+
+You can then see:
+- puzzle number
+- status
+- mode (SOLO/CO-OP)
+- captain
+- hearts / strikes
+- best difficulty
+- contributors and how many correct/wrong answers they gave
+
+**Sharkmeister-only admin commands**
+`!delete <team name>`
+→ Permanently removes that team's saved runs.
+
+`!addheart <team name>`
+→ Adds 1 heart to that team's current/dead run so it can be resumed.
+
+Only **Sharkmeister** can use these two commands.
+
+**Shared points**
+Survival itself does **not** award points to the shared leaderboard.
+Survival is a separate team competition.
+"""
 
 class SurvivalBot(
     commands.Bot
@@ -1553,6 +1793,35 @@ class SurvivalBot(
                 f"Run saved. Come back later with `!survival`."
             )
 
+    def archive_current_run(
+        self,
+        team,
+    ):
+        current = team.get(
+            "current"
+        )
+
+        if not isinstance(
+            current,
+            dict,
+        ):
+            return
+
+        snapshot = copy.deepcopy(
+            current
+        )
+
+        team.setdefault(
+            "history",
+            []
+        ).append(
+            snapshot
+        )
+
+        team[
+            "current"
+        ] = None
+
     async def start_new_run(
         self,
         team_key,
@@ -1597,25 +1866,6 @@ class SurvivalBot(
         )
 
         if existing and not force:
-
-            if run_is_dead(existing):
-                view = ContinueOrRestartView(
-                    self,
-                    requester.id,
-                    team_key,
-                )
-
-                await requester.channel.send(
-                    f"💀 **{display_name}'s Survival run is finished.**\n\n"
-                    f"Reached **Puzzle #{existing.get('puzzle_number', 0)}**\n"
-                    f"Strikes: **3/3**\n"
-                    f"Best difficulty: **{existing.get('best_difficulty', 0)}**\n\n"
-                    f"You cannot continue this run because it has no hearts left. "
-                    f"Use `!addheart {display_name}` first, or start a new run.",
-                    view=view,
-                )
-                return
-
             if existing.get(
                 "status"
             ) == "active":
@@ -1642,12 +1892,22 @@ class SurvivalBot(
 
             return
 
-        run = {
+        if existing and force:
+            self.archive_current_run(
+                team
+            )
 
+        run = {
             "run_id":
                 f"{team_key}:{int(time.time())}",
             "started_by_id":
                 str(requester.id),
+            "captain_id":
+                str(requester.id),
+            "captain_name":
+                requester.display_name,
+            "mode":
+                "coop",
             "status":
                 "active",
             "started_at":
@@ -1719,15 +1979,6 @@ class SurvivalBot(
         if not run:
             await interaction.response.send_message(
                 "No saved run.",
-                ephemeral=True,
-            )
-            return
-
-        if run_is_dead(run):
-            await interaction.response.send_message(
-                "💀 This Survival run is finished at "
-                f"Puzzle #{run.get('puzzle_number', 0)} with "
-                "3/3 strikes. Add a heart first or start a new run.",
                 ephemeral=True,
             )
             return
@@ -2048,6 +2299,125 @@ class SurvivalBot(
             "helper_awarded"
         ] = []
 
+    def get_run_captain_id(
+        self,
+        run,
+    ):
+        captain_id = run.get(
+            "captain_id"
+        )
+
+        if captain_id:
+            return str(
+                captain_id
+            )
+
+        # Backwards compatibility for old runs:
+        # original starter becomes captain.
+        starter = run.get(
+            "started_by_id"
+        )
+
+        if starter:
+            return str(
+                starter
+            )
+
+        return None
+
+    def is_run_captain(
+        self,
+        user,
+        run,
+    ):
+        captain_id = self.get_run_captain_id(
+            run
+        )
+
+        return (
+            captain_id is not None
+            and str(user.id)
+            == captain_id
+        )
+
+    async def set_run_mode(
+        self,
+        message,
+        team_key,
+        mode,
+    ):
+        team = self.state["teams"].get(
+            team_key
+        )
+
+        if not team:
+            await message.channel.send(
+                f"❌ Team **{team_key}** does not exist."
+            )
+            return
+
+        run = team.get(
+            "current"
+        )
+
+        if not run:
+            await message.channel.send(
+                f"❌ **{team.get('name', team_key)}** has no active run."
+            )
+            return
+
+        # Dead/finished runs can never be modified.
+        if run_is_dead(run):
+            await message.channel.send(
+                f"💀 **{team.get('name', team_key)}** is a finished run. "
+                "Solo/Co-op cannot be changed."
+            )
+            return
+
+        if run.get(
+            "status"
+        ) != "active":
+            await message.channel.send(
+                f"⏸️ **{team.get('name', team_key)}** is not currently active."
+            )
+            return
+
+        if not self.is_run_captain(
+            message.author,
+            run,
+        ):
+            await message.channel.send(
+                f"❌ Only the captain "
+                f"(**{run.get('captain_name', 'captain')}**) "
+                "can change this run's mode."
+            )
+            return
+
+        run[
+            "mode"
+        ] = mode
+
+        run[
+            "last_activity"
+        ] = epoch_now()
+
+        save_state(
+            self.state,
+            push=True,
+        )
+
+        if mode == "solo":
+            await message.channel.send(
+                f"🔒 **{team.get('name', team_key)} is now SOLO.**\n"
+                f"Only captain **{run.get('captain_name', message.author.display_name)}** "
+                "can answer this run."
+            )
+        else:
+            await message.channel.send(
+                f"🤝 **{team.get('name', team_key)} is now CO-OP.**\n"
+                "Everyone can answer again."
+            )
+
     async def handle_survival_move(
         self,
         message,
@@ -2079,6 +2449,25 @@ class SurvivalBot(
             if run.get(
                 "status"
             ) != "active":
+                return
+
+            if (
+                run.get("mode", "coop")
+                == "solo"
+                and not self.is_run_captain(
+                    message.author,
+                    run,
+                )
+            ):
+                captain_name = run.get(
+                    "captain_name",
+                    "the captain",
+                )
+
+                await message.channel.send(
+                    f"🔒 **Solo mode is active.** "
+                    f"Only **{captain_name}** can answer this run."
+                )
                 return
 
             puzzle = run.get(
@@ -2627,6 +3016,38 @@ class SurvivalBot(
 
         lower = content.casefold()
 
+        if lower.startswith("!solo "):
+            team_name = content[len("!solo "):].strip()
+
+            if not team_name:
+                await message.channel.send(
+                    "❌ Usage: `!solo <team name>`"
+                )
+                return
+
+            await self.set_run_mode(
+                message,
+                normalize_team_name(team_name),
+                "solo",
+            )
+            return
+
+        if lower.startswith("!coop "):
+            team_name = content[len("!coop "):].strip()
+
+            if not team_name:
+                await message.channel.send(
+                    "❌ Usage: `!coop <team name>`"
+                )
+                return
+
+            await self.set_run_mode(
+                message,
+                normalize_team_name(team_name),
+                "coop",
+            )
+            return
+
         if await self.handle_admin_command(
             message,
             lower,
@@ -2843,93 +3264,210 @@ class SurvivalBot(
         message,
         team_key,
     ):
-        team = self.state["teams"][
+        team = self.state["teams"].get(
             team_key
+        )
+
+        if not team:
+            await message.channel.send(
+                f"❌ Team **{team_key}** does not exist."
+            )
+            return
+
+        runs = team_saved_runs(
+            team
+        )
+
+        # Newest/highest run first.
+        runs.sort(
+            key=lambda run: (
+                -int(
+                    run.get(
+                        "puzzle_number",
+                        0,
+                    )
+                ),
+                str(
+                    run.get(
+                        "started_at",
+                        "",
+                    )
+                ),
+            )
+        )
+
+        if len(runs) == 0:
+            await message.channel.send(
+                f"👥 **{team.get('name', team_key)}** has no Survival runs."
+            )
+            return
+
+        if len(runs) == 1:
+            await self.send_run_details_message(
+                message.channel,
+                team_key,
+                runs[0],
+            )
+            return
+
+        lines = [
+            f"🔎 **Which {team.get('name', team_key)} run do you want to view?**",
+            "",
         ]
 
-        current = team.get(
-            "current"
-        )
-
-        members_text = (
-            "No contributors recorded yet."
-        )
-
-        if current:
-            members = list(
-                current.get(
-                    "members",
-                    {}
-                ).values()
+        for index, run in enumerate(
+            runs[:25],
+            start=1,
+        ):
+            status = run.get(
+                "status",
+                "paused",
             )
 
-            members.sort(
-                key=lambda item: (
-                    -int(
-                        item.get(
-                            "correct",
-                            0,
-                        )
-                    ),
-                    int(
-                        item.get(
-                            "wrong",
-                            0,
-                        )
-                    ),
+            if int(
+                run.get(
+                    "strikes",
+                    0,
+                )
+            ) >= THREE_STRIKES:
+                status_text = "💀 DEAD"
+            elif status == "active":
+                status_text = "🟢 ACTIVE"
+            else:
+                status_text = "⏸️ PAUSED"
+
+            lines.append(
+                f"**{index}.** Puzzle **#{run.get('puzzle_number', 0)}** "
+                f"— {status_text} "
+                f"— best difficulty **{run.get('best_difficulty', 0)}**"
+            )
+
+        view = TeamRunSelectView(
+            self,
+            message.author.id,
+            team_key,
+            runs[:25],
+        )
+
+        await message.channel.send(
+            "\n".join(lines),
+            view=view,
+        )
+
+    async def show_run_details(
+        self,
+        interaction,
+        team_key,
+        run,
+    ):
+        await interaction.response.send_message(
+            self.format_run_details(
+                team_key,
+                run,
+            )
+        )
+
+    def format_run_details(
+        self,
+        team_key,
+        run,
+    ):
+        team = self.state["teams"].get(
+            team_key,
+            {},
+        )
+
+        members = list(
+            run.get(
+                "members",
+                {}
+            ).values()
+        )
+
+        members.sort(
+            key=lambda item: (
+                -int(
+                    item.get(
+                        "correct",
+                        0,
+                    )
+                ),
+                int(
+                    item.get(
+                        "wrong",
+                        0,
+                    )
+                ),
+                str(
                     item.get(
                         "name",
                         "",
-                    ).casefold(),
-                )
+                    )
+                ).casefold(),
             )
+        )
 
-            lines = []
+        if int(
+            run.get(
+                "strikes",
+                0,
+            )
+        ) >= THREE_STRIKES:
+            status = "💀 DEAD"
+        elif run.get(
+            "status"
+        ) == "active":
+            status = "🟢 ACTIVE"
+        else:
+            status = "⏸️ PAUSED"
+
+        if members:
+            member_lines = []
 
             for index, member in enumerate(
                 members,
                 start=1,
             ):
-                lines.append(
+                member_lines.append(
                     f"**{index}.** "
                     f"{member.get('name', 'Unknown')} — "
                     f"**{member.get('correct', 0)} correct** "
                     f"/ {member.get('wrong', 0)} wrong"
                 )
 
-            if lines:
-                members_text = "\n".join(
-                    lines
-                )
-
-        lines = [
-            f"👥 **{team.get('name', team_key)}**",
-            "",
-            f"**Best run:** Puzzle "
-            f"**#{team.get('best_puzzle', 0)}**",
-            f"**Best difficulty:** "
-            f"**{team.get('best_difficulty', 0)}**",
-        ]
-
-        if current:
-            lines.extend(
-                [
-                    "",
-                    f"**Current status:** "
-                    f"{current.get('status', 'paused')}",
-                    f"**Current puzzle:** "
-                    f"#{current.get('puzzle_number', 0)}",
-                    f"**Strikes:** "
-                    f"{current.get('strikes', 0)}/3",
-                    "",
-                    "**Contributors:**",
-                    members_text,
-                ]
+            members_text = "\n".join(
+                member_lines
+            )
+        else:
+            members_text = (
+                "No contributors recorded."
             )
 
-        await message.channel.send(
-            "\n".join(lines)
+        return (
+            f"👥 **{team.get('name', team_key)} — Run**\n"
+            f"**Status:** {status}\n"
+            f"**Mode:** {str(run.get('mode', 'coop')).upper()}\n"
+            f"**Captain:** {run.get('captain_name', 'Unknown')}\n"
+            f"**Puzzle:** #{run.get('puzzle_number', 0)}\n"
+            f"**Best difficulty:** {run.get('best_difficulty', 0)}\n"
+            f"**Strikes:** {run.get('strikes', 0)}/3\n\n"
+            f"**Contributors:**\n"
+            f"{members_text}"
         )
+
+    async def send_run_details_message(
+        self,
+        channel,
+        team_key,
+        run,
+    ):
+        await channel.send(
+            self.format_run_details(
+                team_key,
+                run,
+            )
+        )
+
 
     def is_shark_admin(
         self,
