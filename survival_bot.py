@@ -229,7 +229,32 @@ def push_state_files():
         )
 
         if commit.returncode != 0:
-            return True
+            status = git_run(
+                [
+                    "git",
+                    "status",
+                    "--porcelain",
+                    SURVIVAL_STATE_FILE,
+                ]
+            )
+
+            if not status.stdout.strip():
+                return True
+
+            # The state file was changed but could not be committed.
+            # Try again after rebasing onto the latest main.
+            git_run(
+                [
+                    "git",
+                    "pull",
+                    "--rebase",
+                    "origin",
+                    branch,
+                ]
+            )
+
+            time.sleep(0.5)
+            continue
 
         push = git_run(
             [
@@ -1196,6 +1221,16 @@ def ensure_member(
     return member
 
 
+def run_is_dead(
+    run
+):
+    return (
+        isinstance(run, dict)
+        and int(run.get("strikes", 0)) >= THREE_STRIKES
+        and run.get("paused_reason") == "three strikes"
+    )
+
+
 def run_status_text(
     team,
     run,
@@ -1369,7 +1404,7 @@ class TeamRunSelectView(
         runs,
     ):
         super().__init__(
-            timeout=60
+            timeout=None
         )
         self.bot = bot
         self.requester_id = requester_id
@@ -1455,7 +1490,7 @@ class ContinueOrRestartView(
         team_key,
     ):
         super().__init__(
-            timeout=60
+            timeout=None
         )
         self.bot = bot
         self.requester_id = (
@@ -1467,21 +1502,15 @@ class ContinueOrRestartView(
         self,
         interaction,
     ):
-        if interaction.user.id != (
-            self.requester_id
-        ):
-            await interaction.response.send_message(
-                "Only the person who requested this "
-                "Survival can choose.",
-                ephemeral=True,
-            )
-            return False
-
+        # Persistent buttons survive Action restarts. Anyone may choose
+        # Continue or Start New for a saved team run; the actual run rules
+        # are enforced by resume_team/restart_team.
         return True
 
     @discord.ui.button(
         label="Continue",
         style=discord.ButtonStyle.success,
+        custom_id="survival_continue",
     )
     async def continue_run(
         self,
@@ -1496,6 +1525,7 @@ class ContinueOrRestartView(
     @discord.ui.button(
         label="Start New",
         style=discord.ButtonStyle.danger,
+        custom_id="survival_start_new",
     )
     async def restart_run(
         self,
@@ -1527,6 +1557,30 @@ class SurvivalBot(
     async def setup_hook(
         self
     ):
+        # Register persistent Continue / Start New buttons for every
+        # saved current run. This makes old Discord buttons keep working
+        # even after the GitHub Action restarts.
+        for team_key, team in self.state.get(
+            "teams",
+            {}
+        ).items():
+            current = team.get(
+                "current"
+            )
+
+            if (
+                isinstance(current, dict)
+                and current.get("status") != "active"
+                and current.get("strikes", 0) < THREE_STRIKES
+            ):
+                self.add_view(
+                    ContinueOrRestartView(
+                        self,
+                        0,
+                        team_key,
+                    )
+                )
+
         self.bg_task = asyncio.create_task(
             self.maintenance_loop()
         )
@@ -1870,6 +1924,21 @@ class SurvivalBot(
         if not run:
             await interaction.response.send_message(
                 "No saved run.",
+                ephemeral=True,
+            )
+            return
+
+        if run_is_dead(run):
+            await interaction.response.send_message(
+                f"💀 This run is dead at Puzzle #{run.get('puzzle_number', 0)}. "
+                "Add a heart first or start a new run.",
+                ephemeral=True,
+            )
+            return
+
+        if run.get("status") == "active":
+            await interaction.response.send_message(
+                f"✅ **{team.get('name', team_key)}** is already active.",
                 ephemeral=True,
             )
             return
@@ -3516,41 +3585,44 @@ class SurvivalBot(
         if not run:
             return
 
-        user_id = str(
-            message.author.id
-        )
-
-        if user_id not in run.get(
-            "members",
-            {}
-        ):
-            await message.channel.send(
-                "Only someone who has participated "
-                "in this Survival run can stop it."
-            )
-            return
-
+        # Anyone in the channel may pause an active Survival run.
+        # This is intentionally not captain-only.
         run[
             "status"
         ] = "paused"
 
         run[
             "paused_reason"
-        ] = (
-            "manually stopped"
-        )
+        ] = "manually stopped"
+        run[
+            "last_activity"
+        ] = epoch_now()
 
         update_best(
             team,
             run,
         )
 
-        save_state(
-            self.state,
-            push=True,
-        )
+        try:
+            save_state(
+                self.state,
+                push=True,
+            )
+            clear_lock()
+        except Exception as error:
+            # Revert local status if persistence failed; otherwise
+            # Daily/Random could see an inconsistent run state.
+            run[
+                "status"
+            ] = "active"
+            run[
+                "paused_reason"
+            ] = None
 
-        clear_lock()
+            await message.channel.send(
+                f"❌ Could not save the pause to GitHub: `{str(error)[:500]}`"
+            )
+            return
 
         await message.channel.send(
             f"⏸️ **{team.get('name', team_key)} Survival paused.**\n"
