@@ -1,62 +1,105 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-03-17",
-    "title": "Jumping Out of a Jam",
-    "fen": "r3kbnr/pp1bp1pp/3q1p2/2pPn3/4PB2/3B1N2/PP3PPP/RN1QK2R b KQkq - 0 1",
-    "current_fen": "r3kbnr/pp1bp1pp/5p2/2pP4/4Pq2/3Q1N2/PP3PPP/RN2K2R w KQkq - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r3kbnr/pp1bp1pp/3q1p2/2pPn3/4PB2/3B1N2/PP3PPP/RN1QK2R b KQkq - 0 1\"]\r\n\r\n1... Nxd3+ 2. Qxd3 Qxf4 *",
+    "url": "https://www.chess.com/daily/2020-11-21",
+    "title": "Bern After Solving",
+    "fen": "8/8/p7/q1kbN3/P3P3/2N5/PPK5/8 w - - 0 1",
+    "current_fen": "8/8/p7/q1kbN3/P3P3/2N5/PPK5/8 w - - 0 1",
+    "pgn": "[White \"Horwitz, Bernhard\"]\r\n[Black \"Study\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/p7/q1kbN3/P3P3/2N5/PPK5/8 w - - 0 1\"]\r\n\r\n1.b4+ Kxb4 2.Nxd5+ Kc5 3.Nb6 Qxb6 4.Nd7+ Kc6 5.Nxb6 Kxb6 *",
     "all_moves": [
       {
-        "uci": "e5d3",
-        "san": "Nxd3+",
-        "color": "black"
-      },
-      {
-        "uci": "d1d3",
-        "san": "Qxd3",
+        "uci": "b2b4",
+        "san": "b4+",
         "color": "white"
       },
       {
-        "uci": "d6f4",
-        "san": "Qxf4",
+        "uci": "c5b4",
+        "san": "Kxb4",
+        "color": "black"
+      },
+      {
+        "uci": "c3d5",
+        "san": "Nxd5+",
+        "color": "white"
+      },
+      {
+        "uci": "b4c5",
+        "san": "Kc5",
+        "color": "black"
+      },
+      {
+        "uci": "d5b6",
+        "san": "Nb6",
+        "color": "white"
+      },
+      {
+        "uci": "a5b6",
+        "san": "Qxb6",
+        "color": "black"
+      },
+      {
+        "uci": "e5d7",
+        "san": "Nd7+",
+        "color": "white"
+      },
+      {
+        "uci": "c5c6",
+        "san": "Kc6",
+        "color": "black"
+      },
+      {
+        "uci": "d7b6",
+        "san": "Nxb6",
+        "color": "white"
+      },
+      {
+        "uci": "c6b6",
+        "san": "Kxb6",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5d3",
-        "san": "Nxd3+",
-        "color": "black"
+        "uci": "b2b4",
+        "san": "b4+",
+        "color": "white"
       },
       {
-        "uci": "d6f4",
-        "san": "Qxf4",
-        "color": "black"
+        "uci": "c3d5",
+        "san": "Nxd5+",
+        "color": "white"
+      },
+      {
+        "uci": "d5b6",
+        "san": "Nb6",
+        "color": "white"
+      },
+      {
+        "uci": "e5d7",
+        "san": "Nd7+",
+        "color": "white"
+      },
+      {
+        "uci": "d7b6",
+        "san": "Nxb6",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-20T22:52:28.299705+00:00",
+    "player_color": "white",
+    "player_move_count": 5,
+    "posted_at": "2026-08-20T22:52:45.089509+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787266348299",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1540131436760408086,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxf4",
-        "correct": true,
-        "timestamp": "2026-08-20T22:52:39.266522+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787266365089",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
