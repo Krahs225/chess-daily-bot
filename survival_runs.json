@@ -154,9 +154,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 4,
+      "best_puzzle": 5,
       "best_difficulty": 1374,
-      "best_completed_at": "2026-08-20T14:01:36.918368+00:00",
+      "best_completed_at": "2026-08-20T14:05:27.133296+00:00",
       "current": {
         "run_id": "thice:1787228226",
         "started_by_id": "1539971538290216980",
@@ -171,7 +171,8 @@
           "Nzp5Z",
           "IJq5Q",
           "rqCK7",
-          "yjB2o"
+          "yjB2o",
+          "QxmfQ"
         ],
         "members": {
           "442597396195704832": {
@@ -180,7 +181,50 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "QxmfQ",
+          "rating": 1204,
+          "themes": "crushing defensiveMove endgame long queenEndgame",
+          "url": "https://lichess.org/training/QxmfQ",
+          "start_fen": "8/6pk/7p/3q4/8/8/P2KQ3/8 w - - 2 46",
+          "current_fen": "8/6pk/7p/3q4/8/8/P2KQ3/8 w - - 2 46",
+          "solution": [
+            {
+              "uci": "e2d3",
+              "san": "Qd3+",
+              "color": "white"
+            },
+            {
+              "uci": "d5d3",
+              "san": "Qxd3+",
+              "color": "black"
+            },
+            {
+              "uci": "d2d3",
+              "san": "Kxd3",
+              "color": "white"
+            },
+            {
+              "uci": "h7g6",
+              "san": "Kg6",
+              "color": "black"
+            },
+            {
+              "uci": "a2a4",
+              "san": "a4",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
