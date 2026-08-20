@@ -966,6 +966,8 @@ def build_runtime_puzzle(
             [],
         "last_move_san":
             None,
+        "accepted_moves":
+            [],
     }
 
 
@@ -2074,36 +2076,23 @@ class SurvivalBot(
             ):
                 return
 
-            # IMPORTANT:
-            # Two people can submit the same correct move almost at once.
-            # Automatic opponent replies may advance next_solution_index by
-            # several positions, so an index comparison is NOT sufficient.
+            # Duplicate-safe handling:
+            # a move that was already accepted earlier in THIS puzzle is
+            # never a new strike when it arrives late from another player.
             #
-            # Instead, when a move was just accepted, remember its normalized
-            # SAN and a short duplicate window. If another player submits the
-            # exact same move during that window, it is the same simultaneous
-            # answer and must never cost a strike.
-            last_accepted_san = str(
-                puzzle.get(
-                    "last_accepted_move_san",
-                    ""
-                )
-            ).casefold().rstrip("+#")
-
-            try:
-                last_accepted_at = float(
-                    puzzle.get(
-                        "last_accepted_at",
-                        0,
-                    )
-                )
-            except Exception:
-                last_accepted_at = 0.0
+            # This also survives automatic opponent replies and is safer
+            # than relying on next_solution_index, because the bot can jump
+            # several plies after a correct player move.
+            accepted_moves = puzzle.setdefault(
+                "accepted_moves",
+                []
+            )
 
             normalized_submitted = (
                 submitted.casefold().rstrip("+#")
             )
 
+            # First, test the move against the CURRENT position normally.
             board = chess.Board(
                 puzzle["current_fen"]
             )
@@ -2118,22 +2107,27 @@ class SurvivalBot(
                 expected,
             )
 
-            if (
-                not correct
-                and last_accepted_san
-                and normalized_submitted
-                == last_accepted_san
-                and (
-                    epoch_now()
-                    - last_accepted_at
-                    <= 15.0
-                )
-            ):
-                await message.channel.send(
-                    f"✅ **That move was already accepted, "
-                    f"{user.display_name}.**"
-                )
-                return
+            if not correct:
+                for accepted in reversed(
+                    accepted_moves[-10:]
+                ):
+                    accepted_san = str(
+                        accepted.get(
+                            "san",
+                            ""
+                        )
+                    ).casefold().rstrip("+#")
+
+                    if (
+                        accepted_san
+                        == normalized_submitted
+                    ):
+                        await message.channel.send(
+                            f"✅ **That move was already accepted, "
+                            f"{user.display_name}.**"
+                        )
+                        return
+
 
             if not correct:
 
@@ -2300,6 +2294,29 @@ class SurvivalBot(
             puzzle[
                 "last_accepted_at"
             ] = epoch_now()
+
+            puzzle.setdefault(
+                "accepted_moves",
+                []
+            ).append(
+                {
+                    "san":
+                        expected["san"],
+                    "uci":
+                        expected["uci"],
+                    "accepted_at":
+                        epoch_now(),
+                    "solver_id":
+                        user_id,
+                }
+            )
+
+            # Keep only the most recent accepted player moves.
+            puzzle[
+                "accepted_moves"
+            ] = puzzle[
+                "accepted_moves"
+            ][-10:]
 
             puzzle[
                 "position_before_last_move"
