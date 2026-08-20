@@ -12,7 +12,7 @@
         "started_at": "2026-08-20T12:22:23.121644+00:00",
         "last_activity": 1787248596.5344899,
         "paused_reason": "manually stopped",
-        "puzzle_number": 54,
+        "puzzle_number": 55,
         "strikes": 1,
         "best_difficulty": 2188,
         "used_puzzle_ids": [
@@ -83,76 +83,9 @@
             "wrong": 5
           }
         },
-        "puzzle": {
-          "id": "rvxGZ",
-          "rating": 2102,
-          "themes": "advantage endgame long quietMove",
-          "url": "https://lichess.org/training/rvxGZ",
-          "start_fen": "8/q4p1p/3R2pk/4p3/1P2Pn1P/1Q3N2/P4PPK/2r5 b - - 2 30",
-          "current_fen": "8/5p1p/6pk/4p3/1P2P2P/1Q3N2/P3q1PK/2r5 w - - 0 33",
-          "solution": [
-            {
-              "uci": "a7f2",
-              "san": "Qxf2",
-              "color": "black"
-            },
-            {
-              "uci": "d6d2",
-              "san": "Rd2",
-              "color": "white"
-            },
-            {
-              "uci": "f4e2",
-              "san": "Ne2",
-              "color": "black"
-            },
-            {
-              "uci": "d2e2",
-              "san": "Rxe2",
-              "color": "white"
-            },
-            {
-              "uci": "f2e2",
-              "san": "Qxe2",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Qxe2",
-          "accepted_moves": [
-            {
-              "san": "Qxf2",
-              "uci": "a7f2",
-              "accepted_at": 1787248502.9194133,
-              "solver_id": "601406103712170014"
-            },
-            {
-              "san": "Ne2",
-              "uci": "f4e2",
-              "accepted_at": 1787248588.683974,
-              "solver_id": "601406103712170014"
-            },
-            {
-              "san": "Qxe2",
-              "uci": "f2e2",
-              "accepted_at": 1787248596.5344138,
-              "solver_id": "601406103712170014"
-            }
-          ],
-          "last_accepted_move_uci": "f2e2",
-          "last_accepted_move_san": "Qxe2",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1787248596.5344129,
-          "position_before_last_move": "8/5p1p/6pk/4p3/1P2P2P/1Q3N2/P3RqPK/2r5 b - - 0 32"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
