@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 25,
+      "best_puzzle": 26,
       "best_difficulty": 1672,
-      "best_completed_at": "2026-08-20T13:02:17.619782+00:00",
+      "best_completed_at": "2026-08-20T13:02:58.920200+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -14,7 +14,7 @@
         "paused_reason": null,
         "puzzle_number": 26,
         "strikes": 0,
-        "best_difficulty": 1672,
+        "best_difficulty": 1687,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
@@ -40,7 +40,8 @@
           "Fc97v",
           "9MYLd",
           "5NZP0",
-          "jw7dm"
+          "jw7dm",
+          "mCQnl"
         ],
         "members": {
           "601406103712170014": {
@@ -54,7 +55,59 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "mCQnl",
+          "rating": 1687,
+          "themes": "crushing fork middlegame sacrifice veryLong",
+          "url": "https://lichess.org/training/mCQnl",
+          "start_fen": "4rrk1/p4ppp/2n5/1Rqp4/3N4/2P3P1/P2Q1P1P/4R1K1 b - - 5 22",
+          "current_fen": "4rrk1/p4ppp/2n5/1Rqp4/3N4/2P3P1/P2Q1P1P/4R1K1 b - - 5 22",
+          "solution": [
+            {
+              "uci": "c6d4",
+              "san": "Nxd4",
+              "color": "black"
+            },
+            {
+              "uci": "b5c5",
+              "san": "Rxc5",
+              "color": "white"
+            },
+            {
+              "uci": "d4f3",
+              "san": "Nf3+",
+              "color": "black"
+            },
+            {
+              "uci": "g1g2",
+              "san": "Kg2",
+              "color": "white"
+            },
+            {
+              "uci": "f3d2",
+              "san": "Nxd2",
+              "color": "black"
+            },
+            {
+              "uci": "e1e8",
+              "san": "Rxe8",
+              "color": "white"
+            },
+            {
+              "uci": "f8e8",
+              "san": "Rxe8",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
