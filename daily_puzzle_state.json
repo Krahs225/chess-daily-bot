@@ -1,98 +1,145 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-12-26",
-    "title": "Expose the Black King",
-    "fen": "4r1k1/p1q3p1/1p1p2Q1/2pbrBpP/P5P1/1P2RP2/1bP4K/4R3 w - - 0 1",
-    "current_fen": "5R2/p1q3p1/1p1p1kB1/2pb2pP/P5P1/1P3P2/1bP4K/4R3 b - - 4 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/p1q3p1/1p1p2Q1/2pbrBpP/P5P1/1P2RP2/1bP4K/4R3 w - - 0 1\"]\r\n\r\n1. Qxe8+ Rxe8 2. Rxe8+ Kf7 3. Bg6+ Kf6 4. Rf8+ \r\n*",
+    "url": "https://www.chess.com/daily/2016-12-02",
+    "title": "GM Sutovsky - GM Svidler, 17th European Team Champ",
+    "fen": "4r1k1/pbpR3p/1p2Ppp1/8/8/1P2P1KP/PQ4P1/B6q w - - 0 1",
+    "current_fen": "4r1k1/pbpR3p/1p2Ppp1/8/8/1P2P1KP/PQ4P1/B6q w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/pbpR3p/1p2Ppp1/8/8/1P2P1KP/PQ4P1/B6q w - - 0 1\"]\r\n\r\n1. Rg7+ Kh8 2. Qxf6 Qxg2+ 3. Kh4 Qe4+ 4. Qf4 Qxf4+ 5. exf4 h5 6. Re7+ Kg8 7. Rxe8+ Kh7 8. Rh8# \r\n*",
     "all_moves": [
       {
-        "uci": "g6e8",
-        "san": "Qxe8+",
+        "uci": "d7g7",
+        "san": "Rg7+",
         "color": "white"
       },
       {
-        "uci": "e5e8",
-        "san": "Rxe8",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "e3e8",
+        "uci": "b2f6",
+        "san": "Qxf6",
+        "color": "white"
+      },
+      {
+        "uci": "h1g2",
+        "san": "Qxg2+",
+        "color": "black"
+      },
+      {
+        "uci": "g3h4",
+        "san": "Kh4",
+        "color": "white"
+      },
+      {
+        "uci": "g2e4",
+        "san": "Qe4+",
+        "color": "black"
+      },
+      {
+        "uci": "f6f4",
+        "san": "Qf4",
+        "color": "white"
+      },
+      {
+        "uci": "e4f4",
+        "san": "Qxf4+",
+        "color": "black"
+      },
+      {
+        "uci": "e3f4",
+        "san": "exf4",
+        "color": "white"
+      },
+      {
+        "uci": "h7h5",
+        "san": "h5",
+        "color": "black"
+      },
+      {
+        "uci": "g7e7",
+        "san": "Re7+",
+        "color": "white"
+      },
+      {
+        "uci": "h8g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "e7e8",
         "san": "Rxe8+",
         "color": "white"
       },
       {
-        "uci": "g8f7",
-        "san": "Kf7",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "f5g6",
-        "san": "Bg6+",
-        "color": "white"
-      },
-      {
-        "uci": "f7f6",
-        "san": "Kf6",
-        "color": "black"
-      },
-      {
-        "uci": "e8f8",
-        "san": "Rf8+",
+        "uci": "e8h8",
+        "san": "Rh8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g6e8",
-        "san": "Qxe8+",
+        "uci": "d7g7",
+        "san": "Rg7+",
         "color": "white"
       },
       {
-        "uci": "e3e8",
+        "uci": "b2f6",
+        "san": "Qxf6",
+        "color": "white"
+      },
+      {
+        "uci": "g3h4",
+        "san": "Kh4",
+        "color": "white"
+      },
+      {
+        "uci": "f6f4",
+        "san": "Qf4",
+        "color": "white"
+      },
+      {
+        "uci": "e3f4",
+        "san": "exf4",
+        "color": "white"
+      },
+      {
+        "uci": "g7e7",
+        "san": "Re7+",
+        "color": "white"
+      },
+      {
+        "uci": "e7e8",
         "san": "Rxe8+",
         "color": "white"
       },
       {
-        "uci": "f5g6",
-        "san": "Bg6+",
-        "color": "white"
-      },
-      {
-        "uci": "e8f8",
-        "san": "Rf8+",
+        "uci": "e8h8",
+        "san": "Rh8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-20T21:22:48.965573+00:00",
-    "answer_posted": true,
+    "player_move_count": 8,
+    "posted_at": "2026-08-20T21:23:12.261678+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787260968965",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540108872688214149,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qh7",
-        "correct": false,
-        "timestamp": "2026-08-20T21:22:52.080516+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rf8",
-        "correct": true,
-        "timestamp": "2026-08-20T21:23:05.336874+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787260992261",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
