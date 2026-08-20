@@ -154,9 +154,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 7,
+      "best_puzzle": 8,
       "best_difficulty": 1374,
-      "best_completed_at": "2026-08-20T14:16:37.893059+00:00",
+      "best_completed_at": "2026-08-20T14:16:52.671064+00:00",
       "current": {
         "run_id": "thice:1787228226",
         "started_by_id": "1539971538290216980",
@@ -174,7 +174,8 @@
           "yjB2o",
           "QxmfQ",
           "moPpo",
-          "jyHAg"
+          "jyHAg",
+          "KSKyc"
         ],
         "members": {
           "442597396195704832": {
@@ -183,7 +184,40 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "KSKyc",
+          "rating": 1302,
+          "themes": "crushing endgame short",
+          "url": "https://lichess.org/training/KSKyc",
+          "start_fen": "2kr4/1p3p2/p5pp/2pq4/2PB4/Pn3PP1/2Q1P2P/3R2K1 b - - 0 27",
+          "current_fen": "2kr4/1p3p2/p5pp/2pq4/2PB4/Pn3PP1/2Q1P2P/3R2K1 b - - 0 27",
+          "solution": [
+            {
+              "uci": "b3d4",
+              "san": "Nxd4",
+              "color": "black"
+            },
+            {
+              "uci": "c4d5",
+              "san": "cxd5",
+              "color": "white"
+            },
+            {
+              "uci": "d4c2",
+              "san": "Nxc2",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
