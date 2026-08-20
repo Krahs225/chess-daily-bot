@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 36,
+      "best_puzzle": 37,
       "best_difficulty": 1847,
-      "best_completed_at": "2026-08-20T13:21:15.240606+00:00",
+      "best_completed_at": "2026-08-20T13:22:36.107664+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -51,7 +51,8 @@
           "Gg4MY",
           "Y9Wh6",
           "0Rihv",
-          "GQFda"
+          "GQFda",
+          "WEJHi"
         ],
         "members": {
           "601406103712170014": {
@@ -65,7 +66,49 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "WEJHi",
+          "rating": 1744,
+          "themes": "advantage exposedKing kingsideAttack long master middlegame",
+          "url": "https://lichess.org/training/WEJHi",
+          "start_fen": "6kq/1b1n2b1/pp2p1B1/3p4/P2N1rP1/2P5/1P4Q1/R4RK1 b - - 0 28",
+          "current_fen": "6kq/1b1n2b1/pp2p1B1/3p4/P2N1rP1/2P5/1P4Q1/R4RK1 b - - 0 28",
+          "solution": [
+            {
+              "uci": "g7d4",
+              "san": "Bxd4+",
+              "color": "black"
+            },
+            {
+              "uci": "c3d4",
+              "san": "cxd4",
+              "color": "white"
+            },
+            {
+              "uci": "h8d4",
+              "san": "Qxd4+",
+              "color": "black"
+            },
+            {
+              "uci": "g1h2",
+              "san": "Kh2",
+              "color": "white"
+            },
+            {
+              "uci": "f4g4",
+              "san": "Rxg4",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
