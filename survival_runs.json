@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 7,
+      "best_puzzle": 8,
       "best_difficulty": 1400,
-      "best_completed_at": "2026-08-20T12:46:34.407580+00:00",
+      "best_completed_at": "2026-08-20T12:46:54.986073+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -22,7 +22,8 @@
           "RJflk",
           "iKB3c",
           "iRn25",
-          "EUIXJ"
+          "EUIXJ",
+          "Sae1k"
         ],
         "members": {
           "601406103712170014": {
@@ -36,7 +37,29 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "Sae1k",
+          "rating": 1351,
+          "themes": "kingsideAttack mate mateIn1 middlegame oneMove",
+          "url": "https://lichess.org/training/Sae1k",
+          "start_fen": "rn1Q1rk1/p3R1pp/6q1/1p6/2p1N3/P4b2/B1P2PPP/R2Q2K1 b - - 0 20",
+          "current_fen": "rn1Q1rk1/p3R1pp/6q1/1p6/2p1N3/P4b2/B1P2PPP/R2Q2K1 b - - 0 20",
+          "solution": [
+            {
+              "uci": "g6g2",
+              "san": "Qxg2#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
