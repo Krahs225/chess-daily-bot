@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 50,
+      "best_puzzle": 51,
       "best_difficulty": 2016,
-      "best_completed_at": "2026-08-20T17:45:20.300006+00:00",
+      "best_completed_at": "2026-08-20T17:46:29.316046+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -14,7 +14,7 @@
         "paused_reason": "manually stopped",
         "puzzle_number": 51,
         "strikes": 1,
-        "best_difficulty": 2016,
+        "best_difficulty": 2185,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
@@ -65,7 +65,8 @@
           "G2mGN",
           "KxObB",
           "AX6N8",
-          "rEksh"
+          "rEksh",
+          "WVqx2"
         ],
         "members": {
           "601406103712170014": {
@@ -79,7 +80,40 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "WVqx2",
+          "rating": 2185,
+          "themes": "crushing endgame pawnEndgame short",
+          "url": "https://lichess.org/training/WVqx2",
+          "start_fen": "8/p2k3p/5p2/4p3/K3P3/5PP1/7P/8 b - - 0 36",
+          "current_fen": "8/p2k3p/5p2/4p3/K3P3/5PP1/7P/8 b - - 0 36",
+          "solution": [
+            {
+              "uci": "d7c6",
+              "san": "Kc6",
+              "color": "black"
+            },
+            {
+              "uci": "a4b4",
+              "san": "Kb4",
+              "color": "white"
+            },
+            {
+              "uci": "a7a5",
+              "san": "a5+",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
