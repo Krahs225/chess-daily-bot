@@ -1,122 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-12-19",
-    "title": "Levitsky - Marshall, Kongress 1912",
-    "fen": "5rk1/p1p2ppp/Q6R/3N4/2rP2q1/2P2R2/P1P3PP/6K1 w - - 0 1",
-    "current_fen": "5r2/p1p1Nppk/8/8/2rP4/2P4R/P1P3PP/6K1 b - - 1 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/p1p2ppp/Q6R/3N4/2rP2q1/2P2R2/P1P3PP/6K1 w - - 0 1\"]\r\n\r\n1. Qg6 Qxg6 2. Ne7+ Kh8 3. Nxg6+ Kg8 4. Ne7+ Kh8 5. Rxh7+ Kxh7 6. Rh3#\r\n*",
+    "url": "https://www.chess.com/daily/2025-03-17",
+    "title": "Jumping Out of a Jam",
+    "fen": "r3kbnr/pp1bp1pp/3q1p2/2pPn3/4PB2/3B1N2/PP3PPP/RN1QK2R b KQkq - 0 1",
+    "current_fen": "r3kbnr/pp1bp1pp/3q1p2/2pP4/4PB2/3Q1N2/PP3PPP/RN2K2R b KQkq - 0 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r3kbnr/pp1bp1pp/3q1p2/2pPn3/4PB2/3B1N2/PP3PPP/RN1QK2R b KQkq - 0 1\"]\r\n\r\n1... Nxd3+ 2. Qxd3 Qxf4 *",
     "all_moves": [
       {
-        "uci": "a6g6",
-        "san": "Qg6",
-        "color": "white"
-      },
-      {
-        "uci": "g4g6",
-        "san": "Qxg6",
+        "uci": "e5d3",
+        "san": "Nxd3+",
         "color": "black"
       },
       {
-        "uci": "d5e7",
-        "san": "Ne7+",
+        "uci": "d1d3",
+        "san": "Qxd3",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "d6f4",
+        "san": "Qxf4",
         "color": "black"
-      },
-      {
-        "uci": "e7g6",
-        "san": "Nxg6+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "g6e7",
-        "san": "Ne7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "h6h7",
-        "san": "Rxh7+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h7",
-        "san": "Kxh7",
-        "color": "black"
-      },
-      {
-        "uci": "f3h3",
-        "san": "Rh3#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a6g6",
-        "san": "Qg6",
-        "color": "white"
+        "uci": "e5d3",
+        "san": "Nxd3+",
+        "color": "black"
       },
       {
-        "uci": "d5e7",
-        "san": "Ne7+",
-        "color": "white"
-      },
-      {
-        "uci": "e7g6",
-        "san": "Nxg6+",
-        "color": "white"
-      },
-      {
-        "uci": "g6e7",
-        "san": "Ne7+",
-        "color": "white"
-      },
-      {
-        "uci": "h6h7",
-        "san": "Rxh7+",
-        "color": "white"
-      },
-      {
-        "uci": "f3h3",
-        "san": "Rh3#",
-        "color": "white"
+        "uci": "d6f4",
+        "san": "Qxf4",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-20T22:51:45.972112+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-20T22:52:28.299705+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787266305972",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1540131257726402613,
+    "puzzle_id": "random_1787266348299",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1540131436760408086,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rh3",
+        "move": "nxd3",
         "correct": true,
-        "timestamp": "2026-08-20T22:52:22.621615+00:00"
+        "timestamp": "2026-08-20T22:52:36.533948+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
