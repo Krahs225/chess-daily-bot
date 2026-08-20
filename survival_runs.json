@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787248339.66815,
+        "last_activity": 1787248407.718181,
         "paused_reason": "manually stopped",
         "puzzle_number": 53,
         "strikes": 1,
@@ -78,7 +78,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 34,
+            "correct": 35,
             "wrong": 5
           }
         },
@@ -88,7 +88,7 @@
           "themes": "crushing discoveredAttack discoveredCheck kingsideAttack middlegame sacrifice short",
           "url": "https://lichess.org/training/pePLr",
           "start_fen": "r3k2r/1pp2ppp/8/pP2N2n/P1B1Pn2/2PP2qb/R5P1/2BQ1RK1 b kq - 0 19",
-          "current_fen": "r3k2r/1pp2ppp/8/pP2N2n/P1B1Pn2/2PP2qb/R5P1/2BQ1RK1 b kq - 0 19",
+          "current_fen": "r3k2r/1pp2ppp/8/pP2N2n/P1B1PR2/2PP2q1/R5b1/2BQ2K1 b kq - 0 20",
           "solution": [
             {
               "uci": "h3g2",
@@ -107,17 +107,29 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Bxg2",
+          "accepted_moves": [
+            {
+              "san": "Bxg2",
+              "uci": "h3g2",
+              "accepted_at": 1787248407.7180486,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "h3g2",
+          "last_accepted_move_san": "Bxg2",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787248407.7180474,
+          "position_before_last_move": "r3k2r/1pp2ppp/8/pP2N2n/P1B1Pn2/2PP2qb/R5P1/2BQ1RK1 b kq - 0 19"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
