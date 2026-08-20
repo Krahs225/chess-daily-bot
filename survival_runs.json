@@ -14,10 +14,44 @@
         "paused_reason": "puzzle fetch error",
         "puzzle_number": 1,
         "strikes": 0,
-        "best_difficulty": 0,
-        "used_puzzle_ids": [],
+        "best_difficulty": 1337,
+        "used_puzzle_ids": [
+          "g6cbI"
+        ],
         "members": {},
-        "puzzle": null,
+        "puzzle": {
+          "id": "g6cbI",
+          "rating": 1337,
+          "themes": "endgame mate mateIn2 short",
+          "url": "https://lichess.org/training/g6cbI",
+          "start_fen": "1Q6/q6k/B3p1p1/3pQb1p/5P1K/2P3P1/7P/8 b - - 0 40",
+          "current_fen": "1Q6/q6k/B3p1p1/3pQb1p/5P1K/2P3P1/7P/8 b - - 0 40",
+          "solution": [
+            {
+              "uci": "a7e7",
+              "san": "Qe7+",
+              "color": "black"
+            },
+            {
+              "uci": "e5f6",
+              "san": "Qf6",
+              "color": "white"
+            },
+            {
+              "uci": "e7f6",
+              "san": "Qxf6#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
