@@ -175,7 +175,8 @@
           "fFOy5",
           "nr9JB",
           "bJ235",
-          "KjNyr"
+          "KjNyr",
+          "BqlIJ"
         ],
         "members": {
           "442597396195704832": {
@@ -184,7 +185,50 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "BqlIJ",
+          "rating": 1250,
+          "themes": "advantage kingsideAttack long middlegame pin",
+          "url": "https://lichess.org/training/BqlIJ",
+          "start_fen": "r2r1b2/4kp2/pq2p3/1b2P2Q/1p1N1P2/1P6/1PP1N1P1/R2R2K1 b - - 2 23",
+          "current_fen": "r2r1b2/4kp2/pq2p3/1b2P2Q/1p1N1P2/1P6/1PP1N1P1/R2R2K1 b - - 2 23",
+          "solution": [
+            {
+              "uci": "b5e2",
+              "san": "Bxe2",
+              "color": "black"
+            },
+            {
+              "uci": "h5e2",
+              "san": "Qxe2",
+              "color": "white"
+            },
+            {
+              "uci": "d8d4",
+              "san": "Rxd4",
+              "color": "black"
+            },
+            {
+              "uci": "d1d4",
+              "san": "Rxd4",
+              "color": "white"
+            },
+            {
+              "uci": "b6d4",
+              "san": "Qxd4+",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
