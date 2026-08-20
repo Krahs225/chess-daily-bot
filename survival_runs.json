@@ -164,7 +164,7 @@
         "started_at": "2026-08-20T14:35:58.668682+00:00",
         "last_activity": 1787236710.887757,
         "paused_reason": null,
-        "puzzle_number": 2,
+        "puzzle_number": 3,
         "strikes": 0,
         "best_difficulty": 1386,
         "used_puzzle_ids": [
@@ -178,76 +178,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "440Tp",
-          "rating": 1386,
-          "themes": "advancedPawn crushing endgame long quietMove rookEndgame",
-          "url": "https://lichess.org/training/440Tp",
-          "start_fen": "2r5/3R3p/5pk1/2p5/3P4/P7/5PPP/6K1 b - - 0 28",
-          "current_fen": "2r5/4R2p/5pk1/8/3P4/P7/2p2PPP/5K2 w - - 0 31",
-          "solution": [
-            {
-              "uci": "c5c4",
-              "san": "c4",
-              "color": "black"
-            },
-            {
-              "uci": "d7e7",
-              "san": "Re7",
-              "color": "white"
-            },
-            {
-              "uci": "c4c3",
-              "san": "c3",
-              "color": "black"
-            },
-            {
-              "uci": "g1f1",
-              "san": "Kf1",
-              "color": "white"
-            },
-            {
-              "uci": "c3c2",
-              "san": "c2",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "c2",
-          "accepted_moves": [
-            {
-              "san": "c4",
-              "uci": "c5c4",
-              "accepted_at": 1787236699.6667862,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "c3",
-              "uci": "c4c3",
-              "accepted_at": 1787236705.6168485,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "c2",
-              "uci": "c3c2",
-              "accepted_at": 1787236710.887681,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "c3c2",
-          "last_accepted_move_san": "c2",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1787236710.8876803,
-          "position_before_last_move": "2r5/4R2p/5pk1/8/3P4/P1p5/5PPP/5K2 b - - 1 30"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
