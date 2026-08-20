@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787232344.0048535,
+        "last_activity": 1787232369.0820704,
         "paused_reason": null,
         "puzzle_number": 40,
         "strikes": 0,
@@ -60,7 +60,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 81,
+            "correct": 82,
             "wrong": 1
           },
           "442597396195704832": {
@@ -75,7 +75,7 @@
           "themes": "crushing endgame long pawnEndgame zugzwang",
           "url": "https://lichess.org/training/yFEPz",
           "start_fen": "8/4p1k1/3p4/3P1P2/5K2/8/8/8 b - - 6 70",
-          "current_fen": "8/4p1k1/3p4/3P1P2/5K2/8/8/8 b - - 6 70",
+          "current_fen": "8/4p3/3p1k2/3P1P2/4K3/8/8/8 b - - 8 71",
           "solution": [
             {
               "uci": "g7f6",
@@ -104,16 +104,21 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null
+          "last_move_san": "Kf6",
+          "last_accepted_move_uci": "g7f6",
+          "last_accepted_move_san": "Kf6",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787232369.082011,
+          "position_before_last_move": "8/4p1k1/3p4/3P1P2/5K2/8/8/8 b - - 6 70"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       }
