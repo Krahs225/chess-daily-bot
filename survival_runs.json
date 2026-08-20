@@ -106,9 +106,9 @@
         "started_by_id": "1539976092155256853",
         "status": "active",
         "started_at": "2026-08-20T12:35:11.825849+00:00",
-        "last_activity": 1787229384.910551,
+        "last_activity": 1787229386.4730542,
         "paused_reason": null,
-        "puzzle_number": 1,
+        "puzzle_number": 2,
         "strikes": 1,
         "best_difficulty": 1308,
         "used_puzzle_ids": [
@@ -126,56 +126,10 @@
             "wrong": 1
           }
         },
-        "puzzle": {
-          "id": "eKLsw",
-          "rating": 1308,
-          "themes": "advantage long middlegame",
-          "url": "https://lichess.org/training/eKLsw",
-          "start_fen": "2kr3r/ppp1qppp/2p1bn2/2b3B1/4P1B1/3P4/PPP2PPP/RN1Q1RK1 b - - 8 9",
-          "current_fen": "2kr3r/ppp1bppp/2p5/8/4P1n1/3P4/PPP2PPP/RN3RK1 w - - 0 12",
-          "solution": [
-            {
-              "uci": "e6g4",
-              "san": "Bxg4",
-              "color": "black"
-            },
-            {
-              "uci": "d1g4",
-              "san": "Qxg4+",
-              "color": "white"
-            },
-            {
-              "uci": "f6g4",
-              "san": "Nxg4",
-              "color": "black"
-            },
-            {
-              "uci": "g5e7",
-              "san": "Bxe7",
-              "color": "white"
-            },
-            {
-              "uci": "c5e7",
-              "san": "Bxe7",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [
-            "442597396195704832"
-          ],
-          "last_move_san": "Bxe7"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
-        "helper_candidates": {
-          "442597396195704832": "Thice"
-        },
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
         "helper_awarded": []
       }
     }
