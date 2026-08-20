@@ -154,9 +154,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 13,
-      "best_difficulty": 1423,
-      "best_completed_at": "2026-08-20T14:26:21.452206+00:00",
+      "best_puzzle": 14,
+      "best_difficulty": 1424,
+      "best_completed_at": "2026-08-20T14:27:37.197084+00:00",
       "current": {
         "run_id": "thice:1787228226",
         "started_by_id": "1539971538290216980",
@@ -166,7 +166,7 @@
         "paused_reason": null,
         "puzzle_number": 14,
         "strikes": 2,
-        "best_difficulty": 1424,
+        "best_difficulty": 1511,
         "used_puzzle_ids": [
           "Nzp5Z",
           "IJq5Q",
@@ -180,7 +180,8 @@
           "triT6",
           "jXZA3",
           "sMhIJ",
-          "nDeOr"
+          "nDeOr",
+          "HjpuK"
         ],
         "members": {
           "442597396195704832": {
@@ -189,7 +190,40 @@
             "wrong": 4
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "HjpuK",
+          "rating": 1511,
+          "themes": "mate mateIn2 middlegame short",
+          "url": "https://lichess.org/training/HjpuK",
+          "start_fen": "rnb2r2/1p1k1Npp/1p2p3/1N1pP3/8/2R5/P1P3PP/4KB1n w - - 0 20",
+          "current_fen": "rnb2r2/1p1k1Npp/1p2p3/1N1pP3/8/2R5/P1P3PP/4KB1n w - - 0 20",
+          "solution": [
+            {
+              "uci": "c3c7",
+              "san": "Rc7+",
+              "color": "white"
+            },
+            {
+              "uci": "d7e8",
+              "san": "Ke8",
+              "color": "black"
+            },
+            {
+              "uci": "b5d6",
+              "san": "Nbd6#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
