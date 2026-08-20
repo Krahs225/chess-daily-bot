@@ -178,12 +178,19 @@ def is_qualifying_game(
     game
 ):
 
-    if str(
-        game.get(
-            "rated",
-            ""
-        )
-    ).casefold() != "rated":
+    rated = game.get(
+        "rated",
+        False,
+    )
+
+    # Chess.com PubAPI returns this field as a boolean
+    # (`true` / `false`), not the string "rated".
+    # Keep compatibility with older/string-shaped responses too.
+    if not (
+        rated is True
+        or str(rated).casefold() == "rated"
+        or str(rated).casefold() == "true"
+    ):
 
         return False
 
@@ -581,7 +588,7 @@ async def post_chess_round(
         await channel.send(
             "❌ **Chess Chatter:** "
             "could not find a qualifying "
-            "rated rapid/blitz game."
+            "rated rapid/blitz game from the configured players."
         )
 
         return
