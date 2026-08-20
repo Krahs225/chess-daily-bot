@@ -3341,6 +3341,9 @@ async def handle_answer(
     answer_window,
     move_text
 ):
+    if is_survival_active():
+        return
+
     if not puzzle:
         return
 
@@ -3533,6 +3536,11 @@ async def on_message(
                 message.channel
             )
 
+            return
+
+        # Survival owns all chess-puzzle messages while it is active.
+        # Do this AFTER !rp so !rp can show the user why it is blocked.
+        if is_survival_active():
             return
 
         # =====================================================
