@@ -1508,115 +1508,6 @@ class ContinueOrRestartView(
         )
 
 
-def survival_info_text():
-    return """🔥 **SURVIVAL MODE — INFO**
-
-**Start a run**
-`!survival`
-→ The bot asks for a team name.
-
-The person who starts the run is the **captain**.
-
-**Team / run system**
-- Every new run gets its own saved run record.
-- The same team name can have multiple runs.
-- A run can be active, paused, or dead.
-- `!teamname` (for example `!thice`) lets you choose which saved run of that team you want to view.
-- Team details show the run's puzzle number, status, difficulty, hearts, captain and contributors.
-
-**Co-op / Solo**
-`!solo <team name>`
-→ Captain-only. Only the captain may answer an active run.
-
-`!coop <team name>`
-→ Captain-only. Everyone may answer again.
-
-Solo/Co-op can only be changed on an **active** run. Dead runs cannot be changed.
-
-**Stopping / resuming**
-`!stopsurvival`
-→ Saves and pauses the active run.
-
-After inactivity, Survival automatically pauses after **10 minutes without activity**.
-
-`!survival` + the same team name
-→ If that team has saved runs, choose which run to continue or start a new one.
-
-A run that died at **3/3 strikes cannot be continued** unless Sharkmeister gives it a heart first.
-
-**Hearts / strikes**
-Everyone starts with **❤️❤️❤️**.
-
-A wrong answer costs **1 strike**.
-
-At **3/3 strikes**, the run is **DEAD** and cannot continue normally.
-
-**Puzzle difficulty**
-- #1–10: 1200–1400
-- #11–20: 1400–1550
-- #21–30: 1550–1700
-- #31–40: 1700–1850
-- #41–50: 1850–2050
-- #51–60: 2050–2250
-- #61–70: 2250–2400
-- #71–80: 2400–2600
-- **#81+: 2600+**
-
-**How answering works**
-Everyone may answer in co-op mode.
-
-Send one chess move at a time, such as:
-`Qh6`
-`Qh6+`
-`f1=Q`
-`O-O`
-`!Qh6`
-
-The bot automatically plays the opponent's replies.
-
-If two people submit the same correct move at almost the same time, the duplicate is ignored and **does not cost a heart**.
-
-Some puzzles can have multiple correct mating moves; legal alternative checkmates are accepted.
-
-**Team leaderboard**
-`!survivallb`
-`!survivalboard`
-`!slb`
-
-These show **all saved Survival runs**, so the same team name can appear more than once.
-
-**Team run details**
-Use:
-`!<team name>`
-
-Example:
-`!thice`
-
-If there are multiple Thice runs, the bot lets you choose which run you want to view.
-
-You can then see:
-- puzzle number
-- status
-- mode (SOLO/CO-OP)
-- captain
-- hearts / strikes
-- best difficulty
-- contributors and how many correct/wrong answers they gave
-
-**Sharkmeister-only admin commands**
-`!delete <team name>`
-→ Permanently removes that team's saved runs.
-
-`!addheart <team name>`
-→ Adds 1 heart to that team's current/dead run so it can be resumed.
-
-Only **Sharkmeister** can use these two commands.
-
-**Shared points**
-Survival itself does **not** award points to the shared leaderboard.
-Survival is a separate team competition.
-"""
-
 class SurvivalBot(
     commands.Bot
 ):
@@ -1956,6 +1847,13 @@ class SurvivalBot(
             display_name,
             run["run_id"],
             run["last_activity"],
+        )
+
+        await requester.channel.send(
+            f"👑 **{display_name}** has been created.\n"
+            f"**Captain:** {requester.display_name}\n"
+            f"**Mode:** CO-OP\n"
+            f"Everyone can help!"
         )
 
         await self.post_next_puzzle(
