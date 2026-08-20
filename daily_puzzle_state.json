@@ -1,42 +1,159 @@
 {
   "latest_random_puzzle": {
-    "title": "500 • Hcd18",
-    "fen": "1r3rk1/5ppp/1np1bp2/3q3P/p2P4/P2QB3/1PB2PP1/1K1R3R w - - 2 20",
-    "current_fen": "1r3rk1/5ppQ/1np1bp2/3q3P/p2P4/P3B3/1PB2PP1/1K1R3R b - - 0 20",
+    "url": "https://www.chess.com/daily/2010-06-12",
+    "title": "F Zimkhovitch, 1926",
+    "fen": "4K3/2k1Bp1N/6p1/5PP1/8/7p/b7/8 w KQkq - 0 1",
+    "current_fen": "4K3/2k1Bp1N/6p1/5PP1/8/7p/b7/8 w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4K3/2k1Bp1N/6p1/5PP1/8/7p/b7/8 w KQkq - 0 1\"]\r\n\r\n1. Bf6 Kd6 2. Be7+ Ke5 3. Bd8 Kd6 4. Be7+ Kc6 5. f6 h2 6. Bf8 h1=Q 7. Bh6 Qd5 8. Kf8 Qd8+ 9. Kg7\r\n*",
     "all_moves": [
       {
-        "uci": "d3h7",
-        "san": "Qxh7#",
+        "uci": "e7f6",
+        "san": "Bf6",
+        "color": "white"
+      },
+      {
+        "uci": "c7d6",
+        "san": "Kd6",
+        "color": "black"
+      },
+      {
+        "uci": "f6e7",
+        "san": "Be7+",
+        "color": "white"
+      },
+      {
+        "uci": "d6e5",
+        "san": "Ke5",
+        "color": "black"
+      },
+      {
+        "uci": "e7d8",
+        "san": "Bd8",
+        "color": "white"
+      },
+      {
+        "uci": "e5d6",
+        "san": "Kd6",
+        "color": "black"
+      },
+      {
+        "uci": "d8e7",
+        "san": "Be7+",
+        "color": "white"
+      },
+      {
+        "uci": "d6c6",
+        "san": "Kc6",
+        "color": "black"
+      },
+      {
+        "uci": "f5f6",
+        "san": "f6",
+        "color": "white"
+      },
+      {
+        "uci": "h3h2",
+        "san": "h2",
+        "color": "black"
+      },
+      {
+        "uci": "e7f8",
+        "san": "Bf8",
+        "color": "white"
+      },
+      {
+        "uci": "h2h1q",
+        "san": "h1=Q",
+        "color": "black"
+      },
+      {
+        "uci": "f8h6",
+        "san": "Bh6",
+        "color": "white"
+      },
+      {
+        "uci": "h1d5",
+        "san": "Qd5",
+        "color": "black"
+      },
+      {
+        "uci": "e8f8",
+        "san": "Kf8",
+        "color": "white"
+      },
+      {
+        "uci": "d5d8",
+        "san": "Qd8+",
+        "color": "black"
+      },
+      {
+        "uci": "f8g7",
+        "san": "Kg7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3h7",
-        "san": "Qxh7#",
+        "uci": "e7f6",
+        "san": "Bf6",
+        "color": "white"
+      },
+      {
+        "uci": "f6e7",
+        "san": "Be7+",
+        "color": "white"
+      },
+      {
+        "uci": "e7d8",
+        "san": "Bd8",
+        "color": "white"
+      },
+      {
+        "uci": "d8e7",
+        "san": "Be7+",
+        "color": "white"
+      },
+      {
+        "uci": "f5f6",
+        "san": "f6",
+        "color": "white"
+      },
+      {
+        "uci": "e7f8",
+        "san": "Bf8",
+        "color": "white"
+      },
+      {
+        "uci": "f8h6",
+        "san": "Bh6",
+        "color": "white"
+      },
+      {
+        "uci": "e8f8",
+        "san": "Kf8",
+        "color": "white"
+      },
+      {
+        "uci": "f8g7",
+        "san": "Kg7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "pgn": "",
-    "url": "https://lichess.org/training/Hcd18",
-    "posted_at": "2026-08-20T17:10:10.539917+00:00",
-    "puzzle_id": "random_lichess_500_Hcd18_1787245810539",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
+    "player_move_count": 9,
+    "posted_at": "2026-08-20T17:10:42.874293+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1787245842874",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "qxh7",
-        "correct": true,
-        "timestamp": "2026-08-20T17:10:21.724600+00:00"
-      }
-    },
-    "first_move_user_id": "362606514764251137",
-    "first_move_user_name": "Sharkmeister",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
