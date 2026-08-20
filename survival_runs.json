@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787247393.386797,
+        "last_activity": 1787247400.4176347,
         "paused_reason": "manually stopped",
         "puzzle_number": 46,
         "strikes": 1,
@@ -71,7 +71,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 18,
+            "correct": 19,
             "wrong": 5
           }
         },
@@ -81,7 +81,7 @@
           "themes": "crushing defensiveMove hangingPiece middlegame skewer veryLong",
           "url": "https://lichess.org/training/X3wBJ",
           "start_fen": "r3k2r/1np1b3/pp1p4/3P1q2/PPP1p1p1/2QBB1Pp/5P1K/2R2N2 w kq - 0 37",
-          "current_fen": "Q7/1npkb3/pp1p4/3P4/PPP1q1p1/4B1Pp/5P1K/2R2N2 w - - 0 40",
+          "current_fen": "Q7/1npkb3/pp1p4/3P4/PPP3p1/4BqPp/7K/2R2N2 w - - 0 41",
           "solution": [
             {
               "uci": "c3h8",
@@ -130,7 +130,7 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 6,
+          "next_solution_index": 8,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -139,12 +139,12 @@
             "442597396195704832",
             "601406103712170014"
           ],
-          "last_move_san": "Bxe4",
-          "last_accepted_move_uci": "d3e4",
-          "last_accepted_move_san": "Bxe4",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1787247393.386672,
-          "position_before_last_move": "Q7/1npkb3/pp1p4/3P4/PPP1p1p1/3BBqPp/5P1K/2R2N2 w - - 1 39",
+          "last_move_san": "f3",
+          "last_accepted_move_uci": "f2f3",
+          "last_accepted_move_san": "f3",
+          "last_accepted_move_index": 6,
+          "last_accepted_at": 1787247400.4175203,
+          "position_before_last_move": "Q7/1npkb3/pp1p4/3P4/PPP1q1p1/4B1Pp/5P1K/2R2N2 w - - 0 40",
           "accepted_moves": [
             {
               "san": "Qxa8",
@@ -156,6 +156,12 @@
               "san": "Bxe4",
               "uci": "d3e4",
               "accepted_at": 1787247393.3866737,
+              "solver_id": "442597396195704832"
+            },
+            {
+              "san": "f3",
+              "uci": "f2f3",
+              "accepted_at": 1787247400.4175222,
               "solver_id": "442597396195704832"
             }
           ]
