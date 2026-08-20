@@ -1,43 +1,51 @@
 {
   "latest_random_puzzle": {
-    "title": "400 • p1WeM",
-    "fen": "4q1k1/pp3p2/2nB1p1p/8/3P4/2P2P2/P1Q3PP/6K1 b - - 0 22",
-    "current_fen": "6k1/pp3p2/2nB1p1p/8/3P4/2P2P2/P1Q3PP/4q1K1 w - - 1 23",
+    "title": "1200 • 03Msh",
+    "fen": "3r2r1/2p2R2/3p4/1p6/p5k1/P1P5/1P3K2/4R3 w - - 2 43",
+    "current_fen": "3r2r1/2p2R2/3p4/1p6/p5k1/P1P5/1P3K2/4R3 w - - 2 43",
     "all_moves": [
       {
-        "uci": "e8e1",
-        "san": "Qe1#",
+        "uci": "e1g1",
+        "san": "Rg1+",
+        "color": "white"
+      },
+      {
+        "uci": "g4h5",
+        "san": "Kh5",
         "color": "black"
+      },
+      {
+        "uci": "f7h7",
+        "san": "Rh7#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e8e1",
-        "san": "Qe1#",
-        "color": "black"
+        "uci": "e1g1",
+        "san": "Rg1+",
+        "color": "white"
+      },
+      {
+        "uci": "f7h7",
+        "san": "Rh7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 1,
+    "player_color": "white",
+    "player_move_count": 2,
     "pgn": "",
-    "url": "https://lichess.org/training/p1WeM",
-    "posted_at": "2026-08-20T15:52:23.889659+00:00",
-    "puzzle_id": "random_lichess_400_p1WeM_1787241143889",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
+    "url": "https://lichess.org/training/03Msh",
+    "posted_at": "2026-08-20T16:03:43.159634+00:00",
+    "puzzle_id": "random_lichess_1200_03Msh_1787241823159",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qe1",
-        "correct": true,
-        "timestamp": "2026-08-20T15:52:55.378095+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
