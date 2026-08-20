@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-05-22",
     "title": "One Move Threat",
     "fen": "8/5R2/4ppp1/3p1k1p/3P1P1P/r3PK2/3r1P2/5R2 w - - 0 1",
-    "current_fen": "8/5R2/4ppp1/3p1k1p/3P1P1P/r3PK2/3r1P2/5R2 w - - 0 1",
+    "current_fen": "8/5R2/4ppp1/3p1k1p/3P1P1P/r3PK2/3r1P2/6R1 b - - 1 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/5R2/4ppp1/3p1k1p/3P1P1P/r3PK2/3r1P2/5R2 w - - 0 1\"]\r\n\r\n1. Rg1 \r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787266099642",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
     "message_id": 1540130392366125077,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rg1",
+        "correct": true,
+        "timestamp": "2026-08-20T22:48:28.998149+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
