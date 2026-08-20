@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1787248596.5344899,
+        "last_activity": 1787248757.904621,
         "paused_reason": "manually stopped",
         "puzzle_number": 55,
         "strikes": 1,
@@ -80,7 +80,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 36,
+            "correct": 37,
             "wrong": 5
           }
         },
@@ -90,7 +90,7 @@
           "themes": "crushing middlegame short",
           "url": "https://lichess.org/training/nu1gL",
           "start_fen": "r1bqr1k1/ppp1np1p/3p1B2/3P4/8/P7/4PPPP/Q3KBNR w K - 0 14",
-          "current_fen": "r1bqr1k1/ppp1np1p/3p1B2/3P4/8/P7/4PPPP/Q3KBNR w K - 0 14",
+          "current_fen": "r1bqr1k1/ppp2p1p/3p1Bn1/3P4/8/P7/4PPPP/2Q1KBNR w K - 2 15",
           "solution": [
             {
               "uci": "a1c1",
@@ -109,17 +109,29 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qc1",
+          "accepted_moves": [
+            {
+              "san": "Qc1",
+              "uci": "a1c1",
+              "accepted_at": 1787248757.904513,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "a1c1",
+          "last_accepted_move_san": "Qc1",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1787248757.9045117,
+          "position_before_last_move": "r1bqr1k1/ppp1np1p/3p1B2/3P4/8/P7/4PPPP/Q3KBNR w K - 0 14"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       }
