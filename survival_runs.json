@@ -164,7 +164,7 @@
         "started_at": "2026-08-20T14:35:58.668682+00:00",
         "last_activity": 1787236752.4690936,
         "paused_reason": null,
-        "puzzle_number": 3,
+        "puzzle_number": 4,
         "strikes": 0,
         "best_difficulty": 1386,
         "used_puzzle_ids": [
@@ -179,60 +179,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "IDV5g",
-          "rating": 1258,
-          "themes": "crushing defensiveMove endgame pawnEndgame short",
-          "url": "https://lichess.org/training/IDV5g",
-          "start_fen": "8/6p1/6kp/4pP2/4P1P1/7P/8/6K1 b - - 0 40",
-          "current_fen": "8/6p1/7p/4pP2/4PkP1/7P/5K2/8 w - - 3 42",
-          "solution": [
-            {
-              "uci": "g6g5",
-              "san": "Kg5",
-              "color": "black"
-            },
-            {
-              "uci": "g1f2",
-              "san": "Kf2",
-              "color": "white"
-            },
-            {
-              "uci": "g5f4",
-              "san": "Kf4",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Kf4",
-          "accepted_moves": [
-            {
-              "san": "Kg5",
-              "uci": "g6g5",
-              "accepted_at": 1787236747.614214,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Kf4",
-              "uci": "g5f4",
-              "accepted_at": 1787236752.46902,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "g5f4",
-          "last_accepted_move_san": "Kf4",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1787236752.4690192,
-          "position_before_last_move": "8/6p1/7p/4pPk1/4P1P1/7P/5K2/8 b - - 2 41"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       }
