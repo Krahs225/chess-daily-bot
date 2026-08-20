@@ -1,105 +1,87 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-12-08",
-    "title": "Looming Kingside Loose Ends",
-    "fen": "5rk1/r1q2p1p/p3pQ2/1bPp1p2/1R6/3BP3/P4PPP/1R4K1 w - - 0 30",
-    "current_fen": "6rk/r1q2p1Q/p3p3/1bPp4/6p1/3BP3/P4PPP/1R4K1 b - - 0 33",
-    "pgn": "[Event \"Madrid International\"]\r\n[Site \"Madrid\"]\r\n[Date \"1973.11.30\"]\r\n[Round \"4\"]\r\n[White \"Hort, Vlastimil\"]\r\n[Black \"Portisch, Lajos\"]\r\n[Result \"1-0\"]\r\n[FEN \"5rk1/r1q2p1p/p3pQ2/1bPp1p2/1R6/3BP3/P4PPP/1R4K1 w - - 0 30\"]\r\n\r\n30. Rg4+ fxg4 31. Qg5+ Kh8 32. Qh6 Rg8 33. Qxh7# 1-0",
+    "url": "https://www.chess.com/daily/2021-03-07",
+    "title": "A Sunday Stroll",
+    "fen": "rn3rk1/ppp1bppp/8/3q1b2/3Pn3/3B1N2/PP3PPP/RNBQ1RK1 w - - 0 1",
+    "current_fen": "rn3rk1/ppp1bppp/8/3q1b2/3Pn3/3B1N2/PP3PPP/RNBQ1RK1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"rn3rk1/ppp1bppp/8/3q1b2/3Pn3/3B1N2/PP3PPP/RNBQ1RK1 w - - 0 1\"]\r\n\r\n1.Bxe4 Bxe4 2.Nc3 Bxf3 3.Nxd5 Bxd1 4.Nxe7+ *",
     "all_moves": [
       {
-        "uci": "b4g4",
-        "san": "Rg4+",
+        "uci": "d3e4",
+        "san": "Bxe4",
         "color": "white"
       },
       {
-        "uci": "f5g4",
-        "san": "fxg4",
+        "uci": "f5e4",
+        "san": "Bxe4",
         "color": "black"
       },
       {
-        "uci": "f6g5",
-        "san": "Qg5+",
+        "uci": "b1c3",
+        "san": "Nc3",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "e4f3",
+        "san": "Bxf3",
         "color": "black"
       },
       {
-        "uci": "g5h6",
-        "san": "Qh6",
+        "uci": "c3d5",
+        "san": "Nxd5",
         "color": "white"
       },
       {
-        "uci": "f8g8",
-        "san": "Rg8",
+        "uci": "f3d1",
+        "san": "Bxd1",
         "color": "black"
       },
       {
-        "uci": "h6h7",
-        "san": "Qxh7#",
+        "uci": "d5e7",
+        "san": "Nxe7+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b4g4",
-        "san": "Rg4+",
+        "uci": "d3e4",
+        "san": "Bxe4",
         "color": "white"
       },
       {
-        "uci": "f6g5",
-        "san": "Qg5+",
+        "uci": "b1c3",
+        "san": "Nc3",
         "color": "white"
       },
       {
-        "uci": "g5h6",
-        "san": "Qh6",
+        "uci": "c3d5",
+        "san": "Nxd5",
         "color": "white"
       },
       {
-        "uci": "h6h7",
-        "san": "Qxh7#",
+        "uci": "d5e7",
+        "san": "Nxe7+",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-20T21:14:16.406409+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-20T21:14:49.457220+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787260456406",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540106722939773074,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qh6",
-        "correct": true,
-        "timestamp": "2026-08-20T21:14:31.834422+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxh7",
-        "correct": true,
-        "timestamp": "2026-08-20T21:14:35.045619+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787260489457",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
