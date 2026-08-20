@@ -154,9 +154,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 16,
+      "best_puzzle": 17,
       "best_difficulty": 1511,
-      "best_completed_at": "2026-08-20T14:29:03.365499+00:00",
+      "best_completed_at": "2026-08-20T14:29:45.931299+00:00",
       "current": {
         "run_id": "thice:1787228226",
         "started_by_id": "1539971538290216980",
@@ -183,7 +183,8 @@
           "nDeOr",
           "HjpuK",
           "ky0Xd",
-          "91alr"
+          "91alr",
+          "JY44i"
         ],
         "members": {
           "442597396195704832": {
@@ -192,7 +193,40 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "JY44i",
+          "rating": 1508,
+          "themes": "advantage capturingDefender middlegame short",
+          "url": "https://lichess.org/training/JY44i",
+          "start_fen": "r2q1rk1/pp3p1p/1n1bb1p1/3p2N1/1P1Q2n1/P2BP3/3N1PPP/R1B1K2R w KQ - 3 16",
+          "current_fen": "r2q1rk1/pp3p1p/1n1bb1p1/3p2N1/1P1Q2n1/P2BP3/3N1PPP/R1B1K2R w KQ - 3 16",
+          "solution": [
+            {
+              "uci": "g5e6",
+              "san": "Nxe6",
+              "color": "white"
+            },
+            {
+              "uci": "f7e6",
+              "san": "fxe6",
+              "color": "black"
+            },
+            {
+              "uci": "d4g4",
+              "san": "Qxg4",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
