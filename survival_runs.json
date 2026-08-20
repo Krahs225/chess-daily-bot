@@ -245,9 +245,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-08-20T21:45:45.650572+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1220,
+      "best_completed_at": "2026-08-20T21:47:20.199603+00:00",
       "current": {
         "run_id": "thice:1787262345",
         "started_by_id": "442597396195704832",
@@ -262,7 +262,8 @@
         "strikes": 0,
         "best_difficulty": 1220,
         "used_puzzle_ids": [
-          "6j9Vv"
+          "6j9Vv",
+          "Y7Gdp"
         ],
         "members": {
           "442597396195704832": {
@@ -271,7 +272,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "Y7Gdp",
+          "rating": 1210,
+          "themes": "crushing master middlegame pin short",
+          "url": "https://lichess.org/training/Y7Gdp",
+          "start_fen": "r1bqkb1r/p1pp4/1p3p2/6Bn/3QP3/1B6/PPP3PP/RN3RK1 b kq - 0 12",
+          "current_fen": "r1bqkb1r/p1pp4/1p3p2/6Bn/3QP3/1B6/PPP3PP/RN3RK1 b kq - 0 12",
+          "solution": [
+            {
+              "uci": "f8c5",
+              "san": "Bc5",
+              "color": "black"
+            },
+            {
+              "uci": "d4c5",
+              "san": "Qxc5",
+              "color": "white"
+            },
+            {
+              "uci": "b6c5",
+              "san": "bxc5",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
