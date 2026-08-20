@@ -162,7 +162,7 @@
         "started_by_id": "1539971538290216980",
         "status": "active",
         "started_at": "2026-08-20T12:17:06.074723+00:00",
-        "last_activity": 1787234367.7860622,
+        "last_activity": 1787234372.4061775,
         "paused_reason": "manually stopped",
         "puzzle_number": 2,
         "strikes": 0,
@@ -174,7 +174,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 5,
+            "correct": 6,
             "wrong": 0
           }
         },
@@ -184,7 +184,7 @@
           "themes": "crushing endgame pawnEndgame quietMove veryLong zugzwang",
           "url": "https://lichess.org/training/IJq5Q",
           "start_fen": "8/8/7p/p1p1p1pk/P1P1Pp2/5P1P/5P1K/8 b - - 12 59",
-          "current_fen": "8/8/8/p1p1p2p/P1P1PpPk/7P/5P1K/8 b - - 0 62",
+          "current_fen": "8/8/8/p1p1p3/P1P1Pppk/7P/5P1K/8 w - - 0 63",
           "solution": [
             {
               "uci": "h5h4",
@@ -223,13 +223,13 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 6,
+          "next_solution_index": 7,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "g4",
+          "last_move_san": "hxg4",
           "accepted_moves": [
             {
               "san": "Kh4",
@@ -248,13 +248,19 @@
               "uci": "g5g4",
               "accepted_at": 1787234367.785993,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "hxg4",
+              "uci": "h5g4",
+              "accepted_at": 1787234372.4061272,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "g5g4",
-          "last_accepted_move_san": "g4",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1787234367.7859926,
-          "position_before_last_move": "8/8/8/p1p1p1pp/P1P1Pp1k/5P1P/5P1K/8 b - - 1 61"
+          "last_accepted_move_uci": "h5g4",
+          "last_accepted_move_san": "hxg4",
+          "last_accepted_move_index": 6,
+          "last_accepted_at": 1787234372.4061267,
+          "position_before_last_move": "8/8/8/p1p1p2p/P1P1PpPk/7P/5P1K/8 b - - 0 62"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
