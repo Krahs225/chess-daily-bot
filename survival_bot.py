@@ -61,6 +61,7 @@ INACTIVITY_SECONDS = 10 * 60
 PENDING_TEAM_SECONDS = 60
 
 THREE_STRIKES = 3
+SHARK_ADMIN_NAME = "sharkmeister"
 
 
 # Puzzle difficulty progression.
@@ -1369,6 +1370,7 @@ class SurvivalBot(
 
         self.state = load_runs()
         self.pending_team = None
+        self.game_lock = asyncio.Lock()
 
     async def setup_hook(
         self
@@ -2007,394 +2009,515 @@ class SurvivalBot(
 
         user = message.author
 
-        run[
-            "last_activity"
-        ] = epoch_now()
+        async with self.game_lock:
 
-        ensure_member(
-            run,
-            user,
-        )
-
-        puzzle = run.get(
-            "puzzle"
-        )
-
-        if not puzzle:
-            return
-
-        submitted = move_text.strip()
-
-        if len(
-            submitted.split()
-        ) != 1:
-            await message.channel.send(
-                f"❌ **One move at a time, {user.display_name}.**"
-            )
-            return
-
-        next_index = int(
-            puzzle.get(
-                "next_solution_index",
-                0,
-            )
-        )
-
-        solution = puzzle[
-            "solution"
-        ]
-
-        if next_index >= len(
-            solution
-        ):
-            return
-
-        board = chess.Board(
-            puzzle["current_fen"]
-        )
-
-        expected = solution[
-            next_index
-        ]
-
-        correct = san_matches_move(
-            board,
-            submitted,
-            expected,
-        )
-
-        user_id = str(
-            user.id
-        )
-
-        if not correct:
-
-            wrong_users = run.setdefault(
-                "puzzle",
-                {}
-            ).setdefault(
-                "wrong_users",
-                []
+            active = active_current_run(
+                self.state
             )
 
-            # A single person cannot accidentally burn all three hearts
-            # by spamming wrong guesses on the same position.
-            if user_id in wrong_users:
-                await message.channel.send(
-                    f"❌ **That miss is already counted, {user.display_name}.**"
-                )
+            if not active:
                 return
 
-            wrong_users.append(
-                user_id
+            team_key, team = active
+            current_run = team.get(
+                "current"
             )
 
-            member = ensure_member(
+            if current_run is not run:
+                return
+
+            if run.get(
+                "status"
+            ) != "active":
+                return
+
+            puzzle = run.get(
+                "puzzle"
+            )
+
+            if not puzzle:
+                return
+
+            run[
+                "last_activity"
+            ] = epoch_now()
+
+            ensure_member(
                 run,
                 user,
             )
-            member[
-                "wrong"
-            ] += 1
 
-            run[
-                "strikes"
-            ] += 1
+            submitted = move_text.strip()
 
-            save_state(
-                self.state,
-                push=True,
+            if len(
+                submitted.split()
+            ) != 1:
+                await message.channel.send(
+                    f"❌ **One move at a time, "
+                    f"{user.display_name}.**"
+                )
+                return
+
+            next_index = int(
+                puzzle.get(
+                    "next_solution_index",
+                    0,
+                )
             )
 
-            if run["strikes"] >= THREE_STRIKES:
+            solution = puzzle[
+                "solution"
+            ]
 
-                run[
-                    "status"
-                ] = "paused"
+            if next_index >= len(
+                solution
+            ):
+                return
 
-                run[
-                    "paused_reason"
-                ] = "three strikes"
+            # IMPORTANT:
+            # If a second user sent the exact same correct move while the
+            # first user's message was already being processed, that move
+            # belongs to the position that just advanced. It is a duplicate
+            # and must NOT become a strike.
+            last_accepted_uci = puzzle.get(
+                "last_accepted_move_uci"
+            )
+            last_accepted_index = puzzle.get(
+                "last_accepted_move_index"
+            )
 
-                # Keep best values on the actual team below.
-                team_key = None
-                for key, team in (
-                    self.state["teams"].items()
+            board = chess.Board(
+                puzzle["current_fen"]
+            )
+
+            expected = solution[
+                next_index
+            ]
+
+            correct = san_matches_move(
+                board,
+                submitted,
+                expected,
+            )
+
+            if not correct:
+                if (
+                    last_accepted_uci
+                    and last_accepted_index
+                    == next_index - 1
                 ):
-                    if team.get(
-                        "current"
-                    ) is run:
-                        team_key = key
-                        update_best(
-                            team,
-                            run,
+                    try:
+                        normalized_submitted = (
+                            submitted.casefold()
                         )
-                        break
+
+                        previous = chess.Move.from_uci(
+                            last_accepted_uci
+                        )
+
+                        # Compare against the SAN of the move that was just
+                        # accepted, with +/# ignored, just like the normal
+                        # move matcher.
+                        previous_board = chess.Board(
+                            puzzle.get(
+                                "position_before_last_move",
+                                puzzle["current_fen"],
+                            )
+                        )
+                    except Exception:
+                        normalized_submitted = None
+                        previous = None
+
+                    # A simpler exact-notation check using the stored
+                    # accepted SAN is the authoritative duplicate test.
+                    previous_san = str(
+                        puzzle.get(
+                            "last_accepted_move_san",
+                            "",
+                        )
+                    ).casefold()
+
+                    while previous_san.endswith(
+                        ("+", "#")
+                    ):
+                        previous_san = previous_san[:-1]
+
+                    if normalized_submitted:
+                        normalized_submitted = (
+                            normalized_submitted
+                            .rstrip("+#")
+                        )
+
+                    if (
+                        normalized_submitted
+                        and normalized_submitted
+                        == previous_san
+                    ):
+                        await message.channel.send(
+                            f"✅ **That move was already accepted, "
+                            f"{user.display_name}.**"
+                        )
+                        return
+
+                wrong_users = puzzle.setdefault(
+                    "wrong_users",
+                    []
+                )
+
+                user_id = str(
+                    user.id
+                )
+
+                if user_id in wrong_users:
+                    await message.channel.send(
+                        f"❌ **That miss is already counted, "
+                        f"{user.display_name}.**"
+                    )
+                    return
+
+                wrong_users.append(
+                    user_id
+                )
+
+                member = ensure_member(
+                    run,
+                    user,
+                )
+
+                member[
+                    "wrong"
+                ] += 1
+
+                run[
+                    "strikes"
+                ] += 1
 
                 save_state(
                     self.state,
                     push=True,
                 )
 
-                clear_lock()
+                if run[
+                    "strikes"
+                ] >= THREE_STRIKES:
+
+                    run[
+                        "status"
+                    ] = "paused"
+
+                    run[
+                        "paused_reason"
+                    ] = "three strikes"
+
+                    update_best(
+                        team,
+                        run,
+                    )
+
+                    save_state(
+                        self.state,
+                        push=True,
+                    )
+
+                    clear_lock()
+
+                    await message.channel.send(
+                        f"💀 **SURVIVAL OVER — "
+                        f"{team.get('name', team_key)}**\n"
+                        f"Reached **Puzzle "
+                        f"#{run.get('puzzle_number', 0)}**\n"
+                        f"Three strikes.\n"
+                        f"Best difficulty: "
+                        f"**{run.get('best_difficulty', 0)}**\n\n"
+                        f"Run saved."
+                    )
+
+                    return
 
                 await message.channel.send(
-                    f"💀 **SURVIVAL OVER — "
-                    f"{self.state['teams'][team_key].get('name', team_key)}**\n"
-                    f"Reached **Puzzle #{run.get('puzzle_number', 0)}**\n"
-                    f"Three strikes.\n"
-                    f"Best difficulty: **{run.get('best_difficulty', 0)}**\n\n"
-                    f"Run saved."
+                    f"❌ **Wrong! "
+                    f"Strike {run['strikes']}/"
+                    f"{THREE_STRIKES}.**\n"
+                    f"❤️ "
+                    f"{max(0, THREE_STRIKES - run['strikes'])}"
+                )
+
+                write_lock(
+                    team.get(
+                        "name",
+                        team_key,
+                    ),
+                    run.get(
+                        "run_id",
+                    ),
+                    run[
+                        "last_activity"
+                    ],
                 )
 
                 return
 
-            await message.channel.send(
-                f"❌ **Wrong! Strike {run['strikes']}/{THREE_STRIKES}.**\n"
-                f"❤️ "
-                f"{max(0, THREE_STRIKES - run['strikes'])}"
+            # Correct move.
+            member = ensure_member(
+                run,
+                user,
             )
 
-            write_lock(
-                active_team() or "Survival",
-                run.get(
-                    "run_id",
-                ),
-                run["last_activity"],
+            member[
+                "correct"
+            ] += 1
+
+            user_id = str(
+                user.id
             )
 
-            return
-
-        # Correct move.
-        member = ensure_member(
-            run,
-            user,
-        )
-
-        member[
-            "correct"
-        ] += 1
-
-        # Record first solver / helper candidates for this puzzle.
-        if next_index == 0:
-            run[
-                "first_solver_id"
-            ] = user_id
-            run[
-                "first_solver_name"
-            ] = user.display_name
-
-        elif (
-            user_id
-            != str(
-                run.get(
+            if next_index == 0:
+                run[
                     "first_solver_id"
+                ] = user_id
+
+                run[
+                    "first_solver_name"
+                ] = user.display_name
+
+            elif (
+                user_id
+                != str(
+                    run.get(
+                        "first_solver_id"
+                    )
                 )
+            ):
+                run.setdefault(
+                    "helper_candidates",
+                    {}
+                )[user_id] = (
+                    user.display_name
+                )
+
+            move = chess.Move.from_uci(
+                expected["uci"]
             )
-        ):
-            run.setdefault(
-                "helper_candidates",
-                {}
-            )[user_id] = (
-                user.display_name
-            )
 
-        move = chess.Move.from_uci(
-            expected["uci"]
-        )
+            if move not in board.legal_moves:
+                return
 
-        if move not in board.legal_moves:
-            return
-
-        board.push(
-            move
-        )
-
-        # Automatically play all opponent moves until it is the player's
-        # turn again or the solution ends.
-        next_index += 1
-        opponent_replies = []
-
-        while next_index < len(
-            solution
-        ):
-
-            reply = solution[
-                next_index
+            # Store the exact accepted move BEFORE advancing the position.
+            puzzle[
+                "last_accepted_move_uci"
+            ] = expected[
+                "uci"
             ]
 
-            if reply["color"] == puzzle[
-                "player_color"
-            ]:
-                break
+            puzzle[
+                "last_accepted_move_san"
+            ] = expected[
+                "san"
+            ]
 
-            reply_move = chess.Move.from_uci(
-                reply["uci"]
-            )
+            puzzle[
+                "last_accepted_move_index"
+            ] = next_index
 
-            if reply_move not in board.legal_moves:
-                break
+            puzzle[
+                "position_before_last_move"
+            ] = board.fen()
 
             board.push(
-                reply_move
-            )
-
-            opponent_replies.append(
-                reply["san"]
+                move
             )
 
             next_index += 1
+            opponent_replies = []
 
-        puzzle[
-            "current_fen"
-        ] = board.fen()
-
-        puzzle[
-            "next_solution_index"
-        ] = next_index
-
-        puzzle[
-            "last_move_san"
-        ] = expected["san"]
-
-        puzzle[
-            "wrong_users"
-        ] = puzzle.get(
-            "wrong_users",
-            []
-        )
-
-        run[
-            "last_activity"
-        ] = epoch_now()
-
-        # Persist the move BEFORE awarding shared leaderboard points.
-        # The shared leaderboard helper may reset the git working tree
-        # while resolving concurrent pushes.
-        save_state(
-            self.state,
-            push=True,
-        )
-
-        if next_index >= len(
-            solution
-        ):
-            team_key = None
-
-            for key, team in (
-                self.state["teams"].items()
+            while next_index < len(
+                solution
             ):
-                if team.get(
-                    "current"
-                ) is run:
-                    team_key = key
+
+                reply = solution[
+                    next_index
+                ]
+
+                if reply["color"] == puzzle[
+                    "player_color"
+                ]:
                     break
 
-            if team_key is None:
-                return
+                reply_move = chess.Move.from_uci(
+                    reply["uci"]
+                )
 
-            # Puzzle fully solved: now award individual shared points.
-            await self.score_completed_puzzle(
-                run
-            )
+                if reply_move not in board.legal_moves:
+                    break
+
+                board.push(
+                    reply_move
+                )
+
+                opponent_replies.append(
+                    reply["san"]
+                )
+
+                next_index += 1
+
+            puzzle[
+                "current_fen"
+            ] = board.fen()
+
+            puzzle[
+                "next_solution_index"
+            ] = next_index
+
+            puzzle[
+                "last_move_san"
+            ] = expected["san"]
 
             run[
-                "puzzle"
-            ] = None
+                "last_activity"
+            ] = epoch_now()
 
-            # Puzzle number is the number just completed.
-            completed_number = int(
-                run["puzzle_number"]
-            )
-
-            run[
-                "puzzle_number"
-            ] = completed_number + 1
-
-            # Save state after the scoring transactions.
             save_state(
                 self.state,
                 push=True,
             )
 
-            member_summary = (
-                f"✅ **Puzzle #{completed_number} solved!**"
+            if next_index >= len(
+                solution
+            ):
+                team_key = None
+
+                for key, team_record_value in (
+                    self.state["teams"].items()
+                ):
+                    if team_record_value.get(
+                        "current"
+                    ) is run:
+                        team_key = key
+                        team = team_record_value
+                        break
+
+                if team_key is None:
+                    return
+
+                # Survival deliberately has NO shared leaderboard points.
+                puzzle_number_completed = int(
+                    run["puzzle_number"]
+                )
+
+                run[
+                    "puzzle"
+                ] = None
+
+                run[
+                    "puzzle_number"
+                ] = (
+                    puzzle_number_completed
+                    + 1
+                )
+
+                run[
+                    "first_solver_id"
+                ] = None
+
+                run[
+                    "first_solver_name"
+                ] = None
+
+                run[
+                    "helper_candidates"
+                ] = {}
+
+                save_state(
+                    self.state,
+                    push=True,
+                )
+
+                member_summary = (
+                    f"✅ **Puzzle "
+                    f"#{puzzle_number_completed} "
+                    f"solved!**"
+                )
+
+                if opponent_replies:
+                    member_summary += (
+                        "\n"
+                        f"↩️ **Opponent:** "
+                        f"{' '.join(opponent_replies)}"
+                    )
+
+                await message.channel.send(
+                    member_summary
+                    + "\n"
+                    + f"Next up: **Puzzle "
+                    f"#{run['puzzle_number']}**."
+                )
+
+                await self.post_next_puzzle(
+                    message.channel,
+                    team_key,
+                )
+
+                return
+
+            file, display_board = render_board(
+                puzzle
             )
 
-            if opponent_replies:
-                member_summary += (
-                    "\n"
-                    f"↩️ Opponent: "
-                    f"{' '.join(opponent_replies)}"
+            remaining = (
+                len(
+                    solution
                 )
+                - next_index
+            )
+
+            embed = discord.Embed(
+                title=(
+                    f"🔥 **SURVIVAL — "
+                    f"{team.get('name', team_key)}**"
+                ),
+                description=(
+                    f"✅ **{expected['san']}**\n"
+                    + (
+                        f"↩️ Opponent: "
+                        f"{' '.join(opponent_replies)}\n"
+                        if opponent_replies
+                        else ""
+                    )
+                    + f"**{remaining} move"
+                    + (
+                        "s"
+                        if remaining != 1
+                        else ""
+                    )
+                    + " remaining.**\n"
+                    + f"Strikes: "
+                    f"{'❤️' * max(0, THREE_STRIKES - run['strikes'])}"
+                    f"{'🖤' * run['strikes']}"
+                ),
+            )
+
+            embed.set_image(
+                url="attachment://survival.png"
+            )
 
             await message.channel.send(
-                member_summary
-                + "\n"
-                + f"Next up: **Puzzle #{run['puzzle_number']}**."
+                embed=embed,
+                file=file,
             )
 
-            await self.post_next_puzzle(
-                message.channel,
-                team_key,
+            write_lock(
+                team.get(
+                    "name",
+                    team_key,
+                ),
+                run.get(
+                    "run_id",
+                ),
+                run[
+                    "last_activity"
+                ],
             )
 
-            return
-
-        # More moves remain.
-        file, display_board = render_board(
-            puzzle
-        )
-
-        remaining = (
-            len(
-                solution
-            )
-            - next_index
-        )
-
-        embed = discord.Embed(
-            title=(
-                f"🔥 **SURVIVAL — "
-                f"{self._team_name_for_run(run)}**"
-            ),
-            description=(
-                f"✅ **{expected['san']}**\n"
-                + (
-                    f"↩️ Opponent: "
-                    f"{' '.join(opponent_replies)}\n"
-                    if opponent_replies
-                    else ""
-                )
-                + f"**{remaining} move"
-                + (
-                    "s"
-                    if remaining != 1
-                    else ""
-                )
-                + " remaining.**\n"
-                + f"Strikes: "
-                f"{'❤️' * max(0, THREE_STRIKES - run['strikes'])}"
-                f"{'🖤' * run['strikes']}"
-            ),
-        )
-
-        embed.set_image(
-            url="attachment://survival.png"
-        )
-
-        await message.channel.send(
-            embed=embed,
-            file=file,
-        )
-
-        write_lock(
-            active_team() or self._team_name_for_run(run),
-            run.get(
-                "run_id",
-            ),
-            run["last_activity"],
-        )
 
     def _team_name_for_run(
         self,
@@ -2446,6 +2569,13 @@ class SurvivalBot(
             return
 
         lower = content.casefold()
+
+        if await self.handle_admin_command(
+            message,
+            lower,
+            content,
+        ):
+            return
 
         # Team information command:
         # !THE SQUAD
@@ -2744,7 +2874,215 @@ class SurvivalBot(
             "\n".join(lines)
         )
 
+    def is_shark_admin(
+        self,
+        user,
+    ):
+        return (
+            user.display_name.casefold()
+            == SHARK_ADMIN_NAME
+        )
+
+    async def delete_team(
+        self,
+        message,
+        team_key,
+    ):
+        if not self.is_shark_admin(
+            message.author
+        ):
+            await message.channel.send(
+                "❌ Only **Sharkmeister** can delete Survival teams."
+            )
+            return
+
+        team = self.state[
+            "teams"
+        ].get(
+            team_key
+        )
+
+        if not team:
+            await message.channel.send(
+                f"❌ Team **{team_key}** does not exist."
+            )
+            return
+
+        active = active_current_run(
+            self.state
+        )
+
+        was_active = (
+            active is not None
+            and active[0] == team_key
+        )
+
+        del self.state[
+            "teams"
+        ][
+            team_key
+        ]
+
+        save_state(
+            self.state,
+            push=True,
+        )
+
+        if was_active:
+            clear_lock()
+
+        await message.channel.send(
+            f"🗑️ **{team.get('name', team_key)}** "
+            "has been removed from the Survival team list."
+        )
+
+    async def add_heart(
+        self,
+        message,
+        team_key,
+    ):
+        if not self.is_shark_admin(
+            message.author
+        ):
+            await message.channel.send(
+                "❌ Only **Sharkmeister** can add Survival hearts."
+            )
+            return
+
+        team = self.state[
+            "teams"
+        ].get(
+            team_key
+        )
+
+        if not team:
+            await message.channel.send(
+                f"❌ Team **{team_key}** does not exist."
+            )
+            return
+
+        run = team.get(
+            "current"
+        )
+
+        if not run:
+            await message.channel.send(
+                f"❌ **{team.get('name', team_key)}** "
+                "has no saved Survival run."
+            )
+            return
+
+        old_strikes = int(
+            run.get(
+                "strikes",
+                0,
+            )
+        )
+
+        if old_strikes <= 0:
+            await message.channel.send(
+                f"❤️ **{team.get('name', team_key)}** "
+                "already has all 3 hearts."
+            )
+            return
+
+        run[
+            "strikes"
+        ] = max(
+            0,
+            old_strikes - 1,
+        )
+
+        # If the run ended specifically because of three strikes,
+        # adding a heart makes it resumable again.
+        if run.get(
+            "status"
+        ) != "active":
+            run[
+                "status"
+            ] = "paused"
+
+        run[
+            "paused_reason"
+        ] = None
+
+        run[
+            "last_activity"
+        ] = epoch_now()
+
+        save_state(
+            self.state,
+            push=True,
+        )
+
+        await message.channel.send(
+            f"❤️ **Added 1 heart to "
+            f"{team.get('name', team_key)}.**\n"
+            f"Hearts now: "
+            f"{'❤️' * (THREE_STRIKES - run['strikes'])}"
+            f"{'🖤' * run['strikes']}"
+        )
+
+    async def handle_admin_command(
+        self,
+        message,
+        lower,
+        content,
+    ):
+        if lower.startswith(
+            "!delete "
+        ):
+            team_name = content[
+                len("!delete "):
+            ].strip()
+
+            if not team_name:
+                await message.channel.send(
+                    "❌ Usage: `!delete <team name>`"
+                )
+                return True
+
+            await self.delete_team(
+                message,
+                normalize_team_name(
+                    team_name
+                ),
+            )
+            return True
+
+        if lower.startswith(
+            "!addheart "
+        ):
+            team_name = content[
+                len("!addheart "):
+            ].strip()
+
+            if not team_name:
+                await message.channel.send(
+                    "❌ Usage: `!addheart <team name>`"
+                )
+                return True
+
+            await self.add_heart(
+                message,
+                normalize_team_name(
+                    team_name
+                ),
+            )
+            return True
+
+        return False
+
     async def stop_survival(
+        self,
+        message,
+    ):
+        async with self.game_lock:
+            return await self._stop_survival_locked(
+                message
+            )
+
+    async def _stop_survival_locked(
         self,
         message,
     ):
