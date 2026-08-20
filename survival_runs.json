@@ -245,9 +245,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 2,
+      "best_puzzle": 3,
       "best_difficulty": 1220,
-      "best_completed_at": "2026-08-20T21:47:20.199603+00:00",
+      "best_completed_at": "2026-08-20T21:48:38.784279+00:00",
       "current": {
         "run_id": "thice:1787262345",
         "started_by_id": "442597396195704832",
@@ -260,10 +260,11 @@
         "paused_reason": null,
         "puzzle_number": 3,
         "strikes": 0,
-        "best_difficulty": 1220,
+        "best_difficulty": 1371,
         "used_puzzle_ids": [
           "6j9Vv",
-          "Y7Gdp"
+          "Y7Gdp",
+          "7BZcW"
         ],
         "members": {
           "442597396195704832": {
@@ -272,7 +273,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "7BZcW",
+          "rating": 1371,
+          "themes": "crushing endgame pawnEndgame short zugzwang",
+          "url": "https://lichess.org/training/7BZcW",
+          "start_fen": "8/1p5p/1P2k3/2p3pP/p1P1K1P1/8/1P6/8 w - - 0 45",
+          "current_fen": "8/1p5p/1P2k3/2p3pP/p1P1K1P1/8/1P6/8 w - - 0 45",
+          "solution": [
+            {
+              "uci": "h5h6",
+              "san": "h6",
+              "color": "white"
+            },
+            {
+              "uci": "e6d6",
+              "san": "Kd6",
+              "color": "black"
+            },
+            {
+              "uci": "e4f5",
+              "san": "Kf5",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
