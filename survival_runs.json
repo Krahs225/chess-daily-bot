@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 46,
+      "best_puzzle": 47,
       "best_difficulty": 2016,
-      "best_completed_at": "2026-08-20T13:46:24.829895+00:00",
+      "best_completed_at": "2026-08-20T17:37:09.302873+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -61,7 +61,8 @@
           "4V89k",
           "3LFr7",
           "v3Ite",
-          "X3wBJ"
+          "X3wBJ",
+          "G2mGN"
         ],
         "members": {
           "601406103712170014": {
@@ -75,7 +76,50 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "G2mGN",
+          "rating": 1938,
+          "themes": "advantage long middlegame",
+          "url": "https://lichess.org/training/G2mGN",
+          "start_fen": "2brr1k1/2q2ppp/p1nb1n2/1p1p1PP1/2pP1B2/2N3NP/PPPQ2B1/4RR1K b - - 0 20",
+          "current_fen": "2brr1k1/2q2ppp/p1nb1n2/1p1p1PP1/2pP1B2/2N3NP/PPPQ2B1/4RR1K b - - 0 20",
+          "solution": [
+            {
+              "uci": "e8e1",
+              "san": "Rxe1",
+              "color": "black"
+            },
+            {
+              "uci": "d2e1",
+              "san": "Qxe1",
+              "color": "white"
+            },
+            {
+              "uci": "d6f4",
+              "san": "Bxf4",
+              "color": "black"
+            },
+            {
+              "uci": "g5f6",
+              "san": "gxf6",
+              "color": "white"
+            },
+            {
+              "uci": "f4g3",
+              "san": "Bxg3",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
