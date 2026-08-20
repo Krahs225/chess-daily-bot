@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "800 • GjkJs",
     "fen": "r3r1k1/ppp2ppp/2nb4/6Bq/3P4/2P2B2/P2Q1PPP/R4RK1 b - - 0 16",
-    "current_fen": "r3r1k1/ppp2ppp/2nb4/6Bq/3P4/2P2B2/P2Q1PPP/R4RK1 b - - 0 16",
+    "current_fen": "r3r1k1/ppp2ppp/2nb4/6B1/3P4/2P2B2/P2Q1PPq/R4RK1 w - - 0 17",
     "all_moves": [
       {
         "uci": "h5h2",
@@ -23,13 +23,26 @@
     "url": "https://lichess.org/training/GjkJs",
     "posted_at": "2026-08-20T17:15:06.209771+00:00",
     "puzzle_id": "random_lichess_800_GjkJs_1787246106209",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxh2",
+        "correct": true,
+        "timestamp": "2026-08-20T17:15:11.271238+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "bh8",
+        "correct": false,
+        "timestamp": "2026-08-20T17:15:09.546602+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
