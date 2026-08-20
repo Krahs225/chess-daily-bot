@@ -1903,6 +1903,12 @@ class SurvivalBot(
             run["last_activity"],
         )
 
+        await requester.channel.send(
+            f"👑 **{display_name}** — Captain: "
+            f"**{run.get('captain_name', requester.display_name)}**\n"
+            f"Mode: **CO-OP** — everyone can help."
+        )
+
         await self.post_next_puzzle(
             requester.channel,
             team_key,
@@ -1954,6 +1960,12 @@ class SurvivalBot(
             )
             return
 
+        # If this team's run is already active, Continue simply
+        # re-shows the current puzzle instead of failing.
+        was_already_active = (
+            run.get("status") == "active"
+        )
+
         run[
             "status"
         ] = "active"
@@ -1978,7 +1990,12 @@ class SurvivalBot(
         )
 
         await interaction.response.send_message(
-            f"▶️ **{team.get('name', team_key)} resumed.**"
+            (
+                f"▶️ **{team.get('name', team_key)} is already active. "
+                "Showing the current puzzle again.**"
+                if was_already_active
+                else f"▶️ **{team.get('name', team_key)} resumed.**"
+            )
         )
 
         if run.get(
@@ -2258,6 +2275,46 @@ class SurvivalBot(
         run[
             "helper_awarded"
         ] = []
+
+    async def get_captain_display(
+        self,
+        run,
+    ):
+        captain_id = self.get_run_captain_id(
+            run
+        )
+
+        if not captain_id:
+            return "Unknown"
+
+        stored_name = run.get(
+            "captain_name"
+        )
+
+        if stored_name:
+            return stored_name
+
+        # Old runs may only have started_by_id.
+        # A Discord mention is always valid even when the username
+        # was never stored in the old JSON.
+        try:
+            user = self.get_user(
+                int(captain_id)
+            )
+
+            if user:
+                return user.display_name
+
+            user = await self.fetch_user(
+                int(captain_id)
+            )
+
+            if user:
+                return user.display_name
+        except Exception:
+            pass
+
+        return f"<@{captain_id}>"
 
     def get_run_captain_id(
         self,
@@ -2984,6 +3041,56 @@ class SurvivalBot(
             )
             return
 
+        if lower in {
+            "!repeat",
+            "repeat",
+        }:
+            active_run = active_current_run(
+                self.state
+            )
+
+            if active_run:
+                team_key, team = active_run
+                run = team.get("current")
+
+                if run and run.get("puzzle"):
+                    await self.send_current_puzzle(
+                        message.channel,
+                        team.get(
+                            "name",
+                            team_key,
+                        ),
+                        run,
+                    )
+                    return
+
+            # Also allow repeat for a paused, non-dead current run.
+            for team_key, team in self.state["teams"].items():
+                run = team.get("current")
+                if (
+                    isinstance(run, dict)
+                    and run.get("puzzle")
+                    and not run_is_dead(run)
+                ):
+                    await message.channel.send(
+                        f"⏸️ **{team.get('name', team_key)}** is paused. "
+                        "Showing the saved puzzle; this does not resume the run."
+                    )
+                    await self.send_current_puzzle(
+                        message.channel,
+                        team.get(
+                            "name",
+                            team_key,
+                        ),
+                        run,
+                    )
+                    return
+
+            await message.channel.send(
+                "❌ There is no saved Survival puzzle to repeat."
+            )
+            return
+
         if lower == "!stopsurvival":
             await self.stop_survival(
                 message
@@ -3086,9 +3193,14 @@ class SurvivalBot(
                     key,
                 )
 
+                captain = await self.get_captain_display(
+                    team["current"]
+                )
+
                 await message.channel.send(
                     f"♻️ **{team.get('name', team_name)}** "
-                    "has a saved Survival run.\n\n"
+                    "has a saved Survival run.\n"
+                    f"👑 **Captain:** {captain}\n\n"
                     + run_status_text(
                         team.get(
                             "name",
@@ -3224,9 +3336,21 @@ class SurvivalBot(
             else:
                 status_text = "⏸️ PAUSED"
 
+            captain_id = self.get_run_captain_id(
+                run
+            )
+            captain_display = run.get(
+                "captain_name"
+            ) or (
+                f"<@{captain_id}>"
+                if captain_id
+                else "Unknown"
+            )
+
             lines.append(
                 f"**{index}.** Puzzle **#{run.get('puzzle_number', 0)}** "
                 f"— {status_text} "
+                f"— Captain: **{captain_display}** "
                 f"— best difficulty **{run.get('best_difficulty', 0)}**"
             )
 
@@ -3331,9 +3455,22 @@ class SurvivalBot(
                 "No contributors recorded."
             )
 
+        captain_id = self.get_run_captain_id(
+            run
+        )
+        captain_display = run.get(
+            "captain_name"
+        ) or (
+            f"<@{captain_id}>"
+            if captain_id
+            else "Unknown"
+        )
+
         return (
             f"👥 **{team.get('name', team_key)} — Run**\n"
             f"**Status:** {status}\n"
+            f"**Captain:** {captain_display}\n"
+            f"**Mode:** {str(run.get('mode', 'coop')).upper()}\n"
             f"**Puzzle:** #{run.get('puzzle_number', 0)}\n"
             f"**Best difficulty:** {run.get('best_difficulty', 0)}\n"
             f"**Strikes:** {run.get('strikes', 0)}/3\n\n"
