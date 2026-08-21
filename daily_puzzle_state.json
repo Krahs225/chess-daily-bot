@@ -1,61 +1,68 @@
 {
   "latest_random_puzzle": {
-    "title": "400 • GCrUN",
-    "fen": "2q3k1/1p3p1p/p4Qp1/8/4P3/1B3P2/6PP/7K b - - 2 39",
-    "current_fen": "6k1/1p3p1p/p4Qp1/8/4P3/5P2/6PP/3q3K w - - 0 41",
+    "title": "3300 • OSbwa",
+    "fen": "8/8/p2p1B2/1p1P4/1P2P3/3K2b1/8/2k5 w - - 5 50",
+    "current_fen": "8/8/p2p1B2/1p1P4/1P2P3/3K2b1/8/2k5 w - - 5 50",
     "all_moves": [
       {
-        "uci": "c8c1",
-        "san": "Qc1+",
-        "color": "black"
-      },
-      {
-        "uci": "b3d1",
-        "san": "Bd1",
+        "uci": "e4e5",
+        "san": "e5",
         "color": "white"
       },
       {
-        "uci": "c1d1",
-        "san": "Qxd1#",
+        "uci": "d6e5",
+        "san": "dxe5",
         "color": "black"
+      },
+      {
+        "uci": "f6d8",
+        "san": "Bd8",
+        "color": "white"
+      },
+      {
+        "uci": "e5e4",
+        "san": "e4+",
+        "color": "black"
+      },
+      {
+        "uci": "d3e4",
+        "san": "Kxe4",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c8c1",
-        "san": "Qc1+",
-        "color": "black"
+        "uci": "e4e5",
+        "san": "e5",
+        "color": "white"
       },
       {
-        "uci": "c1d1",
-        "san": "Qxd1#",
-        "color": "black"
+        "uci": "f6d8",
+        "san": "Bd8",
+        "color": "white"
+      },
+      {
+        "uci": "d3e4",
+        "san": "Kxe4",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
+    "player_color": "white",
+    "player_move_count": 3,
     "pgn": "",
-    "url": "https://lichess.org/training/GCrUN",
-    "posted_at": "2026-08-21T16:18:47.025246+00:00",
-    "puzzle_id": "random_lichess_400_GCrUN_1787329127025",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
+    "url": "https://lichess.org/training/OSbwa",
+    "posted_at": "2026-08-21T16:20:08.068273+00:00",
+    "puzzle_id": "random_lichess_3300_OSbwa_1787329208068",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "550338389535227926": {
-        "name": "Nairyaaa",
-        "move": "qxd1",
-        "correct": true,
-        "timestamp": "2026-08-21T16:19:03.913748+00:00"
-      }
-    },
-    "first_move_user_id": "550338389535227926",
-    "first_move_user_name": "Nairyaaa",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -177,6 +184,9 @@
     ],
     "400": [
       "GCrUN"
+    ],
+    "3300": [
+      "OSbwa"
     ]
   }
 }
