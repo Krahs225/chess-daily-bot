@@ -1587,9 +1587,6 @@ class SurvivalBot(
         self.action_task = asyncio.create_task(
             self.action_limit_timer()
         )
-        self.action_task = asyncio.create_task(
-            self.action_limit_timer()
-        )
 
     async def on_ready(
         self
@@ -1767,67 +1764,6 @@ class SurvivalBot(
             "current"
         ] = None
 
-    async def start_or_show_team(
-        self,
-        message,
-        team_name,
-    ):
-        key = normalize_team_name(
-            team_name
-        )
-
-        active = active_current_run(
-            self.state
-        )
-
-        if active:
-            await message.channel.send(
-                f"⚠️ **{active[1].get('name', active[0])}** "
-                "already has an active Survival run."
-            )
-            return
-
-        team = self.state["teams"].get(
-            key
-        )
-
-        if (
-            team
-            and team.get("current")
-        ):
-            view = ContinueOrRestartView(
-                self,
-                message.author.id,
-                key,
-            )
-
-            captain = await self.get_captain_display(
-                team["current"]
-            )
-
-            await message.channel.send(
-                f"♻️ **{team.get('name', team_name)}** "
-                "has a saved Survival run.\n"
-                f"👑 **Captain:** {captain}\n\n"
-                + run_status_text(
-                    team.get(
-                        "name",
-                        team_name,
-                    ),
-                    team["current"],
-                )
-                + "\n\n"
-                "Continue it or start a new run?",
-                view=view,
-            )
-            return
-
-        await self.start_new_run(
-            key,
-            team_name,
-            message,
-        )
-
     async def start_new_run(
         self,
         team_key,
@@ -1883,18 +1819,9 @@ class SurvivalBot(
                 )
                 return
 
-            requester_user = (
-                requester.author
-                if hasattr(
-                    requester,
-                    "author",
-                )
-                else requester
-            )
-
             view = ContinueOrRestartView(
                 self,
-                requester_user.id,
+                requester.id,
                 team_key,
             )
 
@@ -1912,24 +1839,15 @@ class SurvivalBot(
                 team
             )
 
-        requester_user = (
-            requester.author
-            if hasattr(
-                requester,
-                "author",
-            )
-            else requester
-        )
-
         run = {
             "run_id":
                 f"{team_key}:{int(time.time())}",
             "started_by_id":
-                str(requester_user.id),
+                str(requester.id),
             "captain_id":
-                str(requester_user.id),
+                str(requester.id),
             "captain_name":
-                requester_user.display_name,
+                requester.display_name,
             "mode":
                 "coop",
             "status":
@@ -1980,12 +1898,6 @@ class SurvivalBot(
             display_name,
             run["run_id"],
             run["last_activity"],
-        )
-
-        await requester.channel.send(
-            f"👑 **{display_name}** — Captain: "
-            f"**{run.get('captain_name', requester_user.display_name)}**\n"
-            f"Mode: **CO-OP** — everyone can help."
         )
 
         await self.post_next_puzzle(
@@ -2039,12 +1951,6 @@ class SurvivalBot(
             )
             return
 
-        # If this team's run is already active, Continue simply
-        # re-shows the current puzzle instead of failing.
-        was_already_active = (
-            run.get("status") == "active"
-        )
-
         run[
             "status"
         ] = "active"
@@ -2069,12 +1975,7 @@ class SurvivalBot(
         )
 
         await interaction.response.send_message(
-            (
-                f"▶️ **{team.get('name', team_key)} is already active. "
-                "Showing the current puzzle again.**"
-                if was_already_active
-                else f"▶️ **{team.get('name', team_key)} resumed.**"
-            )
+            f"▶️ **{team.get('name', team_key)} resumed.**"
         )
 
         if run.get(
@@ -2355,46 +2256,6 @@ class SurvivalBot(
             "helper_awarded"
         ] = []
 
-    async def get_captain_display(
-        self,
-        run,
-    ):
-        captain_id = self.get_run_captain_id(
-            run
-        )
-
-        if not captain_id:
-            return "Unknown"
-
-        stored_name = run.get(
-            "captain_name"
-        )
-
-        if stored_name:
-            return stored_name
-
-        # Old runs may only have started_by_id.
-        # A Discord mention is always valid even when the username
-        # was never stored in the old JSON.
-        try:
-            user = self.get_user(
-                int(captain_id)
-            )
-
-            if user:
-                return user.display_name
-
-            user = await self.fetch_user(
-                int(captain_id)
-            )
-
-            if user:
-                return user.display_name
-        except Exception:
-            pass
-
-        return f"<@{captain_id}>"
-
     def get_run_captain_id(
         self,
         run,
@@ -2462,22 +2323,10 @@ class SurvivalBot(
         run["mode"] = mode
         run["last_activity"] = epoch_now()
 
-        try:
-            save_state(
-                self.state,
-                push=True,
-            )
-        except Exception as error:
-            run["mode"] = (
-                "coop"
-                if mode == "solo"
-                else "solo"
-            )
-            await message.channel.send(
-                f"❌ Could not save the mode change: "
-                f"`{str(error)[:700]}`"
-            )
-            return
+        save_state(
+            self.state,
+            push=True,
+        )
 
         if mode == "solo":
             await message.channel.send(
@@ -3091,49 +2940,6 @@ class SurvivalBot(
         ):
             return
 
-        # Captain-only mode commands.
-        if lower.startswith("!solo"):
-            parts = content.split(
-                None,
-                1,
-            )
-
-            if len(parts) != 2:
-                await message.channel.send(
-                    "❌ Usage: `!solo <team name>`"
-                )
-                return
-
-            await self.set_run_mode(
-                message,
-                normalize_team_name(
-                    parts[1].strip()
-                ),
-                "solo",
-            )
-            return
-
-        if lower.startswith("!coop"):
-            parts = content.split(
-                None,
-                1,
-            )
-
-            if len(parts) != 2:
-                await message.channel.send(
-                    "❌ Usage: `!coop <team name>`"
-                )
-                return
-
-            await self.set_run_mode(
-                message,
-                normalize_team_name(
-                    parts[1].strip()
-                ),
-                "coop",
-            )
-            return
-
         # Team information command:
         # !THE SQUAD
         if (
@@ -3175,141 +2981,10 @@ class SurvivalBot(
             )
             return
 
-        if lower in {
-            "!repeat",
-            "repeat",
-        }:
-            active_run = active_current_run(
-                self.state
-            )
-
-            if active_run:
-                team_key, team = active_run
-                run = team.get("current")
-
-                if run and run.get("puzzle"):
-                    await self.send_current_puzzle(
-                        message.channel,
-                        team.get(
-                            "name",
-                            team_key,
-                        ),
-                        run,
-                    )
-                    return
-
-            # Also allow repeat for a paused, non-dead current run.
-            for team_key, team in self.state["teams"].items():
-                run = team.get("current")
-                if (
-                    isinstance(run, dict)
-                    and run.get("puzzle")
-                    and not run_is_dead(run)
-                ):
-                    await message.channel.send(
-                        f"⏸️ **{team.get('name', team_key)}** is paused. "
-                        "Showing the saved puzzle; this does not resume the run."
-                    )
-                    await self.send_current_puzzle(
-                        message.channel,
-                        team.get(
-                            "name",
-                            team_key,
-                        ),
-                        run,
-                    )
-                    return
-
-            await message.channel.send(
-                "❌ There is no saved Survival puzzle to repeat."
-            )
-            return
-
         if lower == "!stopsurvival":
             await self.stop_survival(
                 message
             )
-            return
-
-        if lower.startswith("!survival ") and len(
-            content.split(None, 1)
-        ) == 2:
-
-            team_name = content.split(
-                None,
-                1,
-            )[1].strip()
-
-            if not valid_team_name(
-                team_name
-            ):
-                await message.channel.send(
-                    "❌ Team name must be 2–32 characters."
-                )
-                return
-
-            active = active_current_run(
-                self.state
-            )
-
-            if active:
-                await message.channel.send(
-                    f"⚠️ **{active[1].get('name', active[0])}** "
-                    "already has an active Survival run."
-                )
-                return
-
-            try:
-                await self.start_or_show_team(
-                    message,
-                    team_name,
-                )
-            except AttributeError:
-                # Backwards-compatible direct path.
-                key = normalize_team_name(
-                    team_name
-                )
-                team = self.state["teams"].get(
-                    key
-                )
-
-                if (
-                    team
-                    and team.get("current")
-                ):
-                    view = ContinueOrRestartView(
-                        self,
-                        message.author.id,
-                        key,
-                    )
-
-                    captain = await self.get_captain_display(
-                        team["current"]
-                    )
-
-                    await message.channel.send(
-                        f"♻️ **{team.get('name', team_name)}** "
-                        "has a saved Survival run.\n"
-                        f"👑 **Captain:** {captain}\n\n"
-                        + run_status_text(
-                            team.get(
-                                "name",
-                                team_name,
-                            ),
-                            team["current"],
-                        )
-                        + "\n\n"
-                        "Continue it or start a new run?",
-                        view=view,
-                    )
-                    return
-
-                await self.start_new_run(
-                    key,
-                    team_name,
-                    message,
-                )
-
             return
 
         if lower == "!survival":
@@ -3392,23 +3067,43 @@ class SurvivalBot(
                 )
                 return
 
-            try:
-                await self.start_or_show_team(
-                    message,
-                    team_name,
-                )
+            team = self.state["teams"].get(
+                key
+            )
 
-            except Exception as error:
-                print(
-                    f"Survival team start error: {error}",
-                    flush=True,
+            if (
+                team
+                and team.get(
+                    "current"
                 )
-                traceback.print_exc()
+            ):
+                view = ContinueOrRestartView(
+                    self,
+                    message.author.id,
+                    key,
+                )
 
                 await message.channel.send(
-                    f"❌ **Could not start/load team {team_name}.**\n"
-                    f"`{str(error)[:900]}`"
+                    f"♻️ **{team.get('name', team_name)}** "
+                    "has a saved Survival run.\n\n"
+                    + run_status_text(
+                        team.get(
+                            "name",
+                            team_name,
+                        ),
+                        team["current"],
+                    )
+                    + "\n\n"
+                    "Continue it or start a new run?",
+                    view=view,
                 )
+                return
+
+            await self.start_new_run(
+                key,
+                team_name,
+                message,
+            )
 
             return
 
@@ -3526,21 +3221,9 @@ class SurvivalBot(
             else:
                 status_text = "⏸️ PAUSED"
 
-            captain_id = self.get_run_captain_id(
-                run
-            )
-            captain_display = run.get(
-                "captain_name"
-            ) or (
-                f"<@{captain_id}>"
-                if captain_id
-                else "Unknown"
-            )
-
             lines.append(
                 f"**{index}.** Puzzle **#{run.get('puzzle_number', 0)}** "
                 f"— {status_text} "
-                f"— Captain: **{captain_display}** "
                 f"— best difficulty **{run.get('best_difficulty', 0)}**"
             )
 
@@ -3645,22 +3328,9 @@ class SurvivalBot(
                 "No contributors recorded."
             )
 
-        captain_id = self.get_run_captain_id(
-            run
-        )
-        captain_display = run.get(
-            "captain_name"
-        ) or (
-            f"<@{captain_id}>"
-            if captain_id
-            else "Unknown"
-        )
-
         return (
             f"👥 **{team.get('name', team_key)} — Run**\n"
             f"**Status:** {status}\n"
-            f"**Captain:** {captain_display}\n"
-            f"**Mode:** {str(run.get('mode', 'coop')).upper()}\n"
             f"**Puzzle:** #{run.get('puzzle_number', 0)}\n"
             f"**Best difficulty:** {run.get('best_difficulty', 0)}\n"
             f"**Strikes:** {run.get('strikes', 0)}/3\n\n"
@@ -4130,48 +3800,192 @@ def san_matches_move(
         return False
 
 
-async def stop_for_action_limit(self):
-    active = active_current_run(self.state)
+async def dispatch_survival_handoff(
+    self
+):
+    token = os.getenv(
+        "GITHUB_TOKEN"
+    )
+    repository = os.getenv(
+        "GITHUB_REPOSITORY"
+    )
+
+    if not token or not repository:
+        print(
+            "GITHUB_TOKEN/GITHUB_REPOSITORY unavailable; "
+            "cannot hand off Survival.",
+            flush=True,
+        )
+        return False
+
+    workflow = "survival.yml"
+    url = (
+        "https://api.github.com/repos/"
+        f"{repository}/actions/workflows/"
+        f"{workflow}/dispatches"
+    )
+
+    response = requests.post(
+        url,
+        headers={
+            "Accept":
+                "application/vnd.github+json",
+            "Authorization":
+                f"Bearer {token}",
+            "X-GitHub-Api-Version":
+                "2022-11-28",
+        },
+        json={
+            "ref":
+                os.getenv(
+                    "GITHUB_REF_NAME",
+                    "main",
+                )
+        },
+        timeout=20,
+    )
+
+    if response.status_code in {
+        201,
+        204,
+    }:
+        print(
+            "Queued next Survival workflow run.",
+            flush=True,
+        )
+        return True
+
+    print(
+        f"Survival handoff failed: "
+        f"{response.status_code} "
+        f"{response.text[:1000]}",
+        flush=True,
+    )
+    return False
+
+
+async def stop_for_action_limit_fallback(
+    self
+):
+    active = active_current_run(
+        self.state
+    )
 
     if not active:
         return
 
     team_key, team = active
-    run = team.get("current")
+    run = team.get(
+        "current"
+    )
 
     if not run:
         return
 
-    run["status"] = "paused"
-    run["paused_reason"] = "GitHub Actions run limit"
-    update_best(team, run)
-    save_state(self.state, push=True)
+    run[
+        "status"
+    ] = "paused"
+
+    run[
+        "paused_reason"
+    ] = "GitHub Actions handoff unavailable"
+
+    update_best(
+        team,
+        run
+    )
+
+    save_state(
+        self.state,
+        push=True,
+    )
+
     clear_lock()
 
-    channel = self.get_channel(CHANNEL_ID)
+    channel = self.get_channel(
+        CHANNEL_ID
+    )
+
     if channel:
         await channel.send(
             f"⏸️ **{team.get('name', team_key)} Survival paused automatically.**\n"
-            f"Puzzle **#{run.get('puzzle_number', 0)}** saved.\n"
-            "The GitHub run is ending; the team can resume later with `!survival`."
+            f"Puzzle **#{run.get('puzzle_number', 0)} saved.**\n"
+            "The next GitHub run could not be queued, so the run is safely paused."
         )
 
 
-async def action_limit_timer(self):
+async def action_limit_timer(
+    self
+):
     await asyncio.sleep(
-        5 * 60 * 60 + 45 * 60
+        5 * 60 * 60
+        + 35 * 60
     )
+
+    active = active_current_run(
+        self.state
+    )
+
     try:
-        await self.stop_for_action_limit()
+        if active:
+            handed_off = await dispatch_survival_handoff(
+                self
+            )
+
+            if handed_off:
+                team_key, team = active
+                run = team.get(
+                    "current"
+                )
+
+                if run:
+                    channel = self.get_channel(
+                        CHANNEL_ID
+                    )
+
+                    if channel:
+                        await channel.send(
+                            f"🔄 **{team.get('name', team_key)} Survival "
+                            "is handing off to the next GitHub run.**\n"
+                            f"Puzzle **#{run.get('puzzle_number', 0)}** "
+                            "is saved and the run will continue."
+                        )
+
+                # Keep the run ACTIVE and keep the lock.
+                # The queued successor starts after this job exits.
+            else:
+                await stop_for_action_limit_fallback(
+                    self
+                )
+
+        else:
+            print(
+                "No active Survival run at action-limit handoff.",
+                flush=True,
+            )
+
     except Exception as error:
         print(
-            f"Action-limit pause error: {error}",
+            f"Action-limit handoff error: {error}",
             flush=True,
         )
 
+    await asyncio.sleep(
+        20
+    )
 
-SurvivalBot.stop_for_action_limit = stop_for_action_limit
-SurvivalBot.action_limit_timer = action_limit_timer
+    await self.close()
+
+
+SurvivalBot.dispatch_survival_handoff = (
+    dispatch_survival_handoff
+)
+SurvivalBot.stop_for_action_limit_fallback = (
+    stop_for_action_limit_fallback
+)
+SurvivalBot.action_limit_timer = (
+    action_limit_timer
+)
 
 bot = SurvivalBot()
 
