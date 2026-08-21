@@ -1,77 +1,66 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-01-02",
-    "title": "X-Ray Marks the Spot",
-    "fen": "3Rr1k1/2p3pp/1nb4q/p5N1/1p3Q2/1N4PP/PP4BK/4r3 w - - 0 1",
-    "current_fen": "5R1k/2p3pp/1nb4q/p5N1/1p6/1N4PP/PP4BK/4r3 b - - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3Rr1k1/2p3pp/1nb4q/p5N1/1p3Q2/1N4PP/PP4BK/4r3 w - - 0 1\"]\r\n\r\n1. Qf7+ Kh8 2. Qf8+ Rxf8 3. Rxf8# *",
+    "title": "1500 • DRLLt",
+    "fen": "8/8/5kpp/8/3pR3/2p4P/1rB3P1/3K4 b - - 3 41",
+    "current_fen": "8/8/5kpp/8/3pR3/2p4P/1rB3P1/3K4 b - - 3 41",
     "all_moves": [
       {
-        "uci": "f4f7",
-        "san": "Qf7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "d4d3",
+        "san": "d3",
         "color": "black"
       },
       {
-        "uci": "f7f8",
-        "san": "Qf8+",
+        "uci": "c2d3",
+        "san": "Bxd3",
         "color": "white"
       },
       {
-        "uci": "e8f8",
-        "san": "Rxf8",
+        "uci": "b2d2",
+        "san": "Rd2+",
         "color": "black"
       },
       {
-        "uci": "d8f8",
-        "san": "Rxf8#",
+        "uci": "d1c1",
+        "san": "Kc1",
         "color": "white"
+      },
+      {
+        "uci": "d2d3",
+        "san": "Rxd3",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4f7",
-        "san": "Qf7+",
-        "color": "white"
+        "uci": "d4d3",
+        "san": "d3",
+        "color": "black"
       },
       {
-        "uci": "f7f8",
-        "san": "Qf8+",
-        "color": "white"
+        "uci": "b2d2",
+        "san": "Rd2+",
+        "color": "black"
       },
       {
-        "uci": "d8f8",
-        "san": "Rxf8#",
-        "color": "white"
+        "uci": "d2d3",
+        "san": "Rxd3",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-21T20:37:20.381467+00:00",
-    "answer_posted": true,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_1787344640381",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1540459816563245187,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxf8",
-        "correct": true,
-        "timestamp": "2026-08-21T20:37:34.569231+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "pgn": "",
+    "url": "https://lichess.org/training/DRLLt",
+    "posted_at": "2026-08-21T20:45:02.571753+00:00",
+    "puzzle_id": "random_lichess_1500_DRLLt_1787345102571",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
@@ -181,6 +170,9 @@
     ],
     "1998": [
       "JUUv4"
+    ],
+    "1500": [
+      "DRLLt"
     ]
   }
 }
