@@ -1,62 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-05-09",
-    "title": "Clearance Sacrifice",
-    "fen": "8/1k5p/3R4/3P3P/6P1/p2K4/r7/8 b - - 0 1",
-    "current_fen": "8/1k5p/3R4/3P3P/6P1/8/p2K4/8 w - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1k5p/3R4/3P3P/6P1/p2K4/r7/8 b - - 0 1\"]\r\n\r\n1...Rd2+ 2. Kxd2 a2\r\n*",
+    "url": "https://www.chess.com/daily/2023-02-13",
+    "title": "Let the Good Pawns Roll",
+    "fen": "8/1k3npp/ppp2p2/2pb4/5P2/P1N3PB/1PP1P2K/8 w - - 0 1",
+    "current_fen": "8/1k3npp/ppp2p2/2pb4/5P2/P1N3PB/1PP1P2K/8 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/1k3npp/ppp2p2/2pb4/5P2/P1N3PB/1PP1P2K/8 w - - 0 1\"]\r\n\r\n1. e4 Bc4 2. b3 Bb5 3. a4 a5 4. axb5 *",
     "all_moves": [
       {
-        "uci": "a2d2",
-        "san": "Rd2+",
-        "color": "black"
-      },
-      {
-        "uci": "d3d2",
-        "san": "Kxd2",
+        "uci": "e2e4",
+        "san": "e4",
         "color": "white"
       },
       {
-        "uci": "a3a2",
-        "san": "a2",
+        "uci": "d5c4",
+        "san": "Bc4",
         "color": "black"
+      },
+      {
+        "uci": "b2b3",
+        "san": "b3",
+        "color": "white"
+      },
+      {
+        "uci": "c4b5",
+        "san": "Bb5",
+        "color": "black"
+      },
+      {
+        "uci": "a3a4",
+        "san": "a4",
+        "color": "white"
+      },
+      {
+        "uci": "a6a5",
+        "san": "a5",
+        "color": "black"
+      },
+      {
+        "uci": "a4b5",
+        "san": "axb5",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a2d2",
-        "san": "Rd2+",
-        "color": "black"
+        "uci": "e2e4",
+        "san": "e4",
+        "color": "white"
       },
       {
-        "uci": "a3a2",
-        "san": "a2",
-        "color": "black"
+        "uci": "b2b3",
+        "san": "b3",
+        "color": "white"
+      },
+      {
+        "uci": "a3a4",
+        "san": "a4",
+        "color": "white"
+      },
+      {
+        "uci": "a4b5",
+        "san": "axb5",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-21T11:51:35.739116+00:00",
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-21T11:51:51.888225+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787313095739",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1540327508350861323,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "A2",
-        "correct": true,
-        "timestamp": "2026-08-21T11:51:46.761200+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787313111888",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
