@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-12-03",
-    "title": "Greco, 1621",
-    "fen": "1k6/ppr5/2b5/8/1KB5/8/7R/8 w - - 0 1",
-    "current_fen": "8/pBk5/2b5/8/1K6/8/8/8 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"1k6/ppr5/2b5/8/1KB5/8/7R/8 w - - 0 1\"]\r\n\r\n1. Rh8+ Rc8 2. Rxc8+ Kxc8 3. Ba6 Kc7 4. Bxb7\r\n*",
+    "url": "https://www.chess.com/daily/2007-07-24",
+    "title": "Simply Win a Pawn...",
+    "fen": "2bqnbn1/r4p1k/pp1p2pp/2pP4/P1P2Q2/2NB2PP/1P1N1P1B/4R1K1 w - - 0 1",
+    "current_fen": "2bqnbn1/r4p1k/pp1p2pp/2pP4/P1P2Q2/2NB2PP/1P1N1P1B/4R1K1 w - - 0 1",
+    "pgn": "[SetUp \"1\"]\r\n[FEN \"2bqnbn1/r4p1k/pp1p2pp/2pP4/P1P2Q2/2NB2PP/1P1N1P1B/4R1K1 w - - 0 1\"]\r\n[PlyCount \"5\"]\r\n\r\n1. Bxg6+ $1 Kxg6 (1... fxg6 2. Qxf8 $18) 2. Qe4+ Kg7 3. Qxe8 $18 *",
     "all_moves": [
       {
-        "uci": "h2h8",
-        "san": "Rh8+",
+        "uci": "d3g6",
+        "san": "Bxg6+",
         "color": "white"
       },
       {
-        "uci": "c7c8",
-        "san": "Rc8",
+        "uci": "h7g6",
+        "san": "Kxg6",
         "color": "black"
       },
       {
-        "uci": "h8c8",
-        "san": "Rxc8+",
+        "uci": "f4e4",
+        "san": "Qe4+",
         "color": "white"
       },
       {
-        "uci": "b8c8",
-        "san": "Kxc8",
+        "uci": "g6g7",
+        "san": "Kg7",
         "color": "black"
       },
       {
-        "uci": "c4a6",
-        "san": "Ba6",
-        "color": "white"
-      },
-      {
-        "uci": "c8c7",
-        "san": "Kc7",
-        "color": "black"
-      },
-      {
-        "uci": "a6b7",
-        "san": "Bxb7",
+        "uci": "e4e8",
+        "san": "Qxe8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h2h8",
-        "san": "Rh8+",
+        "uci": "d3g6",
+        "san": "Bxg6+",
         "color": "white"
       },
       {
-        "uci": "h8c8",
-        "san": "Rxc8+",
+        "uci": "f4e4",
+        "san": "Qe4+",
         "color": "white"
       },
       {
-        "uci": "c4a6",
-        "san": "Ba6",
-        "color": "white"
-      },
-      {
-        "uci": "a6b7",
-        "san": "Bxb7",
+        "uci": "e4e8",
+        "san": "Qxe8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-21T11:53:23.052498+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-21T11:54:04.035326+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787313203052",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540327958386970677,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Bxb7",
-        "correct": true,
-        "timestamp": "2026-08-21T11:53:54.462145+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787313244035",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
