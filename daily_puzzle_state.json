@@ -1,77 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-10-12",
-    "title": "Rubinstein's Revenge",
-    "fen": "r1bqk2r/pp1nbpp1/2p4p/3N3n/3P1B2/3BP3/PPQ2PPP/R3K1NR b KQkq - 0 1",
-    "current_fen": "r1b1k2r/ppBnqpp1/7p/3p3n/1b1P4/3BP3/PPQ1KPPP/R5NR w kq - 4 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r1bqk2r/pp1nbpp1/2p4p/3N3n/3P1B2/3BP3/PPQ2PPP/R3K1NR b KQkq - 0 1\"]\r\n\r\n1...cxd5 2.Bc7 Bb4+ 3.Ke2 Qe7 *",
+    "url": "https://www.chess.com/daily/2021-09-26",
+    "title": "Keres Attacked",
+    "fen": "r4rk1/1b2qNpp/p7/1p3Q2/3P4/1B6/P5PP/3n1RK1 b - - 0 21",
+    "current_fen": "r4rk1/1b2qNpp/p7/1p3Q2/3P4/1B6/P5PP/3n1RK1 b - - 0 21",
+    "pgn": "[Event \"2nd SELL Baltic Student Olympiad (Variation)\"]\r\n[Site \"Tartu EST\"]\r\n[Date \"1938.03.27\"]\r\n[Round \"3\"]\r\n[White \"Paul Keres\"]\r\n[Black \"Osmo Ilmari Kaila\"]\r\n[Result \"0-1\"]\r\n[ECO \"B14\"]\r\n[PlyCount \"66\"]\r\n[FEN \"r4rk1/1b2qNpp/p7/1p3Q2/3P4/1B6/P5PP/3n1RK1 b - - 0 21\"]\r\n\r\n21...Qe3+ 22.Kh1 Bxg2+ 23.Kxg2 Qxb3 24.axb3 Ne3+ 25.Kg1 Nxf5 0-1",
     "all_moves": [
       {
-        "uci": "c6d5",
-        "san": "cxd5",
+        "uci": "e7e3",
+        "san": "Qe3+",
         "color": "black"
       },
       {
-        "uci": "f4c7",
-        "san": "Bc7",
+        "uci": "g1h1",
+        "san": "Kh1",
         "color": "white"
       },
       {
-        "uci": "e7b4",
-        "san": "Bb4+",
+        "uci": "b7g2",
+        "san": "Bxg2+",
         "color": "black"
       },
       {
-        "uci": "e1e2",
-        "san": "Ke2",
+        "uci": "h1g2",
+        "san": "Kxg2",
         "color": "white"
       },
       {
-        "uci": "d8e7",
-        "san": "Qe7",
+        "uci": "e3b3",
+        "san": "Qxb3",
+        "color": "black"
+      },
+      {
+        "uci": "a2b3",
+        "san": "axb3",
+        "color": "white"
+      },
+      {
+        "uci": "d1e3",
+        "san": "Ne3+",
+        "color": "black"
+      },
+      {
+        "uci": "g2g1",
+        "san": "Kg1",
+        "color": "white"
+      },
+      {
+        "uci": "e3f5",
+        "san": "Nxf5",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c6d5",
-        "san": "cxd5",
+        "uci": "e7e3",
+        "san": "Qe3+",
         "color": "black"
       },
       {
-        "uci": "e7b4",
-        "san": "Bb4+",
+        "uci": "b7g2",
+        "san": "Bxg2+",
         "color": "black"
       },
       {
-        "uci": "d8e7",
-        "san": "Qe7",
+        "uci": "e3b3",
+        "san": "Qxb3",
+        "color": "black"
+      },
+      {
+        "uci": "d1e3",
+        "san": "Ne3+",
+        "color": "black"
+      },
+      {
+        "uci": "e3f5",
+        "san": "Nxf5",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-21T20:55:47.486144+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-21T20:56:32.758456+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787345747486",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1540464459712168037,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qe7",
-        "correct": true,
-        "timestamp": "2026-08-21T20:56:23.705980+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787345792758",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
