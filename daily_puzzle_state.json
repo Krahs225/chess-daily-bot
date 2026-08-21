@@ -1,81 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-06-26",
-    "title": "Checking Around the Bend",
-    "fen": "2r3k1/6p1/2q1n2p/P2pPp2/3P1P1P/1N4PK/1Pr5/2RQR3 b - - 0 1",
-    "current_fen": "2r3k1/6p1/2q1n2p/P2pPp2/3P1P1P/1N4PK/1Pr5/2RQR3 b - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2r3k1/6p1/2q1n2p/P2pPp2/3P1P1P/1N4PK/1Pr5/2RQR3 b - - 0 1\"]\r\n\r\n1... Nxf4+ 2. gxf4 Qc3+ 3. bxc3 R8xc3+ 4. Qf3 Rxf3# *",
+    "title": "1998 • JUUv4",
+    "fen": "8/8/8/3n1P1p/4N3/kp5P/8/2K5 b - - 3 45",
+    "current_fen": "8/8/8/3n1P1p/4N3/kp5P/8/2K5 b - - 3 45",
     "all_moves": [
       {
-        "uci": "e6f4",
-        "san": "Nxf4+",
+        "uci": "a3a2",
+        "san": "Ka2",
         "color": "black"
       },
       {
-        "uci": "g3f4",
-        "san": "gxf4",
+        "uci": "e4d2",
+        "san": "Nd2",
         "color": "white"
       },
       {
-        "uci": "c6c3",
-        "san": "Qc3+",
+        "uci": "b3b2",
+        "san": "b2+",
         "color": "black"
       },
       {
-        "uci": "b2c3",
-        "san": "bxc3",
+        "uci": "c1c2",
+        "san": "Kc2",
         "color": "white"
       },
       {
-        "uci": "c8c3",
-        "san": "R8xc3+",
-        "color": "black"
-      },
-      {
-        "uci": "d1f3",
-        "san": "Qf3",
-        "color": "white"
-      },
-      {
-        "uci": "c3f3",
-        "san": "Rxf3#",
+        "uci": "d5e3",
+        "san": "Ne3+",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e6f4",
-        "san": "Nxf4+",
+        "uci": "a3a2",
+        "san": "Ka2",
         "color": "black"
       },
       {
-        "uci": "c6c3",
-        "san": "Qc3+",
+        "uci": "b3b2",
+        "san": "b2+",
         "color": "black"
       },
       {
-        "uci": "c8c3",
-        "san": "R8xc3+",
-        "color": "black"
-      },
-      {
-        "uci": "c3f3",
-        "san": "Rxf3#",
+        "uci": "d5e3",
+        "san": "Ne3+",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-20T23:18:19.099540+00:00",
-    "answer_posted": false,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_1787267899099",
+    "player_move_count": 3,
+    "pgn": "",
+    "url": "https://lichess.org/training/JUUv4",
+    "posted_at": "2026-08-21T11:16:00.363117+00:00",
+    "puzzle_id": "random_lichess_1998_JUUv4_1787310960363",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1540137939827302442,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
@@ -83,7 +64,7 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "daily",
+  "latest_puzzle_type": "random",
   "current_puzzle": {
     "url": "https://www.chess.com/daily/2026-08-21",
     "title": "Hang Tough",
@@ -186,6 +167,9 @@
     ],
     "1050": [
       "2fw4B"
+    ],
+    "1998": [
+      "JUUv4"
     ]
   }
 }
