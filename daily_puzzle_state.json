@@ -1,165 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-12-02",
-    "title": "GM Sutovsky - GM Svidler, 17th European Team Champ",
-    "fen": "4r1k1/pbpR3p/1p2Ppp1/8/8/1P2P1KP/PQ4P1/B6q w - - 0 1",
-    "current_fen": "7R/pbp4k/1p2P1p1/7p/5P1K/1P5P/P7/B7 b - - 2 8",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/pbpR3p/1p2Ppp1/8/8/1P2P1KP/PQ4P1/B6q w - - 0 1\"]\r\n\r\n1. Rg7+ Kh8 2. Qxf6 Qxg2+ 3. Kh4 Qe4+ 4. Qf4 Qxf4+ 5. exf4 h5 6. Re7+ Kg8 7. Rxe8+ Kh7 8. Rh8# \r\n*",
+    "url": "https://www.chess.com/daily/2026-08-08",
+    "title": "Give, Then Receive",
+    "fen": "2K2k2/8/r4P2/8/1n5P/pB3R2/6P1/8 w - - 0 1",
+    "current_fen": "2K2k2/8/r4P2/8/1n5P/pB3R2/6P1/8 w - - 0 1",
+    "pgn": "[Result \"1-0\"]\n[FEN \"2K2k2/8/r4P2/8/1n5P/pB3R2/6P1/8 w - - 0 1\"]\n\n1. Rg3 Rxf6 2. Kd7 a2 3. Rg8# 1-0",
     "all_moves": [
       {
-        "uci": "d7g7",
-        "san": "Rg7+",
+        "uci": "f3g3",
+        "san": "Rg3",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "a6f6",
+        "san": "Rxf6",
         "color": "black"
       },
       {
-        "uci": "b2f6",
-        "san": "Qxf6",
+        "uci": "c8d7",
+        "san": "Kd7",
         "color": "white"
       },
       {
-        "uci": "h1g2",
-        "san": "Qxg2+",
+        "uci": "a3a2",
+        "san": "a2",
         "color": "black"
       },
       {
-        "uci": "g3h4",
-        "san": "Kh4",
-        "color": "white"
-      },
-      {
-        "uci": "g2e4",
-        "san": "Qe4+",
-        "color": "black"
-      },
-      {
-        "uci": "f6f4",
-        "san": "Qf4",
-        "color": "white"
-      },
-      {
-        "uci": "e4f4",
-        "san": "Qxf4+",
-        "color": "black"
-      },
-      {
-        "uci": "e3f4",
-        "san": "exf4",
-        "color": "white"
-      },
-      {
-        "uci": "h7h5",
-        "san": "h5",
-        "color": "black"
-      },
-      {
-        "uci": "g7e7",
-        "san": "Re7+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "e7e8",
-        "san": "Rxe8+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h7",
-        "san": "Kh7",
-        "color": "black"
-      },
-      {
-        "uci": "e8h8",
-        "san": "Rh8#",
+        "uci": "g3g8",
+        "san": "Rg8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d7g7",
-        "san": "Rg7+",
+        "uci": "f3g3",
+        "san": "Rg3",
         "color": "white"
       },
       {
-        "uci": "b2f6",
-        "san": "Qxf6",
+        "uci": "c8d7",
+        "san": "Kd7",
         "color": "white"
       },
       {
-        "uci": "g3h4",
-        "san": "Kh4",
-        "color": "white"
-      },
-      {
-        "uci": "f6f4",
-        "san": "Qf4",
-        "color": "white"
-      },
-      {
-        "uci": "e3f4",
-        "san": "exf4",
-        "color": "white"
-      },
-      {
-        "uci": "g7e7",
-        "san": "Re7+",
-        "color": "white"
-      },
-      {
-        "uci": "e7e8",
-        "san": "Rxe8+",
-        "color": "white"
-      },
-      {
-        "uci": "e8h8",
-        "san": "Rh8#",
+        "uci": "g3g8",
+        "san": "Rg8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 8,
-    "posted_at": "2026-08-21T20:58:59.022486+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-21T21:02:11.274232+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787345939022",
-    "next_solution_index": 15,
-    "next_player_index": 8,
-    "solved": true,
-    "message_id": 1540465263571501066,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rh8",
-        "correct": true,
-        "timestamp": "2026-08-21T21:00:19.504182+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxe8",
-        "correct": true,
-        "timestamp": "2026-08-21T21:00:12.714742+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787346131274",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
