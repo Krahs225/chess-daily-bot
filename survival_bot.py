@@ -3306,9 +3306,14 @@ class SurvivalBot(
 
         # If someone was asked for a team name, consume only the next
         # non-command message from the requester.
-        pending = self.state.get(
-            "pending_team"
-        ) or self.pending_team
+        # Prefer this bot instance's fresh prompt over any stale
+        # persisted prompt left by an older Action run.
+        pending = (
+            self.pending_team
+            or self.state.get(
+                "pending_team"
+            )
+        )
 
         if (
             pending
@@ -3319,10 +3324,18 @@ class SurvivalBot(
                     0,
                 )
             )
-            and message.author.id
-            == pending["user_id"]
-            and message.channel.id
-            == pending["channel_id"]
+            and str(message.author.id)
+            == str(
+                pending.get(
+                    "user_id"
+                )
+            )
+            and str(message.channel.id)
+            == str(
+                pending.get(
+                    "channel_id"
+                )
+            )
             and not content.startswith("!")
         ):
 
