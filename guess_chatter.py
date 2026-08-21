@@ -942,41 +942,59 @@ async def on_message(
             pass
 
 
-async def run_one_guess_chatter_round(
-    channel
-):
-    """
-    One GitHub Action run = one Guess Chatter round.
+async def guess_chatter_loop():
 
-    Timing is handled by the GitHub Actions cron. We do not keep an
-    infinite Discord task alive, because GitHub-hosted jobs have a
-    finite maximum runtime.
-    """
-    round_started = current_local_time()
+    channel = await client.fetch_channel(
+        CHANNEL_ID
+    )
 
-    try:
-        print(
-            "Starting Guess Chatter round "
-            f"({guess_special_mode(round_started)})...",
-            flush=True,
-        )
+    while True:
 
-        await post_guess(
-            channel
-        )
+        target = next_guess_slot()
 
-        print(
-            "Guess Chatter round finished.",
-            flush=True,
-        )
+        now = current_local_time()
 
-    except Exception as error:
-        print(
-            f"Guess Chatter round error: "
-            f"{error}",
-            flush=True,
-        )
-        raise
+        wait_seconds = (
+            target - now
+        ).total_seconds()
+
+        if wait_seconds > 0:
+            print(
+                f"Next Guess Chatter round: "
+                f"{target.isoformat()}",
+                flush=True,
+            )
+            await asyncio.sleep(
+                wait_seconds
+            )
+
+        round_started = current_local_time()
+
+        try:
+            print(
+                "Starting Guess Chatter round "
+                f"({guess_special_mode(round_started)})...",
+                flush=True,
+            )
+
+            await post_guess(
+                channel
+            )
+
+            print(
+                "Guess Chatter round finished.",
+                flush=True,
+            )
+
+        except Exception as error:
+            print(
+                f"Guess Chatter round error: "
+                f"{error}",
+                flush=True,
+            )
+
+        # Do NOT sleep a fixed 20 minutes from completion.
+        # Always re-align to the next exact 20-minute Guess slot.
 
 
 @client.event
@@ -988,26 +1006,16 @@ async def on_ready():
         flush=True
     )
 
-    try:
-        channel = await client.fetch_channel(
-            CHANNEL_ID
-        )
+    if not hasattr(
+        client,
+        "_guess_chatter_task"
+    ) or client._guess_chatter_task.done():
 
-        # Exactly one round per GitHub Action run.
-        await run_one_guess_chatter_round(
-            channel
+        client._guess_chatter_task = (
+            asyncio.create_task(
+                guess_chatter_loop()
+            )
         )
-
-    except Exception as error:
-        print(
-            f"Guess Chatter startup error: "
-            f"{error}",
-            flush=True
-        )
-        raise
-
-    finally:
-        await client.close()
 
 
 client.run(
