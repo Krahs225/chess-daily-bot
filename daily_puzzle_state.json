@@ -1,76 +1,64 @@
 {
   "latest_random_puzzle": {
-    "title": "2137 • pSLP7",
-    "fen": "b4r1k/3Q2b1/1p4B1/p7/6P1/2qR1P2/P4BK1/8 b - - 2 34",
-    "current_fen": "5r1k/3Q2b1/1p4B1/p7/6P1/3R1b2/P4B2/q5K1 w - - 4 37",
+    "url": "https://www.chess.com/daily/2020-11-22",
+    "title": "Cooldown",
+    "fen": "r1b1k1nr/1p2pp2/p2p2p1/P1pN3p/2P1P3/1nqP2P1/R1N1KP1P/1Q3B1R b kq - 1 1",
+    "current_fen": "r3k1nr/1p2pp2/p2p2p1/P1pN3p/2P1P1b1/1n1P1PP1/R1NqK2P/1Q3B1R w kq - 1 3",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r1b1k1nr/1p2pp2/p2p2p1/P1pN3p/2P1P3/1nqP2P1/R1N1KP1P/1Q3B1R b kq - 1 1\"]\r\n\r\n1...Bg4+ 2.f3 Qd2# 1-0",
     "all_moves": [
       {
-        "uci": "a8f3",
-        "san": "Bxf3+",
+        "uci": "c8g4",
+        "san": "Bg4+",
         "color": "black"
       },
       {
-        "uci": "g2h2",
-        "san": "Kh2",
+        "uci": "f2f3",
+        "san": "f3",
         "color": "white"
       },
       {
-        "uci": "c3e5",
-        "san": "Qe5+",
-        "color": "black"
-      },
-      {
-        "uci": "h2g1",
-        "san": "Kg1",
-        "color": "white"
-      },
-      {
-        "uci": "e5a1",
-        "san": "Qa1+",
+        "uci": "c3d2",
+        "san": "Qd2#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "a8f3",
-        "san": "Bxf3+",
+        "uci": "c8g4",
+        "san": "Bg4+",
         "color": "black"
       },
       {
-        "uci": "c3e5",
-        "san": "Qe5+",
-        "color": "black"
-      },
-      {
-        "uci": "e5a1",
-        "san": "Qa1+",
+        "uci": "c3d2",
+        "san": "Qd2#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 3,
-    "pgn": "",
-    "url": "https://lichess.org/training/pSLP7",
-    "posted_at": "2026-08-21T22:34:31.864232+00:00",
-    "puzzle_id": "random_lichess_2137_pSLP7_1787351671864",
-    "next_solution_index": 5,
-    "next_player_index": 3,
+    "player_move_count": 2,
+    "posted_at": "2026-08-21T22:58:22.900763+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1787353102900",
+    "next_solution_index": 3,
+    "next_player_index": 2,
     "solved": true,
-    "message_id": null,
+    "message_id": 1540495310529495204,
     "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qa1",
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qd2",
         "correct": true,
-        "timestamp": "2026-08-21T22:35:27.572488+00:00"
+        "timestamp": "2026-08-21T22:58:42.691525+00:00"
       }
     },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -179,14 +167,28 @@
     "1998": [
       "JUUv4"
     ],
-    "1500": [
-      "DRLLt"
+    "1819": [
+      "uJBnS",
+      "KFIiw",
+      "tOX70"
     ],
-    "2899": [
-      "L5FgT"
+    "2202": [
+      "FaxCd"
     ],
-    "2137": [
-      "pSLP7"
+    "1811": [
+      "rUBFH"
+    ],
+    "400": [
+      "GCrUN"
+    ],
+    "3300": [
+      "OSbwa"
+    ],
+    "399": [
+      "smkts"
+    ],
+    "1600": [
+      "l9SQo"
     ]
   }
 }
