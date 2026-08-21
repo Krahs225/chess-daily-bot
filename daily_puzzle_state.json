@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-10-09",
     "title": "Tjernikov-Sjerbakov",
     "fen": "n1k1n2r/Qb1r2q1/1p1p1p2/1PpPpPp1/2P1P1P1/6R1/3B1KB1/R1N5 w Qk - 0 1",
-    "current_fen": "n1k1n2r/Qb1r2q1/1p1p1p2/1PpPpPp1/2P1P1P1/6R1/3B1KB1/R1N5 w Qk - 0 1",
+    "current_fen": "b1k1n2r/3r2q1/1p1p1p2/1PpPpPp1/2P1P1P1/6R1/3B1KB1/R1N5 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"n1k1n2r/Qb1r2q1/1p1p1p2/1PpPpPp1/2P1P1P1/6R1/3B1KB1/R1N5 w Qk - 0 1\"]\r\n\r\n1. Qxa8+ Bxa8 2. Rxa8+ Kc7 3. Rga3 Rd8 4. R3a7# \r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787344604293",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540459665417048206,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxa8",
+        "correct": true,
+        "timestamp": "2026-08-21T20:36:56.534139+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
