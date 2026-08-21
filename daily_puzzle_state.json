@@ -1,61 +1,53 @@
 {
   "latest_random_puzzle": {
-    "title": "1811 • rUBFH",
-    "fen": "8/1N3b1p/8/5k2/p1p1p3/P5KP/1PP5/8 w - - 0 48",
-    "current_fen": "8/5N1p/5k2/8/p1p1p3/P5KP/1PP5/8 b - - 0 49",
+    "title": "400 • GCrUN",
+    "fen": "2q3k1/1p3p1p/p4Qp1/8/4P3/1B3P2/6PP/7K b - - 2 39",
+    "current_fen": "2q3k1/1p3p1p/p4Qp1/8/4P3/1B3P2/6PP/7K b - - 2 39",
     "all_moves": [
       {
-        "uci": "b7d6",
-        "san": "Nd6+",
-        "color": "white"
-      },
-      {
-        "uci": "f5f6",
-        "san": "Kf6",
+        "uci": "c8c1",
+        "san": "Qc1+",
         "color": "black"
       },
       {
-        "uci": "d6f7",
-        "san": "Nxf7",
+        "uci": "b3d1",
+        "san": "Bd1",
         "color": "white"
+      },
+      {
+        "uci": "c1d1",
+        "san": "Qxd1#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b7d6",
-        "san": "Nd6+",
-        "color": "white"
+        "uci": "c8c1",
+        "san": "Qc1+",
+        "color": "black"
       },
       {
-        "uci": "d6f7",
-        "san": "Nxf7",
-        "color": "white"
+        "uci": "c1d1",
+        "san": "Qxd1#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 2,
     "pgn": "",
-    "url": "https://lichess.org/training/rUBFH",
-    "posted_at": "2026-08-21T16:17:07.177183+00:00",
-    "puzzle_id": "random_lichess_1811_rUBFH_1787329027177",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
+    "url": "https://lichess.org/training/GCrUN",
+    "posted_at": "2026-08-21T16:18:47.025246+00:00",
+    "puzzle_id": "random_lichess_400_GCrUN_1787329127025",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "550338389535227926": {
-        "name": "Nairyaaa",
-        "move": "nxf7",
-        "correct": true,
-        "timestamp": "2026-08-21T16:17:47.007217+00:00"
-      }
-    },
-    "first_move_user_id": "550338389535227926",
-    "first_move_user_name": "Nairyaaa",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -174,6 +166,9 @@
     ],
     "1811": [
       "rUBFH"
+    ],
+    "400": [
+      "GCrUN"
     ]
   }
 }
