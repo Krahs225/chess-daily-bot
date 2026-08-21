@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-09-26",
     "title": "Keres Attacked",
     "fen": "r4rk1/1b2qNpp/p7/1p3Q2/3P4/1B6/P5PP/3n1RK1 b - - 0 21",
-    "current_fen": "r4rk1/1b2qNpp/p7/1p3Q2/3P4/1B6/P5PP/3n1RK1 b - - 0 21",
+    "current_fen": "r4rk1/1b3Npp/p7/1p3Q2/3P4/1B2q3/P5PP/3n1R1K b - - 2 22",
     "pgn": "[Event \"2nd SELL Baltic Student Olympiad (Variation)\"]\r\n[Site \"Tartu EST\"]\r\n[Date \"1938.03.27\"]\r\n[Round \"3\"]\r\n[White \"Paul Keres\"]\r\n[Black \"Osmo Ilmari Kaila\"]\r\n[Result \"0-1\"]\r\n[ECO \"B14\"]\r\n[PlyCount \"66\"]\r\n[FEN \"r4rk1/1b2qNpp/p7/1p3Q2/3P4/1B6/P5PP/3n1RK1 b - - 0 21\"]\r\n\r\n21...Qe3+ 22.Kh1 Bxg2+ 23.Kxg2 Qxb3 24.axb3 Ne3+ 25.Kg1 Nxf5 0-1",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787345792758",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540464650137632899,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qe3",
+        "correct": true,
+        "timestamp": "2026-08-21T20:56:54.310585+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
