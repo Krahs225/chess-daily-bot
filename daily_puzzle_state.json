@@ -1,108 +1,69 @@
 {
   "latest_random_puzzle": {
-    "title": "2899 • L5FgT",
-    "fen": "r7/2p2kp1/p1P4p/4N3/4qr2/Q1P3Pb/5P1P/R2R2K1 b - - 0 30",
-    "current_fen": "r3k3/2p3p1/p1P4p/4q3/8/2P1r1Pb/Q6P/R3R2K w - - 2 35",
+    "url": "https://www.chess.com/daily/2007-12-31",
+    "title": "A Potential Queen",
+    "fen": "4q3/p2nB1kp/1p1PQ3/5pp1/8/8/P4PPK/8 w - - 0 1",
+    "current_fen": "4q3/p2nB1kp/1p1PQ3/5pp1/8/8/P4PPK/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4q3/p2nB1kp/1p1PQ3/5pp1/8/8/P4PPK/8 w - - 0 1\"]\r\n\r\n1. Bf6+ Nxf6 2. Qxe8 Nxe8 3. d7\r\n*",
     "all_moves": [
       {
-        "uci": "f7e8",
-        "san": "Ke8",
-        "color": "black"
-      },
-      {
-        "uci": "f2f3",
-        "san": "f3",
+        "uci": "e7f6",
+        "san": "Bf6+",
         "color": "white"
       },
       {
-        "uci": "f4f3",
-        "san": "Rxf3",
+        "uci": "d7f6",
+        "san": "Nxf6",
         "color": "black"
       },
       {
-        "uci": "a3a2",
-        "san": "Qa2",
+        "uci": "e6e8",
+        "san": "Qxe8",
         "color": "white"
       },
       {
-        "uci": "e4e3",
-        "san": "Qe3+",
+        "uci": "f6e8",
+        "san": "Nxe8",
         "color": "black"
       },
       {
-        "uci": "g1h1",
-        "san": "Kh1",
+        "uci": "d6d7",
+        "san": "d7",
         "color": "white"
-      },
-      {
-        "uci": "e3e5",
-        "san": "Qxe5",
-        "color": "black"
-      },
-      {
-        "uci": "d1e1",
-        "san": "Re1",
-        "color": "white"
-      },
-      {
-        "uci": "f3e3",
-        "san": "Re3",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f7e8",
-        "san": "Ke8",
-        "color": "black"
+        "uci": "e7f6",
+        "san": "Bf6+",
+        "color": "white"
       },
       {
-        "uci": "f4f3",
-        "san": "Rxf3",
-        "color": "black"
+        "uci": "e6e8",
+        "san": "Qxe8",
+        "color": "white"
       },
       {
-        "uci": "e4e3",
-        "san": "Qe3+",
-        "color": "black"
-      },
-      {
-        "uci": "e3e5",
-        "san": "Qxe5",
-        "color": "black"
-      },
-      {
-        "uci": "f3e3",
-        "san": "Re3",
-        "color": "black"
+        "uci": "d6d7",
+        "san": "d7",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 5,
-    "pgn": "",
-    "url": "https://lichess.org/training/L5FgT",
-    "posted_at": "2026-08-21T20:48:00.221651+00:00",
-    "puzzle_id": "random_lichess_2899_L5FgT_1787345280221",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-21T20:54:01.839587+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1787345641839",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "re3",
-        "correct": true,
-        "timestamp": "2026-08-21T20:50:16.061143+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qe4",
-        "correct": false,
-        "timestamp": "2026-08-21T20:49:54.209487+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
