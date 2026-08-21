@@ -1,76 +1,68 @@
 {
   "latest_random_puzzle": {
-    "title": "1819 • KFIiw",
-    "fen": "8/2r1k3/6p1/5p1p/2BBPP1P/1p1K2P1/8/8 b - - 1 40",
-    "current_fen": "8/4k3/6p1/7p/2rBpP1P/6P1/1K6/8 w - - 0 43",
+    "title": "1819 • tOX70",
+    "fen": "1Q4k1/3P1pp1/p6p/7r/5p1q/2p5/P4P1N/2R2R1K b - - 2 33",
+    "current_fen": "1Q4k1/3P1pp1/p6p/7r/5p1q/2p5/P4P1N/2R2R1K b - - 2 33",
     "all_moves": [
       {
-        "uci": "f5e4",
-        "san": "fxe4+",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "d3c3",
-        "san": "Kc3",
+        "uci": "b8g8",
+        "san": "Qg8+",
         "color": "white"
       },
       {
-        "uci": "b3b2",
-        "san": "b2",
+        "uci": "h7g8",
+        "san": "Kxg8",
         "color": "black"
       },
       {
-        "uci": "c3b2",
-        "san": "Kxb2",
+        "uci": "d7d8q",
+        "san": "d8=Q+",
         "color": "white"
       },
       {
-        "uci": "c7c4",
-        "san": "Rxc4",
+        "uci": "h4d8",
+        "san": "Qxd8",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5e4",
-        "san": "fxe4+",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "b3b2",
-        "san": "b2",
+        "uci": "h7g8",
+        "san": "Kxg8",
         "color": "black"
       },
       {
-        "uci": "c7c4",
-        "san": "Rxc4",
+        "uci": "h4d8",
+        "san": "Qxd8",
         "color": "black"
       }
     ],
     "player_color": "black",
     "player_move_count": 3,
     "pgn": "",
-    "url": "https://lichess.org/training/KFIiw",
-    "posted_at": "2026-08-21T15:45:21.514556+00:00",
-    "puzzle_id": "random_lichess_1819_KFIiw_1787327121514",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
+    "url": "https://lichess.org/training/tOX70",
+    "posted_at": "2026-08-21T15:46:17.977616+00:00",
+    "puzzle_id": "random_lichess_1819_tOX70_1787327177977",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "550338389535227926": {
-        "name": "Nairyaaa",
-        "move": "rxc4",
-        "correct": true,
-        "timestamp": "2026-08-21T15:45:57.606351+00:00"
-      }
-    },
-    "first_move_user_id": "550338389535227926",
-    "first_move_user_name": "Nairyaaa",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -181,7 +173,8 @@
     ],
     "1819": [
       "uJBnS",
-      "KFIiw"
+      "KFIiw",
+      "tOX70"
     ]
   }
 }
