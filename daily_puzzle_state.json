@@ -1,120 +1,68 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-01-23",
-    "title": "All About Precision",
-    "fen": "8/8/8/5K2/7k/6pp/8/R7 w - - 0 1",
-    "current_fen": "8/6k1/8/5K2/8/6R1/6p1/8 b - - 1 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/5K2/7k/6pp/8/R7 w - - 0 1\"]\r\n\r\n1. Ra4+ Kh5 2. Ra8 Kh6 3. Rh8+ Kg7 4. Rxh3 g2 5. Rg3+\r\n*",
+    "title": "2137 • pSLP7",
+    "fen": "b4r1k/3Q2b1/1p4B1/p7/6P1/2qR1P2/P4BK1/8 b - - 2 34",
+    "current_fen": "b4r1k/3Q2b1/1p4B1/p7/6P1/2qR1P2/P4BK1/8 b - - 2 34",
     "all_moves": [
       {
-        "uci": "a1a4",
-        "san": "Ra4+",
-        "color": "white"
-      },
-      {
-        "uci": "h4h5",
-        "san": "Kh5",
+        "uci": "a8f3",
+        "san": "Bxf3+",
         "color": "black"
       },
       {
-        "uci": "a4a8",
-        "san": "Ra8",
+        "uci": "g2h2",
+        "san": "Kh2",
         "color": "white"
       },
       {
-        "uci": "h5h6",
-        "san": "Kh6",
+        "uci": "c3e5",
+        "san": "Qe5+",
         "color": "black"
       },
       {
-        "uci": "a8h8",
-        "san": "Rh8+",
+        "uci": "h2g1",
+        "san": "Kg1",
         "color": "white"
       },
       {
-        "uci": "h6g7",
-        "san": "Kg7",
+        "uci": "e5a1",
+        "san": "Qa1+",
         "color": "black"
-      },
-      {
-        "uci": "h8h3",
-        "san": "Rxh3",
-        "color": "white"
-      },
-      {
-        "uci": "g3g2",
-        "san": "g2",
-        "color": "black"
-      },
-      {
-        "uci": "h3g3",
-        "san": "Rg3+",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a1a4",
-        "san": "Ra4+",
-        "color": "white"
+        "uci": "a8f3",
+        "san": "Bxf3+",
+        "color": "black"
       },
       {
-        "uci": "a4a8",
-        "san": "Ra8",
-        "color": "white"
+        "uci": "c3e5",
+        "san": "Qe5+",
+        "color": "black"
       },
       {
-        "uci": "a8h8",
-        "san": "Rh8+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h3",
-        "san": "Rxh3",
-        "color": "white"
-      },
-      {
-        "uci": "h3g3",
-        "san": "Rg3+",
-        "color": "white"
+        "uci": "e5a1",
+        "san": "Qa1+",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-21T21:03:37.631829+00:00",
-    "answer_posted": true,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_1787346217631",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1540466431689236481,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Ra8",
-        "correct": true,
-        "timestamp": "2026-08-21T21:03:51.948350+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rg3",
-        "correct": true,
-        "timestamp": "2026-08-21T21:04:05.632685+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "player_color": "black",
+    "player_move_count": 3,
+    "pgn": "",
+    "url": "https://lichess.org/training/pSLP7",
+    "posted_at": "2026-08-21T22:34:31.864232+00:00",
+    "puzzle_id": "random_lichess_2137_pSLP7_1787351671864",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -228,6 +176,9 @@
     ],
     "2899": [
       "L5FgT"
+    ],
+    "2137": [
+      "pSLP7"
     ]
   }
 }
