@@ -1,62 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-09-06",
-    "title": "When Forks and Batteries Collide",
-    "fen": "r1q2k1r/p3pp2/3p1Np1/5b2/8/2b1Q3/P1P2PPP/R1B2RK1 w - - 0 1",
-    "current_fen": "r1q2k2/p3pp2/3p1NpB/5b2/8/2b5/P1P2PPP/R4RK1 b - - 0 2",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r1q2k1r/p3pp2/3p1Np1/5b2/8/2b1Q3/P1P2PPP/R1B2RK1 w - - 0 1\"]\r\n\r\n1. Qh6+ Rxh6 2. Bxh6# *",
+    "url": "https://www.chess.com/daily/2013-07-27",
+    "title": "White To Draw",
+    "fen": "8/3k2q1/Q1n1p3/p1Pp1p2/R2P3R/6PK/1r1rB2P/8 w - - 0 1",
+    "current_fen": "8/3k2q1/Q1n1p3/p1Pp1p2/R2P3R/6PK/1r1rB2P/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/3k2q1/Q1n1p3/p1Pp1p2/R2P3R/6PK/1r1rB2P/8 w - - 0 1\"]\r\n\r\n1. Rb4 Rxb4 2. Bb5 Ke7 3. Qxc6\r\n*",
     "all_moves": [
       {
-        "uci": "e3h6",
-        "san": "Qh6+",
+        "uci": "a4b4",
+        "san": "Rb4",
         "color": "white"
       },
       {
-        "uci": "h8h6",
-        "san": "Rxh6",
+        "uci": "b2b4",
+        "san": "Rxb4",
         "color": "black"
       },
       {
-        "uci": "c1h6",
-        "san": "Bxh6#",
+        "uci": "e2b5",
+        "san": "Bb5",
+        "color": "white"
+      },
+      {
+        "uci": "d7e7",
+        "san": "Ke7",
+        "color": "black"
+      },
+      {
+        "uci": "a6c6",
+        "san": "Qxc6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e3h6",
-        "san": "Qh6+",
+        "uci": "a4b4",
+        "san": "Rb4",
         "color": "white"
       },
       {
-        "uci": "c1h6",
-        "san": "Bxh6#",
+        "uci": "e2b5",
+        "san": "Bb5",
+        "color": "white"
+      },
+      {
+        "uci": "a6c6",
+        "san": "Qxc6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-21T11:33:49.171431+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-21T11:34:06.687825+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787312029171",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1540323035238760598,
+    "puzzle_id": "random_1787312046687",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1540323108207075480,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Bxh6",
-        "correct": true,
-        "timestamp": "2026-08-21T11:34:00.409144+00:00"
+        "move": "Ra2",
+        "correct": false,
+        "timestamp": "2026-08-21T11:35:12.769212+00:00"
       }
     },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
