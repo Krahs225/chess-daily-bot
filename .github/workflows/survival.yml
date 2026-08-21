@@ -3,6 +3,10 @@ name: Survival Mode
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  actions: write
+
 concurrency:
   group: survival-mode-bot
   cancel-in-progress: false
@@ -11,6 +15,7 @@ jobs:
   survival:
     runs-on: ubuntu-latest
     timeout-minutes: 355
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,4 +35,7 @@ jobs:
       - name: Run Survival Bot
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
         run: python survival_bot.py
