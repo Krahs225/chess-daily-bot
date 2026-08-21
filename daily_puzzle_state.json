@@ -1,76 +1,117 @@
 {
   "latest_random_puzzle": {
-    "title": "1998 • JUUv4",
-    "fen": "8/8/8/3n1P1p/4N3/kp5P/8/2K5 b - - 3 45",
-    "current_fen": "8/8/8/5P1p/8/4n2P/kpKN4/8 w - - 2 48",
+    "url": "https://www.chess.com/daily/2024-11-03",
+    "title": "Blinding the Defense",
+    "fen": "8/1n3P2/pp3r1p/k7/1N6/1P6/3R2P1/2K5 w - - 0 1",
+    "current_fen": "8/1n3P2/pp3r1p/k7/1N6/1P6/3R2P1/2K5 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/1n3P2/pp3r1p/k7/1N6/1P6/3R2P1/2K5 w - - 0 1\"]\r\n\r\n1. Rf2 Rxf2 2. Nc6+ Kb5 3. Nd4+ Kb4 4. Nf3 Kc3 5. Kd1 Nc5 6. f8=Q *",
     "all_moves": [
       {
-        "uci": "a3a2",
-        "san": "Ka2",
-        "color": "black"
-      },
-      {
-        "uci": "e4d2",
-        "san": "Nd2",
+        "uci": "d2f2",
+        "san": "Rf2",
         "color": "white"
       },
       {
-        "uci": "b3b2",
-        "san": "b2+",
+        "uci": "f6f2",
+        "san": "Rxf2",
         "color": "black"
       },
       {
-        "uci": "c1c2",
-        "san": "Kc2",
+        "uci": "b4c6",
+        "san": "Nc6+",
         "color": "white"
       },
       {
-        "uci": "d5e3",
-        "san": "Ne3+",
+        "uci": "a5b5",
+        "san": "Kb5",
         "color": "black"
+      },
+      {
+        "uci": "c6d4",
+        "san": "Nd4+",
+        "color": "white"
+      },
+      {
+        "uci": "b5b4",
+        "san": "Kb4",
+        "color": "black"
+      },
+      {
+        "uci": "d4f3",
+        "san": "Nf3",
+        "color": "white"
+      },
+      {
+        "uci": "b4c3",
+        "san": "Kc3",
+        "color": "black"
+      },
+      {
+        "uci": "c1d1",
+        "san": "Kd1",
+        "color": "white"
+      },
+      {
+        "uci": "b7c5",
+        "san": "Nc5",
+        "color": "black"
+      },
+      {
+        "uci": "f7f8q",
+        "san": "f8=Q",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a3a2",
-        "san": "Ka2",
-        "color": "black"
+        "uci": "d2f2",
+        "san": "Rf2",
+        "color": "white"
       },
       {
-        "uci": "b3b2",
-        "san": "b2+",
-        "color": "black"
+        "uci": "b4c6",
+        "san": "Nc6+",
+        "color": "white"
       },
       {
-        "uci": "d5e3",
-        "san": "Ne3+",
-        "color": "black"
+        "uci": "c6d4",
+        "san": "Nd4+",
+        "color": "white"
+      },
+      {
+        "uci": "d4f3",
+        "san": "Nf3",
+        "color": "white"
+      },
+      {
+        "uci": "c1d1",
+        "san": "Kd1",
+        "color": "white"
+      },
+      {
+        "uci": "f7f8q",
+        "san": "f8=Q",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "pgn": "",
-    "url": "https://lichess.org/training/JUUv4",
-    "posted_at": "2026-08-21T11:16:00.363117+00:00",
-    "puzzle_id": "random_lichess_1998_JUUv4_1787310960363",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
+    "player_color": "white",
+    "player_move_count": 6,
+    "posted_at": "2026-08-21T11:18:47.263880+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1787311127263",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Ne3",
-        "correct": true,
-        "timestamp": "2026-08-21T11:16:50.496858+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
