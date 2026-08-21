@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-01-23",
     "title": "All About Precision",
     "fen": "8/8/8/5K2/7k/6pp/8/R7 w - - 0 1",
-    "current_fen": "8/6k1/8/5K2/8/7R/6p1/8 w - - 0 5",
+    "current_fen": "8/6k1/8/5K2/8/6R1/6p1/8 b - - 1 5",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/5K2/7k/6pp/8/R7 w - - 0 1\"]\r\n\r\n1. Ra4+ Kh5 2. Ra8 Kh6 3. Rh8+ Kg7 4. Rxh3 g2 5. Rg3+\r\n*",
     "all_moves": [
       {
@@ -87,9 +87,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787346217631",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1540466431689236481,
     "attempted_users": {
       "442597396195704832": {
@@ -100,14 +100,14 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rxh3",
+        "move": "rg3",
         "correct": true,
-        "timestamp": "2026-08-21T21:04:01.061574+00:00"
+        "timestamp": "2026-08-21T21:04:05.632685+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "442597396195704832"
