@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-07-08",
-    "title": "Capablanca - Em.Lasker, Berlin, 1914",
-    "fen": "1R6/k1nK4/1p6/1P6/8/8/8/8 w - - 0 1",
-    "current_fen": "k7/8/1K6/1P6/8/8/8/8 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1R6/k1nK4/1p6/1P6/8/8/8/8 w - - 0 1\"]\r\n\r\n1. Ra8+ Kb7 2. Ra7+ Kxa7 3. Kxc7 Ka8 4. Kxb6\r\n*",
+    "url": "https://www.chess.com/daily/2023-11-11",
+    "title": "Danya's Royal Dance",
+    "fen": "1r5k/p5pp/2p2b2/5p2/7q/2P1B2P/P1Q2P2/K4BR1 b - - 0 28",
+    "current_fen": "1r5k/p5pp/2p2b2/5p2/7q/2P1B2P/P1Q2P2/K4BR1 b - - 0 28",
+    "pgn": "[Event \"Live Chess\"]\r\n[Site \"Chess.com\"]\r\n[Date \"2021.04.10\"]\r\n[Round \"?\"]\r\n[White \"wonderfultime\"]\r\n[Black \"DanielNaroditsky\"]\r\n[Result \"0-1\"]\r\n[ECO \"A41\"]\r\n[WhiteElo \"3015\"]\r\n[BlackElo \"3125\"]\r\n[FEN \"1r5k/p5pp/2p2b2/5p2/7q/2P1B2P/P1Q2P2/K4BR1 b - - 0 28\"]\r\n\r\n28... Qa4 29. Qc1 Qd1 30. Bb5 Bxc3+ 31. Kb1 Rxb5# 0-1",
     "all_moves": [
       {
-        "uci": "b8a8",
-        "san": "Ra8+",
-        "color": "white"
-      },
-      {
-        "uci": "a7b7",
-        "san": "Kb7",
+        "uci": "h4a4",
+        "san": "Qa4",
         "color": "black"
       },
       {
-        "uci": "a8a7",
-        "san": "Ra7+",
+        "uci": "c2c1",
+        "san": "Qc1",
         "color": "white"
       },
       {
-        "uci": "b7a7",
-        "san": "Kxa7",
+        "uci": "a4d1",
+        "san": "Qd1",
         "color": "black"
       },
       {
-        "uci": "d7c7",
-        "san": "Kxc7",
+        "uci": "f1b5",
+        "san": "Bb5",
         "color": "white"
       },
       {
-        "uci": "a7a8",
-        "san": "Ka8",
+        "uci": "f6c3",
+        "san": "Bxc3+",
         "color": "black"
       },
       {
-        "uci": "c7b6",
-        "san": "Kxb6",
+        "uci": "a1b1",
+        "san": "Kb1",
         "color": "white"
+      },
+      {
+        "uci": "b8b5",
+        "san": "Rxb5#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b8a8",
-        "san": "Ra8+",
-        "color": "white"
+        "uci": "h4a4",
+        "san": "Qa4",
+        "color": "black"
       },
       {
-        "uci": "a8a7",
-        "san": "Ra7+",
-        "color": "white"
+        "uci": "a4d1",
+        "san": "Qd1",
+        "color": "black"
       },
       {
-        "uci": "d7c7",
-        "san": "Kxc7",
-        "color": "white"
+        "uci": "f6c3",
+        "san": "Bxc3+",
+        "color": "black"
       },
       {
-        "uci": "c7b6",
-        "san": "Kxb6",
-        "color": "white"
+        "uci": "b8b5",
+        "san": "Rxb5#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 4,
-    "posted_at": "2026-08-21T23:05:50.501924+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-21T23:06:16.714595+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787353550501",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540497187954364467,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "kxb6",
-        "correct": true,
-        "timestamp": "2026-08-21T23:06:08.003938+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787353576714",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
