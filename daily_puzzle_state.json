@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-05-14",
     "title": "Save the Position",
     "fen": "Q7/5B1k/1N1b2p1/7p/4b2P/6r1/2R4K/4R3 b - - 0 1",
-    "current_fen": "Q7/5B1k/1N1b2p1/7p/4b2P/6r1/2R4K/4R3 b - - 0 1",
+    "current_fen": "Q7/5B1k/1N1b2p1/6rp/4b2P/7K/2R5/4R3 b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"Q7/5B1k/1N1b2p1/7p/4b2P/6r1/2R4K/4R3 b - - 0 1\"]\r\n\r\n1...Rg5+ 2. Kh3 Bf5#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787313354100",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540328592398098512,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Rg5",
+        "correct": true,
+        "timestamp": "2026-08-21T11:56:37.864764+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
