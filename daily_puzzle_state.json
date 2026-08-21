@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-10-09",
-    "title": "Tjernikov-Sjerbakov",
-    "fen": "n1k1n2r/Qb1r2q1/1p1p1p2/1PpPpPp1/2P1P1P1/6R1/3B1KB1/R1N5 w Qk - 0 1",
-    "current_fen": "R2rn2r/R1k3q1/1p1p1p2/1PpPpPp1/2P1P1P1/8/3B1KB1/2N5 b - - 4 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"n1k1n2r/Qb1r2q1/1p1p1p2/1PpPpPp1/2P1P1P1/6R1/3B1KB1/R1N5 w Qk - 0 1\"]\r\n\r\n1. Qxa8+ Bxa8 2. Rxa8+ Kc7 3. Rga3 Rd8 4. R3a7# \r\n*",
+    "url": "https://www.chess.com/daily/2024-01-02",
+    "title": "X-Ray Marks the Spot",
+    "fen": "3Rr1k1/2p3pp/1nb4q/p5N1/1p3Q2/1N4PP/PP4BK/4r3 w - - 0 1",
+    "current_fen": "3Rr1k1/2p3pp/1nb4q/p5N1/1p3Q2/1N4PP/PP4BK/4r3 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3Rr1k1/2p3pp/1nb4q/p5N1/1p3Q2/1N4PP/PP4BK/4r3 w - - 0 1\"]\r\n\r\n1. Qf7+ Kh8 2. Qf8+ Rxf8 3. Rxf8# *",
     "all_moves": [
       {
-        "uci": "a7a8",
-        "san": "Qxa8+",
+        "uci": "f4f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "b7a8",
-        "san": "Bxa8",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "a1a8",
-        "san": "Rxa8+",
+        "uci": "f7f8",
+        "san": "Qf8+",
         "color": "white"
       },
       {
-        "uci": "c8c7",
-        "san": "Kc7",
+        "uci": "e8f8",
+        "san": "Rxf8",
         "color": "black"
       },
       {
-        "uci": "g3a3",
-        "san": "Rga3",
-        "color": "white"
-      },
-      {
-        "uci": "d7d8",
-        "san": "Rd8",
-        "color": "black"
-      },
-      {
-        "uci": "a3a7",
-        "san": "R3a7#",
+        "uci": "d8f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a7a8",
-        "san": "Qxa8+",
+        "uci": "f4f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "a1a8",
-        "san": "Rxa8+",
+        "uci": "f7f8",
+        "san": "Qf8+",
         "color": "white"
       },
       {
-        "uci": "g3a3",
-        "san": "Rga3",
-        "color": "white"
-      },
-      {
-        "uci": "a3a7",
-        "san": "R3a7#",
+        "uci": "d8f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-21T20:36:44.293169+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-21T20:37:20.381467+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787344604293",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540459665417048206,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "r3a7",
-        "correct": true,
-        "timestamp": "2026-08-21T20:37:10.646924+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787344640381",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
