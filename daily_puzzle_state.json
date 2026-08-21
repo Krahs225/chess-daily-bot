@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "400 • GCrUN",
     "fen": "2q3k1/1p3p1p/p4Qp1/8/4P3/1B3P2/6PP/7K b - - 2 39",
-    "current_fen": "2q3k1/1p3p1p/p4Qp1/8/4P3/1B3P2/6PP/7K b - - 2 39",
+    "current_fen": "6k1/1p3p1p/p4Qp1/8/4P3/5P2/6PP/2qB3K b - - 4 40",
     "all_moves": [
       {
         "uci": "c8c1",
@@ -38,13 +38,20 @@
     "url": "https://lichess.org/training/GCrUN",
     "posted_at": "2026-08-21T16:18:47.025246+00:00",
     "puzzle_id": "random_lichess_400_GCrUN_1787329127025",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "550338389535227926": {
+        "name": "Nairyaaa",
+        "move": "qc1",
+        "correct": true,
+        "timestamp": "2026-08-21T16:18:56.346040+00:00"
+      }
+    },
+    "first_move_user_id": "550338389535227926",
+    "first_move_user_name": "Nairyaaa",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
