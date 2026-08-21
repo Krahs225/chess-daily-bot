@@ -1,61 +1,53 @@
 {
   "latest_random_puzzle": {
-    "title": "2202 • FaxCd",
-    "fen": "7k/pB2r1b1/2P5/PQ2p2p/6pP/B4pP1/2q2P2/3rR1K1 w - - 3 41",
-    "current_fen": "7k/pB2r1b1/2P5/P3p2p/6pP/B4pP1/5P2/3q1QK1 b - - 1 42",
+    "title": "1811 • rUBFH",
+    "fen": "8/1N3b1p/8/5k2/p1p1p3/P5KP/1PP5/8 w - - 0 48",
+    "current_fen": "8/1N3b1p/8/5k2/p1p1p3/P5KP/1PP5/8 w - - 0 48",
     "all_moves": [
       {
-        "uci": "e1d1",
-        "san": "Rxd1",
+        "uci": "b7d6",
+        "san": "Nd6+",
         "color": "white"
       },
       {
-        "uci": "c2d1",
-        "san": "Qxd1+",
+        "uci": "f5f6",
+        "san": "Kf6",
         "color": "black"
       },
       {
-        "uci": "b5f1",
-        "san": "Qf1",
+        "uci": "d6f7",
+        "san": "Nxf7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1d1",
-        "san": "Rxd1",
+        "uci": "b7d6",
+        "san": "Nd6+",
         "color": "white"
       },
       {
-        "uci": "b5f1",
-        "san": "Qf1",
+        "uci": "d6f7",
+        "san": "Nxf7",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 2,
     "pgn": "",
-    "url": "https://lichess.org/training/FaxCd",
-    "posted_at": "2026-08-21T15:47:23.772802+00:00",
-    "puzzle_id": "random_lichess_2202_FaxCd_1787327243772",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
+    "url": "https://lichess.org/training/rUBFH",
+    "posted_at": "2026-08-21T16:17:07.177183+00:00",
+    "puzzle_id": "random_lichess_1811_rUBFH_1787329027177",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "550338389535227926": {
-        "name": "Nairyaaa",
-        "move": "qf1",
-        "correct": true,
-        "timestamp": "2026-08-21T15:48:39.717222+00:00"
-      }
-    },
-    "first_move_user_id": "550338389535227926",
-    "first_move_user_name": "Nairyaaa",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -171,6 +163,9 @@
     ],
     "2202": [
       "FaxCd"
+    ],
+    "1811": [
+      "rUBFH"
     ]
   }
 }
