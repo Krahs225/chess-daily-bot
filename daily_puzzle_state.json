@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-01-07",
     "title": "Fischer - Panno, Buenos Aires 1970",
     "fen": "2n5/4qk2/4pNnQ/pb1pP3/1p1P2P1/1P4K1/P4P2/8 w - - 0 1",
-    "current_fen": "2n5/4qk2/4pNnQ/pb1pP3/1p1P2P1/1P4K1/P4P2/8 w - - 0 1",
+    "current_fen": "2n2k2/4q2Q/4pNn1/pb1pP3/1p1P2P1/1P4K1/P4P2/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2n5/4qk2/4pNnQ/pb1pP3/1p1P2P1/1P4K1/P4P2/8 w - - 0 1\"]\r\n\r\n1. Qh7+ Kf8 2. Qg8#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787403869874",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540708242685038673,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qh7",
+        "correct": true,
+        "timestamp": "2026-08-22T13:04:33.476797+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
