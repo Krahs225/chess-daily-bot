@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-08-03",
     "title": "King in a Box",
     "fen": "2k5/pp6/2p1p2R/2P3pB/1B1n4/1PKP4/1P3r2/8 b - - 0 1",
-    "current_fen": "2k5/pp6/2p1p2R/2P3pB/1B1n4/1PKP4/1P3r2/8 b - - 0 1",
+    "current_fen": "2k5/pp6/2p1p2R/1nP3pB/1BK5/1P1P4/1P3r2/8 b - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"2k5/pp6/2p1p2R/2P3pB/1B1n4/1PKP4/1P3r2/8 b - - 0 1\"]\r\n\r\n1... Nb5+ 2. Kc4 Rf4+ 3. d4 Rxd4# *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787400871540",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540695666869801063,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nb5",
+        "correct": true,
+        "timestamp": "2026-08-22T12:14:36.199809+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
