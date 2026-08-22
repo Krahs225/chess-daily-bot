@@ -1,107 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-04-22",
-    "title": "Forcing The Promotion",
-    "fen": "2r4k/p5pp/1p1P1r2/3B1p2/8/8/1P3PPP/4R1K1 w - - 0 1",
-    "current_fen": "4Br1k/p2P3p/1p4p1/5p2/8/8/1P3PPP/6K1 b - - 1 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r4k/p5pp/1p1P1r2/3B1p2/8/8/1P3PPP/4R1K1 w - - 0 1\"]\r\n\r\n1. d7 Rd8 2. Re8+ Rf8 3. Bf7 g6 4. Rxf8+ Rxf8 5. Be8\r\n*",
+    "url": "https://www.chess.com/daily/2021-07-31",
+    "title": "So Close",
+    "fen": "8/3R4/4N3/P1b4p/6k1/8/4pP1P/6K1 w - - 0 1",
+    "current_fen": "8/3R4/4N3/P1b4p/6k1/8/4pP1P/6K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/3R4/4N3/P1b4p/6k1/8/4pP1P/6K1 w - - 0 1\"]\r\n\r\n1.h3+ Kf5 2.Nd4+ Bxd4 3.Re7 Be5 4.Rxe5+ Kxe5 5.f4+ Kxf4 6.Kf2 *",
     "all_moves": [
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "h2h3",
+        "san": "h3+",
         "color": "white"
       },
       {
-        "uci": "c8d8",
-        "san": "Rd8",
+        "uci": "g4f5",
+        "san": "Kf5",
         "color": "black"
       },
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "e6d4",
+        "san": "Nd4+",
         "color": "white"
       },
       {
-        "uci": "f6f8",
-        "san": "Rf8",
+        "uci": "c5d4",
+        "san": "Bxd4",
         "color": "black"
       },
       {
-        "uci": "d5f7",
-        "san": "Bf7",
+        "uci": "d7e7",
+        "san": "Re7",
         "color": "white"
       },
       {
-        "uci": "g7g6",
-        "san": "g6",
+        "uci": "d4e5",
+        "san": "Be5",
         "color": "black"
       },
       {
-        "uci": "e8f8",
-        "san": "Rxf8+",
+        "uci": "e7e5",
+        "san": "Rxe5+",
         "color": "white"
       },
       {
-        "uci": "d8f8",
-        "san": "Rxf8",
+        "uci": "f5e5",
+        "san": "Kxe5",
         "color": "black"
       },
       {
-        "uci": "f7e8",
-        "san": "Be8",
+        "uci": "f2f4",
+        "san": "f4+",
+        "color": "white"
+      },
+      {
+        "uci": "e5f4",
+        "san": "Kxf4",
+        "color": "black"
+      },
+      {
+        "uci": "g1f2",
+        "san": "Kf2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "h2h3",
+        "san": "h3+",
         "color": "white"
       },
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "e6d4",
+        "san": "Nd4+",
         "color": "white"
       },
       {
-        "uci": "d5f7",
-        "san": "Bf7",
+        "uci": "d7e7",
+        "san": "Re7",
         "color": "white"
       },
       {
-        "uci": "e8f8",
-        "san": "Rxf8+",
+        "uci": "e7e5",
+        "san": "Rxe5+",
         "color": "white"
       },
       {
-        "uci": "f7e8",
-        "san": "Be8",
+        "uci": "f2f4",
+        "san": "f4+",
+        "color": "white"
+      },
+      {
+        "uci": "g1f2",
+        "san": "Kf2",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-22T13:53:31.760569+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-22T13:54:09.678071+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787406811760",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1540720582268555398,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "be8",
-        "correct": true,
-        "timestamp": "2026-08-22T13:53:57.199735+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787406849678",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
