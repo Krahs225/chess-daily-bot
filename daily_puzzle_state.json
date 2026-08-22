@@ -1,122 +1,107 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-08-28",
-    "title": "Lasker - Torre, 1925",
-    "fen": "r3rnk1/pb3pp1/3pp2p/1q4BQ/1P1P4/4N1R1/P4PPP/4R1K1 w - - 0 1",
-    "current_fen": "r3rnk1/p5R1/3ppB1p/7q/1P1P4/4N3/P4PPP/4R1K1 b - - 2 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3rnk1/pb3pp1/3pp2p/1q4BQ/1P1P4/4N1R1/P4PPP/4R1K1 w - - 0 1\"]\r\n\r\n1. Bf6 Qxh5 2. Rxg7+ Kh8 3. Rxf7+ Kg8 4. Rg7+ Kh8 5. Rxb7+ Kg8 6. Rg7+\r\n*",
+    "url": "https://www.chess.com/daily/2020-05-19",
+    "title": "Endgame Forecast",
+    "fen": "8/8/8/6p1/7k/5KRP/5R2/5r1r b - - 0 1",
+    "current_fen": "8/8/8/6p1/7k/5KRP/5R2/5r1r b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/8/8/6p1/7k/5KRP/5R2/5r1r b - - 0 1\"]\r\n\r\n1...Rxf2+ 2.Kxf2 Rh2+ 3.Rg2 Kxh3 4.Rxh2+ Kxh2 5.Kf3 Kh3 *",
     "all_moves": [
       {
-        "uci": "g5f6",
-        "san": "Bf6",
-        "color": "white"
-      },
-      {
-        "uci": "b5h5",
-        "san": "Qxh5",
+        "uci": "f1f2",
+        "san": "Rxf2+",
         "color": "black"
       },
       {
-        "uci": "g3g7",
-        "san": "Rxg7+",
+        "uci": "f3f2",
+        "san": "Kxf2",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "h1h2",
+        "san": "Rh2+",
         "color": "black"
       },
       {
-        "uci": "g7f7",
-        "san": "Rxf7+",
+        "uci": "g3g2",
+        "san": "Rg2",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "h4h3",
+        "san": "Kxh3",
         "color": "black"
       },
       {
-        "uci": "f7g7",
-        "san": "Rg7+",
+        "uci": "g2h2",
+        "san": "Rxh2+",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "h3h2",
+        "san": "Kxh2",
         "color": "black"
       },
       {
-        "uci": "g7b7",
-        "san": "Rxb7+",
+        "uci": "f2f3",
+        "san": "Kf3",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "h2h3",
+        "san": "Kh3",
         "color": "black"
-      },
-      {
-        "uci": "b7g7",
-        "san": "Rg7+",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5f6",
-        "san": "Bf6",
-        "color": "white"
+        "uci": "f1f2",
+        "san": "Rxf2+",
+        "color": "black"
       },
       {
-        "uci": "g3g7",
-        "san": "Rxg7+",
-        "color": "white"
+        "uci": "h1h2",
+        "san": "Rh2+",
+        "color": "black"
       },
       {
-        "uci": "g7f7",
-        "san": "Rxf7+",
-        "color": "white"
+        "uci": "h4h3",
+        "san": "Kxh3",
+        "color": "black"
       },
       {
-        "uci": "f7g7",
-        "san": "Rg7+",
-        "color": "white"
+        "uci": "h3h2",
+        "san": "Kxh2",
+        "color": "black"
       },
       {
-        "uci": "g7b7",
-        "san": "Rxb7+",
-        "color": "white"
-      },
-      {
-        "uci": "b7g7",
-        "san": "Rg7+",
-        "color": "white"
+        "uci": "h2h3",
+        "san": "Kh3",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-22T13:46:44.164662+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 5,
+    "posted_at": "2026-08-22T13:47:59.134481+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787406404164",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1540718872263532638,
+    "puzzle_id": "random_1787406479134",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1540719187511484417,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rg7",
-        "correct": true,
-        "timestamp": "2026-08-22T13:47:53.180326+00:00"
+        "move": "rxf1",
+        "correct": false,
+        "timestamp": "2026-08-22T13:48:48.859632+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
