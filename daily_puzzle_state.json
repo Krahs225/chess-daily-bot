@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "3187 • R7Pgx",
     "fen": "8/5p1p/4b1pk/8/q1pQ2P1/7P/5P2/5BK1 w - - 0 34",
-    "current_fen": "8/5p1p/4b1pk/8/q1pQ2P1/7P/5P2/5BK1 w - - 0 34",
+    "current_fen": "8/5p1p/4b1pk/8/2pQ1PP1/q6P/8/5BK1 w - - 1 35",
     "all_moves": [
       {
         "uci": "f2f4",
@@ -83,8 +83,8 @@
     "url": "https://lichess.org/training/R7Pgx",
     "posted_at": "2026-08-22T12:40:51.253855+00:00",
     "puzzle_id": "random_lichess_3187_R7Pgx_1787402451253",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": null,
     "attempted_users": {
@@ -93,10 +93,16 @@
         "move": "h4",
         "correct": false,
         "timestamp": "2026-08-22T12:41:39.522603+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "f4",
+        "correct": true,
+        "timestamp": "2026-08-22T12:41:42.263810+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
