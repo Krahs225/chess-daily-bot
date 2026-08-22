@@ -1801,6 +1801,19 @@ class SurvivalBot(
         requester,
         force=False,
     ):
+        requester_user = (
+            requester.author
+            if hasattr(
+                requester,
+                "author",
+            )
+            else getattr(
+                requester,
+                "user",
+                requester,
+            )
+        )
+
         state = self.state
 
         active = active_current_run(
@@ -1851,7 +1864,7 @@ class SurvivalBot(
 
             view = ContinueOrRestartView(
                 self,
-                requester.id,
+                requester_user.id,
                 team_key,
             )
 
@@ -1873,11 +1886,11 @@ class SurvivalBot(
             "run_id":
                 f"{team_key}:{int(time.time())}",
             "started_by_id":
-                str(requester.id),
+                str(requester_user.id),
             "captain_id":
-                str(requester.id),
+                str(requester_user.id),
             "captain_name":
-                requester.display_name,
+                requester_user.display_name,
             "mode":
                 "coop",
             "status":
