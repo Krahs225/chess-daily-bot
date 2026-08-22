@@ -1,62 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-03-31",
-    "title": "Triangular Surprise",
-    "fen": "8/5r2/8/8/kp3p1B/2q5/4Q2P/1K6 w - - 0 1",
-    "current_fen": "8/5r2/8/8/1p3p1B/1kq5/Q6P/1K6 b - - 3 2",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/5r2/8/8/kp3p1B/2q5/4Q2P/1K6 w - - 0 1\"]\r\n\r\n1. Qa6+ Kb3 2. Qa2# *",
+    "url": "https://www.chess.com/daily/2014-02-04",
+    "title": "Mate in 3 ",
+    "fen": "5rk1/pp3ppp/4r3/4R3/1P3P1q/P7/1B2BPQP/5n1K w - - 0 1",
+    "current_fen": "5rk1/pp3ppp/4r3/4R3/1P3P1q/P7/1B2BPQP/5n1K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/pp3ppp/4r3/4R3/1P3P1q/P7/1B2BPQP/5n1K w - - 0 1\"]\r\n\r\n1. Qxg7+ Kxg7 2. Rg5+ Kh6 3. Bg7#\r\n*",
     "all_moves": [
       {
-        "uci": "e2a6",
-        "san": "Qa6+",
+        "uci": "g2g7",
+        "san": "Qxg7+",
         "color": "white"
       },
       {
-        "uci": "a4b3",
-        "san": "Kb3",
+        "uci": "g8g7",
+        "san": "Kxg7",
         "color": "black"
       },
       {
-        "uci": "a6a2",
-        "san": "Qa2#",
+        "uci": "e5g5",
+        "san": "Rg5+",
+        "color": "white"
+      },
+      {
+        "uci": "g7h6",
+        "san": "Kh6",
+        "color": "black"
+      },
+      {
+        "uci": "b2g7",
+        "san": "Bg7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e2a6",
-        "san": "Qa6+",
+        "uci": "g2g7",
+        "san": "Qxg7+",
         "color": "white"
       },
       {
-        "uci": "a6a2",
-        "san": "Qa2#",
+        "uci": "e5g5",
+        "san": "Rg5+",
+        "color": "white"
+      },
+      {
+        "uci": "b2g7",
+        "san": "Bg7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-22T16:46:52.100009+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-22T16:47:16.156705+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787417212100",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1540764204364202045,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qa2",
-        "correct": true,
-        "timestamp": "2026-08-22T16:47:04.927956+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787417236156",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
