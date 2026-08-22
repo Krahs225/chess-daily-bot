@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-01-22",
     "title": "Major Piece Disappearing Act",
     "fen": "8/6q1/1P5k/8/4pKP1/8/8/2R5 w - - 0 1",
-    "current_fen": "8/2q4k/1P6/8/4pKP1/8/8/8 w - - 0 3",
+    "current_fen": "8/2P4k/8/8/4pKP1/8/8/8 b - - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/6q1/1P5k/8/4pKP1/8/8/2R5 w - - 0 1\"]\r\n\r\n1. Rc6+ Kh7 2. Rc7 Qxc7+ 3. bxc7 *",
     "all_moves": [
       {
@@ -57,21 +57,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787406013536",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1540717234085957674,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rc7",
+        "move": "bxc7",
         "correct": true,
-        "timestamp": "2026-08-22T13:40:31.829414+00:00"
+        "timestamp": "2026-08-22T13:40:36.313258+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
