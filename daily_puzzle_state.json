@@ -1,117 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-04-09",
-    "title": "Volchok - Kreslavsky, USSR 1970",
-    "fen": "2kr2nr/1pp2qpp/p1pB4/4p3/8/6Q1/PP3PPP/RN1R2K1 w - - 0 1",
-    "current_fen": "2kB4/1pp3pp/p1p5/4p3/6n1/8/PP3PPP/RN4K1 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr2nr/1pp2qpp/p1pB4/4p3/8/6Q1/PP3PPP/RN1R2K1 w - - 0 1\"]\r\n\r\n1. Qg4+ Qd7 2. Be7 Nf6 3. Rxd7 Nxg4 4. Rxd8+ Rxd8 5. Bxd8\r\n*",
+    "url": "https://www.chess.com/daily/2010-11-14",
+    "title": "Powerful Diagonal",
+    "fen": "6k1/2b3p1/n1P2p2/pp3P1p/3Br3/PP4P1/6NP/3R2K1 b - - 0 1",
+    "current_fen": "6k1/2b3p1/n1P2p2/pp3P1p/3Br3/PP4P1/6NP/3R2K1 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/2b3p1/n1P2p2/pp3P1p/3Br3/PP4P1/6NP/3R2K1 b - - 0 1\"]\r\n\r\n1...Rd4 2. Rxd4 Bb6\r\n*",
     "all_moves": [
       {
-        "uci": "g3g4",
-        "san": "Qg4+",
-        "color": "white"
-      },
-      {
-        "uci": "f7d7",
-        "san": "Qd7",
+        "uci": "e4d4",
+        "san": "Rxd4",
         "color": "black"
       },
       {
-        "uci": "d6e7",
-        "san": "Be7",
+        "uci": "d1d4",
+        "san": "Rxd4",
         "color": "white"
       },
       {
-        "uci": "g8f6",
-        "san": "Nf6",
+        "uci": "c7b6",
+        "san": "Bb6",
         "color": "black"
-      },
-      {
-        "uci": "d1d7",
-        "san": "Rxd7",
-        "color": "white"
-      },
-      {
-        "uci": "f6g4",
-        "san": "Nxg4",
-        "color": "black"
-      },
-      {
-        "uci": "d7d8",
-        "san": "Rxd8+",
-        "color": "white"
-      },
-      {
-        "uci": "h8d8",
-        "san": "Rxd8",
-        "color": "black"
-      },
-      {
-        "uci": "e7d8",
-        "san": "Bxd8",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g3g4",
-        "san": "Qg4+",
-        "color": "white"
+        "uci": "e4d4",
+        "san": "Rxd4",
+        "color": "black"
       },
       {
-        "uci": "d6e7",
-        "san": "Be7",
-        "color": "white"
-      },
-      {
-        "uci": "d1d7",
-        "san": "Rxd7",
-        "color": "white"
-      },
-      {
-        "uci": "d7d8",
-        "san": "Rxd8+",
-        "color": "white"
-      },
-      {
-        "uci": "e7d8",
-        "san": "Bxd8",
-        "color": "white"
+        "uci": "c7b6",
+        "san": "Bb6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-22T14:02:45.766614+00:00",
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T14:03:12.534037+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787407365766",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1540722906210902066,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxd7",
-        "correct": true,
-        "timestamp": "2026-08-22T14:03:02.940636+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxd8",
-        "correct": true,
-        "timestamp": "2026-08-22T14:03:09.570123+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787407392534",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1540723017934446604,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
