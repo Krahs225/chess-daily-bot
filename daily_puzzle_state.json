@@ -1,61 +1,72 @@
 {
   "latest_random_puzzle": {
-    "title": "2001 • e3DDN",
-    "fen": "3r3k/p1q1b3/1p1rpn1p/2p2p2/2P2P2/2B2K2/PPB4P/R3Q1R1 w - - 5 25",
-    "current_fen": "3r4/p1q1b2k/1p1rpB1p/2p2p2/2P2P1Q/5K2/PPB4P/R5R1 b - - 0 26",
+    "url": "https://www.chess.com/daily/2013-09-02",
+    "title": "Mate in 3",
+    "fen": "3r3k/ppp3p1/2nb4/4p1p1/8/2P3P1/PP2QPBN/6K1 w - - 0 1",
+    "current_fen": "3r3k/ppp3p1/2nb4/4p1p1/8/2P3P1/PP2QPBN/6K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r3k/ppp3p1/2nb4/4p1p1/8/2P3P1/PP2QPBN/6K1 w - - 0 1\"]\r\n\r\n1. Qh5+ Kg8 2. Bd5+ Kf8 3. Qf7# \r\n*",
     "all_moves": [
       {
-        "uci": "e1h4",
-        "san": "Qh4",
+        "uci": "e2h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "h8h7",
-        "san": "Kh7",
+        "uci": "h8g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "c3f6",
-        "san": "Bxf6",
+        "uci": "g2d5",
+        "san": "Bd5+",
+        "color": "white"
+      },
+      {
+        "uci": "g8f8",
+        "san": "Kf8",
+        "color": "black"
+      },
+      {
+        "uci": "h5f7",
+        "san": "Qf7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1h4",
-        "san": "Qh4",
+        "uci": "e2h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "c3f6",
-        "san": "Bxf6",
+        "uci": "g2d5",
+        "san": "Bd5+",
+        "color": "white"
+      },
+      {
+        "uci": "h5f7",
+        "san": "Qf7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "pgn": "",
-    "url": "https://lichess.org/training/e3DDN",
-    "posted_at": "2026-08-22T12:52:21.761652+00:00",
-    "puzzle_id": "random_lichess_2001_e3DDN_1787403141761",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-22T12:52:55.514490+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1787403175514",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxf6",
-        "correct": true,
-        "timestamp": "2026-08-22T12:52:51.135081+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
