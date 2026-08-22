@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-08-17",
     "title": "The King's Penalty Box",
     "fen": "3r3r/1Q4p1/3b4/1p2k2p/7q/1P2PP1P/P5P1/3R3K w - - 2 27",
-    "current_fen": "3r3r/5Qp1/8/1pb1k2p/7q/1P2PP1P/P5P1/3R3K w - - 4 28",
+    "current_fen": "3r3r/5Qp1/8/1pb4p/4kP1q/1P2P2P/P5P1/3R3K w - - 1 29",
     "pgn": "[White \"Checkmatemaster7\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"3r3r/1Q4p1/3b4/1p2k2p/7q/1P2PP1P/P5P1/3R3K w - - 2 27\"]\r\n\r\n27. Qf7 Bc5 28. f4+ Ke4 29. Qe6# 1-0",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787400984026",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1540696139664334848,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rd4",
-        "correct": false,
-        "timestamp": "2026-08-22T12:17:21.514605+00:00"
+        "move": "f4",
+        "correct": true,
+        "timestamp": "2026-08-22T12:17:28.748179+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -85,7 +85,9 @@
     "first_move_user_name": "Sharkmeister",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
