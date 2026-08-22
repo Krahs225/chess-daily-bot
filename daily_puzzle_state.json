@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-05-08",
     "title": "Endgame Challenge",
     "fen": "k1B5/2PN3P/7q/P7/K7/8/8/8 w - - 0 1",
-    "current_fen": "k1B5/2P4P/1q6/P7/K7/8/8/8 w - - 0 2",
+    "current_fen": "k7/1qP4P/8/P7/K7/8/8/8 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k1B5/2PN3P/7q/P7/K7/8/8/8 w - - 0 1\"]\r\n\r\n1. Nb6+ Qxb6 2. Bb7+ Qxb7 3. h8=R+ Ka7 4. c8=N+ Ka6 5. Rh6+ \r\n*",
     "all_moves": [
       {
@@ -87,8 +87,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787403979707",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1540708703534321818,
     "attempted_users": {
@@ -100,16 +100,18 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "h8=Q",
-        "correct": false,
-        "timestamp": "2026-08-22T13:06:31.764771+00:00"
+        "move": "bb7",
+        "correct": true,
+        "timestamp": "2026-08-22T13:06:33.965723+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
