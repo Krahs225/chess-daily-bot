@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-10-29",
     "title": "Oh no! Connected passed pawns!",
     "fen": "3r4/p2n1Q2/1k3P2/1qb5/5B2/6P1/1pp2P1P/3R1RK1 w - - 0 1",
-    "current_fen": "3r4/p2n4/1kq1QP2/2b5/5B2/6P1/1pp2P1P/3R1RK1 w - - 2 2",
+    "current_fen": "3r4/p2n4/1k3P2/1qb5/5B2/1Q4P1/1pp2P1P/3R1RK1 w - - 4 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r4/p2n1Q2/1k3P2/1qb5/5B2/6P1/1pp2P1P/3R1RK1 w - - 0 1\"]\r\n\r\n1. Qe6+ Qc6 2. Qb3+ Qb5 3. Qxc2\r\n*",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787403932700",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1540708506620137543,
     "attempted_users": {
@@ -67,13 +67,21 @@
         "move": "qe6",
         "correct": true,
         "timestamp": "2026-08-22T13:05:40.958068+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qb3",
+        "correct": true,
+        "timestamp": "2026-08-22T13:05:49.483932+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
