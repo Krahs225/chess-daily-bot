@@ -1,117 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-11-30",
-    "title": "The Difference Of King Position",
-    "fen": "7k/n2rrppp/2pN2q1/1p1nP3/3P4/P4Q1P/1P4P1/4RR1K w - - 0 1",
-    "current_fen": "7k/n4qpp/2p5/1p1n4/3P4/P6P/1P4P1/5R1K w - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7k/n2rrppp/2pN2q1/1p1nP3/3P4/P4Q1P/1P4P1/4RR1K w - - 0 1\"]\r\n\r\n1. e6 Rxe6 2. Rxe6 Qxe6 3. Nxf7+ Rxf7 4. Qxf7 Qxf7 5. Rxf7\r\n*",
+    "url": "https://www.chess.com/daily/2026-01-21",
+    "title": "Reach for the Stars 🤩",
+    "fen": "4r1k1/2p2p2/p6p/1r2Bq2/1P1Q2p1/6P1/b3RP1P/4R1K1 w - - 0 33",
+    "current_fen": "4r1k1/2p2p2/p6p/1r2Bq2/1P1Q2p1/6P1/b3RP1P/4R1K1 w - - 0 33",
+    "pgn": "[Result \"1-0\"]\r\n[FEN \"4r1k1/2p2p2/p6p/1r2Bq2/1P1Q2p1/6P1/b3RP1P/4R1K1 w - - 0 33\"]\r\n\r\n33. Bh8 Rxe2 34. Qg7# 1-0",
     "all_moves": [
       {
-        "uci": "e5e6",
-        "san": "e6",
+        "uci": "e5h8",
+        "san": "Bh8",
         "color": "white"
       },
       {
-        "uci": "e7e6",
-        "san": "Rxe6",
+        "uci": "e8e2",
+        "san": "Rxe2",
         "color": "black"
       },
       {
-        "uci": "e1e6",
-        "san": "Rxe6",
-        "color": "white"
-      },
-      {
-        "uci": "g6e6",
-        "san": "Qxe6",
-        "color": "black"
-      },
-      {
-        "uci": "d6f7",
-        "san": "Nxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "d7f7",
-        "san": "Rxf7",
-        "color": "black"
-      },
-      {
-        "uci": "f3f7",
-        "san": "Qxf7",
-        "color": "white"
-      },
-      {
-        "uci": "e6f7",
-        "san": "Qxf7",
-        "color": "black"
-      },
-      {
-        "uci": "f1f7",
-        "san": "Rxf7",
+        "uci": "d4g7",
+        "san": "Qg7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5e6",
-        "san": "e6",
+        "uci": "e5h8",
+        "san": "Bh8",
         "color": "white"
       },
       {
-        "uci": "e1e6",
-        "san": "Rxe6",
-        "color": "white"
-      },
-      {
-        "uci": "d6f7",
-        "san": "Nxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "f3f7",
-        "san": "Qxf7",
-        "color": "white"
-      },
-      {
-        "uci": "f1f7",
-        "san": "Rxf7",
+        "uci": "d4g7",
+        "san": "Qg7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-22T13:08:52.671581+00:00",
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T13:09:28.459134+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787404132671",
-    "next_solution_index": 8,
-    "next_player_index": 4,
+    "puzzle_id": "random_1787404168459",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1540709345464029235,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxf7",
-        "correct": true,
-        "timestamp": "2026-08-22T13:09:24.433575+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nxf7",
-        "correct": false,
-        "timestamp": "2026-08-22T13:09:17.152423+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
