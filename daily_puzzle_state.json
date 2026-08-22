@@ -1,126 +1,102 @@
 {
   "latest_random_puzzle": {
-    "title": "2833 • lg089",
-    "fen": "8/5p2/p1k2p1p/4p3/PPKp4/7P/5PP1/8 w - - 2 39",
-    "current_fen": "8/5p2/p1k2p1p/4p3/PPKp4/7P/5PP1/8 w - - 2 39",
+    "url": "https://www.chess.com/daily/2023-11-27",
+    "title": "X-Ray Counterplay",
+    "fen": "6k1/1R3Rbp/2p3p1/1p2p3/1P1pP3/r2Nn3/2P3PP/6K1 b - - 0 1",
+    "current_fen": "8/5kbp/2p3p1/1p2p3/1P1pP3/3Nn3/2P1K1PP/8 w - - 0 5",
+    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/1R3Rbp/2p3p1/1p2p3/1P1pP3/r2Nn3/2P3PP/6K1 b - - 0 1\"]\r\n\r\n1... Ra1+ 2. Kf2 Rf1+ 3. Ke2 Rxf7 4. Rxf7 Kxf7 *",
     "all_moves": [
       {
-        "uci": "g2g4",
-        "san": "g4",
-        "color": "white"
-      },
-      {
-        "uci": "c6d6",
-        "san": "Kd6",
+        "uci": "a3a1",
+        "san": "Ra1+",
         "color": "black"
       },
       {
-        "uci": "h3h4",
-        "san": "h4",
+        "uci": "g1f2",
+        "san": "Kf2",
         "color": "white"
       },
       {
-        "uci": "f6f5",
-        "san": "f5",
+        "uci": "a1f1",
+        "san": "Rf1+",
         "color": "black"
       },
       {
-        "uci": "g4f5",
-        "san": "gxf5",
+        "uci": "f2e2",
+        "san": "Ke2",
         "color": "white"
       },
       {
-        "uci": "f7f6",
-        "san": "f6",
+        "uci": "f1f7",
+        "san": "Rxf7",
         "color": "black"
       },
       {
-        "uci": "f2f4",
-        "san": "f4",
+        "uci": "b7f7",
+        "san": "Rxf7",
         "color": "white"
       },
       {
-        "uci": "h6h5",
-        "san": "h5",
+        "uci": "g8f7",
+        "san": "Kxf7",
         "color": "black"
-      },
-      {
-        "uci": "f4e5",
-        "san": "fxe5+",
-        "color": "white"
-      },
-      {
-        "uci": "d6e5",
-        "san": "Kxe5",
-        "color": "black"
-      },
-      {
-        "uci": "c4d3",
-        "san": "Kd3",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g2g4",
-        "san": "g4",
-        "color": "white"
+        "uci": "a3a1",
+        "san": "Ra1+",
+        "color": "black"
       },
       {
-        "uci": "h3h4",
-        "san": "h4",
-        "color": "white"
+        "uci": "a1f1",
+        "san": "Rf1+",
+        "color": "black"
       },
       {
-        "uci": "g4f5",
-        "san": "gxf5",
-        "color": "white"
+        "uci": "f1f7",
+        "san": "Rxf7",
+        "color": "black"
       },
       {
-        "uci": "f2f4",
-        "san": "f4",
-        "color": "white"
-      },
-      {
-        "uci": "f4e5",
-        "san": "fxe5+",
-        "color": "white"
-      },
-      {
-        "uci": "c4d3",
-        "san": "Kd3",
-        "color": "white"
+        "uci": "g8f7",
+        "san": "Kxf7",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "pgn": "",
-    "url": "https://lichess.org/training/lg089",
-    "posted_at": "2026-08-22T10:26:12.841022+00:00",
-    "puzzle_id": "random_lichess_2833_lg089_1787394372841",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-22T11:53:33.652762+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1787399613652",
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
+    "message_id": 1540690391463104623,
     "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "f4",
-        "correct": false,
-        "timestamp": "2026-08-22T10:28:07.600814+00:00"
-      },
       "442597396195704832": {
         "name": "Thice",
-        "move": "f3",
-        "correct": false,
-        "timestamp": "2026-08-22T10:28:15.935970+00:00"
+        "move": "Kxf7",
+        "correct": true,
+        "timestamp": "2026-08-22T11:53:48.206893+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rf1",
+        "correct": true,
+        "timestamp": "2026-08-22T11:53:40.853849+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
