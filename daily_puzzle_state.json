@@ -1,113 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-04-27",
-    "title": "On The 7th",
-    "fen": "6k1/1b5r/p7/8/1PP5/6P1/1K1R1R1P/4r3 w - - 0 1",
-    "current_fen": "8/1R6/p5k1/8/1PP5/6P1/1K5P/4r3 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/1b5r/p7/8/1PP5/6P1/1K1R1R1P/4r3 w - - 0 1\"]\r\n\r\n1. Rd8+ Kg7 2. Rd7+ Kg6 3. Rxh7 Kxh7 4. Rf7+ Kg6 5. Rxb7 \r\n*",
+    "url": "https://www.chess.com/daily/2013-01-07",
+    "title": "Fischer - Panno, Buenos Aires 1970",
+    "fen": "2n5/4qk2/4pNnQ/pb1pP3/1p1P2P1/1P4K1/P4P2/8 w - - 0 1",
+    "current_fen": "2n5/4qk2/4pNnQ/pb1pP3/1p1P2P1/1P4K1/P4P2/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2n5/4qk2/4pNnQ/pb1pP3/1p1P2P1/1P4K1/P4P2/8 w - - 0 1\"]\r\n\r\n1. Qh7+ Kf8 2. Qg8#\r\n*",
     "all_moves": [
       {
-        "uci": "d2d8",
-        "san": "Rd8+",
+        "uci": "h6h7",
+        "san": "Qh7+",
         "color": "white"
       },
       {
-        "uci": "g8g7",
-        "san": "Kg7",
+        "uci": "f7f8",
+        "san": "Kf8",
         "color": "black"
       },
       {
-        "uci": "d8d7",
-        "san": "Rd7+",
-        "color": "white"
-      },
-      {
-        "uci": "g7g6",
-        "san": "Kg6",
-        "color": "black"
-      },
-      {
-        "uci": "d7h7",
-        "san": "Rxh7",
-        "color": "white"
-      },
-      {
-        "uci": "g6h7",
-        "san": "Kxh7",
-        "color": "black"
-      },
-      {
-        "uci": "f2f7",
-        "san": "Rf7+",
-        "color": "white"
-      },
-      {
-        "uci": "h7g6",
-        "san": "Kg6",
-        "color": "black"
-      },
-      {
-        "uci": "f7b7",
-        "san": "Rxb7",
+        "uci": "h7g8",
+        "san": "Qg8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2d8",
-        "san": "Rd8+",
+        "uci": "h6h7",
+        "san": "Qh7+",
         "color": "white"
       },
       {
-        "uci": "d8d7",
-        "san": "Rd7+",
-        "color": "white"
-      },
-      {
-        "uci": "d7h7",
-        "san": "Rxh7",
-        "color": "white"
-      },
-      {
-        "uci": "f2f7",
-        "san": "Rf7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7b7",
-        "san": "Rxb7",
+        "uci": "h7g8",
+        "san": "Qg8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-22T13:04:10.281758+00:00",
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T13:04:29.874087+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787403850281",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1540708161265078312,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rxb7",
-        "correct": true,
-        "timestamp": "2026-08-22T13:04:24.836405+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rf7",
-        "correct": false,
-        "timestamp": "2026-08-22T13:04:21.768694+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787403869874",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
