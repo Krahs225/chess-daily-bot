@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-03-31",
     "title": "Triangular Surprise",
     "fen": "8/5r2/8/8/kp3p1B/2q5/4Q2P/1K6 w - - 0 1",
-    "current_fen": "8/5r2/8/8/kp3p1B/2q5/4Q2P/1K6 w - - 0 1",
+    "current_fen": "8/5r2/Q7/8/1p3p1B/1kq5/7P/1K6 w - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/5r2/8/8/kp3p1B/2q5/4Q2P/1K6 w - - 0 1\"]\r\n\r\n1. Qa6+ Kb3 2. Qa2# *",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787417212100",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540764204364202045,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qa6",
+        "correct": true,
+        "timestamp": "2026-08-22T16:47:02.646553+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
