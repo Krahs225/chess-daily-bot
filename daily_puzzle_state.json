@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "3044 • Qt9mp",
     "fen": "r3k1nr/pQp1bppp/3q4/4R3/8/8/PPPP2PP/RNB4K b kq - 0 12",
-    "current_fen": "r3k1nr/pQp1bppp/3q4/4R3/8/8/PPPP2PP/RNB4K b kq - 0 12",
+    "current_fen": "r3k1nr/p1p1bppp/2Q5/4q3/8/8/PPPP2PP/RNB4K b kq - 1 13",
     "all_moves": [
       {
         "uci": "d6e5",
@@ -113,13 +113,20 @@
     "url": "https://lichess.org/training/Qt9mp",
     "posted_at": "2026-08-22T12:48:25.743653+00:00",
     "puzzle_id": "random_lichess_3044_Qt9mp_1787402905743",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Qxe5",
+        "correct": true,
+        "timestamp": "2026-08-22T12:48:55.297272+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
