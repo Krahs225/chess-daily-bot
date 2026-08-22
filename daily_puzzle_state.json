@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-01-21",
     "title": "Rook On The Seventh",
     "fen": "2r1r2k/pp2q2p/2p1Pbp1/4BpQn/8/1B6/PPP3PP/3RR2K w - - 0 1",
-    "current_fen": "2r1r2k/pp2q2p/2p1Pbp1/4BpQn/8/1B6/PPP3PP/3RR2K w - - 0 1",
+    "current_fen": "2r1rq1k/pp1R3p/2p1Pbp1/4BpQn/8/1B6/PPP3PP/4R2K w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1r2k/pp2q2p/2p1Pbp1/4BpQn/8/1B6/PPP3PP/3RR2K w - - 0 1\"]\r\n\r\n1. Rd7 Qf8 2. Rf7\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787406984034",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540721304431366235,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rd7",
+        "correct": true,
+        "timestamp": "2026-08-22T13:56:30.368734+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
