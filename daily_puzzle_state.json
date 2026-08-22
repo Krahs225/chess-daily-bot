@@ -1,121 +1,54 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-10-06",
-    "title": "All Zugzwang, No Hope",
-    "fen": "8/8/1p6/p7/kq4p1/3Q4/K7/8 w - - 0 11",
-    "current_fen": "8/3Q4/1p6/pq6/k5p1/8/K7/8 w - - 2 12",
-    "pgn": "[White \"Prokes\"]\r\n[Black \"Study\"]\r\n[Result \"1-0\"]\r\n[FEN \"8/8/1p6/p7/kq4p1/3Q4/K7/8 w - - 0 11\"]\r\n\r\n11. Qd7+ Qb5 12. Qxg4+ Qb4 13. Qd7+ Qb5 14. Qd4+ Qb4 15. Qd3 Qc5 16. Qb3# 1-0",
+    "url": "https://www.chess.com/daily/2018-03-11",
+    "title": "Forcing The Opponent's Hand",
+    "fen": "2R5/8/8/1N6/1B6/1p6/Rp2K3/nkb5 w - - 0 1",
+    "current_fen": "2R5/8/8/1N6/1B6/1p6/Rp2K3/nkb5 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2R5/8/8/1N6/1B6/1p6/Rp2K3/nkb5 w - - 0 1\"]\r\n\r\n1. Rc2 bxc2 2. Nc3#\r\n*",
     "all_moves": [
       {
-        "uci": "d3d7",
-        "san": "Qd7+",
+        "uci": "c8c2",
+        "san": "Rc2",
         "color": "white"
       },
       {
-        "uci": "b4b5",
-        "san": "Qb5",
+        "uci": "b3c2",
+        "san": "bxc2",
         "color": "black"
       },
       {
-        "uci": "d7g4",
-        "san": "Qxg4+",
-        "color": "white"
-      },
-      {
-        "uci": "b5b4",
-        "san": "Qb4",
-        "color": "black"
-      },
-      {
-        "uci": "g4d7",
-        "san": "Qd7+",
-        "color": "white"
-      },
-      {
-        "uci": "b4b5",
-        "san": "Qb5",
-        "color": "black"
-      },
-      {
-        "uci": "d7d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "b5b4",
-        "san": "Qb4",
-        "color": "black"
-      },
-      {
-        "uci": "d4d3",
-        "san": "Qd3",
-        "color": "white"
-      },
-      {
-        "uci": "b4c5",
-        "san": "Qc5",
-        "color": "black"
-      },
-      {
-        "uci": "d3b3",
-        "san": "Qb3#",
+        "uci": "b5c3",
+        "san": "Nc3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3d7",
-        "san": "Qd7+",
+        "uci": "c8c2",
+        "san": "Rc2",
         "color": "white"
       },
       {
-        "uci": "d7g4",
-        "san": "Qxg4+",
-        "color": "white"
-      },
-      {
-        "uci": "g4d7",
-        "san": "Qd7+",
-        "color": "white"
-      },
-      {
-        "uci": "d7d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "d4d3",
-        "san": "Qd3",
-        "color": "white"
-      },
-      {
-        "uci": "d3b3",
-        "san": "Qb3#",
+        "uci": "b5c3",
+        "san": "Nc3#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-22T16:59:40.966567+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T17:00:43.347117+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787417980966",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "puzzle_id": "random_1787418043347",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1540767429121146941,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qd4",
-        "correct": false,
-        "timestamp": "2026-08-22T17:00:05.794303+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": 1540767690493395065,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
