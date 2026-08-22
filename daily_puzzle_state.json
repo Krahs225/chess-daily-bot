@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-02-05",
     "title": "Do Bishops Only Attack One Color?",
     "fen": "r1b1k2r/4bp2/p3pn1p/1p1qB1p1/3p2P1/3B1N2/PPP1QP1P/R4KR1 w kq - 0 16",
-    "current_fen": "r1b1k2r/4bp2/p3pn1p/1p1qB1p1/3p2P1/3B1N2/PPP1QP1P/R4KR1 w kq - 0 16",
+    "current_fen": "r1b1k2r/5p2/p2qpb1p/1p4p1/3pB1P1/5N2/PPP1QP1P/R4KR1 w kq - 2 18",
     "pgn": "[Event \"New York MCC\"]\r\n[Site \"New York\"]\r\n[Date \"1994.??.??\"]\r\n[Round \"5\"]\r\n[White \"Gurevich, Ilya\"]\r\n[Black \"Leveille, Francois\"]\r\n[Result \"1-0\"]\r\n[ECO \"C10\"]\r\n[WhiteElo \"2585\"]\r\n[BlackElo \"2370\"]\r\n[FEN \"r1b1k2r/4bp2/p3pn1p/1p1qB1p1/3p2P1/3B1N2/PPP1QP1P/R4KR1 w kq - 0 16\"]\r\n\r\n16. Bxf6 Bxf6 17. Be4 Qd6 18. Bxa8 1-0",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787405987414",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540717124815949824,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "be4",
+        "correct": true,
+        "timestamp": "2026-08-22T13:40:02.382587+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
