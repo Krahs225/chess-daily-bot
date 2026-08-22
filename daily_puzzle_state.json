@@ -1,68 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-01-07",
-    "title": "Fischer - Panno, Buenos Aires 1970",
-    "fen": "2n5/4qk2/4pNnQ/pb1pP3/1p1P2P1/1P4K1/P4P2/8 w - - 0 1",
-    "current_fen": "2n2kQ1/4q3/4pNn1/pb1pP3/1p1P2P1/1P4K1/P4P2/8 b - - 3 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2n5/4qk2/4pNnQ/pb1pP3/1p1P2P1/1P4K1/P4P2/8 w - - 0 1\"]\r\n\r\n1. Qh7+ Kf8 2. Qg8#\r\n*",
+    "url": "https://www.chess.com/daily/2017-08-28",
+    "title": "Outside The Realm",
+    "fen": "1K6/P7/pkrN4/1r4R1/1p6/1P5p/7P/8 w - - 0 1",
+    "current_fen": "1K6/P7/pkrN4/1r4R1/1p6/1P5p/7P/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1K6/P7/pkrN4/1r4R1/1p6/1P5p/7P/8 w - - 0 1\"]\r\n\r\n1. a8=N+ Ka5+ 2. Nb7# \r\n*",
     "all_moves": [
       {
-        "uci": "h6h7",
-        "san": "Qh7+",
+        "uci": "a7a8n",
+        "san": "a8=N+",
         "color": "white"
       },
       {
-        "uci": "f7f8",
-        "san": "Kf8",
+        "uci": "b6a5",
+        "san": "Ka5+",
         "color": "black"
       },
       {
-        "uci": "h7g8",
-        "san": "Qg8#",
+        "uci": "d6b7",
+        "san": "Nb7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6h7",
-        "san": "Qh7+",
+        "uci": "a7a8n",
+        "san": "a8=N+",
         "color": "white"
       },
       {
-        "uci": "h7g8",
-        "san": "Qg8#",
+        "uci": "d6b7",
+        "san": "Nb7#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-08-22T13:04:29.874087+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-22T13:04:44.732960+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787403869874",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1540708242685038673,
+    "puzzle_id": "random_1787403884732",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1540708305087758418,
     "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qg8",
-        "correct": true,
-        "timestamp": "2026-08-22T13:04:36.861149+00:00"
-      },
       "442597396195704832": {
         "name": "Thice",
-        "move": "g8",
+        "move": "nc4",
         "correct": false,
-        "timestamp": "2026-08-22T13:04:36.342352+00:00"
+        "timestamp": "2026-08-22T13:04:49.251136+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
