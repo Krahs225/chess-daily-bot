@@ -1,89 +1,37 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-11-13",
-    "title": "Zugzwang in a Bottle",
-    "fen": "8/8/8/8/n1K1B3/P7/kp1N4/b7 w - - 0 1",
-    "current_fen": "8/8/8/8/n1K1B3/P7/kp1N4/b7 w - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/8/8/8/n1K1B3/P7/kp1N4/b7 w - - 0 1\"]\r\n\r\n1.Kb4 Nc3 2.Bb1+ Nxb1 3.Ne4 Nxa3 4.Nc3# *",
+    "url": "https://www.chess.com/daily/2013-09-14",
+    "title": "Powerful One Mover",
+    "fen": "7k/6pp/8/4Q3/4P3/q4r2/5bPP/3R3K w - - 0 1",
+    "current_fen": "7k/6pp/8/4Q3/4P3/q4r2/5bPP/3R3K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7k/6pp/8/4Q3/4P3/q4r2/5bPP/3R3K w - - 0 1\"]\r\n\r\n1. Qc3\r\n*",
     "all_moves": [
       {
-        "uci": "c4b4",
-        "san": "Kb4",
-        "color": "white"
-      },
-      {
-        "uci": "a4c3",
-        "san": "Nc3",
-        "color": "black"
-      },
-      {
-        "uci": "e4b1",
-        "san": "Bb1+",
-        "color": "white"
-      },
-      {
-        "uci": "c3b1",
-        "san": "Nxb1",
-        "color": "black"
-      },
-      {
-        "uci": "d2e4",
-        "san": "Ne4",
-        "color": "white"
-      },
-      {
-        "uci": "b1a3",
-        "san": "Nxa3",
-        "color": "black"
-      },
-      {
-        "uci": "e4c3",
-        "san": "Nc3#",
+        "uci": "e5c3",
+        "san": "Qc3",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4b4",
-        "san": "Kb4",
-        "color": "white"
-      },
-      {
-        "uci": "e4b1",
-        "san": "Bb1+",
-        "color": "white"
-      },
-      {
-        "uci": "d2e4",
-        "san": "Ne4",
-        "color": "white"
-      },
-      {
-        "uci": "e4c3",
-        "san": "Nc3#",
+        "uci": "e5c3",
+        "san": "Qc3",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-22T13:33:31.733770+00:00",
-    "answer_posted": true,
+    "player_move_count": 1,
+    "posted_at": "2026-08-22T13:34:24.761346+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787405611733",
+    "puzzle_id": "random_1787405664761",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1540715549099556934,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bb1",
-        "correct": false,
-        "timestamp": "2026-08-22T13:34:08.336811+00:00"
-      }
-    },
+    "message_id": null,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
