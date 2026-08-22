@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-12-30",
-    "title": "How to Cure the Light-Squared Blues",
-    "fen": "3r4/7R/2p1r2p/p1PpPR2/5B1k/2P4P/2b2K2/8 w - - 1 42",
-    "current_fen": "8/7b/2p1r2p/p1PpP3/5R2/2P3Bk/5K2/8 b - - 1 45",
-    "pgn": "[Event \"King Salman World Rapid\"]\r\n[Date \"2019.12.27\"]\r\n[Round \"8\"]\r\n[White \"Anton Guijarro, David\"]\r\n[Black \"Tari, Aryan\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2709\"]\r\n[BlackElo \"2562\"]\r\n[ECO \"A35\"]\r\n[FEN \"3r4/7R/2p1r2p/p1PpPR2/5B1k/2P4P/2b2K2/8 w - - 1 42\"]\r\n\r\n42.Bg3+ Kxh3 43.Rf4 Rf8 44.Rxf8 Bxh7 45.Rf4 1-0",
+    "url": "https://www.chess.com/daily/2020-11-13",
+    "title": "Zugzwang in a Bottle",
+    "fen": "8/8/8/8/n1K1B3/P7/kp1N4/b7 w - - 0 1",
+    "current_fen": "8/8/8/8/n1K1B3/P7/kp1N4/b7 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/8/8/8/n1K1B3/P7/kp1N4/b7 w - - 0 1\"]\r\n\r\n1.Kb4 Nc3 2.Bb1+ Nxb1 3.Ne4 Nxa3 4.Nc3# *",
     "all_moves": [
       {
-        "uci": "f4g3",
-        "san": "Bg3+",
+        "uci": "c4b4",
+        "san": "Kb4",
         "color": "white"
       },
       {
-        "uci": "h4h3",
-        "san": "Kxh3",
+        "uci": "a4c3",
+        "san": "Nc3",
         "color": "black"
       },
       {
-        "uci": "f5f4",
-        "san": "Rf4",
+        "uci": "e4b1",
+        "san": "Bb1+",
         "color": "white"
       },
       {
-        "uci": "d8f8",
-        "san": "Rf8",
+        "uci": "c3b1",
+        "san": "Nxb1",
         "color": "black"
       },
       {
-        "uci": "f4f8",
-        "san": "Rxf8",
+        "uci": "d2e4",
+        "san": "Ne4",
         "color": "white"
       },
       {
-        "uci": "c2h7",
-        "san": "Bxh7",
+        "uci": "b1a3",
+        "san": "Nxa3",
         "color": "black"
       },
       {
-        "uci": "f8f4",
-        "san": "Rf4",
+        "uci": "e4c3",
+        "san": "Nc3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4g3",
-        "san": "Bg3+",
+        "uci": "c4b4",
+        "san": "Kb4",
         "color": "white"
       },
       {
-        "uci": "f5f4",
-        "san": "Rf4",
+        "uci": "e4b1",
+        "san": "Bb1+",
         "color": "white"
       },
       {
-        "uci": "f4f8",
-        "san": "Rxf8",
+        "uci": "d2e4",
+        "san": "Ne4",
         "color": "white"
       },
       {
-        "uci": "f8f4",
-        "san": "Rf4",
+        "uci": "e4c3",
+        "san": "Nc3#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-22T13:32:06.533144+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-22T13:33:31.733770+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787405526533",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540715191627554866,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rf4",
-        "correct": true,
-        "timestamp": "2026-08-22T13:33:17.538008+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787405611733",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
