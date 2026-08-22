@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-10-06",
     "title": "All Zugzwang, No Hope",
     "fen": "8/8/1p6/p7/kq4p1/3Q4/K7/8 w - - 0 11",
-    "current_fen": "8/8/1p6/p7/kq4p1/3Q4/K7/8 w - - 0 11",
+    "current_fen": "8/3Q4/1p6/pq6/k5p1/8/K7/8 w - - 2 12",
     "pgn": "[White \"Prokes\"]\r\n[Black \"Study\"]\r\n[Result \"1-0\"]\r\n[FEN \"8/8/1p6/p7/kq4p1/3Q4/K7/8 w - - 0 11\"]\r\n\r\n11. Qd7+ Qb5 12. Qxg4+ Qb4 13. Qd7+ Qb5 14. Qd4+ Qb4 15. Qd3 Qc5 16. Qb3# 1-0",
     "all_moves": [
       {
@@ -102,13 +102,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787417980966",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540767429121146941,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qd7",
+        "correct": true,
+        "timestamp": "2026-08-22T16:59:51.828253+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
