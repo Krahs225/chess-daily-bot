@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-09-11",
     "title": "Trapped",
     "fen": "r1bqnrk1/pp1pppbp/6p1/n3P3/3N4/1BN1B3/PPP2PPP/R2QK2R w KQ - 0 1",
-    "current_fen": "r1bqnrk1/pp1pppbp/6p1/n3P3/3N4/1BN1B3/PPP2PPP/R2QK2R w KQ - 0 1",
+    "current_fen": "r1bqnr2/pp1ppkbp/6p1/n3P3/3N4/2N1B3/PPP2PPP/R2QK2R w KQ - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqnrk1/pp1pppbp/6p1/n3P3/3N4/1BN1B3/PPP2PPP/R2QK2R w KQ - 0 1\"]\r\n\r\n1. Bxf7+ Kxf7 2. Ne6\r\n*",
     "all_moves": [
       {
@@ -42,20 +42,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787407044207",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540721557289050252,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "ne6",
+        "move": "bxf7",
         "correct": false,
-        "timestamp": "2026-08-22T13:57:28.516287+00:00"
+        "timestamp": "2026-08-22T13:57:31.245476+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "bxf7",
+        "correct": true,
+        "timestamp": "2026-08-22T13:57:31.235978+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
