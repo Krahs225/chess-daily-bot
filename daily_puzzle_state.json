@@ -1,152 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-01-11",
-    "title": "Kotov - Reshevsky, Zurich 1953",
-    "fen": "8/1p6/1p1kp3/4Nppp/pPP2P2/P2K2PP/8/1n6 w - - 0 1",
-    "current_fen": "8/1p6/2k1p3/5p1P/pPp2P2/K4N2/6p1/8 b - - 0 8",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1p6/1p1kp3/4Nppp/pPP2P2/P2K2PP/8/1n6 w - - 0 1\"]\r\n\r\n1. Kc2 Nxa3+ 2. Kb2 h4 3. Kxa3 hxg3 4. Nf7+ Kc6 5. Nxg5 g2 6. Nf3 b5 7. h4 bxc4 8. h5\r\n*",
+    "url": "https://www.chess.com/daily/2018-04-16",
+    "title": "Restricted King",
+    "fen": "2r4r/1R2b3/k1qNbp1n/p1p3pp/2Pp4/3P2PP/1Q2KP2/8 w k - 0 1",
+    "current_fen": "2r4r/1R2b3/k2Nbp1n/pqp3pp/2Pp4/3P2PP/4KP2/8 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r4r/1R2b3/k1qNbp1n/p1p3pp/2Pp4/3P2PP/1Q2KP2/8 w k - 0 1\"]\r\n\r\n1. Qb5+ Qxb5 2. cxb5#\r\n*",
     "all_moves": [
       {
-        "uci": "d3c2",
-        "san": "Kc2",
+        "uci": "b2b5",
+        "san": "Qb5+",
         "color": "white"
       },
       {
-        "uci": "b1a3",
-        "san": "Nxa3+",
+        "uci": "c6b5",
+        "san": "Qxb5",
         "color": "black"
       },
       {
-        "uci": "c2b2",
-        "san": "Kb2",
-        "color": "white"
-      },
-      {
-        "uci": "h5h4",
-        "san": "h4",
-        "color": "black"
-      },
-      {
-        "uci": "b2a3",
-        "san": "Kxa3",
-        "color": "white"
-      },
-      {
-        "uci": "h4g3",
-        "san": "hxg3",
-        "color": "black"
-      },
-      {
-        "uci": "e5f7",
-        "san": "Nf7+",
-        "color": "white"
-      },
-      {
-        "uci": "d6c6",
-        "san": "Kc6",
-        "color": "black"
-      },
-      {
-        "uci": "f7g5",
-        "san": "Nxg5",
-        "color": "white"
-      },
-      {
-        "uci": "g3g2",
-        "san": "g2",
-        "color": "black"
-      },
-      {
-        "uci": "g5f3",
-        "san": "Nf3",
-        "color": "white"
-      },
-      {
-        "uci": "b6b5",
-        "san": "b5",
-        "color": "black"
-      },
-      {
-        "uci": "h3h4",
-        "san": "h4",
-        "color": "white"
-      },
-      {
-        "uci": "b5c4",
-        "san": "bxc4",
-        "color": "black"
-      },
-      {
-        "uci": "h4h5",
-        "san": "h5",
+        "uci": "c4b5",
+        "san": "cxb5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3c2",
-        "san": "Kc2",
+        "uci": "b2b5",
+        "san": "Qb5+",
         "color": "white"
       },
       {
-        "uci": "c2b2",
-        "san": "Kb2",
-        "color": "white"
-      },
-      {
-        "uci": "b2a3",
-        "san": "Kxa3",
-        "color": "white"
-      },
-      {
-        "uci": "e5f7",
-        "san": "Nf7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7g5",
-        "san": "Nxg5",
-        "color": "white"
-      },
-      {
-        "uci": "g5f3",
-        "san": "Nf3",
-        "color": "white"
-      },
-      {
-        "uci": "h3h4",
-        "san": "h4",
-        "color": "white"
-      },
-      {
-        "uci": "h4h5",
-        "san": "h5",
+        "uci": "c4b5",
+        "san": "cxb5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 8,
-    "posted_at": "2026-08-22T13:16:47.269758+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T13:19:06.038637+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787404607269",
-    "next_solution_index": 15,
-    "next_player_index": 8,
-    "solved": true,
-    "message_id": 1540711337234141205,
+    "puzzle_id": "random_1787404746038",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1540711918078005288,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "h5",
+        "move": "qb5",
         "correct": true,
-        "timestamp": "2026-08-22T13:18:59.520992+00:00"
+        "timestamp": "2026-08-22T13:19:18.921893+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
