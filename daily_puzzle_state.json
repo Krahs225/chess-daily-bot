@@ -1,97 +1,68 @@
 {
   "latest_random_puzzle": {
-    "title": "2439 • FPecD",
-    "fen": "2b2rk1/r4pp1/pp1q3p/2pPp2Q/2P1Pb2/2NB2RP/PP4P1/5RK1 w - - 4 22",
-    "current_fen": "2b2rk1/r3q1p1/pp6/2pPPp2/2P2Q2/2NB2RP/PP4P1/6K1 b - - 0 25",
+    "title": "2221 • D6LrE",
+    "fen": "8/5kp1/5p1p/br1Pp3/8/2pN1P2/3nB1PP/R6K w - - 0 36",
+    "current_fen": "8/5kp1/5p1p/br1Pp3/8/2pN1P2/3nB1PP/R6K w - - 0 36",
     "all_moves": [
       {
-        "uci": "f1f4",
-        "san": "Rxf4",
+        "uci": "d3e5",
+        "san": "Nxe5+",
         "color": "white"
       },
       {
-        "uci": "e5f4",
-        "san": "exf4",
+        "uci": "f6e5",
+        "san": "fxe5",
         "color": "black"
       },
       {
-        "uci": "e4e5",
-        "san": "e5",
+        "uci": "e2b5",
+        "san": "Bxb5",
         "color": "white"
       },
       {
-        "uci": "d6e7",
-        "san": "Qe7",
+        "uci": "d2b3",
+        "san": "Nb3",
         "color": "black"
       },
       {
-        "uci": "h5h6",
-        "san": "Qxh6",
-        "color": "white"
-      },
-      {
-        "uci": "f7f5",
-        "san": "f5",
-        "color": "black"
-      },
-      {
-        "uci": "h6f4",
-        "san": "Qxf4",
+        "uci": "a1a2",
+        "san": "Ra2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f1f4",
-        "san": "Rxf4",
+        "uci": "d3e5",
+        "san": "Nxe5+",
         "color": "white"
       },
       {
-        "uci": "e4e5",
-        "san": "e5",
+        "uci": "e2b5",
+        "san": "Bxb5",
         "color": "white"
       },
       {
-        "uci": "h5h6",
-        "san": "Qxh6",
-        "color": "white"
-      },
-      {
-        "uci": "h6f4",
-        "san": "Qxf4",
+        "uci": "a1a2",
+        "san": "Ra2",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
+    "player_move_count": 3,
     "pgn": "",
-    "url": "https://lichess.org/training/FPecD",
-    "posted_at": "2026-08-22T12:33:13.378360+00:00",
-    "puzzle_id": "random_lichess_2439_FPecD_1787401993378",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
+    "url": "https://lichess.org/training/D6LrE",
+    "posted_at": "2026-08-22T12:40:09.139544+00:00",
+    "puzzle_id": "random_lichess_2221_D6LrE_1787402409139",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxf4",
-        "correct": true,
-        "timestamp": "2026-08-22T12:39:33.822083+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rg6",
-        "correct": false,
-        "timestamp": "2026-08-22T12:38:54.756603+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -237,6 +208,9 @@
     ],
     "2439": [
       "FPecD"
+    ],
+    "2221": [
+      "D6LrE"
     ]
   }
 }
