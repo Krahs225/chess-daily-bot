@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-08-01",
     "title": "Which Capture Wins Material?",
     "fen": "2r3k1/3q1pp1/p3b2p/b3p3/N3P3/P4N1P/1P3PP1/2RQ2K1 b - - 0 1",
-    "current_fen": "2r3k1/3q1pp1/p3b2p/b3p3/N3P3/P4N1P/1P3PP1/2RQ2K1 b - - 0 1",
+    "current_fen": "6k1/3q1pp1/p3b2p/b3p3/N3P3/P4N1P/1P3PP1/2Q3K1 b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"2r3k1/3q1pp1/p3b2p/b3p3/N3P3/P4N1P/1P3PP1/2RQ2K1 b - - 0 1\"]\r\n\r\n1... Rxc1 2. Qxc1 Qxa4 *",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787401649450",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540698929526603881,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Bb3",
+        "correct": false,
+        "timestamp": "2026-08-22T12:27:35.448499+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
