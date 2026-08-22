@@ -1,23 +1,23 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-06-04",
-    "title": "Bayer-Falkbeer, Vienna 1852",
-    "fen": "rn3rk1/p4ppp/8/3N1R2/7Q/1B6/P1P1K1PP/q7 w - - 0 1",
-    "current_fen": "rn3r2/p3Nppk/8/7R/8/1B6/P1P1K1PP/q7 b - - 1 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn3rk1/p4ppp/8/3N1R2/7Q/1B6/P1P1K1PP/q7 w - - 0 1\"]\r\n\r\n1. Ne7+ Kh8 2. Qxh7+ Kxh7 3. Rh5#\r\n*",
+    "url": "https://www.chess.com/daily/2022-02-16",
+    "title": "Winning in Vera Menchik Style",
+    "fen": "r5rk/q2b1p1p/1p1p1PpQ/2nPp2P/2P1P3/2N5/Pp6/1K1R1BR1 w - - 0 1",
+    "current_fen": "r5rk/q2b3p/1p1p1PpQ/2nPp3/2P1P3/2N5/Pp6/1K1R1BR1 w - - 0 2",
+    "pgn": "[White \"Vera Menchik\"]\r\n[Black \"George Thomas (Position Manipulated)\"]\r\n[Result \"*\"]\r\n[FEN \"r5rk/q2b1p1p/1p1p1PpQ/2nPp2P/2P1P3/2N5/Pp6/1K1R1BR1 w - - 0 1\"]\r\n\r\n1.hxg6 fxg6 2.Qxh7+ Kxh7 3.Rh1+ Bh3 4.Rxh3# *",
     "all_moves": [
       {
-        "uci": "d5e7",
-        "san": "Ne7+",
+        "uci": "h5g6",
+        "san": "hxg6",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "f7g6",
+        "san": "fxg6",
         "color": "black"
       },
       {
-        "uci": "h4h7",
+        "uci": "h6h7",
         "san": "Qxh7+",
         "color": "white"
       },
@@ -27,51 +27,66 @@
         "color": "black"
       },
       {
-        "uci": "f5h5",
-        "san": "Rh5#",
+        "uci": "g1h1",
+        "san": "Rh1+",
+        "color": "white"
+      },
+      {
+        "uci": "d7h3",
+        "san": "Bh3",
+        "color": "black"
+      },
+      {
+        "uci": "h1h3",
+        "san": "Rxh3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5e7",
-        "san": "Ne7+",
+        "uci": "h5g6",
+        "san": "hxg6",
         "color": "white"
       },
       {
-        "uci": "h4h7",
+        "uci": "h6h7",
         "san": "Qxh7+",
         "color": "white"
       },
       {
-        "uci": "f5h5",
-        "san": "Rh5#",
+        "uci": "g1h1",
+        "san": "Rh1+",
+        "color": "white"
+      },
+      {
+        "uci": "h1h3",
+        "san": "Rxh3#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-22T14:18:27.817472+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-22T14:18:45.329110+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787408307817",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1540726856729362533,
+    "puzzle_id": "random_1787408325329",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1540726931975176213,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rh5",
+        "move": "hxg6",
         "correct": true,
-        "timestamp": "2026-08-22T14:18:37.601503+00:00"
+        "timestamp": "2026-08-22T14:19:03.517653+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
