@@ -1,106 +1,54 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-07-15",
-    "title": "Daniel Shapiro vs Maurice Ashley, New York, 1993",
-    "fen": "Rr6/3kr3/5p2/2PB3p/1p3P2/1PqQP2P/6P1/6K1 w - - 0 1",
-    "current_fen": "8/1R6/3Q1p2/k1P4p/1p3P2/1Pq1P2P/6P1/6K1 w - - 1 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"Rr6/3kr3/5p2/2PB3p/1p3P2/1PqQP2P/6P1/6K1 w - - 0 1\"]\r\n\r\n1. Bc6+ Kxc6 2. Qd6+ Kb5 3. Rxb8+ Rb7 4. Rxb7+ Ka5 5. Qb6#\r\n*",
+    "url": "https://www.chess.com/daily/2022-06-20",
+    "title": "Reading Tactical Signals",
+    "fen": "3r4/2q3kp/1r3p2/1pN2R2/1P4n1/8/1Q4PP/5R1K w - - 0 1",
+    "current_fen": "3r4/2q3kp/1r3p2/1pN2R2/1P4n1/8/1Q4PP/5R1K w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3r4/2q3kp/1r3p2/1pN2R2/1P4n1/8/1Q4PP/5R1K w - - 0 1\"]\r\n\r\n1. Rg5+ Kh8 2. Rxg4 *",
     "all_moves": [
       {
-        "uci": "d5c6",
-        "san": "Bc6+",
+        "uci": "f5g5",
+        "san": "Rg5+",
         "color": "white"
       },
       {
-        "uci": "d7c6",
-        "san": "Kxc6",
+        "uci": "g7h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "d3d6",
-        "san": "Qd6+",
-        "color": "white"
-      },
-      {
-        "uci": "c6b5",
-        "san": "Kb5",
-        "color": "black"
-      },
-      {
-        "uci": "a8b8",
-        "san": "Rxb8+",
-        "color": "white"
-      },
-      {
-        "uci": "e7b7",
-        "san": "Rb7",
-        "color": "black"
-      },
-      {
-        "uci": "b8b7",
-        "san": "Rxb7+",
-        "color": "white"
-      },
-      {
-        "uci": "b5a5",
-        "san": "Ka5",
-        "color": "black"
-      },
-      {
-        "uci": "d6b6",
-        "san": "Qb6#",
+        "uci": "g5g4",
+        "san": "Rxg4",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5c6",
-        "san": "Bc6+",
+        "uci": "f5g5",
+        "san": "Rg5+",
         "color": "white"
       },
       {
-        "uci": "d3d6",
-        "san": "Qd6+",
-        "color": "white"
-      },
-      {
-        "uci": "a8b8",
-        "san": "Rxb8+",
-        "color": "white"
-      },
-      {
-        "uci": "b8b7",
-        "san": "Rxb7+",
-        "color": "white"
-      },
-      {
-        "uci": "d6b6",
-        "san": "Qb6#",
+        "uci": "g5g4",
+        "san": "Rxg4",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-22T13:29:05.814454+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T13:31:00.432518+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787405345814",
-    "next_solution_index": 8,
-    "next_player_index": 4,
+    "puzzle_id": "random_1787405460432",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1540714433951694998,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxb7",
-        "correct": true,
-        "timestamp": "2026-08-22T13:30:52.788213+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
