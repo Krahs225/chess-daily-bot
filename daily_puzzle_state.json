@@ -1,77 +1,66 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-02-01",
-    "title": "Coming On In",
-    "fen": "4rk2/1p6/p1qr1bQ1/8/P7/1P5R/2P3PP/5R1K w - - 0 1",
-    "current_fen": "4rk2/1p1r3R/p4Q2/8/P7/1P6/2P3PP/7K b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4rk2/1p6/p1qr1bQ1/8/P7/1P5R/2P3PP/5R1K w - - 0 1\"]\r\n\r\n1. Rh7 Rd7 2. Rxf6+ Qxf6 3. Qxf6+ \r\n*",
+    "title": "2344 • U1am4",
+    "fen": "1B6/1K3k2/p7/6pp/2P2p2/4bPP1/PP6/8 b - - 0 30",
+    "current_fen": "1B6/1K3k2/p7/6pp/2P2p2/4bPP1/PP6/8 b - - 0 30",
     "all_moves": [
       {
-        "uci": "h3h7",
-        "san": "Rh7",
-        "color": "white"
-      },
-      {
-        "uci": "d6d7",
-        "san": "Rd7",
+        "uci": "g5g4",
+        "san": "g4",
         "color": "black"
       },
       {
-        "uci": "f1f6",
-        "san": "Rxf6+",
+        "uci": "b8f4",
+        "san": "Bxf4",
         "color": "white"
       },
       {
-        "uci": "c6f6",
-        "san": "Qxf6",
+        "uci": "e3f4",
+        "san": "Bxf4",
         "color": "black"
       },
       {
-        "uci": "g6f6",
-        "san": "Qxf6+",
+        "uci": "f3g4",
+        "san": "fxg4",
         "color": "white"
+      },
+      {
+        "uci": "h5g4",
+        "san": "hxg4",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h3h7",
-        "san": "Rh7",
-        "color": "white"
+        "uci": "g5g4",
+        "san": "g4",
+        "color": "black"
       },
       {
-        "uci": "f1f6",
-        "san": "Rxf6+",
-        "color": "white"
+        "uci": "e3f4",
+        "san": "Bxf4",
+        "color": "black"
       },
       {
-        "uci": "g6f6",
-        "san": "Qxf6+",
-        "color": "white"
+        "uci": "h5g4",
+        "san": "hxg4",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-22T12:24:53.513228+00:00",
-    "answer_posted": true,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_1787401493513",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1540698275542212621,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxf6",
-        "correct": true,
-        "timestamp": "2026-08-22T12:25:23.295778+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "pgn": "",
+    "url": "https://lichess.org/training/U1am4",
+    "posted_at": "2026-08-22T12:26:41.547522+00:00",
+    "puzzle_id": "random_lichess_2344_U1am4_1787401601547",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
@@ -207,6 +196,9 @@
     ],
     "2833": [
       "lg089"
+    ],
+    "2344": [
+      "U1am4"
     ]
   }
 }
