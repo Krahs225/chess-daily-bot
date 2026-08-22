@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-09-29",
     "title": "Mate in Three",
     "fen": "6kr/1q2r1p1/1p2N1Q1/4np2/1P1p4/6R1/7P/2R3K1 w KQkq - 0 1",
-    "current_fen": "6kr/1q2r1p1/1p2N1Q1/4np2/1P1p4/6R1/7P/2R3K1 w KQkq - 0 1",
+    "current_fen": "2q3kr/4r1p1/1p2N1Q1/4np2/1P1p4/6R1/7P/6K1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6kr/1q2r1p1/1p2N1Q1/4np2/1P1p4/6R1/7P/2R3K1 w KQkq - 0 1\"]\r\n\r\n1. Rc8+ Qxc8 2. Qxg7+ Rxg7 3. Rxg7#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787403779049",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540707861951283372,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rc8",
+        "correct": true,
+        "timestamp": "2026-08-22T13:03:04.596803+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
