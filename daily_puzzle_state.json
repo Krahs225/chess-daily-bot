@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-04-16",
     "title": "Restricted King",
     "fen": "2r4r/1R2b3/k1qNbp1n/p1p3pp/2Pp4/3P2PP/1Q2KP2/8 w k - 0 1",
-    "current_fen": "2r4r/1R2b3/k2Nbp1n/pqp3pp/2Pp4/3P2PP/4KP2/8 w - - 0 2",
+    "current_fen": "2r4r/1R2b3/k2Nbp1n/pPp3pp/3p4/3P2PP/4KP2/8 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r4r/1R2b3/k1qNbp1n/p1p3pp/2Pp4/3P2PP/1Q2KP2/8 w k - 0 1\"]\r\n\r\n1. Qb5+ Qxb5 2. cxb5#\r\n*",
     "all_moves": [
       {
@@ -42,21 +42,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787404746038",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1540711918078005288,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qb5",
+        "move": "cxb5",
         "correct": true,
-        "timestamp": "2026-08-22T13:19:18.921893+00:00"
+        "timestamp": "2026-08-22T13:19:21.352149+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
