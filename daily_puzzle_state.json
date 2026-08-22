@@ -1,105 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-11-18",
-    "title": "Strong Simplification",
-    "fen": "3r2k1/6r1/4NQp1/1p1qnp2/8/7R/5PP1/1R4K1 b - - 0 1",
-    "current_fen": "6k1/6r1/4Nnp1/1p3p2/8/6KR/5PP1/3r4 w - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r2k1/6r1/4NQp1/1p1qnp2/8/7R/5PP1/1R4K1 b - - 0 1\"]\r\n\r\n1...Qd1+ 2. Rxd1 Rxd1+ 3. Kh2 Ng4+ 4. Kg3 Nxf6\r\n*",
+    "url": "https://www.chess.com/daily/2016-05-18",
+    "title": "Motwani - Granda, Thessaloniki Olympiad 1988",
+    "fen": "8/2k5/2p4R/1p6/1P1K4/1r6/8/8 w - - 0 1",
+    "current_fen": "8/2k5/2p4R/1p6/1P1K4/1r6/8/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/2k5/2p4R/1p6/1P1K4/1r6/8/8 w - - 0 1\"]\r\n\r\n1. Rh4 Rxb4+ 2. Kc5\r\n*",
     "all_moves": [
       {
-        "uci": "d5d1",
-        "san": "Qd1+",
-        "color": "black"
-      },
-      {
-        "uci": "b1d1",
-        "san": "Rxd1",
+        "uci": "h6h4",
+        "san": "Rh4",
         "color": "white"
       },
       {
-        "uci": "d8d1",
-        "san": "Rxd1+",
+        "uci": "b3b4",
+        "san": "Rxb4+",
         "color": "black"
       },
       {
-        "uci": "g1h2",
-        "san": "Kh2",
+        "uci": "d4c5",
+        "san": "Kc5",
         "color": "white"
-      },
-      {
-        "uci": "e5g4",
-        "san": "Ng4+",
-        "color": "black"
-      },
-      {
-        "uci": "h2g3",
-        "san": "Kg3",
-        "color": "white"
-      },
-      {
-        "uci": "g4f6",
-        "san": "Nxf6",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5d1",
-        "san": "Qd1+",
-        "color": "black"
+        "uci": "h6h4",
+        "san": "Rh4",
+        "color": "white"
       },
       {
-        "uci": "d8d1",
-        "san": "Rxd1+",
-        "color": "black"
-      },
-      {
-        "uci": "e5g4",
-        "san": "Ng4+",
-        "color": "black"
-      },
-      {
-        "uci": "g4f6",
-        "san": "Nxf6",
-        "color": "black"
+        "uci": "d4c5",
+        "san": "Kc5",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-22T12:19:24.760168+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T12:19:56.769745+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787401164760",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540696896992051291,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Ng4",
-        "correct": true,
-        "timestamp": "2026-08-22T12:19:31.707530+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nxf6",
-        "correct": true,
-        "timestamp": "2026-08-22T12:19:33.780932+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787401196769",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
