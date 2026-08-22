@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-02-11",
     "title": "A Discovered Win",
     "fen": "r2qk2r/ppp2ppp/4pn2/8/1bBnP3/2N1BP2/PPQ2P1P/R3K2R w - - 0 1",
-    "current_fen": "r2qk2r/ppp2ppp/4pn2/8/1bBnP3/2N1BP2/PPQ2P1P/R3K2R w - - 0 1",
+    "current_fen": "r3k2r/ppp2ppp/4pn2/8/1bBqP3/2N2P2/PPQ2P1P/R3K2R w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qk2r/ppp2ppp/4pn2/8/1bBnP3/2N1BP2/PPQ2P1P/R3K2R w - - 0 1\"]\r\n\r\n1. Bxd4 Qxd4 2. Qa4+ c6 3. Qxb4 b5 4. Nxb5 cxb5 5. Bxb5+\r\n*",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787408361401",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540727081556508693,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "bxd4",
+        "correct": true,
+        "timestamp": "2026-08-22T14:19:27.987460+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
