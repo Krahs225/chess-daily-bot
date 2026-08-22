@@ -1,136 +1,53 @@
 {
   "latest_random_puzzle": {
-    "title": "3044 • Qt9mp",
-    "fen": "r3k1nr/pQp1bppp/3q4/4R3/8/8/PPPP2PP/RNB4K b kq - 0 12",
-    "current_fen": "3k3r/2p2ppp/5n2/2b5/3P3Q/8/PPP1q1PP/RNB4K w - - 1 19",
+    "title": "2001 • e3DDN",
+    "fen": "3r3k/p1q1b3/1p1rpn1p/2p2p2/2P2P2/2B2K2/PPB4P/R3Q1R1 w - - 5 25",
+    "current_fen": "3r3k/p1q1b3/1p1rpn1p/2p2p2/2P2P2/2B2K2/PPB4P/R3Q1R1 w - - 5 25",
     "all_moves": [
       {
-        "uci": "d6e5",
-        "san": "Qxe5",
-        "color": "black"
-      },
-      {
-        "uci": "b7c6",
-        "san": "Qc6+",
+        "uci": "e1h4",
+        "san": "Qh4",
         "color": "white"
       },
       {
-        "uci": "e8d8",
-        "san": "Kd8",
+        "uci": "h8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "c6a8",
-        "san": "Qxa8+",
+        "uci": "c3f6",
+        "san": "Bxf6",
         "color": "white"
-      },
-      {
-        "uci": "d8d7",
-        "san": "Kd7",
-        "color": "black"
-      },
-      {
-        "uci": "a8a7",
-        "san": "Qxa7",
-        "color": "white"
-      },
-      {
-        "uci": "e7c5",
-        "san": "Bc5",
-        "color": "black"
-      },
-      {
-        "uci": "a7a4",
-        "san": "Qa4+",
-        "color": "white"
-      },
-      {
-        "uci": "d7d8",
-        "san": "Kd8",
-        "color": "black"
-      },
-      {
-        "uci": "a4h4",
-        "san": "Qh4+",
-        "color": "white"
-      },
-      {
-        "uci": "g8f6",
-        "san": "Nf6",
-        "color": "black"
-      },
-      {
-        "uci": "d2d4",
-        "san": "d4",
-        "color": "white"
-      },
-      {
-        "uci": "e5e2",
-        "san": "Qe2",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6e5",
-        "san": "Qxe5",
-        "color": "black"
+        "uci": "e1h4",
+        "san": "Qh4",
+        "color": "white"
       },
       {
-        "uci": "e8d8",
-        "san": "Kd8",
-        "color": "black"
-      },
-      {
-        "uci": "d8d7",
-        "san": "Kd7",
-        "color": "black"
-      },
-      {
-        "uci": "e7c5",
-        "san": "Bc5",
-        "color": "black"
-      },
-      {
-        "uci": "d7d8",
-        "san": "Kd8",
-        "color": "black"
-      },
-      {
-        "uci": "g8f6",
-        "san": "Nf6",
-        "color": "black"
-      },
-      {
-        "uci": "e5e2",
-        "san": "Qe2",
-        "color": "black"
+        "uci": "c3f6",
+        "san": "Bxf6",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 7,
+    "player_color": "white",
+    "player_move_count": 2,
     "pgn": "",
-    "url": "https://lichess.org/training/Qt9mp",
-    "posted_at": "2026-08-22T12:48:25.743653+00:00",
-    "puzzle_id": "random_lichess_3044_Qt9mp_1787402905743",
-    "next_solution_index": 13,
-    "next_player_index": 7,
-    "solved": true,
+    "url": "https://lichess.org/training/e3DDN",
+    "posted_at": "2026-08-22T12:52:21.761652+00:00",
+    "puzzle_id": "random_lichess_2001_e3DDN_1787403141761",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qe2",
-        "correct": true,
-        "timestamp": "2026-08-22T12:51:57.178981+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -285,6 +202,9 @@
     ],
     "3044": [
       "Qt9mp"
+    ],
+    "2001": [
+      "e3DDN"
     ]
   }
 }
