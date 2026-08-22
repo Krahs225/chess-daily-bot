@@ -1,77 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-11-21",
-    "title": "Revealing Sunshine Upon a Gloomy Pin",
-    "fen": "2k1r2r/ppp2npp/2n5/8/3P1B2/2P2q2/PPQ1B2P/R3K2R w KQ - 0 1",
-    "current_fen": "4r2r/ppk2npp/2n5/8/3P4/2P2Q2/PP2B2P/R3K2R b KQ - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2k1r2r/ppp2npp/2n5/8/3P1B2/2P2q2/PPQ1B2P/R3K2R w KQ - 0 1\"]\r\n\r\n1. Qf5+ Kd8 2. Bxc7+ Kxc7 3. Qxf3 *",
+    "url": "https://www.chess.com/daily/2008-12-08",
+    "title": "Mate in 2",
+    "fen": "3q2r1/1p1P2pk/6Rp/3QBp1P/PP1P4/8/2r2PP1/6K1 b - - 0 1",
+    "current_fen": "6r1/1p1P2pk/6Rp/3QBp1P/PP1P3q/8/5PPK/2r5 w - - 3 3",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3q2r1/1p1P2pk/6Rp/3QBp1P/PP1P4/8/2r2PP1/6K1 b - - 0 1\"]\r\n\r\n1...Rc1+ 2. Kh2 Qh4#\r\n*",
     "all_moves": [
       {
-        "uci": "c2f5",
-        "san": "Qf5+",
-        "color": "white"
-      },
-      {
-        "uci": "c8d8",
-        "san": "Kd8",
+        "uci": "c2c1",
+        "san": "Rc1+",
         "color": "black"
       },
       {
-        "uci": "f4c7",
-        "san": "Bxc7+",
+        "uci": "g1h2",
+        "san": "Kh2",
         "color": "white"
       },
       {
-        "uci": "d8c7",
-        "san": "Kxc7",
+        "uci": "d8h4",
+        "san": "Qh4#",
         "color": "black"
-      },
-      {
-        "uci": "f5f3",
-        "san": "Qxf3",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c2f5",
-        "san": "Qf5+",
-        "color": "white"
+        "uci": "c2c1",
+        "san": "Rc1+",
+        "color": "black"
       },
       {
-        "uci": "f4c7",
-        "san": "Bxc7+",
-        "color": "white"
-      },
-      {
-        "uci": "f5f3",
-        "san": "Qxf3",
-        "color": "white"
+        "uci": "d8h4",
+        "san": "Qh4#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-22T12:53:36.720581+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T12:53:52.193139+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787403216720",
-    "next_solution_index": 5,
-    "next_player_index": 3,
+    "puzzle_id": "random_1787403232193",
+    "next_solution_index": 3,
+    "next_player_index": 2,
     "solved": true,
-    "message_id": 1540705504165371904,
+    "message_id": 1540705568136630277,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxf3",
+        "move": "qh4",
         "correct": true,
-        "timestamp": "2026-08-22T12:53:46.064442+00:00"
+        "timestamp": "2026-08-22T12:53:58.244303+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
