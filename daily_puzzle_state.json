@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "2200 • cujrf",
     "fen": "1kq3r1/1p2N2p/pQ1p3p/P1r5/4P3/8/1P3PPP/R4RK1 b - - 0 23",
-    "current_fen": "1k6/1p2N2p/pQ1p3p/P6r/4PK2/7q/1P3P2/R4R2 b - - 4 27",
+    "current_fen": "1k6/1p2N2p/pQ1p3p/P7/4PK1r/7q/1P3P2/R4R2 w - - 5 28",
     "all_moves": [
       {
         "uci": "g8g2",
@@ -83,9 +83,9 @@
     "url": "https://lichess.org/training/cujrf",
     "posted_at": "2026-08-22T10:18:56.376573+00:00",
     "puzzle_id": "random_lichess_2200_cujrf_1787393936376",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": null,
     "attempted_users": {
       "442597396195704832": {
@@ -96,16 +96,18 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qh3",
-        "correct": false,
-        "timestamp": "2026-08-22T10:19:45.035543+00:00"
+        "move": "rh4",
+        "correct": true,
+        "timestamp": "2026-08-22T10:19:56.369990+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
