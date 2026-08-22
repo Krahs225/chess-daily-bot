@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-05-30",
     "title": "How to Not Lose Tempo",
     "fen": "5k2/5p2/4p3/p3P3/Pp1q1PQ1/1P2b1P1/2B5/7K b - - 0 1",
-    "current_fen": "5k2/5p2/4p3/p3P3/Pp1q1PQ1/1P2b1P1/2B5/7K b - - 0 1",
+    "current_fen": "5k2/5p2/4p3/p2qP3/Pp3PQ1/1P2b1P1/2B4K/8 b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5k2/5p2/4p3/p3P3/Pp1q1PQ1/1P2b1P1/2B5/7K b - - 0 1\"]\r\n\r\n1...Qd5+ 2. Kh2 Qd2+ 3. Kh3 Qxc2\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787405907430",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540716788902269030,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qd5",
+        "correct": true,
+        "timestamp": "2026-08-22T13:38:51.063315+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
