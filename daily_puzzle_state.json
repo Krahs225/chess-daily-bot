@@ -1,91 +1,84 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-06-05",
-    "title": "Pinned to a Square Dance",
-    "fen": "5k2/Qp1b4/3p4/8/P5pP/8/1B3prP/5R1K b - - 0 1",
-    "current_fen": "5k2/1p6/2bp4/8/P5pP/8/1B4RP/5qQK b - - 1 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"5k2/Qp1b4/3p4/8/P5pP/8/1B3prP/5R1K b - - 0 1\"]\r\n\r\n1... Rg1+ 2. Rxg1 Bc6+ 3. Rg2 f1=Q+ 4. Qg1 Bxg2# *",
+    "url": "https://www.chess.com/daily/2007-09-10",
+    "title": "Ditzy Black Queen",
+    "fen": "4Qbk1/ppq2ppn/8/3PNpP1/2p2P2/7P/4K3/8 w - - 0 1",
+    "current_fen": "4Qbk1/ppq2ppn/8/3PNpP1/2p2P2/7P/4K3/8 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"4Qbk1/ppq2ppn/8/3PNpP1/2p2P2/7P/4K3/8 w - - 0 1\"]\r\n\r\n1. d6 Qxd6 2. Qxf7+ Kh8 3. Ng6+ Qxg6 4. Qxg6 { and white's queen will overwhelm the knight and bishop. }\r\n*",
     "all_moves": [
       {
-        "uci": "g2g1",
-        "san": "Rg1+",
-        "color": "black"
-      },
-      {
-        "uci": "f1g1",
-        "san": "Rxg1",
+        "uci": "d5d6",
+        "san": "d6",
         "color": "white"
       },
       {
-        "uci": "d7c6",
-        "san": "Bc6+",
+        "uci": "c7d6",
+        "san": "Qxd6",
         "color": "black"
       },
       {
-        "uci": "g1g2",
-        "san": "Rg2",
+        "uci": "e8f7",
+        "san": "Qxf7+",
         "color": "white"
       },
       {
-        "uci": "f2f1q",
-        "san": "f1=Q+",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "a7g1",
-        "san": "Qg1",
+        "uci": "e5g6",
+        "san": "Ng6+",
         "color": "white"
       },
       {
-        "uci": "c6g2",
-        "san": "Bxg2#",
+        "uci": "d6g6",
+        "san": "Qxg6",
         "color": "black"
+      },
+      {
+        "uci": "f7g6",
+        "san": "Qxg6",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g2g1",
-        "san": "Rg1+",
-        "color": "black"
+        "uci": "d5d6",
+        "san": "d6",
+        "color": "white"
       },
       {
-        "uci": "d7c6",
-        "san": "Bc6+",
-        "color": "black"
+        "uci": "e8f7",
+        "san": "Qxf7+",
+        "color": "white"
       },
       {
-        "uci": "f2f1q",
-        "san": "f1=Q+",
-        "color": "black"
+        "uci": "e5g6",
+        "san": "Ng6+",
+        "color": "white"
       },
       {
-        "uci": "c6g2",
-        "san": "Bxg2#",
-        "color": "black"
+        "uci": "f7g6",
+        "san": "Qxg6",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-22T12:55:07.755803+00:00",
+    "posted_at": "2026-08-22T12:55:25.657434+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787403307755",
-    "next_solution_index": 6,
-    "next_player_index": 3,
+    "puzzle_id": "random_1787403325657",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1540705885565747323,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "f1=q",
-        "correct": true,
-        "timestamp": "2026-08-22T12:55:20.498095+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
