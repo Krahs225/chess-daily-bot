@@ -1,66 +1,96 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-01-20",
-    "title": "Fundamental Ending",
-    "fen": "1k6/5B2/2K1N3/8/8/8/8/8 w - - 0 1",
-    "current_fen": "1k6/5B2/2K1N3/8/8/8/8/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1k6/5B2/2K1N3/8/8/8/8/8 w - - 0 1\"]\r\n\r\n1. Kb6 Kc8 2. Be8 Kb8 3. Bd7\r\n*",
+    "url": "https://www.chess.com/daily/2008-01-05",
+    "title": "The Final Step",
+    "fen": "5r2/8/p7/1p1B4/8/7R/2P4p/4K1k1 b - - 0 1",
+    "current_fen": "5r2/8/p7/1p1B4/8/7R/2P4p/4K1k1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"5r2/8/p7/1p1B4/8/7R/2P4p/4K1k1 b - - 0 1\"]\r\n\r\n1... Re8+ 2. Kd1 Rd8 3. c4 bxc4 4. Rh5 Rxd5+ 5. Rxd5 h1=Q *",
     "all_moves": [
       {
-        "uci": "c6b6",
-        "san": "Kb6",
-        "color": "white"
-      },
-      {
-        "uci": "b8c8",
-        "san": "Kc8",
+        "uci": "f8e8",
+        "san": "Re8+",
         "color": "black"
       },
       {
-        "uci": "f7e8",
-        "san": "Be8",
+        "uci": "e1d1",
+        "san": "Kd1",
         "color": "white"
       },
       {
-        "uci": "c8b8",
-        "san": "Kb8",
+        "uci": "e8d8",
+        "san": "Rd8",
         "color": "black"
       },
       {
-        "uci": "e8d7",
-        "san": "Bd7",
+        "uci": "c2c4",
+        "san": "c4",
         "color": "white"
+      },
+      {
+        "uci": "b5c4",
+        "san": "bxc4",
+        "color": "black"
+      },
+      {
+        "uci": "h3h5",
+        "san": "Rh5",
+        "color": "white"
+      },
+      {
+        "uci": "d8d5",
+        "san": "Rxd5+",
+        "color": "black"
+      },
+      {
+        "uci": "h5d5",
+        "san": "Rxd5",
+        "color": "white"
+      },
+      {
+        "uci": "h2h1q",
+        "san": "h1=Q",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c6b6",
-        "san": "Kb6",
-        "color": "white"
+        "uci": "f8e8",
+        "san": "Re8+",
+        "color": "black"
       },
       {
-        "uci": "f7e8",
-        "san": "Be8",
-        "color": "white"
+        "uci": "e8d8",
+        "san": "Rd8",
+        "color": "black"
       },
       {
-        "uci": "e8d7",
-        "san": "Bd7",
-        "color": "white"
+        "uci": "b5c4",
+        "san": "bxc4",
+        "color": "black"
+      },
+      {
+        "uci": "d8d5",
+        "san": "Rxd5+",
+        "color": "black"
+      },
+      {
+        "uci": "h2h1q",
+        "san": "h1=Q",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-22T23:25:44.782625+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 5,
+    "posted_at": "2026-08-22T23:29:12.010963+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787441144782",
+    "puzzle_id": "random_1787441352010",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1540864584926367795,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
