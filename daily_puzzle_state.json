@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-06-25",
     "title": "Breaking Down The Walls",
     "fen": "r6k/pp1b2p1/3Np2p/r3P3/1q1p1PRQ/2nB4/2PK3P/4R3 w - - 0 1",
-    "current_fen": "r6k/pp1b2p1/3Np2p/r3P3/1q1p1PRQ/2nB4/2PK3P/4R3 w - - 0 1",
+    "current_fen": "r6k/pp1b4/3Np2p/r3P3/1q1p1PR1/2nB4/2PK3P/4R3 w - - 0 2",
     "pgn": "[FEN \"r6k/pp1b2p1/3Np2p/r3P3/1q1p1PRQ/2nB4/2PK3P/4R3 w - - 0 1\"]\r\n[PlyCount \"3\"]\r\n\r\n1. Qxh6+ gxh6 (1... Kg8 2. Qxg7#) 2. Nf7#",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787403962379",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540708631555608617,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxh6",
+        "correct": true,
+        "timestamp": "2026-08-22T13:06:06.793228+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
