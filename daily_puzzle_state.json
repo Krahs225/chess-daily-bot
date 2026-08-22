@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-04-09",
     "title": "Volchok - Kreslavsky, USSR 1970",
     "fen": "2kr2nr/1pp2qpp/p1pB4/4p3/8/6Q1/PP3PPP/RN1R2K1 w - - 0 1",
-    "current_fen": "2kr2nr/1ppq2pp/p1pB4/4p3/6Q1/8/PP3PPP/RN1R2K1 w - - 2 2",
+    "current_fen": "2kr3r/1ppqB1pp/p1p2n2/4p3/6Q1/8/PP3PPP/RN1R2K1 w - - 4 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr2nr/1pp2qpp/p1pB4/4p3/8/6Q1/PP3PPP/RN1R2K1 w - - 0 1\"]\r\n\r\n1. Qg4+ Qd7 2. Be7 Nf6 3. Rxd7 Nxg4 4. Rxd8+ Rxd8 5. Bxd8\r\n*",
     "all_moves": [
       {
@@ -87,8 +87,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787407365766",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1540722906210902066,
     "attempted_users": {
@@ -97,13 +97,21 @@
         "move": "qg4",
         "correct": true,
         "timestamp": "2026-08-22T14:02:50.371229+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rxd8",
+        "correct": false,
+        "timestamp": "2026-08-22T14:02:57.145285+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
