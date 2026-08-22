@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-03-20",
     "title": "Tactical Spring Cleaning",
     "fen": "6k1/5rpp/PR2b3/3pPp1P/5P1q/2r4B/2P3QK/R7 b - - 0 1",
-    "current_fen": "6k1/5rpp/PR2b3/3pPp1P/5P1q/2r4B/2P3QK/R7 b - - 0 1",
+    "current_fen": "6k1/5rpp/PR2b3/3pPp1P/5P2/8/2P2qQK/R7 b - - 2 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"6k1/5rpp/PR2b3/3pPp1P/5P1q/2r4B/2P3QK/R7 b - - 0 1\"]\r\n\r\n1... Rxh3+ 2. Qxh3 Qf2+ 3. Qg2 Qxb6 *",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787407178033",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1540722118524665907,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxf4",
-        "correct": false,
-        "timestamp": "2026-08-22T13:59:43.849465+00:00"
+        "move": "qf2",
+        "correct": true,
+        "timestamp": "2026-08-22T13:59:47.406451+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -75,8 +75,8 @@
         "timestamp": "2026-08-22T13:59:43.851427+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
