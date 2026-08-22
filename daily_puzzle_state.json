@@ -1,90 +1,87 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-02-12",
-    "title": "Mate in 3",
-    "fen": "r1b2rk1/3q1pp1/p2p4/1pp2N1p/4P3/1BBP4/PPP2QPP/5RK1 w - h6 0 1",
-    "current_fen": "r1b2r2/3q1pQk/p2p4/1pp2N1p/4P3/1BBP4/PPP3PP/5RK1 b - - 2 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2rk1/3q1pp1/p2p4/1pp2N1p/4P3/1BBP4/PPP2QPP/5RK1 w - h6 0 1\"]\r\n\r\n1. Qg3 g5 2. Qxg5+ Kh7 3. Qg7# \r\n*",
+    "url": "https://www.chess.com/daily/2024-02-21",
+    "title": "Squaring Off Against an Isolated King",
+    "fen": "8/P4k2/8/4np2/3b4/2NP2P1/1P5K/R1B3r1 b - - 0 1",
+    "current_fen": "8/P4k2/8/4np2/3b4/2NP2P1/1P5K/R1B3r1 b - - 0 1",
+    "pgn": "[Date \"1996\"]\r\n[White \"Nick de Firmian\"]\r\n[Black \"Tiger Hillarp Persson (remove h7 pawn)\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/P4k2/8/4np2/3b4/2NP2P1/1P5K/R1B3r1 b - - 0 1\"]\r\n\r\n1... Nf3+ 2. Kh3 Rh1+ 3. Kg2 Rh2+ 4. Kxf3 Rf2# 0-1",
     "all_moves": [
       {
-        "uci": "f2g3",
-        "san": "Qg3",
-        "color": "white"
-      },
-      {
-        "uci": "g7g5",
-        "san": "g5",
+        "uci": "e5f3",
+        "san": "Nf3+",
         "color": "black"
       },
       {
-        "uci": "g3g5",
-        "san": "Qxg5+",
+        "uci": "h2h3",
+        "san": "Kh3",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "g1h1",
+        "san": "Rh1+",
         "color": "black"
       },
       {
-        "uci": "g5g7",
-        "san": "Qg7#",
+        "uci": "h3g2",
+        "san": "Kg2",
         "color": "white"
+      },
+      {
+        "uci": "h1h2",
+        "san": "Rh2+",
+        "color": "black"
+      },
+      {
+        "uci": "g2f3",
+        "san": "Kxf3",
+        "color": "white"
+      },
+      {
+        "uci": "h2f2",
+        "san": "Rf2#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f2g3",
-        "san": "Qg3",
-        "color": "white"
+        "uci": "e5f3",
+        "san": "Nf3+",
+        "color": "black"
       },
       {
-        "uci": "g3g5",
-        "san": "Qxg5+",
-        "color": "white"
+        "uci": "g1h1",
+        "san": "Rh1+",
+        "color": "black"
       },
       {
-        "uci": "g5g7",
-        "san": "Qg7#",
-        "color": "white"
+        "uci": "h1h2",
+        "san": "Rh2+",
+        "color": "black"
+      },
+      {
+        "uci": "h2f2",
+        "san": "Rf2#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-22T16:38:23.706946+00:00",
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-22T16:39:12.940085+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787416703706",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1540762071992373390,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qg7",
-        "correct": true,
-        "timestamp": "2026-08-22T16:39:04.494243+00:00"
-      },
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "Qg3",
-        "correct": true,
-        "timestamp": "2026-08-22T16:38:54.443398+00:00"
-      }
-    },
-    "first_move_user_id": "362606514764251137",
-    "first_move_user_name": "Sharkmeister",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787416752940",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
