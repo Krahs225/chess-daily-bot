@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "2001 • e3DDN",
     "fen": "3r3k/p1q1b3/1p1rpn1p/2p2p2/2P2P2/2B2K2/PPB4P/R3Q1R1 w - - 5 25",
-    "current_fen": "3r3k/p1q1b3/1p1rpn1p/2p2p2/2P2P2/2B2K2/PPB4P/R3Q1R1 w - - 5 25",
+    "current_fen": "3r4/p1q1b2k/1p1rpn1p/2p2p2/2P2P1Q/2B2K2/PPB4P/R5R1 w - - 7 26",
     "all_moves": [
       {
         "uci": "e1h4",
@@ -38,13 +38,20 @@
     "url": "https://lichess.org/training/e3DDN",
     "posted_at": "2026-08-22T12:52:21.761652+00:00",
     "puzzle_id": "random_lichess_2001_e3DDN_1787403141761",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qh4",
+        "correct": true,
+        "timestamp": "2026-08-22T12:52:42.371496+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
