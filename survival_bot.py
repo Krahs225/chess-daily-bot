@@ -61,6 +61,8 @@ BATCH_SIZE = 25
 INACTIVITY_SECONDS = 10 * 60
 PENDING_TEAM_SECONDS = 60
 
+RUN_TIME = 5 * 60 * 60 + 50 * 60
+
 THREE_STRIKES = 3
 SHARK_ADMIN_NAME = "sharkmeister"
 
@@ -4131,189 +4133,30 @@ def san_matches_move(
         return False
 
 
-async def dispatch_survival_handoff(
-    self
-):
-    token = os.getenv(
-        "GITHUB_TOKEN"
-    )
-    repository = os.getenv(
-        "GITHUB_REPOSITORY"
-    )
-
-    if not token or not repository:
-        print(
-            "GITHUB_TOKEN/GITHUB_REPOSITORY unavailable; "
-            "cannot hand off Survival.",
-            flush=True,
-        )
-        return False
-
-    workflow = "survival.yml"
-    url = (
-        "https://api.github.com/repos/"
-        f"{repository}/actions/workflows/"
-        f"{workflow}/dispatches"
-    )
-
-    response = requests.post(
-        url,
-        headers={
-            "Accept":
-                "application/vnd.github+json",
-            "Authorization":
-                f"Bearer {token}",
-            "X-GitHub-Api-Version":
-                "2022-11-28",
-        },
-        json={
-            "ref":
-                os.getenv(
-                    "GITHUB_REF_NAME",
-                    "main",
-                )
-        },
-        timeout=20,
-    )
-
-    if response.status_code in {
-        201,
-        204,
-    }:
-        print(
-            "Queued next Survival workflow run.",
-            flush=True,
-        )
-        return True
-
-    print(
-        f"Survival handoff failed: "
-        f"{response.status_code} "
-        f"{response.text[:1000]}",
-        flush=True,
-    )
-    return False
-
-
-async def stop_for_action_limit_fallback(
-    self
-):
-    active = active_current_run(
-        self.state
-    )
-
-    if not active:
-        return
-
-    team_key, team = active
-    run = team.get(
-        "current"
-    )
-
-    if not run:
-        return
-
-    run[
-        "status"
-    ] = "paused"
-
-    run[
-        "paused_reason"
-    ] = "GitHub Actions handoff unavailable"
-
-    update_best(
-        team,
-        run
-    )
-
-    save_state(
-        self.state,
-        push=True,
-    )
-
-    clear_lock()
-
-    channel = self.get_channel(
-        CHANNEL_ID
-    )
-
-    if channel:
-        await channel.send(
-            f"⏸️ **{team.get('name', team_key)} Survival paused automatically.**\n"
-            f"Puzzle **#{run.get('puzzle_number', 0)} saved.**\n"
-            "The next GitHub run could not be queued, so the run is safely paused."
-        )
-
-
 async def action_limit_timer(
     self
 ):
+    """
+    Same runtime model as the working Daily/Random bot:
+    stay connected for 5h50m, then close cleanly. The next scheduled
+    GitHub Action run restores the saved Survival state and continues
+    listening.
+
+    We intentionally do NOT mark an active run as paused here.
+    The current run stays active in survival_runs.json.
+    """
     await asyncio.sleep(
-        5 * 60 * 60
-        + 35 * 60
+        RUN_TIME
     )
 
-    active = active_current_run(
-        self.state
-    )
-
-    try:
-        if active:
-            handed_off = await dispatch_survival_handoff(
-                self
-            )
-
-            if handed_off:
-                team_key, team = active
-                run = team.get(
-                    "current"
-                )
-
-                if run:
-                    channel = self.get_channel(
-                        CHANNEL_ID
-                    )
-
-                    if channel:
-                        await channel.send(
-                            f"🔄 **{team.get('name', team_key)} Survival "
-                            "is handing off to the next GitHub run.**\n"
-                            f"Puzzle **#{run.get('puzzle_number', 0)}** "
-                            "is saved and the run will continue."
-                        )
-
-                # Keep the run ACTIVE and keep the lock.
-                # The queued successor starts after this job exits.
-            else:
-                await stop_for_action_limit_fallback(
-                    self
-                )
-
-        else:
-            print(
-                "No active Survival run at action-limit handoff.",
-                flush=True,
-            )
-
-    except Exception as error:
-        print(
-            f"Action-limit handoff error: {error}",
-            flush=True,
-        )
-
-    await asyncio.sleep(
-        20
+    print(
+        "Ending Survival run cleanly.",
+        flush=True,
     )
 
     await self.close()
 
 
-SurvivalBot.dispatch_survival_handoff = (
-    dispatch_survival_handoff
-)
-SurvivalBot.stop_for_action_limit_fallback = (
-    stop_for_action_limit_fallback
-)
 SurvivalBot.action_limit_timer = (
     action_limit_timer
 )
