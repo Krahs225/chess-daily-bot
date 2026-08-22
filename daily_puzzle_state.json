@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-04-18",
-    "title": "Ding's Pawn Patrol",
-    "fen": "7r/1pqnkpp1/p1p1p1p1/2Pp3r/3P1P1b/2N1PQ1P/PP1B2P1/2R2K1R w - - 0 19",
-    "current_fen": "4k2r/1pqn1ppr/p1p1pPp1/2Pp4/3P1P2/2N1PQ1P/PP1B4/2R2K1R b - - 0 22",
-    "pgn": "[Event \"zt 3.5\"]\r\n[Site \"Shandong CHN\"]\r\n[Date \"2007.05.03\"]\r\n[Round \"?\"]\r\n[White \"Ding Liren\"]\r\n[Black \"Wang Rui\"]\r\n[Result \"1-0\"]\r\n[FEN \"7r/1pqnkpp1/p1p1p1p1/2Pp3r/3P1P1b/2N1PQ1P/PP1B2P1/2R2K1R w - - 0 19\"]\r\n\r\n19. g3 Bf6 20. g4 R5h7 21. g5 Ke8 22. gxf6 *",
+    "url": "https://www.chess.com/daily/2024-09-12",
+    "title": "Marshalling Your Attacking Forces",
+    "fen": "r4rk1/pb3ppp/1p1bpn2/2P4q/2P5/3BP1P1/PBQN1P1P/R4RK1 b - - 0 15",
+    "current_fen": "r4rk1/pb3ppp/1p1bpn2/2P4q/2P5/3BP1P1/PBQN1P1P/R4RK1 b - - 0 15",
+    "pgn": "[Event \"Marshall Chess Club\"]\r\n[Site \"New York, NY\"]\r\n[Date \"2024.08.02\"]\r\n[Round \"1\"]\r\n[White \"Dane Zagar\"]\r\n[Black \"Akira Nakada\"]\r\n[Result \"0-1\"]\r\n[ECO \"D05\"]\r\n[WhiteElo \"2119\"]\r\n[BlackElo \"2486\"]\r\n[FEN \"r4rk1/pb3ppp/1p1bpn2/2P4q/2P5/3BP1P1/PBQN1P1P/R4RK1 b - - 0 15\"]\r\n\r\n15... Ng4 16. h4 Qxh4 17. Bxh7+ Kh8 18. gxh4 Bh2# 0-1",
     "all_moves": [
       {
-        "uci": "g2g3",
-        "san": "g3",
-        "color": "white"
-      },
-      {
-        "uci": "h4f6",
-        "san": "Bf6",
+        "uci": "f6g4",
+        "san": "Ng4",
         "color": "black"
       },
       {
-        "uci": "g3g4",
-        "san": "g4",
+        "uci": "h2h4",
+        "san": "h4",
         "color": "white"
       },
       {
-        "uci": "h5h7",
-        "san": "R5h7",
+        "uci": "h5h4",
+        "san": "Qxh4",
         "color": "black"
       },
       {
-        "uci": "g4g5",
-        "san": "g5",
+        "uci": "d3h7",
+        "san": "Bxh7+",
         "color": "white"
       },
       {
-        "uci": "e7e8",
-        "san": "Ke8",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "g5f6",
-        "san": "gxf6",
+        "uci": "g3h4",
+        "san": "gxh4",
         "color": "white"
+      },
+      {
+        "uci": "d6h2",
+        "san": "Bh2#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "g2g3",
-        "san": "g3",
-        "color": "white"
+        "uci": "f6g4",
+        "san": "Ng4",
+        "color": "black"
       },
       {
-        "uci": "g3g4",
-        "san": "g4",
-        "color": "white"
+        "uci": "h5h4",
+        "san": "Qxh4",
+        "color": "black"
       },
       {
-        "uci": "g4g5",
-        "san": "g5",
-        "color": "white"
+        "uci": "g8h8",
+        "san": "Kh8",
+        "color": "black"
       },
       {
-        "uci": "g5f6",
-        "san": "gxf6",
-        "color": "white"
+        "uci": "d6h2",
+        "san": "Bh2#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 4,
-    "posted_at": "2026-08-22T14:00:44.603237+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-22T14:01:18.825059+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787407244603",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540722397353738272,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "gxf6",
-        "correct": true,
-        "timestamp": "2026-08-22T14:00:58.004516+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787407278825",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
