@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-04-27",
-    "title": "The Chase",
-    "fen": "5rk1/ppp2ppp/3r1n2/4p3/2PqP3/P2P3R/1P1NQ1PP/5R1K w - - 0 1",
-    "current_fen": "5rk1/ppp2ppp/3P1n2/4p3/4P3/Pq1P3R/1P2Q1PP/5R1K b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/ppp2ppp/3r1n2/4p3/2PqP3/P2P3R/1P1NQ1PP/5R1K w - - 0 1\"]\r\n\r\n1. Nb3 Qb6 2. c5 Qxb3 3. cxd6\r\n*",
+    "url": "https://www.chess.com/daily/2018-09-17",
+    "title": "Bronstein - Euwe, Zurich 1953 Variation",
+    "fen": "8/pp2rp1p/4k1p1/3rPbQ1/8/P7/1q4PP/2R2R1K w - - 0 1",
+    "current_fen": "8/pp2rp1p/4k1p1/3rPbQ1/8/P7/1q4PP/2R2R1K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"8/pp2rp1p/4k1p1/3rPbQ1/8/P7/1q4PP/2R2R1K w - - 0 1\"]\r\n\r\n1. Qf6+ Kd7 2. e6+ Bxe6 3. Qxb2\r\n*",
     "all_moves": [
       {
-        "uci": "d2b3",
-        "san": "Nb3",
+        "uci": "g5f6",
+        "san": "Qf6+",
         "color": "white"
       },
       {
-        "uci": "d4b6",
-        "san": "Qb6",
+        "uci": "e6d7",
+        "san": "Kd7",
         "color": "black"
       },
       {
-        "uci": "c4c5",
-        "san": "c5",
+        "uci": "e5e6",
+        "san": "e6+",
         "color": "white"
       },
       {
-        "uci": "b6b3",
-        "san": "Qxb3",
+        "uci": "f5e6",
+        "san": "Bxe6",
         "color": "black"
       },
       {
-        "uci": "c5d6",
-        "san": "cxd6",
+        "uci": "f6b2",
+        "san": "Qxb2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2b3",
-        "san": "Nb3",
+        "uci": "g5f6",
+        "san": "Qf6+",
         "color": "white"
       },
       {
-        "uci": "c4c5",
-        "san": "c5",
+        "uci": "e5e6",
+        "san": "e6+",
         "color": "white"
       },
       {
-        "uci": "c5d6",
-        "san": "cxd6",
+        "uci": "f6b2",
+        "san": "Qxb2",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-22T13:00:47.027423+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-22T13:01:28.783372+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787403647027",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1540707308332519424,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "cxd6",
-        "correct": true,
-        "timestamp": "2026-08-22T13:01:02.236749+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787403688783",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
