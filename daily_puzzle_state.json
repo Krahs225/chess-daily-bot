@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-02-05",
     "title": "In The Middle",
     "fen": "4N3/3Nbp2/1n2k2p/6nP/2P5/3BKP2/8/2r4q w - - 0 1",
-    "current_fen": "4N3/3Nbp2/1n2k2p/6nP/2P5/3BKP2/8/2r4q w - - 0 1",
+    "current_fen": "8/3NbpN1/1n5p/5knP/2P5/4KP2/8/2r4q b - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4N3/3Nbp2/1n2k2p/6nP/2P5/3BKP2/8/2r4q w - - 0 1\"]\r\n\r\n1. Bf5+ Kxf5 2. Ng7#\r\n*",
     "all_moves": [
       {
@@ -42,9 +42,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787400929381",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1540695909313286335,
     "attempted_users": {
       "601406103712170014": {
@@ -52,11 +52,17 @@
         "move": "nc5",
         "correct": false,
         "timestamp": "2026-08-22T12:15:36.518063+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Ng7",
+        "correct": true,
+        "timestamp": "2026-08-22T12:15:38.667891+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
