@@ -1,81 +1,96 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-09-10",
-    "title": "Ditzy Black Queen",
-    "fen": "4Qbk1/ppq2ppn/8/3PNpP1/2p2P2/7P/4K3/8 w - - 0 1",
-    "current_fen": "4Qbk1/ppq2ppn/8/3PNpP1/2p2P2/7P/4K3/8 w - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"4Qbk1/ppq2ppn/8/3PNpP1/2p2P2/7P/4K3/8 w - - 0 1\"]\r\n\r\n1. d6 Qxd6 2. Qxf7+ Kh8 3. Ng6+ Qxg6 4. Qxg6 { and white's queen will overwhelm the knight and bishop. }\r\n*",
+    "url": "https://www.chess.com/daily/2009-03-14",
+    "title": "Mate in 5",
+    "fen": "3n4/5n2/8/1Q6/3k3p/8/3KR3/8 w - - 0 1",
+    "current_fen": "3n4/5n2/8/1Q6/3k3p/8/3KR3/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3n4/5n2/8/1Q6/3k3p/8/3KR3/8 w - - 0 1\"]\r\n\r\n1. Re3 h3 2. Ra3 Ke4 3. Ra4+ Kf3 4. Qe2+ Kg3 5. Rg4#\r\n*",
     "all_moves": [
       {
-        "uci": "d5d6",
-        "san": "d6",
+        "uci": "e2e3",
+        "san": "Re3",
         "color": "white"
       },
       {
-        "uci": "c7d6",
-        "san": "Qxd6",
+        "uci": "h4h3",
+        "san": "h3",
         "color": "black"
       },
       {
-        "uci": "e8f7",
-        "san": "Qxf7+",
+        "uci": "e3a3",
+        "san": "Ra3",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "d4e4",
+        "san": "Ke4",
         "color": "black"
       },
       {
-        "uci": "e5g6",
-        "san": "Ng6+",
+        "uci": "a3a4",
+        "san": "Ra4+",
         "color": "white"
       },
       {
-        "uci": "d6g6",
-        "san": "Qxg6",
+        "uci": "e4f3",
+        "san": "Kf3",
         "color": "black"
       },
       {
-        "uci": "f7g6",
-        "san": "Qxg6",
+        "uci": "b5e2",
+        "san": "Qe2+",
+        "color": "white"
+      },
+      {
+        "uci": "f3g3",
+        "san": "Kg3",
+        "color": "black"
+      },
+      {
+        "uci": "a4g4",
+        "san": "Rg4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5d6",
-        "san": "d6",
+        "uci": "e2e3",
+        "san": "Re3",
         "color": "white"
       },
       {
-        "uci": "e8f7",
-        "san": "Qxf7+",
+        "uci": "e3a3",
+        "san": "Ra3",
         "color": "white"
       },
       {
-        "uci": "e5g6",
-        "san": "Ng6+",
+        "uci": "a3a4",
+        "san": "Ra4+",
         "color": "white"
       },
       {
-        "uci": "f7g6",
-        "san": "Qxg6",
+        "uci": "b5e2",
+        "san": "Qe2+",
+        "color": "white"
+      },
+      {
+        "uci": "a4g4",
+        "san": "Rg4#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-22T12:55:25.657434+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-22T12:55:43.238772+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787403325657",
+    "puzzle_id": "random_1787403343238",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1540705960845250672,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
