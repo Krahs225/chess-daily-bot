@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-06-30",
     "title": "The Rocky Road to f1",
     "fen": "8/2R1Q1pk/3N1r1p/3P4/8/1q4P1/2R3KP/r7 b - - 0 1",
-    "current_fen": "8/2R1Q1pk/3N1r1p/3P4/8/6P1/2R3KP/3q4 b - - 2 5",
+    "current_fen": "8/2R1Q1pk/3N1r1p/3P4/8/6P1/2R3KP/5q2 w - - 3 6",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/2R1Q1pk/3N1r1p/3P4/8/1q4P1/2R3KP/r7 b - - 0 1\"]\r\n\r\n1... Qf3+ 2. Kh3 Qh5+ 3. Kg2 Rg1+ 4. Kxg1 Qd1+ 5. Kg2 Qf1# *",
     "all_moves": [
       {
@@ -87,9 +87,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787401460179",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1540698135838462047,
     "attempted_users": {
       "601406103712170014": {
@@ -100,15 +100,17 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "qd1",
+        "move": "qf1",
         "correct": true,
-        "timestamp": "2026-08-22T12:24:44.008527+00:00"
+        "timestamp": "2026-08-22T12:24:45.065503+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "442597396195704832"
+    ],
     "helper_candidate_users": [
       "442597396195704832"
     ]
