@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-04-11",
     "title": "Early and Often",
     "fen": "rnb2rk1/pp3pp1/4pb1p/2q5/2B5/P1N1PN2/1P2QPPP/R3K2R b KQ - 0 1",
-    "current_fen": "rnb2rk1/pp3pp1/4pb1p/2q5/2B5/P1N1PN2/1P2QPPP/R3K2R b KQ - 0 1",
+    "current_fen": "rnb2rk1/pp3pp1/4p2p/2q5/2B5/P1P1PN2/4QPPP/R3K2R b KQ - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"rnb2rk1/pp3pp1/4pb1p/2q5/2B5/P1N1PN2/1P2QPPP/R3K2R b KQ - 0 1\"]\r\n\r\n1...Bxc3+ 2.bxc3 b5 3.Nd2 bxc4 *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787407334780",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540722775592018061,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "bxc3",
+        "correct": true,
+        "timestamp": "2026-08-22T14:02:22.752787+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
