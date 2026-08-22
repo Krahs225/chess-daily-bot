@@ -1,96 +1,66 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-09-04",
-    "title": "Forced Mate in 5",
-    "fen": "q4rk1/5bpp/p3Q3/1p2NNr1/2P5/P1B5/1P6/K4n2 w - - 0 1",
-    "current_fen": "q4rk1/5bpp/p3Q3/1p2NNr1/2P5/P1B5/1P6/K4n2 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"q4rk1/5bpp/p3Q3/1p2NNr1/2P5/P1B5/1P6/K4n2 w - - 0 1\"]\r\n\r\n1. Nh6+ gxh6 2. Qf6 Bxc4 3. Qh8+ Kxh8 4. Nf7+ Kg8 5. Nxh6#\r\n*",
+    "url": "https://www.chess.com/daily/2008-10-29",
+    "title": "Oh no! Connected passed pawns!",
+    "fen": "3r4/p2n1Q2/1k3P2/1qb5/5B2/6P1/1pp2P1P/3R1RK1 w - - 0 1",
+    "current_fen": "3r4/p2n1Q2/1k3P2/1qb5/5B2/6P1/1pp2P1P/3R1RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r4/p2n1Q2/1k3P2/1qb5/5B2/6P1/1pp2P1P/3R1RK1 w - - 0 1\"]\r\n\r\n1. Qe6+ Qc6 2. Qb3+ Qb5 3. Qxc2\r\n*",
     "all_moves": [
       {
-        "uci": "f5h6",
-        "san": "Nh6+",
+        "uci": "f7e6",
+        "san": "Qe6+",
         "color": "white"
       },
       {
-        "uci": "g7h6",
-        "san": "gxh6",
+        "uci": "b5c6",
+        "san": "Qc6",
         "color": "black"
       },
       {
-        "uci": "e6f6",
-        "san": "Qf6",
+        "uci": "e6b3",
+        "san": "Qb3+",
         "color": "white"
       },
       {
-        "uci": "f7c4",
-        "san": "Bxc4",
+        "uci": "c6b5",
+        "san": "Qb5",
         "color": "black"
       },
       {
-        "uci": "f6h8",
-        "san": "Qh8+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kxh8",
-        "color": "black"
-      },
-      {
-        "uci": "e5f7",
-        "san": "Nf7+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "f7h6",
-        "san": "Nxh6#",
+        "uci": "b3c2",
+        "san": "Qxc2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5h6",
-        "san": "Nh6+",
+        "uci": "f7e6",
+        "san": "Qe6+",
         "color": "white"
       },
       {
-        "uci": "e6f6",
-        "san": "Qf6",
+        "uci": "e6b3",
+        "san": "Qb3+",
         "color": "white"
       },
       {
-        "uci": "f6h8",
-        "san": "Qh8+",
-        "color": "white"
-      },
-      {
-        "uci": "e5f7",
-        "san": "Nf7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7h6",
-        "san": "Nxh6#",
+        "uci": "b3c2",
+        "san": "Qxc2",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-22T13:05:13.324854+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-22T13:05:32.700337+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787403913324",
+    "puzzle_id": "random_1787403932700",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1540708424952848465,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
