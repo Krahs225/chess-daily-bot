@@ -95,7 +95,7 @@
     "url": "https://www.chess.com/daily/2026-08-22",
     "title": "Clear the Air",
     "fen": "2r2r1k/4ppRp/p4n1P/6R1/2q1pP2/8/PpN5/1K4Q1 w - - 0 1",
-    "current_fen": "2r2r1k/4ppRp/p4n1P/6R1/2q1pP2/8/PpN5/1K4Q1 w - - 0 1",
+    "current_fen": "2r2r1k/4ppRp/p4n1P/2q5/4pP2/8/PpN5/1K4Q1 w - - 0 2",
     "pgn": "[Date \"1958.??.??\"]\n[White \"Heemsoth\"]\n[Black \"Heissenbuettel\"]\n[Result \"1-0\"]\n[FEN \"2r2r1k/4ppRp/p4n1P/6R1/2q1pP2/8/PpN5/1K4Q1 w - - 0 1\"]\n\n1. Rc5 Qxc5 2. Rxh7+ Kxh7 3. Qg7# 1-0",
     "all_moves": [
       {
@@ -149,13 +149,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "daily_1787383053719",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Rc5",
+        "correct": true,
+        "timestamp": "2026-08-22T07:45:06.745155+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
