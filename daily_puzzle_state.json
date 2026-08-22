@@ -1,105 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-02-26",
-    "title": "The Triumph of a Single Tempo",
-    "fen": "b4r1k/2r2Bp1/3N1pPp/2n1pP2/pB5P/Pp4R1/1P1Q3K/1q6 w - - 0 1",
-    "current_fen": "b4NRk/2r2B2/3N1p1p/2n1pP2/pB5P/Pp6/1P5K/1q6 b - - 2 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"b4r1k/2r2Bp1/3N1pPp/2n1pP2/pB5P/Pp4R1/1P1Q3K/1q6 w - - 0 1\"]\r\n\r\n1. Qxh6+ gxh6 2. g7+ Kh7 3. gxf8=N+ Kh8 4. Rg8# *",
+    "url": "https://www.chess.com/daily/2023-11-01",
+    "title": "Breaking the Light Squared Bind",
+    "fen": "1rbr2k1/1p2qpp1/3p3n/bNpQnPp1/p1P1P1P1/4B3/PPN1B2R/2KR4 b - - 0 1",
+    "current_fen": "1rbr2k1/1p2qpp1/3p3n/bNpQnPp1/p1P1P1P1/4B3/PPN1B2R/2KR4 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1rbr2k1/1p2qpp1/3p3n/bNpQnPp1/p1P1P1P1/4B3/PPN1B2R/2KR4 b - - 0 1\"]\r\n\r\n1... Be6 2. fxe6 fxe6 3. Qd2 Bxd2+ *",
     "all_moves": [
       {
-        "uci": "d2h6",
-        "san": "Qxh6+",
-        "color": "white"
-      },
-      {
-        "uci": "g7h6",
-        "san": "gxh6",
+        "uci": "c8e6",
+        "san": "Be6",
         "color": "black"
       },
       {
-        "uci": "g6g7",
-        "san": "g7+",
+        "uci": "f5e6",
+        "san": "fxe6",
         "color": "white"
       },
       {
-        "uci": "h8h7",
-        "san": "Kh7",
+        "uci": "f7e6",
+        "san": "fxe6",
         "color": "black"
       },
       {
-        "uci": "g7f8n",
-        "san": "gxf8=N+",
+        "uci": "d5d2",
+        "san": "Qd2",
         "color": "white"
       },
       {
-        "uci": "h7h8",
-        "san": "Kh8",
+        "uci": "a5d2",
+        "san": "Bxd2+",
         "color": "black"
-      },
-      {
-        "uci": "g3g8",
-        "san": "Rg8#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2h6",
-        "san": "Qxh6+",
-        "color": "white"
+        "uci": "c8e6",
+        "san": "Be6",
+        "color": "black"
       },
       {
-        "uci": "g6g7",
-        "san": "g7+",
-        "color": "white"
+        "uci": "f7e6",
+        "san": "fxe6",
+        "color": "black"
       },
       {
-        "uci": "g7f8n",
-        "san": "gxf8=N+",
-        "color": "white"
-      },
-      {
-        "uci": "g3g8",
-        "san": "Rg8#",
-        "color": "white"
+        "uci": "a5d2",
+        "san": "Bxd2+",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-22T16:41:36.940666+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-22T16:42:48.422856+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787416896940",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540762882713587832,
-    "attempted_users": {
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "Gxf8=n",
-        "correct": true,
-        "timestamp": "2026-08-22T16:42:18.850500+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rg8",
-        "correct": true,
-        "timestamp": "2026-08-22T16:42:26.559129+00:00"
-      }
-    },
-    "first_move_user_id": "362606514764251137",
-    "first_move_user_name": "Sharkmeister",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787416968422",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
