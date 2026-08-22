@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-11-18",
-    "title": "Piling It On",
-    "fen": "3rr1k1/1pp3pp/p7/2B1p3/qP2P3/3P1Q1P/6P1/5RK1 w - - 0 1",
-    "current_fen": "5R1k/1pp3pp/p7/4p3/qP2P3/3P3P/6P1/6K1 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3rr1k1/1pp3pp/p7/2B1p3/qP2P3/3P1Q1P/6P1/5RK1 w - - 0 1\"]\r\n\r\n1. Qf7+ Kh8 2. Bf8 Rxf8 3. Qxf8+ Rxf8 4. Rxf8# \r\n*",
+    "url": "https://www.chess.com/daily/2024-02-05",
+    "title": "Do Bishops Only Attack One Color?",
+    "fen": "r1b1k2r/4bp2/p3pn1p/1p1qB1p1/3p2P1/3B1N2/PPP1QP1P/R4KR1 w kq - 0 16",
+    "current_fen": "r1b1k2r/4bp2/p3pn1p/1p1qB1p1/3p2P1/3B1N2/PPP1QP1P/R4KR1 w kq - 0 16",
+    "pgn": "[Event \"New York MCC\"]\r\n[Site \"New York\"]\r\n[Date \"1994.??.??\"]\r\n[Round \"5\"]\r\n[White \"Gurevich, Ilya\"]\r\n[Black \"Leveille, Francois\"]\r\n[Result \"1-0\"]\r\n[ECO \"C10\"]\r\n[WhiteElo \"2585\"]\r\n[BlackElo \"2370\"]\r\n[FEN \"r1b1k2r/4bp2/p3pn1p/1p1qB1p1/3p2P1/3B1N2/PPP1QP1P/R4KR1 w kq - 0 16\"]\r\n\r\n16. Bxf6 Bxf6 17. Be4 Qd6 18. Bxa8 1-0",
     "all_moves": [
       {
-        "uci": "f3f7",
-        "san": "Qf7+",
+        "uci": "e5f6",
+        "san": "Bxf6",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "e7f6",
+        "san": "Bxf6",
         "color": "black"
       },
       {
-        "uci": "c5f8",
-        "san": "Bf8",
+        "uci": "d3e4",
+        "san": "Be4",
         "color": "white"
       },
       {
-        "uci": "e8f8",
-        "san": "Rxf8",
+        "uci": "d5d6",
+        "san": "Qd6",
         "color": "black"
       },
       {
-        "uci": "f7f8",
-        "san": "Qxf8+",
-        "color": "white"
-      },
-      {
-        "uci": "d8f8",
-        "san": "Rxf8",
-        "color": "black"
-      },
-      {
-        "uci": "f1f8",
-        "san": "Rxf8#",
+        "uci": "e4a8",
+        "san": "Bxa8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3f7",
-        "san": "Qf7+",
+        "uci": "e5f6",
+        "san": "Bxf6",
         "color": "white"
       },
       {
-        "uci": "c5f8",
-        "san": "Bf8",
+        "uci": "d3e4",
+        "san": "Be4",
         "color": "white"
       },
       {
-        "uci": "f7f8",
-        "san": "Qxf8+",
-        "color": "white"
-      },
-      {
-        "uci": "f1f8",
-        "san": "Rxf8#",
+        "uci": "e4a8",
+        "san": "Bxa8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-22T13:39:15.267904+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-08-22T13:39:47.414254+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787405955267",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540716989843120293,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxf8",
-        "correct": true,
-        "timestamp": "2026-08-22T13:39:43.097061+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787405987414",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
