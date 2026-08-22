@@ -1,47 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-09-14",
-    "title": "Powerful One Mover",
-    "fen": "7k/6pp/8/4Q3/4P3/q4r2/5bPP/3R3K w - - 0 1",
-    "current_fen": "7k/6pp/8/8/4P3/q1Q2r2/5bPP/3R3K b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7k/6pp/8/4Q3/4P3/q4r2/5bPP/3R3K w - - 0 1\"]\r\n\r\n1. Qc3\r\n*",
+    "url": "https://www.chess.com/daily/2019-07-16",
+    "title": "Everyone Joining The Party",
+    "fen": "r1b1qb1r/pp1n2pp/4Qn1k/2p4P/2B5/8/PPPP1PP1/RNB1K2R w KQ - 0 1",
+    "current_fen": "r1b1qb1r/pp1n2pp/4Qn1k/2p4P/2B5/8/PPPP1PP1/RNB1K2R w KQ - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1qb1r/pp1n2pp/4Qn1k/2p4P/2B5/8/PPPP1PP1/RNB1K2R w KQ - 0 1\"]\r\n\r\n1. d4+ g5 2. hxg6+ Kxg6 3. Bd3+ Kg7 4. Bh6#\r\n*",
     "all_moves": [
       {
-        "uci": "e5c3",
-        "san": "Qc3",
+        "uci": "d2d4",
+        "san": "d4+",
+        "color": "white"
+      },
+      {
+        "uci": "g7g5",
+        "san": "g5",
+        "color": "black"
+      },
+      {
+        "uci": "h5g6",
+        "san": "hxg6+",
+        "color": "white"
+      },
+      {
+        "uci": "h6g6",
+        "san": "Kxg6",
+        "color": "black"
+      },
+      {
+        "uci": "c4d3",
+        "san": "Bd3+",
+        "color": "white"
+      },
+      {
+        "uci": "g6g7",
+        "san": "Kg7",
+        "color": "black"
+      },
+      {
+        "uci": "c1h6",
+        "san": "Bh6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5c3",
-        "san": "Qc3",
+        "uci": "d2d4",
+        "san": "d4+",
+        "color": "white"
+      },
+      {
+        "uci": "h5g6",
+        "san": "hxg6+",
+        "color": "white"
+      },
+      {
+        "uci": "c4d3",
+        "san": "Bd3+",
+        "color": "white"
+      },
+      {
+        "uci": "c1h6",
+        "san": "Bh6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-22T13:34:24.761346+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-22T13:36:19.787735+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787405664761",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1540715771343409183,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qc3",
-        "correct": true,
-        "timestamp": "2026-08-22T13:36:12.281801+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787405779787",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
