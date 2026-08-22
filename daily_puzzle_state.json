@@ -1,99 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-08-17",
-    "title": "The King's Penalty Box",
-    "fen": "3r3r/1Q4p1/3b4/1p2k2p/7q/1P2PP1P/P5P1/3R3K w - - 2 27",
-    "current_fen": "3r3r/6p1/4Q3/1pb4p/4kP1q/1P2P2P/P5P1/3R3K b - - 2 29",
-    "pgn": "[White \"Checkmatemaster7\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"3r3r/1Q4p1/3b4/1p2k2p/7q/1P2PP1P/P5P1/3R3K w - - 2 27\"]\r\n\r\n27. Qf7 Bc5 28. f4+ Ke4 29. Qe6# 1-0",
+    "url": "https://www.chess.com/daily/2009-08-04",
+    "title": "Distraction Tactics",
+    "fen": "rn2r1k1/1p4pp/1q1Pn3/p3p3/1B2Pp2/PQ3P2/4N1PP/2R2R1K w - - 0 1",
+    "current_fen": "rn2r1k1/1p4pp/1q1Pn3/p3p3/1B2Pp2/PQ3P2/4N1PP/2R2R1K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn2r1k1/1p4pp/1q1Pn3/p3p3/1B2Pp2/PQ3P2/4N1PP/2R2R1K w - - 0 1\"]\r\n\r\n1. Rc8 Rxc8 2. Qxe6+\r\n*",
     "all_moves": [
       {
-        "uci": "b7f7",
-        "san": "Qf7",
+        "uci": "c1c8",
+        "san": "Rc8",
         "color": "white"
       },
       {
-        "uci": "d6c5",
-        "san": "Bc5",
+        "uci": "e8c8",
+        "san": "Rxc8",
         "color": "black"
       },
       {
-        "uci": "f3f4",
-        "san": "f4+",
-        "color": "white"
-      },
-      {
-        "uci": "e5e4",
-        "san": "Ke4",
-        "color": "black"
-      },
-      {
-        "uci": "f7e6",
-        "san": "Qe6#",
+        "uci": "b3e6",
+        "san": "Qxe6+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b7f7",
-        "san": "Qf7",
+        "uci": "c1c8",
+        "san": "Rc8",
         "color": "white"
       },
       {
-        "uci": "f3f4",
-        "san": "f4+",
-        "color": "white"
-      },
-      {
-        "uci": "f7e6",
-        "san": "Qe6#",
+        "uci": "b3e6",
+        "san": "Qxe6+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-22T12:16:24.026371+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T12:17:48.432634+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787400984026",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1540696139664334848,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "f4",
-        "correct": true,
-        "timestamp": "2026-08-22T12:17:28.748179+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qe6",
-        "correct": true,
-        "timestamp": "2026-08-22T12:17:32.086065+00:00"
-      },
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "Qf7",
-        "correct": true,
-        "timestamp": "2026-08-22T12:17:21.568458+00:00"
-      }
-    },
-    "first_move_user_id": "362606514764251137",
-    "first_move_user_name": "Sharkmeister",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014",
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014",
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787401068432",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
