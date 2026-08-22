@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-10-09",
     "title": "Off Duty Queen",
     "fen": "r4bQr/ppp2P2/n1k1b1R1/3N4/4PB2/3P3q/PPP5/R3K3 w Q - 0 1",
-    "current_fen": "r4bQr/ppp2P2/n1k1b1R1/3N4/4PB2/3P3q/PPP5/R3K3 w Q - 0 1",
+    "current_fen": "r4bQr/ppp2P2/n1k1q3/3N4/4PB2/3P4/PPP5/R3K3 w Q - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[FEN \"r4bQr/ppp2P2/n1k1b1R1/3N4/4PB2/3P3q/PPP5/R3K3 w Q - 0 1\"]\r\n\r\n1. Rxe6+ Qxe6 2. Qxh8\r\n*",
     "all_moves": [
       {
@@ -42,8 +42,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787404250820",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540709840610005158,
     "attempted_users": {
@@ -52,10 +52,16 @@
         "move": "rxf1",
         "correct": false,
         "timestamp": "2026-08-22T13:10:51.756757+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rxe6",
+        "correct": true,
+        "timestamp": "2026-08-22T13:11:04.577191+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
