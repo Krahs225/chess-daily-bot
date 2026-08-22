@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-03-05",
     "title": "Endgame Mating Net",
     "fen": "6k1/7p/7B/4K2P/6P1/8/8/8 w - - 0 1",
-    "current_fen": "6k1/7p/7B/4K2P/6P1/8/8/8 w - - 0 1",
+    "current_fen": "7k/7p/5K1B/7P/6P1/8/8/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/7p/7B/4K2P/6P1/8/8/8 w - - 0 1\"]\r\n\r\n1. Kf6 Kh8 2. Bg7+ Kg8 3. g5 h6 4. Kg6 hxg5 5. h6 g4 6. h7#\r\n*",
     "all_moves": [
       {
@@ -102,13 +102,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787403719216",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540707610699767969,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "kf6",
+        "correct": true,
+        "timestamp": "2026-08-22T13:02:02.545994+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
