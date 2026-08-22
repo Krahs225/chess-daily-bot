@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-08-01",
     "title": "Unexpected?",
     "fen": "5rk1/p3br2/6p1/3p2p1/4p1P1/1q4PP/2QR2BK/3R4 b - - 0 1",
-    "current_fen": "5rk1/p3br2/6p1/3p2p1/4p1P1/1q4PP/2QR2BK/3R4 b - - 0 1",
+    "current_fen": "5rk1/p3br2/6p1/3p2p1/4p1P1/6qP/2QR2B1/3R3K b - - 1 2",
     "pgn": "[FEN \"5rk1/p3br2/6p1/3p2p1/4p1P1/1q4PP/2QR2BK/3R4 b - - 0 1\"]\r\n\r\n1... Qxg3+ 2. Kh1 ( 2. Kxg3 Bd6# ) ( 2. Kg1 Bd6 3. Rf2 Rxf2 4. Qxf2 Rxf2 5. Rxd5 Qxg2# ) Bd6 3. Bxe4 ( 3. Bf1 Rxf1+ 4. Rxf1 Rxf1# ) ( 3. Bf3 Rxf3 4. Rh2 Rf1+ 5. Rxf1 Rxf1# ) Rf1+ 4. Rxf1 Rxf1#\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787404239421",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540709793046601941,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxg3",
+        "correct": true,
+        "timestamp": "2026-08-22T13:10:45.937607+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
