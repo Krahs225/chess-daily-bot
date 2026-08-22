@@ -1,83 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-04-11",
-    "title": "Early and Often",
-    "fen": "rnb2rk1/pp3pp1/4pb1p/2q5/2B5/P1N1PN2/1P2QPPP/R3K2R b KQ - 0 1",
-    "current_fen": "rnb2rk1/p4pp1/4p2p/2q5/2p5/P1P1P3/3NQPPP/R3K2R w KQ - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"rnb2rk1/pp3pp1/4pb1p/2q5/2B5/P1N1PN2/1P2QPPP/R3K2R b KQ - 0 1\"]\r\n\r\n1...Bxc3+ 2.bxc3 b5 3.Nd2 bxc4 *",
+    "url": "https://www.chess.com/daily/2016-04-09",
+    "title": "Volchok - Kreslavsky, USSR 1970",
+    "fen": "2kr2nr/1pp2qpp/p1pB4/4p3/8/6Q1/PP3PPP/RN1R2K1 w - - 0 1",
+    "current_fen": "2kr2nr/1pp2qpp/p1pB4/4p3/8/6Q1/PP3PPP/RN1R2K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr2nr/1pp2qpp/p1pB4/4p3/8/6Q1/PP3PPP/RN1R2K1 w - - 0 1\"]\r\n\r\n1. Qg4+ Qd7 2. Be7 Nf6 3. Rxd7 Nxg4 4. Rxd8+ Rxd8 5. Bxd8\r\n*",
     "all_moves": [
       {
-        "uci": "f6c3",
-        "san": "Bxc3+",
-        "color": "black"
-      },
-      {
-        "uci": "b2c3",
-        "san": "bxc3",
+        "uci": "g3g4",
+        "san": "Qg4+",
         "color": "white"
       },
       {
-        "uci": "b7b5",
-        "san": "b5",
+        "uci": "f7d7",
+        "san": "Qd7",
         "color": "black"
       },
       {
-        "uci": "f3d2",
-        "san": "Nd2",
+        "uci": "d6e7",
+        "san": "Be7",
         "color": "white"
       },
       {
-        "uci": "b5c4",
-        "san": "bxc4",
+        "uci": "g8f6",
+        "san": "Nf6",
         "color": "black"
+      },
+      {
+        "uci": "d1d7",
+        "san": "Rxd7",
+        "color": "white"
+      },
+      {
+        "uci": "f6g4",
+        "san": "Nxg4",
+        "color": "black"
+      },
+      {
+        "uci": "d7d8",
+        "san": "Rxd8+",
+        "color": "white"
+      },
+      {
+        "uci": "h8d8",
+        "san": "Rxd8",
+        "color": "black"
+      },
+      {
+        "uci": "e7d8",
+        "san": "Bxd8",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f6c3",
-        "san": "Bxc3+",
-        "color": "black"
+        "uci": "g3g4",
+        "san": "Qg4+",
+        "color": "white"
       },
       {
-        "uci": "b7b5",
-        "san": "b5",
-        "color": "black"
+        "uci": "d6e7",
+        "san": "Be7",
+        "color": "white"
       },
       {
-        "uci": "b5c4",
-        "san": "bxc4",
-        "color": "black"
+        "uci": "d1d7",
+        "san": "Rxd7",
+        "color": "white"
+      },
+      {
+        "uci": "d7d8",
+        "san": "Rxd8+",
+        "color": "white"
+      },
+      {
+        "uci": "e7d8",
+        "san": "Bxd8",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-22T14:02:14.780497+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 5,
+    "posted_at": "2026-08-22T14:02:45.766614+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787407334780",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1540722775592018061,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxc4",
-        "correct": true,
-        "timestamp": "2026-08-22T14:02:29.246603+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "b6",
-        "correct": false,
-        "timestamp": "2026-08-22T14:02:25.657419+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787407365766",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
