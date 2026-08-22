@@ -1,122 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-12-21",
-    "title": "Required Precision",
-    "fen": "8/7N/4K3/p5p1/5p2/5P2/k6P/8 w - - 0 1",
-    "current_fen": "8/8/4K3/8/p1kN1p1P/5P2/8/8 b - - 0 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/7N/4K3/p5p1/5p2/5P2/k6P/8 w - - 0 1\"]\r\n\r\n1. Nxg5 a4 2. Ne4 Kb2 3. Nd6 Kb3 4. Nb5 Kb4 5. Nd4 Kc4 6. h4\r\n*",
+    "url": "https://www.chess.com/daily/2022-01-06",
+    "title": "No-Go for Bogo",
+    "fen": "3r1bk1/ppq3pp/2p5/2P2Q1B/8/1P4P1/P6P/5RK1 w - - 2 24",
+    "current_fen": "3r1bk1/ppq3pp/2p5/2P2Q1B/8/1P4P1/P6P/5RK1 w - - 2 24",
+    "pgn": "[Event \"New York\"]\r\n[Site \"New York, NY USA\"]\r\n[Date \"1924.04.02\"]\r\n[Round \"12\"]\r\n[White \"Richard Reti\"]\r\n[Black \"Efim Bogoljubov\"]\r\n[Result \"1-0\"]\r\n[ECO \"A13\"]\r\n[EventDate \"1924.03.16\"]\r\n[PlyCount \"49\"]\r\n[FEN \"3r1bk1/ppq3pp/2p5/2P2Q1B/8/1P4P1/P6P/5RK1 w - - 2 24\"]\r\n\r\n24.Bf7+ Kh8 25.Be8 1-0",
     "all_moves": [
       {
-        "uci": "h7g5",
-        "san": "Nxg5",
+        "uci": "h5f7",
+        "san": "Bf7+",
         "color": "white"
       },
       {
-        "uci": "a5a4",
-        "san": "a4",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "g5e4",
-        "san": "Ne4",
-        "color": "white"
-      },
-      {
-        "uci": "a2b2",
-        "san": "Kb2",
-        "color": "black"
-      },
-      {
-        "uci": "e4d6",
-        "san": "Nd6",
-        "color": "white"
-      },
-      {
-        "uci": "b2b3",
-        "san": "Kb3",
-        "color": "black"
-      },
-      {
-        "uci": "d6b5",
-        "san": "Nb5",
-        "color": "white"
-      },
-      {
-        "uci": "b3b4",
-        "san": "Kb4",
-        "color": "black"
-      },
-      {
-        "uci": "b5d4",
-        "san": "Nd4",
-        "color": "white"
-      },
-      {
-        "uci": "b4c4",
-        "san": "Kc4",
-        "color": "black"
-      },
-      {
-        "uci": "h2h4",
-        "san": "h4",
+        "uci": "f7e8",
+        "san": "Be8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h7g5",
-        "san": "Nxg5",
+        "uci": "h5f7",
+        "san": "Bf7+",
         "color": "white"
       },
       {
-        "uci": "g5e4",
-        "san": "Ne4",
-        "color": "white"
-      },
-      {
-        "uci": "e4d6",
-        "san": "Nd6",
-        "color": "white"
-      },
-      {
-        "uci": "d6b5",
-        "san": "Nb5",
-        "color": "white"
-      },
-      {
-        "uci": "b5d4",
-        "san": "Nd4",
-        "color": "white"
-      },
-      {
-        "uci": "h2h4",
-        "san": "h4",
+        "uci": "f7e8",
+        "san": "Be8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-22T14:10:09.338402+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T14:16:02.741021+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787407809338",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1540724766229532712,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "h4",
-        "correct": true,
-        "timestamp": "2026-08-22T14:15:54.672568+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787408162741",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
