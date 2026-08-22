@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-01-06",
     "title": "No-Go for Bogo",
     "fen": "3r1bk1/ppq3pp/2p5/2P2Q1B/8/1P4P1/P6P/5RK1 w - - 2 24",
-    "current_fen": "3r1bk1/ppq3pp/2p5/2P2Q1B/8/1P4P1/P6P/5RK1 w - - 2 24",
+    "current_fen": "3r1b1k/ppq2Bpp/2p5/2P2Q2/8/1P4P1/P6P/5RK1 w - - 4 25",
     "pgn": "[Event \"New York\"]\r\n[Site \"New York, NY USA\"]\r\n[Date \"1924.04.02\"]\r\n[Round \"12\"]\r\n[White \"Richard Reti\"]\r\n[Black \"Efim Bogoljubov\"]\r\n[Result \"1-0\"]\r\n[ECO \"A13\"]\r\n[EventDate \"1924.03.16\"]\r\n[PlyCount \"49\"]\r\n[FEN \"3r1bk1/ppq3pp/2p5/2P2Q1B/8/1P4P1/P6P/5RK1 w - - 2 24\"]\r\n\r\n24.Bf7+ Kh8 25.Be8 1-0",
     "all_moves": [
       {
@@ -42,20 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787408162741",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540726248228265996,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "bg7",
-        "correct": false,
-        "timestamp": "2026-08-22T14:17:48.721111+00:00"
+        "move": "bf7",
+        "correct": true,
+        "timestamp": "2026-08-22T14:17:51.515367+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
