@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-02-04",
     "title": "Point Counter Point",
     "fen": "3rr1k1/2Q2pb1/p2B2pp/8/P3P1n1/2N2q2/1PP2P1P/3R1RK1 b - - 1 1",
-    "current_fen": "3rr1k1/2Q2pb1/p2B2pp/8/P3P1n1/2N2q2/1PP2P1P/3R1RK1 b - - 1 1",
+    "current_fen": "4r1k1/5pb1/p2Q2pp/8/P3P1n1/2N2q2/1PP2P1P/3R1RK1 b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"3rr1k1/2Q2pb1/p2B2pp/8/P3P1n1/2N2q2/1PP2P1P/3R1RK1 b - - 1 1\"]\r\n\r\n1... Rxd6 2. Qxd6 Be5 3. Rd3 Qf4 *",
     "all_moves": [
       {
@@ -57,13 +57,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787393789835",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540665964213968987,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rxd6",
+        "correct": true,
+        "timestamp": "2026-08-22T10:16:38.777036+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Rxd6",
+        "correct": false,
+        "timestamp": "2026-08-22T10:16:38.783806+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
