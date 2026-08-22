@@ -1,62 +1,51 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-08-01",
-    "title": "Which Capture Wins Material?",
-    "fen": "2r3k1/3q1pp1/p3b2p/b3p3/N3P3/P4N1P/1P3PP1/2RQ2K1 b - - 0 1",
-    "current_fen": "6k1/5pp1/p3b2p/b3p3/q3P3/P4N1P/1P3PP1/2Q3K1 w - - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2r3k1/3q1pp1/p3b2p/b3p3/N3P3/P4N1P/1P3PP1/2RQ2K1 b - - 0 1\"]\r\n\r\n1... Rxc1 2. Qxc1 Qxa4 *",
+    "title": "2300 • jm0v0",
+    "fen": "5rk1/p1pr1p1p/1pp2p2/4p3/Q1P1P3/3q1P2/PP4PP/1R3R1K w - - 2 20",
+    "current_fen": "5rk1/p1pr1p1p/1pp2p2/4p3/Q1P1P3/3q1P2/PP4PP/1R3R1K w - - 2 20",
     "all_moves": [
       {
-        "uci": "c8c1",
-        "san": "Rxc1",
-        "color": "black"
-      },
-      {
-        "uci": "d1c1",
-        "san": "Qxc1",
+        "uci": "f1d1",
+        "san": "Rfd1",
         "color": "white"
       },
       {
-        "uci": "d7a4",
-        "san": "Qxa4",
+        "uci": "d3b1",
+        "san": "Qxb1",
         "color": "black"
+      },
+      {
+        "uci": "d1b1",
+        "san": "Rxb1",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c8c1",
-        "san": "Rxc1",
-        "color": "black"
+        "uci": "f1d1",
+        "san": "Rfd1",
+        "color": "white"
       },
       {
-        "uci": "d7a4",
-        "san": "Qxa4",
-        "color": "black"
+        "uci": "d1b1",
+        "san": "Rxb1",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-08-22T12:27:29.450983+00:00",
-    "answer_posted": true,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_1787401649450",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1540698929526603881,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qxa4",
-        "correct": true,
-        "timestamp": "2026-08-22T12:27:38.467829+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "pgn": "",
+    "url": "https://lichess.org/training/jm0v0",
+    "posted_at": "2026-08-22T12:28:03.623898+00:00",
+    "puzzle_id": "random_lichess_2300_jm0v0_1787401683623",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
@@ -195,6 +184,9 @@
     ],
     "2344": [
       "U1am4"
+    ],
+    "2300": [
+      "jm0v0"
     ]
   }
 }
