@@ -1,74 +1,52 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-04-09",
-    "title": "Promising Light Squared Alignment",
-    "fen": "k2r4/1p3b2/1p1p2p1/1q1r4/5P1P/PP3K1P/1Q4B1/1R1R4 b - - 2 33",
-    "current_fen": "k2r4/1p3b2/1p1p2p1/1q1r4/5P1P/PP3K1P/1Q4B1/1R1R4 b - - 2 33",
-    "pgn": "[White \"EnPassantFork\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"k2r4/1p3b2/1p1p2p1/1q1r4/5P1P/PP3K1P/1Q4B1/1R1R4 b - - 2 33\"]\r\n\r\n33... Rxd1 34. Rxd1 Qh5+ 35. Kf2 Qxd1 0-1",
+    "url": "https://www.chess.com/daily/2014-11-10",
+    "title": "Mate in 2",
+    "fen": "r1b2r1k/ppp2Bp1/2nb3p/6N1/3P2q1/4BQP1/PPP5/2K4R w - - 0 1",
+    "current_fen": "r1b2r1k/ppp2Bp1/2nb3p/6N1/3P2q1/4BQP1/PPP5/2K4R w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2r1k/ppp2Bp1/2nb3p/6N1/3P2q1/4BQP1/PPP5/2K4R w - - 0 1\"]\r\n\r\n1. Rxh6+ gxh6 2. Qf6#\r\n*",
     "all_moves": [
       {
-        "uci": "d5d1",
-        "san": "Rxd1",
-        "color": "black"
-      },
-      {
-        "uci": "b1d1",
-        "san": "Rxd1",
+        "uci": "h1h6",
+        "san": "Rxh6+",
         "color": "white"
       },
       {
-        "uci": "b5h5",
-        "san": "Qh5+",
+        "uci": "g7h6",
+        "san": "gxh6",
         "color": "black"
       },
       {
-        "uci": "f3f2",
-        "san": "Kf2",
+        "uci": "f3f6",
+        "san": "Qf6#",
         "color": "white"
-      },
-      {
-        "uci": "h5d1",
-        "san": "Qxd1",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5d1",
-        "san": "Rxd1",
-        "color": "black"
+        "uci": "h1h6",
+        "san": "Rxh6+",
+        "color": "white"
       },
       {
-        "uci": "b5h5",
-        "san": "Qh5+",
-        "color": "black"
-      },
-      {
-        "uci": "h5d1",
-        "san": "Qxd1",
-        "color": "black"
+        "uci": "f3f6",
+        "san": "Qf6#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-22T14:07:28.747973+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T14:09:47.858577+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787407648747",
+    "puzzle_id": "random_1787407787858",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1540724092506865776,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rd3",
-        "correct": false,
-        "timestamp": "2026-08-22T14:07:36.027484+00:00"
-      }
-    },
+    "message_id": 1540724675884089435,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
