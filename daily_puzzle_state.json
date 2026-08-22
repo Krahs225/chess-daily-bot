@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-09-11",
     "title": "A Delicate Dance",
     "fen": "6k1/Q3R3/6pp/1b3p2/8/1q3P2/1P4PP/K7 b - - 0 1",
-    "current_fen": "6k1/Q3R3/6pp/1b3p2/8/1q3P2/1P4PP/K7 b - - 0 1",
+    "current_fen": "6k1/Q3R3/6pp/1b3p2/8/5P2/KP4PP/3q4 b - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"6k1/Q3R3/6pp/1b3p2/8/1q3P2/1P4PP/K7 b - - 0 1\"]\r\n\r\n1... Qd1+ 2. Ka2 Bc4+ 3. b3 Qxb3+ 4. Ka1 Qd1+ 5. Kb2 Qd2+ 6. Kb1 Bd3+ 7. Ka1\r\nQc1+ 8. Ka2 Bc4# *",
     "all_moves": [
       {
@@ -132,13 +132,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787408419718",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540727326730625105,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qd1",
+        "correct": true,
+        "timestamp": "2026-08-22T14:20:32.237275+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
