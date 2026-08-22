@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-06-14",
     "title": "Exploiting The Uncastled",
     "fen": "rn2k2r/1ppbnppp/p2b1q2/8/P4p2/2NB1N2/1PPP2PP/R1BQR1K1 w kq - 0 1",
-    "current_fen": "rn2k2r/1ppbnppp/p2b1q2/8/P4p2/2NB1N2/1PPP2PP/R1BQR1K1 w kq - 0 1",
+    "current_fen": "rn2k2r/1ppbnppp/p2b3q/3N4/P4p2/3B1N2/1PPP2PP/R1BQR1K1 w kq - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn2k2r/1ppbnppp/p2b1q2/8/P4p2/2NB1N2/1PPP2PP/R1BQR1K1 w kq - 0 1\"]\r\n\r\n1. Nd5 Qh6 2. Rxe7+ Bxe7 3. Nxc7+ Kf8 4. Nxa8\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787393653883",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540665394530885692,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nd5",
+        "correct": true,
+        "timestamp": "2026-08-22T10:14:27.133352+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
