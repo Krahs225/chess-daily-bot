@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-07-07",
     "title": "Hold On, Mate!",
     "fen": "3r1r1k/1b2q2p/p1n1pP2/1p1nP3/2pP3P/P3P1R1/1PQ3R1/1K6 w - - 0 1",
-    "current_fen": "3r1r1k/1b2q2p/p1n1pP2/1p1nP3/2pP3P/P3P1R1/1PQ3R1/1K6 w - - 0 1",
+    "current_fen": "3r3k/1b2q1Rp/p1n1pr2/1p1nP3/2pP3P/P3P3/1PQ3R1/1K6 w - - 0 2",
     "pgn": "[Result \"1-0\"]\n[FEN \"3r1r1k/1b2q2p/p1n1pP2/1p1nP3/2pP3P/P3P1R1/1PQ3R1/1K6 w - - 0 1\"]\n\n1. Rg7 Rxf6 2. Qxh7# 1-0",
     "all_moves": [
       {
@@ -42,16 +42,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787400685363",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1540694888037880001,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "fxe7",
-        "correct": false,
-        "timestamp": "2026-08-22T12:11:30.728989+00:00"
+        "move": "rg7",
+        "correct": true,
+        "timestamp": "2026-08-22T12:11:36.784769+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -60,8 +60,8 @@
         "timestamp": "2026-08-22T12:11:33.688518+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
