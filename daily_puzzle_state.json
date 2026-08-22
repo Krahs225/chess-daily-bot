@@ -1,76 +1,143 @@
 {
   "latest_random_puzzle": {
-    "title": "2399 • ivWK0",
-    "fen": "4r3/p1BqRQpk/2bP3p/1pp5/8/1P6/P4PPP/6K1 b - - 0 29",
-    "current_fen": "8/p1B1Q1pk/3P3p/1pp5/6q1/1P3b2/P5PP/6K1 w - - 0 32",
+    "title": "2500 • 5rMHp",
+    "fen": "5k2/6p1/p3P3/5KpP/6P1/8/8/8 w - - 3 57",
+    "current_fen": "5k2/6p1/p3P3/5KpP/6P1/8/8/8 w - - 3 57",
     "all_moves": [
       {
-        "uci": "e8e7",
-        "san": "Rxe7",
-        "color": "black"
-      },
-      {
-        "uci": "f7e7",
-        "san": "Qxe7",
+        "uci": "f5g5",
+        "san": "Kxg5",
         "color": "white"
       },
       {
-        "uci": "d7g4",
-        "san": "Qg4",
+        "uci": "a6a5",
+        "san": "a5",
         "color": "black"
       },
       {
-        "uci": "f2f3",
-        "san": "f3",
+        "uci": "h5h6",
+        "san": "h6",
         "color": "white"
       },
       {
-        "uci": "c6f3",
-        "san": "Bxf3",
+        "uci": "g7h6",
+        "san": "gxh6+",
         "color": "black"
+      },
+      {
+        "uci": "g5h6",
+        "san": "Kxh6",
+        "color": "white"
+      },
+      {
+        "uci": "a5a4",
+        "san": "a4",
+        "color": "black"
+      },
+      {
+        "uci": "g4g5",
+        "san": "g5",
+        "color": "white"
+      },
+      {
+        "uci": "f8e7",
+        "san": "Ke7",
+        "color": "black"
+      },
+      {
+        "uci": "g5g6",
+        "san": "g6",
+        "color": "white"
+      },
+      {
+        "uci": "a4a3",
+        "san": "a3",
+        "color": "black"
+      },
+      {
+        "uci": "g6g7",
+        "san": "g7",
+        "color": "white"
+      },
+      {
+        "uci": "a3a2",
+        "san": "a2",
+        "color": "black"
+      },
+      {
+        "uci": "g7g8q",
+        "san": "g8=Q",
+        "color": "white"
+      },
+      {
+        "uci": "a2a1q",
+        "san": "a1=Q",
+        "color": "black"
+      },
+      {
+        "uci": "g8f7",
+        "san": "Qf7+",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e8e7",
-        "san": "Rxe7",
-        "color": "black"
+        "uci": "f5g5",
+        "san": "Kxg5",
+        "color": "white"
       },
       {
-        "uci": "d7g4",
-        "san": "Qg4",
-        "color": "black"
+        "uci": "h5h6",
+        "san": "h6",
+        "color": "white"
       },
       {
-        "uci": "c6f3",
-        "san": "Bxf3",
-        "color": "black"
+        "uci": "g5h6",
+        "san": "Kxh6",
+        "color": "white"
+      },
+      {
+        "uci": "g4g5",
+        "san": "g5",
+        "color": "white"
+      },
+      {
+        "uci": "g5g6",
+        "san": "g6",
+        "color": "white"
+      },
+      {
+        "uci": "g6g7",
+        "san": "g7",
+        "color": "white"
+      },
+      {
+        "uci": "g7g8q",
+        "san": "g8=Q",
+        "color": "white"
+      },
+      {
+        "uci": "g8f7",
+        "san": "Qf7+",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
+    "player_color": "white",
+    "player_move_count": 8,
     "pgn": "",
-    "url": "https://lichess.org/training/ivWK0",
-    "posted_at": "2026-08-22T10:20:43.896067+00:00",
-    "puzzle_id": "random_lichess_2399_ivWK0_1787394043896",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
+    "url": "https://lichess.org/training/5rMHp",
+    "posted_at": "2026-08-22T10:21:30.067433+00:00",
+    "puzzle_id": "random_lichess_2500_5rMHp_1787394090067",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxf3",
-        "correct": true,
-        "timestamp": "2026-08-22T10:21:10.457179+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -198,6 +265,9 @@
     ],
     "2399": [
       "ivWK0"
+    ],
+    "2500": [
+      "5rMHp"
     ]
   }
 }
