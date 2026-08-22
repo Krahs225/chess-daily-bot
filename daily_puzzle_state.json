@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-08-21",
     "title": "Double the Fun",
     "fen": "BK6/1R4rq/8/8/8/8/p6p/7k w KQkq - 0 1",
-    "current_fen": "BK6/1R4rq/8/8/8/8/p6p/7k w KQkq - 0 1",
+    "current_fen": "BK6/6rq/8/8/8/8/p6p/1R5k b - - 1 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"BK6/1R4rq/8/8/8/8/p6p/7k w KQkq - 0 1\"]\r\n\r\n1. Rb1#\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787420439281",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
     "message_id": 1540777739731079310,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rb1",
+        "correct": true,
+        "timestamp": "2026-08-22T17:40:46.804019+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
