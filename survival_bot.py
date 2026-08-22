@@ -1937,11 +1937,21 @@ class SurvivalBot(
             push=True,
         )
 
-        write_lock(
-            display_name,
-            run["run_id"],
-            run["last_activity"],
-        )
+        # The Survival state file is the source of truth. The lock is only
+        # an auxiliary fast-path used by the other puzzle bot, so a failure
+        # writing the lock must NOT undo/fail a newly-created Survival run.
+        try:
+            write_lock(
+                display_name,
+                run["run_id"],
+                run["last_activity"],
+            )
+        except Exception as lock_error:
+            print(
+                f"Could not save puzzle mode lock; "
+                f"continuing with Survival state: {lock_error}",
+                flush=True,
+            )
 
         await self.post_next_puzzle(
             requester.channel,
@@ -2006,16 +2016,23 @@ class SurvivalBot(
             push=True,
         )
 
-        write_lock(
-            team.get(
-                "name",
-                team_key,
-            ),
-            run.get(
-                "run_id",
-            ),
-            run["last_activity"],
-        )
+        try:
+            write_lock(
+                team.get(
+                    "name",
+                    team_key,
+                ),
+                run.get(
+                    "run_id",
+                ),
+                run["last_activity"],
+            )
+        except Exception as lock_error:
+            print(
+                f"Could not save puzzle mode lock on resume; "
+                f"continuing: {lock_error}",
+                flush=True,
+            )
 
         await interaction.response.send_message(
             f"▶️ **{team.get('name', team_key)} resumed.**"
