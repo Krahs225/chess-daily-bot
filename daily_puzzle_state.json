@@ -1,77 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-09-14",
-    "title": "Blind Diagonal",
-    "fen": "3r4/6p1/1R2pk2/1bp1p2p/1p1bP2P/1R2NP2/1P1K2P1/8 b - - 0 32",
-    "current_fen": "3r4/6p1/4pk2/4p2p/1pb1P2P/1R2KP2/1P4P1/8 w - - 0 35",
-    "pgn": "[Event \"Groningen op\"]\r\n[Site \"Groningen\"]\r\n[Date \"1991.??.??\"]\r\n[Round \"4\"]\r\n[White \"Basart, Josep Maria\"]\r\n[Black \"Finegold, Benjamin\"]\r\n[Result \"0-1\"]\r\n[ECO \"D11\"]\r\n[WhiteElo \"2205\"]\r\n[BlackElo \"2455\"]\r\n[FEN \"3r4/6p1/1R2pk2/1bp1p2p/1p1bP2P/1R2NP2/1P1K2P1/8 b - - 0 32\"]\r\n\r\n32... Bxe3+ 33. Kxe3 Bc4 34. R6xb4 cxb4 *",
+    "url": "https://www.chess.com/daily/2019-08-20",
+    "title": "Playing For Keeps Down a Rook",
+    "fen": "2r2Bk1/p6p/6p1/1Q6/3P4/P3q1P1/1P5P/2RR1K2 b - - 0 1",
+    "current_fen": "5rk1/p6p/6p1/1Q6/3P4/P3q1P1/1P4KP/2RR4 b - - 1 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r2Bk1/p6p/6p1/1Q6/3P4/P3q1P1/1P5P/2RR1K2 b - - 0 1\"]\r\n\r\n1...Rxf8+ 2. Kg2 Rf2+ 3. Kh3 Qe6+\r\n*",
     "all_moves": [
       {
-        "uci": "d4e3",
-        "san": "Bxe3+",
+        "uci": "c8f8",
+        "san": "Rxf8+",
         "color": "black"
       },
       {
-        "uci": "d2e3",
-        "san": "Kxe3",
+        "uci": "f1g2",
+        "san": "Kg2",
         "color": "white"
       },
       {
-        "uci": "b5c4",
-        "san": "Bc4",
+        "uci": "f8f2",
+        "san": "Rf2+",
         "color": "black"
       },
       {
-        "uci": "b6b4",
-        "san": "R6xb4",
+        "uci": "g2h3",
+        "san": "Kh3",
         "color": "white"
       },
       {
-        "uci": "c5b4",
-        "san": "cxb4",
+        "uci": "e3e6",
+        "san": "Qe6+",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4e3",
-        "san": "Bxe3+",
+        "uci": "c8f8",
+        "san": "Rxf8+",
         "color": "black"
       },
       {
-        "uci": "b5c4",
-        "san": "Bc4",
+        "uci": "f8f2",
+        "san": "Rf2+",
         "color": "black"
       },
       {
-        "uci": "c5b4",
-        "san": "cxb4",
+        "uci": "e3e6",
+        "san": "Qe6+",
         "color": "black"
       }
     ],
     "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-22T13:13:51.421018+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-22T13:14:42.638931+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787404431421",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1540710598273400976,
+    "puzzle_id": "random_1787404482638",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1540710814070214658,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "cxb4",
+        "move": "rxf8",
         "correct": true,
-        "timestamp": "2026-08-22T13:14:35.255984+00:00"
+        "timestamp": "2026-08-22T13:14:51.708980+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
