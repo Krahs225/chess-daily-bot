@@ -1,96 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-11-11",
-    "title": "Danya's Royal Dance",
-    "fen": "1r5k/p5pp/2p2b2/5p2/7q/2P1B2P/P1Q2P2/K4BR1 b - - 0 28",
-    "current_fen": "7k/p5pp/2p5/1r3p2/8/2b1B2P/P4P2/1KQq2R1 w - - 0 32",
-    "pgn": "[Event \"Live Chess\"]\r\n[Site \"Chess.com\"]\r\n[Date \"2021.04.10\"]\r\n[Round \"?\"]\r\n[White \"wonderfultime\"]\r\n[Black \"DanielNaroditsky\"]\r\n[Result \"0-1\"]\r\n[ECO \"A41\"]\r\n[WhiteElo \"3015\"]\r\n[BlackElo \"3125\"]\r\n[FEN \"1r5k/p5pp/2p2b2/5p2/7q/2P1B2P/P1Q2P2/K4BR1 b - - 0 28\"]\r\n\r\n28... Qa4 29. Qc1 Qd1 30. Bb5 Bxc3+ 31. Kb1 Rxb5# 0-1",
+    "title": "2200 • cujrf",
+    "fen": "1kq3r1/1p2N2p/pQ1p3p/P1r5/4P3/8/1P3PPP/R4RK1 b - - 0 23",
+    "current_fen": "1kq3r1/1p2N2p/pQ1p3p/P1r5/4P3/8/1P3PPP/R4RK1 b - - 0 23",
     "all_moves": [
       {
-        "uci": "h4a4",
-        "san": "Qa4",
+        "uci": "g8g2",
+        "san": "Rxg2+",
         "color": "black"
       },
       {
-        "uci": "c2c1",
-        "san": "Qc1",
+        "uci": "g1h1",
+        "san": "Kh1",
         "color": "white"
       },
       {
-        "uci": "a4d1",
-        "san": "Qd1",
+        "uci": "g2h2",
+        "san": "Rxh2+",
         "color": "black"
       },
       {
-        "uci": "f1b5",
-        "san": "Bb5",
+        "uci": "h1h2",
+        "san": "Kxh2",
         "color": "white"
       },
       {
-        "uci": "f6c3",
-        "san": "Bxc3+",
+        "uci": "c5h5",
+        "san": "Rh5+",
         "color": "black"
       },
       {
-        "uci": "a1b1",
-        "san": "Kb1",
+        "uci": "h2g3",
+        "san": "Kg3",
         "color": "white"
       },
       {
-        "uci": "b8b5",
-        "san": "Rxb5#",
+        "uci": "c8h3",
+        "san": "Qh3+",
+        "color": "black"
+      },
+      {
+        "uci": "g3f4",
+        "san": "Kf4",
+        "color": "white"
+      },
+      {
+        "uci": "h5h4",
+        "san": "Rh4#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h4a4",
-        "san": "Qa4",
+        "uci": "g8g2",
+        "san": "Rxg2+",
         "color": "black"
       },
       {
-        "uci": "a4d1",
-        "san": "Qd1",
+        "uci": "g2h2",
+        "san": "Rxh2+",
         "color": "black"
       },
       {
-        "uci": "f6c3",
-        "san": "Bxc3+",
+        "uci": "c5h5",
+        "san": "Rh5+",
         "color": "black"
       },
       {
-        "uci": "b8b5",
-        "san": "Rxb5#",
+        "uci": "c8h3",
+        "san": "Qh3+",
+        "color": "black"
+      },
+      {
+        "uci": "h5h4",
+        "san": "Rh4#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-21T23:06:16.714595+00:00",
-    "answer_posted": true,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_1787353576714",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540497298843238430,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxb5",
-        "correct": true,
-        "timestamp": "2026-08-21T23:07:39.555278+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "player_move_count": 5,
+    "pgn": "",
+    "url": "https://lichess.org/training/cujrf",
+    "posted_at": "2026-08-22T10:18:56.376573+00:00",
+    "puzzle_id": "random_lichess_2200_cujrf_1787393936376",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "daily",
+  "latest_puzzle_type": "random",
   "current_puzzle": {
     "url": "https://www.chess.com/daily/2026-08-22",
     "title": "Clear the Air",
@@ -210,6 +214,9 @@
     ],
     "1600": [
       "l9SQo"
+    ],
+    "2200": [
+      "cujrf"
     ]
   }
 }
