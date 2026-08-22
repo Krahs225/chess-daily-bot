@@ -1,105 +1,64 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-09-12",
-    "title": "Marshalling Your Attacking Forces",
-    "fen": "r4rk1/pb3ppp/1p1bpn2/2P4q/2P5/3BP1P1/PBQN1P1P/R4RK1 b - - 0 15",
-    "current_fen": "r4r1k/pb3ppB/1p2p3/2P5/2P3nP/4P3/PBQN1P1b/R4RK1 w - - 1 19",
-    "pgn": "[Event \"Marshall Chess Club\"]\r\n[Site \"New York, NY\"]\r\n[Date \"2024.08.02\"]\r\n[Round \"1\"]\r\n[White \"Dane Zagar\"]\r\n[Black \"Akira Nakada\"]\r\n[Result \"0-1\"]\r\n[ECO \"D05\"]\r\n[WhiteElo \"2119\"]\r\n[BlackElo \"2486\"]\r\n[FEN \"r4rk1/pb3ppp/1p1bpn2/2P4q/2P5/3BP1P1/PBQN1P1P/R4RK1 b - - 0 15\"]\r\n\r\n15... Ng4 16. h4 Qxh4 17. Bxh7+ Kh8 18. gxh4 Bh2# 0-1",
+    "url": "https://www.chess.com/daily/2008-07-23",
+    "title": "Moving Forward",
+    "fen": "1k1r4/7R/1N6/Pp1b4/8/1P6/7K/8 w - - 0 1",
+    "current_fen": "1k5r/P6R/1N6/1p1b4/8/1P6/7K/8 b - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1k1r4/7R/1N6/Pp1b4/8/1P6/7K/8 w - - 0 1\"]\r\n\r\n1. a6 Rh8 2. a7#\r\n*",
     "all_moves": [
       {
-        "uci": "f6g4",
-        "san": "Ng4",
-        "color": "black"
-      },
-      {
-        "uci": "h2h4",
-        "san": "h4",
+        "uci": "a5a6",
+        "san": "a6",
         "color": "white"
       },
       {
-        "uci": "h5h4",
-        "san": "Qxh4",
+        "uci": "d8h8",
+        "san": "Rh8",
         "color": "black"
       },
       {
-        "uci": "d3h7",
-        "san": "Bxh7+",
+        "uci": "a6a7",
+        "san": "a7#",
         "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "g3h4",
-        "san": "gxh4",
-        "color": "white"
-      },
-      {
-        "uci": "d6h2",
-        "san": "Bh2#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f6g4",
-        "san": "Ng4",
-        "color": "black"
+        "uci": "a5a6",
+        "san": "a6",
+        "color": "white"
       },
       {
-        "uci": "h5h4",
-        "san": "Qxh4",
-        "color": "black"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "d6h2",
-        "san": "Bh2#",
-        "color": "black"
+        "uci": "a6a7",
+        "san": "a7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-22T14:01:18.825059+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-22T14:01:48.024049+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787407278825",
-    "next_solution_index": 7,
-    "next_player_index": 4,
+    "puzzle_id": "random_1787407308024",
+    "next_solution_index": 3,
+    "next_player_index": 2,
     "solved": true,
-    "message_id": 1540722541469896724,
+    "message_id": 1540722663776067767,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bh2",
+        "move": "a7",
         "correct": true,
-        "timestamp": "2026-08-22T14:01:36.477318+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxh4",
-        "correct": true,
-        "timestamp": "2026-08-22T14:01:28.842403+00:00"
+        "timestamp": "2026-08-22T14:01:53.068581+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
