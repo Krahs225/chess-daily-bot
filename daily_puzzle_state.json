@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-06-20",
     "title": "Reading Tactical Signals",
     "fen": "3r4/2q3kp/1r3p2/1pN2R2/1P4n1/8/1Q4PP/5R1K w - - 0 1",
-    "current_fen": "3r4/2q3kp/1r3p2/1pN2R2/1P4n1/8/1Q4PP/5R1K w - - 0 1",
+    "current_fen": "3r3k/2q4p/1r3p2/1pN3R1/1P4n1/8/1Q4PP/5R1K w - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"3r4/2q3kp/1r3p2/1pN2R2/1P4n1/8/1Q4PP/5R1K w - - 0 1\"]\r\n\r\n1. Rg5+ Kh8 2. Rxg4 *",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787405460432",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1540714914652364922,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rg5",
+        "correct": true,
+        "timestamp": "2026-08-22T13:31:09.973551+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
