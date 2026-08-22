@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-01-30",
-    "title": "Spassky's Icing on the Cake",
-    "fen": "4r1k1/3b1p2/5qp1/1BPpn2p/7n/r3P1N1/2Q1RPPP/1R3NK1 b - - 2 28",
-    "current_fen": "4r1k1/5p2/6p1/1BPp3p/7n/r3PnN1/2QNRPbP/1R5K w - - 4 32",
-    "pgn": "[Event \"Bundesliga 1987/88\"]\r\n[Site \"FRG\"]\r\n[Date \"1988\"]\r\n[White \"Gilles Andruet\"]\r\n[Black \"Boris Spassky\"]\r\n[Result \"0-1\"]\r\n[ECO \"E11\"]\r\n[PlyCount \"56\"]\r\n[FEN \"4r1k1/3b1p2/5qp1/1BPpn2p/7n/r3P1N1/2Q1RPPP/1R3NK1 b - - 2 28\"]\r\n\r\n28...Qf3 29.gxf3 Nexf3+ 30.Kh1 Bh3 31.Nd2 Bg2# 0-1",
+    "url": "https://www.chess.com/daily/2007-08-10",
+    "title": "Really. You can win this. Quickly.",
+    "fen": "8/6p1/4b1Rp/4q2k/7b/1B6/2PB2Q1/2K5 w - - 0 1",
+    "current_fen": "8/6p1/4b1Rp/4q2k/7b/1B6/2PB2Q1/2K5 w - - 0 1",
+    "pgn": "[FEN \"8/6p1/4b1Rp/4q2k/7b/1B6/2PB2Q1/2K5 w - - 0 1\"]\r\n[PlyCount \"5\"]\r\n[Date \"2007.08.04\"]\r\n\r\n1. Qg4+ Bxg4 2. Rxh6+ gxh6 3. Bf7#\r\n*",
     "all_moves": [
       {
-        "uci": "f6f3",
-        "san": "Qf3",
-        "color": "black"
-      },
-      {
-        "uci": "g2f3",
-        "san": "gxf3",
+        "uci": "g2g4",
+        "san": "Qg4+",
         "color": "white"
       },
       {
-        "uci": "e5f3",
-        "san": "Nexf3+",
+        "uci": "e6g4",
+        "san": "Bxg4",
         "color": "black"
       },
       {
-        "uci": "g1h1",
-        "san": "Kh1",
+        "uci": "g6h6",
+        "san": "Rxh6+",
         "color": "white"
       },
       {
-        "uci": "d7h3",
-        "san": "Bh3",
+        "uci": "g7h6",
+        "san": "gxh6",
         "color": "black"
       },
       {
-        "uci": "f1d2",
-        "san": "Nd2",
+        "uci": "b3f7",
+        "san": "Bf7#",
         "color": "white"
-      },
-      {
-        "uci": "h3g2",
-        "san": "Bg2#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f6f3",
-        "san": "Qf3",
-        "color": "black"
+        "uci": "g2g4",
+        "san": "Qg4+",
+        "color": "white"
       },
       {
-        "uci": "e5f3",
-        "san": "Nexf3+",
-        "color": "black"
+        "uci": "g6h6",
+        "san": "Rxh6+",
+        "color": "white"
       },
       {
-        "uci": "d7h3",
-        "san": "Bh3",
-        "color": "black"
-      },
-      {
-        "uci": "h3g2",
-        "san": "Bg2#",
-        "color": "black"
+        "uci": "b3f7",
+        "san": "Bf7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-22T17:22:45.293796+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-22T17:30:34.639146+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787419365293",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1540773236411990157,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bg2",
-        "correct": true,
-        "timestamp": "2026-08-22T17:23:05.056397+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787419834639",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
