@@ -1572,41 +1572,17 @@ class SurvivalBot(
         self,
         pending,
     ):
+        # This is transient UI state, not Survival progress.
+        # Do NOT push it to GitHub: a synchronous git push here can block
+        # Discord's event loop and make the next user message appear ignored.
         self.pending_team = pending
-        self.state[
-            "pending_team"
-        ] = pending
-
-        try:
-            save_state(
-                self.state,
-                push=True,
-            )
-        except Exception as error:
-            print(
-                f"Could not persist pending team prompt: {error}",
-                flush=True,
-            )
 
     def clear_pending_team(
         self,
     ):
+        # Clear only the transient prompt. The actual Survival run is
+        # persisted by start_new_run().
         self.pending_team = None
-        self.state.pop(
-            "pending_team",
-            None,
-        )
-
-        try:
-            save_state(
-                self.state,
-                push=True,
-            )
-        except Exception as error:
-            print(
-                f"Could not clear pending team prompt: {error}",
-                flush=True,
-            )
 
     async def setup_hook(
         self
@@ -3036,6 +3012,130 @@ class SurvivalBot(
 
         lower = content.casefold()
 
+        # Highest-priority path: after !survival the very next plain
+        # message from the same user/channel is the team name.
+        pending = self.pending_team
+
+        if (
+            pending
+            and epoch_now()
+            <= float(
+                pending.get(
+                    "expires",
+                    0,
+                )
+            )
+            and str(message.author.id)
+            == str(
+                pending.get(
+                    "user_id"
+                )
+            )
+            and str(message.channel.id)
+            == str(
+                pending.get(
+                    "channel_id"
+                )
+            )
+            and not content.startswith("!")
+        ):
+            self.clear_pending_team()
+
+            team_name = " ".join(
+                content.split()
+            )
+
+            if not valid_team_name(
+                team_name
+            ):
+                await message.channel.send(
+                    "❌ Team name must be 2–32 characters."
+                )
+                return
+
+            key = normalize_team_name(
+                team_name
+            )
+
+            active = active_current_run(
+                self.state
+            )
+
+            if active:
+                await message.channel.send(
+                    f"⚠️ **{active[1].get('name', active[0])}** "
+                    "already has an active Survival run."
+                )
+                return
+
+            team = self.state["teams"].get(
+                key
+            )
+
+            if (
+                team
+                and team.get("current")
+            ):
+                view = ContinueOrRestartView(
+                    self,
+                    message.author.id,
+                    key,
+                )
+
+                captain = await self.get_captain_display(
+                    team["current"]
+                )
+
+                await message.channel.send(
+                    f"♻️ **{team.get('name', team_name)}** "
+                    "has a saved Survival run.\n"
+                    f"👑 **Captain:** {captain}\n\n"
+                    + run_status_text(
+                        team.get(
+                            "name",
+                            team_name,
+                        ),
+                        team["current"],
+                    )
+                    + "\n\n"
+                    "Continue it or start a new run?",
+                    view=view,
+                )
+                return
+
+            try:
+                await self.start_new_run(
+                    key,
+                    team_name,
+                    message,
+                )
+            except Exception as error:
+                print(
+                    f"Could not create Survival team: {error}",
+                    flush=True,
+                )
+                traceback.print_exc()
+
+                await message.channel.send(
+                    f"❌ **Could not create Survival team {team_name}.**\n"
+                    f"`{str(error)[:900]}`"
+                )
+
+            return
+
+        # Expired prompt: discard it and continue normally.
+        if (
+            pending
+            and epoch_now()
+            > float(
+                pending.get(
+                    "expires",
+                    0,
+                )
+            )
+        ):
+            self.clear_pending_team()
+
         if await self.handle_admin_command(
             message,
             lower,
@@ -3305,123 +3405,6 @@ class SurvivalBot(
                 )
 
             return
-
-        # If someone was asked for a team name, consume only the next
-        # non-command message from the requester.
-        # Prefer this bot instance's fresh prompt over any stale
-        # persisted prompt left by an older Action run.
-        pending = (
-            self.pending_team
-            or self.state.get(
-                "pending_team"
-            )
-        )
-
-        if (
-            pending
-            and epoch_now()
-            <= float(
-                pending.get(
-                    "expires",
-                    0,
-                )
-            )
-            and str(message.author.id)
-            == str(
-                pending.get(
-                    "user_id"
-                )
-            )
-            and str(message.channel.id)
-            == str(
-                pending.get(
-                    "channel_id"
-                )
-            )
-            and not content.startswith("!")
-        ):
-
-            self.clear_pending_team()
-
-            team_name = " ".join(
-                content.split()
-            )
-
-            if not valid_team_name(
-                team_name
-            ):
-                await message.channel.send(
-                    "❌ Team name must be 2–32 characters."
-                )
-                return
-
-            key = normalize_team_name(
-                team_name
-            )
-
-            active = active_current_run(
-                self.state
-            )
-
-            if active:
-                await message.channel.send(
-                    f"⚠️ **{active[1].get('name', active[0])}** "
-                    "already has an active Survival run."
-                )
-                return
-
-            team = self.state["teams"].get(
-                key
-            )
-
-            if (
-                team
-                and team.get(
-                    "current"
-                )
-            ):
-                view = ContinueOrRestartView(
-                    self,
-                    message.author.id,
-                    key,
-                )
-
-                captain = await self.get_captain_display(
-                    team["current"]
-                )
-
-                await message.channel.send(
-                    f"♻️ **{team.get('name', team_name)}** "
-                    "has a saved Survival run.\n"
-                    f"👑 **Captain:** {captain}\n\n"
-                    + run_status_text(
-                        team.get(
-                            "name",
-                            team_name,
-                        ),
-                        team["current"],
-                    )
-                    + "\n\n"
-                    "Continue it or start a new run?",
-                    view=view,
-                )
-                return
-
-            await self.start_new_run(
-                key,
-                team_name,
-                message,
-            )
-
-            return
-
-        if pending and epoch_now() > float(
-            pending.get(
-                "expires",
-                0,
-            )
-        ):
-            self.clear_pending_team()
 
         # While Survival is active, route chess-like messages to Survival.
         active = active_current_run(
