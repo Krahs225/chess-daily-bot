@@ -1,75 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-03-05",
-    "title": "Savielly Tartakower vs Endre Steiner, Budapest, 19",
-    "fen": "k3r2r/p2q2b1/2p5/4N2p/4Q1p1/1R4B1/PP3PPP/6K1 w - - 0 1",
-    "current_fen": "kr5r/p2N2b1/2p5/7p/4Q1p1/6B1/PP3PPP/6K1 b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k3r2r/p2q2b1/2p5/4N2p/4Q1p1/1R4B1/PP3PPP/6K1 w - - 0 1\"]\r\n\r\n1. Rb8+ Rxb8 2. Nxd7\r\n*",
+    "url": "https://www.chess.com/daily/2023-08-01",
+    "title": "Which Capture Wins Material?",
+    "fen": "2r3k1/3q1pp1/p3b2p/b3p3/N3P3/P4N1P/1P3PP1/2RQ2K1 b - - 0 1",
+    "current_fen": "2r3k1/3q1pp1/p3b2p/b3p3/N3P3/P4N1P/1P3PP1/2RQ2K1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2r3k1/3q1pp1/p3b2p/b3p3/N3P3/P4N1P/1P3PP1/2RQ2K1 b - - 0 1\"]\r\n\r\n1... Rxc1 2. Qxc1 Qxa4 *",
     "all_moves": [
       {
-        "uci": "b3b8",
-        "san": "Rb8+",
-        "color": "white"
-      },
-      {
-        "uci": "e8b8",
-        "san": "Rxb8",
+        "uci": "c8c1",
+        "san": "Rxc1",
         "color": "black"
       },
       {
-        "uci": "e5d7",
-        "san": "Nxd7",
+        "uci": "d1c1",
+        "san": "Qxc1",
         "color": "white"
+      },
+      {
+        "uci": "d7a4",
+        "san": "Qxa4",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b3b8",
-        "san": "Rb8+",
-        "color": "white"
+        "uci": "c8c1",
+        "san": "Rxc1",
+        "color": "black"
       },
       {
-        "uci": "e5d7",
-        "san": "Nxd7",
-        "color": "white"
+        "uci": "d7a4",
+        "san": "Qxa4",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 2,
-    "posted_at": "2026-08-22T12:26:53.423508+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-22T12:27:29.450983+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787401613423",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1540698778493915198,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rb8",
-        "correct": true,
-        "timestamp": "2026-08-22T12:27:07.308183+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nxd7",
-        "correct": true,
-        "timestamp": "2026-08-22T12:27:11.956721+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787401649450",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
