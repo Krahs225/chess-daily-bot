@@ -1,114 +1,68 @@
 {
   "latest_random_puzzle": {
-    "title": "2200 • cujrf",
-    "fen": "1kq3r1/1p2N2p/pQ1p3p/P1r5/4P3/8/1P3PPP/R4RK1 b - - 0 23",
-    "current_fen": "1k6/1p2N2p/pQ1p3p/P7/4PK1r/7q/1P3P2/R4R2 w - - 5 28",
+    "title": "2399 • ivWK0",
+    "fen": "4r3/p1BqRQpk/2bP3p/1pp5/8/1P6/P4PPP/6K1 b - - 0 29",
+    "current_fen": "4r3/p1BqRQpk/2bP3p/1pp5/8/1P6/P4PPP/6K1 b - - 0 29",
     "all_moves": [
       {
-        "uci": "g8g2",
-        "san": "Rxg2+",
+        "uci": "e8e7",
+        "san": "Rxe7",
         "color": "black"
       },
       {
-        "uci": "g1h1",
-        "san": "Kh1",
+        "uci": "f7e7",
+        "san": "Qxe7",
         "color": "white"
       },
       {
-        "uci": "g2h2",
-        "san": "Rxh2+",
+        "uci": "d7g4",
+        "san": "Qg4",
         "color": "black"
       },
       {
-        "uci": "h1h2",
-        "san": "Kxh2",
+        "uci": "f2f3",
+        "san": "f3",
         "color": "white"
       },
       {
-        "uci": "c5h5",
-        "san": "Rh5+",
-        "color": "black"
-      },
-      {
-        "uci": "h2g3",
-        "san": "Kg3",
-        "color": "white"
-      },
-      {
-        "uci": "c8h3",
-        "san": "Qh3+",
-        "color": "black"
-      },
-      {
-        "uci": "g3f4",
-        "san": "Kf4",
-        "color": "white"
-      },
-      {
-        "uci": "h5h4",
-        "san": "Rh4#",
+        "uci": "c6f3",
+        "san": "Bxf3",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "g8g2",
-        "san": "Rxg2+",
+        "uci": "e8e7",
+        "san": "Rxe7",
         "color": "black"
       },
       {
-        "uci": "g2h2",
-        "san": "Rxh2+",
+        "uci": "d7g4",
+        "san": "Qg4",
         "color": "black"
       },
       {
-        "uci": "c5h5",
-        "san": "Rh5+",
-        "color": "black"
-      },
-      {
-        "uci": "c8h3",
-        "san": "Qh3+",
-        "color": "black"
-      },
-      {
-        "uci": "h5h4",
-        "san": "Rh4#",
+        "uci": "c6f3",
+        "san": "Bxf3",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 5,
+    "player_move_count": 3,
     "pgn": "",
-    "url": "https://lichess.org/training/cujrf",
-    "posted_at": "2026-08-22T10:18:56.376573+00:00",
-    "puzzle_id": "random_lichess_2200_cujrf_1787393936376",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
+    "url": "https://lichess.org/training/ivWK0",
+    "posted_at": "2026-08-22T10:20:43.896067+00:00",
+    "puzzle_id": "random_lichess_2399_ivWK0_1787394043896",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qh3",
-        "correct": true,
-        "timestamp": "2026-08-22T10:19:45.027458+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rh4",
-        "correct": true,
-        "timestamp": "2026-08-22T10:19:56.369990+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -233,6 +187,9 @@
     ],
     "2200": [
       "cujrf"
+    ],
+    "2399": [
+      "ivWK0"
     ]
   }
 }
