@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-12-06",
     "title": "Keres Tactic",
     "fen": "2q3k1/5p2/4PQpp/p2p4/3P4/P2b2PB/5K1P/1r6 w - - 0 43",
-    "current_fen": "2q3k1/5p2/4PQpp/p2p4/3P4/P2b2PB/5K1P/1r6 w - - 0 43",
+    "current_fen": "2q5/5P1k/5Qpp/p2p4/3P4/P2b2PB/5K1P/1r6 w - - 1 44",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2q3k1/5p2/4PQpp/p2p4/3P4/P2b2PB/5K1P/1r6 w - - 0 43\"]\r\n\r\n1. exf7+ Kh7 2. f8=N+ Kg8 3. Be6+\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787488680962",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541063966430859364,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "exf7",
+        "correct": true,
+        "timestamp": "2026-08-23T12:38:10.280118+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
