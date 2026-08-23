@@ -1,77 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-12-06",
-    "title": "Keres Tactic",
-    "fen": "2q3k1/5p2/4PQpp/p2p4/3P4/P2b2PB/5K1P/1r6 w - - 0 43",
-    "current_fen": "2q2Nk1/8/4BQpp/p2p4/3P4/P2b2P1/5K1P/1r6 b - - 2 45",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2q3k1/5p2/4PQpp/p2p4/3P4/P2b2PB/5K1P/1r6 w - - 0 43\"]\r\n\r\n1. exf7+ Kh7 2. f8=N+ Kg8 3. Be6+\r\n*",
+    "url": "https://www.chess.com/daily/2026-07-16",
+    "title": "Chased into the Shadows",
+    "fen": "6k1/1p3pp1/1RP4p/2q1p3/6PK/7P/3P4/Q5R1 b - - 0 38",
+    "current_fen": "6k1/1p3pp1/1RP4p/4p3/6PK/6RP/3P1q2/Q7 b - - 2 39",
+    "pgn": "[White \"Daily Puzzle Collaboration\"]\n[Black \"JohanVA / baltwalt\"]\n[Result \"0-1\"]\n[FEN \"6k1/1p3pp1/1RP4p/2q1p3/6PK/7P/3P4/Q5R1 b - - 0 38\"]\n\n38... Qf2+ 39. Rg3 g5+ 40. Kh5 Qxg3 41. Qh1 Qh4# 0-1",
     "all_moves": [
       {
-        "uci": "e6f7",
-        "san": "exf7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "c5f2",
+        "san": "Qf2+",
         "color": "black"
       },
       {
-        "uci": "f7f8n",
-        "san": "f8=N+",
+        "uci": "g1g3",
+        "san": "Rg3",
         "color": "white"
       },
       {
-        "uci": "h7g8",
-        "san": "Kg8",
+        "uci": "g7g5",
+        "san": "g5+",
         "color": "black"
       },
       {
-        "uci": "h3e6",
-        "san": "Be6+",
+        "uci": "h4h5",
+        "san": "Kh5",
         "color": "white"
+      },
+      {
+        "uci": "f2g3",
+        "san": "Qxg3",
+        "color": "black"
+      },
+      {
+        "uci": "a1h1",
+        "san": "Qh1",
+        "color": "white"
+      },
+      {
+        "uci": "g3h4",
+        "san": "Qh4#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e6f7",
-        "san": "exf7+",
-        "color": "white"
+        "uci": "c5f2",
+        "san": "Qf2+",
+        "color": "black"
       },
       {
-        "uci": "f7f8n",
-        "san": "f8=N+",
-        "color": "white"
+        "uci": "g7g5",
+        "san": "g5+",
+        "color": "black"
       },
       {
-        "uci": "h3e6",
-        "san": "Be6+",
-        "color": "white"
+        "uci": "f2g3",
+        "san": "Qxg3",
+        "color": "black"
+      },
+      {
+        "uci": "g3h4",
+        "san": "Qh4#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-23T18:35:11.111754+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-23T18:36:02.108399+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787510111111",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541153851451777024,
+    "puzzle_id": "random_1787510162108",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541154064564494439,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Be6",
+        "move": "Qf2",
         "correct": true,
-        "timestamp": "2026-08-23T18:35:53.687530+00:00"
+        "timestamp": "2026-08-23T18:36:16.631466+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
