@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-03-22",
     "title": "Power of the Knight",
     "fen": "4r1k1/p1pp1p1p/6p1/3r4/4NP2/1P4P1/P6P/R4K2 w - - 0 1",
-    "current_fen": "4r1k1/p1pp1p1p/6p1/3r4/4NP2/1P4P1/P6P/R4K2 w - - 0 1",
+    "current_fen": "4r1k1/p1pp1p1p/5Np1/3r4/5P2/1P4P1/P6P/R4K2 b - - 1 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/p1pp1p1p/6p1/3r4/4NP2/1P4P1/P6P/R4K2 w - - 0 1\"]\r\n\r\n1. Nf6+\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787497950420",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1541102845615415357,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nf6",
+        "correct": true,
+        "timestamp": "2026-08-23T15:12:34.211276+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
