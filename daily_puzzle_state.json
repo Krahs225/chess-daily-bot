@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-09-03",
-    "title": "Szabo - Gligoric, Zurich 1953",
-    "fen": "r1b1k2r/4b1pp/p3N3/np2q2n/8/2N1B2Q/PPP3PP/R4RK1 w kq - 0 1",
-    "current_fen": "r1b4r/3kb2p/p7/np5N/8/2N1B3/PPP3PP/R4RK1 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"r1b1k2r/4b1pp/p3N3/np2q2n/8/2N1B2Q/PPP3PP/R4RK1 w kq - 0 1\"]\r\n\r\n1. Qxh5+ Qxh5 2. Nxg7+ Kd7 3. Nxh5\r\n*",
+    "url": "https://www.chess.com/daily/2014-01-20",
+    "title": "Back Ranked",
+    "fen": "5rk1/pp3ppp/1b1Q4/1P6/P6n/5pBP/q5BP/4R2K w - - 0 1",
+    "current_fen": "5rk1/pp3ppp/1b1Q4/1P6/P6n/5pBP/q5BP/4R2K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/pp3ppp/1b1Q4/1P6/P6n/5pBP/q5BP/4R2K w - - 0 1\"]\r\n\r\n1. Qxf8+ Kxf8 2. Bd6+ Kg8 3. Re8#\r\n*",
     "all_moves": [
       {
-        "uci": "h3h5",
-        "san": "Qxh5+",
+        "uci": "d6f8",
+        "san": "Qxf8+",
         "color": "white"
       },
       {
-        "uci": "e5h5",
-        "san": "Qxh5",
+        "uci": "g8f8",
+        "san": "Kxf8",
         "color": "black"
       },
       {
-        "uci": "e6g7",
-        "san": "Nxg7+",
+        "uci": "g3d6",
+        "san": "Bd6+",
         "color": "white"
       },
       {
-        "uci": "e8d7",
-        "san": "Kd7",
+        "uci": "f8g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "g7h5",
-        "san": "Nxh5",
+        "uci": "e1e8",
+        "san": "Re8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h3h5",
-        "san": "Qxh5+",
+        "uci": "d6f8",
+        "san": "Qxf8+",
         "color": "white"
       },
       {
-        "uci": "e6g7",
-        "san": "Nxg7+",
+        "uci": "g3d6",
+        "san": "Bd6+",
         "color": "white"
       },
       {
-        "uci": "g7h5",
-        "san": "Nxh5",
+        "uci": "e1e8",
+        "san": "Re8#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-23T12:39:10.162560+00:00",
+    "posted_at": "2026-08-23T12:39:28.294911+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787488750162",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541064256500273223,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nxh5",
-        "correct": true,
-        "timestamp": "2026-08-23T12:39:23.254007+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787488768294",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
