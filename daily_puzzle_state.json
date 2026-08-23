@@ -1,132 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-10-18",
-    "title": "Escaping A Close Call",
-    "fen": "8/8/8/2N3K1/p7/3p4/1k3P2/8 w - - 0 1",
-    "current_fen": "8/8/8/6K1/8/3kP3/8/8 w - - 1 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/2N3K1/p7/3p4/1k3P2/8 w - - 0 1\"]\r\n\r\n1. Nxa4+ Kc2 2. Nb6 d2 3. Nc4 d1=N 4. Ne3+ Nxe3 5. fxe3 Kd3 6. Kf4\r\n*",
+    "url": "https://www.chess.com/daily/2026-05-06",
+    "title": "Royal Dilemma",
+    "fen": "4q3/1pp5/2k1B3/p1P5/Pb2N2R/8/1K6/8 w - - 0 1",
+    "current_fen": "4q3/1pp5/2k1B3/p1P5/Pb2N2R/8/1K6/8 w - - 0 1",
+    "pgn": "[White \"IlanVardi\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"4q3/1pp5/2k1B3/p1P5/Pb2N2R/8/1K6/8 w - - 0 1\"]\r\n\r\n1. Bd5+ Kxd5 2. Nf6+ Kxc5 3. Nxe8 1-0",
     "all_moves": [
       {
-        "uci": "c5a4",
-        "san": "Nxa4+",
+        "uci": "e6d5",
+        "san": "Bd5+",
         "color": "white"
       },
       {
-        "uci": "b2c2",
-        "san": "Kc2",
+        "uci": "c6d5",
+        "san": "Kxd5",
         "color": "black"
       },
       {
-        "uci": "a4b6",
-        "san": "Nb6",
+        "uci": "e4f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "d3d2",
-        "san": "d2",
+        "uci": "d5c5",
+        "san": "Kxc5",
         "color": "black"
       },
       {
-        "uci": "b6c4",
-        "san": "Nc4",
-        "color": "white"
-      },
-      {
-        "uci": "d2d1n",
-        "san": "d1=N",
-        "color": "black"
-      },
-      {
-        "uci": "c4e3",
-        "san": "Ne3+",
-        "color": "white"
-      },
-      {
-        "uci": "d1e3",
-        "san": "Nxe3",
-        "color": "black"
-      },
-      {
-        "uci": "f2e3",
-        "san": "fxe3",
-        "color": "white"
-      },
-      {
-        "uci": "c2d3",
-        "san": "Kd3",
-        "color": "black"
-      },
-      {
-        "uci": "g5f4",
-        "san": "Kf4",
+        "uci": "f6e8",
+        "san": "Nxe8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5a4",
-        "san": "Nxa4+",
+        "uci": "e6d5",
+        "san": "Bd5+",
         "color": "white"
       },
       {
-        "uci": "a4b6",
-        "san": "Nb6",
+        "uci": "e4f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "b6c4",
-        "san": "Nc4",
-        "color": "white"
-      },
-      {
-        "uci": "c4e3",
-        "san": "Ne3+",
-        "color": "white"
-      },
-      {
-        "uci": "f2e3",
-        "san": "fxe3",
-        "color": "white"
-      },
-      {
-        "uci": "g5f4",
-        "san": "Kf4",
+        "uci": "f6e8",
+        "san": "Nxe8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-23T12:50:40.638835+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T12:51:59.877811+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787489440638",
-    "next_solution_index": 10,
-    "next_player_index": 5,
+    "puzzle_id": "random_1787489519877",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1541067153044672563,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "fxe3",
-        "correct": true,
-        "timestamp": "2026-08-23T12:51:53.991919+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nb6",
-        "correct": true,
-        "timestamp": "2026-08-23T12:51:18.463450+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": 1541067484684091514,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
