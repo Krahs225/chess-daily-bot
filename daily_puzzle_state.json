@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-08-29",
     "title": "When Pawns Unite",
     "fen": "3r2k1/2p1npp1/pp1bp2p/8/3PP3/4BN1P/PP2KPP1/R7 w - - 0 1",
-    "current_fen": "3r2k1/2p1npp1/pp1bp2p/8/3PP3/4BN1P/PP2KPP1/R7 w - - 0 1",
+    "current_fen": "3r2k1/2p1npp1/pp2p2p/4P3/1b1P4/4BN1P/PP2KPP1/R7 w - - 1 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"3r2k1/2p1npp1/pp1bp2p/8/3PP3/4BN1P/PP2KPP1/R7 w - - 0 1\"]\r\n\r\n1. e5 Bb4 2. a3 Ba5 3. b4 Bxb4 4. axb4 *",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787511045777",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541157771087454233,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "e5",
+        "correct": true,
+        "timestamp": "2026-08-23T18:51:02.391509+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
