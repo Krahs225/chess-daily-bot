@@ -1,102 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-04-14",
-    "title": "Big Time Bishops",
-    "fen": "3qr2k/6bp/1p4p1/1PpP1p2/1nB5/4PP2/1B3P1P/Q4RK1 w - - 0 1",
-    "current_fen": "3q2k1/6Bp/1p1PB1p1/1Pp2p2/8/4PP2/5P1P/Q4RK1 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3qr2k/6bp/1p4p1/1PpP1p2/1nB5/4PP2/1B3P1P/Q4RK1 w - - 0 1\"]\r\n\r\n1. Bxg7+ Kg8 2. d6+ Nd5 3. Bxd5+ Re6 4. Bxe6#\r\n*",
+    "url": "https://www.chess.com/daily/2022-02-17",
+    "title": "Almira's Surprise Party",
+    "fen": "4q3/4nkbr/pp1P1r1p/3Np1pP/P5P1/1B3P2/1P6/3R1RK1 w - - 0 35",
+    "current_fen": "4q3/4nkbr/pp1P1r1p/3Np1pP/P5P1/1B3P2/1P6/3R1RK1 w - - 0 35",
+    "pgn": "[Event \"French Championship\"]\r\n[Site \"Val d'Isere FRA\"]\r\n[Date \"2002.08.23\"]\r\n[Round \"5\"]\r\n[White \"Almira Fyodorovna Skripchenko\"]\r\n[Black \"Laurent Fressinet\"]\r\n[Result \"1-0\"]\r\n[FEN \"4q3/4nkbr/pp1P1r1p/3Np1pP/P5P1/1B3P2/1P6/3R1RK1 w - - 0 35\"]\r\n\r\n35.Nxf6+ Kxf6 36.d7 Qd8 37.Rd6# 1-0",
     "all_moves": [
       {
-        "uci": "b2g7",
-        "san": "Bxg7+",
+        "uci": "d5f6",
+        "san": "Nxf6+",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "f7f6",
+        "san": "Kxf6",
         "color": "black"
       },
       {
-        "uci": "d5d6",
-        "san": "d6+",
+        "uci": "d6d7",
+        "san": "d7",
         "color": "white"
       },
       {
-        "uci": "b4d5",
-        "san": "Nd5",
+        "uci": "e8d8",
+        "san": "Qd8",
         "color": "black"
       },
       {
-        "uci": "c4d5",
-        "san": "Bxd5+",
-        "color": "white"
-      },
-      {
-        "uci": "e8e6",
-        "san": "Re6",
-        "color": "black"
-      },
-      {
-        "uci": "d5e6",
-        "san": "Bxe6#",
+        "uci": "d1d6",
+        "san": "Rd6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b2g7",
-        "san": "Bxg7+",
+        "uci": "d5f6",
+        "san": "Nxf6+",
         "color": "white"
       },
       {
-        "uci": "d5d6",
-        "san": "d6+",
+        "uci": "d6d7",
+        "san": "d7",
         "color": "white"
       },
       {
-        "uci": "c4d5",
-        "san": "Bxd5+",
-        "color": "white"
-      },
-      {
-        "uci": "d5e6",
-        "san": "Bxe6#",
+        "uci": "d1d6",
+        "san": "Rd6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T13:13:08.549564+00:00",
-    "answer_posted": false,
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T13:13:24.950302+00:00",
+    "answer_posted": true,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787490788549",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541072806081724509,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bxe6",
-        "correct": true,
-        "timestamp": "2026-08-23T13:13:22.798627+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxd5",
-        "correct": true,
-        "timestamp": "2026-08-23T13:13:19.009386+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787490804950",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1541072875174363147,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
