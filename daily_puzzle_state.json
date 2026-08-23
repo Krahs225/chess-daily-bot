@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-02-22",
     "title": "Bon Voyage",
     "fen": "8/b6Q/8/2q1k2p/2b1B1P1/3P1K2/8/8 w - - 0 1",
-    "current_fen": "8/b6Q/8/2q1k2p/2b1B1P1/3P1K2/8/8 w - - 0 1",
+    "current_fen": "8/b6Q/8/4k2p/2bqB1P1/5K2/8/8 w - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/b6Q/8/2q1k2p/2b1B1P1/3P1K2/8/8 w - - 0 1\"]\r\n\r\n1.d4+ Qxd4 2.Qe7+ Be6 3.Qc7+ Kf6 4.g5+ Kxg5 5.Qf4# *",
     "all_moves": [
       {
@@ -87,8 +87,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787491254424",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541074760077672590,
     "attempted_users": {
@@ -97,10 +97,16 @@
         "move": "qf5",
         "correct": false,
         "timestamp": "2026-08-23T13:20:58.296330+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "d4",
+        "correct": true,
+        "timestamp": "2026-08-23T13:21:01.336795+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
