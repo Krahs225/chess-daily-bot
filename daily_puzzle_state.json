@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-11-24",
     "title": "Calculation Practice",
     "fen": "r1bq1rk1/1p2Bpp1/p2pp2p/8/3QnP2/2N5/PPP1B1PP/2KR4 b - - 0 1",
-    "current_fen": "r1bq1rk1/1p2Bpp1/p2pp2p/8/3QnP2/2N5/PPP1B1PP/2KR4 b - - 0 1",
+    "current_fen": "r1bB1rk1/1p3pp1/p2pp2p/8/3Q1P2/2n5/PPP1B1PP/2KR4 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bq1rk1/1p2Bpp1/p2pp2p/8/3QnP2/2N5/PPP1B1PP/2KR4 b - - 0 1\"]\r\n\r\n1...Nxc3 2. Bxd8 Nxe2+ 3. Kb1 Nxd4 4. Rxd4 Rxd8\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787498089462",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541103428233859074,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nxc3",
+        "correct": true,
+        "timestamp": "2026-08-23T15:14:57.550916+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
