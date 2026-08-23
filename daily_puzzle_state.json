@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-12-17",
     "title": "Exposed King",
     "fen": "r4r2/p4kpp/2Q5/2P1q3/3p2PP/P1b5/2P2PB1/5RK1 w - - 0 1",
-    "current_fen": "r4r2/p4kpp/2Q5/2P1q3/3p2PP/P1b5/2P2PB1/5RK1 w - - 0 1",
+    "current_fen": "r4r2/p3k1pp/2Q5/2PBq3/3p2PP/P1b5/2P2P2/5RK1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4r2/p4kpp/2Q5/2P1q3/3p2PP/P1b5/2P2PB1/5RK1 w - - 0 1\"]\r\n\r\n1. Bd5+ Ke7 2. Qb7+ Kf6 3. Qa6+ Ke7 4. Bxa8\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787490510029",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541071637825196114,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "bd5",
+        "correct": true,
+        "timestamp": "2026-08-23T13:08:34.147275+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "bd5",
+        "correct": false,
+        "timestamp": "2026-08-23T13:08:34.152751+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
