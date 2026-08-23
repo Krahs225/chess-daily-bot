@@ -1,90 +1,79 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-04-23",
-    "title": "Kosteniuk's Checkmate Confetti",
-    "fen": "1r2brk1/p1p3p1/2p3P1/4NP1R/4P3/1N2b1q1/PPP1Q3/1K6 w - - 0 30",
-    "current_fen": "1r4k1/p1p2Qp1/2p5/4NP1R/4P3/1N2b1q1/PPP5/1K6 b - - 0 32",
-    "pgn": "[Event \"8th TCh-Eur w\"]\r\n[Site \"Novi Sad SRB\"]\r\n[Date \"2009.10.22\"]\r\n[White \"(Happy Birthday)Alexandra Kosteniuk\"]\r\n[Black \"Monica Calzetta Ruiz\"]\r\n[Result \"1-0\"]\r\n[FEN \"1r2brk1/p1p3p1/2p3P1/4NP1R/4P3/1N2b1q1/PPP1Q3/1K6 w - - 0 30\"]\r\n\r\n30. Qc4+ Bf7 31. gxf7+ Rxf7 32. Qxf7# 1-0",
+    "url": "https://www.chess.com/daily/2023-03-17",
+    "title": "Finding Your Pot of Gold",
+    "fen": "5rk1/5ppp/8/8/8/4PQ2/r1q2PPP/RR4K1 b - - 0 24",
+    "current_fen": "5rk1/5ppp/8/8/7P/4PQ2/rq3PP1/RR4K1 b - - 0 25",
+    "pgn": "[Event \"HUN-ch01\"]\r\n[Site \"Budapest\"]\r\n[Date \"2023.01.24\"]\r\n[Round \"13\"]\r\n[White \"Fuster, Geza\"]\r\n[Black \"Balogh, Janos\"]\r\n[Result \"0-1\"]\r\n[FEN \"5rk1/5ppp/8/8/8/4PQ2/r1q2PPP/RR4K1 b - - 0 24\"]\r\n\r\n24... Qb2 25. h4 Rxa1 26. Rxa1 Qxa1+ *",
     "all_moves": [
       {
-        "uci": "e2c4",
-        "san": "Qc4+",
-        "color": "white"
-      },
-      {
-        "uci": "e8f7",
-        "san": "Bf7",
+        "uci": "c2b2",
+        "san": "Qb2",
         "color": "black"
       },
       {
-        "uci": "g6f7",
-        "san": "gxf7+",
+        "uci": "h2h4",
+        "san": "h4",
         "color": "white"
       },
       {
-        "uci": "f8f7",
-        "san": "Rxf7",
+        "uci": "a2a1",
+        "san": "Rxa1",
         "color": "black"
       },
       {
-        "uci": "c4f7",
-        "san": "Qxf7#",
+        "uci": "b1a1",
+        "san": "Rxa1",
         "color": "white"
+      },
+      {
+        "uci": "b2a1",
+        "san": "Qxa1+",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e2c4",
-        "san": "Qc4+",
-        "color": "white"
+        "uci": "c2b2",
+        "san": "Qb2",
+        "color": "black"
       },
       {
-        "uci": "g6f7",
-        "san": "gxf7+",
-        "color": "white"
+        "uci": "a2a1",
+        "san": "Rxa1",
+        "color": "black"
       },
       {
-        "uci": "c4f7",
-        "san": "Qxf7#",
-        "color": "white"
+        "uci": "b2a1",
+        "san": "Qxa1+",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-23T13:22:05.378641+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-23T13:22:40.165204+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787491325378",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541075058821177425,
+    "puzzle_id": "random_1787491360165",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541075203474333757,
     "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rh8",
-        "correct": false,
-        "timestamp": "2026-08-23T13:22:25.636883+00:00"
-      },
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxf7",
+        "move": "qb2",
         "correct": true,
-        "timestamp": "2026-08-23T13:22:28.204504+00:00"
+        "timestamp": "2026-08-23T13:22:44.343387+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
