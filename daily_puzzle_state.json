@@ -1,74 +1,127 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-06-22",
-    "title": "Using All Pieces",
-    "fen": "b1B5/1r2p3/kp2P2p/1N2p1pP/1P2Q1P1/P7/3K4/8 w - - 0 1",
-    "current_fen": "b1B5/1r2p3/kp2P2p/1N2p1pP/1P2Q1P1/P7/3K4/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"b1B5/1r2p3/kp2P2p/1N2p1pP/1P2Q1P1/P7/3K4/8 w - - 0 1\"]\r\n\r\n1. Kc3 Kxb5 2. Qc4+ Ka4 3. Qa6#\r\n*",
+    "url": "https://www.chess.com/daily/2007-08-25",
+    "title": "No Hints :)",
+    "fen": "r2r1k2/pbq1bpp1/1pp1pn1p/4N2N/2PP4/3Q4/PPB2PPP/R3R1K1 w - - 0 1",
+    "current_fen": "r2r1k2/pbq1bpp1/1pp1pn1p/4N2N/2PP4/3Q4/PPB2PPP/R3R1K1 w - - 0 1",
+    "pgn": "[FEN \"r2r1k2/pbq1bpp1/1pp1pn1p/4N2N/2PP4/3Q4/PPB2PPP/R3R1K1 w - - 0 1\"]\r\n[Result \"*\"]\r\n\r\n\r\n1. Qg3 $1 Ne8 ( 1... Nxh5 2. Ng6+ ) 2. Nxg7 $3 Rxd4 ( 2... Nxg7 3. Ng6+ ) 3. Nxe8 Kxe8 4. Qg8+ Bf8 5. Nxf7 Qxf7 6. Rxe6+ Kd7 7. Qxf7+\r\n*",
     "all_moves": [
       {
-        "uci": "d2c3",
-        "san": "Kc3",
+        "uci": "d3g3",
+        "san": "Qg3",
         "color": "white"
       },
       {
-        "uci": "a6b5",
-        "san": "Kxb5",
+        "uci": "f6e8",
+        "san": "Ne8",
         "color": "black"
       },
       {
-        "uci": "e4c4",
-        "san": "Qc4+",
+        "uci": "h5g7",
+        "san": "Nxg7",
         "color": "white"
       },
       {
-        "uci": "b5a4",
-        "san": "Ka4",
+        "uci": "d8d4",
+        "san": "Rxd4",
         "color": "black"
       },
       {
-        "uci": "c4a6",
-        "san": "Qa6#",
+        "uci": "g7e8",
+        "san": "Nxe8",
+        "color": "white"
+      },
+      {
+        "uci": "f8e8",
+        "san": "Kxe8",
+        "color": "black"
+      },
+      {
+        "uci": "g3g8",
+        "san": "Qg8+",
+        "color": "white"
+      },
+      {
+        "uci": "e7f8",
+        "san": "Bf8",
+        "color": "black"
+      },
+      {
+        "uci": "e5f7",
+        "san": "Nxf7",
+        "color": "white"
+      },
+      {
+        "uci": "c7f7",
+        "san": "Qxf7",
+        "color": "black"
+      },
+      {
+        "uci": "e1e6",
+        "san": "Rxe6+",
+        "color": "white"
+      },
+      {
+        "uci": "e8d7",
+        "san": "Kd7",
+        "color": "black"
+      },
+      {
+        "uci": "g8f7",
+        "san": "Qxf7+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2c3",
-        "san": "Kc3",
+        "uci": "d3g3",
+        "san": "Qg3",
         "color": "white"
       },
       {
-        "uci": "e4c4",
-        "san": "Qc4+",
+        "uci": "h5g7",
+        "san": "Nxg7",
         "color": "white"
       },
       {
-        "uci": "c4a6",
-        "san": "Qa6#",
+        "uci": "g7e8",
+        "san": "Nxe8",
+        "color": "white"
+      },
+      {
+        "uci": "g3g8",
+        "san": "Qg8+",
+        "color": "white"
+      },
+      {
+        "uci": "e5f7",
+        "san": "Nxf7",
+        "color": "white"
+      },
+      {
+        "uci": "e1e6",
+        "san": "Rxe6+",
+        "color": "white"
+      },
+      {
+        "uci": "g8f7",
+        "san": "Qxf7+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-23T18:02:49.410905+00:00",
-    "answer_posted": true,
+    "player_move_count": 7,
+    "posted_at": "2026-08-23T18:04:38.723708+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787508169410",
+    "puzzle_id": "random_1787508278723",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541145707250061402,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qc4",
-        "correct": false,
-        "timestamp": "2026-08-23T18:04:15.217944+00:00"
-      }
-    },
+    "message_id": null,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
