@@ -1,76 +1,69 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-12-19",
-    "title": "Crisscrossed",
-    "fen": "3k1n1r/1ppb2q1/p4p2/2N2QP1/n2PR2p/P5PP/4R2K/1r6 w - - 0 1",
-    "current_fen": "3kbn1r/1pp3q1/p4p2/2N2QP1/n2P3p/P5PP/4R2K/1r6 w - - 0 2",
-    "pgn": "[White \"ultizet\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"3k1n1r/1ppb2q1/p4p2/2N2QP1/n2PR2p/P5PP/4R2K/1r6 w - - 0 1\"]\r\n\r\n1. Re8+ Bxe8 2. Qc8+ Kxc8 3. Rxe8# 1-0",
+    "url": "https://www.chess.com/daily/2011-12-27",
+    "title": "Lipschütz - Schallop, London 1886",
+    "fen": "2r1Rn1k/1p1q2pp/p7/5p2/3P4/1B4P1/P1P1QP1P/6K1 w - - 0 1",
+    "current_fen": "2r1Rn1k/1p1q2pp/p7/5p2/3P4/1B4P1/P1P1QP1P/6K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1Rn1k/1p1q2pp/p7/5p2/3P4/1B4P1/P1P1QP1P/6K1 w - - 0 1\"]\r\n\r\n1. Qc4 Qd5 2. Qxd5 Rxe8 3. Qg8# \r\n*",
     "all_moves": [
       {
-        "uci": "e4e8",
-        "san": "Re8+",
+        "uci": "e2c4",
+        "san": "Qc4",
         "color": "white"
       },
       {
-        "uci": "d7e8",
-        "san": "Bxe8",
+        "uci": "d7d5",
+        "san": "Qd5",
         "color": "black"
       },
       {
-        "uci": "f5c8",
-        "san": "Qc8+",
+        "uci": "c4d5",
+        "san": "Qxd5",
         "color": "white"
       },
       {
-        "uci": "d8c8",
-        "san": "Kxc8",
+        "uci": "c8e8",
+        "san": "Rxe8",
         "color": "black"
       },
       {
-        "uci": "e2e8",
-        "san": "Rxe8#",
+        "uci": "d5g8",
+        "san": "Qg8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4e8",
-        "san": "Re8+",
+        "uci": "e2c4",
+        "san": "Qc4",
         "color": "white"
       },
       {
-        "uci": "f5c8",
-        "san": "Qc8+",
+        "uci": "c4d5",
+        "san": "Qxd5",
         "color": "white"
       },
       {
-        "uci": "e2e8",
-        "san": "Rxe8#",
+        "uci": "d5g8",
+        "san": "Qg8#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-23T18:20:14.229354+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-23T18:22:51.653092+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787509214229",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "puzzle_id": "random_1787509371653",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1541150088905363587,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "gxf6",
-        "correct": false,
-        "timestamp": "2026-08-23T18:22:46.900039+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": 1541150749248065628,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
