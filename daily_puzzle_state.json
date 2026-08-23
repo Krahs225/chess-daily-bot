@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-11-22",
     "title": "Infiltration",
     "fen": "2r2r2/p5qk/1p2pp1p/5p1Q/3Rn3/2PR2PP/PP3P2/5K2 w - - 0 1",
-    "current_fen": "2r2r2/p5qk/1p2pp1p/5p1Q/3Rn3/2PR2PP/PP3P2/5K2 w - - 0 1",
+    "current_fen": "2r2r2/p2R2qk/1p2pp1p/5p1Q/4n3/2PR2PP/PP3P2/5K2 b - - 1 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r2r2/p5qk/1p2pp1p/5p1Q/3Rn3/2PR2PP/PP3P2/5K2 w - - 0 1\"]\r\n\r\n1. Rd7\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787483671475",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1541042955169697822,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rd7",
+        "correct": true,
+        "timestamp": "2026-08-23T11:14:40.012989+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
