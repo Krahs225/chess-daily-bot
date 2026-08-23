@@ -1,77 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-01-20",
-    "title": "Downward Spiral",
-    "fen": "2r4k/p5bp/3r1p1n/3Np2R/3nP3/1B4B1/PP3P2/1K1R4 w - - 11 27",
-    "current_fen": "2r4k/p3N1bp/3B1p2/7R/3pP1n1/1B6/PP3P2/1K6 b - - 2 29",
-    "pgn": "[Event \"Reykjavik Open\"]\r\n[Site \"Reykjavik ISL\"]\r\n[Date \"2013.02.19\"]\r\n[Round \"1\"]\r\n[White \"Yury Markovich Shulman\"]\r\n[Black \"Robin Karlsson\"]\r\n[Result \"1-0\"]\r\n[SetUp \"1\"]\r\n[FEN \"2r4k/p5bp/3r1p1n/3Np2R/3nP3/1B4B1/PP3P2/1K1R4 w - - 11 27\"]\r\n[WhiteElo \"2563\"]\r\n[BlackElo \"1980\"]\r\n[ECO \"E92\"]\r\n[EventDate \"2013.02.19\"]\r\n[PlyCount \"57\"]\r\n\r\n27. Rxd4 exd4 28. Bxd6 Ng4 29. Ne7 1-0",
+    "url": "https://www.chess.com/daily/2015-12-27",
+    "title": "Mating Fundamentals",
+    "fen": "2k5/4R3/4K3/8/4P3/8/8/8 w - - 0 1",
+    "current_fen": "2k5/4R3/4K3/8/4P3/8/8/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k5/4R3/4K3/8/4P3/8/8/8 w - - 0 1\"]\r\n\r\n1. Kd6 Kb8 2. Kc6 Ka8 3. Kb6 Kb8 4. Re8#\r\n*",
     "all_moves": [
       {
-        "uci": "d1d4",
-        "san": "Rxd4",
+        "uci": "e6d6",
+        "san": "Kd6",
         "color": "white"
       },
       {
-        "uci": "e5d4",
-        "san": "exd4",
+        "uci": "c8b8",
+        "san": "Kb8",
         "color": "black"
       },
       {
-        "uci": "g3d6",
-        "san": "Bxd6",
+        "uci": "d6c6",
+        "san": "Kc6",
         "color": "white"
       },
       {
-        "uci": "h6g4",
-        "san": "Ng4",
+        "uci": "b8a8",
+        "san": "Ka8",
         "color": "black"
       },
       {
-        "uci": "d5e7",
-        "san": "Ne7",
+        "uci": "c6b6",
+        "san": "Kb6",
+        "color": "white"
+      },
+      {
+        "uci": "a8b8",
+        "san": "Kb8",
+        "color": "black"
+      },
+      {
+        "uci": "e7e8",
+        "san": "Re8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1d4",
-        "san": "Rxd4",
+        "uci": "e6d6",
+        "san": "Kd6",
         "color": "white"
       },
       {
-        "uci": "g3d6",
-        "san": "Bxd6",
+        "uci": "d6c6",
+        "san": "Kc6",
         "color": "white"
       },
       {
-        "uci": "d5e7",
-        "san": "Ne7",
+        "uci": "c6b6",
+        "san": "Kb6",
+        "color": "white"
+      },
+      {
+        "uci": "e7e8",
+        "san": "Re8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-23T18:15:37.132151+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-23T18:16:14.289771+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787508937132",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541148926705406013,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Ne7",
-        "correct": true,
-        "timestamp": "2026-08-23T18:16:08.256211+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787508974289",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
