@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-10-18",
     "title": "Escaping A Close Call",
     "fen": "8/8/8/2N3K1/p7/3p4/1k3P2/8 w - - 0 1",
-    "current_fen": "8/8/8/2N3K1/p7/3p4/1k3P2/8 w - - 0 1",
+    "current_fen": "8/8/8/6K1/N7/3p4/2k2P2/8 w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/2N3K1/p7/3p4/1k3P2/8 w - - 0 1\"]\r\n\r\n1. Nxa4+ Kc2 2. Nb6 d2 3. Nc4 d1=N 4. Ne3+ Nxe3 5. fxe3 Kd3 6. Kf4\r\n*",
     "all_moves": [
       {
@@ -102,20 +102,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787489440638",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541067153044672563,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nxd3",
+        "move": "nxa4",
+        "correct": true,
+        "timestamp": "2026-08-23T12:50:50.843061+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nxa4",
         "correct": false,
-        "timestamp": "2026-08-23T12:50:47.480700+00:00"
+        "timestamp": "2026-08-23T12:50:51.334631+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
