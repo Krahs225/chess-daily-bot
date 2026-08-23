@@ -1,89 +1,52 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-12-02",
-    "title": "Kemner - van Duin, Rotterdam 2009",
-    "fen": "2r3kr/5R2/6pq/1p2P3/3P4/p4QP1/1n4N1/4KR2 w - - 0 1",
-    "current_fen": "2r3kr/5R2/6pq/1p2P3/3P4/p4QP1/1n4N1/4KR2 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3kr/5R2/6pq/1p2P3/3P4/p4QP1/1n4N1/4KR2 w - - 0 1\"]\r\n\r\n1. Rg7+ Qxg7 2. Qd5+ Kh7 3. Rh1+ Qh6 4. Qf7# \r\n*",
+    "url": "https://www.chess.com/daily/2023-09-26",
+    "title": "No Strings Attached?",
+    "fen": "r1bqkr2/2pp2pQ/pp4n1/4N3/1bB1P3/1PN5/PBP3PP/2KR4 b q - 0 1",
+    "current_fen": "r1bqkr2/2pp2pQ/pp4n1/4N3/1bB1P3/1PN5/PBP3PP/2KR4 b q - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r1bqkr2/2pp2pQ/pp4n1/4N3/1bB1P3/1PN5/PBP3PP/2KR4 b q - 0 1\"]\r\n\r\n1... Qg5+ 2. Kb1 Nxe5 *",
     "all_moves": [
       {
-        "uci": "f7g7",
-        "san": "Rg7+",
-        "color": "white"
-      },
-      {
-        "uci": "h6g7",
-        "san": "Qxg7",
+        "uci": "d8g5",
+        "san": "Qg5+",
         "color": "black"
       },
       {
-        "uci": "f3d5",
-        "san": "Qd5+",
+        "uci": "c1b1",
+        "san": "Kb1",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "g6e5",
+        "san": "Nxe5",
         "color": "black"
-      },
-      {
-        "uci": "f1h1",
-        "san": "Rh1+",
-        "color": "white"
-      },
-      {
-        "uci": "g7h6",
-        "san": "Qh6",
-        "color": "black"
-      },
-      {
-        "uci": "d5f7",
-        "san": "Qf7#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f7g7",
-        "san": "Rg7+",
-        "color": "white"
+        "uci": "d8g5",
+        "san": "Qg5+",
+        "color": "black"
       },
       {
-        "uci": "f3d5",
-        "san": "Qd5+",
-        "color": "white"
-      },
-      {
-        "uci": "f1h1",
-        "san": "Rh1+",
-        "color": "white"
-      },
-      {
-        "uci": "d5f7",
-        "san": "Qf7#",
-        "color": "white"
+        "uci": "g6e5",
+        "san": "Nxe5",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T18:44:06.526052+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-23T18:46:32.719592+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787510646526",
+    "puzzle_id": "random_1787510792719",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541156096553525331,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Re7",
-        "correct": false,
-        "timestamp": "2026-08-23T18:46:27.446463+00:00"
-      }
-    },
+    "message_id": null,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
