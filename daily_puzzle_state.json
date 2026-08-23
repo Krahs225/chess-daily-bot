@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-07-30",
     "title": "Fabi's Birthday Bullet Mate 🥳",
     "fen": "r1b1k2r/pp3p2/2P3p1/4b3/4p3/4N1q1/PP1QPRB1/R2N2K1 b kq - 0 20",
-    "current_fen": "r1b1k2r/pp3p2/2P3p1/4b3/4p3/4N1q1/PP1QPRB1/R2N2K1 b kq - 0 20",
+    "current_fen": "r1b1k3/pp3p2/2P3p1/4b3/4p3/4N3/PP1QPRBq/R2N3K w q - 1 22",
     "pgn": "[Event \"chess.com Speed 1m+1spm 2017\"]\r\n[Site \"Chess.com INT\"]\r\n[Date \"2017.08.24\"]\r\n[Round \"1.22\"]\r\n[White \"Hou, Yifan\"]\r\n[Black \"Caruana, Fabiano\"]\r\n[Result \"0-1\"]\r\n[ECO \"A07\"]\r\n[WhiteElo \"2652\"]\r\n[BlackElo \"2802\"]\r\n[FEN \"r1b1k2r/pp3p2/2P3p1/4b3/4p3/4N1q1/PP1QPRB1/R2N2K1 b kq - 0 20\"]\r\n\r\n20... Rh1+ 21. Kxh1 Qh2# 0-1",
     "all_moves": [
       {
@@ -42,14 +42,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787488344657",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
+    "message_id": 1541062555944878241,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qh2",
+        "correct": true,
+        "timestamp": "2026-08-23T12:32:31.713263+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
