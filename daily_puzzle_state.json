@@ -1,74 +1,37 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-03-17",
-    "title": "Entrapment",
-    "fen": "8/2r3p1/2p1p3/2p1P3/1n1b1P2/2k5/2PN4/2K1B3 w - - 0 1",
-    "current_fen": "8/2r3p1/2p1p3/2p1P3/1n1b1P2/2k5/2PN4/2K1B3 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/2r3p1/2p1p3/2p1P3/1n1b1P2/2k5/2PN4/2K1B3 w - - 0 1\"]\r\n\r\n1. Ne4+ Kc4 2. Nd6+ Kd5 3. c4#\r\n*",
+    "url": "https://www.chess.com/daily/2017-01-15",
+    "title": "Where's The Mate?",
+    "fen": "4rBk1/1p5p/2npq1p1/p1p2p2/2P5/PP1Pp1Pb/1Q3P1P/R2RN1K1 w - - 0 1",
+    "current_fen": "4rBk1/1p5p/2npq1p1/p1p2p2/2P5/PP1Pp1Pb/1Q3P1P/R2RN1K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4rBk1/1p5p/2npq1p1/p1p2p2/2P5/PP1Pp1Pb/1Q3P1P/R2RN1K1 w - - 0 1\"]\r\n\r\n1. Qg7#\r\n*",
     "all_moves": [
       {
-        "uci": "d2e4",
-        "san": "Ne4+",
-        "color": "white"
-      },
-      {
-        "uci": "c3c4",
-        "san": "Kc4",
-        "color": "black"
-      },
-      {
-        "uci": "e4d6",
-        "san": "Nd6+",
-        "color": "white"
-      },
-      {
-        "uci": "c4d5",
-        "san": "Kd5",
-        "color": "black"
-      },
-      {
-        "uci": "c2c4",
-        "san": "c4#",
+        "uci": "b2g7",
+        "san": "Qg7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2e4",
-        "san": "Ne4+",
-        "color": "white"
-      },
-      {
-        "uci": "e4d6",
-        "san": "Nd6+",
-        "color": "white"
-      },
-      {
-        "uci": "c2c4",
-        "san": "c4#",
+        "uci": "b2g7",
+        "san": "Qg7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-23T12:34:27.079863+00:00",
-    "answer_posted": true,
+    "player_move_count": 1,
+    "posted_at": "2026-08-23T12:35:42.415447+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787488467079",
+    "puzzle_id": "random_1787488542415",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541063069000540182,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nb1",
-        "correct": false,
-        "timestamp": "2026-08-23T12:35:27.278522+00:00"
-      }
-    },
+    "message_id": null,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
