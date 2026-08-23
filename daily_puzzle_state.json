@@ -1,77 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-07-28",
-    "title": "Forever Entrapped",
-    "fen": "r2k3r/1ppP4/p2b4/P3p1q1/4P1p1/P1N2BP1/1B3P2/2RQ1RK1 b - - 0 1",
-    "current_fen": "r2k3r/1ppP4/p2b4/P3p3/4P3/P1N2qP1/1B3P2/2R1R1K1 w - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2k3r/1ppP4/p2b4/P3p1q1/4P1p1/P1N2BP1/1B3P2/2RQ1RK1 b - - 0 1\"]\r\n\r\n1...Qh5 2. Re1 gxf3 3. Qxf3 Qxf3\r\n*",
+    "url": "https://www.chess.com/daily/2008-10-24",
+    "title": "Exposing the Opponent",
+    "fen": "r5rk/5p1p/4pb2/8/1P1Pn3/PN2qN1P/4QRP1/2R3K1 b - - 0 1",
+    "current_fen": "r5rk/5p1p/4pb2/8/1P1Pn3/PN2qN1P/4QRP1/2R3K1 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5rk/5p1p/4pb2/8/1P1Pn3/PN2qN1P/4QRP1/2R3K1 b - - 0 1\"]\r\n\r\n1...Rxg2 2. Kxg2 Rg8+ 3. Kf1 Ng3+ 4. Ke1 Nxe2\r\n*",
     "all_moves": [
       {
-        "uci": "g5h5",
-        "san": "Qh5",
+        "uci": "g8g2",
+        "san": "Rxg2+",
+        "color": "black"
+      },
+      {
+        "uci": "g1g2",
+        "san": "Kxg2",
+        "color": "white"
+      },
+      {
+        "uci": "a8g8",
+        "san": "Rg8+",
+        "color": "black"
+      },
+      {
+        "uci": "g2f1",
+        "san": "Kf1",
+        "color": "white"
+      },
+      {
+        "uci": "e4g3",
+        "san": "Ng3+",
         "color": "black"
       },
       {
         "uci": "f1e1",
-        "san": "Re1",
+        "san": "Ke1",
         "color": "white"
       },
       {
-        "uci": "g4f3",
-        "san": "gxf3",
-        "color": "black"
-      },
-      {
-        "uci": "d1f3",
-        "san": "Qxf3",
-        "color": "white"
-      },
-      {
-        "uci": "h5f3",
-        "san": "Qxf3",
+        "uci": "g3e2",
+        "san": "Nxe2",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5h5",
-        "san": "Qh5",
+        "uci": "g8g2",
+        "san": "Rxg2+",
         "color": "black"
       },
       {
-        "uci": "g4f3",
-        "san": "gxf3",
+        "uci": "a8g8",
+        "san": "Rg8+",
         "color": "black"
       },
       {
-        "uci": "h5f3",
-        "san": "Qxf3",
+        "uci": "e4g3",
+        "san": "Ng3+",
+        "color": "black"
+      },
+      {
+        "uci": "g3e2",
+        "san": "Nxe2",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-23T15:13:06.186811+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-23T15:13:50.047364+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787497986186",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541102995276824608,
+    "puzzle_id": "random_1787498030047",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1541103179175829516,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qxf3",
-        "correct": true,
-        "timestamp": "2026-08-23T15:13:43.111015+00:00"
+        "move": "qxf2",
+        "correct": false,
+        "timestamp": "2026-08-23T15:14:07.444013+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
