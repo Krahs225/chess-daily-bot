@@ -1,98 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-08-02",
-    "title": "Double Trouble",
-    "fen": "1r2r2k/5p1p/6pb/2B5/1Pp5/2n3P1/q4PB1/1R1Q1RK1 w - - 0 1",
-    "current_fen": "1r2r1k1/5p1p/6p1/8/1Pp5/2Q3P1/q4PB1/1R3RK1 b - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"1r2r2k/5p1p/6pb/2B5/1Pp5/2n3P1/q4PB1/1R1Q1RK1 w - - 0 1\"]\r\n\r\n1.Bd4+ Bg7 2.Bxg7+ Kxg7 3.Qd4+ Kg8 4.Qxc3 *",
+    "url": "https://www.chess.com/daily/2021-11-16",
+    "title": "A Bird in the Hand",
+    "fen": "r1b1kb1r/ppp2ppp/2n1p3/6B1/3P2q1/3B1N2/PPP2PPP/R2QK2R w KQkq - 6 9",
+    "current_fen": "r1b1kb1r/ppp2ppp/2n1p3/6B1/3P2q1/3B1N2/PPP2PPP/R2QK2R w KQkq - 6 9",
+    "pgn": "[Event \"m\"]\r\n[Site \"London\"]\r\n[Date \"1866\"]\r\n[Round \"09\"]\r\n[White \"Steinitz, Wilhelm\"]\r\n[Black \"Bird, Henry\"]\r\n[Result \"1-0\"]\r\n[FEN \"r1b1kb1r/ppp2ppp/2n1p3/6B1/3P2q1/3B1N2/PPP2PPP/R2QK2R w KQkq - 6 9\"]\r\n\r\n9.h3 Qxg2 10.Rh2 Qxh2 11.Nxh2 *",
     "all_moves": [
       {
-        "uci": "c5d4",
-        "san": "Bd4+",
+        "uci": "h2h3",
+        "san": "h3",
         "color": "white"
       },
       {
-        "uci": "h6g7",
-        "san": "Bg7",
+        "uci": "g4g2",
+        "san": "Qxg2",
         "color": "black"
       },
       {
-        "uci": "d4g7",
-        "san": "Bxg7+",
+        "uci": "h1h2",
+        "san": "Rh2",
         "color": "white"
       },
       {
-        "uci": "h8g7",
-        "san": "Kxg7",
+        "uci": "g2h2",
+        "san": "Qxh2",
         "color": "black"
       },
       {
-        "uci": "d1d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "g7g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "d4c3",
-        "san": "Qxc3",
+        "uci": "f3h2",
+        "san": "Nxh2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5d4",
-        "san": "Bd4+",
+        "uci": "h2h3",
+        "san": "h3",
         "color": "white"
       },
       {
-        "uci": "d4g7",
-        "san": "Bxg7+",
+        "uci": "h1h2",
+        "san": "Rh2",
         "color": "white"
       },
       {
-        "uci": "d1d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "d4c3",
-        "san": "Qxc3",
+        "uci": "f3h2",
+        "san": "Nxh2",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T13:00:39.707116+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T13:01:19.452733+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787490039707",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541069665554534500,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qd4",
-        "correct": false,
-        "timestamp": "2026-08-23T13:00:44.219486+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxc3",
-        "correct": true,
-        "timestamp": "2026-08-23T13:00:59.454338+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787490079452",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
