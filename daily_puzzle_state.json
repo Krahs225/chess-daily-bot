@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-03-14",
     "title": "Winning Complications",
     "fen": "4n2k/1bp3b1/p1q4p/1p2n3/5N2/2P3N1/PP1r1PP1/R1Q1R1K1 b - - 0 1",
-    "current_fen": "4n2k/1bp3b1/p6p/1p6/8/2PNK1N1/PP4q1/R1Q1R3 b - - 1 4",
+    "current_fen": "7k/1bp3b1/p2n3p/1p6/8/2PNK1N1/PP4q1/R1Q1R3 w - - 2 5",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4n2k/1bp3b1/p1q4p/1p2n3/5N2/2P3N1/PP1r1PP1/R1Q1R1K1 b - - 0 1\"]\r\n\r\n1...Rxf2 2. Kxf2 Nd3+ 3. Nxd3 Qxg2+ 4. Ke3 Nd6\r\n*",
     "all_moves": [
       {
@@ -72,9 +72,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787511331109",
-    "next_solution_index": 6,
-    "next_player_index": 3,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1541158968372760738,
     "attempted_users": {
       "601406103712170014": {
@@ -82,13 +82,21 @@
         "move": "Nf6",
         "correct": false,
         "timestamp": "2026-08-23T18:59:13.156791+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Nd6",
+        "correct": true,
+        "timestamp": "2026-08-23T19:01:17.619729+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
