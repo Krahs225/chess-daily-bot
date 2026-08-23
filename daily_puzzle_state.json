@@ -1,105 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-10-15",
-    "title": "Attacking Technique",
-    "fen": "3q4/2nb1kbR/1r1p2p1/2pPp1P1/pp2Pp2/1P3N2/P4P2/1KBB3Q w - - 0 1",
-    "current_fen": "3q1k2/2nb3Q/1r1p2p1/2pPp1P1/pp2Pp1N/1P6/P4P2/1KBB4 b - - 5 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3q4/2nb1kbR/1r1p2p1/2pPp1P1/pp2Pp2/1P3N2/P4P2/1KBB3Q w - - 0 1\"]\r\n\r\n1. Rxg7+ Kxg7 2. Qh6+ Kf7 3. Qh7+ Kf8 4. Nh4\r\n*",
+    "url": "https://www.chess.com/daily/2025-08-22",
+    "title": "Razzle-Dazzle",
+    "fen": "r1b1r3/pp2p1bk/1n2P1pp/1BpN4/6nB/5N2/qPQ3PP/2KR4 w - - 0 1",
+    "current_fen": "r1b1r3/pp2p1bk/1n2P1pp/1BpN4/6nB/5N2/qPQ3PP/2KR4 w - - 0 1",
+    "pgn": "[White \"SamCopeland\"]\r\n[Black \"Chess.com Blitz Inspiration\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1r3/pp2p1bk/1n2P1pp/1BpN4/6nB/5N2/qPQ3PP/2KR4 w - - 0 1\"]\r\n\r\n1. Qxg6+ Kxg6 2. Bd3+ Kh5 3. Nf4# *",
     "all_moves": [
       {
-        "uci": "h7g7",
-        "san": "Rxg7+",
+        "uci": "c2g6",
+        "san": "Qxg6+",
         "color": "white"
       },
       {
-        "uci": "f7g7",
-        "san": "Kxg7",
+        "uci": "h7g6",
+        "san": "Kxg6",
         "color": "black"
       },
       {
-        "uci": "h1h6",
-        "san": "Qh6+",
+        "uci": "b5d3",
+        "san": "Bd3+",
         "color": "white"
       },
       {
-        "uci": "g7f7",
-        "san": "Kf7",
+        "uci": "g6h5",
+        "san": "Kh5",
         "color": "black"
       },
       {
-        "uci": "h6h7",
-        "san": "Qh7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7f8",
-        "san": "Kf8",
-        "color": "black"
-      },
-      {
-        "uci": "f3h4",
-        "san": "Nh4",
+        "uci": "d5f4",
+        "san": "Nf4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h7g7",
-        "san": "Rxg7+",
+        "uci": "c2g6",
+        "san": "Qxg6+",
         "color": "white"
       },
       {
-        "uci": "h1h6",
-        "san": "Qh6+",
+        "uci": "b5d3",
+        "san": "Bd3+",
         "color": "white"
       },
       {
-        "uci": "h6h7",
-        "san": "Qh7+",
-        "color": "white"
-      },
-      {
-        "uci": "f3h4",
-        "san": "Nh4",
+        "uci": "d5f4",
+        "san": "Nf4#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T13:11:51.070168+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T13:12:30.395930+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787490711070",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541072480947535956,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nh4",
-        "correct": true,
-        "timestamp": "2026-08-23T13:12:19.305952+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qh8",
-        "correct": false,
-        "timestamp": "2026-08-23T13:12:04.624448+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787490750395",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
