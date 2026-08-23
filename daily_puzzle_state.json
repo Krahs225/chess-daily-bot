@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-06-11",
     "title": "Nadareishvili, 1949",
     "fen": "3K4/1p5p/1p6/8/8/1B6/1p6/b1k3B1 w KQkq - 0 1",
-    "current_fen": "3K4/1p5p/1p6/8/8/1B6/1p6/b1k3B1 w KQkq - 0 1",
+    "current_fen": "3K4/1p5p/1p6/8/8/1B2B3/1p6/bk6 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3K4/1p5p/1p6/8/8/1B6/1p6/b1k3B1 w KQkq - 0 1\"]\r\n\r\n1. Be3+ Kb1 2. Bh6 b5 3. Ke7 b4 4. Kf6 b5 5. Kg5 Kc1 6. Kf5+ Kb1 7. Kf4 Kc1 8. Ke4+ Kb1 9. Ke3 Kc1 10. Ke2+ Kb1 11. Bd2 h5 12. Kd1 h4 13. Bxb4 h3 14. Bd5 h2 15. Kd2 h1=Q 16. Bxh1 Ka2 17. Bd5+ Kb1 18. Ba3 b4 19. Bb3\r\n*",
     "all_moves": [
       {
@@ -297,20 +297,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787491100882",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541074115996418143,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "a1=Q",
-        "correct": false,
-        "timestamp": "2026-08-23T13:18:27.903868+00:00"
+        "move": "be3",
+        "correct": true,
+        "timestamp": "2026-08-23T13:18:30.351542+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
