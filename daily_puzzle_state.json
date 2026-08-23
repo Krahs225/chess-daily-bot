@@ -1,122 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-07-07",
-    "title": "Major Attack, Minor Finesse",
-    "fen": "4N1rk/4Q2p/5R1n/8/8/rq4Pn/3P1PK1/4R3 b - - 0 1",
-    "current_fen": "4N2k/4Q2p/7n/8/5R2/6r1/3P1Kq1/4R3 w - - 6 7",
-    "pgn": "[White \"himavanth0010\"]\r\n[Black \"Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"4N1rk/4Q2p/5R1n/8/8/rq4Pn/3P1PK1/4R3 b - - 0 1\"]\r\n\r\n1... Rxg3+ 2. fxg3 Nf4+ 3. Rxf4 Qxg3+ 4. Kh1 Qh3+ 5. Kg1 Rg3+ 6. Kf2 Qg2# 0-1",
+    "url": "https://www.chess.com/daily/2015-01-07",
+    "title": "Encroachment",
+    "fen": "8/8/8/8/p7/pkBQK3/p7/8 w - - 0 1",
+    "current_fen": "8/8/8/8/p7/pkBQ4/3K4/q7 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/8/p7/pkBQK3/p7/8 w - - 0 1\"]\r\n\r\n1. Kd2 a1=Q 2. Qd5#\r\n*",
     "all_moves": [
       {
-        "uci": "g8g3",
-        "san": "Rxg3+",
-        "color": "black"
-      },
-      {
-        "uci": "f2g3",
-        "san": "fxg3",
+        "uci": "e3d2",
+        "san": "Kd2",
         "color": "white"
       },
       {
-        "uci": "h3f4",
-        "san": "Nf4+",
+        "uci": "a2a1q",
+        "san": "a1=Q",
         "color": "black"
       },
       {
-        "uci": "f6f4",
-        "san": "Rxf4",
+        "uci": "d3d5",
+        "san": "Qd5#",
         "color": "white"
-      },
-      {
-        "uci": "b3g3",
-        "san": "Qxg3+",
-        "color": "black"
-      },
-      {
-        "uci": "g2h1",
-        "san": "Kh1",
-        "color": "white"
-      },
-      {
-        "uci": "g3h3",
-        "san": "Qh3+",
-        "color": "black"
-      },
-      {
-        "uci": "h1g1",
-        "san": "Kg1",
-        "color": "white"
-      },
-      {
-        "uci": "a3g3",
-        "san": "Rg3+",
-        "color": "black"
-      },
-      {
-        "uci": "g1f2",
-        "san": "Kf2",
-        "color": "white"
-      },
-      {
-        "uci": "h3g2",
-        "san": "Qg2#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "g8g3",
-        "san": "Rxg3+",
-        "color": "black"
+        "uci": "e3d2",
+        "san": "Kd2",
+        "color": "white"
       },
       {
-        "uci": "h3f4",
-        "san": "Nf4+",
-        "color": "black"
-      },
-      {
-        "uci": "b3g3",
-        "san": "Qxg3+",
-        "color": "black"
-      },
-      {
-        "uci": "g3h3",
-        "san": "Qh3+",
-        "color": "black"
-      },
-      {
-        "uci": "a3g3",
-        "san": "Rg3+",
-        "color": "black"
-      },
-      {
-        "uci": "h3g2",
-        "san": "Qg2#",
-        "color": "black"
+        "uci": "d3d5",
+        "san": "Qd5#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 6,
-    "posted_at": "2026-08-23T21:21:37.082888+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-23T21:22:25.201495+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787520097082",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1541195735498883174,
+    "puzzle_id": "random_1787520145201",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541195937496703107,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qg2",
+        "move": "kd2",
         "correct": true,
-        "timestamp": "2026-08-23T21:22:19.576562+00:00"
+        "timestamp": "2026-08-23T21:24:38.028351+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
