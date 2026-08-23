@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-12-22",
     "title": "Calm Defense",
     "fen": "3r1rk1/pbq2ppN/1p2pn2/2p5/3P4/3B4/PPPRQP1P/2K3R1 b - - 0 1",
-    "current_fen": "3r1rk1/pbq2ppN/1p2pn2/2p5/3P4/3B4/PPPRQP1P/2K3R1 b - - 0 1",
+    "current_fen": "3r1rk1/pbq2ppB/1p2p3/2p5/3P4/8/PPPRQP1P/2K3R1 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r1rk1/pbq2ppN/1p2pn2/2p5/3P4/3B4/PPPRQP1P/2K3R1 b - - 0 1\"]\r\n\r\n1...Nxh7 2. Bxh7+ Kxh7 3. Qh5+ Kg8 4. Rxg7+ Kxg7\r\n*",
     "all_moves": [
       {
@@ -72,20 +72,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787490364583",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541071028481040451,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nxc2",
+        "move": "nxg2",
         "correct": false,
-        "timestamp": "2026-08-23T13:06:15.320159+00:00"
+        "timestamp": "2026-08-23T13:06:18.997900+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nxh7",
+        "correct": true,
+        "timestamp": "2026-08-23T13:06:18.952669+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
