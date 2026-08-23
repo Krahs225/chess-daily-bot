@@ -1,107 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-10-30",
-    "title": "March of the Pawns",
-    "fen": "6k1/pp1R2pp/8/n1P5/2P5/1B6/Pr4PK/8 w KQkq - 0 1",
-    "current_fen": "6k1/p1P3pp/8/1rn5/P7/8/6PK/8 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/pp1R2pp/8/n1P5/2P5/1B6/Pr4PK/8 w KQkq - 0 1\"]\r\n\r\n1. Rxb7 Nxb7 2. c6 Rxb3 3. c5 Rb5 4. a4 Nxc5 5. c7\r\n*",
+    "url": "https://www.chess.com/daily/2020-08-22",
+    "title": "Pressure Cooker",
+    "fen": "br4kb/2q2p1p/p2p1npB/3PnN2/B1p5/2N4P/1r1QRPP1/4R1K1 w - - 0 1",
+    "current_fen": "br4kb/2q2p1p/p2p1npB/3PnN2/B1p5/2N4P/1r1QRPP1/4R1K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"br4kb/2q2p1p/p2p1npB/3PnN2/B1p5/2N4P/1r1QRPP1/4R1K1 w - - 0 1\"]\r\n\r\n1.Qxb2 Rxb2 2.Rxe5 dxe5 3.d6 Qxd6 4.Nxd6 *",
     "all_moves": [
       {
-        "uci": "d7b7",
-        "san": "Rxb7",
+        "uci": "d2b2",
+        "san": "Qxb2",
         "color": "white"
       },
       {
-        "uci": "a5b7",
-        "san": "Nxb7",
+        "uci": "b8b2",
+        "san": "Rxb2",
         "color": "black"
       },
       {
-        "uci": "c5c6",
-        "san": "c6",
+        "uci": "e2e5",
+        "san": "Rxe5",
         "color": "white"
       },
       {
-        "uci": "b2b3",
-        "san": "Rxb3",
+        "uci": "d6e5",
+        "san": "dxe5",
         "color": "black"
       },
       {
-        "uci": "c4c5",
-        "san": "c5",
+        "uci": "d5d6",
+        "san": "d6",
         "color": "white"
       },
       {
-        "uci": "b3b5",
-        "san": "Rb5",
+        "uci": "c7d6",
+        "san": "Qxd6",
         "color": "black"
       },
       {
-        "uci": "a2a4",
-        "san": "a4",
-        "color": "white"
-      },
-      {
-        "uci": "b7c5",
-        "san": "Nxc5",
-        "color": "black"
-      },
-      {
-        "uci": "c6c7",
-        "san": "c7",
+        "uci": "f5d6",
+        "san": "Nxd6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d7b7",
-        "san": "Rxb7",
+        "uci": "d2b2",
+        "san": "Qxb2",
         "color": "white"
       },
       {
-        "uci": "c5c6",
-        "san": "c6",
+        "uci": "e2e5",
+        "san": "Rxe5",
         "color": "white"
       },
       {
-        "uci": "c4c5",
-        "san": "c5",
+        "uci": "d5d6",
+        "san": "d6",
         "color": "white"
       },
       {
-        "uci": "a2a4",
-        "san": "a4",
-        "color": "white"
-      },
-      {
-        "uci": "c6c7",
-        "san": "c7",
+        "uci": "f5d6",
+        "san": "Nxd6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-23T09:54:35.278635+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-23T10:15:30.178335+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787478875278",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1541022838088278077,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "C7",
-        "correct": true,
-        "timestamp": "2026-08-23T09:56:50.773943+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787480130178",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
