@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-04-13",
     "title": "Hasek, Deutsche Schachzeitung, 1928",
     "fen": "8/p7/P4p2/3K1P2/5k2/8/8/8 w - - 0 1",
-    "current_fen": "8/p7/P1K2p2/5k2/8/8/8/8 w - - 0 5",
+    "current_fen": "8/pK6/P4p2/4k3/8/8/8/8 w - - 2 6",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/p7/P4p2/3K1P2/5k2/8/8/8 w - - 0 1\"]\r\n\r\n1. Kc6 Ke5 2. Kc7 Kd5 3. Kd7 Ke5 4. Kc6 Kxf5 5. Kb7 Ke5 6. Kxa7\r\n*",
     "all_moves": [
       {
@@ -102,16 +102,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787490890102",
-    "next_solution_index": 8,
-    "next_player_index": 4,
+    "next_solution_index": 10,
+    "next_player_index": 5,
     "solved": false,
     "message_id": 1541073231883018331,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "kc8",
-        "correct": false,
-        "timestamp": "2026-08-23T13:15:31.486050+00:00"
+        "move": "kb7",
+        "correct": true,
+        "timestamp": "2026-08-23T13:15:34.912092+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -124,7 +124,9 @@
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
