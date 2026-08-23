@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-11-21",
-    "title": "Navigating the Jungle",
-    "fen": "r5k1/4r1bp/p5p1/qpnb2B1/2p5/P1P2N1P/1P1N1PP1/2RQ2K1 w - - 0 1",
-    "current_fen": "5rk1/5rbp/p5p1/NpnQ2B1/2p5/P1P4P/1P3PP1/2R3K1 b - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r5k1/4r1bp/p5p1/qpnb2B1/2p5/P1P2N1P/1P1N1PP1/2RQ2K1 w - - 0 1\"]\r\n\r\n1.Nb3 Bxf3 2.Qxf3 Rf8 3.Qd5+ Ref7 4.Nxa5 *",
+    "url": "https://www.chess.com/daily/2025-10-17",
+    "title": "Brain Freeze",
+    "fen": "rnb1qk2/1pp1prbQ/1p6/5pN1/3P4/4B3/PP3PP1/R3K2R w KQ - 0 16",
+    "current_fen": "rnb1qk2/1pp1prbQ/1p6/5pN1/3P4/4B3/PP3PP1/R3K2R w KQ - 0 16",
+    "pgn": "[Event \"Online Blitz\"]\r\n[Date \"2001??.??\"]\r\n[White \"Nadanian Ashot (h2 pawn removed)\"]\r\n[Black \"Konstantin Sakaev\"]\r\n[Result \"1-0\"]\r\n[FEN \"rnb1qk2/1pp1prbQ/1p6/5pN1/3P4/4B3/PP3PP1/R3K2R w KQ - 0 16\"]\r\n\r\n16. Ne6+ Bxe6 17. Bh6 Qb5 18. Qh8# 1-0",
     "all_moves": [
       {
-        "uci": "d2b3",
-        "san": "Nb3",
+        "uci": "g5e6",
+        "san": "Ne6+",
         "color": "white"
       },
       {
-        "uci": "d5f3",
-        "san": "Bxf3",
+        "uci": "c8e6",
+        "san": "Bxe6",
         "color": "black"
       },
       {
-        "uci": "d1f3",
-        "san": "Qxf3",
+        "uci": "e3h6",
+        "san": "Bh6",
         "color": "white"
       },
       {
-        "uci": "a8f8",
-        "san": "Rf8",
+        "uci": "e8b5",
+        "san": "Qb5",
         "color": "black"
       },
       {
-        "uci": "f3d5",
-        "san": "Qd5+",
-        "color": "white"
-      },
-      {
-        "uci": "e7f7",
-        "san": "Ref7",
-        "color": "black"
-      },
-      {
-        "uci": "b3a5",
-        "san": "Nxa5",
+        "uci": "h7h8",
+        "san": "Qh8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2b3",
-        "san": "Nb3",
+        "uci": "g5e6",
+        "san": "Ne6+",
         "color": "white"
       },
       {
-        "uci": "d1f3",
-        "san": "Qxf3",
+        "uci": "e3h6",
+        "san": "Bh6",
         "color": "white"
       },
       {
-        "uci": "f3d5",
-        "san": "Qd5+",
-        "color": "white"
-      },
-      {
-        "uci": "b3a5",
-        "san": "Nxa5",
+        "uci": "h7h8",
+        "san": "Qh8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T09:50:03.294096+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T09:51:14.616929+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787478603294",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541021698298609694,
-    "attempted_users": {
-      "1541007763931668502": {
-        "name": "Martin",
-        "move": "nxa5",
-        "correct": true,
-        "timestamp": "2026-08-23T09:50:55.685442+00:00"
-      }
-    },
-    "first_move_user_id": "1541007763931668502",
-    "first_move_user_name": "Martin",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787478674616",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
