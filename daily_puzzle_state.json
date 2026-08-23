@@ -1,59 +1,67 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-08-15",
-    "title": "Hort - Byrne, Varna OL 1962",
-    "fen": "r1bq1r1k/5p1p/p1pp1npQ/1p2n3/2PNP1P1/2NB1P2/PP6/R3K2R w KQq - 0 1",
-    "current_fen": "r1bq1r1k/5p1p/p1pp1npQ/1p2n3/2PNP1P1/2NB1P2/PP6/R3K2R w KQq - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bq1r1k/5p1p/p1pp1npQ/1p2n3/2PNP1P1/2NB1P2/PP6/R3K2R w KQq - 0 1\"]\r\n\r\n1. Nxc6 Nxc6 2. Nd5 \r\n*",
+    "url": "https://www.chess.com/daily/2022-04-27",
+    "title": "Alignment Signals",
+    "fen": "1nb1kb1r/r5p1/p3p3/1p2qpNp/7Q/2N5/PPP1B1PP/3RKR2 w k - 0 1",
+    "current_fen": "1nb1kb1r/r5p1/p3p3/1p2qpNp/7Q/2N5/PPP1B1PP/3RKR2 w k - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1nb1kb1r/r5p1/p3p3/1p2qpNp/7Q/2N5/PPP1B1PP/3RKR2 w k - 0 1\"]\r\n\r\n1.Rd8+ Kxd8 2.Nf7+ Ke8 3.Nxe5 *",
     "all_moves": [
       {
-        "uci": "d4c6",
-        "san": "Nxc6",
+        "uci": "d1d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "e5c6",
-        "san": "Nxc6",
+        "uci": "e8d8",
+        "san": "Kxd8",
         "color": "black"
       },
       {
-        "uci": "c3d5",
-        "san": "Nd5",
+        "uci": "g5f7",
+        "san": "Nf7+",
+        "color": "white"
+      },
+      {
+        "uci": "d8e8",
+        "san": "Ke8",
+        "color": "black"
+      },
+      {
+        "uci": "f7e5",
+        "san": "Nxe5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4c6",
-        "san": "Nxc6",
+        "uci": "d1d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "c3d5",
-        "san": "Nd5",
+        "uci": "g5f7",
+        "san": "Nf7+",
+        "color": "white"
+      },
+      {
+        "uci": "f7e5",
+        "san": "Nxe5",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-23T18:28:05.220953+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T18:30:13.463321+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787509685220",
+    "puzzle_id": "random_1787509813463",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541152064485457951,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nf5",
-        "correct": false,
-        "timestamp": "2026-08-23T18:29:30.797565+00:00"
-      }
-    },
+    "message_id": null,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
