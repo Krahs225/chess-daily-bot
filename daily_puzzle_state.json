@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-04-28",
     "title": "Tarrasch's Fingerprints",
     "fen": "5rk1/p6p/8/B1pPK1pP/4P3/1PQ5/P5q1/2RR1b2 b - - 0 1",
-    "current_fen": "5rk1/p6p/4K3/B1pP2pP/4P3/1PQ5/P6q/2RR1b2 b - - 2 2",
+    "current_fen": "4r1k1/p2K3p/8/B1pP2pP/4P3/1PQ5/P6q/2RR1b2 b - - 4 3",
     "pgn": "[Result \"0-1\"]\r\n[FEN \"5rk1/p6p/8/B1pPK1pP/4P3/1PQ5/P5q1/2RR1b2 b - - 0 1\"]\r\n\r\n1...Qh2+ 2.Ke6 Re8+ 3.Kd7 Bb5# 0-1",
     "all_moves": [
       {
@@ -57,29 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787491642071",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1541076387102851103,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qh2",
-        "correct": true,
-        "timestamp": "2026-08-23T13:27:27.311659+00:00"
+        "move": "bh3",
+        "correct": false,
+        "timestamp": "2026-08-23T13:27:32.087493+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qh2",
-        "correct": false,
-        "timestamp": "2026-08-23T13:27:27.387138+00:00"
+        "move": "re8",
+        "correct": true,
+        "timestamp": "2026-08-23T13:27:31.416581+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
