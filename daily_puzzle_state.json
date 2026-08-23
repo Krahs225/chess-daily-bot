@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-02-13",
     "title": "Tactical Vacuum",
     "fen": "r3k3/1p4p1/p1q1b2p/P1pn4/5PP1/2N5/1P2Q2K/4R3 w - - 3 29",
-    "current_fen": "r3k3/1p4p1/p1q1b2p/P1pn4/5PP1/2N5/1P2Q2K/4R3 w - - 3 29",
+    "current_fen": "r3k3/1p4p1/p3q2p/P1pn4/5PP1/2N5/1P5K/4R3 w - - 0 30",
     "pgn": "[White \"chesstiger787\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"r3k3/1p4p1/p1q1b2p/P1pn4/5PP1/2N5/1P2Q2K/4R3 w - - 3 29\"]\r\n\r\n29. Qxe6+ Qxe6 30. Rxe6+ Kf7 31. Nxd5 Kxe6 32. Nc7+ Kd7 33. Nxa8 1-0",
     "all_moves": [
       {
@@ -87,20 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787509509992",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541151329542737992,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qxe7",
-        "correct": false,
-        "timestamp": "2026-08-23T18:25:22.441718+00:00"
+        "move": "Qxe6",
+        "correct": true,
+        "timestamp": "2026-08-23T18:25:25.027747+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
