@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-03-31",
     "title": "Shulman - Krush, US Championship 2007",
     "fen": "r6r/2p1R3/p4k1p/1p1b2p1/P1pP1qPP/B1P5/4QP2/R5K1 w - - 0 1",
-    "current_fen": "r6r/2p1R3/p4k1p/1p1b2p1/P1pP1qPP/B1P5/4QP2/R5K1 w - - 0 1",
+    "current_fen": "r6r/2p1R3/p5kp/1p1bP1pP/P1p3P1/B1P5/5P2/R5K1 b - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r6r/2p1R3/p4k1p/1p1b2p1/P1pP1qPP/B1P5/4QP2/R5K1 w - - 0 1\"]\r\n\r\n1. Qe5+ Qxe5 2. dxe5+ Kg6 3. h5#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787518737044",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
+    "message_id": 1541190030666764480,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "h5",
+        "correct": true,
+        "timestamp": "2026-08-23T20:59:08.165557+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
