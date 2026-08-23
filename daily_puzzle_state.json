@@ -1,107 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-02-13",
-    "title": "Tactical Vacuum",
-    "fen": "r3k3/1p4p1/p1q1b2p/P1pn4/5PP1/2N5/1P2Q2K/4R3 w - - 3 29",
-    "current_fen": "N7/1p1k2p1/p6p/P1p5/5PP1/8/1P5K/8 b - - 0 33",
-    "pgn": "[White \"chesstiger787\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"r3k3/1p4p1/p1q1b2p/P1pn4/5PP1/2N5/1P2Q2K/4R3 w - - 3 29\"]\r\n\r\n29. Qxe6+ Qxe6 30. Rxe6+ Kf7 31. Nxd5 Kxe6 32. Nc7+ Kd7 33. Nxa8 1-0",
+    "url": "https://www.chess.com/daily/2022-10-01",
+    "title": "A Well-Calculated Leap",
+    "fen": "rn1qnrk1/4bpp1/pp1pp2p/6N1/2P1N3/3Q2P1/PP2PPKP/R1BR4 w - - 0 14",
+    "current_fen": "rn1qnrk1/4bpp1/pp1pp2p/6N1/2P1N3/3Q2P1/PP2PPKP/R1BR4 w - - 0 14",
+    "pgn": "[Event \"FIDE Steinitz Memorial\"]\r\n[Site \"chess24.com INT\"]\r\n[Date \"2020.05.17\"]\r\n[Round \"18\"]\r\n[White \"( Variation from Game)Bu, Xiangzhi\"]\r\n[Black \"Le, Quang Liem\"]\r\n[Result \"1-0\"]\r\n[ECO \"A30\"]\r\n[WhiteElo \"2705\"]\r\n[BlackElo \"2709\"]\r\n[FEN \"rn1qnrk1/4bpp1/pp1pp2p/6N1/2P1N3/3Q2P1/PP2PPKP/R1BR4 w - - 0 14\"]\r\n\r\n14. Nh7 f5 15. Nxf8 fxe4 16. Qxe4 Bxf8 17. Qxa8 1-0",
     "all_moves": [
       {
-        "uci": "e2e6",
-        "san": "Qxe6+",
+        "uci": "g5h7",
+        "san": "Nh7",
         "color": "white"
       },
       {
-        "uci": "c6e6",
-        "san": "Qxe6",
+        "uci": "f7f5",
+        "san": "f5",
         "color": "black"
       },
       {
-        "uci": "e1e6",
-        "san": "Rxe6+",
+        "uci": "h7f8",
+        "san": "Nxf8",
         "color": "white"
       },
       {
-        "uci": "e8f7",
-        "san": "Kf7",
+        "uci": "f5e4",
+        "san": "fxe4",
         "color": "black"
       },
       {
-        "uci": "c3d5",
-        "san": "Nxd5",
+        "uci": "d3e4",
+        "san": "Qxe4",
         "color": "white"
       },
       {
-        "uci": "f7e6",
-        "san": "Kxe6",
+        "uci": "e7f8",
+        "san": "Bxf8",
         "color": "black"
       },
       {
-        "uci": "d5c7",
-        "san": "Nc7+",
-        "color": "white"
-      },
-      {
-        "uci": "e6d7",
-        "san": "Kd7",
-        "color": "black"
-      },
-      {
-        "uci": "c7a8",
-        "san": "Nxa8",
+        "uci": "e4a8",
+        "san": "Qxa8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e2e6",
-        "san": "Qxe6+",
+        "uci": "g5h7",
+        "san": "Nh7",
         "color": "white"
       },
       {
-        "uci": "e1e6",
-        "san": "Rxe6+",
+        "uci": "h7f8",
+        "san": "Nxf8",
         "color": "white"
       },
       {
-        "uci": "c3d5",
-        "san": "Nxd5",
+        "uci": "d3e4",
+        "san": "Qxe4",
         "color": "white"
       },
       {
-        "uci": "d5c7",
-        "san": "Nc7+",
-        "color": "white"
-      },
-      {
-        "uci": "c7a8",
-        "san": "Nxa8",
+        "uci": "e4a8",
+        "san": "Qxa8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-23T18:25:09.992811+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-23T18:25:41.801905+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787509509992",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1541151329542737992,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nxa8",
-        "correct": true,
-        "timestamp": "2026-08-23T18:25:36.136821+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787509541801",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
