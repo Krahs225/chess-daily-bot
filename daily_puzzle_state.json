@@ -1,83 +1,220 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-01-18",
-    "title": "John Nunn, Schack Bulletinen, 1983",
-    "fen": "5B2/2kr4/5P2/8/6P1/8/8/2K5 w - - 0 1",
-    "current_fen": "8/2k1r3/5PP1/8/8/8/8/2K5 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5B2/2kr4/5P2/8/6P1/8/8/2K5 w - - 0 1\"]\r\n\r\n1. g5 Rf7 2. Be7 Rxe7 3. g6 \r\n*",
+    "url": "https://www.chess.com/daily/2010-10-01",
+    "title": "Del Rio, 1750",
+    "fen": "8/8/3p4/4p2B/4P3/8/4K1kp/8 w KQkq - 0 1",
+    "current_fen": "8/8/3p4/4p2B/4P3/8/4K1kp/8 w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/3p4/4p2B/4P3/8/4K1kp/8 w KQkq - 0 1\"]\r\n\r\n1. Bf3+ Kg1 2. Bh1 Kxh1 3. Kf1 d5 4. exd5 e4 5. d6 e3 6. d7 e2+ 7. Kxe2 Kg2\r\n8. d8=Q h1=Q 9. Qg5+ Kh3 10. Qh5+ Kg2 11. Qg4+ Kh2 12. Kf2 Qf3+ 13. Kxf3\r\n*",
     "all_moves": [
       {
-        "uci": "g4g5",
-        "san": "g5",
+        "uci": "h5f3",
+        "san": "Bf3+",
         "color": "white"
       },
       {
-        "uci": "d7f7",
-        "san": "Rf7",
+        "uci": "g2g1",
+        "san": "Kg1",
         "color": "black"
       },
       {
-        "uci": "f8e7",
-        "san": "Be7",
+        "uci": "f3h1",
+        "san": "Bh1",
         "color": "white"
       },
       {
-        "uci": "f7e7",
-        "san": "Rxe7",
+        "uci": "g1h1",
+        "san": "Kxh1",
         "color": "black"
       },
       {
-        "uci": "g5g6",
-        "san": "g6",
+        "uci": "e2f1",
+        "san": "Kf1",
+        "color": "white"
+      },
+      {
+        "uci": "d6d5",
+        "san": "d5",
+        "color": "black"
+      },
+      {
+        "uci": "e4d5",
+        "san": "exd5",
+        "color": "white"
+      },
+      {
+        "uci": "e5e4",
+        "san": "e4",
+        "color": "black"
+      },
+      {
+        "uci": "d5d6",
+        "san": "d6",
+        "color": "white"
+      },
+      {
+        "uci": "e4e3",
+        "san": "e3",
+        "color": "black"
+      },
+      {
+        "uci": "d6d7",
+        "san": "d7",
+        "color": "white"
+      },
+      {
+        "uci": "e3e2",
+        "san": "e2+",
+        "color": "black"
+      },
+      {
+        "uci": "f1e2",
+        "san": "Kxe2",
+        "color": "white"
+      },
+      {
+        "uci": "h1g2",
+        "san": "Kg2",
+        "color": "black"
+      },
+      {
+        "uci": "d7d8q",
+        "san": "d8=Q",
+        "color": "white"
+      },
+      {
+        "uci": "h2h1q",
+        "san": "h1=Q",
+        "color": "black"
+      },
+      {
+        "uci": "d8g5",
+        "san": "Qg5+",
+        "color": "white"
+      },
+      {
+        "uci": "g2h3",
+        "san": "Kh3",
+        "color": "black"
+      },
+      {
+        "uci": "g5h5",
+        "san": "Qh5+",
+        "color": "white"
+      },
+      {
+        "uci": "h3g2",
+        "san": "Kg2",
+        "color": "black"
+      },
+      {
+        "uci": "h5g4",
+        "san": "Qg4+",
+        "color": "white"
+      },
+      {
+        "uci": "g2h2",
+        "san": "Kh2",
+        "color": "black"
+      },
+      {
+        "uci": "e2f2",
+        "san": "Kf2",
+        "color": "white"
+      },
+      {
+        "uci": "h1f3",
+        "san": "Qf3+",
+        "color": "black"
+      },
+      {
+        "uci": "f2f3",
+        "san": "Kxf3",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g4g5",
-        "san": "g5",
+        "uci": "h5f3",
+        "san": "Bf3+",
         "color": "white"
       },
       {
-        "uci": "f8e7",
-        "san": "Be7",
+        "uci": "f3h1",
+        "san": "Bh1",
         "color": "white"
       },
       {
-        "uci": "g5g6",
-        "san": "g6",
+        "uci": "e2f1",
+        "san": "Kf1",
+        "color": "white"
+      },
+      {
+        "uci": "e4d5",
+        "san": "exd5",
+        "color": "white"
+      },
+      {
+        "uci": "d5d6",
+        "san": "d6",
+        "color": "white"
+      },
+      {
+        "uci": "d6d7",
+        "san": "d7",
+        "color": "white"
+      },
+      {
+        "uci": "f1e2",
+        "san": "Kxe2",
+        "color": "white"
+      },
+      {
+        "uci": "d7d8q",
+        "san": "d8=Q",
+        "color": "white"
+      },
+      {
+        "uci": "d8g5",
+        "san": "Qg5+",
+        "color": "white"
+      },
+      {
+        "uci": "g5h5",
+        "san": "Qh5+",
+        "color": "white"
+      },
+      {
+        "uci": "h5g4",
+        "san": "Qg4+",
+        "color": "white"
+      },
+      {
+        "uci": "e2f2",
+        "san": "Kf2",
+        "color": "white"
+      },
+      {
+        "uci": "f2f3",
+        "san": "Kxf3",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-23T15:31:03.860539+00:00",
-    "answer_posted": true,
+    "player_move_count": 13,
+    "posted_at": "2026-08-23T15:31:45.003957+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787499063860",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541107516283293707,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "f7",
-        "correct": false,
-        "timestamp": "2026-08-23T15:31:09.348796+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "g6",
-        "correct": true,
-        "timestamp": "2026-08-23T15:31:17.992448+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787499105003",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
