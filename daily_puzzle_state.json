@@ -1,105 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-03-14",
-    "title": "Winning Complications",
-    "fen": "4n2k/1bp3b1/p1q4p/1p2n3/5N2/2P3N1/PP1r1PP1/R1Q1R1K1 b - - 0 1",
-    "current_fen": "7k/1bp3b1/p2n3p/1p6/8/2PNK1N1/PP4q1/R1Q1R3 w - - 2 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4n2k/1bp3b1/p1q4p/1p2n3/5N2/2P3N1/PP1r1PP1/R1Q1R1K1 b - - 0 1\"]\r\n\r\n1...Rxf2 2. Kxf2 Nd3+ 3. Nxd3 Qxg2+ 4. Ke3 Nd6\r\n*",
+    "url": "https://www.chess.com/daily/2020-03-20",
+    "title": "You Can Never Hold Back Spring",
+    "fen": "5rk1/5R2/3NQ2b/1N1n4/q5P1/1p5P/1B4r1/3K4 b - - 0 1",
+    "current_fen": "5rk1/5R2/3NQ2b/1N1n4/q5P1/1p5P/1B4r1/3K4 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"5rk1/5R2/3NQ2b/1N1n4/q5P1/1p5P/1B4r1/3K4 b - - 0 1\"]\r\n\r\n1...Nc3+ 2.Ke1 Re2+ 3.Qxe2 Nxe2 *",
     "all_moves": [
       {
-        "uci": "d2f2",
-        "san": "Rxf2",
+        "uci": "d5c3",
+        "san": "Nc3+",
         "color": "black"
       },
       {
-        "uci": "g1f2",
-        "san": "Kxf2",
+        "uci": "d1e1",
+        "san": "Ke1",
         "color": "white"
       },
       {
-        "uci": "e5d3",
-        "san": "Nd3+",
+        "uci": "g2e2",
+        "san": "Re2+",
         "color": "black"
       },
       {
-        "uci": "f4d3",
-        "san": "Nxd3",
+        "uci": "e6e2",
+        "san": "Qxe2",
         "color": "white"
       },
       {
-        "uci": "c6g2",
-        "san": "Qxg2+",
-        "color": "black"
-      },
-      {
-        "uci": "f2e3",
-        "san": "Ke3",
-        "color": "white"
-      },
-      {
-        "uci": "e8d6",
-        "san": "Nd6",
+        "uci": "c3e2",
+        "san": "Nxe2",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2f2",
-        "san": "Rxf2",
+        "uci": "d5c3",
+        "san": "Nc3+",
         "color": "black"
       },
       {
-        "uci": "e5d3",
-        "san": "Nd3+",
+        "uci": "g2e2",
+        "san": "Re2+",
         "color": "black"
       },
       {
-        "uci": "c6g2",
-        "san": "Qxg2+",
-        "color": "black"
-      },
-      {
-        "uci": "e8d6",
-        "san": "Nd6",
+        "uci": "c3e2",
+        "san": "Nxe2",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T18:55:31.109181+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T20:03:04.995205+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787511331109",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541158968372760738,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nf6",
-        "correct": false,
-        "timestamp": "2026-08-23T18:59:13.156791+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Nd6",
-        "correct": true,
-        "timestamp": "2026-08-23T19:01:17.619729+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787515384995",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
