@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-03-10",
     "title": "A Subtle Discovery",
     "fen": "8/7p/q6P/k7/1R6/3P4/8/1K2B3 w - - 0 1",
-    "current_fen": "8/7p/q6P/k7/1R6/3P4/8/1K2B3 w - - 0 1",
+    "current_fen": "8/7p/7q/k7/1R6/3P4/2K5/4B3 w - - 0 2",
     "pgn": "[White \"Hunter Klotz-Burwell\"]\r\n[Black \"Study\"]\r\n[Result \"*\"]\r\n[FEN \"8/7p/q6P/k7/1R6/3P4/8/1K2B3 w - - 0 1\"]\r\n\r\n1. Kc2 Qxh6 2. Rh4+ Kb5 3. Rxh6 *",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787501033437",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541115776105451552,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rf4",
-        "correct": false,
-        "timestamp": "2026-08-23T16:04:21.782770+00:00"
+        "move": "kc2",
+        "correct": true,
+        "timestamp": "2026-08-23T16:04:50.474476+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
