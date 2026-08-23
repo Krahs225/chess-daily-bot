@@ -1,59 +1,34 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-03-01",
-    "title": "Mate in 8",
-    "fen": "8/8/p7/p1k1B3/K7/3P4/6B1/8 w KQkq - 0 1",
-    "current_fen": "8/8/p7/p1k1B3/K7/3P4/6B1/8 w KQkq - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/p7/p1k1B3/K7/3P4/6B1/8 w KQkq - 0 1\"]\r\n\r\n1. Ba8 Kb6 2. d4 Ka7 3. Kxa5 Kxa8 4. Kb6 a5 5. d5 a4 6. d6 a3 7. d7 a2 8. d8=Q#\r\n*",
+    "url": "https://www.chess.com/daily/2022-09-03",
+    "title": "Forks, Pins, and Counterattacks",
+    "fen": "2r1k2r/1p1bqpp1/p1n2n2/3Pp3/P7/2PB1NPp/1PQN1P1P/R3K2R b KQk - 0 1",
+    "current_fen": "2r1k2r/1p1bqpp1/p1n2n2/3Pp3/P7/2PB1NPp/1PQN1P1P/R3K2R b KQk - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2r1k2r/1p1bqpp1/p1n2n2/3Pp3/P7/2PB1NPp/1PQN1P1P/R3K2R b KQk - 0 1\"]\r\n\r\n1... Nb4 2. Qb1 Nxd3+ 3. Qxd3 e4 4. d6 Qe6 5. Qe2 exf3 *",
     "all_moves": [
       {
-        "uci": "g2a8",
-        "san": "Ba8",
-        "color": "white"
-      },
-      {
-        "uci": "c5b6",
-        "san": "Kb6",
+        "uci": "c6b4",
+        "san": "Nb4",
         "color": "black"
       },
       {
-        "uci": "d3d4",
-        "san": "d4",
+        "uci": "c2b1",
+        "san": "Qb1",
         "color": "white"
       },
       {
-        "uci": "b6a7",
-        "san": "Ka7",
+        "uci": "b4d3",
+        "san": "Nxd3+",
         "color": "black"
       },
       {
-        "uci": "a4a5",
-        "san": "Kxa5",
+        "uci": "b1d3",
+        "san": "Qxd3",
         "color": "white"
       },
       {
-        "uci": "a7a8",
-        "san": "Kxa8",
-        "color": "black"
-      },
-      {
-        "uci": "a5b6",
-        "san": "Kb6",
-        "color": "white"
-      },
-      {
-        "uci": "a6a5",
-        "san": "a5",
-        "color": "black"
-      },
-      {
-        "uci": "d4d5",
-        "san": "d5",
-        "color": "white"
-      },
-      {
-        "uci": "a5a4",
-        "san": "a4",
+        "uci": "e5e4",
+        "san": "e4",
         "color": "black"
       },
       {
@@ -62,80 +37,60 @@
         "color": "white"
       },
       {
-        "uci": "a4a3",
-        "san": "a3",
+        "uci": "e7e6",
+        "san": "Qe6",
         "color": "black"
       },
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "d3e2",
+        "san": "Qe2",
         "color": "white"
       },
       {
-        "uci": "a3a2",
-        "san": "a2",
+        "uci": "e4f3",
+        "san": "exf3",
         "color": "black"
-      },
-      {
-        "uci": "d7d8q",
-        "san": "d8=Q#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g2a8",
-        "san": "Ba8",
-        "color": "white"
+        "uci": "c6b4",
+        "san": "Nb4",
+        "color": "black"
       },
       {
-        "uci": "d3d4",
-        "san": "d4",
-        "color": "white"
+        "uci": "b4d3",
+        "san": "Nxd3+",
+        "color": "black"
       },
       {
-        "uci": "a4a5",
-        "san": "Kxa5",
-        "color": "white"
+        "uci": "e5e4",
+        "san": "e4",
+        "color": "black"
       },
       {
-        "uci": "a5b6",
-        "san": "Kb6",
-        "color": "white"
+        "uci": "e7e6",
+        "san": "Qe6",
+        "color": "black"
       },
       {
-        "uci": "d4d5",
-        "san": "d5",
-        "color": "white"
-      },
-      {
-        "uci": "d5d6",
-        "san": "d6",
-        "color": "white"
-      },
-      {
-        "uci": "d6d7",
-        "san": "d7",
-        "color": "white"
-      },
-      {
-        "uci": "d7d8q",
-        "san": "d8=Q#",
-        "color": "white"
+        "uci": "e4f3",
+        "san": "exf3",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 8,
-    "posted_at": "2026-08-23T15:54:44.580571+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 5,
+    "posted_at": "2026-08-23T15:54:52.982404+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787500484580",
+    "puzzle_id": "random_1787500492982",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541113474858614784,
+    "message_id": 1541113509469757644,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
