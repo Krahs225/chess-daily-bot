@@ -1,62 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-03-17",
-    "title": "Mate in 2",
-    "fen": "2n2r2/k3q3/p3p2p/2p1P1p1/3N2Pn/P1N1B2P/2P5/1R4KB w - - 0 1",
-    "current_fen": "kRn2r2/4q3/p1N1p2p/2p1P1p1/6Pn/P1N1B2P/2P5/6KB b - - 3 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2n2r2/k3q3/p3p2p/2p1P1p1/3N2Pn/P1N1B2P/2P5/1R4KB w - - 0 1\"]\r\n\r\n1. Nc6+ Ka8 2. Rb8#\r\n*",
+    "url": "https://www.chess.com/daily/2023-10-24",
+    "title": "The Rook's Stunt Double",
+    "fen": "8/2n2p2/6k1/R5pp/8/5PKP/2r5/1B6 b - - 0 1",
+    "current_fen": "8/2n2p2/6k1/R5pp/8/5PKP/2r5/1B6 b - - 0 1",
+    "pgn": "[White \"Tavernier\"]\r\n[Black \"Grodner\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/2n2p2/6k1/R5pp/8/5PKP/2r5/1B6 b - - 0 1\"]\r\n\r\n1... h4+ 2. Kg4 f5+ 3. Rxf5 Rg2# 0-1",
     "all_moves": [
       {
-        "uci": "d4c6",
-        "san": "Nc6+",
-        "color": "white"
-      },
-      {
-        "uci": "a7a8",
-        "san": "Ka8",
+        "uci": "h5h4",
+        "san": "h4+",
         "color": "black"
       },
       {
-        "uci": "b1b8",
-        "san": "Rb8#",
+        "uci": "g3g4",
+        "san": "Kg4",
         "color": "white"
+      },
+      {
+        "uci": "f7f5",
+        "san": "f5+",
+        "color": "black"
+      },
+      {
+        "uci": "a5f5",
+        "san": "Rxf5",
+        "color": "white"
+      },
+      {
+        "uci": "c2g2",
+        "san": "Rg2#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4c6",
-        "san": "Nc6+",
-        "color": "white"
+        "uci": "h5h4",
+        "san": "h4+",
+        "color": "black"
       },
       {
-        "uci": "b1b8",
-        "san": "Rb8#",
-        "color": "white"
+        "uci": "f7f5",
+        "san": "f5+",
+        "color": "black"
+      },
+      {
+        "uci": "c2g2",
+        "san": "Rg2#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-23T18:10:26.481080+00:00",
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T18:10:40.481559+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787508626481",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1541147624562884768,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rb8",
-        "correct": true,
-        "timestamp": "2026-08-23T18:10:35.956146+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787508640481",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
