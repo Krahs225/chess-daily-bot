@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-05-21",
     "title": "Pieces In Unison",
     "fen": "3r3k/2p1n1pp/5r2/1q4N1/8/1BQ5/2P5/2K3R1 w - - 0 1",
-    "current_fen": "3r3k/2p1n1pp/5r2/1q4N1/8/1BQ5/2P5/2K3R1 w - - 0 1",
+    "current_fen": "3r3k/2p1nN1p/5p2/1q6/8/1B6/2P5/2K3R1 b - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r3k/2p1n1pp/5r2/1q4N1/8/1BQ5/2P5/2K3R1 w - - 0 1\"]\r\n\r\n1. Qxf6 gxf6 2. Nf7#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787500287713",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
+    "message_id": 1541112648412962857,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nf7",
+        "correct": true,
+        "timestamp": "2026-08-23T15:51:33.674027+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
