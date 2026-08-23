@@ -1,98 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-01-29",
-    "title": "S.Brehmer, 1951",
-    "fen": "3n1R2/2K1B2p/4ppkP/6p1/1Np5/6NQ/5r2/3b4 w - - 0 1",
-    "current_fen": "3n4/2K1B2p/4pRkP/6p1/2p5/5bNQ/5r2/8 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3n1R2/2K1B2p/4ppkP/6p1/1Np5/6NQ/5r2/3b4 w - - 0 1\"]\r\n\r\n1. Kd7 Ba4+ 2. Nc6 Bxc6+ 3. Kc7 Bf3 4. Rxf6#\r\n*",
+    "url": "https://www.chess.com/daily/2011-01-18",
+    "title": "Quiet But Effective",
+    "fen": "r1nr2k1/1b2p1bp/p5p1/P2qPpB1/2p5/2P2N2/3Q1PPP/3RRNK1 w - - 0 1",
+    "current_fen": "r1nr2k1/1b2p1bp/p5p1/P2qPpB1/2p5/2P2N2/3Q1PPP/3RRNK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1nr2k1/1b2p1bp/p5p1/P2qPpB1/2p5/2P2N2/3Q1PPP/3RRNK1 w - - 0 1\"]\r\n\r\n1. Qb2 Qxd1 2. Rxd1 Rxd1 3. Qxb7\r\n*",
     "all_moves": [
       {
-        "uci": "c7d7",
-        "san": "Kd7",
+        "uci": "d2b2",
+        "san": "Qb2",
         "color": "white"
       },
       {
-        "uci": "d1a4",
-        "san": "Ba4+",
+        "uci": "d5d1",
+        "san": "Qxd1",
         "color": "black"
       },
       {
-        "uci": "b4c6",
-        "san": "Nc6",
+        "uci": "e1d1",
+        "san": "Rxd1",
         "color": "white"
       },
       {
-        "uci": "a4c6",
-        "san": "Bxc6+",
+        "uci": "d8d1",
+        "san": "Rxd1",
         "color": "black"
       },
       {
-        "uci": "d7c7",
-        "san": "Kc7",
-        "color": "white"
-      },
-      {
-        "uci": "c6f3",
-        "san": "Bf3",
-        "color": "black"
-      },
-      {
-        "uci": "f8f6",
-        "san": "Rxf6#",
+        "uci": "b2b7",
+        "san": "Qxb7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c7d7",
-        "san": "Kd7",
+        "uci": "d2b2",
+        "san": "Qb2",
         "color": "white"
       },
       {
-        "uci": "b4c6",
-        "san": "Nc6",
+        "uci": "e1d1",
+        "san": "Rxd1",
         "color": "white"
       },
       {
-        "uci": "d7c7",
-        "san": "Kc7",
-        "color": "white"
-      },
-      {
-        "uci": "f8f6",
-        "san": "Rxf6#",
+        "uci": "b2b7",
+        "san": "Qxb7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T12:52:51.120270+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T12:59:17.764638+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787489571120",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541067699688317000,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxf6",
-        "correct": true,
-        "timestamp": "2026-08-23T12:59:03.023621+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "kxd8",
-        "correct": false,
-        "timestamp": "2026-08-23T12:58:51.880437+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787489957764",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
