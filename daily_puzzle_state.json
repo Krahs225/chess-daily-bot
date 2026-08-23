@@ -1,75 +1,68 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-03-25",
-    "title": "Tactical Launch",
-    "fen": "8/7p/3p2p1/1B1P3k/1n5P/6P1/q4Q1K/8 w - - 0 1",
-    "current_fen": "5Q2/7p/3p2pk/3P4/1n5P/6P1/q3B2K/8 b - - 3 2",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/7p/3p2p1/1B1P3k/1n5P/6P1/q4Q1K/8 w - - 0 1\"]\r\n\r\n1. Be2+ Kh6 2. Qf8# *",
+    "title": "2367 • C5fXO",
+    "fen": "2r1k3/pp1r1pbp/1q2p1p1/8/P1B5/1n5P/5PPB/2R1QRK1 w - - 0 23",
+    "current_fen": "2r1k3/pp1r1pbp/1q2p1p1/8/P1B5/1n5P/5PPB/2R1QRK1 w - - 0 23",
     "all_moves": [
       {
-        "uci": "b5e2",
-        "san": "Be2+",
+        "uci": "a4a5",
+        "san": "a5",
         "color": "white"
       },
       {
-        "uci": "h5h6",
-        "san": "Kh6",
+        "uci": "b6d8",
+        "san": "Qd8",
         "color": "black"
       },
       {
-        "uci": "f2f8",
-        "san": "Qf8#",
+        "uci": "c4b3",
+        "san": "Bxb3",
+        "color": "white"
+      },
+      {
+        "uci": "c8c1",
+        "san": "Rxc1",
+        "color": "black"
+      },
+      {
+        "uci": "e1c1",
+        "san": "Qxc1",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b5e2",
-        "san": "Be2+",
+        "uci": "a4a5",
+        "san": "a5",
         "color": "white"
       },
       {
-        "uci": "f2f8",
-        "san": "Qf8#",
+        "uci": "c4b3",
+        "san": "Bxb3",
+        "color": "white"
+      },
+      {
+        "uci": "e1c1",
+        "san": "Qxc1",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-23T15:47:53.313455+00:00",
-    "answer_posted": true,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_1787500073313",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1541111750047441038,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "be2",
-        "correct": true,
-        "timestamp": "2026-08-23T15:48:07.591022+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qf8",
-        "correct": true,
-        "timestamp": "2026-08-23T15:48:16.037176+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "player_move_count": 3,
+    "pgn": "",
+    "url": "https://lichess.org/training/C5fXO",
+    "posted_at": "2026-08-23T15:48:33.394676+00:00",
+    "puzzle_id": "random_lichess_2367_C5fXO_1787500113394",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
@@ -233,6 +226,9 @@
     ],
     "3044": [
       "Qt9mp"
+    ],
+    "2367": [
+      "C5fXO"
     ]
   }
 }
