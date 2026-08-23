@@ -1,105 +1,87 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-05-14",
-    "title": "Trademark Mating Pattern",
-    "fen": "6k1/2p2p1p/1p4p1/p1r2P2/3p4/P1qP4/3Q2P1/4R1K1 w - - 0 1",
-    "current_fen": "7k/2p2p2/1p3PpQ/p1r4p/3p4/P1qP4/6P1/6K1 b - - 1 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/2p2p1p/1p4p1/p1r2P2/3p4/P1qP4/3Q2P1/4R1K1 w - - 0 1\"]\r\n\r\n1. f6 h5 2. Re8+ Kh7 3. Rh8+ Kxh8 4. Qh6+\r\n*",
+    "url": "https://www.chess.com/daily/2018-05-16",
+    "title": "Exposing  Improper Kingside Development",
+    "fen": "r2qkb1r/1ppb2pp/p1np1p1n/4p3/2B1P3/2NP1N1P/PPP2PP1/R1BQK2R w KQkq - 0 1",
+    "current_fen": "r2qkb1r/1ppb2pp/p1np1p1n/4p3/2B1P3/2NP1N1P/PPP2PP1/R1BQK2R w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qkb1r/1ppb2pp/p1np1p1n/4p3/2B1P3/2NP1N1P/PPP2PP1/R1BQK2R w KQkq - 0 1\"]\r\n\r\n1. Bxh6 gxh6 2. Ng5 hxg5 3. Qh5+ Ke7 4. Qf7#\r\n*",
     "all_moves": [
       {
-        "uci": "f5f6",
-        "san": "f6",
+        "uci": "c1h6",
+        "san": "Bxh6",
         "color": "white"
       },
       {
-        "uci": "h7h5",
-        "san": "h5",
+        "uci": "g7h6",
+        "san": "gxh6",
         "color": "black"
       },
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "f3g5",
+        "san": "Ng5",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "h6g5",
+        "san": "hxg5",
         "color": "black"
       },
       {
-        "uci": "e8h8",
-        "san": "Rh8+",
+        "uci": "d1h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "h7h8",
-        "san": "Kxh8",
+        "uci": "e8e7",
+        "san": "Ke7",
         "color": "black"
       },
       {
-        "uci": "d2h6",
-        "san": "Qh6+",
+        "uci": "h5f7",
+        "san": "Qf7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5f6",
-        "san": "f6",
+        "uci": "c1h6",
+        "san": "Bxh6",
         "color": "white"
       },
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "f3g5",
+        "san": "Ng5",
         "color": "white"
       },
       {
-        "uci": "e8h8",
-        "san": "Rh8+",
+        "uci": "d1h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "d2h6",
-        "san": "Qh6+",
+        "uci": "h5f7",
+        "san": "Qf7#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-23T15:40:38.992369+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-23T15:41:08.915123+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787499638992",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541109927408574545,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qh6",
-        "correct": true,
-        "timestamp": "2026-08-23T15:40:51.004796+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "re8",
-        "correct": true,
-        "timestamp": "2026-08-23T15:40:46.966348+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787499668915",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
