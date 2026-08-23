@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-10-24",
     "title": "The Rook's Stunt Double",
     "fen": "8/2n2p2/6k1/R5pp/8/5PKP/2r5/1B6 b - - 0 1",
-    "current_fen": "8/2n2p2/6k1/R5pp/8/5PKP/2r5/1B6 b - - 0 1",
+    "current_fen": "8/2n2p2/6k1/R5p1/6Kp/5P1P/2r5/1B6 b - - 1 2",
     "pgn": "[White \"Tavernier\"]\r\n[Black \"Grodner\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/2n2p2/6k1/R5pp/8/5PKP/2r5/1B6 b - - 0 1\"]\r\n\r\n1... h4+ 2. Kg4 f5+ 3. Rxf5 Rg2# 0-1",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787508640481",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541147682415050774,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "h4",
+        "correct": true,
+        "timestamp": "2026-08-23T18:10:55.886945+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
