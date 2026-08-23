@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-10-17",
     "title": "Brain Freeze",
     "fen": "rnb1qk2/1pp1prbQ/1p6/5pN1/3P4/4B3/PP3PP1/R3K2R w KQ - 0 16",
-    "current_fen": "rnb1qk2/1pp1prbQ/1p6/5pN1/3P4/4B3/PP3PP1/R3K2R w KQ - 0 16",
+    "current_fen": "rn2qk2/1pp1prbQ/1p2b3/5p2/3P4/4B3/PP3PP1/R3K2R w KQ - 0 17",
     "pgn": "[Event \"Online Blitz\"]\r\n[Date \"2001??.??\"]\r\n[White \"Nadanian Ashot (h2 pawn removed)\"]\r\n[Black \"Konstantin Sakaev\"]\r\n[Result \"1-0\"]\r\n[FEN \"rnb1qk2/1pp1prbQ/1p6/5pN1/3P4/4B3/PP3PP1/R3K2R w KQ - 0 16\"]\r\n\r\n16. Ne6+ Bxe6 17. Bh6 Qb5 18. Qh8# 1-0",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787478674616",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541021996404441219,
     "attempted_users": {
@@ -67,10 +67,16 @@
         "move": "qg6",
         "correct": false,
         "timestamp": "2026-08-23T09:51:37.000061+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Ne6",
+        "correct": true,
+        "timestamp": "2026-08-23T09:52:33.547544+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
