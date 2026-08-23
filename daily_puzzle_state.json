@@ -1,68 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-06-16",
-    "title": "The Last Attempt",
-    "fen": "8/8/p7/kpK5/p7/8/1P6/7R w K - 0 1",
-    "current_fen": "8/8/p7/kpK5/8/1p6/8/R7 b - - 1 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/p7/kpK5/p7/8/1P6/7R w K - 0 1\"]\r\n\r\n1. b4+ axb3 2. Ra1#\r\n*",
+    "url": "https://www.chess.com/daily/2019-04-07",
+    "title": "Anderssen-Nielsen, Vejle 1989",
+    "fen": "8/8/5rp1/2p1k3/8/2rP4/4PR2/R3K3 w Q - 0 1",
+    "current_fen": "8/8/5rp1/2p1k3/8/2rP4/4PR2/R3K3 w Q - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/5rp1/2p1k3/8/2rP4/4PR2/R3K3 w Q - 0 1\"]\r\n\r\n1. d4+ cxd4 2. Ra5+ Ke6 3. Ra6+\r\n*",
     "all_moves": [
       {
-        "uci": "b2b4",
-        "san": "b4+",
+        "uci": "d3d4",
+        "san": "d4+",
         "color": "white"
       },
       {
-        "uci": "a4b3",
-        "san": "axb3",
+        "uci": "c5d4",
+        "san": "cxd4",
         "color": "black"
       },
       {
-        "uci": "h1a1",
-        "san": "Ra1#",
+        "uci": "a1a5",
+        "san": "Ra5+",
+        "color": "white"
+      },
+      {
+        "uci": "e5e6",
+        "san": "Ke6",
+        "color": "black"
+      },
+      {
+        "uci": "a5a6",
+        "san": "Ra6+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b2b4",
-        "san": "b4+",
+        "uci": "d3d4",
+        "san": "d4+",
         "color": "white"
       },
       {
-        "uci": "h1a1",
-        "san": "Ra1#",
+        "uci": "a1a5",
+        "san": "Ra5+",
+        "color": "white"
+      },
+      {
+        "uci": "a5a6",
+        "san": "Ra6+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-23T15:28:24.910202+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T15:29:02.782455+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787498904910",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1541106848445239362,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ra1",
-        "correct": true,
-        "timestamp": "2026-08-23T15:28:29.085572+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "b4",
-        "correct": false,
-        "timestamp": "2026-08-23T15:28:29.084023+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787498942782",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
