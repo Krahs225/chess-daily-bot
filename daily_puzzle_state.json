@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-03-13",
     "title": "Cold As Ice",
     "fen": "2kr1q2/2p2p1b/ppB4p/2pP2pP/2P3P1/4R3/PQ3P2/6K1 w - - 0 1",
-    "current_fen": "2kr1q2/2p2p1b/ppB4p/2pP2pP/2P3P1/4R3/PQ3P2/6K1 w - - 0 1",
+    "current_fen": "2kr1q2/2p2p1b/1pB4p/1ppP2pP/2P3P1/4R3/P4P2/6K1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr1q2/2p2p1b/ppB4p/2pP2pP/2P3P1/4R3/PQ3P2/6K1 w - - 0 1\"]\r\n\r\n1. Qb5 axb5 2. Ra3 Rd6 3. Ra8#\r\n*",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787515878762",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541178042020266057,
     "attempted_users": {
@@ -67,10 +67,16 @@
         "move": "ra3",
         "correct": false,
         "timestamp": "2026-08-23T20:12:32.430953+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qb5",
+        "correct": true,
+        "timestamp": "2026-08-23T20:13:42.232999+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
