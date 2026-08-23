@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-05-06",
     "title": "Royal Dilemma",
     "fen": "4q3/1pp5/2k1B3/p1P5/Pb2N2R/8/1K6/8 w - - 0 1",
-    "current_fen": "4q3/1pp5/2k1B3/p1P5/Pb2N2R/8/1K6/8 w - - 0 1",
+    "current_fen": "4q3/1pp5/8/p1Pk4/Pb2N2R/8/1K6/8 w - - 0 2",
     "pgn": "[White \"IlanVardi\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"4q3/1pp5/2k1B3/p1P5/Pb2N2R/8/1K6/8 w - - 0 1\"]\r\n\r\n1. Bd5+ Kxd5 2. Nf6+ Kxc5 3. Nxe8 1-0",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787489519877",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541067484684091514,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "bd7",
-        "correct": false,
-        "timestamp": "2026-08-23T12:52:17.106625+00:00"
+        "move": "bd5",
+        "correct": true,
+        "timestamp": "2026-08-23T12:52:25.469915+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
