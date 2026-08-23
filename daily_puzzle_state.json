@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-07-31",
     "title": "Gorgiev's Fantastic Journey",
     "fen": "8/r1p5/3Q4/8/8/1p1N4/kp6/b2K4 w - - 0 1",
-    "current_fen": "r7/2p5/8/3N4/8/1p6/1p6/bk1K4 w - - 4 6",
+    "current_fen": "r7/2p5/8/8/8/1pN5/1p6/bk1K4 b - - 5 6",
     "pgn": "[White \"Tigran Gorgiev\"]\r\n[Black \"Study\"]\r\n[Result \"1-0\"]\r\n[FEN \"8/r1p5/3Q4/8/8/1p1N4/kp6/b2K4 w - - 0 1\"]\r\n\r\n1.Nb4+ Ka3 2.Nc2+ Ka2 3.Qa3+ Rxa3 4.Nb4+ Kb1 5.Nd5 Ra8 6.Nc3# 1-0",
     "all_moves": [
       {
@@ -102,16 +102,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787500532349",
-    "next_solution_index": 10,
-    "next_player_index": 5,
-    "solved": false,
+    "next_solution_index": 11,
+    "next_player_index": 6,
+    "solved": true,
     "message_id": 1541113675056947292,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nd5",
+        "move": "nc3",
         "correct": true,
-        "timestamp": "2026-08-23T15:55:58.844612+00:00"
+        "timestamp": "2026-08-23T15:56:02.105351+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -122,7 +122,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "601406103712170014"
