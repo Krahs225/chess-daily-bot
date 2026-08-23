@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-02-14",
     "title": "Hidden Chemistry",
     "fen": "q4r1k/3R2p1/1pn2pp1/1p6/1P1p3P/P2P1NP1/3Q1P2/6K1 b - - 0 1",
-    "current_fen": "q4r1k/3R2p1/1pn2pp1/1p6/1P1p3P/P2P1NP1/3Q1P2/6K1 b - - 0 1",
+    "current_fen": "qn3r1k/6p1/1p3pp1/1p6/1P1R3P/P2P1NP1/3Q1P2/6K1 b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"q4r1k/3R2p1/1pn2pp1/1p6/1P1p3P/P2P1NP1/3Q1P2/6K1 b - - 0 1\"]\r\n\r\n1... Nb8 2. Rxd4 Qxf3 *",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787508465316",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541146948713717842,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Nb8",
+        "correct": true,
+        "timestamp": "2026-08-23T18:08:19.456186+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
