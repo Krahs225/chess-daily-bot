@@ -1,106 +1,147 @@
 {
   "latest_random_puzzle": {
-    "title": "2001 • B6QtL",
-    "fen": "5rk1/5p2/p4Qp1/1p6/3Nr1B1/7P/q7/5RK1 w - - 0 31",
-    "current_fen": "5rk1/5p2/p7/1p4Q1/6P1/8/8/6K1 b - - 0 35",
+    "url": "https://www.chess.com/daily/2013-03-01",
+    "title": "Mate in 8",
+    "fen": "8/8/p7/p1k1B3/K7/3P4/6B1/8 w KQkq - 0 1",
+    "current_fen": "8/8/p7/p1k1B3/K7/3P4/6B1/8 w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/p7/p1k1B3/K7/3P4/6B1/8 w KQkq - 0 1\"]\r\n\r\n1. Ba8 Kb6 2. d4 Ka7 3. Kxa5 Kxa8 4. Kb6 a5 5. d5 a4 6. d6 a3 7. d7 a2 8. d8=Q#\r\n*",
     "all_moves": [
       {
-        "uci": "d4f5",
-        "san": "Nf5",
+        "uci": "g2a8",
+        "san": "Ba8",
         "color": "white"
       },
       {
-        "uci": "e4g4",
-        "san": "Rxg4+",
+        "uci": "c5b6",
+        "san": "Kb6",
         "color": "black"
       },
       {
-        "uci": "h3g4",
-        "san": "hxg4",
+        "uci": "d3d4",
+        "san": "d4",
         "color": "white"
       },
       {
-        "uci": "g6f5",
-        "san": "gxf5",
+        "uci": "b6a7",
+        "san": "Ka7",
         "color": "black"
       },
       {
-        "uci": "f1f5",
-        "san": "Rxf5",
+        "uci": "a4a5",
+        "san": "Kxa5",
         "color": "white"
       },
       {
-        "uci": "a2d2",
-        "san": "Qd2",
+        "uci": "a7a8",
+        "san": "Kxa8",
         "color": "black"
       },
       {
-        "uci": "f5g5",
-        "san": "Rg5+",
+        "uci": "a5b6",
+        "san": "Kb6",
         "color": "white"
       },
       {
-        "uci": "d2g5",
-        "san": "Qxg5",
+        "uci": "a6a5",
+        "san": "a5",
         "color": "black"
       },
       {
-        "uci": "f6g5",
-        "san": "Qxg5+",
+        "uci": "d4d5",
+        "san": "d5",
+        "color": "white"
+      },
+      {
+        "uci": "a5a4",
+        "san": "a4",
+        "color": "black"
+      },
+      {
+        "uci": "d5d6",
+        "san": "d6",
+        "color": "white"
+      },
+      {
+        "uci": "a4a3",
+        "san": "a3",
+        "color": "black"
+      },
+      {
+        "uci": "d6d7",
+        "san": "d7",
+        "color": "white"
+      },
+      {
+        "uci": "a3a2",
+        "san": "a2",
+        "color": "black"
+      },
+      {
+        "uci": "d7d8q",
+        "san": "d8=Q#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4f5",
-        "san": "Nf5",
+        "uci": "g2a8",
+        "san": "Ba8",
         "color": "white"
       },
       {
-        "uci": "h3g4",
-        "san": "hxg4",
+        "uci": "d3d4",
+        "san": "d4",
         "color": "white"
       },
       {
-        "uci": "f1f5",
-        "san": "Rxf5",
+        "uci": "a4a5",
+        "san": "Kxa5",
         "color": "white"
       },
       {
-        "uci": "f5g5",
-        "san": "Rg5+",
+        "uci": "a5b6",
+        "san": "Kb6",
         "color": "white"
       },
       {
-        "uci": "f6g5",
-        "san": "Qxg5+",
+        "uci": "d4d5",
+        "san": "d5",
+        "color": "white"
+      },
+      {
+        "uci": "d5d6",
+        "san": "d6",
+        "color": "white"
+      },
+      {
+        "uci": "d6d7",
+        "san": "d7",
+        "color": "white"
+      },
+      {
+        "uci": "d7d8q",
+        "san": "d8=Q#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "pgn": "",
-    "url": "https://lichess.org/training/B6QtL",
-    "posted_at": "2026-08-23T15:52:29.095583+00:00",
-    "puzzle_id": "random_lichess_2001_B6QtL_1787500349095",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
+    "player_move_count": 8,
+    "posted_at": "2026-08-23T15:54:44.580571+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1787500484580",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxg5",
-        "correct": true,
-        "timestamp": "2026-08-23T15:53:32.936951+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
