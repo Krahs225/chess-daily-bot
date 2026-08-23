@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "2200 • wsUL0",
     "fen": "3r4/p7/2k4p/2n1Q3/8/2NP1p1q/PPP4P/R5rK w - - 0 28",
-    "current_fen": "3r4/p7/2k4p/2n1Q3/8/2NP1p1q/PPP4P/R5rK w - - 0 28",
+    "current_fen": "3r4/p7/2k4p/2n1Q3/8/2NP3q/PPP2p1P/6RK w - - 0 29",
     "all_moves": [
       {
         "uci": "a1g1",
@@ -53,13 +53,20 @@
     "url": "https://lichess.org/training/wsUL0",
     "posted_at": "2026-08-23T15:50:47.361058+00:00",
     "puzzle_id": "random_lichess_2200_wsUL0_1787500247361",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rxg1",
+        "correct": true,
+        "timestamp": "2026-08-23T15:50:58.264727+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
