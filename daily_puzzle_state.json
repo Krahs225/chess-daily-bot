@@ -1,47 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-03-20",
-    "title": "Corner Mating Pattern",
-    "fen": "7k/7b/7N/8/8/8/8/4K1R1 w - - 0 1",
-    "current_fen": "7k/5N1b/8/8/8/8/8/4K1R1 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7k/7b/7N/8/8/8/8/4K1R1 w - - 0 1\"]\r\n\r\n1. Nf7#\r\n*",
+    "url": "https://www.chess.com/daily/2020-08-02",
+    "title": "Double Trouble",
+    "fen": "1r2r2k/5p1p/6pb/2B5/1Pp5/2n3P1/q4PB1/1R1Q1RK1 w - - 0 1",
+    "current_fen": "1r2r2k/5p1p/6pb/2B5/1Pp5/2n3P1/q4PB1/1R1Q1RK1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1r2r2k/5p1p/6pb/2B5/1Pp5/2n3P1/q4PB1/1R1Q1RK1 w - - 0 1\"]\r\n\r\n1.Bd4+ Bg7 2.Bxg7+ Kxg7 3.Qd4+ Kg8 4.Qxc3 *",
     "all_moves": [
       {
-        "uci": "h6f7",
-        "san": "Nf7#",
+        "uci": "c5d4",
+        "san": "Bd4+",
+        "color": "white"
+      },
+      {
+        "uci": "h6g7",
+        "san": "Bg7",
+        "color": "black"
+      },
+      {
+        "uci": "d4g7",
+        "san": "Bxg7+",
+        "color": "white"
+      },
+      {
+        "uci": "h8g7",
+        "san": "Kxg7",
+        "color": "black"
+      },
+      {
+        "uci": "d1d4",
+        "san": "Qd4+",
+        "color": "white"
+      },
+      {
+        "uci": "g7g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "d4c3",
+        "san": "Qxc3",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6f7",
-        "san": "Nf7#",
+        "uci": "c5d4",
+        "san": "Bd4+",
+        "color": "white"
+      },
+      {
+        "uci": "d4g7",
+        "san": "Bxg7+",
+        "color": "white"
+      },
+      {
+        "uci": "d1d4",
+        "san": "Qd4+",
+        "color": "white"
+      },
+      {
+        "uci": "d4c3",
+        "san": "Qxc3",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-23T13:00:20.164484+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-23T13:00:39.707116+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787490020164",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1541069583535054930,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nf7",
-        "correct": true,
-        "timestamp": "2026-08-23T13:00:25.135428+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787490039707",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
