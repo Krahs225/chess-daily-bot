@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-03-25",
     "title": "Tactical Launch",
     "fen": "8/7p/3p2p1/1B1P3k/1n5P/6P1/q4Q1K/8 w - - 0 1",
-    "current_fen": "8/7p/3p2p1/1B1P3k/1n5P/6P1/q4Q1K/8 w - - 0 1",
+    "current_fen": "8/7p/3p2pk/3P4/1n5P/6P1/q3BQ1K/8 w - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/7p/3p2p1/1B1P3k/1n5P/6P1/q4Q1K/8 w - - 0 1\"]\r\n\r\n1. Be2+ Kh6 2. Qf8# *",
     "all_moves": [
       {
@@ -42,20 +42,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787500073313",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541111750047441038,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qf3",
+        "move": "be2",
+        "correct": true,
+        "timestamp": "2026-08-23T15:48:07.591022+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxe2",
         "correct": false,
-        "timestamp": "2026-08-23T15:47:58.832719+00:00"
+        "timestamp": "2026-08-23T15:48:08.706733+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
