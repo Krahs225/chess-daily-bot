@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-03-03",
     "title": "Relentless Pursuit",
     "fen": "1b1r2k1/5p2/p3p1pp/2q1B2Q/1p2P2P/1B6/1P4PK/5R2 w - - 0 1",
-    "current_fen": "1b1r2k1/5p2/p3p1pp/2q1B2Q/1p2P2P/1B6/1P4PK/5R2 w - - 0 1",
+    "current_fen": "1b1r2k1/8/p3p1pp/2q1B3/1p2P2P/1B6/1P4PK/5R2 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1b1r2k1/5p2/p3p1pp/2q1B2Q/1p2P2P/1B6/1P4PK/5R2 w - - 0 1\"]\r\n\r\n1. Qxg6+ fxg6 2. Bxe6+ Kh7 3. Rf7+ Kg8 4. Rc7+ Kf8 5. Bg7+ Ke8 6. Bf7#\r\n*",
     "all_moves": [
       {
@@ -102,8 +102,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787498266808",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541104172848644156,
     "attempted_users": {
@@ -112,10 +112,16 @@
         "move": "qxh6",
         "correct": false,
         "timestamp": "2026-08-23T15:17:51.231249+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxg6",
+        "correct": true,
+        "timestamp": "2026-08-23T15:17:52.657269+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
