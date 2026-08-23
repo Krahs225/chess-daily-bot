@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-02-12",
-    "title": "Polar 1994",
-    "fen": "8/8/p2p2pp/2p1b1k1/2P3P1/5Q1R/P4PKP/4q3 w - - 0 1",
-    "current_fen": "8/8/p2p3p/2p1b2Q/2P3Pk/8/P4PKP/4q3 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/p2p2pp/2p1b1k1/2P3P1/5Q1R/P4PKP/4q3 w - - 0 1\"]\r\n\r\n1. Rh5+ gxh5 2. Qf5+ Kh4 3. Qxh5#\r\n*",
+    "url": "https://www.chess.com/daily/2023-12-06",
+    "title": "Provocative Bishop, Loose Underpinning",
+    "fen": "r1bq1rk1/pp3ppp/B4n2/b1p1p3/8/P1N2Q1P/1PPP1PP1/R1B1R1K1 b - - 0 1",
+    "current_fen": "r1bq1rk1/pp3ppp/B4n2/b1p1p3/8/P1N2Q1P/1PPP1PP1/R1B1R1K1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r1bq1rk1/pp3ppp/B4n2/b1p1p3/8/P1N2Q1P/1PPP1PP1/R1B1R1K1 b - - 0 1\"]\r\n\r\n1... Bxc3 2. dxc3 e4 3. Qg3 bxa6 *",
     "all_moves": [
       {
-        "uci": "h3h5",
-        "san": "Rh5+",
-        "color": "white"
-      },
-      {
-        "uci": "g6h5",
-        "san": "gxh5",
+        "uci": "a5c3",
+        "san": "Bxc3",
         "color": "black"
       },
       {
-        "uci": "f3f5",
-        "san": "Qf5+",
+        "uci": "d2c3",
+        "san": "dxc3",
         "color": "white"
       },
       {
-        "uci": "g5h4",
-        "san": "Kh4",
+        "uci": "e5e4",
+        "san": "e4",
         "color": "black"
       },
       {
-        "uci": "f5h5",
-        "san": "Qxh5#",
+        "uci": "f3g3",
+        "san": "Qg3",
         "color": "white"
+      },
+      {
+        "uci": "b7a6",
+        "san": "bxa6",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h3h5",
-        "san": "Rh5+",
-        "color": "white"
+        "uci": "a5c3",
+        "san": "Bxc3",
+        "color": "black"
       },
       {
-        "uci": "f3f5",
-        "san": "Qf5+",
-        "color": "white"
+        "uci": "e5e4",
+        "san": "e4",
+        "color": "black"
       },
       {
-        "uci": "f5h5",
-        "san": "Qxh5#",
-        "color": "white"
+        "uci": "b7a6",
+        "san": "bxa6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-23T17:57:21.323692+00:00",
+    "posted_at": "2026-08-23T17:58:13.365801+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787507841323",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541144330910040196,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qxh5",
-        "correct": true,
-        "timestamp": "2026-08-23T17:58:07.995023+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787507893365",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
