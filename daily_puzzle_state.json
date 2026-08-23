@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-10-01",
     "title": "Del Rio, 1750",
     "fen": "8/8/3p4/4p2B/4P3/8/4K1kp/8 w KQkq - 0 1",
-    "current_fen": "8/8/3p4/4p3/4P3/5B2/4K2p/6k1 w - - 2 2",
+    "current_fen": "8/8/3p4/4p3/4P3/8/4K2p/7k w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/3p4/4p2B/4P3/8/4K1kp/8 w KQkq - 0 1\"]\r\n\r\n1. Bf3+ Kg1 2. Bh1 Kxh1 3. Kf1 d5 4. exd5 e4 5. d6 e3 6. d7 e2+ 7. Kxe2 Kg2\r\n8. d8=Q h1=Q 9. Qg5+ Kh3 10. Qh5+ Kg2 11. Qg4+ Kh2 12. Kf2 Qf3+ 13. Kxf3\r\n*",
     "all_moves": [
       {
@@ -207,8 +207,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787499105003",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1541107687788650658,
     "attempted_users": {
@@ -220,16 +220,18 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "kd3",
-        "correct": false,
-        "timestamp": "2026-08-23T15:31:53.157192+00:00"
+        "move": "bh1",
+        "correct": true,
+        "timestamp": "2026-08-23T15:31:58.823509+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
