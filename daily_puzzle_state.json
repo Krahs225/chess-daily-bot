@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-07-15",
     "title": "Daniel Shapiro vs Maurice Ashley, New York, 1993",
     "fen": "Rr6/3kr3/5p2/2PB3p/1p3P2/1PqQP2P/6P1/6K1 w - - 0 1",
-    "current_fen": "8/1R6/3Q1p2/k1P4p/1p3P2/1Pq1P2P/6P1/6K1 w - - 1 5",
+    "current_fen": "8/1R6/1Q3p2/k1P4p/1p3P2/1Pq1P2P/6P1/6K1 b - - 2 5",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"Rr6/3kr3/5p2/2PB3p/1p3P2/1PqQP2P/6P1/6K1 w - - 0 1\"]\r\n\r\n1. Bc6+ Kxc6 2. Qd6+ Kb5 3. Rxb8+ Rb7 4. Rxb7+ Ka5 5. Qb6#\r\n*",
     "all_moves": [
       {
@@ -87,9 +87,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787491578675",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1541076120043261976,
     "attempted_users": {
       "601406103712170014": {
@@ -100,16 +100,18 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "rxb7",
-        "correct": false,
-        "timestamp": "2026-08-23T13:26:45.132613+00:00"
+        "move": "qb6",
+        "correct": true,
+        "timestamp": "2026-08-23T13:26:50.712374+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
