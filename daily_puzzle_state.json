@@ -110,7 +110,7 @@
     "url": "https://www.chess.com/daily/2026-08-23",
     "title": "Take One for the Team",
     "fen": "1nbr3k/r5p1/p4pP1/1ppBN3/P7/7n/1P1K4/5R1R w - - 0 1",
-    "current_fen": "1nbr3k/r5p1/p4pP1/1ppBN3/P7/7n/1P1K4/5R1R w - - 0 1",
+    "current_fen": "1n1r3k/r5p1/p4pP1/1ppB4/P7/7R/1P1K4/8 b - - 0 4",
     "pgn": "[Event \"Correspondence Game\"]\n[Date \"1986.??.??\"]\n[White \"Granberg\"]\n[Black \"Gubnitzkij + Pawns a4 and b5\"]\n[Result \"1-0\"]\n[FEN \"1nbr3k/r5p1/p4pP1/1ppBN3/P7/7n/1P1K4/5R1R w - - 0 1\"]\n\n1. Nd7 Bxd7 2. Rf3 Be6 3. Rfxh3+ Bxh3 4. Rxh3# 1-0",
     "all_moves": [
       {
@@ -173,20 +173,27 @@
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-23T07:24:02.719012+00:00",
+    "posted_at": "2026-08-23T09:39:10.685078+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "daily_1787469842719",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "puzzle_id": "daily_1787477950685",
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Rxh3",
+        "correct": true,
+        "timestamp": "2026-08-23T09:49:49.112094+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
