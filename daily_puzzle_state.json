@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-03-18",
     "title": "Turning the Screws",
     "fen": "rn3rk1/ppp1npp1/3b2qp/8/3P2bB/2N2N2/PP2BPPP/R2Q1RK1 w - - 0 1",
-    "current_fen": "rn3rk1/ppp1bpp1/6qp/4N3/3P4/2N5/PP2bPPP/R2Q1RK1 w - - 0 3",
+    "current_fen": "rn3rk1/ppp1Npp1/7p/8/3P4/2N5/PP3PPP/R2b1RK1 b - - 0 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"rn3rk1/ppp1npp1/3b2qp/8/3P2bB/2N2N2/PP2BPPP/R2Q1RK1 w - - 0 1\"]\r\n\r\n1.Bxe7 Bxe7 2.Ne5 Bxe2 3.Nxg6 Bxd1 4.Nxe7+ *",
     "all_moves": [
       {
@@ -72,9 +72,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787490440073",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1541071344933019749,
     "attempted_users": {
       "601406103712170014": {
@@ -85,16 +85,18 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "ne5",
-        "correct": false,
-        "timestamp": "2026-08-23T13:07:27.278168+00:00"
+        "move": "nxe7",
+        "correct": true,
+        "timestamp": "2026-08-23T13:07:31.659249+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
