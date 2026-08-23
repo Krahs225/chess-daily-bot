@@ -1,306 +1,141 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-06-20",
-    "title": "The Long Draw",
-    "fen": "8/P2k2K1/8/8/8/8/5p2/5r2 w - - 0 1",
-    "current_fen": "8/P2k2K1/8/8/8/8/5p2/5r2 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/P2k2K1/8/8/8/8/5p2/5r2 w - - 0 1\"]\r\n\r\n1. a8=Q Rg1+ 2. Kh8 f1=Q 3. Qd5+ Ke7 4. Qe5+ Kf7 5. Qf5+ Ke7 6. Qe5+ Kd7 7. Qd5+ Kc7 8. Qc5+ Kb7 9. Qd5+ Kb6 10. Qd6+ Kb5 11. Qd5+ Kb4 12. Qd4+ Kb3 13. Qd3+ Kb2 14. Qd2+ Kb1 15. Qd3+ Kc1 16. Qc3+ Kd1 17. Qd3+ Ke1 18. Qe3+ Kd1 19. Qd3+\r\n*",
+    "url": "https://www.chess.com/daily/2018-03-22",
+    "title": "Briger, 1979",
+    "fen": "8/4N3/N7/8/8/2k5/B2n1p2/7K w - - 0 1",
+    "current_fen": "8/4N3/N7/8/8/2k5/B2n1p2/7K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/4N3/N7/8/8/2k5/B2n1p2/7K w - - 0 1\"]\r\n\r\n1. Nd5+ Kd4 2. Bc4 Kxc4 3. Ne3+ Kd3 4. Nf1 Nxf1 5. Nc5+ Ke3 6. Ne4 Kxe4 7.\r\nKg2 Ke3 8. Kxf1\r\n*",
     "all_moves": [
       {
-        "uci": "a7a8q",
-        "san": "a8=Q",
+        "uci": "e7d5",
+        "san": "Nd5+",
         "color": "white"
       },
       {
-        "uci": "f1g1",
-        "san": "Rg1+",
+        "uci": "c3d4",
+        "san": "Kd4",
         "color": "black"
       },
       {
-        "uci": "g7h8",
-        "san": "Kh8",
+        "uci": "a2c4",
+        "san": "Bc4",
         "color": "white"
       },
       {
-        "uci": "f2f1q",
-        "san": "f1=Q",
+        "uci": "d4c4",
+        "san": "Kxc4",
         "color": "black"
       },
       {
-        "uci": "a8d5",
-        "san": "Qd5+",
+        "uci": "d5e3",
+        "san": "Ne3+",
         "color": "white"
       },
       {
-        "uci": "d7e7",
-        "san": "Ke7",
+        "uci": "c4d3",
+        "san": "Kd3",
         "color": "black"
       },
       {
-        "uci": "d5e5",
-        "san": "Qe5+",
+        "uci": "e3f1",
+        "san": "Nf1",
         "color": "white"
       },
       {
-        "uci": "e7f7",
-        "san": "Kf7",
+        "uci": "d2f1",
+        "san": "Nxf1",
         "color": "black"
       },
       {
-        "uci": "e5f5",
-        "san": "Qf5+",
+        "uci": "a6c5",
+        "san": "Nc5+",
         "color": "white"
-      },
-      {
-        "uci": "f7e7",
-        "san": "Ke7",
-        "color": "black"
-      },
-      {
-        "uci": "f5e5",
-        "san": "Qe5+",
-        "color": "white"
-      },
-      {
-        "uci": "e7d7",
-        "san": "Kd7",
-        "color": "black"
-      },
-      {
-        "uci": "e5d5",
-        "san": "Qd5+",
-        "color": "white"
-      },
-      {
-        "uci": "d7c7",
-        "san": "Kc7",
-        "color": "black"
-      },
-      {
-        "uci": "d5c5",
-        "san": "Qc5+",
-        "color": "white"
-      },
-      {
-        "uci": "c7b7",
-        "san": "Kb7",
-        "color": "black"
-      },
-      {
-        "uci": "c5d5",
-        "san": "Qd5+",
-        "color": "white"
-      },
-      {
-        "uci": "b7b6",
-        "san": "Kb6",
-        "color": "black"
-      },
-      {
-        "uci": "d5d6",
-        "san": "Qd6+",
-        "color": "white"
-      },
-      {
-        "uci": "b6b5",
-        "san": "Kb5",
-        "color": "black"
-      },
-      {
-        "uci": "d6d5",
-        "san": "Qd5+",
-        "color": "white"
-      },
-      {
-        "uci": "b5b4",
-        "san": "Kb4",
-        "color": "black"
-      },
-      {
-        "uci": "d5d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "b4b3",
-        "san": "Kb3",
-        "color": "black"
-      },
-      {
-        "uci": "d4d3",
-        "san": "Qd3+",
-        "color": "white"
-      },
-      {
-        "uci": "b3b2",
-        "san": "Kb2",
-        "color": "black"
-      },
-      {
-        "uci": "d3d2",
-        "san": "Qd2+",
-        "color": "white"
-      },
-      {
-        "uci": "b2b1",
-        "san": "Kb1",
-        "color": "black"
-      },
-      {
-        "uci": "d2d3",
-        "san": "Qd3+",
-        "color": "white"
-      },
-      {
-        "uci": "b1c1",
-        "san": "Kc1",
-        "color": "black"
-      },
-      {
-        "uci": "d3c3",
-        "san": "Qc3+",
-        "color": "white"
-      },
-      {
-        "uci": "c1d1",
-        "san": "Kd1",
-        "color": "black"
-      },
-      {
-        "uci": "c3d3",
-        "san": "Qd3+",
-        "color": "white"
-      },
-      {
-        "uci": "d1e1",
-        "san": "Ke1",
-        "color": "black"
       },
       {
         "uci": "d3e3",
-        "san": "Qe3+",
-        "color": "white"
-      },
-      {
-        "uci": "e1d1",
-        "san": "Kd1",
+        "san": "Ke3",
         "color": "black"
       },
       {
-        "uci": "e3d3",
-        "san": "Qd3+",
+        "uci": "c5e4",
+        "san": "Ne4",
+        "color": "white"
+      },
+      {
+        "uci": "e3e4",
+        "san": "Kxe4",
+        "color": "black"
+      },
+      {
+        "uci": "h1g2",
+        "san": "Kg2",
+        "color": "white"
+      },
+      {
+        "uci": "e4e3",
+        "san": "Ke3",
+        "color": "black"
+      },
+      {
+        "uci": "g2f1",
+        "san": "Kxf1",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a7a8q",
-        "san": "a8=Q",
+        "uci": "e7d5",
+        "san": "Nd5+",
         "color": "white"
       },
       {
-        "uci": "g7h8",
-        "san": "Kh8",
+        "uci": "a2c4",
+        "san": "Bc4",
         "color": "white"
       },
       {
-        "uci": "a8d5",
-        "san": "Qd5+",
+        "uci": "d5e3",
+        "san": "Ne3+",
         "color": "white"
       },
       {
-        "uci": "d5e5",
-        "san": "Qe5+",
+        "uci": "e3f1",
+        "san": "Nf1",
         "color": "white"
       },
       {
-        "uci": "e5f5",
-        "san": "Qf5+",
+        "uci": "a6c5",
+        "san": "Nc5+",
         "color": "white"
       },
       {
-        "uci": "f5e5",
-        "san": "Qe5+",
+        "uci": "c5e4",
+        "san": "Ne4",
         "color": "white"
       },
       {
-        "uci": "e5d5",
-        "san": "Qd5+",
+        "uci": "h1g2",
+        "san": "Kg2",
         "color": "white"
       },
       {
-        "uci": "d5c5",
-        "san": "Qc5+",
-        "color": "white"
-      },
-      {
-        "uci": "c5d5",
-        "san": "Qd5+",
-        "color": "white"
-      },
-      {
-        "uci": "d5d6",
-        "san": "Qd6+",
-        "color": "white"
-      },
-      {
-        "uci": "d6d5",
-        "san": "Qd5+",
-        "color": "white"
-      },
-      {
-        "uci": "d5d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "d4d3",
-        "san": "Qd3+",
-        "color": "white"
-      },
-      {
-        "uci": "d3d2",
-        "san": "Qd2+",
-        "color": "white"
-      },
-      {
-        "uci": "d2d3",
-        "san": "Qd3+",
-        "color": "white"
-      },
-      {
-        "uci": "d3c3",
-        "san": "Qc3+",
-        "color": "white"
-      },
-      {
-        "uci": "c3d3",
-        "san": "Qd3+",
-        "color": "white"
-      },
-      {
-        "uci": "d3e3",
-        "san": "Qe3+",
-        "color": "white"
-      },
-      {
-        "uci": "e3d3",
-        "san": "Qd3+",
+        "uci": "g2f1",
+        "san": "Kxf1",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 19,
-    "posted_at": "2026-08-23T16:03:29.997411+00:00",
-    "answer_posted": true,
+    "player_move_count": 8,
+    "posted_at": "2026-08-23T16:03:44.450273+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787501009997",
+    "puzzle_id": "random_1787501024450",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541115679153979422,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
