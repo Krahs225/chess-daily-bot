@@ -1,137 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-01-22",
-    "title": "Outwit an Evasive Target",
-    "fen": "r1b1k1nr/ppp2ppp/1bnppq2/4N3/1P1P1B2/2P5/P2QPPPP/RN2KB1R w KQkq - 0 1",
-    "current_fen": "r1b4r/ppp2kpp/1b1ppn2/3P2B1/1P1n1QP1/2P2P2/P6P/RN2KB1R b KQ - 0 7",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r1b1k1nr/ppp2ppp/1bnppq2/4N3/1P1P1B2/2P5/P2QPPPP/RN2KB1R w KQkq - 0 1\"]\r\n\r\n1. Bg5 Qf5 2. g4 Qe4 3. f3 Qd5 4. Nxf7 Kxf7 5. e4 Nxd4 6. Qf4+ Nf6 7. exd5 *",
+    "url": "https://www.chess.com/daily/2008-03-17",
+    "title": "Can White Draw?",
+    "fen": "8/8/8/3r4/B3k3/3r4/4K3/8 w KQkq - 0 1",
+    "current_fen": "8/8/8/3r4/B3k3/3r4/4K3/8 w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/3r4/B3k3/3r4/4K3/8 w KQkq - 0 1\"]\r\n\r\n1. Bc2 Rd4 2. Bb1\r\n*",
     "all_moves": [
       {
-        "uci": "f4g5",
-        "san": "Bg5",
+        "uci": "a4c2",
+        "san": "Bc2",
         "color": "white"
       },
       {
-        "uci": "f6f5",
-        "san": "Qf5",
+        "uci": "d5d4",
+        "san": "Rd4",
         "color": "black"
       },
       {
-        "uci": "g2g4",
-        "san": "g4",
-        "color": "white"
-      },
-      {
-        "uci": "f5e4",
-        "san": "Qe4",
-        "color": "black"
-      },
-      {
-        "uci": "f2f3",
-        "san": "f3",
-        "color": "white"
-      },
-      {
-        "uci": "e4d5",
-        "san": "Qd5",
-        "color": "black"
-      },
-      {
-        "uci": "e5f7",
-        "san": "Nxf7",
-        "color": "white"
-      },
-      {
-        "uci": "e8f7",
-        "san": "Kxf7",
-        "color": "black"
-      },
-      {
-        "uci": "e2e4",
-        "san": "e4",
-        "color": "white"
-      },
-      {
-        "uci": "c6d4",
-        "san": "Nxd4",
-        "color": "black"
-      },
-      {
-        "uci": "d2f4",
-        "san": "Qf4+",
-        "color": "white"
-      },
-      {
-        "uci": "g8f6",
-        "san": "Nf6",
-        "color": "black"
-      },
-      {
-        "uci": "e4d5",
-        "san": "exd5",
+        "uci": "c2b1",
+        "san": "Bb1",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4g5",
-        "san": "Bg5",
+        "uci": "a4c2",
+        "san": "Bc2",
         "color": "white"
       },
       {
-        "uci": "g2g4",
-        "san": "g4",
-        "color": "white"
-      },
-      {
-        "uci": "f2f3",
-        "san": "f3",
-        "color": "white"
-      },
-      {
-        "uci": "e5f7",
-        "san": "Nxf7",
-        "color": "white"
-      },
-      {
-        "uci": "e2e4",
-        "san": "e4",
-        "color": "white"
-      },
-      {
-        "uci": "d2f4",
-        "san": "Qf4+",
-        "color": "white"
-      },
-      {
-        "uci": "e4d5",
-        "san": "exd5",
+        "uci": "c2b1",
+        "san": "Bb1",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-08-23T17:52:36.508868+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-23T17:54:47.298055+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787507556508",
-    "next_solution_index": 13,
-    "next_player_index": 7,
-    "solved": true,
-    "message_id": 1541143135977996392,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "exd5",
-        "correct": true,
-        "timestamp": "2026-08-23T17:54:40.608091+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787507687298",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
