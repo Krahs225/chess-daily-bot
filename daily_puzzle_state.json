@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-03-15",
     "title": "King in the Corner",
     "fen": "8/p5pk/3Q2qp/3pP3/8/NP1b4/r5PP/6RK b - - 0 1",
-    "current_fen": "8/p5pk/3Q2qp/3pP3/8/NP1b4/r5PP/6RK b - - 0 1",
+    "current_fen": "8/p5pk/3Q3p/3pP3/8/NP1b4/7P/r5RK b - - 2 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/p5pk/3Q2qp/3pP3/8/NP1b4/r5PP/6RK b - - 0 1\"]\r\n\r\n1...Qxg2+ 2. Rxg2 Ra1+ 3. Rg1 Be4#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787499354582",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541108734519152762,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "ra1",
+        "correct": true,
+        "timestamp": "2026-08-23T15:36:00.447907+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
