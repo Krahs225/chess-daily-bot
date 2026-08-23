@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-03-11",
     "title": "Bridge Burning Decision",
     "fen": "8/p1Q5/2K3p1/qP6/1k5P/8/8/8 w - - 3 1",
-    "current_fen": "8/8/1K4p1/8/1k5P/8/8/8 w - - 1 5",
+    "current_fen": "8/8/2K3p1/8/1k5P/8/8/8 b - - 2 5",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/p1Q5/2K3p1/qP6/1k5P/8/8/8 w - - 3 1\"]\r\n\r\n1.Qxa5+ Kxa5 2.Kc5 Ka4 3.b6 axb6+ 4.Kxb6 Kb4 5.Kc6 *",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787489339685",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1541066728958730251,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "kxb6",
+        "move": "kc6",
         "correct": true,
-        "timestamp": "2026-08-23T12:49:22.071659+00:00"
+        "timestamp": "2026-08-23T12:49:25.059118+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -107,7 +107,7 @@
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "442597396195704832"
