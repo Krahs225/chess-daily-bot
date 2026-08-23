@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-02-03",
     "title": "Does a Grandmaster React?",
     "fen": "7r/1bq1ppk1/3R2pp/8/Bpn3PP/5P2/P1P2Q2/1KN3NR b - - 0 1",
-    "current_fen": "7r/1bq1ppk1/3R2pp/8/Bpn3PP/5P2/P1P2Q2/1KN3NR b - - 0 1",
+    "current_fen": "7r/1bq1ppk1/3R2pp/8/Bp4PP/n4P2/PKP2Q2/2N3NR b - - 2 2",
     "pgn": "[Event \"Chess.com Blitz\"]\r\n[White \"AGM2023\"]\r\n[Black \"GMHess (Ng8 removed)\"]\r\n[Result \"1-0\"]\r\n[FEN \"7r/1bq1ppk1/3R2pp/8/Bpn3PP/5P2/P1P2Q2/1KN3NR b - - 0 1\"]\r\n\r\n1... Na3+ 2. Kb2 Qc3# 1-0",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787489266862",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541066424515305472,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "na3",
+        "correct": true,
+        "timestamp": "2026-08-23T12:47:54.048958+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
