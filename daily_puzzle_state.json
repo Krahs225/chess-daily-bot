@@ -1,47 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-03-15",
-    "title": "Saving a Trapped Piece",
-    "fen": "4r1k1/2pN3p/np1r2p1/p4p2/2P5/PPR3P1/4PPKP/5R2 w - - 0 1",
-    "current_fen": "4r1k1/2pN3p/np1r2p1/p4p2/2P5/PP1R2P1/4PPKP/5R2 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/2pN3p/np1r2p1/p4p2/2P5/PPR3P1/4PPKP/5R2 w - - 0 1\"]\r\n\r\n1. Rd3\r\n*",
+    "url": "https://www.chess.com/daily/2016-03-22",
+    "title": "Kasparov - Browne, 1979",
+    "fen": "1r1q2k1/R4p2/3Pb2p/4Q1p1/1p2B3/2p3PP/1P3P2/6K1 w - - 0 1",
+    "current_fen": "1r1q4/R4p1k/3Pb2p/4Q1p1/1p6/2p3PP/1P3P2/6K1 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r1q2k1/R4p2/3Pb2p/4Q1p1/1p2B3/2p3PP/1P3P2/6K1 w - - 0 1\"]\r\n\r\n1. Bh7+ Kxh7 2. Qxe6\r\n*",
     "all_moves": [
       {
-        "uci": "c3d3",
-        "san": "Rd3",
+        "uci": "e4h7",
+        "san": "Bh7+",
+        "color": "white"
+      },
+      {
+        "uci": "g8h7",
+        "san": "Kxh7",
+        "color": "black"
+      },
+      {
+        "uci": "e5e6",
+        "san": "Qxe6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3d3",
-        "san": "Rd3",
+        "uci": "e4h7",
+        "san": "Bh7+",
+        "color": "white"
+      },
+      {
+        "uci": "e5e6",
+        "san": "Qxe6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-23T18:51:59.284174+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-23T18:53:10.604273+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787511119284",
-    "next_solution_index": 1,
+    "puzzle_id": "random_1787511190604",
+    "next_solution_index": 2,
     "next_player_index": 1,
-    "solved": true,
-    "message_id": 1541158079331045530,
+    "solved": false,
+    "message_id": 1541158378406023299,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Rd3",
+        "move": "bh7",
         "correct": true,
-        "timestamp": "2026-08-23T18:53:04.241994+00:00"
+        "timestamp": "2026-08-23T18:53:33.756781+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
