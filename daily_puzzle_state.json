@@ -1,77 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-01-31",
-    "title": "Ryklis-Ivasyuk, USSR 1982",
-    "fen": "4rk2/ppp2nR1/3p1P1p/2r3p1/6P1/2P3BP/P7/4R1K1 w - - 0 1",
-    "current_fen": "6k1/ppp1Pn2/3p3p/2r3p1/6P1/2P3BP/P7/6K1 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4rk2/ppp2nR1/3p1P1p/2r3p1/6P1/2P3BP/P7/4R1K1 w - - 0 1\"]\r\n\r\n1. Re7 Rxe7 2. Rg8+ Kxg8 3. fxe7\r\n*",
+    "url": "https://www.chess.com/daily/2015-03-17",
+    "title": "Entrapment",
+    "fen": "8/2r3p1/2p1p3/2p1P3/1n1b1P2/2k5/2PN4/2K1B3 w - - 0 1",
+    "current_fen": "8/2r3p1/2p1p3/2p1P3/1n1b1P2/2k5/2PN4/2K1B3 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/2r3p1/2p1p3/2p1P3/1n1b1P2/2k5/2PN4/2K1B3 w - - 0 1\"]\r\n\r\n1. Ne4+ Kc4 2. Nd6+ Kd5 3. c4#\r\n*",
     "all_moves": [
       {
-        "uci": "e1e7",
-        "san": "Re7",
+        "uci": "d2e4",
+        "san": "Ne4+",
         "color": "white"
       },
       {
-        "uci": "e8e7",
-        "san": "Rxe7",
+        "uci": "c3c4",
+        "san": "Kc4",
         "color": "black"
       },
       {
-        "uci": "g7g8",
-        "san": "Rg8+",
+        "uci": "e4d6",
+        "san": "Nd6+",
         "color": "white"
       },
       {
-        "uci": "f8g8",
-        "san": "Kxg8",
+        "uci": "c4d5",
+        "san": "Kd5",
         "color": "black"
       },
       {
-        "uci": "f6e7",
-        "san": "fxe7",
+        "uci": "c2c4",
+        "san": "c4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1e7",
-        "san": "Re7",
+        "uci": "d2e4",
+        "san": "Ne4+",
         "color": "white"
       },
       {
-        "uci": "g7g8",
-        "san": "Rg8+",
+        "uci": "e4d6",
+        "san": "Nd6+",
         "color": "white"
       },
       {
-        "uci": "f6e7",
-        "san": "fxe7",
+        "uci": "c2c4",
+        "san": "c4#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-23T12:32:38.486327+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-23T12:34:27.079863+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787488358486",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541062613516034081,
+    "puzzle_id": "random_1787488467079",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1541063069000540182,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "fxe7",
-        "correct": true,
-        "timestamp": "2026-08-23T12:34:21.329149+00:00"
+        "move": "nb1",
+        "correct": false,
+        "timestamp": "2026-08-23T12:35:27.278522+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
