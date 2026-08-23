@@ -1,77 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-10-24",
-    "title": "The Rook's Stunt Double",
-    "fen": "8/2n2p2/6k1/R5pp/8/5PKP/2r5/1B6 b - - 0 1",
-    "current_fen": "8/2n5/6k1/5Rp1/6Kp/5P1P/6r1/1B6 w - - 1 4",
-    "pgn": "[White \"Tavernier\"]\r\n[Black \"Grodner\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/2n2p2/6k1/R5pp/8/5PKP/2r5/1B6 b - - 0 1\"]\r\n\r\n1... h4+ 2. Kg4 f5+ 3. Rxf5 Rg2# 0-1",
+    "url": "https://www.chess.com/daily/2020-06-26",
+    "title": "Climbing the Branches",
+    "fen": "2r2rk1/6pp/1pNR1pb1/1P2p3/P1n1P3/8/1B3PPP/4R1K1 w - - 0 25",
+    "current_fen": "2r2rk1/6pp/1pNR1pb1/1P2p3/P1n1P3/8/1B3PPP/4R1K1 w - - 0 25",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2r2rk1/6pp/1pNR1pb1/1P2p3/P1n1P3/8/1B3PPP/4R1K1 w - - 0 25\"]\r\n\r\n25.Ne7+ Kf7 26.Nxc8 Rxc8 27.Rc6 Rxc6 28.bxc6 *",
     "all_moves": [
       {
-        "uci": "h5h4",
-        "san": "h4+",
-        "color": "black"
-      },
-      {
-        "uci": "g3g4",
-        "san": "Kg4",
+        "uci": "c6e7",
+        "san": "Ne7+",
         "color": "white"
       },
       {
-        "uci": "f7f5",
-        "san": "f5+",
+        "uci": "g8f7",
+        "san": "Kf7",
         "color": "black"
       },
       {
-        "uci": "a5f5",
-        "san": "Rxf5",
+        "uci": "e7c8",
+        "san": "Nxc8",
         "color": "white"
       },
       {
-        "uci": "c2g2",
-        "san": "Rg2#",
+        "uci": "f8c8",
+        "san": "Rxc8",
         "color": "black"
+      },
+      {
+        "uci": "d6c6",
+        "san": "Rc6",
+        "color": "white"
+      },
+      {
+        "uci": "c8c6",
+        "san": "Rxc6",
+        "color": "black"
+      },
+      {
+        "uci": "b5c6",
+        "san": "bxc6",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5h4",
-        "san": "h4+",
-        "color": "black"
+        "uci": "c6e7",
+        "san": "Ne7+",
+        "color": "white"
       },
       {
-        "uci": "f7f5",
-        "san": "f5+",
-        "color": "black"
+        "uci": "e7c8",
+        "san": "Nxc8",
+        "color": "white"
       },
       {
-        "uci": "c2g2",
-        "san": "Rg2#",
-        "color": "black"
+        "uci": "d6c6",
+        "san": "Rc6",
+        "color": "white"
+      },
+      {
+        "uci": "b5c6",
+        "san": "bxc6",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-23T18:10:40.481559+00:00",
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-23T18:11:09.655496+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787508640481",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541147682415050774,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rg2",
-        "correct": true,
-        "timestamp": "2026-08-23T18:11:03.310698+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787508669655",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
