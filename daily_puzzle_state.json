@@ -1,92 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-06-26",
-    "title": "Climbing the Branches",
-    "fen": "2r2rk1/6pp/1pNR1pb1/1P2p3/P1n1P3/8/1B3PPP/4R1K1 w - - 0 25",
-    "current_fen": "8/5kpp/1pP2pb1/4p3/P1n1P3/8/1B3PPP/4R1K1 b - - 0 28",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2r2rk1/6pp/1pNR1pb1/1P2p3/P1n1P3/8/1B3PPP/4R1K1 w - - 0 25\"]\r\n\r\n25.Ne7+ Kf7 26.Nxc8 Rxc8 27.Rc6 Rxc6 28.bxc6 *",
+    "url": "https://www.chess.com/daily/2022-07-06",
+    "title": "Anderssen's Romanticism",
+    "fen": "1r2k1r1/pbppnp1p/1b3P2/8/Q7/B1PB1q2/P4PPP/3R2K1 w - - 0 21",
+    "current_fen": "1r4r1/pbpknp1p/1b3P2/8/8/B1PB1q2/P4PPP/3R2K1 w - - 0 22",
+    "pgn": "[Event \"Berlin 'Evergreen'\"]\r\n[Site \"Berlin\"]\r\n[Date \"1852.??.??\"]\r\n[Round \"?\"]\r\n[White \"Anderssen, Adolf\"]\r\n[Black \"Dufresne, Jean\"]\r\n[Result \"1-0\"]\r\n[ECO \"C52\"]\r\n[FEN \"1r2k1r1/pbppnp1p/1b3P2/8/Q7/B1PB1q2/P4PPP/3R2K1 w - - 0 21\"]\r\n\r\n21. Qxd7+ Kxd7 22. Bf5+ Ke8 23. Bd7+ Kf8 24. Bxe7# 1-0",
     "all_moves": [
       {
-        "uci": "c6e7",
-        "san": "Ne7+",
+        "uci": "a4d7",
+        "san": "Qxd7+",
         "color": "white"
       },
       {
-        "uci": "g8f7",
-        "san": "Kf7",
+        "uci": "e8d7",
+        "san": "Kxd7",
         "color": "black"
       },
       {
-        "uci": "e7c8",
-        "san": "Nxc8",
+        "uci": "d3f5",
+        "san": "Bf5+",
         "color": "white"
       },
       {
-        "uci": "f8c8",
-        "san": "Rxc8",
+        "uci": "d7e8",
+        "san": "Ke8",
         "color": "black"
       },
       {
-        "uci": "d6c6",
-        "san": "Rc6",
+        "uci": "f5d7",
+        "san": "Bd7+",
         "color": "white"
       },
       {
-        "uci": "c8c6",
-        "san": "Rxc6",
+        "uci": "e8f8",
+        "san": "Kf8",
         "color": "black"
       },
       {
-        "uci": "b5c6",
-        "san": "bxc6",
+        "uci": "a3e7",
+        "san": "Bxe7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c6e7",
-        "san": "Ne7+",
+        "uci": "a4d7",
+        "san": "Qxd7+",
         "color": "white"
       },
       {
-        "uci": "e7c8",
-        "san": "Nxc8",
+        "uci": "d3f5",
+        "san": "Bf5+",
         "color": "white"
       },
       {
-        "uci": "d6c6",
-        "san": "Rc6",
+        "uci": "f5d7",
+        "san": "Bd7+",
         "color": "white"
       },
       {
-        "uci": "b5c6",
-        "san": "bxc6",
+        "uci": "a3e7",
+        "san": "Bxe7#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-23T18:11:09.655496+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-23T18:11:57.055589+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787508669655",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541147805056245890,
+    "puzzle_id": "random_1787508717055",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541148003518255158,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "bxc6",
+        "move": "Qxd7",
         "correct": true,
-        "timestamp": "2026-08-23T18:11:50.462026+00:00"
+        "timestamp": "2026-08-23T18:12:04.663846+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
