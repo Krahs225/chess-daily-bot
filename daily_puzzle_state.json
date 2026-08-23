@@ -1,62 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-01-10",
-    "title": "Important Trick to Know",
-    "fen": "8/5p2/1pk2P2/2p3P1/3r2P1/2R3K1/P1p2P2/8 b - - 0 1",
-    "current_fen": "8/5p2/1pk2P2/2p3P1/6P1/3R2K1/P4P2/2q5 w - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/5p2/1pk2P2/2p3P1/3r2P1/2R3K1/P1p2P2/8 b - - 0 1\"]\r\n\r\n1...Rd3+ 2. Rxd3 c1=Q\r\n*",
+    "url": "https://www.chess.com/daily/2025-05-24",
+    "title": "Netting the King",
+    "fen": "7k/2q1r2p/8/3B1P2/7Q/b1pR4/4p3/4K3 w - - 0 1",
+    "current_fen": "7k/2q1r2p/8/3B1P2/7Q/b1pR4/4p3/4K3 w - - 0 1",
+    "pgn": "[Result \"1-0\"]\r\n[FEN \"7k/2q1r2p/8/3B1P2/7Q/b1pR4/4p3/4K3 w - - 0 1\"]\r\n\r\n1. Rg3 Rg7 2. Qxh7+ Kxh7 3. Rh3# 1-0",
     "all_moves": [
       {
-        "uci": "d4d3",
-        "san": "Rd3+",
-        "color": "black"
-      },
-      {
-        "uci": "c3d3",
-        "san": "Rxd3",
+        "uci": "d3g3",
+        "san": "Rg3",
         "color": "white"
       },
       {
-        "uci": "c2c1q",
-        "san": "c1=Q",
+        "uci": "e7g7",
+        "san": "Rg7",
         "color": "black"
+      },
+      {
+        "uci": "h4h7",
+        "san": "Qxh7+",
+        "color": "white"
+      },
+      {
+        "uci": "h8h7",
+        "san": "Kxh7",
+        "color": "black"
+      },
+      {
+        "uci": "g3h3",
+        "san": "Rh3#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4d3",
-        "san": "Rd3+",
-        "color": "black"
+        "uci": "d3g3",
+        "san": "Rg3",
+        "color": "white"
       },
       {
-        "uci": "c2c1q",
-        "san": "c1=Q",
-        "color": "black"
+        "uci": "h4h7",
+        "san": "Qxh7+",
+        "color": "white"
+      },
+      {
+        "uci": "g3h3",
+        "san": "Rh3#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-23T18:00:31.274469+00:00",
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T18:00:49.820255+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787508031274",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1541145127362494515,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "c1=Q",
-        "correct": true,
-        "timestamp": "2026-08-23T18:00:43.567005+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787508049820",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
