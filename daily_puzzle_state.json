@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-07-02",
     "title": "A Fork in the Shadows",
     "fen": "5Q2/8/1p6/p4bk1/K1Pb4/5pN1/P2n4/8 b - - 0 1",
-    "current_fen": "5Q2/8/1p6/p4bk1/K1Pb4/5pN1/P2n4/8 b - - 0 1",
+    "current_fen": "8/3b4/1p6/p1Q3k1/2P5/K4pN1/P2n4/8 b - - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"5Q2/8/1p6/p4bk1/K1Pb4/5pN1/P2n4/8 b - - 0 1\"]\r\n\r\n1... Bd7+ 2. Ka3 Bc5+ 3. Qxc5+ bxc5 *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787489398857",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541066977928548412,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "bc5",
+        "correct": true,
+        "timestamp": "2026-08-23T12:50:15.152784+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
