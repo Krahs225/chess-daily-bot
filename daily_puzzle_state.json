@@ -1,105 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-05-16",
-    "title": "Exposing  Improper Kingside Development",
-    "fen": "r2qkb1r/1ppb2pp/p1np1p1n/4p3/2B1P3/2NP1N1P/PPP2PP1/R1BQK2R w KQkq - 0 1",
-    "current_fen": "r2q1b1r/1ppbkQ1p/p1np1p2/4p1p1/2B1P3/2NP3P/PPP2PP1/R3K2R b KQ - 3 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qkb1r/1ppb2pp/p1np1p1n/4p3/2B1P3/2NP1N1P/PPP2PP1/R1BQK2R w KQkq - 0 1\"]\r\n\r\n1. Bxh6 gxh6 2. Ng5 hxg5 3. Qh5+ Ke7 4. Qf7#\r\n*",
+    "url": "https://www.chess.com/daily/2025-03-25",
+    "title": "Tactical Launch",
+    "fen": "8/7p/3p2p1/1B1P3k/1n5P/6P1/q4Q1K/8 w - - 0 1",
+    "current_fen": "8/7p/3p2p1/1B1P3k/1n5P/6P1/q4Q1K/8 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/7p/3p2p1/1B1P3k/1n5P/6P1/q4Q1K/8 w - - 0 1\"]\r\n\r\n1. Be2+ Kh6 2. Qf8# *",
     "all_moves": [
       {
-        "uci": "c1h6",
-        "san": "Bxh6",
+        "uci": "b5e2",
+        "san": "Be2+",
         "color": "white"
       },
       {
-        "uci": "g7h6",
-        "san": "gxh6",
+        "uci": "h5h6",
+        "san": "Kh6",
         "color": "black"
       },
       {
-        "uci": "f3g5",
-        "san": "Ng5",
-        "color": "white"
-      },
-      {
-        "uci": "h6g5",
-        "san": "hxg5",
-        "color": "black"
-      },
-      {
-        "uci": "d1h5",
-        "san": "Qh5+",
-        "color": "white"
-      },
-      {
-        "uci": "e8e7",
-        "san": "Ke7",
-        "color": "black"
-      },
-      {
-        "uci": "h5f7",
-        "san": "Qf7#",
+        "uci": "f2f8",
+        "san": "Qf8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1h6",
-        "san": "Bxh6",
+        "uci": "b5e2",
+        "san": "Be2+",
         "color": "white"
       },
       {
-        "uci": "f3g5",
-        "san": "Ng5",
-        "color": "white"
-      },
-      {
-        "uci": "d1h5",
-        "san": "Qh5+",
-        "color": "white"
-      },
-      {
-        "uci": "h5f7",
-        "san": "Qf7#",
+        "uci": "f2f8",
+        "san": "Qf8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T15:41:08.915123+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-23T15:47:53.313455+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787499668915",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541110053061402705,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qf7",
-        "correct": true,
-        "timestamp": "2026-08-23T15:41:38.211631+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qh5",
-        "correct": true,
-        "timestamp": "2026-08-23T15:41:37.782397+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787500073313",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
