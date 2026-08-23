@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-09-24",
-    "title": "Infiltration",
-    "fen": "4rb2/p4Qnk/1qp5/3n1NPp/4r3/P3P3/1P4RP/2B3K1 w - - 0 1",
-    "current_fen": "6rk/p4Nn1/1qp3P1/2bn3p/4r3/P3P3/1P4RP/2B3K1 b - - 1 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"4rb2/p4Qnk/1qp5/3n1NPp/4r3/P3P3/1P4RP/2B3K1 w - - 0 1\"]\r\n\r\n1.g6+ Kh8 2.Nh6 Bc5 3.Qg8+ Rxg8 4.Nf7# *",
+    "url": "https://www.chess.com/daily/2021-10-06",
+    "title": "The Overburdened Juggler",
+    "fen": "7r/P1k3bp/1np2pp1/1p2p3/1Pp1P3/2P1BP2/2K1N1P1/3R4 w - - 0 1",
+    "current_fen": "7r/P1k3bp/1np2pp1/1p2p3/1Pp1P3/2P1BP2/2K1N1P1/3R4 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"7r/P1k3bp/1np2pp1/1p2p3/1Pp1P3/2P1BP2/2K1N1P1/3R4 w - - 0 1\"]\r\n\r\n1.Bxb6+ Kxb6 2.Rd7 Bh6 3.Rxh7 *",
     "all_moves": [
       {
-        "uci": "g5g6",
-        "san": "g6+",
+        "uci": "e3b6",
+        "san": "Bxb6+",
         "color": "white"
       },
       {
-        "uci": "h7h8",
-        "san": "Kh8",
+        "uci": "c7b6",
+        "san": "Kxb6",
         "color": "black"
       },
       {
-        "uci": "f5h6",
-        "san": "Nh6",
+        "uci": "d1d7",
+        "san": "Rd7",
         "color": "white"
       },
       {
-        "uci": "f8c5",
-        "san": "Bc5",
+        "uci": "g7h6",
+        "san": "Bh6",
         "color": "black"
       },
       {
-        "uci": "f7g8",
-        "san": "Qg8+",
-        "color": "white"
-      },
-      {
-        "uci": "e8g8",
-        "san": "Rxg8",
-        "color": "black"
-      },
-      {
-        "uci": "h6f7",
-        "san": "Nf7#",
+        "uci": "d7h7",
+        "san": "Rxh7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5g6",
-        "san": "g6+",
+        "uci": "e3b6",
+        "san": "Bxb6+",
         "color": "white"
       },
       {
-        "uci": "f5h6",
-        "san": "Nh6",
+        "uci": "d1d7",
+        "san": "Rd7",
         "color": "white"
       },
       {
-        "uci": "f7g8",
-        "san": "Qg8+",
-        "color": "white"
-      },
-      {
-        "uci": "h6f7",
-        "san": "Nf7#",
+        "uci": "d7h7",
+        "san": "Rxh7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T18:08:44.298848+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T18:09:36.900060+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787508524298",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541147195162624113,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nf7",
-        "correct": true,
-        "timestamp": "2026-08-23T18:09:29.049881+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787508576900",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
