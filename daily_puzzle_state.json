@@ -1,98 +1,66 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-10-08",
-    "title": "Alignment Shift",
-    "fen": "1k3r2/2p5/2n5/p1pN2p1/4R3/N1P2rqP/1P1Q2P1/4R1K1 b - - 0 1",
-    "current_fen": "1k6/2p5/2n5/p1pN2p1/6R1/N1P4P/1P3rQK/4q3 w - - 2 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"1k3r2/2p5/2n5/p1pN2p1/4R3/N1P2rqP/1P1Q2P1/4R1K1 b - - 0 1\"]\r\n\r\n1...Rf2 2.Rg4 Rxg2+ 3.Qxg2 Qxe1+ 4.Kh2 Rf2 *",
+    "title": "2300 • kna38",
+    "fen": "2kr1b1r/1pp3p1/p1q5/6PR/4N1n1/1P1PB3/1PP2PK1/R2Q4 b - - 0 20",
+    "current_fen": "2kr1b1r/1pp3p1/p1q5/6PR/4N1n1/1P1PB3/1PP2PK1/R2Q4 b - - 0 20",
     "all_moves": [
       {
-        "uci": "f3f2",
-        "san": "Rf2",
+        "uci": "g4e3",
+        "san": "Nxe3+",
         "color": "black"
       },
       {
-        "uci": "e4g4",
-        "san": "Rg4",
+        "uci": "f2e3",
+        "san": "fxe3",
         "color": "white"
       },
       {
-        "uci": "f2g2",
-        "san": "Rxg2+",
+        "uci": "h8h5",
+        "san": "Rxh5",
         "color": "black"
       },
       {
-        "uci": "d2g2",
-        "san": "Qxg2",
+        "uci": "d1h5",
+        "san": "Qxh5",
         "color": "white"
       },
       {
-        "uci": "g3e1",
-        "san": "Qxe1+",
-        "color": "black"
-      },
-      {
-        "uci": "g1h2",
-        "san": "Kh2",
-        "color": "white"
-      },
-      {
-        "uci": "f8f2",
-        "san": "Rf2",
+        "uci": "c6c2",
+        "san": "Qxc2+",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3f2",
-        "san": "Rf2",
+        "uci": "g4e3",
+        "san": "Nxe3+",
         "color": "black"
       },
       {
-        "uci": "f2g2",
-        "san": "Rxg2+",
+        "uci": "h8h5",
+        "san": "Rxh5",
         "color": "black"
       },
       {
-        "uci": "g3e1",
-        "san": "Qxe1+",
-        "color": "black"
-      },
-      {
-        "uci": "f8f2",
-        "san": "Rf2",
+        "uci": "c6c2",
+        "san": "Qxc2+",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T15:57:49.823129+00:00",
-    "answer_posted": true,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_1787500669823",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541114251131887629,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxg4",
-        "correct": false,
-        "timestamp": "2026-08-23T15:58:09.953439+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rf2",
-        "correct": true,
-        "timestamp": "2026-08-23T15:58:26.601634+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "player_move_count": 3,
+    "pgn": "",
+    "url": "https://lichess.org/training/kna38",
+    "posted_at": "2026-08-23T15:58:45.918530+00:00",
+    "puzzle_id": "random_lichess_2300_kna38_1787500725918",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
@@ -243,7 +211,8 @@
       "U1am4"
     ],
     "2300": [
-      "jm0v0"
+      "jm0v0",
+      "kna38"
     ],
     "2345": [
       "zSz2d"
