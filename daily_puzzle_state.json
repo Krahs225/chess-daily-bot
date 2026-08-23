@@ -1,47 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-01-15",
-    "title": "Where's The Mate?",
-    "fen": "4rBk1/1p5p/2npq1p1/p1p2p2/2P5/PP1Pp1Pb/1Q3P1P/R2RN1K1 w - - 0 1",
-    "current_fen": "4rBk1/1p4Qp/2npq1p1/p1p2p2/2P5/PP1Pp1Pb/5P1P/R2RN1K1 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4rBk1/1p5p/2npq1p1/p1p2p2/2P5/PP1Pp1Pb/1Q3P1P/R2RN1K1 w - - 0 1\"]\r\n\r\n1. Qg7#\r\n*",
+    "url": "https://www.chess.com/daily/2014-08-06",
+    "title": "Going Big To Win",
+    "fen": "3n2r1/4q1Pk/p3p2p/4p2N/3pP1Qb/1P3R1B/P6K/8 w - - 0 1",
+    "current_fen": "3n2r1/4q1Pk/p3p2p/4p2N/3pP1Qb/1P3R1B/P6K/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3n2r1/4q1Pk/p3p2p/4p2N/3pP1Qb/1P3R1B/P6K/8 w - - 0 1\"]\r\n\r\n1. Qf5+ exf5 2. Bxf5#",
     "all_moves": [
       {
-        "uci": "b2g7",
-        "san": "Qg7#",
+        "uci": "g4f5",
+        "san": "Qf5+",
+        "color": "white"
+      },
+      {
+        "uci": "e6f5",
+        "san": "exf5",
+        "color": "black"
+      },
+      {
+        "uci": "h3f5",
+        "san": "Bxf5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b2g7",
-        "san": "Qg7#",
+        "uci": "g4f5",
+        "san": "Qf5+",
+        "color": "white"
+      },
+      {
+        "uci": "h3f5",
+        "san": "Bxf5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-23T12:35:42.415447+00:00",
+    "player_move_count": 2,
+    "posted_at": "2026-08-23T12:35:51.060401+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787488542415",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1541063385012113449,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qg7",
-        "correct": true,
-        "timestamp": "2026-08-23T12:35:46.275350+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787488551060",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
