@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-09-28",
     "title": "Cautious Steps",
     "fen": "3N2k1/5ppp/8/3B3P/ppR1P2n/2b2P2/1rP2KP1/8 w - - 0 1",
-    "current_fen": "2RN2k1/5ppp/8/3B3P/pp2P2n/2b2P2/2r2KP1/8 w - - 0 2",
+    "current_fen": "2RN2k1/5ppp/8/3B3P/pp2P2n/2b2P2/6P1/2r2K2 w - - 2 3",
     "pgn": "[Date \"????.??.??\"]\r\n[FEN \"3N2k1/5ppp/8/3B3P/ppR1P2n/2b2P2/1rP2KP1/8 w - - 0 1\"]\r\n\r\n1. Rc8 Rxc2+ 2. Kf1 Rc1+ 3. Ke2 Rc2+ 4. Kd1 Rd2+ 5. Kc1 \r\n*",
     "all_moves": [
       {
@@ -87,29 +87,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787500620990",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1541114046236074056,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "ke3",
-        "correct": false,
-        "timestamp": "2026-08-23T15:57:15.099010+00:00"
+        "move": "kf1",
+        "correct": true,
+        "timestamp": "2026-08-23T15:57:23.314839+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "kg1",
+        "move": "kh1",
         "correct": false,
-        "timestamp": "2026-08-23T15:57:21.568280+00:00"
+        "timestamp": "2026-08-23T15:57:22.627507+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
