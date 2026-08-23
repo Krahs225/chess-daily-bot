@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "2300 • kna38",
     "fen": "2kr1b1r/1pp3p1/p1q5/6PR/4N1n1/1P1PB3/1PP2PK1/R2Q4 b - - 0 20",
-    "current_fen": "2kr1b1r/1pp3p1/p1q5/6PR/4N1n1/1P1PB3/1PP2PK1/R2Q4 b - - 0 20",
+    "current_fen": "2kr1b1r/1pp3p1/p1q5/6PR/4N3/1P1PP3/1PP3K1/R2Q4 b - - 0 21",
     "all_moves": [
       {
         "uci": "g4e3",
@@ -53,20 +53,20 @@
     "url": "https://lichess.org/training/kna38",
     "posted_at": "2026-08-23T15:58:45.918530+00:00",
     "puzzle_id": "random_lichess_2300_kna38_1787500725918",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": null,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rxh5",
-        "correct": false,
-        "timestamp": "2026-08-23T15:59:14.772106+00:00"
+        "move": "nxe3",
+        "correct": true,
+        "timestamp": "2026-08-23T15:59:27.974351+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
