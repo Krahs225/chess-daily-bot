@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-11-27",
     "title": "X-Ray Counterplay",
     "fen": "6k1/1R3Rbp/2p3p1/1p2p3/1P1pP3/r2Nn3/2P3PP/6K1 b - - 0 1",
-    "current_fen": "6k1/1R3Rbp/2p3p1/1p2p3/1P1pP3/r2Nn3/2P3PP/6K1 b - - 0 1",
+    "current_fen": "6k1/1R3Rbp/2p3p1/1p2p3/1P1pP3/3Nn3/2P2KPP/r7 b - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"6k1/1R3Rbp/2p3p1/1p2p3/1P1pP3/r2Nn3/2P3PP/6K1 b - - 0 1\"]\r\n\r\n1... Ra1+ 2. Kf2 Rf1+ 3. Ke2 Rxf7 4. Rxf7 Kxf7 *",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787490345007",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541070945916297306,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "ra1",
+        "correct": true,
+        "timestamp": "2026-08-23T13:05:48.281525+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
