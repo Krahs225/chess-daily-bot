@@ -1,92 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-07-16",
-    "title": "Chased into the Shadows",
-    "fen": "6k1/1p3pp1/1RP4p/2q1p3/6PK/7P/3P4/Q5R1 b - - 0 38",
-    "current_fen": "6k1/1p3p2/1RP4p/4p1pK/6Pq/7P/3P4/7Q w - - 2 42",
-    "pgn": "[White \"Daily Puzzle Collaboration\"]\n[Black \"JohanVA / baltwalt\"]\n[Result \"0-1\"]\n[FEN \"6k1/1p3pp1/1RP4p/2q1p3/6PK/7P/3P4/Q5R1 b - - 0 38\"]\n\n38... Qf2+ 39. Rg3 g5+ 40. Kh5 Qxg3 41. Qh1 Qh4# 0-1",
+    "url": "https://www.chess.com/daily/2019-11-02",
+    "title": "Fork in the Road",
+    "fen": "r2q1rk1/p1p2ppp/3b4/nb1np3/2P5/3P1NP1/PPQ2PBP/RNB1K2R b KQ - 0 1",
+    "current_fen": "r2q1rk1/p1p2ppp/3b4/nb2p3/1nP5/2QP1NP1/PP3PBP/RNB1K2R b KQ - 2 2",
+    "pgn": "[Date \"2013.10.31\"]\r\n[Result \"*\"]\r\n[FEN \"r2q1rk1/p1p2ppp/3b4/nb1np3/2P5/3P1NP1/PPQ2PBP/RNB1K2R b KQ - 0 1\"]\r\n[PlyCount \"3\"]\r\n\r\n1... Nb4 2. Qc3 Nxd3+ *",
     "all_moves": [
       {
-        "uci": "c5f2",
-        "san": "Qf2+",
+        "uci": "d5b4",
+        "san": "Nb4",
         "color": "black"
       },
       {
-        "uci": "g1g3",
-        "san": "Rg3",
+        "uci": "c2c3",
+        "san": "Qc3",
         "color": "white"
       },
       {
-        "uci": "g7g5",
-        "san": "g5+",
-        "color": "black"
-      },
-      {
-        "uci": "h4h5",
-        "san": "Kh5",
-        "color": "white"
-      },
-      {
-        "uci": "f2g3",
-        "san": "Qxg3",
-        "color": "black"
-      },
-      {
-        "uci": "a1h1",
-        "san": "Qh1",
-        "color": "white"
-      },
-      {
-        "uci": "g3h4",
-        "san": "Qh4#",
+        "uci": "b4d3",
+        "san": "Nxd3+",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5f2",
-        "san": "Qf2+",
+        "uci": "d5b4",
+        "san": "Nb4",
         "color": "black"
       },
       {
-        "uci": "g7g5",
-        "san": "g5+",
-        "color": "black"
-      },
-      {
-        "uci": "f2g3",
-        "san": "Qxg3",
-        "color": "black"
-      },
-      {
-        "uci": "g3h4",
-        "san": "Qh4#",
+        "uci": "b4d3",
+        "san": "Nxd3+",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T18:36:02.108399+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-23T18:37:48.698593+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787510162108",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541154064564494439,
+    "puzzle_id": "random_1787510268698",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541154511715045527,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qh4",
+        "move": "Nb4",
         "correct": true,
-        "timestamp": "2026-08-23T18:37:42.463808+00:00"
+        "timestamp": "2026-08-23T18:38:29.856466+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
