@@ -1,92 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-06-12",
-    "title": "Mate in 4",
-    "fen": "5rk1/3R1p1p/2p2p2/1q2nB2/5B2/QP3nP1/4rP1P/R4K2 w Q - 0 1",
-    "current_fen": "1R2k3/3R1p1p/2p2p1B/4nB2/8/1P3nP1/4rP1P/5K2 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/3R1p1p/2p2p2/1q2nB2/5B2/QP3nP1/4rP1P/R4K2 w Q - 0 1\"]\r\n\r\n1. Qxf8+ Kxf8 2. Bh6+ Ke8 3. Ra8+ Qb8 4. Rxb8#\r\n*",
+    "url": "https://www.chess.com/daily/2009-06-11",
+    "title": "Mate in 6",
+    "fen": "5r2/1b2P1bk/npqr3p/8/p4p2/1QB2Rn1/6P1/4R1K1 w - - 0 1",
+    "current_fen": "5r2/1b2P1bk/npqr3p/8/p4p2/1QB2Rn1/6P1/4R1K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r2/1b2P1bk/npqr3p/8/p4p2/1QB2Rn1/6P1/4R1K1 w - - 0 1\"]\r\n\r\n1. exf8=N+ Kh8 2. Bxg7+ Kxg7 3. Re7+ Kf6 4. Qf7+ Kg5 5. Nh7+ Kg4 6. Rxf4#\r\n*",
     "all_moves": [
       {
-        "uci": "a3f8",
-        "san": "Qxf8+",
+        "uci": "e7f8n",
+        "san": "exf8=N+",
         "color": "white"
       },
       {
-        "uci": "g8f8",
-        "san": "Kxf8",
+        "uci": "h7h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "f4h6",
-        "san": "Bh6+",
+        "uci": "c3g7",
+        "san": "Bxg7+",
         "color": "white"
       },
       {
-        "uci": "f8e8",
-        "san": "Ke8",
+        "uci": "h8g7",
+        "san": "Kxg7",
         "color": "black"
       },
       {
-        "uci": "a1a8",
-        "san": "Ra8+",
+        "uci": "e1e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "b5b8",
-        "san": "Qb8",
+        "uci": "g7f6",
+        "san": "Kf6",
         "color": "black"
       },
       {
-        "uci": "a8b8",
-        "san": "Rxb8#",
+        "uci": "b3f7",
+        "san": "Qf7+",
+        "color": "white"
+      },
+      {
+        "uci": "f6g5",
+        "san": "Kg5",
+        "color": "black"
+      },
+      {
+        "uci": "f8h7",
+        "san": "Nh7+",
+        "color": "white"
+      },
+      {
+        "uci": "g5g4",
+        "san": "Kg4",
+        "color": "black"
+      },
+      {
+        "uci": "f3f4",
+        "san": "Rxf4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a3f8",
-        "san": "Qxf8+",
+        "uci": "e7f8n",
+        "san": "exf8=N+",
         "color": "white"
       },
       {
-        "uci": "f4h6",
-        "san": "Bh6+",
+        "uci": "c3g7",
+        "san": "Bxg7+",
         "color": "white"
       },
       {
-        "uci": "a1a8",
-        "san": "Ra8+",
+        "uci": "e1e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "a8b8",
-        "san": "Rxb8#",
+        "uci": "b3f7",
+        "san": "Qf7+",
+        "color": "white"
+      },
+      {
+        "uci": "f8h7",
+        "san": "Nh7+",
+        "color": "white"
+      },
+      {
+        "uci": "f3f4",
+        "san": "Rxf4#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T11:41:32.287671+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-23T11:49:44.599858+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787485292287",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541049752903225459,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxb8",
-        "correct": true,
-        "timestamp": "2026-08-23T11:41:57.566220+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787485784599",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
