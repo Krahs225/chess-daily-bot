@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-10-15",
     "title": "Attacking Technique",
     "fen": "3q4/2nb1kbR/1r1p2p1/2pPp1P1/pp2Pp2/1P3N2/P4P2/1KBB3Q w - - 0 1",
-    "current_fen": "3q4/2nb1kbR/1r1p2p1/2pPp1P1/pp2Pp2/1P3N2/P4P2/1KBB3Q w - - 0 1",
+    "current_fen": "3q4/2nb2k1/1r1p2p1/2pPp1P1/pp2Pp2/1P3N2/P4P2/1KBB3Q w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3q4/2nb1kbR/1r1p2p1/2pPp1P1/pp2Pp2/1P3N2/P4P2/1KBB3Q w - - 0 1\"]\r\n\r\n1. Rxg7+ Kxg7 2. Qh6+ Kf7 3. Qh7+ Kf8 4. Nh4\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787490711070",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541072480947535956,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rxg7",
+        "correct": true,
+        "timestamp": "2026-08-23T13:11:55.075499+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rxg7",
+        "correct": false,
+        "timestamp": "2026-08-23T13:11:55.081101+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
