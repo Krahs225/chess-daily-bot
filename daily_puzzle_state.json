@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-08-21",
     "title": "Exposing the King's Hideout",
     "fen": "2k1r1r1/p1p4R/3p4/4pp2/2P2n2/5Pq1/R5P1/1Q5K w - - 0 1",
-    "current_fen": "4r1r1/R7/2kp4/4pp2/2P2n2/5Pq1/6P1/1Q5K w - - 1 3",
+    "current_fen": "4r1r1/R7/2kp4/1Q2pp2/2P2n2/5Pq1/6P1/7K b - - 2 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"2k1r1r1/p1p4R/3p4/4pp2/2P2n2/5Pq1/R5P1/1Q5K w - - 0 1\"]\r\n\r\n1. Rxc7+ Kxc7 2. Rxa7+ Kc6 3. Qb5# *",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787500585550",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1541113898177138801,
     "attempted_users": {
       "442597396195704832": {
@@ -70,16 +70,18 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rxc7",
-        "correct": false,
-        "timestamp": "2026-08-23T15:56:36.290934+00:00"
+        "move": "qb5",
+        "correct": true,
+        "timestamp": "2026-08-23T15:56:41.206617+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
