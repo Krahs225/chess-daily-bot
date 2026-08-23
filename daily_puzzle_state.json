@@ -1,77 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-03-30",
-    "title": "Tying Up Loose Ends",
-    "fen": "r4r1k/pp2qppp/2p1pb2/3P4/2B2BQ1/2P5/P1P2PPP/2KRR3 b - - 0 1",
-    "current_fen": "r4r1k/pp3ppp/2p1pb2/3P4/2q2BQ1/8/P1P1KPPP/3RR3 w - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r4r1k/pp2qppp/2p1pb2/3P4/2B2BQ1/2P5/P1P2PPP/2KRR3 b - - 0 1\"]\r\n\r\n1...Qa3+ 2.Kd2 Qxc3+ 3.Ke2 Qxc4+ *",
+    "url": "https://www.chess.com/daily/2026-02-13",
+    "title": "Tactical Vacuum",
+    "fen": "r3k3/1p4p1/p1q1b2p/P1pn4/5PP1/2N5/1P2Q2K/4R3 w - - 3 29",
+    "current_fen": "r3k3/1p4p1/p1q1b2p/P1pn4/5PP1/2N5/1P2Q2K/4R3 w - - 3 29",
+    "pgn": "[White \"chesstiger787\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"r3k3/1p4p1/p1q1b2p/P1pn4/5PP1/2N5/1P2Q2K/4R3 w - - 3 29\"]\r\n\r\n29. Qxe6+ Qxe6 30. Rxe6+ Kf7 31. Nxd5 Kxe6 32. Nc7+ Kd7 33. Nxa8 1-0",
     "all_moves": [
       {
-        "uci": "e7a3",
-        "san": "Qa3+",
-        "color": "black"
-      },
-      {
-        "uci": "c1d2",
-        "san": "Kd2",
+        "uci": "e2e6",
+        "san": "Qxe6+",
         "color": "white"
       },
       {
-        "uci": "a3c3",
-        "san": "Qxc3+",
+        "uci": "c6e6",
+        "san": "Qxe6",
         "color": "black"
       },
       {
-        "uci": "d2e2",
-        "san": "Ke2",
+        "uci": "e1e6",
+        "san": "Rxe6+",
         "color": "white"
       },
       {
-        "uci": "c3c4",
-        "san": "Qxc4+",
+        "uci": "e8f7",
+        "san": "Kf7",
         "color": "black"
+      },
+      {
+        "uci": "c3d5",
+        "san": "Nxd5",
+        "color": "white"
+      },
+      {
+        "uci": "f7e6",
+        "san": "Kxe6",
+        "color": "black"
+      },
+      {
+        "uci": "d5c7",
+        "san": "Nc7+",
+        "color": "white"
+      },
+      {
+        "uci": "e6d7",
+        "san": "Kd7",
+        "color": "black"
+      },
+      {
+        "uci": "c7a8",
+        "san": "Nxa8",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e7a3",
-        "san": "Qa3+",
-        "color": "black"
+        "uci": "e2e6",
+        "san": "Qxe6+",
+        "color": "white"
       },
       {
-        "uci": "a3c3",
-        "san": "Qxc3+",
-        "color": "black"
+        "uci": "e1e6",
+        "san": "Rxe6+",
+        "color": "white"
       },
       {
-        "uci": "c3c4",
-        "san": "Qxc4+",
-        "color": "black"
+        "uci": "c3d5",
+        "san": "Nxd5",
+        "color": "white"
+      },
+      {
+        "uci": "d5c7",
+        "san": "Nc7+",
+        "color": "white"
+      },
+      {
+        "uci": "c7a8",
+        "san": "Nxa8",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-23T18:24:46.043276+00:00",
+    "player_color": "white",
+    "player_move_count": 5,
+    "posted_at": "2026-08-23T18:25:09.992811+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787509486043",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541151229164527737,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qxc4",
-        "correct": true,
-        "timestamp": "2026-08-23T18:25:04.267468+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787509509992",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
