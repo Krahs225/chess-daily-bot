@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-03-16",
     "title": "Landing a Knockout",
     "fen": "8/1p1b4/7k/P2p4/3P2r1/2P2N1p/1P6/R3K3 b - - 0 1",
-    "current_fen": "8/1p1b4/7k/P2p4/3P2r1/2P2N1p/1P6/R3K3 b - - 0 1",
+    "current_fen": "8/1p1b4/7k/P2p4/3P4/2P4p/1P6/R3K1N1 b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/1p1b4/7k/P2p4/3P2r1/2P2N1p/1P6/R3K3 b - - 0 1\"]\r\n\r\n1...Rg1+ 2.Nxg1 h2 3.Kf2 h1=Q *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787498746837",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541106185405726834,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rg1",
+        "correct": true,
+        "timestamp": "2026-08-23T15:25:50.690196+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
