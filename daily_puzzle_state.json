@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-12-14",
     "title": "Back Rank Bliss",
     "fen": "7k/7p/r3q1b1/1np5/n4QP1/p7/2PB4/K4R2 w - - 0 1",
-    "current_fen": "7k/7p/r3q1b1/1np5/n4QP1/p7/2PB4/K4R2 w - - 0 1",
+    "current_fen": "5Qqk/7p/r5b1/1np5/n5P1/p7/2PB4/K4R2 w - - 2 2",
     "pgn": "[Result \"1-0\"]\r\n[FEN \"7k/7p/r3q1b1/1np5/n4QP1/p7/2PB4/K4R2 w - - 0 1\"]\r\n\r\n1. Qf8+ Qg8 2. Bh6 Bf7 3. Bg7# 1-0",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787515551273",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541176669753311413,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qf8",
+        "correct": true,
+        "timestamp": "2026-08-23T20:06:10.925973+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
