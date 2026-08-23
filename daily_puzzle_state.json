@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-08-27",
     "title": "Clear the Board",
     "fen": "r3k1r1/1pRq2pp/p2bp3/3pQ3/8/8/PP1B1P1P/4K1R1 w q - 0 1",
-    "current_fen": "r3k1r1/1pRq2pp/p2bp3/3pQ3/8/8/PP1B1P1P/4K1R1 w q - 0 1",
+    "current_fen": "r3k1r1/1pRq3p/p2bp1p1/3p3Q/8/8/PP1B1P1P/4K1R1 w q - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"r3k1r1/1pRq2pp/p2bp3/3pQ3/8/8/PP1B1P1P/4K1R1 w q - 0 1\"]\r\n\r\n1.Qh5+ g6 2.Rxd7 gxh5 3.Rxg8+ Kxd7 4.Rxa8 *",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787518775848",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541190193636315186,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qh5",
+        "correct": true,
+        "timestamp": "2026-08-23T20:59:48.231700+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
