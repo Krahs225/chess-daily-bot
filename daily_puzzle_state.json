@@ -1,126 +1,51 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-12-20",
-    "title": "Giorgadze Game",
-    "fen": "4rbk1/5p1p/3ppP2/1bp3Pp/1p2PN2/1P1PQ3/q1P3B1/5RK1 w - - 0 1",
-    "current_fen": "4rbk1/5p1p/3ppP2/1bp3Pp/1p2PN2/1P1PQ3/q1P3B1/5RK1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4rbk1/5p1p/3ppP2/1bp3Pp/1p2PN2/1P1PQ3/q1P3B1/5RK1 w - - 0 1\"]\r\n\r\n1. g6 hxg6 2. Nxg6 fxg6 3. f7+ Kg7 4. fxe8=Q Bxe8 5. Qg5 Qb2 6. Qd8 Qd4+ 7. Kh1\r\n*",
+    "url": "https://www.chess.com/daily/2010-08-17",
+    "title": "Calculation Test",
+    "fen": "4r2k/1p1b2rp/pB1p1n1b/3Ppp1q/PP3Pn1/2N3PP/3QB2R/5RNK b - - 0 1",
+    "current_fen": "4r2k/1p1b2rp/pB1p1n1b/3Ppp1q/PP3Pn1/2N3PP/3QB2R/5RNK b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r2k/1p1b2rp/pB1p1n1b/3Ppp1q/PP3Pn1/2N3PP/3QB2R/5RNK b - - 0 1\"]\r\n\r\n1...Nxh2 2.Bxh5 Nxf1\r\n*",
     "all_moves": [
       {
-        "uci": "g5g6",
-        "san": "g6",
-        "color": "white"
-      },
-      {
-        "uci": "h7g6",
-        "san": "hxg6",
+        "uci": "g4h2",
+        "san": "Nxh2",
         "color": "black"
       },
       {
-        "uci": "f4g6",
-        "san": "Nxg6",
+        "uci": "e2h5",
+        "san": "Bxh5",
         "color": "white"
       },
       {
-        "uci": "f7g6",
-        "san": "fxg6",
+        "uci": "h2f1",
+        "san": "Nxf1",
         "color": "black"
-      },
-      {
-        "uci": "f6f7",
-        "san": "f7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8g7",
-        "san": "Kg7",
-        "color": "black"
-      },
-      {
-        "uci": "f7e8q",
-        "san": "fxe8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "b5e8",
-        "san": "Bxe8",
-        "color": "black"
-      },
-      {
-        "uci": "e3g5",
-        "san": "Qg5",
-        "color": "white"
-      },
-      {
-        "uci": "a2b2",
-        "san": "Qb2",
-        "color": "black"
-      },
-      {
-        "uci": "g5d8",
-        "san": "Qd8",
-        "color": "white"
-      },
-      {
-        "uci": "b2d4",
-        "san": "Qd4+",
-        "color": "black"
-      },
-      {
-        "uci": "g1h1",
-        "san": "Kh1",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5g6",
-        "san": "g6",
-        "color": "white"
+        "uci": "g4h2",
+        "san": "Nxh2",
+        "color": "black"
       },
       {
-        "uci": "f4g6",
-        "san": "Nxg6",
-        "color": "white"
-      },
-      {
-        "uci": "f6f7",
-        "san": "f7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7e8q",
-        "san": "fxe8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "e3g5",
-        "san": "Qg5",
-        "color": "white"
-      },
-      {
-        "uci": "g5d8",
-        "san": "Qd8",
-        "color": "white"
-      },
-      {
-        "uci": "g1h1",
-        "san": "Kh1",
-        "color": "white"
+        "uci": "h2f1",
+        "san": "Nxf1",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-08-23T11:25:04.074215+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-23T11:27:18.720519+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787484304074",
+    "puzzle_id": "random_1787484438720",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541045610080112664,
+    "message_id": 1541046172917964834,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
