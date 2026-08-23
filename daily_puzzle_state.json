@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-02-25",
     "title": "Art of Persuasion",
     "fen": "1Q4R1/5p1p/4p1qk/p2nP3/1p1r2P1/1P6/1PP4P/1K6 b - - 11 39",
-    "current_fen": "1Q4R1/5p1p/4p1qk/p2nP3/1p4P1/1P6/KPP4P/3r4 b - - 13 40",
+    "current_fen": "1Q4R1/5p1p/4p1qk/p3P3/1p4P1/1PP5/K1P4P/3r4 b - - 0 41",
     "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"MagNiels_Carlsen\"]\r\n[Result \"0-1\"]\r\n[FEN \"1Q4R1/5p1p/4p1qk/p2nP3/1p1r2P1/1P6/1PP4P/1K6 b - - 11 39\"]\r\n\r\n39... Rd1+ 40. Ka2 Nc3+ 41. bxc3 Qxc2# 0-1",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787491078023",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1541074020835786843,
     "attempted_users": {
@@ -70,16 +70,18 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "rd1",
-        "correct": false,
-        "timestamp": "2026-08-23T13:18:02.551930+00:00"
+        "move": "nc3",
+        "correct": true,
+        "timestamp": "2026-08-23T13:18:03.658109+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
