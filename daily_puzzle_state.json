@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-05-15",
     "title": "Decoy by any means possible",
     "fen": "r2r1bk1/3qp2p/3pp1p1/p2n2N1/2N3Q1/BP4P1/P4PP1/2R3K1 w - - 0 1",
-    "current_fen": "r2r1bk1/3qp2p/3pp1p1/p2n2N1/2N3Q1/BP4P1/P4PP1/2R3K1 w - - 0 1",
+    "current_fen": "r2r1bk1/3qp2p/1n1pp1p1/p5N1/6Q1/BP4P1/P4PP1/2R3K1 w - - 0 2",
     "pgn": "[FEN \"r2r1bk1/3qp2p/3pp1p1/p2n2N1/2N3Q1/BP4P1/P4PP1/2R3K1 w - - 0 1\"]\r\n[PlyCount \"11\"]\r\n[EventDate \"1976.??.??\"]\r\n\r\n1. Nb6 $3 1... Nxb6 2. Rc7 $3 2... Qxc7 (2... h5 3. Qh3) (2... Qe8 3. Qxe6+ Kh8\r\n4. Rxe7 Qxe7 5. Bb2+ Qg7 6. Nf7+ Kg8 7. Nh6+ Kh8 8. Qg8#) 3. Qxe6+ Kg7 (3...\r\nKh8 4. Bb2+ Bg7 5. Nf7+ Kg8 6. Nh6+ Kh8 7. Qg8+ Rxg8 8. Nf7#) 4. Bb2+ Kh6 5.\r\nQh3+ Kxg5 6. f4# *",
     "all_moves": [
       {
@@ -102,8 +102,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787489012500",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541065357442293824,
     "attempted_users": {
@@ -115,13 +115,13 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "ne5",
-        "correct": false,
-        "timestamp": "2026-08-23T12:44:55.100884+00:00"
+        "move": "nb6",
+        "correct": true,
+        "timestamp": "2026-08-23T12:45:14.146243+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
