@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-05-16",
     "title": "Exposing  Improper Kingside Development",
     "fen": "r2qkb1r/1ppb2pp/p1np1p1n/4p3/2B1P3/2NP1N1P/PPP2PP1/R1BQK2R w KQkq - 0 1",
-    "current_fen": "r2qkb1r/1ppb3p/p1np1p2/4p1p1/2B1P3/2NP3P/PPP2PP1/R2QK2R w KQkq - 0 3",
+    "current_fen": "r2q1b1r/1ppbkQ1p/p1np1p2/4p1p1/2B1P3/2NP3P/PPP2PP1/R3K2R b KQ - 3 4",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qkb1r/1ppb2pp/p1np1p1n/4p3/2B1P3/2NP1N1P/PPP2PP1/R1BQK2R w KQkq - 0 1\"]\r\n\r\n1. Bxh6 gxh6 2. Ng5 hxg5 3. Qh5+ Ke7 4. Qf7#\r\n*",
     "all_moves": [
       {
@@ -72,29 +72,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787499668915",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1541110053061402705,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "ng5",
+        "move": "qf7",
         "correct": true,
-        "timestamp": "2026-08-23T15:41:34.813987+00:00"
+        "timestamp": "2026-08-23T15:41:38.211631+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nh4",
-        "correct": false,
-        "timestamp": "2026-08-23T15:41:22.409609+00:00"
+        "move": "qh5",
+        "correct": true,
+        "timestamp": "2026-08-23T15:41:37.782397+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
