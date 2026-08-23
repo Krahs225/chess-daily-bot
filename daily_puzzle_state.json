@@ -1,120 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-12-16",
-    "title": "Outside The Box Mate",
-    "fen": "1R6/8/8/8/8/4p3/pp2P3/1k2KN1R w K - 0 1",
-    "current_fen": "R7/8/8/8/3N4/4p3/kp2P3/b4RK1 b - - 3 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1R6/8/8/8/8/4p3/pp2P3/1k2KN1R w K - 0 1\"]\r\n\r\n1. Nd2+ Ka1 2. Nb3+ Kb1 3. Nd4 a1=B 4. O-O+ Ka2 5. Ra8#\r\n*",
+    "url": "https://www.chess.com/daily/2022-03-16",
+    "title": "Landing a Knockout",
+    "fen": "8/1p1b4/7k/P2p4/3P2r1/2P2N1p/1P6/R3K3 b - - 0 1",
+    "current_fen": "8/1p1b4/7k/P2p4/3P2r1/2P2N1p/1P6/R3K3 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/1p1b4/7k/P2p4/3P2r1/2P2N1p/1P6/R3K3 b - - 0 1\"]\r\n\r\n1...Rg1+ 2.Nxg1 h2 3.Kf2 h1=Q *",
     "all_moves": [
       {
-        "uci": "f1d2",
-        "san": "Nd2+",
-        "color": "white"
-      },
-      {
-        "uci": "b1a1",
-        "san": "Ka1",
+        "uci": "g4g1",
+        "san": "Rg1+",
         "color": "black"
       },
       {
-        "uci": "d2b3",
-        "san": "Nb3+",
+        "uci": "f3g1",
+        "san": "Nxg1",
         "color": "white"
       },
       {
-        "uci": "a1b1",
-        "san": "Kb1",
+        "uci": "h3h2",
+        "san": "h2",
         "color": "black"
       },
       {
-        "uci": "b3d4",
-        "san": "Nd4",
+        "uci": "e1f2",
+        "san": "Kf2",
         "color": "white"
       },
       {
-        "uci": "a2a1b",
-        "san": "a1=B",
+        "uci": "h2h1q",
+        "san": "h1=Q",
         "color": "black"
-      },
-      {
-        "uci": "e1g1",
-        "san": "O-O+",
-        "color": "white"
-      },
-      {
-        "uci": "b1a2",
-        "san": "Ka2",
-        "color": "black"
-      },
-      {
-        "uci": "b8a8",
-        "san": "Ra8#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f1d2",
-        "san": "Nd2+",
-        "color": "white"
+        "uci": "g4g1",
+        "san": "Rg1+",
+        "color": "black"
       },
       {
-        "uci": "d2b3",
-        "san": "Nb3+",
-        "color": "white"
+        "uci": "h3h2",
+        "san": "h2",
+        "color": "black"
       },
       {
-        "uci": "b3d4",
-        "san": "Nd4",
-        "color": "white"
-      },
-      {
-        "uci": "e1g1",
-        "san": "O-O+",
-        "color": "white"
-      },
-      {
-        "uci": "b8a8",
-        "san": "Ra8#",
-        "color": "white"
+        "uci": "h2h1q",
+        "san": "h1=Q",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-23T15:18:21.743264+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-23T15:25:46.837051+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787498301743",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1541104318596386897,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ra8",
-        "correct": true,
-        "timestamp": "2026-08-23T15:25:25.955821+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nc1",
-        "correct": false,
-        "timestamp": "2026-08-23T15:24:32.826931+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787498746837",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
