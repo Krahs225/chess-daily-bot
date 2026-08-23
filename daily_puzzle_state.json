@@ -1,107 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-10-09",
-    "title": "Pawn Roller Rinck",
-    "fen": "8/8/7P/R4K2/1p6/6p1/8/1r4k1 w - - 0 1",
-    "current_fen": "7Q/8/8/5r2/1p6/6K1/8/5k2 b - - 0 5",
-    "pgn": "[Date \"1908.??.??\"]\r\n[White \"Rinck\"]\r\n[Black \"Study - Win\"]\r\n[Result \"1-0\"]\r\n[FEN \"8/8/7P/R4K2/1p6/6p1/8/1r4k1 w - - 0 1\"]\r\n\r\n1. h7 Rf1+ 2. Kg4 Rf8 3. Kxg3 Kf1 4. Rf5+ Rxf5 5. h8=Q *",
+    "url": "https://www.chess.com/daily/2009-09-27",
+    "title": "Going For It",
+    "fen": "2rqr1k1/p3bp2/1p2R1pB/8/3P4/P2Q1N2/1n3PP1/3R2K1 w - - 0 1",
+    "current_fen": "2rqr1k1/p3bp2/1p2R1pB/8/3P4/P2Q1N2/1n3PP1/3R2K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2rqr1k1/p3bp2/1p2R1pB/8/3P4/P2Q1N2/1n3PP1/3R2K1 w - - 0 1\"]\r\n\r\n1. Rxg6+ fxg6 2. Qxg6+\r\n*",
     "all_moves": [
       {
-        "uci": "h6h7",
-        "san": "h7",
+        "uci": "e6g6",
+        "san": "Rxg6+",
         "color": "white"
       },
       {
-        "uci": "b1f1",
-        "san": "Rf1+",
+        "uci": "f7g6",
+        "san": "fxg6",
         "color": "black"
       },
       {
-        "uci": "f5g4",
-        "san": "Kg4",
-        "color": "white"
-      },
-      {
-        "uci": "f1f8",
-        "san": "Rf8",
-        "color": "black"
-      },
-      {
-        "uci": "g4g3",
-        "san": "Kxg3",
-        "color": "white"
-      },
-      {
-        "uci": "g1f1",
-        "san": "Kf1",
-        "color": "black"
-      },
-      {
-        "uci": "a5f5",
-        "san": "Rf5+",
-        "color": "white"
-      },
-      {
-        "uci": "f8f5",
-        "san": "Rxf5",
-        "color": "black"
-      },
-      {
-        "uci": "h7h8q",
-        "san": "h8=Q",
+        "uci": "d3g6",
+        "san": "Qxg6+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6h7",
-        "san": "h7",
+        "uci": "e6g6",
+        "san": "Rxg6+",
         "color": "white"
       },
       {
-        "uci": "f5g4",
-        "san": "Kg4",
-        "color": "white"
-      },
-      {
-        "uci": "g4g3",
-        "san": "Kxg3",
-        "color": "white"
-      },
-      {
-        "uci": "a5f5",
-        "san": "Rf5+",
-        "color": "white"
-      },
-      {
-        "uci": "h7h8q",
-        "san": "h8=Q",
+        "uci": "d3g6",
+        "san": "Qxg6+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-23T17:55:28.814638+00:00",
+    "player_move_count": 2,
+    "posted_at": "2026-08-23T17:56:49.622825+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787507728814",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1541143858597986346,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "h8=Q",
-        "correct": true,
-        "timestamp": "2026-08-23T17:56:44.708064+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787507809622",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
