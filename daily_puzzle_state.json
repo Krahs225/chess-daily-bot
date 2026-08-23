@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-10-06",
     "title": "The Overburdened Juggler",
     "fen": "7r/P1k3bp/1np2pp1/1p2p3/1Pp1P3/2P1BP2/2K1N1P1/3R4 w - - 0 1",
-    "current_fen": "7r/P1k3bp/1np2pp1/1p2p3/1Pp1P3/2P1BP2/2K1N1P1/3R4 w - - 0 1",
+    "current_fen": "7r/P2R3p/1kp2ppb/1p2p3/1Pp1P3/2P2P2/2K1N1P1/8 w - - 2 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"7r/P1k3bp/1np2pp1/1p2p3/1Pp1P3/2P1BP2/2K1N1P1/3R4 w - - 0 1\"]\r\n\r\n1.Bxb6+ Kxb6 2.Rd7 Bh6 3.Rxh7 *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787508576900",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541147417016017017,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rd7",
+        "correct": true,
+        "timestamp": "2026-08-23T18:10:11.482698+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
