@@ -1,83 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-11-16",
-    "title": "A Bird in the Hand",
-    "fen": "r1b1kb1r/ppp2ppp/2n1p3/6B1/3P2q1/3B1N2/PPP2PPP/R2QK2R w KQkq - 6 9",
-    "current_fen": "r1b1kb1r/ppp2ppp/2n1p3/6B1/3P4/3B3P/PPP2P1N/R2QK3 b Qkq - 0 11",
-    "pgn": "[Event \"m\"]\r\n[Site \"London\"]\r\n[Date \"1866\"]\r\n[Round \"09\"]\r\n[White \"Steinitz, Wilhelm\"]\r\n[Black \"Bird, Henry\"]\r\n[Result \"1-0\"]\r\n[FEN \"r1b1kb1r/ppp2ppp/2n1p3/6B1/3P2q1/3B1N2/PPP2PPP/R2QK2R w KQkq - 6 9\"]\r\n\r\n9.h3 Qxg2 10.Rh2 Qxh2 11.Nxh2 *",
+    "url": "https://www.chess.com/daily/2013-04-30",
+    "title": "Slipping In",
+    "fen": "r1b1r1k1/2qnbp1p/p2pp1p1/5PPQ/1p1BP3/2N2R2/PPP3BP/R5K1 w - - 0 1",
+    "current_fen": "r1b1r1k1/2qnbp1p/p2pp1p1/5PPQ/1p1BP3/2N2R2/PPP3BP/R5K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1r1k1/2qnbp1p/p2pp1p1/5PPQ/1p1BP3/2N2R2/PPP3BP/R5K1 w - - 0 1\"]\r\n\r\n1. Qxh7+ Kxh7 2. Rh3+ Kg8 3. Rh8#\r\n*",
     "all_moves": [
       {
-        "uci": "h2h3",
-        "san": "h3",
+        "uci": "h5h7",
+        "san": "Qxh7+",
         "color": "white"
       },
       {
-        "uci": "g4g2",
-        "san": "Qxg2",
+        "uci": "g8h7",
+        "san": "Kxh7",
         "color": "black"
       },
       {
-        "uci": "h1h2",
-        "san": "Rh2",
+        "uci": "f3h3",
+        "san": "Rh3+",
         "color": "white"
       },
       {
-        "uci": "g2h2",
-        "san": "Qxh2",
+        "uci": "h7g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "f3h2",
-        "san": "Nxh2",
+        "uci": "h3h8",
+        "san": "Rh8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h2h3",
-        "san": "h3",
+        "uci": "h5h7",
+        "san": "Qxh7+",
         "color": "white"
       },
       {
-        "uci": "h1h2",
-        "san": "Rh2",
+        "uci": "f3h3",
+        "san": "Rh3+",
         "color": "white"
       },
       {
-        "uci": "f3h2",
-        "san": "Nxh2",
+        "uci": "h3h8",
+        "san": "Rh8#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-23T13:01:19.505796+00:00",
+    "posted_at": "2026-08-23T13:01:41.825595+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787490079505",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541069832126988349,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nxh2",
-        "correct": true,
-        "timestamp": "2026-08-23T13:01:36.582572+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rg1",
-        "correct": false,
-        "timestamp": "2026-08-23T13:01:32.021914+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787490101825",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
