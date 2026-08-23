@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-04-14",
     "title": "Big Time Bishops",
     "fen": "3qr2k/6bp/1p4p1/1PpP1p2/1nB5/4PP2/1B3P1P/Q4RK1 w - - 0 1",
-    "current_fen": "3qr1k1/6Bp/1p4p1/1PpP1p2/1nB5/4PP2/5P1P/Q4RK1 w - - 1 2",
+    "current_fen": "3qr1k1/6Bp/1p1P2p1/1Ppn1p2/2B5/4PP2/5P1P/Q4RK1 w - - 1 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3qr2k/6bp/1p4p1/1PpP1p2/1nB5/4PP2/1B3P1P/Q4RK1 w - - 0 1\"]\r\n\r\n1. Bxg7+ Kg8 2. d6+ Nd5 3. Bxd5+ Re6 4. Bxe6#\r\n*",
     "all_moves": [
       {
@@ -72,8 +72,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787490788549",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1541072806081724509,
     "attempted_users": {
@@ -82,13 +82,21 @@
         "move": "bxg7",
         "correct": true,
         "timestamp": "2026-08-23T13:13:12.574855+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "d6",
+        "correct": true,
+        "timestamp": "2026-08-23T13:13:15.503955+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
