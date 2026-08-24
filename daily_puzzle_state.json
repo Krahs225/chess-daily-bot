@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-11-19",
     "title": "Pushing Your Luck",
     "fen": "3r3k/p2QP2p/1p4p1/2p5/5P1q/2P4B/1P3P2/2K3R1 b - - 3 27",
-    "current_fen": "3r3k/p2QP2p/1p4p1/2p5/5P1q/2P4B/1P3P2/2K3R1 b - - 3 27",
+    "current_fen": "3r3k/p2QP2p/1p4p1/2p5/5q2/2P4B/1P3P2/1K4R1 b - - 1 28",
     "pgn": "[Result \"*\"]\r\n[FEN \"3r3k/p2QP2p/1p4p1/2p5/5P1q/2P4B/1P3P2/2K3R1 b - - 3 27\"]\r\n\r\n27...Qxf4+ 28.Kb1 Qe4+ 29.Ka1 Rxd7 30.Bxd7 Qxe7 *",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787575190216",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541426812360466473,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxf4",
+        "correct": true,
+        "timestamp": "2026-08-24T12:40:53.157824+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
