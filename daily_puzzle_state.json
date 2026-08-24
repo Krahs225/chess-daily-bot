@@ -1,77 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-12-16",
-    "title": "Szaja Kozlowski, 1931",
-    "fen": "5rkB/5p1R/6P1/8/8/5K2/8/8 w - - 0 1",
-    "current_fen": "5rk1/5pPR/8/8/8/5K2/8/8 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rkB/5p1R/6P1/8/8/5K2/8/8 w - - 0 1\"]\r\n\r\n1. Rg7+ Kxh8 2. Rh7+ Kg8 3. g7\r\n*",
+    "url": "https://www.chess.com/daily/2010-11-18",
+    "title": "Forcing the Promotion",
+    "fen": "3B2k1/1p3pp1/3n3p/Pp6/4Bb2/5P1P/1P3P2/6K1 w - - 0 1",
+    "current_fen": "3B2k1/1n3pp1/7p/Pp6/5b2/5P1P/1P3P2/6K1 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3B2k1/1p3pp1/3n3p/Pp6/4Bb2/5P1P/1P3P2/6K1 w - - 0 1\"]\r\n\r\n1. Bxb7 Nxb7 2. a6 Bb8 3. Bb6\r\n*",
     "all_moves": [
       {
-        "uci": "h7g7",
-        "san": "Rg7+",
+        "uci": "e4b7",
+        "san": "Bxb7",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kxh8",
+        "uci": "d6b7",
+        "san": "Nxb7",
         "color": "black"
       },
       {
-        "uci": "g7h7",
-        "san": "Rh7+",
+        "uci": "a5a6",
+        "san": "a6",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "f4b8",
+        "san": "Bb8",
         "color": "black"
       },
       {
-        "uci": "g6g7",
-        "san": "g7",
+        "uci": "d8b6",
+        "san": "Bb6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h7g7",
-        "san": "Rg7+",
+        "uci": "e4b7",
+        "san": "Bxb7",
         "color": "white"
       },
       {
-        "uci": "g7h7",
-        "san": "Rh7+",
+        "uci": "a5a6",
+        "san": "a6",
         "color": "white"
       },
       {
-        "uci": "g6g7",
-        "san": "g7",
+        "uci": "d8b6",
+        "san": "Bb6",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-24T15:19:08.522073+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-24T15:19:41.192505+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787584748522",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541466903435022428,
+    "puzzle_id": "random_1787584781192",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541467040269991968,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "g7",
+        "move": "Bxb7",
         "correct": true,
-        "timestamp": "2026-08-24T15:19:34.095871+00:00"
+        "timestamp": "2026-08-24T15:19:54.154736+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
