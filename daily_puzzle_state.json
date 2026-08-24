@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-03-07",
     "title": "Forward March, Backward Checkmate",
     "fen": "r3k3/pp2bp1p/8/3P2p1/2P1npQ1/1KN5/PP6/R1B1nB1R b q - 0 16",
-    "current_fen": "r3k3/pp2bp1p/8/3P2p1/2P1npQ1/1KN5/PP6/R1B1nB1R b q - 0 16",
+    "current_fen": "r3k3/pp2bp1p/8/2nP2p1/1KP2pQ1/2N5/PP6/R1B1nB1R b q - 2 17",
     "pgn": "[White \"checkmatemaster7\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"r3k3/pp2bp1p/8/3P2p1/2P1npQ1/1KN5/PP6/R1B1nB1R b q - 0 16\"]\r\n\r\n16... Nc5+ 17. Kb4 Nc2+ 18. Kb5 Nd4+ 19. Ka5 b6+ 20. Kb4 a5+ 21. Ka3 Nc2# 0-1",
     "all_moves": [
       {
@@ -102,13 +102,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787611040484",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541577179568013415,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Nc5",
+        "correct": true,
+        "timestamp": "2026-08-24T22:37:39.812182+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
