@@ -1,72 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-06-14",
-    "title": "Materialism on the Mind",
-    "fen": "r3k2r/p1Q2pbp/bpn1p1p1/3p2N1/4n3/2P3P1/PPKB3q/R2B4 w kq - 0 1",
-    "current_fen": "r1k4r/p1Q3bp/bpn1N1p1/3p4/4n3/2P3P1/PPKB3q/R2B4 b - - 2 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r3k2r/p1Q2pbp/bpn1p1p1/3p2N1/4n3/2P3P1/PPKB3q/R2B4 w kq - 0 1\"]\r\n\r\n1.Qxf7+ Kd8 2.Nxe6+ Kc8 3.Qc7# 1-0",
+    "url": "https://www.chess.com/daily/2024-12-26",
+    "title": "Back Rank Tilt",
+    "fen": "5k2/p2r4/b1q2b1P/2p2pN1/5n2/1QP5/PP3PP1/4R1K1 w - - 0 1",
+    "current_fen": "4R1k1/p2r4/b1q2b1P/2p2pN1/5n2/2P5/PP3PP1/6K1 b - - 1 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"5k2/p2r4/b1q2b1P/2p2pN1/5n2/1QP5/PP3PP1/4R1K1 w - - 0 1\"]\r\n\r\n1. Qg8+ Kxg8 2. Re8# *",
     "all_moves": [
       {
-        "uci": "c7f7",
-        "san": "Qxf7+",
+        "uci": "b3g8",
+        "san": "Qg8+",
         "color": "white"
       },
       {
-        "uci": "e8d8",
-        "san": "Kd8",
+        "uci": "f8g8",
+        "san": "Kxg8",
         "color": "black"
       },
       {
-        "uci": "g5e6",
-        "san": "Nxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "d8c8",
-        "san": "Kc8",
-        "color": "black"
-      },
-      {
-        "uci": "f7c7",
-        "san": "Qc7#",
+        "uci": "e1e8",
+        "san": "Re8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c7f7",
-        "san": "Qxf7+",
+        "uci": "b3g8",
+        "san": "Qg8+",
         "color": "white"
       },
       {
-        "uci": "g5e6",
-        "san": "Nxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "f7c7",
-        "san": "Qc7#",
+        "uci": "e1e8",
+        "san": "Re8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-24T12:43:14.457078+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-24T12:43:44.607444+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787575394457",
-    "next_solution_index": 5,
-    "next_player_index": 3,
+    "puzzle_id": "random_1787575424607",
+    "next_solution_index": 3,
+    "next_player_index": 2,
     "solved": true,
-    "message_id": 1541427668992532511,
+    "message_id": 1541427795727491142,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qc7",
+        "move": "Re8",
         "correct": true,
-        "timestamp": "2026-08-24T12:43:38.219708+00:00"
+        "timestamp": "2026-08-24T12:43:57.151605+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
