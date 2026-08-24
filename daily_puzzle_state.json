@@ -1,47 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-04-11",
-    "title": "Cornered Prey",
-    "fen": "2b2k2/2p2pp1/3p1r1p/1p2B3/1P2P1Q1/1NP3P1/7R/1B2n2K b - - 0 1",
-    "current_fen": "2b2k2/2p2pp1/3p3p/1p2B3/1P2P1Q1/1NP3P1/7R/1B2nr1K w - - 1 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2b2k2/2p2pp1/3p1r1p/1p2B3/1P2P1Q1/1NP3P1/7R/1B2n2K b - - 0 1\"]\r\n\r\n1...Rf1#\r\n*",
+    "url": "https://www.chess.com/daily/2025-03-07",
+    "title": "Forward March, Backward Checkmate",
+    "fen": "r3k3/pp2bp1p/8/3P2p1/2P1npQ1/1KN5/PP6/R1B1nB1R b q - 0 16",
+    "current_fen": "r3k3/pp2bp1p/8/3P2p1/2P1npQ1/1KN5/PP6/R1B1nB1R b q - 0 16",
+    "pgn": "[White \"checkmatemaster7\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"r3k3/pp2bp1p/8/3P2p1/2P1npQ1/1KN5/PP6/R1B1nB1R b q - 0 16\"]\r\n\r\n16... Nc5+ 17. Kb4 Nc2+ 18. Kb5 Nd4+ 19. Ka5 b6+ 20. Kb4 a5+ 21. Ka3 Nc2# 0-1",
     "all_moves": [
       {
-        "uci": "f6f1",
-        "san": "Rf1#",
+        "uci": "e4c5",
+        "san": "Nc5+",
+        "color": "black"
+      },
+      {
+        "uci": "b3b4",
+        "san": "Kb4",
+        "color": "white"
+      },
+      {
+        "uci": "e1c2",
+        "san": "Nc2+",
+        "color": "black"
+      },
+      {
+        "uci": "b4b5",
+        "san": "Kb5",
+        "color": "white"
+      },
+      {
+        "uci": "c2d4",
+        "san": "Nd4+",
+        "color": "black"
+      },
+      {
+        "uci": "b5a5",
+        "san": "Ka5",
+        "color": "white"
+      },
+      {
+        "uci": "b7b6",
+        "san": "b6+",
+        "color": "black"
+      },
+      {
+        "uci": "a5b4",
+        "san": "Kb4",
+        "color": "white"
+      },
+      {
+        "uci": "a7a5",
+        "san": "a5+",
+        "color": "black"
+      },
+      {
+        "uci": "b4a3",
+        "san": "Ka3",
+        "color": "white"
+      },
+      {
+        "uci": "d4c2",
+        "san": "Nc2#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f6f1",
-        "san": "Rf1#",
+        "uci": "e4c5",
+        "san": "Nc5+",
+        "color": "black"
+      },
+      {
+        "uci": "e1c2",
+        "san": "Nc2+",
+        "color": "black"
+      },
+      {
+        "uci": "c2d4",
+        "san": "Nd4+",
+        "color": "black"
+      },
+      {
+        "uci": "b7b6",
+        "san": "b6+",
+        "color": "black"
+      },
+      {
+        "uci": "a7a5",
+        "san": "a5+",
+        "color": "black"
+      },
+      {
+        "uci": "d4c2",
+        "san": "Nc2#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 1,
-    "posted_at": "2026-08-24T22:37:05.141338+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-24T22:37:20.484827+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787611025141",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1541577114720014368,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rf1",
-        "correct": true,
-        "timestamp": "2026-08-24T22:37:12.592221+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787611040484",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
