@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-04-02",
     "title": "Ivanchuk - Morozevich, Memorial Donner 1996, modif",
     "fen": "1q2b2k/1p2b2r/1pn1N1pN/3RPB1p/1P6/P5Q1/2P3KP/8 w - - 0 1",
-    "current_fen": "1q2b2k/1p2b2r/1pn1N1pN/3RPB1p/1P6/P5Q1/2P3KP/8 w - - 0 1",
+    "current_fen": "1q2b2k/1p2b2r/1pn1N1BN/3RP3/1P5p/P5Q1/2P3KP/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1q2b2k/1p2b2r/1pn1N1pN/3RPB1p/1P6/P5Q1/2P3KP/8 w - - 0 1\"]\r\n\r\n1. Bxg6 h4 2. Qg4 Nxe5 3. Qf4 Bxg6 4. Rd8+ Qxd8 5. Nxd8\r\n*",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787574722478",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541424850499797127,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Bxg6",
+        "correct": true,
+        "timestamp": "2026-08-24T12:34:34.678978+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
