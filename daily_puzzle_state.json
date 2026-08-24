@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-07-01",
-    "title": "About That Resign Button...",
-    "fen": "R1b4r/3pkprp/2p1p3/1pNPKP2/8/2P4q/8/8 w - - 0 1",
-    "current_fen": "2R1k2r/1N1p1prp/2pPp3/1p2KP2/8/2P4q/8/8 b - - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"R1b4r/3pkprp/2p1p3/1pNPKP2/8/2P4q/8/8 w - - 0 1\"]\r\n\r\n1. d6+ Kd8 2. Nb7+ Ke8 3. Rxc8# *",
+    "url": "https://www.chess.com/daily/2025-01-15",
+    "title": "Puzzle Freeze",
+    "fen": "3n4/1p6/6p1/B1P2pP1/KPk2P2/P7/8/8 b - - 0 1",
+    "current_fen": "3n4/1p6/6p1/B1P2pP1/KPk2P2/P7/8/8 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3n4/1p6/6p1/B1P2pP1/KPk2P2/P7/8/8 b - - 0 1\"]\r\n\r\n1... b5+ 2. cxb6 Nb7 3. b5 Nc5# *",
     "all_moves": [
       {
-        "uci": "d5d6",
-        "san": "d6+",
-        "color": "white"
-      },
-      {
-        "uci": "e7d8",
-        "san": "Kd8",
+        "uci": "b7b5",
+        "san": "b5+",
         "color": "black"
       },
       {
-        "uci": "c5b7",
-        "san": "Nb7+",
+        "uci": "c5b6",
+        "san": "cxb6",
         "color": "white"
       },
       {
-        "uci": "d8e8",
-        "san": "Ke8",
+        "uci": "d8b7",
+        "san": "Nb7",
         "color": "black"
       },
       {
-        "uci": "a8c8",
-        "san": "Rxc8#",
+        "uci": "b4b5",
+        "san": "b5",
         "color": "white"
+      },
+      {
+        "uci": "b7c5",
+        "san": "Nc5#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5d6",
-        "san": "d6+",
-        "color": "white"
+        "uci": "b7b5",
+        "san": "b5+",
+        "color": "black"
       },
       {
-        "uci": "c5b7",
-        "san": "Nb7+",
-        "color": "white"
+        "uci": "d8b7",
+        "san": "Nb7",
+        "color": "black"
       },
       {
-        "uci": "a8c8",
-        "san": "Rxc8#",
-        "color": "white"
+        "uci": "b7c5",
+        "san": "Nc5#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-24T17:24:07.025979+00:00",
+    "posted_at": "2026-08-24T17:24:34.181040+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787592247025",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541498354578624663,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rxc8",
-        "correct": true,
-        "timestamp": "2026-08-24T17:24:28.698008+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787592274181",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
