@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-08-04",
     "title": "Considering Candidate Moves",
     "fen": "3N4/1p6/p7/P2rPk2/b4p2/N1B3pK/1P2R1P1/8 b - - 0 1",
-    "current_fen": "3N4/1p6/p7/P2rPk2/b4p2/N1B3pK/1P2R1P1/8 b - - 0 1",
+    "current_fen": "8/1p1r1N2/p7/P3Pk2/b4p2/N1B3pK/1P2R1P1/8 b - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"3N4/1p6/p7/P2rPk2/b4p2/N1B3pK/1P2R1P1/8 b - - 0 1\"]\r\n\r\n1... Rd7 2. Nf7 Rxf7 3. e6 Rh7# *",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787585084658",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541468313438396517,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Rxd8",
-        "correct": false,
-        "timestamp": "2026-08-24T15:27:29.418522+00:00"
+        "move": "Rd7",
+        "correct": true,
+        "timestamp": "2026-08-24T15:27:51.183129+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
