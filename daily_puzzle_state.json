@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-10-23",
     "title": "Pinfiltration",
     "fen": "1r4k1/5ppp/r1p5/1nq1N3/1p2P1P1/1B4bP/PB1QK3/3R4 w - - 0 1",
-    "current_fen": "1r5k/5Bpp/r1p5/1nq1N3/1p2P1P1/6bP/PB1QK3/3R4 w - - 1 2",
+    "current_fen": "1r5k/5Bp1/r1p3pQ/1nq5/1p2P1P1/6bP/PB2K3/3R4 b - - 1 3",
     "pgn": "[White \"JohanVA\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"1r4k1/5ppp/r1p5/1nq1N3/1p2P1P1/1B4bP/PB1QK3/3R4 w - - 0 1\"]\r\n\r\n1. Bxf7+ Kh8 2. Ng6+ hxg6 3. Qh6# 1-0",
     "all_moves": [
       {
@@ -57,29 +57,33 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787609126106",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1541569151162908783,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Qd8",
-        "correct": false,
-        "timestamp": "2026-08-24T22:05:49.674763+00:00"
+        "move": "Ng6",
+        "correct": true,
+        "timestamp": "2026-08-24T22:05:58.977627+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "bxf7",
+        "move": "qh6",
         "correct": true,
-        "timestamp": "2026-08-24T22:05:45.108123+00:00"
+        "timestamp": "2026-08-24T22:06:01.817074+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "442597396195704832"
+    ],
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
