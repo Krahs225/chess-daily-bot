@@ -1,47 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-09-01",
-    "title": "Undercover Hero 🦸",
-    "fen": "8/6Pp/7k/5q1P/7K/8/1B6/8 w - - 0 1",
-    "current_fen": "6N1/7p/7k/5q1P/7K/8/1B6/8 b - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/6Pp/7k/5q1P/7K/8/1B6/8 w - - 0 1\"]\r\n\r\n1. g8=N# *",
+    "url": "https://www.chess.com/daily/2019-10-20",
+    "title": "From Attacked to Attacking",
+    "fen": "8/1r5p/2p1k1p1/3pPp2/1n1P1P1P/4K3/2R5/4B3 w - - 0 1",
+    "current_fen": "8/1r5p/2p1k1p1/3pPp2/1n1P1P1P/4K3/2R5/4B3 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1r5p/2p1k1p1/3pPp2/1n1P1P1P/4K3/2R5/4B3 w - - 0 1\"]\r\n\r\n1. Rb2 Nc2+ 2. Rxc2\r\n*",
     "all_moves": [
       {
-        "uci": "g7g8n",
-        "san": "g8=N#",
+        "uci": "c2b2",
+        "san": "Rb2",
+        "color": "white"
+      },
+      {
+        "uci": "b4c2",
+        "san": "Nc2+",
+        "color": "black"
+      },
+      {
+        "uci": "b2c2",
+        "san": "Rxc2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g7g8n",
-        "san": "g8=N#",
+        "uci": "c2b2",
+        "san": "Rb2",
+        "color": "white"
+      },
+      {
+        "uci": "b2c2",
+        "san": "Rxc2",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-24T22:10:13.442315+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-24T22:10:40.651018+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787609413442",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1541570355427278989,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "g8=N",
-        "correct": true,
-        "timestamp": "2026-08-24T22:10:21.147489+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787609440651",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
