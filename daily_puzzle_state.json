@@ -68,95 +68,73 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "random",
+  "latest_puzzle_type": "daily",
   "current_puzzle": {
-    "url": "https://www.chess.com/daily/2026-08-23",
-    "title": "Take One for the Team",
-    "fen": "1nbr3k/r5p1/p4pP1/1ppBN3/P7/7n/1P1K4/5R1R w - - 0 1",
-    "current_fen": "1n1r3k/r5p1/p4pP1/1ppB4/P7/7R/1P1K4/8 b - - 0 4",
-    "pgn": "[Event \"Correspondence Game\"]\n[Date \"1986.??.??\"]\n[White \"Granberg\"]\n[Black \"Gubnitzkij + Pawns a4 and b5\"]\n[Result \"1-0\"]\n[FEN \"1nbr3k/r5p1/p4pP1/1ppBN3/P7/7n/1P1K4/5R1R w - - 0 1\"]\n\n1. Nd7 Bxd7 2. Rf3 Be6 3. Rfxh3+ Bxh3 4. Rxh3# 1-0",
+    "url": "https://www.chess.com/daily/2026-08-24",
+    "title": "Corner Kick",
+    "fen": "Q7/8/5b2/4k3/7B/p1q5/K1P5/8 w - - 0 1",
+    "current_fen": "Q7/8/5b2/4k3/7B/p1q5/K1P5/8 w - - 0 1",
+    "pgn": "[Result \"*\"]\n[FEN \"Q7/8/5b2/4k3/7B/p1q5/K1P5/8 w - - 0 1\"]\n\n1. Bxf6+ Kxf6 2. Qh8+ Ke6 3. Qxc3 *",
     "all_moves": [
       {
-        "uci": "e5d7",
-        "san": "Nd7",
+        "uci": "h4f6",
+        "san": "Bxf6+",
         "color": "white"
       },
       {
-        "uci": "c8d7",
-        "san": "Bxd7",
+        "uci": "e5f6",
+        "san": "Kxf6",
         "color": "black"
       },
       {
-        "uci": "f1f3",
-        "san": "Rf3",
+        "uci": "a8h8",
+        "san": "Qh8+",
         "color": "white"
       },
       {
-        "uci": "d7e6",
-        "san": "Be6",
+        "uci": "f6e6",
+        "san": "Ke6",
         "color": "black"
       },
       {
-        "uci": "f3h3",
-        "san": "Rfxh3+",
-        "color": "white"
-      },
-      {
-        "uci": "e6h3",
-        "san": "Bxh3",
-        "color": "black"
-      },
-      {
-        "uci": "h1h3",
-        "san": "Rxh3#",
+        "uci": "h8c3",
+        "san": "Qxc3",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5d7",
-        "san": "Nd7",
+        "uci": "h4f6",
+        "san": "Bxf6+",
         "color": "white"
       },
       {
-        "uci": "f1f3",
-        "san": "Rf3",
+        "uci": "a8h8",
+        "san": "Qh8+",
         "color": "white"
       },
       {
-        "uci": "f3h3",
-        "san": "Rfxh3+",
-        "color": "white"
-      },
-      {
-        "uci": "h1h3",
-        "san": "Rxh3#",
+        "uci": "h8c3",
+        "san": "Qxc3",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-23T09:39:10.685078+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-24T07:36:05.040445+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "daily_1787477950685",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
+    "puzzle_id": "daily_1787556965040",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rxh3",
-        "correct": true,
-        "timestamp": "2026-08-23T09:49:49.112094+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
