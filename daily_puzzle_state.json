@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-12-16",
     "title": "Szaja Kozlowski, 1931",
     "fen": "5rkB/5p1R/6P1/8/8/5K2/8/8 w - - 0 1",
-    "current_fen": "5rkB/5p1R/6P1/8/8/5K2/8/8 w - - 0 1",
+    "current_fen": "5r1k/5pR1/6P1/8/8/5K2/8/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rkB/5p1R/6P1/8/8/5K2/8/8 w - - 0 1\"]\r\n\r\n1. Rg7+ Kxh8 2. Rh7+ Kg8 3. g7\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787584748522",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541466903435022428,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rg7",
+        "correct": true,
+        "timestamp": "2026-08-24T15:19:27.702131+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
