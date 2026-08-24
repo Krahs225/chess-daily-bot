@@ -1,92 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-02-02",
-    "title": "I Play Against Pieces",
-    "fen": "6r1/4kp2/p1bRpp2/1pr1P3/5b1p/PBP1N3/1P4PP/1K1R4 w - - 0 28",
-    "current_fen": "3R1kr1/5p2/p1r2P2/1p3p2/5b1p/PBP5/1P4PP/1K6 b - - 1 31",
-    "pgn": "[Event \"Zurich\"]\r\n[Site \"Zurich SUI\"]\r\n[Date \"1959.05.21\"]\r\n[Round \"3\"]\r\n[White \"Svetozar Gligoric\"]\r\n[Black \"Erwin Nievergelt\"]\r\n[Result \"1-0\"]\r\n[FEN \"6r1/4kp2/p1bRpp2/1pr1P3/5b1p/PBP1N3/1P4PP/1K1R4 w - - 0 28\"]\r\n\r\n28.Nf5+ exf5 29.exf6+ Kf8 30.Rxc6 Rxc6 31.Rd8# 1-0",
+    "url": "https://www.chess.com/daily/2007-07-12",
+    "title": "How to Punish Black...",
+    "fen": "r3kb1r/1ppqnppp/p1bp4/5P1Q/2P5/8/PPB2PPP/RNB1R1K1 w kq - 0 1",
+    "current_fen": "r3kb1r/1ppqnppp/p1bp4/5P1Q/2P5/8/PPB2PPP/RNB1R1K1 w kq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3kb1r/1ppqnppp/p1bp4/5P1Q/2P5/8/PPB2PPP/RNB1R1K1 w kq - 0 1\"]\r\n\r\n1. f6 gxf6 { Black must capture or lose the knight.  }  2. Bf5 { White keeps black from escaping by castling queenside! The bishop cannot be taken of course because the knight is pinned.  }  2... Qd8 3. Be6 Ng6 ( 3... Qb8 4. Qxf7+ Kd8 5. Qxf6 { And the rook is lost as well... }  ) 4. Bd7+ { Not an easy move to find!  }  4... Kxd7 5. Qf5#\r\n*",
     "all_moves": [
       {
-        "uci": "e3f5",
-        "san": "Nf5+",
+        "uci": "f5f6",
+        "san": "f6",
         "color": "white"
       },
       {
-        "uci": "e6f5",
-        "san": "exf5",
+        "uci": "g7f6",
+        "san": "gxf6",
         "color": "black"
       },
       {
-        "uci": "e5f6",
-        "san": "exf6+",
+        "uci": "c2f5",
+        "san": "Bf5",
         "color": "white"
       },
       {
-        "uci": "e7f8",
-        "san": "Kf8",
+        "uci": "d7d8",
+        "san": "Qd8",
         "color": "black"
       },
       {
-        "uci": "d6c6",
-        "san": "Rxc6",
+        "uci": "f5e6",
+        "san": "Be6",
         "color": "white"
       },
       {
-        "uci": "c5c6",
-        "san": "Rxc6",
+        "uci": "e7g6",
+        "san": "Ng6",
         "color": "black"
       },
       {
-        "uci": "d1d8",
-        "san": "Rd8#",
+        "uci": "e6d7",
+        "san": "Bd7+",
+        "color": "white"
+      },
+      {
+        "uci": "e8d7",
+        "san": "Kxd7",
+        "color": "black"
+      },
+      {
+        "uci": "h5f5",
+        "san": "Qf5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e3f5",
-        "san": "Nf5+",
+        "uci": "f5f6",
+        "san": "f6",
         "color": "white"
       },
       {
-        "uci": "e5f6",
-        "san": "exf6+",
+        "uci": "c2f5",
+        "san": "Bf5",
         "color": "white"
       },
       {
-        "uci": "d6c6",
-        "san": "Rxc6",
+        "uci": "f5e6",
+        "san": "Be6",
         "color": "white"
       },
       {
-        "uci": "d1d8",
-        "san": "Rd8#",
+        "uci": "e6d7",
+        "san": "Bd7+",
+        "color": "white"
+      },
+      {
+        "uci": "h5f5",
+        "san": "Qf5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-24T17:38:15.571797+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-24T17:45:38.350272+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787593095571",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541501913173073953,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rd8",
-        "correct": true,
-        "timestamp": "2026-08-24T17:45:24.162671+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787593538350",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
