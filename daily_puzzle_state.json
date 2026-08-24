@@ -1,104 +1,97 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-09-03",
-    "title": "Magnus From the Top Rope!",
-    "fen": "5k1r/p1Br1pb1/6q1/1pp2Npp/3n4/P2Q3P/1P3PP1/3RR2K w - - 0 29",
-    "current_fen": "5k1r/p1Br1pb1/6q1/1pp2Npp/3n4/P2Q3P/1P3PP1/3RR2K w - - 0 29",
-    "pgn": "[Event \"FIDE World Cup 2023\"]\r\n[Site \"Chess.com\"]\r\n[Date \"2023.08.03\"]\r\n[Round \"2\"]\r\n[White \"Carlsen, Magnus\"]\r\n[Black \"Pantsulaia, Levan\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2835\"]\r\n[BlackElo \"2564\"]\r\n[FEN \"5k1r/p1Br1pb1/6q1/1pp2Npp/3n4/P2Q3P/1P3PP1/3RR2K w - - 0 29\"]\r\n\r\n29. Re8+ Kxe8 30. Qe4+ Ne6 31. Qa8+ Nd8 32. Qxd8+ Rxd8 33. Rxd8# 1-0",
+    "url": "https://www.chess.com/daily/2021-08-18",
+    "title": "An Active Piece",
+    "fen": "8/8/Rb2p1pp/4k3/1r4P1/pB1KP2P/P7/8 w - - 0 1",
+    "current_fen": "8/8/Rb2p1pp/4k3/1r4P1/pB1KP2P/P7/8 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/8/Rb2p1pp/4k3/1r4P1/pB1KP2P/P7/8 w - - 0 1\"]\r\n\r\n1.Kc3 Rb5 2.Kc4 Rc5+ 3.Kb4 Rc6 4.Kb5 Rd6 5.Rxb6 *",
     "all_moves": [
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "d3c3",
+        "san": "Kc3",
         "color": "white"
       },
       {
-        "uci": "f8e8",
-        "san": "Kxe8",
+        "uci": "b4b5",
+        "san": "Rb5",
         "color": "black"
       },
       {
-        "uci": "d3e4",
-        "san": "Qe4+",
+        "uci": "c3c4",
+        "san": "Kc4",
         "color": "white"
       },
       {
-        "uci": "d4e6",
-        "san": "Ne6",
+        "uci": "b5c5",
+        "san": "Rc5+",
         "color": "black"
       },
       {
-        "uci": "e4a8",
-        "san": "Qa8+",
+        "uci": "c4b4",
+        "san": "Kb4",
         "color": "white"
       },
       {
-        "uci": "e6d8",
-        "san": "Nd8",
+        "uci": "c5c6",
+        "san": "Rc6",
         "color": "black"
       },
       {
-        "uci": "a8d8",
-        "san": "Qxd8+",
+        "uci": "b4b5",
+        "san": "Kb5",
         "color": "white"
       },
       {
-        "uci": "d7d8",
-        "san": "Rxd8",
+        "uci": "c6d6",
+        "san": "Rd6",
         "color": "black"
       },
       {
-        "uci": "d1d8",
-        "san": "Rxd8#",
+        "uci": "a6b6",
+        "san": "Rxb6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1e8",
-        "san": "Re8+",
+        "uci": "d3c3",
+        "san": "Kc3",
         "color": "white"
       },
       {
-        "uci": "d3e4",
-        "san": "Qe4+",
+        "uci": "c3c4",
+        "san": "Kc4",
         "color": "white"
       },
       {
-        "uci": "e4a8",
-        "san": "Qa8+",
+        "uci": "c4b4",
+        "san": "Kb4",
         "color": "white"
       },
       {
-        "uci": "a8d8",
-        "san": "Qxd8+",
+        "uci": "b4b5",
+        "san": "Kb5",
         "color": "white"
       },
       {
-        "uci": "d1d8",
-        "san": "Rxd8#",
+        "uci": "a6b6",
+        "san": "Rxb6",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 5,
-    "posted_at": "2026-08-24T17:13:15.285656+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-24T17:16:56.854642+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787591595285",
+    "puzzle_id": "random_1787591816854",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541495620404248748,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bd6",
-        "correct": false,
-        "timestamp": "2026-08-24T17:13:40.813052+00:00"
-      }
-    },
+    "message_id": 1541496549631332366,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
