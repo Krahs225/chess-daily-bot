@@ -1,137 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-02-22",
-    "title": "Assult on the King!",
-    "fen": "r4bk1/pbq2pp1/1pn1p2p/8/4N3/1P2P1P1/PB2QPBP/3R2K1 w - - 0 1",
-    "current_fen": "r4b2/pbqR1p1k/1pn4p/8/6Q1/1P2P1P1/PB3P1P/6K1 b - - 4 7",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4bk1/pbq2pp1/1pn1p2p/8/4N3/1P2P1P1/PB2QPBP/3R2K1 w - - 0 1\"]\r\n\r\n1. Nf6+ gxf6 2. Qg4+ Kh7 3. Be4+ f5 4. Bxf5+ exf5 5. Qxf5+ Kg8 6. Qg4+ Kh7 7. Rd7\r\n*",
+    "url": "https://www.chess.com/daily/2024-04-16",
+    "title": "Coach Dalton's Fancy Footwork",
+    "fen": "8/5k2/1p2p3/2p2p2/p1Pn2q1/P2Q2P1/1P3P2/5BK1 b - - 0 37",
+    "current_fen": "8/5k2/1p2p3/2p2p2/p1Pn2q1/P2Q2P1/1P3P2/5BK1 b - - 0 37",
+    "pgn": "[Event \"Southwest Class Championship 2022\"]\r\n[Site \"Charlotte\"]\r\n[Date \"2022.02.20\"]\r\n[Round \"6\"]\r\n[White \"Liu, Eric\"]\r\n[Black \"Perrine, Dalton\"]\r\n[Result \"0-1\"]\r\n[WhiteElo \"2077\"]\r\n[BlackElo \"2264\"]\r\n[FEN \"8/5k2/1p2p3/2p2p2/p1Pn2q1/P2Q2P1/1P3P2/5BK1 b - - 0 37\"]\r\n\r\n37... Nf3+ 38. Kh1 Qh5+ 39. Kg2 Ne1+ 40. Kg1 Nxd3 *",
     "all_moves": [
       {
-        "uci": "e4f6",
-        "san": "Nf6+",
-        "color": "white"
-      },
-      {
-        "uci": "g7f6",
-        "san": "gxf6",
+        "uci": "d4f3",
+        "san": "Nf3+",
         "color": "black"
       },
       {
-        "uci": "e2g4",
-        "san": "Qg4+",
+        "uci": "g1h1",
+        "san": "Kh1",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "g4h5",
+        "san": "Qh5+",
         "color": "black"
       },
       {
-        "uci": "g2e4",
-        "san": "Be4+",
+        "uci": "h1g2",
+        "san": "Kg2",
         "color": "white"
       },
       {
-        "uci": "f6f5",
-        "san": "f5",
+        "uci": "f3e1",
+        "san": "Ne1+",
         "color": "black"
       },
       {
-        "uci": "e4f5",
-        "san": "Bxf5+",
+        "uci": "g2g1",
+        "san": "Kg1",
         "color": "white"
       },
       {
-        "uci": "e6f5",
-        "san": "exf5",
+        "uci": "e1d3",
+        "san": "Nxd3",
         "color": "black"
-      },
-      {
-        "uci": "g4f5",
-        "san": "Qxf5+",
-        "color": "white"
-      },
-      {
-        "uci": "h7g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "f5g4",
-        "san": "Qg4+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h7",
-        "san": "Kh7",
-        "color": "black"
-      },
-      {
-        "uci": "d1d7",
-        "san": "Rd7",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4f6",
-        "san": "Nf6+",
-        "color": "white"
+        "uci": "d4f3",
+        "san": "Nf3+",
+        "color": "black"
       },
       {
-        "uci": "e2g4",
-        "san": "Qg4+",
-        "color": "white"
+        "uci": "g4h5",
+        "san": "Qh5+",
+        "color": "black"
       },
       {
-        "uci": "g2e4",
-        "san": "Be4+",
-        "color": "white"
+        "uci": "f3e1",
+        "san": "Ne1+",
+        "color": "black"
       },
       {
-        "uci": "e4f5",
-        "san": "Bxf5+",
-        "color": "white"
-      },
-      {
-        "uci": "g4f5",
-        "san": "Qxf5+",
-        "color": "white"
-      },
-      {
-        "uci": "f5g4",
-        "san": "Qg4+",
-        "color": "white"
-      },
-      {
-        "uci": "d1d7",
-        "san": "Rd7",
-        "color": "white"
+        "uci": "e1d3",
+        "san": "Nxd3",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-08-24T17:28:12.272659+00:00",
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-24T17:31:17.542342+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787592492272",
-    "next_solution_index": 13,
-    "next_player_index": 7,
-    "solved": true,
-    "message_id": 1541499383521091634,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rd7",
-        "correct": true,
-        "timestamp": "2026-08-24T17:31:11.632449+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787592677542",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
