@@ -1,152 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-10-14",
-    "title": "Michel Caillaud, diagrammes, 1979",
-    "fen": "7k/7p/6p1/6p1/4p1p1/4K1P1/1P4P1/8 w - - 0 1",
-    "current_fen": "8/8/5Npp/6pk/3K2p1/6P1/6P1/4q3 b - - 1 8",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7k/7p/6p1/6p1/4p1p1/4K1P1/1P4P1/8 w - - 0 1\"]\r\n\r\n1. b4 Kg7 2. b5 Kh6 3. b6 Kh5 4. b7 h6 5. Kd4 e3 6. b8=N e2 7. Nd7 e1=Q 8.\r\nNf6#\r\n*",
+    "url": "https://www.chess.com/daily/2025-06-03",
+    "title": "Zwischenzug Zigzag",
+    "fen": "1r1r2k1/pBR2pb1/7p/3npbp1/1R6/P3B1P1/3N1PP1/6K1 w - - 0 1",
+    "current_fen": "3r2k1/p1R2pb1/7p/3Bpbp1/1r6/P3B1P1/3N1PP1/6K1 w - - 0 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1r1r2k1/pBR2pb1/7p/3npbp1/1R6/P3B1P1/3N1PP1/6K1 w - - 0 1\"]\r\n\r\n1. Bxd5 Rxb4 2. Bxf7+ Kh8 3. axb4 *",
     "all_moves": [
       {
-        "uci": "b2b4",
-        "san": "b4",
+        "uci": "b7d5",
+        "san": "Bxd5",
         "color": "white"
       },
       {
-        "uci": "h8g7",
-        "san": "Kg7",
+        "uci": "b8b4",
+        "san": "Rxb4",
         "color": "black"
       },
       {
-        "uci": "b4b5",
-        "san": "b5",
+        "uci": "d5f7",
+        "san": "Bxf7+",
         "color": "white"
       },
       {
-        "uci": "g7h6",
-        "san": "Kh6",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "b5b6",
-        "san": "b6",
-        "color": "white"
-      },
-      {
-        "uci": "h6h5",
-        "san": "Kh5",
-        "color": "black"
-      },
-      {
-        "uci": "b6b7",
-        "san": "b7",
-        "color": "white"
-      },
-      {
-        "uci": "h7h6",
-        "san": "h6",
-        "color": "black"
-      },
-      {
-        "uci": "e3d4",
-        "san": "Kd4",
-        "color": "white"
-      },
-      {
-        "uci": "e4e3",
-        "san": "e3",
-        "color": "black"
-      },
-      {
-        "uci": "b7b8n",
-        "san": "b8=N",
-        "color": "white"
-      },
-      {
-        "uci": "e3e2",
-        "san": "e2",
-        "color": "black"
-      },
-      {
-        "uci": "b8d7",
-        "san": "Nd7",
-        "color": "white"
-      },
-      {
-        "uci": "e2e1q",
-        "san": "e1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "d7f6",
-        "san": "Nf6#",
+        "uci": "a3b4",
+        "san": "axb4",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b2b4",
-        "san": "b4",
+        "uci": "b7d5",
+        "san": "Bxd5",
         "color": "white"
       },
       {
-        "uci": "b4b5",
-        "san": "b5",
+        "uci": "d5f7",
+        "san": "Bxf7+",
         "color": "white"
       },
       {
-        "uci": "b5b6",
-        "san": "b6",
-        "color": "white"
-      },
-      {
-        "uci": "b6b7",
-        "san": "b7",
-        "color": "white"
-      },
-      {
-        "uci": "e3d4",
-        "san": "Kd4",
-        "color": "white"
-      },
-      {
-        "uci": "b7b8n",
-        "san": "b8=N",
-        "color": "white"
-      },
-      {
-        "uci": "b8d7",
-        "san": "Nd7",
-        "color": "white"
-      },
-      {
-        "uci": "d7f6",
-        "san": "Nf6#",
+        "uci": "a3b4",
+        "san": "axb4",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 8,
-    "posted_at": "2026-08-24T12:50:47.082794+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-24T12:52:14.645005+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787575847082",
-    "next_solution_index": 15,
-    "next_player_index": 8,
-    "solved": true,
-    "message_id": 1541429567217082502,
+    "puzzle_id": "random_1787575934645",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541429934608879627,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Nf6",
+        "move": "Bxd5",
         "correct": true,
-        "timestamp": "2026-08-24T12:52:08.208237+00:00"
+        "timestamp": "2026-08-24T12:52:26.205046+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
