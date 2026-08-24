@@ -1,77 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-11-24",
-    "title": "With The Help of a Little Friend",
-    "fen": "7r/1k1n2p1/1p5p/p2p1p2/1q3P2/1Q1P2P1/5PBP/2R3K1 w - - 0 1",
-    "current_fen": "7r/1Q1n2p1/1pB4p/pk3p2/1q3P2/3P2P1/5P1P/2R3K1 b - - 4 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7r/1k1n2p1/1p5p/p2p1p2/1q3P2/1Q1P2P1/5PBP/2R3K1 w - - 0 1\"]\r\n\r\n1. Qxd5+ Ka6 2. Qb7+ Kb5 3. Bc6#\r\n*",
+    "url": "https://www.chess.com/daily/2026-01-02",
+    "title": "Queen or the Kingdom?",
+    "fen": "2Q5/8/3pqkpp/p7/4PPP1/8/8/6K1 w - - 0 1",
+    "current_fen": "5Q2/5q2/3p1kpp/p7/4PPP1/8/8/6K1 w - - 2 2",
+    "pgn": "[White \"Peerlings, C.\"]\r\n[Black \"Majhi, A.\"]\r\n[Result \"1-0\"]\r\n[FEN \"2Q5/8/3pqkpp/p7/4PPP1/8/8/6K1 w - - 0 1\"]\r\n\r\n1. Qf8+ Qf7 2. e5+ dxe5 3. fxe5+ Ke6 4. Qd6# 1-0",
     "all_moves": [
       {
-        "uci": "b3d5",
-        "san": "Qxd5+",
+        "uci": "c8f8",
+        "san": "Qf8+",
         "color": "white"
       },
       {
-        "uci": "b7a6",
-        "san": "Ka6",
+        "uci": "e6f7",
+        "san": "Qf7",
         "color": "black"
       },
       {
-        "uci": "d5b7",
-        "san": "Qb7+",
+        "uci": "e4e5",
+        "san": "e5+",
         "color": "white"
       },
       {
-        "uci": "a6b5",
-        "san": "Kb5",
+        "uci": "d6e5",
+        "san": "dxe5",
         "color": "black"
       },
       {
-        "uci": "g2c6",
-        "san": "Bc6#",
+        "uci": "f4e5",
+        "san": "fxe5+",
+        "color": "white"
+      },
+      {
+        "uci": "f6e6",
+        "san": "Ke6",
+        "color": "black"
+      },
+      {
+        "uci": "f8d6",
+        "san": "Qd6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b3d5",
-        "san": "Qxd5+",
+        "uci": "c8f8",
+        "san": "Qf8+",
         "color": "white"
       },
       {
-        "uci": "d5b7",
-        "san": "Qb7+",
+        "uci": "e4e5",
+        "san": "e5+",
         "color": "white"
       },
       {
-        "uci": "g2c6",
-        "san": "Bc6#",
+        "uci": "f4e5",
+        "san": "fxe5+",
+        "color": "white"
+      },
+      {
+        "uci": "f8d6",
+        "san": "Qd6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-24T12:28:29.137062+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-24T12:29:17.536209+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787574509137",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541423956383367188,
+    "puzzle_id": "random_1787574557536",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541424158536368160,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Bc6",
+        "move": "Qf8",
         "correct": true,
-        "timestamp": "2026-08-24T12:29:11.660825+00:00"
+        "timestamp": "2026-08-24T12:30:11.152734+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
