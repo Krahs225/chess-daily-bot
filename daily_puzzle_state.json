@@ -1,61 +1,54 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-01-13",
-    "title": "Back to the Basics",
-    "fen": "6k1/6pp/1p2p3/p1pN4/4P3/1qP2RPP/6BK/8 w - - 0 1",
-    "current_fen": "7k/4N1pp/1p2p3/p1p5/4P3/1qP2RPP/6BK/8 w - - 2 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/6pp/1p2p3/p1pN4/4P3/1qP2RPP/6BK/8 w - - 0 1\"]\r\n\r\n1. Ne7+ Kh8 2. Rf8#\r\n*",
+    "url": "https://www.chess.com/daily/2013-08-19",
+    "title": "Us Chess League Mating Action",
+    "fen": "8/rq5k/5p1p/3pnP2/2n2Q2/p1P5/6R1/6RK w - - 0 1",
+    "current_fen": "8/rq5k/5p1p/3pnP2/2n2Q2/p1P5/6R1/6RK w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/rq5k/5p1p/3pnP2/2n2Q2/p1P5/6R1/6RK w - - 0 1\"]\r\n\r\n1. Qxh6+ Kxh6 2. Rh2# \r\n*",
     "all_moves": [
       {
-        "uci": "d5e7",
-        "san": "Ne7+",
+        "uci": "f4h6",
+        "san": "Qxh6+",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "h7h6",
+        "san": "Kxh6",
         "color": "black"
       },
       {
-        "uci": "f3f8",
-        "san": "Rf8#",
+        "uci": "g2h2",
+        "san": "Rh2#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5e7",
-        "san": "Ne7+",
+        "uci": "f4h6",
+        "san": "Qxh6+",
         "color": "white"
       },
       {
-        "uci": "f3f8",
-        "san": "Rf8#",
+        "uci": "g2h2",
+        "san": "Rh2#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-08-24T22:32:51.534674+00:00",
+    "posted_at": "2026-08-24T22:33:04.868481+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787610771534",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "puzzle_id": "random_1787610784868",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1541576052311203850,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Ne7",
-        "correct": true,
-        "timestamp": "2026-08-24T22:32:58.900376+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
