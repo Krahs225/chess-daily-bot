@@ -1,47 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-01-31",
-    "title": "Mate in 1",
-    "fen": "8/8/5NqB/8/8/2p2kp1/6Rr/4K2R w KQkq - 0 1",
-    "current_fen": "8/8/5NqB/8/8/2p2kp1/6Rr/5RK1 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/5NqB/8/8/2p2kp1/6Rr/4K2R w KQkq - 0 1\"]\r\n\r\n1. 0-0\r\n*",
+    "url": "https://www.chess.com/daily/2021-12-07",
+    "title": "Overburdened Defense",
+    "fen": "5rk1/B2p2b1/4n1p1/7p/1P6/2q2BP1/4Q1KP/1R6 b - - 0 1",
+    "current_fen": "6k1/B2p2b1/4n1p1/7p/1P6/2q2QP1/6KP/1R6 b - - 0 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"5rk1/B2p2b1/4n1p1/7p/1P6/2q2BP1/4Q1KP/1R6 b - - 0 1\"]\r\n\r\n1...Rxf3 2.Qxf3 Qc2+ 3.Bf2 Qxb1 *",
     "all_moves": [
       {
-        "uci": "e1g1",
-        "san": "O-O#",
+        "uci": "f8f3",
+        "san": "Rxf3",
+        "color": "black"
+      },
+      {
+        "uci": "e2f3",
+        "san": "Qxf3",
         "color": "white"
+      },
+      {
+        "uci": "c3c2",
+        "san": "Qc2+",
+        "color": "black"
+      },
+      {
+        "uci": "a7f2",
+        "san": "Bf2",
+        "color": "white"
+      },
+      {
+        "uci": "c2b1",
+        "san": "Qxb1",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1g1",
-        "san": "O-O#",
-        "color": "white"
+        "uci": "f8f3",
+        "san": "Rxf3",
+        "color": "black"
+      },
+      {
+        "uci": "c3c2",
+        "san": "Qc2+",
+        "color": "black"
+      },
+      {
+        "uci": "c2b1",
+        "san": "Qxb1",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-24T12:26:44.638662+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-24T12:27:18.491294+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787574404638",
-    "next_solution_index": 1,
+    "puzzle_id": "random_1787574438491",
+    "next_solution_index": 2,
     "next_player_index": 1,
-    "solved": true,
-    "message_id": 1541423517646725140,
+    "solved": false,
+    "message_id": 1541423660076638309,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "o-o",
+        "move": "Rxf3",
         "correct": true,
-        "timestamp": "2026-08-24T12:27:11.993493+00:00"
+        "timestamp": "2026-08-24T12:27:28.737731+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
