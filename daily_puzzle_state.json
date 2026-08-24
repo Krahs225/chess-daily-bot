@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-10-20",
     "title": "From Attacked to Attacking",
     "fen": "8/1r5p/2p1k1p1/3pPp2/1n1P1P1P/4K3/2R5/4B3 w - - 0 1",
-    "current_fen": "8/1r5p/2p1k1p1/3pPp2/1n1P1P1P/4K3/2R5/4B3 w - - 0 1",
+    "current_fen": "8/1r5p/2p1k1p1/3pPp2/3P1P1P/4K3/1Rn5/4B3 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1r5p/2p1k1p1/3pPp2/1n1P1P1P/4K3/2R5/4B3 w - - 0 1\"]\r\n\r\n1. Rb2 Nc2+ 2. Rxc2\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787585673374",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541470781966389349,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rb2",
+        "correct": true,
+        "timestamp": "2026-08-24T15:34:43.579977+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
