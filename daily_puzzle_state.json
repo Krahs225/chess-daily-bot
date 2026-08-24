@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-08-19",
     "title": "Us Chess League Mating Action",
     "fen": "8/rq5k/5p1p/3pnP2/2n2Q2/p1P5/6R1/6RK w - - 0 1",
-    "current_fen": "8/rq5k/5p1p/3pnP2/2n2Q2/p1P5/6R1/6RK w - - 0 1",
+    "current_fen": "8/rq6/5p1k/3pnP2/2n5/p1P5/6R1/6RK w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/rq5k/5p1p/3pnP2/2n2Q2/p1P5/6R1/6RK w - - 0 1\"]\r\n\r\n1. Qxh6+ Kxh6 2. Rh2# \r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787610784868",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541576107395129488,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Qxh6",
+        "correct": true,
+        "timestamp": "2026-08-24T22:33:16.027762+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
