@@ -1,141 +1,51 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-09-13",
-    "title": "Gadia - Mendes, Sao Paulo 1967",
-    "fen": "2r1r3/1p1q2kp/p1nP1pp1/3B1b2/5P2/B1Q3P1/7P/R3R1K1 w Q - 0 1",
-    "current_fen": "2r1r3/1p1q2kp/p1nP1pp1/3B1b2/5P2/B1Q3P1/7P/R3R1K1 w Q - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1r3/1p1q2kp/p1nP1pp1/3B1b2/5P2/B1Q3P1/7P/R3R1K1 w Q - 0 1\"]\r\n\r\n1. Qxf6+ Kxf6 2. Bb2+ Ne5 3. Rxe5 Be6 4. Rxe6+ Kf5 5. Rae1 Rxe6 6. Bxe6+ Qxe6 7. g4+ Kxg4 8. Rxe6\r\n*",
+    "url": "https://www.chess.com/daily/2023-10-25",
+    "title": "Clearing the Air",
+    "fen": "r2r2k1/5pB1/2pq3p/p3pP1p/8/P4Q2/1bP2P1P/1R2R2K b - - 0 1",
+    "current_fen": "r2r2k1/5pB1/2pq3p/p3pP1p/8/P4Q2/1bP2P1P/1R2R2K b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r2r2k1/5pB1/2pq3p/p3pP1p/8/P4Q2/1bP2P1P/1R2R2K b - - 0 1\"]\r\n\r\n1... e4 2. Qxh5 Bxg7 *",
     "all_moves": [
       {
-        "uci": "c3f6",
-        "san": "Qxf6+",
-        "color": "white"
-      },
-      {
-        "uci": "g7f6",
-        "san": "Kxf6",
+        "uci": "e5e4",
+        "san": "e4",
         "color": "black"
       },
       {
-        "uci": "a3b2",
-        "san": "Bb2+",
+        "uci": "f3h5",
+        "san": "Qxh5",
         "color": "white"
       },
       {
-        "uci": "c6e5",
-        "san": "Ne5",
+        "uci": "b2g7",
+        "san": "Bxg7",
         "color": "black"
-      },
-      {
-        "uci": "e1e5",
-        "san": "Rxe5",
-        "color": "white"
-      },
-      {
-        "uci": "f5e6",
-        "san": "Be6",
-        "color": "black"
-      },
-      {
-        "uci": "e5e6",
-        "san": "Rxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "f6f5",
-        "san": "Kf5",
-        "color": "black"
-      },
-      {
-        "uci": "a1e1",
-        "san": "Rae1",
-        "color": "white"
-      },
-      {
-        "uci": "e8e6",
-        "san": "Rxe6",
-        "color": "black"
-      },
-      {
-        "uci": "d5e6",
-        "san": "Bxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "d7e6",
-        "san": "Qxe6",
-        "color": "black"
-      },
-      {
-        "uci": "g3g4",
-        "san": "g4+",
-        "color": "white"
-      },
-      {
-        "uci": "f5g4",
-        "san": "Kxg4",
-        "color": "black"
-      },
-      {
-        "uci": "e1e6",
-        "san": "Rxe6",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3f6",
-        "san": "Qxf6+",
-        "color": "white"
+        "uci": "e5e4",
+        "san": "e4",
+        "color": "black"
       },
       {
-        "uci": "a3b2",
-        "san": "Bb2+",
-        "color": "white"
-      },
-      {
-        "uci": "e1e5",
-        "san": "Rxe5",
-        "color": "white"
-      },
-      {
-        "uci": "e5e6",
-        "san": "Rxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "a1e1",
-        "san": "Rae1",
-        "color": "white"
-      },
-      {
-        "uci": "d5e6",
-        "san": "Bxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "g3g4",
-        "san": "g4+",
-        "color": "white"
-      },
-      {
-        "uci": "e1e6",
-        "san": "Rxe6",
-        "color": "white"
+        "uci": "b2g7",
+        "san": "Bxg7",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 8,
-    "posted_at": "2026-08-24T15:41:54.676421+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-24T15:42:09.764359+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787586114676",
+    "puzzle_id": "random_1787586129764",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541472632862543913,
+    "message_id": 1541472696922148904,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
