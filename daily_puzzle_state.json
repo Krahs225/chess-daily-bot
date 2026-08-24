@@ -1,91 +1,54 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-07-26",
-    "title": "Eye of the Chess Tiger",
-    "fen": "3r3k/1p5p/r5q1/n1Qpb3/4p3/1PN5/PBP2PPP/3R1RK1 b - - 0 29",
-    "current_fen": "3r3k/1p5p/r7/n1Qp4/4p3/1PN5/PBP2PK1/3R1R2 b - - 0 31",
-    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"chesstiger787\"]\r\n[Result \"0-1\"]\r\n[FEN \"3r3k/1p5p/r5q1/n1Qpb3/4p3/1PN5/PBP2PPP/3R1RK1 b - - 0 29\"]\r\n\r\n29... Bxh2+ 30. Kxh2 Qxg2+ 31. Kxg2 Rg8+ 32. Kh3 Rh6# 0-1",
+    "url": "https://www.chess.com/daily/2020-11-22",
+    "title": "Cooldown",
+    "fen": "r1b1k1nr/1p2pp2/p2p2p1/P1pN3p/2P1P3/1nqP2P1/R1N1KP1P/1Q3B1R b kq - 1 1",
+    "current_fen": "r1b1k1nr/1p2pp2/p2p2p1/P1pN3p/2P1P3/1nqP2P1/R1N1KP1P/1Q3B1R b kq - 1 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r1b1k1nr/1p2pp2/p2p2p1/P1pN3p/2P1P3/1nqP2P1/R1N1KP1P/1Q3B1R b kq - 1 1\"]\r\n\r\n1...Bg4+ 2.f3 Qd2# 1-0",
     "all_moves": [
       {
-        "uci": "e5h2",
-        "san": "Bxh2+",
+        "uci": "c8g4",
+        "san": "Bg4+",
         "color": "black"
       },
       {
-        "uci": "g1h2",
-        "san": "Kxh2",
+        "uci": "f2f3",
+        "san": "f3",
         "color": "white"
       },
       {
-        "uci": "g6g2",
-        "san": "Qxg2+",
-        "color": "black"
-      },
-      {
-        "uci": "h2g2",
-        "san": "Kxg2",
-        "color": "white"
-      },
-      {
-        "uci": "d8g8",
-        "san": "Rg8+",
-        "color": "black"
-      },
-      {
-        "uci": "g2h3",
-        "san": "Kh3",
-        "color": "white"
-      },
-      {
-        "uci": "a6h6",
-        "san": "Rh6#",
+        "uci": "c3d2",
+        "san": "Qd2#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5h2",
-        "san": "Bxh2+",
+        "uci": "c8g4",
+        "san": "Bg4+",
         "color": "black"
       },
       {
-        "uci": "g6g2",
-        "san": "Qxg2+",
-        "color": "black"
-      },
-      {
-        "uci": "d8g8",
-        "san": "Rg8+",
-        "color": "black"
-      },
-      {
-        "uci": "a6h6",
-        "san": "Rh6#",
+        "uci": "c3d2",
+        "san": "Qd2#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-24T14:58:29.214752+00:00",
+    "player_move_count": 2,
+    "posted_at": "2026-08-24T15:00:57.060003+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787583509214",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "puzzle_id": "random_1787583657060",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1541461704813322352,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qxg2",
-        "correct": true,
-        "timestamp": "2026-08-24T15:00:47.515018+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
