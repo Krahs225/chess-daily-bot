@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-09-08",
     "title": "Endgame Catapult",
     "fen": "3B4/8/7N/3p3k/K2P3n/6p1/8/8 w - - 0 1",
-    "current_fen": "3B4/8/7N/3p3k/K2P3n/6p1/8/8 w - - 0 1",
+    "current_fen": "8/8/7N/3p4/K2P3k/6p1/8/8 w - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"3B4/8/7N/3p3k/K2P3n/6p1/8/8 w - - 0 1\"]\r\n\r\n1.Bxh4 Kxh4 2.Nf5+ Kg4 3.Nxg3 Kxg3 4.Kb5 Kf4 5.Kc6 Ke4 6.Kc5 Kf5 7.Kxd5 *",
     "all_moves": [
       {
@@ -117,13 +117,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787575804178",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541429388602777700,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Bxh4",
+        "correct": true,
+        "timestamp": "2026-08-24T12:50:16.719158+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
