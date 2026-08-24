@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-12-30",
-    "title": "Aman's Birthday Present",
-    "fen": "r1b2rk1/1p1nq1b1/p2p3p/2pP1pp1/P3n3/2N3P1/1PQNPPBP/R1B1R1K1 b - - 3 19",
-    "current_fen": "r1b2rk1/1p6/p2p3p/2pPnpp1/P2b4/2N2KP1/1PQNP1BP/R1B1R3 w - - 3 23",
-    "pgn": "[Event \"Live Chess\"]\r\n[Site \"Chess.com\"]\r\n[Date \"2021.09.27\"]\r\n[White \"lonelyzeng\"]\r\n[Black \"KNVB\"]\r\n[Result \"0-1\"]\r\n[WhiteElo \"2811\"]\r\n[BlackElo \"2757\"]\r\n[TimeControl \"180\"]\r\n[Termination \"KNVB won by checkmate\"]\r\n[FEN \"r1b2rk1/1p1nq1b1/p2p3p/2pP1pp1/P3n3/2N3P1/1PQNPPBP/R1B1R1K1 b - - 3 19\"]\r\n\r\n19...Nxf2 20.Kxf2 Qe3+ 21.Kxe3 Bd4+ 22.Kf3 Ne5# 0-1",
+    "url": "https://www.chess.com/daily/2014-01-20",
+    "title": "Back Ranked",
+    "fen": "5rk1/pp3ppp/1b1Q4/1P6/P6n/5pBP/q5BP/4R2K w - - 0 1",
+    "current_fen": "5rk1/pp3ppp/1b1Q4/1P6/P6n/5pBP/q5BP/4R2K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/pp3ppp/1b1Q4/1P6/P6n/5pBP/q5BP/4R2K w - - 0 1\"]\r\n\r\n1. Qxf8+ Kxf8 2. Bd6+ Kg8 3. Re8#\r\n*",
     "all_moves": [
       {
-        "uci": "e4f2",
-        "san": "Nxf2",
-        "color": "black"
-      },
-      {
-        "uci": "g1f2",
-        "san": "Kxf2",
+        "uci": "d6f8",
+        "san": "Qxf8+",
         "color": "white"
       },
       {
-        "uci": "e7e3",
-        "san": "Qe3+",
+        "uci": "g8f8",
+        "san": "Kxf8",
         "color": "black"
       },
       {
-        "uci": "f2e3",
-        "san": "Kxe3",
+        "uci": "g3d6",
+        "san": "Bd6+",
         "color": "white"
       },
       {
-        "uci": "g7d4",
-        "san": "Bd4+",
+        "uci": "f8g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "e3f3",
-        "san": "Kf3",
+        "uci": "e1e8",
+        "san": "Re8#",
         "color": "white"
-      },
-      {
-        "uci": "d7e5",
-        "san": "Ne5#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4f2",
-        "san": "Nxf2",
-        "color": "black"
+        "uci": "d6f8",
+        "san": "Qxf8+",
+        "color": "white"
       },
       {
-        "uci": "e7e3",
-        "san": "Qe3+",
-        "color": "black"
+        "uci": "g3d6",
+        "san": "Bd6+",
+        "color": "white"
       },
       {
-        "uci": "g7d4",
-        "san": "Bd4+",
-        "color": "black"
-      },
-      {
-        "uci": "d7e5",
-        "san": "Ne5#",
-        "color": "black"
+        "uci": "e1e8",
+        "san": "Re8#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-24T22:30:56.274418+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-24T22:32:07.039227+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787610656274",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541575567751643228,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Ne5",
-        "correct": true,
-        "timestamp": "2026-08-24T22:31:58.001020+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787610727039",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
