@@ -1,107 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-04-02",
-    "title": "Ivanchuk - Morozevich, Memorial Donner 1996, modif",
-    "fen": "1q2b2k/1p2b2r/1pn1N1pN/3RPB1p/1P6/P5Q1/2P3KP/8 w - - 0 1",
-    "current_fen": "3N3k/1p2b2r/1p4bN/4n3/1P3Q1p/P7/2P3KP/8 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1q2b2k/1p2b2r/1pn1N1pN/3RPB1p/1P6/P5Q1/2P3KP/8 w - - 0 1\"]\r\n\r\n1. Bxg6 h4 2. Qg4 Nxe5 3. Qf4 Bxg6 4. Rd8+ Qxd8 5. Nxd8\r\n*",
+    "url": "https://www.chess.com/daily/2022-07-25",
+    "title": "When the Knight and Rook Join Forces",
+    "fen": "r4rk1/1p3pp1/p3n3/R2N4/1P6/7P/5PP1/5RK1 w - - 0 1",
+    "current_fen": "r4rk1/1p3pp1/p3n3/R2N4/1P6/7P/5PP1/5RK1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r4rk1/1p3pp1/p3n3/R2N4/1P6/7P/5PP1/5RK1 w - - 0 1\"]\r\n\r\n1. Ne7+ Kh7 2. Rh5# *",
     "all_moves": [
       {
-        "uci": "f5g6",
-        "san": "Bxg6",
+        "uci": "d5e7",
+        "san": "Ne7+",
         "color": "white"
       },
       {
-        "uci": "h5h4",
-        "san": "h4",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "g3g4",
-        "san": "Qg4",
-        "color": "white"
-      },
-      {
-        "uci": "c6e5",
-        "san": "Nxe5",
-        "color": "black"
-      },
-      {
-        "uci": "g4f4",
-        "san": "Qf4",
-        "color": "white"
-      },
-      {
-        "uci": "e8g6",
-        "san": "Bxg6",
-        "color": "black"
-      },
-      {
-        "uci": "d5d8",
-        "san": "Rd8+",
-        "color": "white"
-      },
-      {
-        "uci": "b8d8",
-        "san": "Qxd8",
-        "color": "black"
-      },
-      {
-        "uci": "e6d8",
-        "san": "Nxd8",
+        "uci": "a5h5",
+        "san": "Rh5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5g6",
-        "san": "Bxg6",
+        "uci": "d5e7",
+        "san": "Ne7+",
         "color": "white"
       },
       {
-        "uci": "g3g4",
-        "san": "Qg4",
-        "color": "white"
-      },
-      {
-        "uci": "g4f4",
-        "san": "Qf4",
-        "color": "white"
-      },
-      {
-        "uci": "d5d8",
-        "san": "Rd8+",
-        "color": "white"
-      },
-      {
-        "uci": "e6d8",
-        "san": "Nxd8",
+        "uci": "a5h5",
+        "san": "Rh5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-24T12:32:02.478958+00:00",
+    "player_move_count": 2,
+    "posted_at": "2026-08-24T12:36:41.344711+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787574722478",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1541424850499797127,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nxd8",
-        "correct": true,
-        "timestamp": "2026-08-24T12:36:35.493014+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787575001344",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
