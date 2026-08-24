@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2012-05-30",
     "title": "Mate in 2",
     "fen": "2r5/6Qp/4p3/5p1k/1p3R2/1n3P2/5KPP/8 w - - 0 1",
-    "current_fen": "2r5/6Qp/4p3/5p1k/1p3R2/1n3P2/5KPP/8 w - - 0 1",
+    "current_fen": "2r5/6Qp/4p3/5p2/1p5k/1n3P2/5KPP/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r5/6Qp/4p3/5p1k/1p3R2/1n3P2/5KPP/8 w - - 0 1\"]\r\n\r\n1. Rh4+ Kxh4 2. Qh6#\r\n*",
     "all_moves": [
       {
@@ -42,20 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787582667397",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541458173821591665,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Rh5",
-        "correct": false,
-        "timestamp": "2026-08-24T14:44:37.495954+00:00"
+        "move": "Rh4",
+        "correct": true,
+        "timestamp": "2026-08-24T14:44:39.820725+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
