@@ -1,77 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-07-30",
-    "title": "Better Rook Positions",
-    "fen": "3R2R1/1p3r1p/p4p1k/2p2Pb1/2P5/1Pr5/P5P1/2B2K2 w - - 0 1",
-    "current_fen": "3R2R1/1p5p/p6k/2p2Pp1/2P5/1Pr5/P7/5K2 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3R2R1/1p3r1p/p4p1k/2p2Pb1/2P5/1Pr5/P5P1/2B2K2 w - - 0 1\"]\r\n\r\n1. Bxg5+ fxg5 2. g4 Rxf5+ 3. gxf5\r\n*",
+    "url": "https://www.chess.com/daily/2011-09-17",
+    "title": "Claymore, 2006",
+    "fen": "2rb2k1/3n2p1/2pB1p2/1p3P2/5Nb1/2pp2P1/2Pq4/1K2R1QR w - - 0 1",
+    "current_fen": "2rb2k1/3n2p1/2pB1p2/1p3P2/5Nb1/2pp2P1/2Pq4/1K2R1QR w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2rb2k1/3n2p1/2pB1p2/1p3P2/5Nb1/2pp2P1/2Pq4/1K2R1QR w - - 0 1\"]\r\n\r\n1. Rh8+ Kf7 2. Rf8+ Nxf8 3. Qa7+ Kg8 4. Qa2+ Kh8 5. Rh1+ Qh2 6. Rxh2+\r\n*",
     "all_moves": [
       {
-        "uci": "c1g5",
-        "san": "Bxg5+",
+        "uci": "h1h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "f6g5",
-        "san": "fxg5",
+        "uci": "g8f7",
+        "san": "Kf7",
         "color": "black"
       },
       {
-        "uci": "g2g4",
-        "san": "g4",
+        "uci": "h8f8",
+        "san": "Rf8+",
         "color": "white"
       },
       {
-        "uci": "f7f5",
-        "san": "Rxf5+",
+        "uci": "d7f8",
+        "san": "Nxf8",
         "color": "black"
       },
       {
-        "uci": "g4f5",
-        "san": "gxf5",
+        "uci": "g1a7",
+        "san": "Qa7+",
+        "color": "white"
+      },
+      {
+        "uci": "f7g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "a7a2",
+        "san": "Qa2+",
+        "color": "white"
+      },
+      {
+        "uci": "g8h8",
+        "san": "Kh8",
+        "color": "black"
+      },
+      {
+        "uci": "e1h1",
+        "san": "Rh1+",
+        "color": "white"
+      },
+      {
+        "uci": "d2h2",
+        "san": "Qh2",
+        "color": "black"
+      },
+      {
+        "uci": "h1h2",
+        "san": "Rxh2+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1g5",
-        "san": "Bxg5+",
+        "uci": "h1h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "g2g4",
-        "san": "g4",
+        "uci": "h8f8",
+        "san": "Rf8+",
         "color": "white"
       },
       {
-        "uci": "g4f5",
-        "san": "gxf5",
+        "uci": "g1a7",
+        "san": "Qa7+",
+        "color": "white"
+      },
+      {
+        "uci": "a7a2",
+        "san": "Qa2+",
+        "color": "white"
+      },
+      {
+        "uci": "e1h1",
+        "san": "Rh1+",
+        "color": "white"
+      },
+      {
+        "uci": "h1h2",
+        "san": "Rxh2+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-24T22:12:37.953104+00:00",
+    "player_move_count": 6,
+    "posted_at": "2026-08-24T22:15:20.321692+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787609557953",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541570960954495099,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "gxf5",
-        "correct": true,
-        "timestamp": "2026-08-24T22:15:13.511776+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787609720321",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
