@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-01-06",
     "title": "Bothersome Queen",
     "fen": "3rk2r/p4pp1/2p5/2Bn2Qb/4p2p/8/P1q1BPPP/4K2R w - - 0 1",
-    "current_fen": "3rk2r/p4pp1/2p5/2Bn2Qb/4p2p/8/P1q1BPPP/4K2R w - - 0 1",
+    "current_fen": "3r3r/p2k1pp1/2p5/2BnQ2b/4p2p/8/P1q1BPPP/4K2R w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3rk2r/p4pp1/2p5/2Bn2Qb/4p2p/8/P1q1BPPP/4K2R w - - 0 1\"]\r\n\r\n1. Qe5+ Kd7 2. Qd6+ Ke8 3. Qxc6+\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787585691452",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541470857774370879,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qe5",
+        "correct": true,
+        "timestamp": "2026-08-24T15:35:09.050807+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
