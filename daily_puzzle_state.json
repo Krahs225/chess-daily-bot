@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-07-24",
     "title": "Simply Win a Pawn...",
     "fen": "2bqnbn1/r4p1k/pp1p2pp/2pP4/P1P2Q2/2NB2PP/1P1N1P1B/4R1K1 w - - 0 1",
-    "current_fen": "2bqnbn1/r4pk1/pp1p3p/2pP4/P1P1Q3/2N3PP/1P1N1P1B/4R1K1 w - - 2 3",
+    "current_fen": "2bqQbn1/r4pk1/pp1p3p/2pP4/P1P5/2N3PP/1P1N1P1B/4R1K1 b - - 0 3",
     "pgn": "[SetUp \"1\"]\r\n[FEN \"2bqnbn1/r4p1k/pp1p2pp/2pP4/P1P2Q2/2NB2PP/1P1N1P1B/4R1K1 w - - 0 1\"]\r\n[PlyCount \"5\"]\r\n\r\n1. Bxg6+ $1 Kxg6 (1... fxg6 2. Qxf8 $18) 2. Qe4+ Kg7 3. Qxe8 $18 *",
     "all_moves": [
       {
@@ -57,21 +57,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787577141633",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1541434997708427397,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qe4",
+        "move": "Qxe8",
         "correct": true,
-        "timestamp": "2026-08-24T13:12:53.032711+00:00"
+        "timestamp": "2026-08-24T13:12:55.964376+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
