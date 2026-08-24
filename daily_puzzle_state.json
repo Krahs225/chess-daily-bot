@@ -1,61 +1,99 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-01-08",
-    "title": "All in the Name of Winning",
-    "fen": "r4rk1/2q2ppp/p2p1b2/1pnPpN2/8/3B3Q/PPP2PPP/2KR3R w - - 0 1",
-    "current_fen": "r4rk1/4qppp/p2p1b2/1pnPp3/8/3B3Q/PPP2PPP/2KR3R w - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/2q2ppp/p2p1b2/1pnPpN2/8/3B3Q/PPP2PPP/2KR3R w - - 0 1\"]\r\n\r\n1. Ne7+ Qxe7 2. Qxh7#\r\n*",
+    "url": "https://www.chess.com/daily/2023-06-24",
+    "title": "Playing the Long Game",
+    "fen": "3r2k1/pp3ppp/1q2rn2/8/2N4Q/8/PP3PPP/4RRK1 b - - 0 1",
+    "current_fen": "3r2k1/pp3ppp/1q2rn2/8/2N4Q/8/PP3PPP/4RRK1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3r2k1/pp3ppp/1q2rn2/8/2N4Q/8/PP3PPP/4RRK1 b - - 0 1\"]\r\n\r\n1... Rxe1 2. Nxb6 Rdd1 3. Qc4 Rxf1+ 4. Qxf1 Rxf1+ 5. Kxf1 axb6 *",
     "all_moves": [
       {
-        "uci": "f5e7",
-        "san": "Ne7+",
-        "color": "white"
-      },
-      {
-        "uci": "c7e7",
-        "san": "Qxe7",
+        "uci": "e6e1",
+        "san": "Rxe1",
         "color": "black"
       },
       {
-        "uci": "h3h7",
-        "san": "Qxh7#",
+        "uci": "c4b6",
+        "san": "Nxb6",
         "color": "white"
+      },
+      {
+        "uci": "d8d1",
+        "san": "Rdd1",
+        "color": "black"
+      },
+      {
+        "uci": "h4c4",
+        "san": "Qc4",
+        "color": "white"
+      },
+      {
+        "uci": "e1f1",
+        "san": "Rxf1+",
+        "color": "black"
+      },
+      {
+        "uci": "c4f1",
+        "san": "Qxf1",
+        "color": "white"
+      },
+      {
+        "uci": "d1f1",
+        "san": "Rxf1+",
+        "color": "black"
+      },
+      {
+        "uci": "g1f1",
+        "san": "Kxf1",
+        "color": "white"
+      },
+      {
+        "uci": "a7b6",
+        "san": "axb6",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5e7",
-        "san": "Ne7+",
-        "color": "white"
+        "uci": "e6e1",
+        "san": "Rxe1",
+        "color": "black"
       },
       {
-        "uci": "h3h7",
-        "san": "Qxh7#",
-        "color": "white"
+        "uci": "d8d1",
+        "san": "Rdd1",
+        "color": "black"
+      },
+      {
+        "uci": "e1f1",
+        "san": "Rxf1+",
+        "color": "black"
+      },
+      {
+        "uci": "d1f1",
+        "san": "Rxf1+",
+        "color": "black"
+      },
+      {
+        "uci": "a7b6",
+        "san": "axb6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-24T17:35:21.195578+00:00",
+    "player_color": "black",
+    "player_move_count": 5,
+    "posted_at": "2026-08-24T17:35:34.666712+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787592921195",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "puzzle_id": "random_1787592934666",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1541501181732589588,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Ne7",
-        "correct": true,
-        "timestamp": "2026-08-24T17:35:29.271357+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
