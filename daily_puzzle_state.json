@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-11-21",
     "title": "Turning the Tables",
     "fen": "8/2p5/P1p2R1k/2P1B1p1/3P4/6PK/4q2P/8 b - - 0 1",
-    "current_fen": "8/2p5/P1p2R1k/2P1B1p1/3P4/6PK/4q2P/8 b - - 0 1",
+    "current_fen": "8/2p5/P1p2R2/2P1B1pk/3P4/6PK/4q2P/8 w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/2p5/P1p2R1k/2P1B1p1/3P4/6PK/4q2P/8 b - - 0 1\"]\r\n\r\n1...Kh5\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787576130835",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1541430758281838704,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Kh5",
+        "correct": true,
+        "timestamp": "2026-08-24T12:55:58.237160+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
