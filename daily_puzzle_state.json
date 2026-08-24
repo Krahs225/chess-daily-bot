@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-02-01",
     "title": "Give Almost Everything to Win",
     "fen": "3b4/pK1Rp3/1p5p/k2p4/8/PP6/6p1/8 w - - 0 1",
-    "current_fen": "3b4/pK1Rp3/1p5p/k2p4/8/PP6/6p1/8 w - - 0 1",
+    "current_fen": "3b4/p2Rp3/kpK4p/3p4/8/PP6/6p1/8 w - - 2 2",
     "pgn": "[Date \"1926.??.??\"]\r\n[White \"Duras\"]\r\n[Black \"Study - Win\"]\r\n[Result \"1-0\"]\r\n[FEN \"3b4/pK1Rp3/1p5p/k2p4/8/PP6/6p1/8 w - - 0 1\"]\r\n\r\n1. Kc6 Ka6 2. b4 b5 3. a4 bxa4 4. Rxd5 g1=Q 5. Ra5+ Bxa5 6. b5# 1-0",
     "all_moves": [
       {
@@ -102,13 +102,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787577822624",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541437854175985754,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Kc6",
+        "correct": true,
+        "timestamp": "2026-08-24T13:23:54.599572+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
