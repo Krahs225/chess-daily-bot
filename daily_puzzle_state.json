@@ -1,122 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-10-05",
-    "title": "H F Blandford, 1949",
-    "fen": "8/k2K4/8/8/8/2B5/2P5/5n2 w - - 0 1",
-    "current_fen": "k1R5/3K4/2n5/8/3B4/8/8/8 b - - 0 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/k2K4/8/8/8/2B5/2P5/5n2 w - - 0 1\"]\r\n\r\n1. Bd4+ Ka8 2. c4 Nd2 3. c5 Nb3 4. c6 Na5 5. c7 Nc6 6. c8=R+\r\n*",
+    "url": "https://www.chess.com/daily/2022-09-24",
+    "title": "A Strong Botez Birthday Gambit",
+    "fen": "2r3k1/5ppp/4p3/4P3/p2BP3/2q5/1p3PPP/1Q1R2K1 b - - 0 28",
+    "current_fen": "2r3k1/5ppp/4p3/4P3/p2RP3/8/1p3PPP/1Q4K1 b - - 0 29",
+    "pgn": "[Event \"HUN-ch 18th\"]\r\n[Site \"Budapest HUN\"]\r\n[Date \"1963.02.01\"]\r\n[Round \"15\"]\r\n[White \"Laszlo Sapi\"]\r\n[Black \"Laszlo Barczay\"]\r\n[Result \"0-1\"]\r\n[ECO \"D44\"]\r\n[SetUp \"1\"]\r\n[FEN \"2r3k1/5ppp/4p3/4P3/p2BP3/2q5/1p3PPP/1Q1R2K1 b - - 0 28\"]\r\n[PlyCount \"7\"]\r\n[EventDate \"1963.01.12\"]\r\n\r\n28... Qxd4 29. Rxd4 Rc1+ 30. Rd1 Rxb1 31. Rxb1 a3 0-1",
     "all_moves": [
       {
         "uci": "c3d4",
-        "san": "Bd4+",
-        "color": "white"
-      },
-      {
-        "uci": "a7a8",
-        "san": "Ka8",
+        "san": "Qxd4",
         "color": "black"
       },
       {
-        "uci": "c2c4",
-        "san": "c4",
+        "uci": "d1d4",
+        "san": "Rxd4",
         "color": "white"
       },
       {
-        "uci": "f1d2",
-        "san": "Nd2",
+        "uci": "c8c1",
+        "san": "Rc1+",
         "color": "black"
       },
       {
-        "uci": "c4c5",
-        "san": "c5",
+        "uci": "d4d1",
+        "san": "Rd1",
         "color": "white"
       },
       {
-        "uci": "d2b3",
-        "san": "Nb3",
+        "uci": "c1b1",
+        "san": "Rxb1",
         "color": "black"
       },
       {
-        "uci": "c5c6",
-        "san": "c6",
+        "uci": "d1b1",
+        "san": "Rxb1",
         "color": "white"
       },
       {
-        "uci": "b3a5",
-        "san": "Na5",
+        "uci": "a4a3",
+        "san": "a3",
         "color": "black"
-      },
-      {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "a5c6",
-        "san": "Nc6",
-        "color": "black"
-      },
-      {
-        "uci": "c7c8r",
-        "san": "c8=R+",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
         "uci": "c3d4",
-        "san": "Bd4+",
-        "color": "white"
+        "san": "Qxd4",
+        "color": "black"
       },
       {
-        "uci": "c2c4",
-        "san": "c4",
-        "color": "white"
+        "uci": "c8c1",
+        "san": "Rc1+",
+        "color": "black"
       },
       {
-        "uci": "c4c5",
-        "san": "c5",
-        "color": "white"
+        "uci": "c1b1",
+        "san": "Rxb1",
+        "color": "black"
       },
       {
-        "uci": "c5c6",
-        "san": "c6",
-        "color": "white"
-      },
-      {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "c7c8r",
-        "san": "c8=R+",
-        "color": "white"
+        "uci": "a4a3",
+        "san": "a3",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-24T13:13:37.454769+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-24T13:15:55.623533+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787577217454",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1541435315842187264,
+    "puzzle_id": "random_1787577355623",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541435894685376623,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "c8=R",
+        "move": "Qxd4",
         "correct": true,
-        "timestamp": "2026-08-24T13:15:49.086596+00:00"
+        "timestamp": "2026-08-24T13:16:09.105144+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
