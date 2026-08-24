@@ -1,121 +1,54 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-10-02",
-    "title": "L. Olmoutski, Shakhmaty, 1964",
-    "fen": "8/8/8/k7/8/2R4R/1p1p3K/8 w KQkq - 0 1",
-    "current_fen": "8/8/8/8/k7/1R5R/1p1p3K/8 w - - 4 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/k7/8/2R4R/1p1p3K/8 w KQkq - 0 1\"]\r\n\r\n1. Ra3+ Kb4 2. Rab3+ Ka4 3. Rbg3 b1=Q 4. Rh4+ Qb4 5. Rxb4+ Kxb4 6. Rd3\r\n*",
+    "url": "https://www.chess.com/daily/2015-11-29",
+    "title": "Bait and Lure",
+    "fen": "2kr4/p1r3pp/2Q2p2/4pb2/3p4/P2P2P1/5PBP/1R4K1 w - - 0 1",
+    "current_fen": "2kr4/p1r3pp/2Q2p2/4pb2/3p4/P2P2P1/5PBP/1R4K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr4/p1r3pp/2Q2p2/4pb2/3p4/P2P2P1/5PBP/1R4K1 w - - 0 1\"]\r\n\r\n1. Rb8+ Kxb8 2. Qa8#\r\n*",
     "all_moves": [
       {
-        "uci": "c3a3",
-        "san": "Ra3+",
+        "uci": "b1b8",
+        "san": "Rb8+",
         "color": "white"
       },
       {
-        "uci": "a5b4",
-        "san": "Kb4",
+        "uci": "c8b8",
+        "san": "Kxb8",
         "color": "black"
       },
       {
-        "uci": "a3b3",
-        "san": "Rab3+",
-        "color": "white"
-      },
-      {
-        "uci": "b4a4",
-        "san": "Ka4",
-        "color": "black"
-      },
-      {
-        "uci": "b3g3",
-        "san": "Rbg3",
-        "color": "white"
-      },
-      {
-        "uci": "b2b1q",
-        "san": "b1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "h3h4",
-        "san": "Rh4+",
-        "color": "white"
-      },
-      {
-        "uci": "b1b4",
-        "san": "Qb4",
-        "color": "black"
-      },
-      {
-        "uci": "h4b4",
-        "san": "Rxb4+",
-        "color": "white"
-      },
-      {
-        "uci": "a4b4",
-        "san": "Kxb4",
-        "color": "black"
-      },
-      {
-        "uci": "g3d3",
-        "san": "Rd3",
+        "uci": "c6a8",
+        "san": "Qa8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3a3",
-        "san": "Ra3+",
+        "uci": "b1b8",
+        "san": "Rb8+",
         "color": "white"
       },
       {
-        "uci": "a3b3",
-        "san": "Rab3+",
-        "color": "white"
-      },
-      {
-        "uci": "b3g3",
-        "san": "Rbg3",
-        "color": "white"
-      },
-      {
-        "uci": "h3h4",
-        "san": "Rh4+",
-        "color": "white"
-      },
-      {
-        "uci": "h4b4",
-        "san": "Rxb4+",
-        "color": "white"
-      },
-      {
-        "uci": "g3d3",
-        "san": "Rd3",
+        "uci": "c6a8",
+        "san": "Qa8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-24T17:22:11.991097+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-24T17:23:54.249302+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787592131991",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "puzzle_id": "random_1787592234249",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1541497871210389686,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Ra3",
-        "correct": false,
-        "timestamp": "2026-08-24T17:23:25.506338+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": 1541498301298380851,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
