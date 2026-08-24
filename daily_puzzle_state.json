@@ -1,77 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-10-13",
-    "title": "Carlsen-Cheparinov,  FIDE WorldCup 2007",
-    "fen": "8/8/8/4p3/5k2/1KP3p1/8/5B2 w - - 0 1",
-    "current_fen": "8/8/8/8/2K1p3/2P1k1p1/6B1/8 w - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"8/8/8/4p3/5k2/1KP3p1/8/5B2 w - - 0 1\"]\r\n\r\n1. Bg2 Ke3 2. Kc4 e4 3. Bh1\r\n*",
+    "url": "https://www.chess.com/daily/2024-02-07",
+    "title": "Checks, Captures, and Attacks",
+    "fen": "4r1k1/b2N1pp1/7p/p2P4/Pp3P2/6Pq/Q1B2P1P/5RK1 b - - 0 1",
+    "current_fen": "4r1k1/3N1pp1/7p/p2P4/Pp3P2/5KP1/Q1B1q3/5R2 w - - 2 4",
+    "pgn": "[Date \"1987\"]\r\n[White \"Alfonso Romero Holmes\"]\r\n[Black \"Eric Lobron (Pawn moved to h6)\"]\r\n[Result \"0-1\"]\r\n[FEN \"4r1k1/b2N1pp1/7p/p2P4/Pp3P2/6Pq/Q1B2P1P/5RK1 b - - 0 1\"]\r\n\r\n1... Bxf2+ 2. Kxf2 Qxh2+ 3. Kf3 Qe2# 0-1",
     "all_moves": [
       {
-        "uci": "f1g2",
-        "san": "Bg2",
-        "color": "white"
-      },
-      {
-        "uci": "f4e3",
-        "san": "Ke3",
+        "uci": "a7f2",
+        "san": "Bxf2+",
         "color": "black"
       },
       {
-        "uci": "b3c4",
-        "san": "Kc4",
+        "uci": "g1f2",
+        "san": "Kxf2",
         "color": "white"
       },
       {
-        "uci": "e5e4",
-        "san": "e4",
+        "uci": "h3h2",
+        "san": "Qxh2+",
         "color": "black"
       },
       {
-        "uci": "g2h1",
-        "san": "Bh1",
+        "uci": "f2f3",
+        "san": "Kf3",
         "color": "white"
+      },
+      {
+        "uci": "h2e2",
+        "san": "Qe2#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f1g2",
-        "san": "Bg2",
-        "color": "white"
+        "uci": "a7f2",
+        "san": "Bxf2+",
+        "color": "black"
       },
       {
-        "uci": "b3c4",
-        "san": "Kc4",
-        "color": "white"
+        "uci": "h3h2",
+        "san": "Qxh2+",
+        "color": "black"
       },
       {
-        "uci": "g2h1",
-        "san": "Bh1",
-        "color": "white"
+        "uci": "h2e2",
+        "san": "Qe2#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-24T14:46:45.515051+00:00",
+    "posted_at": "2026-08-24T14:51:52.926246+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787582805515",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
-    "message_id": 1541458753189314581,
+    "puzzle_id": "random_1787583112926",
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
+    "message_id": 1541460043143184385,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Bf1",
-        "correct": false,
-        "timestamp": "2026-08-24T14:50:32.546414+00:00"
+        "move": "Qe2",
+        "correct": true,
+        "timestamp": "2026-08-24T14:52:35.711348+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
