@@ -1,77 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-09-15",
-    "title": "Geometrical Dance",
-    "fen": "3R4/6rk/1p4p1/p2Q1p2/P1B1pP2/1n2P1Pp/1q5P/6K1 w - - 0 1",
-    "current_fen": "8/6rk/1p4p1/p4p2/P1B1pP1Q/1n2P1Pp/1q5P/6K1 b - - 3 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3R4/6rk/1p4p1/p2Q1p2/P1B1pP2/1n2P1Pp/1q5P/6K1 w - - 0 1\"]\r\n\r\n1. Rh8+ Kxh8 2. Qd8+ Kh7 3. Qh4# *",
+    "url": "https://www.chess.com/daily/2007-05-26",
+    "title": "Forks and Pins Go Hand In Hand",
+    "fen": "r3k2r/ppp1b2p/2n1p1p1/1Q1q4/2ppN3/8/PPP2PPP/R1B1R1K1 w kq - 0 1",
+    "current_fen": "r3k2r/ppp1b2p/2n1p1p1/1Q1q4/2ppN3/8/PPP2PPP/R1B1R1K1 w kq - 0 1",
+    "pgn": "[FEN \"r3k2r/ppp1b2p/2n1p1p1/1Q1q4/2ppN3/8/PPP2PPP/R1B1R1K1 w kq - 0 1\"]\r\n[PlyCount \"3\"]\r\n\r\n1. Nf6+ $1 1... Bxf6 2. Qxd5 *",
     "all_moves": [
       {
-        "uci": "d8h8",
-        "san": "Rh8+",
+        "uci": "e4f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "h7h8",
-        "san": "Kxh8",
+        "uci": "e7f6",
+        "san": "Bxf6",
         "color": "black"
       },
       {
-        "uci": "d5d8",
-        "san": "Qd8+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h7",
-        "san": "Kh7",
-        "color": "black"
-      },
-      {
-        "uci": "d8h4",
-        "san": "Qh4#",
+        "uci": "b5d5",
+        "san": "Qxd5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d8h8",
-        "san": "Rh8+",
+        "uci": "e4f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "d5d8",
-        "san": "Qd8+",
-        "color": "white"
-      },
-      {
-        "uci": "d8h4",
-        "san": "Qh4#",
+        "uci": "b5d5",
+        "san": "Qxd5",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-24T22:07:52.255567+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-24T22:09:47.798243+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787609272255",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541569763598274630,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qh4",
-        "correct": true,
-        "timestamp": "2026-08-24T22:09:28.564586+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787609387798",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
