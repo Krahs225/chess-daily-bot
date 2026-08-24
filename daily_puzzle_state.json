@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-06-22",
     "title": "Mate in 3",
     "fen": "5rk1/4bpp1/p5p1/3qBp2/3P4/1PP1Q2R/6PP/6K1 w - - 0 1",
-    "current_fen": "5rk1/4bpp1/p5p1/3qBp2/3P4/1PP1Q2R/6PP/6K1 w - - 0 1",
+    "current_fen": "5rk1/4bpp1/p5pQ/3qBp2/3P4/1PP5/6PP/6K1 w - - 2 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/4bpp1/p5p1/3qBp2/3P4/1PP1Q2R/6PP/6K1 w - - 0 1\"]\r\n\r\n1. Rh8+ Kxh8 2. Qh6+ Kg8 3. Qxg7#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787584978372",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541467866896011336,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qh6",
+        "correct": true,
+        "timestamp": "2026-08-24T15:23:05.192357+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
