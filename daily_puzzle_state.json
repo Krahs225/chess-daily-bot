@@ -1,92 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-04-09",
-    "title": "Smyslov Tactic",
-    "fen": "q3r1k1/2r2ppp/1p2p3/3n4/2BP1b2/1Q4P1/PB3P1P/1R1R2K1 b - - 0 1",
-    "current_fen": "4r1k1/5ppp/1p2p3/8/2QP4/4bqP1/PB5P/1R1R1K2 w - - 2 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"q3r1k1/2r2ppp/1p2p3/3n4/2BP1b2/1Q4P1/PB3P1P/1R1R2K1 b - - 0 1\"]\r\n\r\n1...Rxc4 2. Qxc4 Ne3 3. fxe3 Bxe3+ 4. Kf1 Qf3+\r\n*",
+    "url": "https://www.chess.com/daily/2020-01-26",
+    "title": "Just Passing Through",
+    "fen": "r6r/p3kpR1/R3p1b1/1p1n3p/2pP3P/2P1PB2/3B1P2/4K3 w - - 0 1",
+    "current_fen": "r6r/p3kpR1/R3p1b1/1p1n3p/2pP3P/2P1PB2/3B1P2/4K3 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r6r/p3kpR1/R3p1b1/1p1n3p/2pP3P/2P1PB2/3B1P2/4K3 w - - 0 1\"]\r\n\r\n1.Bxd5 exd5 2.Raxg6 *",
     "all_moves": [
       {
-        "uci": "c7c4",
-        "san": "Rxc4",
-        "color": "black"
-      },
-      {
-        "uci": "b3c4",
-        "san": "Qxc4",
+        "uci": "f3d5",
+        "san": "Bxd5",
         "color": "white"
       },
       {
-        "uci": "d5e3",
-        "san": "Ne3",
+        "uci": "e6d5",
+        "san": "exd5",
         "color": "black"
       },
       {
-        "uci": "f2e3",
-        "san": "fxe3",
+        "uci": "a6g6",
+        "san": "Raxg6",
         "color": "white"
-      },
-      {
-        "uci": "f4e3",
-        "san": "Bxe3+",
-        "color": "black"
-      },
-      {
-        "uci": "g1f1",
-        "san": "Kf1",
-        "color": "white"
-      },
-      {
-        "uci": "a8f3",
-        "san": "Qf3+",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c7c4",
-        "san": "Rxc4",
-        "color": "black"
+        "uci": "f3d5",
+        "san": "Bxd5",
+        "color": "white"
       },
       {
-        "uci": "d5e3",
-        "san": "Ne3",
-        "color": "black"
-      },
-      {
-        "uci": "f4e3",
-        "san": "Bxe3+",
-        "color": "black"
-      },
-      {
-        "uci": "a8f3",
-        "san": "Qf3+",
-        "color": "black"
+        "uci": "a6g6",
+        "san": "Raxg6",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-24T22:03:30.700733+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-24T22:04:19.803722+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787609010700",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541568665701322763,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qf3",
-        "correct": true,
-        "timestamp": "2026-08-24T22:04:01.217553+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787609059803",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
