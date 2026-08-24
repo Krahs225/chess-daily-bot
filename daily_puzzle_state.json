@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-09-23",
     "title": "Check it Out",
     "fen": "1rb1R3/p6k/1p1p1Bp1/2pP3p/P2b4/3B1PK1/q2Q2PP/8 b - - 0 1",
-    "current_fen": "1rb1R3/p6k/1p1p1Bp1/2pP3p/P2b4/3B1PK1/q2Q2PP/8 b - - 0 1",
+    "current_fen": "1rb1R3/p6k/1p1p1Bp1/2pP4/P2b3K/3B1P2/q2Q2PP/8 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1rb1R3/p6k/1p1p1Bp1/2pP3p/P2b4/3B1PK1/q2Q2PP/8 b - - 0 1\"]\r\n\r\n1... h4+ (1... Qxd2 2. Rh8#) 2. Kxh4 (2. Kf4 Qxd2+) Bxf6+ (2... Qxd2 3. Rh8#) 3. Kg3 Qxd2\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787576535868",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541432457478283264,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "h4",
+        "correct": true,
+        "timestamp": "2026-08-24T13:03:21.810026+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
