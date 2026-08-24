@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-10-04",
-    "title": "Mate in 4",
-    "fen": "8/3B3K/5pn1/3r3k/2R5/q2r4/6N1/4b1R1 w - - 0 1",
-    "current_fen": "8/7K/5pB1/3r3k/7b/q2r4/8/6R1 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/3B3K/5pn1/3r3k/2R5/q2r4/6N1/4b1R1 w - - 0 1\"]\r\n\r\n1. Rh4+ Bxh4 2. Nf4+ Nxf4 3. Be8+ Ng6 4. Bxg6#\r\n*",
+    "url": "https://www.chess.com/daily/2022-02-02",
+    "title": "I Play Against Pieces",
+    "fen": "6r1/4kp2/p1bRpp2/1pr1P3/5b1p/PBP1N3/1P4PP/1K1R4 w - - 0 28",
+    "current_fen": "6r1/4kp2/p1bRpp2/1pr1P3/5b1p/PBP1N3/1P4PP/1K1R4 w - - 0 28",
+    "pgn": "[Event \"Zurich\"]\r\n[Site \"Zurich SUI\"]\r\n[Date \"1959.05.21\"]\r\n[Round \"3\"]\r\n[White \"Svetozar Gligoric\"]\r\n[Black \"Erwin Nievergelt\"]\r\n[Result \"1-0\"]\r\n[FEN \"6r1/4kp2/p1bRpp2/1pr1P3/5b1p/PBP1N3/1P4PP/1K1R4 w - - 0 28\"]\r\n\r\n28.Nf5+ exf5 29.exf6+ Kf8 30.Rxc6 Rxc6 31.Rd8# 1-0",
     "all_moves": [
       {
-        "uci": "c4h4",
-        "san": "Rh4+",
+        "uci": "e3f5",
+        "san": "Nf5+",
         "color": "white"
       },
       {
-        "uci": "e1h4",
-        "san": "Bxh4",
+        "uci": "e6f5",
+        "san": "exf5",
         "color": "black"
       },
       {
-        "uci": "g2f4",
-        "san": "Nf4+",
+        "uci": "e5f6",
+        "san": "exf6+",
         "color": "white"
       },
       {
-        "uci": "g6f4",
-        "san": "Nxf4",
+        "uci": "e7f8",
+        "san": "Kf8",
         "color": "black"
       },
       {
-        "uci": "d7e8",
-        "san": "Be8+",
+        "uci": "d6c6",
+        "san": "Rxc6",
         "color": "white"
       },
       {
-        "uci": "f4g6",
-        "san": "Ng6",
+        "uci": "c5c6",
+        "san": "Rxc6",
         "color": "black"
       },
       {
-        "uci": "e8g6",
-        "san": "Bxg6#",
+        "uci": "d1d8",
+        "san": "Rd8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4h4",
-        "san": "Rh4+",
+        "uci": "e3f5",
+        "san": "Nf5+",
         "color": "white"
       },
       {
-        "uci": "g2f4",
-        "san": "Nf4+",
+        "uci": "e5f6",
+        "san": "exf6+",
         "color": "white"
       },
       {
-        "uci": "d7e8",
-        "san": "Be8+",
+        "uci": "d6c6",
+        "san": "Rxc6",
         "color": "white"
       },
       {
-        "uci": "e8g6",
-        "san": "Bxg6#",
+        "uci": "d1d8",
+        "san": "Rd8#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-24T17:37:28.749217+00:00",
+    "posted_at": "2026-08-24T17:38:15.571797+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787593048749",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541501717185564733,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bxg6",
-        "correct": true,
-        "timestamp": "2026-08-24T17:38:10.150637+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787593095571",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
