@@ -1,137 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-10-31",
-    "title": "Trick or Treat",
-    "fen": "8/8/8/1pbK4/5P2/1kN5/8/8 b - - 0 1",
-    "current_fen": "5q2/8/8/3K4/8/2k5/8/8 w - - 0 8",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/8/8/1pbK4/5P2/1kN5/8/8 b - - 0 1\"]\r\n\r\n1... Kxc3 2. Kxc5 b4 3. f5 b3 4. f6 b2 5. f7 b1=Q 6. f8=Q Qb4+ 7. Kd5 Qxf8 *",
+    "url": "https://www.chess.com/daily/2008-07-23",
+    "title": "Moving Forward",
+    "fen": "1k1r4/7R/1N6/Pp1b4/8/1P6/7K/8 w - - 0 1",
+    "current_fen": "1k1r4/7R/1N6/Pp1b4/8/1P6/7K/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1k1r4/7R/1N6/Pp1b4/8/1P6/7K/8 w - - 0 1\"]\r\n\r\n1. a6 Rh8 2. a7#\r\n*",
     "all_moves": [
       {
-        "uci": "b3c3",
-        "san": "Kxc3",
-        "color": "black"
-      },
-      {
-        "uci": "d5c5",
-        "san": "Kxc5",
+        "uci": "a5a6",
+        "san": "a6",
         "color": "white"
       },
       {
-        "uci": "b5b4",
-        "san": "b4",
+        "uci": "d8h8",
+        "san": "Rh8",
         "color": "black"
       },
       {
-        "uci": "f4f5",
-        "san": "f5",
+        "uci": "a6a7",
+        "san": "a7#",
         "color": "white"
-      },
-      {
-        "uci": "b4b3",
-        "san": "b3",
-        "color": "black"
-      },
-      {
-        "uci": "f5f6",
-        "san": "f6",
-        "color": "white"
-      },
-      {
-        "uci": "b3b2",
-        "san": "b2",
-        "color": "black"
-      },
-      {
-        "uci": "f6f7",
-        "san": "f7",
-        "color": "white"
-      },
-      {
-        "uci": "b2b1q",
-        "san": "b1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "f7f8q",
-        "san": "f8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "b1b4",
-        "san": "Qb4+",
-        "color": "black"
-      },
-      {
-        "uci": "c5d5",
-        "san": "Kd5",
-        "color": "white"
-      },
-      {
-        "uci": "b4f8",
-        "san": "Qxf8",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b3c3",
-        "san": "Kxc3",
-        "color": "black"
+        "uci": "a5a6",
+        "san": "a6",
+        "color": "white"
       },
       {
-        "uci": "b5b4",
-        "san": "b4",
-        "color": "black"
-      },
-      {
-        "uci": "b4b3",
-        "san": "b3",
-        "color": "black"
-      },
-      {
-        "uci": "b3b2",
-        "san": "b2",
-        "color": "black"
-      },
-      {
-        "uci": "b2b1q",
-        "san": "b1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "b1b4",
-        "san": "Qb4+",
-        "color": "black"
-      },
-      {
-        "uci": "b4f8",
-        "san": "Qxf8",
-        "color": "black"
+        "uci": "a6a7",
+        "san": "a7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 7,
-    "posted_at": "2026-08-24T15:23:13.565567+00:00",
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-24T15:23:54.872595+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787584993565",
-    "next_solution_index": 13,
-    "next_player_index": 7,
-    "solved": true,
-    "message_id": 1541467930519273595,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qxf8",
-        "correct": true,
-        "timestamp": "2026-08-24T15:23:49.201062+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787585034872",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
