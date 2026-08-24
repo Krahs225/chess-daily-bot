@@ -1,74 +1,51 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-01-24",
-    "title": "Reckless Abandon",
-    "fen": "3qr1k1/5pp1/1p5p/r1ppPN1P/3n2R1/6P1/P1Q2PK1/R7 w - - 0 1",
-    "current_fen": "3qr1k1/5pp1/1p5p/r1ppPN1P/3n2R1/6P1/P1Q2PK1/R7 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3qr1k1/5pp1/1p5p/r1ppPN1P/3n2R1/6P1/P1Q2PK1/R7 w - - 0 1\"]\r\n\r\n1. Nxh6+ Kf8 2. Qh7 gxh6 3. Rg7\r\n*",
+    "url": "https://www.chess.com/daily/2011-01-31",
+    "title": "Mate in 1",
+    "fen": "8/8/5NqB/8/8/2p2kp1/6Rr/4K2R w KQkq - 0 1",
+    "current_fen": "8/8/5NqB/8/8/2p2kp1/6Rr/5RK1 b - - 1 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/5NqB/8/8/2p2kp1/6Rr/4K2R w KQkq - 0 1\"]\r\n\r\n1. 0-0\r\n*",
     "all_moves": [
       {
-        "uci": "f5h6",
-        "san": "Nxh6+",
-        "color": "white"
-      },
-      {
-        "uci": "g8f8",
-        "san": "Kf8",
-        "color": "black"
-      },
-      {
-        "uci": "c2h7",
-        "san": "Qh7",
-        "color": "white"
-      },
-      {
-        "uci": "g7h6",
-        "san": "gxh6",
-        "color": "black"
-      },
-      {
-        "uci": "g4g7",
-        "san": "Rg7",
+        "uci": "e1g1",
+        "san": "O-O#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5h6",
-        "san": "Nxh6+",
-        "color": "white"
-      },
-      {
-        "uci": "c2h7",
-        "san": "Qh7",
-        "color": "white"
-      },
-      {
-        "uci": "g4g7",
-        "san": "Rg7",
+        "uci": "e1g1",
+        "san": "O-O#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-23T22:08:22.137327+00:00",
+    "player_move_count": 1,
+    "posted_at": "2026-08-24T12:26:44.638662+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787522902137",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": 1541207500458561617,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "puzzle_id": "random_1787574404638",
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1541423517646725140,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "o-o",
+        "correct": true,
+        "timestamp": "2026-08-24T12:27:11.993493+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "daily",
+  "latest_puzzle_type": "random",
   "current_puzzle": {
     "url": "https://www.chess.com/daily/2026-08-24",
     "title": "Corner Kick",
@@ -121,12 +98,12 @@
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-24T07:36:05.040445+00:00",
+    "posted_at": "2026-08-24T09:00:59.789024+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "daily_1787556965040",
+    "puzzle_id": "daily_1787562059789",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
