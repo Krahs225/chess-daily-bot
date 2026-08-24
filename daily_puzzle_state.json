@@ -1,107 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-11-04",
-    "title": "Mate in 5",
-    "fen": "5rk1/r5p1/p1b2p2/3q1N2/6Q1/6P1/2B2P2/6KR w K - 0 1",
-    "current_fen": "5rk1/r6R/p1b2p1N/3q4/8/6P1/2B2P2/6K1 b - - 3 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/r5p1/p1b2p2/3q1N2/6Q1/6P1/2B2P2/6KR w K - 0 1\"]\r\n\r\n1. Nh6+ Kh8 2. Nf7+ Kg8 3. Qxg7+ Kxg7 4. Rh7+ Kg8 5. Nh6#\r\n*",
+    "url": "https://www.chess.com/daily/2026-05-27",
+    "title": "Horsefield",
+    "fen": "5k2/p7/1p1N2q1/2pnQN2/P4n1P/1P5P/7K/8 w - - 0 1",
+    "current_fen": "5k2/p7/1p1N2q1/2pnQN2/P4n1P/1P5P/7K/8 w - - 0 1",
+    "pgn": "[Event \"Ch Argentina\"]\r\n[Site \"Argentina\"]\r\n[Date \"1989.??.??\"]\r\n[White \"Panno Oscar (ARG)\"]\r\n[Black \"Schuster Carlos (ARG)\"]\r\n[Result \"1-0\"]\r\n[FEN \"5k2/p7/1p1N2q1/2pnQN2/P4n1P/1P5P/7K/8 w - - 0 1\"]\r\n\r\n1. Qh8+ Qg8 2. Qh6+ Qg7 3. Qxg7# 1-0",
     "all_moves": [
       {
-        "uci": "f5h6",
-        "san": "Nh6+",
+        "uci": "e5h8",
+        "san": "Qh8+",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "g6g8",
+        "san": "Qg8",
         "color": "black"
       },
       {
-        "uci": "h6f7",
-        "san": "Nf7+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "g4g7",
-        "san": "Qxg7+",
+        "uci": "h8h6",
+        "san": "Qh6+",
         "color": "white"
       },
       {
         "uci": "g8g7",
-        "san": "Kxg7",
+        "san": "Qg7",
         "color": "black"
       },
       {
-        "uci": "h1h7",
-        "san": "Rh7+",
-        "color": "white"
-      },
-      {
-        "uci": "g7g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "f7h6",
-        "san": "Nh6#",
+        "uci": "h6g7",
+        "san": "Qxg7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5h6",
-        "san": "Nh6+",
+        "uci": "e5h8",
+        "san": "Qh8+",
         "color": "white"
       },
       {
-        "uci": "h6f7",
-        "san": "Nf7+",
+        "uci": "h8h6",
+        "san": "Qh6+",
         "color": "white"
       },
       {
-        "uci": "g4g7",
-        "san": "Qxg7+",
-        "color": "white"
-      },
-      {
-        "uci": "h1h7",
-        "san": "Rh7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7h6",
-        "san": "Nh6#",
+        "uci": "h6g7",
+        "san": "Qxg7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-24T22:26:44.575914+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-24T22:27:58.874637+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787610404575",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1541574512015843359,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Nh6",
-        "correct": true,
-        "timestamp": "2026-08-24T22:27:37.650785+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787610478874",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
