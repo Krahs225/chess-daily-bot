@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-06-25",
     "title": "Accuracy to Win",
     "fen": "8/k4p2/1r3P2/7p/1N1B1Q1P/5B2/1K5q/8 w KQkq - 0 1",
-    "current_fen": "8/k4p2/1r3P2/7p/1N1B1Q1P/5B2/1K5q/8 w KQkq - 0 1",
+    "current_fen": "8/k4p2/1r3P2/7p/1N1B1q1P/8/1K4B1/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/k4p2/1r3P2/7p/1N1B1Q1P/5B2/1K5q/8 w KQkq - 0 1\"]\r\n\r\n1. Bg2 Qxf4 2. Bxb6+ Kb8 3. Bc7+ Qxc7 4. Na6+ Kc8 5. Bh3+ Qd7 6. Bxd7+\r\n*",
     "all_moves": [
       {
@@ -102,20 +102,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787577660382",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541437172966756373,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Kc1",
-        "correct": false,
-        "timestamp": "2026-08-24T13:21:39.949023+00:00"
+        "move": "Bg2",
+        "correct": true,
+        "timestamp": "2026-08-24T13:21:53.181175+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
