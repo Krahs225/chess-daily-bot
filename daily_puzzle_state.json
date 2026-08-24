@@ -1,92 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-09-28",
-    "title": "One Step Back...",
-    "fen": "r1r3k1/4qpp1/5n1p/1bpp1Q2/p7/P2PP1P1/1PRN1PBP/2R3K1 b - - 0 1",
-    "current_fen": "r1r3k1/4qp2/7p/2pp2p1/p5n1/P2PP1P1/1PRN1PBP/2R3K1 w - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r1r3k1/4qpp1/5n1p/1bpp1Q2/p7/P2PP1P1/1PRN1PBP/2R3K1 b - - 0 1\"]\r\n\r\n1...Bd7 2.Qf4 g5 3.Qf3 Bg4 4.Qxg4 Nxg4 *",
+    "url": "https://www.chess.com/daily/2016-04-02",
+    "title": "Ivanchuk - Morozevich, Memorial Donner 1996, modif",
+    "fen": "1q2b2k/1p2b2r/1pn1N1pN/3RPB1p/1P6/P5Q1/2P3KP/8 w - - 0 1",
+    "current_fen": "1q2b2k/1p2b2r/1pn1N1pN/3RPB1p/1P6/P5Q1/2P3KP/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1q2b2k/1p2b2r/1pn1N1pN/3RPB1p/1P6/P5Q1/2P3KP/8 w - - 0 1\"]\r\n\r\n1. Bxg6 h4 2. Qg4 Nxe5 3. Qf4 Bxg6 4. Rd8+ Qxd8 5. Nxd8\r\n*",
     "all_moves": [
       {
-        "uci": "b5d7",
-        "san": "Bd7",
+        "uci": "f5g6",
+        "san": "Bxg6",
+        "color": "white"
+      },
+      {
+        "uci": "h5h4",
+        "san": "h4",
         "color": "black"
       },
       {
-        "uci": "f5f4",
+        "uci": "g3g4",
+        "san": "Qg4",
+        "color": "white"
+      },
+      {
+        "uci": "c6e5",
+        "san": "Nxe5",
+        "color": "black"
+      },
+      {
+        "uci": "g4f4",
         "san": "Qf4",
         "color": "white"
       },
       {
-        "uci": "g7g5",
-        "san": "g5",
+        "uci": "e8g6",
+        "san": "Bxg6",
         "color": "black"
       },
       {
-        "uci": "f4f3",
-        "san": "Qf3",
+        "uci": "d5d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "d7g4",
-        "san": "Bg4",
+        "uci": "b8d8",
+        "san": "Qxd8",
         "color": "black"
       },
       {
-        "uci": "f3g4",
-        "san": "Qxg4",
+        "uci": "e6d8",
+        "san": "Nxd8",
         "color": "white"
-      },
-      {
-        "uci": "f6g4",
-        "san": "Nxg4",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b5d7",
-        "san": "Bd7",
-        "color": "black"
+        "uci": "f5g6",
+        "san": "Bxg6",
+        "color": "white"
       },
       {
-        "uci": "g7g5",
-        "san": "g5",
-        "color": "black"
+        "uci": "g3g4",
+        "san": "Qg4",
+        "color": "white"
       },
       {
-        "uci": "d7g4",
-        "san": "Bg4",
-        "color": "black"
+        "uci": "g4f4",
+        "san": "Qf4",
+        "color": "white"
       },
       {
-        "uci": "f6g4",
-        "san": "Nxg4",
-        "color": "black"
+        "uci": "d5d8",
+        "san": "Rd8+",
+        "color": "white"
+      },
+      {
+        "uci": "e6d8",
+        "san": "Nxd8",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-24T12:31:06.048333+00:00",
+    "player_color": "white",
+    "player_move_count": 5,
+    "posted_at": "2026-08-24T12:32:02.478958+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787574666048",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541424614100574281,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nxg4",
-        "correct": true,
-        "timestamp": "2026-08-24T12:31:57.568464+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787574722478",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
