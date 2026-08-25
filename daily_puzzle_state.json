@@ -1,83 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-04-22",
-    "title": "Embracing the Tension",
-    "fen": "r1b2r1k/ppp3pp/8/4p3/8/4P3/PPP1QqPP/RN1K1B1R b - - 1 1",
-    "current_fen": "r2r3k/ppp3pp/8/4p3/8/4P3/PPPNbqPP/R1K2B1R w - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r1b2r1k/ppp3pp/8/4p3/8/4P3/PPP1QqPP/RN1K1B1R b - - 1 1\"]\r\n\r\n1...Rd8+ 2.Nd2 Bg4 3.Kc1 Bxe2 *",
+    "url": "https://www.chess.com/daily/2015-08-06",
+    "title": "Two Many Queens",
+    "fen": "5k2/4pP2/2q1p2N/p2p2N1/2p1P3/1pP5/1n3nKP/1Q6 w - - 0 1",
+    "current_fen": "5k2/4pP2/2q1p2N/p2p2N1/2p1P3/1pP5/1n3nKP/1Q6 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5k2/4pP2/2q1p2N/p2p2N1/2p1P3/1pP5/1n3nKP/1Q6 w - - 0 1\"]\r\n\r\n1. Nh7+ Kg7 2. f8=Q+ Kxh7 3. Qf7+ Kxh6 4. Qc1# \r\n*",
     "all_moves": [
       {
-        "uci": "f8d8",
-        "san": "Rd8+",
-        "color": "black"
-      },
-      {
-        "uci": "b1d2",
-        "san": "Nd2",
+        "uci": "g5h7",
+        "san": "Nh7+",
         "color": "white"
       },
       {
-        "uci": "c8g4",
-        "san": "Bg4",
+        "uci": "f8g7",
+        "san": "Kg7",
         "color": "black"
       },
       {
-        "uci": "d1c1",
-        "san": "Kc1",
+        "uci": "f7f8q",
+        "san": "f8=Q+",
         "color": "white"
       },
       {
-        "uci": "g4e2",
-        "san": "Bxe2",
+        "uci": "g7h7",
+        "san": "Kxh7",
         "color": "black"
+      },
+      {
+        "uci": "f8f7",
+        "san": "Qf7+",
+        "color": "white"
+      },
+      {
+        "uci": "h7h6",
+        "san": "Kxh6",
+        "color": "black"
+      },
+      {
+        "uci": "b1c1",
+        "san": "Qc1#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f8d8",
-        "san": "Rd8+",
-        "color": "black"
+        "uci": "g5h7",
+        "san": "Nh7+",
+        "color": "white"
       },
       {
-        "uci": "c8g4",
-        "san": "Bg4",
-        "color": "black"
+        "uci": "f7f8q",
+        "san": "f8=Q+",
+        "color": "white"
       },
       {
-        "uci": "g4e2",
-        "san": "Bxe2",
-        "color": "black"
+        "uci": "f8f7",
+        "san": "Qf7+",
+        "color": "white"
+      },
+      {
+        "uci": "b1c1",
+        "san": "Qc1#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-25T19:16:54.747689+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-25T19:17:29.929313+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787685414747",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541889127471906968,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxe2",
-        "correct": true,
-        "timestamp": "2026-08-25T19:17:12.563691+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bxd2",
-        "correct": false,
-        "timestamp": "2026-08-25T19:17:12.561499+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787685449929",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
