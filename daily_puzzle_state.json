@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-02-28",
-    "title": "A Grand Plan",
-    "fen": "r6k/5rp1/2b1n3/5p1p/2B2n1q/1QP2PN1/P4BPP/1R3RK1 b - - 0 26",
-    "current_fen": "r6k/5rp1/8/5p1p/2B2n2/1QP2bNn/P4B1P/1R3R1K w - - 0 30",
-    "pgn": "[Date \"2026.01.10\"]\r\n[White \"Stalmach, Richard\"]\r\n[Black \"Grandelius, Nils\"]\r\n[Result \"0-1\"]\r\n[WhiteElo \"2405\"]\r\n[BlackElo \"2660\"]\r\n[FEN \"r6k/5rp1/2b1n3/5p1p/2B2n1q/1QP2PN1/P4BPP/1R3RK1 b - - 0 26\"]\r\n\r\n26... Qh3 27. gxh3 Nxh3+ 28. Kg2 Nef4+ 29. Kh1 Bxf3# 0-1",
+    "url": "https://www.chess.com/daily/2016-01-04",
+    "title": "Give It Away, Give It Away Now",
+    "fen": "r7/6p1/4b1Rp/4q2k/7b/1B6/2PB2Q1/2K5 w - - 0 1",
+    "current_fen": "r7/6p1/4b1Rp/4q2k/7b/1B6/2PB2Q1/2K5 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/6p1/4b1Rp/4q2k/7b/1B6/2PB2Q1/2K5 w - - 0 1\"]\r\n\r\n1. Qg4+ Bxg4 2. Rxh6+ gxh6 3. Bf7#\r\n*",
     "all_moves": [
       {
-        "uci": "h4h3",
-        "san": "Qh3",
-        "color": "black"
-      },
-      {
-        "uci": "g2h3",
-        "san": "gxh3",
+        "uci": "g2g4",
+        "san": "Qg4+",
         "color": "white"
       },
       {
-        "uci": "f4h3",
-        "san": "Nxh3+",
+        "uci": "e6g4",
+        "san": "Bxg4",
         "color": "black"
       },
       {
-        "uci": "g1g2",
-        "san": "Kg2",
+        "uci": "g6h6",
+        "san": "Rxh6+",
         "color": "white"
       },
       {
-        "uci": "e6f4",
-        "san": "Nef4+",
+        "uci": "g7h6",
+        "san": "gxh6",
         "color": "black"
       },
       {
-        "uci": "g2h1",
-        "san": "Kh1",
+        "uci": "b3f7",
+        "san": "Bf7#",
         "color": "white"
-      },
-      {
-        "uci": "c6f3",
-        "san": "Bxf3#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h4h3",
-        "san": "Qh3",
-        "color": "black"
+        "uci": "g2g4",
+        "san": "Qg4+",
+        "color": "white"
       },
       {
-        "uci": "f4h3",
-        "san": "Nxh3+",
-        "color": "black"
+        "uci": "g6h6",
+        "san": "Rxh6+",
+        "color": "white"
       },
       {
-        "uci": "e6f4",
-        "san": "Nef4+",
-        "color": "black"
-      },
-      {
-        "uci": "c6f3",
-        "san": "Bxf3#",
-        "color": "black"
+        "uci": "b3f7",
+        "san": "Bf7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T22:06:55.453036+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T22:07:58.754492+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787695615453",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541931912405188631,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxf3",
-        "correct": true,
-        "timestamp": "2026-08-25T22:07:51.764278+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787695678754",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
