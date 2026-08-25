@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-01-14",
     "title": "Opening Blunder",
     "fen": "r1bqk2r/pp1nbppp/2pp3n/4p1N1/P1BPP3/8/1PP2PPP/RNBQK2R w KQkq - 0 1",
-    "current_fen": "r1bqk2r/pp1nbppp/2pp3n/4p1N1/P1BPP3/8/1PP2PPP/RNBQK2R w KQkq - 0 1",
+    "current_fen": "r1bqk2r/pp1nbnpp/2pp4/4p1N1/P2PP3/8/1PP2PPP/RNBQK2R w KQkq - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqk2r/pp1nbppp/2pp3n/4p1N1/P1BPP3/8/1PP2PPP/RNBQK2R w KQkq - 0 1\"]\r\n\r\n1. Bxf7+ Nxf7 2. Ne6 Qa5+ 3. Bd2\r\n*",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787687282707",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541896962331115615,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "ne6",
-        "correct": false,
-        "timestamp": "2026-08-25T19:48:22.589068+00:00"
+        "move": "bxf7",
+        "correct": true,
+        "timestamp": "2026-08-25T19:48:48.363462+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
