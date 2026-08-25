@@ -1,121 +1,69 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-04-20",
-    "title": "Playing With Precision",
-    "fen": "3r4/7p/p5pk/1p2Qp2/3n1P2/1P1qN1P1/P6P/4R1K1 w - - 0 1",
-    "current_fen": "3r4/6kp/p5p1/1p4Q1/3n1Pp1/1P1q2P1/P6P/4R1K1 w - - 2 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r4/7p/p5pk/1p2Qp2/3n1P2/1P1qN1P1/P6P/4R1K1 w - - 0 1\"]\r\n\r\n1. Ng4+ fxg4 2. Qg5+ Kg7 3. Qe7+ Kh6 4. Qh4+ Kg7 5. Re7+ Kg8 6. Qxh7+\r\n*",
+    "url": "https://www.chess.com/daily/2025-04-28",
+    "title": "Check for a Fork",
+    "fen": "1r6/kb2npBp/p3p1p1/8/P7/r5P1/2P2PBP/2R1R1K1 w - - 0 29",
+    "current_fen": "1r6/kb2npBp/p3p1p1/8/P7/r5P1/2P2PBP/2R1R1K1 w - - 0 29",
+    "pgn": "[White \"JohanVA\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"1r6/kb2npBp/p3p1p1/8/P7/r5P1/2P2PBP/2R1R1K1 w - - 0 29\"]\r\n\r\n29. Bd4+ Ka8 30. Bc5 Rxa4 31. Bxe7 1-0",
     "all_moves": [
       {
-        "uci": "e3g4",
-        "san": "Ng4+",
+        "uci": "g7d4",
+        "san": "Bd4+",
         "color": "white"
       },
       {
-        "uci": "f5g4",
-        "san": "fxg4",
+        "uci": "a7a8",
+        "san": "Ka8",
         "color": "black"
       },
       {
-        "uci": "e5g5",
-        "san": "Qg5+",
+        "uci": "d4c5",
+        "san": "Bc5",
         "color": "white"
       },
       {
-        "uci": "h6g7",
-        "san": "Kg7",
+        "uci": "a3a4",
+        "san": "Rxa4",
         "color": "black"
       },
       {
-        "uci": "g5e7",
-        "san": "Qe7+",
-        "color": "white"
-      },
-      {
-        "uci": "g7h6",
-        "san": "Kh6",
-        "color": "black"
-      },
-      {
-        "uci": "e7h4",
-        "san": "Qh4+",
-        "color": "white"
-      },
-      {
-        "uci": "h6g7",
-        "san": "Kg7",
-        "color": "black"
-      },
-      {
-        "uci": "e1e7",
-        "san": "Re7+",
-        "color": "white"
-      },
-      {
-        "uci": "g7g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "h4h7",
-        "san": "Qxh7+",
+        "uci": "c5e7",
+        "san": "Bxe7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e3g4",
-        "san": "Ng4+",
+        "uci": "g7d4",
+        "san": "Bd4+",
         "color": "white"
       },
       {
-        "uci": "e5g5",
-        "san": "Qg5+",
+        "uci": "d4c5",
+        "san": "Bc5",
         "color": "white"
       },
       {
-        "uci": "g5e7",
-        "san": "Qe7+",
-        "color": "white"
-      },
-      {
-        "uci": "e7h4",
-        "san": "Qh4+",
-        "color": "white"
-      },
-      {
-        "uci": "e1e7",
-        "san": "Re7+",
-        "color": "white"
-      },
-      {
-        "uci": "h4h7",
-        "san": "Qxh7+",
+        "uci": "c5e7",
+        "san": "Bxe7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-25T20:01:18.009177+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T20:02:35.432141+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787688078009",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "puzzle_id": "random_1787688155432",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1541900298174603366,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "re7",
-        "correct": false,
-        "timestamp": "2026-08-25T20:01:57.032200+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": 1541900622612135977,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
