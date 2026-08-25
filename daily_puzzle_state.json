@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-01-04",
     "title": "Give It Away, Give It Away Now",
     "fen": "r7/6p1/4b1Rp/4q2k/7b/1B6/2PB2Q1/2K5 w - - 0 1",
-    "current_fen": "r7/6p1/4b1Rp/4q2k/7b/1B6/2PB2Q1/2K5 w - - 0 1",
+    "current_fen": "r7/6p1/6Rp/4q2k/6bb/1B6/2PB4/2K5 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/6p1/4b1Rp/4q2k/7b/1B6/2PB2Q1/2K5 w - - 0 1\"]\r\n\r\n1. Qg4+ Bxg4 2. Rxh6+ gxh6 3. Bf7#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787695678754",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541932177778937908,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qg4",
+        "correct": true,
+        "timestamp": "2026-08-25T22:08:07.388041+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
