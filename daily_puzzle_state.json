@@ -1,135 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-12-21",
-    "title": "V. Platov, Deutsches Wochenschach 1914",
-    "fen": "3b3k/2p5/Bp6/P7/8/n5K1/3B4/8 w - - 0 1",
-    "current_fen": "Q2b2k1/2p5/2n5/1p6/8/6K1/8/8 b - - 0 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3b3k/2p5/Bp6/P7/8/n5K1/3B4/8 w - - 0 1\"]\r\n\r\n1. Bc3+ Kg8 2. Bc4+ Nxc4 3. a6 b5 4. Ba5 Nxa5 5. a7 Nc6 6. a8=Q\r\n*",
+    "url": "https://www.chess.com/daily/2012-04-13",
+    "title": "Unusual Mating Pattern",
+    "fen": "r1b1rk2/ppq2P1p/6p1/2p3N1/P2p2PQ/1P1P3P/2P1n1K1/R4R2 w - - 0 1",
+    "current_fen": "r1b1rk2/ppq2P1p/6p1/2p3N1/P2p2PQ/1P1P3P/2P1n1K1/R4R2 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1rk2/ppq2P1p/6p1/2p3N1/P2p2PQ/1P1P3P/2P1n1K1/R4R2 w - - 0 1\"]\r\n\r\n1. Nxh7+ Kg7 2. fxe8=N+ Kh8 3. Rf8#\r\n*",
     "all_moves": [
       {
-        "uci": "d2c3",
-        "san": "Bc3+",
+        "uci": "g5h7",
+        "san": "Nxh7+",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "f8g7",
+        "san": "Kg7",
         "color": "black"
       },
       {
-        "uci": "a6c4",
-        "san": "Bc4+",
+        "uci": "f7e8n",
+        "san": "fxe8=N+",
         "color": "white"
       },
       {
-        "uci": "a3c4",
-        "san": "Nxc4",
+        "uci": "g7h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "a5a6",
-        "san": "a6",
-        "color": "white"
-      },
-      {
-        "uci": "b6b5",
-        "san": "b5",
-        "color": "black"
-      },
-      {
-        "uci": "c3a5",
-        "san": "Ba5",
-        "color": "white"
-      },
-      {
-        "uci": "c4a5",
-        "san": "Nxa5",
-        "color": "black"
-      },
-      {
-        "uci": "a6a7",
-        "san": "a7",
-        "color": "white"
-      },
-      {
-        "uci": "a5c6",
-        "san": "Nc6",
-        "color": "black"
-      },
-      {
-        "uci": "a7a8q",
-        "san": "a8=Q",
+        "uci": "f1f8",
+        "san": "Rf8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2c3",
-        "san": "Bc3+",
+        "uci": "g5h7",
+        "san": "Nxh7+",
         "color": "white"
       },
       {
-        "uci": "a6c4",
-        "san": "Bc4+",
+        "uci": "f7e8n",
+        "san": "fxe8=N+",
         "color": "white"
       },
       {
-        "uci": "a5a6",
-        "san": "a6",
-        "color": "white"
-      },
-      {
-        "uci": "c3a5",
-        "san": "Ba5",
-        "color": "white"
-      },
-      {
-        "uci": "a6a7",
-        "san": "a7",
-        "color": "white"
-      },
-      {
-        "uci": "a7a8q",
-        "san": "a8=Q",
+        "uci": "f1f8",
+        "san": "Rf8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-25T21:48:54.968042+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T21:49:27.963255+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787694534968",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1541927380455792701,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "a8=Q",
-        "correct": true,
-        "timestamp": "2026-08-25T21:49:18.061517+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bc4",
-        "correct": true,
-        "timestamp": "2026-08-25T21:49:00.669390+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787694567963",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
