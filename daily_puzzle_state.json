@@ -1,91 +1,69 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-06-11",
-    "title": "Step Right Up",
-    "fen": "2kr4/pp5Q/2p1p2P/8/4P3/K1n3P1/b2r1PB1/R1R5 b - - 0 1",
-    "current_fen": "2kr4/pp5Q/2p1p2P/1nK5/3rP3/6P1/b4PB1/R1R5 b - - 4 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2kr4/pp5Q/2p1p2P/8/4P3/K1n3P1/b2r1PB1/R1R5 b - - 0 1\"]\r\n\r\n1...Nb5+ 2.Kb4 R2d4+ 3.Kc5 Nc7 4.Rxa2 b6+ *",
+    "url": "https://www.chess.com/daily/2024-01-06",
+    "title": "Finding Nemo's Birthday Brilliancy",
+    "fen": "4kr2/2r1b1QR/4P1p1/1b6/nN6/PpP1B3/1P4q1/2KR4 w - - 0 1",
+    "current_fen": "4kr2/2r1b1QR/4P1p1/1b6/nN6/PpP1B3/1P4q1/2KR4 w - - 0 1",
+    "pgn": "[White \"Happy Birthday, Nemo!\"]\r\n[Black \"Game Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"4kr2/2r1b1QR/4P1p1/1b6/nN6/PpP1B3/1P4q1/2KR4 w - - 0 1\"]\r\n\r\n1. Qf7+ Rxf7 2. exf7+ Kf8 3. Bh6# 1-0",
     "all_moves": [
       {
-        "uci": "c3b5",
-        "san": "Nb5+",
-        "color": "black"
-      },
-      {
-        "uci": "a3b4",
-        "san": "Kb4",
+        "uci": "g7f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "d2d4",
-        "san": "R2d4+",
+        "uci": "f8f7",
+        "san": "Rxf7",
         "color": "black"
       },
       {
-        "uci": "b4c5",
-        "san": "Kc5",
+        "uci": "e6f7",
+        "san": "exf7+",
         "color": "white"
       },
       {
-        "uci": "b5c7",
-        "san": "Nc7",
+        "uci": "e8f8",
+        "san": "Kf8",
         "color": "black"
       },
       {
-        "uci": "a1a2",
-        "san": "Rxa2",
+        "uci": "e3h6",
+        "san": "Bh6#",
         "color": "white"
-      },
-      {
-        "uci": "b7b6",
-        "san": "b6+",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3b5",
-        "san": "Nb5+",
-        "color": "black"
+        "uci": "g7f7",
+        "san": "Qf7+",
+        "color": "white"
       },
       {
-        "uci": "d2d4",
-        "san": "R2d4+",
-        "color": "black"
+        "uci": "e6f7",
+        "san": "exf7+",
+        "color": "white"
       },
       {
-        "uci": "b5c7",
-        "san": "Nc7",
-        "color": "black"
-      },
-      {
-        "uci": "b7b6",
-        "san": "b6+",
-        "color": "black"
+        "uci": "e3h6",
+        "san": "Bh6#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T19:08:25.932379+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T19:13:40.839017+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787684905932",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "puzzle_id": "random_1787685220839",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1541886993242390621,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "R8d5",
-        "correct": false,
-        "timestamp": "2026-08-25T19:13:05.113794+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
