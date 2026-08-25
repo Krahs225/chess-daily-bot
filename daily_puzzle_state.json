@@ -1,77 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-10-19",
-    "title": "Spielmann-Mentjik Margate 1938",
-    "fen": "r4nk1/pp1b2pp/4p3/3pn1N1/3q4/P2B1Q2/6PP/R4R1K w - - 0 1",
-    "current_fen": "5R1k/pp1b2pB/4p3/3pn1N1/3q4/P7/6PP/R6K b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4nk1/pp1b2pp/4p3/3pn1N1/3q4/P2B1Q2/6PP/R4R1K w - - 0 1\"]\r\n\r\n1. Qxf8+ Rxf8 2. Bxh7+ Kh8 3. Rxf8#\r\n*",
+    "url": "https://www.chess.com/daily/2007-05-26",
+    "title": "Forks and Pins Go Hand In Hand",
+    "fen": "r3k2r/ppp1b2p/2n1p1p1/1Q1q4/2ppN3/8/PPP2PPP/R1B1R1K1 w kq - 0 1",
+    "current_fen": "r3k2r/ppp1b2p/2n1p1p1/1Q1q4/2ppN3/8/PPP2PPP/R1B1R1K1 w kq - 0 1",
+    "pgn": "[FEN \"r3k2r/ppp1b2p/2n1p1p1/1Q1q4/2ppN3/8/PPP2PPP/R1B1R1K1 w kq - 0 1\"]\r\n[PlyCount \"3\"]\r\n\r\n1. Nf6+ $1 1... Bxf6 2. Qxd5 *",
     "all_moves": [
       {
-        "uci": "f3f8",
-        "san": "Qxf8+",
+        "uci": "e4f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "a8f8",
-        "san": "Rxf8",
+        "uci": "e7f6",
+        "san": "Bxf6",
         "color": "black"
       },
       {
-        "uci": "d3h7",
-        "san": "Bxh7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "f1f8",
-        "san": "Rxf8#",
+        "uci": "b5d5",
+        "san": "Qxd5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3f8",
-        "san": "Qxf8+",
+        "uci": "e4f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "d3h7",
-        "san": "Bxh7+",
-        "color": "white"
-      },
-      {
-        "uci": "f1f8",
-        "san": "Rxf8#",
+        "uci": "b5d5",
+        "san": "Qxd5",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-25T20:53:21.930085+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-25T20:53:55.414488+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787691201930",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541913401700130938,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxf8",
-        "correct": true,
-        "timestamp": "2026-08-25T20:53:42.216889+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787691235414",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
