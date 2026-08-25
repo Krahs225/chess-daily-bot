@@ -1,77 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-03-07",
-    "title": "Targeting a Stranded Piece",
-    "fen": "1k4q1/1pp5/1b1np1r1/3p3P/Q2P1P2/1PB1P3/2P1B2R/K7 b - - 0 1",
-    "current_fen": "1k6/1pp5/1b1np2P/3p4/Q2P1P2/1PB1P3/1KP1B2q/6r1 w - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"1k4q1/1pp5/1b1np1r1/3p3P/Q2P1P2/1PB1P3/2P1B2R/K7 b - - 0 1\"]\r\n\r\n1... Rg1+ 2. Kb2 Qg3 3. h6 Qxh2 *",
+    "url": "https://www.chess.com/daily/2025-08-21",
+    "title": "Tactical Tractor Beam",
+    "fen": "1r6/2p2bk1/1bQ3qr/p3P3/pN2N3/P7/1P4RP/1R5K b - - 0 1",
+    "current_fen": "1r6/2p2bk1/1bQ3qr/p3P3/pN2N3/P7/1P4RP/1R5K b - - 0 1",
+    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"EnPassantFork\"]\r\n[Result \"0-1\"]\r\n[FEN \"1r6/2p2bk1/1bQ3qr/p3P3/pN2N3/P7/1P4RP/1R5K b - - 0 1\"]\r\n\r\n1... Qxg2+ 2. Kxg2 Rxc6 3. Nxc6 Bd5 4. Nxb8 Bxe4+ 5. Kg3 Bxb1 0-1",
     "all_moves": [
       {
-        "uci": "g6g1",
-        "san": "Rg1+",
+        "uci": "g6g2",
+        "san": "Qxg2+",
         "color": "black"
       },
       {
-        "uci": "a1b2",
-        "san": "Kb2",
+        "uci": "h1g2",
+        "san": "Kxg2",
         "color": "white"
       },
       {
-        "uci": "g8g3",
-        "san": "Qg3",
+        "uci": "h6c6",
+        "san": "Rxc6",
         "color": "black"
       },
       {
-        "uci": "h5h6",
-        "san": "h6",
+        "uci": "b4c6",
+        "san": "Nxc6",
         "color": "white"
       },
       {
-        "uci": "g3h2",
-        "san": "Qxh2",
+        "uci": "f7d5",
+        "san": "Bd5",
+        "color": "black"
+      },
+      {
+        "uci": "c6b8",
+        "san": "Nxb8",
+        "color": "white"
+      },
+      {
+        "uci": "d5e4",
+        "san": "Bxe4+",
+        "color": "black"
+      },
+      {
+        "uci": "g2g3",
+        "san": "Kg3",
+        "color": "white"
+      },
+      {
+        "uci": "e4b1",
+        "san": "Bxb1",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "g6g1",
-        "san": "Rg1+",
+        "uci": "g6g2",
+        "san": "Qxg2+",
         "color": "black"
       },
       {
-        "uci": "g8g3",
-        "san": "Qg3",
+        "uci": "h6c6",
+        "san": "Rxc6",
         "color": "black"
       },
       {
-        "uci": "g3h2",
-        "san": "Qxh2",
+        "uci": "f7d5",
+        "san": "Bd5",
+        "color": "black"
+      },
+      {
+        "uci": "d5e4",
+        "san": "Bxe4+",
+        "color": "black"
+      },
+      {
+        "uci": "e4b1",
+        "san": "Bxb1",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-25T12:57:26.105861+00:00",
+    "player_move_count": 5,
+    "posted_at": "2026-08-25T12:58:10.628719+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787662646105",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541793629704556634,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxh2",
-        "correct": true,
-        "timestamp": "2026-08-25T12:58:06.090597+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787662690628",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
