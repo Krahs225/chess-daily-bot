@@ -1,98 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-12-25",
-    "title": "A Gift From Tal",
-    "fen": "4kr2/ppp3pp/4P3/1N1pq1B1/8/8/PPn1Q1PP/R3b2K w - - 3 21",
-    "current_fen": "4k3/ppp3pp/4P3/1N1R2B1/7P/6q1/PPn2bP1/7K b - - 0 24",
-    "pgn": "[Event \"Simul\"]\r\n[Site \"Chicago, IL USA\"]\r\n[Date \"1988\"]\r\n[White \"Mikhail Tal\"]\r\n[Black \"Jack Miller\"]\r\n[Result \"*\"]\r\n[FEN \"4kr2/ppp3pp/4P3/1N1pq1B1/8/8/PPn1Q1PP/R3b2K w - - 3 21\"]\r\n\r\n21.h4 Qg3 22.Rd1 Rf2 23.Qxf2 Bxf2 24.Rxd5 *",
+    "url": "https://www.chess.com/daily/2023-03-07",
+    "title": "Targeting a Stranded Piece",
+    "fen": "1k4q1/1pp5/1b1np1r1/3p3P/Q2P1P2/1PB1P3/2P1B2R/K7 b - - 0 1",
+    "current_fen": "1k4q1/1pp5/1b1np1r1/3p3P/Q2P1P2/1PB1P3/2P1B2R/K7 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1k4q1/1pp5/1b1np1r1/3p3P/Q2P1P2/1PB1P3/2P1B2R/K7 b - - 0 1\"]\r\n\r\n1... Rg1+ 2. Kb2 Qg3 3. h6 Qxh2 *",
     "all_moves": [
       {
-        "uci": "h2h4",
-        "san": "h4",
+        "uci": "g6g1",
+        "san": "Rg1+",
+        "color": "black"
+      },
+      {
+        "uci": "a1b2",
+        "san": "Kb2",
         "color": "white"
       },
       {
-        "uci": "e5g3",
+        "uci": "g8g3",
         "san": "Qg3",
         "color": "black"
       },
       {
-        "uci": "a1d1",
-        "san": "Rd1",
+        "uci": "h5h6",
+        "san": "h6",
         "color": "white"
       },
       {
-        "uci": "f8f2",
-        "san": "Rf2",
+        "uci": "g3h2",
+        "san": "Qxh2",
         "color": "black"
-      },
-      {
-        "uci": "e2f2",
-        "san": "Qxf2",
-        "color": "white"
-      },
-      {
-        "uci": "e1f2",
-        "san": "Bxf2",
-        "color": "black"
-      },
-      {
-        "uci": "d1d5",
-        "san": "Rxd5",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h2h4",
-        "san": "h4",
-        "color": "white"
+        "uci": "g6g1",
+        "san": "Rg1+",
+        "color": "black"
       },
       {
-        "uci": "a1d1",
-        "san": "Rd1",
-        "color": "white"
+        "uci": "g8g3",
+        "san": "Qg3",
+        "color": "black"
       },
       {
-        "uci": "e2f2",
-        "san": "Qxf2",
-        "color": "white"
-      },
-      {
-        "uci": "d1d5",
-        "san": "Rxd5",
-        "color": "white"
+        "uci": "g3h2",
+        "san": "Qxh2",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T11:03:05.092445+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T12:57:26.105861+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787655785092",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541764852052140103,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "e7",
-        "correct": false,
-        "timestamp": "2026-08-25T11:06:34.482323+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rxd5",
-        "correct": true,
-        "timestamp": "2026-08-25T11:14:57.042093+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787662646105",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
