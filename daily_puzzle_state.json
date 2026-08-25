@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-05-11",
-    "title": "Sometimes you gotta sacrifice...",
-    "fen": "r1b2rk1/ppp2ppp/1b6/3q4/3pN3/Q4N2/PPP2KPP/R1B1R3 w - - 0 12",
-    "current_fen": "r1b1R1k1/ppp2p1p/1b3p1B/3q4/3p4/5N2/PPP2KPP/R7 b - - 3 15",
-    "pgn": "[FEN \"r1b2rk1/ppp2ppp/1b6/3q4/3pN3/Q4N2/PPP2KPP/R1B1R3 w - - 0 12\"]\r\n[PlyCount \"7\"]\r\n\r\n12. Nf6+ gxf6 13. Qxf8+ Kxf8 14. Bh6+ Kg8 15. Re8# *",
+    "url": "https://www.chess.com/daily/2017-04-25",
+    "title": "Throwing Out The Bait",
+    "fen": "1r1q3r/1b3Q2/3kp3/1B1p2Np/1b1P3P/2N1P3/1P4P1/R5K1 w - - 0 1",
+    "current_fen": "1r1q3r/1b3Q2/3kp3/1B1p2Np/1b1P3P/2N1P3/1P4P1/R5K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r1q3r/1b3Q2/3kp3/1B1p2Np/1b1P3P/2N1P3/1P4P1/R5K1 w - - 0 1\"]\r\n\r\n1. Ra6+ Bxa6 2. Qxe6+ Kc7 3. Qc6#\r\n*",
     "all_moves": [
       {
-        "uci": "e4f6",
-        "san": "Nf6+",
+        "uci": "a1a6",
+        "san": "Ra6+",
         "color": "white"
       },
       {
-        "uci": "g7f6",
-        "san": "gxf6",
+        "uci": "b7a6",
+        "san": "Bxa6",
         "color": "black"
       },
       {
-        "uci": "a3f8",
-        "san": "Qxf8+",
+        "uci": "f7e6",
+        "san": "Qxe6+",
         "color": "white"
       },
       {
-        "uci": "g8f8",
-        "san": "Kxf8",
+        "uci": "d6c7",
+        "san": "Kc7",
         "color": "black"
       },
       {
-        "uci": "c1h6",
-        "san": "Bh6+",
-        "color": "white"
-      },
-      {
-        "uci": "f8g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "e1e8",
-        "san": "Re8#",
+        "uci": "e6c6",
+        "san": "Qc6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4f6",
-        "san": "Nf6+",
+        "uci": "a1a6",
+        "san": "Ra6+",
         "color": "white"
       },
       {
-        "uci": "a3f8",
-        "san": "Qxf8+",
+        "uci": "f7e6",
+        "san": "Qxe6+",
         "color": "white"
       },
       {
-        "uci": "c1h6",
-        "san": "Bh6+",
-        "color": "white"
-      },
-      {
-        "uci": "e1e8",
-        "san": "Re8#",
+        "uci": "e6c6",
+        "san": "Qc6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T22:57:03.577469+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T22:57:24.532704+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787698623577",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541944529626865755,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "re8",
-        "correct": true,
-        "timestamp": "2026-08-25T22:57:15.596720+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787698644532",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
