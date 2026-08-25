@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-01-15",
     "title": "Promotion vs Mating Net",
     "fen": "8/2NP1p1k/6pP/6r1/p5r1/7K/1P6/3R3R b - - 0 1",
-    "current_fen": "8/2NP1p1k/6pP/6r1/p5r1/7K/1P6/3R3R b - - 0 1",
+    "current_fen": "3Q4/2N4k/6pP/5pr1/p5r1/7K/1P6/3R3R b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/2NP1p1k/6pP/6r1/p5r1/7K/1P6/3R3R b - - 0 1\"]\r\n\r\n1... f5 2. d8=Q Rh5+ 3. Qh4 Rhxh4# *",
     "all_moves": [
       {
@@ -57,13 +57,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787692908277",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541920558214676611,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "f5",
+        "correct": true,
+        "timestamp": "2026-08-25T21:21:54.095217+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rg3",
+        "correct": false,
+        "timestamp": "2026-08-25T21:21:54.493214+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
