@@ -1,100 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-05-08",
-    "title": "Finding a Weak Point in the Defense",
-    "fen": "R7/1rrq1pbk/5p1p/3N1P1Q/2BpP3/2p3P1/6KP/8 w - - 0 1",
-    "current_fen": "R7/1rrq1pbk/5p1p/3N1P1Q/2BpP3/2p3P1/6KP/8 w - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"R7/1rrq1pbk/5p1p/3N1P1Q/2BpP3/2p3P1/6KP/8 w - - 0 1\"]\r\n\r\n1.Qg6+ fxg6 2.fxg6+ Kxg6 3.Nf4+ Kg5 4.h4+ Kg4 5.Be2# *",
+    "url": "https://www.chess.com/daily/2025-11-13",
+    "title": "Moving Target",
+    "fen": "1R1N4/5pk1/6pp/3qp3/1Q2N1nP/2PP2PK/r7/8 b - - 0 44",
+    "current_fen": "1R1N4/6k1/6pp/4pp2/1Q2N2P/2Pq1KP1/7r/8 w - - 0 47",
+    "pgn": "[Result \"0-1\"]\r\n[FEN \"1R1N4/5pk1/6pp/3qp3/1Q2N1nP/2PP2PK/r7/8 b - - 0 44\"]\r\n\r\n44... Rh2+ 45. Kxg4 f5+ 46. Kf3 Qxd3# 0-1",
     "all_moves": [
       {
-        "uci": "h5g6",
-        "san": "Qg6+",
-        "color": "white"
-      },
-      {
-        "uci": "f7g6",
-        "san": "fxg6",
+        "uci": "a2h2",
+        "san": "Rh2+",
         "color": "black"
       },
       {
-        "uci": "f5g6",
-        "san": "fxg6+",
+        "uci": "h3g4",
+        "san": "Kxg4",
         "color": "white"
       },
       {
-        "uci": "h7g6",
-        "san": "Kxg6",
+        "uci": "f7f5",
+        "san": "f5+",
         "color": "black"
       },
       {
-        "uci": "d5f4",
-        "san": "Nf4+",
+        "uci": "g4f3",
+        "san": "Kf3",
         "color": "white"
       },
       {
-        "uci": "g6g5",
-        "san": "Kg5",
+        "uci": "d5d3",
+        "san": "Qxd3#",
         "color": "black"
-      },
-      {
-        "uci": "h2h4",
-        "san": "h4+",
-        "color": "white"
-      },
-      {
-        "uci": "g5g4",
-        "san": "Kg4",
-        "color": "black"
-      },
-      {
-        "uci": "c4e2",
-        "san": "Be2#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5g6",
-        "san": "Qg6+",
-        "color": "white"
+        "uci": "a2h2",
+        "san": "Rh2+",
+        "color": "black"
       },
       {
-        "uci": "f5g6",
-        "san": "fxg6+",
-        "color": "white"
+        "uci": "f7f5",
+        "san": "f5+",
+        "color": "black"
       },
       {
-        "uci": "d5f4",
-        "san": "Nf4+",
-        "color": "white"
-      },
-      {
-        "uci": "h2h4",
-        "san": "h4+",
-        "color": "white"
-      },
-      {
-        "uci": "c4e2",
-        "san": "Be2#",
-        "color": "white"
+        "uci": "d5d3",
+        "san": "Qxd3#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-25T20:02:57.962742+00:00",
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T20:04:34.465490+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787688177962",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "puzzle_id": "random_1787688274465",
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
+    "message_id": 1541901123126960319,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxd3",
+        "correct": true,
+        "timestamp": "2026-08-25T20:08:29.832796+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
