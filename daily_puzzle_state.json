@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-04-26",
-    "title": "Rank and File Tactical Opportunity",
-    "fen": "8/5k2/2P1pr2/p2nq3/8/PP1Q2P1/7P/2R4K w - - 0 48",
-    "current_fen": "5k2/2Q5/4pr2/p7/8/PP4P1/7P/7K b - - 0 51",
-    "pgn": "[Event \"PRO League Central\"]\r\n[Site \"Chess.com INT\"]\r\n[Date \"2017.02.01\"]\r\n[Round \"4\"]\r\n[White \"Hawkins, Jonathan J (Missed Opportunity)\"]\r\n[Black \"Thorfinnsson, Bragi\"]\r\n[Result \"1-0\"]\r\n[ECO \"D55\"]\r\n[WhiteElo \"2583\"]\r\n[BlackElo \"2453\"]\r\n[FEN \"8/5k2/2P1pr2/p2nq3/8/PP1Q2P1/7P/2R4K w - - 0 48\"]\r\n[WhiteTeam \"London Towers\"]\r\n[BlackTeam \"Reykjavik Puffins\"]\r\n\r\n48. c7 Nxc7 49. Rxc7+ Qxc7 50. Qh7+ Kf8 51. Qxc7 1-0",
+    "url": "https://www.chess.com/daily/2022-06-16",
+    "title": "Aronian's Fingerprints",
+    "fen": "2r3k1/pp3p1p/1n2b3/4P3/3KPp2/1N1B4/PP4PP/7R b - - 0 1",
+    "current_fen": "2r3k1/pp3p1p/1n2b3/4P3/3KPp2/1N1B4/PP4PP/7R b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2r3k1/pp3p1p/1n2b3/4P3/3KPp2/1N1B4/PP4PP/7R b - - 0 1\"]\r\n\r\n1...Na4 2.Bb5 Rd8+ 3.Bd7 Rxd7# *",
     "all_moves": [
       {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "d5c7",
-        "san": "Nxc7",
+        "uci": "b6a4",
+        "san": "Na4",
         "color": "black"
       },
       {
-        "uci": "c1c7",
-        "san": "Rxc7+",
+        "uci": "d3b5",
+        "san": "Bb5",
         "color": "white"
       },
       {
-        "uci": "e5c7",
-        "san": "Qxc7",
+        "uci": "c8d8",
+        "san": "Rd8+",
         "color": "black"
       },
       {
-        "uci": "d3h7",
-        "san": "Qh7+",
+        "uci": "b5d7",
+        "san": "Bd7",
         "color": "white"
       },
       {
-        "uci": "f7f8",
-        "san": "Kf8",
+        "uci": "d8d7",
+        "san": "Rxd7#",
         "color": "black"
-      },
-      {
-        "uci": "h7c7",
-        "san": "Qxc7",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
+        "uci": "b6a4",
+        "san": "Na4",
+        "color": "black"
       },
       {
-        "uci": "c1c7",
-        "san": "Rxc7+",
-        "color": "white"
+        "uci": "c8d8",
+        "san": "Rd8+",
+        "color": "black"
       },
       {
-        "uci": "d3h7",
-        "san": "Qh7+",
-        "color": "white"
-      },
-      {
-        "uci": "h7c7",
-        "san": "Qxc7",
-        "color": "white"
+        "uci": "d8d7",
+        "san": "Rxd7#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T20:18:25.559710+00:00",
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T20:19:07.122310+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787689105559",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541904609054949507,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxc7",
-        "correct": true,
-        "timestamp": "2026-08-25T20:19:00.986934+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787689147122",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
