@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-07-11",
     "title": "All Out For Mate",
     "fen": "5r2/1R2Qppk/1bp2r2/3p4/6K1/6P1/2P2P1P/5b2 b - - 0 1",
-    "current_fen": "5r2/1R2Qppk/1bp2r2/3p4/6K1/6P1/2P2P1P/5b2 b - - 0 1",
+    "current_fen": "5Q2/1R3ppk/2p2r2/3p4/6K1/6P1/2P2b1P/5b2 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r2/1R2Qppk/1bp2r2/3p4/6K1/6P1/2P2P1P/5b2 b - - 0 1\"]\r\n\r\n1...Bxf2 2. Qxf8 Be2+ 3. Kh3 Bf3 4. Rb4 d4\r\n*",
     "all_moves": [
       {
@@ -72,20 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787682612465",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541877373975138367,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Re6",
-        "correct": false,
-        "timestamp": "2026-08-25T18:31:28.441512+00:00"
+        "move": "Bxf2",
+        "correct": true,
+        "timestamp": "2026-08-25T18:31:44.929735+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
