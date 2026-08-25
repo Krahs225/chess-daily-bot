@@ -1,77 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-09-25",
-    "title": "Unusual Mating Theme",
-    "fen": "4R3/3qrpk1/5b1p/2pB1PpQ/1pPp4/6P1/PP5P/6K1 w - - 0 1",
-    "current_fen": "6R1/3qr2k/5bPp/2pB2p1/1pPp4/6P1/PP5P/6K1 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4R3/3qrpk1/5b1p/2pB1PpQ/1pPp4/6P1/PP5P/6K1 w - - 0 1\"]\r\n\r\n1. Qg6+ fxg6 2. Rg8+ Kh7 3. fxg6#\r\n*",
+    "url": "https://www.chess.com/daily/2023-06-26",
+    "title": "Forward Defense, Backward Attack",
+    "fen": "2r5/5k1p/N5p1/3p4/p2BpP2/4P2B/1P2bP2/6K1 b - - 0 1",
+    "current_fen": "2r5/5k1p/N5p1/3p4/p2BpP2/4P2B/1P2bP2/6K1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2r5/5k1p/N5p1/3p4/p2BpP2/4P2B/1P2bP2/6K1 b - - 0 1\"]\r\n\r\n1... Rc1+ 2. Kh2 Bxa6 *",
     "all_moves": [
       {
-        "uci": "h5g6",
-        "san": "Qg6+",
-        "color": "white"
-      },
-      {
-        "uci": "f7g6",
-        "san": "fxg6",
+        "uci": "c8c1",
+        "san": "Rc1+",
         "color": "black"
       },
       {
-        "uci": "e8g8",
-        "san": "Rg8+",
+        "uci": "g1h2",
+        "san": "Kh2",
         "color": "white"
       },
       {
-        "uci": "g7h7",
-        "san": "Kh7",
+        "uci": "e2a6",
+        "san": "Bxa6",
         "color": "black"
-      },
-      {
-        "uci": "f5g6",
-        "san": "fxg6#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5g6",
-        "san": "Qg6+",
-        "color": "white"
+        "uci": "c8c1",
+        "san": "Rc1+",
+        "color": "black"
       },
       {
-        "uci": "e8g8",
-        "san": "Rg8+",
-        "color": "white"
-      },
-      {
-        "uci": "f5g6",
-        "san": "fxg6#",
-        "color": "white"
+        "uci": "e2a6",
+        "san": "Bxa6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-25T21:20:17.827135+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-25T21:20:34.311003+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787692817827",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541920178567380992,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "fxg6",
-        "correct": true,
-        "timestamp": "2026-08-25T21:20:27.300446+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787692834311",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
