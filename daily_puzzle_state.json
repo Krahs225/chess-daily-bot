@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-02-09",
-    "title": "Tower of Terror",
-    "fen": "8/1R3R2/p2p4/1pkr3p/8/1P2P3/1K3Pr1/8 w - - 6 1",
-    "current_fen": "8/1R6/p2p4/k2r3p/pP6/4P3/1K3Pr1/8 b - - 0 4",
-    "pgn": "[Result \"1-0\"]\r\n[FEN \"8/1R3R2/p2p4/1pkr3p/8/1P2P3/1K3Pr1/8 w - - 6 1\"]\r\n\r\n1.Rfc7+ Kb4 2.Rc4+ Ka5 3.Ra4+ bxa4 4.b4# 1-0",
+    "url": "https://www.chess.com/daily/2014-03-29",
+    "title": "Creating Chaos",
+    "fen": "r1qr4/5kpp/ppnBbp2/2pn4/2BpQ3/P4N2/1PP2PPP/2KRR3 w - - 0 1",
+    "current_fen": "r1qr4/5kpp/ppnBbp2/2pn4/2BpQ3/P4N2/1PP2PPP/2KRR3 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1qr4/5kpp/ppnBbp2/2pn4/2BpQ3/P4N2/1PP2PPP/2KRR3 w - - 0 1\"]\r\n\r\n1. Ng5+ fxg5 2. Qf3+ Kg6 3. Rxe6+ Qxe6 4. Bxd5\r\n*",
     "all_moves": [
       {
-        "uci": "f7c7",
-        "san": "Rfc7+",
+        "uci": "f3g5",
+        "san": "Ng5+",
         "color": "white"
       },
       {
-        "uci": "c5b4",
-        "san": "Kb4",
+        "uci": "f6g5",
+        "san": "fxg5",
         "color": "black"
       },
       {
-        "uci": "c7c4",
-        "san": "Rc4+",
+        "uci": "e4f3",
+        "san": "Qf3+",
         "color": "white"
       },
       {
-        "uci": "b4a5",
-        "san": "Ka5",
+        "uci": "f7g6",
+        "san": "Kg6",
         "color": "black"
       },
       {
-        "uci": "c4a4",
-        "san": "Ra4+",
+        "uci": "e1e6",
+        "san": "Rxe6+",
         "color": "white"
       },
       {
-        "uci": "b5a4",
-        "san": "bxa4",
+        "uci": "c8e6",
+        "san": "Qxe6",
         "color": "black"
       },
       {
-        "uci": "b3b4",
-        "san": "b4#",
+        "uci": "c4d5",
+        "san": "Bxd5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f7c7",
-        "san": "Rfc7+",
+        "uci": "f3g5",
+        "san": "Ng5+",
         "color": "white"
       },
       {
-        "uci": "c7c4",
-        "san": "Rc4+",
+        "uci": "e4f3",
+        "san": "Qf3+",
         "color": "white"
       },
       {
-        "uci": "c4a4",
-        "san": "Ra4+",
+        "uci": "e1e6",
+        "san": "Rxe6+",
         "color": "white"
       },
       {
-        "uci": "b3b4",
-        "san": "b4#",
+        "uci": "c4d5",
+        "san": "Bxd5",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-25T22:22:21.659644+00:00",
+    "posted_at": "2026-08-25T22:22:37.451051+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787696541659",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541935797048049747,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "b4",
-        "correct": true,
-        "timestamp": "2026-08-25T22:22:32.024422+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787696557451",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
