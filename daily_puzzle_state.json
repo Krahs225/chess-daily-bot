@@ -120,65 +120,65 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "random",
+  "latest_puzzle_type": "daily",
   "current_puzzle": {
-    "url": "https://www.chess.com/daily/2026-08-24",
-    "title": "Corner Kick",
-    "fen": "Q7/8/5b2/4k3/7B/p1q5/K1P5/8 w - - 0 1",
-    "current_fen": "Q7/8/5b2/4k3/7B/p1q5/K1P5/8 w - - 0 1",
-    "pgn": "[Result \"*\"]\n[FEN \"Q7/8/5b2/4k3/7B/p1q5/K1P5/8 w - - 0 1\"]\n\n1. Bxf6+ Kxf6 2. Qh8+ Ke6 3. Qxc3 *",
+    "url": "https://www.chess.com/daily/2026-08-25",
+    "title": "Set the Table",
+    "fen": "8/p4p2/6kp/2NR1p2/4nP2/PPB1P2P/7r/4K3 b - - 0 41",
+    "current_fen": "8/p4p2/6kp/2NR1p2/4nP2/PPB1P2P/7r/4K3 b - - 0 41",
+    "pgn": "[Event \"It\"]\n[Site \"Vina del Mar (Chile)\"]\n[Date \"1945.??.??\"]\n[White \"Salas Romo Julio\"]\n[Black \"Castillo Larenas Mariano\"]\n[Result \"0-1\"]\n[FEN \"8/p4p2/6kp/2NR1p2/4nP2/PPB1P2P/7r/4K3 b - - 0 41\"]\n\n41... Rh1+ 42. Ke2 Nxc3+ 43. Kf2 Nxd5 0-1",
     "all_moves": [
       {
-        "uci": "h4f6",
-        "san": "Bxf6+",
-        "color": "white"
-      },
-      {
-        "uci": "e5f6",
-        "san": "Kxf6",
+        "uci": "h2h1",
+        "san": "Rh1+",
         "color": "black"
       },
       {
-        "uci": "a8h8",
-        "san": "Qh8+",
+        "uci": "e1e2",
+        "san": "Ke2",
         "color": "white"
       },
       {
-        "uci": "f6e6",
-        "san": "Ke6",
+        "uci": "e4c3",
+        "san": "Nxc3+",
         "color": "black"
       },
       {
-        "uci": "h8c3",
-        "san": "Qxc3",
+        "uci": "e2f2",
+        "san": "Kf2",
         "color": "white"
+      },
+      {
+        "uci": "c3d5",
+        "san": "Nxd5",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h4f6",
-        "san": "Bxf6+",
-        "color": "white"
+        "uci": "h2h1",
+        "san": "Rh1+",
+        "color": "black"
       },
       {
-        "uci": "a8h8",
-        "san": "Qh8+",
-        "color": "white"
+        "uci": "e4c3",
+        "san": "Nxc3+",
+        "color": "black"
       },
       {
-        "uci": "h8c3",
-        "san": "Qxc3",
-        "color": "white"
+        "uci": "c3d5",
+        "san": "Nxd5",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-24T09:00:59.789024+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-25T07:47:53.649343+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "daily_1787562059789",
+    "puzzle_id": "daily_1787644073649",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
