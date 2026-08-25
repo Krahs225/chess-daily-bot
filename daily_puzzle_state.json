@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-04-22",
     "title": "Embracing the Tension",
     "fen": "r1b2r1k/ppp3pp/8/4p3/8/4P3/PPP1QqPP/RN1K1B1R b - - 1 1",
-    "current_fen": "r2r3k/ppp3pp/8/4p3/6b1/4P3/PPPNQqPP/R1K2B1R b - - 5 3",
+    "current_fen": "r2r3k/ppp3pp/8/4p3/8/4P3/PPPNbqPP/R1K2B1R w - - 0 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"r1b2r1k/ppp3pp/8/4p3/8/4P3/PPP1QqPP/RN1K1B1R b - - 1 1\"]\r\n\r\n1...Rd8+ 2.Nd2 Bg4 3.Kc1 Bxe2 *",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787685414747",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1541889127471906968,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxd2",
-        "correct": false,
-        "timestamp": "2026-08-25T19:17:09.370339+00:00"
+        "move": "bxe2",
+        "correct": true,
+        "timestamp": "2026-08-25T19:17:12.563691+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -77,7 +77,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
