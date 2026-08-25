@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-02-05",
     "title": "Easy Like Sunday Morning",
     "fen": "3r3r/5pkp/pp3Np1/5pP1/2P5/7Q/PP1q3P/5K1R w - - 0 1",
-    "current_fen": "3r3r/5pkp/pp3Np1/5pP1/2P5/7Q/PP1q3P/5K1R w - - 0 1",
+    "current_fen": "3r3r/5pkp/pp3NpQ/5pP1/2P5/8/PP1q3P/5K1R b - - 1 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r3r/5pkp/pp3Np1/5pP1/2P5/7Q/PP1q3P/5K1R w - - 0 1\"]\r\n\r\n1. Qh6# \r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787684192596",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1541884001562665031,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qh6",
+        "correct": true,
+        "timestamp": "2026-08-25T18:56:37.024853+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
