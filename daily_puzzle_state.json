@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-09-09",
     "title": "Free to Mate",
     "fen": "1r5k/2p3R1/n3N2p/p2Pp2q/1r2P3/8/1PP3Q1/2K2R2 w - - 0 1",
-    "current_fen": "1r5k/2p3R1/n3N2p/p2Pp2q/1r2P3/8/1PP3Q1/2K2R2 w - - 0 1",
+    "current_fen": "1r6/2p4k/n3N2p/p2Pp2q/1r2P3/8/1PP3Q1/2K2R2 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r5k/2p3R1/n3N2p/p2Pp2q/1r2P3/8/1PP3Q1/2K2R2 w - - 0 1\"]\r\n\r\n1. Rh7+ Kxh7 2. Qg7#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787644172753",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541716145961312268,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rh7",
+        "correct": true,
+        "timestamp": "2026-08-25T07:49:40.692993+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
