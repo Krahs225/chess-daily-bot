@@ -1,81 +1,96 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-01-30",
-    "title": "Unusual Checkmate Pattern",
-    "fen": "bbB5/r4N2/r6R/2p1BpPP/5Pk1/4P3/1p2PK2/7R w - - 0 1",
-    "current_fen": "bbB5/r4N2/r6R/2p1BpPP/5Pk1/4P3/1p2PK2/7R w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"bbB5/r4N2/r6R/2p1BpPP/5Pk1/4P3/1p2PK2/7R w - - 0 1\"]\r\n\r\n1. Bb7 Rxb7 2. Bc7 Bxc7 3. Rd6 Bxd6 4. Nh6#\r\n*",
+    "url": "https://www.chess.com/daily/2014-05-16",
+    "title": "Fluvia Poyatos - Grischuk, Oropesa 1998",
+    "fen": "6k1/pp4pp/8/P3p3/3nPrbq/R7/1P1QBP2/2B2RK1 w - - 0 1",
+    "current_fen": "6k1/pp4pp/8/P3p3/3nPrbq/R7/1P1QBP2/2B2RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/pp4pp/8/P3p3/3nPrbq/R7/1P1QBP2/2B2RK1 w - - 0 1\"]\r\n\r\n1. Bc4+ Kh8 2. Qxd4 Bf3 3. Qd8+ Qxd8 4. Bxf4 exf4 5. Rxf3\r\n*",
     "all_moves": [
       {
-        "uci": "c8b7",
-        "san": "Bb7",
+        "uci": "e2c4",
+        "san": "Bc4+",
         "color": "white"
       },
       {
-        "uci": "a7b7",
-        "san": "Rxb7",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "e5c7",
-        "san": "Bc7",
+        "uci": "d2d4",
+        "san": "Qxd4",
         "color": "white"
       },
       {
-        "uci": "b8c7",
-        "san": "Bxc7",
+        "uci": "g4f3",
+        "san": "Bf3",
         "color": "black"
       },
       {
-        "uci": "h6d6",
-        "san": "Rd6",
+        "uci": "d4d8",
+        "san": "Qd8+",
         "color": "white"
       },
       {
-        "uci": "c7d6",
-        "san": "Bxd6",
+        "uci": "h4d8",
+        "san": "Qxd8",
         "color": "black"
       },
       {
-        "uci": "f7h6",
-        "san": "Nh6#",
+        "uci": "c1f4",
+        "san": "Bxf4",
+        "color": "white"
+      },
+      {
+        "uci": "e5f4",
+        "san": "exf4",
+        "color": "black"
+      },
+      {
+        "uci": "a3f3",
+        "san": "Rxf3",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c8b7",
-        "san": "Bb7",
+        "uci": "e2c4",
+        "san": "Bc4+",
         "color": "white"
       },
       {
-        "uci": "e5c7",
-        "san": "Bc7",
+        "uci": "d2d4",
+        "san": "Qxd4",
         "color": "white"
       },
       {
-        "uci": "h6d6",
-        "san": "Rd6",
+        "uci": "d4d8",
+        "san": "Qd8+",
         "color": "white"
       },
       {
-        "uci": "f7h6",
-        "san": "Nh6#",
+        "uci": "c1f4",
+        "san": "Bxf4",
+        "color": "white"
+      },
+      {
+        "uci": "a3f3",
+        "san": "Rxf3",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T09:24:06.773235+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-25T09:24:28.181810+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787649846773",
+    "puzzle_id": "random_1787649868181",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541739944429625415,
+    "message_id": 1541740034124943451,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
