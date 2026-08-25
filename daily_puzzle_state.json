@@ -1,102 +1,42 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-10-07",
-    "title": "Angled Off",
-    "fen": "1r3k2/8/5K2/8/8/6r1/5Q2/8 w - - 0 1",
-    "current_fen": "1r5k/6Q1/5K2/8/8/8/8/8 b - - 2 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r3k2/8/5K2/8/8/6r1/5Q2/8 w - - 0 1\"]\r\n\r\n1. Qc5+ Kg8 2. Qc4+ Kh8 3. Qh4+ Kg8 4. Qxg3+ Kh8 5. Qg7#\r\n*",
+    "url": "https://www.chess.com/daily/2011-01-31",
+    "title": "Mate in 1",
+    "fen": "8/8/5NqB/8/8/2p2kp1/6Rr/4K2R w KQkq - 0 1",
+    "current_fen": "8/8/5NqB/8/8/2p2kp1/6Rr/5RK1 b - - 1 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/5NqB/8/8/2p2kp1/6Rr/4K2R w KQkq - 0 1\"]\r\n\r\n1. 0-0\r\n*",
     "all_moves": [
       {
-        "uci": "f2c5",
-        "san": "Qc5+",
-        "color": "white"
-      },
-      {
-        "uci": "f8g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "c5c4",
-        "san": "Qc4+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "c4h4",
-        "san": "Qh4+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "h4g3",
-        "san": "Qxg3+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "g3g7",
-        "san": "Qg7#",
+        "uci": "e1g1",
+        "san": "O-O#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f2c5",
-        "san": "Qc5+",
-        "color": "white"
-      },
-      {
-        "uci": "c5c4",
-        "san": "Qc4+",
-        "color": "white"
-      },
-      {
-        "uci": "c4h4",
-        "san": "Qh4+",
-        "color": "white"
-      },
-      {
-        "uci": "h4g3",
-        "san": "Qxg3+",
-        "color": "white"
-      },
-      {
-        "uci": "g3g7",
-        "san": "Qg7#",
+        "uci": "e1g1",
+        "san": "O-O#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-25T20:12:35.275771+00:00",
-    "answer_posted": true,
+    "player_move_count": 1,
+    "posted_at": "2026-08-25T20:14:14.731996+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787688755275",
-    "next_solution_index": 9,
-    "next_player_index": 5,
+    "puzzle_id": "random_1787688854732",
+    "next_solution_index": 1,
+    "next_player_index": 1,
     "solved": true,
-    "message_id": 1541903138666315887,
+    "message_id": 1541903556225933362,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qg7",
+        "move": "o-o",
         "correct": true,
-        "timestamp": "2026-08-25T20:14:10.086927+00:00"
+        "timestamp": "2026-08-25T20:14:23.894896+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
