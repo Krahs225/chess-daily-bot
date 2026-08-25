@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2012-02-11",
     "title": "White to Play and Win",
     "fen": "r5kb/1bp2p1p/7B/1p1n1N2/p2P4/P2Q4/BPP2qPP/4rR1K w q - 0 1",
-    "current_fen": "r5kb/1bp2p1p/7B/1p1n1N2/p2P4/P2Q4/BPP2qPP/4rR1K w q - 0 1",
+    "current_fen": "r5kb/1bp1np1p/7B/1p6/p2P4/P2Q4/BPP2qPP/4rR1K w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5kb/1bp2p1p/7B/1p1n1N2/p2P4/P2Q4/BPP2qPP/4rR1K w q - 0 1\"]\r\n\r\n1. Ne7+ Nxe7 2. Qg3+ Ng6 3. Qxf2\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787688576807",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541902390012158083,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "ne7",
+        "correct": true,
+        "timestamp": "2026-08-25T20:11:35.307519+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
