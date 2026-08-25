@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-11-26",
     "title": "Enough to Win?",
     "fen": "r1r3k1/n4q1p/5Pp1/3R4/1p6/p6P/B1p3PK/2Q5 w - - 0 1",
-    "current_fen": "r2r2k1/n4q1p/5Pp1/8/1p6/p6P/B1p3PK/2Q5 w - - 0 2",
+    "current_fen": "r2r3k/n4q1p/5PpQ/8/1p6/p6P/B1p3PK/8 w - - 2 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1r3k1/n4q1p/5Pp1/3R4/1p6/p6P/B1p3PK/2Q5 w - - 0 1\"]\r\n\r\n1. Rd8+ Rxd8 2. Qh6 Kh8 3. Bxf7 Rg8 4. Bxg8 Rxg8 5. f7 a2 6. Qc1\r\n*",
     "all_moves": [
       {
@@ -102,23 +102,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787694627104",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1541927766822223953,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rd8",
+        "move": "qh6",
+        "correct": false,
+        "timestamp": "2026-08-25T21:50:39.900685+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qh6",
         "correct": true,
-        "timestamp": "2026-08-25T21:50:31.340577+00:00"
+        "timestamp": "2026-08-25T21:50:39.898633+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
