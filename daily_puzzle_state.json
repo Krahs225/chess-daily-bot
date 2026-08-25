@@ -1,107 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-04-11",
-    "title": "Laser Dance",
-    "fen": "5n1q/8/1p6/k7/P6p/2P5/Q7/7K w - - 0 1",
-    "current_fen": "5n1q/8/1p6/k7/P6p/2P5/Q7/7K w - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"5n1q/8/1p6/k7/P6p/2P5/Q7/7K w - - 0 1\"]\r\n\r\n1.Qe2 Kxa4 2.Qb2 Ka5 3.Qa1+ Kb5 4.c4+ Kxc4 5.Qxh8 *",
+    "url": "https://www.chess.com/daily/2020-11-13",
+    "title": "Zugzwang in a Bottle",
+    "fen": "8/8/8/8/n1K1B3/P7/kp1N4/b7 w - - 0 1",
+    "current_fen": "8/8/8/8/1K6/n1N5/kp6/b7 b - - 1 4",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/8/8/8/n1K1B3/P7/kp1N4/b7 w - - 0 1\"]\r\n\r\n1.Kb4 Nc3 2.Bb1+ Nxb1 3.Ne4 Nxa3 4.Nc3# *",
     "all_moves": [
       {
-        "uci": "a2e2",
-        "san": "Qe2",
+        "uci": "c4b4",
+        "san": "Kb4",
         "color": "white"
       },
       {
-        "uci": "a5a4",
-        "san": "Kxa4",
+        "uci": "a4c3",
+        "san": "Nc3",
         "color": "black"
       },
       {
-        "uci": "e2b2",
-        "san": "Qb2",
+        "uci": "e4b1",
+        "san": "Bb1+",
         "color": "white"
       },
       {
-        "uci": "a4a5",
-        "san": "Ka5",
+        "uci": "c3b1",
+        "san": "Nxb1",
         "color": "black"
       },
       {
-        "uci": "b2a1",
-        "san": "Qa1+",
+        "uci": "d2e4",
+        "san": "Ne4",
         "color": "white"
       },
       {
-        "uci": "a5b5",
-        "san": "Kb5",
+        "uci": "b1a3",
+        "san": "Nxa3",
         "color": "black"
       },
       {
-        "uci": "c3c4",
-        "san": "c4+",
-        "color": "white"
-      },
-      {
-        "uci": "b5c4",
-        "san": "Kxc4",
-        "color": "black"
-      },
-      {
-        "uci": "a1h8",
-        "san": "Qxh8",
+        "uci": "e4c3",
+        "san": "Nc3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a2e2",
-        "san": "Qe2",
+        "uci": "c4b4",
+        "san": "Kb4",
         "color": "white"
       },
       {
-        "uci": "e2b2",
-        "san": "Qb2",
+        "uci": "e4b1",
+        "san": "Bb1+",
         "color": "white"
       },
       {
-        "uci": "b2a1",
-        "san": "Qa1+",
+        "uci": "d2e4",
+        "san": "Ne4",
         "color": "white"
       },
       {
-        "uci": "c3c4",
-        "san": "c4+",
-        "color": "white"
-      },
-      {
-        "uci": "a1h8",
-        "san": "Qxh8",
+        "uci": "e4c3",
+        "san": "Nc3#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-25T13:05:40.524097+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-25T16:54:30.098243+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787663140524",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": 1541795702382796871,
+    "puzzle_id": "random_1787676870098",
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
+    "message_id": 1541853289790836746,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Qd4",
-        "correct": false,
-        "timestamp": "2026-08-25T13:25:05.220925+00:00"
+        "move": "Nc3",
+        "correct": true,
+        "timestamp": "2026-08-25T16:56:19.292396+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
