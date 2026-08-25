@@ -1,90 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-07-16",
-    "title": "Flexing the Best Rook Capture",
-    "fen": "8/p4p1k/4p1qp/1r4B1/3P3Q/2P2R2/PP4r1/K1N3R1 b - - 0 1",
-    "current_fen": "8/p4p1k/4p2p/1r4B1/3P3Q/2P2R2/P7/KrN3R1 w - - 2 4",
-    "pgn": "[Result \"0-1\"]\r\n[FEN \"8/p4p1k/4p1qp/1r4B1/3P3Q/2P2R2/PP4r1/K1N3R1 b - - 0 1\"]\r\n\r\n1... Qb1+ 2. Kxb1 Rgxb2+ 3. Ka1 Rb1# 0-1",
+    "url": "https://www.chess.com/daily/2021-05-12",
+    "title": "Cavalry Charge",
+    "fen": "3r2k1/5ppp/p5q1/1p3n2/3nQ3/NP5P/P4PPB/R4RK1 b - - 0 1",
+    "current_fen": "3r2k1/5ppp/p5q1/1p3n2/3nQ3/NP5P/P4PPB/R4RK1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3r2k1/5ppp/p5q1/1p3n2/3nQ3/NP5P/P4PPB/R4RK1 b - - 0 1\"]\r\n\r\n1...Ng3 2.Qe3 Nde2+ 3.Qxe2 Nxe2+ *",
     "all_moves": [
       {
-        "uci": "g6b1",
-        "san": "Qb1+",
+        "uci": "f5g3",
+        "san": "Ng3",
         "color": "black"
       },
       {
-        "uci": "a1b1",
-        "san": "Kxb1",
+        "uci": "e4e3",
+        "san": "Qe3",
         "color": "white"
       },
       {
-        "uci": "g2b2",
-        "san": "Rgxb2+",
+        "uci": "d4e2",
+        "san": "Nde2+",
         "color": "black"
       },
       {
-        "uci": "b1a1",
-        "san": "Ka1",
+        "uci": "e3e2",
+        "san": "Qxe2",
         "color": "white"
       },
       {
-        "uci": "b2b1",
-        "san": "Rb1#",
+        "uci": "g3e2",
+        "san": "Nxe2+",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "g6b1",
-        "san": "Qb1+",
+        "uci": "f5g3",
+        "san": "Ng3",
         "color": "black"
       },
       {
-        "uci": "g2b2",
-        "san": "Rgxb2+",
+        "uci": "d4e2",
+        "san": "Nde2+",
         "color": "black"
       },
       {
-        "uci": "b2b1",
-        "san": "Rb1#",
+        "uci": "g3e2",
+        "san": "Nxe2+",
         "color": "black"
       }
     ],
     "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-25T18:38:28.920943+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-25T18:39:41.746969+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787683108920",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541879456392810656,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rgxb2",
-        "correct": true,
-        "timestamp": "2026-08-25T18:39:05.056614+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "B2b1",
-        "correct": true,
-        "timestamp": "2026-08-25T18:39:08.892377+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787683181746",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
