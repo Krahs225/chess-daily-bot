@@ -1,62 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-05-26",
-    "title": "Forks and Pins Go Hand In Hand",
-    "fen": "r3k2r/ppp1b2p/2n1p1p1/1Q1q4/2ppN3/8/PPP2PPP/R1B1R1K1 w kq - 0 1",
-    "current_fen": "r3k2r/ppp4p/2n1pbp1/3Q4/2pp4/8/PPP2PPP/R1B1R1K1 b kq - 0 2",
-    "pgn": "[FEN \"r3k2r/ppp1b2p/2n1p1p1/1Q1q4/2ppN3/8/PPP2PPP/R1B1R1K1 w kq - 0 1\"]\r\n[PlyCount \"3\"]\r\n\r\n1. Nf6+ $1 1... Bxf6 2. Qxd5 *",
+    "url": "https://www.chess.com/daily/2021-04-23",
+    "title": "One Way Ticket",
+    "fen": "2kbr3/pp3p2/2p3p1/2n1PPp1/2KBP1P1/1P4NP/nP4B1/5R2 b - - 1 1",
+    "current_fen": "2kbr3/pp3p2/2p3p1/2n1PPp1/2KBP1P1/1P4NP/nP4B1/5R2 b - - 1 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2kbr3/pp3p2/2p3p1/2n1PPp1/2KBP1P1/1P4NP/nP4B1/5R2 b - - 1 1\"]\r\n\r\n1...b5+ 2.Kxc5 Kd7 3.e6+ fxe6 4.fxe6+ Rxe6 5.Rf7+ Re7 6.Rxe7+ Bxe7# *",
     "all_moves": [
       {
-        "uci": "e4f6",
-        "san": "Nf6+",
-        "color": "white"
-      },
-      {
-        "uci": "e7f6",
-        "san": "Bxf6",
+        "uci": "b7b5",
+        "san": "b5+",
         "color": "black"
       },
       {
-        "uci": "b5d5",
-        "san": "Qxd5",
+        "uci": "c4c5",
+        "san": "Kxc5",
         "color": "white"
+      },
+      {
+        "uci": "c8d7",
+        "san": "Kd7",
+        "color": "black"
+      },
+      {
+        "uci": "e5e6",
+        "san": "e6+",
+        "color": "white"
+      },
+      {
+        "uci": "f7e6",
+        "san": "fxe6",
+        "color": "black"
+      },
+      {
+        "uci": "f5e6",
+        "san": "fxe6+",
+        "color": "white"
+      },
+      {
+        "uci": "e8e6",
+        "san": "Rxe6",
+        "color": "black"
+      },
+      {
+        "uci": "f1f7",
+        "san": "Rf7+",
+        "color": "white"
+      },
+      {
+        "uci": "e6e7",
+        "san": "Re7",
+        "color": "black"
+      },
+      {
+        "uci": "f7e7",
+        "san": "Rxe7+",
+        "color": "white"
+      },
+      {
+        "uci": "d8e7",
+        "san": "Bxe7#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4f6",
-        "san": "Nf6+",
-        "color": "white"
+        "uci": "b7b5",
+        "san": "b5+",
+        "color": "black"
       },
       {
-        "uci": "b5d5",
-        "san": "Qxd5",
-        "color": "white"
+        "uci": "c8d7",
+        "san": "Kd7",
+        "color": "black"
+      },
+      {
+        "uci": "f7e6",
+        "san": "fxe6",
+        "color": "black"
+      },
+      {
+        "uci": "e8e6",
+        "san": "Rxe6",
+        "color": "black"
+      },
+      {
+        "uci": "e6e7",
+        "san": "Re7",
+        "color": "black"
+      },
+      {
+        "uci": "d8e7",
+        "san": "Bxe7#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-25T20:53:55.414488+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 6,
+    "posted_at": "2026-08-25T21:16:39.547152+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787691235414",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1541913543337844776,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxd5",
-        "correct": true,
-        "timestamp": "2026-08-25T20:54:18.870935+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787692599547",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
