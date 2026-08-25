@@ -1,120 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-09-24",
-    "title": "The Finishing Touch",
-    "fen": "r7/pp5p/3p2p1/1q3n1k/4R3/Pb3p2/2B2PPP/2Q3K1 w - - 0 1",
-    "current_fen": "r7/pp5p/3p2pQ/1q3P2/6k1/Pb3p1P/2B2P2/6K1 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/pp5p/3p2p1/1q3n1k/4R3/Pb3p2/2B2PPP/2Q3K1 w - - 0 1\"]\r\n\r\n1. g4+ Kh4 2. gxf5+ Kh5 3. Rh4+ Kxh4 4. Qh6+ Kg4 5. h3#\r\n*",
+    "url": "https://www.chess.com/daily/2017-08-23",
+    "title": "Queen Or King?",
+    "fen": "N3k2r/1p1b1pbp/qBnQ1np1/4p3/4P3/1N4P1/PP3P1K/2R5 w - - 0 1",
+    "current_fen": "N3k2r/1p1b1pbp/qBnQ1np1/4p3/4P3/1N4P1/PP3P1K/2R5 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"N3k2r/1p1b1pbp/qBnQ1np1/4p3/4P3/1N4P1/PP3P1K/2R5 w - - 0 1\"]\r\n\r\n1. Nc7+ Kd8 2. Ne6+ Ke8 3. Nxg7#\r\n*",
     "all_moves": [
       {
-        "uci": "g2g4",
-        "san": "g4+",
+        "uci": "a8c7",
+        "san": "Nc7+",
         "color": "white"
       },
       {
-        "uci": "h5h4",
-        "san": "Kh4",
+        "uci": "e8d8",
+        "san": "Kd8",
         "color": "black"
       },
       {
-        "uci": "g4f5",
-        "san": "gxf5+",
+        "uci": "c7e6",
+        "san": "Ne6+",
         "color": "white"
       },
       {
-        "uci": "h4h5",
-        "san": "Kh5",
+        "uci": "d8e8",
+        "san": "Ke8",
         "color": "black"
       },
       {
-        "uci": "e4h4",
-        "san": "Rh4+",
-        "color": "white"
-      },
-      {
-        "uci": "h5h4",
-        "san": "Kxh4",
-        "color": "black"
-      },
-      {
-        "uci": "c1h6",
-        "san": "Qh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h4g4",
-        "san": "Kg4",
-        "color": "black"
-      },
-      {
-        "uci": "h2h3",
-        "san": "h3#",
+        "uci": "e6g7",
+        "san": "Nxg7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g2g4",
-        "san": "g4+",
+        "uci": "a8c7",
+        "san": "Nc7+",
         "color": "white"
       },
       {
-        "uci": "g4f5",
-        "san": "gxf5+",
+        "uci": "c7e6",
+        "san": "Ne6+",
         "color": "white"
       },
       {
-        "uci": "e4h4",
-        "san": "Rh4+",
-        "color": "white"
-      },
-      {
-        "uci": "c1h6",
-        "san": "Qh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h2h3",
-        "san": "h3#",
+        "uci": "e6g7",
+        "san": "Nxg7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-25T10:39:03.005665+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T10:40:48.649112+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787654343005",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1541758802943148047,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "H3",
-        "correct": true,
-        "timestamp": "2026-08-25T10:40:34.505451+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qh6",
-        "correct": true,
-        "timestamp": "2026-08-25T10:40:28.560978+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787654448649",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
