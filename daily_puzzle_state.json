@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-05-12",
     "title": "Cavalry Charge",
     "fen": "3r2k1/5ppp/p5q1/1p3n2/3nQ3/NP5P/P4PPB/R4RK1 b - - 0 1",
-    "current_fen": "3r2k1/5ppp/p5q1/1p3n2/3nQ3/NP5P/P4PPB/R4RK1 b - - 0 1",
+    "current_fen": "3r2k1/5ppp/p5q1/1p6/3n4/NP2Q1nP/P4PPB/R4RK1 b - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"3r2k1/5ppp/p5q1/1p3n2/3nQ3/NP5P/P4PPB/R4RK1 b - - 0 1\"]\r\n\r\n1...Ng3 2.Qe3 Nde2+ 3.Qxe2 Nxe2+ *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787683181746",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541879761696071712,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Ng3",
+        "correct": true,
+        "timestamp": "2026-08-25T18:40:18.189799+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
