@@ -1,105 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-12-01",
-    "title": "Mate in 4",
-    "fen": "2kr3r/p1p5/2p2q2/2N3Q1/1R5p/P5PP/4PP2/1b4K1 w - - 0 1",
-    "current_fen": "2kr3r/pQp5/2p2q2/2N2b2/7p/P5PP/4PP2/6K1 b - - 3 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr3r/p1p5/2p2q2/2N3Q1/1R5p/P5PP/4PP2/1b4K1 w - - 0 1\"]\r\n\r\n1. Qg4+ Bf5 2. Rb8+ Kxb8 3. Qb4+ Kc8 4. Qb7#\r\n*",
+    "url": "https://www.chess.com/daily/2024-06-23",
+    "title": "Trapped Between a Pattern & The Best Move",
+    "fen": "2r1r1k1/1p3pb1/8/p2R3p/P3N1pq/1Q3P2/1P4PP/R5K1 w - - 0 26",
+    "current_fen": "2r1r1k1/1p3pb1/8/p2R3p/P3N1pq/1Q3P2/1P4PP/R5K1 w - - 0 26",
+    "pgn": "[Event \"Gausdal Int\"]\r\n[Site \"Gausdal NOR\"]\r\n[Date \"1991.??.??\"]\r\n[Round \"9\"]\r\n[White \"Lanka (Variation from Game), Zigurds\"]\r\n[Black \"Thorhallsson, Throstur\"]\r\n[Result \"1-0\"]\r\n[ECO \"B01\"]\r\n[WhiteElo \"2445\"]\r\n[BlackElo \"2425\"]\r\n[FEN \"2r1r1k1/1p3pb1/8/p2R3p/P3N1pq/1Q3P2/1P4PP/R5K1 w - - 0 26\"]\r\n\r\n26. Rd7 Re7 27. g3 Qh3 28. Rxe7 *",
     "all_moves": [
       {
-        "uci": "g5g4",
-        "san": "Qg4+",
+        "uci": "d5d7",
+        "san": "Rd7",
         "color": "white"
       },
       {
-        "uci": "b1f5",
-        "san": "Bf5",
+        "uci": "e8e7",
+        "san": "Re7",
         "color": "black"
       },
       {
-        "uci": "b4b8",
-        "san": "Rb8+",
+        "uci": "g2g3",
+        "san": "g3",
         "color": "white"
       },
       {
-        "uci": "c8b8",
-        "san": "Kxb8",
+        "uci": "h4h3",
+        "san": "Qh3",
         "color": "black"
       },
       {
-        "uci": "g4b4",
-        "san": "Qb4+",
-        "color": "white"
-      },
-      {
-        "uci": "b8c8",
-        "san": "Kc8",
-        "color": "black"
-      },
-      {
-        "uci": "b4b7",
-        "san": "Qb7#",
+        "uci": "d7e7",
+        "san": "Rxe7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5g4",
-        "san": "Qg4+",
+        "uci": "d5d7",
+        "san": "Rd7",
         "color": "white"
       },
       {
-        "uci": "b4b8",
-        "san": "Rb8+",
+        "uci": "g2g3",
+        "san": "g3",
         "color": "white"
       },
       {
-        "uci": "g4b4",
-        "san": "Qb4+",
-        "color": "white"
-      },
-      {
-        "uci": "b4b7",
-        "san": "Qb7#",
+        "uci": "d7e7",
+        "san": "Rxe7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T21:56:27.710143+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T21:57:15.013454+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787694987710",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541929280001277972,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qb4",
-        "correct": true,
-        "timestamp": "2026-08-25T21:56:37.356277+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qb7",
-        "correct": true,
-        "timestamp": "2026-08-25T21:56:37.696034+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787695035013",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
