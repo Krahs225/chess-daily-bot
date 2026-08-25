@@ -1,77 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-07-11",
-    "title": "Jump Around!",
-    "fen": "4b1k1/1pp1n1r1/p7/2r3pR/4p1N1/2PnP1PP/1PB2R1K/8 w - - 0 1",
-    "current_fen": "4b3/1pp1nNr1/p5kR/2r3p1/4p3/2PnP1PP/1PB2R1K/8 b - - 5 3",
-    "pgn": "[Result \"1-0\"]\n[FEN \"4b1k1/1pp1n1r1/p7/2r3pR/4p1N1/2PnP1PP/1PB2R1K/8 w - - 0 1\"]\n\n1. Nh6+ Kh7 2. Nf7+ Kg6 3. Rh6# 1-0",
+    "url": "https://www.chess.com/daily/2024-02-21",
+    "title": "Squaring Off Against an Isolated King",
+    "fen": "8/P4k2/8/4np2/3b4/2NP2P1/1P5K/R1B3r1 b - - 0 1",
+    "current_fen": "8/P4k2/8/4np2/3b4/2NP2P1/1P5K/R1B3r1 b - - 0 1",
+    "pgn": "[Date \"1996\"]\r\n[White \"Nick de Firmian\"]\r\n[Black \"Tiger Hillarp Persson (remove h7 pawn)\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/P4k2/8/4np2/3b4/2NP2P1/1P5K/R1B3r1 b - - 0 1\"]\r\n\r\n1... Nf3+ 2. Kh3 Rh1+ 3. Kg2 Rh2+ 4. Kxf3 Rf2# 0-1",
     "all_moves": [
       {
-        "uci": "g4h6",
-        "san": "Nh6+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "e5f3",
+        "san": "Nf3+",
         "color": "black"
       },
       {
-        "uci": "h6f7",
-        "san": "Nf7+",
+        "uci": "h2h3",
+        "san": "Kh3",
         "color": "white"
       },
       {
-        "uci": "h7g6",
-        "san": "Kg6",
+        "uci": "g1h1",
+        "san": "Rh1+",
         "color": "black"
       },
       {
-        "uci": "h5h6",
-        "san": "Rh6#",
+        "uci": "h3g2",
+        "san": "Kg2",
         "color": "white"
+      },
+      {
+        "uci": "h1h2",
+        "san": "Rh2+",
+        "color": "black"
+      },
+      {
+        "uci": "g2f3",
+        "san": "Kxf3",
+        "color": "white"
+      },
+      {
+        "uci": "h2f2",
+        "san": "Rf2#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "g4h6",
-        "san": "Nh6+",
-        "color": "white"
+        "uci": "e5f3",
+        "san": "Nf3+",
+        "color": "black"
       },
       {
-        "uci": "h6f7",
-        "san": "Nf7+",
-        "color": "white"
+        "uci": "g1h1",
+        "san": "Rh1+",
+        "color": "black"
       },
       {
-        "uci": "h5h6",
-        "san": "Rh6#",
-        "color": "white"
+        "uci": "h1h2",
+        "san": "Rh2+",
+        "color": "black"
+      },
+      {
+        "uci": "h2f2",
+        "san": "Rf2#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-25T17:04:51.232670+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-25T17:06:26.742393+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787677491232",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541855894609068172,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rh6",
-        "correct": true,
-        "timestamp": "2026-08-25T17:06:16.404565+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787677586742",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
