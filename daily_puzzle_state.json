@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-09-11",
     "title": "King Pursuit",
     "fen": "5r2/5k1p/2Np1ppK/2p2b2/2P5/5P2/3r2PP/R7 w - - 0 1",
-    "current_fen": "5r2/7p/2Np1ppK/2p2k2/2P1R3/5P2/6rP/8 w - - 0 5",
+    "current_fen": "5r2/4N2p/3p1ppK/2p2k2/2P1R3/5P2/6rP/8 b - - 1 5",
     "pgn": "[Result \"1-0\"]\r\n[FEN \"5r2/5k1p/2Np1ppK/2p2b2/2P5/5P2/3r2PP/R7 w - - 0 1\"]\r\n\r\n1. Ra7+ Bd7 2. Rxd7+ Ke6 3. Re7+ Kf5 4. Re4 Rxg2 5. Ne7# 1-0",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787682779924",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1541878076084977735,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Re4",
+        "move": "Ne7",
         "correct": true,
-        "timestamp": "2026-08-25T18:33:20.395534+00:00"
+        "timestamp": "2026-08-25T18:33:25.307750+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -107,8 +107,10 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
