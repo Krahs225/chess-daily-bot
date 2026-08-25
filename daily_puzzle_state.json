@@ -1,105 +1,87 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-03-20",
-    "title": "Hope Springs Eternal",
-    "fen": "2B5/8/3pP3/2pk4/7K/2P5/r7/8 w - - 0 1",
-    "current_fen": "4Q3/8/3p4/2pk4/7K/2P5/6r1/8 b - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2B5/8/3pP3/2pk4/7K/2P5/r7/8 w - - 0 1\"]\r\n\r\n1.e7 Rh2+ 2.Bh3 Re2 3.Bg2+ Rxg2 4.e8=Q *",
+    "url": "https://www.chess.com/daily/2024-03-17",
+    "title": "Zoom In, Zug Out",
+    "fen": "8/1Q6/8/8/4N1K1/8/8/2q2k2 w - - 0 1",
+    "current_fen": "8/1Q6/8/8/4N1K1/8/8/2q2k2 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/1Q6/8/8/4N1K1/8/8/2q2k2 w - - 0 1\"]\r\n\r\n1. Qf7+ Ke1 2. Qf2+ Kd1 3. Kh5 Qc4 4. Qd2# *",
     "all_moves": [
       {
-        "uci": "e6e7",
-        "san": "e7",
+        "uci": "b7f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "a2h2",
-        "san": "Rh2+",
+        "uci": "f1e1",
+        "san": "Ke1",
         "color": "black"
       },
       {
-        "uci": "c8h3",
-        "san": "Bh3",
+        "uci": "f7f2",
+        "san": "Qf2+",
         "color": "white"
       },
       {
-        "uci": "h2e2",
-        "san": "Re2",
+        "uci": "e1d1",
+        "san": "Kd1",
         "color": "black"
       },
       {
-        "uci": "h3g2",
-        "san": "Bg2+",
+        "uci": "g4h5",
+        "san": "Kh5",
         "color": "white"
       },
       {
-        "uci": "e2g2",
-        "san": "Rxg2",
+        "uci": "c1c4",
+        "san": "Qc4",
         "color": "black"
       },
       {
-        "uci": "e7e8q",
-        "san": "e8=Q",
+        "uci": "f2d2",
+        "san": "Qd2#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e6e7",
-        "san": "e7",
+        "uci": "b7f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "c8h3",
-        "san": "Bh3",
+        "uci": "f7f2",
+        "san": "Qf2+",
         "color": "white"
       },
       {
-        "uci": "h3g2",
-        "san": "Bg2+",
+        "uci": "g4h5",
+        "san": "Kh5",
         "color": "white"
       },
       {
-        "uci": "e7e8q",
-        "san": "e8=Q",
+        "uci": "f2d2",
+        "san": "Qd2#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-25T19:18:11.897397+00:00",
+    "posted_at": "2026-08-25T19:18:49.958974+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787685491897",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541889455151910933,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "e8=Q",
-        "correct": true,
-        "timestamp": "2026-08-25T19:18:42.328082+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bg2",
-        "correct": true,
-        "timestamp": "2026-08-25T19:18:35.232449+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787685529958",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
