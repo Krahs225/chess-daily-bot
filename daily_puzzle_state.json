@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-09-04",
     "title": "Simple Thinking",
     "fen": "6k1/pp3p2/6p1/3Q3P/1PP4q/3K1P2/3b4/8 w - - 0 1",
-    "current_fen": "6k1/pp3p2/6p1/3Q3P/1PP4q/3K1P2/3b4/8 w - - 0 1",
+    "current_fen": "6k1/pp3p2/6P1/3Q4/1PP2q2/3K1P2/3b4/8 w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/pp3p2/6p1/3Q3P/1PP4q/3K1P2/3b4/8 w - - 0 1\"]\r\n\r\n1. hxg6 Qf4 2. Qxf7+ Qxf7 3. gxf7+ Kxf7 4. Kxd2\r\n*",
     "all_moves": [
       {
@@ -72,8 +72,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787694841427",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541928665988726865,
     "attempted_users": {
@@ -85,13 +85,13 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "fxg6",
-        "correct": false,
-        "timestamp": "2026-08-25T21:54:38.528566+00:00"
+        "move": "hxg6",
+        "correct": true,
+        "timestamp": "2026-08-25T21:54:40.313524+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
