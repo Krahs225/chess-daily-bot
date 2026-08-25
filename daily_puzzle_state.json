@@ -1,92 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-03-02",
-    "title": "Antolis - Tang, Australian Junior Chess Championsh",
-    "fen": "r1b2rk1/pp3ppp/1q3n2/2b1p1N1/7P/3B4/PPPBQ1P1/2K2R1R w - - 0 1",
-    "current_fen": "r1b2r1k/pp3NpB/7q/2b1p2Q/7P/8/PPPB2P1/2K4R b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2rk1/pp3ppp/1q3n2/2b1p1N1/7P/3B4/PPPBQ1P1/2K2R1R w - - 0 1\"]\r\n\r\n1. Rxf6 Qxf6 2. Bxh7+ Kh8 3. Qh5 Qh6 4. Nxf7+\r\n*",
+    "url": "https://www.chess.com/daily/2015-09-24",
+    "title": "The Finishing Touch",
+    "fen": "r7/pp5p/3p2p1/1q3n1k/4R3/Pb3p2/2B2PPP/2Q3K1 w - - 0 1",
+    "current_fen": "r7/pp5p/3p2p1/1q3n1k/4R3/Pb3p2/2B2PPP/2Q3K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/pp5p/3p2p1/1q3n1k/4R3/Pb3p2/2B2PPP/2Q3K1 w - - 0 1\"]\r\n\r\n1. g4+ Kh4 2. gxf5+ Kh5 3. Rh4+ Kxh4 4. Qh6+ Kg4 5. h3#\r\n*",
     "all_moves": [
       {
-        "uci": "f1f6",
-        "san": "Rxf6",
+        "uci": "g2g4",
+        "san": "g4+",
         "color": "white"
       },
       {
-        "uci": "b6f6",
-        "san": "Qxf6",
+        "uci": "h5h4",
+        "san": "Kh4",
         "color": "black"
       },
       {
-        "uci": "d3h7",
-        "san": "Bxh7+",
+        "uci": "g4f5",
+        "san": "gxf5+",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "h4h5",
+        "san": "Kh5",
         "color": "black"
       },
       {
-        "uci": "e2h5",
-        "san": "Qh5",
+        "uci": "e4h4",
+        "san": "Rh4+",
         "color": "white"
       },
       {
-        "uci": "f6h6",
-        "san": "Qh6",
+        "uci": "h5h4",
+        "san": "Kxh4",
         "color": "black"
       },
       {
-        "uci": "g5f7",
-        "san": "Nxf7+",
+        "uci": "c1h6",
+        "san": "Qh6+",
+        "color": "white"
+      },
+      {
+        "uci": "h4g4",
+        "san": "Kg4",
+        "color": "black"
+      },
+      {
+        "uci": "h2h3",
+        "san": "h3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f1f6",
-        "san": "Rxf6",
+        "uci": "g2g4",
+        "san": "g4+",
         "color": "white"
       },
       {
-        "uci": "d3h7",
-        "san": "Bxh7+",
+        "uci": "g4f5",
+        "san": "gxf5+",
         "color": "white"
       },
       {
-        "uci": "e2h5",
-        "san": "Qh5",
+        "uci": "e4h4",
+        "san": "Rh4+",
         "color": "white"
       },
       {
-        "uci": "g5f7",
-        "san": "Nxf7+",
+        "uci": "c1h6",
+        "san": "Qh6+",
+        "color": "white"
+      },
+      {
+        "uci": "h2h3",
+        "san": "h3#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T10:37:02.570478+00:00",
+    "player_move_count": 5,
+    "posted_at": "2026-08-25T10:39:03.005665+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787654222570",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541758298188025970,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nxf7",
-        "correct": true,
-        "timestamp": "2026-08-25T10:38:57.232911+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787654343005",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
