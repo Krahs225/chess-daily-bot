@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-08-12",
-    "title": "Carefully Casting Your Net",
-    "fen": "8/1r3p2/p4Nkp/3pP2p/P3p3/2q4P/5P1K/3Q4 w - - 0 1",
-    "current_fen": "4Q3/1r2kp2/p4N1p/3pP3/P3p3/2q4P/5P1K/8 b - - 6 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/1r3p2/p4Nkp/3pP2p/P3p3/2q4P/5P1K/3Q4 w - - 0 1\"]\r\n\r\n1. Qxh5+ Kg7 2. Qg4+ Kf8 3. Qg8+ Ke7 4. Qe8# *",
+    "url": "https://www.chess.com/daily/2011-01-20",
+    "title": "Tactical Flare",
+    "fen": "3n1n1k/pb2bp1p/1pq1pP2/2p3NQ/8/1BP3B1/PP3PPP/6K1 w - - 0 1",
+    "current_fen": "3n1n1k/pb2bp1p/1pq1pP2/2p3NQ/8/1BP3B1/PP3PPP/6K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3n1n1k/pb2bp1p/1pq1pP2/2p3NQ/8/1BP3B1/PP3PPP/6K1 w - - 0 1\"]\r\n\r\n1. Bd5 Qxd5 2. Nxf7+ Nxf7 3. Qxd5 exd5 4. fxe7\r\n*",
     "all_moves": [
       {
-        "uci": "d1h5",
-        "san": "Qxh5+",
+        "uci": "b3d5",
+        "san": "Bd5",
         "color": "white"
       },
       {
-        "uci": "g6g7",
-        "san": "Kg7",
+        "uci": "c6d5",
+        "san": "Qxd5",
         "color": "black"
       },
       {
-        "uci": "h5g4",
-        "san": "Qg4+",
+        "uci": "g5f7",
+        "san": "Nxf7+",
         "color": "white"
       },
       {
-        "uci": "g7f8",
-        "san": "Kf8",
+        "uci": "d8f7",
+        "san": "Nxf7",
         "color": "black"
       },
       {
-        "uci": "g4g8",
-        "san": "Qg8+",
+        "uci": "h5d5",
+        "san": "Qxd5",
         "color": "white"
       },
       {
-        "uci": "f8e7",
-        "san": "Ke7",
+        "uci": "e6d5",
+        "san": "exd5",
         "color": "black"
       },
       {
-        "uci": "g8e8",
-        "san": "Qe8#",
+        "uci": "f6e7",
+        "san": "fxe7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1h5",
-        "san": "Qxh5+",
+        "uci": "b3d5",
+        "san": "Bd5",
         "color": "white"
       },
       {
-        "uci": "h5g4",
-        "san": "Qg4+",
+        "uci": "g5f7",
+        "san": "Nxf7+",
         "color": "white"
       },
       {
-        "uci": "g4g8",
-        "san": "Qg8+",
+        "uci": "h5d5",
+        "san": "Qxd5",
         "color": "white"
       },
       {
-        "uci": "g8e8",
-        "san": "Qe8#",
+        "uci": "f6e7",
+        "san": "fxe7",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-25T08:37:49.370409+00:00",
+    "posted_at": "2026-08-25T08:38:15.861038+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787647069370",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541728295131811851,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qe8",
-        "correct": true,
-        "timestamp": "2026-08-25T08:38:12.076972+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787647095861",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
