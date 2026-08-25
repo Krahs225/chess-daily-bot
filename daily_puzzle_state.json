@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-12-03",
-    "title": "Taking a Moment",
-    "fen": "8/1p5p/1n1k4/3pp3/r6N/2PP2P1/PN1K1P1n/6R1 b - - 0 42",
-    "current_fen": "8/1p5p/1n1k4/3pp3/7P/2PPK3/PN3P2/6n1 w - - 0 45",
-    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"geelse_zot\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/1p5p/1n1k4/3pp3/r6N/2PP2P1/PN1K1P1n/6R1 b - - 0 42\"]\r\n\r\n42... Rxh4 43. gxh4 Nf3+ 44. Ke3 Nxg1 0-1",
+    "url": "https://www.chess.com/daily/2014-08-21",
+    "title": "Movsesian vs A.Korobov, Moscow, 2004",
+    "fen": "8/4R3/2np1Qp1/1pqk2P1/p5r1/P2B4/1PP4n/1K6 w - - 0 1",
+    "current_fen": "8/4R3/2np1Qp1/1pqk2P1/p5r1/P2B4/1PP4n/1K6 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/4R3/2np1Qp1/1pqk2P1/p5r1/P2B4/1PP4n/1K6 w - - 0 1\"]\r\n\r\n1. Qe6+ Kd4 2. c3+ Qxc3 3. Qxd6#\r\n*",
     "all_moves": [
       {
-        "uci": "a4h4",
-        "san": "Rxh4",
-        "color": "black"
-      },
-      {
-        "uci": "g3h4",
-        "san": "gxh4",
+        "uci": "f6e6",
+        "san": "Qe6+",
         "color": "white"
       },
       {
-        "uci": "h2f3",
-        "san": "Nf3+",
+        "uci": "d5d4",
+        "san": "Kd4",
         "color": "black"
       },
       {
-        "uci": "d2e3",
-        "san": "Ke3",
+        "uci": "c2c3",
+        "san": "c3+",
         "color": "white"
       },
       {
-        "uci": "f3g1",
-        "san": "Nxg1",
+        "uci": "c5c3",
+        "san": "Qxc3",
         "color": "black"
+      },
+      {
+        "uci": "e6d6",
+        "san": "Qxd6#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a4h4",
-        "san": "Rxh4",
-        "color": "black"
+        "uci": "f6e6",
+        "san": "Qe6+",
+        "color": "white"
       },
       {
-        "uci": "h2f3",
-        "san": "Nf3+",
-        "color": "black"
+        "uci": "c2c3",
+        "san": "c3+",
+        "color": "white"
       },
       {
-        "uci": "f3g1",
-        "san": "Nxg1",
-        "color": "black"
+        "uci": "e6d6",
+        "san": "Qxd6#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-25T10:42:42.332024+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-25T10:43:09.038209+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787654562332",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541759722967924810,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nxg1",
-        "correct": true,
-        "timestamp": "2026-08-25T10:42:52.376726+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787654589038",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
