@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-12-23",
     "title": "Norman Macloed, Shahmat 1983",
     "fen": "k7/8/1K1p4/4p3/5p2/1R6/7b/8 w - - 0 1",
-    "current_fen": "k7/8/1K1p4/4p3/5p2/1R6/7b/8 w - - 0 1",
+    "current_fen": "k7/8/1K1p4/4p3/5p2/6b1/8/1R6 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k7/8/1K1p4/4p3/5p2/1R6/7b/8 w - - 0 1\"]\r\n\r\n1. Rb1 Bg3 2. Kc7 Bf2 3. Rb8+ Ka7 4. Rb2\r\n*",
     "all_moves": [
       {
@@ -72,8 +72,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787692940205",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541920691878760458,
     "attempted_users": {
@@ -85,13 +85,13 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rh3",
-        "correct": false,
-        "timestamp": "2026-08-25T21:23:01.787175+00:00"
+        "move": "rb1",
+        "correct": true,
+        "timestamp": "2026-08-25T21:23:16.218913+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
