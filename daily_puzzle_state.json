@@ -1,119 +1,112 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-03-03",
-    "title": "Mislav, 2005",
-    "fen": "k7/8/1P1P1n1P/2p4p/5p2/3P1K2/1P3P1b/8 w - - 0 1",
-    "current_fen": "k7/8/1P1P1n1P/2p4p/5p2/3P1K2/1P3P1b/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k7/8/1P1P1n1P/2p4p/5p2/3P1K2/1P3P1b/8 w - - 0 1\"]\r\n\r\n1. b4 cxb4 2. d4 b3 3. d7 Nxd7 4. h7 b2 5. h8=Q+ Kb7 6. Qh7\r\n*",
+    "url": "https://www.chess.com/daily/2021-05-01",
+    "title": "Go, Jonny, Go!",
+    "fen": "2R2Nk1/pb3p2/3r1P1p/6pP/6P1/2P5/2K5/8 w - - 15 48",
+    "current_fen": "2R2Nk1/pb3p2/3r1P1p/6pP/6P1/2P5/2K5/8 w - - 15 48",
+    "pgn": "[Event \"Aalborg\"]\r\n[Site \"Aalborg Int.\"]\r\n[Date \"1993\"]\r\n[Round \"1\"]\r\n[White \"Hector, Jonny\"]\r\n[Black \"Sobjerg, Erik\"]\r\n[Result \"*\"]\r\n[WhiteElo \"2470\"]\r\n[BlackElo \"2270\"]\r\n[FEN \"2R2Nk1/pb3p2/3r1P1p/6pP/6P1/2P5/2K5/8 w - - 15 48\"]\r\n\r\n48.Rb8 Be4+ 49.Kc1 Rxf6 50.Nd7+ Kg7 51.Rg8+ Kxg8 52.Nxf6+ Kg7 53.Nxe4 *",
     "all_moves": [
       {
-        "uci": "b2b4",
-        "san": "b4",
+        "uci": "c8b8",
+        "san": "Rb8",
         "color": "white"
       },
       {
-        "uci": "c5b4",
-        "san": "cxb4",
+        "uci": "b7e4",
+        "san": "Be4+",
         "color": "black"
       },
       {
-        "uci": "d3d4",
-        "san": "d4",
+        "uci": "c2c1",
+        "san": "Kc1",
         "color": "white"
       },
       {
-        "uci": "b4b3",
-        "san": "b3",
+        "uci": "d6f6",
+        "san": "Rxf6",
         "color": "black"
       },
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "f8d7",
+        "san": "Nd7+",
         "color": "white"
       },
       {
-        "uci": "f6d7",
-        "san": "Nxd7",
+        "uci": "g8g7",
+        "san": "Kg7",
         "color": "black"
       },
       {
-        "uci": "h6h7",
-        "san": "h7",
+        "uci": "b8g8",
+        "san": "Rg8+",
         "color": "white"
       },
       {
-        "uci": "b3b2",
-        "san": "b2",
+        "uci": "g7g8",
+        "san": "Kxg8",
         "color": "black"
       },
       {
-        "uci": "h7h8q",
-        "san": "h8=Q+",
+        "uci": "d7f6",
+        "san": "Nxf6+",
         "color": "white"
       },
       {
-        "uci": "a8b7",
-        "san": "Kb7",
+        "uci": "g8g7",
+        "san": "Kg7",
         "color": "black"
       },
       {
-        "uci": "h8h7",
-        "san": "Qh7",
+        "uci": "f6e4",
+        "san": "Nxe4",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b2b4",
-        "san": "b4",
+        "uci": "c8b8",
+        "san": "Rb8",
         "color": "white"
       },
       {
-        "uci": "d3d4",
-        "san": "d4",
+        "uci": "c2c1",
+        "san": "Kc1",
         "color": "white"
       },
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "f8d7",
+        "san": "Nd7+",
         "color": "white"
       },
       {
-        "uci": "h6h7",
-        "san": "h7",
+        "uci": "b8g8",
+        "san": "Rg8+",
         "color": "white"
       },
       {
-        "uci": "h7h8q",
-        "san": "h8=Q+",
+        "uci": "d7f6",
+        "san": "Nxf6+",
         "color": "white"
       },
       {
-        "uci": "h8h7",
-        "san": "Qh7",
+        "uci": "f6e4",
+        "san": "Nxe4",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 6,
-    "posted_at": "2026-08-25T22:29:10.819110+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-25T22:30:30.288538+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787696950819",
+    "puzzle_id": "random_1787697030288",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541937513768427592,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "kg2",
-        "correct": false,
-        "timestamp": "2026-08-25T22:29:20.841305+00:00"
-      }
-    },
+    "message_id": 1541937846556819578,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
