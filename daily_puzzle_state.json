@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-03-01",
     "title": "Nikolai Zinoviev, Lisove gospodarsto, 1994",
     "fen": "4k3/4p2b/4N3/4N3/8/4K3/8/6R1 w - - 0 1",
-    "current_fen": "4k3/4p2b/4N3/4N3/8/4K3/8/6R1 w - - 0 1",
+    "current_fen": "4k3/4p1R1/4N3/4N3/8/3bK3/8/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4k3/4p2b/4N3/4N3/8/4K3/8/6R1 w - - 0 1\"]\r\n\r\n1. Rg7 Bd3 2. Rg8#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787683497124",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541881084327886909,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Rxg8",
+        "correct": false,
+        "timestamp": "2026-08-25T18:45:51.612549+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
