@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-05-11",
     "title": "Sometimes you gotta sacrifice...",
     "fen": "r1b2rk1/ppp2ppp/1b6/3q4/3pN3/Q4N2/PPP2KPP/R1B1R3 w - - 0 12",
-    "current_fen": "r1b2rk1/ppp2ppp/1b6/3q4/3pN3/Q4N2/PPP2KPP/R1B1R3 w - - 0 12",
+    "current_fen": "r1b2k2/ppp2p1p/1b3p2/3q4/3p4/5N2/PPP2KPP/R1B1R3 w - - 0 14",
     "pgn": "[FEN \"r1b2rk1/ppp2ppp/1b6/3q4/3pN3/Q4N2/PPP2KPP/R1B1R3 w - - 0 12\"]\r\n[PlyCount \"7\"]\r\n\r\n12. Nf6+ gxf6 13. Qxf8+ Kxf8 14. Bh6+ Kg8 15. Re8# *",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787698623577",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541944529626865755,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxf8",
+        "correct": true,
+        "timestamp": "2026-08-25T22:57:13.963073+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
