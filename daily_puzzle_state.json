@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-02-21",
-    "title": "Squaring Off Against an Isolated King",
-    "fen": "8/P4k2/8/4np2/3b4/2NP2P1/1P5K/R1B3r1 b - - 0 1",
-    "current_fen": "8/P4k2/8/5p2/3b4/2NP1KP1/1P3r2/R1B5 w - - 1 5",
-    "pgn": "[Date \"1996\"]\r\n[White \"Nick de Firmian\"]\r\n[Black \"Tiger Hillarp Persson (remove h7 pawn)\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/P4k2/8/4np2/3b4/2NP2P1/1P5K/R1B3r1 b - - 0 1\"]\r\n\r\n1... Nf3+ 2. Kh3 Rh1+ 3. Kg2 Rh2+ 4. Kxf3 Rf2# 0-1",
+    "url": "https://www.chess.com/daily/2014-12-19",
+    "title": "Honfi - Csenady, Hungary 1963",
+    "fen": "r4rk1/pb1q1ppp/2N1p3/2Rn4/1p1P4/3BPQ2/1P3PPP/2R3K1 w - - 0 1",
+    "current_fen": "r4rk1/pb1q1ppp/2N1p3/2Rn4/1p1P4/3BPQ2/1P3PPP/2R3K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/pb1q1ppp/2N1p3/2Rn4/1p1P4/3BPQ2/1P3PPP/2R3K1 w - - 0 1\"]\r\n\r\n1. Bxh7+ Kxh7 2. Qh3+ Kg8 3. Rxd5 Qxd5 4. Ne7#\r\n*",
     "all_moves": [
       {
-        "uci": "e5f3",
-        "san": "Nf3+",
-        "color": "black"
-      },
-      {
-        "uci": "h2h3",
-        "san": "Kh3",
+        "uci": "d3h7",
+        "san": "Bxh7+",
         "color": "white"
       },
       {
-        "uci": "g1h1",
-        "san": "Rh1+",
+        "uci": "g8h7",
+        "san": "Kxh7",
         "color": "black"
       },
       {
-        "uci": "h3g2",
-        "san": "Kg2",
+        "uci": "f3h3",
+        "san": "Qh3+",
         "color": "white"
       },
       {
-        "uci": "h1h2",
-        "san": "Rh2+",
+        "uci": "h7g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "g2f3",
-        "san": "Kxf3",
+        "uci": "c5d5",
+        "san": "Rxd5",
         "color": "white"
       },
       {
-        "uci": "h2f2",
-        "san": "Rf2#",
+        "uci": "d7d5",
+        "san": "Qxd5",
         "color": "black"
+      },
+      {
+        "uci": "c6e7",
+        "san": "Ne7#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5f3",
-        "san": "Nf3+",
-        "color": "black"
+        "uci": "d3h7",
+        "san": "Bxh7+",
+        "color": "white"
       },
       {
-        "uci": "g1h1",
-        "san": "Rh1+",
-        "color": "black"
+        "uci": "f3h3",
+        "san": "Qh3+",
+        "color": "white"
       },
       {
-        "uci": "h1h2",
-        "san": "Rh2+",
-        "color": "black"
+        "uci": "c5d5",
+        "san": "Rxd5",
+        "color": "white"
       },
       {
-        "uci": "h2f2",
-        "san": "Rf2#",
-        "color": "black"
+        "uci": "c6e7",
+        "san": "Ne7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-25T17:06:26.742393+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-25T17:07:06.043721+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787677586742",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541856298084335656,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rf2",
-        "correct": true,
-        "timestamp": "2026-08-25T17:06:54.291702+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787677626043",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
