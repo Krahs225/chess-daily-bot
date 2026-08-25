@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-03-28",
-    "title": "Tal - Smyslov, Bled 1959",
-    "fen": "r1bb1r1k/p4ppp/2p2n1N/7Q/2p5/2B2N2/qPP2PPP/2KR3R w - - 0 1",
-    "current_fen": "r1bb2k1/p4Npp/2p2n2/8/2p5/2B2N2/1PPK1PPP/R6R b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bb1r1k/p4ppp/2p2n1N/7Q/2p5/2B2N2/qPP2PPP/2KR3R w - - 0 1\"]\r\n\r\n1. Qxf7 Qa1+ 2. Kd2 Rxf7 3. Nxf7+ Kg8 4. Rxa1 \r\n*",
+    "url": "https://www.chess.com/daily/2021-12-28",
+    "title": "When Pigs Fly",
+    "fen": "6k1/p2Q3p/1r4pP/2P5/8/1R6/PP2qr2/1KR5 b - - 0 1",
+    "current_fen": "6k1/p2Q3p/1r4pP/2P5/8/1R6/PP2qr2/1KR5 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/p2Q3p/1r4pP/2P5/8/1R6/PP2qr2/1KR5 b - - 0 1\"]\r\n\r\n1...Qxb2+ 2.Rxb2 Rbxb2+ 3.Ka1 Rxa2+ 4.Kb1 Rfb2# *",
     "all_moves": [
       {
-        "uci": "h5f7",
-        "san": "Qxf7",
-        "color": "white"
-      },
-      {
-        "uci": "a2a1",
-        "san": "Qa1+",
+        "uci": "e2b2",
+        "san": "Qxb2+",
         "color": "black"
       },
       {
-        "uci": "c1d2",
-        "san": "Kd2",
+        "uci": "b3b2",
+        "san": "Rxb2",
         "color": "white"
       },
       {
-        "uci": "f8f7",
-        "san": "Rxf7",
+        "uci": "b6b2",
+        "san": "Rbxb2+",
         "color": "black"
       },
       {
-        "uci": "h6f7",
-        "san": "Nxf7+",
+        "uci": "b1a1",
+        "san": "Ka1",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "b2a2",
+        "san": "Rxa2+",
         "color": "black"
       },
       {
-        "uci": "d1a1",
-        "san": "Rxa1",
+        "uci": "a1b1",
+        "san": "Kb1",
         "color": "white"
+      },
+      {
+        "uci": "f2b2",
+        "san": "Rfb2#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5f7",
-        "san": "Qxf7",
-        "color": "white"
+        "uci": "e2b2",
+        "san": "Qxb2+",
+        "color": "black"
       },
       {
-        "uci": "c1d2",
-        "san": "Kd2",
-        "color": "white"
+        "uci": "b6b2",
+        "san": "Rbxb2+",
+        "color": "black"
       },
       {
-        "uci": "h6f7",
-        "san": "Nxf7+",
-        "color": "white"
+        "uci": "b2a2",
+        "san": "Rxa2+",
+        "color": "black"
       },
       {
-        "uci": "d1a1",
-        "san": "Rxa1",
-        "color": "white"
+        "uci": "f2b2",
+        "san": "Rfb2#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 4,
-    "posted_at": "2026-08-25T17:02:19.816831+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-25T17:03:44.187233+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787677339816",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541855258786144411,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rxa1",
-        "correct": true,
-        "timestamp": "2026-08-25T17:03:34.679637+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787677424187",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
