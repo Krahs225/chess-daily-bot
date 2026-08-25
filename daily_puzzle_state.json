@@ -1,62 +1,122 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-09-29",
-    "title": "Exposed King",
-    "fen": "r1b4r/1p1n1k1p/p4q1b/4pP2/8/2p1BQ2/PPP2P1P/2KR2R1 w - - 0 1",
-    "current_fen": "r1b4r/1p1nk2p/p4q1B/4pP1Q/8/2p5/PPP2P1P/2KR2R1 b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b4r/1p1n1k1p/p4q1b/4pP2/8/2p1BQ2/PPP2P1P/2KR2R1 w - - 0 1\"]\r\n\r\n1. Qh5+ Ke7 2. Bxh6\r\n*",
+    "url": "https://www.chess.com/daily/2013-07-26",
+    "title": "Mate in 6",
+    "fen": "r1b3k1/1p1rnpPp/p3p1RQ/8/3b4/8/P1P3PP/5R1K w - - 0 1",
+    "current_fen": "r1b5/1p1rnkPp/p3p1RQ/8/3b4/8/P1P3PP/7K w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b3k1/1p1rnpPp/p3p1RQ/8/3b4/8/P1P3PP/5R1K w - - 0 1\"]\r\n\r\n1. Rxf7 Kxf7 2. g8=Q+ Nxg8 3. Qxh7+ Bg7 4. Qxg7+ Ke8 5. Qxg8+ Ke7 6. Rxe6#\r\n*",
     "all_moves": [
       {
-        "uci": "f3h5",
-        "san": "Qh5+",
+        "uci": "f1f7",
+        "san": "Rxf7",
         "color": "white"
       },
       {
-        "uci": "f7e7",
+        "uci": "g8f7",
+        "san": "Kxf7",
+        "color": "black"
+      },
+      {
+        "uci": "g7g8q",
+        "san": "g8=Q+",
+        "color": "white"
+      },
+      {
+        "uci": "e7g8",
+        "san": "Nxg8",
+        "color": "black"
+      },
+      {
+        "uci": "h6h7",
+        "san": "Qxh7+",
+        "color": "white"
+      },
+      {
+        "uci": "d4g7",
+        "san": "Bg7",
+        "color": "black"
+      },
+      {
+        "uci": "h7g7",
+        "san": "Qxg7+",
+        "color": "white"
+      },
+      {
+        "uci": "f7e8",
+        "san": "Ke8",
+        "color": "black"
+      },
+      {
+        "uci": "g7g8",
+        "san": "Qxg8+",
+        "color": "white"
+      },
+      {
+        "uci": "e8e7",
         "san": "Ke7",
         "color": "black"
       },
       {
-        "uci": "e3h6",
-        "san": "Bxh6",
+        "uci": "g6e6",
+        "san": "Rxe6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3h5",
-        "san": "Qh5+",
+        "uci": "f1f7",
+        "san": "Rxf7",
         "color": "white"
       },
       {
-        "uci": "e3h6",
-        "san": "Bxh6",
+        "uci": "g7g8q",
+        "san": "g8=Q+",
+        "color": "white"
+      },
+      {
+        "uci": "h6h7",
+        "san": "Qxh7+",
+        "color": "white"
+      },
+      {
+        "uci": "h7g7",
+        "san": "Qxg7+",
+        "color": "white"
+      },
+      {
+        "uci": "g7g8",
+        "san": "Qxg8+",
+        "color": "white"
+      },
+      {
+        "uci": "g6e6",
+        "san": "Rxe6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-25T19:57:16.558408+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-25T19:57:47.091482+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787687836558",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1541899285681930243,
+    "puzzle_id": "random_1787687867091",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541899413176320022,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "bxh6",
+        "move": "rxf7",
         "correct": true,
-        "timestamp": "2026-08-25T19:57:37.543551+00:00"
+        "timestamp": "2026-08-25T19:58:08.816502+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
