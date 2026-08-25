@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-02-25",
     "title": "Defending",
     "fen": "4B3/1p1P1pk1/6pp/8/8/5bPP/3R1P1K/r7 w - - 0 1",
-    "current_fen": "4B3/1p1P1pk1/6pp/8/8/5bPP/3R1P1K/r7 w - - 0 1",
+    "current_fen": "4B3/1p1P1pk1/6pp/8/6P1/5b1P/3R1P1K/r7 b - - 0 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4B3/1p1P1pk1/6pp/8/8/5bPP/3R1P1K/r7 w - - 0 1\"]\r\n\r\n1. g4\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787655593424",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1541764047551205377,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "g4",
+        "correct": true,
+        "timestamp": "2026-08-25T11:00:07.394861+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
