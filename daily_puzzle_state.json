@@ -1,105 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-01-31",
-    "title": "Back to the Start",
-    "fen": "8/P2k1pp1/2p4p/3p1K1P/R2P4/2P3P1/1P3n2/7r b - - 3 40",
-    "current_fen": "Q7/3k1pp1/2p4p/3p3P/R2P4/2P1n1PK/1P6/7r w - - 5 44",
-    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"chesstiger787\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/P2k1pp1/2p4p/3p1K1P/R2P4/2P3P1/1P3n2/7r b - - 3 40\"]\r\n\r\n40... Rf1 41. a8=Q Nd1+ 42. Kg4 Ne3+ 43. Kh3 Rh1# 0-1",
+    "url": "https://www.chess.com/daily/2025-07-16",
+    "title": "Flexing the Best Rook Capture",
+    "fen": "8/p4p1k/4p1qp/1r4B1/3P3Q/2P2R2/PP4r1/K1N3R1 b - - 0 1",
+    "current_fen": "8/p4p1k/4p1qp/1r4B1/3P3Q/2P2R2/PP4r1/K1N3R1 b - - 0 1",
+    "pgn": "[Result \"0-1\"]\r\n[FEN \"8/p4p1k/4p1qp/1r4B1/3P3Q/2P2R2/PP4r1/K1N3R1 b - - 0 1\"]\r\n\r\n1... Qb1+ 2. Kxb1 Rgxb2+ 3. Ka1 Rb1# 0-1",
     "all_moves": [
       {
-        "uci": "h1f1",
-        "san": "Rf1",
+        "uci": "g6b1",
+        "san": "Qb1+",
         "color": "black"
       },
       {
-        "uci": "a7a8q",
-        "san": "a8=Q",
+        "uci": "a1b1",
+        "san": "Kxb1",
         "color": "white"
       },
       {
-        "uci": "f2d1",
-        "san": "Nd1+",
+        "uci": "g2b2",
+        "san": "Rgxb2+",
         "color": "black"
       },
       {
-        "uci": "f5g4",
-        "san": "Kg4",
+        "uci": "b1a1",
+        "san": "Ka1",
         "color": "white"
       },
       {
-        "uci": "d1e3",
-        "san": "Ne3+",
-        "color": "black"
-      },
-      {
-        "uci": "g4h3",
-        "san": "Kh3",
-        "color": "white"
-      },
-      {
-        "uci": "f1h1",
-        "san": "Rh1#",
+        "uci": "b2b1",
+        "san": "Rb1#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h1f1",
-        "san": "Rf1",
+        "uci": "g6b1",
+        "san": "Qb1+",
         "color": "black"
       },
       {
-        "uci": "f2d1",
-        "san": "Nd1+",
+        "uci": "g2b2",
+        "san": "Rgxb2+",
         "color": "black"
       },
       {
-        "uci": "d1e3",
-        "san": "Ne3+",
-        "color": "black"
-      },
-      {
-        "uci": "f1h1",
-        "san": "Rh1#",
+        "uci": "b2b1",
+        "san": "Rb1#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T18:34:59.739108+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T18:38:28.920943+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787682899739",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541878580164825099,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Ne3",
-        "correct": true,
-        "timestamp": "2026-08-25T18:37:50.452399+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rh1",
-        "correct": true,
-        "timestamp": "2026-08-25T18:37:59.359645+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787683108920",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
