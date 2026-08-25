@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-08-23",
     "title": "Queen Or King?",
     "fen": "N3k2r/1p1b1pbp/qBnQ1np1/4p3/4P3/1N4P1/PP3P1K/2R5 w - - 0 1",
-    "current_fen": "4k2r/1p1b1pbp/qBnQNnp1/4p3/4P3/1N4P1/PP3P1K/2R5 w - - 4 3",
+    "current_fen": "4k2r/1p1b1pNp/qBnQ1np1/4p3/4P3/1N4P1/PP3P1K/2R5 b - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"N3k2r/1p1b1pbp/qBnQ1np1/4p3/4P3/1N4P1/PP3P1K/2R5 w - - 0 1\"]\r\n\r\n1. Nc7+ Kd8 2. Ne6+ Ke8 3. Nxg7#\r\n*",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787654448649",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1541759246218166304,
     "attempted_users": {
       "442597396195704832": {
@@ -70,16 +70,20 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Nxa6",
-        "correct": false,
-        "timestamp": "2026-08-25T10:41:05.233191+00:00"
+        "move": "Nxg7",
+        "correct": true,
+        "timestamp": "2026-08-25T10:41:22.153836+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
