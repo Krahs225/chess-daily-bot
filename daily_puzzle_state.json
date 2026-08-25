@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-11-13",
-    "title": "Zugzwang in a Bottle",
-    "fen": "8/8/8/8/n1K1B3/P7/kp1N4/b7 w - - 0 1",
-    "current_fen": "8/8/8/8/1K6/n1N5/kp6/b7 b - - 1 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/8/8/8/n1K1B3/P7/kp1N4/b7 w - - 0 1\"]\r\n\r\n1.Kb4 Nc3 2.Bb1+ Nxb1 3.Ne4 Nxa3 4.Nc3# *",
+    "url": "https://www.chess.com/daily/2015-01-16",
+    "title": "M.Carlsen vs Hans K Harestad, Copenhagen, 2003",
+    "fen": "r7/3bb1kp/q4p1N/1pnPp1np/2p4Q/2P5/1PB3P1/2B2RK1 w - - 0 1",
+    "current_fen": "r7/3bb1kp/q4p1N/1pnPp1np/2p4Q/2P5/1PB3P1/2B2RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/3bb1kp/q4p1N/1pnPp1np/2p4Q/2P5/1PB3P1/2B2RK1 w - - 0 1\"]\r\n\r\n1. Qxg5+ fxg5 2. Rf7+ Kxh6 3. Rxh7#\r\n*",
     "all_moves": [
       {
-        "uci": "c4b4",
-        "san": "Kb4",
+        "uci": "h4g5",
+        "san": "Qxg5+",
         "color": "white"
       },
       {
-        "uci": "a4c3",
-        "san": "Nc3",
+        "uci": "f6g5",
+        "san": "fxg5",
         "color": "black"
       },
       {
-        "uci": "e4b1",
-        "san": "Bb1+",
+        "uci": "f1f7",
+        "san": "Rf7+",
         "color": "white"
       },
       {
-        "uci": "c3b1",
-        "san": "Nxb1",
+        "uci": "g7h6",
+        "san": "Kxh6",
         "color": "black"
       },
       {
-        "uci": "d2e4",
-        "san": "Ne4",
-        "color": "white"
-      },
-      {
-        "uci": "b1a3",
-        "san": "Nxa3",
-        "color": "black"
-      },
-      {
-        "uci": "e4c3",
-        "san": "Nc3#",
+        "uci": "f7h7",
+        "san": "Rxh7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4b4",
-        "san": "Kb4",
+        "uci": "h4g5",
+        "san": "Qxg5+",
         "color": "white"
       },
       {
-        "uci": "e4b1",
-        "san": "Bb1+",
+        "uci": "f1f7",
+        "san": "Rf7+",
         "color": "white"
       },
       {
-        "uci": "d2e4",
-        "san": "Ne4",
-        "color": "white"
-      },
-      {
-        "uci": "e4c3",
-        "san": "Nc3#",
+        "uci": "f7h7",
+        "san": "Rxh7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T16:54:30.098243+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T16:56:29.701050+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787676870098",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541853289790836746,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Nc3",
-        "correct": true,
-        "timestamp": "2026-08-25T16:56:19.292396+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787676989701",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
