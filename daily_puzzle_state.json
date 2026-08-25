@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-12-30",
     "title": "Birthday Brah Checkmate 🍰",
     "fen": "R4Q2/5p1k/2p3bB/1p1n3p/4p2P/2q1P3/5PP1/5K2 b - - 0 1",
-    "current_fen": "R4Q2/5p1k/2p3bB/1p1n3p/4p2P/2q1P3/5PP1/5K2 b - - 0 1",
+    "current_fen": "R4Q2/5p1k/2p3bB/1p1n3p/4p2P/4P3/4KPP1/2q5 b - - 2 2",
     "pgn": "[Event \"Chess.com blitz\"]\r\n[White \"tgpgoat (Rook added to a8)\"]\r\n[Black \"KNVB Happy Birthday, Aman!\"]\r\n[Result \"1-0\"]\r\n[FEN \"R4Q2/5p1k/2p3bB/1p1n3p/4p2P/2q1P3/5PP1/5K2 b - - 0 1\"]\r\n\r\n1... Qc1+ 2. Ke2 Nc3# 1-0",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787682389585",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541876439526150285,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qc1",
+        "correct": true,
+        "timestamp": "2026-08-25T18:26:35.019676+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
