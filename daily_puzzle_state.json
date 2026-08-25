@@ -1,14 +1,14 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-06-22",
-    "title": "Getting In Prime Position",
-    "fen": "2r3k1/p6p/5R2/8/1Bn1p3/3R4/P1r3PP/6K1 w - - 0 1",
-    "current_fen": "2r4k/p6p/5R2/8/2n1p3/2R5/P5PP/6K1 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/p6p/5R2/8/1Bn1p3/3R4/P1r3PP/6K1 w - - 0 1\"]\r\n\r\n1. Rg3+ Kh8 2. Bc3 Rxc3 3. Rxc3\r\n*",
+    "url": "https://www.chess.com/daily/2019-04-26",
+    "title": "Botvinnik - Sharov, Leningrad 1928",
+    "fen": "1rb2nk1/p1r1qppp/4p3/2P5/4B1N1/P5Q1/5PPP/R3R1K1 w Q - 0 1",
+    "current_fen": "1rb2nk1/p1r1qppp/4p3/2P5/4B1N1/P5Q1/5PPP/R3R1K1 w Q - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1rb2nk1/p1r1qppp/4p3/2P5/4B1N1/P5Q1/5PPP/R3R1K1 w Q - 0 1\"]\r\n\r\n1. Nf6+ Kh8 2. Ne8 Qxe8 3. Qxc7\r\n*",
     "all_moves": [
       {
-        "uci": "d3g3",
-        "san": "Rg3+",
+        "uci": "g4f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
@@ -17,74 +17,56 @@
         "color": "black"
       },
       {
-        "uci": "b4c3",
-        "san": "Bc3",
+        "uci": "f6e8",
+        "san": "Ne8",
         "color": "white"
       },
       {
-        "uci": "c2c3",
-        "san": "Rxc3",
+        "uci": "e7e8",
+        "san": "Qxe8",
         "color": "black"
       },
       {
-        "uci": "g3c3",
-        "san": "Rxc3",
+        "uci": "g3c7",
+        "san": "Qxc7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3g3",
-        "san": "Rg3+",
+        "uci": "g4f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "b4c3",
-        "san": "Bc3",
+        "uci": "f6e8",
+        "san": "Ne8",
         "color": "white"
       },
       {
-        "uci": "g3c3",
-        "san": "Rxc3",
+        "uci": "g3c7",
+        "san": "Qxc7",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-25T18:48:19.707798+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-25T18:48:54.624375+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787683699707",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541881934278426658,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rg3",
-        "correct": true,
-        "timestamp": "2026-08-25T18:48:25.171964+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rxc3",
-        "correct": true,
-        "timestamp": "2026-08-25T18:48:41.116806+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787683734624",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
