@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-04-20",
     "title": "A Grandiose Entrance",
     "fen": "5r1k/r5pp/1p3p2/1bp1q2P/5N2/b3P1P1/1PP4R/2KQRB2 w - - 6 1",
-    "current_fen": "5r1k/r5pp/1p3p2/1bp1q2P/5N2/b3P1P1/1PP4R/2KQRB2 w - - 6 1",
+    "current_fen": "5r1k/r5p1/1p3pp1/1bp1q2P/8/b3P1P1/1PP4R/2KQRB2 w - - 0 2",
     "pgn": "[White \"chesstiger787\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"5r1k/r5pp/1p3p2/1bp1q2P/5N2/b3P1P1/1PP4R/2KQRB2 w - - 6 1\"]\r\n\r\n1. Ng6+ hxg6 2. hxg6+ Kg8 3. Bc4+ Bxc4 4. Rh8+ Kxh8 5. Rh1+ Kg8 6. Rh8+ Kxh8 7.\r\nQh1+ Kg8 8. Qh7# 1-0",
     "all_moves": [
       {
@@ -132,13 +132,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787696200176",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541934373245423767,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "ng6",
+        "correct": true,
+        "timestamp": "2026-08-25T22:16:46.765073+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
