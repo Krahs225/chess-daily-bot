@@ -1,104 +1,127 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-05-16",
-    "title": "Fluvia Poyatos - Grischuk, Oropesa 1998",
-    "fen": "6k1/pp4pp/8/P3p3/3nPrbq/R7/1P1QBP2/2B2RK1 w - - 0 1",
-    "current_fen": "6k1/pp4pp/8/P3p3/3nPrbq/R7/1P1QBP2/2B2RK1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/pp4pp/8/P3p3/3nPrbq/R7/1P1QBP2/2B2RK1 w - - 0 1\"]\r\n\r\n1. Bc4+ Kh8 2. Qxd4 Bf3 3. Qd8+ Qxd8 4. Bxf4 exf4 5. Rxf3\r\n*",
+    "url": "https://www.chess.com/daily/2021-08-08",
+    "title": "Sunday is the New Saturday",
+    "fen": "k7/8/7p/1p2P1b1/bK6/5N2/B7/8 w - - 0 1",
+    "current_fen": "k7/8/7p/1p2P1b1/bK6/5N2/B7/8 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"k7/8/7p/1p2P1b1/bK6/5N2/B7/8 w - - 0 1\"]\r\n\r\n1.Nxg5 hxg5 2.Bf7 Bd1 3.e6 Bg4 4.e7 Bd7 5.Kc5 Kb7 6.Kd6 Bc6 7.Bd5 *",
     "all_moves": [
       {
-        "uci": "e2c4",
-        "san": "Bc4+",
+        "uci": "f3g5",
+        "san": "Nxg5",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "h6g5",
+        "san": "hxg5",
         "color": "black"
       },
       {
-        "uci": "d2d4",
-        "san": "Qxd4",
+        "uci": "a2f7",
+        "san": "Bf7",
         "color": "white"
       },
       {
-        "uci": "g4f3",
-        "san": "Bf3",
+        "uci": "a4d1",
+        "san": "Bd1",
         "color": "black"
       },
       {
-        "uci": "d4d8",
-        "san": "Qd8+",
+        "uci": "e5e6",
+        "san": "e6",
         "color": "white"
       },
       {
-        "uci": "h4d8",
-        "san": "Qxd8",
+        "uci": "d1g4",
+        "san": "Bg4",
         "color": "black"
       },
       {
-        "uci": "c1f4",
-        "san": "Bxf4",
+        "uci": "e6e7",
+        "san": "e7",
         "color": "white"
       },
       {
-        "uci": "e5f4",
-        "san": "exf4",
+        "uci": "g4d7",
+        "san": "Bd7",
         "color": "black"
       },
       {
-        "uci": "a3f3",
-        "san": "Rxf3",
+        "uci": "b4c5",
+        "san": "Kc5",
+        "color": "white"
+      },
+      {
+        "uci": "a8b7",
+        "san": "Kb7",
+        "color": "black"
+      },
+      {
+        "uci": "c5d6",
+        "san": "Kd6",
+        "color": "white"
+      },
+      {
+        "uci": "d7c6",
+        "san": "Bc6",
+        "color": "black"
+      },
+      {
+        "uci": "f7d5",
+        "san": "Bd5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e2c4",
-        "san": "Bc4+",
+        "uci": "f3g5",
+        "san": "Nxg5",
         "color": "white"
       },
       {
-        "uci": "d2d4",
-        "san": "Qxd4",
+        "uci": "a2f7",
+        "san": "Bf7",
         "color": "white"
       },
       {
-        "uci": "d4d8",
-        "san": "Qd8+",
+        "uci": "e5e6",
+        "san": "e6",
         "color": "white"
       },
       {
-        "uci": "c1f4",
-        "san": "Bxf4",
+        "uci": "e6e7",
+        "san": "e7",
         "color": "white"
       },
       {
-        "uci": "a3f3",
-        "san": "Rxf3",
+        "uci": "b4c5",
+        "san": "Kc5",
+        "color": "white"
+      },
+      {
+        "uci": "c5d6",
+        "san": "Kd6",
+        "color": "white"
+      },
+      {
+        "uci": "f7d5",
+        "san": "Bd5",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-25T09:24:28.181810+00:00",
-    "answer_posted": true,
+    "player_move_count": 7,
+    "posted_at": "2026-08-25T10:23:48.754341+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787649868181",
+    "puzzle_id": "random_1787653428754",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1541740034124943451,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bxg4",
-        "correct": false,
-        "timestamp": "2026-08-25T09:36:21.831964+00:00"
-      }
-    },
+    "message_id": null,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
