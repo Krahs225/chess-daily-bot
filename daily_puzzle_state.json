@@ -1,107 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-11-08",
-    "title": "In Passing",
-    "fen": "2r3k1/3R1pp1/4p3/1R5r/p1P5/PP3P2/5P1P/6K1 b - - 0 1",
-    "current_fen": "6k1/5pp1/4p3/1P6/8/P4P2/1p3P1P/1Rr3K1 w - - 2 6",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2r3k1/3R1pp1/4p3/1R5r/p1P5/PP3P2/5P1P/6K1 b - - 0 1\"]\r\n\r\n1...Rxb5 2.cxb5 axb3 3.Rd2 Rc2 4.Rd1 b2 5.Rb1 Rc1+ *",
+    "url": "https://www.chess.com/daily/2008-09-19",
+    "title": "Dimitri Gurevich Tactic",
+    "fen": "2r2rk1/ppBQ1pp1/7p/6q1/4n3/4nB2/PPP3PP/1K2R2R b - - 0 1",
+    "current_fen": "2r2rk1/ppBQ1pp1/7p/6q1/4n3/4nB2/PPP3PP/1K2R2R b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r2rk1/ppBQ1pp1/7p/6q1/4n3/4nB2/PPP3PP/1K2R2R b - - 0 1\"]\r\n\r\n1...Rxc7 2. Qxc7 Nd2+ 3. Kc1 Nec4 4. Rd1 Nb3+ 5. Kb1 Qc1+ 6. Rxc1 Ncd2#\r\n*",
     "all_moves": [
       {
-        "uci": "h5b5",
-        "san": "Rxb5",
+        "uci": "c8c7",
+        "san": "Rxc7",
         "color": "black"
       },
       {
-        "uci": "c4b5",
-        "san": "cxb5",
+        "uci": "d7c7",
+        "san": "Qxc7",
         "color": "white"
       },
       {
-        "uci": "a4b3",
-        "san": "axb3",
+        "uci": "e4d2",
+        "san": "Nd2+",
         "color": "black"
       },
       {
-        "uci": "d7d2",
-        "san": "Rd2",
+        "uci": "b1c1",
+        "san": "Kc1",
         "color": "white"
       },
       {
-        "uci": "c8c2",
-        "san": "Rc2",
+        "uci": "e3c4",
+        "san": "Nec4",
         "color": "black"
       },
       {
-        "uci": "d2d1",
+        "uci": "e1d1",
         "san": "Rd1",
         "color": "white"
       },
       {
-        "uci": "b3b2",
-        "san": "b2",
+        "uci": "d2b3",
+        "san": "Nb3+",
         "color": "black"
       },
       {
-        "uci": "d1b1",
-        "san": "Rb1",
+        "uci": "c1b1",
+        "san": "Kb1",
         "color": "white"
       },
       {
-        "uci": "c2c1",
-        "san": "Rc1+",
+        "uci": "g5c1",
+        "san": "Qc1+",
+        "color": "black"
+      },
+      {
+        "uci": "d1c1",
+        "san": "Rxc1",
+        "color": "white"
+      },
+      {
+        "uci": "c4d2",
+        "san": "Ncd2#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5b5",
-        "san": "Rxb5",
+        "uci": "c8c7",
+        "san": "Rxc7",
         "color": "black"
       },
       {
-        "uci": "a4b3",
-        "san": "axb3",
+        "uci": "e4d2",
+        "san": "Nd2+",
         "color": "black"
       },
       {
-        "uci": "c8c2",
-        "san": "Rc2",
+        "uci": "e3c4",
+        "san": "Nec4",
         "color": "black"
       },
       {
-        "uci": "b3b2",
-        "san": "b2",
+        "uci": "d2b3",
+        "san": "Nb3+",
         "color": "black"
       },
       {
-        "uci": "c2c1",
-        "san": "Rc1+",
+        "uci": "g5c1",
+        "san": "Qc1+",
+        "color": "black"
+      },
+      {
+        "uci": "c4d2",
+        "san": "Ncd2#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 5,
-    "posted_at": "2026-08-25T07:50:41.206770+00:00",
+    "player_move_count": 6,
+    "posted_at": "2026-08-25T07:51:17.097573+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787644241206",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1541716433208213605,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rc1",
-        "correct": true,
-        "timestamp": "2026-08-25T07:51:11.274403+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787644277097",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
