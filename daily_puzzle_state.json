@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-01-03",
     "title": "Find One Weakness, Exploit Another",
     "fen": "6k1/4b1pb/5p1p/6nP/r2PP3/2p3Q1/4BPP1/6K1 w - - 0 1",
-    "current_fen": "5b1k/6pb/5p1p/6nP/r2PP3/1Qp5/4BPP1/6K1 w - - 4 3",
+    "current_fen": "5b1k/6pb/5p1p/6nP/Q2PP3/2p5/4BPP1/6K1 b - - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"6k1/4b1pb/5p1p/6nP/r2PP3/2p3Q1/4BPP1/6K1 w - - 0 1\"]\r\n\r\n1. Qb8+ Bf8 2. Qb3+ Kh8 3. Qxa4 *",
     "all_moves": [
       {
@@ -57,21 +57,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787662738484",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1541794016239026219,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qb3",
+        "move": "qxa4",
         "correct": true,
-        "timestamp": "2026-08-25T12:59:08.265108+00:00"
+        "timestamp": "2026-08-25T12:59:10.576968+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
