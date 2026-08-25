@@ -1,83 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-01-15",
-    "title": "Promotion vs Mating Net",
-    "fen": "8/2NP1p1k/6pP/6r1/p5r1/7K/1P6/3R3R b - - 0 1",
-    "current_fen": "8/2N4k/6pP/5p2/p5rr/7K/1P6/3R3R w - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/2NP1p1k/6pP/6r1/p5r1/7K/1P6/3R3R b - - 0 1\"]\r\n\r\n1... f5 2. d8=Q Rh5+ 3. Qh4 Rhxh4# *",
+    "url": "https://www.chess.com/daily/2017-12-23",
+    "title": "Norman Macloed, Shahmat 1983",
+    "fen": "k7/8/1K1p4/4p3/5p2/1R6/7b/8 w - - 0 1",
+    "current_fen": "k7/8/1K1p4/4p3/5p2/1R6/7b/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k7/8/1K1p4/4p3/5p2/1R6/7b/8 w - - 0 1\"]\r\n\r\n1. Rb1 Bg3 2. Kc7 Bf2 3. Rb8+ Ka7 4. Rb2\r\n*",
     "all_moves": [
       {
-        "uci": "f7f5",
-        "san": "f5",
-        "color": "black"
-      },
-      {
-        "uci": "d7d8q",
-        "san": "d8=Q",
+        "uci": "b3b1",
+        "san": "Rb1",
         "color": "white"
       },
       {
-        "uci": "g5h5",
-        "san": "Rh5+",
+        "uci": "h2g3",
+        "san": "Bg3",
         "color": "black"
       },
       {
-        "uci": "d8h4",
-        "san": "Qh4",
+        "uci": "b6c7",
+        "san": "Kc7",
         "color": "white"
       },
       {
-        "uci": "h5h4",
-        "san": "Rhxh4#",
+        "uci": "g3f2",
+        "san": "Bf2",
         "color": "black"
+      },
+      {
+        "uci": "b1b8",
+        "san": "Rb8+",
+        "color": "white"
+      },
+      {
+        "uci": "a8a7",
+        "san": "Ka7",
+        "color": "black"
+      },
+      {
+        "uci": "b8b2",
+        "san": "Rb2",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f7f5",
-        "san": "f5",
-        "color": "black"
+        "uci": "b3b1",
+        "san": "Rb1",
+        "color": "white"
       },
       {
-        "uci": "g5h5",
-        "san": "Rh5+",
-        "color": "black"
+        "uci": "b6c7",
+        "san": "Kc7",
+        "color": "white"
       },
       {
-        "uci": "h5h4",
-        "san": "Rhxh4#",
-        "color": "black"
+        "uci": "b1b8",
+        "san": "Rb8+",
+        "color": "white"
+      },
+      {
+        "uci": "b8b2",
+        "san": "Rb2",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-25T21:21:48.277831+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-25T21:22:20.205602+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787692908277",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1541920558214676611,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "h5h4",
-        "correct": true,
-        "timestamp": "2026-08-25T21:22:00.961021+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rg3",
-        "correct": false,
-        "timestamp": "2026-08-25T21:21:54.493214+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787692940205",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
