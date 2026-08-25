@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-09-24",
     "title": "The Finishing Touch",
     "fen": "r7/pp5p/3p2p1/1q3n1k/4R3/Pb3p2/2B2PPP/2Q3K1 w - - 0 1",
-    "current_fen": "r7/pp5p/3p2pQ/1q3P2/6k1/Pb3p2/2B2P1P/6K1 w - - 2 5",
+    "current_fen": "r7/pp5p/3p2pQ/1q3P2/6k1/Pb3p1P/2B2P2/6K1 b - - 0 5",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/pp5p/3p2p1/1q3n1k/4R3/Pb3p2/2B2PPP/2Q3K1 w - - 0 1\"]\r\n\r\n1. g4+ Kh4 2. gxf5+ Kh5 3. Rh4+ Kxh4 4. Qh6+ Kg4 5. h3#\r\n*",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787654343005",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1541758802943148047,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Rh4",
+        "move": "H3",
         "correct": true,
-        "timestamp": "2026-08-25T10:40:25.888503+00:00"
+        "timestamp": "2026-08-25T10:40:34.505451+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -107,8 +107,10 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
