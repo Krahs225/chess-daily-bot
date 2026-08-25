@@ -1,68 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-05-03",
-    "title": "Overworking the Opponent",
-    "fen": "4rr2/3n2k1/pp1p4/3P1p1p/2P2p1q/P3N2P/3Q2P1/4RRK1 w - - 0 1",
-    "current_fen": "4R3/3n2k1/pp1p4/3P1r1p/2P2p1q/P6P/3Q2P1/5RK1 b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4rr2/3n2k1/pp1p4/3P1p1p/2P2p1q/P3N2P/3Q2P1/4RRK1 w - - 0 1\"]\r\n\r\n1. Nxf5+ Rxf5 2. Rxe8\r\n*",
+    "url": "https://www.chess.com/daily/2018-09-12",
+    "title": "Give To Take",
+    "fen": "r3k3/pp1R2pp/2q2p2/8/1Q2r3/1NP5/P5PP/2K2B2 w q - 0 1",
+    "current_fen": "r3k3/pp2r1pp/2q2p2/8/1Q6/1NP5/P5PP/2K2B2 w q - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"r3k3/pp1R2pp/2q2p2/8/1Q2r3/1NP5/P5PP/2K2B2 w q - 0 1\"]\r\n\r\n1. Re7+ Rxe7 2. Bb5 \r\n*",
     "all_moves": [
       {
-        "uci": "e3f5",
-        "san": "Nxf5+",
+        "uci": "d7e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "f8f5",
-        "san": "Rxf5",
+        "uci": "e4e7",
+        "san": "Rxe7",
         "color": "black"
       },
       {
-        "uci": "e1e8",
-        "san": "Rxe8",
+        "uci": "f1b5",
+        "san": "Bb5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e3f5",
-        "san": "Nxf5+",
+        "uci": "d7e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "e1e8",
-        "san": "Rxe8",
+        "uci": "f1b5",
+        "san": "Bb5",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-08-25T10:41:33.758704+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-25T10:41:53.362205+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787654493758",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1541759435293327492,
+    "puzzle_id": "random_1787654513362",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541759517505617941,
     "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qd4",
-        "correct": false,
-        "timestamp": "2026-08-25T10:41:39.469490+00:00"
-      },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Rxe8",
+        "move": "Re7",
         "correct": true,
-        "timestamp": "2026-08-25T10:41:46.001842+00:00"
+        "timestamp": "2026-08-25T10:42:04.249640+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
