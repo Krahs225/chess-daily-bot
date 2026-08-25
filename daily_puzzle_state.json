@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-05-10",
     "title": "Peripheral Glance",
     "fen": "r1bq1bkr/pppp2pp/8/4P3/1n1Bn3/5Q2/PPP2PPP/RN2K2R w KQ - 0 1",
-    "current_fen": "r1bq1bkr/pppp2pp/8/4P3/1n1Bn3/5Q2/PPP2PPP/RN2K2R w KQ - 0 1",
+    "current_fen": "r1bq1bkr/ppp3pp/8/3pP3/1n1Bn3/1Q6/PPP2PPP/RN2K2R w KQ d6 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"r1bq1bkr/pppp2pp/8/4P3/1n1Bn3/5Q2/PPP2PPP/RN2K2R w KQ - 0 1\"]\r\n\r\n1.Qb3+ d5 2.exd6+ Nd5 3.Qxd5+ *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787697221781",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541938650001182831,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qb3",
+        "correct": true,
+        "timestamp": "2026-08-25T22:33:49.054467+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
