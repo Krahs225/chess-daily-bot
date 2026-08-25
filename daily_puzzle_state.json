@@ -1,75 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-09-12",
-    "title": "Give To Take",
-    "fen": "r3k3/pp1R2pp/2q2p2/8/1Q2r3/1NP5/P5PP/2K2B2 w q - 0 1",
-    "current_fen": "r3k3/pp2r1pp/2q2p2/1B6/1Q6/1NP5/P5PP/2K5 b q - 1 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"r3k3/pp1R2pp/2q2p2/8/1Q2r3/1NP5/P5PP/2K2B2 w q - 0 1\"]\r\n\r\n1. Re7+ Rxe7 2. Bb5 \r\n*",
+    "url": "https://www.chess.com/daily/2025-12-03",
+    "title": "Taking a Moment",
+    "fen": "8/1p5p/1n1k4/3pp3/r6N/2PP2P1/PN1K1P1n/6R1 b - - 0 42",
+    "current_fen": "8/1p5p/1n1k4/3pp3/r6N/2PP2P1/PN1K1P1n/6R1 b - - 0 42",
+    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"geelse_zot\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/1p5p/1n1k4/3pp3/r6N/2PP2P1/PN1K1P1n/6R1 b - - 0 42\"]\r\n\r\n42... Rxh4 43. gxh4 Nf3+ 44. Ke3 Nxg1 0-1",
     "all_moves": [
       {
-        "uci": "d7e7",
-        "san": "Re7+",
-        "color": "white"
-      },
-      {
-        "uci": "e4e7",
-        "san": "Rxe7",
+        "uci": "a4h4",
+        "san": "Rxh4",
         "color": "black"
       },
       {
-        "uci": "f1b5",
-        "san": "Bb5",
+        "uci": "g3h4",
+        "san": "gxh4",
         "color": "white"
+      },
+      {
+        "uci": "h2f3",
+        "san": "Nf3+",
+        "color": "black"
+      },
+      {
+        "uci": "d2e3",
+        "san": "Ke3",
+        "color": "white"
+      },
+      {
+        "uci": "f3g1",
+        "san": "Nxg1",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d7e7",
-        "san": "Re7+",
-        "color": "white"
+        "uci": "a4h4",
+        "san": "Rxh4",
+        "color": "black"
       },
       {
-        "uci": "f1b5",
-        "san": "Bb5",
-        "color": "white"
+        "uci": "h2f3",
+        "san": "Nf3+",
+        "color": "black"
+      },
+      {
+        "uci": "f3g1",
+        "san": "Nxg1",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-25T10:41:53.362205+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T10:42:42.332024+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787654513362",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1541759517505617941,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Re7",
-        "correct": true,
-        "timestamp": "2026-08-25T10:42:04.249640+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Bb5",
-        "correct": true,
-        "timestamp": "2026-08-25T10:42:05.537967+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787654562332",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
