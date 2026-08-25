@@ -1,62 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-08-19",
-    "title": "Better Late Than Never :)",
-    "fen": "2Q1b1r1/p1n2p1p/1pkNp1qn/2p5/2P5/1P3P2/P5PP/3R1R1K w - - 0 1",
-    "current_fen": "4b1r1/pQnk1p1p/1p2p1qn/2p2N2/2P5/1P3P2/P5PP/3R1R1K b - - 3 2",
-    "pgn": "[FEN \"2Q1b1r1/p1n2p1p/1pkNp1qn/2p5/2P5/1P3P2/P5PP/3R1R1K w - - 0 1\"]\r\n[PlyCount \"3\"]\r\n\r\n1. Qb7+ Kd7 2. Nf5# *",
+    "url": "https://www.chess.com/daily/2020-12-12",
+    "title": "Rinck Returns",
+    "fen": "2b5/6b1/pB6/6K1/8/8/1k6/4R3 w - - 0 1",
+    "current_fen": "2b5/6b1/pB6/6K1/8/8/1k6/4R3 w - - 0 1",
+    "pgn": "[Date \"1923\"]\r\n[White \"Rinck, Henri\"]\r\n[Black \"Study\"]\r\n[Result \"*\"]\r\n[FEN \"2b5/6b1/pB6/6K1/8/8/1k6/4R3 w - - 0 1\"]\r\n\r\n1.Re8 Bh3 2.Kg6 Bc3 3.Re2+ Kb3 4.Re3 Bf1 5.Ba5 Kc4 6.Rxc3+ *",
     "all_moves": [
       {
-        "uci": "c8b7",
-        "san": "Qb7+",
+        "uci": "e1e8",
+        "san": "Re8",
         "color": "white"
       },
       {
-        "uci": "c6d7",
-        "san": "Kd7",
+        "uci": "c8h3",
+        "san": "Bh3",
         "color": "black"
       },
       {
-        "uci": "d6f5",
-        "san": "Nf5#",
+        "uci": "g5g6",
+        "san": "Kg6",
+        "color": "white"
+      },
+      {
+        "uci": "g7c3",
+        "san": "Bc3",
+        "color": "black"
+      },
+      {
+        "uci": "e8e2",
+        "san": "Re2+",
+        "color": "white"
+      },
+      {
+        "uci": "b2b3",
+        "san": "Kb3",
+        "color": "black"
+      },
+      {
+        "uci": "e2e3",
+        "san": "Re3",
+        "color": "white"
+      },
+      {
+        "uci": "h3f1",
+        "san": "Bf1",
+        "color": "black"
+      },
+      {
+        "uci": "b6a5",
+        "san": "Ba5",
+        "color": "white"
+      },
+      {
+        "uci": "b3c4",
+        "san": "Kc4",
+        "color": "black"
+      },
+      {
+        "uci": "e3c3",
+        "san": "Rxc3+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c8b7",
-        "san": "Qb7+",
+        "uci": "e1e8",
+        "san": "Re8",
         "color": "white"
       },
       {
-        "uci": "d6f5",
-        "san": "Nf5#",
+        "uci": "g5g6",
+        "san": "Kg6",
+        "color": "white"
+      },
+      {
+        "uci": "e8e2",
+        "san": "Re2+",
+        "color": "white"
+      },
+      {
+        "uci": "e2e3",
+        "san": "Re3",
+        "color": "white"
+      },
+      {
+        "uci": "b6a5",
+        "san": "Ba5",
+        "color": "white"
+      },
+      {
+        "uci": "e3c3",
+        "san": "Rxc3+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-25T22:08:44.811077+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-25T22:09:03.454779+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787695724811",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1541932372432265357,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nf5",
-        "correct": true,
-        "timestamp": "2026-08-25T22:08:56.106024+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787695743454",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
