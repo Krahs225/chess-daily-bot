@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-04-20",
     "title": "Forcing Continuation",
     "fen": "3r1r1k/ppp2Bpp/1b1p4/6q1/4P1P1/5Q2/PP3PK1/R6R w - - 0 1",
-    "current_fen": "3r1r1k/ppp2B2/1b1p2Qp/8/4P1P1/8/PP3PK1/8 w - - 4 7",
+    "current_fen": "3r1r1k/ppp2B2/1b1p3Q/8/4P1P1/8/PP3PK1/8 b - - 0 7",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r1r1k/ppp2Bpp/1b1p4/6q1/4P1P1/5Q2/PP3PK1/R6R w - - 0 1\"]\r\n\r\n1. Rxh7+ Kxh7 2. Rh1+ Qh6 3. Qf5+ Kh8 4. Rxh6+ gxh6 5. Qf6+ Kh7 6. Qg6+ Kh8 7. Qxh6#\r\n*",
     "all_moves": [
       {
@@ -117,16 +117,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787696424916",
-    "next_solution_index": 12,
-    "next_player_index": 6,
-    "solved": false,
+    "next_solution_index": 13,
+    "next_player_index": 7,
+    "solved": true,
     "message_id": 1541935307396743321,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qg6",
+        "move": "qxh6",
         "correct": true,
-        "timestamp": "2026-08-25T22:21:01.566707+00:00"
+        "timestamp": "2026-08-25T22:21:03.396634+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -137,7 +137,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "601406103712170014"
