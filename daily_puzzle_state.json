@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-01-31",
     "title": "Back to the Start",
     "fen": "8/P2k1pp1/2p4p/3p1K1P/R2P4/2P3P1/1P3n2/7r b - - 3 40",
-    "current_fen": "Q7/3k1pp1/2p4p/3p3P/R2P2K1/2P3P1/1P6/3n1r2 b - - 2 42",
+    "current_fen": "Q7/3k1pp1/2p4p/3p3P/R2P4/2P1n1PK/1P6/7r w - - 5 44",
     "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"chesstiger787\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/P2k1pp1/2p4p/3p1K1P/R2P4/2P3P1/1P3n2/7r b - - 3 40\"]\r\n\r\n40... Rf1 41. a8=Q Nd1+ 42. Kg4 Ne3+ 43. Kh3 Rh1# 0-1",
     "all_moves": [
       {
@@ -72,29 +72,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787682899739",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1541878580164825099,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Rh1",
-        "correct": false,
-        "timestamp": "2026-08-25T18:37:46.015629+00:00"
+        "move": "Ne3",
+        "correct": true,
+        "timestamp": "2026-08-25T18:37:50.452399+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "F5",
-        "correct": false,
-        "timestamp": "2026-08-25T18:37:34.833859+00:00"
+        "move": "Rh1",
+        "correct": true,
+        "timestamp": "2026-08-25T18:37:59.359645+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
