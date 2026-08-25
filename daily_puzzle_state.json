@@ -1,62 +1,137 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-07-24",
-    "title": "Patiently Taking Material",
-    "fen": "4q1k1/3pB1pp/5n2/1Q2N3/3P4/P6P/2r3P1/6K1 b - - 0 1",
-    "current_fen": "6k1/3pq1pp/5n2/1Q2N3/3P4/P6P/6PK/2r5 w - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4q1k1/3pB1pp/5n2/1Q2N3/3P4/P6P/2r3P1/6K1 b - - 0 1\"]\r\n\r\n1...Rc1+ 2. Kh2 Qxe7\r\n*",
+    "url": "https://www.chess.com/daily/2011-04-20",
+    "title": "Forcing Continuation",
+    "fen": "3r1r1k/ppp2Bpp/1b1p4/6q1/4P1P1/5Q2/PP3PK1/R6R w - - 0 1",
+    "current_fen": "3r1r2/ppp2Bpk/1b1p4/6q1/4P1P1/5Q2/PP3PK1/R7 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r1r1k/ppp2Bpp/1b1p4/6q1/4P1P1/5Q2/PP3PK1/R6R w - - 0 1\"]\r\n\r\n1. Rxh7+ Kxh7 2. Rh1+ Qh6 3. Qf5+ Kh8 4. Rxh6+ gxh6 5. Qf6+ Kh7 6. Qg6+ Kh8 7. Qxh6#\r\n*",
     "all_moves": [
       {
-        "uci": "c2c1",
-        "san": "Rc1+",
-        "color": "black"
-      },
-      {
-        "uci": "g1h2",
-        "san": "Kh2",
+        "uci": "h1h7",
+        "san": "Rxh7+",
         "color": "white"
       },
       {
-        "uci": "e8e7",
-        "san": "Qxe7",
+        "uci": "h8h7",
+        "san": "Kxh7",
         "color": "black"
+      },
+      {
+        "uci": "a1h1",
+        "san": "Rh1+",
+        "color": "white"
+      },
+      {
+        "uci": "g5h6",
+        "san": "Qh6",
+        "color": "black"
+      },
+      {
+        "uci": "f3f5",
+        "san": "Qf5+",
+        "color": "white"
+      },
+      {
+        "uci": "h7h8",
+        "san": "Kh8",
+        "color": "black"
+      },
+      {
+        "uci": "h1h6",
+        "san": "Rxh6+",
+        "color": "white"
+      },
+      {
+        "uci": "g7h6",
+        "san": "gxh6",
+        "color": "black"
+      },
+      {
+        "uci": "f5f6",
+        "san": "Qf6+",
+        "color": "white"
+      },
+      {
+        "uci": "h8h7",
+        "san": "Kh7",
+        "color": "black"
+      },
+      {
+        "uci": "f6g6",
+        "san": "Qg6+",
+        "color": "white"
+      },
+      {
+        "uci": "h7h8",
+        "san": "Kh8",
+        "color": "black"
+      },
+      {
+        "uci": "g6h6",
+        "san": "Qxh6#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c2c1",
-        "san": "Rc1+",
-        "color": "black"
+        "uci": "h1h7",
+        "san": "Rxh7+",
+        "color": "white"
       },
       {
-        "uci": "e8e7",
-        "san": "Qxe7",
-        "color": "black"
+        "uci": "a1h1",
+        "san": "Rh1+",
+        "color": "white"
+      },
+      {
+        "uci": "f3f5",
+        "san": "Qf5+",
+        "color": "white"
+      },
+      {
+        "uci": "h1h6",
+        "san": "Rxh6+",
+        "color": "white"
+      },
+      {
+        "uci": "f5f6",
+        "san": "Qf6+",
+        "color": "white"
+      },
+      {
+        "uci": "f6g6",
+        "san": "Qg6+",
+        "color": "white"
+      },
+      {
+        "uci": "g6h6",
+        "san": "Qxh6#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-25T22:19:33.462566+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 7,
+    "posted_at": "2026-08-25T22:20:24.916173+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787696373462",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1541935091637428235,
+    "puzzle_id": "random_1787696424916",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1541935307396743321,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxe7",
+        "move": "rxh7",
         "correct": true,
-        "timestamp": "2026-08-25T22:20:18.813430+00:00"
+        "timestamp": "2026-08-25T22:20:28.489860+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
