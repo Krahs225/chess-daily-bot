@@ -1,47 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-02-05",
-    "title": "Easy Like Sunday Morning",
-    "fen": "3r3r/5pkp/pp3Np1/5pP1/2P5/7Q/PP1q3P/5K1R w - - 0 1",
-    "current_fen": "3r3r/5pkp/pp3NpQ/5pP1/2P5/8/PP1q3P/5K1R b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r3r/5pkp/pp3Np1/5pP1/2P5/7Q/PP1q3P/5K1R w - - 0 1\"]\r\n\r\n1. Qh6# \r\n*",
+    "url": "https://www.chess.com/daily/2014-05-26",
+    "title": "Mate in 2",
+    "fen": "rn5k/pp2B2p/4B1p1/q1pP4/3br3/6P1/PP5P/R2Q3K w - - 0 1",
+    "current_fen": "rn5k/pp2B2p/4B1p1/q1pP4/3r4/6P1/PP5P/R6K w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn5k/pp2B2p/4B1p1/q1pP4/3br3/6P1/PP5P/R2Q3K w - - 0 1\"]\r\n\r\n1. Qxd4+ Rxd4 2. Bf6#\r\n*",
     "all_moves": [
       {
-        "uci": "h3h6",
-        "san": "Qh6#",
+        "uci": "d1d4",
+        "san": "Qxd4+",
+        "color": "white"
+      },
+      {
+        "uci": "e4d4",
+        "san": "Rxd4",
+        "color": "black"
+      },
+      {
+        "uci": "e7f6",
+        "san": "Bf6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h3h6",
-        "san": "Qh6#",
+        "uci": "d1d4",
+        "san": "Qxd4+",
+        "color": "white"
+      },
+      {
+        "uci": "e7f6",
+        "san": "Bf6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-25T18:56:41.216804+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-25T18:56:51.107508+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787684201216",
-    "next_solution_index": 1,
+    "puzzle_id": "random_1787684211107",
+    "next_solution_index": 2,
     "next_player_index": 1,
-    "solved": true,
-    "message_id": 1541884038246043769,
+    "solved": false,
+    "message_id": 1541884078888853636,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qh6",
+        "move": "Qxd4",
         "correct": true,
-        "timestamp": "2026-08-25T18:56:44.653514+00:00"
+        "timestamp": "2026-08-25T18:56:59.069183+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
