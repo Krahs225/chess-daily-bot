@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-03-07",
     "title": "Targeting a Stranded Piece",
     "fen": "1k4q1/1pp5/1b1np1r1/3p3P/Q2P1P2/1PB1P3/2P1B2R/K7 b - - 0 1",
-    "current_fen": "1k4q1/1pp5/1b1np1r1/3p3P/Q2P1P2/1PB1P3/2P1B2R/K7 b - - 0 1",
+    "current_fen": "1k4q1/1pp5/1b1np3/3p3P/Q2P1P2/1PB1P3/1KP1B2R/6r1 b - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"1k4q1/1pp5/1b1np1r1/3p3P/Q2P1P2/1PB1P3/2P1B2R/K7 b - - 0 1\"]\r\n\r\n1... Rg1+ 2. Kb2 Qg3 3. h6 Qxh2 *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787662646105",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541793629704556634,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rg1",
+        "correct": true,
+        "timestamp": "2026-08-25T12:57:57.447115+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
