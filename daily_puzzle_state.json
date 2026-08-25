@@ -1,122 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-11-10",
-    "title": "Pepe's Checkmate Puzzler",
-    "fen": "4r1k1/1p3p1p/8/1N4NR/B3n3/1Pr5/P6P/R2K4 b - - 0 1",
-    "current_fen": "6k1/1p3p1p/8/1N4NR/1P6/3n4/Pr5P/RK1B4 w - - 3 7",
-    "pgn": "[White \"pepe\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"4r1k1/1p3p1p/8/1N4NR/B3n3/1Pr5/P6P/R2K4 b - - 0 1\"]\r\n\r\n1... Nf2+ 2. Kd2 Rd3+ 3. Kc1 Re2 4. b4 Rd1+ 5. Bxd1 Nd3+ 6. Kb1 Rb2# 0-1",
+    "url": "https://www.chess.com/daily/2010-01-14",
+    "title": "Opening Blunder",
+    "fen": "r1bqk2r/pp1nbppp/2pp3n/4p1N1/P1BPP3/8/1PP2PPP/RNBQK2R w KQkq - 0 1",
+    "current_fen": "r1bqk2r/pp1nbppp/2pp3n/4p1N1/P1BPP3/8/1PP2PPP/RNBQK2R w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqk2r/pp1nbppp/2pp3n/4p1N1/P1BPP3/8/1PP2PPP/RNBQK2R w KQkq - 0 1\"]\r\n\r\n1. Bxf7+ Nxf7 2. Ne6 Qa5+ 3. Bd2\r\n*",
     "all_moves": [
       {
-        "uci": "e4f2",
-        "san": "Nf2+",
-        "color": "black"
-      },
-      {
-        "uci": "d1d2",
-        "san": "Kd2",
+        "uci": "c4f7",
+        "san": "Bxf7+",
         "color": "white"
       },
       {
-        "uci": "c3d3",
-        "san": "Rd3+",
+        "uci": "h6f7",
+        "san": "Nxf7",
         "color": "black"
       },
       {
-        "uci": "d2c1",
-        "san": "Kc1",
+        "uci": "g5e6",
+        "san": "Ne6",
         "color": "white"
       },
       {
-        "uci": "e8e2",
-        "san": "Re2",
+        "uci": "d8a5",
+        "san": "Qa5+",
         "color": "black"
       },
       {
-        "uci": "b3b4",
-        "san": "b4",
+        "uci": "c1d2",
+        "san": "Bd2",
         "color": "white"
-      },
-      {
-        "uci": "d3d1",
-        "san": "Rd1+",
-        "color": "black"
-      },
-      {
-        "uci": "a4d1",
-        "san": "Bxd1",
-        "color": "white"
-      },
-      {
-        "uci": "f2d3",
-        "san": "Nd3+",
-        "color": "black"
-      },
-      {
-        "uci": "c1b1",
-        "san": "Kb1",
-        "color": "white"
-      },
-      {
-        "uci": "e2b2",
-        "san": "Rb2#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4f2",
-        "san": "Nf2+",
-        "color": "black"
+        "uci": "c4f7",
+        "san": "Bxf7+",
+        "color": "white"
       },
       {
-        "uci": "c3d3",
-        "san": "Rd3+",
-        "color": "black"
+        "uci": "g5e6",
+        "san": "Ne6",
+        "color": "white"
       },
       {
-        "uci": "e8e2",
-        "san": "Re2",
-        "color": "black"
-      },
-      {
-        "uci": "d3d1",
-        "san": "Rd1+",
-        "color": "black"
-      },
-      {
-        "uci": "f2d3",
-        "san": "Nd3+",
-        "color": "black"
-      },
-      {
-        "uci": "e2b2",
-        "san": "Rb2#",
-        "color": "black"
+        "uci": "c1d2",
+        "san": "Bd2",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 6,
-    "posted_at": "2026-08-25T19:46:37.659536+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T19:48:02.707310+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787687197659",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1541896606377320515,
+    "puzzle_id": "random_1787687282707",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1541896962331115615,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rb2",
-        "correct": true,
-        "timestamp": "2026-08-25T19:47:55.763887+00:00"
+        "move": "ne6",
+        "correct": false,
+        "timestamp": "2026-08-25T19:48:22.589068+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
