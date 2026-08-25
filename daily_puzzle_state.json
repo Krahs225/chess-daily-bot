@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-05-31",
     "title": "Target Practice",
     "fen": "5r1k/3N3p/6q1/5p2/2pp3Q/6P1/1P3PKP/8 b - - 0 1",
-    "current_fen": "5r1k/3N3p/6q1/5p2/2pp3Q/6P1/1P3PKP/8 b - - 0 1",
+    "current_fen": "5r1k/3N3p/2q5/5p2/2pp3Q/6P1/1P3P1P/6K1 b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r1k/3N3p/6q1/5p2/2pp3Q/6P1/1P3PKP/8 b - - 0 1\"]\r\n\r\n1...Qc6+ 2. Kg1 Qxd7\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787687151304",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541896411799617616,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qc6",
+        "correct": true,
+        "timestamp": "2026-08-25T19:45:57.948900+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
