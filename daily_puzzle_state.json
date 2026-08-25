@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-09-30",
     "title": "Checkmate Anyone?",
     "fen": "R4r1k/1pp4p/3p1r1b/3Pp3/1nP4Q/7P/2b1KP2/3N2R1 b - - 0 1",
-    "current_fen": "R4r1k/1pp4p/3p1r1b/3Pp3/1nP4Q/7P/2b1KP2/3N2R1 b - - 0 1",
+    "current_fen": "R4r1k/1pp4p/3p1r1b/3Pp3/2P4Q/3b3P/2n2P2/3NK1R1 w - - 3 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"R4r1k/1pp4p/3p1r1b/3Pp3/1nP4Q/7P/2b1KP2/3N2R1 b - - 0 1\"]\r\n\r\n1... Bd3+ (1... Rxa8 2. Qxf6+ Bg7 3. Qxg7#) 2. Ke1 Nc2#\r\n*",
     "all_moves": [
       {
@@ -42,20 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787662754463",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1541794083620659292,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nd3",
-        "correct": false,
-        "timestamp": "2026-08-25T12:59:27.044489+00:00"
+        "move": "nc2",
+        "correct": true,
+        "timestamp": "2026-08-25T12:59:31.840886+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
