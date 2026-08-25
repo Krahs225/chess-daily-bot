@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-12-19",
-    "title": "Honfi - Csenady, Hungary 1963",
-    "fen": "r4rk1/pb1q1ppp/2N1p3/2Rn4/1p1P4/3BPQ2/1P3PPP/2R3K1 w - - 0 1",
-    "current_fen": "r4rk1/pb2Npp1/4p3/3q4/1p1P4/4P2Q/1P3PPP/2R3K1 b - - 1 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/pb1q1ppp/2N1p3/2Rn4/1p1P4/3BPQ2/1P3PPP/2R3K1 w - - 0 1\"]\r\n\r\n1. Bxh7+ Kxh7 2. Qh3+ Kg8 3. Rxd5 Qxd5 4. Ne7#\r\n*",
+    "url": "https://www.chess.com/daily/2024-07-17",
+    "title": "Back to the File",
+    "fen": "3r4/p1N2pkp/1pQ5/3P1bp1/4P3/3R1B2/PP2Pq2/6RK b - - 0 1",
+    "current_fen": "3r4/p1N2pkp/1pQ5/3P1bp1/4P3/3R1B2/PP2Pq2/6RK b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3r4/p1N2pkp/1pQ5/3P1bp1/4P3/3R1B2/PP2Pq2/6RK b - - 0 1\"]\r\n\r\n1... Qh4+ 2. Kg2 Bh3+ 3. Kh2 Bf1# *",
     "all_moves": [
       {
-        "uci": "d3h7",
-        "san": "Bxh7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h7",
-        "san": "Kxh7",
+        "uci": "f2h4",
+        "san": "Qh4+",
         "color": "black"
       },
       {
-        "uci": "f3h3",
-        "san": "Qh3+",
+        "uci": "h1g2",
+        "san": "Kg2",
         "color": "white"
       },
       {
-        "uci": "h7g8",
-        "san": "Kg8",
+        "uci": "f5h3",
+        "san": "Bh3+",
         "color": "black"
       },
       {
-        "uci": "c5d5",
-        "san": "Rxd5",
+        "uci": "g2h2",
+        "san": "Kh2",
         "color": "white"
       },
       {
-        "uci": "d7d5",
-        "san": "Qxd5",
+        "uci": "h3f1",
+        "san": "Bf1#",
         "color": "black"
-      },
-      {
-        "uci": "c6e7",
-        "san": "Ne7#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3h7",
-        "san": "Bxh7+",
-        "color": "white"
+        "uci": "f2h4",
+        "san": "Qh4+",
+        "color": "black"
       },
       {
-        "uci": "f3h3",
-        "san": "Qh3+",
-        "color": "white"
+        "uci": "f5h3",
+        "san": "Bh3+",
+        "color": "black"
       },
       {
-        "uci": "c5d5",
-        "san": "Rxd5",
-        "color": "white"
-      },
-      {
-        "uci": "c6e7",
-        "san": "Ne7#",
-        "color": "white"
+        "uci": "h3f1",
+        "san": "Bf1#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T17:07:06.043721+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-25T17:09:05.798848+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787677626043",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1541856459170644030,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Ne7",
-        "correct": true,
-        "timestamp": "2026-08-25T17:08:56.437741+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787677745798",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
