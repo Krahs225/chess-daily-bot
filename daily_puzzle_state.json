@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-02-25",
     "title": "Waiting for 1-0",
     "fen": "8/8/8/8/4p3/5pNN/4p3/2K1k3 w - - 0 1",
-    "current_fen": "8/8/8/5N2/4p3/5p1N/4p3/2K2k2 w - - 2 2",
+    "current_fen": "8/8/8/8/4p3/4Np1N/4p3/2K1k3 w - - 4 3",
     "pgn": "[White \"Loyd, Sam\"]\r\n[Black \"Study\"]\r\n[Result \"1-0\"]\r\n[FEN \"8/8/8/8/4p3/5pNN/4p3/2K1k3 w - - 0 1\"]\r\n\r\n1. Nf5 Kf1 2. Ne3+ Ke1 3. Kc2 f2 4. Kc1 f1=Q 5. Nc2# 1-0",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787694758983",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1541928321837826182,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nxe4",
-        "correct": false,
-        "timestamp": "2026-08-25T21:52:48.065922+00:00"
+        "move": "ne3",
+        "correct": true,
+        "timestamp": "2026-08-25T21:52:56.985764+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -109,7 +109,9 @@
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
