@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-09-22",
     "title": "Knock Knock",
     "fen": "4r1k1/p1p3pp/1p1pPr2/3Q4/4n1Bq/2P1B2P/P1P2PK1/3RR3 b - - 0 1",
-    "current_fen": "4r1k1/p1p3pp/1p1pPr2/3Q4/4n1Bq/2P1B2P/P1P2PK1/3RR3 b - - 0 1",
+    "current_fen": "4r1k1/p1p3pp/1p1pP3/3Q4/4n1Bq/2P1B2P/P1P2r2/3RR2K b - - 1 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"4r1k1/p1p3pp/1p1pPr2/3Q4/4n1Bq/2P1B2P/P1P2PK1/3RR3 b - - 0 1\"]\r\n\r\n1... Rxf2+ 2. Kh1 Qg3 3. e7+ Kh8 4. Bxf2 Nxf2# *",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787654707134",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541760330345095189,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rxf2",
+        "correct": true,
+        "timestamp": "2026-08-25T10:45:14.738722+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
