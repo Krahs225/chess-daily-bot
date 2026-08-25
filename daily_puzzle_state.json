@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-03-29",
     "title": "Backward Logic",
     "fen": "8/8/8/5K1N/7k/7p/7R/8 w - - 0 1",
-    "current_fen": "8/8/8/5K1N/7k/8/7p/7R w - - 0 2",
+    "current_fen": "8/8/8/5K1N/7k/8/7R/8 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/5K1N/7k/7p/7R/8 w - - 0 1\"]\r\n\r\n1. Rh1 h2 2. Rxh2#\r\n*",
     "all_moves": [
       {
@@ -42,16 +42,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787682843403",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1541878344327499946,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Rh1",
+        "move": "Rxh2",
         "correct": true,
-        "timestamp": "2026-08-25T18:34:18.008573+00:00"
+        "timestamp": "2026-08-25T18:34:24.659995+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -62,7 +62,7 @@
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
