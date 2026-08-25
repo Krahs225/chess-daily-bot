@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-05-03",
     "title": "Overworking the Opponent",
     "fen": "4rr2/3n2k1/pp1p4/3P1p1p/2P2p1q/P3N2P/3Q2P1/4RRK1 w - - 0 1",
-    "current_fen": "4rr2/3n2k1/pp1p4/3P1p1p/2P2p1q/P3N2P/3Q2P1/4RRK1 w - - 0 1",
+    "current_fen": "4r3/3n2k1/pp1p4/3P1r1p/2P2p1q/P6P/3Q2P1/4RRK1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4rr2/3n2k1/pp1p4/3P1p1p/2P2p1q/P3N2P/3Q2P1/4RRK1 w - - 0 1\"]\r\n\r\n1. Nxf5+ Rxf5 2. Rxe8\r\n*",
     "all_moves": [
       {
@@ -42,8 +42,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787654493758",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1541759435293327492,
     "attempted_users": {
@@ -52,10 +52,16 @@
         "move": "Qd4",
         "correct": false,
         "timestamp": "2026-08-25T10:41:39.469490+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Nxf5",
+        "correct": true,
+        "timestamp": "2026-08-25T10:41:42.209965+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
