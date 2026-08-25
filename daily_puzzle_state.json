@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-09-29",
     "title": "Exposed King",
     "fen": "r1b4r/1p1n1k1p/p4q1b/4pP2/8/2p1BQ2/PPP2P1P/2KR2R1 w - - 0 1",
-    "current_fen": "r1b4r/1p1n1k1p/p4q1b/4pP2/8/2p1BQ2/PPP2P1P/2KR2R1 w - - 0 1",
+    "current_fen": "r1b4r/1p1nk2p/p4q1b/4pP1Q/8/2p1B3/PPP2P1P/2KR2R1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b4r/1p1n1k1p/p4q1b/4pP2/8/2p1BQ2/PPP2P1P/2KR2R1 w - - 0 1\"]\r\n\r\n1. Qh5+ Ke7 2. Bxh6\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787687836558",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1541899285681930243,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qh5",
+        "correct": true,
+        "timestamp": "2026-08-25T19:57:28.069640+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
