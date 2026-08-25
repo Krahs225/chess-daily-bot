@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-11-02",
     "title": "Candidate Moves",
     "fen": "r2q1rk1/1b1n1ppp/p3pn2/2B5/B7/4PN2/PPQ2PPP/2R1K2R b K - 0 1",
-    "current_fen": "r2q1rk1/1b3ppp/p3pn2/2Q5/B7/4PN2/PP3PPP/2R1K2R b K - 0 2",
+    "current_fen": "2rq1rk1/1b3ppp/p3pn2/2Q5/B7/4PN2/PP3PPP/2R2RK1 b - - 2 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"r2q1rk1/1b1n1ppp/p3pn2/2B5/B7/4PN2/PPQ2PPP/2R1K2R b K - 0 1\"]\r\n\r\n1...Nxc5 2.Qxc5 Rc8 3.O-O Rxc5 *",
     "all_moves": [
       {
@@ -57,23 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787683449519",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1541880885475807285,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Nxc5",
+        "move": "Ne4",
+        "correct": false,
+        "timestamp": "2026-08-25T18:44:22.541976+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rc8",
         "correct": true,
-        "timestamp": "2026-08-25T18:44:18.149041+00:00"
+        "timestamp": "2026-08-25T18:44:22.201652+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
