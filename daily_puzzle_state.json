@@ -1,91 +1,114 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-11-28",
-    "title": "Major Piece Feast",
-    "fen": "4r1k1/p3qppb/2R1n3/8/N2Q2P1/1P3P2/P4KB1/4R3 b - - 0 31",
-    "current_fen": "4r1k1/p4ppb/2R5/8/N2n2P1/1P3P2/P4KB1/8 b - - 1 34",
-    "pgn": "[Date \"2024.10.17\"]\r\n[White \"PracticeMakesOK\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"4r1k1/p3qppb/2R1n3/8/N2Q2P1/1P3P2/P4KB1/4R3 b - - 0 31\"]\r\n\r\n31... Qh4+ 32. Kf1 Qxe1+ 33. Kxe1 Nxd4+ 34. Kf2 Nxc6 0-1",
+    "url": "https://www.chess.com/daily/2013-04-27",
+    "title": "White Wins",
+    "fen": "2r4k/2p3b1/1p5p/1P1Q4/r6P/4qBR1/4P3/1R5K w - - 0 1",
+    "current_fen": "2r4k/2p3b1/1p5p/1P1Q4/r6P/4qBR1/4P3/1R5K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r4k/2p3b1/1p5p/1P1Q4/r6P/4qBR1/4P3/1R5K w - - 0 1\"]\r\n\r\n1. Rxg7 Qf2 2. Rh7+ Kxh7 3. Qf7+ Kh8 4. Qf6+ Kh7 5. Be4+ Rxe4 6. Qxf2\r\n*",
     "all_moves": [
       {
-        "uci": "e7h4",
-        "san": "Qh4+",
-        "color": "black"
-      },
-      {
-        "uci": "f2f1",
-        "san": "Kf1",
+        "uci": "g3g7",
+        "san": "Rxg7",
         "color": "white"
       },
       {
-        "uci": "h4e1",
-        "san": "Qxe1+",
+        "uci": "e3f2",
+        "san": "Qf2",
         "color": "black"
       },
       {
-        "uci": "f1e1",
-        "san": "Kxe1",
+        "uci": "g7h7",
+        "san": "Rh7+",
         "color": "white"
       },
       {
-        "uci": "e6d4",
-        "san": "Nxd4+",
+        "uci": "h8h7",
+        "san": "Kxh7",
         "color": "black"
       },
       {
-        "uci": "e1f2",
-        "san": "Kf2",
+        "uci": "d5f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "d4c6",
-        "san": "Nxc6",
+        "uci": "h7h8",
+        "san": "Kh8",
         "color": "black"
+      },
+      {
+        "uci": "f7f6",
+        "san": "Qf6+",
+        "color": "white"
+      },
+      {
+        "uci": "h8h7",
+        "san": "Kh7",
+        "color": "black"
+      },
+      {
+        "uci": "f3e4",
+        "san": "Be4+",
+        "color": "white"
+      },
+      {
+        "uci": "a4e4",
+        "san": "Rxe4",
+        "color": "black"
+      },
+      {
+        "uci": "f6f2",
+        "san": "Qxf2",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e7h4",
-        "san": "Qh4+",
-        "color": "black"
+        "uci": "g3g7",
+        "san": "Rxg7",
+        "color": "white"
       },
       {
-        "uci": "h4e1",
-        "san": "Qxe1+",
-        "color": "black"
+        "uci": "g7h7",
+        "san": "Rh7+",
+        "color": "white"
       },
       {
-        "uci": "e6d4",
-        "san": "Nxd4+",
-        "color": "black"
+        "uci": "d5f7",
+        "san": "Qf7+",
+        "color": "white"
       },
       {
-        "uci": "d4c6",
-        "san": "Nxc6",
-        "color": "black"
+        "uci": "f7f6",
+        "san": "Qf6+",
+        "color": "white"
+      },
+      {
+        "uci": "f3e4",
+        "san": "Be4+",
+        "color": "white"
+      },
+      {
+        "uci": "f6f2",
+        "san": "Qxf2",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-25T20:42:38.973024+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 6,
+    "posted_at": "2026-08-25T20:43:25.714509+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787690558973",
-    "next_solution_index": 6,
-    "next_player_index": 3,
+    "puzzle_id": "random_1787690605714",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1541910705178148894,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Nxd4",
-        "correct": true,
-        "timestamp": "2026-08-25T20:43:05.625622+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "message_id": 1541910899986661447,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
