@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-07-23",
     "title": "Polgar's Magnetic Attack",
     "fen": "6r1/4k3/4prbn/pp1p4/2pP1RPN/P1P1K3/2P1B3/7R w - - 0 30",
-    "current_fen": "6r1/8/4pkbn/pp1p4/2pP4/P1P1KN2/2P1B3/7R w - - 2 33",
+    "current_fen": "6r1/8/4pkbR/pp1p4/2pP4/P1P1KN2/2P1B3/8 b - - 0 33",
     "pgn": "[Site \"Buenos Aires\"]\n[Date \"1992.??.??\"]\n[White \"Happy Birthday Polgar, Judit\"]\n[Black \"Panno, Oscar\"]\n[Result \"1-0\"]\n[FEN \"6r1/4k3/4prbn/pp1p4/2pP1RPN/P1P1K3/2P1B3/7R w - - 0 30\"]\n\n30. Rxf6 Kxf6 31. g5+ Kxg5 32. Nf3+ Kf6 33. Rxh6 1-0",
     "all_moves": [
       {
@@ -72,16 +72,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787747268273",
-    "next_solution_index": 6,
-    "next_player_index": 3,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1542148560039190551,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "g5",
+        "move": "rxh6",
         "correct": true,
-        "timestamp": "2026-08-26T12:27:54.769469+00:00"
+        "timestamp": "2026-08-26T12:28:03.648546+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -92,7 +92,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "601406103712170014"
