@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-10-18",
-    "title": "Waiting Game",
-    "fen": "8/3N3k/7p/6pq/4K3/6PP/8/8 w - - 0 1",
-    "current_fen": "8/8/7p/5K1k/6P1/6P1/8/8 b - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/3N3k/7p/6pq/4K3/6PP/8/8 w - - 0 1\"]\r\n\r\n1.Nf6+ Kg6 2.Nxh5 Kxh5 3.Kf5 g4 4.hxg4# *",
+    "url": "https://www.chess.com/daily/2007-07-10",
+    "title": "Get Yourself an Extra Bishop!",
+    "fen": "2k5/1ppr2p1/p1n3bp/7q/3prP2/PP1B2Q1/1KPBR2P/3R4 w KQkq - 0 1",
+    "current_fen": "2k5/1ppr2p1/p1n3bp/7q/3prP2/PP1B2Q1/1KPBR2P/3R4 w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k5/1ppr2p1/p1n3bp/7q/3prP2/PP1B2Q1/1KPBR2P/3R4 w KQkq - 0 1\"]\r\n\r\n1. Rde1 { Threatening the rook }  ( 1. Bxe4 { ?? Bad move! }  1... Qxe2 2. Qxg6 Qxd1 ) 1... Rxe2 ( 1... Rde7 2. Bxe4 Bxe4 3. Rxe4 Rxe4 4. Rxe4 { And white has won a piece. }  ) 2. Bxe2 ( 2. Rxe2 Bxd3 3. cxd3 Qxe2 ) Qf5 3. Bd3 Qf6 4. Qxg6 { And white has an extra piece. }\r\n*",
     "all_moves": [
       {
-        "uci": "d7f6",
-        "san": "Nf6+",
+        "uci": "d1e1",
+        "san": "Rde1",
         "color": "white"
       },
       {
-        "uci": "h7g6",
-        "san": "Kg6",
+        "uci": "e4e2",
+        "san": "Rxe2",
         "color": "black"
       },
       {
-        "uci": "f6h5",
-        "san": "Nxh5",
+        "uci": "d3e2",
+        "san": "Bxe2",
         "color": "white"
       },
       {
-        "uci": "g6h5",
-        "san": "Kxh5",
+        "uci": "h5f5",
+        "san": "Qf5",
         "color": "black"
       },
       {
-        "uci": "e4f5",
-        "san": "Kf5",
+        "uci": "e2d3",
+        "san": "Bd3",
         "color": "white"
       },
       {
-        "uci": "g5g4",
-        "san": "g4",
+        "uci": "f5f6",
+        "san": "Qf6",
         "color": "black"
       },
       {
-        "uci": "h3g4",
-        "san": "hxg4#",
+        "uci": "g3g6",
+        "san": "Qxg6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d7f6",
-        "san": "Nf6+",
+        "uci": "d1e1",
+        "san": "Rde1",
         "color": "white"
       },
       {
-        "uci": "f6h5",
-        "san": "Nxh5",
+        "uci": "d3e2",
+        "san": "Bxe2",
         "color": "white"
       },
       {
-        "uci": "e4f5",
-        "san": "Kf5",
+        "uci": "e2d3",
+        "san": "Bd3",
         "color": "white"
       },
       {
-        "uci": "h3g4",
-        "san": "hxg4#",
+        "uci": "g3g6",
+        "san": "Qxg6",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-26T15:01:15.377547+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T15:01:37.393260+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787756475377",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542187178149543947,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "hxg4",
-        "correct": true,
-        "timestamp": "2026-08-26T15:01:29.982457+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787756497393",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
