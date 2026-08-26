@@ -1,14 +1,14 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-06-30",
-    "title": "Free Piece? 🤔",
-    "fen": "3r3k/3r2pp/pbn5/1p6/5N2/1B4P1/PP3P2/K1R5 w - - 0 1",
-    "current_fen": "3r3k/3r2p1/pbn3p1/1p6/8/1B4P1/PP3P2/K6R b - - 1 2",
-    "pgn": "[White \"Duo-Owl\"]\n[Black \"Daily Puzzle Inspiration\"]\n[Result \"1-0\"]\n[FEN \"3r3k/3r2pp/pbn5/1p6/5N2/1B4P1/PP3P2/K1R5 w - - 0 1\"]\n\n1. Ng6+ hxg6 2. Rh1# 1-0",
+    "url": "https://www.chess.com/daily/2024-11-08",
+    "title": "Fork Insurance",
+    "fen": "4k3/4Pp1p/3P1K2/6P1/8/p2n4/8/8 w - - 0 1",
+    "current_fen": "4k3/4Pp1p/3P1K2/6P1/8/p2n4/8/8 w - - 0 1",
+    "pgn": "[Date \"1889.??.??\"]\r\n[White \"von Holzhausen, Sohege\"]\r\n[Black \"Study\"]\r\n[Result \"1-0\"]\r\n[FEN \"4k3/4Pp1p/3P1K2/6P1/8/p2n4/8/8 w - - 0 1\"]\r\n\r\n1. g6 hxg6 2. d7+ Kxd7 3. Kxf7 Ne5+ 4. Kf8 a2 5. e8=Q+ 1-0",
     "all_moves": [
       {
-        "uci": "f4g6",
-        "san": "Ng6+",
+        "uci": "g5g6",
+        "san": "g6",
         "color": "white"
       },
       {
@@ -17,46 +17,84 @@
         "color": "black"
       },
       {
-        "uci": "c1h1",
-        "san": "Rh1#",
+        "uci": "d6d7",
+        "san": "d7+",
+        "color": "white"
+      },
+      {
+        "uci": "e8d7",
+        "san": "Kxd7",
+        "color": "black"
+      },
+      {
+        "uci": "f6f7",
+        "san": "Kxf7",
+        "color": "white"
+      },
+      {
+        "uci": "d3e5",
+        "san": "Ne5+",
+        "color": "black"
+      },
+      {
+        "uci": "f7f8",
+        "san": "Kf8",
+        "color": "white"
+      },
+      {
+        "uci": "a3a2",
+        "san": "a2",
+        "color": "black"
+      },
+      {
+        "uci": "e7e8q",
+        "san": "e8=Q+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4g6",
-        "san": "Ng6+",
+        "uci": "g5g6",
+        "san": "g6",
         "color": "white"
       },
       {
-        "uci": "c1h1",
-        "san": "Rh1#",
+        "uci": "d6d7",
+        "san": "d7+",
+        "color": "white"
+      },
+      {
+        "uci": "f6f7",
+        "san": "Kxf7",
+        "color": "white"
+      },
+      {
+        "uci": "f7f8",
+        "san": "Kf8",
+        "color": "white"
+      },
+      {
+        "uci": "e7e8q",
+        "san": "e8=Q+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-26T07:54:33.245242+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-26T07:54:50.164768+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787730873245",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542079794714513438,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rh1",
-        "correct": true,
-        "timestamp": "2026-08-26T07:54:42.800969+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787730890164",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
