@@ -1,121 +1,84 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-10-15",
-    "title": "Endgame Theme",
-    "fen": "4K1k1/6pN/6P1/8/8/8/8/8 w - - 0 1",
-    "current_fen": "6Q1/5K2/7k/5p2/8/8/8/8 w - - 1 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4K1k1/6pN/6P1/8/8/8/8/8 w - - 0 1\"]\r\n\r\n1. Ke7 Kh8 2. Nf6 gxf6 3. Kf7 f5 4. g7+ Kh7 5. g8=Q+ Kh6 6. Qg6#\r\n*",
+    "url": "https://www.chess.com/daily/2023-05-03",
+    "title": "Which Knight?",
+    "fen": "8/1k6/6p1/3r1n2/N4Bn1/1P4P1/2R4P/6K1 b - - 0 1",
+    "current_fen": "8/1k6/6p1/3r1n2/N4Bn1/1P4P1/2R4P/6K1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/1k6/6p1/3r1n2/N4Bn1/1P4P1/2R4P/6K1 b - - 0 1\"]\r\n\r\n1... Rd1+ 2. Kg2 Nge3+ 3. Bxe3 Nxe3+ 4. Kf3 Nxc2 *",
     "all_moves": [
       {
-        "uci": "e8e7",
-        "san": "Ke7",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "d5d1",
+        "san": "Rd1+",
         "color": "black"
       },
       {
-        "uci": "h7f6",
-        "san": "Nf6",
+        "uci": "g1g2",
+        "san": "Kg2",
         "color": "white"
       },
       {
-        "uci": "g7f6",
-        "san": "gxf6",
+        "uci": "g4e3",
+        "san": "Nge3+",
         "color": "black"
       },
       {
-        "uci": "e7f7",
-        "san": "Kf7",
+        "uci": "f4e3",
+        "san": "Bxe3",
         "color": "white"
       },
       {
-        "uci": "f6f5",
-        "san": "f5",
+        "uci": "f5e3",
+        "san": "Nxe3+",
         "color": "black"
       },
       {
-        "uci": "g6g7",
-        "san": "g7+",
+        "uci": "g2f3",
+        "san": "Kf3",
         "color": "white"
       },
       {
-        "uci": "h8h7",
-        "san": "Kh7",
+        "uci": "e3c2",
+        "san": "Nxc2",
         "color": "black"
-      },
-      {
-        "uci": "g7g8q",
-        "san": "g8=Q+",
-        "color": "white"
-      },
-      {
-        "uci": "h7h6",
-        "san": "Kh6",
-        "color": "black"
-      },
-      {
-        "uci": "g8g6",
-        "san": "Qg6#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e8e7",
-        "san": "Ke7",
-        "color": "white"
+        "uci": "d5d1",
+        "san": "Rd1+",
+        "color": "black"
       },
       {
-        "uci": "h7f6",
-        "san": "Nf6",
-        "color": "white"
+        "uci": "g4e3",
+        "san": "Nge3+",
+        "color": "black"
       },
       {
-        "uci": "e7f7",
-        "san": "Kf7",
-        "color": "white"
+        "uci": "f5e3",
+        "san": "Nxe3+",
+        "color": "black"
       },
       {
-        "uci": "g6g7",
-        "san": "g7+",
-        "color": "white"
-      },
-      {
-        "uci": "g7g8q",
-        "san": "g8=Q+",
-        "color": "white"
-      },
-      {
-        "uci": "g8g6",
-        "san": "Qg6#",
-        "color": "white"
+        "uci": "e3c2",
+        "san": "Nxc2",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-26T18:48:51.220859+00:00",
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T18:49:30.445668+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787770131220",
-    "next_solution_index": 10,
-    "next_player_index": 5,
+    "puzzle_id": "random_1787770170445",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1542244453983719515,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "g8=Q",
-        "correct": true,
-        "timestamp": "2026-08-26T18:49:23.565943+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
