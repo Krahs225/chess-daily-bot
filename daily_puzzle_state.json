@@ -1,122 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-04-26",
-    "title": "Henry A. Adamson, The Chess Amateur, 1921",
-    "fen": "8/7K/k1P5/p7/8/8/8/8 w - - 0 1",
-    "current_fen": "2Q5/8/1k1K4/8/8/8/8/q7 b - - 0 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/7K/k1P5/p7/8/8/8/8 w - - 0 1\"]\r\n\r\n1. Kg6 Kb6 2. Kf5 a4 3. Ke5 a3 4. Kd6 a2 5. c7 a1=Q 6. c8=Q\r\n*",
+    "url": "https://www.chess.com/daily/2010-12-28",
+    "title": "Mating Mindset",
+    "fen": "2k1r3/pb4pp/8/Q2p4/2pq1P2/1P6/4r1PP/R1B2R1K b - - 0 1",
+    "current_fen": "2k1r3/pb4pp/8/Q2p4/2pq1P2/1P6/4r1PP/R1B2R1K b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k1r3/pb4pp/8/Q2p4/2pq1P2/1P6/4r1PP/R1B2R1K b - - 0 1\"]\r\n\r\n1...Qf2 2. Rg1 Qxg2+ 3. Rxg2 Re1+ 4. Rg1 d4+\r\n*",
     "all_moves": [
       {
-        "uci": "h7g6",
-        "san": "Kg6",
-        "color": "white"
-      },
-      {
-        "uci": "a6b6",
-        "san": "Kb6",
+        "uci": "d4f2",
+        "san": "Qf2",
         "color": "black"
       },
       {
-        "uci": "g6f5",
-        "san": "Kf5",
+        "uci": "f1g1",
+        "san": "Rg1",
         "color": "white"
       },
       {
-        "uci": "a5a4",
-        "san": "a4",
+        "uci": "f2g2",
+        "san": "Qxg2+",
         "color": "black"
       },
       {
-        "uci": "f5e5",
-        "san": "Ke5",
+        "uci": "g1g2",
+        "san": "Rxg2",
         "color": "white"
       },
       {
-        "uci": "a4a3",
-        "san": "a3",
+        "uci": "e2e1",
+        "san": "Re1+",
         "color": "black"
       },
       {
-        "uci": "e5d6",
-        "san": "Kd6",
+        "uci": "g2g1",
+        "san": "Rg1",
         "color": "white"
       },
       {
-        "uci": "a3a2",
-        "san": "a2",
+        "uci": "d5d4",
+        "san": "d4+",
         "color": "black"
-      },
-      {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "a2a1q",
-        "san": "a1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "c7c8q",
-        "san": "c8=Q",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h7g6",
-        "san": "Kg6",
-        "color": "white"
+        "uci": "d4f2",
+        "san": "Qf2",
+        "color": "black"
       },
       {
-        "uci": "g6f5",
-        "san": "Kf5",
-        "color": "white"
+        "uci": "f2g2",
+        "san": "Qxg2+",
+        "color": "black"
       },
       {
-        "uci": "f5e5",
-        "san": "Ke5",
-        "color": "white"
+        "uci": "e2e1",
+        "san": "Re1+",
+        "color": "black"
       },
       {
-        "uci": "e5d6",
-        "san": "Kd6",
-        "color": "white"
-      },
-      {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "c7c8q",
-        "san": "c8=Q",
-        "color": "white"
+        "uci": "d5d4",
+        "san": "d4+",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-26T16:33:39.937404+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T16:34:59.877881+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787762019937",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1542210432930938982,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "C8=q",
-        "correct": true,
-        "timestamp": "2026-08-26T16:34:47.234695+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787762099877",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
