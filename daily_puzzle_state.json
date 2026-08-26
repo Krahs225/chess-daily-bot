@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-09-26",
-    "title": "Sweet Combination",
-    "fen": "2b4k/3r1pbp/p1p3p1/q1p5/2B1P3/3QN3/P1P2PPP/1R4K1 w - - 0 1",
-    "current_fen": "8/3b1Rkp/p1p3p1/q1p5/2B1P3/4N3/P1P2PPP/6K1 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2b4k/3r1pbp/p1p3p1/q1p5/2B1P3/3QN3/P1P2PPP/1R4K1 w - - 0 1\"]\r\n\r\n1. Qxd7 Bxd7 2. Rb8+ Bf8 3. Rxf8+ Kg7 4. Rxf7+\r\n*",
+    "url": "https://www.chess.com/daily/2015-12-04",
+    "title": "Victor Korchnoi vs Andrei Peterson, Kiev, 1965",
+    "fen": "r2r1n2/pp2bk2/2p1p2p/3q4/3PN1QP/2P3R1/P4PP1/5RK1 w q - 0 1",
+    "current_fen": "r2r1n2/pp2bk2/2p1p2p/3q4/3PN1QP/2P3R1/P4PP1/5RK1 w q - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2r1n2/pp2bk2/2p1p2p/3q4/3PN1QP/2P3R1/P4PP1/5RK1 w q - 0 1\"]\r\n\r\n1. Qg7+ Ke8 2. Qxe7+ Kxe7 3. Rg7+ Ke8 4. Nf6#\r\n*",
     "all_moves": [
       {
-        "uci": "d3d7",
-        "san": "Qxd7",
+        "uci": "g4g7",
+        "san": "Qg7+",
         "color": "white"
       },
       {
-        "uci": "c8d7",
-        "san": "Bxd7",
+        "uci": "f7e8",
+        "san": "Ke8",
         "color": "black"
       },
       {
-        "uci": "b1b8",
-        "san": "Rb8+",
+        "uci": "g7e7",
+        "san": "Qxe7+",
         "color": "white"
       },
       {
-        "uci": "g7f8",
-        "san": "Bf8",
+        "uci": "e8e7",
+        "san": "Kxe7",
         "color": "black"
       },
       {
-        "uci": "b8f8",
-        "san": "Rxf8+",
+        "uci": "g3g7",
+        "san": "Rg7+",
         "color": "white"
       },
       {
-        "uci": "h8g7",
-        "san": "Kg7",
+        "uci": "e7e8",
+        "san": "Ke8",
         "color": "black"
       },
       {
-        "uci": "f8f7",
-        "san": "Rxf7+",
+        "uci": "e4f6",
+        "san": "Nf6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3d7",
-        "san": "Qxd7",
+        "uci": "g4g7",
+        "san": "Qg7+",
         "color": "white"
       },
       {
-        "uci": "b1b8",
-        "san": "Rb8+",
+        "uci": "g7e7",
+        "san": "Qxe7+",
         "color": "white"
       },
       {
-        "uci": "b8f8",
-        "san": "Rxf8+",
+        "uci": "g3g7",
+        "san": "Rg7+",
         "color": "white"
       },
       {
-        "uci": "f8f7",
-        "san": "Rxf7+",
+        "uci": "e4f6",
+        "san": "Nf6#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-26T15:07:53.406054+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T15:08:56.992915+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787756873406",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542188847515828436,
-    "attempted_users": {
-      "1403636751695740971": {
-        "name": "WetisJas",
-        "move": "rxf7",
-        "correct": true,
-        "timestamp": "2026-08-26T15:08:45.071699+00:00"
-      }
-    },
-    "first_move_user_id": "1403636751695740971",
-    "first_move_user_name": "WetisJas",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787756936992",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
