@@ -1,107 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-08-06",
-    "title": "Where Do You See Yourself in Five Moves?",
-    "fen": "8/8/4pB2/3p4/3K4/1B6/1k1N4/q7 w - - 0 1",
-    "current_fen": "8/8/8/2K5/2N5/1k6/8/B7 b - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/8/4pB2/3p4/3K4/1B6/1k1N4/q7 w - - 0 1\"]\r\n\r\n1. Kc5+ e5 2. Bxe5+ d4 3. Bxd4+ Ka3 4. Nc4+ Kxb3 5. Bxa1 *",
+    "url": "https://www.chess.com/daily/2021-01-07",
+    "title": "Ercole's Journey",
+    "fen": "2r2r1k/6pp/2NN4/5p2/2Q2nq1/8/6PP/2R4K w - - 0 1",
+    "current_fen": "2r2r1k/6pp/2NN4/5p2/2Q2nq1/8/6PP/2R4K w - - 0 1",
+    "pgn": "[White \"Del Rio\"]\r\n[Black \"Composition\"]\r\n[Result \"*\"]\r\n[FEN \"2r2r1k/6pp/2NN4/5p2/2Q2nq1/8/6PP/2R4K w - - 0 1\"]\r\n\r\n1.Qg8+ Kxg8 2.Ne7+ Kh8 3.Nf7+ Rxf7 4.Rxc8+ Rf8 5.Rxf8# *",
     "all_moves": [
       {
-        "uci": "d4c5",
-        "san": "Kc5+",
+        "uci": "c4g8",
+        "san": "Qg8+",
         "color": "white"
       },
       {
-        "uci": "e6e5",
-        "san": "e5",
+        "uci": "h8g8",
+        "san": "Kxg8",
         "color": "black"
       },
       {
-        "uci": "f6e5",
-        "san": "Bxe5+",
+        "uci": "c6e7",
+        "san": "Ne7+",
         "color": "white"
       },
       {
-        "uci": "d5d4",
-        "san": "d4",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "e5d4",
-        "san": "Bxd4+",
+        "uci": "d6f7",
+        "san": "Nf7+",
         "color": "white"
       },
       {
-        "uci": "b2a3",
-        "san": "Ka3",
+        "uci": "f8f7",
+        "san": "Rxf7",
         "color": "black"
       },
       {
-        "uci": "d2c4",
-        "san": "Nc4+",
+        "uci": "c1c8",
+        "san": "Rxc8+",
         "color": "white"
       },
       {
-        "uci": "a3b3",
-        "san": "Kxb3",
+        "uci": "f7f8",
+        "san": "Rf8",
         "color": "black"
       },
       {
-        "uci": "d4a1",
-        "san": "Bxa1",
+        "uci": "c8f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4c5",
-        "san": "Kc5+",
+        "uci": "c4g8",
+        "san": "Qg8+",
         "color": "white"
       },
       {
-        "uci": "f6e5",
-        "san": "Bxe5+",
+        "uci": "c6e7",
+        "san": "Ne7+",
         "color": "white"
       },
       {
-        "uci": "e5d4",
-        "san": "Bxd4+",
+        "uci": "d6f7",
+        "san": "Nf7+",
         "color": "white"
       },
       {
-        "uci": "d2c4",
-        "san": "Nc4+",
+        "uci": "c1c8",
+        "san": "Rxc8+",
         "color": "white"
       },
       {
-        "uci": "d4a1",
-        "san": "Bxa1",
+        "uci": "c8f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 5,
-    "posted_at": "2026-08-26T10:34:44.035189+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T10:35:31.811083+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787740484035",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542120104706179083,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxa1",
-        "correct": true,
-        "timestamp": "2026-08-26T10:35:26.241583+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787740531811",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
