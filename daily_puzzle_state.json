@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-03-23",
     "title": "Nimzowitsch's Criminal",
     "fen": "2r5/6N1/3P3K/2rR4/7k/8/6P1/8 w - - 0 1",
-    "current_fen": "8/3P4/7K/3r4/5k2/4N3/6P1/8 w - - 5 5",
+    "current_fen": "8/3P4/7K/3N4/5k2/8/6P1/8 b - - 0 5",
     "pgn": "[Result \"*\"]\r\n[FEN \"2r5/6N1/3P3K/2rR4/7k/8/6P1/8 w - - 0 1\"]\r\n\r\n1.Rxc5 Rxc5 2.d7 Rd5 3.Nf5+ Kg4 4.Ne3+ Kf4 5.Nxd5+ *",
     "all_moves": [
       {
@@ -87,9 +87,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787742729416",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1542129522864820318,
     "attempted_users": {
       "442597396195704832": {
@@ -100,14 +100,14 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Ne3",
+        "move": "Nxd5",
         "correct": true,
-        "timestamp": "2026-08-26T11:12:38.301718+00:00"
+        "timestamp": "2026-08-26T11:12:40.349597+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "601406103712170014"
