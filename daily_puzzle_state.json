@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-05-05",
     "title": "Weak Square",
     "fen": "4r1k1/1ppq1ppp/1pn5/8/2BP4/2P1Q2P/PP4P1/5RK1 w - - 0 1",
-    "current_fen": "4r1k1/1ppq1ppp/1pn5/8/2BP4/2P1Q2P/PP4P1/5RK1 w - - 0 1",
+    "current_fen": "4r1k1/1ppq1Rpp/1pn5/8/2BP4/2P1Q2P/PP4P1/6K1 b - - 0 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/1ppq1ppp/1pn5/8/2BP4/2P1Q2P/PP4P1/5RK1 w - - 0 1\"]\r\n\r\n1. Rxf7\r\n*",
     "all_moves": [
       {
@@ -27,9 +27,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787771646634",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
     "message_id": 1542250810795229286,
     "attempted_users": {
       "442597396195704832": {
@@ -37,11 +37,17 @@
         "move": "bxf7",
         "correct": false,
         "timestamp": "2026-08-26T19:14:10.357837+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rxf7",
+        "correct": true,
+        "timestamp": "2026-08-26T19:14:16.482239+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
