@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-05-01",
     "title": "Green - Christie, Unity Trek 2010",
     "fen": "2rr2k1/p4p2/qp1Rpp1p/1Nn5/8/1P2PPP1/P3Q1KP/2R5 w - - 0 1",
-    "current_fen": "2r3k1/p4p2/qp1rpp1p/1NR5/8/1P2PPP1/P3Q1KP/8 w - - 0 2",
+    "current_fen": "2q3k1/p4p2/1p1rpp1p/1N6/8/1P2PPP1/P3Q1KP/8 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2rr2k1/p4p2/qp1Rpp1p/1Nn5/8/1P2PPP1/P3Q1KP/2R5 w - - 0 1\"]\r\n\r\n1. Rxc5 Rxd6 2. Rxc8+ Qxc8 3. Nxd6\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,22 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787750112412",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542160489130229823,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rxd8",
+        "move": "rxc8",
+        "correct": true,
+        "timestamp": "2026-08-26T13:15:23.106866+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rg5",
         "correct": false,
-        "timestamp": "2026-08-26T13:15:17.895464+00:00"
+        "timestamp": "2026-08-26T13:15:23.310599+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
