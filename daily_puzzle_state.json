@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-02-15",
     "title": "Fischer - Tal, Leipzig 1960, Modified",
     "fen": "1qkr3r/1p1bBp1Q/p3p3/P2p1p2/B2N4/P1p5/2P2PPP/4RRK1 w - - 0 1",
-    "current_fen": "1q1r3r/1p1kBp1Q/p3p3/P2p1p2/3N4/P1p5/2P2PPP/4RRK1 w - - 0 2",
+    "current_fen": "3r3r/1p1k1p1Q/p2qp3/P2p1p2/3N4/P1p5/2P2PPP/4RRK1 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1qkr3r/1p1bBp1Q/p3p3/P2p1p2/B2N4/P1p5/2P2PPP/4RRK1 w - - 0 1\"]\r\n\r\n1. Bxd7+ Kxd7 2. Bd6 Qxd6 3. Qxf7+\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787754729229",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542179853439082597,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bxd8",
-        "correct": false,
-        "timestamp": "2026-08-26T14:33:36.577795+00:00"
+        "move": "bd6",
+        "correct": true,
+        "timestamp": "2026-08-26T14:34:07.017917+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -79,7 +79,9 @@
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
