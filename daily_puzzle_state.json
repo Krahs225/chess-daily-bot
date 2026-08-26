@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-09-13",
     "title": "Oral - Jaracz, Mlada Boleslav 1994, modified",
     "fen": "q3r1k1/r7/pp1p1p2/6pQ/P2Nb1R1/7R/1P4PP/6K1 w - - 0 1",
-    "current_fen": "4r1k1/r7/pp1p1Q1R/6p1/P2Nq3/8/1P4PP/6K1 w - - 1 6",
+    "current_fen": "4r1kR/r7/pp1p1Q2/6p1/P2Nq3/8/1P4PP/6K1 b - - 2 6",
     "pgn": "[Date \"????.??.??\"]\r\n[FEN \"q3r1k1/r7/pp1p1p2/6pQ/P2Nb1R1/7R/1P4PP/6K1 w - - 0 1\"]\r\n\r\n1. Rxe4 Qxe4 2. Qh8+ Kf7 3. Rh7+ Kg6 4. Rh6+ Kf7 5. Qxf6+ Kg8 6. Rh8#\r\n*",
     "all_moves": [
       {
@@ -102,9 +102,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787771512497",
-    "next_solution_index": 10,
-    "next_player_index": 5,
-    "solved": false,
+    "next_solution_index": 11,
+    "next_player_index": 6,
+    "solved": true,
     "message_id": 1542250247470714972,
     "attempted_users": {
       "601406103712170014": {
@@ -115,16 +115,18 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "rxg5",
-        "correct": false,
-        "timestamp": "2026-08-26T19:12:32.712113+00:00"
+        "move": "rh8",
+        "correct": true,
+        "timestamp": "2026-08-26T19:13:46.086107+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
