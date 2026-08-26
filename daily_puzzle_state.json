@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-11-30",
     "title": "Silent But Deadly",
     "fen": "5k2/5p2/2K2P2/p3Q3/1q5p/1P4p1/P7/5n2 w - - 0 1",
-    "current_fen": "5k2/5p2/2K2P2/p3Q3/1q5p/1P4p1/P7/5n2 w - - 0 1",
+    "current_fen": "5k2/5p2/2K2P2/p3Q3/7p/PP4p1/3q4/5n2 w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5k2/5p2/2K2P2/p3Q3/1q5p/1P4p1/P7/5n2 w - - 0 1\"]\r\n\r\n1. a3 Qd2 2. Qb8+ Qd8 3. Qxd8#\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787751038071",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542164371503976551,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qc5",
-        "correct": false,
-        "timestamp": "2026-08-26T13:30:59.241847+00:00"
+        "move": "a3",
+        "correct": true,
+        "timestamp": "2026-08-26T13:31:46.922579+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -75,8 +75,8 @@
         "timestamp": "2026-08-26T13:31:19.050709+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
