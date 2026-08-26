@@ -1,47 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-04-06",
-    "title": "No Escape",
-    "fen": "5rk1/4Qppp/2p1p3/r7/2q5/4PK2/P4PPP/R2R4 w - - 0 1",
-    "current_fen": "3R1rk1/4Qppp/2p1p3/r7/2q5/4PK2/P4PPP/R7 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/4Qppp/2p1p3/r7/2q5/4PK2/P4PPP/R2R4 w - - 0 1\"]\r\n\r\n1. Rd8\r\n*",
+    "url": "https://www.chess.com/daily/2015-10-03",
+    "title": "D Bronstein - V Kortchnoi, Leningrad 1962",
+    "fen": "2Q4R/6p1/6kp/8/6P1/1p3q2/1P2r1PK/8 w - - 0 1",
+    "current_fen": "2Q4R/6p1/6kp/8/6P1/1p3q2/1P2r1PK/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2Q4R/6p1/6kp/8/6P1/1p3q2/1P2r1PK/8 w - - 0 1\"]\r\n\r\n1. Rxh6+ Kxh6 2. Qh8+ Kg6 3. Qh5+ Kf6 4. g5+ \r\n*",
     "all_moves": [
       {
-        "uci": "d1d8",
-        "san": "Rd8",
+        "uci": "h8h6",
+        "san": "Rxh6+",
+        "color": "white"
+      },
+      {
+        "uci": "g6h6",
+        "san": "Kxh6",
+        "color": "black"
+      },
+      {
+        "uci": "c8h8",
+        "san": "Qh8+",
+        "color": "white"
+      },
+      {
+        "uci": "h6g6",
+        "san": "Kg6",
+        "color": "black"
+      },
+      {
+        "uci": "h8h5",
+        "san": "Qh5+",
+        "color": "white"
+      },
+      {
+        "uci": "g6f6",
+        "san": "Kf6",
+        "color": "black"
+      },
+      {
+        "uci": "g4g5",
+        "san": "g5+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1d8",
-        "san": "Rd8",
+        "uci": "h8h6",
+        "san": "Rxh6+",
+        "color": "white"
+      },
+      {
+        "uci": "c8h8",
+        "san": "Qh8+",
+        "color": "white"
+      },
+      {
+        "uci": "h8h5",
+        "san": "Qh5+",
+        "color": "white"
+      },
+      {
+        "uci": "g4g5",
+        "san": "g5+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-26T14:47:12.515517+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T14:47:18.092127+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787755632515",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1542183642262933525,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rd8",
-        "correct": true,
-        "timestamp": "2026-08-26T14:47:15.713779+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787755638092",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1542183665621139488,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
