@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-05-09",
     "title": "Breaking Through",
     "fen": "r1bq1r1k/4n2p/2nppppQ/2p5/pp2P1PP/3P1N2/PPP1NPBR/2K4R w - - 0 1",
-    "current_fen": "r1bq3R/4nk2/2npp1p1/2p3P1/pp2P1P1/3P4/PPP1NPB1/2K4R w - - 3 6",
+    "current_fen": "r1bq3R/4nk1R/2npp1p1/2p3P1/pp2P1P1/3P4/PPP1NPB1/2K5 b - - 4 6",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bq1r1k/4n2p/2nppppQ/2p5/pp2P1PP/3P1N2/PPP1NPBR/2K4R w - - 0 1\"]\r\n\r\n1. Ng5 fxg5 2. hxg5 Rf7 3. Qxh7+ Rxh7 4. Rxh7+ Kg8 5. Rh8+ Kf7 6. R1h7#\r\n*",
     "all_moves": [
       {
@@ -102,27 +102,27 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787744753844",
-    "next_solution_index": 10,
-    "next_player_index": 5,
-    "solved": false,
+    "next_solution_index": 11,
+    "next_player_index": 6,
+    "solved": true,
     "message_id": 1542138013847650446,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rh8",
-        "correct": true,
-        "timestamp": "2026-08-26T11:46:07.806170+00:00"
+        "move": "rah7",
+        "correct": false,
+        "timestamp": "2026-08-26T11:46:09.339481+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "hxg5",
+        "move": "R1h7",
         "correct": true,
-        "timestamp": "2026-08-26T11:46:01.217345+00:00"
+        "timestamp": "2026-08-26T11:46:11.989436+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "601406103712170014"
