@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-04-20",
-    "title": "Nepo Shatters a Fragile Defense",
-    "fen": "4q3/1Q6/4kpp1/2Bn4/8/1KP5/1P6/8 w - - 0 46",
-    "current_fen": "8/4q3/4kpp1/3Q4/2P5/1K6/1P6/8 b - - 1 48",
-    "pgn": "[Event \"RUS-ch U20\"]\r\n[Site \"Cheboksary\"]\r\n[Date \"2006.03.10\"]\r\n[Round \"9\"]\r\n[White \"Nepomniachtchi, Ian (Game Variation)\"]\r\n[Black \"Savchenko, Boris\"]\r\n[Result \"1-0\"]\r\n[ECO \"B77\"]\r\n[WhiteElo \"2506\"]\r\n[BlackElo \"2569\"]\r\n[FEN \"4q3/1Q6/4kpp1/2Bn4/8/1KP5/1P6/8 w - - 0 46\"]\r\n\r\n46. c4 Ne7 47. Bxe7 Qxe7 48. Qd5# 1-0",
+    "url": "https://www.chess.com/daily/2021-01-18",
+    "title": "Sardine Can",
+    "fen": "6k1/1pp2ppp/1b4b1/pP1P4/P1P1nq2/1N1B4/5PPP/4RQK1 b - - 0 1",
+    "current_fen": "6k1/1pp2ppp/1b4b1/pP1P4/P1P1nq2/1N1B4/5PPP/4RQK1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/1pp2ppp/1b4b1/pP1P4/P1P1nq2/1N1B4/5PPP/4RQK1 b - - 0 1\"]\r\n\r\n1...Bxf2+ 2.Kh1 Ng3+ 3.hxg3 Qh6# *",
     "all_moves": [
       {
-        "uci": "c3c4",
-        "san": "c4",
-        "color": "white"
-      },
-      {
-        "uci": "d5e7",
-        "san": "Ne7",
+        "uci": "b6f2",
+        "san": "Bxf2+",
         "color": "black"
       },
       {
-        "uci": "c5e7",
-        "san": "Bxe7",
+        "uci": "g1h1",
+        "san": "Kh1",
         "color": "white"
       },
       {
-        "uci": "e8e7",
-        "san": "Qxe7",
+        "uci": "e4g3",
+        "san": "Ng3+",
         "color": "black"
       },
       {
-        "uci": "b7d5",
-        "san": "Qd5#",
+        "uci": "h2g3",
+        "san": "hxg3",
         "color": "white"
+      },
+      {
+        "uci": "f4h6",
+        "san": "Qh6#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3c4",
-        "san": "c4",
-        "color": "white"
+        "uci": "b6f2",
+        "san": "Bxf2+",
+        "color": "black"
       },
       {
-        "uci": "c5e7",
-        "san": "Bxe7",
-        "color": "white"
+        "uci": "e4g3",
+        "san": "Ng3+",
+        "color": "black"
       },
       {
-        "uci": "b7d5",
-        "san": "Qd5#",
-        "color": "white"
+        "uci": "f4h6",
+        "san": "Qh6#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-26T22:14:07.491208+00:00",
+    "posted_at": "2026-08-26T22:14:43.641019+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787782447491",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542296112822616225,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qd5",
-        "correct": true,
-        "timestamp": "2026-08-26T22:14:39.157603+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787782483641",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
