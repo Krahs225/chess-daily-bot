@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-09-06",
     "title": "A Fun Way To Save A Draw",
     "fen": "8/8/8/8/5qpk/4p3/4Q1P1/7K w - - 0 1",
-    "current_fen": "8/8/8/8/6pk/4p1q1/4Q3/7K w - - 0 2",
+    "current_fen": "8/8/8/8/6p1/4p1qk/5Q2/7K w - - 2 3",
     "pgn": "[Date \"????.??.??\"]\r\n[FEN \"8/8/8/8/5qpk/4p3/4Q1P1/7K w - - 0 1\"]\r\n\r\n1. g3+ Qxg3 2. Qf2 Kh3 3. Qf1+\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,22 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787744434132",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542136672630739025,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "g3",
+        "move": "qf2",
         "correct": true,
-        "timestamp": "2026-08-26T11:40:37.915200+00:00"
+        "timestamp": "2026-08-26T11:40:41.926761+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxg4",
+        "correct": false,
+        "timestamp": "2026-08-26T11:40:41.932229+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
