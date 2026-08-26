@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-08-10",
     "title": "M. McNabb - A. Kulashko, Auckland, 2000",
     "fen": "6k1/2R5/4Np1P/4pK2/4P3/b3r3/3p4/8 w KQkq - 0 1",
-    "current_fen": "7k/6R1/4Np1P/4pK2/4P3/b3r3/3p4/8 w - - 2 2",
+    "current_fen": "3N3k/6R1/5p1P/4pK2/4P3/b4r2/3p4/8 w - - 4 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/2R5/4Np1P/4pK2/4P3/b3r3/3p4/8 w KQkq - 0 1\"]\r\n\r\n1. Rg7+ Kh8 2. Nd8 Rf3+ 3. Ke6 d1=Q 4. Nf7#\r\n*",
     "all_moves": [
       {
@@ -72,8 +72,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787742204556",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542127321102680116,
     "attempted_users": {
@@ -82,13 +82,21 @@
         "move": "nf8",
         "correct": false,
         "timestamp": "2026-08-26T11:03:41.141392+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Nd8",
+        "correct": true,
+        "timestamp": "2026-08-26T11:03:44.025669+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
