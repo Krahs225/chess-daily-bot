@@ -1,113 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-05-01",
-    "title": "Early and Often",
-    "fen": "r2q1r2/6k1/2Q2p2/3p2p1/p1bP4/P3P1P1/5PPR/R3K3 w Q - 0 1",
-    "current_fen": "r2q3k/5Q2/5p2/3p2p1/p2P4/P2bP1P1/5PP1/2K4R b - - 4 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r2q1r2/6k1/2Q2p2/3p2p1/p1bP4/P3P1P1/5PPR/R3K3 w Q - 0 1\"]\r\n\r\n1.Qb7+ Rf7 2.Rh7+ Kxh7 3.Qxf7+ Kh8 4.O-O-O Bd3 5.Rh1+ *",
+    "url": "https://www.chess.com/daily/2007-05-27",
+    "title": "Unprotected Queen!",
+    "fen": "rnb1k2r/pp2b1pp/2p2pn1/q3P2Q/5p2/PB6/1BPP2PP/RN2K1NR w KQkq - 0 1",
+    "current_fen": "rnb1k2r/pp2b1pp/2p2pn1/q3P2Q/5p2/PB6/1BPP2PP/RN2K1NR w KQkq - 0 1",
+    "pgn": "[FEN \"rnb1k2r/pp2b1pp/2p2pn1/q3P2Q/5p2/PB6/1BPP2PP/RN2K1NR w KQkq - 0 1\"]\r\n\r\n1. Bf7+ $1 1... Kxf7 (1... Kf8 2. Bxg6 {now white wins the knight } hxg6 3. Qxh8+)2. e6+ Ke8 3. Qxa5 *",
     "all_moves": [
       {
-        "uci": "c6b7",
-        "san": "Qb7+",
+        "uci": "b3f7",
+        "san": "Bf7+",
         "color": "white"
       },
       {
-        "uci": "f8f7",
-        "san": "Rf7",
+        "uci": "e8f7",
+        "san": "Kxf7",
         "color": "black"
       },
       {
-        "uci": "h2h7",
-        "san": "Rh7+",
+        "uci": "e5e6",
+        "san": "e6+",
         "color": "white"
       },
       {
-        "uci": "g7h7",
-        "san": "Kxh7",
+        "uci": "f7e8",
+        "san": "Ke8",
         "color": "black"
       },
       {
-        "uci": "b7f7",
-        "san": "Qxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "h7h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "e1c1",
-        "san": "O-O-O",
-        "color": "white"
-      },
-      {
-        "uci": "c4d3",
-        "san": "Bd3",
-        "color": "black"
-      },
-      {
-        "uci": "d1h1",
-        "san": "Rh1+",
+        "uci": "h5a5",
+        "san": "Qxa5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c6b7",
-        "san": "Qb7+",
+        "uci": "b3f7",
+        "san": "Bf7+",
         "color": "white"
       },
       {
-        "uci": "h2h7",
-        "san": "Rh7+",
+        "uci": "e5e6",
+        "san": "e6+",
         "color": "white"
       },
       {
-        "uci": "b7f7",
-        "san": "Qxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "e1c1",
-        "san": "O-O-O",
-        "color": "white"
-      },
-      {
-        "uci": "d1h1",
-        "san": "Rh1+",
+        "uci": "h5a5",
+        "san": "Qxa5",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T12:30:29.099180+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T12:31:06.509729+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787747429099",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542149234525085759,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rh1",
-        "correct": true,
-        "timestamp": "2026-08-26T12:30:49.936082+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "kd7",
-        "correct": false,
-        "timestamp": "2026-08-26T12:30:43.239767+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787747466509",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
