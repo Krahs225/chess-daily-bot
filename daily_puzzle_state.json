@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-12-26",
     "title": "Mate in 2",
     "fen": "5Q2/8/3K4/8/8/7p/8/7k w KQkq - 0 1",
-    "current_fen": "5Q2/8/3K4/8/8/7p/8/7k w KQkq - 0 1",
+    "current_fen": "8/8/3K4/8/8/8/5Q1p/7k w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5Q2/8/3K4/8/8/7p/8/7k w KQkq - 0 1\"]\r\n\r\n1. Qf2 h2 2. Qf1#\r\n*",
     "all_moves": [
       {
@@ -42,20 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787751696703",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542167133981773937,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qf1",
-        "correct": false,
-        "timestamp": "2026-08-26T13:41:39.734338+00:00"
+        "move": "qf2",
+        "correct": true,
+        "timestamp": "2026-08-26T13:41:41.077552+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
