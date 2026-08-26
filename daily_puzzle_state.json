@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-08-04",
     "title": "V.Korolkov, 1951",
     "fen": "4knrr/2p2p1p/P1P5/3N1K2/8/8/8/8 w k - 0 1",
-    "current_fen": "4knrr/2p2p1p/P1P5/3N1K2/8/8/8/8 w k - 0 1",
+    "current_fen": "4kn1r/P1p2p1p/2P5/3N1Kr1/8/8/8/8 w k - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4knrr/2p2p1p/P1P5/3N1K2/8/8/8/8 w k - 0 1\"]\r\n\r\n1. a7 Rg5+ 2. Kxg5 Ne6+ 3. Kh6 O-O 4. Ne7+ Kh8 5. Ng6+ fxg6 6. a8=Q\r\n*",
     "all_moves": [
       {
@@ -102,13 +102,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787765714929",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542225930863378483,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "a7",
+        "correct": true,
+        "timestamp": "2026-08-26T17:35:31.137974+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
