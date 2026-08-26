@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-04-14",
     "title": "Dropping a Line",
     "fen": "3r2k1/p4pp1/3b2rp/3p3q/4n3/BP1Q1N1P/P3RPP1/4RK2 b - - 1 1",
-    "current_fen": "3r2k1/p4pp1/3b2qp/3p4/4n3/BP1Q1N1P/P3RP2/4RK2 b - - 2 3",
+    "current_fen": "3r2k1/p4pp1/3b2qp/3p4/8/BP1Q1NPP/P3R3/4RK2 b - - 0 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"3r2k1/p4pp1/3b2rp/3p3q/4n3/BP1Q1N1P/P3RPP1/4RK2 b - - 1 1\"]\r\n\r\n1...Rxg2 2.Kxg2 Qg6+ 3.Kf1 Ng3+ 4.fxg3 Qxd3 *",
     "all_moves": [
       {
@@ -72,8 +72,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787742577062",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "next_solution_index": 6,
+    "next_player_index": 3,
     "solved": false,
     "message_id": 1542128894101164125,
     "attempted_users": {
@@ -82,13 +82,21 @@
         "move": "qg6",
         "correct": true,
         "timestamp": "2026-08-26T11:09:47.333237+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Ng3",
+        "correct": true,
+        "timestamp": "2026-08-26T11:09:52.809446+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
