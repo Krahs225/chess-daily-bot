@@ -1,122 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-05-20",
-    "title": "Tough Twist on a Classic Concept",
-    "fen": "4kb1r/pp3ppp/q3b3/6Q1/1n1N4/2r1B3/PPP2PPP/2KRR3 w k - 0 1",
-    "current_fen": "3N1b1r/pp2k1pp/4Rp2/6B1/1n6/8/PPP2PPP/2KR4 b - - 0 6",
-    "pgn": "[FEN \"4kb1r/pp3ppp/q3b3/6Q1/1n1N4/2r1B3/PPP2PPP/2KRR3 w k - 0 1\"]\r\n[PlyCount \"11\"]\r\n\r\n1. Qd8+ 1... Kxd8 2. Nxe6+ 2... Ke7 (2... Kc8 3. Rd8#) (2... Ke8 3. Nxg7+ 3...\r\nBxg7 (3... Ke7 4. Bg5#) 4. Bg5+ 4... Be5 5. Rd8#) 3. Bg5+ 3... f6 (3... Ke8 4.\r\nRd8#) 4. Nd8+ $1 4... Re3 5. Rxe3+ Qe6 6. Rxe6# *",
+    "url": "https://www.chess.com/daily/2011-06-06",
+    "title": "Mate in 2",
+    "fen": "2b2rk1/p4p2/5R1Q/1ppq3r/8/P5P1/6P1/5RK1 w - - 0 1",
+    "current_fen": "2b2rk1/p4p2/5R1Q/1ppq3r/8/P5P1/6P1/5RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2b2rk1/p4p2/5R1Q/1ppq3r/8/P5P1/6P1/5RK1 w - - 0 1\"]\r\n\r\n1. Rg6+ fxg6 2. Rxf8#\r\n*",
     "all_moves": [
       {
-        "uci": "g5d8",
-        "san": "Qd8+",
+        "uci": "f6g6",
+        "san": "Rg6+",
         "color": "white"
       },
       {
-        "uci": "e8d8",
-        "san": "Kxd8",
+        "uci": "f7g6",
+        "san": "fxg6",
         "color": "black"
       },
       {
-        "uci": "d4e6",
-        "san": "Nxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "d8e7",
-        "san": "Ke7",
-        "color": "black"
-      },
-      {
-        "uci": "e3g5",
-        "san": "Bg5+",
-        "color": "white"
-      },
-      {
-        "uci": "f7f6",
-        "san": "f6",
-        "color": "black"
-      },
-      {
-        "uci": "e6d8",
-        "san": "Nd8+",
-        "color": "white"
-      },
-      {
-        "uci": "c3e3",
-        "san": "Re3",
-        "color": "black"
-      },
-      {
-        "uci": "e1e3",
-        "san": "Rxe3+",
-        "color": "white"
-      },
-      {
-        "uci": "a6e6",
-        "san": "Qe6",
-        "color": "black"
-      },
-      {
-        "uci": "e3e6",
-        "san": "Rxe6#",
+        "uci": "f1f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5d8",
-        "san": "Qd8+",
+        "uci": "f6g6",
+        "san": "Rg6+",
         "color": "white"
       },
       {
-        "uci": "d4e6",
-        "san": "Nxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "e3g5",
-        "san": "Bg5+",
-        "color": "white"
-      },
-      {
-        "uci": "e6d8",
-        "san": "Nd8+",
-        "color": "white"
-      },
-      {
-        "uci": "e1e3",
-        "san": "Rxe3+",
-        "color": "white"
-      },
-      {
-        "uci": "e3e6",
-        "san": "Rxe6#",
+        "uci": "f1f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-26T20:06:44.164684+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T20:07:19.872956+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787774804164",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1542264053802602497,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxe6",
-        "correct": true,
-        "timestamp": "2026-08-26T20:07:08.945230+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787774839872",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
