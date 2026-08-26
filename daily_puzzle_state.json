@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-02-22",
     "title": "Important Endgame Motif",
     "fen": "4k3/8/4N3/5n1P/8/8/8/7K w KQkq - 0 1",
-    "current_fen": "4k3/8/4N3/5n1P/8/8/8/7K w KQkq - 0 1",
+    "current_fen": "4k3/6n1/8/7P/8/8/8/7K w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4k3/8/4N3/5n1P/8/8/8/7K w KQkq - 0 1\"]\r\n\r\n1. Ng7+ Nxg7 2. h6 Kf8 3. h7\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787770655913",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542246655229952050,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "ng7",
+        "correct": true,
+        "timestamp": "2026-08-26T18:57:46.158410+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
