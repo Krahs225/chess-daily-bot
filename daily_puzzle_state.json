@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-03-07",
     "title": "Forcing the Opponent's Hand",
     "fen": "7k/6pP/6P1/4p3/4Pp1p/1p2pPpP/1P2P1K1/2B3NQ w KQkq - 0 1",
-    "current_fen": "7k/6pP/6P1/4p3/4Pp1p/1p2pPpP/1P2P1K1/2B3NQ w KQkq - 0 1",
+    "current_fen": "7k/6pP/6P1/4p3/4P2p/1p2pPpP/1P2P1K1/6NQ w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7k/6pP/6P1/4p3/4Pp1p/1p2pPpP/1P2P1K1/2B3NQ w KQkq - 0 1\"]\r\n\r\n1. Bxe3 fxe3 2. f4 exf4 3. Kf3 g2 4. Kxg2 f3+ 5. exf3 e2 6. Qh2 e1=Q 7. Qb8#\r\n*",
     "all_moves": [
       {
@@ -117,13 +117,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787747207931",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542148306753425421,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "bxe3",
+        "correct": true,
+        "timestamp": "2026-08-26T12:26:53.279206+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
