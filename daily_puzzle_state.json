@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-03-11",
     "title": "Cohn, 1928",
     "fen": "8/8/8/1p2k3/4q3/4R1K1/8/8 w - - 0 1",
-    "current_fen": "8/8/8/1p2k3/4q3/4R1K1/8/8 w - - 0 1",
+    "current_fen": "8/8/8/4k3/4q3/1p2R3/4K3/8 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/1p2k3/4q3/4R1K1/8/8 w - - 0 1\"]\r\n\r\n1. Kf2 b4 2. Ke2 b3 3. Kd1 Qxe3\r\n*",
     "all_moves": [
       {
@@ -62,13 +62,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787751020186",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542164296497365004,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "ke2",
+        "correct": true,
+        "timestamp": "2026-08-26T13:30:24.208227+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
