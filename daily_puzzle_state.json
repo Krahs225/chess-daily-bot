@@ -1,76 +1,99 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-05-05",
-    "title": "Importance of Gaining Time",
-    "fen": "7R/7P/1k6/8/8/8/1K6/7r w - - 0 1",
-    "current_fen": "1R5r/k7/8/8/8/8/1K6/8 w - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7R/7P/1k6/8/8/8/1K6/7r w - - 0 1\"]\r\n\r\n1. Rb8+ Ka7 2. h8=Q Rxh8 3. Rxh8\r\n*",
+    "url": "https://www.chess.com/daily/2024-11-21",
+    "title": "Diagonal Darts",
+    "fen": "3q1rk1/pbb2pp1/1p5p/2n5/2B2Q2/2B5/1P2r1PP/R4RK1 w - - 0 14",
+    "current_fen": "3q1rk1/pbb2pp1/1p5p/2n5/2B2Q2/2B5/1P2r1PP/R4RK1 w - - 0 14",
+    "pgn": "[White \"GuyLemieux\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"3q1rk1/pbb2pp1/1p5p/2n5/2B2Q2/2B5/1P2r1PP/R4RK1 w - - 0 14\"]\r\n\r\n14. Bxf7+ Kh7 15. Qf5+ Kh8 16. Bxg7+ Kxg7 17. Qg6+ Kh8 18. Qxh6# 1-0",
     "all_moves": [
       {
-        "uci": "h8b8",
-        "san": "Rb8+",
+        "uci": "c4f7",
+        "san": "Bxf7+",
         "color": "white"
       },
       {
-        "uci": "b6a7",
-        "san": "Ka7",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "h7h8q",
-        "san": "h8=Q",
+        "uci": "f4f5",
+        "san": "Qf5+",
         "color": "white"
       },
       {
-        "uci": "h1h8",
-        "san": "Rxh8",
+        "uci": "h7h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "b8h8",
-        "san": "Rxh8",
+        "uci": "c3g7",
+        "san": "Bxg7+",
+        "color": "white"
+      },
+      {
+        "uci": "h8g7",
+        "san": "Kxg7",
+        "color": "black"
+      },
+      {
+        "uci": "f5g6",
+        "san": "Qg6+",
+        "color": "white"
+      },
+      {
+        "uci": "g7h8",
+        "san": "Kh8",
+        "color": "black"
+      },
+      {
+        "uci": "g6h6",
+        "san": "Qxh6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h8b8",
-        "san": "Rb8+",
+        "uci": "c4f7",
+        "san": "Bxf7+",
         "color": "white"
       },
       {
-        "uci": "h7h8q",
-        "san": "h8=Q",
+        "uci": "f4f5",
+        "san": "Qf5+",
         "color": "white"
       },
       {
-        "uci": "b8h8",
-        "san": "Rxh8",
+        "uci": "c3g7",
+        "san": "Bxg7+",
+        "color": "white"
+      },
+      {
+        "uci": "f5g6",
+        "san": "Qg6+",
+        "color": "white"
+      },
+      {
+        "uci": "g6h6",
+        "san": "Qxh6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T14:25:56.105538+00:00",
+    "player_move_count": 5,
+    "posted_at": "2026-08-26T14:26:04.290787+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787754356105",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "puzzle_id": "random_1787754364290",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1542178289307750460,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "h8=q",
-        "correct": true,
-        "timestamp": "2026-08-26T14:26:00.582511+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
