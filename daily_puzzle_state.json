@@ -1,77 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-02-23",
-    "title": "Rewarding Exachanges",
-    "fen": "r1b2rk1/pp1qbppp/n4n2/P2N2N1/3P4/1Q2PB2/1P4PP/R1B2RK1 b - - 0 1",
-    "current_fen": "r1b2rk1/pp3ppp/n7/P2B2b1/3P4/4P3/1P4PP/R1B2RK1 w - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2rk1/pp1qbppp/n4n2/P2N2N1/3P4/1Q2PB2/1P4PP/R1B2RK1 b - - 0 1\"]\r\n\r\n1...Nxd5 2. Qxd5 Qxd5 3. Bxd5 Bxg5\r\n*",
+    "url": "https://www.chess.com/daily/2017-01-09",
+    "title": "Reshevsky - Fischer, Spain 1970 Modified",
+    "fen": "5rk1/p5pp/b7/5Q2/3p4/3p4/3q1PPP/4RBK1 w - - 0 1",
+    "current_fen": "5rk1/p5pp/b7/5Q2/3p4/3p4/3q1PPP/4RBK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/p5pp/b7/5Q2/3p4/3p4/3q1PPP/4RBK1 w - - 0 1\"]\r\n\r\n1. Qd5+ Kh8 2. Qf7 \r\n*",
     "all_moves": [
       {
-        "uci": "f6d5",
-        "san": "Nxd5",
-        "color": "black"
-      },
-      {
-        "uci": "b3d5",
-        "san": "Qxd5",
+        "uci": "f5d5",
+        "san": "Qd5+",
         "color": "white"
       },
       {
-        "uci": "d7d5",
-        "san": "Qxd5",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "f3d5",
-        "san": "Bxd5",
+        "uci": "d5f7",
+        "san": "Qf7",
         "color": "white"
-      },
-      {
-        "uci": "e7g5",
-        "san": "Bxg5",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f6d5",
-        "san": "Nxd5",
-        "color": "black"
+        "uci": "f5d5",
+        "san": "Qd5+",
+        "color": "white"
       },
       {
-        "uci": "d7d5",
-        "san": "Qxd5",
-        "color": "black"
-      },
-      {
-        "uci": "e7g5",
-        "san": "Bxg5",
-        "color": "black"
+        "uci": "d5f7",
+        "san": "Qf7",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T07:34:20.481810+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T07:34:47.817229+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787729660481",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542074708055564419,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxg5",
-        "correct": true,
-        "timestamp": "2026-08-26T07:34:36.794560+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787729687817",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
