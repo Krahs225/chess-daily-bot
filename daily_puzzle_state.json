@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-06-18",
     "title": "Alireza Opens His Birthday Gift 🎁",
     "fen": "1rbq1r1k/4bpRp/p2p4/3N1P1P/n2BP3/P4P2/1PPp4/1K1R4 w - - 0 24",
-    "current_fen": "1rbq1r1k/4bpRp/p2p4/3N1P1P/n2BP3/P4P2/1PPp4/1K1R4 w - - 0 24",
+    "current_fen": "1rbq1rk1/4bp1p/p2p4/3N1P1P/n2BP3/P4P2/1PPp4/1K1R4 w - - 0 25",
     "pgn": "[Event \"Live Chess\"]\r\n[Site \"Chess.com\"]\r\n[Date \"2024.03.04\"]\r\n[Round \"?\"]\r\n[White \"Firouzja2003\"]\r\n[Black \"DanielNaroditsky\"]\r\n[Result \"1-0\"]\r\n[ECO \"B87\"]\r\n[WhiteElo \"3151\"]\r\n[BlackElo \"3158\"]\r\n[FEN \"1rbq1r1k/4bpRp/p2p4/3N1P1P/n2BP3/P4P2/1PPp4/1K1R4 w - - 0 24\"]\r\n\r\n24. Rg8+ Kxg8 25. Nxe7+ Qxe7 26. Rg1+ Qg5 27. Rxg5# 1-0",
     "all_moves": [
       {
@@ -72,20 +72,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787746063208",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542143505558798428,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rxh7",
+        "move": "rg8",
         "correct": false,
-        "timestamp": "2026-08-26T12:07:47.192163+00:00"
+        "timestamp": "2026-08-26T12:07:51.968003+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rg8",
+        "correct": true,
+        "timestamp": "2026-08-26T12:07:51.959860+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
