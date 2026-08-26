@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-12-31",
     "title": "Auld Lang Syne",
     "fen": "4k1nr/1R1b1pb1/r3p1pp/p2p2B1/3P3P/q1NB4/P1P2PP1/4K2R w Kk - 0 1",
-    "current_fen": "4k1nr/1R1b1pb1/r3p1pp/p2p2B1/3P3P/q1NB4/P1P2PP1/4K2R w Kk - 0 1",
+    "current_fen": "1Rb1k1nr/5pb1/r3p1pp/p2p2B1/3P3P/q1NB4/P1P2PP1/4K2R w Kk - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"4k1nr/1R1b1pb1/r3p1pp/p2p2B1/3P3P/q1NB4/P1P2PP1/4K2R w Kk - 0 1\"]\r\n\r\n1. Rb8+ Bc8 2. Bb5+ Kf8 3. Rxc8# *",
     "all_moves": [
       {
@@ -57,13 +57,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787738574074",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542112093862498365,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rb8+",
+        "correct": true,
+        "timestamp": "2026-08-26T10:02:58.878431+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rxd7",
+        "correct": false,
+        "timestamp": "2026-08-26T10:02:59.987032+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
