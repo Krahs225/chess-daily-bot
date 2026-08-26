@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-09-22",
     "title": "Detour",
     "fen": "r1b2q1k/6pp/8/1p5r/pP2Q3/4PPB1/6PP/1RR3K1 b - - 0 1",
-    "current_fen": "r4q1k/1Q4pp/6b1/1p5r/pP6/4PPB1/6PP/1RR3K1 b - - 4 3",
+    "current_fen": "r4q1k/1Q4pp/8/1p5r/pP6/4PPB1/6PP/1bR3K1 w - - 0 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"r1b2q1k/6pp/8/1p5r/pP2Q3/4PPB1/6PP/1RR3K1 b - - 0 1\"]\r\n\r\n1...Bf5 2.Qd5 Bg6 3.Qb7 Bxb1 *",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787767088825",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1542231694868750409,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Bf5",
+        "move": "Bxb1",
         "correct": true,
-        "timestamp": "2026-08-26T17:58:22.906054+00:00"
+        "timestamp": "2026-08-26T17:58:32.099079+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -77,7 +77,7 @@
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "442597396195704832"
