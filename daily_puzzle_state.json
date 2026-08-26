@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-01-09",
-    "title": "Capturing First and Last",
-    "fen": "2q2rk1/1b4pp/p3p3/p4p2/P2Pn3/5N2/3QBPPP/2R3K1 w - - 0 1",
-    "current_fen": "5k2/1b4pp/p3p3/p4p2/P2P4/8/3NBPPP/6K1 b - - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2q2rk1/1b4pp/p3p3/p4p2/P2Pn3/5N2/3QBPPP/2R3K1 w - - 0 1\"]\r\n\r\n1. Rxc8 Nxd2 2. Rxf8+ Kxf8 3. Nxd2 *",
+    "url": "https://www.chess.com/daily/2022-12-06",
+    "title": "Rooks Belong Where?!",
+    "fen": "8/PR6/4p3/r6p/3kp2P/1P6/4K3/8 w - - 0 1",
+    "current_fen": "8/PR6/4p3/r6p/3kp2P/1P6/4K3/8 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/PR6/4p3/r6p/3kp2P/1P6/4K3/8 w - - 0 1\"]\r\n\r\n1. Rb4+ Kc3 2. Ra4 Rxa7 3. Rxa7 *",
     "all_moves": [
       {
-        "uci": "c1c8",
-        "san": "Rxc8",
+        "uci": "b7b4",
+        "san": "Rb4+",
         "color": "white"
       },
       {
-        "uci": "e4d2",
-        "san": "Nxd2",
+        "uci": "d4c3",
+        "san": "Kc3",
         "color": "black"
       },
       {
-        "uci": "c8f8",
-        "san": "Rxf8+",
+        "uci": "b4a4",
+        "san": "Ra4",
         "color": "white"
       },
       {
-        "uci": "g8f8",
-        "san": "Kxf8",
+        "uci": "a5a7",
+        "san": "Rxa7",
         "color": "black"
       },
       {
-        "uci": "f3d2",
-        "san": "Nxd2",
+        "uci": "a4a7",
+        "san": "Rxa7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1c8",
-        "san": "Rxc8",
+        "uci": "b7b4",
+        "san": "Rb4+",
         "color": "white"
       },
       {
-        "uci": "c8f8",
-        "san": "Rxf8+",
+        "uci": "b4a4",
+        "san": "Ra4",
         "color": "white"
       },
       {
-        "uci": "f3d2",
-        "san": "Nxd2",
+        "uci": "a4a7",
+        "san": "Rxa7",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-26T10:04:32.351037+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T10:04:46.928021+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787738672351",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542112505961255004,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nxd2",
-        "correct": true,
-        "timestamp": "2026-08-26T10:04:40.712618+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787738686928",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
