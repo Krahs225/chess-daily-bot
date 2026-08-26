@@ -1,77 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-12-08",
-    "title": "A Seemingly Quiet Endgame",
-    "fen": "4nk2/rp1Rn1pp/1N3p2/2P5/P4p2/5P2/1K3B1P/8 w - - 0 1",
-    "current_fen": "4n3/Np1k2pp/5p2/2P5/P4p2/5P2/1K3B1P/8 b - - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"4nk2/rp1Rn1pp/1N3p2/2P5/P4p2/5P2/1K3B1P/8 w - - 0 1\"]\r\n\r\n1. Rxe7 Kxe7 2. Nc8+ Kd7 3. Nxa7 *",
+    "url": "https://www.chess.com/daily/2007-10-30",
+    "title": "Activate the Pieces",
+    "fen": "r3k2r/pp1qppb1/1pn2p2/1Q5p/P3N3/6P1/5PBP/2R1R1K1 w kq - 0 1",
+    "current_fen": "r3k2r/pp1qppb1/1pn2p2/1Q5p/P3N3/6P1/5PBP/2R1R1K1 w kq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3k2r/pp1qppb1/1pn2p2/1Q5p/P3N3/6P1/5PBP/2R1R1K1 w kq - 0 1\"]\r\n\r\n1. Rxc6 bxc6 (1... Qxc6 2. Nd6+) 2. Nxf6+ Kd8 (2... Bxf6 3. Bxc6) 3. Bxc6 Qd4 4. Nxh5 (4. Bxa8 Bxf6)\r\n*",
     "all_moves": [
       {
-        "uci": "d7e7",
-        "san": "Rxe7",
+        "uci": "c1c6",
+        "san": "Rxc6",
         "color": "white"
       },
       {
-        "uci": "f8e7",
-        "san": "Kxe7",
+        "uci": "b7c6",
+        "san": "bxc6",
         "color": "black"
       },
       {
-        "uci": "b6c8",
-        "san": "Nc8+",
+        "uci": "e4f6",
+        "san": "Nxf6+",
         "color": "white"
       },
       {
-        "uci": "e7d7",
-        "san": "Kd7",
+        "uci": "e8d8",
+        "san": "Kd8",
         "color": "black"
       },
       {
-        "uci": "c8a7",
-        "san": "Nxa7",
+        "uci": "g2c6",
+        "san": "Bxc6",
+        "color": "white"
+      },
+      {
+        "uci": "d7d4",
+        "san": "Qd4",
+        "color": "black"
+      },
+      {
+        "uci": "f6h5",
+        "san": "Nxh5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d7e7",
-        "san": "Rxe7",
+        "uci": "c1c6",
+        "san": "Rxc6",
         "color": "white"
       },
       {
-        "uci": "b6c8",
-        "san": "Nc8+",
+        "uci": "e4f6",
+        "san": "Nxf6+",
         "color": "white"
       },
       {
-        "uci": "c8a7",
-        "san": "Nxa7",
+        "uci": "g2c6",
+        "san": "Bxc6",
+        "color": "white"
+      },
+      {
+        "uci": "f6h5",
+        "san": "Nxh5",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T22:32:19.994849+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T22:32:41.806356+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787783539994",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542300695301202052,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nxa7",
-        "correct": true,
-        "timestamp": "2026-08-26T22:32:37.470610+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787783561806",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
