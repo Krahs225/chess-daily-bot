@@ -1,117 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-12-11",
-    "title": "Pawn Indigestion",
-    "fen": "3r1rk1/p4ppp/1p2p3/2n4Q/8/1PB1P3/P4PqP/2KR1R2 w - - 0 1",
-    "current_fen": "5rk1/p4ppp/1p2p3/8/8/1PB1P3/P5RP/1K1n4 w - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3r1rk1/p4ppp/1p2p3/2n4Q/8/1PB1P3/P4PqP/2KR1R2 w - - 0 1\"]\r\n\r\n1.Rg1 Rxd1+ 2.Qxd1 Nd3+ 3.Kb1 Nxf2 4.Rxg2 Nxd1 5.Rxg7+ Kh8 6.Bf6 *",
+    "url": "https://www.chess.com/daily/2011-04-13",
+    "title": "Mate in 3",
+    "fen": "1r6/5RR1/7p/2p1r1p1/2p1P1k1/3P2P1/2P3K1/8 w - - 0 1",
+    "current_fen": "1r6/6R1/7p/2p1r2k/2p1P1Pp/3P4/2P3K1/8 b - - 0 3",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r6/5RR1/7p/2p1r1p1/2p1P1k1/3P2P1/2P3K1/8 w - - 0 1\"]\r\n\r\n1. Rf4+ Kh5 2. Rh4+ gxh4 3. g4#\r\n*",
     "all_moves": [
       {
-        "uci": "f1g1",
-        "san": "Rg1",
+        "uci": "f7f4",
+        "san": "Rf4+",
         "color": "white"
       },
       {
-        "uci": "d8d1",
-        "san": "Rxd1+",
+        "uci": "g4h5",
+        "san": "Kh5",
         "color": "black"
       },
       {
-        "uci": "h5d1",
-        "san": "Qxd1",
+        "uci": "f4h4",
+        "san": "Rh4+",
         "color": "white"
       },
       {
-        "uci": "c5d3",
-        "san": "Nd3+",
+        "uci": "g5h4",
+        "san": "gxh4",
         "color": "black"
       },
       {
-        "uci": "c1b1",
-        "san": "Kb1",
-        "color": "white"
-      },
-      {
-        "uci": "d3f2",
-        "san": "Nxf2",
-        "color": "black"
-      },
-      {
-        "uci": "g1g2",
-        "san": "Rxg2",
-        "color": "white"
-      },
-      {
-        "uci": "f2d1",
-        "san": "Nxd1",
-        "color": "black"
-      },
-      {
-        "uci": "g2g7",
-        "san": "Rxg7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "c3f6",
-        "san": "Bf6",
+        "uci": "g3g4",
+        "san": "g4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f1g1",
-        "san": "Rg1",
+        "uci": "f7f4",
+        "san": "Rf4+",
         "color": "white"
       },
       {
-        "uci": "h5d1",
-        "san": "Qxd1",
+        "uci": "f4h4",
+        "san": "Rh4+",
         "color": "white"
       },
       {
-        "uci": "c1b1",
-        "san": "Kb1",
-        "color": "white"
-      },
-      {
-        "uci": "g1g2",
-        "san": "Rxg2",
-        "color": "white"
-      },
-      {
-        "uci": "g2g7",
-        "san": "Rxg7+",
-        "color": "white"
-      },
-      {
-        "uci": "c3f6",
-        "san": "Bf6",
+        "uci": "g3g4",
+        "san": "g4#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-26T07:41:53.668117+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T07:47:18.854796+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787730113668",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
-    "message_id": 1542076608695762996,
+    "puzzle_id": "random_1787730438854",
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
+    "message_id": 1542077972096491644,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rxg2",
+        "move": "g4",
         "correct": true,
-        "timestamp": "2026-08-26T07:43:41.225489+00:00"
+        "timestamp": "2026-08-26T07:47:26.481370+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
