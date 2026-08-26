@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-10-13",
     "title": "When the Marshall Attacks",
     "fen": "5rk1/6pp/p2br3/3p1p1q/R2P1Pb1/2P1B1P1/1P1N3P/4RQK1 b - - 0 22",
-    "current_fen": "5rk1/6pp/p2br3/3p1p1q/R2P1Pb1/2P1B1P1/1P1N3P/4RQK1 b - - 0 22",
+    "current_fen": "4qrk1/6pp/p2br3/3p1p2/R2P1Pb1/2P3P1/1P1N1B1P/4RQK1 b - - 2 23",
     "pgn": "[Event \"Budapest\"]\r\n[Site \"Budapest\"]\r\n[Date \"1987\"]\r\n[Round \"5\"]\r\n[White \"Kindermann, Stefan\"]\r\n[Black \"Lukacs, Peter\"]\r\n[Result \"0-1\"]\r\n[WhiteElo \"2520\"]\r\n[BlackElo \"2500\"]\r\n[FEN \"5rk1/6pp/p2br3/3p1p1q/R2P1Pb1/2P1B1P1/1P1N3P/4RQK1 b - - 0 22\"]\r\n\r\n22...Qe8 23.Bf2 Rxe1 24.Qxe1 Qxa4 *",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787750434268",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542161839050334209,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rfe8",
-        "correct": false,
-        "timestamp": "2026-08-26T13:20:54.151919+00:00"
+        "move": "qe8",
+        "correct": true,
+        "timestamp": "2026-08-26T13:21:01.883486+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -75,8 +75,8 @@
         "timestamp": "2026-08-26T13:20:44.091608+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
