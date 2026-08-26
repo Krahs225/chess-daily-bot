@@ -1,119 +1,52 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-12-04",
-    "title": "Mate in 6",
-    "fen": "8/2K3Q1/2p2Pp1/2P2pPp/2R2Pkn/2Pp1n1b/6p1/3B1NR1 w - - 0 1",
-    "current_fen": "8/2K3Q1/2p2Pp1/2P2pPp/2R2Pkn/2Pp1n1b/6p1/3B1NR1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/2K3Q1/2p2Pp1/2P2pPp/2R2Pkn/2Pp1n1b/6p1/3B1NR1 w - - 0 1\"]\r\n\r\n1. Qe7 d2 2. Re4 fxe4 3. Qxe4 Nf5 4. Qxf3+ Kh4 5. Qf2+ Ng3 6. Qxg3#\r\n*",
+    "url": "https://www.chess.com/daily/2026-06-17",
+    "title": "Up in Your Grill",
+    "fen": "2RB2bk/6b1/p7/1p4Np/1P4p1/PB5P/K2p2P1/4r3 w - - 0 1",
+    "current_fen": "2RB2bk/6b1/p7/1p4Np/1P4p1/PB5P/K2p2P1/4r3 w - - 0 1",
+    "pgn": "[White \"Francanorte\"]\n[Black \"Daily Puzzle Inspiration\"]\n[Result \"1-0\"]\n[FEN \"2RB2bk/6b1/p7/1p4Np/1P4p1/PB5P/K2p2P1/4r3 w - - 0 1\"]\n\n1. Bf6 Bxf6 2. Rxg8# 1-0",
     "all_moves": [
       {
-        "uci": "g7e7",
-        "san": "Qe7",
+        "uci": "d8f6",
+        "san": "Bf6",
         "color": "white"
       },
       {
-        "uci": "d3d2",
-        "san": "d2",
+        "uci": "g7f6",
+        "san": "Bxf6",
         "color": "black"
       },
       {
-        "uci": "c4e4",
-        "san": "Re4",
-        "color": "white"
-      },
-      {
-        "uci": "f5e4",
-        "san": "fxe4",
-        "color": "black"
-      },
-      {
-        "uci": "e7e4",
-        "san": "Qxe4",
-        "color": "white"
-      },
-      {
-        "uci": "h4f5",
-        "san": "Nf5",
-        "color": "black"
-      },
-      {
-        "uci": "e4f3",
-        "san": "Qxf3+",
-        "color": "white"
-      },
-      {
-        "uci": "g4h4",
-        "san": "Kh4",
-        "color": "black"
-      },
-      {
-        "uci": "f3f2",
-        "san": "Qf2+",
-        "color": "white"
-      },
-      {
-        "uci": "f5g3",
-        "san": "Ng3",
-        "color": "black"
-      },
-      {
-        "uci": "f2g3",
-        "san": "Qxg3#",
+        "uci": "c8g8",
+        "san": "Rxg8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g7e7",
-        "san": "Qe7",
+        "uci": "d8f6",
+        "san": "Bf6",
         "color": "white"
       },
       {
-        "uci": "c4e4",
-        "san": "Re4",
-        "color": "white"
-      },
-      {
-        "uci": "e7e4",
-        "san": "Qxe4",
-        "color": "white"
-      },
-      {
-        "uci": "e4f3",
-        "san": "Qxf3+",
-        "color": "white"
-      },
-      {
-        "uci": "f3f2",
-        "san": "Qf2+",
-        "color": "white"
-      },
-      {
-        "uci": "f2g3",
-        "san": "Qxg3#",
+        "uci": "c8g8",
+        "san": "Rxg8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-26T18:45:15.697008+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T18:46:14.134517+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787769915697",
+    "puzzle_id": "random_1787769974134",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542243552707354755,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nh2",
-        "correct": false,
-        "timestamp": "2026-08-26T18:45:52.052429+00:00"
-      }
-    },
+    "message_id": 1542243795129737288,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
