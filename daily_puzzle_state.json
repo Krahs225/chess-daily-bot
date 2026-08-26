@@ -1,44 +1,14 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-10-22",
-    "title": "Countering a Premature Lunge",
-    "fen": "r1b1r1k1/1p2qpb1/2pp2pp/p1n5/2PNn3/1PNBB2P/P1Q2PP1/3RR1K1 w - - 0 1",
-    "current_fen": "r1b1R3/1p3pbk/2pp2pp/p7/2P5/1P5P/P1NB1PP1/3R2K1 b - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r1b1r1k1/1p2qpb1/2pp2pp/p1n5/2PNn3/1PNBB2P/P1Q2PP1/3RR1K1 w - - 0 1\"]\r\n\r\n1. Bxe4 Nxe4 2. Nxe4 Qxe4 3. Bd2 Qxc2 4. Rxe8+ Kh7 5. Nxc2 *",
+    "url": "https://www.chess.com/daily/2021-05-07",
+    "title": "Run Interference",
+    "fen": "6k1/1q3pp1/pp5p/2b1r3/4n3/1PN4P/PBQ2PP1/3R2K1 w - - 0 1",
+    "current_fen": "3R4/1q3ppk/pp5p/2b1r3/4n3/1PN4P/PBQ2PP1/6K1 w - - 2 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/1q3pp1/pp5p/2b1r3/4n3/1PN4P/PBQ2PP1/3R2K1 w - - 0 1\"]\r\n\r\n1.Rd8+ Kh7 2.Rd5 Bxf2+ 3.Kf1 Rxd5 4.Qxe4+ f5 5.Qxd5 Qxd5 6.Nxd5 *",
     "all_moves": [
       {
-        "uci": "d3e4",
-        "san": "Bxe4",
-        "color": "white"
-      },
-      {
-        "uci": "c5e4",
-        "san": "Nxe4",
-        "color": "black"
-      },
-      {
-        "uci": "c3e4",
-        "san": "Nxe4",
-        "color": "white"
-      },
-      {
-        "uci": "e7e4",
-        "san": "Qxe4",
-        "color": "black"
-      },
-      {
-        "uci": "e3d2",
-        "san": "Bd2",
-        "color": "white"
-      },
-      {
-        "uci": "e4c2",
-        "san": "Qxc2",
-        "color": "black"
-      },
-      {
-        "uci": "e1e8",
-        "san": "Rxe8+",
+        "uci": "d1d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
@@ -47,61 +17,106 @@
         "color": "black"
       },
       {
-        "uci": "d4c2",
-        "san": "Nxc2",
+        "uci": "d8d5",
+        "san": "Rd5",
+        "color": "white"
+      },
+      {
+        "uci": "c5f2",
+        "san": "Bxf2+",
+        "color": "black"
+      },
+      {
+        "uci": "g1f1",
+        "san": "Kf1",
+        "color": "white"
+      },
+      {
+        "uci": "e5d5",
+        "san": "Rxd5",
+        "color": "black"
+      },
+      {
+        "uci": "c2e4",
+        "san": "Qxe4+",
+        "color": "white"
+      },
+      {
+        "uci": "f7f5",
+        "san": "f5",
+        "color": "black"
+      },
+      {
+        "uci": "e4d5",
+        "san": "Qxd5",
+        "color": "white"
+      },
+      {
+        "uci": "b7d5",
+        "san": "Qxd5",
+        "color": "black"
+      },
+      {
+        "uci": "c3d5",
+        "san": "Nxd5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3e4",
-        "san": "Bxe4",
+        "uci": "d1d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "c3e4",
-        "san": "Nxe4",
+        "uci": "d8d5",
+        "san": "Rd5",
         "color": "white"
       },
       {
-        "uci": "e3d2",
-        "san": "Bd2",
+        "uci": "g1f1",
+        "san": "Kf1",
         "color": "white"
       },
       {
-        "uci": "e1e8",
-        "san": "Rxe8+",
+        "uci": "c2e4",
+        "san": "Qxe4+",
         "color": "white"
       },
       {
-        "uci": "d4c2",
-        "san": "Nxc2",
+        "uci": "e4d5",
+        "san": "Qxd5",
+        "color": "white"
+      },
+      {
+        "uci": "c3d5",
+        "san": "Nxd5",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T17:25:05.560742+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-26T17:27:21.919106+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787765105560",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542223377127706699,
+    "puzzle_id": "random_1787765241919",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542223946785628231,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Nxc2",
+        "move": "Rd8",
         "correct": true,
-        "timestamp": "2026-08-26T17:27:15.810411+00:00"
+        "timestamp": "2026-08-26T17:27:40.643106+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
