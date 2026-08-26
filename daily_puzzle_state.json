@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-02-02",
-    "title": "Mate in One? Fourget About It!",
-    "fen": "2k2r2/2p5/2q5/p1p1n3/P1P2n1B/1R4Pp/1Q1R4/6K1 b - - 0 1",
-    "current_fen": "2k5/2p5/8/p1p5/P1P3nB/1R4Pp/1Q2RK2/7q w - - 3 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2k2r2/2p5/2q5/p1p1n3/P1P2n1B/1R4Pp/1Q1R4/6K1 b - - 0 1\"]\r\n\r\n1... Ne2+ 2. Rxe2 Rf1+ 3. Kxf1 Qh1+ 4. Kf2 Ng4# *",
+    "url": "https://www.chess.com/daily/2026-03-10",
+    "title": "All Clear!",
+    "fen": "3rr2k/6pp/p1n1p2q/1p2B3/1P2PP2/6P1/P3Q2P/R4R1K b - - 0 1",
+    "current_fen": "3rr2k/6pp/p1n1p2q/1p2B3/1P2PP2/6P1/P3Q2P/R4R1K b - - 0 1",
+    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"Smocktopus\"]\r\n[Result \"0-1\"]\r\n[FEN \"3rr2k/6pp/p1n1p2q/1p2B3/1P2PP2/6P1/P3Q2P/R4R1K b - - 0 1\"]\r\n\r\n1... Nxe5 2. fxe5 Rd2 3. Qf3 Qxh2# 0-1",
     "all_moves": [
       {
-        "uci": "f4e2",
-        "san": "Ne2+",
+        "uci": "c6e5",
+        "san": "Nxe5",
         "color": "black"
       },
       {
-        "uci": "d2e2",
-        "san": "Rxe2",
+        "uci": "f4e5",
+        "san": "fxe5",
         "color": "white"
       },
       {
-        "uci": "f8f1",
-        "san": "Rf1+",
+        "uci": "d8d2",
+        "san": "Rd2",
         "color": "black"
       },
       {
-        "uci": "g1f1",
-        "san": "Kxf1",
+        "uci": "e2f3",
+        "san": "Qf3",
         "color": "white"
       },
       {
-        "uci": "c6h1",
-        "san": "Qh1+",
-        "color": "black"
-      },
-      {
-        "uci": "f1f2",
-        "san": "Kf2",
-        "color": "white"
-      },
-      {
-        "uci": "e5g4",
-        "san": "Ng4#",
+        "uci": "h6h2",
+        "san": "Qxh2#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4e2",
-        "san": "Ne2+",
+        "uci": "c6e5",
+        "san": "Nxe5",
         "color": "black"
       },
       {
-        "uci": "f8f1",
-        "san": "Rf1+",
+        "uci": "d8d2",
+        "san": "Rd2",
         "color": "black"
       },
       {
-        "uci": "c6h1",
-        "san": "Qh1+",
-        "color": "black"
-      },
-      {
-        "uci": "e5g4",
-        "san": "Ng4#",
+        "uci": "h6h2",
+        "san": "Qxh2#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T09:32:29.492211+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T09:33:12.663611+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787736749492",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542104440797003807,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ng4",
-        "correct": true,
-        "timestamp": "2026-08-26T09:33:05.541967+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787736792663",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
