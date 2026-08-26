@@ -1,105 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-12-13",
-    "title": "Kingpin",
-    "fen": "2k1rr2/pp4Q1/2B3p1/6B1/2q5/8/P5P1/3R2K1 b - - 0 1",
-    "current_fen": "2k1r2r/pp4Q1/6pB/8/8/8/P5PK/2q5 w - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2k1rr2/pp4Q1/2B3p1/6B1/2q5/8/P5P1/3R2K1 b - - 0 1\"]\r\n\r\n1... Qc5+ 2. Kh2 Rh8+ 3. Bh6 Qxc6 4. Rc1 Qxc1 *",
+    "url": "https://www.chess.com/daily/2026-06-24",
+    "title": "Step Up Your Game",
+    "fen": "r7/4p2k/1q1pN1p1/3P4/2rb4/1p3P2/1P1Q2P1/1K1R4 w - - 0 26",
+    "current_fen": "r7/4p2k/1q1pN1p1/3P4/2rb4/1p3P2/1P1Q2P1/1K1R4 w - - 0 26",
+    "pgn": "[White \"Jeremy Kane\"]\n[Black \"Daily Puzzle Inspiration\"]\n[Result \"1-0\"]\n[FEN \"r7/4p2k/1q1pN1p1/3P4/2rb4/1p3P2/1P1Q2P1/1K1R4 w - - 0 26\"]\n\n26. Qh6+ Kxh6 27. Rh1# 1-0",
     "all_moves": [
       {
-        "uci": "c4c5",
-        "san": "Qc5+",
-        "color": "black"
-      },
-      {
-        "uci": "g1h2",
-        "san": "Kh2",
+        "uci": "d2h6",
+        "san": "Qh6+",
         "color": "white"
       },
       {
-        "uci": "f8h8",
-        "san": "Rh8+",
+        "uci": "h7h6",
+        "san": "Kxh6",
         "color": "black"
       },
       {
-        "uci": "g5h6",
-        "san": "Bh6",
+        "uci": "d1h1",
+        "san": "Rh1#",
         "color": "white"
-      },
-      {
-        "uci": "c5c6",
-        "san": "Qxc6",
-        "color": "black"
-      },
-      {
-        "uci": "d1c1",
-        "san": "Rc1",
-        "color": "white"
-      },
-      {
-        "uci": "c6c1",
-        "san": "Qxc1",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4c5",
-        "san": "Qc5+",
-        "color": "black"
+        "uci": "d2h6",
+        "san": "Qh6+",
+        "color": "white"
       },
       {
-        "uci": "f8h8",
-        "san": "Rh8+",
-        "color": "black"
-      },
-      {
-        "uci": "c5c6",
-        "san": "Qxc6",
-        "color": "black"
-      },
-      {
-        "uci": "c6c1",
-        "san": "Qxc1",
-        "color": "black"
+        "uci": "d1h1",
+        "san": "Rh1#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T12:10:34.898664+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T12:11:34.983724+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787746234898",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542144225548697601,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxc1",
-        "correct": true,
-        "timestamp": "2026-08-26T12:10:54.810724+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxc6",
-        "correct": true,
-        "timestamp": "2026-08-26T12:10:50.293957+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787746294983",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
