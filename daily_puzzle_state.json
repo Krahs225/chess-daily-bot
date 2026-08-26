@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-07-09",
     "title": "Calculate Twice, Pin Once",
     "fen": "6k1/2q2pb1/5np1/p2B3p/Pp6/1P3NP1/5PP1/3Q2K1 b - - 0 1",
-    "current_fen": "6k1/2q2pb1/5np1/p2B3p/Pp6/1P3NP1/5PP1/3Q2K1 b - - 0 1",
+    "current_fen": "6k1/3q1Bb1/5np1/p6p/Pp6/1P3NP1/5PP1/3Q2K1 b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"6k1/2q2pb1/5np1/p2B3p/Pp6/1P3NP1/5PP1/3Q2K1 b - - 0 1\"]\r\n\r\n1... Qd7 2. Bxf7+ Qxf7 *",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787761904346",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542209948593823866,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Qd7",
+        "correct": true,
+        "timestamp": "2026-08-26T16:32:02.434832+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
