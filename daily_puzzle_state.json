@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-08-21",
     "title": "Sac'N'Mate",
     "fen": "rnbk1b1r/ppqpnQ1p/4p1p1/2p1N1B1/4N3/8/PPP2PPP/R3KB1R w KQ - 0 1",
-    "current_fen": "rnb1kb1r/ppqpn2p/4p1p1/2p1N1B1/4N3/8/PPP2PPP/R3KB1R w KQ - 0 2",
+    "current_fen": "rnbk1b1r/ppqpn2p/4pNp1/2p1N1B1/8/8/PPP2PPP/R3KB1R w KQ - 2 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rnbk1b1r/ppqpnQ1p/4p1p1/2p1N1B1/4N3/8/PPP2PPP/R3KB1R w KQ - 0 1\"]\r\n\r\n1. Qe8+ Kxe8 2. Nf6+ Kd8 3. Nf7#\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,22 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787745789219",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542142356504059935,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qe8",
+        "move": "nf6",
         "correct": true,
-        "timestamp": "2026-08-26T12:03:13.781340+00:00"
+        "timestamp": "2026-08-26T12:03:16.602735+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nf6",
+        "correct": false,
+        "timestamp": "2026-08-26T12:03:16.983769+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
