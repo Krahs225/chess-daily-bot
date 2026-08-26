@@ -1,89 +1,52 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-07-10",
-    "title": "Get Yourself an Extra Bishop!",
-    "fen": "2k5/1ppr2p1/p1n3bp/7q/3prP2/PP1B2Q1/1KPBR2P/3R4 w KQkq - 0 1",
-    "current_fen": "2k5/1ppr2p1/p1n3bp/7q/3prP2/PP1B2Q1/1KPBR2P/3R4 w KQkq - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k5/1ppr2p1/p1n3bp/7q/3prP2/PP1B2Q1/1KPBR2P/3R4 w KQkq - 0 1\"]\r\n\r\n1. Rde1 { Threatening the rook }  ( 1. Bxe4 { ?? Bad move! }  1... Qxe2 2. Qxg6 Qxd1 ) 1... Rxe2 ( 1... Rde7 2. Bxe4 Bxe4 3. Rxe4 Rxe4 4. Rxe4 { And white has won a piece. }  ) 2. Bxe2 ( 2. Rxe2 Bxd3 3. cxd3 Qxe2 ) Qf5 3. Bd3 Qf6 4. Qxg6 { And white has an extra piece. }\r\n*",
+    "url": "https://www.chess.com/daily/2021-07-21",
+    "title": "Enticement",
+    "fen": "2kr2nr/ppp4p/4pqp1/2b1p3/PP2P3/2P4Q/5PPP/RNB2RK1 b - - 0 1",
+    "current_fen": "2kr2nr/ppp4p/4pqp1/2b1p3/PP2P3/2P4Q/5PPP/RNB2RK1 b - - 0 1",
+    "pgn": "[Result \"0-1\"]\r\n[FEN \"2kr2nr/ppp4p/4pqp1/2b1p3/PP2P3/2P4Q/5PPP/RNB2RK1 b - - 0 1\"]\r\n\r\n1...Qxf2+ 2.Rxf2 Rd1# 0-1",
     "all_moves": [
       {
-        "uci": "d1e1",
-        "san": "Rde1",
-        "color": "white"
-      },
-      {
-        "uci": "e4e2",
-        "san": "Rxe2",
+        "uci": "f6f2",
+        "san": "Qxf2+",
         "color": "black"
       },
       {
-        "uci": "d3e2",
-        "san": "Bxe2",
+        "uci": "f1f2",
+        "san": "Rxf2",
         "color": "white"
       },
       {
-        "uci": "h5f5",
-        "san": "Qf5",
+        "uci": "d8d1",
+        "san": "Rd1#",
         "color": "black"
-      },
-      {
-        "uci": "e2d3",
-        "san": "Bd3",
-        "color": "white"
-      },
-      {
-        "uci": "f5f6",
-        "san": "Qf6",
-        "color": "black"
-      },
-      {
-        "uci": "g3g6",
-        "san": "Qxg6",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1e1",
-        "san": "Rde1",
-        "color": "white"
+        "uci": "f6f2",
+        "san": "Qxf2+",
+        "color": "black"
       },
       {
-        "uci": "d3e2",
-        "san": "Bxe2",
-        "color": "white"
-      },
-      {
-        "uci": "e2d3",
-        "san": "Bd3",
-        "color": "white"
-      },
-      {
-        "uci": "g3g6",
-        "san": "Qxg6",
-        "color": "white"
+        "uci": "d8d1",
+        "san": "Rd1#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T15:01:37.393260+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T15:02:44.780431+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787756497393",
+    "puzzle_id": "random_1787756564780",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542187270419910666,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "f5",
-        "correct": false,
-        "timestamp": "2026-08-26T15:02:40.899872+00:00"
-      }
-    },
+    "message_id": 1542187552302174379,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
