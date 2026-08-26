@@ -1,62 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-10-24",
-    "title": "Overloading The Critical Square",
-    "fen": "2r3r1/pQpk2q1/1b5p/5N2/8/5Bp1/PP3P1P/1R3RK1 b - - 0 1",
-    "current_fen": "2r3r1/pQpk4/1b5p/5N2/8/5B2/PP3p1P/1R3RqK w - - 2 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3r1/pQpk2q1/1b5p/5N2/8/5Bp1/PP3P1P/1R3RK1 b - - 0 1\"]\r\n\r\n1...gxf2+ 2. Kh1 Qg1+\r\n*",
+    "url": "https://www.chess.com/daily/2018-05-23",
+    "title": "Almus-Herman, East Germany 1957",
+    "fen": "6k1/1b2qpp1/1p5p/5B2/3p4/2r1PQP1/5P1P/R5K1 w Q - 0 1",
+    "current_fen": "b5k1/4qpp1/1p5p/5B2/3p4/2r1PQP1/5P1P/6K1 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/1b2qpp1/1p5p/5B2/3p4/2r1PQP1/5P1P/R5K1 w Q - 0 1\"]\r\n\r\n1. Ra8+ Bxa8 2. Qxa8+ Qf8 3. Bh7+ Kxh7 4. Qxf8\r\n*",
     "all_moves": [
       {
-        "uci": "g3f2",
-        "san": "gxf2+",
-        "color": "black"
-      },
-      {
-        "uci": "g1h1",
-        "san": "Kh1",
+        "uci": "a1a8",
+        "san": "Ra8+",
         "color": "white"
       },
       {
-        "uci": "g7g1",
-        "san": "Qg1+",
+        "uci": "b7a8",
+        "san": "Bxa8",
         "color": "black"
+      },
+      {
+        "uci": "f3a8",
+        "san": "Qxa8+",
+        "color": "white"
+      },
+      {
+        "uci": "e7f8",
+        "san": "Qf8",
+        "color": "black"
+      },
+      {
+        "uci": "f5h7",
+        "san": "Bh7+",
+        "color": "white"
+      },
+      {
+        "uci": "g8h7",
+        "san": "Kxh7",
+        "color": "black"
+      },
+      {
+        "uci": "a8f8",
+        "san": "Qxf8",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g3f2",
-        "san": "gxf2+",
-        "color": "black"
+        "uci": "a1a8",
+        "san": "Ra8+",
+        "color": "white"
       },
       {
-        "uci": "g7g1",
-        "san": "Qg1+",
-        "color": "black"
+        "uci": "f3a8",
+        "san": "Qxa8+",
+        "color": "white"
+      },
+      {
+        "uci": "f5h7",
+        "san": "Bh7+",
+        "color": "white"
+      },
+      {
+        "uci": "a8f8",
+        "san": "Qxf8",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-26T22:54:11.527653+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T22:54:49.287819+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787784851527",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542306195447218367,
+    "puzzle_id": "random_1787784889287",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542306353916149855,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qg1",
+        "move": "ra8",
         "correct": true,
-        "timestamp": "2026-08-26T22:54:44.762546+00:00"
+        "timestamp": "2026-08-26T22:54:58.108017+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
