@@ -1,47 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-04-01",
-    "title": "Double Attack",
-    "fen": "r1r3k1/1b1n1ppp/p1q1pb2/P3B2n/Np2P3/3B1N2/1P2QPPP/R2R2K1 w - - 0 1",
-    "current_fen": "r1r3k1/1b1n1ppp/p1q1pb2/P3B2n/Np1NP3/3B4/1P2QPPP/R2R2K1 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1r3k1/1b1n1ppp/p1q1pb2/P3B2n/Np2P3/3B1N2/1P2QPPP/R2R2K1 w - - 0 1\"]\r\n\r\n1. Nd4\r\n*",
+    "url": "https://www.chess.com/daily/2019-05-15",
+    "title": "Shirov-Motylev, Moscow 2001 Modified",
+    "fen": "1r2kb1r/pq2pppp/Q4n2/2pPN3/P1p1P3/8/1p3PPP/1R2KB1R w Kk a6 0 1",
+    "current_fen": "1r2kb1r/pq2pppp/Q4n2/2pPN3/P1p1P3/8/1p3PPP/1R2KB1R w Kk a6 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r2kb1r/pq2pppp/Q4n2/2pPN3/P1p1P3/8/1p3PPP/1R2KB1R w Kk a6 0 1\"]\r\n\r\n1. Rxb2 Qxa6 2. Rxb8+ Qc8 3. Rxc8#\r\n*",
     "all_moves": [
       {
-        "uci": "f3d4",
-        "san": "Nd4",
+        "uci": "b1b2",
+        "san": "Rxb2",
+        "color": "white"
+      },
+      {
+        "uci": "b7a6",
+        "san": "Qxa6",
+        "color": "black"
+      },
+      {
+        "uci": "b2b8",
+        "san": "Rxb8+",
+        "color": "white"
+      },
+      {
+        "uci": "a6c8",
+        "san": "Qc8",
+        "color": "black"
+      },
+      {
+        "uci": "b8c8",
+        "san": "Rxc8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3d4",
-        "san": "Nd4",
+        "uci": "b1b2",
+        "san": "Rxb2",
+        "color": "white"
+      },
+      {
+        "uci": "b2b8",
+        "san": "Rxb8+",
+        "color": "white"
+      },
+      {
+        "uci": "b8c8",
+        "san": "Rxc8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-26T16:35:51.640868+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T16:36:08.435535+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787762151640",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1542210985438216205,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Nd4",
-        "correct": true,
-        "timestamp": "2026-08-26T16:35:59.240905+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787762168435",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
