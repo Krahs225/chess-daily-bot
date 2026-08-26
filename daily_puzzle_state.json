@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-12-21",
     "title": "Creating and Maintaining Threats",
     "fen": "6k1/2p2ppp/1n1p4/3r4/3Q4/1q2B2P/1P3PP1/R5K1 w - - 0 1",
-    "current_fen": "6k1/2p2ppp/1n1p4/3r4/3Q4/1q2B2P/1P3PP1/R5K1 w - - 0 1",
+    "current_fen": "6k1/2p2ppp/1Q1p4/8/8/1q2B2P/1P3PP1/R2r2K1 w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/2p2ppp/1n1p4/3r4/3Q4/1q2B2P/1P3PP1/R5K1 w - - 0 1\"]\r\n\r\n1. Qxb6 Rd1+ 2. Kh2\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787784421130",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542304390889611405,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxb6",
+        "correct": true,
+        "timestamp": "2026-08-26T22:47:36.044688+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
