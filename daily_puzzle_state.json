@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2012-06-07",
-    "title": "Spielmann - Hoenlinger, Vienna 1929",
-    "fen": "2r1nrk1/p4p1p/1p2p1pQ/nPqbRN2/8/P2B4/1BP2PPP/3R2K1 w - - 0 1",
-    "current_fen": "2r1nrkR/p3qp2/1p2p1p1/nP1b4/8/P2B4/1BP2PPP/3R2K1 b - - 3 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1nrk1/p4p1p/1p2p1pQ/nPqbRN2/8/P2B4/1BP2PPP/3R2K1 w - - 0 1\"]\r\n\r\n1. Ne7+ Qxe7 2. Qxh7+ Kxh7 3. Rh5+ Kg8 4. Rh8#\r\n*",
+    "url": "https://www.chess.com/daily/2019-05-01",
+    "title": "Green - Christie, Unity Trek 2010",
+    "fen": "2rr2k1/p4p2/qp1Rpp1p/1Nn5/8/1P2PPP1/P3Q1KP/2R5 w - - 0 1",
+    "current_fen": "2rr2k1/p4p2/qp1Rpp1p/1Nn5/8/1P2PPP1/P3Q1KP/2R5 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2rr2k1/p4p2/qp1Rpp1p/1Nn5/8/1P2PPP1/P3Q1KP/2R5 w - - 0 1\"]\r\n\r\n1. Rxc5 Rxd6 2. Rxc8+ Qxc8 3. Nxd6\r\n*",
     "all_moves": [
       {
-        "uci": "f5e7",
-        "san": "Ne7+",
+        "uci": "c1c5",
+        "san": "Rxc5",
         "color": "white"
       },
       {
-        "uci": "c5e7",
-        "san": "Qxe7",
+        "uci": "d8d6",
+        "san": "Rxd6",
         "color": "black"
       },
       {
-        "uci": "h6h7",
-        "san": "Qxh7+",
+        "uci": "c5c8",
+        "san": "Rxc8+",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kxh7",
+        "uci": "a6c8",
+        "san": "Qxc8",
         "color": "black"
       },
       {
-        "uci": "e5h5",
-        "san": "Rh5+",
-        "color": "white"
-      },
-      {
-        "uci": "h7g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "h5h8",
-        "san": "Rh8#",
+        "uci": "b5d6",
+        "san": "Nxd6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5e7",
-        "san": "Ne7+",
+        "uci": "c1c5",
+        "san": "Rxc5",
         "color": "white"
       },
       {
-        "uci": "h6h7",
-        "san": "Qxh7+",
+        "uci": "c5c8",
+        "san": "Rxc8+",
         "color": "white"
       },
       {
-        "uci": "e5h5",
-        "san": "Rh5+",
-        "color": "white"
-      },
-      {
-        "uci": "h5h8",
-        "san": "Rh8#",
+        "uci": "b5d6",
+        "san": "Nxd6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T13:14:42.531092+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T13:15:12.412244+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787750082531",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542160363691446373,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rh8",
-        "correct": true,
-        "timestamp": "2026-08-26T13:15:06.406937+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787750112412",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
