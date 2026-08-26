@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-08-14",
     "title": "Pawn Parade",
     "fen": "r1bqk2r/1p3pbp/2n1p1p1/p1pp4/P3P3/2NPBN1P/1PP2PP1/R2Q1RK1 b kq - 0 1",
-    "current_fen": "r1bqk2r/1p3pbp/2n1p1p1/p1p3B1/P2pP3/2NP1N1P/1PP2PP1/R2Q1RK1 b kq - 1 2",
+    "current_fen": "r1bqk2r/1p4bp/2n1ppp1/p1p5/P2pP3/2NP1N1P/1PPB1PP1/R2Q1RK1 b kq - 1 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"r1bqk2r/1p3pbp/2n1p1p1/p1pp4/P3P3/2NPBN1P/1PP2PP1/R2Q1RK1 b kq - 0 1\"]\r\n\r\n1... d4 2. Bg5 f6 3. Bd2 dxc3 *",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787770634952",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542246567745036369,
     "attempted_users": {
@@ -70,16 +70,18 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "d4",
-        "correct": false,
-        "timestamp": "2026-08-26T18:57:22.576000+00:00"
+        "move": "f6",
+        "correct": true,
+        "timestamp": "2026-08-26T18:57:26.682801+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
