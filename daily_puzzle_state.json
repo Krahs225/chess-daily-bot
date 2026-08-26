@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-04-23",
     "title": "Mate in 6",
     "fen": "8/p6R/8/6p1/4Qrk1/6p1/P1P2PK1/3q4 w - - 0 1",
-    "current_fen": "8/p6R/8/6p1/4Qrk1/6p1/P1P2PK1/3q4 w - - 0 1",
+    "current_fen": "8/p7/8/6p1/4Qr1k/6p1/P1P2PK1/3q4 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/p6R/8/6p1/4Qrk1/6p1/P1P2PK1/3q4 w - - 0 1\"]\r\n\r\n1. Rh4+ Kxh4 2. Qh7+ Qh5 3. fxg3+ Kg4 4. Qd7+ Rf5 5. Qd1+ Rf3 6. Qxf3#\r\n*",
     "all_moves": [
       {
@@ -102,8 +102,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787741648124",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542124987316568115,
     "attempted_users": {
@@ -112,10 +112,16 @@
         "move": "qe6",
         "correct": false,
         "timestamp": "2026-08-26T10:54:15.476778+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rh4",
+        "correct": true,
+        "timestamp": "2026-08-26T10:54:18.632026+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
