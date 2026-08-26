@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-02-13",
     "title": "White to Draw",
     "fen": "2k5/2P4K/1P3p2/6p1/6n1/8/5P2/8 w KQkq - 0 1",
-    "current_fen": "2k5/2P4K/1P3p2/4n1p1/8/5P2/8/8 w - - 1 2",
+    "current_fen": "2k5/2P3K1/1P3p2/6p1/8/5n2/8/8 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k5/2P4K/1P3p2/6p1/6n1/8/5P2/8 w KQkq - 0 1\"]\r\n\r\n1. f3 Ne5 2. Kg7 Nxf3 3. Kxf6 g4 4. Kf5 g3 5. Kg4 g2 6. Kh3 g1=Q 7. b7+ Kxb7 8. c8=Q+\r\n*",
     "all_moves": [
       {
@@ -132,16 +132,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787770978471",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542248008215953411,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Kg8",
-        "correct": false,
-        "timestamp": "2026-08-26T19:03:24.287372+00:00"
+        "move": "Kg7",
+        "correct": true,
+        "timestamp": "2026-08-26T19:04:28.547187+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -154,7 +154,9 @@
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
