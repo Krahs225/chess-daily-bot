@@ -1,77 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-11-16",
-    "title": "Maximizing the Tension",
-    "fen": "r2q3r/5Rpp/k2b4/p2b4/PpR5/4B2Q/1P4PP/6K1 w - - 0 1",
-    "current_fen": "r6r/5Rpp/kR1bb3/p7/Pp6/4B3/1P4PP/6K1 b - - 0 3",
-    "pgn": "[White \"Missed Blitz Opportunity\"]\r\n[Black \"Max Farberov\"]\r\n[Result \"1-0\"]\r\n[FEN \"r2q3r/5Rpp/k2b4/p2b4/PpR5/4B2Q/1P4PP/6K1 w - - 0 1\"]\r\n\r\n1. Qe6 Bxe6 2. Rc6+ Qb6 3. Rxb6# 1-0",
+    "url": "https://www.chess.com/daily/2021-09-02",
+    "title": "Light Lunch",
+    "fen": "1rb2r1k/6p1/1p1N1pqp/p7/2R1P3/P7/PR1B1P1P/3QK3 b - - 0 1",
+    "current_fen": "1rb2r1k/6p1/1p1N1pqp/p7/2R1P3/P7/PR1B1P1P/3QK3 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1rb2r1k/6p1/1p1N1pqp/p7/2R1P3/P7/PR1B1P1P/3QK3 b - - 0 1\"]\r\n\r\n1...Qg1+ 2.Ke2 Bg4+ 3.f3 Bxf3+ 4.Kxf3 Qxd1+ *",
     "all_moves": [
       {
-        "uci": "h3e6",
-        "san": "Qe6",
-        "color": "white"
-      },
-      {
-        "uci": "d5e6",
-        "san": "Bxe6",
+        "uci": "g6g1",
+        "san": "Qg1+",
         "color": "black"
       },
       {
-        "uci": "c4c6",
-        "san": "Rc6+",
+        "uci": "e1e2",
+        "san": "Ke2",
         "color": "white"
       },
       {
-        "uci": "d8b6",
-        "san": "Qb6",
+        "uci": "c8g4",
+        "san": "Bg4+",
         "color": "black"
       },
       {
-        "uci": "c6b6",
-        "san": "Rxb6#",
+        "uci": "f2f3",
+        "san": "f3",
         "color": "white"
+      },
+      {
+        "uci": "g4f3",
+        "san": "Bxf3+",
+        "color": "black"
+      },
+      {
+        "uci": "e2f3",
+        "san": "Kxf3",
+        "color": "white"
+      },
+      {
+        "uci": "g1d1",
+        "san": "Qxd1+",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h3e6",
-        "san": "Qe6",
-        "color": "white"
+        "uci": "g6g1",
+        "san": "Qg1+",
+        "color": "black"
       },
       {
-        "uci": "c4c6",
-        "san": "Rc6+",
-        "color": "white"
+        "uci": "c8g4",
+        "san": "Bg4+",
+        "color": "black"
       },
       {
-        "uci": "c6b6",
-        "san": "Rxb6#",
-        "color": "white"
+        "uci": "g4f3",
+        "san": "Bxf3+",
+        "color": "black"
+      },
+      {
+        "uci": "g1d1",
+        "san": "Qxd1+",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T13:50:14.240811+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T13:50:53.867743+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787752214240",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542169304768708623,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxb6",
-        "correct": true,
-        "timestamp": "2026-08-26T13:50:47.450583+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787752253867",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
