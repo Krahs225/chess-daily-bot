@@ -1,62 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-11-15",
-    "title": "You Can't Block This!",
-    "fen": "r3kb1r/1pp1p2p/p3P3/1Nq1np2/3N1p2/P2R3P/1PP2PB1/3R3K w q - 0 1",
-    "current_fen": "r3kb1r/1pN1p2p/p1N1P3/2q2p2/5p2/P2n3P/1PP2PB1/3R3K b q - 0 2",
-    "pgn": "[White \"Pepe\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"r3kb1r/1pp1p2p/p3P3/1Nq1np2/3N1p2/P2R3P/1PP2PB1/3R3K w q - 0 1\"]\r\n\r\n1. Nc6 Nxd3 2. Nxc7# 1-0",
+    "url": "https://www.chess.com/daily/2024-04-18",
+    "title": "The Price to Win a Piece",
+    "fen": "4q1k1/5ppp/1p6/2p5/p1P5/P2P1N2/1b2rPPP/1Q1R1K2 w - - 0 28",
+    "current_fen": "4q1k1/5ppp/1p6/2p5/p1P5/P2P4/1b3rPP/1Q1R1KN1 w - - 0 29",
+    "pgn": "[Event \"Tirnavia-B\"]\r\n[Site \"Trnava\"]\r\n[Date \"1988.??.??\"]\r\n[Round \"11\"]\r\n[White \"Rozentalis, Eduardas\"]\r\n[Black \"Diaz Diaz, Joaquin Carlos\"]\r\n[Result \"1-0\"]\r\n[ECO \"B22\"]\r\n[WhiteElo \"2520\"]\r\n[BlackElo \"2485\"]\r\n[FEN \"4q1k1/5ppp/1p6/2p5/p1P5/P2P1N2/1b2rPPP/1Q1R1K2 w - - 0 28\"]\r\n\r\n28. Ng1 Rxf2+ 29. Kxf2 Bd4+ 30. Kf1 Qe3 31. Nh3 1-0",
     "all_moves": [
       {
-        "uci": "d4c6",
-        "san": "Nc6",
+        "uci": "f3g1",
+        "san": "Ng1",
         "color": "white"
       },
       {
-        "uci": "e5d3",
-        "san": "Nxd3",
+        "uci": "e2f2",
+        "san": "Rxf2+",
         "color": "black"
       },
       {
-        "uci": "b5c7",
-        "san": "Nxc7#",
+        "uci": "f1f2",
+        "san": "Kxf2",
+        "color": "white"
+      },
+      {
+        "uci": "b2d4",
+        "san": "Bd4+",
+        "color": "black"
+      },
+      {
+        "uci": "f2f1",
+        "san": "Kf1",
+        "color": "white"
+      },
+      {
+        "uci": "e8e3",
+        "san": "Qe3",
+        "color": "black"
+      },
+      {
+        "uci": "g1h3",
+        "san": "Nh3",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4c6",
-        "san": "Nc6",
+        "uci": "f3g1",
+        "san": "Ng1",
         "color": "white"
       },
       {
-        "uci": "b5c7",
-        "san": "Nxc7#",
+        "uci": "f1f2",
+        "san": "Kxf2",
+        "color": "white"
+      },
+      {
+        "uci": "f2f1",
+        "san": "Kf1",
+        "color": "white"
+      },
+      {
+        "uci": "g1h3",
+        "san": "Nh3",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-26T22:55:51.921438+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T22:56:34.911348+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787784951921",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542306616563597333,
+    "puzzle_id": "random_1787784994911",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542306797333909545,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nxc7",
+        "move": "ng1",
         "correct": true,
-        "timestamp": "2026-08-26T22:56:30.409782+00:00"
+        "timestamp": "2026-08-26T22:56:46.628462+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
