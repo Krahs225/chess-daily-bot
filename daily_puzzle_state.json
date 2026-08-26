@@ -1,83 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-02-04",
-    "title": "Exploiting a Vulnerable King",
-    "fen": "rn2k2r/pppbqppp/3b1n2/6N1/2PP1B2/8/PP2B1PP/RN1Q1RK1 b - - 0 1",
-    "current_fen": "rn2k2r/pppb1ppp/5n2/6q1/2PP4/8/PP2BRPP/RN1Q2K1 w - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn2k2r/pppbqppp/3b1n2/6N1/2PP1B2/8/PP2B1PP/RN1Q1RK1 b - - 0 1\"]\r\n\r\n1...Bxf4 2. Rxf4 Qe3+ 3. Rf2 Qxg5\r\n*",
+    "url": "https://www.chess.com/daily/2017-01-13",
+    "title": "Polar 1994",
+    "fen": "2b1n1N1/B4r2/4p3/2N1k2p/1pP4p/1K3P2/3pP3/1Bq3Q1 w - - 0 1",
+    "current_fen": "2b1n1N1/B4r2/4p3/2N1k2p/1pP4p/1K3P2/3pP3/1Bq3Q1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2b1n1N1/B4r2/4p3/2N1k2p/1pP4p/1K3P2/3pP3/1Bq3Q1 w - - 0 1\"]\r\n\r\n1. Qd4+ Kxd4 2. Nd7#\r\n*",
     "all_moves": [
       {
-        "uci": "d6f4",
-        "san": "Bxf4",
-        "color": "black"
-      },
-      {
-        "uci": "f1f4",
-        "san": "Rxf4",
+        "uci": "g1d4",
+        "san": "Qd4+",
         "color": "white"
       },
       {
-        "uci": "e7e3",
-        "san": "Qe3+",
+        "uci": "e5d4",
+        "san": "Kxd4",
         "color": "black"
       },
       {
-        "uci": "f4f2",
-        "san": "Rf2",
+        "uci": "c5d7",
+        "san": "Nd7#",
         "color": "white"
-      },
-      {
-        "uci": "e3g5",
-        "san": "Qxg5",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6f4",
-        "san": "Bxf4",
-        "color": "black"
+        "uci": "g1d4",
+        "san": "Qd4+",
+        "color": "white"
       },
       {
-        "uci": "e7e3",
-        "san": "Qe3+",
-        "color": "black"
-      },
-      {
-        "uci": "e3g5",
-        "san": "Qxg5",
-        "color": "black"
+        "uci": "c5d7",
+        "san": "Nd7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T12:24:09.435485+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T12:24:31.510067+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787747049435",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542147642094657587,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxg5",
-        "correct": true,
-        "timestamp": "2026-08-26T12:24:22.552458+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxg4",
-        "correct": false,
-        "timestamp": "2026-08-26T12:24:18.678953+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787747071510",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
