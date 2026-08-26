@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-11-15",
-    "title": "Don't Stop Me Now",
-    "fen": "r6k/2p1R1pb/pp1p1p1p/1P1P4/P1P5/2B1Q1P1/2q2P1P/6K1 w - - 0 27",
-    "current_fen": "4Q1bk/P1p3p1/1p1p1p1p/3P4/P1P5/2q3P1/5P1P/6K1 b - - 0 30",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r6k/2p1R1pb/pp1p1p1p/1P1P4/P1P5/2B1Q1P1/2q2P1P/6K1 w - - 0 27\"]\r\n\r\n27. Re8+ Rxe8 28. Qxe8+ Bg8 29. bxa6 Qxc3 30. a7 *",
+    "url": "https://www.chess.com/daily/2014-02-15",
+    "title": "Fischer - Tal, Leipzig 1960, Modified",
+    "fen": "1qkr3r/1p1bBp1Q/p3p3/P2p1p2/B2N4/P1p5/2P2PPP/4RRK1 w - - 0 1",
+    "current_fen": "1qkr3r/1p1bBp1Q/p3p3/P2p1p2/B2N4/P1p5/2P2PPP/4RRK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1qkr3r/1p1bBp1Q/p3p3/P2p1p2/B2N4/P1p5/2P2PPP/4RRK1 w - - 0 1\"]\r\n\r\n1. Bxd7+ Kxd7 2. Bd6 Qxd6 3. Qxf7+\r\n*",
     "all_moves": [
       {
-        "uci": "e7e8",
-        "san": "Re8+",
+        "uci": "a4d7",
+        "san": "Bxd7+",
         "color": "white"
       },
       {
-        "uci": "a8e8",
-        "san": "Rxe8",
+        "uci": "c8d7",
+        "san": "Kxd7",
         "color": "black"
       },
       {
-        "uci": "e3e8",
-        "san": "Qxe8+",
+        "uci": "e7d6",
+        "san": "Bd6",
         "color": "white"
       },
       {
-        "uci": "h7g8",
-        "san": "Bg8",
+        "uci": "b8d6",
+        "san": "Qxd6",
         "color": "black"
       },
       {
-        "uci": "b5a6",
-        "san": "bxa6",
-        "color": "white"
-      },
-      {
-        "uci": "c2c3",
-        "san": "Qxc3",
-        "color": "black"
-      },
-      {
-        "uci": "a6a7",
-        "san": "a7",
+        "uci": "h7f7",
+        "san": "Qxf7+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e7e8",
-        "san": "Re8+",
+        "uci": "a4d7",
+        "san": "Bxd7+",
         "color": "white"
       },
       {
-        "uci": "e3e8",
-        "san": "Qxe8+",
+        "uci": "e7d6",
+        "san": "Bd6",
         "color": "white"
       },
       {
-        "uci": "b5a6",
-        "san": "bxa6",
-        "color": "white"
-      },
-      {
-        "uci": "a6a7",
-        "san": "a7",
+        "uci": "h7f7",
+        "san": "Qxf7+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T14:29:55.848650+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T14:32:09.229884+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787754595848",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542179295483396216,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "a7",
-        "correct": true,
-        "timestamp": "2026-08-26T14:32:03.451042+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787754729229",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
