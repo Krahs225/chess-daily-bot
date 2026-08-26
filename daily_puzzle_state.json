@@ -1,77 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-02-04",
-    "title": "Spectacular Mating Pattern",
-    "fen": "3r1rk1/pp3ppp/8/2p5/4PB1n/P1P2qPP/Q3RP1K/6R1 b - - 0 1",
-    "current_fen": "5rk1/pp3ppp/8/2p5/4PB2/P1P2nPP/Q3RPR1/3r3K w - - 3 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r1rk1/pp3ppp/8/2p5/4PB1n/P1P2qPP/Q3RP1K/6R1 b - - 0 1\"]\r\n\r\n1...Qg2+ 2. Rxg2 Nf3+ 3. Kh1 Rd1+\r\n*",
+    "url": "https://www.chess.com/daily/2021-11-06",
+    "title": "Planting Your Feet",
+    "fen": "1kbr4/1ppr4/p3p3/3P4/P1q1Q3/2N1B3/1P1R1P1b/3R3K b - - 0 1",
+    "current_fen": "1kb4r/Bppr4/p3p3/3P4/P1q1Q3/2N5/1P1R1P1b/3R3K b - - 2 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1kbr4/1ppr4/p3p3/3P4/P1q1Q3/2N1B3/1P1R1P1b/3R3K b - - 0 1\"]\r\n\r\n1...Rh8 2.Ba7+ Ka8 3.Qxc4 Rg7 *",
     "all_moves": [
       {
-        "uci": "f3g2",
-        "san": "Qg2+",
+        "uci": "d8h8",
+        "san": "Rh8",
         "color": "black"
       },
       {
-        "uci": "g1g2",
-        "san": "Rxg2",
+        "uci": "e3a7",
+        "san": "Ba7+",
         "color": "white"
       },
       {
-        "uci": "h4f3",
-        "san": "Nf3+",
+        "uci": "b8a8",
+        "san": "Ka8",
         "color": "black"
       },
       {
-        "uci": "h2h1",
-        "san": "Kh1",
+        "uci": "e4c4",
+        "san": "Qxc4",
         "color": "white"
       },
       {
-        "uci": "d8d1",
-        "san": "Rd1+",
+        "uci": "d7g7",
+        "san": "Rg7",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3g2",
-        "san": "Qg2+",
+        "uci": "d8h8",
+        "san": "Rh8",
         "color": "black"
       },
       {
-        "uci": "h4f3",
-        "san": "Nf3+",
+        "uci": "b8a8",
+        "san": "Ka8",
         "color": "black"
       },
       {
-        "uci": "d8d1",
-        "san": "Rd1+",
+        "uci": "d7g7",
+        "san": "Rg7",
         "color": "black"
       }
     ],
     "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-26T07:47:45.424227+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T07:48:04.412726+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787730465424",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542078083652395090,
+    "puzzle_id": "random_1787730484412",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542078163285442571,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rd1",
+        "move": "rh8",
         "correct": true,
-        "timestamp": "2026-08-26T07:47:58.876447+00:00"
+        "timestamp": "2026-08-26T07:48:16.376080+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
