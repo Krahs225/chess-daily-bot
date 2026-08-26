@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-01-18",
     "title": "Sardine Can",
     "fen": "6k1/1pp2ppp/1b4b1/pP1P4/P1P1nq2/1N1B4/5PPP/4RQK1 b - - 0 1",
-    "current_fen": "6k1/1pp2ppp/6b1/pP1P4/P1P1nq2/1N1B4/5bPP/4RQ1K b - - 1 2",
+    "current_fen": "6k1/1pp2ppp/6bq/pP1P4/P1P5/1N1B2P1/5bP1/4RQ1K w - - 1 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"6k1/1pp2ppp/1b4b1/pP1P4/P1P1nq2/1N1B4/5PPP/4RQK1 b - - 0 1\"]\r\n\r\n1...Bxf2+ 2.Kh1 Ng3+ 3.hxg3 Qh6# *",
     "all_moves": [
       {
@@ -57,21 +57,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787782483641",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1542296274366369813,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "bxf2",
+        "move": "qh6",
         "correct": true,
-        "timestamp": "2026-08-26T22:14:53.981713+00:00"
+        "timestamp": "2026-08-26T22:14:59.682582+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
