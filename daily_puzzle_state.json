@@ -1,90 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-02-15",
-    "title": "Fischer - Tal, Leipzig 1960, Modified",
-    "fen": "1qkr3r/1p1bBp1Q/p3p3/P2p1p2/B2N4/P1p5/2P2PPP/4RRK1 w - - 0 1",
-    "current_fen": "3r3r/1p1k1Q2/p2qp3/P2p1p2/3N4/P1p5/2P2PPP/4RRK1 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1qkr3r/1p1bBp1Q/p3p3/P2p1p2/B2N4/P1p5/2P2PPP/4RRK1 w - - 0 1\"]\r\n\r\n1. Bxd7+ Kxd7 2. Bd6 Qxd6 3. Qxf7+\r\n*",
+    "url": "https://www.chess.com/daily/2011-06-06",
+    "title": "Mate in 2",
+    "fen": "2b2rk1/p4p2/5R1Q/1ppq3r/8/P5P1/6P1/5RK1 w - - 0 1",
+    "current_fen": "2b2rk1/p4p2/5R1Q/1ppq3r/8/P5P1/6P1/5RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2b2rk1/p4p2/5R1Q/1ppq3r/8/P5P1/6P1/5RK1 w - - 0 1\"]\r\n\r\n1. Rg6+ fxg6 2. Rxf8#\r\n*",
     "all_moves": [
       {
-        "uci": "a4d7",
-        "san": "Bxd7+",
+        "uci": "f6g6",
+        "san": "Rg6+",
         "color": "white"
       },
       {
-        "uci": "c8d7",
-        "san": "Kxd7",
+        "uci": "f7g6",
+        "san": "fxg6",
         "color": "black"
       },
       {
-        "uci": "e7d6",
-        "san": "Bd6",
-        "color": "white"
-      },
-      {
-        "uci": "b8d6",
-        "san": "Qxd6",
-        "color": "black"
-      },
-      {
-        "uci": "h7f7",
-        "san": "Qxf7+",
+        "uci": "f1f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a4d7",
-        "san": "Bxd7+",
+        "uci": "f6g6",
+        "san": "Rg6+",
         "color": "white"
       },
       {
-        "uci": "e7d6",
-        "san": "Bd6",
-        "color": "white"
-      },
-      {
-        "uci": "h7f7",
-        "san": "Qxf7+",
+        "uci": "f1f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T14:32:09.229884+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T14:34:20.976614+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787754729229",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542179853439082597,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxf7",
-        "correct": true,
-        "timestamp": "2026-08-26T14:34:10.429388+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bxd7",
-        "correct": true,
-        "timestamp": "2026-08-26T14:32:54.774956+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787754860976",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
