@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-05-03",
     "title": "Which Knight?",
     "fen": "8/1k6/6p1/3r1n2/N4Bn1/1P4P1/2R4P/6K1 b - - 0 1",
-    "current_fen": "8/1k6/6p1/8/N7/1P2nKP1/2R4P/3r4 b - - 1 4",
+    "current_fen": "8/1k6/6p1/8/N7/1P3KP1/2n4P/3r4 w - - 0 5",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/1k6/6p1/3r1n2/N4Bn1/1P4P1/2R4P/6K1 b - - 0 1\"]\r\n\r\n1... Rd1+ 2. Kg2 Nge3+ 3. Bxe3 Nxe3+ 4. Kf3 Nxc2 *",
     "all_moves": [
       {
@@ -72,21 +72,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787770170445",
-    "next_solution_index": 6,
-    "next_player_index": 3,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1542244618794700801,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nxe3",
+        "move": "nxc2",
         "correct": true,
-        "timestamp": "2026-08-26T18:50:01.341263+00:00"
+        "timestamp": "2026-08-26T18:50:03.766165+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
