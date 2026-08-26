@@ -1,111 +1,141 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-08-16",
-    "title": "V.Korolkov, 1951",
-    "fen": "5k2/8/1p4P1/p2P4/4b3/1P6/PrP5/R3K3 w Q - 0 1",
-    "current_fen": "5k2/8/1p4P1/p2P4/4b3/1P6/PrP5/R3K3 w Q - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"5k2/8/1p4P1/p2P4/4b3/1P6/PrP5/R3K3 w Q - 0 1\"]\r\n\r\n1. g7+ Kxg7 2. d6 Kf6 3. d7 Ke7 4. d8=Q+ Kxd8 5. O-O-O+ Kc7 6. Kxb2\r\n*",
+    "url": "https://www.chess.com/daily/2018-08-17",
+    "title": "V.Rudenko, Achalgazdra Kommunisti, 1956",
+    "fen": "B7/2pp4/8/PP2p3/K7/8/5k1b/8 w - - 0 1",
+    "current_fen": "B7/2pp4/8/PP2p3/K7/8/5k1b/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"B7/2pp4/8/PP2p3/K7/8/5k1b/8 w - - 0 1\"]\r\n\r\n1. a6 Bf4 2. b6 cxb6 3. Kb5 e4 4. a7 e3 5. Bh1 e2 6. a8=Q e1=Q 7. Qf3+ Kg1\r\n8. Qg2#\r\n*",
     "all_moves": [
       {
-        "uci": "g6g7",
-        "san": "g7+",
+        "uci": "a5a6",
+        "san": "a6",
         "color": "white"
       },
       {
-        "uci": "f8g7",
-        "san": "Kxg7",
+        "uci": "h2f4",
+        "san": "Bf4",
         "color": "black"
       },
       {
-        "uci": "d5d6",
-        "san": "d6",
+        "uci": "b5b6",
+        "san": "b6",
         "color": "white"
       },
       {
-        "uci": "g7f6",
-        "san": "Kf6",
+        "uci": "c7b6",
+        "san": "cxb6",
         "color": "black"
       },
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "a4b5",
+        "san": "Kb5",
         "color": "white"
       },
       {
-        "uci": "f6e7",
-        "san": "Ke7",
+        "uci": "e5e4",
+        "san": "e4",
         "color": "black"
       },
       {
-        "uci": "d7d8q",
-        "san": "d8=Q+",
+        "uci": "a6a7",
+        "san": "a7",
         "color": "white"
       },
       {
-        "uci": "e7d8",
-        "san": "Kxd8",
+        "uci": "e4e3",
+        "san": "e3",
         "color": "black"
       },
       {
-        "uci": "e1c1",
-        "san": "O-O-O+",
+        "uci": "a8h1",
+        "san": "Bh1",
         "color": "white"
       },
       {
-        "uci": "d8c7",
-        "san": "Kc7",
+        "uci": "e3e2",
+        "san": "e2",
         "color": "black"
       },
       {
-        "uci": "c1b2",
-        "san": "Kxb2",
+        "uci": "a7a8q",
+        "san": "a8=Q",
+        "color": "white"
+      },
+      {
+        "uci": "e2e1q",
+        "san": "e1=Q",
+        "color": "black"
+      },
+      {
+        "uci": "a8f3",
+        "san": "Qf3+",
+        "color": "white"
+      },
+      {
+        "uci": "f2g1",
+        "san": "Kg1",
+        "color": "black"
+      },
+      {
+        "uci": "f3g2",
+        "san": "Qg2#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g6g7",
-        "san": "g7+",
+        "uci": "a5a6",
+        "san": "a6",
         "color": "white"
       },
       {
-        "uci": "d5d6",
-        "san": "d6",
+        "uci": "b5b6",
+        "san": "b6",
         "color": "white"
       },
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "a4b5",
+        "san": "Kb5",
         "color": "white"
       },
       {
-        "uci": "d7d8q",
-        "san": "d8=Q+",
+        "uci": "a6a7",
+        "san": "a7",
         "color": "white"
       },
       {
-        "uci": "e1c1",
-        "san": "O-O-O+",
+        "uci": "a8h1",
+        "san": "Bh1",
         "color": "white"
       },
       {
-        "uci": "c1b2",
-        "san": "Kxb2",
+        "uci": "a7a8q",
+        "san": "a8=Q",
+        "color": "white"
+      },
+      {
+        "uci": "a8f3",
+        "san": "Qf3+",
+        "color": "white"
+      },
+      {
+        "uci": "f3g2",
+        "san": "Qg2#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-26T14:44:01.919037+00:00",
-    "answer_posted": true,
+    "player_move_count": 8,
+    "posted_at": "2026-08-26T14:44:29.173222+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787755441919",
+    "puzzle_id": "random_1787755469173",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542182842501431488,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
