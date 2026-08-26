@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-05-29",
     "title": "A Guided Checkmate Tour",
     "fen": "1r2r2k/5p1p/ppbp1P1B/2n2P2/2P3Rp/1N6/Pb4RP/6K1 w - - 0 1",
-    "current_fen": "1r2r2k/5p1p/ppbp1P1B/2n2P2/2P3Rp/1N6/Pb4RP/6K1 w - - 0 1",
+    "current_fen": "1r2r1k1/5pBp/ppbp1P2/2n2P2/2P3Rp/1N6/Pb4RP/6K1 w - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"1r2r2k/5p1p/ppbp1P1B/2n2P2/2P3Rp/1N6/Pb4RP/6K1 w - - 0 1\"]\r\n\r\n1. Bg7+ Kg8 2. Bf8+ Kxf8 3. Rg8# *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787743814338",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542134073559097376,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Bg7",
+        "correct": true,
+        "timestamp": "2026-08-26T11:30:28.728860+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
