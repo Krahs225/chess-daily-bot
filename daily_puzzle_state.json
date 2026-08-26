@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-01-30",
     "title": "Opportunity for Reflection",
     "fen": "6k1/R1r2p1p/2P1p1p1/1rQb2q1/8/6P1/5P1P/2R3K1 w - - 0 1",
-    "current_fen": "R2Q4/2r2p1p/2P1p1p1/1r1b1k2/5P2/6Pq/8/2R3K1 w - - 0 6",
+    "current_fen": "R7/2r2p1p/2P1p1p1/1r1b1kQ1/5P2/6Pq/8/2R3K1 b - - 1 6",
     "pgn": "[Result \"*\"]\r\n[FEN \"6k1/R1r2p1p/2P1p1p1/1rQb2q1/8/6P1/5P1P/2R3K1 w - - 0 1\"]\r\n\r\n1.Ra8+ Kg7 2.Qf8+ Kf6 3.f4 Qh5 4.Qd8+ Kf5 5.h3 Qxh3 6.Qg5+ *",
     "all_moves": [
       {
@@ -102,16 +102,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787771212742",
-    "next_solution_index": 10,
-    "next_player_index": 5,
-    "solved": false,
+    "next_solution_index": 11,
+    "next_player_index": 6,
+    "solved": true,
     "message_id": 1542248990681206795,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "h3",
+        "move": "qg5",
         "correct": true,
-        "timestamp": "2026-08-26T19:08:05.759098+00:00"
+        "timestamp": "2026-08-26T19:08:09.602501+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -122,7 +122,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "601406103712170014"
