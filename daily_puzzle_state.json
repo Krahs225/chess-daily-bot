@@ -1,106 +1,69 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-04-15",
-    "title": "Alekhine-Lasker, Zurich 1934",
-    "fen": "3r1rn1/pp1n2kp/1qpN1pp1/6Q1/4P3/1B1R4/PP3PPP/2R3K1 w KQkq - 1 0",
-    "current_fen": "3r1rnk/pp1n3p/1qp2pp1/5NQ1/4P3/1B1R4/PP3PPP/2R3K1 w - - 3 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r1rn1/pp1n2kp/1qpN1pp1/6Q1/4P3/1B1R4/PP3PPP/2R3K1 w KQkq - 1 0\"]\r\n\r\n1. Nf5+ Kh8 2. Qxg6 Qxf2+ 3. Kxf2 hxg6 4. Rh3+ Nh6 5. Rxh6#\r\n*",
+    "url": "https://www.chess.com/daily/2022-05-12",
+    "title": "Testing Your Reflexes",
+    "fen": "2kr3r/1p1b1pp1/p2Qp3/7p/3PP1n1/1N1B4/PP2KPq1/5R1R w - - 0 1",
+    "current_fen": "2kr3r/1p1b1pp1/p2Qp3/7p/3PP1n1/1N1B4/PP2KPq1/5R1R w - - 0 1",
+    "pgn": "[Result \"1-0\"]\r\n[FEN \"2kr3r/1p1b1pp1/p2Qp3/7p/3PP1n1/1N1B4/PP2KPq1/5R1R w - - 0 1\"]\r\n\r\n1.Rc1+ Bc6 2.Rxc6+ bxc6 3.Bxa6# 1-0",
     "all_moves": [
       {
-        "uci": "d6f5",
-        "san": "Nf5+",
+        "uci": "f1c1",
+        "san": "Rc1+",
         "color": "white"
       },
       {
-        "uci": "g7h8",
-        "san": "Kh8",
+        "uci": "d7c6",
+        "san": "Bc6",
         "color": "black"
       },
       {
-        "uci": "g5g6",
-        "san": "Qxg6",
+        "uci": "c1c6",
+        "san": "Rxc6+",
         "color": "white"
       },
       {
-        "uci": "b6f2",
-        "san": "Qxf2+",
+        "uci": "b7c6",
+        "san": "bxc6",
         "color": "black"
       },
       {
-        "uci": "g1f2",
-        "san": "Kxf2",
-        "color": "white"
-      },
-      {
-        "uci": "h7g6",
-        "san": "hxg6",
-        "color": "black"
-      },
-      {
-        "uci": "d3h3",
-        "san": "Rh3+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h6",
-        "san": "Nh6",
-        "color": "black"
-      },
-      {
-        "uci": "h3h6",
-        "san": "Rxh6#",
+        "uci": "d3a6",
+        "san": "Bxa6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6f5",
-        "san": "Nf5+",
+        "uci": "f1c1",
+        "san": "Rc1+",
         "color": "white"
       },
       {
-        "uci": "g5g6",
-        "san": "Qxg6",
+        "uci": "c1c6",
+        "san": "Rxc6+",
         "color": "white"
       },
       {
-        "uci": "g1f2",
-        "san": "Kxf2",
-        "color": "white"
-      },
-      {
-        "uci": "d3h3",
-        "san": "Rh3+",
-        "color": "white"
-      },
-      {
-        "uci": "h3h6",
-        "san": "Rxh6#",
+        "uci": "d3a6",
+        "san": "Bxa6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T17:37:44.850812+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T17:39:44.889680+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787765864850",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "puzzle_id": "random_1787765984889",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1542226560374018118,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qh4",
-        "correct": false,
-        "timestamp": "2026-08-26T17:39:33.666152+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": 1542227063866523691,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
