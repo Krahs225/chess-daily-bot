@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-05-15",
     "title": "The Fatal Flaw, Greed",
     "fen": "r2qk2r/pppbnp1p/2np2p1/3N2B1/2BbP3/8/PPP2PPP/R2QK2R w KQkq - 0 1",
-    "current_fen": "r2qk2r/pppbnp1p/2np2p1/3N2B1/2BbP3/8/PPP2PPP/R2QK2R w KQkq - 0 1",
+    "current_fen": "r2qk2r/pppbnp1p/3p2p1/3N2B1/2BnP3/8/PPP2PPP/R3K2R w KQkq - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qk2r/pppbnp1p/2np2p1/3N2B1/2BbP3/8/PPP2PPP/R2QK2R w KQkq - 0 1\"]\r\n\r\n1. Qxd4 Nxd4 2. Nf6+ Kf8 3. Bh6#\r\n*",
     "all_moves": [
       {
@@ -57,20 +57,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787743554244",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542132982062645320,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nf6",
+        "move": "qxd4",
+        "correct": true,
+        "timestamp": "2026-08-26T11:26:06.253690+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxd4",
         "correct": false,
-        "timestamp": "2026-08-26T11:25:57.446652+00:00"
+        "timestamp": "2026-08-26T11:26:06.538243+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
