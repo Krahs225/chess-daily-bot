@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-11-06",
     "title": "The Buzzing Bishops Sting the King",
     "fen": "5N1k/B7/2p1K3/qp5p/8/1B5P/P4pP1/8 w - - 0 1",
-    "current_fen": "5Nk1/8/2p1K3/qp5p/3B4/1B5P/P4pP1/8 w - - 2 2",
+    "current_fen": "5Nk1/4K3/2p5/qp5p/3B4/1B5P/P4pP1/8 b - - 3 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"5N1k/B7/2p1K3/qp5p/8/1B5P/P4pP1/8 w - - 0 1\"]\r\n\r\n1. Bd4+ Kg8 2. Ke7# *",
     "all_moves": [
       {
@@ -42,16 +42,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787750171390",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1542160737101946962,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "kf7",
-        "correct": false,
-        "timestamp": "2026-08-26T13:16:22.042251+00:00"
+        "move": "ke7",
+        "correct": true,
+        "timestamp": "2026-08-26T13:16:27.604548+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -62,9 +62,11 @@
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
