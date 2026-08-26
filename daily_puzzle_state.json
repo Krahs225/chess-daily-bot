@@ -1,47 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-09-01",
-    "title": "The Untouchables",
-    "fen": "r1b2rk1/1p2qpp1/2n2n1p/p1b1p1N1/2B5/P1N1P3/1PQ2PPP/R1B1K2R w KQq - 0 1",
-    "current_fen": "r1b2rk1/1p2qpp1/2n2n1p/p1bNp1N1/2B5/P3P3/1PQ2PPP/R1B1K2R b KQ - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2rk1/1p2qpp1/2n2n1p/p1b1p1N1/2B5/P1N1P3/1PQ2PPP/R1B1K2R w KQq - 0 1\"]\r\n\r\n1. Nd5\r\n*",
+    "url": "https://www.chess.com/daily/2024-05-29",
+    "title": "A Guided Checkmate Tour",
+    "fen": "1r2r2k/5p1p/ppbp1P1B/2n2P2/2P3Rp/1N6/Pb4RP/6K1 w - - 0 1",
+    "current_fen": "1r2r2k/5p1p/ppbp1P1B/2n2P2/2P3Rp/1N6/Pb4RP/6K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1r2r2k/5p1p/ppbp1P1B/2n2P2/2P3Rp/1N6/Pb4RP/6K1 w - - 0 1\"]\r\n\r\n1. Bg7+ Kg8 2. Bf8+ Kxf8 3. Rg8# *",
     "all_moves": [
       {
-        "uci": "c3d5",
-        "san": "Nd5",
+        "uci": "h6g7",
+        "san": "Bg7+",
+        "color": "white"
+      },
+      {
+        "uci": "h8g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "g7f8",
+        "san": "Bf8+",
+        "color": "white"
+      },
+      {
+        "uci": "g8f8",
+        "san": "Kxf8",
+        "color": "black"
+      },
+      {
+        "uci": "g4g8",
+        "san": "Rg8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3d5",
-        "san": "Nd5",
+        "uci": "h6g7",
+        "san": "Bg7+",
+        "color": "white"
+      },
+      {
+        "uci": "g7f8",
+        "san": "Bf8+",
+        "color": "white"
+      },
+      {
+        "uci": "g4g8",
+        "san": "Rg8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-26T11:30:02.423346+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T11:30:14.338467+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787743802423",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1542134023948869795,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nd5",
-        "correct": true,
-        "timestamp": "2026-08-26T11:30:08.396435+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787743814338",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
