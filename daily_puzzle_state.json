@@ -1,104 +1,297 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-04-18",
-    "title": "The Price to Win a Piece",
-    "fen": "4q1k1/5ppp/1p6/2p5/p1P5/P2P1N2/1b2rPPP/1Q1R1K2 w - - 0 28",
-    "current_fen": "6k1/5ppp/1p6/2p5/p1Pb4/P2Pq2N/6PP/1Q1R1K2 b - - 4 31",
-    "pgn": "[Event \"Tirnavia-B\"]\r\n[Site \"Trnava\"]\r\n[Date \"1988.??.??\"]\r\n[Round \"11\"]\r\n[White \"Rozentalis, Eduardas\"]\r\n[Black \"Diaz Diaz, Joaquin Carlos\"]\r\n[Result \"1-0\"]\r\n[ECO \"B22\"]\r\n[WhiteElo \"2520\"]\r\n[BlackElo \"2485\"]\r\n[FEN \"4q1k1/5ppp/1p6/2p5/p1P5/P2P1N2/1b2rPPP/1Q1R1K2 w - - 0 28\"]\r\n\r\n28. Ng1 Rxf2+ 29. Kxf2 Bd4+ 30. Kf1 Qe3 31. Nh3 1-0",
+    "url": "https://www.chess.com/daily/2008-01-12",
+    "title": "Endgame Technique",
+    "fen": "k7/Bp1p4/1P6/6p1/8/K5p1/6P1/8 w - - 0 1",
+    "current_fen": "k7/Bp1p4/1P6/6p1/8/K5p1/6P1/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k7/Bp1p4/1P6/6p1/8/K5p1/6P1/8 w - - 0 1\"]\r\n\r\n1. Kb4 d5 2. Kc5 g4 3. Bb8 Kxb8 4. Kxd5 Kc8 5. Ke6 Kd8 6. Kd6 Kc8 7. Ke7 Kb8 8. Kd7 Ka8 9. Ke6 Kb8 10. Kf5 Kc8 11. Kxg4 Kd7 12. Kxg3 Kc6 13. Kh4 Kxb6 14. g4 Ka5 15. g5 b5 16. g6 b4 17. g7 b3 18. g8=Q\r\n*",
     "all_moves": [
       {
-        "uci": "f3g1",
-        "san": "Ng1",
+        "uci": "a3b4",
+        "san": "Kb4",
         "color": "white"
       },
       {
-        "uci": "e2f2",
-        "san": "Rxf2+",
+        "uci": "d7d5",
+        "san": "d5",
         "color": "black"
       },
       {
-        "uci": "f1f2",
-        "san": "Kxf2",
+        "uci": "b4c5",
+        "san": "Kc5",
         "color": "white"
       },
       {
-        "uci": "b2d4",
-        "san": "Bd4+",
+        "uci": "g5g4",
+        "san": "g4",
         "color": "black"
       },
       {
-        "uci": "f2f1",
-        "san": "Kf1",
+        "uci": "a7b8",
+        "san": "Bb8",
         "color": "white"
       },
       {
-        "uci": "e8e3",
-        "san": "Qe3",
+        "uci": "a8b8",
+        "san": "Kxb8",
         "color": "black"
       },
       {
-        "uci": "g1h3",
-        "san": "Nh3",
+        "uci": "c5d5",
+        "san": "Kxd5",
+        "color": "white"
+      },
+      {
+        "uci": "b8c8",
+        "san": "Kc8",
+        "color": "black"
+      },
+      {
+        "uci": "d5e6",
+        "san": "Ke6",
+        "color": "white"
+      },
+      {
+        "uci": "c8d8",
+        "san": "Kd8",
+        "color": "black"
+      },
+      {
+        "uci": "e6d6",
+        "san": "Kd6",
+        "color": "white"
+      },
+      {
+        "uci": "d8c8",
+        "san": "Kc8",
+        "color": "black"
+      },
+      {
+        "uci": "d6e7",
+        "san": "Ke7",
+        "color": "white"
+      },
+      {
+        "uci": "c8b8",
+        "san": "Kb8",
+        "color": "black"
+      },
+      {
+        "uci": "e7d7",
+        "san": "Kd7",
+        "color": "white"
+      },
+      {
+        "uci": "b8a8",
+        "san": "Ka8",
+        "color": "black"
+      },
+      {
+        "uci": "d7e6",
+        "san": "Ke6",
+        "color": "white"
+      },
+      {
+        "uci": "a8b8",
+        "san": "Kb8",
+        "color": "black"
+      },
+      {
+        "uci": "e6f5",
+        "san": "Kf5",
+        "color": "white"
+      },
+      {
+        "uci": "b8c8",
+        "san": "Kc8",
+        "color": "black"
+      },
+      {
+        "uci": "f5g4",
+        "san": "Kxg4",
+        "color": "white"
+      },
+      {
+        "uci": "c8d7",
+        "san": "Kd7",
+        "color": "black"
+      },
+      {
+        "uci": "g4g3",
+        "san": "Kxg3",
+        "color": "white"
+      },
+      {
+        "uci": "d7c6",
+        "san": "Kc6",
+        "color": "black"
+      },
+      {
+        "uci": "g3h4",
+        "san": "Kh4",
+        "color": "white"
+      },
+      {
+        "uci": "c6b6",
+        "san": "Kxb6",
+        "color": "black"
+      },
+      {
+        "uci": "g2g4",
+        "san": "g4",
+        "color": "white"
+      },
+      {
+        "uci": "b6a5",
+        "san": "Ka5",
+        "color": "black"
+      },
+      {
+        "uci": "g4g5",
+        "san": "g5",
+        "color": "white"
+      },
+      {
+        "uci": "b7b5",
+        "san": "b5",
+        "color": "black"
+      },
+      {
+        "uci": "g5g6",
+        "san": "g6",
+        "color": "white"
+      },
+      {
+        "uci": "b5b4",
+        "san": "b4",
+        "color": "black"
+      },
+      {
+        "uci": "g6g7",
+        "san": "g7",
+        "color": "white"
+      },
+      {
+        "uci": "b4b3",
+        "san": "b3",
+        "color": "black"
+      },
+      {
+        "uci": "g7g8q",
+        "san": "g8=Q",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3g1",
-        "san": "Ng1",
+        "uci": "a3b4",
+        "san": "Kb4",
         "color": "white"
       },
       {
-        "uci": "f1f2",
-        "san": "Kxf2",
+        "uci": "b4c5",
+        "san": "Kc5",
         "color": "white"
       },
       {
-        "uci": "f2f1",
-        "san": "Kf1",
+        "uci": "a7b8",
+        "san": "Bb8",
         "color": "white"
       },
       {
-        "uci": "g1h3",
-        "san": "Nh3",
+        "uci": "c5d5",
+        "san": "Kxd5",
+        "color": "white"
+      },
+      {
+        "uci": "d5e6",
+        "san": "Ke6",
+        "color": "white"
+      },
+      {
+        "uci": "e6d6",
+        "san": "Kd6",
+        "color": "white"
+      },
+      {
+        "uci": "d6e7",
+        "san": "Ke7",
+        "color": "white"
+      },
+      {
+        "uci": "e7d7",
+        "san": "Kd7",
+        "color": "white"
+      },
+      {
+        "uci": "d7e6",
+        "san": "Ke6",
+        "color": "white"
+      },
+      {
+        "uci": "e6f5",
+        "san": "Kf5",
+        "color": "white"
+      },
+      {
+        "uci": "f5g4",
+        "san": "Kxg4",
+        "color": "white"
+      },
+      {
+        "uci": "g4g3",
+        "san": "Kxg3",
+        "color": "white"
+      },
+      {
+        "uci": "g3h4",
+        "san": "Kh4",
+        "color": "white"
+      },
+      {
+        "uci": "g2g4",
+        "san": "g4",
+        "color": "white"
+      },
+      {
+        "uci": "g4g5",
+        "san": "g5",
+        "color": "white"
+      },
+      {
+        "uci": "g5g6",
+        "san": "g6",
+        "color": "white"
+      },
+      {
+        "uci": "g6g7",
+        "san": "g7",
+        "color": "white"
+      },
+      {
+        "uci": "g7g8q",
+        "san": "g8=Q",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T13:21:19.497923+00:00",
+    "player_move_count": 18,
+    "posted_at": "2026-08-26T13:21:59.240073+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787750479497",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542162028658032784,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "kf1",
-        "correct": true,
-        "timestamp": "2026-08-26T13:21:46.963686+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nh3",
-        "correct": true,
-        "timestamp": "2026-08-26T13:21:50.842087+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787750519240",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
