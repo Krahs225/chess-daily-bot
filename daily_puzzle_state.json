@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-09-25",
     "title": "Diagonal Diversion",
     "fen": "1B6/8/7P/4p3/3b3k/8/8/2K5 w - - 0 1",
-    "current_fen": "1B6/8/7P/4p3/3b3k/8/8/2K5 w - - 0 1",
+    "current_fen": "8/B7/7P/4p3/7k/8/8/b1K5 w - - 2 2",
     "pgn": "[White \"Paul Heuacker\"]\r\n[Black \"Study\"]\r\n[Result \"*\"]\r\n[FEN \"1B6/8/7P/4p3/3b3k/8/8/2K5 w - - 0 1\"]\r\n\r\n1. Ba7 Ba1 2. Kb1 Bc3 3. Kc2 Ba1 4. Bd4 Bxd4 5. Kd3 Ba1 6. Ke4 Kg5 7. h7 Kg6 8.\r\nh8=Q *",
     "all_moves": [
       {
@@ -132,20 +132,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787780005065",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542285868033777675,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "h7",
-        "correct": false,
-        "timestamp": "2026-08-26T21:33:38.377866+00:00"
+        "move": "ba7",
+        "correct": true,
+        "timestamp": "2026-08-26T21:33:46.137901+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
