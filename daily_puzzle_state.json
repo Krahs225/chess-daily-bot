@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-12-28",
     "title": "Mating Mindset",
     "fen": "2k1r3/pb4pp/8/Q2p4/2pq1P2/1P6/4r1PP/R1B2R1K b - - 0 1",
-    "current_fen": "2k1r3/pb4pp/8/Q2p4/2pq1P2/1P6/4r1PP/R1B2R1K b - - 0 1",
+    "current_fen": "2k1r3/pb4pp/8/Q2p4/2p2P2/1P6/4rqPP/R1B3RK b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k1r3/pb4pp/8/Q2p4/2pq1P2/1P6/4r1PP/R1B2R1K b - - 0 1\"]\r\n\r\n1...Qf2 2. Rg1 Qxg2+ 3. Rxg2 Re1+ 4. Rg1 d4+\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787762099877",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542210768886562988,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Qf2",
+        "correct": true,
+        "timestamp": "2026-08-26T16:35:11.719193+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
