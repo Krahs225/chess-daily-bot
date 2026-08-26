@@ -1,126 +1,66 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-11-21",
-    "title": "Rinck 1904",
-    "fen": "8/3p4/4b3/7Q/B1p1k3/5pK1/1q2P3/8 w - - 0 1",
-    "current_fen": "8/3p4/4b3/7Q/B1p1k3/5pK1/1q2P3/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/3p4/4b3/7Q/B1p1k3/5pK1/1q2P3/8 w - - 0 1\"]\r\n\r\n1. Bc6+ dxc6 2. Qxf3+ Ke5 3. Qf4+ Kd5 4. e4+ Kc5 5. Qf8+ Kb5 6. Qb8+ Ka5 7. Qxb2\r\n*",
+    "url": "https://www.chess.com/daily/2019-06-29",
+    "title": "Breaking The Coordination of Pieces",
+    "fen": "r3r3/pp1b2k1/5p1p/P2B1np1/2Pq4/BP3PP1/2Q3KP/R3R3 b - - 0 1",
+    "current_fen": "r3r3/pp1b2k1/5p1p/P2B1np1/2Pq4/BP3PP1/2Q3KP/R3R3 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3r3/pp1b2k1/5p1p/P2B1np1/2Pq4/BP3PP1/2Q3KP/R3R3 b - - 0 1\"]\r\n\r\n1...Qxa1 2. Rxa1 Ne3+ 3. Kf2 Nxc2\r\n*",
     "all_moves": [
       {
-        "uci": "a4c6",
-        "san": "Bc6+",
-        "color": "white"
-      },
-      {
-        "uci": "d7c6",
-        "san": "dxc6",
+        "uci": "d4a1",
+        "san": "Qxa1",
         "color": "black"
       },
       {
-        "uci": "h5f3",
-        "san": "Qxf3+",
+        "uci": "e1a1",
+        "san": "Rxa1",
         "color": "white"
       },
       {
-        "uci": "e4e5",
-        "san": "Ke5",
+        "uci": "f5e3",
+        "san": "Ne3+",
         "color": "black"
       },
       {
-        "uci": "f3f4",
-        "san": "Qf4+",
+        "uci": "g2f2",
+        "san": "Kf2",
         "color": "white"
       },
       {
-        "uci": "e5d5",
-        "san": "Kd5",
+        "uci": "e3c2",
+        "san": "Nxc2",
         "color": "black"
-      },
-      {
-        "uci": "e2e4",
-        "san": "e4+",
-        "color": "white"
-      },
-      {
-        "uci": "d5c5",
-        "san": "Kc5",
-        "color": "black"
-      },
-      {
-        "uci": "f4f8",
-        "san": "Qf8+",
-        "color": "white"
-      },
-      {
-        "uci": "c5b5",
-        "san": "Kb5",
-        "color": "black"
-      },
-      {
-        "uci": "f8b8",
-        "san": "Qb8+",
-        "color": "white"
-      },
-      {
-        "uci": "b5a5",
-        "san": "Ka5",
-        "color": "black"
-      },
-      {
-        "uci": "b8b2",
-        "san": "Qxb2",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a4c6",
-        "san": "Bc6+",
-        "color": "white"
+        "uci": "d4a1",
+        "san": "Qxa1",
+        "color": "black"
       },
       {
-        "uci": "h5f3",
-        "san": "Qxf3+",
-        "color": "white"
+        "uci": "f5e3",
+        "san": "Ne3+",
+        "color": "black"
       },
       {
-        "uci": "f3f4",
-        "san": "Qf4+",
-        "color": "white"
-      },
-      {
-        "uci": "e2e4",
-        "san": "e4+",
-        "color": "white"
-      },
-      {
-        "uci": "f4f8",
-        "san": "Qf8+",
-        "color": "white"
-      },
-      {
-        "uci": "f8b8",
-        "san": "Qb8+",
-        "color": "white"
-      },
-      {
-        "uci": "b8b2",
-        "san": "Qxb2",
-        "color": "white"
+        "uci": "e3c2",
+        "san": "Nxc2",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-08-26T14:48:51.484262+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T14:49:11.181762+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787755731484",
+    "puzzle_id": "random_1787755751181",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542184057515942058,
+    "message_id": 1542184140420677662,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
