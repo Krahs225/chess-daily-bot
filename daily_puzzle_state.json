@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-04-09",
     "title": "Foot Race",
     "fen": "8/6p1/8/K6P/7P/kr5R/8/8 w - - 0 1",
-    "current_fen": "8/8/7p/5K1P/7k/8/8/8 w - - 1 9",
+    "current_fen": "8/8/6Kp/7P/7k/8/8/8 b - - 2 9",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/6p1/8/K6P/7P/kr5R/8/8 w - - 0 1\"]\r\n\r\n1.Rxb3+ Kxb3 2.Kb5 Kc3 3.Kc5 Kd3 4.Kd5 Ke3 5.Ke5 Kf3 6.Kf5 Kg3 7.h6 gxh6 \r\n8.h5 Kh4 9.Kg6 *",
     "all_moves": [
       {
@@ -147,16 +147,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787744701013",
-    "next_solution_index": 16,
-    "next_player_index": 8,
-    "solved": false,
+    "next_solution_index": 17,
+    "next_player_index": 9,
+    "solved": true,
     "message_id": 1542137792505581689,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "h5",
+        "move": "kg6",
         "correct": true,
-        "timestamp": "2026-08-26T11:45:25.669111+00:00"
+        "timestamp": "2026-08-26T11:45:27.162375+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -167,7 +167,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "601406103712170014"
