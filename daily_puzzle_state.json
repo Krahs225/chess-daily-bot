@@ -1,149 +1,67 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-09-23",
-    "title": "Half Point Better Than No Point",
-    "fen": "r7/2p5/rPNP4/5K2/8/4k3/8/8 w - - 0 1",
-    "current_fen": "r7/2p5/rPNP4/5K2/8/4k3/8/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/2p5/rPNP4/5K2/8/4k3/8/8 w - - 0 1\"]\r\n\r\n1. dxc7 Rxb6 2. Na7 Rf8+ 3. Ke5 Rh8 4. c8=Q Rh5+ 5. Qf5 Rxf5+ 6. Kxf5 Kd4 7.\r\nNc8 Rh6 8. Ne7\r\n*",
+    "url": "https://www.chess.com/daily/2018-03-18",
+    "title": "For The Good of The Kingdom",
+    "fen": "5b1k/1r3p1p/3p4/2pq3N/8/p4P2/P5QP/4R1K1 w - - 0 1",
+    "current_fen": "5b1k/1r3p1p/3p4/2pq3N/8/p4P2/P5QP/4R1K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5b1k/1r3p1p/3p4/2pq3N/8/p4P2/P5QP/4R1K1 w - - 0 1\"]\r\n\r\n1. Qg7+ Bxg7 2. Re8+ Bf8 3. Rxf8#\r\n*",
     "all_moves": [
       {
-        "uci": "d6c7",
-        "san": "dxc7",
+        "uci": "g2g7",
+        "san": "Qg7+",
         "color": "white"
       },
       {
-        "uci": "a6b6",
-        "san": "Rxb6",
+        "uci": "f8g7",
+        "san": "Bxg7",
         "color": "black"
       },
       {
-        "uci": "c6a7",
-        "san": "Na7",
+        "uci": "e1e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "a8f8",
-        "san": "Rf8+",
+        "uci": "g7f8",
+        "san": "Bf8",
         "color": "black"
       },
       {
-        "uci": "f5e5",
-        "san": "Ke5",
-        "color": "white"
-      },
-      {
-        "uci": "f8h8",
-        "san": "Rh8",
-        "color": "black"
-      },
-      {
-        "uci": "c7c8q",
-        "san": "c8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "h8h5",
-        "san": "Rh5+",
-        "color": "black"
-      },
-      {
-        "uci": "c8f5",
-        "san": "Qf5",
-        "color": "white"
-      },
-      {
-        "uci": "h5f5",
-        "san": "Rxf5+",
-        "color": "black"
-      },
-      {
-        "uci": "e5f5",
-        "san": "Kxf5",
-        "color": "white"
-      },
-      {
-        "uci": "e3d4",
-        "san": "Kd4",
-        "color": "black"
-      },
-      {
-        "uci": "a7c8",
-        "san": "Nc8",
-        "color": "white"
-      },
-      {
-        "uci": "b6h6",
-        "san": "Rh6",
-        "color": "black"
-      },
-      {
-        "uci": "c8e7",
-        "san": "Ne7",
+        "uci": "e8f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6c7",
-        "san": "dxc7",
+        "uci": "g2g7",
+        "san": "Qg7+",
         "color": "white"
       },
       {
-        "uci": "c6a7",
-        "san": "Na7",
+        "uci": "e1e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "f5e5",
-        "san": "Ke5",
-        "color": "white"
-      },
-      {
-        "uci": "c7c8q",
-        "san": "c8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "c8f5",
-        "san": "Qf5",
-        "color": "white"
-      },
-      {
-        "uci": "e5f5",
-        "san": "Kxf5",
-        "color": "white"
-      },
-      {
-        "uci": "a7c8",
-        "san": "Nc8",
-        "color": "white"
-      },
-      {
-        "uci": "c8e7",
-        "san": "Ne7",
+        "uci": "e8f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 8,
-    "posted_at": "2026-08-26T22:45:10.369233+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T22:46:34.904677+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787784310369",
+    "puzzle_id": "random_1787784394904",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542303925678506040,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "d7",
-        "correct": false,
-        "timestamp": "2026-08-26T22:46:18.301055+00:00"
-      }
-    },
+    "message_id": null,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
