@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-04-17",
     "title": "Short And Sweet",
     "fen": "1r1q3r/3bNppk/p2Q3p/1pn2P2/8/P7/BPP2PPP/3R2K1 w - - 0 1",
-    "current_fen": "1r1q3r/3bNppk/p2Q3p/1pn2P2/8/P7/BPP2PPP/3R2K1 w - - 0 1",
+    "current_fen": "1r1q3r/3bN1pk/p5Pp/1pn5/8/P7/BPP2PPP/3R2K1 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r1q3r/3bNppk/p2Q3p/1pn2P2/8/P7/BPP2PPP/3R2K1 w - - 0 1\"]\r\n\r\n1. Qg6+ fxg6 2. fxg6#\r\n*",
     "all_moves": [
       {
@@ -42,14 +42,27 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787771923701",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
+    "message_id": 1542251972785217657,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "fxg6",
+        "correct": true,
+        "timestamp": "2026-08-26T19:18:47.947728+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qg6",
+        "correct": false,
+        "timestamp": "2026-08-26T19:18:47.916459+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
