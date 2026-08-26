@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-10-27",
     "title": "White to Win",
     "fen": "7r/Q4p1p/4n1p1/7k/5P2/2q3PK/2P3P1/4R3 w - - 0 1",
-    "current_fen": "7r/Q6p/4p1p1/7k/5P2/2q3PK/2P3P1/8 w - - 0 2",
+    "current_fen": "7r/6qp/4p1p1/7k/5P2/6PK/2P3P1/8 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7r/Q4p1p/4n1p1/7k/5P2/2q3PK/2P3P1/4R3 w - - 0 1\"]\r\n\r\n1. Rxe6 (1. Qe7 Nxf4+ 2. Kh2 Nxg2) fxe6 2. Qg7 (2. Qe7 Kh6) Qxg7 (2... Qe3 3. Qxh8) 3. g4+ Kh6 4. g5+ Kh5 5. g4#\r\n*",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787730027412",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542076246534524939,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qe7",
-        "correct": false,
-        "timestamp": "2026-08-26T07:41:28.392293+00:00"
+        "move": "qg7",
+        "correct": true,
+        "timestamp": "2026-08-26T07:41:38.715962+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
