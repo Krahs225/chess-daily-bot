@@ -1,92 +1,107 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-02-21",
-    "title": "Squaring Off Against an Isolated King",
-    "fen": "8/P4k2/8/4np2/3b4/2NP2P1/1P5K/R1B3r1 b - - 0 1",
-    "current_fen": "8/P4k2/8/5p2/3b4/2NP1KP1/1P3r2/R1B5 w - - 1 5",
-    "pgn": "[Date \"1996\"]\r\n[White \"Nick de Firmian\"]\r\n[Black \"Tiger Hillarp Persson (remove h7 pawn)\"]\r\n[Result \"0-1\"]\r\n[FEN \"8/P4k2/8/4np2/3b4/2NP2P1/1P5K/R1B3r1 b - - 0 1\"]\r\n\r\n1... Nf3+ 2. Kh3 Rh1+ 3. Kg2 Rh2+ 4. Kxf3 Rf2# 0-1",
+    "url": "https://www.chess.com/daily/2009-05-30",
+    "title": "Mating With Patience",
+    "fen": "7B/8/8/1p6/3K4/8/p7/kn6 w - - 0 1",
+    "current_fen": "7B/8/8/1p6/8/2nK4/p7/k7 w - - 2 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7B/8/8/1p6/3K4/8/p7/kn6 w - - 0 1\"]\r\n\r\n1. Kd3+ Nc3 2. Kc2 b4 3. Kc1 b3 4. Bxc3+ b2+ 5. Bxb2#\r\n*",
     "all_moves": [
       {
-        "uci": "e5f3",
-        "san": "Nf3+",
-        "color": "black"
-      },
-      {
-        "uci": "h2h3",
-        "san": "Kh3",
+        "uci": "d4d3",
+        "san": "Kd3+",
         "color": "white"
       },
       {
-        "uci": "g1h1",
-        "san": "Rh1+",
+        "uci": "b1c3",
+        "san": "Nc3",
         "color": "black"
       },
       {
-        "uci": "h3g2",
-        "san": "Kg2",
+        "uci": "d3c2",
+        "san": "Kc2",
         "color": "white"
       },
       {
-        "uci": "h1h2",
-        "san": "Rh2+",
+        "uci": "b5b4",
+        "san": "b4",
         "color": "black"
       },
       {
-        "uci": "g2f3",
-        "san": "Kxf3",
+        "uci": "c2c1",
+        "san": "Kc1",
         "color": "white"
       },
       {
-        "uci": "h2f2",
-        "san": "Rf2#",
+        "uci": "b4b3",
+        "san": "b3",
         "color": "black"
+      },
+      {
+        "uci": "h8c3",
+        "san": "Bxc3+",
+        "color": "white"
+      },
+      {
+        "uci": "b3b2",
+        "san": "b2+",
+        "color": "black"
+      },
+      {
+        "uci": "c3b2",
+        "san": "Bxb2#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5f3",
-        "san": "Nf3+",
-        "color": "black"
+        "uci": "d4d3",
+        "san": "Kd3+",
+        "color": "white"
       },
       {
-        "uci": "g1h1",
-        "san": "Rh1+",
-        "color": "black"
+        "uci": "d3c2",
+        "san": "Kc2",
+        "color": "white"
       },
       {
-        "uci": "h1h2",
-        "san": "Rh2+",
-        "color": "black"
+        "uci": "c2c1",
+        "san": "Kc1",
+        "color": "white"
       },
       {
-        "uci": "h2f2",
-        "san": "Rf2#",
-        "color": "black"
+        "uci": "h8c3",
+        "san": "Bxc3+",
+        "color": "white"
+      },
+      {
+        "uci": "c3b2",
+        "san": "Bxb2#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T10:02:09.005391+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 5,
+    "posted_at": "2026-08-26T10:02:30.654803+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787738529005",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542111905034928258,
+    "puzzle_id": "random_1787738550654",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542111996193931304,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rf2",
+        "move": "kd3",
         "correct": true,
-        "timestamp": "2026-08-26T10:02:22.319758+00:00"
+        "timestamp": "2026-08-26T10:02:36.499105+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
