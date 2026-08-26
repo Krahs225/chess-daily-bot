@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-11-13",
     "title": "Moving Target",
     "fen": "1R1N4/5pk1/6pp/3qp3/1Q2N1nP/2PP2PK/r7/8 b - - 0 44",
-    "current_fen": "1R1N4/5pk1/6pp/3qp3/1Q2N1KP/2PP2P1/7r/8 b - - 0 45",
+    "current_fen": "1R1N4/6k1/6pp/3qpp2/1Q2N2P/2PP1KP1/7r/8 b - - 1 46",
     "pgn": "[Result \"0-1\"]\r\n[FEN \"1R1N4/5pk1/6pp/3qp3/1Q2N1nP/2PP2PK/r7/8 b - - 0 44\"]\r\n\r\n44... Rh2+ 45. Kxg4 f5+ 46. Kf3 Qxd3# 0-1",
     "all_moves": [
       {
@@ -57,29 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787738896793",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542113447284834335,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
         "move": "f5",
-        "correct": false,
-        "timestamp": "2026-08-26T10:08:20.673108+00:00"
+        "correct": true,
+        "timestamp": "2026-08-26T10:08:24.120271+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rh2",
-        "correct": true,
-        "timestamp": "2026-08-26T10:08:21.544252+00:00"
+        "move": "f5",
+        "correct": false,
+        "timestamp": "2026-08-26T10:08:24.260642+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
