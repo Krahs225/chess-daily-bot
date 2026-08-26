@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-06-29",
     "title": "Breaking The Coordination of Pieces",
     "fen": "r3r3/pp1b2k1/5p1p/P2B1np1/2Pq4/BP3PP1/2Q3KP/R3R3 b - - 0 1",
-    "current_fen": "r3r3/pp1b2k1/5p1p/P2B1np1/2Pq4/BP3PP1/2Q3KP/R3R3 b - - 0 1",
+    "current_fen": "r3r3/pp1b2k1/5p1p/P2B1np1/2P5/BP3PP1/2Q3KP/R7 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3r3/pp1b2k1/5p1p/P2B1np1/2Pq4/BP3PP1/2Q3KP/R3R3 b - - 0 1\"]\r\n\r\n1...Qxa1 2. Rxa1 Ne3+ 3. Kf2 Nxc2\r\n*",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787755751181",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542184140420677662,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "ne3",
-        "correct": false,
-        "timestamp": "2026-08-26T14:49:26.787965+00:00"
+        "move": "qxa1",
+        "correct": true,
+        "timestamp": "2026-08-26T14:49:37.448141+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
