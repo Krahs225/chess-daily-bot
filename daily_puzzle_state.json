@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-09-25",
     "title": "Forcing Moves, Light Counterplay",
     "fen": "6k1/pb3pp1/6p1/8/P3q3/1Q4P1/5P1P/R4K2 b - - 0 1",
-    "current_fen": "6k1/pb3pp1/6p1/8/P7/1Q4P1/4KP1P/R6q b - - 2 2",
+    "current_fen": "6k1/p4pp1/b5p1/8/P7/1Q4P1/3K1P1P/q7 w - - 0 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"6k1/pb3pp1/6p1/8/P3q3/1Q4P1/5P1P/R4K2 b - - 0 1\"]\r\n\r\n1... Qh1+ 2. Ke2 Ba6+ 3. Kd2 Qxa1 *",
     "all_moves": [
       {
@@ -57,23 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787771895804",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1542251855801749585,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qh1",
+        "move": "ba6",
         "correct": true,
-        "timestamp": "2026-08-26T19:18:20.064751+00:00"
+        "timestamp": "2026-08-26T19:18:21.877805+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxa1",
+        "correct": true,
+        "timestamp": "2026-08-26T19:18:27.441619+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
