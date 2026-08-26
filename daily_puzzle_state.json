@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-05-18",
     "title": "Seizing the Moment",
     "fen": "5r2/1P3k2/3p3P/2NPr1p1/2P5/5KR1/6P1/4R3 b - - 0 1",
-    "current_fen": "5r2/1P3k2/3p3P/2NPr1p1/2P5/5KR1/6P1/4R3 b - - 0 1",
+    "current_fen": "5r2/1P6/3p2kP/2NPr1p1/2P3K1/6R1/6P1/4R3 b - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"5r2/1P3k2/3p3P/2NPr1p1/2P5/5KR1/6P1/4R3 b - - 0 1\"]\r\n\r\n1... Kg6+ 2. Kg4 Rf4+ 3. Kh3 Rh4# *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787739729928",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542116942465339394,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "kg6",
+        "correct": true,
+        "timestamp": "2026-08-26T10:22:24.502490+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
