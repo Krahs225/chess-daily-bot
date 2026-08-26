@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-07-03",
     "title": "Catalan Opening Theory",
     "fen": "r1bqkb1r/pp3ppp/4pn2/2p1N3/2pn4/6P1/PP2PPBP/RNBQ1RK1 w kq - 0 1",
-    "current_fen": "r1bqkb1r/pp3ppp/4pn2/2p1N3/2pn4/6P1/PP2PPBP/RNBQ1RK1 w kq - 0 1",
+    "current_fen": "r1bqkb1r/pp3ppp/2n1pn2/2p1N3/2p5/4P1P1/PP3PBP/RNBQ1RK1 w kq - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqkb1r/pp3ppp/4pn2/2p1N3/2pn4/6P1/PP2PPBP/RNBQ1RK1 w kq - 0 1\"]\r\n\r\n1. e3 Nc6 2. Bxc6+ bxc6 3. Qxd8+ Kxd8 4. Nxf7+ Ke8 5. Nxh8\r\n*",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787738454673",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542111593171517461,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxd8",
+        "correct": false,
+        "timestamp": "2026-08-26T10:01:02.880144+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
