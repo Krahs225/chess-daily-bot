@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-01-21",
     "title": "Mate in 3",
     "fen": "5rk1/pQ3ppp/8/4q3/P4p1n/1BpR4/2P3P1/5K2 w - - 0 1",
-    "current_fen": "3Rq1k1/p4rpp/8/8/P4p1n/1Bp5/2P3P1/5K2 w - - 2 3",
+    "current_fen": "4R1k1/p4rpp/8/8/P4p1n/1Bp5/2P3P1/5K2 b - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/pQ3ppp/8/4q3/P4p1n/1BpR4/2P3P1/5K2 w - - 0 1\"]\r\n\r\n1. Qxf7+ Rxf7 2. Rd8+ Qe8 3. Rxe8#\r\n*",
     "all_moves": [
       {
@@ -57,27 +57,27 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787747194195",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1542148249731989505,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rd8",
+        "move": "rxe8",
         "correct": true,
-        "timestamp": "2026-08-26T12:26:38.624202+00:00"
+        "timestamp": "2026-08-26T12:26:40.789632+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qxf7",
+        "move": "re8",
         "correct": false,
-        "timestamp": "2026-08-26T12:26:37.762987+00:00"
+        "timestamp": "2026-08-26T12:26:40.072099+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
