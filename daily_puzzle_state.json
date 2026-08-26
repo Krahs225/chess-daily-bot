@@ -1,120 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-03-23",
-    "title": "Nimzowitsch's Criminal",
-    "fen": "2r5/6N1/3P3K/2rR4/7k/8/6P1/8 w - - 0 1",
-    "current_fen": "8/3P4/7K/3N4/5k2/8/6P1/8 b - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2r5/6N1/3P3K/2rR4/7k/8/6P1/8 w - - 0 1\"]\r\n\r\n1.Rxc5 Rxc5 2.d7 Rd5 3.Nf5+ Kg4 4.Ne3+ Kf4 5.Nxd5+ *",
+    "url": "https://www.chess.com/daily/2009-06-22",
+    "title": "Limited Space",
+    "fen": "2rn1rk1/2p1npb1/1p1qb2p/p2pN1p1/3P4/PPN1P1P1/1B3PBP/2RQR1K1 w - - 0 1",
+    "current_fen": "2rn1rk1/2p1npb1/1p1qb2p/p2pN1p1/3P4/PPN1P1P1/1B3PBP/2RQR1K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2rn1rk1/2p1npb1/1p1qb2p/p2pN1p1/3P4/PPN1P1P1/1B3PBP/2RQR1K1 w - - 0 1\"]\r\n\r\n1. Nb5 Bxe5 2. Nxd6\r\n*",
     "all_moves": [
       {
-        "uci": "d5c5",
-        "san": "Rxc5",
+        "uci": "c3b5",
+        "san": "Nb5",
         "color": "white"
       },
       {
-        "uci": "c8c5",
-        "san": "Rxc5",
+        "uci": "g7e5",
+        "san": "Bxe5",
         "color": "black"
       },
       {
-        "uci": "d6d7",
-        "san": "d7",
-        "color": "white"
-      },
-      {
-        "uci": "c5d5",
-        "san": "Rd5",
-        "color": "black"
-      },
-      {
-        "uci": "g7f5",
-        "san": "Nf5+",
-        "color": "white"
-      },
-      {
-        "uci": "h4g4",
-        "san": "Kg4",
-        "color": "black"
-      },
-      {
-        "uci": "f5e3",
-        "san": "Ne3+",
-        "color": "white"
-      },
-      {
-        "uci": "g4f4",
-        "san": "Kf4",
-        "color": "black"
-      },
-      {
-        "uci": "e3d5",
-        "san": "Nxd5+",
+        "uci": "b5d6",
+        "san": "Nxd6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5c5",
-        "san": "Rxc5",
+        "uci": "c3b5",
+        "san": "Nb5",
         "color": "white"
       },
       {
-        "uci": "d6d7",
-        "san": "d7",
-        "color": "white"
-      },
-      {
-        "uci": "g7f5",
-        "san": "Nf5+",
-        "color": "white"
-      },
-      {
-        "uci": "f5e3",
-        "san": "Ne3+",
-        "color": "white"
-      },
-      {
-        "uci": "e3d5",
-        "san": "Nxd5+",
+        "uci": "b5d6",
+        "san": "Nxd6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T11:12:09.416039+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T11:12:51.131255+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787742729416",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542129522864820318,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nf5",
-        "correct": false,
-        "timestamp": "2026-08-26T11:12:34.061459+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nxd5",
-        "correct": true,
-        "timestamp": "2026-08-26T11:12:40.349597+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787742771131",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
