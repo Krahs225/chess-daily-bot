@@ -1,83 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-08-09",
-    "title": "Van den Hoek - Euwe, 1942",
-    "fen": "3r2k1/pp2qppp/2pb1n2/5PQ1/6P1/8/PB1r1PBP/1R3RK1 b - - 0 1",
-    "current_fen": "3r2k1/pp3ppp/2pb1n2/5P2/6PQ/8/Pq3PBP/5RK1 w - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r2k1/pp2qppp/2pb1n2/5PQ1/6P1/8/PB1r1PBP/1R3RK1 b - - 0 1\"]\r\n\r\n1...Rxb2 2. Rxb2 Qe5 3. Qh4 Qxb2\r\n*",
+    "url": "https://www.chess.com/daily/2010-11-03",
+    "title": "Instructional Pawn Endgame",
+    "fen": "k7/8/PK3p1p/4p1p1/4P3/8/6P1/8 w - - 0 1",
+    "current_fen": "k7/8/PK3p1p/4p1p1/4P3/8/6P1/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k7/8/PK3p1p/4p1p1/4P3/8/6P1/8 w - - 0 1\"]\r\n\r\n1. g4 Kb8 2. a7+ Ka8 3. Ka6 h5 4. gxh5\r\n*",
     "all_moves": [
       {
-        "uci": "d2b2",
-        "san": "Rxb2",
-        "color": "black"
-      },
-      {
-        "uci": "b1b2",
-        "san": "Rxb2",
+        "uci": "g2g4",
+        "san": "g4",
         "color": "white"
       },
       {
-        "uci": "e7e5",
-        "san": "Qe5",
+        "uci": "a8b8",
+        "san": "Kb8",
         "color": "black"
       },
       {
-        "uci": "g5h4",
-        "san": "Qh4",
+        "uci": "a6a7",
+        "san": "a7+",
         "color": "white"
       },
       {
-        "uci": "e5b2",
-        "san": "Qxb2",
+        "uci": "b8a8",
+        "san": "Ka8",
         "color": "black"
+      },
+      {
+        "uci": "b6a6",
+        "san": "Ka6",
+        "color": "white"
+      },
+      {
+        "uci": "h6h5",
+        "san": "h5",
+        "color": "black"
+      },
+      {
+        "uci": "g4h5",
+        "san": "gxh5",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2b2",
-        "san": "Rxb2",
-        "color": "black"
+        "uci": "g2g4",
+        "san": "g4",
+        "color": "white"
       },
       {
-        "uci": "e7e5",
-        "san": "Qe5",
-        "color": "black"
+        "uci": "a6a7",
+        "san": "a7+",
+        "color": "white"
       },
       {
-        "uci": "e5b2",
-        "san": "Qxb2",
-        "color": "black"
+        "uci": "b6a6",
+        "san": "Ka6",
+        "color": "white"
+      },
+      {
+        "uci": "g4h5",
+        "san": "gxh5",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T13:15:30.959624+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T13:15:50.215908+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787750130959",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542160566842425377,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxb2",
-        "correct": true,
-        "timestamp": "2026-08-26T13:15:44.195871+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "h6",
-        "correct": false,
-        "timestamp": "2026-08-26T13:15:41.959860+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787750150215",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
