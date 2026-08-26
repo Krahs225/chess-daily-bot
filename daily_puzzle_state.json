@@ -1,66 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-03-20",
-    "title": "You Can Never Hold Back Spring",
-    "fen": "5rk1/5R2/3NQ2b/1N1n4/q5P1/1p5P/1B4r1/3K4 b - - 0 1",
-    "current_fen": "5rk1/5R2/3NQ2b/1N1n4/q5P1/1p5P/1B4r1/3K4 b - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"5rk1/5R2/3NQ2b/1N1n4/q5P1/1p5P/1B4r1/3K4 b - - 0 1\"]\r\n\r\n1...Nc3+ 2.Ke1 Re2+ 3.Qxe2 Nxe2 *",
+    "title": "2400 • laqe2",
+    "fen": "7r/6kP/6P1/5P1K/8/8/8/8 w - - 1 55",
+    "current_fen": "7r/6kP/6P1/5P1K/8/8/8/8 w - - 1 55",
     "all_moves": [
       {
-        "uci": "d5c3",
-        "san": "Nc3+",
-        "color": "black"
-      },
-      {
-        "uci": "d1e1",
-        "san": "Ke1",
+        "uci": "h5g5",
+        "san": "Kg5",
         "color": "white"
       },
       {
-        "uci": "g2e2",
-        "san": "Re2+",
+        "uci": "h8f8",
+        "san": "Rf8",
         "color": "black"
       },
       {
-        "uci": "e6e2",
-        "san": "Qxe2",
+        "uci": "f5f6",
+        "san": "f6+",
         "color": "white"
       },
       {
-        "uci": "c3e2",
-        "san": "Nxe2",
+        "uci": "g7h8",
+        "san": "Kh8",
         "color": "black"
+      },
+      {
+        "uci": "g6g7",
+        "san": "g7+",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5c3",
-        "san": "Nc3+",
-        "color": "black"
+        "uci": "h5g5",
+        "san": "Kg5",
+        "color": "white"
       },
       {
-        "uci": "g2e2",
-        "san": "Re2+",
-        "color": "black"
+        "uci": "f5f6",
+        "san": "f6+",
+        "color": "white"
       },
       {
-        "uci": "c3e2",
-        "san": "Nxe2",
-        "color": "black"
+        "uci": "g6g7",
+        "san": "g7+",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-26T14:19:25.188626+00:00",
-    "answer_posted": false,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_1787753965188",
+    "pgn": "",
+    "url": "https://lichess.org/training/laqe2",
+    "posted_at": "2026-08-26T14:19:30.032777+00:00",
+    "puzzle_id": "random_lichess_2400_laqe2_1787753970032",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542176648798150688,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
@@ -215,6 +211,9 @@
     ],
     "2000": [
       "AosmO"
+    ],
+    "2400": [
+      "laqe2"
     ]
   }
 }
