@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-01-08",
     "title": "Light Square Infiltration",
     "fen": "5r1k/6p1/1p2p2p/p2qP2P/P2P2p1/3QBb2/5P2/1R3RK1 b - - 0 1",
-    "current_fen": "5r1k/6p1/1p2p2p/p2qP2P/P2P2p1/3QBb2/5P2/1R3RK1 b - - 0 1",
+    "current_fen": "3q1r1k/6p1/1p2p1Qp/p3P2P/P2P2p1/4Bb2/5P2/1R3RK1 b - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"5r1k/6p1/1p2p2p/p2qP2P/P2P2p1/3QBb2/5P2/1R3RK1 b - - 0 1\"]\r\n\r\n1... Qd8 2. Qg6 Qh4 3. Bxh6 Qh1# *",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787738598126",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542112195272515614,
     "attempted_users": {
@@ -70,13 +70,13 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "be4",
-        "correct": false,
-        "timestamp": "2026-08-26T10:03:24.890655+00:00"
+        "move": "qd8",
+        "correct": true,
+        "timestamp": "2026-08-26T10:03:51.310757+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
