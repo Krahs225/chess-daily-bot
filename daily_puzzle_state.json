@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-06-18",
     "title": "Lust to Expand",
     "fen": "2r5/6N1/3P3K/2rR4/7k/8/6P1/8 w - - 0 1",
-    "current_fen": "8/3P4/7K/3r4/8/4N1k1/6P1/8 w - - 5 5",
+    "current_fen": "8/3P4/7K/3N4/8/6k1/6P1/8 b - - 0 5",
     "pgn": "[Result \"*\"]\r\n[FEN \"2r5/6N1/3P3K/2rR4/7k/8/6P1/8 w - - 0 1\"]\r\n\r\n1.Rxc5 Rxc5 2.d7 Rd5 3.Nf5+ Kg4 4.Ne3+ Kg3 5.Nxd5 *",
     "all_moves": [
       {
@@ -87,21 +87,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787783213756",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1542299326355742762,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "ne3",
+        "move": "nxd5",
         "correct": true,
-        "timestamp": "2026-08-26T22:29:09.487411+00:00"
+        "timestamp": "2026-08-26T22:29:12.679394+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
