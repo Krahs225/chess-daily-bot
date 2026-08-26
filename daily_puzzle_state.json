@@ -1,150 +1,87 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-03-07",
-    "title": "Forcing the Opponent's Hand",
-    "fen": "7k/6pP/6P1/4p3/4Pp1p/1p2pPpP/1P2P1K1/2B3NQ w KQkq - 0 1",
-    "current_fen": "1Q5k/6pP/6P1/8/4P2p/1p3P1P/1P4K1/4q1N1 b - - 1 7",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7k/6pP/6P1/4p3/4Pp1p/1p2pPpP/1P2P1K1/2B3NQ w KQkq - 0 1\"]\r\n\r\n1. Bxe3 fxe3 2. f4 exf4 3. Kf3 g2 4. Kxg2 f3+ 5. exf3 e2 6. Qh2 e1=Q 7. Qb8#\r\n*",
+    "url": "https://www.chess.com/daily/2026-07-23",
+    "title": "Polgar's Magnetic Attack",
+    "fen": "6r1/4k3/4prbn/pp1p4/2pP1RPN/P1P1K3/2P1B3/7R w - - 0 30",
+    "current_fen": "6r1/4k3/4prbn/pp1p4/2pP1RPN/P1P1K3/2P1B3/7R w - - 0 30",
+    "pgn": "[Site \"Buenos Aires\"]\n[Date \"1992.??.??\"]\n[White \"Happy Birthday Polgar, Judit\"]\n[Black \"Panno, Oscar\"]\n[Result \"1-0\"]\n[FEN \"6r1/4k3/4prbn/pp1p4/2pP1RPN/P1P1K3/2P1B3/7R w - - 0 30\"]\n\n30. Rxf6 Kxf6 31. g5+ Kxg5 32. Nf3+ Kf6 33. Rxh6 1-0",
     "all_moves": [
       {
-        "uci": "c1e3",
-        "san": "Bxe3",
+        "uci": "f4f6",
+        "san": "Rxf6",
         "color": "white"
       },
       {
-        "uci": "f4e3",
-        "san": "fxe3",
+        "uci": "e7f6",
+        "san": "Kxf6",
         "color": "black"
       },
       {
-        "uci": "f3f4",
-        "san": "f4",
+        "uci": "g4g5",
+        "san": "g5+",
         "color": "white"
       },
       {
-        "uci": "e5f4",
-        "san": "exf4",
+        "uci": "f6g5",
+        "san": "Kxg5",
         "color": "black"
       },
       {
-        "uci": "g2f3",
-        "san": "Kf3",
+        "uci": "h4f3",
+        "san": "Nf3+",
         "color": "white"
       },
       {
-        "uci": "g3g2",
-        "san": "g2",
+        "uci": "g5f6",
+        "san": "Kf6",
         "color": "black"
       },
       {
-        "uci": "f3g2",
-        "san": "Kxg2",
-        "color": "white"
-      },
-      {
-        "uci": "f4f3",
-        "san": "f3+",
-        "color": "black"
-      },
-      {
-        "uci": "e2f3",
-        "san": "exf3",
-        "color": "white"
-      },
-      {
-        "uci": "e3e2",
-        "san": "e2",
-        "color": "black"
-      },
-      {
-        "uci": "h1h2",
-        "san": "Qh2",
-        "color": "white"
-      },
-      {
-        "uci": "e2e1q",
-        "san": "e1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "h2b8",
-        "san": "Qb8#",
+        "uci": "h1h6",
+        "san": "Rxh6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1e3",
-        "san": "Bxe3",
+        "uci": "f4f6",
+        "san": "Rxf6",
         "color": "white"
       },
       {
-        "uci": "f3f4",
-        "san": "f4",
+        "uci": "g4g5",
+        "san": "g5+",
         "color": "white"
       },
       {
-        "uci": "g2f3",
-        "san": "Kf3",
+        "uci": "h4f3",
+        "san": "Nf3+",
         "color": "white"
       },
       {
-        "uci": "f3g2",
-        "san": "Kxg2",
-        "color": "white"
-      },
-      {
-        "uci": "e2f3",
-        "san": "exf3",
-        "color": "white"
-      },
-      {
-        "uci": "h1h2",
-        "san": "Qh2",
-        "color": "white"
-      },
-      {
-        "uci": "h2b8",
-        "san": "Qb8#",
+        "uci": "h1h6",
+        "san": "Rxh6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-08-26T12:26:47.931024+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T12:27:48.273187+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787747207931",
-    "next_solution_index": 13,
-    "next_player_index": 7,
-    "solved": true,
-    "message_id": 1542148306753425421,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qb8",
-        "correct": true,
-        "timestamp": "2026-08-26T12:27:18.883648+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qh2",
-        "correct": true,
-        "timestamp": "2026-08-26T12:27:15.818195+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787747268273",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
