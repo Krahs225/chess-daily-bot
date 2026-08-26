@@ -1,150 +1,147 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-12-07",
-    "title": "The Red Banner of Courage",
-    "fen": "3k4/2b3P1/p3b3/2p2P2/6K1/2Pp3P/p7/8 w - - 0 1",
-    "current_fen": "4N3/2bQ4/p4k2/2p4K/8/2Pp3P/8/6q1 b - - 0 7",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3k4/2b3P1/p3b3/2p2P2/6K1/2Pp3P/p7/8 w - - 0 1\"]\r\n\r\n1. fxe6 a1=Q 2. g8=Q+ Ke7 3. Qf7+ Kd6 4. Qd7+ Ke5 5. e7 Qg1+ 6. Kh5 Kf6 7. e8=N+\r\n*",
+    "url": "https://www.chess.com/daily/2022-01-28",
+    "title": "Shouldering the Burden",
+    "fen": "8/1q6/8/p1k5/P3p3/1PK5/3Q4/8 b - - 0 1",
+    "current_fen": "8/1q6/8/p1k5/P3p3/1PK5/3Q4/8 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/1q6/8/p1k5/P3p3/1PK5/3Q4/8 b - - 0 1\"]\r\n\r\n1...Qb4+ 2.Kc2 Qxd2+ 3.Kxd2 Kd4 4.Ke2 Kc3 5.Ke3 Kxb3 6.Kxe4 Kxa4 7.Kd3 Kb3\r\n8.Kd2 Kb2 *",
     "all_moves": [
       {
-        "uci": "f5e6",
-        "san": "fxe6",
-        "color": "white"
-      },
-      {
-        "uci": "a2a1q",
-        "san": "a1=Q",
+        "uci": "b7b4",
+        "san": "Qb4+",
         "color": "black"
       },
       {
-        "uci": "g7g8q",
-        "san": "g8=Q+",
+        "uci": "c3c2",
+        "san": "Kc2",
         "color": "white"
       },
       {
-        "uci": "d8e7",
-        "san": "Ke7",
+        "uci": "b4d2",
+        "san": "Qxd2+",
         "color": "black"
       },
       {
-        "uci": "g8f7",
-        "san": "Qf7+",
+        "uci": "c2d2",
+        "san": "Kxd2",
         "color": "white"
       },
       {
-        "uci": "e7d6",
-        "san": "Kd6",
+        "uci": "c5d4",
+        "san": "Kd4",
         "color": "black"
       },
       {
-        "uci": "f7d7",
-        "san": "Qd7+",
+        "uci": "d2e2",
+        "san": "Ke2",
         "color": "white"
       },
       {
-        "uci": "d6e5",
-        "san": "Ke5",
+        "uci": "d4c3",
+        "san": "Kc3",
         "color": "black"
       },
       {
-        "uci": "e6e7",
-        "san": "e7",
+        "uci": "e2e3",
+        "san": "Ke3",
         "color": "white"
       },
       {
-        "uci": "a1g1",
-        "san": "Qg1+",
+        "uci": "c3b3",
+        "san": "Kxb3",
         "color": "black"
       },
       {
-        "uci": "g4h5",
-        "san": "Kh5",
+        "uci": "e3e4",
+        "san": "Kxe4",
         "color": "white"
       },
       {
-        "uci": "e5f6",
-        "san": "Kf6",
+        "uci": "b3a4",
+        "san": "Kxa4",
         "color": "black"
       },
       {
-        "uci": "e7e8n",
-        "san": "e8=N+",
+        "uci": "e4d3",
+        "san": "Kd3",
         "color": "white"
+      },
+      {
+        "uci": "a4b3",
+        "san": "Kb3",
+        "color": "black"
+      },
+      {
+        "uci": "d3d2",
+        "san": "Kd2",
+        "color": "white"
+      },
+      {
+        "uci": "b3b2",
+        "san": "Kb2",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5e6",
-        "san": "fxe6",
-        "color": "white"
+        "uci": "b7b4",
+        "san": "Qb4+",
+        "color": "black"
       },
       {
-        "uci": "g7g8q",
-        "san": "g8=Q+",
-        "color": "white"
+        "uci": "b4d2",
+        "san": "Qxd2+",
+        "color": "black"
       },
       {
-        "uci": "g8f7",
-        "san": "Qf7+",
-        "color": "white"
+        "uci": "c5d4",
+        "san": "Kd4",
+        "color": "black"
       },
       {
-        "uci": "f7d7",
-        "san": "Qd7+",
-        "color": "white"
+        "uci": "d4c3",
+        "san": "Kc3",
+        "color": "black"
       },
       {
-        "uci": "e6e7",
-        "san": "e7",
-        "color": "white"
+        "uci": "c3b3",
+        "san": "Kxb3",
+        "color": "black"
       },
       {
-        "uci": "g4h5",
-        "san": "Kh5",
-        "color": "white"
+        "uci": "b3a4",
+        "san": "Kxa4",
+        "color": "black"
       },
       {
-        "uci": "e7e8n",
-        "san": "e8=N+",
-        "color": "white"
+        "uci": "a4b3",
+        "san": "Kb3",
+        "color": "black"
+      },
+      {
+        "uci": "b3b2",
+        "san": "Kb2",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-08-26T12:51:36.844085+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 8,
+    "posted_at": "2026-08-26T12:52:40.975471+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787748696844",
-    "next_solution_index": 13,
-    "next_player_index": 7,
-    "solved": true,
-    "message_id": 1542154552206172170,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "e8=n",
-        "correct": true,
-        "timestamp": "2026-08-26T12:52:27.665455+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qd7",
-        "correct": true,
-        "timestamp": "2026-08-26T12:52:02.345035+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787748760975",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
