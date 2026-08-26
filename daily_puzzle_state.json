@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-01-05",
     "title": "Synchronized Piece Play",
     "fen": "8/1Rr3k1/6p1/3Q1p1p/4n2P/P7/1K4P1/2r5 b - - 0 1",
-    "current_fen": "8/1Rr3k1/6p1/3Q1p1p/4n2P/P7/1K4P1/2r5 b - - 0 1",
+    "current_fen": "8/1Rr3k1/6p1/3Q1p1p/4n2P/P7/6P1/1K6 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1Rr3k1/6p1/3Q1p1p/4n2P/P7/1K4P1/2r5 b - - 0 1\"]\r\n\r\n1...Rb1+ 2. Kxb1 Nc3+ 3. Kc2 Nxd5+ 4. Rxc7+ Nxc7\r\n*",
     "all_moves": [
       {
@@ -72,20 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787782707366",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542297202154545173,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "r7c2",
-        "correct": false,
-        "timestamp": "2026-08-26T22:18:48.020404+00:00"
+        "move": "rb1",
+        "correct": true,
+        "timestamp": "2026-08-26T22:19:00.196831+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
