@@ -1,122 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-08-28",
-    "title": "Lasker - Torre, 1925",
-    "fen": "r3rnk1/pb3pp1/3pp2p/1q4BQ/1P1P4/4N1R1/P4PPP/4R1K1 w - - 0 1",
-    "current_fen": "r3rnk1/p5R1/3ppB1p/7q/1P1P4/4N3/P4PPP/4R1K1 b - - 2 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3rnk1/pb3pp1/3pp2p/1q4BQ/1P1P4/4N1R1/P4PPP/4R1K1 w - - 0 1\"]\r\n\r\n1. Bf6 Qxh5 2. Rxg7+ Kh8 3. Rxf7+ Kg8 4. Rg7+ Kh8 5. Rxb7+ Kg8 6. Rg7+\r\n*",
+    "url": "https://www.chess.com/daily/2009-01-08",
+    "title": "Mate in 3",
+    "fen": "Q7/1P3p2/2k1n3/2N5/3P3b/4P3/1r2b3/7K b - - 0 1",
+    "current_fen": "Q7/1P3p2/2k1n3/2N5/3P3b/4P3/1r2b3/7K b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"Q7/1P3p2/2k1n3/2N5/3P3b/4P3/1r2b3/7K b - - 0 1\"]\r\n\r\n1... Bf3+ 2. Kg1 Rb1+ 3. Kh2 Rh1# *",
     "all_moves": [
       {
-        "uci": "g5f6",
-        "san": "Bf6",
-        "color": "white"
-      },
-      {
-        "uci": "b5h5",
-        "san": "Qxh5",
+        "uci": "e2f3",
+        "san": "Bf3+",
         "color": "black"
       },
       {
-        "uci": "g3g7",
-        "san": "Rxg7+",
+        "uci": "h1g1",
+        "san": "Kg1",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "b2b1",
+        "san": "Rb1+",
         "color": "black"
       },
       {
-        "uci": "g7f7",
-        "san": "Rxf7+",
+        "uci": "g1h2",
+        "san": "Kh2",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "b1h1",
+        "san": "Rh1#",
         "color": "black"
-      },
-      {
-        "uci": "f7g7",
-        "san": "Rg7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "g7b7",
-        "san": "Rxb7+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "b7g7",
-        "san": "Rg7+",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5f6",
-        "san": "Bf6",
-        "color": "white"
+        "uci": "e2f3",
+        "san": "Bf3+",
+        "color": "black"
       },
       {
-        "uci": "g3g7",
-        "san": "Rxg7+",
-        "color": "white"
+        "uci": "b2b1",
+        "san": "Rb1+",
+        "color": "black"
       },
       {
-        "uci": "g7f7",
-        "san": "Rxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7g7",
-        "san": "Rg7+",
-        "color": "white"
-      },
-      {
-        "uci": "g7b7",
-        "san": "Rxb7+",
-        "color": "white"
-      },
-      {
-        "uci": "b7g7",
-        "san": "Rg7+",
-        "color": "white"
+        "uci": "b1h1",
+        "san": "Rh1#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-26T16:36:49.458206+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T16:37:31.468371+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787762209458",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1542211228385157310,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rg7",
-        "correct": true,
-        "timestamp": "2026-08-26T16:37:22.168136+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787762251468",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
