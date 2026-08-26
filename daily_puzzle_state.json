@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-05-03",
     "title": "Go for the King",
     "fen": "7k/bp3Qp1/1q3npp/p3R3/1P1r1P2/P5PP/7K/4R3 w - - 0 1",
-    "current_fen": "7k/bp3Qp1/1q3npp/p3R3/1P1r1P2/P5PP/7K/4R3 w - - 0 1",
+    "current_fen": "4R3/bp3Qpk/1q3npp/p7/1P1r1P2/P5PP/7K/4R3 w - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"7k/bp3Qp1/1q3npp/p3R3/1P1r1P2/P5PP/7K/4R3 w - - 0 1\"]\r\n\r\n1. Re8+ Kh7 2. Qxg7+ Kxg7 3. R1e7# *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787744927887",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542138745116041386,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rxe8",
+        "correct": false,
+        "timestamp": "2026-08-26T11:48:51.793259+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
