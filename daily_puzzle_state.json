@@ -1,62 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-06-28",
-    "title": "W.Schmidt - H.Liebert, Polanica Zdroj, 1967",
-    "fen": "8/8/p3p3/3b1pR1/1B3P1k/8/4r1PK/8 w - - 0 1",
-    "current_fen": "8/8/p3p3/3b1pR1/5P1k/8/5BPK/8 b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/p3p3/3b1pR1/1B3P1k/8/4r1PK/8 w - - 0 1\"]\r\n\r\n1. Be1+ Rf2 2. Bxf2#\r\n*",
+    "url": "https://www.chess.com/daily/2007-10-28",
+    "title": "Queen Invasion",
+    "fen": "3qrk2/3b1p2/1N1p2np/p2P3p/1p1QPP2/6R1/6BP/6K1 w - - 0 1",
+    "current_fen": "3qrk2/3b1p2/1N1p2np/p2P3p/1p1QPP2/6R1/6BP/6K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3qrk2/3b1p2/1N1p2np/p2P3p/1p1QPP2/6R1/6BP/6K1 w - - 0 1\"]\r\n\r\n1. Rxg6 fxg6 2. Qh8+ Kf7 3. Qh7+ Kf8 4. Nxd7+\r\n*",
     "all_moves": [
       {
-        "uci": "b4e1",
-        "san": "Be1+",
+        "uci": "g3g6",
+        "san": "Rxg6",
         "color": "white"
       },
       {
-        "uci": "e2f2",
-        "san": "Rf2",
+        "uci": "f7g6",
+        "san": "fxg6",
         "color": "black"
       },
       {
-        "uci": "e1f2",
-        "san": "Bxf2#",
+        "uci": "d4h8",
+        "san": "Qh8+",
+        "color": "white"
+      },
+      {
+        "uci": "f8f7",
+        "san": "Kf7",
+        "color": "black"
+      },
+      {
+        "uci": "h8h7",
+        "san": "Qh7+",
+        "color": "white"
+      },
+      {
+        "uci": "f7f8",
+        "san": "Kf8",
+        "color": "black"
+      },
+      {
+        "uci": "b6d7",
+        "san": "Nxd7+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b4e1",
-        "san": "Be1+",
+        "uci": "g3g6",
+        "san": "Rxg6",
         "color": "white"
       },
       {
-        "uci": "e1f2",
-        "san": "Bxf2#",
+        "uci": "d4h8",
+        "san": "Qh8+",
+        "color": "white"
+      },
+      {
+        "uci": "h8h7",
+        "san": "Qh7+",
+        "color": "white"
+      },
+      {
+        "uci": "b6d7",
+        "san": "Nxd7+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-26T22:53:09.017203+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T22:53:23.418499+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787784789017",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542305935681388544,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bxf2",
-        "correct": true,
-        "timestamp": "2026-08-26T22:53:17.267615+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787784803418",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
