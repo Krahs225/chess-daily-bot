@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-05-03",
     "title": "Go for the King",
     "fen": "7k/bp3Qp1/1q3npp/p3R3/1P1r1P2/P5PP/7K/4R3 w - - 0 1",
-    "current_fen": "4R3/bp4k1/1q3npp/p7/1P1r1P2/P5PP/7K/4R3 w - - 0 3",
+    "current_fen": "4R3/bp2R1k1/1q3npp/p7/1P1r1P2/P5PP/7K/8 b - - 1 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"7k/bp3Qp1/1q3npp/p3R3/1P1r1P2/P5PP/7K/4R3 w - - 0 1\"]\r\n\r\n1. Re8+ Kh7 2. Qxg7+ Kxg7 3. R1e7# *",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787744927887",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1542138745116041386,
     "attempted_users": {
       "442597396195704832": {
@@ -70,15 +70,17 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qxg7",
+        "move": "R1e7",
         "correct": true,
-        "timestamp": "2026-08-26T11:52:03.538991+00:00"
+        "timestamp": "2026-08-26T11:52:07.371460+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
