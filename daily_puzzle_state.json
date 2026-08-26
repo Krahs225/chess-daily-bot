@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-05-17",
     "title": "No Fear",
     "fen": "1r4k1/5R2/p2q2pQ/4p3/1rpbB3/6P1/Rn5P/2B4K b - - 0 1",
-    "current_fen": "1r4k1/5R2/p2q2pQ/4p3/1rpbB3/6P1/Rn5P/2B4K b - - 0 1",
+    "current_fen": "1r6/5k1Q/p2q2p1/4p3/1rpbB3/6P1/Rn5P/2B4K b - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r4k1/5R2/p2q2pQ/4p3/1rpbB3/6P1/Rn5P/2B4K b - - 0 1\"]\r\n\r\n1...Kxf7 2. Qh7+ Ke6 3. Qxg6+ Kd7 4. Qf7+ Qe7\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787774720509",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542263708573499502,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "kxf7",
+        "correct": true,
+        "timestamp": "2026-08-26T20:05:36.463250+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
