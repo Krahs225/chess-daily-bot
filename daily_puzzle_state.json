@@ -1,107 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-05-30",
-    "title": "Back Rank Tricks",
-    "fen": "2r1r1k1/1p1q1ppp/3p1b2/p2P4/3Q4/5N2/PP2RPPP/4R1K1 w - - 0 18",
-    "current_fen": "2r1r1k1/1pQ2ppp/3p1b2/p2P4/q3R3/5N2/1P3PPP/4R1K1 b - - 1 22",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1r1k1/1p1q1ppp/3p1b2/p2P4/3Q4/5N2/PP2RPPP/4R1K1 w - - 0 18\"]\r\n\r\n18. Qg4 Qb5 19. Qc4 Qd7 20. Qc7 Qb5 21. a4 Qxa4 22. Re4\r\n*",
+    "url": "https://www.chess.com/daily/2024-06-19",
+    "title": "Attracting Attention",
+    "fen": "rnbq1rk1/p4ppp/1bp2n2/8/N1B1pP2/P6P/1PPP2P1/R1BQK1NR b KQ - 0 1",
+    "current_fen": "rnbq1rk1/p4ppp/1bp2n2/8/N1B1pP2/P6P/1PPP2P1/R1BQK1NR b KQ - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"rnbq1rk1/p4ppp/1bp2n2/8/N1B1pP2/P6P/1PPP2P1/R1BQK1NR b KQ - 0 1\"]\r\n\r\n1... Bxg1 2. Rxg1 Qd4 3. Rf1 Qxc4 *",
     "all_moves": [
       {
-        "uci": "d4g4",
-        "san": "Qg4",
-        "color": "white"
-      },
-      {
-        "uci": "d7b5",
-        "san": "Qb5",
+        "uci": "b6g1",
+        "san": "Bxg1",
         "color": "black"
       },
       {
-        "uci": "g4c4",
-        "san": "Qc4",
+        "uci": "h1g1",
+        "san": "Rxg1",
         "color": "white"
       },
       {
-        "uci": "b5d7",
-        "san": "Qd7",
+        "uci": "d8d4",
+        "san": "Qd4",
         "color": "black"
       },
       {
-        "uci": "c4c7",
-        "san": "Qc7",
+        "uci": "g1f1",
+        "san": "Rf1",
         "color": "white"
       },
       {
-        "uci": "d7b5",
-        "san": "Qb5",
+        "uci": "d4c4",
+        "san": "Qxc4",
         "color": "black"
-      },
-      {
-        "uci": "a2a4",
-        "san": "a4",
-        "color": "white"
-      },
-      {
-        "uci": "b5a4",
-        "san": "Qxa4",
-        "color": "black"
-      },
-      {
-        "uci": "e2e4",
-        "san": "Re4",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4g4",
-        "san": "Qg4",
-        "color": "white"
+        "uci": "b6g1",
+        "san": "Bxg1",
+        "color": "black"
       },
       {
-        "uci": "g4c4",
-        "san": "Qc4",
-        "color": "white"
+        "uci": "d8d4",
+        "san": "Qd4",
+        "color": "black"
       },
       {
-        "uci": "c4c7",
-        "san": "Qc7",
-        "color": "white"
-      },
-      {
-        "uci": "a2a4",
-        "san": "a4",
-        "color": "white"
-      },
-      {
-        "uci": "e2e4",
-        "san": "Re4",
-        "color": "white"
+        "uci": "d4c4",
+        "san": "Qxc4",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T18:38:37.900852+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T18:42:20.699238+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787769517900",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542241881583255605,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "re4",
-        "correct": true,
-        "timestamp": "2026-08-26T18:42:11.107234+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787769740699",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
