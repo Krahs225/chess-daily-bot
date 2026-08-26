@@ -1,47 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-02-20",
-    "title": "Mate in 1",
-    "fen": "1B4BQ/2PR1NP1/3R3N/8/7p/7k/3PP2p/7K w - - 0 1",
-    "current_fen": "1B4BQ/2PR1NP1/7N/8/7p/3R3k/3PP2p/7K b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1B4BQ/2PR1NP1/3R3N/8/7p/7k/3PP2p/7K w - - 0 1\"]\r\n\r\n1. Rd3#\r\n*",
+    "url": "https://www.chess.com/daily/2022-05-25",
+    "title": "Janowski's Jackpot",
+    "fen": "k7/1b6/p3R3/Bp6/4P3/6r1/P3K1P1/8 w - - 0 38",
+    "current_fen": "k7/1b6/p3R3/Bp6/4P3/6r1/P3K1P1/8 w - - 0 38",
+    "pgn": "[Event \"It\"]\r\n[Site \"Paris (France)\"]\r\n[Date \"1900.??.??\"]\r\n[Round \"?\"]\r\n[White \"Janowski Dawid M (POL)\"]\r\n[Black \"Sterling Francisco\"]\r\n[Result \"1-0\"]\r\n[ECO \"B45\"]\r\n[FEN \"k7/1b6/p3R3/Bp6/4P3/6r1/P3K1P1/8 w - - 0 38\"]\r\n\r\n38.Re8+ Ka7 39.Be1 Rxg2+ 40.Bf2+ Rxf2+ 41.Kxf2 1-0",
     "all_moves": [
       {
-        "uci": "d6d3",
-        "san": "Rd3#",
+        "uci": "e6e8",
+        "san": "Re8+",
+        "color": "white"
+      },
+      {
+        "uci": "a8a7",
+        "san": "Ka7",
+        "color": "black"
+      },
+      {
+        "uci": "a5e1",
+        "san": "Be1",
+        "color": "white"
+      },
+      {
+        "uci": "g3g2",
+        "san": "Rxg2+",
+        "color": "black"
+      },
+      {
+        "uci": "e1f2",
+        "san": "Bf2+",
+        "color": "white"
+      },
+      {
+        "uci": "g2f2",
+        "san": "Rxf2+",
+        "color": "black"
+      },
+      {
+        "uci": "e2f2",
+        "san": "Kxf2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6d3",
-        "san": "Rd3#",
+        "uci": "e6e8",
+        "san": "Re8+",
+        "color": "white"
+      },
+      {
+        "uci": "a5e1",
+        "san": "Be1",
+        "color": "white"
+      },
+      {
+        "uci": "e1f2",
+        "san": "Bf2+",
+        "color": "white"
+      },
+      {
+        "uci": "e2f2",
+        "san": "Kxf2",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-26T07:39:31.161360+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T07:39:50.226602+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787729971161",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1542076011489927219,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rd3",
-        "correct": true,
-        "timestamp": "2026-08-26T07:39:43.447800+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787729990226",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
