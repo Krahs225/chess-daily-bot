@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-07-21",
-    "title": "Seeking a Positional Advantage",
-    "fen": "1r6/5pk1/3p1qp1/2n1p2p/b1P1P3/Rp2Q1PP/1P1NBP2/5K2 w - - 0 1",
-    "current_fen": "1r6/5pk1/3p1qp1/4p2p/Q1P1P3/1p4PP/1P1NBP2/5K2 b - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"1r6/5pk1/3p1qp1/2n1p2p/b1P1P3/Rp2Q1PP/1P1NBP2/5K2 w - - 0 1\"]\r\n\r\n1.Rxa4 Nxa4 2.Qa7 Rb4 3.Qa5 Rb8 4.Qxa4 *",
+    "url": "https://www.chess.com/daily/2022-12-17",
+    "title": "Refuting Creative Counterplay",
+    "fen": "r5k1/2p1qpp1/p1b1p2p/1rnpP3/8/BPQ2NP1/P1P2P2/2KR3R w - - 0 1",
+    "current_fen": "r5k1/2p1qpp1/p1b1p2p/1rnpP3/8/BPQ2NP1/P1P2P2/2KR3R w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r5k1/2p1qpp1/p1b1p2p/1rnpP3/8/BPQ2NP1/P1P2P2/2KR3R w - - 0 1\"]\r\n\r\n1. Nd4 Nxb3+ 2. Qxb3 Rxb3 3. Bxe7 *",
     "all_moves": [
       {
-        "uci": "a3a4",
-        "san": "Rxa4",
+        "uci": "f3d4",
+        "san": "Nd4",
         "color": "white"
       },
       {
-        "uci": "c5a4",
-        "san": "Nxa4",
+        "uci": "c5b3",
+        "san": "Nxb3+",
         "color": "black"
       },
       {
-        "uci": "e3a7",
-        "san": "Qa7",
+        "uci": "c3b3",
+        "san": "Qxb3",
         "color": "white"
       },
       {
-        "uci": "b8b4",
-        "san": "Rb4",
+        "uci": "b5b3",
+        "san": "Rxb3",
         "color": "black"
       },
       {
-        "uci": "a7a5",
-        "san": "Qa5",
-        "color": "white"
-      },
-      {
-        "uci": "b4b8",
-        "san": "Rb8",
-        "color": "black"
-      },
-      {
-        "uci": "a5a4",
-        "san": "Qxa4",
+        "uci": "a3e7",
+        "san": "Bxe7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a3a4",
-        "san": "Rxa4",
+        "uci": "f3d4",
+        "san": "Nd4",
         "color": "white"
       },
       {
-        "uci": "e3a7",
-        "san": "Qa7",
+        "uci": "c3b3",
+        "san": "Qxb3",
         "color": "white"
       },
       {
-        "uci": "a7a5",
-        "san": "Qa5",
-        "color": "white"
-      },
-      {
-        "uci": "a5a4",
-        "san": "Qxa4",
+        "uci": "a3e7",
+        "san": "Bxe7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T14:18:42.768873+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T14:19:09.052370+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787753922768",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542176470808666173,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxa4",
-        "correct": true,
-        "timestamp": "2026-08-26T14:18:57.183290+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787753949052",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
