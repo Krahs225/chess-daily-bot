@@ -1,107 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-10-26",
-    "title": "What's Better Than Winning A Queen?",
-    "fen": "4Q3/pb1p2k1/1pnP3p/2pB1q1P/2P5/6P1/P5NK/8 w - - 0 1",
-    "current_fen": "8/pb1p1qQ1/1pnP3p/2p4k/2P3P1/8/P5NK/8 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4Q3/pb1p2k1/1pnP3p/2pB1q1P/2P5/6P1/P5NK/8 w - - 0 1\"]\r\n\r\n1. Qg8+ Kf6 2. Qh8+ Kg5 3. Qg7+ Kxh5 4. Bf7+ Qxf7 5. g4#\r\n*",
+    "url": "https://www.chess.com/daily/2022-06-16",
+    "title": "Aronian's Fingerprints",
+    "fen": "2r3k1/pp3p1p/1n2b3/4P3/3KPp2/1N1B4/PP4PP/7R b - - 0 1",
+    "current_fen": "2r3k1/pp3p1p/1n2b3/4P3/3KPp2/1N1B4/PP4PP/7R b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2r3k1/pp3p1p/1n2b3/4P3/3KPp2/1N1B4/PP4PP/7R b - - 0 1\"]\r\n\r\n1...Na4 2.Bb5 Rd8+ 3.Bd7 Rxd7# *",
     "all_moves": [
       {
-        "uci": "e8g8",
-        "san": "Qg8+",
-        "color": "white"
-      },
-      {
-        "uci": "g7f6",
-        "san": "Kf6",
+        "uci": "b6a4",
+        "san": "Na4",
         "color": "black"
       },
       {
-        "uci": "g8h8",
-        "san": "Qh8+",
+        "uci": "d3b5",
+        "san": "Bb5",
         "color": "white"
       },
       {
-        "uci": "f6g5",
-        "san": "Kg5",
+        "uci": "c8d8",
+        "san": "Rd8+",
         "color": "black"
       },
       {
-        "uci": "h8g7",
-        "san": "Qg7+",
+        "uci": "b5d7",
+        "san": "Bd7",
         "color": "white"
       },
       {
-        "uci": "g5h5",
-        "san": "Kxh5",
+        "uci": "d8d7",
+        "san": "Rxd7#",
         "color": "black"
-      },
-      {
-        "uci": "d5f7",
-        "san": "Bf7+",
-        "color": "white"
-      },
-      {
-        "uci": "f5f7",
-        "san": "Qxf7",
-        "color": "black"
-      },
-      {
-        "uci": "g3g4",
-        "san": "g4#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e8g8",
-        "san": "Qg8+",
-        "color": "white"
+        "uci": "b6a4",
+        "san": "Na4",
+        "color": "black"
       },
       {
-        "uci": "g8h8",
-        "san": "Qh8+",
-        "color": "white"
+        "uci": "c8d8",
+        "san": "Rd8+",
+        "color": "black"
       },
       {
-        "uci": "h8g7",
-        "san": "Qg7+",
-        "color": "white"
-      },
-      {
-        "uci": "d5f7",
-        "san": "Bf7+",
-        "color": "white"
-      },
-      {
-        "uci": "g3g4",
-        "san": "g4#",
-        "color": "white"
+        "uci": "d8d7",
+        "san": "Rxd7#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T09:34:09.630502+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T09:34:43.573110+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787736849630",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542104860911075359,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "g4",
-        "correct": true,
-        "timestamp": "2026-08-26T09:34:37.484177+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787736883573",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
