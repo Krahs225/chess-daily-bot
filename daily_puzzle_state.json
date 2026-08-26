@@ -1,90 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-02-21",
-    "title": "Ignoring The Threats",
-    "fen": "R7/6bk/4B2p/8/6N1/2P1nP1p/KP4r1/8 w - - 0 1",
-    "current_fen": "R7/6bk/7p/5B2/8/2P2P2/KP4N1/7q b - - 1 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"R7/6bk/4B2p/8/6N1/2P1nP1p/KP4r1/8 w - - 0 1\"]\r\n\r\n1. Nxe3 h2 2. Nxg2 h1=Q 3. Bf5#\r\n*",
+    "url": "https://www.chess.com/daily/2018-03-04",
+    "title": "L. Kubbel, 1933",
+    "fen": "kr6/1n6/8/3Q4/8/8/p2K4/6Q1 w - - 0 1",
+    "current_fen": "kr6/1n6/8/3Q4/8/8/p2K4/6Q1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"kr6/1n6/8/3Q4/8/8/p2K4/6Q1 w - - 0 1\"]\r\n\r\n1. Qg7 Ka7 2. Qa5#\r\n*",
     "all_moves": [
       {
-        "uci": "g4e3",
-        "san": "Nxe3",
+        "uci": "g1g7",
+        "san": "Qg7",
         "color": "white"
       },
       {
-        "uci": "h3h2",
-        "san": "h2",
+        "uci": "a8a7",
+        "san": "Ka7",
         "color": "black"
       },
       {
-        "uci": "e3g2",
-        "san": "Nxg2",
-        "color": "white"
-      },
-      {
-        "uci": "h2h1q",
-        "san": "h1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "e6f5",
-        "san": "Bf5#",
+        "uci": "d5a5",
+        "san": "Qa5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g4e3",
-        "san": "Nxe3",
+        "uci": "g1g7",
+        "san": "Qg7",
         "color": "white"
       },
       {
-        "uci": "e3g2",
-        "san": "Nxg2",
-        "color": "white"
-      },
-      {
-        "uci": "e6f5",
-        "san": "Bf5#",
+        "uci": "d5a5",
+        "san": "Qa5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T17:53:02.037283+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T17:54:48.640562+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787766782037",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542230406554714143,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nxg2",
-        "correct": true,
-        "timestamp": "2026-08-26T17:53:57.668252+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bf5",
-        "correct": true,
-        "timestamp": "2026-08-26T17:54:00.958489+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787766888640",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
