@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-08-13",
-    "title": "Retreat to Win!",
-    "fen": "1n3rnr/p6p/2pN2p1/k1P5/1p2P3/3R1PBB/PP5P/2K5 w - - 0 1",
-    "current_fen": "1n3rnr/p6p/k1pN2p1/2P5/4P3/p4P2/PP5P/2K1BB2 b - - 3 3",
-    "pgn": "[FEN \"1n3rnr/p6p/2pN2p1/k1P5/1p2P3/3R1PBB/PP5P/2K5 w - - 0 1\"]\r\n[PlyCount \"5\"]\r\n\r\n1. Ra3+ bxa3 2. Be1+ Ka6 (2... Ka4 3. b3#) 3. Bf1# *",
+    "url": "https://www.chess.com/daily/2022-05-24",
+    "title": "Chessbrah Birthday Bash",
+    "fen": "5bk1/5p2/p1r3p1/Qp2P2p/1P5P/6P1/P2BqPK1/2R5 b - - 4 33",
+    "current_fen": "5bk1/5p2/p1r3p1/Qp2P2p/1P5P/6P1/P2BqPK1/2R5 b - - 4 33",
+    "pgn": "[Event \"Canadian op\"]\r\n[Site \"Edmonton\"]\r\n[Date \"2009.07.15\"]\r\n[Round \"5\"]\r\n[White \"Sundar, Avinash\"]\r\n[Black \"Hansen, Eric\"]\r\n[Result \"0-1\"]\r\n[WhiteElo \"2093\"]\r\n[BlackElo \"2423\"]\r\n[ECO \"D79\"]\r\n[Plycount \"72\"]\r\n[FEN \"5bk1/5p2/p1r3p1/Qp2P2p/1P5P/6P1/P2BqPK1/2R5 b - - 4 33\"]\r\n\r\n33...Qxd2 34.Rxc6 Qd5+ 35.Kh2 Qxc6 0-1",
     "all_moves": [
       {
-        "uci": "d3a3",
-        "san": "Ra3+",
-        "color": "white"
-      },
-      {
-        "uci": "b4a3",
-        "san": "bxa3",
+        "uci": "e2d2",
+        "san": "Qxd2",
         "color": "black"
       },
       {
-        "uci": "g3e1",
-        "san": "Be1+",
+        "uci": "c1c6",
+        "san": "Rxc6",
         "color": "white"
       },
       {
-        "uci": "a5a6",
-        "san": "Ka6",
+        "uci": "d2d5",
+        "san": "Qd5+",
         "color": "black"
       },
       {
-        "uci": "h3f1",
-        "san": "Bf1#",
+        "uci": "g2h2",
+        "san": "Kh2",
         "color": "white"
+      },
+      {
+        "uci": "d5c6",
+        "san": "Qxc6",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3a3",
-        "san": "Ra3+",
-        "color": "white"
+        "uci": "e2d2",
+        "san": "Qxd2",
+        "color": "black"
       },
       {
-        "uci": "g3e1",
-        "san": "Be1+",
-        "color": "white"
+        "uci": "d2d5",
+        "san": "Qd5+",
+        "color": "black"
       },
       {
-        "uci": "h3f1",
-        "san": "Bf1#",
-        "color": "white"
+        "uci": "d5c6",
+        "san": "Qxc6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-26T11:06:50.686003+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T11:07:35.143842+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787742410686",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542128186526277644,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bf1",
-        "correct": true,
-        "timestamp": "2026-08-26T11:07:07.578956+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787742455143",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
