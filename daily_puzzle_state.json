@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-01-13",
     "title": "Polar 1994",
     "fen": "2b1n1N1/B4r2/4p3/2N1k2p/1pP4p/1K3P2/3pP3/1Bq3Q1 w - - 0 1",
-    "current_fen": "2b1n1N1/B4r2/4p3/2N4p/1pPk3p/1K3P2/3pP3/1Bq5 w - - 0 2",
+    "current_fen": "2b1n1N1/B2N1r2/4p3/7p/1pPk3p/1K3P2/3pP3/1Bq5 b - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2b1n1N1/B4r2/4p3/2N1k2p/1pP4p/1K3P2/3pP3/1Bq3Q1 w - - 0 1\"]\r\n\r\n1. Qd4+ Kxd4 2. Nd7#\r\n*",
     "all_moves": [
       {
@@ -42,16 +42,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787747071510",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1542147734541312112,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nd3",
-        "correct": false,
-        "timestamp": "2026-08-26T12:24:57.845052+00:00"
+        "move": "nd7",
+        "correct": true,
+        "timestamp": "2026-08-26T12:25:02.081517+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -62,7 +62,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
