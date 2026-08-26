@@ -1,77 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-03-18",
-    "title": "For The Good of The Kingdom",
-    "fen": "5b1k/1r3p1p/3p4/2pq3N/8/p4P2/P5QP/4R1K1 w - - 0 1",
-    "current_fen": "5R1k/1r3p1p/3p4/2pq3N/8/p4P2/P6P/6K1 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5b1k/1r3p1p/3p4/2pq3N/8/p4P2/P5QP/4R1K1 w - - 0 1\"]\r\n\r\n1. Qg7+ Bxg7 2. Re8+ Bf8 3. Rxf8#\r\n*",
+    "url": "https://www.chess.com/daily/2009-12-21",
+    "title": "Creating and Maintaining Threats",
+    "fen": "6k1/2p2ppp/1n1p4/3r4/3Q4/1q2B2P/1P3PP1/R5K1 w - - 0 1",
+    "current_fen": "6k1/2p2ppp/1n1p4/3r4/3Q4/1q2B2P/1P3PP1/R5K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/2p2ppp/1n1p4/3r4/3Q4/1q2B2P/1P3PP1/R5K1 w - - 0 1\"]\r\n\r\n1. Qxb6 Rd1+ 2. Kh2\r\n*",
     "all_moves": [
       {
-        "uci": "g2g7",
-        "san": "Qg7+",
+        "uci": "d4b6",
+        "san": "Qxb6",
         "color": "white"
       },
       {
-        "uci": "f8g7",
-        "san": "Bxg7",
+        "uci": "d5d1",
+        "san": "Rd1+",
         "color": "black"
       },
       {
-        "uci": "e1e8",
-        "san": "Re8+",
-        "color": "white"
-      },
-      {
-        "uci": "g7f8",
-        "san": "Bf8",
-        "color": "black"
-      },
-      {
-        "uci": "e8f8",
-        "san": "Rxf8#",
+        "uci": "g1h2",
+        "san": "Kh2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g2g7",
-        "san": "Qg7+",
+        "uci": "d4b6",
+        "san": "Qxb6",
         "color": "white"
       },
       {
-        "uci": "e1e8",
-        "san": "Re8+",
-        "color": "white"
-      },
-      {
-        "uci": "e8f8",
-        "san": "Rxf8#",
+        "uci": "g1h2",
+        "san": "Kh2",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T22:46:34.904677+00:00",
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T22:47:01.130314+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787784394904",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542304280847851527,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxf8",
-        "correct": true,
-        "timestamp": "2026-08-26T22:46:57.169548+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787784421130",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
