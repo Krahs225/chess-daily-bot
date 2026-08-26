@@ -1,92 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-04-30",
-    "title": "Tricky First Move Sequence",
-    "fen": "7r/3rkp2/1R6/p3Pp1p/2pP1q2/P1P4P/n1P3Q1/1R5K w - - 0 1",
-    "current_fen": "1Q6/2kr4/4p3/p3Pp1p/2pP1q2/P1P4P/n1P5/1R5K b - - 2 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7r/3rkp2/1R6/p3Pp1p/2pP1q2/P1P4P/n1P3Q1/1R5K w - - 0 1\"]\r\n\r\n1. Re6+ fxe6 2. Qg7+ Kd8 3. Qxh8+ Kc7 4. Qb8+\r\n*",
+    "url": "https://www.chess.com/daily/2022-08-01",
+    "title": "Eclipsing the Opponent's Attack",
+    "fen": "5rk1/5p2/p6p/P3P1p1/4Nn2/3Q1P1q/5P2/4R1K1 w - - 0 1",
+    "current_fen": "5rk1/5p2/p6p/P3P1p1/4Nn2/3Q1P1q/5P2/4R1K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"5rk1/5p2/p6p/P3P1p1/4Nn2/3Q1P1q/5P2/4R1K1 w - - 0 1\"]\r\n\r\n1. Nf6+ Kg7 2. Qh7# *",
     "all_moves": [
       {
-        "uci": "b6e6",
-        "san": "Re6+",
+        "uci": "e4f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "f7e6",
-        "san": "fxe6",
+        "uci": "g8g7",
+        "san": "Kg7",
         "color": "black"
       },
       {
-        "uci": "g2g7",
-        "san": "Qg7+",
-        "color": "white"
-      },
-      {
-        "uci": "e7d8",
-        "san": "Kd8",
-        "color": "black"
-      },
-      {
-        "uci": "g7h8",
-        "san": "Qxh8+",
-        "color": "white"
-      },
-      {
-        "uci": "d8c7",
-        "san": "Kc7",
-        "color": "black"
-      },
-      {
-        "uci": "h8b8",
-        "san": "Qb8+",
+        "uci": "d3h7",
+        "san": "Qh7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b6e6",
-        "san": "Re6+",
+        "uci": "e4f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "g2g7",
-        "san": "Qg7+",
-        "color": "white"
-      },
-      {
-        "uci": "g7h8",
-        "san": "Qxh8+",
-        "color": "white"
-      },
-      {
-        "uci": "h8b8",
-        "san": "Qb8+",
+        "uci": "d3h7",
+        "san": "Qh7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T15:27:06.423750+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T15:28:37.308139+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787758026423",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542193682898485281,
-    "attempted_users": {
-      "1403636751695740971": {
-        "name": "WetisJas",
-        "move": "Qb8#",
-        "correct": true,
-        "timestamp": "2026-08-26T15:28:29.922525+00:00"
-      }
-    },
-    "first_move_user_id": "1403636751695740971",
-    "first_move_user_name": "WetisJas",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787758117308",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
