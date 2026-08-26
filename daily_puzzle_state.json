@@ -1,92 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-07-26",
-    "title": "Benefiting From Passed Pawns and Open Kings",
-    "fen": "1k2r3/ppr5/2p1P2p/2Rn2p1/PP1P1p2/5Q1P/3B2Pq/2R2K2 w - - 0 1",
-    "current_fen": "4r3/ppk5/4P2p/3Q2p1/PP1P1p2/7P/3B1KP1/7q b - - 2 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1k2r3/ppr5/2p1P2p/2Rn2p1/PP1P1p2/5Q1P/3B2Pq/2R2K2 w - - 0 1\"]\r\n\r\n1. Rxd5 cxd5 2. Rxc7 Kxc7 3. Qxd5 Qh1+ 4. Kf2\r\n*",
+    "url": "https://www.chess.com/daily/2019-02-03",
+    "title": "The Art of Taking Squares Away",
+    "fen": "8/7Q/pp3pq1/3p1k1p/3P1P1P/4P1P1/7K/8 w - - 0 1",
+    "current_fen": "8/7Q/pp3pq1/3p1k1p/3P1P1P/4P1P1/7K/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/7Q/pp3pq1/3p1k1p/3P1P1P/4P1P1/7K/8 w - - 0 1\"]\r\n\r\n1. e4+ dxe4 2. Qd7#\r\n*",
     "all_moves": [
       {
-        "uci": "c5d5",
-        "san": "Rxd5",
+        "uci": "e3e4",
+        "san": "e4+",
         "color": "white"
       },
       {
-        "uci": "c6d5",
-        "san": "cxd5",
+        "uci": "d5e4",
+        "san": "dxe4",
         "color": "black"
       },
       {
-        "uci": "c1c7",
-        "san": "Rxc7",
-        "color": "white"
-      },
-      {
-        "uci": "b8c7",
-        "san": "Kxc7",
-        "color": "black"
-      },
-      {
-        "uci": "f3d5",
-        "san": "Qxd5",
-        "color": "white"
-      },
-      {
-        "uci": "h2h1",
-        "san": "Qh1+",
-        "color": "black"
-      },
-      {
-        "uci": "f1f2",
-        "san": "Kf2",
+        "uci": "h7d7",
+        "san": "Qd7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5d5",
-        "san": "Rxd5",
+        "uci": "e3e4",
+        "san": "e4+",
         "color": "white"
       },
       {
-        "uci": "c1c7",
-        "san": "Rxc7",
-        "color": "white"
-      },
-      {
-        "uci": "f3d5",
-        "san": "Qxd5",
-        "color": "white"
-      },
-      {
-        "uci": "f1f2",
-        "san": "Kf2",
+        "uci": "h7d7",
+        "san": "Qd7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T07:37:48.755925+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T07:39:06.432356+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787729868755",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542075582505033778,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "kf2",
-        "correct": true,
-        "timestamp": "2026-08-26T07:38:59.551001+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787729946432",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
