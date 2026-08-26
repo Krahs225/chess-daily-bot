@@ -1,34 +1,34 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-01-07",
-    "title": "Ercole's Journey",
-    "fen": "2r2r1k/6pp/2NN4/5p2/2Q2nq1/8/6PP/2R4K w - - 0 1",
-    "current_fen": "5R1k/4N1pp/8/5p2/5nq1/8/6PP/7K b - - 0 5",
-    "pgn": "[White \"Del Rio\"]\r\n[Black \"Composition\"]\r\n[Result \"*\"]\r\n[FEN \"2r2r1k/6pp/2NN4/5p2/2Q2nq1/8/6PP/2R4K w - - 0 1\"]\r\n\r\n1.Qg8+ Kxg8 2.Ne7+ Kh8 3.Nf7+ Rxf7 4.Rxc8+ Rf8 5.Rxf8# *",
+    "url": "https://www.chess.com/daily/2016-04-05",
+    "title": "Pirc - Byrne, Helsinki 1952",
+    "fen": "5r2/5P1p/2n5/p2k4/2R5/2KN2P1/7P/8 w - - 0 1",
+    "current_fen": "5r2/5P1p/2n5/p2k4/2R5/2KN2P1/7P/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r2/5P1p/2n5/p2k4/2R5/2KN2P1/7P/8 w - - 0 1\"]\r\n\r\n1. Nf4+ Kd6 2. Rxc6+ Kxc6 3. Ne6 Rxf7 4. Nd8+\r\n*",
     "all_moves": [
       {
-        "uci": "c4g8",
-        "san": "Qg8+",
+        "uci": "d3f4",
+        "san": "Nf4+",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kxg8",
+        "uci": "d5d6",
+        "san": "Kd6",
         "color": "black"
       },
       {
-        "uci": "c6e7",
-        "san": "Ne7+",
+        "uci": "c4c6",
+        "san": "Rxc6+",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "d6c6",
+        "san": "Kxc6",
         "color": "black"
       },
       {
-        "uci": "d6f7",
-        "san": "Nf7+",
+        "uci": "f4e6",
+        "san": "Ne6",
         "color": "white"
       },
       {
@@ -37,71 +37,56 @@
         "color": "black"
       },
       {
-        "uci": "c1c8",
-        "san": "Rxc8+",
-        "color": "white"
-      },
-      {
-        "uci": "f7f8",
-        "san": "Rf8",
-        "color": "black"
-      },
-      {
-        "uci": "c8f8",
-        "san": "Rxf8#",
+        "uci": "e6d8",
+        "san": "Nd8+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4g8",
-        "san": "Qg8+",
+        "uci": "d3f4",
+        "san": "Nf4+",
         "color": "white"
       },
       {
-        "uci": "c6e7",
-        "san": "Ne7+",
+        "uci": "c4c6",
+        "san": "Rxc6+",
         "color": "white"
       },
       {
-        "uci": "d6f7",
-        "san": "Nf7+",
+        "uci": "f4e6",
+        "san": "Ne6",
         "color": "white"
       },
       {
-        "uci": "c1c8",
-        "san": "Rxc8+",
-        "color": "white"
-      },
-      {
-        "uci": "c8f8",
-        "san": "Rxf8#",
+        "uci": "e6d8",
+        "san": "Nd8+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T10:35:31.811083+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T10:35:50.129121+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787740531811",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542120305072279574,
+    "puzzle_id": "random_1787740550129",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1542120382230831245,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rxf8",
-        "correct": true,
-        "timestamp": "2026-08-26T10:35:45.628417+00:00"
+        "move": "rc5",
+        "correct": false,
+        "timestamp": "2026-08-26T10:36:00.176768+00:00"
       }
     },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
