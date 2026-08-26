@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-06-08",
     "title": "King in the Corner",
     "fen": "4r2k/8/p1p4p/2P5/1P6/5qpP/6Q1/6RK b - - 0 1",
-    "current_fen": "4r2k/8/p1p4p/2P5/1P6/5qpP/6Q1/6RK b - - 0 1",
+    "current_fen": "7k/8/p1p4p/2P5/1P6/5QpP/4r3/6RK b - - 0 2",
     "pgn": "[FEN \"4r2k/8/p1p4p/2P5/1P6/5qpP/6Q1/6RK b - - 0 1\"]\r\n[PlyCount \"3\"]\r\n\r\n1... Re2 $1 2. Qxf3 Rh2# *",
     "all_moves": [
       {
@@ -42,20 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787758420748",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542195337307885608,
     "attempted_users": {
       "1403636751695740971": {
         "name": "WetisJas",
-        "move": "Rd2",
-        "correct": false,
-        "timestamp": "2026-08-26T15:34:21.658232+00:00"
+        "move": "Re2",
+        "correct": true,
+        "timestamp": "2026-08-26T15:34:32.598089+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "1403636751695740971",
+    "first_move_user_name": "WetisJas",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
