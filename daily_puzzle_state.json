@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-06-12",
     "title": "Heavy Piece Play",
     "fen": "3r3r/pkpqnpp1/8/Q1R5/3P4/4P1P1/P4P2/R5K1 w - - 0 1",
-    "current_fen": "3r3r/pkpqnpp1/8/Q1R5/3P4/4P1P1/P4P2/R5K1 w - - 0 1",
+    "current_fen": "k2r3r/p1pqnpp1/8/Q1R5/3P4/4P1P1/P4P2/1R4K1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r3r/pkpqnpp1/8/Q1R5/3P4/4P1P1/P4P2/R5K1 w - - 0 1\"]\r\n\r\n1. Rb1+ Ka8 2. Qxa7+ Kxa7 3. Ra5#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787731195898",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542081147385815203,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rb1",
+        "correct": true,
+        "timestamp": "2026-08-26T08:00:03.805428+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
