@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-06-05",
     "title": "Tactical gg",
     "fen": "7k/3q1p2/2Rb1prp/pB1p2r1/Pp1N4/3n1Q1P/1P1N1PP1/6RK b - - 0 1",
-    "current_fen": "7k/5p2/2Rb1prp/pB1p2r1/Pp1N4/3n3Q/1P1N1PP1/6RK b - - 0 2",
+    "current_fen": "7k/5p2/2Rb1prp/pB1p2r1/Pp1N4/7Q/1P1N1nP1/6RK w - - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"7k/3q1p2/2Rb1prp/pB1p2r1/Pp1N4/3n1Q1P/1P1N1PP1/6RK b - - 0 1\"]\r\n\r\n1... Qxh3+ 2. Qxh3 Nxf2# *",
     "all_moves": [
       {
@@ -42,9 +42,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787743637557",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1542133331540578387,
     "attempted_users": {
       "442597396195704832": {
@@ -55,14 +55,14 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qxh3",
+        "move": "Nxf2",
         "correct": true,
-        "timestamp": "2026-08-26T11:27:29.679435+00:00"
+        "timestamp": "2026-08-26T11:27:32.792254+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
