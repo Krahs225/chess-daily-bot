@@ -1,77 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-06-12",
-    "title": "Heavy Piece Play",
-    "fen": "3r3r/pkpqnpp1/8/Q1R5/3P4/4P1P1/P4P2/R5K1 w - - 0 1",
-    "current_fen": "3r3r/k1pqnpp1/8/R7/3P4/4P1P1/P4P2/1R4K1 b - - 1 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r3r/pkpqnpp1/8/Q1R5/3P4/4P1P1/P4P2/R5K1 w - - 0 1\"]\r\n\r\n1. Rb1+ Ka8 2. Qxa7+ Kxa7 3. Ra5#\r\n*",
+    "url": "https://www.chess.com/daily/2013-12-12",
+    "title": "Polugaevsky - Szilayi, Moscow 1960",
+    "fen": "r2r4/1p1R3p/5pk1/b1B1Pp2/p4P2/P7/1P5P/1K1R4 w q - 0 1",
+    "current_fen": "r2r4/1p1R3p/5pk1/b1B1Pp2/p4P2/P7/1P5P/1K1R4 w q - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2r4/1p1R3p/5pk1/b1B1Pp2/p4P2/P7/1P5P/1K1R4 w q - 0 1\"]\r\n\r\n1. Rg1+ Kh6 2. Bf8+ Rxf8 3. Rd3 Be1 4. Rh3+ Bh4 5. Rxh4#\r\n*",
     "all_moves": [
       {
-        "uci": "a1b1",
-        "san": "Rb1+",
+        "uci": "d1g1",
+        "san": "Rg1+",
         "color": "white"
       },
       {
-        "uci": "b7a8",
-        "san": "Ka8",
+        "uci": "g6h6",
+        "san": "Kh6",
         "color": "black"
       },
       {
-        "uci": "a5a7",
-        "san": "Qxa7+",
+        "uci": "c5f8",
+        "san": "Bf8+",
         "color": "white"
       },
       {
-        "uci": "a8a7",
-        "san": "Kxa7",
+        "uci": "d8f8",
+        "san": "Rxf8",
         "color": "black"
       },
       {
-        "uci": "c5a5",
-        "san": "Ra5#",
+        "uci": "d7d3",
+        "san": "Rd3",
+        "color": "white"
+      },
+      {
+        "uci": "a5e1",
+        "san": "Be1",
+        "color": "black"
+      },
+      {
+        "uci": "d3h3",
+        "san": "Rh3+",
+        "color": "white"
+      },
+      {
+        "uci": "e1h4",
+        "san": "Bh4",
+        "color": "black"
+      },
+      {
+        "uci": "h3h4",
+        "san": "Rxh4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a1b1",
-        "san": "Rb1+",
+        "uci": "d1g1",
+        "san": "Rg1+",
         "color": "white"
       },
       {
-        "uci": "a5a7",
-        "san": "Qxa7+",
+        "uci": "c5f8",
+        "san": "Bf8+",
         "color": "white"
       },
       {
-        "uci": "c5a5",
-        "san": "Ra5#",
+        "uci": "d7d3",
+        "san": "Rd3",
+        "color": "white"
+      },
+      {
+        "uci": "d3h3",
+        "san": "Rh3+",
+        "color": "white"
+      },
+      {
+        "uci": "h3h4",
+        "san": "Rxh4#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T07:59:55.898124+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-26T08:00:16.372188+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787731195898",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542081147385815203,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ra5",
-        "correct": true,
-        "timestamp": "2026-08-26T08:00:09.813315+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787731216372",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
