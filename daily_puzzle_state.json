@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-06-30",
     "title": "When the Dust Settles",
     "fen": "2r5/1p1n1k1p/p3p1p1/2qp1p2/5n2/1P2PP1P/P2PNKB1/1QR5 b - - 1 1",
-    "current_fen": "2r5/1p1n1k1p/p3p1p1/3p1p2/5n2/1P2PP1P/P2P1KB1/1QN5 b - - 0 2",
+    "current_fen": "8/1p1n1k1p/p3p1p1/3p1p2/5n2/1P2PP1P/P2P1KB1/2Q5 b - - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"2r5/1p1n1k1p/p3p1p1/2qp1p2/5n2/1P2PP1P/P2PNKB1/1QR5 b - - 1 1\"]\r\n\r\n1...Qxc1 2.Nxc1 Rxc1 3.Qxc1 Nd3+ 4.Ke2 Nxc1+ *",
     "all_moves": [
       {
@@ -72,29 +72,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787744475884",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542136847709503539,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nxc1",
-        "correct": false,
-        "timestamp": "2026-08-26T11:41:21.041180+00:00"
+        "move": "rxc1",
+        "correct": true,
+        "timestamp": "2026-08-26T11:41:24.825503+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qxc1",
-        "correct": true,
-        "timestamp": "2026-08-26T11:41:21.411422+00:00"
+        "move": "Rxc1",
+        "correct": false,
+        "timestamp": "2026-08-26T11:41:25.159951+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
