@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-08-23",
     "title": "Knight Knight",
     "fen": "r1b1kb1r/2qn1p1p/p1N1pp2/1p6/4N3/3Q4/PPP3PP/2KR1B1R w kq - 0 1",
-    "current_fen": "r1b1kb1r/2qn1p1p/p1N1pp2/1p6/4N3/3Q4/PPP3PP/2KR1B1R w kq - 0 1",
+    "current_fen": "r3kb1r/2qb1p1p/p1N1pp2/1p6/4N3/8/PPP3PP/2KR1B1R w kq - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1kb1r/2qn1p1p/p1N1pp2/1p6/4N3/3Q4/PPP3PP/2KR1B1R w kq - 0 1\"]\r\n\r\n1. Qxd7+ Bxd7 2. Nxf6# \r\n*",
     "all_moves": [
       {
@@ -42,20 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787741919399",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542126125201752065,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qd8",
-        "correct": false,
-        "timestamp": "2026-08-26T10:58:43.988943+00:00"
+        "move": "qxd7",
+        "correct": true,
+        "timestamp": "2026-08-26T10:58:47.984489+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
