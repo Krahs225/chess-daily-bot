@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-04-27",
     "title": "Desperation Escape",
     "fen": "8/pr1r3p/6p1/2p1pk2/3b2N1/6P1/PP1R1PKP/4R3 w - - 0 1",
-    "current_fen": "8/pr1r3p/6p1/2p1pk2/3b2N1/6P1/PP1R1PKP/4R3 w - - 0 1",
+    "current_fen": "8/pr1r3p/6p1/2p2k2/3p2N1/6P1/PP3PKP/4R3 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/pr1r3p/6p1/2p1pk2/3b2N1/6P1/PP1R1PKP/4R3 w - - 0 1\"]\r\n\r\n1. Rxd4 exd4 2. Re5+ Kxg4 3. h3#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787776002151",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542269078796763176,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rxd4",
+        "correct": true,
+        "timestamp": "2026-08-26T20:26:57.232904+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
