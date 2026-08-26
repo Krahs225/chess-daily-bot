@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-07-20",
     "title": "Mate in 3",
     "fen": "rnbqkbnr/p1pp4/1p4Pp/4p2Q/8/8/PPPP1PPP/RNB1KBNR w KQkq - 0 1",
-    "current_fen": "rnbqkbnr/p1pp4/1p4Pp/4p2Q/8/8/PPPP1PPP/RNB1KBNR w KQkq - 0 1",
+    "current_fen": "rnbq1bnr/p1ppk1P1/1p5p/4p2Q/8/8/PPPP1PPP/RNB1KBNR w KQ - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rnbqkbnr/p1pp4/1p4Pp/4p2Q/8/8/PPPP1PPP/RNB1KBNR w KQkq - 0 1\"]\r\n\r\n1. g7+ Ke7 2. Qxe5+ Kf7 3. gxh8=N#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787766748227",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542230264787378268,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "g7",
+        "correct": true,
+        "timestamp": "2026-08-26T17:52:34.229429+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
