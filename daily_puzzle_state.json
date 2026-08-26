@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-09-10",
     "title": "Chain of Events",
     "fen": "r4rk1/pp3ppp/2pq1nb1/6N1/2BP4/7R/PPQ2PPP/4R1K1 w - - 0 1",
-    "current_fen": "r6k/pp3rp1/2pq1np1/6N1/3P4/8/PP3PPP/4R1K1 w - - 0 4",
+    "current_fen": "r5k1/pp4p1/2pN1np1/8/3P4/8/PP3PPP/4R1K1 b - - 0 5",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/pp3ppp/2pq1nb1/6N1/2BP4/7R/PPQ2PPP/4R1K1 w - - 0 1\"]\r\n\r\n1. Qxg6 hxg6 2. Bxf7+ Rxf7 3. Rh8+ Kxh8 4. Nxf7+ Kg8 5. Nxd6\r\n*",
     "all_moves": [
       {
@@ -87,27 +87,27 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787741711692",
-    "next_solution_index": 6,
-    "next_player_index": 3,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1542125254489542696,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rh8",
+        "move": "nxd6",
         "correct": true,
-        "timestamp": "2026-08-26T10:55:41.682285+00:00"
+        "timestamp": "2026-08-26T10:55:43.629782+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Nxf7",
+        "move": "Rh8",
         "correct": false,
-        "timestamp": "2026-08-26T10:55:32.296676+00:00"
+        "timestamp": "2026-08-26T10:55:43.022695+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
