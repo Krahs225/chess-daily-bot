@@ -1,126 +1,81 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-08-25",
-    "title": "No Hints :)",
-    "fen": "r2r1k2/pbq1bpp1/1pp1pn1p/4N2N/2PP4/3Q4/PPB2PPP/R3R1K1 w - - 0 1",
-    "current_fen": "r2r1k2/pbq1bpp1/1pp1pn1p/4N2N/2PP4/3Q4/PPB2PPP/R3R1K1 w - - 0 1",
-    "pgn": "[FEN \"r2r1k2/pbq1bpp1/1pp1pn1p/4N2N/2PP4/3Q4/PPB2PPP/R3R1K1 w - - 0 1\"]\r\n[Result \"*\"]\r\n\r\n\r\n1. Qg3 $1 Ne8 ( 1... Nxh5 2. Ng6+ ) 2. Nxg7 $3 Rxd4 ( 2... Nxg7 3. Ng6+ ) 3. Nxe8 Kxe8 4. Qg8+ Bf8 5. Nxf7 Qxf7 6. Rxe6+ Kd7 7. Qxf7+\r\n*",
+    "url": "https://www.chess.com/daily/2008-01-22",
+    "title": "Can White Win This?",
+    "fen": "8/8/8/4K3/8/3k4/Q1p5/8 w - - 0 1",
+    "current_fen": "8/8/8/4K3/8/3k4/Q1p5/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/4K3/8/3k4/Q1p5/8 w - - 0 1\"]\r\n\r\n1. Qb2 Kd2 2. Ke4 Kd1 3. Kd3 c1=Q 4. Qe2#\r\n*",
     "all_moves": [
       {
-        "uci": "d3g3",
-        "san": "Qg3",
+        "uci": "a2b2",
+        "san": "Qb2",
         "color": "white"
       },
       {
-        "uci": "f6e8",
-        "san": "Ne8",
+        "uci": "d3d2",
+        "san": "Kd2",
         "color": "black"
       },
       {
-        "uci": "h5g7",
-        "san": "Nxg7",
+        "uci": "e5e4",
+        "san": "Ke4",
         "color": "white"
       },
       {
-        "uci": "d8d4",
-        "san": "Rxd4",
+        "uci": "d2d1",
+        "san": "Kd1",
         "color": "black"
       },
       {
-        "uci": "g7e8",
-        "san": "Nxe8",
+        "uci": "e4d3",
+        "san": "Kd3",
         "color": "white"
       },
       {
-        "uci": "f8e8",
-        "san": "Kxe8",
+        "uci": "c2c1q",
+        "san": "c1=Q",
         "color": "black"
       },
       {
-        "uci": "g3g8",
-        "san": "Qg8+",
-        "color": "white"
-      },
-      {
-        "uci": "e7f8",
-        "san": "Bf8",
-        "color": "black"
-      },
-      {
-        "uci": "e5f7",
-        "san": "Nxf7",
-        "color": "white"
-      },
-      {
-        "uci": "c7f7",
-        "san": "Qxf7",
-        "color": "black"
-      },
-      {
-        "uci": "e1e6",
-        "san": "Rxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "e8d7",
-        "san": "Kd7",
-        "color": "black"
-      },
-      {
-        "uci": "g8f7",
-        "san": "Qxf7+",
+        "uci": "b2e2",
+        "san": "Qe2#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3g3",
-        "san": "Qg3",
+        "uci": "a2b2",
+        "san": "Qb2",
         "color": "white"
       },
       {
-        "uci": "h5g7",
-        "san": "Nxg7",
+        "uci": "e5e4",
+        "san": "Ke4",
         "color": "white"
       },
       {
-        "uci": "g7e8",
-        "san": "Nxe8",
+        "uci": "e4d3",
+        "san": "Kd3",
         "color": "white"
       },
       {
-        "uci": "g3g8",
-        "san": "Qg8+",
-        "color": "white"
-      },
-      {
-        "uci": "e5f7",
-        "san": "Nxf7",
-        "color": "white"
-      },
-      {
-        "uci": "e1e6",
-        "san": "Rxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "g8f7",
-        "san": "Qxf7+",
+        "uci": "b2e2",
+        "san": "Qe2#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-08-26T15:54:00.572963+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T15:54:16.324954+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787759640572",
+    "puzzle_id": "random_1787759656324",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542200453532618943,
+    "message_id": 1542200518976213015,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
