@@ -1,47 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-09-04",
-    "title": "Coming In From Behind",
-    "fen": "8/1pR5/p4k1p/4pPpB/Pb1r4/3p1PP1/1P4KP/3q4 w - - 0 1",
-    "current_fen": "8/1p3R2/p4k1p/4pPpB/Pb1r4/3p1PP1/1P4KP/3q4 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1pR5/p4k1p/4pPpB/Pb1r4/3p1PP1/1P4KP/3q4 w - - 0 1\"]\r\n\r\n1. Rf7#\r\n*",
+    "url": "https://www.chess.com/daily/2013-10-07",
+    "title": "Cornered",
+    "fen": "r3r1k1/pbpn2b1/1p3qQ1/3p2N1/3P4/2N1P3/PP3PP1/R3K2R w KQ - 0 1",
+    "current_fen": "r3r1k1/pbpn2b1/1p3qQ1/3p2N1/3P4/2N1P3/PP3PP1/R3K2R w KQ - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3r1k1/pbpn2b1/1p3qQ1/3p2N1/3P4/2N1P3/PP3PP1/R3K2R w KQ - 0 1\"]\r\n\r\n1. Rh8+ Kxh8 2. Qh7#\r\n*",
     "all_moves": [
       {
-        "uci": "c7f7",
-        "san": "Rf7#",
+        "uci": "h1h8",
+        "san": "Rh8+",
+        "color": "white"
+      },
+      {
+        "uci": "g8h8",
+        "san": "Kxh8",
+        "color": "black"
+      },
+      {
+        "uci": "g6h7",
+        "san": "Qh7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c7f7",
-        "san": "Rf7#",
+        "uci": "h1h8",
+        "san": "Rh8+",
+        "color": "white"
+      },
+      {
+        "uci": "g6h7",
+        "san": "Qh7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-26T20:25:15.960734+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T20:25:33.265414+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787775915960",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1542268718149541979,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rf7",
-        "correct": true,
-        "timestamp": "2026-08-26T20:25:20.097041+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787775933265",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
