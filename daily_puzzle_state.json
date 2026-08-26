@@ -1,105 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2012-06-08",
-    "title": "False Imprisonment",
-    "fen": "3q3r/p2r1pkp/bp1N1np1/n2p4/5Q2/B1P5/P4PPP/R3R1K1 w Qk - 0 1",
-    "current_fen": "3q2kr/p2r1pnp/bp4pN/n2p4/8/B1P5/P4PPP/R3R1K1 b - - 1 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3q3r/p2r1pkp/bp1N1np1/n2p4/5Q2/B1P5/P4PPP/R3R1K1 w Qk - 0 1\"]\r\n\r\n1. Nf5+ Kg8 2. Qh6 Nh5 3. Qg7+ Nxg7 4. Nh6#\r\n*",
+    "url": "https://www.chess.com/daily/2013-01-21",
+    "title": "Mate in 3",
+    "fen": "5rk1/pQ3ppp/8/4q3/P4p1n/1BpR4/2P3P1/5K2 w - - 0 1",
+    "current_fen": "5rk1/pQ3ppp/8/4q3/P4p1n/1BpR4/2P3P1/5K2 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/pQ3ppp/8/4q3/P4p1n/1BpR4/2P3P1/5K2 w - - 0 1\"]\r\n\r\n1. Qxf7+ Rxf7 2. Rd8+ Qe8 3. Rxe8#\r\n*",
     "all_moves": [
       {
-        "uci": "d6f5",
-        "san": "Nf5+",
+        "uci": "b7f7",
+        "san": "Qxf7+",
         "color": "white"
       },
       {
-        "uci": "g7g8",
-        "san": "Kg8",
+        "uci": "f8f7",
+        "san": "Rxf7",
         "color": "black"
       },
       {
-        "uci": "f4h6",
-        "san": "Qh6",
+        "uci": "d3d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "f6h5",
-        "san": "Nh5",
+        "uci": "e5e8",
+        "san": "Qe8",
         "color": "black"
       },
       {
-        "uci": "h6g7",
-        "san": "Qg7+",
-        "color": "white"
-      },
-      {
-        "uci": "h5g7",
-        "san": "Nxg7",
-        "color": "black"
-      },
-      {
-        "uci": "f5h6",
-        "san": "Nh6#",
+        "uci": "d8e8",
+        "san": "Rxe8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6f5",
-        "san": "Nf5+",
+        "uci": "b7f7",
+        "san": "Qxf7+",
         "color": "white"
       },
       {
-        "uci": "f4h6",
-        "san": "Qh6",
+        "uci": "d3d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "h6g7",
-        "san": "Qg7+",
-        "color": "white"
-      },
-      {
-        "uci": "f5h6",
-        "san": "Nh6#",
+        "uci": "d8e8",
+        "san": "Rxe8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T12:25:12.308102+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T12:26:34.195115+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787747112308",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542147905660518551,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nh6",
-        "correct": true,
-        "timestamp": "2026-08-26T12:26:08.104459+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "g4",
-        "correct": false,
-        "timestamp": "2026-08-26T12:25:55.912656+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787747194195",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
