@@ -1,77 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-02-15",
-    "title": "Must Know Pattern",
-    "fen": "r1b1k2r/pp2bppp/8/2pN2q1/8/8/PPP2PPP/R2QR1K1 w Qkq - 0 1",
-    "current_fen": "r1bbRk1r/ppN2ppp/8/2p3q1/8/8/PPP2PPP/R5K1 b - - 1 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1k2r/pp2bppp/8/2pN2q1/8/8/PPP2PPP/R2QR1K1 w Qkq - 0 1\"]\r\n\r\n1. Nc7+ Kf8 2. Qd8+ Bxd8 3. Re8#\r\n*",
+    "url": "https://www.chess.com/daily/2015-06-28",
+    "title": "W.Schmidt - H.Liebert, Polanica Zdroj, 1967",
+    "fen": "8/8/p3p3/3b1pR1/1B3P1k/8/4r1PK/8 w - - 0 1",
+    "current_fen": "8/8/p3p3/3b1pR1/1B3P1k/8/4r1PK/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/p3p3/3b1pR1/1B3P1k/8/4r1PK/8 w - - 0 1\"]\r\n\r\n1. Be1+ Rf2 2. Bxf2#\r\n*",
     "all_moves": [
       {
-        "uci": "d5c7",
-        "san": "Nc7+",
+        "uci": "b4e1",
+        "san": "Be1+",
         "color": "white"
       },
       {
-        "uci": "e8f8",
-        "san": "Kf8",
+        "uci": "e2f2",
+        "san": "Rf2",
         "color": "black"
       },
       {
-        "uci": "d1d8",
-        "san": "Qd8+",
-        "color": "white"
-      },
-      {
-        "uci": "e7d8",
-        "san": "Bxd8",
-        "color": "black"
-      },
-      {
-        "uci": "e1e8",
-        "san": "Re8#",
+        "uci": "e1f2",
+        "san": "Bxf2#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5c7",
-        "san": "Nc7+",
+        "uci": "b4e1",
+        "san": "Be1+",
         "color": "white"
       },
       {
-        "uci": "d1d8",
-        "san": "Qd8+",
-        "color": "white"
-      },
-      {
-        "uci": "e1e8",
-        "san": "Re8#",
+        "uci": "e1f2",
+        "san": "Bxf2#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T18:37:09.602876+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T18:37:35.429254+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787769429602",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542241511217959093,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "re8",
-        "correct": true,
-        "timestamp": "2026-08-26T18:37:27.159019+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787769455429",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
