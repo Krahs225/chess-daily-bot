@@ -1,51 +1,81 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-10-11",
-    "title": "Simply Mate",
-    "fen": "6k1/4pp1p/3p4/1Nr5/4P3/1P2Q1q1/P5PP/4R2K b - - 0 1",
-    "current_fen": "6k1/4pp1p/3p4/1Nr5/4P3/1P2Q1q1/P5PP/4R2K b - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/4pp1p/3p4/1Nr5/4P3/1P2Q1q1/P5PP/4R2K b - - 0 1\"]\r\n\r\n1...Qxe3 2. Rxe3 Rc1+\r\n*",
+    "url": "https://www.chess.com/daily/2022-08-29",
+    "title": "When Pawns Unite",
+    "fen": "3r2k1/2p1npp1/pp1bp2p/8/3PP3/4BN1P/PP2KPP1/R7 w - - 0 1",
+    "current_fen": "3r2k1/2p1npp1/pp1bp2p/8/3PP3/4BN1P/PP2KPP1/R7 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3r2k1/2p1npp1/pp1bp2p/8/3PP3/4BN1P/PP2KPP1/R7 w - - 0 1\"]\r\n\r\n1. e5 Bb4 2. a3 Ba5 3. b4 Bxb4 4. axb4 *",
     "all_moves": [
       {
-        "uci": "g3e3",
-        "san": "Qxe3",
-        "color": "black"
-      },
-      {
-        "uci": "e1e3",
-        "san": "Rxe3",
+        "uci": "e4e5",
+        "san": "e5",
         "color": "white"
       },
       {
-        "uci": "c5c1",
-        "san": "Rc1+",
+        "uci": "d6b4",
+        "san": "Bb4",
         "color": "black"
+      },
+      {
+        "uci": "a2a3",
+        "san": "a3",
+        "color": "white"
+      },
+      {
+        "uci": "b4a5",
+        "san": "Ba5",
+        "color": "black"
+      },
+      {
+        "uci": "b2b4",
+        "san": "b4",
+        "color": "white"
+      },
+      {
+        "uci": "a5b4",
+        "san": "Bxb4",
+        "color": "black"
+      },
+      {
+        "uci": "a3b4",
+        "san": "axb4",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g3e3",
-        "san": "Qxe3",
-        "color": "black"
+        "uci": "e4e5",
+        "san": "e5",
+        "color": "white"
       },
       {
-        "uci": "c5c1",
-        "san": "Rc1+",
-        "color": "black"
+        "uci": "a2a3",
+        "san": "a3",
+        "color": "white"
+      },
+      {
+        "uci": "b2b4",
+        "san": "b4",
+        "color": "white"
+      },
+      {
+        "uci": "a3b4",
+        "san": "axb4",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-26T17:40:45.258860+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T17:41:01.567653+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787766045258",
+    "puzzle_id": "random_1787766061567",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542227316778733710,
+    "message_id": 1542227384961335396,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
