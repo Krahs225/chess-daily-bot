@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-11-21",
     "title": "Open Season",
     "fen": "r7/6Q1/p2pk1p1/1pp2b2/4Nn1q/1P1P4/1PP3PP/4RRK1 w - - 0 1",
-    "current_fen": "r7/6Q1/p2pk1p1/1pp2b2/4Nn1q/1P1P4/1PP3PP/4RRK1 w - - 0 1",
+    "current_fen": "r7/6Q1/p2p2p1/1ppk1bN1/5n1q/1P1P4/1PP3PP/4RRK1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/6Q1/p2pk1p1/1pp2b2/4Nn1q/1P1P4/1PP3PP/4RRK1 w - - 0 1\"]\r\n\r\n1. Ng5+ Kd5 2. Qb7+ Kd4 3. Nf3#\r\n*",
     "all_moves": [
       {
@@ -57,20 +57,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787771663657",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542250881783701544,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nc3",
+        "move": "ng5",
+        "correct": true,
+        "timestamp": "2026-08-26T19:14:32.726529+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Nxc5",
         "correct": false,
-        "timestamp": "2026-08-26T19:14:30.039006+00:00"
+        "timestamp": "2026-08-26T19:14:30.050585+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
