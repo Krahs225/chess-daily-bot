@@ -1,141 +1,81 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-02-06",
-    "title": "Mate in 8",
-    "fen": "3Q4/1P3pk1/4r1p1/3p2Bp/5PnP/Q6K/6P1/1q6 b - - 0 53",
-    "current_fen": "3Q4/1P3pk1/4r1p1/3p2Bp/5PnP/Q6K/6P1/1q6 b - - 0 53",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3Q4/1P3pk1/4r1p1/3p2Bp/5PnP/Q6K/6P1/1q6 b - - 0 53\"]\r\n\r\n53... Qh1+ 54. Kg3 Qe1+ 55. Kh3 Nf2+ 56. Kh2 Qh1+ 57. Kg3 Ne4+ 58. Kf3 Qf1+ (58... Qd1+) 59. Ke3 Qf2+ 60. Kd3 Qd2#\r\n*",
+    "url": "https://www.chess.com/daily/2024-01-10",
+    "title": "Fiona's Dark Squared Surprise Party!",
+    "fen": "3qr1k1/p5pp/2pb1n2/p2p4/P7/1PNP3P/3Q1PP1/2B1R1K1 b - - 0 21",
+    "current_fen": "3qr1k1/p5pp/2pb1n2/p2p4/P7/1PNP3P/3Q1PP1/2B1R1K1 b - - 0 21",
+    "pgn": "[White \"Happy Birthday\"]\r\n[Black \"Fiona! \"]\r\n[Result \"0-1\"]\r\n[FEN \"3qr1k1/p5pp/2pb1n2/p2p4/P7/1PNP3P/3Q1PP1/2B1R1K1 b - - 0 21\"]\r\n\r\n21... Bb4 22. Rxe8+ Qxe8 23. d4 Ne4 24. Qe2 Bxc3 *",
     "all_moves": [
       {
-        "uci": "b1h1",
-        "san": "Qh1+",
+        "uci": "d6b4",
+        "san": "Bb4",
         "color": "black"
       },
       {
-        "uci": "h3g3",
-        "san": "Kg3",
+        "uci": "e1e8",
+        "san": "Rxe8+",
         "color": "white"
       },
       {
-        "uci": "h1e1",
-        "san": "Qe1+",
+        "uci": "d8e8",
+        "san": "Qxe8",
         "color": "black"
       },
       {
-        "uci": "g3h3",
-        "san": "Kh3",
+        "uci": "d3d4",
+        "san": "d4",
         "color": "white"
       },
       {
-        "uci": "g4f2",
-        "san": "Nf2+",
+        "uci": "f6e4",
+        "san": "Ne4",
         "color": "black"
       },
       {
-        "uci": "h3h2",
-        "san": "Kh2",
+        "uci": "d2e2",
+        "san": "Qe2",
         "color": "white"
       },
       {
-        "uci": "e1h1",
-        "san": "Qh1+",
-        "color": "black"
-      },
-      {
-        "uci": "h2g3",
-        "san": "Kg3",
-        "color": "white"
-      },
-      {
-        "uci": "f2e4",
-        "san": "Ne4+",
-        "color": "black"
-      },
-      {
-        "uci": "g3f3",
-        "san": "Kf3",
-        "color": "white"
-      },
-      {
-        "uci": "h1f1",
-        "san": "Qf1+",
-        "color": "black"
-      },
-      {
-        "uci": "f3e3",
-        "san": "Ke3",
-        "color": "white"
-      },
-      {
-        "uci": "f1f2",
-        "san": "Qf2+",
-        "color": "black"
-      },
-      {
-        "uci": "e3d3",
-        "san": "Kd3",
-        "color": "white"
-      },
-      {
-        "uci": "f2d2",
-        "san": "Qd2#",
+        "uci": "b4c3",
+        "san": "Bxc3",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b1h1",
-        "san": "Qh1+",
+        "uci": "d6b4",
+        "san": "Bb4",
         "color": "black"
       },
       {
-        "uci": "h1e1",
-        "san": "Qe1+",
+        "uci": "d8e8",
+        "san": "Qxe8",
         "color": "black"
       },
       {
-        "uci": "g4f2",
-        "san": "Nf2+",
+        "uci": "f6e4",
+        "san": "Ne4",
         "color": "black"
       },
       {
-        "uci": "e1h1",
-        "san": "Qh1+",
-        "color": "black"
-      },
-      {
-        "uci": "f2e4",
-        "san": "Ne4+",
-        "color": "black"
-      },
-      {
-        "uci": "h1f1",
-        "san": "Qf1+",
-        "color": "black"
-      },
-      {
-        "uci": "f1f2",
-        "san": "Qf2+",
-        "color": "black"
-      },
-      {
-        "uci": "f2d2",
-        "san": "Qd2#",
+        "uci": "b4c3",
+        "san": "Bxc3",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 8,
-    "posted_at": "2026-08-26T14:42:30.307891+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T14:42:42.548299+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787755350307",
+    "puzzle_id": "random_1787755362548",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542182458513170573,
+    "message_id": 1542182509675282523,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
