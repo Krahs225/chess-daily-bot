@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-07-12",
     "title": "Scaling the Wall",
     "fen": "4R3/pp3r2/2p4k/4B3/4P3/7b/P7/5rRK w - - 0 1",
-    "current_fen": "4R3/pp3r2/2p4k/4B3/4P3/7b/P7/5rRK w - - 0 1",
+    "current_fen": "7R/pp5r/2p4k/4B3/4P3/7b/P7/5rRK w - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"4R3/pp3r2/2p4k/4B3/4P3/7b/P7/5rRK w - - 0 1\"]\r\n\r\n1.Rh8+ Rh7 2.Bg7+ Kh5 3.Rxh7# *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787774855077",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542264267397664769,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rh8",
+        "correct": true,
+        "timestamp": "2026-08-26T20:07:40.923976+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
