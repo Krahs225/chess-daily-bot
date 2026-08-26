@@ -1,62 +1,83 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-03-19",
-    "title": "Can You Checkmate a Grandmaster?",
-    "fen": "2r5/pp1b4/4p3/3pPk2/5P2/8/1K6/3R2R1 w - - 0 35",
-    "current_fen": "8/pp1b4/4p3/3pPkR1/2rR1P2/8/1K6/8 b - - 3 36",
-    "pgn": "[Event \"Astana\"]\r\n[Site \"Astana\"]\r\n[Date \"2001.05.26\"]\r\n[Round \"6\"]\r\n[White \"Kasparov, Garry\"]\r\n[Black \"Shirov, Alexei\"]\r\n[Result \"1-0\"]\r\n[ECO \"C11\"]\r\n[WhiteElo \"2827\"]\r\n[BlackElo \"2722\"]\r\n[FEN \"2r5/pp1b4/4p3/3pPk2/5P2/8/1K6/3R2R1 w - - 0 35\"]\r\n\r\n35. Rd4 Rc4 36. Rg5# 1-0",
+    "url": "https://www.chess.com/daily/2010-04-01",
+    "title": "Mate in 3",
+    "fen": "5K1k/6pp/p5P1/6R1/7P/8/8/8 w - - 0 1",
+    "current_fen": "5K1k/6p1/p5Pp/7R/7P/8/8/8 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5K1k/6pp/p5P1/6R1/7P/8/8/8 w - - 0 1\"]\r\n\r\n1. Rh5 h6 2.Ra5 h5 3.Rxh5#\r\n*",
     "all_moves": [
       {
-        "uci": "d1d4",
-        "san": "Rd4",
+        "uci": "g5h5",
+        "san": "Rh5",
         "color": "white"
       },
       {
-        "uci": "c8c4",
-        "san": "Rc4",
+        "uci": "h7h6",
+        "san": "h6",
         "color": "black"
       },
       {
-        "uci": "g1g5",
-        "san": "Rg5#",
+        "uci": "h5a5",
+        "san": "Ra5",
+        "color": "white"
+      },
+      {
+        "uci": "h6h5",
+        "san": "h5",
+        "color": "black"
+      },
+      {
+        "uci": "a5h5",
+        "san": "Rxh5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1d4",
-        "san": "Rd4",
+        "uci": "g5h5",
+        "san": "Rh5",
         "color": "white"
       },
       {
-        "uci": "g1g5",
-        "san": "Rg5#",
+        "uci": "h5a5",
+        "san": "Ra5",
+        "color": "white"
+      },
+      {
+        "uci": "a5h5",
+        "san": "Rxh5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-26T13:44:51.101302+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T13:45:05.236122+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787751891101",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542167950851702906,
+    "puzzle_id": "random_1787751905236",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542168008577908768,
     "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rh5",
+        "correct": true,
+        "timestamp": "2026-08-26T13:45:10.315541+00:00"
+      },
       "442597396195704832": {
         "name": "Thice",
-        "move": "rg5",
-        "correct": true,
-        "timestamp": "2026-08-26T13:45:00.204094+00:00"
+        "move": "kf7",
+        "correct": false,
+        "timestamp": "2026-08-26T13:45:10.817888+00:00"
       }
     },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
