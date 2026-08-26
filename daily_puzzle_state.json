@@ -1,75 +1,87 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-02-16",
-    "title": "Boris Spassky vs Arnulf Westermeier, Germany, 1982",
-    "fen": "5R2/4r1r1/1p4k1/p1pB2Bp/P1P4K/2P1p3/1P6/8 w - - 0 1",
-    "current_fen": "8/4r1rk/1p5R/p1pB2Bp/P1P4K/2P1p3/1P6/8 b - - 3 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5R2/4r1r1/1p4k1/p1pB2Bp/P1P4K/2P1p3/1P6/8 w - - 0 1\"]\r\n\r\n1. Rf6+ Kh7 2. Rh6#\r\n*",
+    "url": "https://www.chess.com/daily/2024-04-18",
+    "title": "The Price to Win a Piece",
+    "fen": "4q1k1/5ppp/1p6/2p5/p1P5/P2P1N2/1b2rPPP/1Q1R1K2 w - - 0 28",
+    "current_fen": "4q1k1/5ppp/1p6/2p5/p1P5/P2P1N2/1b2rPPP/1Q1R1K2 w - - 0 28",
+    "pgn": "[Event \"Tirnavia-B\"]\r\n[Site \"Trnava\"]\r\n[Date \"1988.??.??\"]\r\n[Round \"11\"]\r\n[White \"Rozentalis, Eduardas\"]\r\n[Black \"Diaz Diaz, Joaquin Carlos\"]\r\n[Result \"1-0\"]\r\n[ECO \"B22\"]\r\n[WhiteElo \"2520\"]\r\n[BlackElo \"2485\"]\r\n[FEN \"4q1k1/5ppp/1p6/2p5/p1P5/P2P1N2/1b2rPPP/1Q1R1K2 w - - 0 28\"]\r\n\r\n28. Ng1 Rxf2+ 29. Kxf2 Bd4+ 30. Kf1 Qe3 31. Nh3 1-0",
     "all_moves": [
       {
-        "uci": "f8f6",
-        "san": "Rf6+",
+        "uci": "f3g1",
+        "san": "Ng1",
         "color": "white"
       },
       {
-        "uci": "g6h7",
-        "san": "Kh7",
+        "uci": "e2f2",
+        "san": "Rxf2+",
         "color": "black"
       },
       {
-        "uci": "f6h6",
-        "san": "Rh6#",
+        "uci": "f1f2",
+        "san": "Kxf2",
+        "color": "white"
+      },
+      {
+        "uci": "b2d4",
+        "san": "Bd4+",
+        "color": "black"
+      },
+      {
+        "uci": "f2f1",
+        "san": "Kf1",
+        "color": "white"
+      },
+      {
+        "uci": "e8e3",
+        "san": "Qe3",
+        "color": "black"
+      },
+      {
+        "uci": "g1h3",
+        "san": "Nh3",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f8f6",
-        "san": "Rf6+",
+        "uci": "f3g1",
+        "san": "Ng1",
         "color": "white"
       },
       {
-        "uci": "f6h6",
-        "san": "Rh6#",
+        "uci": "f1f2",
+        "san": "Kxf2",
+        "color": "white"
+      },
+      {
+        "uci": "f2f1",
+        "san": "Kf1",
+        "color": "white"
+      },
+      {
+        "uci": "g1h3",
+        "san": "Nh3",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-26T10:49:20.861236+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T10:49:35.966732+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787741360861",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542123782460932121,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rf6",
-        "correct": true,
-        "timestamp": "2026-08-26T10:49:26.329394+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rh6",
-        "correct": true,
-        "timestamp": "2026-08-26T10:49:28.821271+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787741375966",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
