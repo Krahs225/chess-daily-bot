@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-08-29",
     "title": "Hide and Seek",
     "fen": "r5k1/4p2p/2bpNp2/p1p2PpQ/1r4N1/1P1q2P1/1R1P2BP/7K w - - 0 1",
-    "current_fen": "r3k3/4p2p/2bpNp1N/p1p2Pp1/1r6/1P1q2P1/1R1P2BP/7K w - - 2 3",
+    "current_fen": "r3k3/4p2p/2BpNp1N/p1p2Pp1/1r6/1P1q2P1/1R1P3P/7K b - - 0 3",
     "pgn": "[White \"JohanVA/geelse_zot\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"r5k1/4p2p/2bpNp2/p1p2PpQ/1r4N1/1P1q2P1/1R1P2BP/7K w - - 0 1\"]\r\n\r\n1. Qf7+ Kxf7 2. Nh6+ Ke8 3. Bxc6# 1-0",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787767515607",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1542233483747922051,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nh6",
+        "move": "bxc6",
         "correct": true,
-        "timestamp": "2026-08-26T18:05:40.031839+00:00"
+        "timestamp": "2026-08-26T18:05:47.894825+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -77,7 +77,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
