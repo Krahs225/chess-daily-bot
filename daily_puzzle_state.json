@@ -1,105 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-07-09",
-    "title": "Pardon the Interrup...",
-    "fen": "3q2k1/1p4pp/8/6P1/8/1P2Q3/b5BP/3rR1K1 w - - 0 30",
-    "current_fen": "4R2k/1p4pp/8/3r2P1/8/1P6/b6P/6K1 b - - 0 33",
-    "pgn": "[Event \"Izt\"]\n[Site \"Biel (Switzerland)\"]\n[Date \"1993.??.??\"]\n[Round \"7\"]\n[White \"Van Wely Loek (NED)\"]\n[Black \"Brunner Lucas (SUI)\"]\n[Result \"1-0\"]\n[FEN \"3q2k1/1p4pp/8/6P1/8/1P2Q3/b5BP/3rR1K1 w - - 0 30\"]\n[WhiteElo \"2585\"]\n[BlackElo \"2475\"]\n\n30. Bd5+ Rxd5 31. Qe6+ Kh8 32. Qe8+ Qxe8 33. Rxe8# 1-0",
+    "url": "https://www.chess.com/daily/2022-04-28",
+    "title": "Tarrasch's Fingerprints",
+    "fen": "5rk1/p6p/8/B1pPK1pP/4P3/1PQ5/P5q1/2RR1b2 b - - 0 1",
+    "current_fen": "5rk1/p6p/8/B1pPK1pP/4P3/1PQ5/P5q1/2RR1b2 b - - 0 1",
+    "pgn": "[Result \"0-1\"]\r\n[FEN \"5rk1/p6p/8/B1pPK1pP/4P3/1PQ5/P5q1/2RR1b2 b - - 0 1\"]\r\n\r\n1...Qh2+ 2.Ke6 Re8+ 3.Kd7 Bb5# 0-1",
     "all_moves": [
       {
-        "uci": "g2d5",
-        "san": "Bd5+",
-        "color": "white"
-      },
-      {
-        "uci": "d1d5",
-        "san": "Rxd5",
+        "uci": "g2h2",
+        "san": "Qh2+",
         "color": "black"
       },
       {
-        "uci": "e3e6",
-        "san": "Qe6+",
+        "uci": "e5e6",
+        "san": "Ke6",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "f8e8",
+        "san": "Re8+",
         "color": "black"
       },
       {
-        "uci": "e6e8",
-        "san": "Qe8+",
+        "uci": "e6d7",
+        "san": "Kd7",
         "color": "white"
       },
       {
-        "uci": "d8e8",
-        "san": "Qxe8",
+        "uci": "f1b5",
+        "san": "Bb5#",
         "color": "black"
-      },
-      {
-        "uci": "e1e8",
-        "san": "Rxe8#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g2d5",
-        "san": "Bd5+",
-        "color": "white"
+        "uci": "g2h2",
+        "san": "Qh2+",
+        "color": "black"
       },
       {
-        "uci": "e3e6",
-        "san": "Qe6+",
-        "color": "white"
+        "uci": "f8e8",
+        "san": "Re8+",
+        "color": "black"
       },
       {
-        "uci": "e6e8",
-        "san": "Qe8+",
-        "color": "white"
-      },
-      {
-        "uci": "e1e8",
-        "san": "Rxe8#",
-        "color": "white"
+        "uci": "f1b5",
+        "san": "Bb5#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T10:11:19.950188+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T10:11:54.119786+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787739079950",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542114216071274606,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qe8",
-        "correct": true,
-        "timestamp": "2026-08-26T10:11:30.944632+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxe8",
-        "correct": true,
-        "timestamp": "2026-08-26T10:11:33.020815+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787739114119",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
