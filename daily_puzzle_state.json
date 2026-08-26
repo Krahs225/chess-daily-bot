@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-03-12",
     "title": "Celebrating Sultan Khan's Birthday",
     "fen": "8/p3N1pk/7p/2q4n/2p2p2/2Pr1P2/P5PP/1Q2RK2 b - - 12 44",
-    "current_fen": "8/p3N1pk/7p/2q5/2p2p2/2Pr1PP1/P5P1/1Q2RK2 b - - 0 45",
+    "current_fen": "8/p3N1pk/7p/2q5/2p5/2Pr1Pp1/P1Q3P1/4RK2 b - - 1 46",
     "pgn": "[Event \"It\"]\r\n[Site \"Liege (Belgium)\"]\r\n[Date \"1930.??.??\"]\r\n[Round \"3\"]\r\n[White \"Ahues Carl O (GER)\"]\r\n[Black \"Sultan Khan Mir (IND)\"]\r\n[Result \"0-1\"]\r\n[ECO \"E43\"]\r\n[FEN \"8/p3N1pk/7p/2q4n/2p2p2/2Pr1P2/P5PP/1Q2RK2 b - - 12 44\"]\r\n\r\n44...Ng3+ 45.hxg3 fxg3 46.Qc2 Qh5 0-1",
     "all_moves": [
       {
@@ -57,16 +57,22 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787743514587",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542132815703965757,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qh5",
+        "move": "fxg3",
+        "correct": true,
+        "timestamp": "2026-08-26T11:25:24.034149+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qh5",
         "correct": false,
-        "timestamp": "2026-08-26T11:25:21.449856+00:00"
+        "timestamp": "2026-08-26T11:25:22.499914+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
