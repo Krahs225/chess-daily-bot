@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-06-01",
     "title": "A Fun Fork",
     "fen": "2k2B1n/1p5p/1P6/4Kp2/5P2/1b5P/6B1/8 b - - 0 1",
-    "current_fen": "2k2B1n/1p5p/1P6/4Kp2/5P2/1b5P/6B1/8 b - - 0 1",
+    "current_fen": "2k2B2/1p5p/1P4n1/4Kp2/5P2/1b5P/6B1/8 w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k2B1n/1p5p/1P6/4Kp2/5P2/1b5P/6B1/8 b - - 0 1\"]\r\n\r\n1. Ng6+\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787764538228",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1542220995887112324,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Ng6",
+        "correct": true,
+        "timestamp": "2026-08-26T17:15:46.446927+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
