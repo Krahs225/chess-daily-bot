@@ -1,98 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-07-13",
-    "title": "Pushing Through the Advantage",
-    "fen": "k7/8/3n4/8/7b/8/6R1/B5K1 w - - 0 1",
-    "current_fen": "k7/1n6/8/b7/R7/2B5/8/5K2 b - - 7 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k7/8/3n4/8/7b/8/6R1/B5K1 w - - 0 1\"]\r\n\r\n1. Rg4 Be1 2. Kf1 Ba5 3. Ra4 Nb7 4. Bc3\r\n*",
+    "url": "https://www.chess.com/daily/2024-08-10",
+    "title": "Pragg Slices Off a Birthday Piece 🍰",
+    "fen": "3k4/1pp3p1/pnr3b1/2q3Pp/7P/PQ1BPp2/1P1B1P2/1K5R b - - 0 29",
+    "current_fen": "3k4/1pp3p1/pnr3b1/2q3Pp/7P/PQ1BPp2/1P1B1P2/1K5R b - - 0 29",
+    "pgn": "[Event \"Reykjavik Open 2017\"]\r\n[Site \"Reykjavik ISL\"]\r\n[Date \"2017.04.22\"]\r\n[Round \"5.36\"]\r\n[White \"Dougherty, M..\"]\r\n[Black \"Praggnanandhaa, R..\"]\r\n[Result \"0-1\"]\r\n[ECO \"A28\"]\r\n[WhiteElo \"2171\"]\r\n[BlackElo \"2447\"]\r\n[FEN \"3k4/1pp3p1/pnr3b1/2q3Pp/7P/PQ1BPp2/1P1B1P2/1K5R b - - 0 29\"]\r\n\r\n29... Qc4 30. Qxc4 Nxc4 31. Bxg6 Nxd2+ 32. Ka2 Rxg6 0-1",
     "all_moves": [
       {
-        "uci": "g2g4",
-        "san": "Rg4",
-        "color": "white"
-      },
-      {
-        "uci": "h4e1",
-        "san": "Be1",
+        "uci": "c5c4",
+        "san": "Qc4",
         "color": "black"
       },
       {
-        "uci": "g1f1",
-        "san": "Kf1",
+        "uci": "b3c4",
+        "san": "Qxc4",
         "color": "white"
       },
       {
-        "uci": "e1a5",
-        "san": "Ba5",
+        "uci": "b6c4",
+        "san": "Nxc4",
         "color": "black"
       },
       {
-        "uci": "g4a4",
-        "san": "Ra4",
+        "uci": "d3g6",
+        "san": "Bxg6",
         "color": "white"
       },
       {
-        "uci": "d6b7",
-        "san": "Nb7",
+        "uci": "c4d2",
+        "san": "Nxd2+",
         "color": "black"
       },
       {
-        "uci": "a1c3",
-        "san": "Bc3",
+        "uci": "b1a2",
+        "san": "Ka2",
         "color": "white"
+      },
+      {
+        "uci": "c6g6",
+        "san": "Rxg6",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "g2g4",
-        "san": "Rg4",
-        "color": "white"
+        "uci": "c5c4",
+        "san": "Qc4",
+        "color": "black"
       },
       {
-        "uci": "g1f1",
-        "san": "Kf1",
-        "color": "white"
+        "uci": "b6c4",
+        "san": "Nxc4",
+        "color": "black"
       },
       {
-        "uci": "g4a4",
-        "san": "Ra4",
-        "color": "white"
+        "uci": "c4d2",
+        "san": "Nxd2+",
+        "color": "black"
       },
       {
-        "uci": "a1c3",
-        "san": "Bc3",
-        "color": "white"
+        "uci": "c6g6",
+        "san": "Rxg6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 4,
-    "posted_at": "2026-08-26T11:22:47.627656+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T11:24:00.746487+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787743367627",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542132200131133440,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "be4",
-        "correct": false,
-        "timestamp": "2026-08-26T11:23:39.427851+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bc3",
-        "correct": true,
-        "timestamp": "2026-08-26T11:23:40.512213+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787743440746",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
