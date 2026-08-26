@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-02-17",
     "title": "Simple Chess",
     "fen": "r4nk1/1pR2ppp/1q2pn2/pB2N3/5r2/P3Q3/1P3PPP/2R3K1 b - - 0 1",
-    "current_fen": "r4nk1/1pR2ppp/1q2pn2/pB2N3/5r2/P3Q3/1P3PPP/2R3K1 b - - 0 1",
+    "current_fen": "r4nk1/1pR2ppp/4pn2/pB2N3/5r2/P3P3/1P4PP/2R3K1 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4nk1/1pR2ppp/1q2pn2/pB2N3/5r2/P3Q3/1P3PPP/2R3K1 b - - 0 1\"]\r\n\r\n1...Qxe3 2. fxe3 Rf5 3. R7c5 b6\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787739380468",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542115476874989631,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxe3",
+        "correct": true,
+        "timestamp": "2026-08-26T10:16:49.052359+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
