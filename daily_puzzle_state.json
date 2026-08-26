@@ -1,90 +1,42 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-03-12",
-    "title": "Celebrating Sultan Khan's Birthday",
-    "fen": "8/p3N1pk/7p/2q4n/2p2p2/2Pr1P2/P5PP/1Q2RK2 b - - 12 44",
-    "current_fen": "8/p3N1pk/7p/7q/2p5/2Pr1Pp1/P1Q3P1/4RK2 w - - 2 47",
-    "pgn": "[Event \"It\"]\r\n[Site \"Liege (Belgium)\"]\r\n[Date \"1930.??.??\"]\r\n[Round \"3\"]\r\n[White \"Ahues Carl O (GER)\"]\r\n[Black \"Sultan Khan Mir (IND)\"]\r\n[Result \"0-1\"]\r\n[ECO \"E43\"]\r\n[FEN \"8/p3N1pk/7p/2q4n/2p2p2/2Pr1P2/P5PP/1Q2RK2 b - - 12 44\"]\r\n\r\n44...Ng3+ 45.hxg3 fxg3 46.Qc2 Qh5 0-1",
+    "url": "https://www.chess.com/daily/2011-09-11",
+    "title": "The Final Blow",
+    "fen": "2kr4/1p2ppb1/p1n2n1p/2PN2p1/4p3/6B1/PPP1NPPP/2K5 w - - 0 1",
+    "current_fen": "2kr4/1p2ppb1/p1n2n1p/2PN2p1/4p3/6B1/PPP1NPPP/2K5 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr4/1p2ppb1/p1n2n1p/2PN2p1/4p3/6B1/PPP1NPPP/2K5 w - - 0 1\"]\r\n\r\n1. Nb6#\r\n*",
     "all_moves": [
       {
-        "uci": "h5g3",
-        "san": "Ng3+",
-        "color": "black"
-      },
-      {
-        "uci": "h2g3",
-        "san": "hxg3",
+        "uci": "d5b6",
+        "san": "Nb6#",
         "color": "white"
-      },
-      {
-        "uci": "f4g3",
-        "san": "fxg3",
-        "color": "black"
-      },
-      {
-        "uci": "b1c2",
-        "san": "Qc2",
-        "color": "white"
-      },
-      {
-        "uci": "c5h5",
-        "san": "Qh5",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5g3",
-        "san": "Ng3+",
-        "color": "black"
-      },
-      {
-        "uci": "f4g3",
-        "san": "fxg3",
-        "color": "black"
-      },
-      {
-        "uci": "c5h5",
-        "san": "Qh5",
-        "color": "black"
+        "uci": "d5b6",
+        "san": "Nb6#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T11:25:14.587406+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 1,
+    "posted_at": "2026-08-26T11:25:44.835079+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787743514587",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542132815703965757,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "fxg3",
-        "correct": true,
-        "timestamp": "2026-08-26T11:25:24.034149+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qh5",
-        "correct": true,
-        "timestamp": "2026-08-26T11:25:28.174510+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787743544835",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
