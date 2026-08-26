@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-07-19",
     "title": "The Quiet Moves are the Hardest",
     "fen": "8/2N2k1p/5pp1/4p3/p5PP/1Pn2Q2/3q1PK1/8 w - - 0 1",
-    "current_fen": "8/2N2k1p/5pp1/4p3/p5PP/1Pn2Q2/3q1PK1/8 w - - 0 1",
+    "current_fen": "8/2N3kp/2Q2pp1/4p3/p5PP/1Pn5/3q1PK1/8 w - - 2 2",
     "pgn": "[FEN \"8/2N2k1p/5pp1/4p3/p5PP/1Pn2Q2/3q1PK1/8 w - - 0 1\"]\r\n[PlyCount \"13\"]\r\n1. Qc6 {threatens Qe8+} Kg7 (1... Qd8 2. Qxc3 a3 3. Qc4+ Ke7 4.\r\nNd5+ Kf8 5. b4 {W has a N for a P}) 2. Qe8 Qd6 3. Ne6+ Kh6 4. Qf7 {\r\nand mate on g7} Qc6+ 5. Kh2 Qd7 6. Qxd7 axb3 7. Qg7# *",
     "all_moves": [
       {
@@ -117,13 +117,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787780829224",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542289324999975013,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qc6",
+        "correct": true,
+        "timestamp": "2026-08-26T21:47:47.060742+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
