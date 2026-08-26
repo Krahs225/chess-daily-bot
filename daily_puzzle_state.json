@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-04-05",
     "title": "Pirc - Byrne, Helsinki 1952",
     "fen": "5r2/5P1p/2n5/p2k4/2R5/2KN2P1/7P/8 w - - 0 1",
-    "current_fen": "5r2/5P1p/2n5/p2k4/2R5/2KN2P1/7P/8 w - - 0 1",
+    "current_fen": "5r2/5P1p/2nk4/p7/2R2N2/2K3P1/7P/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r2/5P1p/2n5/p2k4/2R5/2KN2P1/7P/8 w - - 0 1\"]\r\n\r\n1. Nf4+ Kd6 2. Rxc6+ Kxc6 3. Ne6 Rxf7 4. Nd8+\r\n*",
     "all_moves": [
       {
@@ -72,20 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787740550129",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542120382230831245,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rc5",
-        "correct": false,
-        "timestamp": "2026-08-26T10:36:00.176768+00:00"
+        "move": "nf4",
+        "correct": true,
+        "timestamp": "2026-08-26T10:36:08.221799+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
