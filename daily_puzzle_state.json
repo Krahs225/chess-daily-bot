@@ -1,111 +1,74 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-11-08",
-    "title": "Fork Insurance",
-    "fen": "4k3/4Pp1p/3P1K2/6P1/8/p2n4/8/8 w - - 0 1",
-    "current_fen": "4QK2/3k4/6p1/4n3/8/8/p7/8 b - - 0 5",
-    "pgn": "[Date \"1889.??.??\"]\r\n[White \"von Holzhausen, Sohege\"]\r\n[Black \"Study\"]\r\n[Result \"1-0\"]\r\n[FEN \"4k3/4Pp1p/3P1K2/6P1/8/p2n4/8/8 w - - 0 1\"]\r\n\r\n1. g6 hxg6 2. d7+ Kxd7 3. Kxf7 Ne5+ 4. Kf8 a2 5. e8=Q+ 1-0",
+    "url": "https://www.chess.com/daily/2019-06-12",
+    "title": "Heavy Piece Play",
+    "fen": "3r3r/pkpqnpp1/8/Q1R5/3P4/4P1P1/P4P2/R5K1 w - - 0 1",
+    "current_fen": "3r3r/pkpqnpp1/8/Q1R5/3P4/4P1P1/P4P2/R5K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r3r/pkpqnpp1/8/Q1R5/3P4/4P1P1/P4P2/R5K1 w - - 0 1\"]\r\n\r\n1. Rb1+ Ka8 2. Qxa7+ Kxa7 3. Ra5#\r\n*",
     "all_moves": [
       {
-        "uci": "g5g6",
-        "san": "g6",
+        "uci": "a1b1",
+        "san": "Rb1+",
         "color": "white"
       },
       {
-        "uci": "h7g6",
-        "san": "hxg6",
+        "uci": "b7a8",
+        "san": "Ka8",
         "color": "black"
       },
       {
-        "uci": "d6d7",
-        "san": "d7+",
+        "uci": "a5a7",
+        "san": "Qxa7+",
         "color": "white"
       },
       {
-        "uci": "e8d7",
-        "san": "Kxd7",
+        "uci": "a8a7",
+        "san": "Kxa7",
         "color": "black"
       },
       {
-        "uci": "f6f7",
-        "san": "Kxf7",
-        "color": "white"
-      },
-      {
-        "uci": "d3e5",
-        "san": "Ne5+",
-        "color": "black"
-      },
-      {
-        "uci": "f7f8",
-        "san": "Kf8",
-        "color": "white"
-      },
-      {
-        "uci": "a3a2",
-        "san": "a2",
-        "color": "black"
-      },
-      {
-        "uci": "e7e8q",
-        "san": "e8=Q+",
+        "uci": "c5a5",
+        "san": "Ra5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5g6",
-        "san": "g6",
+        "uci": "a1b1",
+        "san": "Rb1+",
         "color": "white"
       },
       {
-        "uci": "d6d7",
-        "san": "d7+",
+        "uci": "a5a7",
+        "san": "Qxa7+",
         "color": "white"
       },
       {
-        "uci": "f6f7",
-        "san": "Kxf7",
-        "color": "white"
-      },
-      {
-        "uci": "f7f8",
-        "san": "Kf8",
-        "color": "white"
-      },
-      {
-        "uci": "e7e8q",
-        "san": "e8=Q+",
+        "uci": "c5a5",
+        "san": "Ra5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T07:54:50.164768+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T07:59:55.898124+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787730890164",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542079865191403621,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "e8=q",
-        "correct": true,
-        "timestamp": "2026-08-26T07:55:28.848710+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787731195898",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "daily",
+  "latest_puzzle_type": "random",
   "current_puzzle": {
     "url": "https://www.chess.com/daily/2026-08-26",
     "title": "See You Around",
