@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-08-22",
     "title": "In Your Face",
     "fen": "5r1k/p6p/1p3pp1/2nQ1N2/4Pq1P/5P2/P5P1/3R2K1 w - - 0 1",
-    "current_fen": "3R1r1k/p1n4p/1p3pp1/5N2/4P2P/5P2/P5PK/8 w - - 0 5",
+    "current_fen": "5R1k/p1n4p/1p3pp1/5N2/4P2P/5P2/P5PK/8 b - - 0 5",
     "pgn": "[FEN \"5r1k/p6p/1p3pp1/2nQ1N2/4Pq1P/5P2/P5P1/3R2K1 w - - 0 1\"]\r\n[PlyCount \"9\"]\r\n\r\n1. Qf7 1... Ne6 (1... Qh6 2. Rd8 Rxd8 3. Qxf6+ Qg7 4. Qxg7#) 2. Rd8 2... Qc1+ 3. Kh2 Qc7+ 4. Qxc7 Nxc7\r\n5. Rxf8# *",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787744504566",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1542136968480297010,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxc7",
+        "move": "rxf8",
         "correct": true,
-        "timestamp": "2026-08-26T11:42:29.709909+00:00"
+        "timestamp": "2026-08-26T11:42:32.696579+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -107,7 +107,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
