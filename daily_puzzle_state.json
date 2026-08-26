@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-02-15",
     "title": "Must Know Pattern",
     "fen": "r1b1k2r/pp2bppp/8/2pN2q1/8/8/PPP2PPP/R2QR1K1 w Qkq - 0 1",
-    "current_fen": "r1b1k2r/pp2bppp/8/2pN2q1/8/8/PPP2PPP/R2QR1K1 w Qkq - 0 1",
+    "current_fen": "r1b2k1r/ppN1bppp/8/2p3q1/8/8/PPP2PPP/R2QR1K1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1k2r/pp2bppp/8/2pN2q1/8/8/PPP2PPP/R2QR1K1 w Qkq - 0 1\"]\r\n\r\n1. Nc7+ Kf8 2. Qd8+ Bxd8 3. Re8#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787769429602",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542241511217959093,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nc7",
+        "correct": true,
+        "timestamp": "2026-08-26T18:37:23.298580+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
