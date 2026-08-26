@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-10-02",
     "title": "Volatile Exchanges",
     "fen": "2kr3r/pp3q1p/n3p1p1/8/2BbbB2/1P3P2/P5PP/2RQ1RK1 w - - 0 1",
-    "current_fen": "2kr3r/pp3q1p/n3p1p1/8/2BbbB2/1P3P2/P5PP/2RQ1RK1 w - - 0 1",
+    "current_fen": "2kr3r/pp5p/n3p1p1/8/2BQbq2/1P3P2/P5PP/2R2RK1 w - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"2kr3r/pp3q1p/n3p1p1/8/2BbbB2/1P3P2/P5PP/2RQ1RK1 w - - 0 1\"]\r\n\r\n1.Qxd4 Qxf4 2.Qxa7 Bc6 3.Bxa6 Qd4+ 4.Qxd4 Rxd4 5.Rxc6+ *",
     "all_moves": [
       {
@@ -87,20 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787730585088",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542078585790140429,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bxe6",
-        "correct": false,
-        "timestamp": "2026-08-26T07:50:05.592785+00:00"
+        "move": "qxd4",
+        "correct": true,
+        "timestamp": "2026-08-26T07:50:11.829278+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
