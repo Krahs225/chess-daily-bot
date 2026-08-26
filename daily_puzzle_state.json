@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-01-17",
     "title": "Moves With Immunity",
     "fen": "2kr4/Qpq2p2/3np1p1/7p/8/1PP3N1/5PPP/3R2K1 w - - 0 1",
-    "current_fen": "2kr4/Qpq2p2/3np1p1/7p/8/1PP3N1/5PPP/3R2K1 w - - 0 1",
+    "current_fen": "2kr4/Qp2qp2/3np1p1/7p/4N3/1PP5/5PPP/3R2K1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr4/Qpq2p2/3np1p1/7p/8/1PP3N1/5PPP/3R2K1 w - - 0 1\"]\r\n\r\n1. Ne4 Qe7 2. Qc5+\r\n*",
     "all_moves": [
       {
@@ -42,8 +42,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787747616441",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542150020143517768,
     "attempted_users": {
@@ -52,10 +52,16 @@
         "move": "ra1",
         "correct": false,
         "timestamp": "2026-08-26T12:33:45.320332+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "ne4",
+        "correct": true,
+        "timestamp": "2026-08-26T12:33:46.575642+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
