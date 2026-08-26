@@ -1,92 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-11-21",
-    "title": "Navigating the Jungle",
-    "fen": "r5k1/4r1bp/p5p1/qpnb2B1/2p5/P1P2N1P/1P1N1PP1/2RQ2K1 w - - 0 1",
-    "current_fen": "5rk1/5rbp/p5p1/NpnQ2B1/2p5/P1P4P/1P3PP1/2R3K1 b - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r5k1/4r1bp/p5p1/qpnb2B1/2p5/P1P2N1P/1P1N1PP1/2RQ2K1 w - - 0 1\"]\r\n\r\n1.Nb3 Bxf3 2.Qxf3 Rf8 3.Qd5+ Ref7 4.Nxa5 *",
+    "url": "https://www.chess.com/daily/2019-05-19",
+    "title": "Squares Not Really Covered",
+    "fen": "r1b2r2/1q2Qpkp/pp3np1/3p4/3N4/4P3/P3BPPP/R4RK1 w - - 0 1",
+    "current_fen": "r1b2r2/1q2Qpkp/pp3np1/3p4/3N4/4P3/P3BPPP/R4RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2r2/1q2Qpkp/pp3np1/3p4/3N4/4P3/P3BPPP/R4RK1 w - - 0 1\"]\r\n\r\n1. Ne6+ Bxe6 2. Qxb7 \r\n*",
     "all_moves": [
       {
-        "uci": "d2b3",
-        "san": "Nb3",
+        "uci": "d4e6",
+        "san": "Ne6+",
         "color": "white"
       },
       {
-        "uci": "d5f3",
-        "san": "Bxf3",
+        "uci": "c8e6",
+        "san": "Bxe6",
         "color": "black"
       },
       {
-        "uci": "d1f3",
-        "san": "Qxf3",
-        "color": "white"
-      },
-      {
-        "uci": "a8f8",
-        "san": "Rf8",
-        "color": "black"
-      },
-      {
-        "uci": "f3d5",
-        "san": "Qd5+",
-        "color": "white"
-      },
-      {
-        "uci": "e7f7",
-        "san": "Ref7",
-        "color": "black"
-      },
-      {
-        "uci": "b3a5",
-        "san": "Nxa5",
+        "uci": "e7b7",
+        "san": "Qxb7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2b3",
-        "san": "Nb3",
+        "uci": "d4e6",
+        "san": "Ne6+",
         "color": "white"
       },
       {
-        "uci": "d1f3",
-        "san": "Qxf3",
-        "color": "white"
-      },
-      {
-        "uci": "f3d5",
-        "san": "Qd5+",
-        "color": "white"
-      },
-      {
-        "uci": "b3a5",
-        "san": "Nxa5",
+        "uci": "e7b7",
+        "san": "Qxb7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T13:31:59.357978+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T13:32:40.778895+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787751119357",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542164712513478728,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nxa5",
-        "correct": true,
-        "timestamp": "2026-08-26T13:32:30.581374+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787751160778",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
