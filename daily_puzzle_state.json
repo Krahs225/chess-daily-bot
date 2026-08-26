@@ -1,141 +1,96 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-09-16",
-    "title": "Mate in 8",
-    "fen": "r1r5/pp2bpk1/4p3/3pn1N1/2n2B2/2N3R1/PPP2P2/2K2B1R w - - 0 1",
-    "current_fen": "r1r5/pp2bpk1/4p3/3pn1N1/2n2B2/2N3R1/PPP2P2/2K2B1R w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1r5/pp2bpk1/4p3/3pn1N1/2n2B2/2N3R1/PPP2P2/2K2B1R w - - 0 1\"]\r\n\r\n1. Nxe6+ Kf6 2. Nd4 Ng6 3. Nxd5+ Kg7 4. Bh6+ Kh8 5. Nxe7 Rc5 6. Bf8+ Nh4 7. Rxh4+ Rh5 8. Rxh5#\r\n*",
+    "url": "https://www.chess.com/daily/2007-07-12",
+    "title": "How to Punish Black...",
+    "fen": "r3kb1r/1ppqnppp/p1bp4/5P1Q/2P5/8/PPB2PPP/RNB1R1K1 w kq - 0 1",
+    "current_fen": "r3kb1r/1ppqnppp/p1bp4/5P1Q/2P5/8/PPB2PPP/RNB1R1K1 w kq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3kb1r/1ppqnppp/p1bp4/5P1Q/2P5/8/PPB2PPP/RNB1R1K1 w kq - 0 1\"]\r\n\r\n1. f6 gxf6 { Black must capture or lose the knight.  }  2. Bf5 { White keeps black from escaping by castling queenside! The bishop cannot be taken of course because the knight is pinned.  }  2... Qd8 3. Be6 Ng6 ( 3... Qb8 4. Qxf7+ Kd8 5. Qxf6 { And the rook is lost as well... }  ) 4. Bd7+ { Not an easy move to find!  }  4... Kxd7 5. Qf5#\r\n*",
     "all_moves": [
       {
-        "uci": "g5e6",
-        "san": "Nxe6+",
+        "uci": "f5f6",
+        "san": "f6",
         "color": "white"
       },
       {
         "uci": "g7f6",
-        "san": "Kf6",
+        "san": "gxf6",
         "color": "black"
       },
       {
-        "uci": "e6d4",
-        "san": "Nd4",
+        "uci": "c2f5",
+        "san": "Bf5",
         "color": "white"
       },
       {
-        "uci": "e5g6",
+        "uci": "d7d8",
+        "san": "Qd8",
+        "color": "black"
+      },
+      {
+        "uci": "f5e6",
+        "san": "Be6",
+        "color": "white"
+      },
+      {
+        "uci": "e7g6",
         "san": "Ng6",
         "color": "black"
       },
       {
-        "uci": "c3d5",
-        "san": "Nxd5+",
+        "uci": "e6d7",
+        "san": "Bd7+",
         "color": "white"
       },
       {
-        "uci": "f6g7",
-        "san": "Kg7",
+        "uci": "e8d7",
+        "san": "Kxd7",
         "color": "black"
       },
       {
-        "uci": "f4h6",
-        "san": "Bh6+",
-        "color": "white"
-      },
-      {
-        "uci": "g7h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "d5e7",
-        "san": "Nxe7",
-        "color": "white"
-      },
-      {
-        "uci": "c8c5",
-        "san": "Rc5",
-        "color": "black"
-      },
-      {
-        "uci": "h6f8",
-        "san": "Bf8+",
-        "color": "white"
-      },
-      {
-        "uci": "g6h4",
-        "san": "Nh4",
-        "color": "black"
-      },
-      {
-        "uci": "h1h4",
-        "san": "Rxh4+",
-        "color": "white"
-      },
-      {
-        "uci": "c5h5",
-        "san": "Rh5",
-        "color": "black"
-      },
-      {
-        "uci": "h4h5",
-        "san": "Rxh5#",
+        "uci": "h5f5",
+        "san": "Qf5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5e6",
-        "san": "Nxe6+",
+        "uci": "f5f6",
+        "san": "f6",
         "color": "white"
       },
       {
-        "uci": "e6d4",
-        "san": "Nd4",
+        "uci": "c2f5",
+        "san": "Bf5",
         "color": "white"
       },
       {
-        "uci": "c3d5",
-        "san": "Nxd5+",
+        "uci": "f5e6",
+        "san": "Be6",
         "color": "white"
       },
       {
-        "uci": "f4h6",
-        "san": "Bh6+",
+        "uci": "e6d7",
+        "san": "Bd7+",
         "color": "white"
       },
       {
-        "uci": "d5e7",
-        "san": "Nxe7",
-        "color": "white"
-      },
-      {
-        "uci": "h6f8",
-        "san": "Bf8+",
-        "color": "white"
-      },
-      {
-        "uci": "h1h4",
-        "san": "Rxh4+",
-        "color": "white"
-      },
-      {
-        "uci": "h4h5",
-        "san": "Rxh5#",
+        "uci": "h5f5",
+        "san": "Qf5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 8,
-    "posted_at": "2026-08-26T13:48:57.781268+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-26T13:49:08.437270+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787752137781",
+    "puzzle_id": "random_1787752148437",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542168984449716324,
+    "message_id": 1542169029274509434,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
