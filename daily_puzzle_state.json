@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-07-03",
     "title": "Candidate Highlights: Ian's King Hunt",
     "fen": "8/5pk1/3bp2p/8/6KP/5Q2/7q/5B2 b - - 0 47",
-    "current_fen": "8/5pk1/3bp2p/8/6KP/5Q2/7q/5B2 b - - 0 47",
+    "current_fen": "8/5pk1/3bp3/7K/7P/5Q2/7q/5B2 b - - 0 48",
     "pgn": "[Event \"Corus-C\"]\r\n[Site \"Wijk aan Zee\"]\r\n[Date \"2007.01.18\"]\r\n[Round \"5\"]\r\n[White \"Jonkman, Harmen\"]\r\n[Black \"Nepomniachtchi, Ian\"]\r\n[Result \"0-1\"]\r\n[ECO \"C02\"]\r\n[WhiteElo \"2425\"]\r\n[BlackElo \"2587\"]\r\n[SetUp \"1\"]\r\n[FEN \"8/5pk1/3bp2p/8/6KP/5Q2/7q/5B2 b - - 0 47\"]\r\n\r\n47... h5+ 48. Kxh5 Qe5+ 49. Kg4 f5+ 50. Kh5 f4+ 51. Kg4 Qf5# 0-1",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787752348864",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542169869875683329,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "h5",
+        "correct": true,
+        "timestamp": "2026-08-26T13:52:36.479304+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
