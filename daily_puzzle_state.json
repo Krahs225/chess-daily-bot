@@ -1,76 +1,54 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-05-29",
-    "title": "A Guided Checkmate Tour",
-    "fen": "1r2r2k/5p1p/ppbp1P1B/2n2P2/2P3Rp/1N6/Pb4RP/6K1 w - - 0 1",
-    "current_fen": "1r2r1k1/5pBp/ppbp1P2/2n2P2/2P3Rp/1N6/Pb4RP/6K1 w - - 2 2",
-    "pgn": "[Result \"*\"]\r\n[FEN \"1r2r2k/5p1p/ppbp1P1B/2n2P2/2P3Rp/1N6/Pb4RP/6K1 w - - 0 1\"]\r\n\r\n1. Bg7+ Kg8 2. Bf8+ Kxf8 3. Rg8# *",
+    "url": "https://www.chess.com/daily/2024-04-29",
+    "title": "Royal Acrobatics",
+    "fen": "2r2r1k/3q1B2/5p1p/p7/P2P4/5P1P/2bQ2P1/4R1K1 w - - 0 1",
+    "current_fen": "2r2r1k/3q1B2/5p1p/p7/P2P4/5P1P/2bQ2P1/4R1K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2r2r1k/3q1B2/5p1p/p7/P2P4/5P1P/2bQ2P1/4R1K1 w - - 0 1\"]\r\n\r\n1. Qxh6+ Bh7 2. Qxf6# *",
     "all_moves": [
       {
-        "uci": "h6g7",
-        "san": "Bg7+",
+        "uci": "d2h6",
+        "san": "Qxh6+",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "c2h7",
+        "san": "Bh7",
         "color": "black"
       },
       {
-        "uci": "g7f8",
-        "san": "Bf8+",
-        "color": "white"
-      },
-      {
-        "uci": "g8f8",
-        "san": "Kxf8",
-        "color": "black"
-      },
-      {
-        "uci": "g4g8",
-        "san": "Rg8#",
+        "uci": "h6f6",
+        "san": "Qxf6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6g7",
-        "san": "Bg7+",
+        "uci": "d2h6",
+        "san": "Qxh6+",
         "color": "white"
       },
       {
-        "uci": "g7f8",
-        "san": "Bf8+",
-        "color": "white"
-      },
-      {
-        "uci": "g4g8",
-        "san": "Rg8#",
+        "uci": "h6f6",
+        "san": "Qxf6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T11:30:14.338467+00:00",
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T11:30:34.143338+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787743814338",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "puzzle_id": "random_1787743834143",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1542134073559097376,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bg7",
-        "correct": true,
-        "timestamp": "2026-08-26T11:30:28.728860+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
