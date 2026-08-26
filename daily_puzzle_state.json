@@ -1,123 +1,54 @@
 {
   "latest_random_puzzle": {
-    "title": "2300 • jw8fN",
-    "fen": "8/8/PkR3r1/1P1K4/3P1p2/2P5/1b6/8 b - - 4 54",
-    "current_fen": "8/k1b5/2K5/8/3P4/2P2p2/8/8 w - - 0 60",
+    "url": "https://www.chess.com/daily/2024-03-19",
+    "title": "Can You Checkmate a Grandmaster?",
+    "fen": "2r5/pp1b4/4p3/3pPk2/5P2/8/1K6/3R2R1 w - - 0 35",
+    "current_fen": "2r5/pp1b4/4p3/3pPk2/5P2/8/1K6/3R2R1 w - - 0 35",
+    "pgn": "[Event \"Astana\"]\r\n[Site \"Astana\"]\r\n[Date \"2001.05.26\"]\r\n[Round \"6\"]\r\n[White \"Kasparov, Garry\"]\r\n[Black \"Shirov, Alexei\"]\r\n[Result \"1-0\"]\r\n[ECO \"C11\"]\r\n[WhiteElo \"2827\"]\r\n[BlackElo \"2722\"]\r\n[FEN \"2r5/pp1b4/4p3/3pPk2/5P2/8/1K6/3R2R1 w - - 0 35\"]\r\n\r\n35. Rd4 Rc4 36. Rg5# 1-0",
     "all_moves": [
       {
-        "uci": "g6c6",
-        "san": "Rxc6",
-        "color": "black"
-      },
-      {
-        "uci": "b5c6",
-        "san": "bxc6",
+        "uci": "d1d4",
+        "san": "Rd4",
         "color": "white"
       },
       {
-        "uci": "f4f3",
-        "san": "f3",
+        "uci": "c8c4",
+        "san": "Rc4",
         "color": "black"
       },
       {
-        "uci": "a6a7",
-        "san": "a7",
+        "uci": "g1g5",
+        "san": "Rg5#",
         "color": "white"
-      },
-      {
-        "uci": "b6a7",
-        "san": "Kxa7",
-        "color": "black"
-      },
-      {
-        "uci": "d5d6",
-        "san": "Kd6",
-        "color": "white"
-      },
-      {
-        "uci": "b2c1",
-        "san": "Bc1",
-        "color": "black"
-      },
-      {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "c1f4",
-        "san": "Bf4+",
-        "color": "black"
-      },
-      {
-        "uci": "d6c6",
-        "san": "Kc6",
-        "color": "white"
-      },
-      {
-        "uci": "f4c7",
-        "san": "Bxc7",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "g6c6",
-        "san": "Rxc6",
-        "color": "black"
+        "uci": "d1d4",
+        "san": "Rd4",
+        "color": "white"
       },
       {
-        "uci": "f4f3",
-        "san": "f3",
-        "color": "black"
-      },
-      {
-        "uci": "b6a7",
-        "san": "Kxa7",
-        "color": "black"
-      },
-      {
-        "uci": "b2c1",
-        "san": "Bc1",
-        "color": "black"
-      },
-      {
-        "uci": "c1f4",
-        "san": "Bf4+",
-        "color": "black"
-      },
-      {
-        "uci": "f4c7",
-        "san": "Bxc7",
-        "color": "black"
+        "uci": "g1g5",
+        "san": "Rg5#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 6,
-    "pgn": "",
-    "url": "https://lichess.org/training/jw8fN",
-    "posted_at": "2026-08-26T13:43:46.765131+00:00",
-    "puzzle_id": "random_lichess_2300_jw8fN_1787751826765",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T13:44:51.101302+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_1787751891101",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxb2",
-        "correct": false,
-        "timestamp": "2026-08-26T13:44:27.511413+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bxc7",
-        "correct": true,
-        "timestamp": "2026-08-26T13:44:36.435036+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
