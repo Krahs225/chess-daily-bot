@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-03-14",
     "title": "When the Central Smoke Clears",
     "fen": "r5k1/1p3pbp/1p2b1p1/8/1q1rn3/1B3QBP/P2N1PP1/3R1RK1 w - - 0 1",
-    "current_fen": "r5k1/1p3pbp/1p2b1p1/8/1q2r3/1B3QBP/P4PP1/3R1RK1 w - - 0 2",
+    "current_fen": "r5k1/1p3pbp/1p1Bb1p1/8/4r3/1Bq2Q1P/P4PP1/3R1RK1 w - - 2 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"r5k1/1p3pbp/1p2b1p1/8/1q1rn3/1B3QBP/P2N1PP1/3R1RK1 w - - 0 1\"]\r\n\r\n1. Nxe4 Rxe4 2. Bd6 Qc3 3. Qxe4 *",
     "all_moves": [
       {
@@ -57,23 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787741510654",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542124411128250509,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nxe4",
+        "move": "bd6",
+        "correct": false,
+        "timestamp": "2026-08-26T10:52:06.404337+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Bd6",
         "correct": true,
-        "timestamp": "2026-08-26T10:52:02.105802+00:00"
+        "timestamp": "2026-08-26T10:52:06.029373+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
