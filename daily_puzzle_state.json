@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-09-09",
     "title": "Fragile Light Squares",
     "fen": "3rr3/pp3kpp/2p1b3/P1Q3B1/BP1P4/6Pq/R4P1P/1N3RK1 b - - 0 1",
-    "current_fen": "3rr3/pp3kpp/2p1b3/P1Q3B1/BP1P4/6Pq/R4P1P/1N3RK1 b - - 0 1",
+    "current_fen": "3rr3/pp3kpp/2p1b3/P1Q3B1/BP1P4/6P1/R4P1P/1N3K2 b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"3rr3/pp3kpp/2p1b3/P1Q3B1/BP1P4/6Pq/R4P1P/1N3RK1 b - - 0 1\"]\r\n\r\n1... Qxf1+ 2. Kxf1 Bh3+ 3. Kg1 Re1# *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787783461471",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542300365184041062,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxf1",
+        "correct": true,
+        "timestamp": "2026-08-26T22:31:18.025767+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
