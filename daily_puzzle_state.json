@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "2300 • jw8fN",
     "fen": "8/8/PkR3r1/1P1K4/3P1p2/2P5/1b6/8 b - - 4 54",
-    "current_fen": "8/8/PkR3r1/1P1K4/3P1p2/2P5/1b6/8 b - - 4 54",
+    "current_fen": "8/8/PkP5/3K4/3P1p2/2P5/1b6/8 b - - 0 55",
     "all_moves": [
       {
         "uci": "g6c6",
@@ -98,8 +98,8 @@
     "url": "https://lichess.org/training/jw8fN",
     "posted_at": "2026-08-26T13:43:46.765131+00:00",
     "puzzle_id": "random_lichess_2300_jw8fN_1787751826765",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": null,
     "attempted_users": {
@@ -108,10 +108,16 @@
         "move": "e4",
         "correct": false,
         "timestamp": "2026-08-26T13:43:49.268160+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rxc6",
+        "correct": true,
+        "timestamp": "2026-08-26T13:44:06.636297+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
