@@ -1,47 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-05-24",
-    "title": "Checkmate Practice",
-    "fen": "2r1kb1r/1b1p1ppp/p3pB2/8/2q1PP2/2pQ1B2/PPP3PP/2KR3R w - - 0 1",
-    "current_fen": "2r1kb1r/1b1Q1ppp/p3pB2/8/2q1PP2/2p2B2/PPP3PP/2KR3R b - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1kb1r/1b1p1ppp/p3pB2/8/2q1PP2/2pQ1B2/PPP3PP/2KR3R w - - 0 1\"]\r\n\r\n1. Qxd7#\r\n*",
+    "url": "https://www.chess.com/daily/2019-03-05",
+    "title": "Tkachiev vs Ponomariov, Moscow, 2008",
+    "fen": "r1b1r1k1/ppb2pp1/2nq3p/3p4/3P4/3BBN1P/PP3PP1/R2QR1K1 w - - 0 1",
+    "current_fen": "r1b1r1k1/ppb2pp1/2nq3p/3p4/3P4/3BBN1P/PP3PP1/R2QR1K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1r1k1/ppb2pp1/2nq3p/3p4/3P4/3BBN1P/PP3PP1/R2QR1K1 w - - 0 1\"]\r\n\r\n1. Bf4 Rxe1+ 2. Qxe1 Qd7 3. Bxc7\r\n*",
     "all_moves": [
       {
-        "uci": "d3d7",
-        "san": "Qxd7#",
+        "uci": "e3f4",
+        "san": "Bf4",
+        "color": "white"
+      },
+      {
+        "uci": "e8e1",
+        "san": "Rxe1+",
+        "color": "black"
+      },
+      {
+        "uci": "d1e1",
+        "san": "Qxe1",
+        "color": "white"
+      },
+      {
+        "uci": "d6d7",
+        "san": "Qd7",
+        "color": "black"
+      },
+      {
+        "uci": "f4c7",
+        "san": "Bxc7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3d7",
-        "san": "Qxd7#",
+        "uci": "e3f4",
+        "san": "Bf4",
+        "color": "white"
+      },
+      {
+        "uci": "d1e1",
+        "san": "Qxe1",
+        "color": "white"
+      },
+      {
+        "uci": "f4c7",
+        "san": "Bxc7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-26T17:29:41.222593+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T17:29:52.185273+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787765381222",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1542224531400298556,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qxd7",
-        "correct": true,
-        "timestamp": "2026-08-26T17:29:48.992526+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787765392185",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
