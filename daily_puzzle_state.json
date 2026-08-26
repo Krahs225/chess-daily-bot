@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-08-08",
     "title": "Spanner in the Works",
     "fen": "2q3k1/4R1p1/p3P1bp/1p2n1p1/1P1r4/P4QBK/2P3B1/8 w - - 0 1",
-    "current_fen": "2q3R1/4k3/p5bp/1p2B3/1P4r1/P6K/2P3B1/8 w - - 0 6",
+    "current_fen": "2R5/4k3/p5bp/1p2B3/1P4r1/P6K/2P3B1/8 b - - 0 6",
     "pgn": "[Result \"*\"]\r\n[FEN \"2q3k1/4R1p1/p3P1bp/1p2n1p1/1P1r4/P4QBK/2P3B1/8 w - - 0 1\"]\r\n\r\n1.Bxe5 g4+ 2.Qxg4 Rxg4 3.Rxg7+ Kf8 4.e7+ Ke8 5.Rg8+ Kxe7 6.Rxc8 *",
     "all_moves": [
       {
@@ -102,16 +102,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787745349382",
-    "next_solution_index": 10,
-    "next_player_index": 5,
-    "solved": false,
+    "next_solution_index": 11,
+    "next_player_index": 6,
+    "solved": true,
     "message_id": 1542140511517675531,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rg8",
+        "move": "rxc8",
         "correct": true,
-        "timestamp": "2026-08-26T11:56:13.554118+00:00"
+        "timestamp": "2026-08-26T11:56:18.792729+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -122,7 +122,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
