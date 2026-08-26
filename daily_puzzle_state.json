@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-08-25",
     "title": "Mate in 4",
     "fen": "kr3r2/1p2Rp2/pn4p1/1N5p/8/3Q2P1/PPP2q1P/1K5R w K - 0 1",
-    "current_fen": "kr3r2/1p2Rp2/pn4p1/1N5p/8/3Q2P1/PPP2q1P/1K5R w K - 0 1",
+    "current_fen": "1r3r2/kpN1Rp2/pn4p1/7p/8/3Q2P1/PPP2q1P/1K5R w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"kr3r2/1p2Rp2/pn4p1/1N5p/8/3Q2P1/PPP2q1P/1K5R w K - 0 1\"]\r\n\r\n1. Nc7+ Ka7 2. Qxa6+ bxa6 3. Nb5+ Ka8 4. Ra7# \r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787743297804",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542131906915733544,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nc7",
+        "correct": true,
+        "timestamp": "2026-08-26T11:21:41.622256+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
