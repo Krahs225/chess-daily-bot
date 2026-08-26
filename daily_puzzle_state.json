@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-06-28",
     "title": "W.Schmidt - H.Liebert, Polanica Zdroj, 1967",
     "fen": "8/8/p3p3/3b1pR1/1B3P1k/8/4r1PK/8 w - - 0 1",
-    "current_fen": "8/8/p3p3/3b1pR1/1B3P1k/8/4r1PK/8 w - - 0 1",
+    "current_fen": "8/8/p3p3/3b1pR1/5P1k/8/5rPK/4B3 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/p3p3/3b1pR1/1B3P1k/8/4r1PK/8 w - - 0 1\"]\r\n\r\n1. Be1+ Rf2 2. Bxf2#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787784774981",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542305874721247313,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "be1",
+        "correct": true,
+        "timestamp": "2026-08-26T22:53:03.246710+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
