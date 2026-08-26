@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-04-03",
     "title": "Lolli's Mating Pattern",
     "fen": "5rk1/5p2/7Q/5P2/8/8/8/6K1 w - - 0 1",
-    "current_fen": "5rk1/5p2/7Q/5P2/8/8/8/6K1 w - - 0 1",
+    "current_fen": "r5k1/5pQ1/5P2/8/8/8/8/6K1 b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/5p2/7Q/5P2/8/8/8/6K1 w - - 0 1\"]\r\n\r\n1. f6 Ra8 2. Qg7# \r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787769870008",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
+    "message_id": 1542243359366586379,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qg7",
+        "correct": true,
+        "timestamp": "2026-08-26T18:44:37.719828+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
