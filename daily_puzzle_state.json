@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-05-26",
     "title": "Clean Sweep",
     "fen": "5rk1/ppR1R3/5np1/P7/1P5p/4P2P/1Q4PK/5r2 w - - 0 1",
-    "current_fen": "5rk1/ppR1R3/5np1/P7/1P5p/4P2P/1Q4PK/5r2 w - - 0 1",
+    "current_fen": "5r1k/ppR3R1/5np1/P7/1P5p/4P2P/1Q4PK/5r2 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/ppR1R3/5np1/P7/1P5p/4P2P/1Q4PK/5r2 w - - 0 1\"]\r\n\r\n1. Rg7+ Kh8 2. Rh7+ Kg8 3. Rcg7# \r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787757259952",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542190468584972349,
+    "attempted_users": {
+      "1403636751695740971": {
+        "name": "WetisJas",
+        "move": "rg7",
+        "correct": true,
+        "timestamp": "2026-08-26T15:14:39.438458+00:00"
+      }
+    },
+    "first_move_user_id": "1403636751695740971",
+    "first_move_user_name": "WetisJas",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
