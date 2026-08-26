@@ -1,62 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-07-09",
-    "title": "Calculate Twice, Pin Once",
-    "fen": "6k1/2q2pb1/5np1/p2B3p/Pp6/1P3NP1/5PP1/3Q2K1 b - - 0 1",
-    "current_fen": "6k1/5qb1/5np1/p6p/Pp6/1P3NP1/5PP1/3Q2K1 w - - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/2q2pb1/5np1/p2B3p/Pp6/1P3NP1/5PP1/3Q2K1 b - - 0 1\"]\r\n\r\n1... Qd7 2. Bxf7+ Qxf7 *",
+    "url": "https://www.chess.com/daily/2024-12-26",
+    "title": "Back Rank Tilt",
+    "fen": "5k2/p2r4/b1q2b1P/2p2pN1/5n2/1QP5/PP3PP1/4R1K1 w - - 0 1",
+    "current_fen": "5k2/p2r4/b1q2b1P/2p2pN1/5n2/1QP5/PP3PP1/4R1K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"5k2/p2r4/b1q2b1P/2p2pN1/5n2/1QP5/PP3PP1/4R1K1 w - - 0 1\"]\r\n\r\n1. Qg8+ Kxg8 2. Re8# *",
     "all_moves": [
       {
-        "uci": "c7d7",
-        "san": "Qd7",
-        "color": "black"
-      },
-      {
-        "uci": "d5f7",
-        "san": "Bxf7+",
+        "uci": "b3g8",
+        "san": "Qg8+",
         "color": "white"
       },
       {
-        "uci": "d7f7",
-        "san": "Qxf7",
+        "uci": "f8g8",
+        "san": "Kxg8",
         "color": "black"
+      },
+      {
+        "uci": "e1e8",
+        "san": "Re8#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c7d7",
-        "san": "Qd7",
-        "color": "black"
+        "uci": "b3g8",
+        "san": "Qg8+",
+        "color": "white"
       },
       {
-        "uci": "d7f7",
-        "san": "Qxf7",
-        "color": "black"
+        "uci": "e1e8",
+        "san": "Re8#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-08-26T16:31:44.346238+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T16:32:19.770901+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787761904346",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542209948593823866,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qxf7",
-        "correct": true,
-        "timestamp": "2026-08-26T16:32:11.994198+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787761939770",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
