@@ -1,134 +1,67 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-07-21",
-    "title": "Best Moves! No hint...",
-    "fen": "2kr2r1/pp6/2q2p1b/N1P2P1p/P2ppn2/3n1B2/1BQ3PP/1R3RK1 b - - 0 1",
-    "current_fen": "2kr2r1/pp6/2q2p1b/N1P2P1p/P2ppn2/3n1B2/1BQ3PP/1R3RK1 b - - 0 1",
-    "pgn": "[FEN \"2kr2r1/pp6/2q2p1b/N1P2P1p/P2ppn2/3n1B2/1BQ3PP/1R3RK1 b - - 0 1\"]\r\n[PlyCount \"13\"]\r\n[Result \"*\"]\r\n[Date \"2007.07.19\"]\r\n\r\n1... exf3 $1 2. Nxc6 Ne2+ 3. Qxe2 ( 3. Kh1 $4 fxg2# ) fxe2 4. Ne7+ ( 4. Nxd8 Be3+ 5. Kh1 exf1=Q+ 6. Rxf1 Nxb2 $19 ) Kc7 5. Nxg8 Be3+ 6. Kh1 exf1=Q+ 7. Rxf1 Rxg8 $19\r\n*",
+    "url": "https://www.chess.com/daily/2025-05-03",
+    "title": "Tactical Misdirection",
+    "fen": "r3kb1r/pp1n1pp1/4b2p/q1pNpn2/7B/2P2N2/PPB2PPP/R2QK2R w KQkq - 0 1",
+    "current_fen": "r3kb1r/pp1n1pp1/4b2p/q1pNpn2/7B/2P2N2/PPB2PPP/R2QK2R w KQkq - 0 1",
+    "pgn": "[White \"JohanVA\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"r3kb1r/pp1n1pp1/4b2p/q1pNpn2/7B/2P2N2/PPB2PPP/R2QK2R w KQkq - 0 1\"]\r\n\r\n1. Bxf5 Bxf5 2. Qa4 Qxa4 3. Nc7# 1-0",
     "all_moves": [
       {
-        "uci": "e4f3",
-        "san": "exf3",
-        "color": "black"
-      },
-      {
-        "uci": "a5c6",
-        "san": "Nxc6",
+        "uci": "c2f5",
+        "san": "Bxf5",
         "color": "white"
       },
       {
-        "uci": "f4e2",
-        "san": "Ne2+",
+        "uci": "e6f5",
+        "san": "Bxf5",
         "color": "black"
       },
       {
-        "uci": "c2e2",
-        "san": "Qxe2",
+        "uci": "d1a4",
+        "san": "Qa4",
         "color": "white"
       },
       {
-        "uci": "f3e2",
-        "san": "fxe2",
+        "uci": "a5a4",
+        "san": "Qxa4",
         "color": "black"
       },
       {
-        "uci": "c6e7",
-        "san": "Ne7+",
+        "uci": "d5c7",
+        "san": "Nc7#",
         "color": "white"
-      },
-      {
-        "uci": "c8c7",
-        "san": "Kc7",
-        "color": "black"
-      },
-      {
-        "uci": "e7g8",
-        "san": "Nxg8",
-        "color": "white"
-      },
-      {
-        "uci": "h6e3",
-        "san": "Be3+",
-        "color": "black"
-      },
-      {
-        "uci": "g1h1",
-        "san": "Kh1",
-        "color": "white"
-      },
-      {
-        "uci": "e2f1q",
-        "san": "exf1=Q+",
-        "color": "black"
-      },
-      {
-        "uci": "b1f1",
-        "san": "Rxf1",
-        "color": "white"
-      },
-      {
-        "uci": "d8g8",
-        "san": "Rxg8",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4f3",
-        "san": "exf3",
-        "color": "black"
+        "uci": "c2f5",
+        "san": "Bxf5",
+        "color": "white"
       },
       {
-        "uci": "f4e2",
-        "san": "Ne2+",
-        "color": "black"
+        "uci": "d1a4",
+        "san": "Qa4",
+        "color": "white"
       },
       {
-        "uci": "f3e2",
-        "san": "fxe2",
-        "color": "black"
-      },
-      {
-        "uci": "c8c7",
-        "san": "Kc7",
-        "color": "black"
-      },
-      {
-        "uci": "h6e3",
-        "san": "Be3+",
-        "color": "black"
-      },
-      {
-        "uci": "e2f1q",
-        "san": "exf1=Q+",
-        "color": "black"
-      },
-      {
-        "uci": "d8g8",
-        "san": "Rxg8",
-        "color": "black"
+        "uci": "d5c7",
+        "san": "Nc7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 7,
-    "posted_at": "2026-08-26T15:46:03.525996+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T15:46:20.678849+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787759163526",
+    "puzzle_id": "random_1787759180678",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542198452203683981,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nh3",
-        "correct": false,
-        "timestamp": "2026-08-26T15:46:15.332107+00:00"
-      }
-    },
+    "message_id": 1542198524232470609,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
