@@ -1,62 +1,107 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-05-16",
-    "title": "Trouble or No Trouble?",
-    "fen": "br4k1/4Rppp/8/P7/1Q6/6P1/5PBP/3r2K1 w - - 0 1",
-    "current_fen": "b3R1k1/5ppp/8/P7/1r6/6P1/5P1P/3r1BK1 b - - 1 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"br4k1/4Rppp/8/P7/1Q6/6P1/5PBP/3r2K1 w - - 0 1\"]\r\n\r\n1. Bf1 Rxb4 2. Re8#\r\n*",
+    "url": "https://www.chess.com/daily/2020-01-16",
+    "title": "The Force is Strong with This One",
+    "fen": "r1b1k2r/pp1nqpp1/4p2p/3pP1N1/8/3BQ3/PP3PPP/2R2RK1 w kq - 0 20",
+    "current_fen": "1rb1k2r/Qp1nqpp1/4p2p/3pP1N1/8/3B4/PP3PPP/2R2RK1 w k - 1 21",
+    "pgn": "[Event \"Ostlandserien 01/02 div. 1, Asker - Nor\"]\r\n[Site \"Asker NOR\"]\r\n[Date \"2002.02.09\"]\r\n[Round \"6\"]\r\n[White \"Magnus Carlsen\"]\r\n[Black \"Tor Gulbrandsen\"]\r\n[Result \"1-0\"]\r\n[FEN \"r1b1k2r/pp1nqpp1/4p2p/3pP1N1/8/3BQ3/PP3PPP/2R2RK1 w kq - 0 20\"]\r\n\r\n20.Qxa7 Rb8 21.Qxb8 Nxb8 22.Rxc8+ Kd7 23.Rxh8 Nc6 24.Nf3 1-0",
     "all_moves": [
       {
-        "uci": "g2f1",
-        "san": "Bf1",
+        "uci": "e3a7",
+        "san": "Qxa7",
         "color": "white"
       },
       {
-        "uci": "b8b4",
-        "san": "Rxb4",
+        "uci": "a8b8",
+        "san": "Rb8",
         "color": "black"
       },
       {
-        "uci": "e7e8",
-        "san": "Re8#",
+        "uci": "a7b8",
+        "san": "Qxb8",
+        "color": "white"
+      },
+      {
+        "uci": "d7b8",
+        "san": "Nxb8",
+        "color": "black"
+      },
+      {
+        "uci": "c1c8",
+        "san": "Rxc8+",
+        "color": "white"
+      },
+      {
+        "uci": "e8d7",
+        "san": "Kd7",
+        "color": "black"
+      },
+      {
+        "uci": "c8h8",
+        "san": "Rxh8",
+        "color": "white"
+      },
+      {
+        "uci": "b8c6",
+        "san": "Nc6",
+        "color": "black"
+      },
+      {
+        "uci": "g5f3",
+        "san": "Nf3",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g2f1",
-        "san": "Bf1",
+        "uci": "e3a7",
+        "san": "Qxa7",
         "color": "white"
       },
       {
-        "uci": "e7e8",
-        "san": "Re8#",
+        "uci": "a7b8",
+        "san": "Qxb8",
+        "color": "white"
+      },
+      {
+        "uci": "c1c8",
+        "san": "Rxc8+",
+        "color": "white"
+      },
+      {
+        "uci": "c8h8",
+        "san": "Rxh8",
+        "color": "white"
+      },
+      {
+        "uci": "g5f3",
+        "san": "Nf3",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-26T21:04:28.560012+00:00",
+    "player_move_count": 5,
+    "posted_at": "2026-08-26T21:04:54.125689+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787778268560",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542278585287442502,
+    "puzzle_id": "random_1787778294125",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542278691961442395,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Re8",
-        "correct": true,
-        "timestamp": "2026-08-26T21:04:47.766614+00:00"
+        "move": "Rxc8",
+        "correct": false,
+        "timestamp": "2026-08-26T21:05:11.330986+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
