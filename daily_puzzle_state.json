@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-05-12",
     "title": "Testing Your Reflexes",
     "fen": "2kr3r/1p1b1pp1/p2Qp3/7p/3PP1n1/1N1B4/PP2KPq1/5R1R w - - 0 1",
-    "current_fen": "2kr3r/1p1b1pp1/p2Qp3/7p/3PP1n1/1N1B4/PP2KPq1/5R1R w - - 0 1",
+    "current_fen": "2kr3r/5pp1/p1pQp3/7p/3PP1n1/1N1B4/PP2KPq1/7R w - - 0 3",
     "pgn": "[Result \"1-0\"]\r\n[FEN \"2kr3r/1p1b1pp1/p2Qp3/7p/3PP1n1/1N1B4/PP2KPq1/5R1R w - - 0 1\"]\r\n\r\n1.Rc1+ Bc6 2.Rxc6+ bxc6 3.Bxa6# 1-0",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787765984889",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542227063866523691,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Ba6",
+        "correct": false,
+        "timestamp": "2026-08-26T17:40:12.260906+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
