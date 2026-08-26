@@ -1,107 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-12-25",
-    "title": "Mate in 5",
-    "fen": "r4rk1/5pp1/2p4P/p6Q/3P1P2/Pbp1P3/qP6/2K3RR w - - 0 1",
-    "current_fen": "r4rk1/5pQ1/2p4P/p7/3P1P2/Pbp1P3/qP6/2K4R b - - 5 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/5pp1/2p4P/p6Q/3P1P2/Pbp1P3/qP6/2K3RR w - - 0 1\"]\r\n\r\n1. Rxg7+ Kh8 2. Rh7+ Kxh7 3. Qf5+ Kh8 4. Qf6+ Kg8 5. Qg7#\r\n*",
+    "url": "https://www.chess.com/daily/2024-11-27",
+    "title": "I Have My Eye on You",
+    "fen": "3rkb1r/1p1b4/pnqp3p/3Nppp1/4P3/7P/PPPBNPP1/R2QK1R1 w Qk - 0 1",
+    "current_fen": "3rkb1r/1p1b4/pnqp3p/3Nppp1/4P3/7P/PPPBNPP1/R2QK1R1 w Qk - 0 1",
+    "pgn": "[White \"JohanVA\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"3rkb1r/1p1b4/pnqp3p/3Nppp1/4P3/7P/PPPBNPP1/R2QK1R1 w Qk - 0 1\"]\r\n\r\n1. Nd4 exd4 2. Qh5# 1-0",
     "all_moves": [
       {
-        "uci": "g1g7",
-        "san": "Rxg7+",
+        "uci": "e2d4",
+        "san": "Nd4",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "e5d4",
+        "san": "exd4",
         "color": "black"
       },
       {
-        "uci": "g7h7",
-        "san": "Rh7+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h7",
-        "san": "Kxh7",
-        "color": "black"
-      },
-      {
-        "uci": "h5f5",
-        "san": "Qf5+",
-        "color": "white"
-      },
-      {
-        "uci": "h7h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "f5f6",
-        "san": "Qf6+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "f6g7",
-        "san": "Qg7#",
+        "uci": "d1h5",
+        "san": "Qh5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g1g7",
-        "san": "Rxg7+",
+        "uci": "e2d4",
+        "san": "Nd4",
         "color": "white"
       },
       {
-        "uci": "g7h7",
-        "san": "Rh7+",
-        "color": "white"
-      },
-      {
-        "uci": "h5f5",
-        "san": "Qf5+",
-        "color": "white"
-      },
-      {
-        "uci": "f5f6",
-        "san": "Qf6+",
-        "color": "white"
-      },
-      {
-        "uci": "f6g7",
-        "san": "Qg7#",
+        "uci": "d1h5",
+        "san": "Qh5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T11:46:24.995147+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T11:46:45.826407+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787744784995",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542138144248565821,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qg7",
-        "correct": true,
-        "timestamp": "2026-08-26T11:46:32.577176+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787744805826",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
