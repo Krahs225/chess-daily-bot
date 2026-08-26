@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-09-02",
-    "title": "Light Lunch",
-    "fen": "1rb2r1k/6p1/1p1N1pqp/p7/2R1P3/P7/PR1B1P1P/3QK3 b - - 0 1",
-    "current_fen": "1r3r1k/6p1/1p1N1p1p/p7/2R1P3/P4K2/PR1B3P/3q4 w - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"1rb2r1k/6p1/1p1N1pqp/p7/2R1P3/P7/PR1B1P1P/3QK3 b - - 0 1\"]\r\n\r\n1...Qg1+ 2.Ke2 Bg4+ 3.f3 Bxf3+ 4.Kxf3 Qxd1+ *",
+    "url": "https://www.chess.com/daily/2017-12-15",
+    "title": "Troitzky, 1922",
+    "fen": "3n4/6k1/2P3P1/1K6/6b1/8/8/8 w - - 0 1",
+    "current_fen": "3n4/6k1/2P3P1/1K6/6b1/8/8/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3n4/6k1/2P3P1/1K6/6b1/8/8/8 w - - 0 1\"]\r\n\r\n1. c7 Nb7 2. c8=N Bxc8 3. Kb6 Nd6 4. Kc7\r\n*",
     "all_moves": [
       {
-        "uci": "g6g1",
-        "san": "Qg1+",
-        "color": "black"
-      },
-      {
-        "uci": "e1e2",
-        "san": "Ke2",
+        "uci": "c6c7",
+        "san": "c7",
         "color": "white"
       },
       {
-        "uci": "c8g4",
-        "san": "Bg4+",
+        "uci": "d8b7",
+        "san": "Nb7",
         "color": "black"
       },
       {
-        "uci": "f2f3",
-        "san": "f3",
+        "uci": "c7c8n",
+        "san": "c8=N",
         "color": "white"
       },
       {
-        "uci": "g4f3",
-        "san": "Bxf3+",
+        "uci": "g4c8",
+        "san": "Bxc8",
         "color": "black"
       },
       {
-        "uci": "e2f3",
-        "san": "Kxf3",
+        "uci": "b5b6",
+        "san": "Kb6",
         "color": "white"
       },
       {
-        "uci": "g1d1",
-        "san": "Qxd1+",
+        "uci": "b7d6",
+        "san": "Nd6",
         "color": "black"
+      },
+      {
+        "uci": "b6c7",
+        "san": "Kc7",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g6g1",
-        "san": "Qg1+",
-        "color": "black"
+        "uci": "c6c7",
+        "san": "c7",
+        "color": "white"
       },
       {
-        "uci": "c8g4",
-        "san": "Bg4+",
-        "color": "black"
+        "uci": "c7c8n",
+        "san": "c8=N",
+        "color": "white"
       },
       {
-        "uci": "g4f3",
-        "san": "Bxf3+",
-        "color": "black"
+        "uci": "b5b6",
+        "san": "Kb6",
+        "color": "white"
       },
       {
-        "uci": "g1d1",
-        "san": "Qxd1+",
-        "color": "black"
+        "uci": "b6c7",
+        "san": "Kc7",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-26T13:50:53.867743+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T13:51:17.453785+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787752253867",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542169471601344574,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxd1",
-        "correct": true,
-        "timestamp": "2026-08-26T13:51:10.550975+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787752277453",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
