@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-11-05",
     "title": "Mating Nets and Red Herrings",
     "fen": "r1b2k1r/1pp2p2/p4Np1/2n1P2p/7q/2P3bP/P1PQ2B1/3RR1K1 w - - 0 1",
-    "current_fen": "r1b2k1r/1pp2p2/p4Np1/2n1P2p/7q/2P3bP/P1PQ2B1/3RR1K1 w - - 0 1",
+    "current_fen": "r1b2k2/1pp2p2/p4Npr/2n1P2p/7q/2P3bP/P1P3B1/3RR1K1 w - - 0 2",
     "pgn": "[White \"Sam Copeland Puzzle\"]\r\n[Black \"?\"]\r\n[Result \"1-0\"]\r\n[FEN \"r1b2k1r/1pp2p2/p4Np1/2n1P2p/7q/2P3bP/P1PQ2B1/3RR1K1 w - - 0 1\"]\r\n\r\n1. Qh6+ Rxh6 2. Rd8+ Ke7 3. Re8# 1-0",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787784251432",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542303680366383134,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qh6",
+        "correct": true,
+        "timestamp": "2026-08-26T22:44:36.802456+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
