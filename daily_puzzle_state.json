@@ -1,62 +1,73 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-01-15",
-    "title": "In Between the Fork",
-    "fen": "8/R4p1k/6p1/1P5p/1b6/5PPB/4r2P/6K1 b - - 0 1",
-    "current_fen": "8/R4p1k/6p1/1P5p/1b6/5PPB/4r2P/6K1 b - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/R4p1k/6p1/1P5p/1b6/5PPB/4r2P/6K1 b - - 0 1\"]\r\n\r\n1... Bc5+ 2. Kf1 Rf2+ 3. Ke1 Bxa7 *",
+    "title": "1500 • ucGfG",
+    "fen": "8/8/8/7p/4N3/1P1Kb3/6k1/8 b - - 5 60",
+    "current_fen": "8/8/8/7p/4N3/1P1Kb3/6k1/8 b - - 5 60",
     "all_moves": [
       {
-        "uci": "b4c5",
-        "san": "Bc5+",
+        "uci": "g2f3",
+        "san": "Kf3",
         "color": "black"
       },
       {
-        "uci": "g1f1",
-        "san": "Kf1",
+        "uci": "e4d6",
+        "san": "Nd6",
         "color": "white"
       },
       {
-        "uci": "e2f2",
-        "san": "Rf2+",
+        "uci": "h5h4",
+        "san": "h4",
         "color": "black"
       },
       {
-        "uci": "f1e1",
-        "san": "Ke1",
+        "uci": "d6f5",
+        "san": "Nf5",
         "color": "white"
       },
       {
-        "uci": "c5a7",
-        "san": "Bxa7",
+        "uci": "h4h3",
+        "san": "h3",
+        "color": "black"
+      },
+      {
+        "uci": "f5e3",
+        "san": "Nxe3",
+        "color": "white"
+      },
+      {
+        "uci": "h3h2",
+        "san": "h2",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b4c5",
-        "san": "Bc5+",
+        "uci": "g2f3",
+        "san": "Kf3",
         "color": "black"
       },
       {
-        "uci": "e2f2",
-        "san": "Rf2+",
+        "uci": "h5h4",
+        "san": "h4",
         "color": "black"
       },
       {
-        "uci": "c5a7",
-        "san": "Bxa7",
+        "uci": "h4h3",
+        "san": "h3",
+        "color": "black"
+      },
+      {
+        "uci": "h3h2",
+        "san": "h2",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T14:26:43.115610+00:00",
-    "answer_posted": false,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_1787754403115",
+    "player_move_count": 4,
+    "pgn": "",
+    "url": "https://lichess.org/training/ucGfG",
+    "posted_at": "2026-08-26T14:26:47.329993+00:00",
+    "puzzle_id": "random_lichess_1500_ucGfG_1787754407330",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
@@ -222,6 +233,9 @@
     ],
     "3000": [
       "kTu0p"
+    ],
+    "1500": [
+      "ucGfG"
     ]
   }
 }
