@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-01-16",
     "title": "Pawn Storm",
     "fen": "4r1k1/1q2bppp/3pp3/2r2PPP/Pp2P3/8/PNPR2Q1/1K3R2 w - - 0 1",
-    "current_fen": "4rb2/1q6/3ppk2/4r3/Pp6/8/PNPR2Q1/1K6 w - - 0 7",
+    "current_fen": "4rb2/1Q6/3ppk2/4r3/Pp6/8/PNPR4/1K6 b - - 0 7",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/1q2bppp/3pp3/2r2PPP/Pp2P3/8/PNPR2Q1/1K3R2 w - - 0 1\"]\r\n\r\n1. f6 Bf8 2. g6 hxg6 3. hxg6 gxf6 4. gxf7+ Kxf7 5. Rxf6+ Kxf6 6. e5+ Rxe5 7. Qxb7\r\n*",
     "all_moves": [
       {
@@ -117,9 +117,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787749995188",
-    "next_solution_index": 12,
-    "next_player_index": 6,
-    "solved": false,
+    "next_solution_index": 13,
+    "next_player_index": 7,
+    "solved": true,
     "message_id": 1542159997633564762,
     "attempted_users": {
       "442597396195704832": {
@@ -130,16 +130,18 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "e5",
-        "correct": false,
-        "timestamp": "2026-08-26T13:13:47.073198+00:00"
+        "move": "Qxb7",
+        "correct": true,
+        "timestamp": "2026-08-26T13:13:49.781699+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
