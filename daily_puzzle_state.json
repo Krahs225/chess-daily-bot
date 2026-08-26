@@ -1,119 +1,82 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-02-10",
-    "title": "Runaround",
-    "fen": "3q1r1k/5bRp/5P2/7P/1P1ppN2/2Q1P3/5r2/2K4R w - - 0 1",
-    "current_fen": "3q1r1k/5bRp/5P2/7P/1P1ppN2/2Q1P3/5r2/2K4R w - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3q1r1k/5bRp/5P2/7P/1P1ppN2/2Q1P3/5r2/2K4R w - - 0 1\"]\r\n\r\n1.Ng6+ Bxg6 2.hxg6 Rf1+ 3.Rxf1 dxc3 4.Rxh7+ Kg8 5.Rg7+ Kh8 6.Rh1# 1-0",
+    "url": "https://www.chess.com/daily/2014-07-04",
+    "title": "Bronstein-Mikenas 1965",
+    "fen": "r6k/1p4pp/p2q1b2/1r6/3pQ3/1P5P/1P1B1PP1/R3R1K1 w Qq - 0 1",
+    "current_fen": "r6k/1p4pp/p2q1b2/1r6/3pQ3/1P5P/1P1B1PP1/R3R1K1 w Qq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r6k/1p4pp/p2q1b2/1r6/3pQ3/1P5P/1P1B1PP1/R3R1K1 w Qq - 0 1\"]\r\n\r\n1. Rxa6 bxa6 2. Qxa8+ Rb8 3. Re8+ Qf8 4. Rxf8+\r\n*",
     "all_moves": [
       {
-        "uci": "f4g6",
-        "san": "Ng6+",
+        "uci": "a1a6",
+        "san": "Rxa6",
         "color": "white"
       },
       {
-        "uci": "f7g6",
-        "san": "Bxg6",
+        "uci": "b7a6",
+        "san": "bxa6",
         "color": "black"
       },
       {
-        "uci": "h5g6",
-        "san": "hxg6",
+        "uci": "e4a8",
+        "san": "Qxa8+",
         "color": "white"
       },
       {
-        "uci": "f2f1",
-        "san": "Rf1+",
+        "uci": "b5b8",
+        "san": "Rb8",
         "color": "black"
       },
       {
-        "uci": "h1f1",
-        "san": "Rxf1",
+        "uci": "e1e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "d4c3",
-        "san": "dxc3",
+        "uci": "d6f8",
+        "san": "Qf8",
         "color": "black"
       },
       {
-        "uci": "g7h7",
-        "san": "Rxh7+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "h7g7",
-        "san": "Rg7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "f1h1",
-        "san": "Rh1#",
+        "uci": "e8f8",
+        "san": "Rxf8+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4g6",
-        "san": "Ng6+",
+        "uci": "a1a6",
+        "san": "Rxa6",
         "color": "white"
       },
       {
-        "uci": "h5g6",
-        "san": "hxg6",
+        "uci": "e4a8",
+        "san": "Qxa8+",
         "color": "white"
       },
       {
-        "uci": "h1f1",
-        "san": "Rxf1",
+        "uci": "e1e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "g7h7",
-        "san": "Rxh7+",
-        "color": "white"
-      },
-      {
-        "uci": "h7g7",
-        "san": "Rg7+",
-        "color": "white"
-      },
-      {
-        "uci": "f1h1",
-        "san": "Rh1#",
+        "uci": "e8f8",
+        "san": "Rxf8+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-26T21:35:47.418147+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T21:36:37.143699+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787780147418",
+    "puzzle_id": "random_1787780197143",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542286465025970268,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qc5",
-        "correct": false,
-        "timestamp": "2026-08-26T21:36:30.991801+00:00"
-      }
-    },
+    "message_id": 1542286674120155186,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
