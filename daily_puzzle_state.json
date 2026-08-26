@@ -1,47 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-08-29",
-    "title": "Short and Sweet",
-    "fen": "4r2r/pp5p/n7/1Np2Qp1/3p4/4k1P1/PPP4P/4qBK1 w - - 0 1",
-    "current_fen": "4r2r/pp5p/n7/1Np3p1/3p4/3Qk1P1/PPP4P/4qBK1 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r2r/pp5p/n7/1Np2Qp1/3p4/4k1P1/PPP4P/4qBK1 w - - 0 1\"]\r\n\r\n1. Qd3#\r\n*",
+    "url": "https://www.chess.com/daily/2025-02-02",
+    "title": "Mate in One? Fourget About It!",
+    "fen": "2k2r2/2p5/2q5/p1p1n3/P1P2n1B/1R4Pp/1Q1R4/6K1 b - - 0 1",
+    "current_fen": "2k2r2/2p5/2q5/p1p1n3/P1P2n1B/1R4Pp/1Q1R4/6K1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2k2r2/2p5/2q5/p1p1n3/P1P2n1B/1R4Pp/1Q1R4/6K1 b - - 0 1\"]\r\n\r\n1... Ne2+ 2. Rxe2 Rf1+ 3. Kxf1 Qh1+ 4. Kf2 Ng4# *",
     "all_moves": [
       {
-        "uci": "f5d3",
-        "san": "Qd3#",
+        "uci": "f4e2",
+        "san": "Ne2+",
+        "color": "black"
+      },
+      {
+        "uci": "d2e2",
+        "san": "Rxe2",
         "color": "white"
+      },
+      {
+        "uci": "f8f1",
+        "san": "Rf1+",
+        "color": "black"
+      },
+      {
+        "uci": "g1f1",
+        "san": "Kxf1",
+        "color": "white"
+      },
+      {
+        "uci": "c6h1",
+        "san": "Qh1+",
+        "color": "black"
+      },
+      {
+        "uci": "f1f2",
+        "san": "Kf2",
+        "color": "white"
+      },
+      {
+        "uci": "e5g4",
+        "san": "Ng4#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5d3",
-        "san": "Qd3#",
-        "color": "white"
+        "uci": "f4e2",
+        "san": "Ne2+",
+        "color": "black"
+      },
+      {
+        "uci": "f8f1",
+        "san": "Rf1+",
+        "color": "black"
+      },
+      {
+        "uci": "c6h1",
+        "san": "Qh1+",
+        "color": "black"
+      },
+      {
+        "uci": "e5g4",
+        "san": "Ng4#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-26T09:32:20.026130+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T09:32:29.492211+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787736740026",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1542104401152573441,
+    "puzzle_id": "random_1787736749492",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1542104440797003807,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qd3",
-        "correct": true,
-        "timestamp": "2026-08-26T09:32:25.549879+00:00"
+        "move": "h2",
+        "correct": false,
+        "timestamp": "2026-08-26T09:32:42.629983+00:00"
       }
     },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
