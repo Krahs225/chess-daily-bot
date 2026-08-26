@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-02-03",
     "title": "The Art of Taking Squares Away",
     "fen": "8/7Q/pp3pq1/3p1k1p/3P1P1P/4P1P1/7K/8 w - - 0 1",
-    "current_fen": "8/7Q/pp3pq1/3p1k1p/3P1P1P/4P1P1/7K/8 w - - 0 1",
+    "current_fen": "8/7Q/pp3pq1/5k1p/3PpP1P/6P1/7K/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/7Q/pp3pq1/3p1k1p/3P1P1P/4P1P1/7K/8 w - - 0 1\"]\r\n\r\n1. e4+ dxe4 2. Qd7#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787729946432",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542075906938511391,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "e4",
+        "correct": true,
+        "timestamp": "2026-08-26T07:39:18.317359+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
