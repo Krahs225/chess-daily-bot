@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-11-03",
     "title": "Maintaining The Trap",
     "fen": "1r6/6R1/3pB3/2pPn3/1r3k2/1P5R/3K4/8 w - - 0 1",
-    "current_fen": "1r6/6R1/3pB3/2pPn3/4rk2/1P5R/4K3/8 w - - 2 2",
+    "current_fen": "1r6/6R1/3pB3/2pPn3/4rk2/1P5R/5K2/8 b - - 3 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r6/6R1/3pB3/2pPn3/1r3k2/1P5R/3K4/8 w - - 0 1\"]\r\n\r\n1. Ke2 Re4+ 2. Kf2\r\n*",
     "all_moves": [
       {
@@ -42,9 +42,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787744277464",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1542136015915974726,
     "attempted_users": {
       "601406103712170014": {
@@ -55,16 +55,20 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "h3g3",
-        "correct": false,
-        "timestamp": "2026-08-26T11:38:24.833452+00:00"
+        "move": "kf2",
+        "correct": true,
+        "timestamp": "2026-08-26T11:38:52.192962+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "442597396195704832"
+    ],
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
