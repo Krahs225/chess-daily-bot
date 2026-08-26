@@ -1,107 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-07-03",
-    "title": "Candidate Highlights: Ian's King Hunt",
-    "fen": "8/5pk1/3bp2p/8/6KP/5Q2/7q/5B2 b - - 0 47",
-    "current_fen": "8/6k1/3bp3/5q2/5pKP/5Q2/8/5B2 w - - 2 52",
-    "pgn": "[Event \"Corus-C\"]\r\n[Site \"Wijk aan Zee\"]\r\n[Date \"2007.01.18\"]\r\n[Round \"5\"]\r\n[White \"Jonkman, Harmen\"]\r\n[Black \"Nepomniachtchi, Ian\"]\r\n[Result \"0-1\"]\r\n[ECO \"C02\"]\r\n[WhiteElo \"2425\"]\r\n[BlackElo \"2587\"]\r\n[SetUp \"1\"]\r\n[FEN \"8/5pk1/3bp2p/8/6KP/5Q2/7q/5B2 b - - 0 47\"]\r\n\r\n47... h5+ 48. Kxh5 Qe5+ 49. Kg4 f5+ 50. Kh5 f4+ 51. Kg4 Qf5# 0-1",
+    "url": "https://www.chess.com/daily/2026-06-25",
+    "title": "I'll Pass - Unless...",
+    "fen": "2Q5/7p/1p6/1k4q1/1p3pP1/1P6/2P3P1/2K5 w - - 0 1",
+    "current_fen": "2Q5/7p/1p6/1k4q1/1p3pP1/1P6/2P3P1/2K5 w - - 0 1",
+    "pgn": "[Result \"1-0\"]\n[FEN \"2Q5/7p/1p6/1k4q1/1p3pP1/1P6/2P3P1/2K5 w - - 0 1\"]\n\n1. c4+ bxc3 2. Qc4+ Ka5 3. Qa4# 1-0",
     "all_moves": [
       {
-        "uci": "h6h5",
-        "san": "h5+",
-        "color": "black"
-      },
-      {
-        "uci": "g4h5",
-        "san": "Kxh5",
+        "uci": "c2c4",
+        "san": "c4+",
         "color": "white"
       },
       {
-        "uci": "h2e5",
-        "san": "Qe5+",
+        "uci": "b4c3",
+        "san": "bxc3",
         "color": "black"
       },
       {
-        "uci": "h5g4",
-        "san": "Kg4",
+        "uci": "c8c4",
+        "san": "Qc4+",
         "color": "white"
       },
       {
-        "uci": "f7f5",
-        "san": "f5+",
+        "uci": "b5a5",
+        "san": "Ka5",
         "color": "black"
       },
       {
-        "uci": "g4h5",
-        "san": "Kh5",
+        "uci": "c4a4",
+        "san": "Qa4#",
         "color": "white"
-      },
-      {
-        "uci": "f5f4",
-        "san": "f4+",
-        "color": "black"
-      },
-      {
-        "uci": "h5g4",
-        "san": "Kg4",
-        "color": "white"
-      },
-      {
-        "uci": "e5f5",
-        "san": "Qf5#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6h5",
-        "san": "h5+",
-        "color": "black"
+        "uci": "c2c4",
+        "san": "c4+",
+        "color": "white"
       },
       {
-        "uci": "h2e5",
-        "san": "Qe5+",
-        "color": "black"
+        "uci": "c8c4",
+        "san": "Qc4+",
+        "color": "white"
       },
       {
-        "uci": "f7f5",
-        "san": "f5+",
-        "color": "black"
-      },
-      {
-        "uci": "f5f4",
-        "san": "f4+",
-        "color": "black"
-      },
-      {
-        "uci": "e5f5",
-        "san": "Qf5#",
-        "color": "black"
+        "uci": "c4a4",
+        "san": "Qa4#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T13:52:28.864425+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T13:52:59.954368+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787752348864",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542169869875683329,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qf5",
-        "correct": true,
-        "timestamp": "2026-08-26T13:52:51.579289+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787752379954",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
