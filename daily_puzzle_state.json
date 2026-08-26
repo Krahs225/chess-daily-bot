@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-01-10",
     "title": "Exposed Black King",
     "fen": "1Q6/N1rk1p1r/4pP2/3pP3/3pq1p1/Pn5p/1PP4R/1K1R4 w - - 0 1",
-    "current_fen": "1Q6/N1rk1p1r/4pP2/3pP3/3pq1p1/Pn5p/1PP4R/1K1R4 w - - 0 1",
+    "current_fen": "3k4/N1r2p1r/4pP2/1Q1pP3/3pq1p1/Pn5p/1PP4R/1K1R4 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1Q6/N1rk1p1r/4pP2/3pP3/3pq1p1/Pn5p/1PP4R/1K1R4 w - - 0 1\"]\r\n\r\n1. Qb5+ Kd8 2. Qb6 Qf3 3. Rc1 Qf4 4. Qd6+ Ke8 5. Qxc7\r\n*",
     "all_moves": [
       {
@@ -87,20 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787744083311",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542135201121960077,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qxb3",
-        "correct": false,
-        "timestamp": "2026-08-26T11:35:08.803821+00:00"
+        "move": "Qb5",
+        "correct": true,
+        "timestamp": "2026-08-26T11:35:33.333086+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
