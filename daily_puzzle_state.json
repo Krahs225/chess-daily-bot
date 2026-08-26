@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-11-07",
     "title": "A Tree Falling in the Forest",
     "fen": "r1bqnrk1/1pp1n1bp/3p2p1/3Ppp2/1BP1P3/2N2P2/P3B1PP/R2QNRK1 b - - 0 13",
-    "current_fen": "r1bqnrk1/1pp1n1bp/3p2p1/3Ppp2/1BP1P3/2N2P2/P3B1PP/R2QNRK1 b - - 0 13",
+    "current_fen": "r1bqnrk1/1p2n1bp/2Pp2p1/4pp2/1BP1P3/2N2P2/P3B1PP/R2QNRK1 b - - 0 14",
     "pgn": "[White \"Child Prodigy\"]\r\n[Black \"Candidate Master\"]\r\n[Result \"0-1\"]\r\n[FEN \"r1bqnrk1/1pp1n1bp/3p2p1/3Ppp2/1BP1P3/2N2P2/P3B1PP/R2QNRK1 b - - 0 13\"]\r\n\r\n13... c5 14. dxc6 Qb6+ 15. Kh1 Qxb4 0-1",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787771344116",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542249541695184958,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "c5",
+        "correct": true,
+        "timestamp": "2026-08-26T19:09:11.858133+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
