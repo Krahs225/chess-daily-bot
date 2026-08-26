@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-11-25",
     "title": "Deadly Decoy",
     "fen": "4rkb1/R7/4pB2/pp1pPn1Q/2pP4/P1P5/1KP2q2/8 w - - 0 1",
-    "current_fen": "4rkb1/R7/4pB2/pp1pPn1Q/2pP4/P1P5/1KP2q2/8 w - - 0 1",
+    "current_fen": "4rkb1/R5B1/4p2n/pp1pP3/2pP4/P1P5/1KP2q2/8 b - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4rkb1/R7/4pB2/pp1pPn1Q/2pP4/P1P5/1KP2q2/8 w - - 0 1\"]\r\n\r\n1. Qh6+ Nxh6 2. Bg7#\r\n*",
     "all_moves": [
       {
@@ -42,14 +42,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787765696933",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
+    "message_id": 1542225855265120469,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Bg7",
+        "correct": true,
+        "timestamp": "2026-08-26T17:35:10.543984+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
