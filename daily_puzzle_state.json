@@ -1,92 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-08-02",
-    "title": "Double Trouble",
-    "fen": "1r2r2k/5p1p/6pb/2B5/1Pp5/2n3P1/q4PB1/1R1Q1RK1 w - - 0 1",
-    "current_fen": "1r2r1k1/5p1p/6p1/8/1Pp5/2Q3P1/q4PB1/1R3RK1 b - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"1r2r2k/5p1p/6pb/2B5/1Pp5/2n3P1/q4PB1/1R1Q1RK1 w - - 0 1\"]\r\n\r\n1.Bd4+ Bg7 2.Bxg7+ Kxg7 3.Qd4+ Kg8 4.Qxc3 *",
+    "url": "https://www.chess.com/daily/2026-04-14",
+    "title": "Marshmellow Experiment",
+    "fen": "r5k1/1p3pp1/2p4p/q4N1R/2P1P1P1/1P6/2P4Q/R1K5 b - - 0 1",
+    "current_fen": "r5k1/1p3pp1/2p4p/q4N1R/2P1P1P1/1P6/2P4Q/R1K5 b - - 0 1",
+    "pgn": "[Result \"0-1\"]\r\n[FEN \"r5k1/1p3pp1/2p4p/q4N1R/2P1P1P1/1P6/2P4Q/R1K5 b - - 0 1\"]\r\n\r\n1... Qe1+ 2. Kb2 Qxa1# 0-1",
     "all_moves": [
       {
-        "uci": "c5d4",
-        "san": "Bd4+",
-        "color": "white"
-      },
-      {
-        "uci": "h6g7",
-        "san": "Bg7",
+        "uci": "a5e1",
+        "san": "Qe1+",
         "color": "black"
       },
       {
-        "uci": "d4g7",
-        "san": "Bxg7+",
+        "uci": "c1b2",
+        "san": "Kb2",
         "color": "white"
       },
       {
-        "uci": "h8g7",
-        "san": "Kxg7",
+        "uci": "e1a1",
+        "san": "Qxa1#",
         "color": "black"
-      },
-      {
-        "uci": "d1d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "g7g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "d4c3",
-        "san": "Qxc3",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5d4",
-        "san": "Bd4+",
-        "color": "white"
+        "uci": "a5e1",
+        "san": "Qe1+",
+        "color": "black"
       },
       {
-        "uci": "d4g7",
-        "san": "Bxg7+",
-        "color": "white"
-      },
-      {
-        "uci": "d1d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "d4c3",
-        "san": "Qxc3",
-        "color": "white"
+        "uci": "e1a1",
+        "san": "Qxa1#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T18:46:38.230384+00:00",
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T18:47:06.374096+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787769998230",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542243896883675330,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxc3",
-        "correct": true,
-        "timestamp": "2026-08-26T18:46:57.663662+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787770026374",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
