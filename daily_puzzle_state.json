@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-06-25",
-    "title": "A Loose Knight",
-    "fen": "2R1b1k1/N4p1p/5np1/8/8/P1N4P/1r3PP1/6K1 w - - 0 1",
-    "current_fen": "8/N4pkp/6p1/8/4R3/P6P/1r3PP1/6K1 b - - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2R1b1k1/N4p1p/5np1/8/8/P1N4P/1r3PP1/6K1 w - - 0 1\"]\r\n\r\n1. Ne4 Nxe4 2. Rxe8+ Kg7 3. Rxe4 *",
+    "url": "https://www.chess.com/daily/2024-11-16",
+    "title": "Maximizing the Tension",
+    "fen": "r2q3r/5Rpp/k2b4/p2b4/PpR5/4B2Q/1P4PP/6K1 w - - 0 1",
+    "current_fen": "r2q3r/5Rpp/k2b4/p2b4/PpR5/4B2Q/1P4PP/6K1 w - - 0 1",
+    "pgn": "[White \"Missed Blitz Opportunity\"]\r\n[Black \"Max Farberov\"]\r\n[Result \"1-0\"]\r\n[FEN \"r2q3r/5Rpp/k2b4/p2b4/PpR5/4B2Q/1P4PP/6K1 w - - 0 1\"]\r\n\r\n1. Qe6 Bxe6 2. Rc6+ Qb6 3. Rxb6# 1-0",
     "all_moves": [
       {
-        "uci": "c3e4",
-        "san": "Ne4",
+        "uci": "h3e6",
+        "san": "Qe6",
         "color": "white"
       },
       {
-        "uci": "f6e4",
-        "san": "Nxe4",
+        "uci": "d5e6",
+        "san": "Bxe6",
         "color": "black"
       },
       {
-        "uci": "c8e8",
-        "san": "Rxe8+",
+        "uci": "c4c6",
+        "san": "Rc6+",
         "color": "white"
       },
       {
-        "uci": "g8g7",
-        "san": "Kg7",
+        "uci": "d8b6",
+        "san": "Qb6",
         "color": "black"
       },
       {
-        "uci": "e8e4",
-        "san": "Rxe4",
+        "uci": "c6b6",
+        "san": "Rxb6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3e4",
-        "san": "Ne4",
+        "uci": "h3e6",
+        "san": "Qe6",
         "color": "white"
       },
       {
-        "uci": "c8e8",
-        "san": "Rxe8+",
+        "uci": "c4c6",
+        "san": "Rc6+",
         "color": "white"
       },
       {
-        "uci": "e8e4",
-        "san": "Rxe4",
+        "uci": "c6b6",
+        "san": "Rxb6#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-26T13:49:51.074440+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T13:50:14.240811+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787752191074",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542169207557455995,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxe4",
-        "correct": true,
-        "timestamp": "2026-08-26T13:50:04.282336+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787752214240",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
