@@ -1,107 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-08-06",
-    "title": "Attaining Navara",
-    "fen": "r4r1k/1RR3pb/4p3/3p2p1/3P1B2/P5Pq/5P2/2Q3K1 w - - 0 34",
-    "current_fen": "r6k/1R4Q1/4p3/3p4/3Pbp2/P5Pq/5P2/6K1 b - - 0 38",
-    "pgn": "[Event \"Tata Steel Challengers\"]\r\n[Site \"Wijk aan Zee NED\"]\r\n[Date \"2015.01.18\"]\r\n[Round \"8\"]\r\n[White \"David Navara\"]\r\n[Black \"Bart Michiels\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2729\"]\r\n[BlackElo \"2563\"]\r\n[FEN \"r4r1k/1RR3pb/4p3/3p2p1/3P1B2/P5Pq/5P2/2Q3K1 w - - 0 34\"]\r\n\r\n34.Rxg7 gxf4 35.Qc7 Be4 36.Rg8+ Rxg8 37.Qe5+ Rg7 38.Qxg7# 1-0",
+    "url": "https://www.chess.com/daily/2018-05-30",
+    "title": "Karel Treybal - Moll, Berlin 1906",
+    "fen": "r1b2r2/pp4pk/1qp2npp/4p1B1/1b2P2Q/1BNP3P/PPP3P1/R4R1K w Qq - 0 1",
+    "current_fen": "r1b2r2/pp4pk/1qp2npp/4p1B1/1b2P2Q/1BNP3P/PPP3P1/R4R1K w Qq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2r2/pp4pk/1qp2npp/4p1B1/1b2P2Q/1BNP3P/PPP3P1/R4R1K w Qq - 0 1\"]\r\n\r\n1. Rxf6 Rxf6 2. Bxf6 gxf6 3. Qxf6 Qc7 4. Bf7\r\n*",
     "all_moves": [
       {
-        "uci": "c7g7",
-        "san": "Rxg7",
+        "uci": "f1f6",
+        "san": "Rxf6",
         "color": "white"
       },
       {
-        "uci": "g5f4",
-        "san": "gxf4",
+        "uci": "f8f6",
+        "san": "Rxf6",
         "color": "black"
       },
       {
-        "uci": "c1c7",
+        "uci": "g5f6",
+        "san": "Bxf6",
+        "color": "white"
+      },
+      {
+        "uci": "g7f6",
+        "san": "gxf6",
+        "color": "black"
+      },
+      {
+        "uci": "h4f6",
+        "san": "Qxf6",
+        "color": "white"
+      },
+      {
+        "uci": "b6c7",
         "san": "Qc7",
-        "color": "white"
-      },
-      {
-        "uci": "h7e4",
-        "san": "Be4",
         "color": "black"
       },
       {
-        "uci": "g7g8",
-        "san": "Rg8+",
-        "color": "white"
-      },
-      {
-        "uci": "f8g8",
-        "san": "Rxg8",
-        "color": "black"
-      },
-      {
-        "uci": "c7e5",
-        "san": "Qe5+",
-        "color": "white"
-      },
-      {
-        "uci": "g8g7",
-        "san": "Rg7",
-        "color": "black"
-      },
-      {
-        "uci": "e5g7",
-        "san": "Qxg7#",
+        "uci": "b3f7",
+        "san": "Bf7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c7g7",
-        "san": "Rxg7",
+        "uci": "f1f6",
+        "san": "Rxf6",
         "color": "white"
       },
       {
-        "uci": "c1c7",
-        "san": "Qc7",
+        "uci": "g5f6",
+        "san": "Bxf6",
         "color": "white"
       },
       {
-        "uci": "g7g8",
-        "san": "Rg8+",
+        "uci": "h4f6",
+        "san": "Qxf6",
         "color": "white"
       },
       {
-        "uci": "c7e5",
-        "san": "Qe5+",
-        "color": "white"
-      },
-      {
-        "uci": "e5g7",
-        "san": "Qxg7#",
+        "uci": "b3f7",
+        "san": "Bf7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T12:11:50.815600+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T12:13:50.399185+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787746310815",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542144543946711113,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxg7",
-        "correct": true,
-        "timestamp": "2026-08-26T12:13:47.180996+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787746430399",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
