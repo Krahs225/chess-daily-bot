@@ -1,47 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-02-22",
-    "title": "Checkmate!",
-    "fen": "r1br2k1/pp1n1p1R/3Pp1p1/6P1/q1p1PQ2/2b2N2/PP2BP2/2KR4 w - - 0 1",
-    "current_fen": "r1br2k1/pp1n1Q1R/3Pp1p1/6P1/q1p1P3/2b2N2/PP2BP2/2KR4 b - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1br2k1/pp1n1p1R/3Pp1p1/6P1/q1p1PQ2/2b2N2/PP2BP2/2KR4 w - - 0 1\"]\r\n\r\n1. Qxf7#\r\n*",
+    "url": "https://www.chess.com/daily/2020-02-12",
+    "title": "Evening Stroll",
+    "fen": "4k2r/3qbp1p/p2p1p2/1p6/nP2QP2/8/P1P3PP/2KRR3 w k - 0 22",
+    "current_fen": "4k2r/3qbp1p/p2p1p2/1p6/nP2QP2/8/P1P3PP/2KRR3 w k - 0 22",
+    "pgn": "[Event \"Asia zt 3.3\"]\r\n[Site \"Tagaytay City\"]\r\n[Date \"2013.01.24\"]\r\n[Round \"3\"]\r\n[White \"So, Wesley\"]\r\n[Black \"Paragua, Mark\"]\r\n[Result \"1-0\"]\r\n[FEN \"4k2r/3qbp1p/p2p1p2/1p6/nP2QP2/8/P1P3PP/2KRR3 w k - 0 22\"]\r\n\r\n22.Qa8+ Qd8 23.Rxe7+ Kxe7 24.Re1+ Kd7 25.Qb7+ Qc7 26.Re7+ Kxe7 27.Qxc7+ 1-0",
     "all_moves": [
       {
-        "uci": "f4f7",
-        "san": "Qxf7#",
+        "uci": "e4a8",
+        "san": "Qa8+",
+        "color": "white"
+      },
+      {
+        "uci": "d7d8",
+        "san": "Qd8",
+        "color": "black"
+      },
+      {
+        "uci": "e1e7",
+        "san": "Rxe7+",
+        "color": "white"
+      },
+      {
+        "uci": "e8e7",
+        "san": "Kxe7",
+        "color": "black"
+      },
+      {
+        "uci": "d1e1",
+        "san": "Re1+",
+        "color": "white"
+      },
+      {
+        "uci": "e7d7",
+        "san": "Kd7",
+        "color": "black"
+      },
+      {
+        "uci": "a8b7",
+        "san": "Qb7+",
+        "color": "white"
+      },
+      {
+        "uci": "d8c7",
+        "san": "Qc7",
+        "color": "black"
+      },
+      {
+        "uci": "e1e7",
+        "san": "Re7+",
+        "color": "white"
+      },
+      {
+        "uci": "d7e7",
+        "san": "Kxe7",
+        "color": "black"
+      },
+      {
+        "uci": "b7c7",
+        "san": "Qxc7+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4f7",
-        "san": "Qxf7#",
+        "uci": "e4a8",
+        "san": "Qa8+",
+        "color": "white"
+      },
+      {
+        "uci": "e1e7",
+        "san": "Rxe7+",
+        "color": "white"
+      },
+      {
+        "uci": "d1e1",
+        "san": "Re1+",
+        "color": "white"
+      },
+      {
+        "uci": "a8b7",
+        "san": "Qb7+",
+        "color": "white"
+      },
+      {
+        "uci": "e1e7",
+        "san": "Re7+",
+        "color": "white"
+      },
+      {
+        "uci": "b7c7",
+        "san": "Qxc7+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-26T11:17:41.100705+00:00",
+    "player_move_count": 6,
+    "posted_at": "2026-08-26T11:17:46.826056+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787743061100",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1542130914790871161,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxf7",
-        "correct": true,
-        "timestamp": "2026-08-26T11:17:44.441716+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787743066826",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1542130937997951027,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
