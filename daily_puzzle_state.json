@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-05-24",
     "title": "Checkmate Practice",
     "fen": "2r1kb1r/1b1p1ppp/p3pB2/8/2q1PP2/2pQ1B2/PPP3PP/2KR3R w - - 0 1",
-    "current_fen": "2r1kb1r/1b1p1ppp/p3pB2/8/2q1PP2/2pQ1B2/PPP3PP/2KR3R w - - 0 1",
+    "current_fen": "2r1kb1r/1b1Q1ppp/p3pB2/8/2q1PP2/2p2B2/PPP3PP/2KR3R b - - 0 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1kb1r/1b1p1ppp/p3pB2/8/2q1PP2/2pQ1B2/PPP3PP/2KR3R w - - 0 1\"]\r\n\r\n1. Qxd7#\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787765381222",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
     "message_id": 1542224531400298556,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxd7",
+        "correct": true,
+        "timestamp": "2026-08-26T17:29:48.992526+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
