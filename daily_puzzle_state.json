@@ -1,62 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-03-28",
-    "title": "Hook Mating Pattern",
-    "fen": "5k2/5p2/5N2/4P1P1/8/8/8/4K2R w K - 0 1",
-    "current_fen": "4R3/4kp2/5N2/4P1P1/8/8/8/4K3 b - - 3 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5k2/5p2/5N2/4P1P1/8/8/8/4K2R w K - 0 1\"]\r\n\r\n1. Rh8+ Ke7 2. Re8# \r\n*",
+    "url": "https://www.chess.com/daily/2018-04-26",
+    "title": "Henry A. Adamson, The Chess Amateur, 1921",
+    "fen": "8/7K/k1P5/p7/8/8/8/8 w - - 0 1",
+    "current_fen": "8/7K/k1P5/p7/8/8/8/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/7K/k1P5/p7/8/8/8/8 w - - 0 1\"]\r\n\r\n1. Kg6 Kb6 2. Kf5 a4 3. Ke5 a3 4. Kd6 a2 5. c7 a1=Q 6. c8=Q\r\n*",
     "all_moves": [
       {
-        "uci": "h1h8",
-        "san": "Rh8+",
+        "uci": "h7g6",
+        "san": "Kg6",
         "color": "white"
       },
       {
-        "uci": "f8e7",
-        "san": "Ke7",
+        "uci": "a6b6",
+        "san": "Kb6",
         "color": "black"
       },
       {
-        "uci": "h8e8",
-        "san": "Re8#",
+        "uci": "g6f5",
+        "san": "Kf5",
+        "color": "white"
+      },
+      {
+        "uci": "a5a4",
+        "san": "a4",
+        "color": "black"
+      },
+      {
+        "uci": "f5e5",
+        "san": "Ke5",
+        "color": "white"
+      },
+      {
+        "uci": "a4a3",
+        "san": "a3",
+        "color": "black"
+      },
+      {
+        "uci": "e5d6",
+        "san": "Kd6",
+        "color": "white"
+      },
+      {
+        "uci": "a3a2",
+        "san": "a2",
+        "color": "black"
+      },
+      {
+        "uci": "c6c7",
+        "san": "c7",
+        "color": "white"
+      },
+      {
+        "uci": "a2a1q",
+        "san": "a1=Q",
+        "color": "black"
+      },
+      {
+        "uci": "c7c8q",
+        "san": "c8=Q",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h1h8",
-        "san": "Rh8+",
+        "uci": "h7g6",
+        "san": "Kg6",
         "color": "white"
       },
       {
-        "uci": "h8e8",
-        "san": "Re8#",
+        "uci": "g6f5",
+        "san": "Kf5",
+        "color": "white"
+      },
+      {
+        "uci": "f5e5",
+        "san": "Ke5",
+        "color": "white"
+      },
+      {
+        "uci": "e5d6",
+        "san": "Kd6",
+        "color": "white"
+      },
+      {
+        "uci": "c6c7",
+        "san": "c7",
+        "color": "white"
+      },
+      {
+        "uci": "c7c8q",
+        "san": "c8=Q",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-26T16:33:24.327198+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-26T16:33:39.937404+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787762004327",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542210368355438644,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Re8",
-        "correct": true,
-        "timestamp": "2026-08-26T16:33:33.250177+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787762019937",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
