@@ -1,121 +1,114 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-03-10",
-    "title": "Adolf Albin-Simon Winawer, Nuremberg 189",
-    "fen": "rnb3k1/ppb3pp/3pPn2/2pP1P1Q/2Pq4/6N1/PP4PP/R1B2R1K w - - 0 1",
-    "current_fen": "rnb1Q1qk/ppb4p/3pPN1p/2pP1P2/2P5/8/PP4PP/R4R1K w - - 3 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rnb3k1/ppb3pp/3pPn2/2pP1P1Q/2Pq4/6N1/PP4PP/R1B2R1K w - - 0 1\"]\r\n\r\n1. Qf7+ Kh8 2. Nh5 Qg4 3. Bh6 gxh6 4. Nxf6 Qg7 5. Qe8+ Qg8 6. Qxg8#\r\n*",
+    "url": "https://www.chess.com/daily/2011-10-07",
+    "title": "Mate in 6",
+    "fen": "3R4/1p3p1k/1p4pp/r3P3/PQ4P1/3B1b1K/1P5P/6q1 w - - 0 1",
+    "current_fen": "3R4/1p3p1k/1p4pp/r3P3/PQ4P1/3B1b1K/1P5P/6q1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3R4/1p3p1k/1p4pp/r3P3/PQ4P1/3B1b1K/1P5P/6q1 w - - 0 1\"]\r\n\r\n1. Rh8+ Kxh8 2. Qf8+ Kh7 3. Qxf7+ Kh8 4. Qf8+ Kh7 5. Bxg6+ Kxg6 6. Qg8#\r\n*",
     "all_moves": [
       {
-        "uci": "h5f7",
-        "san": "Qf7+",
+        "uci": "d8h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "g8h8",
+        "uci": "h7h8",
+        "san": "Kxh8",
+        "color": "black"
+      },
+      {
+        "uci": "b4f8",
+        "san": "Qf8+",
+        "color": "white"
+      },
+      {
+        "uci": "h8h7",
+        "san": "Kh7",
+        "color": "black"
+      },
+      {
+        "uci": "f8f7",
+        "san": "Qxf7+",
+        "color": "white"
+      },
+      {
+        "uci": "h7h8",
         "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "g3h5",
-        "san": "Nh5",
+        "uci": "f7f8",
+        "san": "Qf8+",
         "color": "white"
       },
       {
-        "uci": "d4g4",
-        "san": "Qg4",
+        "uci": "h8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "c1h6",
-        "san": "Bh6",
+        "uci": "d3g6",
+        "san": "Bxg6+",
         "color": "white"
       },
       {
-        "uci": "g7h6",
-        "san": "gxh6",
+        "uci": "h7g6",
+        "san": "Kxg6",
         "color": "black"
       },
       {
-        "uci": "h5f6",
-        "san": "Nxf6",
-        "color": "white"
-      },
-      {
-        "uci": "g4g7",
-        "san": "Qg7",
-        "color": "black"
-      },
-      {
-        "uci": "f7e8",
-        "san": "Qe8+",
-        "color": "white"
-      },
-      {
-        "uci": "g7g8",
-        "san": "Qg8",
-        "color": "black"
-      },
-      {
-        "uci": "e8g8",
-        "san": "Qxg8#",
+        "uci": "f8g8",
+        "san": "Qg8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5f7",
-        "san": "Qf7+",
+        "uci": "d8h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "g3h5",
-        "san": "Nh5",
+        "uci": "b4f8",
+        "san": "Qf8+",
         "color": "white"
       },
       {
-        "uci": "c1h6",
-        "san": "Bh6",
+        "uci": "f8f7",
+        "san": "Qxf7+",
         "color": "white"
       },
       {
-        "uci": "h5f6",
-        "san": "Nxf6",
+        "uci": "f7f8",
+        "san": "Qf8+",
         "color": "white"
       },
       {
-        "uci": "f7e8",
-        "san": "Qe8+",
+        "uci": "d3g6",
+        "san": "Bxg6+",
         "color": "white"
       },
       {
-        "uci": "e8g8",
-        "san": "Qxg8#",
+        "uci": "f8g8",
+        "san": "Qg8#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 6,
-    "posted_at": "2026-08-26T12:15:21.269333+00:00",
+    "posted_at": "2026-08-26T12:16:41.966739+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787746521269",
-    "next_solution_index": 10,
-    "next_player_index": 5,
+    "puzzle_id": "random_1787746601966",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1542145427514728468,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qe8",
-        "correct": true,
-        "timestamp": "2026-08-26T12:16:36.156793+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
