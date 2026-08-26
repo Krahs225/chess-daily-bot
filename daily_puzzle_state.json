@@ -1,107 +1,107 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-10-23",
-    "title": "Hanssen's Unlikely Couple",
-    "fen": "r3N2k/3P3p/1p3p2/3n4/3P4/8/6PK/8 w - - 0 1",
-    "current_fen": "3r3k/2PP3p/1p3p2/8/8/8/6PK/8 b - - 0 5",
-    "pgn": "[Date \"1930.??.??\"]\r\n[White \"Hanssen\"]\r\n[Black \"Study - Win\"]\r\n[Result \"1-0\"]\r\n[SetUp \"1\"]\r\n[FEN \"r3N2k/3P3p/1p3p2/3n4/3P4/8/6PK/8 w - - 0 1\"]\r\n\r\n1. Nd6 Nc7 2. d5 Rf8 3. Ne8 Rxe8 4. d6 Rd8 5. dxc7 *",
+    "url": "https://www.chess.com/daily/2010-02-05",
+    "title": "Mate in 5",
+    "fen": "2N5/8/8/8/8/R1p5/b7/k1K5 w - - 0 1",
+    "current_fen": "R1N5/8/8/8/8/8/b1p5/k1K5 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2N5/8/8/8/8/R1p5/b7/k1K5 w - - 0 1\"]\r\n\r\n1. Ra8 c2 2. Na7 Bd5 3. Nc6+ Ba2 4. Na5 Bd5 5. Nb3#\r\n*",
     "all_moves": [
       {
-        "uci": "e8d6",
-        "san": "Nd6",
+        "uci": "a3a8",
+        "san": "Ra8",
         "color": "white"
       },
       {
-        "uci": "d5c7",
-        "san": "Nc7",
+        "uci": "c3c2",
+        "san": "c2",
         "color": "black"
       },
       {
-        "uci": "d4d5",
-        "san": "d5",
+        "uci": "c8a7",
+        "san": "Na7",
         "color": "white"
       },
       {
-        "uci": "a8f8",
-        "san": "Rf8",
+        "uci": "a2d5",
+        "san": "Bd5",
         "color": "black"
       },
       {
-        "uci": "d6e8",
-        "san": "Ne8",
+        "uci": "a7c6",
+        "san": "Nc6+",
         "color": "white"
       },
       {
-        "uci": "f8e8",
-        "san": "Rxe8",
+        "uci": "d5a2",
+        "san": "Ba2",
         "color": "black"
       },
       {
-        "uci": "d5d6",
-        "san": "d6",
+        "uci": "c6a5",
+        "san": "Na5",
         "color": "white"
       },
       {
-        "uci": "e8d8",
-        "san": "Rd8",
+        "uci": "a2d5",
+        "san": "Bd5",
         "color": "black"
       },
       {
-        "uci": "d6c7",
-        "san": "dxc7",
+        "uci": "a5b3",
+        "san": "Nb3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e8d6",
-        "san": "Nd6",
+        "uci": "a3a8",
+        "san": "Ra8",
         "color": "white"
       },
       {
-        "uci": "d4d5",
-        "san": "d5",
+        "uci": "c8a7",
+        "san": "Na7",
         "color": "white"
       },
       {
-        "uci": "d6e8",
-        "san": "Ne8",
+        "uci": "a7c6",
+        "san": "Nc6+",
         "color": "white"
       },
       {
-        "uci": "d5d6",
-        "san": "d6",
+        "uci": "c6a5",
+        "san": "Na5",
         "color": "white"
       },
       {
-        "uci": "d6c7",
-        "san": "dxc7",
+        "uci": "a5b3",
+        "san": "Nb3#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 5,
-    "posted_at": "2026-08-26T18:54:19.807517+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T18:56:31.418081+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787770459807",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542245833490300989,
+    "puzzle_id": "random_1787770591418",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542246384101494825,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "dxc7",
+        "move": "ra8",
         "correct": true,
-        "timestamp": "2026-08-26T18:56:26.493144+00:00"
+        "timestamp": "2026-08-26T18:56:44.434747+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
