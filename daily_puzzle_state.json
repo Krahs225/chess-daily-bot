@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2012-11-06",
     "title": "Hammer-Carlsen WYC U14, Crete 2003",
     "fen": "r2qr2k/pp2Npp1/1np1b3/4R1p1/1Q6/3P2P1/PPP2PBP/5RK1 w - - 0 1",
-    "current_fen": "r2qr2k/pp2Npp1/1np1b3/4R1p1/1Q6/3P2P1/PPP2PBP/5RK1 w - - 0 1",
+    "current_fen": "r2qr2k/pp2Npp1/1np1b3/4R3/7p/3P2P1/PPP2PBP/5RK1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qr2k/pp2Npp1/1np1b3/4R1p1/1Q6/3P2P1/PPP2PBP/5RK1 w - - 0 1\"]\r\n\r\n1. Qh4+ gxh4 2. Rh5#\r\n*",
     "all_moves": [
       {
@@ -42,20 +42,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787741600147",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542124786354880542,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "ng6",
+        "move": "qh4",
         "correct": false,
-        "timestamp": "2026-08-26T10:53:23.304825+00:00"
+        "timestamp": "2026-08-26T10:53:26.582406+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qh4",
+        "correct": true,
+        "timestamp": "2026-08-26T10:53:25.961265+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
