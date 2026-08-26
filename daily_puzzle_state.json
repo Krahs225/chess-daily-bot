@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-03-04",
     "title": "L. Kubbel, 1933",
     "fen": "kr6/1n6/8/3Q4/8/8/p2K4/6Q1 w - - 0 1",
-    "current_fen": "kr6/1n6/8/3Q4/8/8/p2K4/6Q1 w - - 0 1",
+    "current_fen": "1r6/kn4Q1/8/3Q4/8/8/p2K4/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"kr6/1n6/8/3Q4/8/8/p2K4/6Q1 w - - 0 1\"]\r\n\r\n1. Qg7 Ka7 2. Qa5#\r\n*",
     "all_moves": [
       {
@@ -42,8 +42,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787766888640",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542230854443602023,
     "attempted_users": {
@@ -52,10 +52,16 @@
         "move": "Qgh1",
         "correct": false,
         "timestamp": "2026-08-26T17:55:39.352573+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qg7",
+        "correct": true,
+        "timestamp": "2026-08-26T17:56:07.001802+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
