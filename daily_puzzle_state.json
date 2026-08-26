@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-04-21",
     "title": "Sacrificing for a Gain",
     "fen": "r4rk1/p3pp1p/2Q3p1/3n1b2/5q2/2N2P2/PPP3PP/1K1R1B1R b - - 0 1",
-    "current_fen": "r4rk1/p3pp1p/2Q3p1/3n1b2/5q2/2N2P2/PPP3PP/1K1R1B1R b - - 0 1",
+    "current_fen": "r4rk1/p3pp1p/2Q3p1/3n4/5q2/2N2P2/PPK3PP/3R1B1R b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/p3pp1p/2Q3p1/3n1b2/5q2/2N2P2/PPP3PP/1K1R1B1R b - - 0 1\"]\r\n\r\n1...Bxc2+ 2. Kxc2 Nb4+ 3. Kb1 Nxc6\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787740400705",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542119756436344922,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "bxc2",
+        "correct": true,
+        "timestamp": "2026-08-26T10:33:32.186259+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
