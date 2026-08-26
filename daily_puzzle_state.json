@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-09-05",
     "title": "Open the Diagonal",
     "fen": "r4r1k/2p3qp/3p4/p1nPp1P1/1pP1Bp1P/1P3Pn1/P4KNR/1Q2R3 b - - 0 1",
-    "current_fen": "r4r1k/2p3qp/3p4/p1nPp1P1/1pP1Bp1P/1P3Pn1/P4KNR/1Q2R3 b - - 0 1",
+    "current_fen": "r4r1k/6qp/2Pp4/p1n1p1P1/1pP1Bp1P/1P3Pn1/P4KNR/1Q2R3 b - - 0 2",
     "pgn": "[FEN \"r4r1k/2p3qp/3p4/p1nPp1P1/1pP1Bp1P/1P3Pn1/P4KNR/1Q2R3 b - - 0 1\"]\r\n[PlyCount \"5\"]\r\n[Result \"*\"]\r\n\r\n1... c6 $3 2. dxc6 Qa7 3. Nxf4 Ncxe4+ 4. Kg2 Qf2+ 5. Kh3 Qxf3 { and white cannot prevent losing more material }\r\n*",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787775951294",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542268867307638924,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "c6",
+        "correct": true,
+        "timestamp": "2026-08-26T20:26:00.840679+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
