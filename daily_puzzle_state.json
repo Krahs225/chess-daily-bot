@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-01-22",
-    "title": "Can White Win This?",
-    "fen": "8/8/8/4K3/8/3k4/Q1p5/8 w - - 0 1",
-    "current_fen": "8/8/8/8/8/3K4/4Q3/2qk4 b - - 1 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/4K3/8/3k4/Q1p5/8 w - - 0 1\"]\r\n\r\n1. Qb2 Kd2 2. Ke4 Kd1 3. Kd3 c1=Q 4. Qe2#\r\n*",
+    "url": "https://www.chess.com/daily/2020-06-23",
+    "title": "Reflexive Thinking",
+    "fen": "6k1/1pp3pp/p2b4/3PR3/4N3/6P1/2P2K1P/4r3 w - - 0 1",
+    "current_fen": "6k1/1pp3pp/p2b4/3PR3/4N3/6P1/2P2K1P/4r3 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/1pp3pp/p2b4/3PR3/4N3/6P1/2P2K1P/4r3 w - - 0 1\"]\r\n\r\n1.Re8+ Kf7 2.Nxd6+ cxd6 3.Rxe1 0-1",
     "all_moves": [
       {
-        "uci": "a2b2",
-        "san": "Qb2",
+        "uci": "e5e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "d3d2",
-        "san": "Kd2",
+        "uci": "g8f7",
+        "san": "Kf7",
         "color": "black"
       },
       {
-        "uci": "e5e4",
-        "san": "Ke4",
+        "uci": "e4d6",
+        "san": "Nxd6+",
         "color": "white"
       },
       {
-        "uci": "d2d1",
-        "san": "Kd1",
+        "uci": "c7d6",
+        "san": "cxd6",
         "color": "black"
       },
       {
-        "uci": "e4d3",
-        "san": "Kd3",
-        "color": "white"
-      },
-      {
-        "uci": "c2c1q",
-        "san": "c1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "b2e2",
-        "san": "Qe2#",
+        "uci": "e8e1",
+        "san": "Rxe1",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a2b2",
-        "san": "Qb2",
+        "uci": "e5e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "e5e4",
-        "san": "Ke4",
+        "uci": "e4d6",
+        "san": "Nxd6+",
         "color": "white"
       },
       {
-        "uci": "e4d3",
-        "san": "Kd3",
-        "color": "white"
-      },
-      {
-        "uci": "b2e2",
-        "san": "Qe2#",
+        "uci": "e8e1",
+        "san": "Rxe1",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T15:54:16.324954+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T15:56:29.797866+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787759656324",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542200518976213015,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qe2",
-        "correct": true,
-        "timestamp": "2026-08-26T15:54:48.947871+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787759789797",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
