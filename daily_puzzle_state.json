@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-04-05",
-    "title": "Pirc - Byrne, Helsinki 1952",
-    "fen": "5r2/5P1p/2n5/p2k4/2R5/2KN2P1/7P/8 w - - 0 1",
-    "current_fen": "3N4/5r1p/2k5/p7/8/2K3P1/7P/8 b - - 1 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r2/5P1p/2n5/p2k4/2R5/2KN2P1/7P/8 w - - 0 1\"]\r\n\r\n1. Nf4+ Kd6 2. Rxc6+ Kxc6 3. Ne6 Rxf7 4. Nd8+\r\n*",
+    "url": "https://www.chess.com/daily/2022-04-04",
+    "title": "Pop Fly",
+    "fen": "8/7R/pR3rp1/4p1k1/8/7P/6PK/3r4 w - - 0 1",
+    "current_fen": "8/7R/pR3rp1/4p1k1/8/7P/6PK/3r4 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/7R/pR3rp1/4p1k1/8/7P/6PK/3r4 w - - 0 1\"]\r\n\r\n1.h4+ Kf5 2.g4+ Kxg4 3.Rxf6 *",
     "all_moves": [
       {
-        "uci": "d3f4",
-        "san": "Nf4+",
+        "uci": "h3h4",
+        "san": "h4+",
         "color": "white"
       },
       {
-        "uci": "d5d6",
-        "san": "Kd6",
+        "uci": "g5f5",
+        "san": "Kf5",
         "color": "black"
       },
       {
-        "uci": "c4c6",
-        "san": "Rxc6+",
+        "uci": "g2g4",
+        "san": "g4+",
         "color": "white"
       },
       {
-        "uci": "d6c6",
-        "san": "Kxc6",
+        "uci": "f5g4",
+        "san": "Kxg4",
         "color": "black"
       },
       {
-        "uci": "f4e6",
-        "san": "Ne6",
-        "color": "white"
-      },
-      {
-        "uci": "f8f7",
-        "san": "Rxf7",
-        "color": "black"
-      },
-      {
-        "uci": "e6d8",
-        "san": "Nd8+",
+        "uci": "b6f6",
+        "san": "Rxf6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3f4",
-        "san": "Nf4+",
+        "uci": "h3h4",
+        "san": "h4+",
         "color": "white"
       },
       {
-        "uci": "c4c6",
-        "san": "Rxc6+",
+        "uci": "g2g4",
+        "san": "g4+",
         "color": "white"
       },
       {
-        "uci": "f4e6",
-        "san": "Ne6",
-        "color": "white"
-      },
-      {
-        "uci": "e6d8",
-        "san": "Nd8+",
+        "uci": "b6f6",
+        "san": "Rxf6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T10:35:50.129121+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-26T10:36:24.574408+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787740550129",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542120382230831245,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nd8",
-        "correct": true,
-        "timestamp": "2026-08-26T10:36:14.002481+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787740584574",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
