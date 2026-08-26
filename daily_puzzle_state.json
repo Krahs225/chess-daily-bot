@@ -1,120 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-07-18",
-    "title": "Hamann-BrinckClaussen, Hastings 1962",
-    "fen": "r4rk1/pp4np/2n1bppB/qNQ1p3/8/6P1/PP2PPBP/R4RK1 w - - 0 1",
-    "current_fen": "r4rk1/p6p/2p2pp1/2N1p3/8/6P1/PP2PP1P/R4RK1 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/pp4np/2n1bppB/qNQ1p3/8/6P1/PP2PPBP/R4RK1 w - - 0 1\"]\r\n\r\n1. Bxg7 Kxg7 2. Bxc6 bxc6 3. Nd4 Qxc5 4. Nxe6+ Kg8 5. Nxc5\r\n*",
+    "url": "https://www.chess.com/daily/2014-07-30",
+    "title": "Mate in 4",
+    "fen": "r1bq3k/pppn1Qpp/3b4/8/3Pp3/6p1/PPP2P2/R3KB1R w KQq - 0 1",
+    "current_fen": "r1bq4/pppn1Qpk/3b4/8/3Pp3/6p1/PPP2P2/R3KB2 w Q - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bq3k/pppn1Qpp/3b4/8/3Pp3/6p1/PPP2P2/R3KB1R w KQq - 0 1\"]\r\n\r\n1. Rxh7+ Kxh7 2. Qh5+ Kg8 3. Bc4+ Kf8 4. Qf7# \r\n*",
     "all_moves": [
       {
-        "uci": "h6g7",
-        "san": "Bxg7",
+        "uci": "h1h7",
+        "san": "Rxh7+",
         "color": "white"
       },
       {
-        "uci": "g8g7",
-        "san": "Kxg7",
+        "uci": "h8h7",
+        "san": "Kxh7",
         "color": "black"
       },
       {
-        "uci": "g2c6",
-        "san": "Bxc6",
+        "uci": "f7h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "b7c6",
-        "san": "bxc6",
-        "color": "black"
-      },
-      {
-        "uci": "b5d4",
-        "san": "Nd4",
-        "color": "white"
-      },
-      {
-        "uci": "a5c5",
-        "san": "Qxc5",
-        "color": "black"
-      },
-      {
-        "uci": "d4e6",
-        "san": "Nxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "g7g8",
+        "uci": "h7g8",
         "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "e6c5",
-        "san": "Nxc5",
+        "uci": "f1c4",
+        "san": "Bc4+",
+        "color": "white"
+      },
+      {
+        "uci": "g8f8",
+        "san": "Kf8",
+        "color": "black"
+      },
+      {
+        "uci": "h5f7",
+        "san": "Qf7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6g7",
-        "san": "Bxg7",
+        "uci": "h1h7",
+        "san": "Rxh7+",
         "color": "white"
       },
       {
-        "uci": "g2c6",
-        "san": "Bxc6",
+        "uci": "f7h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "b5d4",
-        "san": "Nd4",
+        "uci": "f1c4",
+        "san": "Bc4+",
         "color": "white"
       },
       {
-        "uci": "d4e6",
-        "san": "Nxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "e6c5",
-        "san": "Nxc5",
+        "uci": "h5f7",
+        "san": "Qf7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-26T10:07:07.046659+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-26T10:07:54.343743+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787738827046",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542113155399028818,
+    "puzzle_id": "random_1787738874343",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542113353881624596,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qe7",
-        "correct": false,
-        "timestamp": "2026-08-26T10:07:36.912837+00:00"
+        "move": "rxh7",
+        "correct": true,
+        "timestamp": "2026-08-26T10:07:57.661387+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nxc5",
-        "correct": true,
-        "timestamp": "2026-08-26T10:07:46.220991+00:00"
+        "move": "rxh7",
+        "correct": false,
+        "timestamp": "2026-08-26T10:07:58.086411+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
