@@ -1,92 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-10-28",
-    "title": "Queen Invasion",
-    "fen": "3qrk2/3b1p2/1N1p2np/p2P3p/1p1QPP2/6R1/6BP/6K1 w - - 0 1",
-    "current_fen": "3qrk2/3N3Q/3p2pp/p2P3p/1p2PP2/8/6BP/6K1 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3qrk2/3b1p2/1N1p2np/p2P3p/1p1QPP2/6R1/6BP/6K1 w - - 0 1\"]\r\n\r\n1. Rxg6 fxg6 2. Qh8+ Kf7 3. Qh7+ Kf8 4. Nxd7+\r\n*",
+    "url": "https://www.chess.com/daily/2025-06-23",
+    "title": "Calling All Bishops!",
+    "fen": "5b2/pp4p1/1k5p/n1p1rb1q/4p2B/P1N5/1PP3PP/3RRBK1 w - - 0 1",
+    "current_fen": "5b2/pp4p1/1k5p/n1p1rb1q/4p2B/P1N5/1PP3PP/3RRBK1 w - - 0 1",
+    "pgn": "[Result \"1-0\"]\r\n[FEN \"5b2/pp4p1/1k5p/n1p1rb1q/4p2B/P1N5/1PP3PP/3RRBK1 w - - 0 1\"]\r\n\r\n1. Bd8+ Kc6 2. Bb5# 1-0",
     "all_moves": [
       {
-        "uci": "g3g6",
-        "san": "Rxg6",
+        "uci": "h4d8",
+        "san": "Bd8+",
         "color": "white"
       },
       {
-        "uci": "f7g6",
-        "san": "fxg6",
+        "uci": "b6c6",
+        "san": "Kc6",
         "color": "black"
       },
       {
-        "uci": "d4h8",
-        "san": "Qh8+",
-        "color": "white"
-      },
-      {
-        "uci": "f8f7",
-        "san": "Kf7",
-        "color": "black"
-      },
-      {
-        "uci": "h8h7",
-        "san": "Qh7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7f8",
-        "san": "Kf8",
-        "color": "black"
-      },
-      {
-        "uci": "b6d7",
-        "san": "Nxd7+",
+        "uci": "f1b5",
+        "san": "Bb5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g3g6",
-        "san": "Rxg6",
+        "uci": "h4d8",
+        "san": "Bd8+",
         "color": "white"
       },
       {
-        "uci": "d4h8",
-        "san": "Qh8+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h7",
-        "san": "Qh7+",
-        "color": "white"
-      },
-      {
-        "uci": "b6d7",
-        "san": "Nxd7+",
+        "uci": "f1b5",
+        "san": "Bb5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T22:25:25.592677+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T22:26:29.045894+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787783125592",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542298956682363130,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nxd7",
-        "correct": true,
-        "timestamp": "2026-08-26T22:26:13.912357+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787783189045",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
