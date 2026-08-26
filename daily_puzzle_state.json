@@ -1,186 +1,51 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-12-12",
-    "title": "Can you Promote the Pawn Safely?",
-    "fen": "7r/2P5/1K2N3/8/8/8/8/k7 w - - 0 1",
-    "current_fen": "7r/2P5/1K2N3/8/8/8/8/k7 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7r/2P5/1K2N3/8/8/8/8/k7 w - - 0 1\"]\r\n\r\n1. Nd8 Rh6+ 2. Kb5 Rh5+ 3. Kb4 Rh4+ 4. Kb3 Rh3+ 5. Kc2 Rh4 6. Kd3 Rh3+ 7. Kd4 Rh4+ 8. Kd5 Rh5+ 9. Kd6 Rh6+ 10. Ke7 Rh7+ 11. Nf7\r\n*",
+    "url": "https://www.chess.com/daily/2020-01-12",
+    "title": "A Grandmaster's Entrance",
+    "fen": "5r1k/1pp1q1pp/7r/p7/6Qn/1P4PK/PB4B1/5R2 w - - 0 32",
+    "current_fen": "5r1k/1pp1q1pp/7r/p7/6Qn/1P4PK/PB4B1/5R2 w - - 0 32",
+    "pgn": "[Event \"5th EKA IIFL Wealth GM Open\"]\r\n[Date \"2019.12.31\"]\r\n[White \"Vaibhav, Suri\"]\r\n[Black \"Anadkat Kartavya\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2597\"]\r\n[BlackElo \"2023\"]\r\n[ECO \"A22\"]\r\n[FEN \"5r1k/1pp1q1pp/7r/p7/6Qn/1P4PK/PB4B1/5R2 w - - 0 32\"]\r\n\r\n32.Qxg7+ Qxg7 33.Rxf8# 1-0",
     "all_moves": [
       {
-        "uci": "e6d8",
-        "san": "Nd8",
+        "uci": "g4g7",
+        "san": "Qxg7+",
         "color": "white"
       },
       {
-        "uci": "h8h6",
-        "san": "Rh6+",
+        "uci": "e7g7",
+        "san": "Qxg7",
         "color": "black"
       },
       {
-        "uci": "b6b5",
-        "san": "Kb5",
-        "color": "white"
-      },
-      {
-        "uci": "h6h5",
-        "san": "Rh5+",
-        "color": "black"
-      },
-      {
-        "uci": "b5b4",
-        "san": "Kb4",
-        "color": "white"
-      },
-      {
-        "uci": "h5h4",
-        "san": "Rh4+",
-        "color": "black"
-      },
-      {
-        "uci": "b4b3",
-        "san": "Kb3",
-        "color": "white"
-      },
-      {
-        "uci": "h4h3",
-        "san": "Rh3+",
-        "color": "black"
-      },
-      {
-        "uci": "b3c2",
-        "san": "Kc2",
-        "color": "white"
-      },
-      {
-        "uci": "h3h4",
-        "san": "Rh4",
-        "color": "black"
-      },
-      {
-        "uci": "c2d3",
-        "san": "Kd3",
-        "color": "white"
-      },
-      {
-        "uci": "h4h3",
-        "san": "Rh3+",
-        "color": "black"
-      },
-      {
-        "uci": "d3d4",
-        "san": "Kd4",
-        "color": "white"
-      },
-      {
-        "uci": "h3h4",
-        "san": "Rh4+",
-        "color": "black"
-      },
-      {
-        "uci": "d4d5",
-        "san": "Kd5",
-        "color": "white"
-      },
-      {
-        "uci": "h4h5",
-        "san": "Rh5+",
-        "color": "black"
-      },
-      {
-        "uci": "d5d6",
-        "san": "Kd6",
-        "color": "white"
-      },
-      {
-        "uci": "h5h6",
-        "san": "Rh6+",
-        "color": "black"
-      },
-      {
-        "uci": "d6e7",
-        "san": "Ke7",
-        "color": "white"
-      },
-      {
-        "uci": "h6h7",
-        "san": "Rh7+",
-        "color": "black"
-      },
-      {
-        "uci": "d8f7",
-        "san": "Nf7",
+        "uci": "f1f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e6d8",
-        "san": "Nd8",
+        "uci": "g4g7",
+        "san": "Qxg7+",
         "color": "white"
       },
       {
-        "uci": "b6b5",
-        "san": "Kb5",
-        "color": "white"
-      },
-      {
-        "uci": "b5b4",
-        "san": "Kb4",
-        "color": "white"
-      },
-      {
-        "uci": "b4b3",
-        "san": "Kb3",
-        "color": "white"
-      },
-      {
-        "uci": "b3c2",
-        "san": "Kc2",
-        "color": "white"
-      },
-      {
-        "uci": "c2d3",
-        "san": "Kd3",
-        "color": "white"
-      },
-      {
-        "uci": "d3d4",
-        "san": "Kd4",
-        "color": "white"
-      },
-      {
-        "uci": "d4d5",
-        "san": "Kd5",
-        "color": "white"
-      },
-      {
-        "uci": "d5d6",
-        "san": "Kd6",
-        "color": "white"
-      },
-      {
-        "uci": "d6e7",
-        "san": "Ke7",
-        "color": "white"
-      },
-      {
-        "uci": "d8f7",
-        "san": "Nf7",
+        "uci": "f1f8",
+        "san": "Rxf8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 11,
-    "posted_at": "2026-08-26T21:50:55.897579+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T21:51:11.473774+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787781055897",
+    "puzzle_id": "random_1787781071473",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542290275752480851,
+    "message_id": 1542290340789092443,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
