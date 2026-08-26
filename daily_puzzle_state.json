@@ -1,92 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-06-07",
-    "title": "Euwe Revisited",
-    "fen": "4rrk1/ppp2pbp/3q2pn/5bB1/2Bp4/1QPP1N2/PP4PP/4RRK1 w - - 6 17",
-    "current_fen": "4Bk2/ppp4p/3q2pb/5b2/3p4/1QPP1N2/PP4PP/5RK1 b - - 0 20",
-    "pgn": "[Event \"It\"]\r\n[Site \"Amsterdam (Netherlands)\"]\r\n[Date \"1922.??.??\"]\r\n[Round \"?\"]\r\n[White \"Max Euwe\"]\r\n[Black \"Wiersma E Sr\"]\r\n[Result \"1-0\"]\r\n[FEN \"4rrk1/ppp2pbp/3q2pn/5bB1/2Bp4/1QPP1N2/PP4PP/4RRK1 w - - 6 17\"]\r\n\r\n17.Rxe8 Rxe8 18.Bxh6 Bxh6 19.Bxf7+ Kf8 20.Bxe8 1-0",
+    "url": "https://www.chess.com/daily/2019-10-24",
+    "title": "Overloading The Critical Square",
+    "fen": "2r3r1/pQpk2q1/1b5p/5N2/8/5Bp1/PP3P1P/1R3RK1 b - - 0 1",
+    "current_fen": "2r3r1/pQpk2q1/1b5p/5N2/8/5Bp1/PP3P1P/1R3RK1 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3r1/pQpk2q1/1b5p/5N2/8/5Bp1/PP3P1P/1R3RK1 b - - 0 1\"]\r\n\r\n1...gxf2+ 2. Kh1 Qg1+\r\n*",
     "all_moves": [
       {
-        "uci": "e1e8",
-        "san": "Rxe8",
-        "color": "white"
-      },
-      {
-        "uci": "f8e8",
-        "san": "Rxe8",
+        "uci": "g3f2",
+        "san": "gxf2+",
         "color": "black"
       },
       {
-        "uci": "g5h6",
-        "san": "Bxh6",
+        "uci": "g1h1",
+        "san": "Kh1",
         "color": "white"
       },
       {
-        "uci": "g7h6",
-        "san": "Bxh6",
+        "uci": "g7g1",
+        "san": "Qg1+",
         "color": "black"
-      },
-      {
-        "uci": "c4f7",
-        "san": "Bxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8f8",
-        "san": "Kf8",
-        "color": "black"
-      },
-      {
-        "uci": "f7e8",
-        "san": "Bxe8",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1e8",
-        "san": "Rxe8",
-        "color": "white"
+        "uci": "g3f2",
+        "san": "gxf2+",
+        "color": "black"
       },
       {
-        "uci": "g5h6",
-        "san": "Bxh6",
-        "color": "white"
-      },
-      {
-        "uci": "c4f7",
-        "san": "Bxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7e8",
-        "san": "Bxe8",
-        "color": "white"
+        "uci": "g7g1",
+        "san": "Qg1+",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-26T22:53:41.822417+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T22:54:11.527653+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787784821822",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542306071857729597,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bxe8",
-        "correct": true,
-        "timestamp": "2026-08-26T22:54:01.665154+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787784851527",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
