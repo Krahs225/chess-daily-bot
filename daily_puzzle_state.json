@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-02-21",
     "title": "Winning the House",
     "fen": "r1b2bk1/1p6/p2p4/P2Pp3/1PN1P3/3q4/6B1/6QK w - - 0 1",
-    "current_fen": "r1b2bk1/1p6/p2p4/P2Pp3/1PN1P3/3q4/6B1/6QK w - - 0 1",
+    "current_fen": "r1b2bk1/1p6/p2p4/P2Pp3/1PN1P3/3q4/8/5BQK b - - 1 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b2bk1/1p6/p2p4/P2Pp3/1PN1P3/3q4/6B1/6QK w - - 0 1\"]\r\n\r\n1. Bf1+\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787737996538",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1542109671727431732,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "bf1",
+        "correct": true,
+        "timestamp": "2026-08-26T09:53:24.108656+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
