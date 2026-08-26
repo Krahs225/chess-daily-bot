@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-04-12",
     "title": "Heavy is the Crown",
     "fen": "2r2br1/pp2np2/2q1b3/2NpPp1k/P2P1Ppp/1RR5/1P2N1PP/4Q1K1 w - - 0 1",
-    "current_fen": "2r2br1/pp3p1R/2q1b1n1/2NpPp2/P2P1Pk1/8/1P2N1PP/6K1 w - - 3 5",
+    "current_fen": "2r2br1/pp3p1R/2q1b1n1/2NpPp2/P2P1Pk1/7P/1P2N1P1/6K1 b - - 0 5",
     "pgn": "[Result \"1-0\"]\r\n[FEN \"2r2br1/pp2np2/2q1b3/2NpPp1k/P2P1Ppp/1RR5/1P2N1PP/4Q1K1 w - - 0 1\"]\r\n\r\n1. Qxh4+ Kxh4 2. Rh3+ gxh3 3. Rxh3+ Kg4 4. Rh7 Ng6 5. h3# 1-0",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787747648544",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1542150155476795513,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rh7",
+        "move": "h3",
         "correct": true,
-        "timestamp": "2026-08-26T12:34:36.275836+00:00"
+        "timestamp": "2026-08-26T12:34:38.604337+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -107,7 +107,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
