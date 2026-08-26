@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-11-17",
     "title": "A.Shirov - V.Savon, 1991",
     "fen": "5rk1/p4pp1/P2p1n1p/1r1P1N2/4P1q1/2P1B3/2Q3PP/5RK1 w - - 0 1",
-    "current_fen": "5rk1/p4pp1/P2p1n1p/1r1P1N2/4P1q1/2P1B3/2Q3PP/5RK1 w - - 0 1",
+    "current_fen": "5rk1/p4pp1/P2p1n1p/1r1P1N1q/4PR2/2P1B3/2Q3PP/6K1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[FEN \"5rk1/p4pp1/P2p1n1p/1r1P1N2/4P1q1/2P1B3/2Q3PP/5RK1 w - - 0 1\"]\r\n\r\n1. Rf4 Qh5 2. Rh4 Qg6 3. Ne7+\r\n*",
     "all_moves": [
       {
@@ -57,26 +57,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787748665823",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542154422484869200,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nxg7",
-        "correct": false,
-        "timestamp": "2026-08-26T12:51:15.571756+00:00"
+        "move": "rf4",
+        "correct": true,
+        "timestamp": "2026-08-26T12:51:19.348181+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nxh6",
+        "move": "rf4",
         "correct": false,
-        "timestamp": "2026-08-26T12:51:11.356351+00:00"
+        "timestamp": "2026-08-26T12:51:19.356641+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
