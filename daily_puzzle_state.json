@@ -1,77 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-05-04",
-    "title": "Two For One",
-    "fen": "7r/1pkb3p/pn6/2rNq1b1/4B1p1/6P1/PP3QNP/3R1RK1 b - - 0 1",
-    "current_fen": "7r/1pk4p/p1b5/2Qnq1b1/6p1/6P1/PP4NP/3R1RK1 w - - 2 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7r/1pkb3p/pn6/2rNq1b1/4B1p1/6P1/PP3QNP/3R1RK1 b - - 0 1\"]\r\n\r\n1...Rxd5 2. Bxd5 Nxd5 3. Qc5+ Bc6\r\n*",
+    "url": "https://www.chess.com/daily/2024-06-12",
+    "title": "All Eyes On Me",
+    "fen": "r5k1/6p1/2p2p1p/N3p3/1P2n3/2P2nbP/2QB1qB1/4RR1K b - - 1 30",
+    "current_fen": "r5k1/6p1/2p2p1p/N3p3/1P2n3/2P2nbP/2QB1qB1/4RR1K b - - 1 30",
+    "pgn": "[Result \"0-1\"]\r\n[FEN \"r5k1/6p1/2p2p1p/N3p3/1P2n3/2P2nbP/2QB1qB1/4RR1K b - - 1 30\"]\r\n\r\n30... Qg1+ 31. Rxg1 Nf2# 0-1",
     "all_moves": [
       {
-        "uci": "c5d5",
-        "san": "Rxd5",
+        "uci": "f2g1",
+        "san": "Qg1+",
         "color": "black"
       },
       {
-        "uci": "e4d5",
-        "san": "Bxd5",
+        "uci": "f1g1",
+        "san": "Rxg1",
         "color": "white"
       },
       {
-        "uci": "b6d5",
-        "san": "Nxd5",
-        "color": "black"
-      },
-      {
-        "uci": "f2c5",
-        "san": "Qc5+",
-        "color": "white"
-      },
-      {
-        "uci": "d7c6",
-        "san": "Bc6",
+        "uci": "e4f2",
+        "san": "Nf2#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5d5",
-        "san": "Rxd5",
+        "uci": "f2g1",
+        "san": "Qg1+",
         "color": "black"
       },
       {
-        "uci": "b6d5",
-        "san": "Nxd5",
-        "color": "black"
-      },
-      {
-        "uci": "d7c6",
-        "san": "Bc6",
+        "uci": "e4f2",
+        "san": "Nf2#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T14:46:15.373357+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T14:46:48.329479+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787755575373",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542183402365648928,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bc6",
-        "correct": true,
-        "timestamp": "2026-08-26T14:46:42.069861+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787755608329",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
