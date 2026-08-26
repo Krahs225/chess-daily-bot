@@ -1,83 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-12-20",
-    "title": "Forcing Moves Melt Pawn Shields",
-    "fen": "7k/bpp4p/p2p3p/P6q/Q1Nn1P2/2PB3P/1P2r1PK/R2R4 b - - 0 1",
-    "current_fen": "7k/bpp4p/p2p3p/P7/Q1N2P2/2PB1n1P/1P5r/R2R3K w - - 1 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"7k/bpp4p/p2p3p/P6q/Q1Nn1P2/2PB3P/1P2r1PK/R2R4 b - - 0 1\"]\r\n\r\n1... Nf3+ 2. Kh1 Qxh3+ 3. gxh3 Rh2# *",
+    "url": "https://www.chess.com/daily/2025-05-20",
+    "title": "Bullet Oversight, Puzzle Knockout",
+    "fen": "3R4/pb3p1k/1pq1pP1p/2p2n1P/6p1/1PP2NP1/P4P2/2Q3K1 w - - 16 39",
+    "current_fen": "3R4/pb3p1k/1pq1pP1p/2p2n1P/6p1/1PP2NP1/P4P2/2Q3K1 w - - 16 39",
+    "pgn": "[Event \"Chess.com\"]\r\n[White \"pepe\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"3R4/pb3p1k/1pq1pP1p/2p2n1P/6p1/1PP2NP1/P4P2/2Q3K1 w - - 16 39\"]\r\n[TimeControl \"Bullet Game\"]\r\n\r\n39. Qxh6+ Nxh6 40. Ng5# 1-0",
     "all_moves": [
       {
-        "uci": "d4f3",
-        "san": "Nf3+",
-        "color": "black"
-      },
-      {
-        "uci": "h2h1",
-        "san": "Kh1",
+        "uci": "c1h6",
+        "san": "Qxh6+",
         "color": "white"
       },
       {
-        "uci": "h5h3",
-        "san": "Qxh3+",
+        "uci": "f5h6",
+        "san": "Nxh6",
         "color": "black"
       },
       {
-        "uci": "g2h3",
-        "san": "gxh3",
+        "uci": "f3g5",
+        "san": "Ng5#",
         "color": "white"
-      },
-      {
-        "uci": "e2h2",
-        "san": "Rh2#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4f3",
-        "san": "Nf3+",
-        "color": "black"
+        "uci": "c1h6",
+        "san": "Qxh6+",
+        "color": "white"
       },
       {
-        "uci": "h5h3",
-        "san": "Qxh3+",
-        "color": "black"
-      },
-      {
-        "uci": "e2h2",
-        "san": "Rh2#",
-        "color": "black"
+        "uci": "f3g5",
+        "san": "Ng5#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-26T13:55:45.271671+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-26T13:57:02.354049+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787752545271",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542170693834252399,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rh2",
-        "correct": true,
-        "timestamp": "2026-08-26T13:55:55.422065+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rxg2",
-        "correct": false,
-        "timestamp": "2026-08-26T13:55:52.297517+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787752622354",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
