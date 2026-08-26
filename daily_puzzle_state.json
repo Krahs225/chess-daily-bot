@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-01-15",
     "title": "Common Mating Theme",
     "fen": "r5rk/3n1p1p/3p1ppQ/3P1N2/P3PP2/2p5/qbB2P1P/3R2RK w - - 0 1",
-    "current_fen": "r5rk/3n1p1p/3p1p1Q/3P1p2/P3PP2/2pR4/qbB2P1P/6RK w - - 0 2",
+    "current_fen": "r5r1/3n1p1k/3p1p2/3P1p2/P3PP2/2p4R/qbB2P1P/6RK b - - 1 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5rk/3n1p1p/3p1ppQ/3P1N2/P3PP2/2p5/qbB2P1P/3R2RK w - - 0 1\"]\r\n\r\n1. Rd3 gxf5 2. Qxh7+ Kxh7 3. Rh3#\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787747692058",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1542150337387827211,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rd3",
+        "move": "rh3",
         "correct": true,
-        "timestamp": "2026-08-26T12:35:00.289969+00:00"
+        "timestamp": "2026-08-26T12:35:04.800679+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -77,7 +77,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
