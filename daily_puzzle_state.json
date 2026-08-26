@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-04-24",
-    "title": "Setting Them Up For Failure",
-    "fen": "r1b1r2k/ppp2Qp1/2nb3p/8/2BPq3/2P5/P1P2PPP/R1B2RK1 w Q - 0 1",
-    "current_fen": "r1b1r3/ppp4k/2nb1Q1p/8/3Pq3/2PB4/P1P2PPP/R4RK1 b - - 3 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1r2k/ppp2Qp1/2nb3p/8/2BPq3/2P5/P1P2PPP/R1B2RK1 w Q - 0 1\"]\r\n\r\n1. Bxh6 gxh6 2. Qf6+ Kh7 3. Bd3\r\n*",
+    "url": "https://www.chess.com/daily/2014-10-02",
+    "title": "Judit Polgar - Artashes Minasian, Batumi, 1999",
+    "fen": "4R3/p2r1q1k/5B1P/6P1/2p4K/3b4/4Q3/8 w - - 0 1",
+    "current_fen": "4R3/p2r1q1k/5B1P/6P1/2p4K/3b4/4Q3/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4R3/p2r1q1k/5B1P/6P1/2p4K/3b4/4Q3/8 w - - 0 1\"]\r\n\r\n1. g6+ Kxg6 2. Qh5+ Kh7 3. Rh8#\r\n*",
     "all_moves": [
       {
-        "uci": "c1h6",
-        "san": "Bxh6",
+        "uci": "g5g6",
+        "san": "g6+",
         "color": "white"
       },
       {
-        "uci": "g7h6",
-        "san": "gxh6",
+        "uci": "h7g6",
+        "san": "Kxg6",
         "color": "black"
       },
       {
-        "uci": "f7f6",
-        "san": "Qf6+",
+        "uci": "e2h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "h8h7",
+        "uci": "g6h7",
         "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "c4d3",
-        "san": "Bd3",
+        "uci": "e8h8",
+        "san": "Rh8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1h6",
-        "san": "Bxh6",
+        "uci": "g5g6",
+        "san": "g6+",
         "color": "white"
       },
       {
-        "uci": "f7f6",
-        "san": "Qf6+",
+        "uci": "e2h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "c4d3",
-        "san": "Bd3",
+        "uci": "e8h8",
+        "san": "Rh8#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-26T09:36:21.633292+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-26T09:36:47.908586+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787736981633",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542105414642966569,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bd3",
-        "correct": true,
-        "timestamp": "2026-08-26T09:36:40.347042+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787737007908",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
