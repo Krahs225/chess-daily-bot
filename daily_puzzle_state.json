@@ -1,107 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-09-24",
-    "title": "The Finishing Touch",
-    "fen": "r7/pp5p/3p2p1/1q3n1k/4R3/Pb3p2/2B2PPP/2Q3K1 w - - 0 1",
-    "current_fen": "r7/pp5p/3p2pQ/1q3P2/6k1/Pb3p1P/2B2P2/6K1 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/pp5p/3p2p1/1q3n1k/4R3/Pb3p2/2B2PPP/2Q3K1 w - - 0 1\"]\r\n\r\n1. g4+ Kh4 2. gxf5+ Kh5 3. Rh4+ Kxh4 4. Qh6+ Kg4 5. h3#\r\n*",
+    "url": "https://www.chess.com/daily/2025-02-09",
+    "title": "Tactical Second Act",
+    "fen": "4k3/2P1p2p/N1q3p1/1p4Q1/p1n2n2/5N2/P5PP/6K1 w - - 0 1",
+    "current_fen": "4k3/2P1p2p/N1q3p1/1p4Q1/p1n2n2/5N2/P5PP/6K1 w - - 0 1",
+    "pgn": "[White \"JohanVA\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"4k3/2P1p2p/N1q3p1/1p4Q1/p1n2n2/5N2/P5PP/6K1 w - - 0 1\"]\r\n\r\n1. Qxb5 Qxb5 2. c8=Q+ Kf7 3. Qxc4+ Qxc4 4. Ne5+ Ke6 5. Nxc4 1-0",
     "all_moves": [
       {
-        "uci": "g2g4",
-        "san": "g4+",
+        "uci": "g5b5",
+        "san": "Qxb5",
         "color": "white"
       },
       {
-        "uci": "h5h4",
-        "san": "Kh4",
+        "uci": "c6b5",
+        "san": "Qxb5",
         "color": "black"
       },
       {
-        "uci": "g4f5",
-        "san": "gxf5+",
+        "uci": "c7c8q",
+        "san": "c8=Q+",
         "color": "white"
       },
       {
-        "uci": "h4h5",
-        "san": "Kh5",
+        "uci": "e8f7",
+        "san": "Kf7",
         "color": "black"
       },
       {
-        "uci": "e4h4",
-        "san": "Rh4+",
+        "uci": "c8c4",
+        "san": "Qxc4+",
         "color": "white"
       },
       {
-        "uci": "h5h4",
-        "san": "Kxh4",
+        "uci": "b5c4",
+        "san": "Qxc4",
         "color": "black"
       },
       {
-        "uci": "c1h6",
-        "san": "Qh6+",
+        "uci": "f3e5",
+        "san": "Ne5+",
         "color": "white"
       },
       {
-        "uci": "h4g4",
-        "san": "Kg4",
+        "uci": "f7e6",
+        "san": "Ke6",
         "color": "black"
       },
       {
-        "uci": "h2h3",
-        "san": "h3#",
+        "uci": "e5c4",
+        "san": "Nxc4",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g2g4",
-        "san": "g4+",
+        "uci": "g5b5",
+        "san": "Qxb5",
         "color": "white"
       },
       {
-        "uci": "g4f5",
-        "san": "gxf5+",
+        "uci": "c7c8q",
+        "san": "c8=Q+",
         "color": "white"
       },
       {
-        "uci": "e4h4",
-        "san": "Rh4+",
+        "uci": "c8c4",
+        "san": "Qxc4+",
         "color": "white"
       },
       {
-        "uci": "c1h6",
-        "san": "Qh6+",
+        "uci": "f3e5",
+        "san": "Ne5+",
         "color": "white"
       },
       {
-        "uci": "h2h3",
-        "san": "h3#",
+        "uci": "e5c4",
+        "san": "Nxc4",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 5,
-    "posted_at": "2026-08-27T00:43:21.071545+00:00",
+    "posted_at": "2026-08-27T00:44:43.507624+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787791401071",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542333666183618611,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "h3",
-        "correct": true,
-        "timestamp": "2026-08-27T00:44:37.976233+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787791483507",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
