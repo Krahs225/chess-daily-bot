@@ -1,91 +1,69 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-03-17",
-    "title": "Zoom In, Zug Out",
-    "fen": "8/1Q6/8/8/4N1K1/8/8/2q2k2 w - - 0 1",
-    "current_fen": "8/8/8/8/4N1K1/8/5Q2/2qk4 w - - 4 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/1Q6/8/8/4N1K1/8/8/2q2k2 w - - 0 1\"]\r\n\r\n1. Qf7+ Ke1 2. Qf2+ Kd1 3. Kh5 Qc4 4. Qd2# *",
+    "url": "https://www.chess.com/daily/2016-06-29",
+    "title": "Danner - Schnabel Hradec Kralove 1992",
+    "fen": "r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1",
+    "current_fen": "r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1\"]\r\n\r\n1. Qxd6 Bxd6 2. Nf6+ Kg7 3. Nxg4\r\n*",
     "all_moves": [
       {
-        "uci": "b7f7",
-        "san": "Qf7+",
+        "uci": "b4d6",
+        "san": "Qxd6",
         "color": "white"
       },
       {
-        "uci": "f1e1",
-        "san": "Ke1",
+        "uci": "f8d6",
+        "san": "Bxd6",
         "color": "black"
       },
       {
-        "uci": "f7f2",
-        "san": "Qf2+",
+        "uci": "d5f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "e1d1",
-        "san": "Kd1",
+        "uci": "g8g7",
+        "san": "Kg7",
         "color": "black"
       },
       {
-        "uci": "g4h5",
-        "san": "Kh5",
-        "color": "white"
-      },
-      {
-        "uci": "c1c4",
-        "san": "Qc4",
-        "color": "black"
-      },
-      {
-        "uci": "f2d2",
-        "san": "Qd2#",
+        "uci": "f6g4",
+        "san": "Nxg4",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b7f7",
-        "san": "Qf7+",
+        "uci": "b4d6",
+        "san": "Qxd6",
         "color": "white"
       },
       {
-        "uci": "f7f2",
-        "san": "Qf2+",
+        "uci": "d5f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "g4h5",
-        "san": "Kh5",
-        "color": "white"
-      },
-      {
-        "uci": "f2d2",
-        "san": "Qd2#",
+        "uci": "f6g4",
+        "san": "Nxg4",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-27T11:03:54.920540+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-27T11:06:09.103829+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787828634920",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "puzzle_id": "random_1787828769103",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1542489836399886398,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qf1",
-        "correct": false,
-        "timestamp": "2026-08-27T11:05:55.595980+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": 1542490399225151519,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
