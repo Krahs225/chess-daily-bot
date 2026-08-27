@@ -1,77 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-06-29",
-    "title": "Danner - Schnabel Hradec Kralove 1992",
-    "fen": "r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1",
-    "current_fen": "r7/p4pk1/Bpbb2p1/n3p3/4P1N1/4B1P1/7P/3R1RK1 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1\"]\r\n\r\n1. Qxd6 Bxd6 2. Nf6+ Kg7 3. Nxg4\r\n*",
+    "url": "https://www.chess.com/daily/2011-11-04",
+    "title": "Mate in 5",
+    "fen": "5rk1/r5p1/p1b2p2/3q1N2/6Q1/6P1/2B2P2/6KR w K - 0 1",
+    "current_fen": "5rk1/r5p1/p1b2p2/3q1N2/6Q1/6P1/2B2P2/6KR w K - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5rk1/r5p1/p1b2p2/3q1N2/6Q1/6P1/2B2P2/6KR w K - 0 1\"]\r\n\r\n1. Nh6+ Kh8 2. Nf7+ Kg8 3. Qxg7+ Kxg7 4. Rh7+ Kg8 5. Nh6#\r\n*",
     "all_moves": [
       {
-        "uci": "b4d6",
-        "san": "Qxd6",
+        "uci": "f5h6",
+        "san": "Nh6+",
         "color": "white"
       },
       {
-        "uci": "f8d6",
-        "san": "Bxd6",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "d5f6",
-        "san": "Nf6+",
+        "uci": "h6f7",
+        "san": "Nf7+",
+        "color": "white"
+      },
+      {
+        "uci": "h8g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "g4g7",
+        "san": "Qxg7+",
         "color": "white"
       },
       {
         "uci": "g8g7",
-        "san": "Kg7",
+        "san": "Kxg7",
         "color": "black"
       },
       {
-        "uci": "f6g4",
-        "san": "Nxg4",
+        "uci": "h1h7",
+        "san": "Rh7+",
+        "color": "white"
+      },
+      {
+        "uci": "g7g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "f7h6",
+        "san": "Nh6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b4d6",
-        "san": "Qxd6",
+        "uci": "f5h6",
+        "san": "Nh6+",
         "color": "white"
       },
       {
-        "uci": "d5f6",
-        "san": "Nf6+",
+        "uci": "h6f7",
+        "san": "Nf7+",
         "color": "white"
       },
       {
-        "uci": "f6g4",
-        "san": "Nxg4",
+        "uci": "g4g7",
+        "san": "Qxg7+",
+        "color": "white"
+      },
+      {
+        "uci": "h1h7",
+        "san": "Rh7+",
+        "color": "white"
+      },
+      {
+        "uci": "f7h6",
+        "san": "Nh6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-27T11:06:09.103829+00:00",
+    "player_move_count": 5,
+    "posted_at": "2026-08-27T11:06:32.497784+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787828769103",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542490399225151519,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nxg4",
-        "correct": true,
-        "timestamp": "2026-08-27T11:06:25.968758+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787828792497",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
