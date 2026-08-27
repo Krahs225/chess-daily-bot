@@ -1,91 +1,99 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-09-10",
-    "title": "Petrosian - Keres, Zurich 1953 Variation",
-    "fen": "r3k2r/1p2b1p1/2n2p1p/p3pP2/3p4/3N2PP/PP3PB1/R1R3K1 w kq - 0 1",
-    "current_fen": "r4k1r/4b1p1/5p1p/p2BpP2/3p4/3N2PP/PP3P2/R5K1 w - - 3 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"r3k2r/1p2b1p1/2n2p1p/p3pP2/3p4/3N2PP/PP3PB1/R1R3K1 w kq - 0 1\"]\r\n\r\n1. Rxc6 bxc6 2. Bxc6+ Kf7 3. Bd5+ Kf8 4. Bxa8\r\n*",
+    "url": "https://www.chess.com/daily/2024-02-10",
+    "title": "Major Pieces with a Light Touch",
+    "fen": "8/8/3q4/2k5/3pbr1p/8/Q5P1/3R2K1 w - - 0 1",
+    "current_fen": "8/8/3q4/2k5/3pbr1p/8/Q5P1/3R2K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/8/3q4/2k5/3pbr1p/8/Q5P1/3R2K1 w - - 0 1\"]\r\n\r\n1. Rc1+ Kb5 2. Qc4+ Kb6 3. Qb3+ Ka7 4. Ra1+ Qa6 5. Rxa6+ *",
     "all_moves": [
       {
-        "uci": "c1c6",
-        "san": "Rxc6",
+        "uci": "d1c1",
+        "san": "Rc1+",
         "color": "white"
       },
       {
-        "uci": "b7c6",
-        "san": "bxc6",
+        "uci": "c5b5",
+        "san": "Kb5",
         "color": "black"
       },
       {
-        "uci": "g2c6",
-        "san": "Bxc6+",
+        "uci": "a2c4",
+        "san": "Qc4+",
         "color": "white"
       },
       {
-        "uci": "e8f7",
-        "san": "Kf7",
+        "uci": "b5b6",
+        "san": "Kb6",
         "color": "black"
       },
       {
-        "uci": "c6d5",
-        "san": "Bd5+",
+        "uci": "c4b3",
+        "san": "Qb3+",
         "color": "white"
       },
       {
-        "uci": "f7f8",
-        "san": "Kf8",
+        "uci": "b6a7",
+        "san": "Ka7",
         "color": "black"
       },
       {
-        "uci": "d5a8",
-        "san": "Bxa8",
+        "uci": "c1a1",
+        "san": "Ra1+",
+        "color": "white"
+      },
+      {
+        "uci": "d6a6",
+        "san": "Qa6",
+        "color": "black"
+      },
+      {
+        "uci": "a1a6",
+        "san": "Rxa6+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1c6",
-        "san": "Rxc6",
+        "uci": "d1c1",
+        "san": "Rc1+",
         "color": "white"
       },
       {
-        "uci": "g2c6",
-        "san": "Bxc6+",
+        "uci": "a2c4",
+        "san": "Qc4+",
         "color": "white"
       },
       {
-        "uci": "c6d5",
-        "san": "Bd5+",
+        "uci": "c4b3",
+        "san": "Qb3+",
         "color": "white"
       },
       {
-        "uci": "d5a8",
-        "san": "Bxa8",
+        "uci": "c1a1",
+        "san": "Ra1+",
+        "color": "white"
+      },
+      {
+        "uci": "a1a6",
+        "san": "Rxa6+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-27T00:20:16.900398+00:00",
+    "player_move_count": 5,
+    "posted_at": "2026-08-27T00:20:37.355452+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787790016900",
-    "next_solution_index": 6,
-    "next_player_index": 3,
+    "puzzle_id": "random_1787790037355",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1542327860998701087,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bd5",
-        "correct": true,
-        "timestamp": "2026-08-27T00:20:34.240634+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
