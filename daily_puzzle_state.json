@@ -1,107 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-10-29",
-    "title": "On The Hunt",
-    "fen": "r2q3r/pp3R1p/3p1Qpk/8/3N4/8/P5P1/6K1 w - - 0 1",
-    "current_fen": "r2q3r/pp5p/3p2p1/5R2/3Q2k1/6N1/P5P1/6K1 b - - 9 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q3r/pp3R1p/3p1Qpk/8/3N4/8/P5P1/6K1 w - - 0 1\"]\r\n\r\n1. Nf5+ Kh5 2. Ng3+ Kh6 3. Qg7+ Kg5 4. Rf5+ Kg4 5. Qd4+\r\n*",
+    "url": "https://www.chess.com/daily/2019-12-26",
+    "title": "Petrosian and Simagin Visit Again",
+    "fen": "Q7/p4rkp/3q4/2p1p1N1/P1P5/8/7B/7K w - - 0 45",
+    "current_fen": "Q7/p4rkp/3q4/2p1p1N1/P1P5/8/7B/7K w - - 0 45",
+    "pgn": "[Event \"Moscow-ch playoff\"]\r\n[Site \"Moscow URS\"]\r\n[Date \"1956\"]\r\n[Round \"5\"]\r\n[White \"Tigran Vartanovich Petrosian\"]\r\n[Black \"Vladimir Simagin\"]\r\n[Result \"1-0\"]\r\n[SetUp \"1\"]\r\n[FEN \"Q7/p4rkp/3q4/2p1p1N1/P1P5/8/7B/7K w - - 0 45\"]\r\n[PlyCount \"7\"]\r\n\r\n45. Bxe5+ Qxe5 46. Qh8+ Kxh8 47. Nxf7+ Kg7 48. Nxe5 1-0",
     "all_moves": [
       {
-        "uci": "d4f5",
-        "san": "Nf5+",
+        "uci": "h2e5",
+        "san": "Bxe5+",
         "color": "white"
       },
       {
-        "uci": "h6h5",
-        "san": "Kh5",
+        "uci": "d6e5",
+        "san": "Qxe5",
         "color": "black"
       },
       {
-        "uci": "f5g3",
-        "san": "Ng3+",
+        "uci": "a8h8",
+        "san": "Qh8+",
         "color": "white"
       },
       {
-        "uci": "h5h6",
-        "san": "Kh6",
+        "uci": "g7h8",
+        "san": "Kxh8",
         "color": "black"
       },
       {
-        "uci": "f6g7",
-        "san": "Qg7+",
+        "uci": "g5f7",
+        "san": "Nxf7+",
         "color": "white"
       },
       {
-        "uci": "h6g5",
-        "san": "Kg5",
+        "uci": "h8g7",
+        "san": "Kg7",
         "color": "black"
       },
       {
-        "uci": "f7f5",
-        "san": "Rf5+",
-        "color": "white"
-      },
-      {
-        "uci": "g5g4",
-        "san": "Kg4",
-        "color": "black"
-      },
-      {
-        "uci": "g7d4",
-        "san": "Qd4+",
+        "uci": "f7e5",
+        "san": "Nxe5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4f5",
-        "san": "Nf5+",
+        "uci": "h2e5",
+        "san": "Bxe5+",
         "color": "white"
       },
       {
-        "uci": "f5g3",
-        "san": "Ng3+",
+        "uci": "a8h8",
+        "san": "Qh8+",
         "color": "white"
       },
       {
-        "uci": "f6g7",
-        "san": "Qg7+",
+        "uci": "g5f7",
+        "san": "Nxf7+",
         "color": "white"
       },
       {
-        "uci": "f7f5",
-        "san": "Rf5+",
-        "color": "white"
-      },
-      {
-        "uci": "g7d4",
-        "san": "Qd4+",
+        "uci": "f7e5",
+        "san": "Nxe5",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-27T10:19:07.138024+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-27T10:22:33.176932+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787825947138",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542478563050135703,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qd4",
-        "correct": true,
-        "timestamp": "2026-08-27T10:22:26.173293+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787826153176",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
