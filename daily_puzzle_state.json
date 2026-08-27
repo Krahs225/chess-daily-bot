@@ -1,77 +1,152 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-05-30",
-    "title": "How to Not Lose Tempo",
-    "fen": "5k2/5p2/4p3/p3P3/Pp1q1PQ1/1P2b1P1/2B5/7K b - - 0 1",
-    "current_fen": "5k2/5p2/4p3/p3P3/Pp3PQ1/1P2b1PK/2q5/8 w - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5k2/5p2/4p3/p3P3/Pp1q1PQ1/1P2b1P1/2B5/7K b - - 0 1\"]\r\n\r\n1...Qd5+ 2. Kh2 Qd2+ 3. Kh3 Qxc2\r\n*",
+    "url": "https://www.chess.com/daily/2023-08-27",
+    "title": "Cross-Eyed by Troitsky's Cross-Pins",
+    "fen": "1q3k2/2b2p1p/8/6Q1/1p6/4B3/1K6/8 w - - 0 1",
+    "current_fen": "1q3k2/5p1p/3b4/2B3Q1/1p6/8/1K6/8 w - - 2 2",
+    "pgn": "[White \"Troitsky\"]\r\n[Black \"Study\"]\r\n[Result \"*\"]\r\n[FEN \"1q3k2/2b2p1p/8/6Q1/1p6/4B3/1K6/8 w - - 0 1\"]\r\n\r\n1. Bc5+ Bd6 2. Qe5 Kg8 3. Bxd6 Qd8 4. Qg3+ Kh8 5. Be5+ f6 6. Qg5 h6 7. Bxf6+\r\nQxf6+ 8. Qxf6+ *",
     "all_moves": [
       {
-        "uci": "d4d5",
-        "san": "Qd5+",
-        "color": "black"
-      },
-      {
-        "uci": "h1h2",
-        "san": "Kh2",
+        "uci": "e3c5",
+        "san": "Bc5+",
         "color": "white"
       },
       {
-        "uci": "d5d2",
-        "san": "Qd2+",
+        "uci": "c7d6",
+        "san": "Bd6",
         "color": "black"
       },
       {
-        "uci": "h2h3",
-        "san": "Kh3",
+        "uci": "g5e5",
+        "san": "Qe5",
         "color": "white"
       },
       {
-        "uci": "d2c2",
-        "san": "Qxc2",
+        "uci": "f8g8",
+        "san": "Kg8",
         "color": "black"
+      },
+      {
+        "uci": "c5d6",
+        "san": "Bxd6",
+        "color": "white"
+      },
+      {
+        "uci": "b8d8",
+        "san": "Qd8",
+        "color": "black"
+      },
+      {
+        "uci": "e5g3",
+        "san": "Qg3+",
+        "color": "white"
+      },
+      {
+        "uci": "g8h8",
+        "san": "Kh8",
+        "color": "black"
+      },
+      {
+        "uci": "d6e5",
+        "san": "Be5+",
+        "color": "white"
+      },
+      {
+        "uci": "f7f6",
+        "san": "f6",
+        "color": "black"
+      },
+      {
+        "uci": "g3g5",
+        "san": "Qg5",
+        "color": "white"
+      },
+      {
+        "uci": "h7h6",
+        "san": "h6",
+        "color": "black"
+      },
+      {
+        "uci": "e5f6",
+        "san": "Bxf6+",
+        "color": "white"
+      },
+      {
+        "uci": "d8f6",
+        "san": "Qxf6+",
+        "color": "black"
+      },
+      {
+        "uci": "g5f6",
+        "san": "Qxf6+",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4d5",
-        "san": "Qd5+",
-        "color": "black"
+        "uci": "e3c5",
+        "san": "Bc5+",
+        "color": "white"
       },
       {
-        "uci": "d5d2",
-        "san": "Qd2+",
-        "color": "black"
+        "uci": "g5e5",
+        "san": "Qe5",
+        "color": "white"
       },
       {
-        "uci": "d2c2",
-        "san": "Qxc2",
-        "color": "black"
+        "uci": "c5d6",
+        "san": "Bxd6",
+        "color": "white"
+      },
+      {
+        "uci": "e5g3",
+        "san": "Qg3+",
+        "color": "white"
+      },
+      {
+        "uci": "d6e5",
+        "san": "Be5+",
+        "color": "white"
+      },
+      {
+        "uci": "g3g5",
+        "san": "Qg5",
+        "color": "white"
+      },
+      {
+        "uci": "e5f6",
+        "san": "Bxf6+",
+        "color": "white"
+      },
+      {
+        "uci": "g5f6",
+        "san": "Qxf6+",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-27T10:01:54.679454+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 8,
+    "posted_at": "2026-08-27T10:02:27.978400+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787824914679",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542474233198813234,
+    "puzzle_id": "random_1787824947978",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542474372617609306,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qxc2",
+        "move": "Bc5",
         "correct": true,
-        "timestamp": "2026-08-27T10:02:20.980623+00:00"
+        "timestamp": "2026-08-27T10:02:42.960256+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
