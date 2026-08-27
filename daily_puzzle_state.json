@@ -1,96 +1,126 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-01-27",
-    "title": "Choosing Your Path",
-    "fen": "r1b1r1k1/ppp3pp/8/3p1p2/4pPn1/2B3K1/PPqQP1PP/4RBNR b - - 0 1",
-    "current_fen": "r1b1r1k1/ppp3pp/8/3p1p2/5P2/4B1K1/PP2P1PP/4RBNn w - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r1b1r1k1/ppp3pp/8/3p1p2/4pPn1/2B3K1/PPqQP1PP/4RBNR b - - 0 1\"]\r\n\r\n1...Qxd2 2.Bxd2 e3 3.Bc1 Nf2 4.Bxe3 Nxh1+ *",
+    "url": "https://www.chess.com/daily/2008-05-24",
+    "title": "Troitsky Masterpiece",
+    "fen": "8/1n3P2/pp3r1p/k5p1/1N6/1P6/1R4P1/2K5 w - - 0 1",
+    "current_fen": "8/1n3P2/pp5p/k5p1/1N6/1P6/5rP1/2K5 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1n3P2/pp3r1p/k5p1/1N6/1P6/1R4P1/2K5 w - - 0 1\"]\r\n\r\n1. Rf2 Rxf2 2. Nc6+ Kb5 3. Nd4+ Kb4 4. Nf3 Kc3 5. Kd1 g4 6. f8=Q\r\n*",
     "all_moves": [
       {
-        "uci": "c2d2",
-        "san": "Qxd2",
-        "color": "black"
-      },
-      {
-        "uci": "c3d2",
-        "san": "Bxd2",
+        "uci": "b2f2",
+        "san": "Rf2",
         "color": "white"
       },
       {
-        "uci": "e4e3",
-        "san": "e3",
+        "uci": "f6f2",
+        "san": "Rxf2",
         "color": "black"
       },
       {
-        "uci": "d2c1",
-        "san": "Bc1",
+        "uci": "b4c6",
+        "san": "Nc6+",
         "color": "white"
       },
       {
-        "uci": "g4f2",
-        "san": "Nf2",
+        "uci": "a5b5",
+        "san": "Kb5",
         "color": "black"
       },
       {
-        "uci": "c1e3",
-        "san": "Bxe3",
+        "uci": "c6d4",
+        "san": "Nd4+",
         "color": "white"
       },
       {
-        "uci": "f2h1",
-        "san": "Nxh1+",
+        "uci": "b5b4",
+        "san": "Kb4",
         "color": "black"
+      },
+      {
+        "uci": "d4f3",
+        "san": "Nf3",
+        "color": "white"
+      },
+      {
+        "uci": "b4c3",
+        "san": "Kc3",
+        "color": "black"
+      },
+      {
+        "uci": "c1d1",
+        "san": "Kd1",
+        "color": "white"
+      },
+      {
+        "uci": "g5g4",
+        "san": "g4",
+        "color": "black"
+      },
+      {
+        "uci": "f7f8q",
+        "san": "f8=Q",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c2d2",
-        "san": "Qxd2",
-        "color": "black"
+        "uci": "b2f2",
+        "san": "Rf2",
+        "color": "white"
       },
       {
-        "uci": "e4e3",
-        "san": "e3",
-        "color": "black"
+        "uci": "b4c6",
+        "san": "Nc6+",
+        "color": "white"
       },
       {
-        "uci": "g4f2",
-        "san": "Nf2",
-        "color": "black"
+        "uci": "c6d4",
+        "san": "Nd4+",
+        "color": "white"
       },
       {
-        "uci": "f2h1",
-        "san": "Nxh1+",
-        "color": "black"
+        "uci": "d4f3",
+        "san": "Nf3",
+        "color": "white"
+      },
+      {
+        "uci": "c1d1",
+        "san": "Kd1",
+        "color": "white"
+      },
+      {
+        "uci": "f7f8q",
+        "san": "f8=Q",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-27T00:49:36.885614+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 6,
+    "posted_at": "2026-08-27T09:29:27.128530+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787791776885",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542335242990260245,
+    "puzzle_id": "random_1787822967128",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542466064292519957,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Nxh1",
+        "move": "Rf2",
         "correct": true,
-        "timestamp": "2026-08-27T00:49:59.743250+00:00"
+        "timestamp": "2026-08-27T09:31:35.699489+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "daily",
+  "latest_puzzle_type": "random",
   "current_puzzle": {
     "url": "https://www.chess.com/daily/2026-08-27",
     "title": "Gentle Lightning Bolt ⚡",
