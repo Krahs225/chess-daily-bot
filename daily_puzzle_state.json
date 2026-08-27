@@ -1,66 +1,111 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2012-04-14",
-    "title": "White to Draw",
-    "fen": "R4bk1/5p1p/2p1r1p1/8/1P3R2/3q1PPP/3r1BK1/Q7 w - - 0 1",
-    "current_fen": "R4bk1/5p1p/2p1r1p1/8/1P3R2/3q1PPP/3r1BK1/Q7 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"R4bk1/5p1p/2p1r1p1/8/1P3R2/3q1PPP/3r1BK1/Q7 w - - 0 1\"]\r\n\r\n1. Qh8+ Kxh8 2. Rxf8+ Kg7 3. R8xf7+\r\n*",
+    "url": "https://www.chess.com/daily/2025-05-04",
+    "title": "Weaving a Delicate Net",
+    "fen": "2Q5/6pb/P3B2k/1p2pPq1/3p4/4b2P/1N4P1/2R1KR2 b - - 0 1",
+    "current_fen": "2Q5/6pb/P3B2k/1p2pPq1/3p4/4b2P/1N4P1/2R1KR2 b - - 0 1",
+    "pgn": "[White \"sethwmd\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"2Q5/6pb/P3B2k/1p2pPq1/3p4/4b2P/1N4P1/2R1KR2 b - - 0 1\"]\r\n\r\n1... Qg3+ 2. Ke2 Qxg2+ 3. Rf2 Qxf2+ 4. Kd3 Qg2 5. Qc6 e4+ 6. Qxe4 Qd2# 0-1",
     "all_moves": [
       {
-        "uci": "a1h8",
-        "san": "Qh8+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kxh8",
+        "uci": "g5g3",
+        "san": "Qg3+",
         "color": "black"
       },
       {
-        "uci": "a8f8",
-        "san": "Rxf8+",
+        "uci": "e1e2",
+        "san": "Ke2",
         "color": "white"
       },
       {
-        "uci": "h8g7",
-        "san": "Kg7",
+        "uci": "g3g2",
+        "san": "Qxg2+",
         "color": "black"
       },
       {
-        "uci": "f8f7",
-        "san": "R8xf7+",
+        "uci": "f1f2",
+        "san": "Rf2",
         "color": "white"
+      },
+      {
+        "uci": "g2f2",
+        "san": "Qxf2+",
+        "color": "black"
+      },
+      {
+        "uci": "e2d3",
+        "san": "Kd3",
+        "color": "white"
+      },
+      {
+        "uci": "f2g2",
+        "san": "Qg2",
+        "color": "black"
+      },
+      {
+        "uci": "c8c6",
+        "san": "Qc6",
+        "color": "white"
+      },
+      {
+        "uci": "e5e4",
+        "san": "e4+",
+        "color": "black"
+      },
+      {
+        "uci": "c6e4",
+        "san": "Qxe4",
+        "color": "white"
+      },
+      {
+        "uci": "g2d2",
+        "san": "Qd2#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "a1h8",
-        "san": "Qh8+",
-        "color": "white"
+        "uci": "g5g3",
+        "san": "Qg3+",
+        "color": "black"
       },
       {
-        "uci": "a8f8",
-        "san": "Rxf8+",
-        "color": "white"
+        "uci": "g3g2",
+        "san": "Qxg2+",
+        "color": "black"
       },
       {
-        "uci": "f8f7",
-        "san": "R8xf7+",
-        "color": "white"
+        "uci": "g2f2",
+        "san": "Qxf2+",
+        "color": "black"
+      },
+      {
+        "uci": "f2g2",
+        "san": "Qg2",
+        "color": "black"
+      },
+      {
+        "uci": "e5e4",
+        "san": "e4+",
+        "color": "black"
+      },
+      {
+        "uci": "g2d2",
+        "san": "Qd2#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-27T22:27:50.461372+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 6,
+    "posted_at": "2026-08-27T23:22:12.196612+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787869670461",
+    "puzzle_id": "random_1787872932196",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542661952042434621,
+    "message_id": 1542675632557924373,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
