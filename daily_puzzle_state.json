@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-08-02",
     "title": "Racing For Royalty",
     "fen": "4k3/5p2/2P5/6K1/1p1P3P/8/5P2/8 w - - 0 1",
-    "current_fen": "4k3/5p2/2P5/6K1/1p1P3P/8/5P2/8 w - - 0 1",
+    "current_fen": "4k3/5p2/2P5/6KP/3P4/1p6/5P2/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4k3/5p2/2P5/6K1/1p1P3P/8/5P2/8 w - - 0 1\"]\r\n\r\n1. h5 b3 2. h6 b2 3. h7 b1=Q 4. h8=Q+\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787828136799",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542487747950944316,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "h5",
+        "correct": true,
+        "timestamp": "2026-08-27T10:55:44.372955+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
