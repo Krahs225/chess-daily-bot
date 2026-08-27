@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-01-27",
     "title": "Choosing Your Path",
     "fen": "r1b1r1k1/ppp3pp/8/3p1p2/4pPn1/2B3K1/PPqQP1PP/4RBNR b - - 0 1",
-    "current_fen": "r1b1r1k1/ppp3pp/8/3p1p2/4pPn1/2B3K1/PPqQP1PP/4RBNR b - - 0 1",
+    "current_fen": "r1b1r1k1/ppp3pp/8/3p1p2/4pPn1/6K1/PP1BP1PP/4RBNR b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"r1b1r1k1/ppp3pp/8/3p1p2/4pPn1/2B3K1/PPqQP1PP/4RBNR b - - 0 1\"]\r\n\r\n1...Qxd2 2.Bxd2 e3 3.Bc1 Nf2 4.Bxe3 Nxh1+ *",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787791776885",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542335242990260245,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxd2",
+        "correct": true,
+        "timestamp": "2026-08-27T00:49:52.355559+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
