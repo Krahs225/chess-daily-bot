@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-09-13",
     "title": "Breaching the Defensive Wall",
     "fen": "3r2k1/2qp4/2nRprp1/p6p/1pQ2N1P/1P4P1/1KP5/3R4 w - - 2 25",
-    "current_fen": "3r2k1/2qp4/2nRprp1/p6p/1pQ2N1P/1P4P1/1KP5/3R4 w - - 2 25",
+    "current_fen": "3r2k1/2q5/2pRprp1/p6p/1p3N1P/1P4P1/1KP5/3R4 w - - 0 26",
     "pgn": "[Result \"*\"]\r\n[FEN \"3r2k1/2qp4/2nRprp1/p6p/1pQ2N1P/1P4P1/1KP5/3R4 w - - 2 25\"]\r\n\r\n25. Qxc6 dxc6 26. Rxd8+ Rf8 27. Rxf8+ Kxf8 28. Nxe6+ Ke7 29. Nxc7 *",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787791605668",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542334524531417132,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxc6",
+        "correct": true,
+        "timestamp": "2026-08-27T00:46:58.974029+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
