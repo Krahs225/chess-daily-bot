@@ -1,74 +1,112 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-03-19",
-    "title": "Blindsided",
-    "fen": "3rr1k1/pp3ppp/1b3q2/3p4/Q7/1PN2BPb/PB3P1P/R3R1K1 b - - 0 1",
-    "current_fen": "3rr1k1/pp3ppp/1b3q2/3p4/Q7/1PN2BPb/PB3P1P/R3R1K1 b - - 0 1",
-    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"Clomiet\"]\r\n[Result \"0-1\"]\r\n[FEN \"3rr1k1/pp3ppp/1b3q2/3p4/Q7/1PN2BPb/PB3P1P/R3R1K1 b - - 0 1\"]\r\n\r\n1... Bxf2+ 2. Kxf2 Qb6+ 3. Re3 Qxe3# 0-1",
+    "url": "https://www.chess.com/daily/2012-09-15",
+    "title": "Mate in 6",
+    "fen": "1r5r/6p1/6R1/2R1p3/3pB3/1P1Pn1Pk/1P6/6K1 w - - 0 1",
+    "current_fen": "1r5r/6p1/6R1/2R1p3/3pB3/1P1Pn1Pk/1P6/6K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r5r/6p1/6R1/2R1p3/3pB3/1P1Pn1Pk/1P6/6K1 w - - 0 1\"]\r\n\r\n1. Rc2 Ng4 2. Rh2+ Kxg3 3. Rg2+ Kf4 4. R6xg4+ Ke3 5. R4g3+ Kf4 6. Rf3#\r\n*",
     "all_moves": [
       {
-        "uci": "b6f2",
-        "san": "Bxf2+",
-        "color": "black"
-      },
-      {
-        "uci": "g1f2",
-        "san": "Kxf2",
+        "uci": "c5c2",
+        "san": "Rc2",
         "color": "white"
       },
       {
-        "uci": "f6b6",
-        "san": "Qb6+",
+        "uci": "e3g4",
+        "san": "Ng4",
         "color": "black"
       },
       {
-        "uci": "e1e3",
-        "san": "Re3",
+        "uci": "c2h2",
+        "san": "Rh2+",
         "color": "white"
       },
       {
-        "uci": "b6e3",
-        "san": "Qxe3#",
+        "uci": "h3g3",
+        "san": "Kxg3",
         "color": "black"
+      },
+      {
+        "uci": "h2g2",
+        "san": "Rg2+",
+        "color": "white"
+      },
+      {
+        "uci": "g3f4",
+        "san": "Kf4",
+        "color": "black"
+      },
+      {
+        "uci": "g6g4",
+        "san": "R6xg4+",
+        "color": "white"
+      },
+      {
+        "uci": "f4e3",
+        "san": "Ke3",
+        "color": "black"
+      },
+      {
+        "uci": "g4g3",
+        "san": "R4g3+",
+        "color": "white"
+      },
+      {
+        "uci": "e3f4",
+        "san": "Kf4",
+        "color": "black"
+      },
+      {
+        "uci": "g3f3",
+        "san": "Rf3#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b6f2",
-        "san": "Bxf2+",
-        "color": "black"
+        "uci": "c5c2",
+        "san": "Rc2",
+        "color": "white"
       },
       {
-        "uci": "f6b6",
-        "san": "Qb6+",
-        "color": "black"
+        "uci": "c2h2",
+        "san": "Rh2+",
+        "color": "white"
       },
       {
-        "uci": "b6e3",
-        "san": "Qxe3#",
-        "color": "black"
+        "uci": "h2g2",
+        "san": "Rg2+",
+        "color": "white"
+      },
+      {
+        "uci": "g6g4",
+        "san": "R6xg4+",
+        "color": "white"
+      },
+      {
+        "uci": "g4g3",
+        "san": "R4g3+",
+        "color": "white"
+      },
+      {
+        "uci": "g3f3",
+        "san": "Rf3#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-27T00:27:58.656599+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 6,
+    "posted_at": "2026-08-27T00:29:45.529488+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787790478656",
+    "puzzle_id": "random_1787790585529",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542329797760385064,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Re2",
-        "correct": false,
-        "timestamp": "2026-08-27T00:29:36.862090+00:00"
-      }
-    },
+    "message_id": 1542330246399922207,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
