@@ -1,122 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-12-23",
-    "title": "Navigating the Chaos",
-    "fen": "Q6Q/8/p2p2k1/1pn2bq1/1nPr4/P7/3N4/b1BK1B1R b - - 0 1",
-    "current_fen": "Q6b/4q3/p2p2k1/1pn5/1nP3r1/P6K/8/2Bb1B1R w - - 0 7",
-    "pgn": "[Result \"*\"]\r\n[FEN \"Q6Q/8/p2p2k1/1pn2bq1/1nPr4/P7/3N4/b1BK1B1R b - - 0 1\"]\r\n\r\n1...Bc2+ 2.Ke2 Qe7+ 3.Ne4 Rxe4+ 4.Kf3 Bd1+ 5.Kg2 Rg4+ 6.Kh3 Bxh8 *",
+    "url": "https://www.chess.com/daily/2025-03-29",
+    "title": "Hidden Rook + Bishop Alignment",
+    "fen": "4k3/4r1pp/r7/2p5/b4K1P/6P1/1R1B1P2/Q7 b - - 3 23",
+    "current_fen": "4k3/4r1pp/5r2/2p5/b5KP/6P1/1R1B1P2/Q7 b - - 5 24",
+    "pgn": "[White \"sethwmd\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"4k3/4r1pp/r7/2p5/b4K1P/6P1/1R1B1P2/Q7 b - - 3 23\"]\r\n\r\n23... Rf6+ 24. Kg4 Bd7+ 25. Kh5 Re5+ 26. Bg5 Rh6# 0-1",
     "all_moves": [
       {
-        "uci": "f5c2",
-        "san": "Bc2+",
+        "uci": "a6f6",
+        "san": "Rf6+",
         "color": "black"
       },
       {
-        "uci": "d1e2",
-        "san": "Ke2",
+        "uci": "f4g4",
+        "san": "Kg4",
         "color": "white"
       },
       {
-        "uci": "g5e7",
-        "san": "Qe7+",
+        "uci": "a4d7",
+        "san": "Bd7+",
         "color": "black"
       },
       {
-        "uci": "d2e4",
-        "san": "Ne4",
+        "uci": "g4h5",
+        "san": "Kh5",
         "color": "white"
       },
       {
-        "uci": "d4e4",
-        "san": "Rxe4+",
+        "uci": "e7e5",
+        "san": "Re5+",
         "color": "black"
       },
       {
-        "uci": "e2f3",
-        "san": "Kf3",
+        "uci": "d2g5",
+        "san": "Bg5",
         "color": "white"
       },
       {
-        "uci": "c2d1",
-        "san": "Bd1+",
-        "color": "black"
-      },
-      {
-        "uci": "f3g2",
-        "san": "Kg2",
-        "color": "white"
-      },
-      {
-        "uci": "e4g4",
-        "san": "Rg4+",
-        "color": "black"
-      },
-      {
-        "uci": "g2h3",
-        "san": "Kh3",
-        "color": "white"
-      },
-      {
-        "uci": "a1h8",
-        "san": "Bxh8",
+        "uci": "f6h6",
+        "san": "Rh6#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5c2",
-        "san": "Bc2+",
+        "uci": "a6f6",
+        "san": "Rf6+",
         "color": "black"
       },
       {
-        "uci": "g5e7",
-        "san": "Qe7+",
+        "uci": "a4d7",
+        "san": "Bd7+",
         "color": "black"
       },
       {
-        "uci": "d4e4",
-        "san": "Rxe4+",
+        "uci": "e7e5",
+        "san": "Re5+",
         "color": "black"
       },
       {
-        "uci": "c2d1",
-        "san": "Bd1+",
-        "color": "black"
-      },
-      {
-        "uci": "e4g4",
-        "san": "Rg4+",
-        "color": "black"
-      },
-      {
-        "uci": "a1h8",
-        "san": "Bxh8",
+        "uci": "f6h6",
+        "san": "Rh6#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 6,
-    "posted_at": "2026-08-27T00:31:59.430516+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-27T00:35:52.864259+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787790719430",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1542330807920762960,
+    "puzzle_id": "random_1787790952864",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542331793984987196,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Bxh8",
+        "move": "Rf6",
         "correct": true,
-        "timestamp": "2026-08-27T00:35:48.921248+00:00"
+        "timestamp": "2026-08-27T00:36:10.207672+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
