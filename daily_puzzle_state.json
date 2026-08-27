@@ -1,201 +1,111 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-02-16",
-    "title": "Precise Endgame Play",
-    "fen": "1N1R4/8/8/5K2/8/5p2/4k3/8 w - - 0 1",
-    "current_fen": "1N1R4/8/8/5K2/8/5p2/4k3/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1N1R4/8/8/5K2/8/5p2/4k3/8 w - - 0 1\"]\r\n\r\n1. Nc6 f2 2. Nd4+ Ke3 3. Nc2+ Kf3 4. Rd3+ Ke2 5. Re3+ Kd1 6. Rf3 Ke2 7. Nd4+ Ke1 8. Re3+ Kd1 9. Rd3+ Ke1 10. Nf3+ Ke2 11. Ke4 f1=Q 12. Rd2#\r\n*",
+    "url": "https://www.chess.com/daily/2018-12-15",
+    "title": "Kamikaze Style",
+    "fen": "1k3r2/pP5Q/4q3/2p1p1p1/R2b4/6P1/1r3PBP/5RK1 w - - 0 1",
+    "current_fen": "1k3r2/pP5Q/4q3/2p1p1p1/R2b4/6P1/1r3PBP/5RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"1k3r2/pP5Q/4q3/2p1p1p1/R2b4/6P1/1r3PBP/5RK1 w - - 0 1\"]\r\n\r\n1. Rxa7 Kxa7 2. Ra1+ Kb6 3. b8=Q+ Rxb8 4. Qa7+ Kb5 5. Qa4+ Kb6 6. Qa5#\r\n*",
     "all_moves": [
       {
-        "uci": "b8c6",
-        "san": "Nc6",
+        "uci": "a4a7",
+        "san": "Rxa7",
         "color": "white"
       },
       {
-        "uci": "f3f2",
-        "san": "f2",
+        "uci": "b8a7",
+        "san": "Kxa7",
         "color": "black"
       },
       {
-        "uci": "c6d4",
-        "san": "Nd4+",
+        "uci": "f1a1",
+        "san": "Ra1+",
         "color": "white"
       },
       {
-        "uci": "e2e3",
-        "san": "Ke3",
+        "uci": "a7b6",
+        "san": "Kb6",
         "color": "black"
       },
       {
-        "uci": "d4c2",
-        "san": "Nc2+",
+        "uci": "b7b8q",
+        "san": "b8=Q+",
         "color": "white"
       },
       {
-        "uci": "e3f3",
-        "san": "Kf3",
+        "uci": "f8b8",
+        "san": "Rxb8",
         "color": "black"
       },
       {
-        "uci": "d8d3",
-        "san": "Rd3+",
+        "uci": "h7a7",
+        "san": "Qa7+",
         "color": "white"
       },
       {
-        "uci": "f3e2",
-        "san": "Ke2",
+        "uci": "b6b5",
+        "san": "Kb5",
         "color": "black"
       },
       {
-        "uci": "d3e3",
-        "san": "Re3+",
+        "uci": "a7a4",
+        "san": "Qa4+",
         "color": "white"
       },
       {
-        "uci": "e2d1",
-        "san": "Kd1",
+        "uci": "b5b6",
+        "san": "Kb6",
         "color": "black"
       },
       {
-        "uci": "e3f3",
-        "san": "Rf3",
-        "color": "white"
-      },
-      {
-        "uci": "d1e2",
-        "san": "Ke2",
-        "color": "black"
-      },
-      {
-        "uci": "c2d4",
-        "san": "Nd4+",
-        "color": "white"
-      },
-      {
-        "uci": "e2e1",
-        "san": "Ke1",
-        "color": "black"
-      },
-      {
-        "uci": "f3e3",
-        "san": "Re3+",
-        "color": "white"
-      },
-      {
-        "uci": "e1d1",
-        "san": "Kd1",
-        "color": "black"
-      },
-      {
-        "uci": "e3d3",
-        "san": "Rd3+",
-        "color": "white"
-      },
-      {
-        "uci": "d1e1",
-        "san": "Ke1",
-        "color": "black"
-      },
-      {
-        "uci": "d4f3",
-        "san": "Nf3+",
-        "color": "white"
-      },
-      {
-        "uci": "e1e2",
-        "san": "Ke2",
-        "color": "black"
-      },
-      {
-        "uci": "f5e4",
-        "san": "Ke4",
-        "color": "white"
-      },
-      {
-        "uci": "f2f1q",
-        "san": "f1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "d3d2",
-        "san": "Rd2#",
+        "uci": "a4a5",
+        "san": "Qa5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b8c6",
-        "san": "Nc6",
+        "uci": "a4a7",
+        "san": "Rxa7",
         "color": "white"
       },
       {
-        "uci": "c6d4",
-        "san": "Nd4+",
+        "uci": "f1a1",
+        "san": "Ra1+",
         "color": "white"
       },
       {
-        "uci": "d4c2",
-        "san": "Nc2+",
+        "uci": "b7b8q",
+        "san": "b8=Q+",
         "color": "white"
       },
       {
-        "uci": "d8d3",
-        "san": "Rd3+",
+        "uci": "h7a7",
+        "san": "Qa7+",
         "color": "white"
       },
       {
-        "uci": "d3e3",
-        "san": "Re3+",
+        "uci": "a7a4",
+        "san": "Qa4+",
         "color": "white"
       },
       {
-        "uci": "e3f3",
-        "san": "Rf3",
-        "color": "white"
-      },
-      {
-        "uci": "c2d4",
-        "san": "Nd4+",
-        "color": "white"
-      },
-      {
-        "uci": "f3e3",
-        "san": "Re3+",
-        "color": "white"
-      },
-      {
-        "uci": "e3d3",
-        "san": "Rd3+",
-        "color": "white"
-      },
-      {
-        "uci": "d4f3",
-        "san": "Nf3+",
-        "color": "white"
-      },
-      {
-        "uci": "f5e4",
-        "san": "Ke4",
-        "color": "white"
-      },
-      {
-        "uci": "d3d2",
-        "san": "Rd2#",
+        "uci": "a4a5",
+        "san": "Qa5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 12,
-    "posted_at": "2026-08-27T00:41:16.011309+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-27T00:41:20.079701+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787791276011",
+    "puzzle_id": "random_1787791280079",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542333142017515610,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
