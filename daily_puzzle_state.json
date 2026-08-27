@@ -1,119 +1,67 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-05-15",
-    "title": "Decoy by any means possible",
-    "fen": "r2r1bk1/3qp2p/3pp1p1/p2n2N1/2N3Q1/BP4P1/P4PP1/2R3K1 w - - 0 1",
-    "current_fen": "r2r1bk1/3qp2p/3pp1p1/p2n2N1/2N3Q1/BP4P1/P4PP1/2R3K1 w - - 0 1",
-    "pgn": "[FEN \"r2r1bk1/3qp2p/3pp1p1/p2n2N1/2N3Q1/BP4P1/P4PP1/2R3K1 w - - 0 1\"]\r\n[PlyCount \"11\"]\r\n[EventDate \"1976.??.??\"]\r\n\r\n1. Nb6 $3 1... Nxb6 2. Rc7 $3 2... Qxc7 (2... h5 3. Qh3) (2... Qe8 3. Qxe6+ Kh8\r\n4. Rxe7 Qxe7 5. Bb2+ Qg7 6. Nf7+ Kg8 7. Nh6+ Kh8 8. Qg8#) 3. Qxe6+ Kg7 (3...\r\nKh8 4. Bb2+ Bg7 5. Nf7+ Kg8 6. Nh6+ Kh8 7. Qg8+ Rxg8 8. Nf7#) 4. Bb2+ Kh6 5.\r\nQh3+ Kxg5 6. f4# *",
+    "url": "https://www.chess.com/daily/2026-03-19",
+    "title": "Blindsided",
+    "fen": "3rr1k1/pp3ppp/1b3q2/3p4/Q7/1PN2BPb/PB3P1P/R3R1K1 b - - 0 1",
+    "current_fen": "3rr1k1/pp3ppp/1b3q2/3p4/Q7/1PN2BPb/PB3P1P/R3R1K1 b - - 0 1",
+    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"Clomiet\"]\r\n[Result \"0-1\"]\r\n[FEN \"3rr1k1/pp3ppp/1b3q2/3p4/Q7/1PN2BPb/PB3P1P/R3R1K1 b - - 0 1\"]\r\n\r\n1... Bxf2+ 2. Kxf2 Qb6+ 3. Re3 Qxe3# 0-1",
     "all_moves": [
       {
-        "uci": "c4b6",
-        "san": "Nb6",
-        "color": "white"
-      },
-      {
-        "uci": "d5b6",
-        "san": "Nxb6",
+        "uci": "b6f2",
+        "san": "Bxf2+",
         "color": "black"
       },
       {
-        "uci": "c1c7",
-        "san": "Rc7",
+        "uci": "g1f2",
+        "san": "Kxf2",
         "color": "white"
       },
       {
-        "uci": "d7c7",
-        "san": "Qxc7",
+        "uci": "f6b6",
+        "san": "Qb6+",
         "color": "black"
       },
       {
-        "uci": "g4e6",
-        "san": "Qxe6+",
+        "uci": "e1e3",
+        "san": "Re3",
         "color": "white"
       },
       {
-        "uci": "g8g7",
-        "san": "Kg7",
+        "uci": "b6e3",
+        "san": "Qxe3#",
         "color": "black"
-      },
-      {
-        "uci": "a3b2",
-        "san": "Bb2+",
-        "color": "white"
-      },
-      {
-        "uci": "g7h6",
-        "san": "Kh6",
-        "color": "black"
-      },
-      {
-        "uci": "e6h3",
-        "san": "Qh3+",
-        "color": "white"
-      },
-      {
-        "uci": "h6g5",
-        "san": "Kxg5",
-        "color": "black"
-      },
-      {
-        "uci": "f2f4",
-        "san": "f4#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4b6",
-        "san": "Nb6",
-        "color": "white"
+        "uci": "b6f2",
+        "san": "Bxf2+",
+        "color": "black"
       },
       {
-        "uci": "c1c7",
-        "san": "Rc7",
-        "color": "white"
+        "uci": "f6b6",
+        "san": "Qb6+",
+        "color": "black"
       },
       {
-        "uci": "g4e6",
-        "san": "Qxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "a3b2",
-        "san": "Bb2+",
-        "color": "white"
-      },
-      {
-        "uci": "e6h3",
-        "san": "Qh3+",
-        "color": "white"
-      },
-      {
-        "uci": "f2f4",
-        "san": "f4#",
-        "color": "white"
+        "uci": "b6e3",
+        "san": "Qxe3#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-27T00:27:22.047826+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-27T00:27:58.656599+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787790442047",
+    "puzzle_id": "random_1787790478656",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542329644181622885,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qf3",
-        "correct": false,
-        "timestamp": "2026-08-27T00:27:45.465579+00:00"
-      }
-    },
+    "message_id": 1542329797760385064,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
