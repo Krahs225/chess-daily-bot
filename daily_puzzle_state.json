@@ -1,47 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-02-20",
-    "title": "Mate in 1",
-    "fen": "1B4BQ/2PR1NP1/3R3N/8/7p/7k/3PP2p/7K w - - 0 1",
-    "current_fen": "1B4BQ/2PR1NP1/7N/8/7p/3R3k/3PP2p/7K b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1B4BQ/2PR1NP1/3R3N/8/7p/7k/3PP2p/7K w - - 0 1\"]\r\n\r\n1. Rd3#\r\n*",
+    "url": "https://www.chess.com/daily/2017-04-07",
+    "title": "Koz-Schusterowitsch, Saratow 1990",
+    "fen": "7r/1pk2ppr/pNn3p1/2p1b1q1/2P2p2/5Q1P/PP4B1/3R1RK1 w - - 0 1",
+    "current_fen": "7r/1pk2ppr/pNn3p1/2p1b1q1/2P2p2/5Q1P/PP4B1/3R1RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7r/1pk2ppr/pNn3p1/2p1b1q1/2P2p2/5Q1P/PP4B1/3R1RK1 w - - 0 1\"]\r\n\r\n1. Rd7+ Kxb6 2. Rxb7+ Kxb7 3. Qxc6+\r\n*",
     "all_moves": [
       {
-        "uci": "d6d3",
-        "san": "Rd3#",
+        "uci": "d1d7",
+        "san": "Rd7+",
+        "color": "white"
+      },
+      {
+        "uci": "c7b6",
+        "san": "Kxb6",
+        "color": "black"
+      },
+      {
+        "uci": "d7b7",
+        "san": "Rxb7+",
+        "color": "white"
+      },
+      {
+        "uci": "b6b7",
+        "san": "Kxb7",
+        "color": "black"
+      },
+      {
+        "uci": "f3c6",
+        "san": "Qxc6+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6d3",
-        "san": "Rd3#",
+        "uci": "d1d7",
+        "san": "Rd7+",
+        "color": "white"
+      },
+      {
+        "uci": "d7b7",
+        "san": "Rxb7+",
+        "color": "white"
+      },
+      {
+        "uci": "f3c6",
+        "san": "Qxc6+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-27T10:54:44.802627+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-27T10:55:08.533219+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787828084802",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1542487529184301077,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rd3",
-        "correct": true,
-        "timestamp": "2026-08-27T10:55:01.938111+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787828108533",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
