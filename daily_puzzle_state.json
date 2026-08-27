@@ -1,62 +1,107 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-10-02",
-    "title": "First Comes The Pin, Then Comes The Mate",
-    "fen": "r2qrk2/4np2/3p1Qbp/2pP2N1/2n1N3/7P/p3B1P1/5RK1 w q - 0 1",
-    "current_fen": "r2qr1k1/4npQ1/3pN1bp/2pP4/2n1N3/7P/p3B1P1/5RK1 b - - 3 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qrk2/4np2/3p1Qbp/2pP2N1/2n1N3/7P/p3B1P1/5RK1 w q - 0 1\"]\r\n\r\n1. Ne6+ Kg8 2. Qg7#\r\n*",
+    "url": "https://www.chess.com/daily/2011-06-04",
+    "title": "G.Kasparyan, 4th HM Turkmenskya Iskra 1940",
+    "fen": "6kN/r2Ppnr1/8/4Pp1K/8/8/8/2R5 w - - 0 1",
+    "current_fen": "6kN/r2Ppnr1/8/4Pp1K/8/8/8/2R5 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6kN/r2Ppnr1/8/4Pp1K/8/8/8/2R5 w - - 0 1\"]\r\n\r\n1. Rc8+ Nd8 2. Rxd8+ Kh7 3. Nf7 Rxf7 4. Re8 Rxd7 5. e6\r\n*",
     "all_moves": [
       {
-        "uci": "g5e6",
-        "san": "Ne6+",
+        "uci": "c1c8",
+        "san": "Rc8+",
         "color": "white"
       },
       {
-        "uci": "f8g8",
-        "san": "Kg8",
+        "uci": "f7d8",
+        "san": "Nd8",
         "color": "black"
       },
       {
-        "uci": "f6g7",
-        "san": "Qg7#",
+        "uci": "c8d8",
+        "san": "Rxd8+",
+        "color": "white"
+      },
+      {
+        "uci": "g8h7",
+        "san": "Kh7",
+        "color": "black"
+      },
+      {
+        "uci": "h8f7",
+        "san": "Nf7",
+        "color": "white"
+      },
+      {
+        "uci": "g7f7",
+        "san": "Rxf7",
+        "color": "black"
+      },
+      {
+        "uci": "d8e8",
+        "san": "Re8",
+        "color": "white"
+      },
+      {
+        "uci": "a7d7",
+        "san": "Rxd7",
+        "color": "black"
+      },
+      {
+        "uci": "e5e6",
+        "san": "e6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5e6",
-        "san": "Ne6+",
+        "uci": "c1c8",
+        "san": "Rc8+",
         "color": "white"
       },
       {
-        "uci": "f6g7",
-        "san": "Qg7#",
+        "uci": "c8d8",
+        "san": "Rxd8+",
+        "color": "white"
+      },
+      {
+        "uci": "h8f7",
+        "san": "Nf7",
+        "color": "white"
+      },
+      {
+        "uci": "d8e8",
+        "san": "Re8",
+        "color": "white"
+      },
+      {
+        "uci": "e5e6",
+        "san": "e6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-27T10:09:13.977835+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-27T10:10:28.365148+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787825353977",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542476075148251197,
+    "puzzle_id": "random_1787825428365",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1542476387053604995,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qg7",
-        "correct": true,
-        "timestamp": "2026-08-27T10:10:22.908225+00:00"
+        "move": "Nxf7",
+        "correct": false,
+        "timestamp": "2026-08-27T10:10:39.895681+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
