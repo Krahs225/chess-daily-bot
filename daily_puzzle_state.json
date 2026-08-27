@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-07-10",
     "title": "The Brute Force Method",
     "fen": "Q7/4Npk1/1R4p1/7p/1P5r/1KP5/8/5q2 w - - 0 1",
-    "current_fen": "Q7/4Npk1/1R4p1/7p/1P5r/1KP5/8/5q2 w - - 0 1",
+    "current_fen": "6Q1/4Np2/1R4pk/7p/1P5r/1KP5/8/5q2 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"Q7/4Npk1/1R4p1/7p/1P5r/1KP5/8/5q2 w - - 0 1\"]\r\n\r\n1. Qg8+ Kh6 2. Rxg6+ fxg6 3. Qxg6#\r\n*",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787823324297",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542467562099581010,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Rxg6",
-        "correct": false,
-        "timestamp": "2026-08-27T09:35:37.893598+00:00"
+        "move": "Qg8",
+        "correct": true,
+        "timestamp": "2026-08-27T09:35:48.043103+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
