@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-06-29",
     "title": "Danner - Schnabel Hradec Kralove 1992",
     "fen": "r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1",
-    "current_fen": "r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1",
+    "current_fen": "r5k1/p4p2/Bpbb2p1/n2Np3/4P1q1/4B1P1/7P/3R1RK1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1\"]\r\n\r\n1. Qxd6 Bxd6 2. Nf6+ Kg7 3. Nxg4\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787828769103",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542490399225151519,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxd6",
+        "correct": true,
+        "timestamp": "2026-08-27T11:06:19.268377+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
