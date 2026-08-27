@@ -1,47 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-10-20",
-    "title": "Tight Spaces",
-    "fen": "3rqk2/pQ1b3R/3P1pr1/2p2p2/8/4P3/PP3PP1/2KR4 w - - 0 1",
-    "current_fen": "3rqk2/pQ1bR3/3P1pr1/2p2p2/8/4P3/PP3PP1/2KR4 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3rqk2/pQ1b3R/3P1pr1/2p2p2/8/4P3/PP3PP1/2KR4 w - - 0 1\"]\r\n\r\n1. Re7\r\n*",
+    "url": "https://www.chess.com/daily/2023-03-02",
+    "title": "A Deceptive Piece Offering",
+    "fen": "5r1r/pbb5/5p2/1pP1pPpk/R7/6PP/P6K/2BR4 w - - 0 1",
+    "current_fen": "5r1r/pbb5/5p2/1pP1pP1k/7p/6PP/P6K/2BR4 w - - 0 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"5r1r/pbb5/5p2/1pP1pPpk/R7/6PP/P6K/2BR4 w - - 0 1\"]\r\n\r\n1. Rh4+ gxh4 2. g4# *",
     "all_moves": [
       {
-        "uci": "h7e7",
-        "san": "Re7",
+        "uci": "a4h4",
+        "san": "Rh4+",
+        "color": "white"
+      },
+      {
+        "uci": "g5h4",
+        "san": "gxh4",
+        "color": "black"
+      },
+      {
+        "uci": "g3g4",
+        "san": "g4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h7e7",
-        "san": "Re7",
+        "uci": "a4h4",
+        "san": "Rh4+",
+        "color": "white"
+      },
+      {
+        "uci": "g3g4",
+        "san": "g4#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-27T10:53:55.639767+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-27T10:54:28.929488+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787828035639",
-    "next_solution_index": 1,
+    "puzzle_id": "random_1787828068929",
+    "next_solution_index": 2,
     "next_player_index": 1,
-    "solved": true,
-    "message_id": 1542487323407683594,
+    "solved": false,
+    "message_id": 1542487462444671029,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Re7",
+        "move": "Rh4",
         "correct": true,
-        "timestamp": "2026-08-27T10:54:21.456918+00:00"
+        "timestamp": "2026-08-27T10:54:36.656830+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
