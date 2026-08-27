@@ -1,107 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-01-05",
-    "title": "Wuehler - Krassner, Berkeley 1991",
-    "fen": "r7/pk3ppp/1p1Q2b1/8/2qP4/5N1P/PPP3P1/1K2R3 w - - 0 1",
-    "current_fen": "r7/p4ppp/2k3b1/2p1N3/2qP4/Q6P/PPP3P1/1K6 b - - 1 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/pk3ppp/1p1Q2b1/8/2qP4/5N1P/PPP3P1/1K2R3 w - - 0 1\"]\r\n\r\n1. Re7+ Ka6 2. Qa3+ Kb5 3. Re5+ Kc6 4. Rc5+ bxc5 5. Ne5+ \r\n*",
+    "url": "https://www.chess.com/daily/2015-08-31",
+    "title": "The Hunt",
+    "fen": "r1bqkb1r/ppp1npp1/2np3p/4p1N1/2B1P3/2N5/PPPP1PPP/R1BQK2R w KQkq - 0 1",
+    "current_fen": "r1bqkb1r/ppp1npp1/2np3p/4p1N1/2B1P3/2N5/PPPP1PPP/R1BQK2R w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqkb1r/ppp1npp1/2np3p/4p1N1/2B1P3/2N5/PPPP1PPP/R1BQK2R w KQkq - 0 1\"]\r\n\r\n1. Bxf7+ Kd7 2. Qg4+ Nf5 3. Qxf5+ Ke7 4. Nd5#\r\n*",
     "all_moves": [
       {
-        "uci": "e1e7",
-        "san": "Re7+",
+        "uci": "c4f7",
+        "san": "Bxf7+",
         "color": "white"
       },
       {
-        "uci": "b7a6",
-        "san": "Ka6",
+        "uci": "e8d7",
+        "san": "Kd7",
         "color": "black"
       },
       {
-        "uci": "d6a3",
-        "san": "Qa3+",
+        "uci": "d1g4",
+        "san": "Qg4+",
         "color": "white"
       },
       {
-        "uci": "a6b5",
-        "san": "Kb5",
+        "uci": "e7f5",
+        "san": "Nf5",
         "color": "black"
       },
       {
-        "uci": "e7e5",
-        "san": "Re5+",
+        "uci": "g4f5",
+        "san": "Qxf5+",
         "color": "white"
       },
       {
-        "uci": "b5c6",
-        "san": "Kc6",
+        "uci": "d7e7",
+        "san": "Ke7",
         "color": "black"
       },
       {
-        "uci": "e5c5",
-        "san": "Rc5+",
-        "color": "white"
-      },
-      {
-        "uci": "b6c5",
-        "san": "bxc5",
-        "color": "black"
-      },
-      {
-        "uci": "f3e5",
-        "san": "Ne5+",
+        "uci": "c3d5",
+        "san": "Nd5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1e7",
-        "san": "Re7+",
+        "uci": "c4f7",
+        "san": "Bxf7+",
         "color": "white"
       },
       {
-        "uci": "d6a3",
-        "san": "Qa3+",
+        "uci": "d1g4",
+        "san": "Qg4+",
         "color": "white"
       },
       {
-        "uci": "e7e5",
-        "san": "Re5+",
+        "uci": "g4f5",
+        "san": "Qxf5+",
         "color": "white"
       },
       {
-        "uci": "e5c5",
-        "san": "Rc5+",
-        "color": "white"
-      },
-      {
-        "uci": "f3e5",
-        "san": "Ne5+",
+        "uci": "c3d5",
+        "san": "Nd5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-27T00:30:36.797881+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-27T00:31:32.647076+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787790636797",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542330460779192392,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Ne5",
-        "correct": true,
-        "timestamp": "2026-08-27T00:31:25.343313+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787790692647",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
