@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-11-20",
     "title": "Falling to Pieces",
     "fen": "2r2r1k/b2q3p/2b3Q1/Pp2P3/3P4/PRP1B2R/5PPP/6K1 b - - 0 26",
-    "current_fen": "2r2r1k/b2q3p/2b3Q1/Pp2P3/3P4/PRP1B2R/5PPP/6K1 b - - 0 26",
+    "current_fen": "2r2r1k/b6p/2b3Q1/Pp2P3/3P4/PRP1B2P/5P1P/6K1 b - - 0 27",
     "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"Seth_Isaac\"]\r\n[Result \"0-1\"]\r\n[FEN \"2r2r1k/b2q3p/2b3Q1/Pp2P3/3P4/PRP1B2R/5PPP/6K1 b - - 0 26\"]\r\n\r\n26... Qxh3 27. gxh3 hxg6 0-1",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787789772106",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542326833981169777,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxh3",
+        "correct": true,
+        "timestamp": "2026-08-27T00:16:19.555813+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
