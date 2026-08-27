@@ -1,77 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-11-30",
-    "title": "Magnus Reveals a Birthday Gift",
-    "fen": "2rr2k1/pb3pp1/4q2p/2pn4/2Q1P3/P4P2/1P3BPP/2KR2NR b - - 0 23",
-    "current_fen": "6k1/pb3pp1/4Q2p/2p5/4P3/P3nP2/1P3BPP/2Kr2NR w - - 1 26",
-    "pgn": "[Event \"NOR-chT qualifier\"]\r\n[Site \"Norway\"]\r\n[Date \"2001.??.??\"]\r\n[Round \"1\"]\r\n[White \"Gaasland, Glenn\"]\r\n[Black \"Carlsen, Magnus\"]\r\n[Result \"0-1\"]\r\n[ECO \"E32\"]\r\n[BlackElo \"2072\"]\r\n[FEN \"2rr2k1/pb3pp1/4q2p/2pn4/2Q1P3/P4P2/1P3BPP/2KR2NR b - - 0 23\"]\r\n\r\n23... Ne3 24. Rxd8+ Rxd8 25. Qxe6 Rd1# 0-1",
+    "url": "https://www.chess.com/daily/2024-03-17",
+    "title": "Zoom In, Zug Out",
+    "fen": "8/1Q6/8/8/4N1K1/8/8/2q2k2 w - - 0 1",
+    "current_fen": "8/1Q6/8/8/4N1K1/8/8/2q2k2 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/1Q6/8/8/4N1K1/8/8/2q2k2 w - - 0 1\"]\r\n\r\n1. Qf7+ Ke1 2. Qf2+ Kd1 3. Kh5 Qc4 4. Qd2# *",
     "all_moves": [
       {
-        "uci": "d5e3",
-        "san": "Ne3",
-        "color": "black"
-      },
-      {
-        "uci": "d1d8",
-        "san": "Rxd8+",
+        "uci": "b7f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "c8d8",
-        "san": "Rxd8",
+        "uci": "f1e1",
+        "san": "Ke1",
         "color": "black"
       },
       {
-        "uci": "c4e6",
-        "san": "Qxe6",
+        "uci": "f7f2",
+        "san": "Qf2+",
         "color": "white"
       },
       {
-        "uci": "d8d1",
-        "san": "Rd1#",
+        "uci": "e1d1",
+        "san": "Kd1",
         "color": "black"
+      },
+      {
+        "uci": "g4h5",
+        "san": "Kh5",
+        "color": "white"
+      },
+      {
+        "uci": "c1c4",
+        "san": "Qc4",
+        "color": "black"
+      },
+      {
+        "uci": "f2d2",
+        "san": "Qd2#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5e3",
-        "san": "Ne3",
-        "color": "black"
+        "uci": "b7f7",
+        "san": "Qf7+",
+        "color": "white"
       },
       {
-        "uci": "c8d8",
-        "san": "Rxd8",
-        "color": "black"
+        "uci": "f7f2",
+        "san": "Qf2+",
+        "color": "white"
       },
       {
-        "uci": "d8d1",
-        "san": "Rd1#",
-        "color": "black"
+        "uci": "g4h5",
+        "san": "Kh5",
+        "color": "white"
+      },
+      {
+        "uci": "f2d2",
+        "san": "Qd2#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-27T11:03:10.656346+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-27T11:03:54.920540+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787828590656",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542489651330420746,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rd1",
-        "correct": true,
-        "timestamp": "2026-08-27T11:03:46.536606+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787828634920",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
