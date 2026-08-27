@@ -1,119 +1,97 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2012-09-15",
-    "title": "Mate in 6",
-    "fen": "1r5r/6p1/6R1/2R1p3/3pB3/1P1Pn1Pk/1P6/6K1 w - - 0 1",
-    "current_fen": "1r5r/6p1/6R1/2R1p3/3pB3/1P1Pn1Pk/1P6/6K1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r5r/6p1/6R1/2R1p3/3pB3/1P1Pn1Pk/1P6/6K1 w - - 0 1\"]\r\n\r\n1. Rc2 Ng4 2. Rh2+ Kxg3 3. Rg2+ Kf4 4. R6xg4+ Ke3 5. R4g3+ Kf4 6. Rf3#\r\n*",
+    "url": "https://www.chess.com/daily/2018-01-05",
+    "title": "Wuehler - Krassner, Berkeley 1991",
+    "fen": "r7/pk3ppp/1p1Q2b1/8/2qP4/5N1P/PPP3P1/1K2R3 w - - 0 1",
+    "current_fen": "r7/pk3ppp/1p1Q2b1/8/2qP4/5N1P/PPP3P1/1K2R3 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/pk3ppp/1p1Q2b1/8/2qP4/5N1P/PPP3P1/1K2R3 w - - 0 1\"]\r\n\r\n1. Re7+ Ka6 2. Qa3+ Kb5 3. Re5+ Kc6 4. Rc5+ bxc5 5. Ne5+ \r\n*",
     "all_moves": [
       {
-        "uci": "c5c2",
-        "san": "Rc2",
+        "uci": "e1e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "e3g4",
-        "san": "Ng4",
+        "uci": "b7a6",
+        "san": "Ka6",
         "color": "black"
       },
       {
-        "uci": "c2h2",
-        "san": "Rh2+",
+        "uci": "d6a3",
+        "san": "Qa3+",
         "color": "white"
       },
       {
-        "uci": "h3g3",
-        "san": "Kxg3",
+        "uci": "a6b5",
+        "san": "Kb5",
         "color": "black"
       },
       {
-        "uci": "h2g2",
-        "san": "Rg2+",
+        "uci": "e7e5",
+        "san": "Re5+",
         "color": "white"
       },
       {
-        "uci": "g3f4",
-        "san": "Kf4",
+        "uci": "b5c6",
+        "san": "Kc6",
         "color": "black"
       },
       {
-        "uci": "g6g4",
-        "san": "R6xg4+",
+        "uci": "e5c5",
+        "san": "Rc5+",
         "color": "white"
       },
       {
-        "uci": "f4e3",
-        "san": "Ke3",
+        "uci": "b6c5",
+        "san": "bxc5",
         "color": "black"
       },
       {
-        "uci": "g4g3",
-        "san": "R4g3+",
-        "color": "white"
-      },
-      {
-        "uci": "e3f4",
-        "san": "Kf4",
-        "color": "black"
-      },
-      {
-        "uci": "g3f3",
-        "san": "Rf3#",
+        "uci": "f3e5",
+        "san": "Ne5+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5c2",
-        "san": "Rc2",
+        "uci": "e1e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "c2h2",
-        "san": "Rh2+",
+        "uci": "d6a3",
+        "san": "Qa3+",
         "color": "white"
       },
       {
-        "uci": "h2g2",
-        "san": "Rg2+",
+        "uci": "e7e5",
+        "san": "Re5+",
         "color": "white"
       },
       {
-        "uci": "g6g4",
-        "san": "R6xg4+",
+        "uci": "e5c5",
+        "san": "Rc5+",
         "color": "white"
       },
       {
-        "uci": "g4g3",
-        "san": "R4g3+",
-        "color": "white"
-      },
-      {
-        "uci": "g3f3",
-        "san": "Rf3#",
+        "uci": "f3e5",
+        "san": "Ne5+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-27T00:29:45.529488+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-27T00:30:36.797881+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787790585529",
+    "puzzle_id": "random_1787790636797",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542330246399922207,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bf5",
-        "correct": false,
-        "timestamp": "2026-08-27T00:30:31.140976+00:00"
-      }
-    },
+    "message_id": 1542330460779192392,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
