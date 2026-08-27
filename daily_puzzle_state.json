@@ -1,107 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-07-24",
-    "title": "Holmward Bound",
-    "fen": "8/1r6/1N1Pp3/1P6/8/4k3/8/3K4 w - - 0 1",
-    "current_fen": "3Q4/8/8/3p4/1r6/4k3/8/3K4 b - - 0 5",
-    "pgn": "[White \"Ernst Holm\"]\r\n[Black \"Study\"]\r\n[Result \"*\"]\r\n[FEN \"8/1r6/1N1Pp3/1P6/8/4k3/8/3K4 w - - 0 1\"]\r\n\r\n1. d7 Rb8 2. Nc8 Rxb5 3. Nb6 Rb4 4. Nd5+ exd5 5. d8=Q *",
+    "url": "https://www.chess.com/daily/2023-07-07",
+    "title": "I Spy...",
+    "fen": "r2q1rk1/pbpnb1pp/1p2p3/3P4/8/1P1p2P1/PB1N1PBP/R2Q1RK1 w - - 0 1",
+    "current_fen": "r2q1rk1/p1pnb1pp/1p1Pp3/8/8/1P1p2P1/PB1N1PbP/R2Q1RK1 w - - 0 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r2q1rk1/pbpnb1pp/1p2p3/3P4/8/1P1p2P1/PB1N1PBP/R2Q1RK1 w - - 0 1\"]\r\n\r\n1. d6 Bxg2 2. dxe7 Qxe7 3. Kxg2 *",
     "all_moves": [
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "d5d6",
+        "san": "d6",
         "color": "white"
       },
       {
-        "uci": "b7b8",
-        "san": "Rb8",
+        "uci": "b7g2",
+        "san": "Bxg2",
         "color": "black"
       },
       {
-        "uci": "b6c8",
-        "san": "Nc8",
+        "uci": "d6e7",
+        "san": "dxe7",
         "color": "white"
       },
       {
-        "uci": "b8b5",
-        "san": "Rxb5",
+        "uci": "d8e7",
+        "san": "Qxe7",
         "color": "black"
       },
       {
-        "uci": "c8b6",
-        "san": "Nb6",
-        "color": "white"
-      },
-      {
-        "uci": "b5b4",
-        "san": "Rb4",
-        "color": "black"
-      },
-      {
-        "uci": "b6d5",
-        "san": "Nd5+",
-        "color": "white"
-      },
-      {
-        "uci": "e6d5",
-        "san": "exd5",
-        "color": "black"
-      },
-      {
-        "uci": "d7d8q",
-        "san": "d8=Q",
+        "uci": "g1g2",
+        "san": "Kxg2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "d5d6",
+        "san": "d6",
         "color": "white"
       },
       {
-        "uci": "b6c8",
-        "san": "Nc8",
+        "uci": "d6e7",
+        "san": "dxe7",
         "color": "white"
       },
       {
-        "uci": "c8b6",
-        "san": "Nb6",
-        "color": "white"
-      },
-      {
-        "uci": "b6d5",
-        "san": "Nd5+",
-        "color": "white"
-      },
-      {
-        "uci": "d7d8q",
-        "san": "d8=Q",
+        "uci": "g1g2",
+        "san": "Kxg2",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-27T00:25:02.314053+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-27T00:25:54.043607+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787790302314",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542329058589671594,
+    "puzzle_id": "random_1787790354043",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542329274613104854,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "d8=Q",
+        "move": "d6",
         "correct": true,
-        "timestamp": "2026-08-27T00:25:49.950010+00:00"
+        "timestamp": "2026-08-27T00:26:04.110738+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
