@@ -1,77 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-08-11",
-    "title": "Her Majesty's Laser Dance",
-    "fen": "3rk3/p1b1n2Q/2bq1pp1/2N5/2B5/B7/3P3P/RN3RK1 b - - 0 1",
-    "current_fen": "3rk3/p1b1n2Q/2b2pp1/2N5/2B5/B7/3P1R1P/RN1q1K2 w - - 5 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3rk3/p1b1n2Q/2bq1pp1/2N5/2B5/B7/3P3P/RN3RK1 b - - 0 1\"]\r\n\r\n1... Qd4+ 2. Rf2 Qg4+ 3. Kf1 Qd1# *",
+    "url": "https://www.chess.com/daily/2017-10-02",
+    "title": "First Comes The Pin, Then Comes The Mate",
+    "fen": "r2qrk2/4np2/3p1Qbp/2pP2N1/2n1N3/7P/p3B1P1/5RK1 w q - 0 1",
+    "current_fen": "r2qrk2/4np2/3p1Qbp/2pP2N1/2n1N3/7P/p3B1P1/5RK1 w q - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qrk2/4np2/3p1Qbp/2pP2N1/2n1N3/7P/p3B1P1/5RK1 w q - 0 1\"]\r\n\r\n1. Ne6+ Kg8 2. Qg7#\r\n*",
     "all_moves": [
       {
-        "uci": "d6d4",
-        "san": "Qd4+",
-        "color": "black"
-      },
-      {
-        "uci": "f1f2",
-        "san": "Rf2",
+        "uci": "g5e6",
+        "san": "Ne6+",
         "color": "white"
       },
       {
-        "uci": "d4g4",
-        "san": "Qg4+",
+        "uci": "f8g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "g1f1",
-        "san": "Kf1",
+        "uci": "f6g7",
+        "san": "Qg7#",
         "color": "white"
-      },
-      {
-        "uci": "g4d1",
-        "san": "Qd1#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6d4",
-        "san": "Qd4+",
-        "color": "black"
+        "uci": "g5e6",
+        "san": "Ne6+",
+        "color": "white"
       },
       {
-        "uci": "d4g4",
-        "san": "Qg4+",
-        "color": "black"
-      },
-      {
-        "uci": "g4d1",
-        "san": "Qd1#",
-        "color": "black"
+        "uci": "f6g7",
+        "san": "Qg7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-27T10:08:26.377267+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-27T10:09:13.977835+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787825306377",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542475875478409240,
+    "puzzle_id": "random_1787825353977",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1542476075148251197,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qd1",
-        "correct": true,
-        "timestamp": "2026-08-27T10:09:07.080354+00:00"
+        "move": "Qxf7",
+        "correct": false,
+        "timestamp": "2026-08-27T10:09:37.119899+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
