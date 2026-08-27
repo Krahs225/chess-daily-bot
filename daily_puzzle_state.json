@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-03-13",
     "title": "Lazard's Playground",
     "fen": "8/1p6/1Pp4B/K1P1qN2/P1k1p3/2p5/2P2P2/8 w - - 0 1",
-    "current_fen": "8/1p6/1Pp4B/K1P1qN2/P1k1p3/2p5/2P2P2/8 w - - 0 1",
+    "current_fen": "8/1p6/1Pp4B/K1P1q3/P2kp3/2p1N3/2P2P2/8 w - - 2 2",
     "pgn": "[Date \"1921\"]\r\n[White \"Lazard\"]\r\n[Black \"Study - Win\"]\r\n[Result \"1-0\"]\r\n[FEN \"8/1p6/1Pp4B/K1P1qN2/P1k1p3/2p5/2P2P2/8 w - - 0 1\"]\r\n\r\n1.Ne3+ Kd4 2.Bg7 Kxc5 3.Bf8+ Kd4+ 4.Kb4 c5+ 5.Ka3 Qf6 6.Bg7 Qxg7 7.Nf5+ \r\nKe5 8.Nxg7 1-0",
     "all_moves": [
       {
@@ -132,13 +132,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787825548900",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542476893285257217,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Ne3",
+        "correct": true,
+        "timestamp": "2026-08-27T10:13:24.510308+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
