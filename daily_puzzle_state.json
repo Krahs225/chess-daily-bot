@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-07-08",
     "title": "Endgame Reflections",
     "fen": "1NK5/8/5k2/4bp2/P5p1/8/6PP/8 w - - 0 1",
-    "current_fen": "1NK5/8/5k2/4bp2/P5p1/8/6PP/8 w - - 0 1",
+    "current_fen": "2K5/3N4/4k3/4bp2/P5p1/8/6PP/8 w - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"1NK5/8/5k2/4bp2/P5p1/8/6PP/8 w - - 0 1\"]\r\n\r\n1.Nd7+ Ke6 2.Nxe5 Kxe5 3.g3 f4 4.gxf4+ *",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787868801395",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542658306924093595,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nd7",
+        "correct": true,
+        "timestamp": "2026-08-27T22:13:28.381162+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
