@@ -1,92 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-04-06",
-    "title": "Paul Michelet, diagrammes, 1996",
-    "fen": "8/4p3/6PB/8/8/7n/1pK5/k7 w - - 0 1",
-    "current_fen": "6R1/4p3/4n3/8/8/8/kBK5/8 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/4p3/6PB/8/8/7n/1pK5/k7 w - - 0 1\"]\r\n\r\n1. Bg7 Ka2 2. Bxb2 Nf4 3. g7 Ne6 4. g8=R\r\n*",
+    "url": "https://www.chess.com/daily/2022-07-31",
+    "title": "Gorgiev's Fantastic Journey",
+    "fen": "8/r1p5/3Q4/8/8/1p1N4/kp6/b2K4 w - - 0 1",
+    "current_fen": "8/r1p5/3Q4/8/8/1p1N4/kp6/b2K4 w - - 0 1",
+    "pgn": "[White \"Tigran Gorgiev\"]\r\n[Black \"Study\"]\r\n[Result \"1-0\"]\r\n[FEN \"8/r1p5/3Q4/8/8/1p1N4/kp6/b2K4 w - - 0 1\"]\r\n\r\n1.Nb4+ Ka3 2.Nc2+ Ka2 3.Qa3+ Rxa3 4.Nb4+ Kb1 5.Nd5 Ra8 6.Nc3# 1-0",
     "all_moves": [
       {
-        "uci": "h6g7",
-        "san": "Bg7",
+        "uci": "d3b4",
+        "san": "Nb4+",
         "color": "white"
       },
       {
-        "uci": "a1a2",
+        "uci": "a2a3",
+        "san": "Ka3",
+        "color": "black"
+      },
+      {
+        "uci": "b4c2",
+        "san": "Nc2+",
+        "color": "white"
+      },
+      {
+        "uci": "a3a2",
         "san": "Ka2",
         "color": "black"
       },
       {
-        "uci": "g7b2",
-        "san": "Bxb2",
+        "uci": "d6a3",
+        "san": "Qa3+",
         "color": "white"
       },
       {
-        "uci": "h3f4",
-        "san": "Nf4",
+        "uci": "a7a3",
+        "san": "Rxa3",
         "color": "black"
       },
       {
-        "uci": "g6g7",
-        "san": "g7",
+        "uci": "c2b4",
+        "san": "Nb4+",
         "color": "white"
       },
       {
-        "uci": "f4e6",
-        "san": "Ne6",
+        "uci": "a2b1",
+        "san": "Kb1",
         "color": "black"
       },
       {
-        "uci": "g7g8r",
-        "san": "g8=R",
+        "uci": "b4d5",
+        "san": "Nd5",
+        "color": "white"
+      },
+      {
+        "uci": "a3a8",
+        "san": "Ra8",
+        "color": "black"
+      },
+      {
+        "uci": "d5c3",
+        "san": "Nc3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6g7",
-        "san": "Bg7",
+        "uci": "d3b4",
+        "san": "Nb4+",
         "color": "white"
       },
       {
-        "uci": "g7b2",
-        "san": "Bxb2",
+        "uci": "b4c2",
+        "san": "Nc2+",
         "color": "white"
       },
       {
-        "uci": "g6g7",
-        "san": "g7",
+        "uci": "d6a3",
+        "san": "Qa3+",
         "color": "white"
       },
       {
-        "uci": "g7g8r",
-        "san": "g8=R",
+        "uci": "c2b4",
+        "san": "Nb4+",
+        "color": "white"
+      },
+      {
+        "uci": "b4d5",
+        "san": "Nd5",
+        "color": "white"
+      },
+      {
+        "uci": "d5c3",
+        "san": "Nc3#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-27T10:16:48.190980+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-27T10:18:04.929653+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787825808190",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542477980985458688,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "g8=R",
-        "correct": true,
-        "timestamp": "2026-08-27T10:17:37.385249+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787825884929",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
