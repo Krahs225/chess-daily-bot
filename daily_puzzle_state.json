@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-03-24",
     "title": "Mutual Tension",
     "fen": "4r1k1/pbp5/1p5b/4NP1p/1PP3qP/1N1B2P1/P5Q1/4R1K1 b - - 0 1",
-    "current_fen": "4r1k1/pbp5/1p5b/4NP1p/1PP3qP/1N1B2P1/P5Q1/4R1K1 b - - 0 1",
+    "current_fen": "6k1/pbp5/1p5b/4RP1p/1PP3qP/1N1B2P1/P5Q1/6K1 b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"4r1k1/pbp5/1p5b/4NP1p/1PP3qP/1N1B2P1/P5Q1/4R1K1 b - - 0 1\"]\r\n\r\n1...Rxe5 2.Rxe5 Bxg2 3.Kxg2 Bf4 *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787869616379",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542661725642555522,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rxe5",
+        "correct": true,
+        "timestamp": "2026-08-27T22:27:02.568224+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
