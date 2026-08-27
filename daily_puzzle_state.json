@@ -1,137 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-06-04",
-    "title": "MaTing Attack",
-    "fen": "2kr3r/1p1q1p2/4b3/4np1p/QpPp4/3P2P1/3NPPBP/R5K1 w - - 0 1",
-    "current_fen": "1k1r3r/RB1q1p2/1Q2b3/4np1p/2Pp4/3P2P1/3NPP1P/6K1 b - - 8 7",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr3r/1p1q1p2/4b3/4np1p/QpPp4/3P2P1/3NPPBP/R5K1 w - - 0 1\"]\r\n\r\n1. Qa8+ Kc7 2. Qxb7+ Kd6 3. Qxb4+ Kc7 4. Ra7+ Kc8 5. Bb7+ Kc7 6. Qc5+ Kb8 7. Qb6\r\n*",
+    "url": "https://www.chess.com/daily/2024-11-27",
+    "title": "I Have My Eye on You",
+    "fen": "3rkb1r/1p1b4/pnqp3p/3Nppp1/4P3/7P/PPPBNPP1/R2QK1R1 w Qk - 0 1",
+    "current_fen": "3rkb1r/1p1b4/pnqp3p/3N1pp1/3pP3/7P/PPPB1PP1/R2QK1R1 w Qk - 0 2",
+    "pgn": "[White \"JohanVA\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"3rkb1r/1p1b4/pnqp3p/3Nppp1/4P3/7P/PPPBNPP1/R2QK1R1 w Qk - 0 1\"]\r\n\r\n1. Nd4 exd4 2. Qh5# 1-0",
     "all_moves": [
       {
-        "uci": "a4a8",
-        "san": "Qa8+",
+        "uci": "e2d4",
+        "san": "Nd4",
         "color": "white"
       },
       {
-        "uci": "c8c7",
-        "san": "Kc7",
+        "uci": "e5d4",
+        "san": "exd4",
         "color": "black"
       },
       {
-        "uci": "a8b7",
-        "san": "Qxb7+",
-        "color": "white"
-      },
-      {
-        "uci": "c7d6",
-        "san": "Kd6",
-        "color": "black"
-      },
-      {
-        "uci": "b7b4",
-        "san": "Qxb4+",
-        "color": "white"
-      },
-      {
-        "uci": "d6c7",
-        "san": "Kc7",
-        "color": "black"
-      },
-      {
-        "uci": "a1a7",
-        "san": "Ra7+",
-        "color": "white"
-      },
-      {
-        "uci": "c7c8",
-        "san": "Kc8",
-        "color": "black"
-      },
-      {
-        "uci": "g2b7",
-        "san": "Bb7+",
-        "color": "white"
-      },
-      {
-        "uci": "c8c7",
-        "san": "Kc7",
-        "color": "black"
-      },
-      {
-        "uci": "b4c5",
-        "san": "Qc5+",
-        "color": "white"
-      },
-      {
-        "uci": "c7b8",
-        "san": "Kb8",
-        "color": "black"
-      },
-      {
-        "uci": "c5b6",
-        "san": "Qb6",
+        "uci": "d1h5",
+        "san": "Qh5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a4a8",
-        "san": "Qa8+",
+        "uci": "e2d4",
+        "san": "Nd4",
         "color": "white"
       },
       {
-        "uci": "a8b7",
-        "san": "Qxb7+",
-        "color": "white"
-      },
-      {
-        "uci": "b7b4",
-        "san": "Qxb4+",
-        "color": "white"
-      },
-      {
-        "uci": "a1a7",
-        "san": "Ra7+",
-        "color": "white"
-      },
-      {
-        "uci": "g2b7",
-        "san": "Bb7+",
-        "color": "white"
-      },
-      {
-        "uci": "b4c5",
-        "san": "Qc5+",
-        "color": "white"
-      },
-      {
-        "uci": "c5b6",
-        "san": "Qb6",
+        "uci": "d1h5",
+        "san": "Qh5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-08-27T00:16:54.737637+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-27T00:19:59.512399+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787789814737",
-    "next_solution_index": 13,
-    "next_player_index": 7,
-    "solved": true,
-    "message_id": 1542327012704784425,
+    "puzzle_id": "random_1787789999512",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542327788697157682,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qb6",
+        "move": "Nd4",
         "correct": true,
-        "timestamp": "2026-08-27T00:19:55.340675+00:00"
+        "timestamp": "2026-08-27T00:20:08.220885+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
