@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-10-20",
     "title": "Tight Spaces",
     "fen": "3rqk2/pQ1b3R/3P1pr1/2p2p2/8/4P3/PP3PP1/2KR4 w - - 0 1",
-    "current_fen": "3rqk2/pQ1b3R/3P1pr1/2p2p2/8/4P3/PP3PP1/2KR4 w - - 0 1",
+    "current_fen": "3rqk2/pQ1bR3/3P1pr1/2p2p2/8/4P3/PP3PP1/2KR4 b - - 1 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3rqk2/pQ1b3R/3P1pr1/2p2p2/8/4P3/PP3PP1/2KR4 w - - 0 1\"]\r\n\r\n1. Re7\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787828035639",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1542487323407683594,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Re7",
+        "correct": true,
+        "timestamp": "2026-08-27T10:54:21.456918+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
