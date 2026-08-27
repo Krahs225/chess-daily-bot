@@ -1,107 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-02-10",
-    "title": "Major Pieces with a Light Touch",
-    "fen": "8/8/3q4/2k5/3pbr1p/8/Q5P1/3R2K1 w - - 0 1",
-    "current_fen": "8/k7/R7/8/3pbr1p/1Q6/6P1/6K1 b - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/8/3q4/2k5/3pbr1p/8/Q5P1/3R2K1 w - - 0 1\"]\r\n\r\n1. Rc1+ Kb5 2. Qc4+ Kb6 3. Qb3+ Ka7 4. Ra1+ Qa6 5. Rxa6+ *",
+    "url": "https://www.chess.com/daily/2011-01-18",
+    "title": "Quiet But Effective",
+    "fen": "r1nr2k1/1b2p1bp/p5p1/P2qPpB1/2p5/2P2N2/3Q1PPP/3RRNK1 w - - 0 1",
+    "current_fen": "r1nr2k1/1b2p1bp/p5p1/P2qPpB1/2p5/2P2N2/3Q1PPP/3RRNK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1nr2k1/1b2p1bp/p5p1/P2qPpB1/2p5/2P2N2/3Q1PPP/3RRNK1 w - - 0 1\"]\r\n\r\n1. Qb2 Qxd1 2. Rxd1 Rxd1 3. Qxb7\r\n*",
     "all_moves": [
       {
-        "uci": "d1c1",
-        "san": "Rc1+",
+        "uci": "d2b2",
+        "san": "Qb2",
         "color": "white"
       },
       {
-        "uci": "c5b5",
-        "san": "Kb5",
+        "uci": "d5d1",
+        "san": "Qxd1",
         "color": "black"
       },
       {
-        "uci": "a2c4",
-        "san": "Qc4+",
+        "uci": "e1d1",
+        "san": "Rxd1",
         "color": "white"
       },
       {
-        "uci": "b5b6",
-        "san": "Kb6",
+        "uci": "d8d1",
+        "san": "Rxd1",
         "color": "black"
       },
       {
-        "uci": "c4b3",
-        "san": "Qb3+",
-        "color": "white"
-      },
-      {
-        "uci": "b6a7",
-        "san": "Ka7",
-        "color": "black"
-      },
-      {
-        "uci": "c1a1",
-        "san": "Ra1+",
-        "color": "white"
-      },
-      {
-        "uci": "d6a6",
-        "san": "Qa6",
-        "color": "black"
-      },
-      {
-        "uci": "a1a6",
-        "san": "Rxa6+",
+        "uci": "b2b7",
+        "san": "Qxb7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1c1",
-        "san": "Rc1+",
+        "uci": "d2b2",
+        "san": "Qb2",
         "color": "white"
       },
       {
-        "uci": "a2c4",
-        "san": "Qc4+",
+        "uci": "e1d1",
+        "san": "Rxd1",
         "color": "white"
       },
       {
-        "uci": "c4b3",
-        "san": "Qb3+",
-        "color": "white"
-      },
-      {
-        "uci": "c1a1",
-        "san": "Ra1+",
-        "color": "white"
-      },
-      {
-        "uci": "a1a6",
-        "san": "Rxa6+",
+        "uci": "b2b7",
+        "san": "Qxb7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-27T00:20:37.355452+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-27T00:21:38.284762+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787790037355",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542327947116027985,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rxa6",
-        "correct": true,
-        "timestamp": "2026-08-27T00:21:32.083619+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787790098284",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
