@@ -1,77 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-01-15",
-    "title": "Hello, Goodbye",
-    "fen": "6rk/3R2rp/2p1bQ2/1p2N3/1P2Pn2/P3q1b1/1BR3B1/7K w - - 3 39",
-    "current_fen": "3R2bk/5Nrp/2p5/1p6/1P2Pn2/P3q1b1/1BR3B1/7K b - - 3 41",
-    "pgn": "[Result \"1-0\"]\r\n[FEN \"6rk/3R2rp/2p1bQ2/1p2N3/1P2Pn2/P3q1b1/1BR3B1/7K w - - 3 39\"]\r\n\r\n39. Qxg7+ Rxg7 40. Rd8+ Bg8 41. Nf7# 1-0",
+    "url": "https://www.chess.com/daily/2026-04-28",
+    "title": "Sitting Duck",
+    "fen": "r1bqk2r/1pppn1pp/p2b4/1B1P1pN1/4p3/8/PPP2PPP/R1BQ1RK1 w kq - 0 1",
+    "current_fen": "r1bqk2r/1pppn1pp/p2b4/1B1P1pN1/4p3/8/PPP2PPP/R1BQ1RK1 w kq - 0 1",
+    "pgn": "[White \"IlanVardi\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqk2r/1pppn1pp/p2b4/1B1P1pN1/4p3/8/PPP2PPP/R1BQ1RK1 w kq - 0 1\"]\r\n\r\n1. Ne6 axb5 2. Nxd8 *",
     "all_moves": [
       {
-        "uci": "f6g7",
-        "san": "Qxg7+",
+        "uci": "g5e6",
+        "san": "Ne6",
         "color": "white"
       },
       {
-        "uci": "g8g7",
-        "san": "Rxg7",
+        "uci": "a6b5",
+        "san": "axb5",
         "color": "black"
       },
       {
-        "uci": "d7d8",
-        "san": "Rd8+",
-        "color": "white"
-      },
-      {
-        "uci": "e6g8",
-        "san": "Bg8",
-        "color": "black"
-      },
-      {
-        "uci": "e5f7",
-        "san": "Nf7#",
+        "uci": "e6d8",
+        "san": "Nxd8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f6g7",
-        "san": "Qxg7+",
+        "uci": "g5e6",
+        "san": "Ne6",
         "color": "white"
       },
       {
-        "uci": "d7d8",
-        "san": "Rd8+",
-        "color": "white"
-      },
-      {
-        "uci": "e5f7",
-        "san": "Nf7#",
+        "uci": "e6d8",
+        "san": "Nxd8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-27T00:47:38.242039+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-27T00:48:29.879699+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787791658242",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542334745390743622,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nf7",
-        "correct": true,
-        "timestamp": "2026-08-27T00:48:24.975552+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787791709879",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
