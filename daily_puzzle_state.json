@@ -1,92 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-03-13",
-    "title": "Forcing Through the Passed Pawn",
-    "fen": "2r5/P4P2/5p2/5k2/1K6/8/1B6/8 w - - 0 1",
-    "current_fen": "1B3r2/P7/4kp2/8/1K6/8/8/8 b - - 1 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r5/P4P2/5p2/5k2/1K6/8/1B6/8 w - - 0 1\"]\r\n\r\n1. Bc1 Ke6 2. Bf4 Ra8 3. f8=Q Rxf8 4. Bb8\r\n*",
+    "url": "https://www.chess.com/daily/2017-05-16",
+    "title": "Lined Up For Failure",
+    "fen": "2r3k1/1p2b1pp/pq2b3/4p3/QP1pP3/PB1P4/3B2PP/5RK1 w - - 0 1",
+    "current_fen": "2r3k1/1p2b1pp/pq2b3/4p3/QP1pP3/PB1P4/3B2PP/5RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/1p2b1pp/pq2b3/4p3/QP1pP3/PB1P4/3B2PP/5RK1 w - - 0 1\"]\r\n\r\n1. Qd7 Bxb3 2. Qxc8+\r\n*",
     "all_moves": [
       {
-        "uci": "b2c1",
-        "san": "Bc1",
+        "uci": "a4d7",
+        "san": "Qd7",
         "color": "white"
       },
       {
-        "uci": "f5e6",
-        "san": "Ke6",
+        "uci": "e6b3",
+        "san": "Bxb3",
         "color": "black"
       },
       {
-        "uci": "c1f4",
-        "san": "Bf4",
-        "color": "white"
-      },
-      {
-        "uci": "c8a8",
-        "san": "Ra8",
-        "color": "black"
-      },
-      {
-        "uci": "f7f8q",
-        "san": "f8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "a8f8",
-        "san": "Rxf8",
-        "color": "black"
-      },
-      {
-        "uci": "f4b8",
-        "san": "Bb8",
+        "uci": "d7c8",
+        "san": "Qxc8+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b2c1",
-        "san": "Bc1",
+        "uci": "a4d7",
+        "san": "Qd7",
         "color": "white"
       },
       {
-        "uci": "c1f4",
-        "san": "Bf4",
-        "color": "white"
-      },
-      {
-        "uci": "f7f8q",
-        "san": "f8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "f4b8",
-        "san": "Bb8",
+        "uci": "d7c8",
+        "san": "Qxc8+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-27T10:58:19.495868+00:00",
+    "player_move_count": 2,
+    "posted_at": "2026-08-27T11:00:03.495472+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787828299495",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542488429911212083,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bb8",
-        "correct": true,
-        "timestamp": "2026-08-27T10:59:53.049277+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787828403495",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
