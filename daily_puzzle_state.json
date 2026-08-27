@@ -1,77 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-07-30",
-    "title": "Light Square Shuffle",
-    "fen": "6k1/1b4p1/p5q1/1pp1p3/3p3p/1P1P1r1P/1PP3RB/4QR1K b - - 1 1",
-    "current_fen": "6k1/1b4p1/p7/1pp1p3/3p3p/1P1P3P/1PP2KrB/4QR2 w - - 3 4",
-    "pgn": "[Result \"0-1\"]\r\n[FEN \"6k1/1b4p1/p5q1/1pp1p3/3p3p/1P1P1r1P/1PP3RB/4QR1K b - - 1 1\"]\r\n\r\n1...Qxg2+ 2.Kxg2 Rg3+ 3.Kf2 Rg2# 0-1",
+    "url": "https://www.chess.com/daily/2024-09-13",
+    "title": "Breaching the Defensive Wall",
+    "fen": "3r2k1/2qp4/2nRprp1/p6p/1pQ2N1P/1P4P1/1KP5/3R4 w - - 2 25",
+    "current_fen": "3r2k1/2qp4/2nRprp1/p6p/1pQ2N1P/1P4P1/1KP5/3R4 w - - 2 25",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3r2k1/2qp4/2nRprp1/p6p/1pQ2N1P/1P4P1/1KP5/3R4 w - - 2 25\"]\r\n\r\n25. Qxc6 dxc6 26. Rxd8+ Rf8 27. Rxf8+ Kxf8 28. Nxe6+ Ke7 29. Nxc7 *",
     "all_moves": [
       {
-        "uci": "g6g2",
-        "san": "Qxg2+",
-        "color": "black"
-      },
-      {
-        "uci": "h1g2",
-        "san": "Kxg2",
+        "uci": "c4c6",
+        "san": "Qxc6",
         "color": "white"
       },
       {
-        "uci": "f3g3",
-        "san": "Rg3+",
+        "uci": "d7c6",
+        "san": "dxc6",
         "color": "black"
       },
       {
-        "uci": "g2f2",
-        "san": "Kf2",
+        "uci": "d6d8",
+        "san": "Rxd8+",
         "color": "white"
       },
       {
-        "uci": "g3g2",
-        "san": "Rg2#",
+        "uci": "f6f8",
+        "san": "Rf8",
         "color": "black"
+      },
+      {
+        "uci": "d8f8",
+        "san": "Rxf8+",
+        "color": "white"
+      },
+      {
+        "uci": "g8f8",
+        "san": "Kxf8",
+        "color": "black"
+      },
+      {
+        "uci": "f4e6",
+        "san": "Nxe6+",
+        "color": "white"
+      },
+      {
+        "uci": "f8e7",
+        "san": "Ke7",
+        "color": "black"
+      },
+      {
+        "uci": "e6c7",
+        "san": "Nxc7",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g6g2",
-        "san": "Qxg2+",
-        "color": "black"
+        "uci": "c4c6",
+        "san": "Qxc6",
+        "color": "white"
       },
       {
-        "uci": "f3g3",
-        "san": "Rg3+",
-        "color": "black"
+        "uci": "d6d8",
+        "san": "Rxd8+",
+        "color": "white"
       },
       {
-        "uci": "g3g2",
-        "san": "Rg2#",
-        "color": "black"
+        "uci": "d8f8",
+        "san": "Rxf8+",
+        "color": "white"
+      },
+      {
+        "uci": "f4e6",
+        "san": "Nxe6+",
+        "color": "white"
+      },
+      {
+        "uci": "e6c7",
+        "san": "Nxc7",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-27T00:45:30.300529+00:00",
+    "player_color": "white",
+    "player_move_count": 5,
+    "posted_at": "2026-08-27T00:46:45.668260+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787791530300",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542334208653926490,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rg2",
-        "correct": true,
-        "timestamp": "2026-08-27T00:46:41.474481+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787791605668",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
