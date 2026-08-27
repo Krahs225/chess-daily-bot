@@ -1,89 +1,82 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-01-16",
-    "title": "Not Too Shabby",
-    "fen": "r4b1k/pp1q1p1p/1np2PnB/3p4/6N1/P1N4Q/1PP4P/2K2R2 w - - 3 29",
-    "current_fen": "r4b1k/pp1q1p1p/1np2PnB/3p4/6N1/P1N4Q/1PP4P/2K2R2 w - - 3 29",
-    "pgn": "[Event \"USA-ch\"]\r\n[Site \"Key West, FL USA\"]\r\n[Date \"1994.10.12\"]\r\n[Round \"2\"]\r\n[White \"Alexander Anatolyevich Shabalov\"]\r\n[Black \"Alexander Vladimirovich Ivanov\"]\r\n[Result \"1-0\"]\r\n[ECO \"C22\"]\r\n[PlyCount \"63\"]\r\n[FEN \"r4b1k/pp1q1p1p/1np2PnB/3p4/6N1/P1N4Q/1PP4P/2K2R2 w - - 3 29\"]\r\n\r\n29.Bg7+ Bxg7 30.fxg7+ Kxg7 31.Qh6+ Kh8 32.Nf6 1-0",
+    "url": "https://www.chess.com/daily/2009-11-24",
+    "title": "Calculation Practice",
+    "fen": "r1bq1rk1/1p2Bpp1/p2pp2p/8/3QnP2/2N5/PPP1B1PP/2KR4 b - - 0 1",
+    "current_fen": "r1bq1rk1/1p2Bpp1/p2pp2p/8/3QnP2/2N5/PPP1B1PP/2KR4 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bq1rk1/1p2Bpp1/p2pp2p/8/3QnP2/2N5/PPP1B1PP/2KR4 b - - 0 1\"]\r\n\r\n1...Nxc3 2. Bxd8 Nxe2+ 3. Kb1 Nxd4 4. Rxd4 Rxd8\r\n*",
     "all_moves": [
       {
-        "uci": "h6g7",
-        "san": "Bg7+",
-        "color": "white"
-      },
-      {
-        "uci": "f8g7",
-        "san": "Bxg7",
+        "uci": "e4c3",
+        "san": "Nxc3",
         "color": "black"
       },
       {
-        "uci": "f6g7",
-        "san": "fxg7+",
+        "uci": "e7d8",
+        "san": "Bxd8",
         "color": "white"
       },
       {
-        "uci": "h8g7",
-        "san": "Kxg7",
+        "uci": "c3e2",
+        "san": "Nxe2+",
         "color": "black"
       },
       {
-        "uci": "h3h6",
-        "san": "Qh6+",
+        "uci": "c1b1",
+        "san": "Kb1",
         "color": "white"
       },
       {
-        "uci": "g7h8",
-        "san": "Kh8",
+        "uci": "e2d4",
+        "san": "Nxd4",
         "color": "black"
       },
       {
-        "uci": "g4f6",
-        "san": "Nf6",
+        "uci": "d1d4",
+        "san": "Rxd4",
         "color": "white"
+      },
+      {
+        "uci": "f8d8",
+        "san": "Rxd8",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6g7",
-        "san": "Bg7+",
-        "color": "white"
+        "uci": "e4c3",
+        "san": "Nxc3",
+        "color": "black"
       },
       {
-        "uci": "f6g7",
-        "san": "fxg7+",
-        "color": "white"
+        "uci": "c3e2",
+        "san": "Nxe2+",
+        "color": "black"
       },
       {
-        "uci": "h3h6",
-        "san": "Qh6+",
-        "color": "white"
+        "uci": "e2d4",
+        "san": "Nxd4",
+        "color": "black"
       },
       {
-        "uci": "g4f6",
-        "san": "Nf6",
-        "color": "white"
+        "uci": "f8d8",
+        "san": "Rxd8",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 4,
-    "posted_at": "2026-08-27T11:00:57.549659+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-27T11:02:21.821348+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787828457549",
+    "puzzle_id": "random_1787828541821",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1542489093420748911,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bxf8",
-        "correct": false,
-        "timestamp": "2026-08-27T11:01:20.090998+00:00"
-      }
-    },
+    "message_id": null,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
