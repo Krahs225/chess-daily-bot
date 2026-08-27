@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-05-04",
     "title": "Weaving a Delicate Net",
     "fen": "2Q5/6pb/P3B2k/1p2pPq1/3p4/4b2P/1N4P1/2R1KR2 b - - 0 1",
-    "current_fen": "2Q5/6pb/P3B2k/1p2pP2/3p4/4b1qP/1N2K1P1/2R2R2 b - - 2 2",
+    "current_fen": "2Q5/6pb/P3B2k/1p2pP2/3p4/4b2P/1N2KRq1/2R5 b - - 1 3",
     "pgn": "[White \"sethwmd\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"2Q5/6pb/P3B2k/1p2pPq1/3p4/4b2P/1N4P1/2R1KR2 b - - 0 1\"]\r\n\r\n1... Qg3+ 2. Ke2 Qxg2+ 3. Rf2 Qxf2+ 4. Kd3 Qg2 5. Qc6 e4+ 6. Qxe4 Qd2# 0-1",
     "all_moves": [
       {
@@ -102,8 +102,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787872932196",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542675632557924373,
     "attempted_users": {
@@ -112,13 +112,21 @@
         "move": "qg3",
         "correct": true,
         "timestamp": "2026-08-27T23:22:33.568668+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxg2",
+        "correct": true,
+        "timestamp": "2026-08-27T23:22:43.629331+00:00"
       }
     },
     "first_move_user_id": "1541007763931668502",
     "first_move_user_name": "Martin",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
