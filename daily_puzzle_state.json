@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-03-16",
     "title": "No Way To Hold On",
     "fen": "8/8/8/6k1/7b/4K3/8/7R w K - 0 1",
-    "current_fen": "8/8/8/6k1/7b/4K3/8/7R w K - 0 1",
+    "current_fen": "8/8/8/7k/7b/5K2/8/7R w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/6k1/7b/4K3/8/7R w K - 0 1\"]\r\n\r\n1. Kf3 Kh5 2. Kf4\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787789477129",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542325596674330738,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Kf3",
+        "correct": true,
+        "timestamp": "2026-08-27T00:11:32.073718+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
