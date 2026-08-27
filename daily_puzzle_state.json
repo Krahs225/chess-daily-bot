@@ -1,107 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-09-13",
-    "title": "Breaching the Defensive Wall",
-    "fen": "3r2k1/2qp4/2nRprp1/p6p/1pQ2N1P/1P4P1/1KP5/3R4 w - - 2 25",
-    "current_fen": "8/2N1k3/2p3p1/p6p/1p5P/1P4P1/1KP5/3R4 b - - 0 29",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3r2k1/2qp4/2nRprp1/p6p/1pQ2N1P/1P4P1/1KP5/3R4 w - - 2 25\"]\r\n\r\n25. Qxc6 dxc6 26. Rxd8+ Rf8 27. Rxf8+ Kxf8 28. Nxe6+ Ke7 29. Nxc7 *",
+    "url": "https://www.chess.com/daily/2024-11-30",
+    "title": "Magnus Blows Out the Candles 🤫",
+    "fen": "8/8/8/1Q6/3N2K1/kp2P3/3n1PP1/4q3 w - - 0 55",
+    "current_fen": "8/8/8/1Q6/3N2K1/kp2P3/3n1PP1/4q3 w - - 0 55",
+    "pgn": "[Event \"Grand Chess Tour: Superbet Poland Rapid \"]\r\n[Site \"?\"]\r\n[Date \"2023.05.25\"]\r\n[Round \"20\"]\r\n[White \"Carlsen, Magnus\"]\r\n[Black \"So, Wesley\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2839\"]\r\n[BlackElo \"2788\"]\r\n[SetUp \"1\"]\r\n[FEN \"8/8/8/1Q6/3N2K1/kp2P3/3n1PP1/4q3 w - - 0 55\"]\r\n[PlyCount \"5\"]\r\n[EventDate \"2023.??.??\"]\r\n[EventType \"blitz\"]\r\n\r\n55. Qxb3+ Nxb3 56. Nc2+ Kb2 57. Nxe1 1-0",
     "all_moves": [
       {
-        "uci": "c4c6",
-        "san": "Qxc6",
+        "uci": "b5b3",
+        "san": "Qxb3+",
         "color": "white"
       },
       {
-        "uci": "d7c6",
-        "san": "dxc6",
+        "uci": "d2b3",
+        "san": "Nxb3",
         "color": "black"
       },
       {
-        "uci": "d6d8",
-        "san": "Rxd8+",
+        "uci": "d4c2",
+        "san": "Nc2+",
         "color": "white"
       },
       {
-        "uci": "f6f8",
-        "san": "Rf8",
+        "uci": "a3b2",
+        "san": "Kb2",
         "color": "black"
       },
       {
-        "uci": "d8f8",
-        "san": "Rxf8+",
-        "color": "white"
-      },
-      {
-        "uci": "g8f8",
-        "san": "Kxf8",
-        "color": "black"
-      },
-      {
-        "uci": "f4e6",
-        "san": "Nxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "f8e7",
-        "san": "Ke7",
-        "color": "black"
-      },
-      {
-        "uci": "e6c7",
-        "san": "Nxc7",
+        "uci": "c2e1",
+        "san": "Nxe1",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4c6",
-        "san": "Qxc6",
+        "uci": "b5b3",
+        "san": "Qxb3+",
         "color": "white"
       },
       {
-        "uci": "d6d8",
-        "san": "Rxd8+",
+        "uci": "d4c2",
+        "san": "Nc2+",
         "color": "white"
       },
       {
-        "uci": "d8f8",
-        "san": "Rxf8+",
-        "color": "white"
-      },
-      {
-        "uci": "f4e6",
-        "san": "Nxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "e6c7",
-        "san": "Nxc7",
+        "uci": "c2e1",
+        "san": "Nxe1",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-27T00:46:45.668260+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-27T00:47:20.445764+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787791605668",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542334524531417132,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nxc7",
-        "correct": true,
-        "timestamp": "2026-08-27T00:47:12.760345+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787791640445",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
