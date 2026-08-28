@@ -1,77 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-08-07",
-    "title": "Challenging the King Blockade",
-    "fen": "2b1k2r/pp2P3/2p3RQ/8/5P2/7P/Pq1r2PK/4R3 w - - 0 41",
-    "current_fen": "2b1k3/pp2P3/2p5/7r/5P2/7P/PR5K/4R3 b - - 0 43",
-    "pgn": "[Event \"San Remo\"]\r\n[Site \"San Remo ITA\"]\r\n[Date \"1930.01.25\"]\r\n[Round \"8\"]\r\n[White \"Geza Maroczy\"]\r\n[Black \"Massimiliano Romi\"]\r\n[Result \"1-0\"]\r\n[ECO \"D45\"]\r\n[SetUp \"1\"]\r\n[FEN \"2b1k2r/pp2P3/2p3RQ/8/5P2/7P/Pq1r2PK/4R3 w - - 0 41\"]\r\n[PlyCount \"5\"]\r\n[EventDate \"1930.01.16\"]\r\n\r\n41. Qh5 Rxg2+ 42. Rxg2+ Rxh5 43. Rxb2 1-0",
+    "url": "https://www.chess.com/daily/2021-02-23",
+    "title": "Light Square Insecurities",
+    "fen": "5bk1/5p1p/q2p1P2/3Pr1p1/p7/1p3Q1P/1P4PK/1B3R2 w - - 0 1",
+    "current_fen": "5bk1/5p1p/q2p1P2/3Pr1p1/p7/1p3Q1P/1P4PK/1B3R2 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"5bk1/5p1p/q2p1P2/3Pr1p1/p7/1p3Q1P/1P4PK/1B3R2 w - - 0 1\"]\r\n\r\n1.Qh5 h6 2.Bh7+ Kxh7 3.Qxf7+ Kh8 4.Qxf8+ *",
     "all_moves": [
       {
-        "uci": "h6h5",
+        "uci": "f3h5",
         "san": "Qh5",
         "color": "white"
       },
       {
-        "uci": "d2g2",
-        "san": "Rxg2+",
+        "uci": "h7h6",
+        "san": "h6",
         "color": "black"
       },
       {
-        "uci": "g6g2",
-        "san": "Rxg2+",
+        "uci": "b1h7",
+        "san": "Bh7+",
         "color": "white"
       },
       {
-        "uci": "h8h5",
-        "san": "Rxh5",
+        "uci": "g8h7",
+        "san": "Kxh7",
         "color": "black"
       },
       {
-        "uci": "g2b2",
-        "san": "Rxb2",
+        "uci": "h5f7",
+        "san": "Qxf7+",
+        "color": "white"
+      },
+      {
+        "uci": "h7h8",
+        "san": "Kh8",
+        "color": "black"
+      },
+      {
+        "uci": "f7f8",
+        "san": "Qxf8+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6h5",
+        "uci": "f3h5",
         "san": "Qh5",
         "color": "white"
       },
       {
-        "uci": "g6g2",
-        "san": "Rxg2+",
+        "uci": "b1h7",
+        "san": "Bh7+",
         "color": "white"
       },
       {
-        "uci": "g2b2",
-        "san": "Rxb2",
+        "uci": "h5f7",
+        "san": "Qxf7+",
+        "color": "white"
+      },
+      {
+        "uci": "f7f8",
+        "san": "Qxf8+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-28T13:00:14.566929+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-28T13:01:19.990623+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787922014566",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542881500041711757,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rxb2",
-        "correct": true,
-        "timestamp": "2026-08-28T13:01:07.643449+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787922079990",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
