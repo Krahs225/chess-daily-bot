@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-04-17",
     "title": "Here Comes the Sun",
     "fen": "r7/4bkp1/Bp3p2/8/Q1p3pR/Nn1q2B1/1P3P2/4K2R b K - 0 1",
-    "current_fen": "r7/4bkp1/Bp3p2/8/Q1p3pR/Nn1q2B1/1P3P2/4K2R b K - 0 1",
+    "current_fen": "4r3/5kp1/Bp3p2/4B3/1Qp3pR/Nn1q4/1P3P2/4K2R b K - 2 3",
     "pgn": "[Result \"0-1\"]\r\n[FEN \"r7/4bkp1/Bp3p2/8/Q1p3pR/Nn1q2B1/1P3P2/4K2R b K - 0 1\"]\r\n\r\n1... Bb4+ 2. Qxb4 Re8+ 3. Be5 Rxe5# 0-1",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787926394655",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542899873815461978,
     "attempted_users": {
@@ -67,10 +67,16 @@
         "move": "qd2",
         "correct": false,
         "timestamp": "2026-08-28T14:13:21.038784+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Re8",
+        "correct": true,
+        "timestamp": "2026-08-28T14:13:28.022530+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
