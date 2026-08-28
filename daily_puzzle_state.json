@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-10-12",
-    "title": "Heavy Piece Relations",
-    "fen": "6k1/1r3p1p/4pQp1/3qR3/1P6/P2r4/6PP/5RK1 b - - 0 1",
-    "current_fen": "6k1/1r5p/4p1p1/8/1P1q4/P7/6PP/5Q1K w - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/1r3p1p/4pQp1/3qR3/1P6/P2r4/6PP/5RK1 b - - 0 1\"]\r\n\r\n1...Qd4+ 2. Kh1 Rd1 3. Rxe6 Rxf1+ 4. Qxf1 fxe6\r\n*",
+    "url": "https://www.chess.com/daily/2024-01-10",
+    "title": "Fiona's Dark Squared Surprise Party!",
+    "fen": "3qr1k1/p5pp/2pb1n2/p2p4/P7/1PNP3P/3Q1PP1/2B1R1K1 b - - 0 21",
+    "current_fen": "3qr1k1/p5pp/2pb1n2/p2p4/P7/1PNP3P/3Q1PP1/2B1R1K1 b - - 0 21",
+    "pgn": "[White \"Happy Birthday\"]\r\n[Black \"Fiona! \"]\r\n[Result \"0-1\"]\r\n[FEN \"3qr1k1/p5pp/2pb1n2/p2p4/P7/1PNP3P/3Q1PP1/2B1R1K1 b - - 0 21\"]\r\n\r\n21... Bb4 22. Rxe8+ Qxe8 23. d4 Ne4 24. Qe2 Bxc3 *",
     "all_moves": [
       {
-        "uci": "d5d4",
-        "san": "Qd4+",
+        "uci": "d6b4",
+        "san": "Bb4",
         "color": "black"
       },
       {
-        "uci": "g1h1",
-        "san": "Kh1",
+        "uci": "e1e8",
+        "san": "Rxe8+",
         "color": "white"
       },
       {
-        "uci": "d3d1",
-        "san": "Rd1",
+        "uci": "d8e8",
+        "san": "Qxe8",
         "color": "black"
       },
       {
-        "uci": "e5e6",
-        "san": "Rxe6",
+        "uci": "d3d4",
+        "san": "d4",
         "color": "white"
       },
       {
-        "uci": "d1f1",
-        "san": "Rxf1+",
+        "uci": "f6e4",
+        "san": "Ne4",
         "color": "black"
       },
       {
-        "uci": "f6f1",
-        "san": "Qxf1",
+        "uci": "d2e2",
+        "san": "Qe2",
         "color": "white"
       },
       {
-        "uci": "f7e6",
-        "san": "fxe6",
+        "uci": "b4c3",
+        "san": "Bxc3",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5d4",
-        "san": "Qd4+",
+        "uci": "d6b4",
+        "san": "Bb4",
         "color": "black"
       },
       {
-        "uci": "d3d1",
-        "san": "Rd1",
+        "uci": "d8e8",
+        "san": "Qxe8",
         "color": "black"
       },
       {
-        "uci": "d1f1",
-        "san": "Rxf1+",
+        "uci": "f6e4",
+        "san": "Ne4",
         "color": "black"
       },
       {
-        "uci": "f7e6",
-        "san": "fxe6",
+        "uci": "b4c3",
+        "san": "Bxc3",
         "color": "black"
       }
     ],
     "player_color": "black",
     "player_move_count": 4,
-    "posted_at": "2026-08-28T13:45:30.544095+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-28T13:46:37.533936+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787924730544",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542892891062542400,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "fxe6",
-        "correct": true,
-        "timestamp": "2026-08-28T13:46:30.962724+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787924797533",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
