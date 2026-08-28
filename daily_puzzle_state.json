@@ -1,98 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-02-23",
-    "title": "Light Square Insecurities",
-    "fen": "5bk1/5p1p/q2p1P2/3Pr1p1/p7/1p3Q1P/1P4PK/1B3R2 w - - 0 1",
-    "current_fen": "5Q1k/8/q2p1P1p/3Pr1p1/p7/1p5P/1P4PK/5R2 b - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"5bk1/5p1p/q2p1P2/3Pr1p1/p7/1p3Q1P/1P4PK/1B3R2 w - - 0 1\"]\r\n\r\n1.Qh5 h6 2.Bh7+ Kxh7 3.Qxf7+ Kh8 4.Qxf8+ *",
+    "url": "https://www.chess.com/daily/2016-12-26",
+    "title": "F.Carauana vs J.Bogota, 2003",
+    "fen": "r1b1kbQ1/ppp1n3/3p4/5pPq/5P2/2N3K1/PPPB3P/4R3 w - - 0 1",
+    "current_fen": "r1b1kbQ1/ppp1n3/3p4/5pPq/5P2/2N3K1/PPPB3P/4R3 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1kbQ1/ppp1n3/3p4/5pPq/5P2/2N3K1/PPPB3P/4R3 w - - 0 1\"]\r\n\r\n1. Rxe7+ Kxe7 2. Nd5+ \r\n*",
     "all_moves": [
       {
-        "uci": "f3h5",
-        "san": "Qh5",
+        "uci": "e1e7",
+        "san": "Rxe7+",
         "color": "white"
       },
       {
-        "uci": "h7h6",
-        "san": "h6",
+        "uci": "e8e7",
+        "san": "Kxe7",
         "color": "black"
       },
       {
-        "uci": "b1h7",
-        "san": "Bh7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h7",
-        "san": "Kxh7",
-        "color": "black"
-      },
-      {
-        "uci": "h5f7",
-        "san": "Qxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "h7h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "f7f8",
-        "san": "Qxf8+",
+        "uci": "c3d5",
+        "san": "Nd5+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3h5",
-        "san": "Qh5",
+        "uci": "e1e7",
+        "san": "Rxe7+",
         "color": "white"
       },
       {
-        "uci": "b1h7",
-        "san": "Bh7+",
-        "color": "white"
-      },
-      {
-        "uci": "h5f7",
-        "san": "Qxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7f8",
-        "san": "Qxf8+",
+        "uci": "c3d5",
+        "san": "Nd5+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-28T13:01:19.990623+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-28T13:02:21.961608+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787922079990",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542881774055596165,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qxf8",
-        "correct": true,
-        "timestamp": "2026-08-28T13:01:50.552080+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxg7",
-        "correct": false,
-        "timestamp": "2026-08-28T13:01:48.391560+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787922141961",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
