@@ -1,47 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-08-05",
-    "title": "Securing The Promotion",
-    "fen": "5k2/8/7P/8/5K2/8/4B3/8 w - - 0 1",
-    "current_fen": "5k2/8/7P/8/2B2K2/8/8/8 b - - 1 1",
-    "pgn": "[Event \"?\"]\r\n[Site \"?\"]\r\n[Date \"????.??.??\"]\r\n[Round \"?\"]\r\n[White \"?\"]\r\n[Black \"?\"]\r\n[Result \"*\"]\r\n[FEN \"5k2/8/7P/8/5K2/8/4B3/8 w - - 0 1\"]\r\n[SetUp \"1\"]\r\n[CurrentPosition \"5k2/8/7P/8/2B2K2/8/8/8 b - - 1 1\"]\r\n\r\n1.Bc4  *",
+    "url": "https://www.chess.com/daily/2022-06-09",
+    "title": "Boleslavsky's Piece Harmony",
+    "fen": "7r/1qr1nNp1/p1k4p/1pB5/4P1Q1/8/PP3PPP/6K1 w - - 3 25",
+    "current_fen": "7r/1qr1nNp1/p1k4p/1pB5/4P1Q1/8/PP3PPP/6K1 w - - 3 25",
+    "pgn": "[Site \"URS\"]\r\n[Date \"1967.??.??\"]\r\n[Round \"?\"]\r\n[White \"Boleslavsky Isaac (RUS)\"]\r\n[Black \"Dzindzichashvili Roman (USA)\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2560\"]\r\n[BlackElo \"2542\"]\r\n[ECO \"D29\"]\r\n[FEN \"7r/1qr1nNp1/p1k4p/1pB5/4P1Q1/8/PP3PPP/6K1 w - - 3 25\"]\r\n\r\n25.Qe6+ Kxc5 26.Qd6+ Kc4 27.Ne5# 1-0",
     "all_moves": [
       {
-        "uci": "e2c4",
-        "san": "Bc4",
+        "uci": "g4e6",
+        "san": "Qe6+",
+        "color": "white"
+      },
+      {
+        "uci": "c6c5",
+        "san": "Kxc5",
+        "color": "black"
+      },
+      {
+        "uci": "e6d6",
+        "san": "Qd6+",
+        "color": "white"
+      },
+      {
+        "uci": "c5c4",
+        "san": "Kc4",
+        "color": "black"
+      },
+      {
+        "uci": "f7e5",
+        "san": "Ne5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e2c4",
-        "san": "Bc4",
+        "uci": "g4e6",
+        "san": "Qe6+",
+        "color": "white"
+      },
+      {
+        "uci": "e6d6",
+        "san": "Qd6+",
+        "color": "white"
+      },
+      {
+        "uci": "f7e5",
+        "san": "Ne5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-28T14:14:03.988187+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-28T14:14:22.317725+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787926443988",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1542900078061166664,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bc4",
-        "correct": true,
-        "timestamp": "2026-08-28T14:14:14.516326+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787926462317",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
