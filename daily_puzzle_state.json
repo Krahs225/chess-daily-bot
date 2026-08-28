@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-04-06",
     "title": "Tricky Check",
     "fen": "6k1/1Q4p1/5p1p/4p3/2P1q3/6PP/2r2P2/1R4K1 b - - 0 1",
-    "current_fen": "6k1/1Q4p1/5p1p/4p3/2P1q3/6PP/2r2P2/1R4K1 b - - 0 1",
+    "current_fen": "6k1/1Q4p1/5p1p/4p3/2P1q3/6PP/5P2/2R3K1 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/1Q4p1/5p1p/4p3/2P1q3/6PP/2r2P2/1R4K1 b - - 0 1\"]\r\n\r\n1...Rc1+ 2. Rxc1 Qxb7\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787926484752",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542900248890966046,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rc1",
+        "correct": true,
+        "timestamp": "2026-08-28T14:14:50.674908+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
