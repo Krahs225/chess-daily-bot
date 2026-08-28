@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-04-22",
-    "title": "Embracing the Tension",
-    "fen": "r1b2r1k/ppp3pp/8/4p3/8/4P3/PPP1QqPP/RN1K1B1R b - - 1 1",
-    "current_fen": "r2r3k/ppp3pp/8/4p3/8/4P3/PPPNbqPP/R1K2B1R w - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r1b2r1k/ppp3pp/8/4p3/8/4P3/PPP1QqPP/RN1K1B1R b - - 1 1\"]\r\n\r\n1...Rd8+ 2.Nd2 Bg4 3.Kc1 Bxe2 *",
+    "url": "https://www.chess.com/daily/2022-03-30",
+    "title": "Tying Up Loose Ends",
+    "fen": "r4r1k/pp2qppp/2p1pb2/3P4/2B2BQ1/2P5/P1P2PPP/2KRR3 b - - 0 1",
+    "current_fen": "r4r1k/pp2qppp/2p1pb2/3P4/2B2BQ1/2P5/P1P2PPP/2KRR3 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r4r1k/pp2qppp/2p1pb2/3P4/2B2BQ1/2P5/P1P2PPP/2KRR3 b - - 0 1\"]\r\n\r\n1...Qa3+ 2.Kd2 Qxc3+ 3.Ke2 Qxc4+ *",
     "all_moves": [
       {
-        "uci": "f8d8",
-        "san": "Rd8+",
+        "uci": "e7a3",
+        "san": "Qa3+",
         "color": "black"
       },
       {
-        "uci": "b1d2",
-        "san": "Nd2",
+        "uci": "c1d2",
+        "san": "Kd2",
         "color": "white"
       },
       {
-        "uci": "c8g4",
-        "san": "Bg4",
+        "uci": "a3c3",
+        "san": "Qxc3+",
         "color": "black"
       },
       {
-        "uci": "d1c1",
-        "san": "Kc1",
+        "uci": "d2e2",
+        "san": "Ke2",
         "color": "white"
       },
       {
-        "uci": "g4e2",
-        "san": "Bxe2",
+        "uci": "c3c4",
+        "san": "Qxc4+",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f8d8",
-        "san": "Rd8+",
+        "uci": "e7a3",
+        "san": "Qa3+",
         "color": "black"
       },
       {
-        "uci": "c8g4",
-        "san": "Bg4",
+        "uci": "a3c3",
+        "san": "Qxc3+",
         "color": "black"
       },
       {
-        "uci": "g4e2",
-        "san": "Bxe2",
+        "uci": "c3c4",
+        "san": "Qxc4+",
         "color": "black"
       }
     ],
     "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-28T13:49:15.032125+00:00",
+    "posted_at": "2026-08-28T13:49:47.843187+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787924955032",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542893832239190047,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bxe2",
-        "correct": true,
-        "timestamp": "2026-08-28T13:49:41.436214+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787924987843",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
