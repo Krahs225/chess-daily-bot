@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-05-08",
     "title": "Westerinen Story",
     "fen": "1r3rk1/3Q2pp/p3p3/6B1/3np3/6R1/PqP1B2P/3K2R1 w - - 2 25",
-    "current_fen": "1r3rk1/3Q2pp/p3p3/6B1/3np3/6R1/PqP1B2P/3K2R1 w - - 2 25",
+    "current_fen": "1r3r2/6kp/p3p3/6B1/3np3/6R1/PqP1B2P/3K2R1 w - - 0 26",
     "pgn": "[Site \"New York, USA\"]\r\n[Date \"1977\"]\r\n[White \"Heikki Westerinen\"]\r\n[Black \"Gudmundur Sigurjonsson\"]\r\n[Result \"1-0\"]\r\n[FEN \"1r3rk1/3Q2pp/p3p3/6B1/3np3/6R1/PqP1B2P/3K2R1 w - - 2 25\"]\r\n25.Qxg7+ Kxg7 26.Bd8+ Kh8 27.Rg8+ Rxg8 28.Bf6+ Rg7 29.Bxg7+ Kg8 30.Bxd4+ \r\n1-0",
     "all_moves": [
       {
@@ -102,13 +102,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787924044151",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542890011941277819,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Qxg7",
+        "correct": true,
+        "timestamp": "2026-08-28T13:34:08.740279+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
