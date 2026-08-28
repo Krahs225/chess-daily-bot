@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-03-12",
     "title": "Cleaning House",
     "fen": "2br3k/pp5p/1q3pp1/8/7Q/1B5P/PP2rPP1/2R2RK1 w - - 0 1",
-    "current_fen": "2br3k/pp5p/1q3pp1/8/7Q/1B5P/PP2rPP1/2R2RK1 w - - 0 1",
+    "current_fen": "2br3k/ppq4p/5pp1/8/7Q/1B5P/PP2rPP1/5RK1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2br3k/pp5p/1q3pp1/8/7Q/1B5P/PP2rPP1/2R2RK1 w - - 0 1\"]\r\n\r\n1. Rc7 Qxc7 2. Qxf6+ Qg7 3. Qxd8+ Re8 4. Qxe8+\r\n*",
     "all_moves": [
       {
@@ -72,16 +72,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787925714026",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542897015623520281,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Qg4",
-        "correct": false,
-        "timestamp": "2026-08-28T14:02:19.428821+00:00"
+        "move": "Rc7",
+        "correct": true,
+        "timestamp": "2026-08-28T14:03:40.093865+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -90,8 +90,8 @@
         "timestamp": "2026-08-28T14:03:04.556630+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
