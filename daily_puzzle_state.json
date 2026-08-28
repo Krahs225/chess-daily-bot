@@ -1,120 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-02-07",
-    "title": "Crafty Captures",
-    "fen": "r3r1k1/pp4pp/1bn2p2/3bp3/1B1p2qP/P2P1NP1/5PBK/2RQR3 w - - 0 1",
-    "current_fen": "4r2k/pp4pp/1b3p2/3B4/1B1p3P/P2P2P1/5P1K/3R4 b - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r3r1k1/pp4pp/1bn2p2/3bp3/1B1p2qP/P2P1NP1/5PBK/2RQR3 w - - 0 1\"]\r\n\r\n1. Nxe5 Nxe5 2. Bxd5+ Kh8 3. Rxe5 Qxd1 4. Rxe8+ Rxe8 5. Rxd1 *",
+    "url": "https://www.chess.com/daily/2023-06-02",
+    "title": "Give and Take",
+    "fen": "8/6R1/R3B1p1/p3r1pP/7k/3p4/P5PK/5r2 b - - 0 1",
+    "current_fen": "8/6R1/R3B1p1/p3r1pP/7k/3p4/P5PK/5r2 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/6R1/R3B1p1/p3r1pP/7k/3p4/P5PK/5r2 b - - 0 1\"]\r\n\r\n1... Rh1+ 2. Kxh1 Kg3 3. Rxa5 Re1# *",
     "all_moves": [
       {
-        "uci": "f3e5",
-        "san": "Nxe5",
-        "color": "white"
-      },
-      {
-        "uci": "c6e5",
-        "san": "Nxe5",
+        "uci": "f1h1",
+        "san": "Rh1+",
         "color": "black"
       },
       {
-        "uci": "g2d5",
-        "san": "Bxd5+",
+        "uci": "h2h1",
+        "san": "Kxh1",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "h4g3",
+        "san": "Kg3",
         "color": "black"
       },
       {
-        "uci": "e1e5",
-        "san": "Rxe5",
+        "uci": "a6a5",
+        "san": "Rxa5",
         "color": "white"
       },
       {
-        "uci": "g4d1",
-        "san": "Qxd1",
+        "uci": "e5e1",
+        "san": "Re1#",
         "color": "black"
-      },
-      {
-        "uci": "e5e8",
-        "san": "Rxe8+",
-        "color": "white"
-      },
-      {
-        "uci": "a8e8",
-        "san": "Rxe8",
-        "color": "black"
-      },
-      {
-        "uci": "c1d1",
-        "san": "Rxd1",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3e5",
-        "san": "Nxe5",
-        "color": "white"
+        "uci": "f1h1",
+        "san": "Rh1+",
+        "color": "black"
       },
       {
-        "uci": "g2d5",
-        "san": "Bxd5+",
-        "color": "white"
+        "uci": "h4g3",
+        "san": "Kg3",
+        "color": "black"
       },
       {
-        "uci": "e1e5",
-        "san": "Rxe5",
-        "color": "white"
-      },
-      {
-        "uci": "e5e8",
-        "san": "Rxe8+",
-        "color": "white"
-      },
-      {
-        "uci": "c1d1",
-        "san": "Rxd1",
-        "color": "white"
+        "uci": "e5e1",
+        "san": "Re1#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-28T13:41:37.781494+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-28T13:42:23.466717+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787924497781",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1542891914439958659,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rxd1",
-        "correct": true,
-        "timestamp": "2026-08-28T13:41:57.908557+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxe8",
-        "correct": true,
-        "timestamp": "2026-08-28T13:41:55.147941+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787924543466",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
