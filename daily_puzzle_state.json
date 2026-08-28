@@ -1,92 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-12-02",
-    "title": "Kemner - van Duin, Rotterdam 2009",
-    "fen": "2r3kr/5R2/6pq/1p2P3/3P4/p4QP1/1n4N1/4KR2 w - - 0 1",
-    "current_fen": "2r4r/5Q1k/6pq/1p2P3/3P4/p5P1/1n4N1/4K2R b - - 5 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3kr/5R2/6pq/1p2P3/3P4/p4QP1/1n4N1/4KR2 w - - 0 1\"]\r\n\r\n1. Rg7+ Qxg7 2. Qd5+ Kh7 3. Rh1+ Qh6 4. Qf7# \r\n*",
+    "url": "https://www.chess.com/daily/2020-11-04",
+    "title": "Overwhelming the Defenses",
+    "fen": "1k6/1p1r1rB1/p1p1pPp1/Q2n4/7R/7P/Pq3PP1/3R2K1 w - - 0 1",
+    "current_fen": "1k6/1p1r1rB1/p1p1pPp1/Q2n4/7R/7P/Pq3PP1/3R2K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1k6/1p1r1rB1/p1p1pPp1/Q2n4/7R/7P/Pq3PP1/3R2K1 w - - 0 1\"]\r\n\r\n1.Rh8+ Ka7 2.Qc5+ Qb6 3.Rxd5 Rxd5 4.Ra8+ Kxa8 5.Qxb6 *",
     "all_moves": [
       {
-        "uci": "f7g7",
-        "san": "Rg7+",
+        "uci": "h4h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "h6g7",
-        "san": "Qxg7",
+        "uci": "b8a7",
+        "san": "Ka7",
         "color": "black"
       },
       {
-        "uci": "f3d5",
-        "san": "Qd5+",
+        "uci": "a5c5",
+        "san": "Qc5+",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "b2b6",
+        "san": "Qb6",
         "color": "black"
       },
       {
-        "uci": "f1h1",
-        "san": "Rh1+",
+        "uci": "d1d5",
+        "san": "Rxd5",
         "color": "white"
       },
       {
-        "uci": "g7h6",
-        "san": "Qh6",
+        "uci": "d7d5",
+        "san": "Rxd5",
         "color": "black"
       },
       {
-        "uci": "d5f7",
-        "san": "Qf7#",
+        "uci": "h8a8",
+        "san": "Ra8+",
+        "color": "white"
+      },
+      {
+        "uci": "a7a8",
+        "san": "Kxa8",
+        "color": "black"
+      },
+      {
+        "uci": "c5b6",
+        "san": "Qxb6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f7g7",
-        "san": "Rg7+",
+        "uci": "h4h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "f3d5",
-        "san": "Qd5+",
+        "uci": "a5c5",
+        "san": "Qc5+",
         "color": "white"
       },
       {
-        "uci": "f1h1",
-        "san": "Rh1+",
+        "uci": "d1d5",
+        "san": "Rxd5",
         "color": "white"
       },
       {
-        "uci": "d5f7",
-        "san": "Qf7#",
+        "uci": "h8a8",
+        "san": "Ra8+",
+        "color": "white"
+      },
+      {
+        "uci": "c5b6",
+        "san": "Qxb6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-28T14:14:58.837433+00:00",
+    "player_move_count": 5,
+    "posted_at": "2026-08-28T14:15:33.467089+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787926498837",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542900307665887256,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qf7",
-        "correct": true,
-        "timestamp": "2026-08-28T14:15:28.401420+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787926533467",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
