@@ -1,62 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-02-03",
-    "title": "Does a Grandmaster React?",
-    "fen": "7r/1bq1ppk1/3R2pp/8/Bpn3PP/5P2/P1P2Q2/1KN3NR b - - 0 1",
-    "current_fen": "7r/1b2ppk1/3R2pp/8/Bp4PP/n1q2P2/PKP2Q2/2N3NR w - - 3 3",
-    "pgn": "[Event \"Chess.com Blitz\"]\r\n[White \"AGM2023\"]\r\n[Black \"GMHess (Ng8 removed)\"]\r\n[Result \"1-0\"]\r\n[FEN \"7r/1bq1ppk1/3R2pp/8/Bpn3PP/5P2/P1P2Q2/1KN3NR b - - 0 1\"]\r\n\r\n1... Na3+ 2. Kb2 Qc3# 1-0",
+    "url": "https://www.chess.com/daily/2023-09-07",
+    "title": "Reading, Shredding the Defense",
+    "fen": "8/kpp5/p4Q2/P1P5/KP5r/3R2p1/5q2/8 w - - 0 1",
+    "current_fen": "8/kpp5/p4Q2/P1P5/KP5r/3R2p1/5q2/8 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/kpp5/p4Q2/P1P5/KP5r/3R2p1/5q2/8 w - - 0 1\"]\r\n\r\n1. Qb6+ cxb6 2. axb6+ Kb8 3. Rd8# *",
     "all_moves": [
       {
-        "uci": "c4a3",
-        "san": "Na3+",
-        "color": "black"
-      },
-      {
-        "uci": "b1b2",
-        "san": "Kb2",
+        "uci": "f6b6",
+        "san": "Qb6+",
         "color": "white"
       },
       {
-        "uci": "c7c3",
-        "san": "Qc3#",
+        "uci": "c7b6",
+        "san": "cxb6",
         "color": "black"
+      },
+      {
+        "uci": "a5b6",
+        "san": "axb6+",
+        "color": "white"
+      },
+      {
+        "uci": "a7b8",
+        "san": "Kb8",
+        "color": "black"
+      },
+      {
+        "uci": "d3d8",
+        "san": "Rd8#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4a3",
-        "san": "Na3+",
-        "color": "black"
+        "uci": "f6b6",
+        "san": "Qb6+",
+        "color": "white"
       },
       {
-        "uci": "c7c3",
-        "san": "Qc3#",
-        "color": "black"
+        "uci": "a5b6",
+        "san": "axb6+",
+        "color": "white"
+      },
+      {
+        "uci": "d3d8",
+        "san": "Rd8#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-28T14:07:22.460569+00:00",
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-28T14:07:36.024061+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787926042460",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542898393167437906,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qc3",
-        "correct": true,
-        "timestamp": "2026-08-28T14:07:31.239868+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787926056024",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
