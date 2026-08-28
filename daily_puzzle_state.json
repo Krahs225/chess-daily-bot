@@ -1,62 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-03-27",
-    "title": "Kramnik - Aronian, Tal Memorial World Blitz Champi",
-    "fen": "r2qk2r/3bb1pp/5p2/1p1Q4/1pNP4/4P3/PB4PP/R4RK1 w kq - 0 1",
-    "current_fen": "r2qkr2/3Nb1pp/5p2/1p1Q4/1p1P4/4P3/PB4PP/R4RK1 b q - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qk2r/3bb1pp/5p2/1p1Q4/1pNP4/4P3/PB4PP/R4RK1 w kq - 0 1\"]\r\n\r\n1. Ne5 Rf8 2. Nxd7\r\n*",
+    "url": "https://www.chess.com/daily/2007-09-16",
+    "title": "Clever Little Mate",
+    "fen": "7r/4b2N/1pp1b2q/p2pNkp1/Pn1P4/2N5/1PP1RPP1/3R2K1 w - - 0 1",
+    "current_fen": "7r/4b2N/1pp1b2q/p2pNkp1/Pn1P4/2N5/1PP1RPP1/3R2K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"7r/4b2N/1pp1b2q/p2pNkp1/Pn1P4/2N5/1PP1RPP1/3R2K1 w - - 0 1\"]\r\n\r\n1. g4+ Kf4 2. Re4+ dxe4 3. Ne2# *",
     "all_moves": [
       {
-        "uci": "c4e5",
-        "san": "Ne5",
+        "uci": "g2g4",
+        "san": "g4+",
         "color": "white"
       },
       {
-        "uci": "h8f8",
-        "san": "Rf8",
+        "uci": "f5f4",
+        "san": "Kf4",
         "color": "black"
       },
       {
-        "uci": "e5d7",
-        "san": "Nxd7",
+        "uci": "e2e4",
+        "san": "Re4+",
+        "color": "white"
+      },
+      {
+        "uci": "d5e4",
+        "san": "dxe4",
+        "color": "black"
+      },
+      {
+        "uci": "c3e2",
+        "san": "Ne2#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4e5",
-        "san": "Ne5",
+        "uci": "g2g4",
+        "san": "g4+",
         "color": "white"
       },
       {
-        "uci": "e5d7",
-        "san": "Nxd7",
+        "uci": "e2e4",
+        "san": "Re4+",
+        "color": "white"
+      },
+      {
+        "uci": "c3e2",
+        "san": "Ne2#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-28T13:10:15.923438+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-08-28T13:12:52.482513+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787922615923",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542884021598429335,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nxd7",
-        "correct": true,
-        "timestamp": "2026-08-28T13:12:48.415585+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787922772482",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1542884678879543327,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
