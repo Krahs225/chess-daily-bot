@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-11-26",
     "title": "Sacrificial Fun",
     "fen": "6r1/pp2RNbk/2p3pp/5b2/1q1P1Q2/1P6/P4PPP/R5K1 w - - 0 1",
-    "current_fen": "6r1/pp2RNbk/2p3pp/5b2/1q1P1Q2/1P6/P4PPP/R5K1 w - - 0 1",
+    "current_fen": "6r1/pp2RN1k/2p3pb/5b2/1q1P4/1P6/P4PPP/R5K1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6r1/pp2RNbk/2p3pp/5b2/1q1P1Q2/1P6/P4PPP/R5K1 w - - 0 1\"]\r\n\r\n1. Qxh6+ Bxh6 2. Ng5+ Kh8 3. Rh7#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787922821987",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542884885616787457,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxh6",
+        "correct": true,
+        "timestamp": "2026-08-28T13:13:49.167908+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
