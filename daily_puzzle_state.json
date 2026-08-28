@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-11-16",
     "title": "Up, Down, Right, Left, Win!",
     "fen": "5r2/1pp3bk/p3Qqpp/P7/1P1P4/1BN3P1/2P4P/R3R1K1 b - - 0 1",
-    "current_fen": "5r2/1pp4k/p3Q1pp/P7/1P1b4/1BN1RqP1/2P4P/R5K1 b - - 1 4",
+    "current_fen": "5r2/1pp4k/p3Q1pp/P7/1P6/1BN1bqP1/2P4P/R5K1 w - - 0 5",
     "pgn": "[Result \"*\"]\r\n[FEN \"5r2/1pp3bk/p3Qqpp/P7/1P1P4/1BN3P1/2P4P/R3R1K1 b - - 0 1\"]\r\n\r\n1... Qf2+ 2. Kh1 Qf3+ 3. Kg1 Bxd4+ 4. Re3 Bxe3+ *",
     "all_moves": [
       {
@@ -72,9 +72,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787924224185",
-    "next_solution_index": 6,
-    "next_player_index": 3,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1542890767649873932,
     "attempted_users": {
       "601406103712170014": {
@@ -85,14 +85,14 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "Bxd4",
+        "move": "Bxe3",
         "correct": true,
-        "timestamp": "2026-08-28T13:37:17.109674+00:00"
+        "timestamp": "2026-08-28T13:37:22.237232+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "442597396195704832"
