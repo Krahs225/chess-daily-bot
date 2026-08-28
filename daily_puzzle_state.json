@@ -1,62 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-08-01",
-    "title": "The Principle of Loose Pieces",
-    "fen": "r1bqk2r/pp4b1/3p2p1/2p4p/2npP2P/3N1PPN/PP4B1/R2QK2R w - - 0 1",
-    "current_fen": "r1bq3r/pp2k1b1/3p2p1/2p4p/2QpP2P/3N1PPN/PP4B1/R3K2R b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqk2r/pp4b1/3p2p1/2p4p/2npP2P/3N1PPN/PP4B1/R2QK2R w - - 0 1\"]\r\n\r\n1. Qa4+ Ke7 2. Qxc4\r\n*",
+    "url": "https://www.chess.com/daily/2021-05-13",
+    "title": "Hanging Around",
+    "fen": "2r1rbk1/1p1n1p2/p2p2pp/7N/qP1BPQ2/Pb5P/5PP1/1B1RR1K1 b - - 1 1",
+    "current_fen": "2r1rbk1/1p1n1p2/p2p1Npp/8/qP1BPQ2/P6P/5PP1/1B1bR1K1 b - - 1 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2r1rbk1/1p1n1p2/p2p2pp/7N/qP1BPQ2/Pb5P/5PP1/1B1RR1K1 b - - 1 1\"]\r\n\r\n1...Bxd1 2.Nf6+ Nxf6 3.Qxf6 Re5 4.Bxe5 dxe5 *",
     "all_moves": [
       {
-        "uci": "d1a4",
-        "san": "Qa4+",
-        "color": "white"
-      },
-      {
-        "uci": "e8e7",
-        "san": "Ke7",
+        "uci": "b3d1",
+        "san": "Bxd1",
         "color": "black"
       },
       {
-        "uci": "a4c4",
-        "san": "Qxc4",
+        "uci": "h5f6",
+        "san": "Nf6+",
         "color": "white"
+      },
+      {
+        "uci": "d7f6",
+        "san": "Nxf6",
+        "color": "black"
+      },
+      {
+        "uci": "f4f6",
+        "san": "Qxf6",
+        "color": "white"
+      },
+      {
+        "uci": "e8e5",
+        "san": "Re5",
+        "color": "black"
+      },
+      {
+        "uci": "d4e5",
+        "san": "Bxe5",
+        "color": "white"
+      },
+      {
+        "uci": "d6e5",
+        "san": "dxe5",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1a4",
-        "san": "Qa4+",
-        "color": "white"
+        "uci": "b3d1",
+        "san": "Bxd1",
+        "color": "black"
       },
       {
-        "uci": "a4c4",
-        "san": "Qxc4",
-        "color": "white"
+        "uci": "d7f6",
+        "san": "Nxf6",
+        "color": "black"
+      },
+      {
+        "uci": "e8e5",
+        "san": "Re5",
+        "color": "black"
+      },
+      {
+        "uci": "d6e5",
+        "san": "dxe5",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-28T13:08:53.941746+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-28T13:09:06.334030+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787922533941",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542883677472825408,
+    "puzzle_id": "random_1787922546334",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1542883729393983519,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qxc4",
+        "move": "bxd1",
         "correct": true,
-        "timestamp": "2026-08-28T13:08:59.954932+00:00"
+        "timestamp": "2026-08-28T13:09:20.066963+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
