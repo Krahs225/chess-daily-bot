@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-07-20",
     "title": "Happy Intl. Chess Day! 🌍",
     "fen": "kr2r3/1pb3QR/1ppqN3/3n1P2/1P6/5B2/2P3P1/7K w - - 0 1",
-    "current_fen": "kr2r3/1pb3QR/1ppqN3/3n1P2/1P6/5B2/2P3P1/7K w - - 0 1",
+    "current_fen": "kr2r3/1pb4R/1ppqN3/3n1P2/1P6/5B2/2P3P1/Q6K b - - 1 1",
     "pgn": "[Result \"*\"]\n[FEN \"kr2r3/1pb3QR/1ppqN3/3n1P2/1P6/5B2/2P3P1/7K w - - 0 1\"]\n\n1. Qa1# *",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787923802573",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
     "message_id": 1542888999415455784,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Qa1",
+        "correct": true,
+        "timestamp": "2026-08-28T13:30:07.638809+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
