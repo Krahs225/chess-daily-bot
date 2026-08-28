@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-03-26",
     "title": "Queen Or King?",
     "fen": "8/2Q5/2nNp3/4k3/3q4/5R2/4K3/8 w - - 0 1",
-    "current_fen": "8/2Q5/2n1p3/1N6/3qk3/5R2/4K3/8 w - - 2 2",
+    "current_fen": "8/8/2n1p3/1N1k4/3q1Q2/5R2/4K3/8 w - - 4 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/2Q5/2nNp3/4k3/3q4/5R2/4K3/8 w - - 0 1\"]\r\n\r\n1. Nb5+ Ke4 2. Qf4+ Kd5 3. Qd6+ Kc4 4. Na3#\r\n*",
     "all_moves": [
       {
@@ -72,8 +72,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787923661293",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542888406663692399,
     "attempted_users": {
@@ -85,16 +85,18 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nb5",
-        "correct": false,
-        "timestamp": "2026-08-28T13:27:49.413506+00:00"
+        "move": "qf4",
+        "correct": true,
+        "timestamp": "2026-08-28T13:27:53.171849+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
