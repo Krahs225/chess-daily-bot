@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-06-23",
     "title": "Desperation Draw",
     "fen": "r5k1/P4ppp/8/8/p1p1P3/4KP2/2P3PP/5R2 w - - 0 1",
-    "current_fen": "r5k1/P4ppp/8/8/p1p1P3/4KP2/2P3PP/5R2 w - - 0 1",
+    "current_fen": "5rk1/P4ppp/8/8/p1p1P3/4KP2/2P3PP/1R6 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/P4ppp/8/8/p1p1P3/4KP2/2P3PP/5R2 w - - 0 1\"]\r\n\r\n1. Rb1 Rf8 2. Rb8\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787924253165",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542890889209184306,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rb1",
+        "correct": true,
+        "timestamp": "2026-08-28T13:37:37.370240+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Rb1",
+        "correct": false,
+        "timestamp": "2026-08-28T13:37:37.941469+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
