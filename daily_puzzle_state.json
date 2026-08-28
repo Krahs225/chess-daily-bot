@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-07-24",
     "title": "Step This Way...",
     "fen": "2k1r3/pp6/6qp/1N1p1p2/P2P4/3B3P/5PP1/1R4K1 w - - 0 1",
-    "current_fen": "4r3/ppk5/3N3p/3p1q2/P2P4/7P/5PP1/1R4K1 w - - 2 3",
+    "current_fen": "4r3/ppk5/7p/3p1N2/P2P4/7P/5PP1/1R4K1 b - - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"2k1r3/pp6/6qp/1N1p1p2/P2P4/3B3P/5PP1/1R4K1 w - - 0 1\"]\r\n\r\n1. Bxf5+ Qxf5 2. Nd6+ Kc7 3. Nxf5 *",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787923449223",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1542887517043425460,
     "attempted_users": {
       "601406103712170014": {
@@ -70,14 +70,14 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "Nd6",
+        "move": "Nxf5",
         "correct": true,
-        "timestamp": "2026-08-28T13:24:19.419147+00:00"
+        "timestamp": "2026-08-28T13:24:22.491720+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "442597396195704832"
