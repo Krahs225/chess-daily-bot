@@ -1,90 +1,102 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-03-21",
-    "title": "Queen Movement",
-    "fen": "6k1/4pn1p/q2pN1p1/3P4/2p1P3/6PP/8/2Q4K w - - 0 1",
-    "current_fen": "5Q2/4pk1p/q2pN1p1/3Pn3/2p1P3/6PP/8/7K b - - 5 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/4pn1p/q2pN1p1/3P4/2p1P3/6PP/8/2Q4K w - - 0 1\"]\r\n\r\n1. Qb2 Ne5 2. Qb8+ Kf7 3. Qf8#\r\n*",
+    "url": "https://www.chess.com/daily/2025-02-07",
+    "title": "Crafty Captures",
+    "fen": "r3r1k1/pp4pp/1bn2p2/3bp3/1B1p2qP/P2P1NP1/5PBK/2RQR3 w - - 0 1",
+    "current_fen": "r3r1k1/pp4pp/1bn2p2/3bp3/1B1p2qP/P2P1NP1/5PBK/2RQR3 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r3r1k1/pp4pp/1bn2p2/3bp3/1B1p2qP/P2P1NP1/5PBK/2RQR3 w - - 0 1\"]\r\n\r\n1. Nxe5 Nxe5 2. Bxd5+ Kh8 3. Rxe5 Qxd1 4. Rxe8+ Rxe8 5. Rxd1 *",
     "all_moves": [
       {
-        "uci": "c1b2",
-        "san": "Qb2",
+        "uci": "f3e5",
+        "san": "Nxe5",
         "color": "white"
       },
       {
-        "uci": "f7e5",
-        "san": "Ne5",
+        "uci": "c6e5",
+        "san": "Nxe5",
         "color": "black"
       },
       {
-        "uci": "b2b8",
-        "san": "Qb8+",
+        "uci": "g2d5",
+        "san": "Bxd5+",
         "color": "white"
       },
       {
-        "uci": "g8f7",
-        "san": "Kf7",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "b8f8",
-        "san": "Qf8#",
+        "uci": "e1e5",
+        "san": "Rxe5",
+        "color": "white"
+      },
+      {
+        "uci": "g4d1",
+        "san": "Qxd1",
+        "color": "black"
+      },
+      {
+        "uci": "e5e8",
+        "san": "Rxe8+",
+        "color": "white"
+      },
+      {
+        "uci": "a8e8",
+        "san": "Rxe8",
+        "color": "black"
+      },
+      {
+        "uci": "c1d1",
+        "san": "Rxd1",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1b2",
-        "san": "Qb2",
+        "uci": "f3e5",
+        "san": "Nxe5",
         "color": "white"
       },
       {
-        "uci": "b2b8",
-        "san": "Qb8+",
+        "uci": "g2d5",
+        "san": "Bxd5+",
         "color": "white"
       },
       {
-        "uci": "b8f8",
-        "san": "Qf8#",
+        "uci": "e1e5",
+        "san": "Rxe5",
+        "color": "white"
+      },
+      {
+        "uci": "e5e8",
+        "san": "Rxe8+",
+        "color": "white"
+      },
+      {
+        "uci": "c1d1",
+        "san": "Rxd1",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-28T13:41:01.734006+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-28T13:41:37.781494+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787924461734",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1542891764573274143,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qf8",
-        "correct": true,
-        "timestamp": "2026-08-28T13:41:24.142480+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qb8",
-        "correct": true,
-        "timestamp": "2026-08-28T13:41:20.607387+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787924497781",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
