@@ -1,105 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-03-26",
-    "title": "Queen Or King?",
-    "fen": "8/2Q5/2nNp3/4k3/3q4/5R2/4K3/8 w - - 0 1",
-    "current_fen": "8/8/2nQp3/8/2kq4/N4R2/4K3/8 b - - 7 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/2Q5/2nNp3/4k3/3q4/5R2/4K3/8 w - - 0 1\"]\r\n\r\n1. Nb5+ Ke4 2. Qf4+ Kd5 3. Qd6+ Kc4 4. Na3#\r\n*",
+    "url": "https://www.chess.com/daily/2018-05-06",
+    "title": "For The Kingdom",
+    "fen": "8/5Rp1/kpPb4/p6p/K1P5/1Q6/Pr1q3P/6R1 w - - 0 1",
+    "current_fen": "8/5Rp1/kpPb4/p6p/K1P5/1Q6/Pr1q3P/6R1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/5Rp1/kpPb4/p6p/K1P5/1Q6/Pr1q3P/6R1 w - - 0 1\"]\r\n\r\n1. Qb5+ Rxb5 2. cxb5#\r\n*",
     "all_moves": [
       {
-        "uci": "d6b5",
-        "san": "Nb5+",
+        "uci": "b3b5",
+        "san": "Qb5+",
         "color": "white"
       },
       {
-        "uci": "e5e4",
-        "san": "Ke4",
+        "uci": "b2b5",
+        "san": "Rxb5",
         "color": "black"
       },
       {
-        "uci": "c7f4",
-        "san": "Qf4+",
-        "color": "white"
-      },
-      {
-        "uci": "e4d5",
-        "san": "Kd5",
-        "color": "black"
-      },
-      {
-        "uci": "f4d6",
-        "san": "Qd6+",
-        "color": "white"
-      },
-      {
-        "uci": "d5c4",
-        "san": "Kc4",
-        "color": "black"
-      },
-      {
-        "uci": "b5a3",
-        "san": "Na3#",
+        "uci": "c4b5",
+        "san": "cxb5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6b5",
-        "san": "Nb5+",
+        "uci": "b3b5",
+        "san": "Qb5+",
         "color": "white"
       },
       {
-        "uci": "c7f4",
-        "san": "Qf4+",
-        "color": "white"
-      },
-      {
-        "uci": "f4d6",
-        "san": "Qd6+",
-        "color": "white"
-      },
-      {
-        "uci": "b5a3",
-        "san": "Na3#",
+        "uci": "c4b5",
+        "san": "cxb5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-28T13:27:41.293739+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-28T13:28:24.576960+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787923661293",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542888406663692399,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Nb5",
-        "correct": true,
-        "timestamp": "2026-08-28T13:27:48.987483+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "na3",
-        "correct": true,
-        "timestamp": "2026-08-28T13:28:05.873341+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787923704576",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
