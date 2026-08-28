@@ -1,74 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-07-12",
-    "title": "Stretching The Defense",
-    "fen": "rnbqkb1r/pp5p/2p3p1/4Pn2/4pB2/1B6/PPP2PPP/RN1Q1RK1 w kq - 0 1",
-    "current_fen": "rnbQ1b1r/pp3k1p/2p3p1/4Pn2/4pB2/8/PPP2PPP/RN3RK1 b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rnbqkb1r/pp5p/2p3p1/4Pn2/4pB2/1B6/PPP2PPP/RN1Q1RK1 w kq - 0 1\"]\r\n\r\n1. Bf7+ Kxf7 2. Qxd8\r\n*",
+    "url": "https://www.chess.com/daily/2022-12-16",
+    "title": "The Tactic is in the Details",
+    "fen": "1r3rk1/1q3nbp/3n4/pp1p1pBb/P2Pp3/1B5P/QP1NNPP1/2R1R2K b - - 0 1",
+    "current_fen": "1r3rk1/1q3nbp/3n4/pp1p1pBb/P2Pp3/1B5P/QP1NNPP1/2R1R2K b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1r3rk1/1q3nbp/3n4/pp1p1pBb/P2Pp3/1B5P/QP1NNPP1/2R1R2K b - - 0 1\"]\r\n\r\n1... Nxg5 2. Bxd5+ Bf7 3. Bxb7 Bxa2 *",
     "all_moves": [
       {
-        "uci": "b3f7",
-        "san": "Bf7+",
-        "color": "white"
-      },
-      {
-        "uci": "e8f7",
-        "san": "Kxf7",
+        "uci": "f7g5",
+        "san": "Nxg5",
         "color": "black"
       },
       {
-        "uci": "d1d8",
-        "san": "Qxd8",
+        "uci": "b3d5",
+        "san": "Bxd5+",
         "color": "white"
+      },
+      {
+        "uci": "h5f7",
+        "san": "Bf7",
+        "color": "black"
+      },
+      {
+        "uci": "d5b7",
+        "san": "Bxb7",
+        "color": "white"
+      },
+      {
+        "uci": "f7a2",
+        "san": "Bxa2",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b3f7",
-        "san": "Bf7+",
-        "color": "white"
+        "uci": "f7g5",
+        "san": "Nxg5",
+        "color": "black"
       },
       {
-        "uci": "d1d8",
-        "san": "Qxd8",
-        "color": "white"
+        "uci": "h5f7",
+        "san": "Bf7",
+        "color": "black"
+      },
+      {
+        "uci": "f7a2",
+        "san": "Bxa2",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-28T13:44:03.750692+00:00",
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-28T13:44:20.971853+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787924643750",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1542892527659651203,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Bf7",
-        "correct": true,
-        "timestamp": "2026-08-28T13:44:08.540121+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxd8",
-        "correct": true,
-        "timestamp": "2026-08-28T13:44:12.527205+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787924660971",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
