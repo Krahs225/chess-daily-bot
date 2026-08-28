@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-07-02",
     "title": "Back Rank Traps",
     "fen": "2r1k2r/p3pp2/3p1bp1/3P4/5P2/1Q6/PPq1P1RP/R1B1K3 b - - 0 1",
-    "current_fen": "2r1k2r/p3pp2/3p2p1/3P4/5P1b/1Q6/PP2P1RP/2R2K2 b - - 0 3",
+    "current_fen": "4k2r/p3pp2/3p2p1/3P4/5P1b/1Q6/PP2P1RP/2r2K2 w - - 0 4",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1k2r/p3pp2/3p1bp1/3P4/5P2/1Q6/PPq1P1RP/R1B1K3 b - - 0 1\"]\r\n\r\n1...Bh4+ 2. Kf1 Qxc1+ 3. Rxc1 Rxc1+\r\n*",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787923990619",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1542889787671842886,
     "attempted_users": {
       "442597396195704832": {
@@ -70,14 +70,14 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qxc1",
+        "move": "rxc1",
         "correct": true,
-        "timestamp": "2026-08-28T13:33:28.140908+00:00"
+        "timestamp": "2026-08-28T13:33:30.204022+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "601406103712170014"
