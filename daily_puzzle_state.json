@@ -1,76 +1,84 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-10-18",
-    "title": "Oll-Stohl, Manila 1992",
-    "fen": "4r3/1bk2p1r/p1pbp1p1/2npB1P1/N3P2P/PP6/1KP3B1/3R3R w - - 0 1",
-    "current_fen": "4r3/1b3p1r/p1p1p1p1/2npk1P1/N6P/PP6/1KP3B1/3R3R w - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r3/1bk2p1r/p1pbp1p1/2npB1P1/N3P2P/PP6/1KP3B1/3R3R w - - 0 1\"]\r\n\r\n1. Bxd6+ Kxd6 2. e5+ Kxe5 3. Nxc5\r\n*",
+    "url": "https://www.chess.com/daily/2013-04-11",
+    "title": "Mate in 4",
+    "fen": "3qr1kr/p4ppp/2p5/2B1R3/1n2PP2/3P3B/2n1KP1P/3Q2R1 w - - 0 1",
+    "current_fen": "3qr1kr/p4ppp/2p5/2B1R3/1n2PP2/3P3B/2n1KP1P/3Q2R1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3qr1kr/p4ppp/2p5/2B1R3/1n2PP2/3P3B/2n1KP1P/3Q2R1 w - - 0 1\"]\r\n\r\n1. Rxe8+ Qxe8 2. Rxg7+ Kxg7 3. Qg1+ Kh6 4. Qg5#\r\n*",
     "all_moves": [
       {
-        "uci": "e5d6",
-        "san": "Bxd6+",
+        "uci": "e5e8",
+        "san": "Rxe8+",
         "color": "white"
       },
       {
-        "uci": "c7d6",
-        "san": "Kxd6",
+        "uci": "d8e8",
+        "san": "Qxe8",
         "color": "black"
       },
       {
-        "uci": "e4e5",
-        "san": "e5+",
+        "uci": "g1g7",
+        "san": "Rxg7+",
         "color": "white"
       },
       {
-        "uci": "d6e5",
-        "san": "Kxe5",
+        "uci": "g8g7",
+        "san": "Kxg7",
         "color": "black"
       },
       {
-        "uci": "a4c5",
-        "san": "Nxc5",
+        "uci": "d1g1",
+        "san": "Qg1+",
+        "color": "white"
+      },
+      {
+        "uci": "g7h6",
+        "san": "Kh6",
+        "color": "black"
+      },
+      {
+        "uci": "g1g5",
+        "san": "Qg5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5d6",
-        "san": "Bxd6+",
+        "uci": "e5e8",
+        "san": "Rxe8+",
         "color": "white"
       },
       {
-        "uci": "e4e5",
-        "san": "e5+",
+        "uci": "g1g7",
+        "san": "Rxg7+",
         "color": "white"
       },
       {
-        "uci": "a4c5",
-        "san": "Nxc5",
+        "uci": "d1g1",
+        "san": "Qg1+",
+        "color": "white"
+      },
+      {
+        "uci": "g1g5",
+        "san": "Qg5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-28T22:23:15.797696+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-28T22:23:38.327787+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787955795797",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "puzzle_id": "random_1787955818327",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1543023187879665716,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "e5",
-        "correct": true,
-        "timestamp": "2026-08-28T22:23:32.429736+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
