@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-04-14",
     "title": "Step Up to the Fork",
     "fen": "4B3/1R3pk1/6p1/P1r2b2/7p/6P1/5P1P/6K1 b - - 2 36",
-    "current_fen": "4B3/1R3pk1/6p1/P1r2b2/7p/6P1/5P1P/6K1 b - - 2 36",
+    "current_fen": "4B3/1R3pk1/6p1/P7/4b2p/6PK/5P1P/2r5 b - - 6 38",
     "pgn": "[Result \"*\"]\r\n[FEN \"4B3/1R3pk1/6p1/P1r2b2/7p/6P1/5P1P/6K1 b - - 2 36\"]\r\n\r\n36... Rc1+ 37. Kg2 Be4+ 38. Kh3 Bxb7 *",
     "all_moves": [
       {
@@ -57,23 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787925682492",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1542896883352084544,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
         "move": "be4",
-        "correct": false,
-        "timestamp": "2026-08-28T14:01:36.127869+00:00"
+        "correct": true,
+        "timestamp": "2026-08-28T14:01:38.687624+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Rc1",
+        "correct": true,
+        "timestamp": "2026-08-28T14:01:36.129209+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
