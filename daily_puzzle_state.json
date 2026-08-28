@@ -1,32 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-11-26",
-    "title": "Dropping The Hammer",
-    "fen": "r1bqnr2/pp1pp1bp/4P1p1/n2Q4/6k1/2N1B3/PPP2PPP/R3K2R w KQ - 0 1",
-    "current_fen": "r1bqnr2/pp1pp1bp/4P1p1/n2Q4/6k1/2N1B3/PPP2PPP/R3K2R w KQ - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqnr2/pp1pp1bp/4P1p1/n2Q4/6k1/2N1B3/PPP2PPP/R3K2R w KQ - 0 1\"]\r\n\r\n1. Qg5#\r\n*",
+    "url": "https://www.chess.com/daily/2021-09-16",
+    "title": "Clockwork",
+    "fen": "r2qrbk1/1ppb1p1p/p1np1np1/4p1B1/B2PP3/2P2N1P/PP3PP1/RN1QR1K1 w - - 0 1",
+    "current_fen": "r2qrbk1/1ppb1p1p/p1np1np1/4p1B1/B2PP3/2P2N1P/PP3PP1/RN1QR1K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r2qrbk1/1ppb1p1p/p1np1np1/4p1B1/B2PP3/2P2N1P/PP3PP1/RN1QR1K1 w - - 0 1\"]\r\n\r\n1.Bxc6 Bxc6 2.dxe5 dxe5 3.Qxd8 Raxd8 4.Bxf6 *",
     "all_moves": [
       {
-        "uci": "d5g5",
-        "san": "Qg5#",
+        "uci": "a4c6",
+        "san": "Bxc6",
+        "color": "white"
+      },
+      {
+        "uci": "d7c6",
+        "san": "Bxc6",
+        "color": "black"
+      },
+      {
+        "uci": "d4e5",
+        "san": "dxe5",
+        "color": "white"
+      },
+      {
+        "uci": "d6e5",
+        "san": "dxe5",
+        "color": "black"
+      },
+      {
+        "uci": "d1d8",
+        "san": "Qxd8",
+        "color": "white"
+      },
+      {
+        "uci": "a8d8",
+        "san": "Raxd8",
+        "color": "black"
+      },
+      {
+        "uci": "g5f6",
+        "san": "Bxf6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5g5",
-        "san": "Qg5#",
+        "uci": "a4c6",
+        "san": "Bxc6",
+        "color": "white"
+      },
+      {
+        "uci": "d4e5",
+        "san": "dxe5",
+        "color": "white"
+      },
+      {
+        "uci": "d1d8",
+        "san": "Qxd8",
+        "color": "white"
+      },
+      {
+        "uci": "g5f6",
+        "san": "Bxf6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-28T13:51:05.668523+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-08-28T13:51:12.806061+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787925065668",
+    "puzzle_id": "random_1787925072806",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
