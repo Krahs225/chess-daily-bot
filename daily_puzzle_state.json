@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-08-07",
     "title": "Challenging the King Blockade",
     "fen": "2b1k2r/pp2P3/2p3RQ/8/5P2/7P/Pq1r2PK/4R3 w - - 0 41",
-    "current_fen": "2b1k2r/pp2P3/2p3RQ/8/5P2/7P/Pq1r2PK/4R3 w - - 0 41",
+    "current_fen": "2b1k2r/pp2P3/2p3R1/7Q/5P2/7P/Pq4rK/4R3 w - - 0 42",
     "pgn": "[Event \"San Remo\"]\r\n[Site \"San Remo ITA\"]\r\n[Date \"1930.01.25\"]\r\n[Round \"8\"]\r\n[White \"Geza Maroczy\"]\r\n[Black \"Massimiliano Romi\"]\r\n[Result \"1-0\"]\r\n[ECO \"D45\"]\r\n[SetUp \"1\"]\r\n[FEN \"2b1k2r/pp2P3/2p3RQ/8/5P2/7P/Pq1r2PK/4R3 w - - 0 41\"]\r\n[PlyCount \"5\"]\r\n[EventDate \"1930.01.16\"]\r\n\r\n41. Qh5 Rxg2+ 42. Rxg2+ Rxh5 43. Rxb2 1-0",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787922014566",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542881500041711757,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Rg8",
-        "correct": false,
-        "timestamp": "2026-08-28T13:00:30.977547+00:00"
+        "move": "Qh5",
+        "correct": true,
+        "timestamp": "2026-08-28T13:00:50.443286+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
