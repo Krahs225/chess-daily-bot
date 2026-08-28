@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-12-28",
     "title": "Classic Uncastled Tactic",
     "fen": "r3k1nr/1pp2pp1/p1pb1q2/7p/4P3/2N3QP/PP3PP1/R1B2RK1 w kq - 0 1",
-    "current_fen": "r3k1nr/1pp2pp1/p1pb1q2/7p/4P3/2N3QP/PP3PP1/R1B2RK1 w kq - 0 1",
+    "current_fen": "r3k1nr/1pp2pp1/p1pb4/4q2p/8/2N3QP/PP3PP1/R1B2RK1 w kq - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3k1nr/1pp2pp1/p1pb1q2/7p/4P3/2N3QP/PP3PP1/R1B2RK1 w kq - 0 1\"]\r\n\r\n1. e5 Qxe5 2. Qxe5+ Bxe5 3. Re1 f6 4. f4\r\n*",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787922442185",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542883292821323867,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "e5",
+        "correct": true,
+        "timestamp": "2026-08-28T13:07:26.045839+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
