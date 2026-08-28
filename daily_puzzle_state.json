@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-12-15",
-    "title": "Leaping into the Action",
-    "fen": "4r2k/bp2r1p1/6Qp/p2PN3/Pn5P/1PN2q1n/1B4RP/2R2B1K b - - 0 1",
-    "current_fen": "4r2k/bp2r1p1/6Qp/p2PN3/Pn5P/1PN5/1B3n1P/2R2qRK w - - 2 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"4r2k/bp2r1p1/6Qp/p2PN3/Pn5P/1PN2q1n/1B4RP/2R2B1K b - - 0 1\"]\r\n\r\n1... Nf2+ 2. Kg1 Nd1+ 3. Kh1 Qxf1+ 4. Rg1 Nf2# *",
+    "url": "https://www.chess.com/daily/2022-08-07",
+    "title": "Challenging the King Blockade",
+    "fen": "2b1k2r/pp2P3/2p3RQ/8/5P2/7P/Pq1r2PK/4R3 w - - 0 41",
+    "current_fen": "2b1k2r/pp2P3/2p3RQ/8/5P2/7P/Pq1r2PK/4R3 w - - 0 41",
+    "pgn": "[Event \"San Remo\"]\r\n[Site \"San Remo ITA\"]\r\n[Date \"1930.01.25\"]\r\n[Round \"8\"]\r\n[White \"Geza Maroczy\"]\r\n[Black \"Massimiliano Romi\"]\r\n[Result \"1-0\"]\r\n[ECO \"D45\"]\r\n[SetUp \"1\"]\r\n[FEN \"2b1k2r/pp2P3/2p3RQ/8/5P2/7P/Pq1r2PK/4R3 w - - 0 41\"]\r\n[PlyCount \"5\"]\r\n[EventDate \"1930.01.16\"]\r\n\r\n41. Qh5 Rxg2+ 42. Rxg2+ Rxh5 43. Rxb2 1-0",
     "all_moves": [
       {
-        "uci": "h3f2",
-        "san": "Nf2+",
-        "color": "black"
-      },
-      {
-        "uci": "h1g1",
-        "san": "Kg1",
+        "uci": "h6h5",
+        "san": "Qh5",
         "color": "white"
       },
       {
-        "uci": "f2d1",
-        "san": "Nd1+",
+        "uci": "d2g2",
+        "san": "Rxg2+",
         "color": "black"
       },
       {
-        "uci": "g1h1",
-        "san": "Kh1",
+        "uci": "g6g2",
+        "san": "Rxg2+",
         "color": "white"
       },
       {
-        "uci": "f3f1",
-        "san": "Qxf1+",
+        "uci": "h8h5",
+        "san": "Rxh5",
         "color": "black"
       },
       {
-        "uci": "g2g1",
-        "san": "Rg1",
+        "uci": "g2b2",
+        "san": "Rxb2",
         "color": "white"
-      },
-      {
-        "uci": "d1f2",
-        "san": "Nf2#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h3f2",
-        "san": "Nf2+",
-        "color": "black"
+        "uci": "h6h5",
+        "san": "Qh5",
+        "color": "white"
       },
       {
-        "uci": "f2d1",
-        "san": "Nd1+",
-        "color": "black"
+        "uci": "g6g2",
+        "san": "Rxg2+",
+        "color": "white"
       },
       {
-        "uci": "f3f1",
-        "san": "Qxf1+",
-        "color": "black"
-      },
-      {
-        "uci": "d1f2",
-        "san": "Nf2#",
-        "color": "black"
+        "uci": "g2b2",
+        "san": "Rxb2",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-28T12:59:31.231609+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-28T13:00:14.566929+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787921971231",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542881318075895848,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Nf2",
-        "correct": true,
-        "timestamp": "2026-08-28T13:00:01.193165+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787922014566",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
