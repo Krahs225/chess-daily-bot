@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-08-21",
     "title": "Pigs on the Loose",
     "fen": "7k/1ppn3p/3p4/3PpQ2/p1P1P3/P3P3/1PK2Nr1/r7 b - - 0 1",
-    "current_fen": "7k/1ppn3p/3p4/3PpQ2/p1P1P3/P3P3/1PK2Nr1/r7 b - - 0 1",
+    "current_fen": "7k/1ppQ3p/3p4/3Pp3/p1P1P3/P3P3/1PK2Nr1/5r2 b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"7k/1ppn3p/3p4/3PpQ2/p1P1P3/P3P3/1PK2Nr1/r7 b - - 0 1\"]\r\n\r\n1...Rf1 2.Qxd7 Rfxf2+ 3.Kc3 Rc2+ 4.Kb4 Rxb2+ 5.Kxa4 Rg8 *",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787925614885",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1542896601435996260,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rf1",
+        "correct": true,
+        "timestamp": "2026-08-28T14:00:27.751199+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
