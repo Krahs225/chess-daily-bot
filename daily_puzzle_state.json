@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-10-05",
     "title": "Mate in 2",
     "fen": "1rbq3k/R3r2p/4nNpQ/5p2/1p6/6PP/1Pp3BK/8 w - - 0 1",
-    "current_fen": "1rbq3k/R3r2p/4nNpQ/5p2/1p6/6PP/1Pp3BK/8 w - - 0 1",
+    "current_fen": "1rbq3k/R6r/4nNp1/5p2/1p6/6PP/1Pp3BK/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1rbq3k/R3r2p/4nNpQ/5p2/1p6/6PP/1Pp3BK/8 w - - 0 1\"]\r\n\r\n1. Qxh7+ Rxh7 2. Rxh7#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787925380848",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1542895618907967528,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxh7",
+        "correct": true,
+        "timestamp": "2026-08-28T13:56:29.416445+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
