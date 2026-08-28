@@ -1,98 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2012-08-22",
-    "title": "Sandrin-Kramer, Omaha 1949",
-    "fen": "5nk1/pb4r1/2qb2Pp/1p2p3/1Pp5/P2B2R1/1B3QPP/5RK1 w - - 0 1",
-    "current_fen": "5Rrk/pb4P1/2q4p/1p2p3/1Pp5/P2B2R1/1B4PP/6K1 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5nk1/pb4r1/2qb2Pp/1p2p3/1Pp5/P2B2R1/1B3QPP/5RK1 w - - 0 1\"]\r\n\r\n1. Qf7+ Kh8 2. Qxf8+ Bxf8 3. Rxf8+ Rg8 4. g7#\r\n*",
+    "url": "https://www.chess.com/daily/2011-01-03",
+    "title": "Loose Security",
+    "fen": "6k1/2p2r2/1p4q1/p2P4/2P5/1P2Q1P1/P2R4/6K1 b - - 0 1",
+    "current_fen": "6k1/2p2r2/1p4q1/p2P4/2P5/1P2Q1P1/P2R4/6K1 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/2p2r2/1p4q1/p2P4/2P5/1P2Q1P1/P2R4/6K1 b - - 0 1\"]\r\n\r\n1...Qb1+ 2. Kh2 Rh7+\r\n*",
     "all_moves": [
       {
-        "uci": "f2f7",
-        "san": "Qf7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "g6b1",
+        "san": "Qb1+",
         "color": "black"
       },
       {
-        "uci": "f7f8",
-        "san": "Qxf8+",
+        "uci": "g1h2",
+        "san": "Kh2",
         "color": "white"
       },
       {
-        "uci": "d6f8",
-        "san": "Bxf8",
+        "uci": "f7h7",
+        "san": "Rh7+",
         "color": "black"
-      },
-      {
-        "uci": "f1f8",
-        "san": "Rxf8+",
-        "color": "white"
-      },
-      {
-        "uci": "g7g8",
-        "san": "Rg8",
-        "color": "black"
-      },
-      {
-        "uci": "g6g7",
-        "san": "g7#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f2f7",
-        "san": "Qf7+",
-        "color": "white"
+        "uci": "g6b1",
+        "san": "Qb1+",
+        "color": "black"
       },
       {
-        "uci": "f7f8",
-        "san": "Qxf8+",
-        "color": "white"
-      },
-      {
-        "uci": "f1f8",
-        "san": "Rxf8+",
-        "color": "white"
-      },
-      {
-        "uci": "g6g7",
-        "san": "g7#",
-        "color": "white"
+        "uci": "f7h7",
+        "san": "Rh7+",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-28T13:15:12.340490+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-28T13:16:08.003122+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787922912340",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1542885264769159270,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "G7",
-        "correct": true,
-        "timestamp": "2026-08-28T13:15:40.518889+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxf8",
-        "correct": false,
-        "timestamp": "2026-08-28T13:15:40.517544+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787922968003",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
