@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-02-13",
     "title": "Mate in 3",
     "fen": "r1b1qrk1/ppp1nNp1/2np3p/2b1p2Q/2B1P3/2N4P/PPPP1PP1/R1B1K2R w KQ - 0 1",
-    "current_fen": "r1b1qrk1/ppp1nNp1/2np4/2b1p2Q/2B1P3/2N4P/PPPP1PP1/R1B1K2R w KQ - 3 3",
+    "current_fen": "r1b1qrkQ/ppp1nNp1/2np4/2b1p3/2B1P3/2N4P/PPPP1PP1/R1B1K2R b KQ - 4 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1qrk1/ppp1nNp1/2np3p/2b1p2Q/2B1P3/2N4P/PPPP1PP1/R1B1K2R w KQ - 0 1\"]\r\n\r\n1. Nxh6+ Kh7 2. Nf7+ Kg8 3. Qh8#\r\n*",
     "all_moves": [
       {
@@ -57,21 +57,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787926076668",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1542898537141112952,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nf7",
+        "move": "qh8",
         "correct": true,
-        "timestamp": "2026-08-28T14:08:07.059927+00:00"
+        "timestamp": "2026-08-28T14:08:10.603584+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
