@@ -1,143 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-04-16",
-    "title": "Dueling Major Pieces",
-    "fen": "3r4/RQ6/4qpk1/6p1/P3p2p/1P5P/5PP1/6K1 b - - 1 1",
-    "current_fen": "8/RQ6/5pk1/6p1/P3p3/1P4pP/5q2/5K2 w - - 0 8",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3r4/RQ6/4qpk1/6p1/P3p2p/1P5P/5PP1/6K1 b - - 1 1\"]\r\n\r\n1...Rd1+ 2.Kh2 Qd6+ 3.g3 hxg3+ 4.Kg2 Rg1+ 5.Kxg1 Qd1+ 6.Kg2 Qf3+ 7.Kf1 \r\nQxf2# *",
+    "url": "https://www.chess.com/daily/2010-10-05",
+    "title": "Mate in 2",
+    "fen": "1rbq3k/R3r2p/4nNpQ/5p2/1p6/6PP/1Pp3BK/8 w - - 0 1",
+    "current_fen": "1rbq3k/R3r2p/4nNpQ/5p2/1p6/6PP/1Pp3BK/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1rbq3k/R3r2p/4nNpQ/5p2/1p6/6PP/1Pp3BK/8 w - - 0 1\"]\r\n\r\n1. Qxh7+ Rxh7 2. Rxh7#\r\n*",
     "all_moves": [
       {
-        "uci": "d8d1",
-        "san": "Rd1+",
-        "color": "black"
-      },
-      {
-        "uci": "g1h2",
-        "san": "Kh2",
+        "uci": "h6h7",
+        "san": "Qxh7+",
         "color": "white"
       },
       {
-        "uci": "e6d6",
-        "san": "Qd6+",
+        "uci": "e7h7",
+        "san": "Rxh7",
         "color": "black"
       },
       {
-        "uci": "g2g3",
-        "san": "g3",
+        "uci": "a7h7",
+        "san": "Rxh7#",
         "color": "white"
-      },
-      {
-        "uci": "h4g3",
-        "san": "hxg3+",
-        "color": "black"
-      },
-      {
-        "uci": "h2g2",
-        "san": "Kg2",
-        "color": "white"
-      },
-      {
-        "uci": "d1g1",
-        "san": "Rg1+",
-        "color": "black"
-      },
-      {
-        "uci": "g2g1",
-        "san": "Kxg1",
-        "color": "white"
-      },
-      {
-        "uci": "d6d1",
-        "san": "Qd1+",
-        "color": "black"
-      },
-      {
-        "uci": "g1g2",
-        "san": "Kg2",
-        "color": "white"
-      },
-      {
-        "uci": "d1f3",
-        "san": "Qf3+",
-        "color": "black"
-      },
-      {
-        "uci": "g2f1",
-        "san": "Kf1",
-        "color": "white"
-      },
-      {
-        "uci": "f3f2",
-        "san": "Qxf2#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d8d1",
-        "san": "Rd1+",
-        "color": "black"
+        "uci": "h6h7",
+        "san": "Qxh7+",
+        "color": "white"
       },
       {
-        "uci": "e6d6",
-        "san": "Qd6+",
-        "color": "black"
-      },
-      {
-        "uci": "h4g3",
-        "san": "hxg3+",
-        "color": "black"
-      },
-      {
-        "uci": "d1g1",
-        "san": "Rg1+",
-        "color": "black"
-      },
-      {
-        "uci": "d6d1",
-        "san": "Qd1+",
-        "color": "black"
-      },
-      {
-        "uci": "d1f3",
-        "san": "Qf3+",
-        "color": "black"
-      },
-      {
-        "uci": "f3f2",
-        "san": "Qxf2#",
-        "color": "black"
+        "uci": "a7h7",
+        "san": "Rxh7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 7,
-    "posted_at": "2026-08-28T13:55:42.158149+00:00",
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-28T13:56:20.848827+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787925342158",
-    "next_solution_index": 13,
-    "next_player_index": 7,
-    "solved": true,
-    "message_id": 1542895456286285834,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxf2",
-        "correct": true,
-        "timestamp": "2026-08-28T13:56:15.288373+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qd2",
-        "correct": false,
-        "timestamp": "2026-08-28T13:56:01.969526+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787925380848",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
