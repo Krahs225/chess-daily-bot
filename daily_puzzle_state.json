@@ -1,120 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-05-25",
-    "title": "Discovering Daily Puzzle Nirvana",
-    "fen": "3r4/pQp2pkp/8/2bPPqp1/4nP2/3B4/R5PP/4R2K b - - 0 1",
-    "current_fen": "7r/p1p2pk1/6p1/2bPP3/1Q3Pp1/6P1/R5P1/4R2K w - - 2 6",
-    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"JohanVA\"]\r\n[Result \"0-1\"]\r\n[FEN \"3r4/pQp2pkp/8/2bPPqp1/4nP2/3B4/R5PP/4R2K b - - 0 1\"]\r\n\r\n1... Ng3+ 2. hxg3 Qg6 3. Bf5 g4 4. Bxg6 hxg6 5. Qb4 Rh8# 0-1",
+    "url": "https://www.chess.com/daily/2024-07-18",
+    "title": "Bye Bye Birdie",
+    "fen": "3R1nk1/5rp1/4Q3/4B3/3pqP2/8/6P1/6K1 b - - 0 41",
+    "current_fen": "3R1nk1/5rp1/4Q3/4B3/3pqP2/8/6P1/6K1 b - - 0 41",
+    "pgn": "[Event \"Match\"]\r\n[Site \"New Castle on Tyne (England)\"]\r\n[Date \"1892.??.??\"]\r\n[White \"Henry E Bird\"]\r\n[Black \"Emanuel Lasker\"]\r\n[Result \"0-1\"]\r\n[FEN \"3R1nk1/5rp1/4Q3/4B3/3pqP2/8/6P1/6K1 b - - 0 41\"]\r\n\r\n41... Qe1+ 42. Kh2 Qh4+ 43. Kg1 Qxd8 0-1",
     "all_moves": [
       {
-        "uci": "e4g3",
-        "san": "Ng3+",
+        "uci": "e4e1",
+        "san": "Qe1+",
         "color": "black"
       },
       {
-        "uci": "h2g3",
-        "san": "hxg3",
+        "uci": "g1h2",
+        "san": "Kh2",
         "color": "white"
       },
       {
-        "uci": "f5g6",
-        "san": "Qg6",
+        "uci": "e1h4",
+        "san": "Qh4+",
         "color": "black"
       },
       {
-        "uci": "d3f5",
-        "san": "Bf5",
+        "uci": "h2g1",
+        "san": "Kg1",
         "color": "white"
       },
       {
-        "uci": "g5g4",
-        "san": "g4",
-        "color": "black"
-      },
-      {
-        "uci": "f5g6",
-        "san": "Bxg6",
-        "color": "white"
-      },
-      {
-        "uci": "h7g6",
-        "san": "hxg6",
-        "color": "black"
-      },
-      {
-        "uci": "b7b4",
-        "san": "Qb4",
-        "color": "white"
-      },
-      {
-        "uci": "d8h8",
-        "san": "Rh8#",
+        "uci": "h4d8",
+        "san": "Qxd8",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4g3",
-        "san": "Ng3+",
+        "uci": "e4e1",
+        "san": "Qe1+",
         "color": "black"
       },
       {
-        "uci": "f5g6",
-        "san": "Qg6",
+        "uci": "e1h4",
+        "san": "Qh4+",
         "color": "black"
       },
       {
-        "uci": "g5g4",
-        "san": "g4",
-        "color": "black"
-      },
-      {
-        "uci": "h7g6",
-        "san": "hxg6",
-        "color": "black"
-      },
-      {
-        "uci": "d8h8",
-        "san": "Rh8#",
+        "uci": "h4d8",
+        "san": "Qxd8",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 5,
-    "posted_at": "2026-08-29T09:23:06.883600+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T09:24:01.267414+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787995386883",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1543189244942491699,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rh8",
-        "correct": true,
-        "timestamp": "2026-08-29T09:23:40.069655+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "hxg6",
-        "correct": true,
-        "timestamp": "2026-08-29T09:23:37.218900+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787995441267",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
