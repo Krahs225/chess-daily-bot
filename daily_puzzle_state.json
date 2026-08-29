@@ -1,165 +1,117 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-04-07",
-    "title": "Alexei Seleznev, Shakhmatny vestnik, 1914",
-    "fen": "8/6p1/8/K6P/7P/1k6/8/8 w - - 0 1",
-    "current_fen": "8/8/6Kp/7P/7k/8/8/8 b - - 2 8",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/6p1/8/K6P/7P/1k6/8/8 w - - 0 1\"]\r\n\r\n1. Kb5 Kc3 2. Kc5 Kd3 3. Kd5 Ke3 4. Ke5 Kf3 5. Kf5 Kg3 6. h6 gxh6 7. h5 Kh4 8. Kg6\r\n*",
+    "url": "https://www.chess.com/daily/2007-05-17",
+    "title": "The Windmill Effect",
+    "fen": "r2nk1r1/pb3q1p/4p3/3p2pQ/8/BP6/PP3PPP/2R1R1K1 w q - 0 1",
+    "current_fen": "r2nk1r1/pb3q1p/4p3/3p2pQ/8/BP6/PP3PPP/2R1R1K1 w q - 0 1",
+    "pgn": "[FEN \"r2nk1r1/pb3q1p/4p3/3p2pQ/8/BP6/PP3PPP/2R1R1K1 w q - 0 1\"]\r\n[PlyCount \"11\"]\r\n\r\n1. Rc7 1... Qxh5 2. Re7+ Kf8 3. Rxb7+ Ke8 4. Re7+ Kf8 5. Rxh7+ Ke8 6. Rxh5 *",
     "all_moves": [
       {
-        "uci": "a5b5",
-        "san": "Kb5",
+        "uci": "c1c7",
+        "san": "Rc7",
         "color": "white"
       },
       {
-        "uci": "b3c3",
-        "san": "Kc3",
+        "uci": "f7h5",
+        "san": "Qxh5",
         "color": "black"
       },
       {
-        "uci": "b5c5",
-        "san": "Kc5",
+        "uci": "c7e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "c3d3",
-        "san": "Kd3",
+        "uci": "e8f8",
+        "san": "Kf8",
         "color": "black"
       },
       {
-        "uci": "c5d5",
-        "san": "Kd5",
+        "uci": "e7b7",
+        "san": "Rxb7+",
         "color": "white"
       },
       {
-        "uci": "d3e3",
-        "san": "Ke3",
+        "uci": "f8e8",
+        "san": "Ke8",
         "color": "black"
       },
       {
-        "uci": "d5e5",
-        "san": "Ke5",
+        "uci": "b7e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "e3f3",
-        "san": "Kf3",
+        "uci": "e8f8",
+        "san": "Kf8",
         "color": "black"
       },
       {
-        "uci": "e5f5",
-        "san": "Kf5",
+        "uci": "e7h7",
+        "san": "Rxh7+",
         "color": "white"
       },
       {
-        "uci": "f3g3",
-        "san": "Kg3",
+        "uci": "f8e8",
+        "san": "Ke8",
         "color": "black"
       },
       {
-        "uci": "h5h6",
-        "san": "h6",
-        "color": "white"
-      },
-      {
-        "uci": "g7h6",
-        "san": "gxh6",
-        "color": "black"
-      },
-      {
-        "uci": "h4h5",
-        "san": "h5",
-        "color": "white"
-      },
-      {
-        "uci": "g3h4",
-        "san": "Kh4",
-        "color": "black"
-      },
-      {
-        "uci": "f5g6",
-        "san": "Kg6",
+        "uci": "h7h5",
+        "san": "Rxh5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a5b5",
-        "san": "Kb5",
+        "uci": "c1c7",
+        "san": "Rc7",
         "color": "white"
       },
       {
-        "uci": "b5c5",
-        "san": "Kc5",
+        "uci": "c7e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "c5d5",
-        "san": "Kd5",
+        "uci": "e7b7",
+        "san": "Rxb7+",
         "color": "white"
       },
       {
-        "uci": "d5e5",
-        "san": "Ke5",
+        "uci": "b7e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "e5f5",
-        "san": "Kf5",
+        "uci": "e7h7",
+        "san": "Rxh7+",
         "color": "white"
       },
       {
-        "uci": "h5h6",
-        "san": "h6",
-        "color": "white"
-      },
-      {
-        "uci": "h4h5",
-        "san": "h5",
-        "color": "white"
-      },
-      {
-        "uci": "f5g6",
-        "san": "Kg6",
+        "uci": "h7h5",
+        "san": "Rxh5",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 8,
-    "posted_at": "2026-08-29T08:55:49.798899+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-29T08:56:37.598963+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787993749798",
-    "next_solution_index": 15,
-    "next_player_index": 8,
-    "solved": true,
-    "message_id": 1543182378485153833,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "h6",
-        "correct": true,
-        "timestamp": "2026-08-29T08:56:10.942254+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Kg6",
-        "correct": true,
-        "timestamp": "2026-08-29T08:56:22.829977+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1787993797598",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
