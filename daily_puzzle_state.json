@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-02-18",
     "title": "Missed Opportunity",
     "fen": "6k1/4r1b1/4p1P1/qp6/8/P4Q2/1PP5/1K1R4 w - - 0 31",
-    "current_fen": "6k1/4r1b1/4p1P1/qp6/8/P4Q2/1PP5/1K1R4 w - - 0 31",
+    "current_fen": "6k1/2q1r1b1/4p1P1/1p6/1P6/P4Q2/2P5/1K1R4 w - - 1 32",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/4r1b1/4p1P1/qp6/8/P4Q2/1PP5/1K1R4 w - - 0 31\"]\r\n\r\n31. b4 Qc7 32. Qa8+ Bf8 33. Rf1\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787991986502",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543174982388023377,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "b7",
-        "correct": false,
-        "timestamp": "2026-08-29T08:26:27.098731+00:00"
+        "move": "b4",
+        "correct": true,
+        "timestamp": "2026-08-29T08:28:17.718498+00:00"
       },
       "1403636751695740971": {
         "name": "WetisJas",
@@ -75,8 +75,8 @@
         "timestamp": "2026-08-29T08:28:00.447366+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
