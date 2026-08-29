@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-09-20",
     "title": "Mindful Piece Placement",
     "fen": "r2r4/pppb3Q/2nk1q2/3p1B2/1P6/P3PPR1/3PKP1P/8 w - - 0 1",
-    "current_fen": "r2r4/pppb3Q/2nk1q2/3p1B2/1P6/P3PPR1/3PKP1P/8 w - - 0 1",
+    "current_fen": "r2r4/pppb3Q/2nk1qR1/3p1B2/1P6/P3PP2/3PKP1P/8 b - - 1 1",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2r4/pppb3Q/2nk1q2/3p1B2/1P6/P3PPR1/3PKP1P/8 w - - 0 1\"]\r\n\r\n1. Rg6\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787997139190",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1543196594566996059,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rg6",
+        "correct": true,
+        "timestamp": "2026-08-29T09:52:23.359189+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
