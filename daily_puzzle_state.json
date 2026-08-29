@@ -1,92 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-03-31",
-    "title": "Promotion Commotion",
-    "fen": "5k2/8/3P1K2/7b/2B5/8/8/8 w - - 0 1",
-    "current_fen": "4bk2/4BB2/5K2/8/8/8/8/8 b - - 4 4",
-    "pgn": "[Event \"Leipziger Tageblatt\"]\r\n[Date \"1921.??.??\"]\r\n[White \"Dehler, O.\"]\r\n[Black \"Study\"]\r\n[Result \"1-0\"]\r\n[FEN \"5k2/8/3P1K2/7b/2B5/8/8/8 w - - 0 1\"]\r\n\r\n1. d7 Be8 2. d8=B Ba4 3. Bf7 Be8 4. Be7# 1-0",
+    "url": "https://www.chess.com/daily/2025-02-21",
+    "title": "A Subtle Opening",
+    "fen": "1r5k/3b1p2/4p2p/p3P2P/3pNnQ1/1P6/q1PN2P1/2KRR3 b - - 0 1",
+    "current_fen": "1r5k/3b1p2/4p2p/p3P2P/3pNnQ1/1P6/q1PN2P1/2KRR3 b - - 0 1",
+    "pgn": "[Result \"0-1\"]\r\n[FEN \"1r5k/3b1p2/4p2p/p3P2P/3pNnQ1/1P6/q1PN2P1/2KRR3 b - - 0 1\"]\r\n\r\n1... d3 2. Qxf4 Qxc2# 0-1",
     "all_moves": [
       {
-        "uci": "d6d7",
-        "san": "d7",
-        "color": "white"
-      },
-      {
-        "uci": "h5e8",
-        "san": "Be8",
+        "uci": "d4d3",
+        "san": "d3",
         "color": "black"
       },
       {
-        "uci": "d7d8b",
-        "san": "d8=B",
+        "uci": "g4f4",
+        "san": "Qxf4",
         "color": "white"
       },
       {
-        "uci": "e8a4",
-        "san": "Ba4",
+        "uci": "a2c2",
+        "san": "Qxc2#",
         "color": "black"
-      },
-      {
-        "uci": "c4f7",
-        "san": "Bf7",
-        "color": "white"
-      },
-      {
-        "uci": "a4e8",
-        "san": "Be8",
-        "color": "black"
-      },
-      {
-        "uci": "d8e7",
-        "san": "Be7#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6d7",
-        "san": "d7",
-        "color": "white"
+        "uci": "d4d3",
+        "san": "d3",
+        "color": "black"
       },
       {
-        "uci": "d7d8b",
-        "san": "d8=B",
-        "color": "white"
-      },
-      {
-        "uci": "c4f7",
-        "san": "Bf7",
-        "color": "white"
-      },
-      {
-        "uci": "d8e7",
-        "san": "Be7#",
-        "color": "white"
+        "uci": "a2c2",
+        "san": "Qxc2#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-29T10:26:03.733154+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-29T10:26:39.264439+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787999163733",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1543205087105646592,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "be7",
-        "correct": true,
-        "timestamp": "2026-08-29T10:26:33.288941+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787999199264",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
