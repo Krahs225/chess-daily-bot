@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-11-12",
     "title": "Flipping a Coin",
     "fen": "r4rk1/p2p2pp/3p4/1P1bpP2/6Q1/4P3/PP1qBKPP/R6R w - - 0 1",
-    "current_fen": "r4rk1/p2p2pp/3p4/1P1bpP2/6Q1/4P3/PP1qBKPP/R6R w - - 0 1",
+    "current_fen": "r4rk1/p2p2pp/3p4/1P1bpP2/6Q1/4P3/PPq1BKPP/3R3R w - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"r4rk1/p2p2pp/3p4/1P1bpP2/6Q1/4P3/PP1qBKPP/R6R w - - 0 1\"]\r\n\r\n1. Rad1 Qc2 2. Rxd5 *",
     "all_moves": [
       {
@@ -42,20 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787997192195",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543196816814637200,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rhe1",
-        "correct": false,
-        "timestamp": "2026-08-29T09:53:20.446664+00:00"
+        "move": "rad1",
+        "correct": true,
+        "timestamp": "2026-08-29T09:53:23.806908+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
