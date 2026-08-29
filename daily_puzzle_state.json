@@ -1,77 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-07-13",
-    "title": "Walking Into Danger",
-    "fen": "r6k/5p1p/p1pp2r1/1pb5/4P3/2NP1P2/PPP3PK/4RR2 b - - 0 1",
-    "current_fen": "6rk/5p1p/p1pp1r2/1pb5/4PK2/2NP1P2/PPP3P1/4RR2 w - - 5 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r6k/5p1p/p1pp2r1/1pb5/4P3/2NP1P2/PPP3PK/4RR2 b - - 0 1\"]\r\n\r\n1...Rh6+ 2. Kg3 Rg8+ 3. Kf4 Rf6#\r\n*",
+    "url": "https://www.chess.com/daily/2022-05-27",
+    "title": "Mutual Vulnerabilities",
+    "fen": "2r3k1/pR2bq1p/6pB/4pp2/8/2r4Q/P4PPP/3R2K1 w - - 6 35",
+    "current_fen": "2r3k1/pR2bq1p/6pB/4pp2/8/2r4Q/P4PPP/3R2K1 w - - 6 35",
+    "pgn": "[Event \"It\"]\r\n[Site \"Copenhagen (Denmark)\"]\r\n[Date \"1991.??.??\"]\r\n[Round \"?\"]\r\n[White \"Roland Reinhard Greger (Variation from Game)\"]\r\n[Black \"Pia Cramling\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/pR2bq1p/6pB/4pp2/8/2r4Q/P4PPP/3R2K1 w - - 6 35\"]\r\n\r\n35.Qxc3 Rxc3 36.Rb8+ Bf8 37.Rdd8 Rc1+ 38.Bxc1 *",
     "all_moves": [
       {
-        "uci": "g6h6",
-        "san": "Rh6+",
-        "color": "black"
-      },
-      {
-        "uci": "h2g3",
-        "san": "Kg3",
+        "uci": "h3c3",
+        "san": "Qxc3",
         "color": "white"
       },
       {
-        "uci": "a8g8",
-        "san": "Rg8+",
+        "uci": "c8c3",
+        "san": "Rxc3",
         "color": "black"
       },
       {
-        "uci": "g3f4",
-        "san": "Kf4",
+        "uci": "b7b8",
+        "san": "Rb8+",
         "color": "white"
       },
       {
-        "uci": "h6f6",
-        "san": "Rf6#",
+        "uci": "e7f8",
+        "san": "Bf8",
         "color": "black"
+      },
+      {
+        "uci": "d1d8",
+        "san": "Rdd8",
+        "color": "white"
+      },
+      {
+        "uci": "c3c1",
+        "san": "Rc1+",
+        "color": "black"
+      },
+      {
+        "uci": "h6c1",
+        "san": "Bxc1",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g6h6",
-        "san": "Rh6+",
-        "color": "black"
+        "uci": "h3c3",
+        "san": "Qxc3",
+        "color": "white"
       },
       {
-        "uci": "a8g8",
-        "san": "Rg8+",
-        "color": "black"
+        "uci": "b7b8",
+        "san": "Rb8+",
+        "color": "white"
       },
       {
-        "uci": "h6f6",
-        "san": "Rf6#",
-        "color": "black"
+        "uci": "d1d8",
+        "san": "Rdd8",
+        "color": "white"
+      },
+      {
+        "uci": "h6c1",
+        "san": "Bxc1",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-29T09:37:01.486114+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T09:37:36.077934+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787996221486",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1543192745286311998,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rf6",
-        "correct": true,
-        "timestamp": "2026-08-29T09:37:30.375047+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787996256077",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
