@@ -1,76 +1,84 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-09-05",
-    "title": "Keeping Cool Under Pressure",
-    "fen": "4r3/pp3pk1/6p1/4n1Q1/1P2N3/P3PP2/1q6/5KR1 w - - 0 1",
-    "current_fen": "4rk2/pp3p2/5Qp1/4n3/1P2N3/P3PP2/1q6/5KR1 w - - 2 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r3/pp3pk1/6p1/4n1Q1/1P2N3/P3PP2/1q6/5KR1 w - - 0 1\"]\r\n\r\n1. Qf6+ Kf8 2. Rh1 Qc1+ 3. Kg2\r\n*",
+    "url": "https://www.chess.com/daily/2011-03-03",
+    "title": "Creative Technique",
+    "fen": "1k1r4/pP2q3/8/Q7/8/6bP/6P1/2R4K w KQkq - 0 1",
+    "current_fen": "1k1r4/pP2q3/8/Q7/8/6bP/6P1/2R4K w KQkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1k1r4/pP2q3/8/Q7/8/6bP/6P1/2R4K w KQkq - 0 1\"]\r\n\r\n1. Rc8+ Rxc8 2. Qxa7+ Kxa7 3. bxc8=N+ Kb7 4. Nxe7\r\n*",
     "all_moves": [
       {
-        "uci": "g5f6",
-        "san": "Qf6+",
+        "uci": "c1c8",
+        "san": "Rc8+",
         "color": "white"
       },
       {
-        "uci": "g7f8",
-        "san": "Kf8",
+        "uci": "d8c8",
+        "san": "Rxc8",
         "color": "black"
       },
       {
-        "uci": "g1h1",
-        "san": "Rh1",
+        "uci": "a5a7",
+        "san": "Qxa7+",
         "color": "white"
       },
       {
-        "uci": "b2c1",
-        "san": "Qc1+",
+        "uci": "b8a7",
+        "san": "Kxa7",
         "color": "black"
       },
       {
-        "uci": "f1g2",
-        "san": "Kg2",
+        "uci": "b7c8n",
+        "san": "bxc8=N+",
+        "color": "white"
+      },
+      {
+        "uci": "a7b7",
+        "san": "Kb7",
+        "color": "black"
+      },
+      {
+        "uci": "c8e7",
+        "san": "Nxe7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5f6",
-        "san": "Qf6+",
+        "uci": "c1c8",
+        "san": "Rc8+",
         "color": "white"
       },
       {
-        "uci": "g1h1",
-        "san": "Rh1",
+        "uci": "a5a7",
+        "san": "Qxa7+",
         "color": "white"
       },
       {
-        "uci": "f1g2",
-        "san": "Kg2",
+        "uci": "b7c8n",
+        "san": "bxc8=N+",
+        "color": "white"
+      },
+      {
+        "uci": "c8e7",
+        "san": "Nxe7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-29T19:21:36.668362+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T19:23:12.120076+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788031296668",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "puzzle_id": "random_1788031392120",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1543339861572849805,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "F4",
-        "correct": false,
-        "timestamp": "2026-08-29T19:23:08.058592+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "message_id": 1543340261739077633,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
