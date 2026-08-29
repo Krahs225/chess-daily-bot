@@ -1,119 +1,82 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-07-25",
-    "title": "Impressive Finish",
-    "fen": "3n3k/1b1qbr1p/p4p1Q/4pP2/1pNpN2B/1P1P4/P5PP/5RK1 w - - 0 1",
-    "current_fen": "3n3k/1b1qbr1p/p4p1Q/4pP2/1pNpN2B/1P1P4/P5PP/5RK1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3n3k/1b1qbr1p/p4p1Q/4pP2/1pNpN2B/1P1P4/P5PP/5RK1 w - - 0 1\"]\r\n\r\n1. Ncd6 Bxd6 2. Bxf6+ Kg8 3. Rf3 Rg7 4. Bxg7 Bxe4 5. Rg3 Bxf5 6. Bxe5+\r\n*",
+    "url": "https://www.chess.com/daily/2017-09-02",
+    "title": "Manca vs. Braga 1992",
+    "fen": "r1k2b1r/pp4pp/2p1n3/3NQ1B1/6q1/8/PPP2P1P/2KR4 w kq - 0 1",
+    "current_fen": "r1k2b1r/pp4pp/2p1n3/3NQ1B1/6q1/8/PPP2P1P/2KR4 w kq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1k2b1r/pp4pp/2p1n3/3NQ1B1/6q1/8/PPP2P1P/2KR4 w kq - 0 1\"]\r\n\r\n1. Qc7+ Nxc7 2. Nb6+ Kb8 3. Rd8+ Qc8 4. Rxc8#\r\n*",
     "all_moves": [
       {
-        "uci": "c4d6",
-        "san": "Ncd6",
+        "uci": "e5c7",
+        "san": "Qc7+",
         "color": "white"
       },
       {
-        "uci": "e7d6",
-        "san": "Bxd6",
+        "uci": "e6c7",
+        "san": "Nxc7",
         "color": "black"
       },
       {
-        "uci": "h4f6",
-        "san": "Bxf6+",
+        "uci": "d5b6",
+        "san": "Nb6+",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "c8b8",
+        "san": "Kb8",
         "color": "black"
       },
       {
-        "uci": "f1f3",
-        "san": "Rf3",
+        "uci": "d1d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "f7g7",
-        "san": "Rg7",
+        "uci": "g4c8",
+        "san": "Qc8",
         "color": "black"
       },
       {
-        "uci": "f6g7",
-        "san": "Bxg7",
-        "color": "white"
-      },
-      {
-        "uci": "b7e4",
-        "san": "Bxe4",
-        "color": "black"
-      },
-      {
-        "uci": "f3g3",
-        "san": "Rg3",
-        "color": "white"
-      },
-      {
-        "uci": "e4f5",
-        "san": "Bxf5",
-        "color": "black"
-      },
-      {
-        "uci": "g7e5",
-        "san": "Bxe5+",
+        "uci": "d8c8",
+        "san": "Rxc8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4d6",
-        "san": "Ncd6",
+        "uci": "e5c7",
+        "san": "Qc7+",
         "color": "white"
       },
       {
-        "uci": "h4f6",
-        "san": "Bxf6+",
+        "uci": "d5b6",
+        "san": "Nb6+",
         "color": "white"
       },
       {
-        "uci": "f1f3",
-        "san": "Rf3",
+        "uci": "d1d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "f6g7",
-        "san": "Bxg7",
-        "color": "white"
-      },
-      {
-        "uci": "f3g3",
-        "san": "Rg3",
-        "color": "white"
-      },
-      {
-        "uci": "g7e5",
-        "san": "Bxe5+",
+        "uci": "d8c8",
+        "san": "Rxc8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-29T18:51:03.847387+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T19:08:23.181916+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788029463847",
+    "puzzle_id": "random_1788030503181",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543332173933973626,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bxf6",
-        "correct": false,
-        "timestamp": "2026-08-29T18:51:33.862758+00:00"
-      }
-    },
+    "message_id": 1543336533300347002,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
