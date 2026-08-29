@@ -1,62 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-11-12",
-    "title": "Flipping a Coin",
-    "fen": "r4rk1/p2p2pp/3p4/1P1bpP2/6Q1/4P3/PP1qBKPP/R6R w - - 0 1",
-    "current_fen": "r4rk1/p2p2pp/3p4/1P1RpP2/6Q1/4P3/PPq1BKPP/7R b - - 0 2",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r4rk1/p2p2pp/3p4/1P1bpP2/6Q1/4P3/PP1qBKPP/R6R w - - 0 1\"]\r\n\r\n1. Rad1 Qc2 2. Rxd5 *",
+    "url": "https://www.chess.com/daily/2019-08-21",
+    "title": "The All Important First Move of a Sequence",
+    "fen": "2kq3r/1p6/2pr3p/6p1/3B1P2/PP6/7P/2KR2Q1 w - - 0 1",
+    "current_fen": "2kq3r/1p6/2pr3p/6p1/3B1P2/PP6/7P/2KR2Q1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kq3r/1p6/2pr3p/6p1/3B1P2/PP6/7P/2KR2Q1 w - - 0 1\"]\r\n\r\n1. Qg4+ Qd7 2. Qxd7+ Rxd7 3. Bxh8\r\n*",
     "all_moves": [
       {
-        "uci": "a1d1",
-        "san": "Rad1",
+        "uci": "g1g4",
+        "san": "Qg4+",
         "color": "white"
       },
       {
-        "uci": "d2c2",
-        "san": "Qc2",
+        "uci": "d8d7",
+        "san": "Qd7",
         "color": "black"
       },
       {
-        "uci": "d1d5",
-        "san": "Rxd5",
+        "uci": "g4d7",
+        "san": "Qxd7+",
+        "color": "white"
+      },
+      {
+        "uci": "d6d7",
+        "san": "Rxd7",
+        "color": "black"
+      },
+      {
+        "uci": "d4h8",
+        "san": "Bxh8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a1d1",
-        "san": "Rad1",
+        "uci": "g1g4",
+        "san": "Qg4+",
         "color": "white"
       },
       {
-        "uci": "d1d5",
-        "san": "Rxd5",
+        "uci": "g4d7",
+        "san": "Qxd7+",
+        "color": "white"
+      },
+      {
+        "uci": "d4h8",
+        "san": "Bxh8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-29T09:19:57.471694+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T09:20:14.619157+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787995197471",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1543188450574868530,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxd5",
-        "correct": true,
-        "timestamp": "2026-08-29T09:20:04.805851+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787995214619",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
