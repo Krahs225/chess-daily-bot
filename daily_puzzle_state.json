@@ -1,106 +1,99 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-03-29",
-    "title": "Advanced Tactics",
-    "fen": "q3r1k1/5pp1/1QbR3p/1p2n3/1P2p2P/6P1/1NP2PB1/6K1 b - - 0 1",
-    "current_fen": "4r1k1/5pp1/1QbR3p/1p2n3/1P2p2P/6P1/2P2PB1/q2N2K1 b - - 2 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"q3r1k1/5pp1/1QbR3p/1p2n3/1P2p2P/6P1/1NP2PB1/6K1 b - - 0 1\"]\r\n\r\n1...Qa1+ 2. Nd1 e3 3. fxe3 Bxg2 4. Kxg2 Qa8+ 5. Kg1 Nc4\r\n*",
+    "url": "https://www.chess.com/daily/2023-02-03",
+    "title": "Exposing a Wandering King",
+    "fen": "3N4/8/2Q4p/4qppk/8/6PP/p5K1/8 w - - 0 1",
+    "current_fen": "3N4/8/2Q4p/4qppk/8/6PP/p5K1/8 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3N4/8/2Q4p/4qppk/8/6PP/p5K1/8 w - - 0 1\"]\r\n\r\n1. g4+ fxg4 2. hxg4+ Kh4 3. Qxh6+ Kxg4 4. Qh3+ Kf4 5. Qf3# *",
     "all_moves": [
       {
-        "uci": "a8a1",
-        "san": "Qa1+",
-        "color": "black"
-      },
-      {
-        "uci": "b2d1",
-        "san": "Nd1",
+        "uci": "g3g4",
+        "san": "g4+",
         "color": "white"
       },
       {
-        "uci": "e4e3",
-        "san": "e3",
+        "uci": "f5g4",
+        "san": "fxg4",
         "color": "black"
       },
       {
-        "uci": "f2e3",
-        "san": "fxe3",
+        "uci": "h3g4",
+        "san": "hxg4+",
         "color": "white"
       },
       {
-        "uci": "c6g2",
-        "san": "Bxg2",
+        "uci": "h5h4",
+        "san": "Kh4",
         "color": "black"
       },
       {
-        "uci": "g1g2",
-        "san": "Kxg2",
+        "uci": "c6h6",
+        "san": "Qxh6+",
         "color": "white"
       },
       {
-        "uci": "a1a8",
-        "san": "Qa8+",
+        "uci": "h4g4",
+        "san": "Kxg4",
         "color": "black"
       },
       {
-        "uci": "g2g1",
-        "san": "Kg1",
+        "uci": "h6h3",
+        "san": "Qh3+",
         "color": "white"
       },
       {
-        "uci": "e5c4",
-        "san": "Nc4",
+        "uci": "g4f4",
+        "san": "Kf4",
         "color": "black"
+      },
+      {
+        "uci": "h3f3",
+        "san": "Qf3#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a8a1",
-        "san": "Qa1+",
-        "color": "black"
+        "uci": "g3g4",
+        "san": "g4+",
+        "color": "white"
       },
       {
-        "uci": "e4e3",
-        "san": "e3",
-        "color": "black"
+        "uci": "h3g4",
+        "san": "hxg4+",
+        "color": "white"
       },
       {
-        "uci": "c6g2",
-        "san": "Bxg2",
-        "color": "black"
+        "uci": "c6h6",
+        "san": "Qxh6+",
+        "color": "white"
       },
       {
-        "uci": "a1a8",
-        "san": "Qa8+",
-        "color": "black"
+        "uci": "h6h3",
+        "san": "Qh3+",
+        "color": "white"
       },
       {
-        "uci": "e5c4",
-        "san": "Nc4",
-        "color": "black"
+        "uci": "h3f3",
+        "san": "Qf3#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 5,
-    "posted_at": "2026-08-29T09:55:48.613033+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-29T10:04:54.884383+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787997348613",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "puzzle_id": "random_1787997894884",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1543197473378668625,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nc4",
-        "correct": false,
-        "timestamp": "2026-08-29T09:56:06.906265+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "message_id": 1543199763984416921,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
