@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-12-05",
     "title": "White to Draw",
     "fen": "3r4/1p3r2/RR6/4kp2/p7/1n1P1PK1/P2P4/8 w - - 0 1",
-    "current_fen": "3r4/6r1/1p6/R4p2/p1R2K2/3k1P2/P2P4/8 w - - 0 6",
+    "current_fen": "3r4/6r1/8/1p3p2/R4K2/2R2P2/P2k4/8 w - - 0 8",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r4/1p3r2/RR6/4kp2/p7/1n1P1PK1/P2P4/8 w - - 0 1\"]\r\n\r\n1. Rb5+ Nc5 2. Rxc5+ Kd4 3. Raa5 Rg7+ 4. Kf4 b6 5. Rc4+ Kxd3 6. Raxa4 b5 7. Rc3+ Kxd2 8. Raa3 b4 9. Rc5 bxa3 10. Rd5+\r\n*",
     "all_moves": [
       {
@@ -162,23 +162,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787996807684",
-    "next_solution_index": 10,
-    "next_player_index": 5,
+    "next_solution_index": 14,
+    "next_player_index": 7,
     "solved": false,
     "message_id": 1543195204075651134,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rc4",
+        "move": "raxa4",
         "correct": true,
-        "timestamp": "2026-08-29T09:47:41.694286+00:00"
+        "timestamp": "2026-08-29T09:47:46.094080+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rc3",
+        "correct": true,
+        "timestamp": "2026-08-29T09:47:46.349472+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
