@@ -1,76 +1,69 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-07-11",
-    "title": "More Crazy Knights",
-    "fen": "r3rk2/2b3pn/1p6/1Pp1N3/2N1bP2/1Q1P2q1/1B2B3/1K1R4 w - - 0 1",
-    "current_fen": "r3rk2/2b3pn/1p1N2b1/1Pp1N3/5P2/1Q1P2q1/1B2B3/1K1R4 w - - 2 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3rk2/2b3pn/1p6/1Pp1N3/2N1bP2/1Q1P2q1/1B2B3/1K1R4 w - - 0 1\"]\r\n\r\n1. Nd6 { Threating mate and the bishop on e4. }  1... Bg6 2. Nf5 Qg2 { Giving up mate instead of the queen. }  ( 2... Bxf5 3. Qf7# ) 3. Nd7#\r\n*",
+    "url": "https://www.chess.com/daily/2017-04-30",
+    "title": "Nakamura's Blitz Tactics",
+    "fen": "2r3k1/5pp1/4q2p/3R4/8/4P3/2r2PPP/1Q1R2K1 w - - 0 1",
+    "current_fen": "2r3k1/5pp1/4q2p/3R4/8/4P3/2r2PPP/1Q1R2K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/5pp1/4q2p/3R4/8/4P3/2r2PPP/1Q1R2K1 w - - 0 1\"]\r\n\r\n1. Rd8+ Kh7 2. Rxc8 Qxc8 3. Rc1\r\n*",
     "all_moves": [
       {
-        "uci": "c4d6",
-        "san": "Nd6",
+        "uci": "d5d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "e4g6",
-        "san": "Bg6",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "d6f5",
-        "san": "Nf5",
+        "uci": "d8c8",
+        "san": "Rxc8",
         "color": "white"
       },
       {
-        "uci": "g3g2",
-        "san": "Qg2",
+        "uci": "e6c8",
+        "san": "Qxc8",
         "color": "black"
       },
       {
-        "uci": "e5d7",
-        "san": "Nd7#",
+        "uci": "d1c1",
+        "san": "Rc1",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4d6",
-        "san": "Nd6",
+        "uci": "d5d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "d6f5",
-        "san": "Nf5",
+        "uci": "d8c8",
+        "san": "Rxc8",
         "color": "white"
       },
       {
-        "uci": "e5d7",
-        "san": "Nd7#",
+        "uci": "d1c1",
+        "san": "Rc1",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-29T10:09:54.984878+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-29T10:12:11.081477+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787998194984",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "puzzle_id": "random_1787998331081",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1543201022757838950,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ne4",
-        "correct": false,
-        "timestamp": "2026-08-29T10:12:07.384556+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "message_id": 1543201593544024147,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
