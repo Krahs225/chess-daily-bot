@@ -1,171 +1,81 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-07-28",
-    "title": "Gennadiy Gelman, Shantraji MT,  2009",
-    "fen": "8/3Pp3/PB6/7p/5k1K/p4P2/6BP/3q4 w - - 0 1",
-    "current_fen": "8/3Pp3/PB6/7p/5k1K/p4P2/6BP/3q4 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/3Pp3/PB6/7p/5k1K/p4P2/6BP/3q4 w - - 0 1\"]\r\n\r\n1. d8=Q Qxd8 2. Bxd8 a2 3. Bc7+ e5 4. Bxe5+ Kxe5 5. a7 a1=Q 6. a8=Q Qxa8 7.\r\nf4+ Kxf4 8. Bxa8 Kf5 9. Kxh5 Kf6 10. Kh6\r\n*",
+    "url": "https://www.chess.com/daily/2025-08-24",
+    "title": "Seeing Through the Matrix",
+    "fen": "6k1/1pp2rp1/p1n1qn1R/4p3/PB2P3/2PP1KP1/3Q1PB1/7R b - - 0 1",
+    "current_fen": "6k1/1pp2rp1/p1n1qn1R/4p3/PB2P3/2PP1KP1/3Q1PB1/7R b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/1pp2rp1/p1n1qn1R/4p3/PB2P3/2PP1KP1/3Q1PB1/7R b - - 0 1\"]\r\n\r\n1... Nd4+ 2. cxd4 Qg4+ 3. Ke3 Nd5+ 4. exd5 exd4# *",
     "all_moves": [
       {
-        "uci": "d7d8q",
-        "san": "d8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "d1d8",
-        "san": "Qxd8",
+        "uci": "c6d4",
+        "san": "Nd4+",
         "color": "black"
       },
       {
-        "uci": "b6d8",
-        "san": "Bxd8",
+        "uci": "c3d4",
+        "san": "cxd4",
         "color": "white"
       },
       {
-        "uci": "a3a2",
-        "san": "a2",
+        "uci": "e6g4",
+        "san": "Qg4+",
         "color": "black"
       },
       {
-        "uci": "d8c7",
-        "san": "Bc7+",
+        "uci": "f3e3",
+        "san": "Ke3",
         "color": "white"
       },
       {
-        "uci": "e7e5",
-        "san": "e5",
+        "uci": "f6d5",
+        "san": "Nd5+",
         "color": "black"
       },
       {
-        "uci": "c7e5",
-        "san": "Bxe5+",
+        "uci": "e4d5",
+        "san": "exd5",
         "color": "white"
       },
       {
-        "uci": "f4e5",
-        "san": "Kxe5",
+        "uci": "e5d4",
+        "san": "exd4#",
         "color": "black"
-      },
-      {
-        "uci": "a6a7",
-        "san": "a7",
-        "color": "white"
-      },
-      {
-        "uci": "a2a1q",
-        "san": "a1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "a7a8q",
-        "san": "a8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "a1a8",
-        "san": "Qxa8",
-        "color": "black"
-      },
-      {
-        "uci": "f3f4",
-        "san": "f4+",
-        "color": "white"
-      },
-      {
-        "uci": "e5f4",
-        "san": "Kxf4",
-        "color": "black"
-      },
-      {
-        "uci": "g2a8",
-        "san": "Bxa8",
-        "color": "white"
-      },
-      {
-        "uci": "f4f5",
-        "san": "Kf5",
-        "color": "black"
-      },
-      {
-        "uci": "h4h5",
-        "san": "Kxh5",
-        "color": "white"
-      },
-      {
-        "uci": "f5f6",
-        "san": "Kf6",
-        "color": "black"
-      },
-      {
-        "uci": "h5h6",
-        "san": "Kh6",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d7d8q",
-        "san": "d8=Q",
-        "color": "white"
+        "uci": "c6d4",
+        "san": "Nd4+",
+        "color": "black"
       },
       {
-        "uci": "b6d8",
-        "san": "Bxd8",
-        "color": "white"
+        "uci": "e6g4",
+        "san": "Qg4+",
+        "color": "black"
       },
       {
-        "uci": "d8c7",
-        "san": "Bc7+",
-        "color": "white"
+        "uci": "f6d5",
+        "san": "Nd5+",
+        "color": "black"
       },
       {
-        "uci": "c7e5",
-        "san": "Bxe5+",
-        "color": "white"
-      },
-      {
-        "uci": "a6a7",
-        "san": "a7",
-        "color": "white"
-      },
-      {
-        "uci": "a7a8q",
-        "san": "a8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "f3f4",
-        "san": "f4+",
-        "color": "white"
-      },
-      {
-        "uci": "g2a8",
-        "san": "Bxa8",
-        "color": "white"
-      },
-      {
-        "uci": "h4h5",
-        "san": "Kxh5",
-        "color": "white"
-      },
-      {
-        "uci": "h5h6",
-        "san": "Kh6",
-        "color": "white"
+        "uci": "e5d4",
+        "san": "exd4#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 10,
-    "posted_at": "2026-08-29T09:08:57.568023+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T09:09:07.045329+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787994537568",
+    "puzzle_id": "random_1787994547045",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543185685937131594,
+    "message_id": 1543185722473975945,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
