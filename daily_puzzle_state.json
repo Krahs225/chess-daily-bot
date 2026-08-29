@@ -1,62 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-11-12",
-    "title": "Flipping a Coin",
-    "fen": "r4rk1/p2p2pp/3p4/1P1bpP2/6Q1/4P3/PP1qBKPP/R6R w - - 0 1",
-    "current_fen": "r4rk1/p2p2pp/3p4/1P1RpP2/6Q1/4P3/PPq1BKPP/7R b - - 0 2",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r4rk1/p2p2pp/3p4/1P1bpP2/6Q1/4P3/PP1qBKPP/R6R w - - 0 1\"]\r\n\r\n1. Rad1 Qc2 2. Rxd5 *",
+    "url": "https://www.chess.com/daily/2021-08-16",
+    "title": "A Relative Pin",
+    "fen": "7k/p5q1/PpPQ1r1p/2n5/3B4/5pP1/5P2/2R3K1 b - - 0 1",
+    "current_fen": "7k/p5q1/PpPQ1r1p/2n5/3B4/5pP1/5P2/2R3K1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"7k/p5q1/PpPQ1r1p/2n5/3B4/5pP1/5P2/2R3K1 b - - 0 1\"]\r\n\r\n1...Rxd6 2.Bxg7+ Kxg7 3.c7 Rc6 4.c8=Q Rxc8 *",
     "all_moves": [
       {
-        "uci": "a1d1",
-        "san": "Rad1",
-        "color": "white"
-      },
-      {
-        "uci": "d2c2",
-        "san": "Qc2",
+        "uci": "f6d6",
+        "san": "Rxd6",
         "color": "black"
       },
       {
-        "uci": "d1d5",
-        "san": "Rxd5",
+        "uci": "d4g7",
+        "san": "Bxg7+",
         "color": "white"
+      },
+      {
+        "uci": "h8g7",
+        "san": "Kxg7",
+        "color": "black"
+      },
+      {
+        "uci": "c6c7",
+        "san": "c7",
+        "color": "white"
+      },
+      {
+        "uci": "d6c6",
+        "san": "Rc6",
+        "color": "black"
+      },
+      {
+        "uci": "c7c8q",
+        "san": "c8=Q",
+        "color": "white"
+      },
+      {
+        "uci": "c6c8",
+        "san": "Rxc8",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "a1d1",
-        "san": "Rad1",
-        "color": "white"
+        "uci": "f6d6",
+        "san": "Rxd6",
+        "color": "black"
       },
       {
-        "uci": "d1d5",
-        "san": "Rxd5",
-        "color": "white"
+        "uci": "h8g7",
+        "san": "Kxg7",
+        "color": "black"
+      },
+      {
+        "uci": "d6c6",
+        "san": "Rc6",
+        "color": "black"
+      },
+      {
+        "uci": "c6c8",
+        "san": "Rxc8",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-29T09:53:12.195768+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T09:53:32.349746+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787997192195",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1543196816814637200,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxd5",
-        "correct": true,
-        "timestamp": "2026-08-29T09:53:27.838547+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787997212349",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
