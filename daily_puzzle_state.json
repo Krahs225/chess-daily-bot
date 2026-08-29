@@ -1,92 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-09-03",
-    "title": "Arjun's Surprise Checkmate Party 🥳",
-    "fen": "4nrk1/p1r1qp1p/6pQ/4p1PP/np2P3/3P1PN1/P3N2R/4K2R w K - 0 24",
-    "current_fen": "4nr2/p1r1qp2/7R/4p1kR/np2P3/3P1PN1/P3N3/4K3 b - - 1 27",
-    "pgn": "[Event \"ch-Commonwealth 2019\"]\r\n[Site \"New Delhi IND\"]\r\n[Date \"2019.07.04\"]\r\n[Round \"6.5\"]\r\n[White \"Erigaisi, Arjun\"]\r\n[Black \"Ajay, Karthikeyan\"]\r\n[Result \"1-0\"]\r\n[ECO \"B06\"]\r\n[WhiteElo \"2526\"]\r\n[BlackElo \"2227\"]\r\n[FEN \"4nrk1/p1r1qp1p/6pQ/4p1PP/np2P3/3P1PN1/P3N2R/4K2R w K - 0 24\"]\r\n\r\n24. Qxh7+ Kxh7 25. hxg6+ Kxg6 26. Rh6+ Kxg5 27. R1h5# 1-0",
+    "url": "https://www.chess.com/daily/2011-06-28",
+    "title": "Unleashing the Force",
+    "fen": "r4rk1/p2qbppp/1pn1p3/4P3/2PN2R1/2B3P1/P4P1P/R2Q2K1 w - - 0 1",
+    "current_fen": "r4r2/p2qbpkp/1pn1p3/4P3/2PN4/2B3P1/P4P1P/R2Q2K1 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/p2qbppp/1pn1p3/4P3/2PN2R1/2B3P1/P4P1P/R2Q2K1 w - - 0 1\"]\r\n\r\n1. Rxg7+ Kxg7 2. Nf5+ exf5 3. Qxd7\r\n*",
     "all_moves": [
       {
-        "uci": "h6h7",
-        "san": "Qxh7+",
+        "uci": "g4g7",
+        "san": "Rxg7+",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kxh7",
+        "uci": "g8g7",
+        "san": "Kxg7",
         "color": "black"
       },
       {
-        "uci": "h5g6",
-        "san": "hxg6+",
+        "uci": "d4f5",
+        "san": "Nf5+",
         "color": "white"
       },
       {
-        "uci": "h7g6",
-        "san": "Kxg6",
+        "uci": "e6f5",
+        "san": "exf5",
         "color": "black"
       },
       {
-        "uci": "h2h6",
-        "san": "Rh6+",
-        "color": "white"
-      },
-      {
-        "uci": "g6g5",
-        "san": "Kxg5",
-        "color": "black"
-      },
-      {
-        "uci": "h1h5",
-        "san": "R1h5#",
+        "uci": "d1d7",
+        "san": "Qxd7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6h7",
-        "san": "Qxh7+",
+        "uci": "g4g7",
+        "san": "Rxg7+",
         "color": "white"
       },
       {
-        "uci": "h5g6",
-        "san": "hxg6+",
+        "uci": "d4f5",
+        "san": "Nf5+",
         "color": "white"
       },
       {
-        "uci": "h2h6",
-        "san": "Rh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h1h5",
-        "san": "R1h5#",
+        "uci": "d1d7",
+        "san": "Qxd7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-29T09:35:40.629895+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T09:36:23.643419+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787996140629",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1543192406793654303,
+    "puzzle_id": "random_1787996183643",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1543192586603462717,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "r1h5",
+        "move": "rxg7",
         "correct": true,
-        "timestamp": "2026-08-29T09:36:16.454919+00:00"
+        "timestamp": "2026-08-29T09:36:31.941597+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
