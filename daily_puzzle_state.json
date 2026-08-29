@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-09-10",
     "title": "When the Puzzle Fights Back",
     "fen": "1r4k1/R3b1p1/6Pp/5P2/R7/p7/r4B1P/6K1 b - - 0 1",
-    "current_fen": "1r4k1/R3b1p1/6Pp/5P2/R7/p7/r4B1P/6K1 b - - 0 1",
+    "current_fen": "Rr4k1/6p1/6Pp/2b2P2/R7/p7/r4B1P/6K1 b - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"1r4k1/R3b1p1/6Pp/5P2/R7/p7/r4B1P/6K1 b - - 0 1\"]\r\n\r\n1... Bc5 2. Ra8 Bxf2+ 3. Kf1 Rf8 *",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787994144411",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543184033436008479,
     "attempted_users": {
@@ -70,13 +70,13 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "rxf2",
-        "correct": false,
-        "timestamp": "2026-08-29T09:02:31.325500+00:00"
+        "move": "bc5",
+        "correct": true,
+        "timestamp": "2026-08-29T09:02:33.781216+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
