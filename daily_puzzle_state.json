@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-01-26",
     "title": "Awkward King Positioning",
     "fen": "r1bq3r/pppp2p1/6kp/5p1n/7Q/3P1NP1/PP3P1P/n1BK1B1R w - - 0 1",
-    "current_fen": "r1bq3r/pppp2p1/6kp/5p1n/7Q/3P1NP1/PP3P1P/n1BK1B1R w - - 0 1",
+    "current_fen": "r1bq3r/pppp2p1/7p/5p1k/8/3P1NP1/PP3P1P/n1BK1B1R w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bq3r/pppp2p1/6kp/5p1n/7Q/3P1NP1/PP3P1P/n1BK1B1R w - - 0 1\"]\r\n\r\n1. Qxh5+ Kxh5 2. Ne5 Qg5 3. Be2+ Qg4 4. Bxg4+ fxg4 5. h3 \r\n*",
     "all_moves": [
       {
@@ -87,20 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788030979584",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543338531651592263,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Ne5",
-        "correct": false,
-        "timestamp": "2026-08-29T19:16:25.020444+00:00"
+        "move": "Qxh5",
+        "correct": true,
+        "timestamp": "2026-08-29T19:16:37.663939+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
