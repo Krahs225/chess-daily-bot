@@ -1,68 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-11-20",
-    "title": "When King Met Bishop",
-    "fen": "8/5b2/1Bp3pn/p1N1p1k1/1b4Pp/1P3P1P/P4K2/1N1r4 w - - 0 1",
-    "current_fen": "8/5b2/2p3pn/p3p3/1b2NkPp/1P2BP1P/P4K2/1N1r4 b - - 3 2",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/5b2/1Bp3pn/p1N1p1k1/1b4Pp/1P3P1P/P4K2/1N1r4 w - - 0 1\"]\r\n\r\n1. Ne4+ Kf4 2. Be3# *",
+    "url": "https://www.chess.com/daily/2023-11-03",
+    "title": "Find the Win a World Champion Missed!",
+    "fen": "3q1rk1/5ppp/p2b4/2pB1nP1/P1P2P2/2BP4/1r5P/R2Q1RK1 b - - 0 24",
+    "current_fen": "3q1rk1/5ppp/p2b4/2pB1nP1/P1P2P2/2BP4/1r5P/R2Q1RK1 b - - 0 24",
+    "pgn": "[Event \"Live Chess\"]\r\n[Site \"Chess.com\"]\r\n[Date \"2023.09.26\"]\r\n[White \"lachesisQ\"]\r\n[Black \"MagnusCarlsen\"]\r\n[Result \"1/2-1/2\"]\r\n[ECO \"B51\"]\r\n[WhiteElo \"2853\"]\r\n[BlackElo \"2941\"]\r\n[FEN \"3q1rk1/5ppp/p2b4/2pB1nP1/P1P2P2/2BP4/1r5P/R2Q1RK1 b - - 0 24\"]\r\n\r\n24... Qxg5+ 25. Kh1 Ng3+ 26. hxg3 Qh6+ 27. Kg1 Qh2# *",
     "all_moves": [
       {
-        "uci": "c5e4",
-        "san": "Ne4+",
-        "color": "white"
-      },
-      {
-        "uci": "g5f4",
-        "san": "Kf4",
+        "uci": "d8g5",
+        "san": "Qxg5+",
         "color": "black"
       },
       {
-        "uci": "b6e3",
-        "san": "Be3#",
+        "uci": "g1h1",
+        "san": "Kh1",
         "color": "white"
+      },
+      {
+        "uci": "f5g3",
+        "san": "Ng3+",
+        "color": "black"
+      },
+      {
+        "uci": "h2g3",
+        "san": "hxg3",
+        "color": "white"
+      },
+      {
+        "uci": "g5h6",
+        "san": "Qh6+",
+        "color": "black"
+      },
+      {
+        "uci": "h1g1",
+        "san": "Kg1",
+        "color": "white"
+      },
+      {
+        "uci": "h6h2",
+        "san": "Qh2#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5e4",
-        "san": "Ne4+",
-        "color": "white"
+        "uci": "d8g5",
+        "san": "Qxg5+",
+        "color": "black"
       },
       {
-        "uci": "b6e3",
-        "san": "Be3#",
-        "color": "white"
+        "uci": "f5g3",
+        "san": "Ng3+",
+        "color": "black"
+      },
+      {
+        "uci": "g5h6",
+        "san": "Qh6+",
+        "color": "black"
+      },
+      {
+        "uci": "h6h2",
+        "san": "Qh2#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-29T09:15:26.663830+00:00",
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T09:15:37.635707+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787994926663",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1543187315290017852,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "f4",
-        "correct": false,
-        "timestamp": "2026-08-29T09:15:30.039044+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "be3",
-        "correct": true,
-        "timestamp": "2026-08-29T09:15:34.590545+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787994937635",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
