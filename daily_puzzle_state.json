@@ -1,122 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2012-09-21",
-    "title": "Finishing With a Flourish",
-    "fen": "2kr4/p4R1R/2p1r1p1/1Np4b/2P4P/8/PP1p2PK/8 w - - 0 1",
-    "current_fen": "k7/1R1R4/1Np3p1/2p4b/2P4P/8/PP4PK/3q4 b - - 1 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr4/p4R1R/2p1r1p1/1Np4b/2P4P/8/PP1p2PK/8 w - - 0 1\"]\r\n\r\n1. Nxa7+ Kb8 2. Rb7+ Ka8 3. Nc8 Re7 4. Rhxe7 Rd7 5. Rexd7 d1=Q 6. Nb6#\r\n*",
+    "url": "https://www.chess.com/daily/2015-09-07",
+    "title": "Overworked Under Paid",
+    "fen": "2rr2k1/1p3pp1/p1n4p/2Qq4/3P4/6P1/PP3P1P/3RR1K1 w - - 0 1",
+    "current_fen": "2rr2k1/1p3pp1/p1n4p/2Qq4/3P4/6P1/PP3P1P/3RR1K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2rr2k1/1p3pp1/p1n4p/2Qq4/3P4/6P1/PP3P1P/3RR1K1 w - - 0 1\"]\r\n\r\n1. Re8+ Kh7 2. Qxd5 Rxd5 3. Rxc8\r\n*",
     "all_moves": [
       {
-        "uci": "b5a7",
-        "san": "Nxa7+",
+        "uci": "e1e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "c8b8",
-        "san": "Kb8",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "f7b7",
-        "san": "Rb7+",
+        "uci": "c5d5",
+        "san": "Qxd5",
         "color": "white"
       },
       {
-        "uci": "b8a8",
-        "san": "Ka8",
+        "uci": "d8d5",
+        "san": "Rxd5",
         "color": "black"
       },
       {
-        "uci": "a7c8",
-        "san": "Nc8",
-        "color": "white"
-      },
-      {
-        "uci": "e6e7",
-        "san": "Re7",
-        "color": "black"
-      },
-      {
-        "uci": "h7e7",
-        "san": "Rhxe7",
-        "color": "white"
-      },
-      {
-        "uci": "d8d7",
-        "san": "Rd7",
-        "color": "black"
-      },
-      {
-        "uci": "e7d7",
-        "san": "Rexd7",
-        "color": "white"
-      },
-      {
-        "uci": "d2d1q",
-        "san": "d1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "c8b6",
-        "san": "Nb6#",
+        "uci": "e8c8",
+        "san": "Rxc8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b5a7",
-        "san": "Nxa7+",
+        "uci": "e1e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "f7b7",
-        "san": "Rb7+",
+        "uci": "c5d5",
+        "san": "Qxd5",
         "color": "white"
       },
       {
-        "uci": "a7c8",
-        "san": "Nc8",
-        "color": "white"
-      },
-      {
-        "uci": "h7e7",
-        "san": "Rhxe7",
-        "color": "white"
-      },
-      {
-        "uci": "e7d7",
-        "san": "Rexd7",
-        "color": "white"
-      },
-      {
-        "uci": "c8b6",
-        "san": "Nb6#",
+        "uci": "e8c8",
+        "san": "Rxc8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-29T10:18:18.350164+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T10:19:04.387367+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787998698350",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1543203134766194773,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nb6",
-        "correct": true,
-        "timestamp": "2026-08-29T10:18:57.417834+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787998744387",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
