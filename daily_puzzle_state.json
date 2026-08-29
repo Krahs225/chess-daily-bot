@@ -1,156 +1,81 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-04-30",
-    "title": "Difinitive Breakthrough",
-    "fen": "4r2k/1b3p1p/pq1RNpr1/1p1n4/4pQBP/2P4R/1P3PP1/2K5 w - - 0 1",
-    "current_fen": "4r2k/1b3p1p/pq1RNpr1/1p1n4/4pQBP/2P4R/1P3PP1/2K5 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r2k/1b3p1p/pq1RNpr1/1p1n4/4pQBP/2P4R/1P3PP1/2K5 w - - 0 1\"]\r\n\r\n1. h5 Nxf4 2. hxg6 Qxd6 3. Rxh7+ Kg8 4. gxf7+ Kxh7 5. fxe8=Q Nxe6 6. Bf5+ Kg7 7. Qg6+ Kf8 8. Qxf6+ Ke8 9. Bxe6\r\n*",
+    "url": "https://www.chess.com/daily/2014-11-02",
+    "title": "Darwin Yang - Michael Mulyar, Tulsa, 2008",
+    "fen": "8/1Q4R1/p3q2p/5ppk/8/4P1PP/2r5/6K1 w - - 0 1",
+    "current_fen": "8/1Q4R1/p3q2p/5ppk/8/4P1PP/2r5/6K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1Q4R1/p3q2p/5ppk/8/4P1PP/2r5/6K1 w - - 0 1\"]\r\n\r\n1. Qf3+ g4 2. hxg4+ fxg4 3. Qh1+ Rh2 4. Qxh2#\r\n*",
     "all_moves": [
       {
-        "uci": "h4h5",
-        "san": "h5",
+        "uci": "b7f3",
+        "san": "Qf3+",
         "color": "white"
       },
       {
-        "uci": "d5f4",
-        "san": "Nxf4",
+        "uci": "g5g4",
+        "san": "g4",
         "color": "black"
       },
       {
-        "uci": "h5g6",
-        "san": "hxg6",
+        "uci": "h3g4",
+        "san": "hxg4+",
         "color": "white"
       },
       {
-        "uci": "b6d6",
-        "san": "Qxd6",
+        "uci": "f5g4",
+        "san": "fxg4",
         "color": "black"
       },
       {
-        "uci": "h3h7",
-        "san": "Rxh7+",
+        "uci": "f3h1",
+        "san": "Qh1+",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "c2h2",
+        "san": "Rh2",
         "color": "black"
       },
       {
-        "uci": "g6f7",
-        "san": "gxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h7",
-        "san": "Kxh7",
-        "color": "black"
-      },
-      {
-        "uci": "f7e8q",
-        "san": "fxe8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "f4e6",
-        "san": "Nxe6",
-        "color": "black"
-      },
-      {
-        "uci": "g4f5",
-        "san": "Bf5+",
-        "color": "white"
-      },
-      {
-        "uci": "h7g7",
-        "san": "Kg7",
-        "color": "black"
-      },
-      {
-        "uci": "e8g6",
-        "san": "Qg6+",
-        "color": "white"
-      },
-      {
-        "uci": "g7f8",
-        "san": "Kf8",
-        "color": "black"
-      },
-      {
-        "uci": "g6f6",
-        "san": "Qxf6+",
-        "color": "white"
-      },
-      {
-        "uci": "f8e8",
-        "san": "Ke8",
-        "color": "black"
-      },
-      {
-        "uci": "f5e6",
-        "san": "Bxe6",
+        "uci": "h1h2",
+        "san": "Qxh2#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h4h5",
-        "san": "h5",
+        "uci": "b7f3",
+        "san": "Qf3+",
         "color": "white"
       },
       {
-        "uci": "h5g6",
-        "san": "hxg6",
+        "uci": "h3g4",
+        "san": "hxg4+",
         "color": "white"
       },
       {
-        "uci": "h3h7",
-        "san": "Rxh7+",
+        "uci": "f3h1",
+        "san": "Qh1+",
         "color": "white"
       },
       {
-        "uci": "g6f7",
-        "san": "gxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7e8q",
-        "san": "fxe8=Q",
-        "color": "white"
-      },
-      {
-        "uci": "g4f5",
-        "san": "Bf5+",
-        "color": "white"
-      },
-      {
-        "uci": "e8g6",
-        "san": "Qg6+",
-        "color": "white"
-      },
-      {
-        "uci": "g6f6",
-        "san": "Qxf6+",
-        "color": "white"
-      },
-      {
-        "uci": "f5e6",
-        "san": "Bxe6",
+        "uci": "h1h2",
+        "san": "Qxh2#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 9,
-    "posted_at": "2026-08-29T18:05:41.065911+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T18:05:53.972081+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788026741065",
+    "puzzle_id": "random_1788026753972",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543320753859207249,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
