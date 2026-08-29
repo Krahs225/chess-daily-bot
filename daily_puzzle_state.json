@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-04-07",
     "title": "Alexei Seleznev, Shakhmatny vestnik, 1914",
     "fen": "8/6p1/8/K6P/7P/1k6/8/8 w - - 0 1",
-    "current_fen": "8/6p1/8/K6P/7P/1k6/8/8 w - - 0 1",
+    "current_fen": "8/6p1/8/1K5P/7P/2k5/8/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/6p1/8/K6P/7P/1k6/8/8 w - - 0 1\"]\r\n\r\n1. Kb5 Kc3 2. Kc5 Kd3 3. Kd5 Ke3 4. Ke5 Kf3 5. Kf5 Kg3 6. h6 gxh6 7. h5 Kh4 8. Kg6\r\n*",
     "all_moves": [
       {
@@ -132,8 +132,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787993749798",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543182378485153833,
     "attempted_users": {
@@ -142,10 +142,16 @@
         "move": "h6",
         "correct": false,
         "timestamp": "2026-08-29T08:55:53.233771+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Kb5",
+        "correct": true,
+        "timestamp": "2026-08-29T08:55:53.595047+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
