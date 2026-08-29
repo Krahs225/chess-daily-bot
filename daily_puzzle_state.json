@@ -1,98 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-05-28",
-    "title": "Jansa-Novotny, Prague 1969",
-    "fen": "r2qk1r1/pp1b1p2/3Pp2Q/4P1pN/2P1p3/P7/5PpP/R4RK1 w Qq - 0 1",
-    "current_fen": "r2qkr2/pp1b1pN1/3P4/4P1p1/2P1p3/P7/5PpP/R4RK1 b - - 1 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qk1r1/pp1b1p2/3Pp2Q/4P1pN/2P1p3/P7/5PpP/R4RK1 w Qq - 0 1\"]\r\n\r\n1. Ng7+ Kf8 2. Nxe6+ Ke8 3. Qf8+ Rxf8 4. Ng7#\r\n*",
+    "url": "https://www.chess.com/daily/2019-06-01",
+    "title": "Approaching The Corner",
+    "fen": "2r3k1/2r2ppp/8/8/p7/1p6/PP3RPP/1K3R2 b - - 0 1",
+    "current_fen": "2r3k1/2r2ppp/8/8/p7/1p6/PP3RPP/1K3R2 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/2r2ppp/8/8/p7/1p6/PP3RPP/1K3R2 b - - 0 1\"]\r\n\r\n1...Rc1+ 2. Rxc1 Rxc1 3. Kxc1 bxa2\r\n*",
     "all_moves": [
       {
-        "uci": "h5g7",
-        "san": "Ng7+",
-        "color": "white"
-      },
-      {
-        "uci": "e8f8",
-        "san": "Kf8",
+        "uci": "c7c1",
+        "san": "Rc1+",
         "color": "black"
       },
       {
-        "uci": "g7e6",
-        "san": "Nxe6+",
+        "uci": "f1c1",
+        "san": "Rxc1",
         "color": "white"
       },
       {
-        "uci": "f8e8",
-        "san": "Ke8",
+        "uci": "c8c1",
+        "san": "Rxc1+",
         "color": "black"
       },
       {
-        "uci": "h6f8",
-        "san": "Qf8+",
+        "uci": "b1c1",
+        "san": "Kxc1",
         "color": "white"
       },
       {
-        "uci": "g8f8",
-        "san": "Rxf8",
+        "uci": "b3a2",
+        "san": "bxa2",
         "color": "black"
-      },
-      {
-        "uci": "e6g7",
-        "san": "Ng7#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5g7",
-        "san": "Ng7+",
-        "color": "white"
+        "uci": "c7c1",
+        "san": "Rc1+",
+        "color": "black"
       },
       {
-        "uci": "g7e6",
-        "san": "Nxe6+",
-        "color": "white"
+        "uci": "c8c1",
+        "san": "Rxc1+",
+        "color": "black"
       },
       {
-        "uci": "h6f8",
-        "san": "Qf8+",
-        "color": "white"
-      },
-      {
-        "uci": "e6g7",
-        "san": "Ng7#",
-        "color": "white"
+        "uci": "b3a2",
+        "san": "bxa2",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-29T09:06:01.061790+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T09:06:32.578869+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787994361061",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1543184942224117851,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Ng7",
-        "correct": false,
-        "timestamp": "2026-08-29T09:06:11.594818+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ng7",
-        "correct": true,
-        "timestamp": "2026-08-29T09:06:16.923656+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787994392578",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
