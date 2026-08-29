@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-12-28",
     "title": "Forcing Moves Parade 🎉",
     "fen": "4n3/1bp2p2/1p3kpp/1P4N1/3R1BPP/Q1p5/Rrq2nN1/3r1BK1 w - - 0 1",
-    "current_fen": "4n3/1bp2p2/1p3kpp/1P4N1/3R1BPP/Q1p5/Rrq2nN1/3r1BK1 w - - 0 1",
+    "current_fen": "4n3/1bp2p2/1p4pp/1P2k1N1/3R2PP/Q1p5/Rrq2nN1/3r1BK1 w - - 0 2",
     "pgn": "[White \"Jolteon29A/sethwmd\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"4n3/1bp2p2/1p3kpp/1P4N1/3R1BPP/Q1p5/Rrq2nN1/3r1BK1 w - - 0 1\"]\r\n\r\n1. Be5+ Kxe5 2. Qe7+ Kxd4 3. Qe3+ Kd5 4. Nf4+ Kd6 5. Nxf7+ Kd7 6. Qe6# 1-0",
     "all_moves": [
       {
@@ -102,8 +102,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787993196523",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543180057764175925,
     "attempted_users": {
@@ -112,10 +112,16 @@
         "move": "Be2",
         "correct": false,
         "timestamp": "2026-08-29T08:47:44.925180+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Be5",
+        "correct": true,
+        "timestamp": "2026-08-29T08:48:20.854815+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
