@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-04-14",
     "title": "Sending in the Bait",
     "fen": "r5k1/5p1p/2p3p1/q1Q4P/pp6/4R3/5PP1/5BK1 w - - 0 1",
-    "current_fen": "r5k1/5p1p/2p3p1/q1Q4P/pp6/4R3/5PP1/5BK1 w - - 0 1",
+    "current_fen": "4r1k1/5p1p/2p3p1/q1Q4P/pp6/8/5PP1/5BK1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/5p1p/2p3p1/q1Q4P/pp6/4R3/5PP1/5BK1 w - - 0 1\"]\r\n\r\n1. Re8+ Rxe8 2. Qxa5\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788031090368",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1543338996824936528,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Re8",
+        "correct": true,
+        "timestamp": "2026-08-29T19:18:14.805546+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
