@@ -1,201 +1,66 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-11-27",
-    "title": "Gregor Werner, Die Schwalbe, 1996",
-    "fen": "4Q3/3N3k/7p/6q1/8/1p6/5K2/8 w - - 0 1",
-    "current_fen": "4Q3/3N3k/7p/6q1/8/1p6/5K2/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"4Q3/3N3k/7p/6q1/8/1p6/5K2/8 w - - 0 1\"]\r\n\r\n1. Nf8+ Kh8 2. Ne6+ Qg8 3. Qe7 b2 4. Qf6+ Kh7 5. Qf5+ Kh8 6. Qe5+ Kh7 7.\r\nQe4+ Kh8 8. Qd4+ Kh7 9. Qd3+ Kh8 10. Qc3+ Kh7 11. Qc2+ Kh8 12. Qxb2+\r\n*",
+    "url": "https://www.chess.com/daily/2008-08-26",
+    "title": "Using Tempo to Win",
+    "fen": "1r5k/1ppqbrpp/p2p4/8/3BQn2/2P2N1P/PP3PP1/3RR1K1 w - - 0 1",
+    "current_fen": "1r5k/1ppqbrpp/p2p4/8/3BQn2/2P2N1P/PP3PP1/3RR1K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r5k/1ppqbrpp/p2p4/8/3BQn2/2P2N1P/PP3PP1/3RR1K1 w - - 0 1\"]\r\n\r\n1. Ba7 Rbf8 2. Ne5 Qb5 3. Nxf7+\r\n*",
     "all_moves": [
       {
-        "uci": "d7f8",
-        "san": "Nf8+",
+        "uci": "d4a7",
+        "san": "Ba7",
         "color": "white"
       },
       {
-        "uci": "h7h8",
-        "san": "Kh8",
+        "uci": "b8f8",
+        "san": "Rbf8",
         "color": "black"
       },
       {
-        "uci": "f8e6",
-        "san": "Ne6+",
+        "uci": "f3e5",
+        "san": "Ne5",
         "color": "white"
       },
       {
-        "uci": "g5g8",
-        "san": "Qg8",
+        "uci": "d7b5",
+        "san": "Qb5",
         "color": "black"
       },
       {
-        "uci": "e8e7",
-        "san": "Qe7",
-        "color": "white"
-      },
-      {
-        "uci": "b3b2",
-        "san": "b2",
-        "color": "black"
-      },
-      {
-        "uci": "e7f6",
-        "san": "Qf6+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h7",
-        "san": "Kh7",
-        "color": "black"
-      },
-      {
-        "uci": "f6f5",
-        "san": "Qf5+",
-        "color": "white"
-      },
-      {
-        "uci": "h7h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "f5e5",
-        "san": "Qe5+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h7",
-        "san": "Kh7",
-        "color": "black"
-      },
-      {
-        "uci": "e5e4",
-        "san": "Qe4+",
-        "color": "white"
-      },
-      {
-        "uci": "h7h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "e4d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h7",
-        "san": "Kh7",
-        "color": "black"
-      },
-      {
-        "uci": "d4d3",
-        "san": "Qd3+",
-        "color": "white"
-      },
-      {
-        "uci": "h7h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "d3c3",
-        "san": "Qc3+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h7",
-        "san": "Kh7",
-        "color": "black"
-      },
-      {
-        "uci": "c3c2",
-        "san": "Qc2+",
-        "color": "white"
-      },
-      {
-        "uci": "h7h8",
-        "san": "Kh8",
-        "color": "black"
-      },
-      {
-        "uci": "c2b2",
-        "san": "Qxb2+",
+        "uci": "e5f7",
+        "san": "Nxf7+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d7f8",
-        "san": "Nf8+",
+        "uci": "d4a7",
+        "san": "Ba7",
         "color": "white"
       },
       {
-        "uci": "f8e6",
-        "san": "Ne6+",
+        "uci": "f3e5",
+        "san": "Ne5",
         "color": "white"
       },
       {
-        "uci": "e8e7",
-        "san": "Qe7",
-        "color": "white"
-      },
-      {
-        "uci": "e7f6",
-        "san": "Qf6+",
-        "color": "white"
-      },
-      {
-        "uci": "f6f5",
-        "san": "Qf5+",
-        "color": "white"
-      },
-      {
-        "uci": "f5e5",
-        "san": "Qe5+",
-        "color": "white"
-      },
-      {
-        "uci": "e5e4",
-        "san": "Qe4+",
-        "color": "white"
-      },
-      {
-        "uci": "e4d4",
-        "san": "Qd4+",
-        "color": "white"
-      },
-      {
-        "uci": "d4d3",
-        "san": "Qd3+",
-        "color": "white"
-      },
-      {
-        "uci": "d3c3",
-        "san": "Qc3+",
-        "color": "white"
-      },
-      {
-        "uci": "c3c2",
-        "san": "Qc2+",
-        "color": "white"
-      },
-      {
-        "uci": "c2b2",
-        "san": "Qxb2+",
+        "uci": "e5f7",
+        "san": "Nxf7+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 12,
-    "posted_at": "2026-08-29T17:59:02.187475+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T17:59:07.513253+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788026342187",
+    "puzzle_id": "random_1788026347513",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543319080688427009,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
