@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-06-16",
     "title": "Setting the Lure",
     "fen": "3n4/2R3r1/1p2bkpp/3pNp2/p4PP1/P2BP2P/4K3/8 w - - 0 1",
-    "current_fen": "3n4/2R3r1/1p2bkpp/3pNp2/p4PP1/P2BP2P/4K3/8 w - - 0 1",
+    "current_fen": "3n4/2R3r1/1p2bkp1/3pNpp1/p4P2/P2BP2P/4K3/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3n4/2R3r1/1p2bkpp/3pNp2/p4PP1/P2BP2P/4K3/8 w - - 0 1\"]\r\n\r\n1. g5+ hxg5 2. fxg5+ Kxe5 3. Rxg7\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787998007632",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1543200237269688351,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "g5",
+        "correct": true,
+        "timestamp": "2026-08-29T10:07:21.670268+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
