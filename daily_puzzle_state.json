@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-02-03",
     "title": "Exposing a Wandering King",
     "fen": "3N4/8/2Q4p/4qppk/8/6PP/p5K1/8 w - - 0 1",
-    "current_fen": "3N4/8/8/4q1p1/5k2/7Q/p5K1/8 w - - 2 5",
+    "current_fen": "3N4/8/8/4q1p1/5k2/5Q2/p5K1/8 b - - 3 5",
     "pgn": "[Result \"*\"]\r\n[FEN \"3N4/8/2Q4p/4qppk/8/6PP/p5K1/8 w - - 0 1\"]\r\n\r\n1. g4+ fxg4 2. hxg4+ Kh4 3. Qxh6+ Kxg4 4. Qh3+ Kf4 5. Qf3# *",
     "all_moves": [
       {
@@ -87,21 +87,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787997894884",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1543199763984416921,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qh3",
+        "move": "qf3",
         "correct": true,
-        "timestamp": "2026-08-29T10:05:40.624864+00:00"
+        "timestamp": "2026-08-29T10:05:42.864848+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
