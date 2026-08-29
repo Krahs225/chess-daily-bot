@@ -1,92 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-11-02",
-    "title": "Darwin Yang - Michael Mulyar, Tulsa, 2008",
-    "fen": "8/1Q4R1/p3q2p/5ppk/8/4P1PP/2r5/6K1 w - - 0 1",
-    "current_fen": "8/6R1/p3q2p/7k/6p1/4P1P1/7Q/6K1 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1Q4R1/p3q2p/5ppk/8/4P1PP/2r5/6K1 w - - 0 1\"]\r\n\r\n1. Qf3+ g4 2. hxg4+ fxg4 3. Qh1+ Rh2 4. Qxh2#\r\n*",
+    "url": "https://www.chess.com/daily/2010-08-24",
+    "title": "Chasing Tactics",
+    "fen": "r2q1rk1/ppp2p1p/3p2p1/4b3/1nn1P1Q1/2N4P/PB2NPP1/1BKR3R b - - 0 1",
+    "current_fen": "r2q1rk1/ppp2p1p/3p2p1/4b3/1nn1P1Q1/2N4P/PB2NPP1/1BKR3R b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q1rk1/ppp2p1p/3p2p1/4b3/1nn1P1Q1/2N4P/PB2NPP1/1BKR3R b - - 0 1\"]\r\n\r\n1...h5 2. Qf3 Qg5+\r\n*",
     "all_moves": [
       {
-        "uci": "b7f3",
-        "san": "Qf3+",
-        "color": "white"
-      },
-      {
-        "uci": "g5g4",
-        "san": "g4",
+        "uci": "h7h5",
+        "san": "h5",
         "color": "black"
       },
       {
-        "uci": "h3g4",
-        "san": "hxg4+",
+        "uci": "g4f3",
+        "san": "Qf3",
         "color": "white"
       },
       {
-        "uci": "f5g4",
-        "san": "fxg4",
+        "uci": "d8g5",
+        "san": "Qg5+",
         "color": "black"
-      },
-      {
-        "uci": "f3h1",
-        "san": "Qh1+",
-        "color": "white"
-      },
-      {
-        "uci": "c2h2",
-        "san": "Rh2",
-        "color": "black"
-      },
-      {
-        "uci": "h1h2",
-        "san": "Qxh2#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b7f3",
-        "san": "Qf3+",
-        "color": "white"
+        "uci": "h7h5",
+        "san": "h5",
+        "color": "black"
       },
       {
-        "uci": "h3g4",
-        "san": "hxg4+",
-        "color": "white"
-      },
-      {
-        "uci": "f3h1",
-        "san": "Qh1+",
-        "color": "white"
-      },
-      {
-        "uci": "h1h2",
-        "san": "Qxh2#",
-        "color": "white"
+        "uci": "d8g5",
+        "san": "Qg5+",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-29T18:05:53.972081+00:00",
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-29T18:06:25.442290+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788026753972",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1543320808825426060,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qxh2",
-        "correct": true,
-        "timestamp": "2026-08-29T18:06:20.696498+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788026785442",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
