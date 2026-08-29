@@ -1,105 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-10-27",
-    "title": "Dark Squared Super Powers! 🦸",
-    "fen": "r4r2/bp3bkp/2p3pn/pP6/P3P1P1/2N1q1QP/1B5K/5R2 w - - 0 1",
-    "current_fen": "r4rk1/bp2Nb1p/2p3pn/pP2B3/P3P1P1/7P/7K/5R2 b - - 2 4",
-    "pgn": "[White \"GuyLemieux\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"r4r2/bp3bkp/2p3pn/pP6/P3P1P1/2N1q1QP/1B5K/5R2 w - - 0 1\"]\r\n\r\n1. Nd5+ Qd4 2. Qe5+ Qxe5+ 3. Bxe5+ Kg8 4. Ne7# 1-0",
+    "url": "https://www.chess.com/daily/2022-09-10",
+    "title": "When the Puzzle Fights Back",
+    "fen": "1r4k1/R3b1p1/6Pp/5P2/R7/p7/r4B1P/6K1 b - - 0 1",
+    "current_fen": "1r4k1/R3b1p1/6Pp/5P2/R7/p7/r4B1P/6K1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1r4k1/R3b1p1/6Pp/5P2/R7/p7/r4B1P/6K1 b - - 0 1\"]\r\n\r\n1... Bc5 2. Ra8 Bxf2+ 3. Kf1 Rf8 *",
     "all_moves": [
       {
-        "uci": "c3d5",
-        "san": "Nd5+",
-        "color": "white"
-      },
-      {
-        "uci": "e3d4",
-        "san": "Qd4",
+        "uci": "e7c5",
+        "san": "Bc5",
         "color": "black"
       },
       {
-        "uci": "g3e5",
-        "san": "Qe5+",
+        "uci": "a7a8",
+        "san": "Ra8",
         "color": "white"
       },
       {
-        "uci": "d4e5",
-        "san": "Qxe5+",
+        "uci": "c5f2",
+        "san": "Bxf2+",
         "color": "black"
       },
       {
-        "uci": "b2e5",
-        "san": "Bxe5+",
+        "uci": "g1f1",
+        "san": "Kf1",
         "color": "white"
       },
       {
-        "uci": "g7g8",
-        "san": "Kg8",
+        "uci": "b8f8",
+        "san": "Rf8",
         "color": "black"
-      },
-      {
-        "uci": "d5e7",
-        "san": "Ne7#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3d5",
-        "san": "Nd5+",
-        "color": "white"
+        "uci": "e7c5",
+        "san": "Bc5",
+        "color": "black"
       },
       {
-        "uci": "g3e5",
-        "san": "Qe5+",
-        "color": "white"
+        "uci": "c5f2",
+        "san": "Bxf2+",
+        "color": "black"
       },
       {
-        "uci": "b2e5",
-        "san": "Bxe5+",
-        "color": "white"
-      },
-      {
-        "uci": "d5e7",
-        "san": "Ne7#",
-        "color": "white"
+        "uci": "b8f8",
+        "san": "Rf8",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-29T09:00:25.639376+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T09:02:24.411854+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787994025639",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1543183535257555086,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxe5",
-        "correct": false,
-        "timestamp": "2026-08-29T09:00:46.483842+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Ne7",
-        "correct": true,
-        "timestamp": "2026-08-29T09:00:47.981700+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787994144411",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
