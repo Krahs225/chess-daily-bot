@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-12-31",
     "title": "Decisive Breakthrough",
     "fen": "r2q1rk1/4bp1p/4pBp1/3pN3/3P4/pbPB3Q/1P3PPP/3RR1K1 w - - 0 1",
-    "current_fen": "r2q1rk1/4b2p/4pBp1/3pN3/3P4/pbP4Q/1P3PPP/3RR1K1 w - - 0 2",
+    "current_fen": "r2q2k1/4br1p/4QBp1/3pN3/3P4/pbP5/1P3PPP/3RR1K1 w - - 1 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q1rk1/4bp1p/4pBp1/3pN3/3P4/pbPB3Q/1P3PPP/3RR1K1 w - - 0 1\"]\r\n\r\n1. Bxg6 fxg6 2. Qxe6+ Rf7 3. Qxf7#\r\n*",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788030767201",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1543337640957448275,
     "attempted_users": {
@@ -70,16 +70,18 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "Nc6",
-        "correct": false,
-        "timestamp": "2026-08-29T19:14:19.434566+00:00"
+        "move": "Qxe6",
+        "correct": true,
+        "timestamp": "2026-08-29T19:14:37.712761+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
