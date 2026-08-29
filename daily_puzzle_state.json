@@ -1,186 +1,111 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-05-21",
-    "title": "L Mitrofanov, 1967",
-    "fen": "8/k7/P2b2P1/KP1Pn2P/4R3/8/6np/8 w - - 0 1",
-    "current_fen": "8/k7/P2b2P1/KP1Pn2P/4R3/8/6np/8 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/k7/P2b2P1/KP1Pn2P/4R3/8/6np/8 w - - 0 1\"]\r\n\r\n1. b6+ Ka8 2. Re1 Nxe1 3. g7 h1=Q 4. g8=Q+ Bb8 5. a7 Nc6+ 6. dxc6 Qxh5+ 7. Qg5 Qxg5+ 8. Ka6 Bxa7 9. c7 Qa5+ 10. Kxa5 Kb7 11. bxa7\r\n*",
+    "url": "https://www.chess.com/daily/2022-03-11",
+    "title": "Fier on Board",
+    "fen": "2r2bk1/1q1n1pp1/2b1r3/1p4N1/2p1P3/1p1P2P1/PB3PK1/Q1R4R w - - 0 27",
+    "current_fen": "2r2bk1/1q1n1pp1/2b1r3/1p4N1/2p1P3/1p1P2P1/PB3PK1/Q1R4R w - - 0 27",
+    "pgn": "[Event \"Chess Olympiad\"]\r\n[Site \"Batumi GEO\"]\r\n[Date \"2018.09.25\"]\r\n[Round \"2.19\"]\r\n[White \"Alexandr Hilario Takeda dos Santos Fier\"]\r\n[Black \"Robert Aloma Vidal\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2558\"]\r\n[BlackElo \"2428\"]\r\n[ECO \"A09\"]\r\n[EventDate \"2018.09.24\"]\r\n[PlyCount \"53\"]\r\n[FEN \"2r2bk1/1q1n1pp1/2b1r3/1p4N1/2p1P3/1p1P2P1/PB3PK1/Q1R4R w - - 0 27\"]\r\n\r\n27.Rh8+ Kxh8 28.Rh1+ Kg8 29.Rh8+ Kxh8 30.Qh1+ Rh6 31.Qxh6+ Kg8 32.Qh7# 1-0",
     "all_moves": [
       {
-        "uci": "b5b6",
-        "san": "b6+",
+        "uci": "h1h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "a7a8",
-        "san": "Ka8",
+        "uci": "g8h8",
+        "san": "Kxh8",
         "color": "black"
       },
       {
-        "uci": "e4e1",
-        "san": "Re1",
+        "uci": "c1h1",
+        "san": "Rh1+",
         "color": "white"
       },
       {
-        "uci": "g2e1",
-        "san": "Nxe1",
+        "uci": "h8g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "g6g7",
-        "san": "g7",
+        "uci": "h1h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "h2h1q",
-        "san": "h1=Q",
+        "uci": "g8h8",
+        "san": "Kxh8",
         "color": "black"
       },
       {
-        "uci": "g7g8q",
-        "san": "g8=Q+",
+        "uci": "a1h1",
+        "san": "Qh1+",
         "color": "white"
       },
       {
-        "uci": "d6b8",
-        "san": "Bb8",
+        "uci": "e6h6",
+        "san": "Rh6",
         "color": "black"
       },
       {
-        "uci": "a6a7",
-        "san": "a7",
+        "uci": "h1h6",
+        "san": "Qxh6+",
         "color": "white"
       },
       {
-        "uci": "e5c6",
-        "san": "Nc6+",
+        "uci": "h8g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "d5c6",
-        "san": "dxc6",
-        "color": "white"
-      },
-      {
-        "uci": "h1h5",
-        "san": "Qxh5+",
-        "color": "black"
-      },
-      {
-        "uci": "g8g5",
-        "san": "Qg5",
-        "color": "white"
-      },
-      {
-        "uci": "h5g5",
-        "san": "Qxg5+",
-        "color": "black"
-      },
-      {
-        "uci": "a5a6",
-        "san": "Ka6",
-        "color": "white"
-      },
-      {
-        "uci": "b8a7",
-        "san": "Bxa7",
-        "color": "black"
-      },
-      {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "g5a5",
-        "san": "Qa5+",
-        "color": "black"
-      },
-      {
-        "uci": "a6a5",
-        "san": "Kxa5",
-        "color": "white"
-      },
-      {
-        "uci": "a8b7",
-        "san": "Kb7",
-        "color": "black"
-      },
-      {
-        "uci": "b6a7",
-        "san": "bxa7",
+        "uci": "h6h7",
+        "san": "Qh7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b5b6",
-        "san": "b6+",
+        "uci": "h1h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "e4e1",
-        "san": "Re1",
+        "uci": "c1h1",
+        "san": "Rh1+",
         "color": "white"
       },
       {
-        "uci": "g6g7",
-        "san": "g7",
+        "uci": "h1h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "g7g8q",
-        "san": "g8=Q+",
+        "uci": "a1h1",
+        "san": "Qh1+",
         "color": "white"
       },
       {
-        "uci": "a6a7",
-        "san": "a7",
+        "uci": "h1h6",
+        "san": "Qxh6+",
         "color": "white"
       },
       {
-        "uci": "d5c6",
-        "san": "dxc6",
-        "color": "white"
-      },
-      {
-        "uci": "g8g5",
-        "san": "Qg5",
-        "color": "white"
-      },
-      {
-        "uci": "a5a6",
-        "san": "Ka6",
-        "color": "white"
-      },
-      {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "a6a5",
-        "san": "Kxa5",
-        "color": "white"
-      },
-      {
-        "uci": "b6a7",
-        "san": "bxa7",
+        "uci": "h6h7",
+        "san": "Qh7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 11,
-    "posted_at": "2026-08-29T08:52:34.879236+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-08-29T08:52:44.532105+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787993554879",
+    "puzzle_id": "random_1787993564532",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543181561296584786,
+    "message_id": 1543181602325270639,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
