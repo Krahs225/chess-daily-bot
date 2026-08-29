@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-07-08",
     "title": "No Payen, No Gain",
     "fen": "8/pb2q1kn/3p1rpN/2pP4/1p2Bb2/6Q1/P6P/6RK w - - 0 32",
-    "current_fen": "8/pb2q1kn/3p1rpN/2pP4/1p2Bb2/6Q1/P6P/6RK w - - 0 32",
+    "current_fen": "8/pb2q1kn/3p2rN/2pP4/1p2Bb2/8/P6P/6RK w - - 0 33",
     "pgn": "[Event \"21st Open\"]\r\n[Site \"Cappelle la Grande FRA\"]\r\n[Date \"2005.02.18\"]\r\n[Round \"8\"]\r\n[White \"Payen, Arnaud\"]\r\n[Black \"Fedorchuk, Sergey A.\"]\r\n[Result \"*\"]\r\n[WhiteElo \"2384\"]\r\n[BlackElo \"2570\"]\r\n[FEN \"8/pb2q1kn/3p1rpN/2pP4/1p2Bb2/6Q1/P6P/6RK w - - 0 32\"]\r\n\r\n32.Qxg6+ Rxg6 33.Rxg6+ Kf8 34.Rg8# 1-0",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787997233443",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543196989846593537,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxg6",
+        "correct": true,
+        "timestamp": "2026-08-29T09:53:59.938457+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
