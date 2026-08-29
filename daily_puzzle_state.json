@@ -1,119 +1,67 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-01-20",
-    "title": "The Winning Capture",
-    "fen": "8/6R1/k2p4/3P2K1/8/8/3r4/8 b - - 0 1",
-    "current_fen": "8/6R1/k2p4/3P2K1/8/8/3r4/8 b - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/6R1/k2p4/3P2K1/8/8/3r4/8 b - - 0 1\"]\r\n\r\n1... Rg2+ 2. Kf6 Rxg7 3. Kxg7 Kb5 4. Kf6 Kc4 5. Ke6 Kc5 6. Ke7 Kxd5 *",
+    "url": "https://www.chess.com/daily/2016-06-29",
+    "title": "Danner - Schnabel Hradec Kralove 1992",
+    "fen": "r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1",
+    "current_fen": "r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1\"]\r\n\r\n1. Qxd6 Bxd6 2. Nf6+ Kg7 3. Nxg4\r\n*",
     "all_moves": [
       {
-        "uci": "d2g2",
-        "san": "Rg2+",
-        "color": "black"
-      },
-      {
-        "uci": "g5f6",
-        "san": "Kf6",
+        "uci": "b4d6",
+        "san": "Qxd6",
         "color": "white"
       },
       {
-        "uci": "g2g7",
-        "san": "Rxg7",
+        "uci": "f8d6",
+        "san": "Bxd6",
         "color": "black"
       },
       {
-        "uci": "f6g7",
-        "san": "Kxg7",
+        "uci": "d5f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "a6b5",
-        "san": "Kb5",
+        "uci": "g8g7",
+        "san": "Kg7",
         "color": "black"
       },
       {
-        "uci": "g7f6",
-        "san": "Kf6",
+        "uci": "f6g4",
+        "san": "Nxg4",
         "color": "white"
-      },
-      {
-        "uci": "b5c4",
-        "san": "Kc4",
-        "color": "black"
-      },
-      {
-        "uci": "f6e6",
-        "san": "Ke6",
-        "color": "white"
-      },
-      {
-        "uci": "c4c5",
-        "san": "Kc5",
-        "color": "black"
-      },
-      {
-        "uci": "e6e7",
-        "san": "Ke7",
-        "color": "white"
-      },
-      {
-        "uci": "c5d5",
-        "san": "Kxd5",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2g2",
-        "san": "Rg2+",
-        "color": "black"
+        "uci": "b4d6",
+        "san": "Qxd6",
+        "color": "white"
       },
       {
-        "uci": "g2g7",
-        "san": "Rxg7",
-        "color": "black"
+        "uci": "d5f6",
+        "san": "Nf6+",
+        "color": "white"
       },
       {
-        "uci": "a6b5",
-        "san": "Kb5",
-        "color": "black"
-      },
-      {
-        "uci": "b5c4",
-        "san": "Kc4",
-        "color": "black"
-      },
-      {
-        "uci": "c4c5",
-        "san": "Kc5",
-        "color": "black"
-      },
-      {
-        "uci": "c5d5",
-        "san": "Kxd5",
-        "color": "black"
+        "uci": "f6g4",
+        "san": "Nxg4",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 6,
-    "posted_at": "2026-08-29T12:37:34.355783+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T12:37:54.361667+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788007054355",
+    "puzzle_id": "random_1788007074361",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543238182118752351,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rxd5",
-        "correct": false,
-        "timestamp": "2026-08-29T12:37:46.502241+00:00"
-      }
-    },
+    "message_id": 1543238265962766398,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
