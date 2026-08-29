@@ -1,75 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-04-14",
-    "title": "Sending in the Bait",
-    "fen": "r5k1/5p1p/2p3p1/q1Q4P/pp6/4R3/5PP1/5BK1 w - - 0 1",
-    "current_fen": "4r1k1/5p1p/2p3p1/Q6P/pp6/8/5PP1/5BK1 b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5k1/5p1p/2p3p1/q1Q4P/pp6/4R3/5PP1/5BK1 w - - 0 1\"]\r\n\r\n1. Re8+ Rxe8 2. Qxa5\r\n*",
+    "url": "https://www.chess.com/daily/2018-10-07",
+    "title": "The Aggressive Check",
+    "fen": "rn1q2k1/5pp1/1ppr3p/b2pN1P1/p2PbPBB/P3P3/1P5P/2RQ1RK1 w q - 0 1",
+    "current_fen": "rn1q2k1/5pp1/1ppr3p/b2pN1P1/p2PbPBB/P3P3/1P5P/2RQ1RK1 w q - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"rn1q2k1/5pp1/1ppr3p/b2pN1P1/p2PbPBB/P3P3/1P5P/2RQ1RK1 w q - 0 1\"]\r\n\r\n1. Nxf7 Kxf7 2. g6+\r\n*",
     "all_moves": [
       {
-        "uci": "e3e8",
-        "san": "Re8+",
+        "uci": "e5f7",
+        "san": "Nxf7",
         "color": "white"
       },
       {
-        "uci": "a8e8",
-        "san": "Rxe8",
+        "uci": "g8f7",
+        "san": "Kxf7",
         "color": "black"
       },
       {
-        "uci": "c5a5",
-        "san": "Qxa5",
+        "uci": "g5g6",
+        "san": "g6+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e3e8",
-        "san": "Re8+",
+        "uci": "e5f7",
+        "san": "Nxf7",
         "color": "white"
       },
       {
-        "uci": "c5a5",
-        "san": "Qxa5",
+        "uci": "g5g6",
+        "san": "g6+",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-08-29T19:18:10.368546+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-29T19:19:15.615968+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788031090368",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1543338996824936528,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Re8",
-        "correct": true,
-        "timestamp": "2026-08-29T19:18:14.805546+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qxa5",
-        "correct": true,
-        "timestamp": "2026-08-29T19:18:18.947413+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1788031155615",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
