@@ -1,107 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-05-25",
-    "title": "Discovering Daily Puzzle Nirvana",
-    "fen": "3r4/pQp2pkp/8/2bPPqp1/4nP2/3B4/R5PP/4R2K b - - 0 1",
-    "current_fen": "7r/p1p2pk1/6p1/2bPP3/1Q3Pp1/6P1/R5P1/4R2K w - - 2 6",
-    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"JohanVA\"]\r\n[Result \"0-1\"]\r\n[FEN \"3r4/pQp2pkp/8/2bPPqp1/4nP2/3B4/R5PP/4R2K b - - 0 1\"]\r\n\r\n1... Ng3+ 2. hxg3 Qg6 3. Bf5 g4 4. Bxg6 hxg6 5. Qb4 Rh8# 0-1",
+    "url": "https://www.chess.com/daily/2015-03-11",
+    "title": "Open Avenues",
+    "fen": "2r1rbk1/1q1n1p1p/p1bpp1p1/1p4PQ/3BPP2/P1NR4/1PP3BP/5RK1 w - - 0 1",
+    "current_fen": "2r1rb2/1q1n1p1k/p1bpp1p1/1p4P1/3BPP2/P1NR4/1PP3BP/5RK1 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1rbk1/1q1n1p1p/p1bpp1p1/1p4PQ/3BPP2/P1NR4/1PP3BP/5RK1 w - - 0 1\"]\r\n\r\n1. Qxh7+ Kxh7 2. Rh3+ Bh6 3. Rxh6+ Kg8 4. Rh8#\r\n*",
     "all_moves": [
       {
-        "uci": "e4g3",
-        "san": "Ng3+",
-        "color": "black"
-      },
-      {
-        "uci": "h2g3",
-        "san": "hxg3",
+        "uci": "h5h7",
+        "san": "Qxh7+",
         "color": "white"
       },
       {
-        "uci": "f5g6",
-        "san": "Qg6",
+        "uci": "g8h7",
+        "san": "Kxh7",
         "color": "black"
       },
       {
-        "uci": "d3f5",
-        "san": "Bf5",
+        "uci": "d3h3",
+        "san": "Rh3+",
         "color": "white"
       },
       {
-        "uci": "g5g4",
-        "san": "g4",
+        "uci": "f8h6",
+        "san": "Bh6",
         "color": "black"
       },
       {
-        "uci": "f5g6",
-        "san": "Bxg6",
+        "uci": "h3h6",
+        "san": "Rxh6+",
         "color": "white"
       },
       {
-        "uci": "h7g6",
-        "san": "hxg6",
+        "uci": "h7g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "b7b4",
-        "san": "Qb4",
-        "color": "white"
-      },
-      {
-        "uci": "d8h8",
+        "uci": "h6h8",
         "san": "Rh8#",
-        "color": "black"
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4g3",
-        "san": "Ng3+",
-        "color": "black"
+        "uci": "h5h7",
+        "san": "Qxh7+",
+        "color": "white"
       },
       {
-        "uci": "f5g6",
-        "san": "Qg6",
-        "color": "black"
+        "uci": "d3h3",
+        "san": "Rh3+",
+        "color": "white"
       },
       {
-        "uci": "g5g4",
-        "san": "g4",
-        "color": "black"
+        "uci": "h3h6",
+        "san": "Rxh6+",
+        "color": "white"
       },
       {
-        "uci": "h7g6",
-        "san": "hxg6",
-        "color": "black"
-      },
-      {
-        "uci": "d8h8",
+        "uci": "h6h8",
         "san": "Rh8#",
-        "color": "black"
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 5,
-    "posted_at": "2026-08-29T17:50:50.516877+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T17:51:36.180167+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788025850516",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1543317019523293306,
+    "puzzle_id": "random_1788025896180",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1543317210112729090,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Rh8",
+        "move": "Qxh7",
         "correct": true,
-        "timestamp": "2026-08-29T17:51:31.099466+00:00"
+        "timestamp": "2026-08-29T17:51:42.353515+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
