@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-07-09",
     "title": "A Winning Piece Circle",
     "fen": "2r3k1/5npp/p7/1q6/2nQ3P/8/PB2B1P1/1K3R2 b - - 0 1",
-    "current_fen": "2r3k1/5npp/p7/1q6/3Q3P/n7/PB2B1P1/K4R2 b - - 2 2",
+    "current_fen": "2r3k1/5npp/p7/1q6/3Q3P/8/PBn1B1P1/1K3R2 b - - 4 3",
     "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"JohanVA\"]\r\n[Result \"0-1\"]\r\n[FEN \"2r3k1/5npp/p7/1q6/2nQ3P/8/PB2B1P1/1K3R2 b - - 0 1\"]\r\n\r\n1... Na3+ 2. Ka1 Nc2+ 3. Kb1 Nxd4 4. Bxb5 Nxb5 0-1",
     "all_moves": [
       {
@@ -72,8 +72,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787995075315",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1543187938085572659,
     "attempted_users": {
@@ -82,13 +82,21 @@
         "move": "na3",
         "correct": true,
         "timestamp": "2026-08-29T09:17:58.838086+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nc2",
+        "correct": true,
+        "timestamp": "2026-08-29T09:18:03.262545+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
