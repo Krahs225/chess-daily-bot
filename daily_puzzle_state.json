@@ -1,51 +1,81 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-08-24",
-    "title": "Chasing Tactics",
-    "fen": "r2q1rk1/ppp2p1p/3p2p1/4b3/1nn1P1Q1/2N4P/PB2NPP1/1BKR3R b - - 0 1",
-    "current_fen": "r2q1rk1/ppp2p1p/3p2p1/4b3/1nn1P1Q1/2N4P/PB2NPP1/1BKR3R b - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q1rk1/ppp2p1p/3p2p1/4b3/1nn1P1Q1/2N4P/PB2NPP1/1BKR3R b - - 0 1\"]\r\n\r\n1...h5 2. Qf3 Qg5+\r\n*",
+    "url": "https://www.chess.com/daily/2020-04-24",
+    "title": "Rolling on a String",
+    "fen": "1r1r1k2/p5bp/6p1/4N3/1PB1R3/P6P/6P1/7K b - - 0 1",
+    "current_fen": "1r1r1k2/p5bp/6p1/4N3/1PB1R3/P6P/6P1/7K b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1r1r1k2/p5bp/6p1/4N3/1PB1R3/P6P/6P1/7K b - - 0 1\"]\r\n\r\n1...Rd1+ 2.Kh2 Rd4 3.Re3 Bxe5+ 4.Rxe5 Rxc4 *",
     "all_moves": [
       {
-        "uci": "h7h5",
-        "san": "h5",
+        "uci": "d8d1",
+        "san": "Rd1+",
         "color": "black"
       },
       {
-        "uci": "g4f3",
-        "san": "Qf3",
+        "uci": "h1h2",
+        "san": "Kh2",
         "color": "white"
       },
       {
-        "uci": "d8g5",
-        "san": "Qg5+",
+        "uci": "d1d4",
+        "san": "Rd4",
+        "color": "black"
+      },
+      {
+        "uci": "e4e3",
+        "san": "Re3",
+        "color": "white"
+      },
+      {
+        "uci": "g7e5",
+        "san": "Bxe5+",
+        "color": "black"
+      },
+      {
+        "uci": "e3e5",
+        "san": "Rxe5",
+        "color": "white"
+      },
+      {
+        "uci": "d4c4",
+        "san": "Rxc4",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h7h5",
-        "san": "h5",
+        "uci": "d8d1",
+        "san": "Rd1+",
         "color": "black"
       },
       {
-        "uci": "d8g5",
-        "san": "Qg5+",
+        "uci": "d1d4",
+        "san": "Rd4",
+        "color": "black"
+      },
+      {
+        "uci": "g7e5",
+        "san": "Bxe5+",
+        "color": "black"
+      },
+      {
+        "uci": "d4c4",
+        "san": "Rxc4",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-08-29T18:06:25.442290+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T18:46:53.846876+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788026785442",
+    "puzzle_id": "random_1788029213846",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543320940082102276,
+    "message_id": 1543331125768888412,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
