@@ -1,62 +1,40 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-09-15",
-    "title": "Mating In Style",
-    "fen": "1r4rk/2q2pbp/p1p1bp2/4p2Q/Pp2P2N/6RP/BPP2PP1/3N2K1 w - - 0 1",
-    "current_fen": "1r4rk/2q3bp/p1p1ppN1/4p2Q/Pp2P3/6RP/1PP2PP1/3N2K1 b - - 1 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r4rk/2q2pbp/p1p1bp2/4p2Q/Pp2P2N/6RP/BPP2PP1/3N2K1 w - - 0 1\"]\r\n\r\n1. Bxe6 fxe6 2. Ng6#\r\n*",
+    "url": "https://www.chess.com/daily/2010-06-07",
+    "title": "Basic Protection",
+    "fen": "rbb1k2r/pp3ppp/5q2/1N1p4/5P2/8/PPQ1P1PP/2KR1B1R w - - 0 1",
+    "current_fen": "rbb1k2r/pp3ppp/5q2/1N1p4/5P2/8/PPQ1P1PP/2KR1B1R w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rbb1k2r/pp3ppp/5q2/1N1p4/5P2/8/PPQ1P1PP/2KR1B1R w - - 0 1\"]\r\n\r\n1. Qxc8+\r\n*",
     "all_moves": [
       {
-        "uci": "a2e6",
-        "san": "Bxe6",
-        "color": "white"
-      },
-      {
-        "uci": "f7e6",
-        "san": "fxe6",
-        "color": "black"
-      },
-      {
-        "uci": "h4g6",
-        "san": "Ng6#",
+        "uci": "c2c8",
+        "san": "Qxc8+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a2e6",
-        "san": "Bxe6",
-        "color": "white"
-      },
-      {
-        "uci": "h4g6",
-        "san": "Ng6#",
+        "uci": "c2c8",
+        "san": "Qxc8+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-29T17:58:02.375044+00:00",
+    "player_move_count": 1,
+    "posted_at": "2026-08-29T17:58:43.157894+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788026282375",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1543318830447861821,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Ng6",
-        "correct": true,
-        "timestamp": "2026-08-29T17:58:38.417087+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788026323157",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
