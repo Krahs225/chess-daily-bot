@@ -1,402 +1,102 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-04-24",
-    "title": "A Long Way To Go For A Half Point",
-    "fen": "7R/kn1r4/5p2/1p3P2/1P2K2Q/7p/q6b/8 w - - 0 1",
-    "current_fen": "8/1n1r3k/5pR1/1p3P2/1P2K3/7p/5q1b/8 w - - 16 10",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7R/kn1r4/5p2/1p3P2/1P2K2Q/7p/q6b/8 w - - 0 1\"]\r\n\r\n1. Qf2+ Qxf2 2. Ra8+ Kb6 3. Ra6+ Kc7 4. Rc6+ Kd8 5. Rc8+ Ke7 6. Re8+ Kf7 7.\r\nRf8+ Kg7 8. Rg8+ Kh6 9. Rg6+ Kh7 10. Rh6+ Kg8 11. Rh8+ Kf7 12. Rf8+ Ke7 13.\r\nRe8+ Kd6 14. Re6+ Kc7 15. Rc6+ Kd8 16. Rc8+ Ke7 17. Re8+ Kf7 18. Rf8+ Kg7\r\n19. Rg8+ Kh6 20. Rg6+ Kh5 21. Rh6+ Kg4 22. Rg6+ Kh4 23. Rh6+ Kg3 24. Rg6+\r\n*",
+    "url": "https://www.chess.com/daily/2025-05-25",
+    "title": "Discovering Daily Puzzle Nirvana",
+    "fen": "3r4/pQp2pkp/8/2bPPqp1/4nP2/3B4/R5PP/4R2K b - - 0 1",
+    "current_fen": "3r4/pQp2pkp/8/2bPPqp1/4nP2/3B4/R5PP/4R2K b - - 0 1",
+    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"JohanVA\"]\r\n[Result \"0-1\"]\r\n[FEN \"3r4/pQp2pkp/8/2bPPqp1/4nP2/3B4/R5PP/4R2K b - - 0 1\"]\r\n\r\n1... Ng3+ 2. hxg3 Qg6 3. Bf5 g4 4. Bxg6 hxg6 5. Qb4 Rh8# 0-1",
     "all_moves": [
       {
-        "uci": "h4f2",
-        "san": "Qf2+",
-        "color": "white"
-      },
-      {
-        "uci": "a2f2",
-        "san": "Qxf2",
+        "uci": "e4g3",
+        "san": "Ng3+",
         "color": "black"
       },
       {
-        "uci": "h8a8",
-        "san": "Ra8+",
+        "uci": "h2g3",
+        "san": "hxg3",
         "color": "white"
       },
       {
-        "uci": "a7b6",
-        "san": "Kb6",
+        "uci": "f5g6",
+        "san": "Qg6",
         "color": "black"
       },
       {
-        "uci": "a8a6",
-        "san": "Ra6+",
+        "uci": "d3f5",
+        "san": "Bf5",
         "color": "white"
       },
       {
-        "uci": "b6c7",
-        "san": "Kc7",
+        "uci": "g5g4",
+        "san": "g4",
         "color": "black"
       },
       {
-        "uci": "a6c6",
-        "san": "Rc6+",
+        "uci": "f5g6",
+        "san": "Bxg6",
         "color": "white"
       },
       {
-        "uci": "c7d8",
-        "san": "Kd8",
+        "uci": "h7g6",
+        "san": "hxg6",
         "color": "black"
       },
       {
-        "uci": "c6c8",
-        "san": "Rc8+",
+        "uci": "b7b4",
+        "san": "Qb4",
         "color": "white"
       },
       {
-        "uci": "d8e7",
-        "san": "Ke7",
+        "uci": "d8h8",
+        "san": "Rh8#",
         "color": "black"
-      },
-      {
-        "uci": "c8e8",
-        "san": "Re8+",
-        "color": "white"
-      },
-      {
-        "uci": "e7f7",
-        "san": "Kf7",
-        "color": "black"
-      },
-      {
-        "uci": "e8f8",
-        "san": "Rf8+",
-        "color": "white"
-      },
-      {
-        "uci": "f7g7",
-        "san": "Kg7",
-        "color": "black"
-      },
-      {
-        "uci": "f8g8",
-        "san": "Rg8+",
-        "color": "white"
-      },
-      {
-        "uci": "g7h6",
-        "san": "Kh6",
-        "color": "black"
-      },
-      {
-        "uci": "g8g6",
-        "san": "Rg6+",
-        "color": "white"
-      },
-      {
-        "uci": "h6h7",
-        "san": "Kh7",
-        "color": "black"
-      },
-      {
-        "uci": "g6h6",
-        "san": "Rh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h7g8",
-        "san": "Kg8",
-        "color": "black"
-      },
-      {
-        "uci": "h6h8",
-        "san": "Rh8+",
-        "color": "white"
-      },
-      {
-        "uci": "g8f7",
-        "san": "Kf7",
-        "color": "black"
-      },
-      {
-        "uci": "h8f8",
-        "san": "Rf8+",
-        "color": "white"
-      },
-      {
-        "uci": "f7e7",
-        "san": "Ke7",
-        "color": "black"
-      },
-      {
-        "uci": "f8e8",
-        "san": "Re8+",
-        "color": "white"
-      },
-      {
-        "uci": "e7d6",
-        "san": "Kd6",
-        "color": "black"
-      },
-      {
-        "uci": "e8e6",
-        "san": "Re6+",
-        "color": "white"
-      },
-      {
-        "uci": "d6c7",
-        "san": "Kc7",
-        "color": "black"
-      },
-      {
-        "uci": "e6c6",
-        "san": "Rc6+",
-        "color": "white"
-      },
-      {
-        "uci": "c7d8",
-        "san": "Kd8",
-        "color": "black"
-      },
-      {
-        "uci": "c6c8",
-        "san": "Rc8+",
-        "color": "white"
-      },
-      {
-        "uci": "d8e7",
-        "san": "Ke7",
-        "color": "black"
-      },
-      {
-        "uci": "c8e8",
-        "san": "Re8+",
-        "color": "white"
-      },
-      {
-        "uci": "e7f7",
-        "san": "Kf7",
-        "color": "black"
-      },
-      {
-        "uci": "e8f8",
-        "san": "Rf8+",
-        "color": "white"
-      },
-      {
-        "uci": "f7g7",
-        "san": "Kg7",
-        "color": "black"
-      },
-      {
-        "uci": "f8g8",
-        "san": "Rg8+",
-        "color": "white"
-      },
-      {
-        "uci": "g7h6",
-        "san": "Kh6",
-        "color": "black"
-      },
-      {
-        "uci": "g8g6",
-        "san": "Rg6+",
-        "color": "white"
-      },
-      {
-        "uci": "h6h5",
-        "san": "Kh5",
-        "color": "black"
-      },
-      {
-        "uci": "g6h6",
-        "san": "Rh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h5g4",
-        "san": "Kg4",
-        "color": "black"
-      },
-      {
-        "uci": "h6g6",
-        "san": "Rg6+",
-        "color": "white"
-      },
-      {
-        "uci": "g4h4",
-        "san": "Kh4",
-        "color": "black"
-      },
-      {
-        "uci": "g6h6",
-        "san": "Rh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h4g3",
-        "san": "Kg3",
-        "color": "black"
-      },
-      {
-        "uci": "h6g6",
-        "san": "Rg6+",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h4f2",
-        "san": "Qf2+",
-        "color": "white"
+        "uci": "e4g3",
+        "san": "Ng3+",
+        "color": "black"
       },
       {
-        "uci": "h8a8",
-        "san": "Ra8+",
-        "color": "white"
+        "uci": "f5g6",
+        "san": "Qg6",
+        "color": "black"
       },
       {
-        "uci": "a8a6",
-        "san": "Ra6+",
-        "color": "white"
+        "uci": "g5g4",
+        "san": "g4",
+        "color": "black"
       },
       {
-        "uci": "a6c6",
-        "san": "Rc6+",
-        "color": "white"
+        "uci": "h7g6",
+        "san": "hxg6",
+        "color": "black"
       },
       {
-        "uci": "c6c8",
-        "san": "Rc8+",
-        "color": "white"
-      },
-      {
-        "uci": "c8e8",
-        "san": "Re8+",
-        "color": "white"
-      },
-      {
-        "uci": "e8f8",
-        "san": "Rf8+",
-        "color": "white"
-      },
-      {
-        "uci": "f8g8",
-        "san": "Rg8+",
-        "color": "white"
-      },
-      {
-        "uci": "g8g6",
-        "san": "Rg6+",
-        "color": "white"
-      },
-      {
-        "uci": "g6h6",
-        "san": "Rh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h6h8",
-        "san": "Rh8+",
-        "color": "white"
-      },
-      {
-        "uci": "h8f8",
-        "san": "Rf8+",
-        "color": "white"
-      },
-      {
-        "uci": "f8e8",
-        "san": "Re8+",
-        "color": "white"
-      },
-      {
-        "uci": "e8e6",
-        "san": "Re6+",
-        "color": "white"
-      },
-      {
-        "uci": "e6c6",
-        "san": "Rc6+",
-        "color": "white"
-      },
-      {
-        "uci": "c6c8",
-        "san": "Rc8+",
-        "color": "white"
-      },
-      {
-        "uci": "c8e8",
-        "san": "Re8+",
-        "color": "white"
-      },
-      {
-        "uci": "e8f8",
-        "san": "Rf8+",
-        "color": "white"
-      },
-      {
-        "uci": "f8g8",
-        "san": "Rg8+",
-        "color": "white"
-      },
-      {
-        "uci": "g8g6",
-        "san": "Rg6+",
-        "color": "white"
-      },
-      {
-        "uci": "g6h6",
-        "san": "Rh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h6g6",
-        "san": "Rg6+",
-        "color": "white"
-      },
-      {
-        "uci": "g6h6",
-        "san": "Rh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h6g6",
-        "san": "Rg6+",
-        "color": "white"
+        "uci": "d8h8",
+        "san": "Rh8#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 24,
-    "posted_at": "2026-08-29T09:21:56.202017+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 5,
+    "posted_at": "2026-08-29T09:23:06.883600+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787995316202",
-    "next_solution_index": 18,
-    "next_player_index": 9,
+    "puzzle_id": "random_1787995386883",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1543188948254326825,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rg6",
-        "correct": true,
-        "timestamp": "2026-08-29T09:22:33.033807+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rf7",
-        "correct": false,
-        "timestamp": "2026-08-29T09:22:24.934412+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "message_id": 1543189244942491699,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
