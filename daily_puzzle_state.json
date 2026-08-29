@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-06-11",
     "title": "Tying Up Loose Ends",
     "fen": "1k4r1/pq3p2/1p3Q2/3R1P1p/8/b4P2/P1PNr2P/1R5K w - - 0 1",
-    "current_fen": "1k6/p4p2/1p6/5P1p/4N3/b2Q1P2/P1q2r1P/1R5K w - - 0 5",
+    "current_fen": "1k6/p4p2/1p6/5P1p/8/b2Q1P2/P1q2N1P/1R5K b - - 0 5",
     "pgn": "[Result \"*\"]\r\n[FEN \"1k4r1/pq3p2/1p3Q2/3R1P1p/8/b4P2/P1PNr2P/1R5K w - - 0 1\"]\r\n\r\n1.Rd8+ Rxd8 2.Qxd8+ Qc8 3.Qd3 Rf2 4.Ne4 Qxc2 5.Nxf2 *",
     "all_moves": [
       {
@@ -87,21 +87,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787998457714",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1543202125033771029,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "ne4",
+        "move": "nxf2",
         "correct": true,
-        "timestamp": "2026-08-29T10:15:00.377957+00:00"
+        "timestamp": "2026-08-29T10:15:07.873650+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
