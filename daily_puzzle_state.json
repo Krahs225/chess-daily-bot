@@ -1,47 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-11-07",
-    "title": "Hanging Pieces",
-    "fen": "r1b1k2r/pp1n1p1p/5p2/1B2pN2/4P2P/8/1q3PP1/R2Q1K1R b - - 0 1",
-    "current_fen": "r1b1k2r/pp1n1p1p/5p2/1q2pN2/4P2P/8/5PP1/R2Q1K1R w - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1k2r/pp1n1p1p/5p2/1B2pN2/4P2P/8/1q3PP1/R2Q1K1R b - - 0 1\"]\r\n\r\n1...Qxb5+\r\n*",
+    "url": "https://www.chess.com/daily/2024-02-19",
+    "title": "The Overburdened Queen",
+    "fen": "2r1q1k1/p4p1p/4pPp1/8/2R5/1p2Q3/5PPP/6K1 w - - 0 1",
+    "current_fen": "2r1q1k1/p4p1p/4pPp1/8/2R5/1p2Q3/5PPP/6K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2r1q1k1/p4p1p/4pPp1/8/2R5/1p2Q3/5PPP/6K1 w - - 0 1\"]\r\n\r\n1. Qh6 Qf8 2. Rxc8 Qxc8 3. Qg7# *",
     "all_moves": [
       {
-        "uci": "b2b5",
-        "san": "Qxb5+",
+        "uci": "e3h6",
+        "san": "Qh6",
+        "color": "white"
+      },
+      {
+        "uci": "e8f8",
+        "san": "Qf8",
         "color": "black"
+      },
+      {
+        "uci": "c4c8",
+        "san": "Rxc8",
+        "color": "white"
+      },
+      {
+        "uci": "f8c8",
+        "san": "Qxc8",
+        "color": "black"
+      },
+      {
+        "uci": "h6g7",
+        "san": "Qg7#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b2b5",
-        "san": "Qxb5+",
-        "color": "black"
+        "uci": "e3h6",
+        "san": "Qh6",
+        "color": "white"
+      },
+      {
+        "uci": "c4c8",
+        "san": "Rxc8",
+        "color": "white"
+      },
+      {
+        "uci": "h6g7",
+        "san": "Qg7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 1,
-    "posted_at": "2026-08-29T10:35:34.296957+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T10:59:31.740970+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787999734296",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1543207479989768192,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxb5",
-        "correct": true,
-        "timestamp": "2026-08-29T10:35:39.878603+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788001171740",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
