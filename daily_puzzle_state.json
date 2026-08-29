@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-08-08",
     "title": "Multiple Threats",
     "fen": "rr4k1/2q2p2/5Bpp/8/p2NQ3/P1P5/6PP/1R5K b - - 0 1",
-    "current_fen": "rr4k1/2q2p2/5Bpp/8/p2NQ3/P1P5/6PP/1R5K b - - 0 1",
+    "current_fen": "rr4k1/5p2/5Bpp/8/p2N1q2/P1P5/2Q3PP/1R5K b - - 2 2",
     "pgn": "[FEN \"rr4k1/2q2p2/5Bpp/8/p2NQ3/P1P5/6PP/1R5K b - - 0 1\"]\r\n\r\n\r\n1... Qf4 2. Qc2 Rxb1+ 3. Qxb1 Qxf6\r\n*",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787997076425",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543196332267937884,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rxb1",
-        "correct": false,
-        "timestamp": "2026-08-29T09:51:20.182897+00:00"
+        "move": "qf4",
+        "correct": true,
+        "timestamp": "2026-08-29T09:51:26.830829+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
