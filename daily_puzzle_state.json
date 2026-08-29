@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-02-02",
     "title": "Mate in One? Fourget About It!",
     "fen": "2k2r2/2p5/2q5/p1p1n3/P1P2n1B/1R4Pp/1Q1R4/6K1 b - - 0 1",
-    "current_fen": "2k2r2/2p5/2q5/p1p1n3/P1P2n1B/1R4Pp/1Q1R4/6K1 b - - 0 1",
+    "current_fen": "2k2r2/2p5/2q5/p1p1n3/P1P4B/1R4Pp/1Q2R3/6K1 b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"2k2r2/2p5/2q5/p1p1n3/P1P2n1B/1R4Pp/1Q1R4/6K1 b - - 0 1\"]\r\n\r\n1... Ne2+ 2. Rxe2 Rf1+ 3. Kxf1 Qh1+ 4. Kf2 Ng4# *",
     "all_moves": [
       {
@@ -72,20 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788038785553",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543371272992587779,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "H2",
-        "correct": false,
-        "timestamp": "2026-08-29T21:26:52.962923+00:00"
+        "move": "Ne2",
+        "correct": true,
+        "timestamp": "2026-08-29T21:27:01.141919+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
