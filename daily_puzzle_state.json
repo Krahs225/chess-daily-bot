@@ -1,107 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-09-25",
-    "title": "Mating Sequence",
-    "fen": "8/P2B1pk1/6p1/1pPRp1np/1B1bP3/7P/6PK/5r2 b - - 0 1",
-    "current_fen": "8/P2B1pk1/6p1/1pPRp2p/1B4P1/4b1nP/5r2/7K w - - 5 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/P2B1pk1/6p1/1pPRp1np/1B1bP3/7P/6PK/5r2 b - - 0 1\"]\r\n\r\n1...Bg1+ 2. Kh1 Nxe4 3. g4 Be3+ 4. Kg2 Rf2+ 5. Kh1 Ng3+\r\n*",
+    "url": "https://www.chess.com/daily/2010-11-20",
+    "title": "Playing With Patience",
+    "fen": "2K1k3/2P5/7r/4N3/8/8/8/8 w - - 0 1",
+    "current_fen": "2K1k3/2P5/7r/4N3/8/8/8/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2K1k3/2P5/7r/4N3/8/8/8/8 w - - 0 1\"]\r\n\r\n1. Kb8 Rd6 2. Ka7 Rd8 3. Kb7\r\n*",
     "all_moves": [
       {
-        "uci": "d4g1",
-        "san": "Bg1+",
-        "color": "black"
-      },
-      {
-        "uci": "h2h1",
-        "san": "Kh1",
+        "uci": "c8b8",
+        "san": "Kb8",
         "color": "white"
       },
       {
-        "uci": "g5e4",
-        "san": "Nxe4",
+        "uci": "h6d6",
+        "san": "Rd6",
         "color": "black"
       },
       {
-        "uci": "g2g4",
-        "san": "g4",
+        "uci": "b8a7",
+        "san": "Ka7",
         "color": "white"
       },
       {
-        "uci": "g1e3",
-        "san": "Be3+",
+        "uci": "d6d8",
+        "san": "Rd8",
         "color": "black"
       },
       {
-        "uci": "h1g2",
-        "san": "Kg2",
+        "uci": "a7b7",
+        "san": "Kb7",
         "color": "white"
-      },
-      {
-        "uci": "f1f2",
-        "san": "Rf2+",
-        "color": "black"
-      },
-      {
-        "uci": "g2h1",
-        "san": "Kh1",
-        "color": "white"
-      },
-      {
-        "uci": "e4g3",
-        "san": "Ng3+",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4g1",
-        "san": "Bg1+",
-        "color": "black"
+        "uci": "c8b8",
+        "san": "Kb8",
+        "color": "white"
       },
       {
-        "uci": "g5e4",
-        "san": "Nxe4",
-        "color": "black"
+        "uci": "b8a7",
+        "san": "Ka7",
+        "color": "white"
       },
       {
-        "uci": "g1e3",
-        "san": "Be3+",
-        "color": "black"
-      },
-      {
-        "uci": "f1f2",
-        "san": "Rf2+",
-        "color": "black"
-      },
-      {
-        "uci": "e4g3",
-        "san": "Ng3+",
-        "color": "black"
+        "uci": "a7b7",
+        "san": "Kb7",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 5,
-    "posted_at": "2026-08-29T10:29:12.246964+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T10:30:39.773755+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787999352246",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1543205877077643295,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ng3",
-        "correct": true,
-        "timestamp": "2026-08-29T10:30:32.003600+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787999439773",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
