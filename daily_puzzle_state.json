@@ -1,90 +1,49 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-02-04",
-    "title": "Exploiting a Vulnerable King",
-    "fen": "rn2k2r/pppbqppp/3b1n2/6N1/2PP1B2/8/PP2B1PP/RN1Q1RK1 b - - 0 1",
-    "current_fen": "rn2k2r/pppb1ppp/5n2/6q1/2PP4/8/PP2BRPP/RN1Q2K1 w - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn2k2r/pppbqppp/3b1n2/6N1/2PP1B2/8/PP2B1PP/RN1Q1RK1 b - - 0 1\"]\r\n\r\n1...Bxf4 2. Rxf4 Qe3+ 3. Rf2 Qxg5\r\n*",
+    "url": "https://www.chess.com/daily/2025-03-31",
+    "title": "Forgo the Fork",
+    "fen": "3Q4/8/2b1k1p1/3p1n2/3P4/p1P4N/1r2q1PP/6BK w - - 0 1",
+    "current_fen": "3Q4/8/2b1k1p1/3p1n2/3P4/p1P4N/1r2q1PP/6BK w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"3Q4/8/2b1k1p1/3p1n2/3P4/p1P4N/1r2q1PP/6BK w - - 0 1\"]\r\n\r\n1. Ng5# *",
     "all_moves": [
       {
-        "uci": "d6f4",
-        "san": "Bxf4",
-        "color": "black"
-      },
-      {
-        "uci": "f1f4",
-        "san": "Rxf4",
+        "uci": "h3g5",
+        "san": "Ng5#",
         "color": "white"
-      },
-      {
-        "uci": "e7e3",
-        "san": "Qe3+",
-        "color": "black"
-      },
-      {
-        "uci": "f4f2",
-        "san": "Rf2",
-        "color": "white"
-      },
-      {
-        "uci": "e3g5",
-        "san": "Qxg5",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6f4",
-        "san": "Bxf4",
-        "color": "black"
-      },
-      {
-        "uci": "e7e3",
-        "san": "Qe3+",
-        "color": "black"
-      },
-      {
-        "uci": "e3g5",
-        "san": "Qxg5",
-        "color": "black"
+        "uci": "h3g5",
+        "san": "Ng5#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-29T09:16:07.895734+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 1,
+    "posted_at": "2026-08-29T09:16:27.211634+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787994967895",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1543187489303437435,
+    "puzzle_id": "random_1787994987211",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1543187569972478043,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qe3",
-        "correct": true,
-        "timestamp": "2026-08-29T09:16:14.228848+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxg5",
-        "correct": true,
-        "timestamp": "2026-08-29T09:16:18.021771+00:00"
+        "move": "nf4",
+        "correct": false,
+        "timestamp": "2026-08-29T09:16:32.085663+00:00"
       }
     },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
