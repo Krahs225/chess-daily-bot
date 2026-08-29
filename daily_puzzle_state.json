@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-05-03",
     "title": "The Fragile Circle",
     "fen": "r4rk1/1ppqppbp/1n4p1/p2Pn3/4P2P/2N1BP2/PP2BP2/R2QK2R w KQ - 0 1",
-    "current_fen": "r4rk1/1ppqppbp/1n4p1/p2Pn3/4P2P/2N1BP2/PP2BP2/R2QK2R w KQ - 0 1",
+    "current_fen": "r4rk1/1p1qppbp/1p4p1/p2Pn3/4P2P/2N2P2/PP2BP2/R2QK2R w KQ - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"r4rk1/1ppqppbp/1n4p1/p2Pn3/4P2P/2N1BP2/PP2BP2/R2QK2R w KQ - 0 1\"]\r\n\r\n1.Bxb6 cxb6 2.f4 Nc6 3.dxc6 *",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787995578073",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543190046763393065,
     "attempted_users": {
@@ -67,10 +67,16 @@
         "move": "f4",
         "correct": false,
         "timestamp": "2026-08-29T09:26:20.755084+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "bxb6",
+        "correct": true,
+        "timestamp": "2026-08-29T09:26:24.182454+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
