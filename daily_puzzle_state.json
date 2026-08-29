@@ -1,98 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-08-25",
-    "title": "Who is Defending the Defender?",
-    "fen": "r3r1k1/5pbp/bp4p1/p1p2PQN/3q4/1PN5/1P4PP/R1B3RK b - - 0 1",
-    "current_fen": "r5k1/5p1p/bp4p1/p1p2P1N/8/1PN1r3/1P4PP/R5K1 w - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r3r1k1/5pbp/bp4p1/p1p2PQN/3q4/1PN5/1P4PP/R1B3RK b - - 0 1\"]\r\n\r\n1... Qxg1+ 2. Kxg1 Bd4+ 3. Be3 Bxe3+ 4. Qxe3 Rxe3 *",
+    "url": "https://www.chess.com/daily/2020-11-05",
+    "title": "Ignition Switch",
+    "fen": "r4rk1/1N1q1ppp/p2Pp3/1b1n4/P7/1Q5N/1P3PPP/2RR2K1 b - - 0 1",
+    "current_fen": "r4rk1/1N1q1ppp/p2Pp3/1b1n4/P7/1Q5N/1P3PPP/2RR2K1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r4rk1/1N1q1ppp/p2Pp3/1b1n4/P7/1Q5N/1P3PPP/2RR2K1 b - - 0 1\"]\r\n\r\n1...Bxa4 2.Nc5 Bxb3 3.Nxd7 Bxd1 4.Nxf8 Ba4 5.Nxe6 fxe6 *",
     "all_moves": [
       {
-        "uci": "d4g1",
-        "san": "Qxg1+",
+        "uci": "b5a4",
+        "san": "Bxa4",
         "color": "black"
       },
       {
-        "uci": "h1g1",
-        "san": "Kxg1",
+        "uci": "b7c5",
+        "san": "Nc5",
         "color": "white"
       },
       {
-        "uci": "g7d4",
-        "san": "Bd4+",
+        "uci": "a4b3",
+        "san": "Bxb3",
         "color": "black"
       },
       {
-        "uci": "c1e3",
-        "san": "Be3",
+        "uci": "c5d7",
+        "san": "Nxd7",
         "color": "white"
       },
       {
-        "uci": "d4e3",
-        "san": "Bxe3+",
+        "uci": "b3d1",
+        "san": "Bxd1",
         "color": "black"
       },
       {
-        "uci": "g5e3",
-        "san": "Qxe3",
+        "uci": "d7f8",
+        "san": "Nxf8",
         "color": "white"
       },
       {
-        "uci": "e8e3",
-        "san": "Rxe3",
+        "uci": "d1a4",
+        "san": "Ba4",
+        "color": "black"
+      },
+      {
+        "uci": "f8e6",
+        "san": "Nxe6",
+        "color": "white"
+      },
+      {
+        "uci": "f7e6",
+        "san": "fxe6",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4g1",
-        "san": "Qxg1+",
+        "uci": "b5a4",
+        "san": "Bxa4",
         "color": "black"
       },
       {
-        "uci": "g7d4",
-        "san": "Bd4+",
+        "uci": "a4b3",
+        "san": "Bxb3",
         "color": "black"
       },
       {
-        "uci": "d4e3",
-        "san": "Bxe3+",
+        "uci": "b3d1",
+        "san": "Bxd1",
         "color": "black"
       },
       {
-        "uci": "e8e3",
-        "san": "Rxe3",
+        "uci": "d1a4",
+        "san": "Ba4",
+        "color": "black"
+      },
+      {
+        "uci": "f7e6",
+        "san": "fxe6",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-08-29T09:30:36.904147+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-08-29T09:30:58.750208+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787995836904",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1543191132224225341,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rxe3",
-        "correct": true,
-        "timestamp": "2026-08-29T09:30:50.458490+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bxe3",
-        "correct": false,
-        "timestamp": "2026-08-29T09:30:47.272258+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787995858750",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
