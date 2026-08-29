@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-10-27",
     "title": "Moves of Majesty",
     "fen": "8/pp6/2p4p/2P3pk/2Q5/4P3/3q2PK/8 w - - 0 1",
-    "current_fen": "8/pp3Q2/2p4p/2P3p1/7k/4P3/3q2PK/8 w - - 2 2",
+    "current_fen": "8/pp6/2p1Q2p/2P3pk/8/4P3/3q2PK/8 w - - 4 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/pp6/2p4p/2P3pk/2Q5/4P3/3q2PK/8 w - - 0 1\"]\r\n\r\n1. Qf7+ Kh4 2. Qe6 Kh5 3. Kh3\r\n*",
     "all_moves": [
       {
@@ -57,29 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787994703846",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1543186379800838196,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qf6",
+        "move": "qe6",
         "correct": false,
-        "timestamp": "2026-08-29T09:12:46.029488+00:00"
+        "timestamp": "2026-08-29T09:12:56.538655+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qf3",
-        "correct": false,
-        "timestamp": "2026-08-29T09:12:16.102598+00:00"
+        "move": "qe6",
+        "correct": true,
+        "timestamp": "2026-08-29T09:12:56.532588+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
