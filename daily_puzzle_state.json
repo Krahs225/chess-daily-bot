@@ -1,47 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-03-31",
-    "title": "Forgo the Fork",
-    "fen": "3Q4/8/2b1k1p1/3p1n2/3P4/p1P4N/1r2q1PP/6BK w - - 0 1",
-    "current_fen": "3Q4/8/2b1k1p1/3p1nN1/3P4/p1P5/1r2q1PP/6BK b - - 1 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3Q4/8/2b1k1p1/3p1n2/3P4/p1P4N/1r2q1PP/6BK w - - 0 1\"]\r\n\r\n1. Ng5# *",
+    "url": "https://www.chess.com/daily/2025-10-07",
+    "title": "Endgame MVP",
+    "fen": "7k/5pb1/6p1/1pQ4P/3Pp3/4P1P1/1Nq2P2/7K b - - 0 38",
+    "current_fen": "7k/5pb1/6p1/1pQ4P/3Pp3/4P1P1/1Nq2P2/7K b - - 0 38",
+    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"MagNiels_Carlsen\"]\r\n[Result \"0-1\"]\r\n[FEN \"7k/5pb1/6p1/1pQ4P/3Pp3/4P1P1/1Nq2P2/7K b - - 0 38\"]\r\n\r\n38... Qxc5 39. dxc5 Bxb2 40. c6 Be5 0-1",
     "all_moves": [
       {
-        "uci": "h3g5",
-        "san": "Ng5#",
+        "uci": "c2c5",
+        "san": "Qxc5",
+        "color": "black"
+      },
+      {
+        "uci": "d4c5",
+        "san": "dxc5",
         "color": "white"
+      },
+      {
+        "uci": "g7b2",
+        "san": "Bxb2",
+        "color": "black"
+      },
+      {
+        "uci": "c5c6",
+        "san": "c6",
+        "color": "white"
+      },
+      {
+        "uci": "b2e5",
+        "san": "Be5",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h3g5",
-        "san": "Ng5#",
-        "color": "white"
+        "uci": "c2c5",
+        "san": "Qxc5",
+        "color": "black"
+      },
+      {
+        "uci": "g7b2",
+        "san": "Bxb2",
+        "color": "black"
+      },
+      {
+        "uci": "b2e5",
+        "san": "Be5",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-08-29T09:16:27.211634+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T09:16:43.841682+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787994987211",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1543187569972478043,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ng5",
-        "correct": true,
-        "timestamp": "2026-08-29T09:16:35.433827+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787995003841",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
