@@ -1,113 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-04-12",
-    "title": "Hillel Aloni, 1962",
-    "fen": "4b3/6p1/Pp1pP1r1/2kp4/5P2/1P1K4/B1P4P/8 w - - 0 1",
-    "current_fen": "8/P3P1p1/1pbpr3/3k4/1PP2P2/3K4/7P/8 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4b3/6p1/Pp1pP1r1/2kp4/5P2/1P1K4/B1P4P/8 w - - 0 1\"]\r\n\r\n1. b4+ Kc6 2. Bxd5+ Kxd5 3. a7 Bc6 4. e7 Re6 5. c4#\r\n*",
+    "url": "https://www.chess.com/daily/2011-04-19",
+    "title": "Thinking In Reverse",
+    "fen": "4rrk1/p4pp1/bp1P1n1p/2q1BQ2/2P2P2/P2B4/3N2PP/1R5K b - - 0 1",
+    "current_fen": "4rrk1/p4pp1/bp1P1n1p/2q1BQ2/2P2P2/P2B4/3N2PP/1R5K b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4rrk1/p4pp1/bp1P1n1p/2q1BQ2/2P2P2/P2B4/3N2PP/1R5K b - - 0 1\"]\r\n\r\n1...Bc8 2. Ne4 Bxf5 3. Nxc5 Bxd3\r\n*",
     "all_moves": [
       {
-        "uci": "b3b4",
-        "san": "b4+",
-        "color": "white"
-      },
-      {
-        "uci": "c5c6",
-        "san": "Kc6",
+        "uci": "a6c8",
+        "san": "Bc8",
         "color": "black"
       },
       {
-        "uci": "a2d5",
-        "san": "Bxd5+",
+        "uci": "d2e4",
+        "san": "Ne4",
         "color": "white"
       },
       {
-        "uci": "c6d5",
-        "san": "Kxd5",
+        "uci": "c8f5",
+        "san": "Bxf5",
         "color": "black"
       },
       {
-        "uci": "a6a7",
-        "san": "a7",
+        "uci": "e4c5",
+        "san": "Nxc5",
         "color": "white"
       },
       {
-        "uci": "e8c6",
-        "san": "Bc6",
+        "uci": "f5d3",
+        "san": "Bxd3",
         "color": "black"
-      },
-      {
-        "uci": "e6e7",
-        "san": "e7",
-        "color": "white"
-      },
-      {
-        "uci": "g6e6",
-        "san": "Re6",
-        "color": "black"
-      },
-      {
-        "uci": "c2c4",
-        "san": "c4#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b3b4",
-        "san": "b4+",
-        "color": "white"
+        "uci": "a6c8",
+        "san": "Bc8",
+        "color": "black"
       },
       {
-        "uci": "a2d5",
-        "san": "Bxd5+",
-        "color": "white"
+        "uci": "c8f5",
+        "san": "Bxf5",
+        "color": "black"
       },
       {
-        "uci": "a6a7",
-        "san": "a7",
-        "color": "white"
-      },
-      {
-        "uci": "e6e7",
-        "san": "e7",
-        "color": "white"
-      },
-      {
-        "uci": "c2c4",
-        "san": "c4#",
-        "color": "white"
+        "uci": "f5d3",
+        "san": "Bxd3",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-29T09:38:59.256705+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T09:42:33.736844+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787996339256",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1543193239195095091,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "c4",
-        "correct": true,
-        "timestamp": "2026-08-29T09:42:22.014399+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "b5",
-        "correct": false,
-        "timestamp": "2026-08-29T09:41:43.940440+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787996553736",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
