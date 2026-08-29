@@ -1,107 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-02-11",
-    "title": "Separation Anxiety",
-    "fen": "8/8/1R4pP/3K4/k4p2/5r2/8/8 w - - 0 1",
-    "current_fen": "7Q/8/k7/7p/2K2p2/4r3/8/8 b - - 0 5",
-    "pgn": "[White \"Troitsky\"]\r\n[Black \"Study\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/1R4pP/3K4/k4p2/5r2/8/8 w - - 0 1\"]\r\n\r\n1. Kc4 Ka5 2. Rb5+ Ka6 3. Rh5 gxh5 4. h7 Re3 5. h8=Q *",
+    "url": "https://www.chess.com/daily/2012-06-16",
+    "title": "Mate in 4",
+    "fen": "6k1/5pp1/2p3n1/2Pp2Qp/8/3P1qP1/PBr4P/4R1K1 w - - 0 1",
+    "current_fen": "6k1/5pp1/2p3n1/2Pp2Qp/8/3P1qP1/PBr4P/4R1K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/5pp1/2p3n1/2Pp2Qp/8/3P1qP1/PBr4P/4R1K1 w - - 0 1\"]\r\n\r\n1. Re8+ Kh7 2. Rh8+ Kxh8 3. Qh6+ Kg8 4. Qxg7#\r\n*",
     "all_moves": [
       {
-        "uci": "d5c4",
-        "san": "Kc4",
+        "uci": "e1e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "a4a5",
-        "san": "Ka5",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "b6b5",
-        "san": "Rb5+",
+        "uci": "e8h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "a5a6",
-        "san": "Ka6",
+        "uci": "h7h8",
+        "san": "Kxh8",
         "color": "black"
       },
       {
-        "uci": "b5h5",
-        "san": "Rh5",
+        "uci": "g5h6",
+        "san": "Qh6+",
         "color": "white"
       },
       {
-        "uci": "g6h5",
-        "san": "gxh5",
+        "uci": "h8g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "h6h7",
-        "san": "h7",
-        "color": "white"
-      },
-      {
-        "uci": "f3e3",
-        "san": "Re3",
-        "color": "black"
-      },
-      {
-        "uci": "h7h8q",
-        "san": "h8=Q",
+        "uci": "h6g7",
+        "san": "Qxg7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5c4",
-        "san": "Kc4",
+        "uci": "e1e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "b6b5",
-        "san": "Rb5+",
+        "uci": "e8h8",
+        "san": "Rh8+",
         "color": "white"
       },
       {
-        "uci": "b5h5",
-        "san": "Rh5",
+        "uci": "g5h6",
+        "san": "Qh6+",
         "color": "white"
       },
       {
-        "uci": "h6h7",
-        "san": "h7",
-        "color": "white"
-      },
-      {
-        "uci": "h7h8q",
-        "san": "h8=Q",
+        "uci": "h6g7",
+        "san": "Qxg7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-29T09:43:01.277838+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T09:45:03.263094+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787996581277",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1543194254384300043,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "h8=q",
-        "correct": true,
-        "timestamp": "2026-08-29T09:43:20.909060+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787996703263",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
