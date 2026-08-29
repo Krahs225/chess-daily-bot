@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-04-25",
     "title": "Mate in 4",
     "fen": "r3n3/pp2q1pk/2p1BnRp/8/2p2P2/1P5P/PB4QK/8 w q - 0 1",
-    "current_fen": "r3n3/pp2q1pk/2p1B3/7n/2p2P1Q/1P5P/PB5K/8 w - - 4 4",
+    "current_fen": "r3n3/pp2q1pk/2p1B3/7Q/2p2P2/1P5P/PB5K/8 b - - 0 4",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3n3/pp2q1pk/2p1BnRp/8/2p2P2/1P5P/PB4QK/8 w q - 0 1\"]\r\n\r\n1. Rxh6+ Kxh6 2. Qg5+ Kh7 3. Qh4+ Nh5 4. Qxh5#\r\n*",
     "all_moves": [
       {
@@ -72,16 +72,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788031267964",
-    "next_solution_index": 6,
-    "next_player_index": 3,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1543339741070491679,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "Qh4",
+        "move": "Qxh5",
         "correct": true,
-        "timestamp": "2026-08-29T19:21:25.523369+00:00"
+        "timestamp": "2026-08-29T19:21:30.057936+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -92,7 +92,7 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
