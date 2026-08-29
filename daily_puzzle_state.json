@@ -1,64 +1,14 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-02-08",
-    "title": "Oh, What a Night",
-    "fen": "8/3r1P1P/Rp4N1/8/2n3kN/1p6/1P4PP/K7 w - - 0 1",
-    "current_fen": "8/3r1P1P/Rp4N1/8/2n3kN/1p6/1P4PP/K7 w - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/3r1P1P/Rp4N1/8/2n3kN/1p6/1P4PP/K7 w - - 0 1\"]\r\n\r\n1.Ne5+ Nxe5 2.Ra4+ Kg5 3.Nf3+ Nxf3 4.Rg4+ Kxg4 5.gxf3+ Kg5 6.h4+ Kg6 7.f8=N+ *",
+    "url": "https://www.chess.com/daily/2016-06-07",
+    "title": "Korchnoi-Petrosian, Moscow 1963",
+    "fen": "8/p7/1p6/2p1pPk1/2P1P2p/1P1p3r/P4K2/5R2 w - - 0 1",
+    "current_fen": "8/p7/1p6/2p1pPk1/2P1P2p/1P1p3r/P4K2/5R2 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/p7/1p6/2p1pPk1/2P1P2p/1P1p3r/P4K2/5R2 w - - 0 1\"]\r\n\r\n1. f6 Kg6 2. f7 Kg7 3. f8=Q+ Kxf8 4. Kg2+\r\n*",
     "all_moves": [
       {
-        "uci": "g6e5",
-        "san": "Ne5+",
-        "color": "white"
-      },
-      {
-        "uci": "c4e5",
-        "san": "Nxe5",
-        "color": "black"
-      },
-      {
-        "uci": "a6a4",
-        "san": "Ra4+",
-        "color": "white"
-      },
-      {
-        "uci": "g4g5",
-        "san": "Kg5",
-        "color": "black"
-      },
-      {
-        "uci": "h4f3",
-        "san": "Nf3+",
-        "color": "white"
-      },
-      {
-        "uci": "e5f3",
-        "san": "Nxf3",
-        "color": "black"
-      },
-      {
-        "uci": "a4g4",
-        "san": "Rg4+",
-        "color": "white"
-      },
-      {
-        "uci": "g5g4",
-        "san": "Kxg4",
-        "color": "black"
-      },
-      {
-        "uci": "g2f3",
-        "san": "gxf3+",
-        "color": "white"
-      },
-      {
-        "uci": "g4g5",
-        "san": "Kg5",
-        "color": "black"
-      },
-      {
-        "uci": "h2h4",
-        "san": "h4+",
+        "uci": "f5f6",
+        "san": "f6",
         "color": "white"
       },
       {
@@ -67,60 +17,65 @@
         "color": "black"
       },
       {
-        "uci": "f7f8n",
-        "san": "f8=N+",
+        "uci": "f6f7",
+        "san": "f7",
+        "color": "white"
+      },
+      {
+        "uci": "g6g7",
+        "san": "Kg7",
+        "color": "black"
+      },
+      {
+        "uci": "f7f8q",
+        "san": "f8=Q+",
+        "color": "white"
+      },
+      {
+        "uci": "g7f8",
+        "san": "Kxf8",
+        "color": "black"
+      },
+      {
+        "uci": "f2g2",
+        "san": "Kg2+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g6e5",
-        "san": "Ne5+",
+        "uci": "f5f6",
+        "san": "f6",
         "color": "white"
       },
       {
-        "uci": "a6a4",
-        "san": "Ra4+",
+        "uci": "f6f7",
+        "san": "f7",
         "color": "white"
       },
       {
-        "uci": "h4f3",
-        "san": "Nf3+",
+        "uci": "f7f8q",
+        "san": "f8=Q+",
         "color": "white"
       },
       {
-        "uci": "a4g4",
-        "san": "Rg4+",
-        "color": "white"
-      },
-      {
-        "uci": "g2f3",
-        "san": "gxf3+",
-        "color": "white"
-      },
-      {
-        "uci": "h2h4",
-        "san": "h4+",
-        "color": "white"
-      },
-      {
-        "uci": "f7f8n",
-        "san": "f8=N+",
+        "uci": "f2g2",
+        "san": "Kg2+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-08-29T10:27:48.231140+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T10:27:59.735727+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787999268231",
+    "puzzle_id": "random_1787999279735",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543205524886130712,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
