@@ -1,92 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-05-27",
-    "title": "Mutual Vulnerabilities",
-    "fen": "2r3k1/pR2bq1p/6pB/4pp2/8/2r4Q/P4PPP/3R2K1 w - - 6 35",
-    "current_fen": "1R1R1bk1/p4q1p/6p1/4pp2/8/8/P4PPP/2B3K1 b - - 0 38",
-    "pgn": "[Event \"It\"]\r\n[Site \"Copenhagen (Denmark)\"]\r\n[Date \"1991.??.??\"]\r\n[Round \"?\"]\r\n[White \"Roland Reinhard Greger (Variation from Game)\"]\r\n[Black \"Pia Cramling\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/pR2bq1p/6pB/4pp2/8/2r4Q/P4PPP/3R2K1 w - - 6 35\"]\r\n\r\n35.Qxc3 Rxc3 36.Rb8+ Bf8 37.Rdd8 Rc1+ 38.Bxc1 *",
+    "url": "https://www.chess.com/daily/2009-03-25",
+    "title": "Proper Defense",
+    "fen": "2r1nQk1/p3P3/1pb3p1/4qp2/8/1P6/6PP/3R1R1K b - - 0 1",
+    "current_fen": "2r1nQ2/p3P2k/1pb3p1/4qp2/8/1P1R4/6PP/5R1K b - - 2 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r1nQk1/p3P3/1pb3p1/4qp2/8/1P6/6PP/3R1R1K b - - 0 1\"]\r\n\r\n1...Kh7 2. Rd3 Bxg2+ 3. Kxg2 Qe2+\r\n*",
     "all_moves": [
       {
-        "uci": "h3c3",
-        "san": "Qxc3",
-        "color": "white"
-      },
-      {
-        "uci": "c8c3",
-        "san": "Rxc3",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "b7b8",
-        "san": "Rb8+",
+        "uci": "d1d3",
+        "san": "Rd3",
         "color": "white"
       },
       {
-        "uci": "e7f8",
-        "san": "Bf8",
+        "uci": "c6g2",
+        "san": "Bxg2+",
         "color": "black"
       },
       {
-        "uci": "d1d8",
-        "san": "Rdd8",
+        "uci": "h1g2",
+        "san": "Kxg2",
         "color": "white"
       },
       {
-        "uci": "c3c1",
-        "san": "Rc1+",
+        "uci": "e5e2",
+        "san": "Qe2+",
         "color": "black"
-      },
-      {
-        "uci": "h6c1",
-        "san": "Bxc1",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h3c3",
-        "san": "Qxc3",
-        "color": "white"
+        "uci": "g8h7",
+        "san": "Kh7",
+        "color": "black"
       },
       {
-        "uci": "b7b8",
-        "san": "Rb8+",
-        "color": "white"
+        "uci": "c6g2",
+        "san": "Bxg2+",
+        "color": "black"
       },
       {
-        "uci": "d1d8",
-        "san": "Rdd8",
-        "color": "white"
-      },
-      {
-        "uci": "h6c1",
-        "san": "Bxc1",
-        "color": "white"
+        "uci": "e5e2",
+        "san": "Qe2+",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-29T09:37:36.077934+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T09:38:10.930702+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787996256077",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1543192892464693328,
+    "puzzle_id": "random_1787996290930",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1543193036505223199,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "bxc1",
+        "move": "kh7",
         "correct": true,
-        "timestamp": "2026-08-29T09:38:05.686183+00:00"
+        "timestamp": "2026-08-29T09:38:21.397658+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
