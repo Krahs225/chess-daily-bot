@@ -1,107 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-08-28",
-    "title": "Managing Your Attacking Momentum",
-    "fen": "Qb2k1r1/5p2/p3b3/3N3p/4p2q/P3P3/1PPBK1P1/R4R2 b - - 0 1",
-    "current_fen": "Qb2k3/5p2/p7/3N3p/4p3/P3PP2/1PP5/R2Kq1r1 w - - 0 6",
-    "pgn": "[Result \"*\"]\r\n[FEN \"Qb2k1r1/5p2/p3b3/3N3p/4p2q/P3P3/1PPBK1P1/R4R2 b - - 0 1\"]\r\n\r\n1... Bg4+ 2. Rf3 Bxf3+ 3. gxf3 Rg2+ 4. Kd1 Rg1+ 5. Be1 Qxe1# *",
+    "url": "https://www.chess.com/daily/2008-03-29",
+    "title": "Advanced Tactics",
+    "fen": "q3r1k1/5pp1/1QbR3p/1p2n3/1P2p2P/6P1/1NP2PB1/6K1 b - - 0 1",
+    "current_fen": "q3r1k1/5pp1/1QbR3p/1p2n3/1P2p2P/6P1/1NP2PB1/6K1 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"q3r1k1/5pp1/1QbR3p/1p2n3/1P2p2P/6P1/1NP2PB1/6K1 b - - 0 1\"]\r\n\r\n1...Qa1+ 2. Nd1 e3 3. fxe3 Bxg2 4. Kxg2 Qa8+ 5. Kg1 Nc4\r\n*",
     "all_moves": [
       {
-        "uci": "e6g4",
-        "san": "Bg4+",
+        "uci": "a8a1",
+        "san": "Qa1+",
         "color": "black"
       },
       {
-        "uci": "f1f3",
-        "san": "Rf3",
+        "uci": "b2d1",
+        "san": "Nd1",
         "color": "white"
       },
       {
-        "uci": "g4f3",
-        "san": "Bxf3+",
+        "uci": "e4e3",
+        "san": "e3",
         "color": "black"
       },
       {
-        "uci": "g2f3",
-        "san": "gxf3",
+        "uci": "f2e3",
+        "san": "fxe3",
         "color": "white"
       },
       {
-        "uci": "g8g2",
-        "san": "Rg2+",
+        "uci": "c6g2",
+        "san": "Bxg2",
         "color": "black"
       },
       {
-        "uci": "e2d1",
-        "san": "Kd1",
+        "uci": "g1g2",
+        "san": "Kxg2",
         "color": "white"
+      },
+      {
+        "uci": "a1a8",
+        "san": "Qa8+",
+        "color": "black"
       },
       {
         "uci": "g2g1",
-        "san": "Rg1+",
-        "color": "black"
-      },
-      {
-        "uci": "d2e1",
-        "san": "Be1",
+        "san": "Kg1",
         "color": "white"
       },
       {
-        "uci": "h4e1",
-        "san": "Qxe1#",
+        "uci": "e5c4",
+        "san": "Nc4",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e6g4",
-        "san": "Bg4+",
+        "uci": "a8a1",
+        "san": "Qa1+",
         "color": "black"
       },
       {
-        "uci": "g4f3",
-        "san": "Bxf3+",
+        "uci": "e4e3",
+        "san": "e3",
         "color": "black"
       },
       {
-        "uci": "g8g2",
-        "san": "Rg2+",
+        "uci": "c6g2",
+        "san": "Bxg2",
         "color": "black"
       },
       {
-        "uci": "g2g1",
-        "san": "Rg1+",
+        "uci": "a1a8",
+        "san": "Qa8+",
         "color": "black"
       },
       {
-        "uci": "h4e1",
-        "san": "Qxe1#",
+        "uci": "e5c4",
+        "san": "Nc4",
         "color": "black"
       }
     ],
     "player_color": "black",
     "player_move_count": 5,
-    "posted_at": "2026-08-29T09:54:31.969154+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-29T09:55:48.613033+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787997271969",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1543197152229195776,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxe1",
-        "correct": true,
-        "timestamp": "2026-08-29T09:55:42.185763+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787997348613",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
