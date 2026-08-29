@@ -1,77 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-11-25",
-    "title": "Mate in 3",
-    "fen": "4r1k1/p4Nb1/1p6/2p5/2Q1B3/2PP2P1/P2q3P/1R5K w - - 0 1",
-    "current_fen": "6rk/p4Nb1/1p6/2p5/4B3/2PP2P1/P2q3P/1R5K b - - 1 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/p4Nb1/1p6/2p5/2Q1B3/2PP2P1/P2q3P/1R5K w - - 0 1\"]\r\n\r\n1. Nh6+ Kh8 2. Qg8+ Rxg8 3. Nf7#\r\n*",
+    "url": "https://www.chess.com/daily/2025-07-08",
+    "title": "Tactical Rewind",
+    "fen": "5B2/pp5p/5kp1/2n3N1/2Nb4/1P1p3P/P1b2PP1/5K2 w - - 5 29",
+    "current_fen": "5B2/pp5p/5kp1/2n3N1/2Nb4/1P1p3P/P1b2PP1/5K2 w - - 5 29",
+    "pgn": "[White \"chesstiger787\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"5B2/pp5p/5kp1/2n3N1/2Nb4/1P1p3P/P1b2PP1/5K2 w - - 5 29\"]\r\n\r\n29. Bxc5 Bxc5 30. Ne4+ Kf5 31. Nxc5 1-0",
     "all_moves": [
       {
-        "uci": "f7h6",
-        "san": "Nh6+",
+        "uci": "f8c5",
+        "san": "Bxc5",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "d4c5",
+        "san": "Bxc5",
         "color": "black"
       },
       {
-        "uci": "c4g8",
-        "san": "Qg8+",
+        "uci": "g5e4",
+        "san": "Ne4+",
         "color": "white"
       },
       {
-        "uci": "e8g8",
-        "san": "Rxg8",
+        "uci": "f6f5",
+        "san": "Kf5",
         "color": "black"
       },
       {
-        "uci": "h6f7",
-        "san": "Nf7#",
+        "uci": "e4c5",
+        "san": "Nxc5",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f7h6",
-        "san": "Nh6+",
+        "uci": "f8c5",
+        "san": "Bxc5",
         "color": "white"
       },
       {
-        "uci": "c4g8",
-        "san": "Qg8+",
+        "uci": "g5e4",
+        "san": "Ne4+",
         "color": "white"
       },
       {
-        "uci": "h6f7",
-        "san": "Nf7#",
+        "uci": "e4c5",
+        "san": "Nxc5",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-29T10:33:04.085332+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-29T10:33:21.484694+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787999584085",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1543206849011257375,
+    "puzzle_id": "random_1787999601484",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1543206921987825715,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nf7",
-        "correct": true,
-        "timestamp": "2026-08-29T10:33:15.046635+00:00"
+        "move": "bg7",
+        "correct": false,
+        "timestamp": "2026-08-29T10:33:28.134679+00:00"
       }
     },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
