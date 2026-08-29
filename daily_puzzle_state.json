@@ -1,107 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-10-07",
-    "title": "King Hunt",
-    "fen": "5r2/4b1k1/p2p1r2/P1P1p3/5np1/BP2R3/6P1/3RN1K1 b - - 0 1",
-    "current_fen": "7r/6k1/p2p4/P1P1p3/5rKb/BP6/4R1P1/3RN3 w - - 1 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r2/4b1k1/p2p1r2/P1P1p3/5np1/BP2R3/6P1/3RN1K1 b - - 0 1\"]\r\n\r\n1...Ne2+ 2. Rxe2 Rf1+ 3. Kh2 Rh8+ 4. Kg3 Bh4+ 5. Kxg4 Rf4+\r\n*",
+    "url": "https://www.chess.com/daily/2013-04-25",
+    "title": "Mate in 4",
+    "fen": "r3n3/pp2q1pk/2p1BnRp/8/2p2P2/1P5P/PB4QK/8 w q - 0 1",
+    "current_fen": "r3n3/pp2q1pk/2p1BnRp/8/2p2P2/1P5P/PB4QK/8 w q - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3n3/pp2q1pk/2p1BnRp/8/2p2P2/1P5P/PB4QK/8 w q - 0 1\"]\r\n\r\n1. Rxh6+ Kxh6 2. Qg5+ Kh7 3. Qh4+ Nh5 4. Qxh5#\r\n*",
     "all_moves": [
       {
-        "uci": "f4e2",
-        "san": "Ne2+",
-        "color": "black"
-      },
-      {
-        "uci": "e3e2",
-        "san": "Rxe2",
+        "uci": "g6h6",
+        "san": "Rxh6+",
         "color": "white"
       },
       {
-        "uci": "f6f1",
-        "san": "Rf1+",
+        "uci": "h7h6",
+        "san": "Kxh6",
         "color": "black"
       },
       {
-        "uci": "g1h2",
-        "san": "Kh2",
+        "uci": "g2g5",
+        "san": "Qg5+",
         "color": "white"
       },
       {
-        "uci": "f8h8",
-        "san": "Rh8+",
+        "uci": "h6h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "h2g3",
-        "san": "Kg3",
+        "uci": "g5h4",
+        "san": "Qh4+",
         "color": "white"
       },
       {
-        "uci": "e7h4",
-        "san": "Bh4+",
+        "uci": "f6h5",
+        "san": "Nh5",
         "color": "black"
       },
       {
-        "uci": "g3g4",
-        "san": "Kxg4",
+        "uci": "h4h5",
+        "san": "Qxh5#",
         "color": "white"
-      },
-      {
-        "uci": "f1f4",
-        "san": "Rf4+",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4e2",
-        "san": "Ne2+",
-        "color": "black"
+        "uci": "g6h6",
+        "san": "Rxh6+",
+        "color": "white"
       },
       {
-        "uci": "f6f1",
-        "san": "Rf1+",
-        "color": "black"
+        "uci": "g2g5",
+        "san": "Qg5+",
+        "color": "white"
       },
       {
-        "uci": "f8h8",
-        "san": "Rh8+",
-        "color": "black"
+        "uci": "g5h4",
+        "san": "Qh4+",
+        "color": "white"
       },
       {
-        "uci": "e7h4",
-        "san": "Bh4+",
-        "color": "black"
-      },
-      {
-        "uci": "f1f4",
-        "san": "Rf4+",
-        "color": "black"
+        "uci": "h4h5",
+        "san": "Qxh5#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 5,
-    "posted_at": "2026-08-29T19:20:41.075860+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-08-29T19:21:07.964882+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788031241075",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1543339628621340783,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rf4",
-        "correct": true,
-        "timestamp": "2026-08-29T19:20:55.918108+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788031267964",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
