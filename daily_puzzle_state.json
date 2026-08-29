@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-08-23",
     "title": "Fork City",
     "fen": "5r1k/1p2R1pn/3p3p/p4p1P/P1q2N2/2N5/1P3PB1/6K1 w - - 0 1",
-    "current_fen": "5rk1/1p2R1pn/3p2Np/p2q1p1P/P7/2N5/1P3P2/6K1 w - - 0 3",
+    "current_fen": "5rk1/1p2R1pn/3p2Np/p2N1p1P/P7/8/1P3P2/6K1 b - - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"5r1k/1p2R1pn/3p3p/p4p1P/P1q2N2/2N5/1P3PB1/6K1 w - - 0 1\"]\r\n\r\n1. Ng6+ Kg8 2. Bd5+ Qxd5 3. Nxd5 *",
     "all_moves": [
       {
@@ -57,21 +57,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787998991122",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1543204362589839491,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bd5",
+        "move": "nxd5",
         "correct": true,
-        "timestamp": "2026-08-29T10:23:24.967236+00:00"
+        "timestamp": "2026-08-29T10:23:28.202795+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
