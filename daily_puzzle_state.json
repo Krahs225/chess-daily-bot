@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-06-17",
     "title": "Svidler Blows Out the Candles",
     "fen": "6rk/1bq1b2p/3pp1pQ/r3n3/4PN2/2B5/PP2B2P/1K1R2R1 w - - 0 32",
-    "current_fen": "6rk/1bq1b2p/3pp1pQ/r3n3/4PN2/2B5/PP2B2P/1K1R2R1 w - - 0 32",
+    "current_fen": "7k/1bq1b2p/3pp1rQ/r3n3/4P3/2B5/PP2B2P/1K1R2R1 w - - 0 33",
     "pgn": "[Event \"Olympiad\"]\r\n[Site \"Bled (Slovenia)\"]\r\n[Date \"2002.??.??\"]\r\n[Round \"11\"]\r\n[White \"Svidler Peter (RUS)\"]\r\n[Black \"Bischoff Klaus (GER)\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2693\"]\r\n[BlackElo \"2564\"]\r\n[FEN \"6rk/1bq1b2p/3pp1pQ/r3n3/4PN2/2B5/PP2B2P/1K1R2R1 w - - 0 32\"]\r\n\r\n32.Nxg6+ Rxg6 33.Rxg6 Bxe4+ 34.Bd3 Bxg6 35.Bxg6 Bf6 36.Qf8# 1-0",
     "all_moves": [
       {
@@ -87,8 +87,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787995674078",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543190450008105040,
     "attempted_users": {
@@ -97,10 +97,16 @@
         "move": "qxh7",
         "correct": false,
         "timestamp": "2026-08-29T09:27:58.785158+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nxg6",
+        "correct": true,
+        "timestamp": "2026-08-29T09:28:02.149750+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
