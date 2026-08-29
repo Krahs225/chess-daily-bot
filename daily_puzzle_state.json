@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-07-13",
     "title": "Walking Into Danger",
     "fen": "r6k/5p1p/p1pp2r1/1pb5/4P3/2NP1P2/PPP3PK/4RR2 b - - 0 1",
-    "current_fen": "r6k/5p1p/p1pp2r1/1pb5/4P3/2NP1P2/PPP3PK/4RR2 b - - 0 1",
+    "current_fen": "r6k/5p1p/p1pp3r/1pb5/4P3/2NP1PK1/PPP3P1/4RR2 b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r6k/5p1p/p1pp2r1/1pb5/4P3/2NP1P2/PPP3PK/4RR2 b - - 0 1\"]\r\n\r\n1...Rh6+ 2. Kg3 Rg8+ 3. Kf4 Rf6#\r\n*",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787996221486",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543192745286311998,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rag8",
-        "correct": false,
-        "timestamp": "2026-08-29T09:37:07.817625+00:00"
+        "move": "rh6",
+        "correct": true,
+        "timestamp": "2026-08-29T09:37:15.529960+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
