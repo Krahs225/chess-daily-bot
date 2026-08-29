@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-09-15",
     "title": "All Aboard!",
     "fen": "2r5/8/3R1b1p/1k4p1/1n1Q4/p3PqPb/P4P1P/6K1 w - - 0 1",
-    "current_fen": "2r5/8/3R1b1p/1k4p1/1n1Q4/p3PqPb/P4P1P/6K1 w - - 0 1",
+    "current_fen": "2r5/8/1R3b1p/k5p1/1Q6/p3PqPb/P4P1P/6K1 b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"2r5/8/3R1b1p/1k4p1/1n1Q4/p3PqPb/P4P1P/6K1 w - - 0 1\"]\r\n\r\n1. Rb6+ Ka5 2. Qxb4# *",
     "all_moves": [
       {
@@ -42,14 +42,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787999721654",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
+    "message_id": 1543207426407534625,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxb4",
+        "correct": true,
+        "timestamp": "2026-08-29T10:35:27.558727+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
