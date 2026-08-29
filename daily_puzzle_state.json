@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-08-25",
     "title": "Who is Defending the Defender?",
     "fen": "r3r1k1/5pbp/bp4p1/p1p2PQN/3q4/1PN5/1P4PP/R1B3RK b - - 0 1",
-    "current_fen": "r3r1k1/5pbp/bp4p1/p1p2PQN/8/1PN5/1P4PP/R1B3K1 b - - 0 2",
+    "current_fen": "r3r1k1/5p1p/bp4p1/p1p2PQN/3b4/1PN1B3/1P4PP/R5K1 b - - 2 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"r3r1k1/5pbp/bp4p1/p1p2PQN/3q4/1PN5/1P4PP/R1B3RK b - - 0 1\"]\r\n\r\n1... Qxg1+ 2. Kxg1 Bd4+ 3. Be3 Bxe3+ 4. Qxe3 Rxe3 *",
     "all_moves": [
       {
@@ -72,16 +72,22 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787995836904",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1543191132224225341,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
+        "move": "re1",
+        "correct": false,
+        "timestamp": "2026-08-29T09:30:43.989086+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
         "move": "qxg1",
-        "correct": true,
-        "timestamp": "2026-08-29T09:30:39.655647+00:00"
+        "correct": false,
+        "timestamp": "2026-08-29T09:30:41.130410+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
