@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-01-23",
     "title": "Calculation Practice",
     "fen": "3qn3/2p3n1/2P2kPp/2Q1p2P/7P/4PpN1/5K2/8 w - - 0 1",
-    "current_fen": "3qn3/2p3n1/2P2kPp/2Q1p2P/7P/4PpN1/5K2/8 w - - 0 1",
+    "current_fen": "3qn3/2p3n1/2P3Pp/2Q1pk1P/4N2P/4Pp2/5K2/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3qn3/2p3n1/2P2kPp/2Q1p2P/7P/4PpN1/5K2/8 w - - 0 1\"]\r\n\r\n1. Ne4+ Kf5 2. Qf8+ Kg4 3. Qxf3+ Kxh4 4. Qh1+ Kg4 5. Kg2 Qh4 6. Qd1+\r\n*",
     "all_moves": [
       {
@@ -102,20 +102,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787993606219",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543181776439214182,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qf8",
-        "correct": false,
-        "timestamp": "2026-08-29T08:53:29.816123+00:00"
+        "move": "ne4",
+        "correct": true,
+        "timestamp": "2026-08-29T08:53:33.901442+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
