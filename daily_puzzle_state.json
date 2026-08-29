@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-03-02",
     "title": "Three Step Process",
     "fen": "2rk1b1r/ppNbp1pp/8/4B3/8/7P/PPP1B1P1/3R2Kn w - - 0 1",
-    "current_fen": "2rk1b1r/ppN1p1pp/8/1B2B3/8/7P/PPP3P1/6Kn w - - 2 3",
+    "current_fen": "2rk1b1r/pp2p1pp/4N3/1B2B3/8/7P/PPP3P1/6Kn b - - 3 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"2rk1b1r/ppNbp1pp/8/4B3/8/7P/PPP1B1P1/3R2Kn w - - 0 1\"]\r\n\r\n1. Rxd7+ Kxd7 2. Bb5+ Kd8 3. Ne6# *",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787994286069",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1543184627693260802,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
         "move": "Ne6",
-        "correct": false,
-        "timestamp": "2026-08-29T09:04:51.661922+00:00"
+        "correct": true,
+        "timestamp": "2026-08-29T09:05:09.422158+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -77,9 +77,11 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
