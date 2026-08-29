@@ -1,92 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-07-12",
-    "title": "Rook Cooperation",
-    "fen": "6k1/1p3R2/p1b3p1/3pr3/8/P5Pq/1P5P/1N3RK1 w - - 0 1",
-    "current_fen": "8/1p3R2/p1b3p1/3pr1k1/8/P5PR/1P5P/1N4K1 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/1p3R2/p1b3p1/3pr3/8/P5Pq/1P5P/1N3RK1 w - - 0 1\"]\r\n\r\n1. Rf8+ Kg7 2. R1f7+ Kh6 3. Rh8+ Kg5 4. Rxh3\r\n*",
+    "url": "https://www.chess.com/daily/2023-11-20",
+    "title": "When King Met Bishop",
+    "fen": "8/5b2/1Bp3pn/p1N1p1k1/1b4Pp/1P3P1P/P4K2/1N1r4 w - - 0 1",
+    "current_fen": "8/5b2/1Bp3pn/p1N1p1k1/1b4Pp/1P3P1P/P4K2/1N1r4 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/5b2/1Bp3pn/p1N1p1k1/1b4Pp/1P3P1P/P4K2/1N1r4 w - - 0 1\"]\r\n\r\n1. Ne4+ Kf4 2. Be3# *",
     "all_moves": [
       {
-        "uci": "f7f8",
-        "san": "Rf8+",
+        "uci": "c5e4",
+        "san": "Ne4+",
         "color": "white"
       },
       {
-        "uci": "g8g7",
-        "san": "Kg7",
+        "uci": "g5f4",
+        "san": "Kf4",
         "color": "black"
       },
       {
-        "uci": "f1f7",
-        "san": "R1f7+",
-        "color": "white"
-      },
-      {
-        "uci": "g7h6",
-        "san": "Kh6",
-        "color": "black"
-      },
-      {
-        "uci": "f8h8",
-        "san": "Rh8+",
-        "color": "white"
-      },
-      {
-        "uci": "h6g5",
-        "san": "Kg5",
-        "color": "black"
-      },
-      {
-        "uci": "h8h3",
-        "san": "Rxh3",
+        "uci": "b6e3",
+        "san": "Be3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f7f8",
-        "san": "Rf8+",
+        "uci": "c5e4",
+        "san": "Ne4+",
         "color": "white"
       },
       {
-        "uci": "f1f7",
-        "san": "R1f7+",
-        "color": "white"
-      },
-      {
-        "uci": "f8h8",
-        "san": "Rh8+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h3",
-        "san": "Rxh3",
+        "uci": "b6e3",
+        "san": "Be3#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-29T09:15:02.410554+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-29T09:15:26.663830+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787994902410",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1543187213343264778,
+    "puzzle_id": "random_1787994926663",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1543187315290017852,
     "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxh3",
-        "correct": true,
-        "timestamp": "2026-08-29T09:15:21.718305+00:00"
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "f4",
+        "correct": false,
+        "timestamp": "2026-08-29T09:15:30.039044+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
