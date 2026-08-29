@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-10-14",
     "title": "Mate in 2",
     "fen": "3k4/5p2/2Q2P2/4P3/3N4/2b2Kp1/8/8 w - - 0 1",
-    "current_fen": "3k4/5p2/2Q2P2/4P3/3N4/2b2Kp1/8/8 w - - 0 1",
+    "current_fen": "3k4/8/2Q1pP2/8/3N4/2b2Kp1/8/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3k4/5p2/2Q2P2/4P3/3N4/2b2Kp1/8/8 w - - 0 1\"]\r\n\r\n1. e6 fxe6 2. Nxe6#\r\n*",
     "all_moves": [
       {
@@ -42,8 +42,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787993841188",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543182762327015425,
     "attempted_users": {
@@ -52,10 +52,16 @@
         "move": "nb5",
         "correct": false,
         "timestamp": "2026-08-29T08:57:39.246903+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "e6",
+        "correct": true,
+        "timestamp": "2026-08-29T08:57:47.966936+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
