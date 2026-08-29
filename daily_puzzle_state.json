@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-10-19",
     "title": "Regain Material",
     "fen": "r3r1k1/pp3ppp/5n2/2p1q3/Q7/P1PBPP2/6PP/R1B1R1K1 b - - 0 1",
-    "current_fen": "r3r1k1/pp3ppp/5n2/2p1q3/Q7/P1PBPP2/6PP/R1B1R1K1 b - - 0 1",
+    "current_fen": "r3r1k1/pp3ppp/5n2/2p5/Q7/P1qBPP2/6PP/R1B1R1K1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3r1k1/pp3ppp/5n2/2p1q3/Q7/P1PBPP2/6PP/R1B1R1K1 b - - 0 1\"]\r\n\r\n1...Qxc3\r\n*",
     "all_moves": [
       {
@@ -27,14 +27,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788032539236",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
+    "message_id": 1543345073847140393,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxc3",
+        "correct": true,
+        "timestamp": "2026-08-29T19:42:28.519232+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
