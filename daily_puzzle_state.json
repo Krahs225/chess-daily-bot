@@ -1,105 +1,87 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-12-16",
-    "title": "Mate in 4",
-    "fen": "r4rk1/ppq2pp1/2pbpn1B/8/3P3R/2PB1QPP/P1P5/5RK1 w - - 0 1",
-    "current_fen": "r4rkR/ppq2pB1/2p1pQ2/4b3/3P4/2P3PP/P1P5/5RK1 b - - 2 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/ppq2pp1/2pbpn1B/8/3P3R/2PB1QPP/P1P5/5RK1 w - - 0 1\"]\r\n\r\n1. Qxf6 Be5 2. Bh7+ Kxh7 3. Bxg7+ Kg8 4. Rh8# \r\n*",
+    "url": "https://www.chess.com/daily/2018-02-14",
+    "title": "Holzhausen - Tarrasch, Berlin 1912",
+    "fen": "r1bqr1k1/pppnbppp/2np4/8/2BNP3/2N4P/PPP2PP1/R1BQR1K1 w Qq - 0 1",
+    "current_fen": "r1bqr1k1/pppnbppp/2np4/8/2BNP3/2N4P/PPP2PP1/R1BQR1K1 w Qq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bqr1k1/pppnbppp/2np4/8/2BNP3/2N4P/PPP2PP1/R1BQR1K1 w Qq - 0 1\"]\r\n\r\n1. Bxf7+ Kxf7 2. Ne6 Kxe6 3. Qd5+ Kf6 4. Qf5# \r\n*",
     "all_moves": [
       {
-        "uci": "f3f6",
-        "san": "Qxf6",
+        "uci": "c4f7",
+        "san": "Bxf7+",
         "color": "white"
       },
       {
-        "uci": "d6e5",
-        "san": "Be5",
+        "uci": "g8f7",
+        "san": "Kxf7",
         "color": "black"
       },
       {
-        "uci": "d3h7",
-        "san": "Bh7+",
+        "uci": "d4e6",
+        "san": "Ne6",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kxh7",
+        "uci": "f7e6",
+        "san": "Kxe6",
         "color": "black"
       },
       {
-        "uci": "h6g7",
-        "san": "Bxg7+",
+        "uci": "d1d5",
+        "san": "Qd5+",
         "color": "white"
       },
       {
-        "uci": "h7g8",
-        "san": "Kg8",
+        "uci": "e6f6",
+        "san": "Kf6",
         "color": "black"
       },
       {
-        "uci": "h4h8",
-        "san": "Rh8#",
+        "uci": "d5f5",
+        "san": "Qf5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3f6",
-        "san": "Qxf6",
+        "uci": "c4f7",
+        "san": "Bxf7+",
         "color": "white"
       },
       {
-        "uci": "d3h7",
-        "san": "Bh7+",
+        "uci": "d4e6",
+        "san": "Ne6",
         "color": "white"
       },
       {
-        "uci": "h6g7",
-        "san": "Bxg7+",
+        "uci": "d1d5",
+        "san": "Qd5+",
         "color": "white"
       },
       {
-        "uci": "h4h8",
-        "san": "Rh8#",
+        "uci": "d5f5",
+        "san": "Qf5#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-29T09:24:45.852253+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-29T09:25:19.614659+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787995485852",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1543189659847237695,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxg7",
-        "correct": false,
-        "timestamp": "2026-08-29T09:24:58.094059+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rh8",
-        "correct": true,
-        "timestamp": "2026-08-29T09:24:59.321783+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1787995519614",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
