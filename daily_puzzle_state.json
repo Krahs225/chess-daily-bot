@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2017-05-28",
     "title": "Jansa-Novotny, Prague 1969",
     "fen": "r2qk1r1/pp1b1p2/3Pp2Q/4P1pN/2P1p3/P7/5PpP/R4RK1 w Qq - 0 1",
-    "current_fen": "r2qk1r1/pp1b1p2/3Pp2Q/4P1pN/2P1p3/P7/5PpP/R4RK1 w Qq - 0 1",
+    "current_fen": "r2q1kr1/pp1b1pN1/3Pp2Q/4P1p1/2P1p3/P7/5PpP/R4RK1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qk1r1/pp1b1p2/3Pp2Q/4P1pN/2P1p3/P7/5PpP/R4RK1 w Qq - 0 1\"]\r\n\r\n1. Ng7+ Kf8 2. Nxe6+ Ke8 3. Qf8+ Rxf8 4. Ng7#\r\n*",
     "all_moves": [
       {
@@ -72,8 +72,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787994361061",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1543184942224117851,
     "attempted_users": {
@@ -82,10 +82,16 @@
         "move": "Nf6",
         "correct": false,
         "timestamp": "2026-08-29T09:06:04.971083+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "ng7",
+        "correct": true,
+        "timestamp": "2026-08-29T09:06:10.197881+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
