@@ -1,70 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-06-29",
-    "title": "Danner - Schnabel Hradec Kralove 1992",
-    "fen": "r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1",
-    "current_fen": "r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4bk1/p4p2/Bpbr2p1/n2Np3/1Q2P1q1/4B1P1/7P/3R1RK1 w - - 0 1\"]\r\n\r\n1. Qxd6 Bxd6 2. Nf6+ Kg7 3. Nxg4\r\n*",
+    "url": "https://www.chess.com/daily/2024-06-01",
+    "title": "Pushing the Limits",
+    "fen": "3r3r/8/4p3/6pp/4P2k/1P1q1Q1P/P4PP1/R5K1 w - - 0 1",
+    "current_fen": "3r3r/8/4p3/6pp/4P2k/1P4PP/P6K/R7 b - - 0 3",
+    "pgn": "[Event \"U2000 A46: London System - Round 1\"]\r\n[Site \"Chess.com\"]\r\n[Date \"2013.07.07\"]\r\n[White \"321\"]\r\n[Black \"chessmaster102\"]\r\n[Result \"1-0\"]\r\n[FEN \"3r3r/8/4p3/6pp/4P2k/1P1q1Q1P/P4PP1/R5K1 w - - 0 1\"]\r\n[PlyCount \"5\"]\r\n\r\n1. Kh2 Qxf3 2. g3+ Qxg3+ 3. fxg3# 1-0",
     "all_moves": [
       {
-        "uci": "b4d6",
-        "san": "Qxd6",
+        "uci": "g1h2",
+        "san": "Kh2",
         "color": "white"
       },
       {
-        "uci": "f8d6",
-        "san": "Bxd6",
+        "uci": "d3f3",
+        "san": "Qxf3",
         "color": "black"
       },
       {
-        "uci": "d5f6",
-        "san": "Nf6+",
+        "uci": "g2g3",
+        "san": "g3+",
         "color": "white"
       },
       {
-        "uci": "g8g7",
-        "san": "Kg7",
+        "uci": "f3g3",
+        "san": "Qxg3+",
         "color": "black"
       },
       {
-        "uci": "f6g4",
-        "san": "Nxg4",
+        "uci": "f2g3",
+        "san": "fxg3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b4d6",
-        "san": "Qxd6",
+        "uci": "g1h2",
+        "san": "Kh2",
         "color": "white"
       },
       {
-        "uci": "d5f6",
-        "san": "Nf6+",
+        "uci": "g2g3",
+        "san": "g3+",
         "color": "white"
       },
       {
-        "uci": "f6g4",
-        "san": "Nxg4",
+        "uci": "f2g3",
+        "san": "fxg3#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-08-29T12:37:54.361667+00:00",
+    "posted_at": "2026-08-29T17:41:54.677433+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788007074361",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": 1543238265962766398,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "puzzle_id": "random_1788025314677",
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
+    "message_id": 1543314771720540231,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "fxg3",
+        "correct": true,
+        "timestamp": "2026-08-29T17:42:15.153906+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
