@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-03-29",
     "title": "Advanced Tactics",
     "fen": "q3r1k1/5pp1/1QbR3p/1p2n3/1P2p2P/6P1/1NP2PB1/6K1 b - - 0 1",
-    "current_fen": "q3r1k1/5pp1/1QbR3p/1p2n3/1P2p2P/6P1/1NP2PB1/6K1 b - - 0 1",
+    "current_fen": "4r1k1/5pp1/1QbR3p/1p2n3/1P2p2P/6P1/2P2PB1/q2N2K1 b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"q3r1k1/5pp1/1QbR3p/1p2n3/1P2p2P/6P1/1NP2PB1/6K1 b - - 0 1\"]\r\n\r\n1...Qa1+ 2. Nd1 e3 3. fxe3 Bxg2 4. Kxg2 Qa8+ 5. Kg1 Nc4\r\n*",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787997348613",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1543197473378668625,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qa1",
+        "correct": true,
+        "timestamp": "2026-08-29T09:56:00.254260+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
