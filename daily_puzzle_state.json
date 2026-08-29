@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-04-19",
     "title": "Thinking In Reverse",
     "fen": "4rrk1/p4pp1/bp1P1n1p/2q1BQ2/2P2P2/P2B4/3N2PP/1R5K b - - 0 1",
-    "current_fen": "4rrk1/p4pp1/bp1P1n1p/2q1BQ2/2P2P2/P2B4/3N2PP/1R5K b - - 0 1",
+    "current_fen": "2b1rrk1/p4pp1/1p1P1n1p/2q1BQ2/2P1NP2/P2B4/6PP/1R5K b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4rrk1/p4pp1/bp1P1n1p/2q1BQ2/2P2P2/P2B4/3N2PP/1R5K b - - 0 1\"]\r\n\r\n1...Bc8 2. Ne4 Bxf5 3. Nxc5 Bxd3\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787996553736",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1543194138860851291,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "bc8",
+        "correct": true,
+        "timestamp": "2026-08-29T09:42:38.946680+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
