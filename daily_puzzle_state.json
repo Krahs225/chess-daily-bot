@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-11-28",
     "title": "Mate in 2",
     "fen": "r2q1rk1/1bppbp2/p1n3p1/1pnBPN1p/6Q1/8/PPP2PPP/RNB1R1K1 w - h6 0 1",
-    "current_fen": "r2q1r1k/1bppbp2/p1n3Q1/1pnBPN1p/8/8/PPP2PPP/RNB1R1K1 w - - 1 2",
+    "current_fen": "r2q1r1k/1bppbpQ1/p1n5/1pnBPN1p/8/8/PPP2PPP/RNB1R1K1 b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q1rk1/1bppbp2/p1n3p1/1pnBPN1p/6Q1/8/PPP2PPP/RNB1R1K1 w - h6 0 1\"]\r\n\r\n1. Qxg6+ Kh8 2. Qg7#\r\n*",
     "all_moves": [
       {
@@ -42,9 +42,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787992547107",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1543177334046335037,
     "attempted_users": {
       "442597396195704832": {
@@ -55,9 +55,9 @@
       },
       "1403636751695740971": {
         "name": "WetisJas",
-        "move": "Qh6",
-        "correct": false,
-        "timestamp": "2026-08-29T08:36:19.391939+00:00"
+        "move": "qg7",
+        "correct": true,
+        "timestamp": "2026-08-29T08:37:14.853386+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -68,9 +68,11 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "1403636751695740971"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
