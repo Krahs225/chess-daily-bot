@@ -1,74 +1,67 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-02-12",
-    "title": "Endgame Creativity",
-    "fen": "8/8/8/2p2k2/3p4/1K1P4/3P2P1/b7 b - - 0 1",
-    "current_fen": "8/8/8/2p2k2/3p4/1K1P4/3P2P1/b7 b - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/8/2p2k2/3p4/1K1P4/3P2P1/b7 b - - 0 1\"]\r\n\r\n1...Kf4 2. Ka2 Bc3 3. dxc3 c4\r\n*",
+    "url": "https://www.chess.com/daily/2009-03-04",
+    "title": "Opening Lines for Attack",
+    "fen": "rr6/3B2k1/3p1b2/B2P4/pP3p2/R1nR1P1p/7P/6K1 b - - 0 1",
+    "current_fen": "rr6/3B2k1/3p1b2/B2P4/pP3p2/R1nR1P1p/7P/6K1 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rr6/3B2k1/3p1b2/B2P4/pP3p2/R1nR1P1p/7P/6K1 b - - 0 1\"]\r\n\r\n1...Rxa5 2. bxa5 Rb1+ 3. Kf2 Bh4#\r\n*",
     "all_moves": [
       {
-        "uci": "f5f4",
-        "san": "Kf4",
+        "uci": "a8a5",
+        "san": "Rxa5",
         "color": "black"
       },
       {
-        "uci": "b3a2",
-        "san": "Ka2",
+        "uci": "b4a5",
+        "san": "bxa5",
         "color": "white"
       },
       {
-        "uci": "a1c3",
-        "san": "Bc3",
+        "uci": "b8b1",
+        "san": "Rb1+",
         "color": "black"
       },
       {
-        "uci": "d2c3",
-        "san": "dxc3",
+        "uci": "g1f2",
+        "san": "Kf2",
         "color": "white"
       },
       {
-        "uci": "c5c4",
-        "san": "c4",
+        "uci": "f6h4",
+        "san": "Bh4#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5f4",
-        "san": "Kf4",
+        "uci": "a8a5",
+        "san": "Rxa5",
         "color": "black"
       },
       {
-        "uci": "a1c3",
-        "san": "Bc3",
+        "uci": "b8b1",
+        "san": "Rb1+",
         "color": "black"
       },
       {
-        "uci": "c5c4",
-        "san": "c4",
+        "uci": "f6h4",
+        "san": "Bh4#",
         "color": "black"
       }
     ],
     "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-08-29T21:23:11.569114+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-29T21:24:05.742678+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788038591569",
+    "puzzle_id": "random_1788038645742",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543370458294919240,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "C4",
-        "correct": false,
-        "timestamp": "2026-08-29T21:24:02.385865+00:00"
-      }
-    },
+    "message_id": null,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
