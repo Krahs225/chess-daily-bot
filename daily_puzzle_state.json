@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-09-15",
     "title": "Mate in 3",
     "fen": "8/3K1k2/6R1/5P2/8/8/8/8 w - - 0 1",
-    "current_fen": "3k4/8/3K1R2/5P2/8/8/8/8 w - - 4 3",
+    "current_fen": "3k1R2/8/3K4/5P2/8/8/8/8 b - - 5 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/3K1k2/6R1/5P2/8/8/8/8 w - - 0 1\"]\r\n\r\n1. Kd6 Ke8 2. Rf6 Kd8 3. Rf8#\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788031043288",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1543338798673432679,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Rg8",
-        "correct": false,
-        "timestamp": "2026-08-29T19:17:47.632778+00:00"
+        "move": "Rf8",
+        "correct": true,
+        "timestamp": "2026-08-29T19:17:56.917318+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
@@ -77,8 +77,10 @@
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "442597396195704832"
+    ],
     "helper_candidate_users": [
       "442597396195704832"
     ]
