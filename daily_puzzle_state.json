@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-09-25",
     "title": "Mating Sequence",
     "fen": "8/P2B1pk1/6p1/1pPRp1np/1B1bP3/7P/6PK/5r2 b - - 0 1",
-    "current_fen": "8/P2B1pk1/6p1/1pPRp1np/1B2P3/7P/6P1/5rbK b - - 2 2",
+    "current_fen": "8/P2B1pk1/6p1/1pPRp2p/1B2n1P1/7P/8/5rbK b - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/P2B1pk1/6p1/1pPRp1np/1B1bP3/7P/6PK/5r2 b - - 0 1\"]\r\n\r\n1...Bg1+ 2. Kh1 Nxe4 3. g4 Be3+ 4. Kg2 Rf2+ 5. Kh1 Ng3+\r\n*",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787999352246",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1543205877077643295,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bxc5",
-        "correct": false,
-        "timestamp": "2026-08-29T10:29:49.882976+00:00"
+        "move": "nxe4",
+        "correct": true,
+        "timestamp": "2026-08-29T10:30:04.410993+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
