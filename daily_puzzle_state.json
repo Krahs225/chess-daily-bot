@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-08-27",
     "title": "Gentle Lightning Bolt ⚡",
     "fen": "3rR3/3P1p2/2B2bp1/p1p2k2/P7/5KpP/8/8 w - - 0 39",
-    "current_fen": "3rR3/3P1p2/2B3p1/p1p2k2/P6b/5Kp1/8/8 w - - 0 40",
+    "current_fen": "3rR3/3P1p2/5kp1/p1p5/P3B2b/5Kp1/8/8 w - - 2 41",
     "pgn": "[White \"JohanVA\"]\n[Black \"hahachess81\"]\n[Result \"1-0\"]\n[FEN \"3rR3/3P1p2/2B2bp1/p1p2k2/P7/5KpP/8/8 w - - 0 39\"]\n\n39. h4 Bxh4 40. Be4+ Kf6 41. Rxd8 1-0",
     "all_moves": [
       {
@@ -57,23 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788030593901",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1543336913740501024,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "H4",
+        "move": "Be4",
+        "correct": false,
+        "timestamp": "2026-08-29T19:10:16.917272+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Be4",
         "correct": true,
-        "timestamp": "2026-08-29T19:10:12.356796+00:00"
+        "timestamp": "2026-08-29T19:10:16.756555+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
