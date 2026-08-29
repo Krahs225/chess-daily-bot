@@ -1,96 +1,66 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-10-28",
-    "title": "The Long and Short of It",
-    "fen": "r1b2rk1/5pb1/p1n1p3/4q3/4NB1R/3p4/1PP1Q1PP/5RK1 w - - 0 25",
-    "current_fen": "r1b2rk1/5pb1/p1n1p3/4q3/4NB1R/3p4/1PP1Q1PP/5RK1 w - - 0 25",
-    "pgn": "[Event \"Gibtelecom Chess Festival\"]\r\n[Site \"Gibraltar\"]\r\n[Date \"2006.01.28\"]\r\n[Round \"5.12\"]\r\n[White \"Nigel Short\"]\r\n[Black \"Natalia Zhukova\"]\r\n[Result \"*\"]\r\n[WhiteElo \"2676\"]\r\n[BlackElo \"2432\"]\r\n[ECO \"C11\"]\r\n[EventDate \"2006.01.24\"]\r\n[PlyCount \"51\"]\r\n[FEN \"r1b2rk1/5pb1/p1n1p3/4q3/4NB1R/3p4/1PP1Q1PP/5RK1 w - - 0 25\"]\r\n\r\n25.Bxe5 dxe2 26.Nf6+ Bxf6 27.Bxf6 exf1=Q+ 28.Kxf1 Ne7 29.Rh8# *",
+    "url": "https://www.chess.com/daily/2020-06-01",
+    "title": "Queenside Tension",
+    "fen": "1kbr1r2/pp3pp1/2p2n1p/1nNpN3/1q1P4/3BP2P/PPQ2PP1/1K1R4 w - - 0 1",
+    "current_fen": "1kbr1r2/pp3pp1/2p2n1p/1nNpN3/1q1P4/3BP2P/PPQ2PP1/1K1R4 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1kbr1r2/pp3pp1/2p2n1p/1nNpN3/1q1P4/3BP2P/PPQ2PP1/1K1R4 w - - 0 1\"]\r\n\r\n1. Na6+ bxa6 2. Nxc6+ Ka8 3. Nxb4 *",
     "all_moves": [
       {
-        "uci": "f4e5",
-        "san": "Bxe5",
+        "uci": "c5a6",
+        "san": "Na6+",
         "color": "white"
       },
       {
-        "uci": "d3e2",
-        "san": "dxe2",
+        "uci": "b7a6",
+        "san": "bxa6",
         "color": "black"
       },
       {
-        "uci": "e4f6",
-        "san": "Nf6+",
+        "uci": "e5c6",
+        "san": "Nxc6+",
         "color": "white"
       },
       {
-        "uci": "g7f6",
-        "san": "Bxf6",
+        "uci": "b8a8",
+        "san": "Ka8",
         "color": "black"
       },
       {
-        "uci": "e5f6",
-        "san": "Bxf6",
-        "color": "white"
-      },
-      {
-        "uci": "e2f1q",
-        "san": "exf1=Q+",
-        "color": "black"
-      },
-      {
-        "uci": "g1f1",
-        "san": "Kxf1",
-        "color": "white"
-      },
-      {
-        "uci": "c6e7",
-        "san": "Ne7",
-        "color": "black"
-      },
-      {
-        "uci": "h4h8",
-        "san": "Rh8#",
+        "uci": "c6b4",
+        "san": "Nxb4",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4e5",
-        "san": "Bxe5",
+        "uci": "c5a6",
+        "san": "Na6+",
         "color": "white"
       },
       {
-        "uci": "e4f6",
-        "san": "Nf6+",
+        "uci": "e5c6",
+        "san": "Nxc6+",
         "color": "white"
       },
       {
-        "uci": "e5f6",
-        "san": "Bxf6",
-        "color": "white"
-      },
-      {
-        "uci": "g1f1",
-        "san": "Kxf1",
-        "color": "white"
-      },
-      {
-        "uci": "h4h8",
-        "san": "Rh8#",
+        "uci": "c6b4",
+        "san": "Nxb4",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-29T10:15:50.790464+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-29T10:17:59.440503+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787998550790",
+    "puzzle_id": "random_1787998679440",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543202515099852832,
+    "message_id": 1543203054692864071,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
