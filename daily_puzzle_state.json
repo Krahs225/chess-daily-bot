@@ -1,122 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-03-11",
-    "title": "Fier on Board",
-    "fen": "2r2bk1/1q1n1pp1/2b1r3/1p4N1/2p1P3/1p1P2P1/PB3PK1/Q1R4R w - - 0 27",
-    "current_fen": "2r2bk1/1q1n1ppQ/2b5/1p4N1/2p1P3/1p1P2P1/PB3PK1/8 b - - 2 32",
-    "pgn": "[Event \"Chess Olympiad\"]\r\n[Site \"Batumi GEO\"]\r\n[Date \"2018.09.25\"]\r\n[Round \"2.19\"]\r\n[White \"Alexandr Hilario Takeda dos Santos Fier\"]\r\n[Black \"Robert Aloma Vidal\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2558\"]\r\n[BlackElo \"2428\"]\r\n[ECO \"A09\"]\r\n[EventDate \"2018.09.24\"]\r\n[PlyCount \"53\"]\r\n[FEN \"2r2bk1/1q1n1pp1/2b1r3/1p4N1/2p1P3/1p1P2P1/PB3PK1/Q1R4R w - - 0 27\"]\r\n\r\n27.Rh8+ Kxh8 28.Rh1+ Kg8 29.Rh8+ Kxh8 30.Qh1+ Rh6 31.Qxh6+ Kg8 32.Qh7# 1-0",
+    "url": "https://www.chess.com/daily/2022-08-28",
+    "title": "Managing Your Attacking Momentum",
+    "fen": "Qb2k1r1/5p2/p3b3/3N3p/4p2q/P3P3/1PPBK1P1/R4R2 b - - 0 1",
+    "current_fen": "Qb2k1r1/5p2/p3b3/3N3p/4p2q/P3P3/1PPBK1P1/R4R2 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"Qb2k1r1/5p2/p3b3/3N3p/4p2q/P3P3/1PPBK1P1/R4R2 b - - 0 1\"]\r\n\r\n1... Bg4+ 2. Rf3 Bxf3+ 3. gxf3 Rg2+ 4. Kd1 Rg1+ 5. Be1 Qxe1# *",
     "all_moves": [
       {
-        "uci": "h1h8",
-        "san": "Rh8+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h8",
-        "san": "Kxh8",
+        "uci": "e6g4",
+        "san": "Bg4+",
         "color": "black"
       },
       {
-        "uci": "c1h1",
-        "san": "Rh1+",
+        "uci": "f1f3",
+        "san": "Rf3",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "g4f3",
+        "san": "Bxf3+",
         "color": "black"
       },
       {
-        "uci": "h1h8",
-        "san": "Rh8+",
+        "uci": "g2f3",
+        "san": "gxf3",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kxh8",
+        "uci": "g8g2",
+        "san": "Rg2+",
         "color": "black"
       },
       {
-        "uci": "a1h1",
-        "san": "Qh1+",
+        "uci": "e2d1",
+        "san": "Kd1",
         "color": "white"
       },
       {
-        "uci": "e6h6",
-        "san": "Rh6",
+        "uci": "g2g1",
+        "san": "Rg1+",
         "color": "black"
       },
       {
-        "uci": "h1h6",
-        "san": "Qxh6+",
+        "uci": "d2e1",
+        "san": "Be1",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "h4e1",
+        "san": "Qxe1#",
         "color": "black"
-      },
-      {
-        "uci": "h6h7",
-        "san": "Qh7#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h1h8",
-        "san": "Rh8+",
-        "color": "white"
+        "uci": "e6g4",
+        "san": "Bg4+",
+        "color": "black"
       },
       {
-        "uci": "c1h1",
-        "san": "Rh1+",
-        "color": "white"
+        "uci": "g4f3",
+        "san": "Bxf3+",
+        "color": "black"
       },
       {
-        "uci": "h1h8",
-        "san": "Rh8+",
-        "color": "white"
+        "uci": "g8g2",
+        "san": "Rg2+",
+        "color": "black"
       },
       {
-        "uci": "a1h1",
-        "san": "Qh1+",
-        "color": "white"
+        "uci": "g2g1",
+        "san": "Rg1+",
+        "color": "black"
       },
       {
-        "uci": "h1h6",
-        "san": "Qxh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h6h7",
-        "san": "Qh7#",
-        "color": "white"
+        "uci": "h4e1",
+        "san": "Qxe1#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-29T09:54:10.801473+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 5,
+    "posted_at": "2026-08-29T09:54:31.969154+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787997250801",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1543197062596665356,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qh7",
-        "correct": true,
-        "timestamp": "2026-08-29T09:54:23.749895+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787997271969",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
