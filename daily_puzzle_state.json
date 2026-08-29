@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-02-10",
     "title": "Surveying the Terrain",
     "fen": "6k1/1bQ3p1/1r2qrP1/p6R/4Pp2/3P4/P1PK1P2/8 w - - 0 1",
-    "current_fen": "5rk1/1b4p1/1r2q1P1/p7/4Pp1Q/3P4/P1PK1P2/8 w - - 2 4",
+    "current_fen": "5rk1/1b4pQ/1r2q1P1/p7/4Pp2/3P4/P1PK1P2/8 b - - 3 4",
     "pgn": "[Result \"*\"]\r\n[FEN \"6k1/1bQ3p1/1r2qrP1/p6R/4Pp2/3P4/P1PK1P2/8 w - - 0 1\"]\r\n\r\n1.Qd8+ Rf8 2.Rh8+ Kxh8 3.Qh4+ Kg8 4.Qh7# *",
     "all_moves": [
       {
@@ -72,16 +72,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787996736087",
-    "next_solution_index": 6,
-    "next_player_index": 3,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1543194904384118824,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxf8",
-        "correct": false,
-        "timestamp": "2026-08-29T09:45:45.827336+00:00"
+        "move": "qh7",
+        "correct": true,
+        "timestamp": "2026-08-29T09:45:51.189123+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -92,9 +92,11 @@
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
