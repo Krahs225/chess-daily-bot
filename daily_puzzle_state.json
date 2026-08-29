@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-06-15",
     "title": "Typical Motif",
     "fen": "rnbq1rk1/p3ppbp/1p1p1np1/2p3B1/2BP4/2P1PN2/PP1N1PPP/R2QK2R w KQ - 0 8",
-    "current_fen": "rn1q1rk1/p3pp1p/bp1p1bp1/2pB4/3P4/2P1PN2/PP1N1PPP/R2QK2R w KQ - 2 10",
+    "current_fen": "Bn1q1rk1/p3pp1p/bp1p1bp1/2p5/3P4/2P1PN2/PP1N1PPP/R2QK2R b KQ - 0 10",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rnbq1rk1/p3ppbp/1p1p1np1/2p3B1/2BP4/2P1PN2/PP1N1PPP/R2QK2R w KQ - 0 8\"]\r\n\r\n8. Bxf6 Bxf6 9. Bd5 Ba6 10. Bxa8\r\n*",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1787993952405",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1543183228196757528,
     "attempted_users": {
       "442597396195704832": {
@@ -67,13 +67,21 @@
         "move": "bd5",
         "correct": true,
         "timestamp": "2026-08-29T08:59:17.378640+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Bxa8",
+        "correct": true,
+        "timestamp": "2026-08-29T08:59:20.694465+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
