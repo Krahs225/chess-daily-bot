@@ -1,135 +1,42 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-04-26",
-    "title": "Henry A. Adamson, The Chess Amateur, 1921",
-    "fen": "8/7K/k1P5/p7/8/8/8/8 w - - 0 1",
-    "current_fen": "2Q5/8/1k1K4/8/8/8/8/q7 b - - 0 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/7K/k1P5/p7/8/8/8/8 w - - 0 1\"]\r\n\r\n1. Kg6 Kb6 2. Kf5 a4 3. Ke5 a3 4. Kd6 a2 5. c7 a1=Q 6. c8=Q\r\n*",
+    "url": "https://www.chess.com/daily/2008-10-19",
+    "title": "Regain Material",
+    "fen": "r3r1k1/pp3ppp/5n2/2p1q3/Q7/P1PBPP2/6PP/R1B1R1K1 b - - 0 1",
+    "current_fen": "r3r1k1/pp3ppp/5n2/2p1q3/Q7/P1PBPP2/6PP/R1B1R1K1 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3r1k1/pp3ppp/5n2/2p1q3/Q7/P1PBPP2/6PP/R1B1R1K1 b - - 0 1\"]\r\n\r\n1...Qxc3\r\n*",
     "all_moves": [
       {
-        "uci": "h7g6",
-        "san": "Kg6",
-        "color": "white"
-      },
-      {
-        "uci": "a6b6",
-        "san": "Kb6",
+        "uci": "e5c3",
+        "san": "Qxc3",
         "color": "black"
-      },
-      {
-        "uci": "g6f5",
-        "san": "Kf5",
-        "color": "white"
-      },
-      {
-        "uci": "a5a4",
-        "san": "a4",
-        "color": "black"
-      },
-      {
-        "uci": "f5e5",
-        "san": "Ke5",
-        "color": "white"
-      },
-      {
-        "uci": "a4a3",
-        "san": "a3",
-        "color": "black"
-      },
-      {
-        "uci": "e5d6",
-        "san": "Kd6",
-        "color": "white"
-      },
-      {
-        "uci": "a3a2",
-        "san": "a2",
-        "color": "black"
-      },
-      {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "a2a1q",
-        "san": "a1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "c7c8q",
-        "san": "c8=Q",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h7g6",
-        "san": "Kg6",
-        "color": "white"
-      },
-      {
-        "uci": "g6f5",
-        "san": "Kf5",
-        "color": "white"
-      },
-      {
-        "uci": "f5e5",
-        "san": "Ke5",
-        "color": "white"
-      },
-      {
-        "uci": "e5d6",
-        "san": "Kd6",
-        "color": "white"
-      },
-      {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "c7c8q",
-        "san": "c8=Q",
-        "color": "white"
+        "uci": "e5c3",
+        "san": "Qxc3",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-29T19:25:19.121122+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 1,
+    "posted_at": "2026-08-29T19:42:19.236262+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788031519121",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1543340794465751131,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "C7",
-        "correct": true,
-        "timestamp": "2026-08-29T19:27:00.394530+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "c8=Q",
-        "correct": true,
-        "timestamp": "2026-08-29T19:42:01.922797+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1788032539236",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
