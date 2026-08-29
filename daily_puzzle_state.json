@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-06-07",
-    "title": "Korchnoi-Petrosian, Moscow 1963",
-    "fen": "8/p7/1p6/2p1pPk1/2P1P2p/1P1p3r/P4K2/5R2 w - - 0 1",
-    "current_fen": "5k2/p7/1p6/2p1p3/2P1P2p/1P1p3r/P5K1/5R2 b - - 1 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/p7/1p6/2p1pPk1/2P1P2p/1P1p3r/P4K2/5R2 w - - 0 1\"]\r\n\r\n1. f6 Kg6 2. f7 Kg7 3. f8=Q+ Kxf8 4. Kg2+\r\n*",
+    "url": "https://www.chess.com/daily/2022-06-29",
+    "title": "Candidate Highlight: Alireza's Forced Mate",
+    "fen": "r3k1n1/1p4QR/p3q1p1/4pb2/4N3/2P2P2/PP3P2/2K5 w - - 0 28",
+    "current_fen": "r3k1n1/1p4QR/p3q1p1/4pb2/4N3/2P2P2/PP3P2/2K5 w - - 0 28",
+    "pgn": "[Event \"Olympiad-43\"]\r\n[Site \"Batumi\"]\r\n[Date \"2018.10.05\"]\r\n[Round \"11.4\"]\r\n[White \"Firouzja, Alireza\"]\r\n[Black \"Quparadze, Giga\"]\r\n[Result \"1-0\"]\r\n[SetUp \"1\"]\r\n[FEN \"r3k1n1/1p4QR/p3q1p1/4pb2/4N3/2P2P2/PP3P2/2K5 w - - 0 28\"]\r\n[ECO \"B42\"]\r\n[WhiteElo \"2582\"]\r\n[BlackElo \"2495\"]\r\n\r\n28. Nd6+ Qxd6 29. Qf7+ Kd8 30. Qxg8+ Qf8 31. Qxf8# 1-0",
     "all_moves": [
       {
-        "uci": "f5f6",
-        "san": "f6",
+        "uci": "e4d6",
+        "san": "Nd6+",
         "color": "white"
       },
       {
-        "uci": "g5g6",
-        "san": "Kg6",
+        "uci": "e6d6",
+        "san": "Qxd6",
         "color": "black"
       },
       {
-        "uci": "f6f7",
-        "san": "f7",
+        "uci": "g7f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "g6g7",
-        "san": "Kg7",
+        "uci": "e8d8",
+        "san": "Kd8",
         "color": "black"
       },
       {
-        "uci": "f7f8q",
-        "san": "f8=Q+",
+        "uci": "f7g8",
+        "san": "Qxg8+",
         "color": "white"
       },
       {
-        "uci": "g7f8",
-        "san": "Kxf8",
+        "uci": "d6f8",
+        "san": "Qf8",
         "color": "black"
       },
       {
-        "uci": "f2g2",
-        "san": "Kg2+",
+        "uci": "g8f8",
+        "san": "Qxf8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5f6",
-        "san": "f6",
+        "uci": "e4d6",
+        "san": "Nd6+",
         "color": "white"
       },
       {
-        "uci": "f6f7",
-        "san": "f7",
+        "uci": "g7f7",
+        "san": "Qf7+",
         "color": "white"
       },
       {
-        "uci": "f7f8q",
-        "san": "f8=Q+",
+        "uci": "f7g8",
+        "san": "Qxg8+",
         "color": "white"
       },
       {
-        "uci": "f2g2",
-        "san": "Kg2+",
+        "uci": "g8f8",
+        "san": "Qxf8#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-08-29T10:28:13.611538+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-29T10:28:30.224800+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1787999293611",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1543205632184942603,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "kg2",
-        "correct": true,
-        "timestamp": "2026-08-29T10:28:23.848516+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1787999310224",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
