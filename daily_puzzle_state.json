@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-09-09",
     "title": "Defend or Counter Threats?",
     "fen": "r2q3k/p1p3pp/2Bb2r1/3p1p2/3P2b1/1QP5/PP1N1PPP/R1B1R1K1 b - - 0 1",
-    "current_fen": "r2q3k/p1p3pp/2Bb2r1/3p1p2/3P2b1/1QP5/PP1N1PPP/R1B1R1K1 b - - 0 1",
+    "current_fen": "r2q3k/p1p3pp/2B3r1/3p1p2/3P2b1/1QP5/PP1N1PPb/R1B1RK2 b - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q3k/p1p3pp/2Bb2r1/3p1p2/3P2b1/1QP5/PP1N1PPP/R1B1R1K1 b - - 0 1\"]\r\n\r\n1...Bxh2+ 2. Kf1 Rxc6\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788072038072",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1543510743645683794,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Bxh2",
+        "correct": true,
+        "timestamp": "2026-08-30T06:41:01.023151+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
