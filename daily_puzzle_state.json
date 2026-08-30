@@ -1,66 +1,81 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-07-13",
-    "title": "Can White Save the Piece??\r\n",
-    "fen": "6k1/R4p1p/b5p1/1q1P4/4Q2P/2b3N1/5PP1/2r1B1K1 w - - 0 1",
-    "current_fen": "6k1/R4p1p/b5p1/1q1P4/4Q2P/2b3N1/5PP1/2r1B1K1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/R4p1p/b5p1/1q1P4/4Q2P/2b3N1/5PP1/2r1B1K1 w - - 0 1\"]\r\n\r\n1. Kh2 { The king moves away from the pin! }  1... Rxe1 ( 1... Bxe1 { This is worse for black. }  2. Qf4 Qe8 { To stop checkmate... }  3. Qxc1 ) 2. Qf3 Qe8 ( 2... Qc4 { Trying to protect the bishop? }  3. Qxf7+ Kh8 4. Qxh7# ) 3. Qxc3 { White keeps the extra pawn and a great position! }\r\n*",
+    "url": "https://www.chess.com/daily/2019-09-15",
+    "title": "The Two Piece Attack",
+    "fen": "4k3/R6p/2Ppn1p1/5p2/1r1B4/5P1P/6PK/8 w - - 0 1",
+    "current_fen": "4k3/R6p/2Ppn1p1/5p2/1r1B4/5P1P/6PK/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4k3/R6p/2Ppn1p1/5p2/1r1B4/5P1P/6PK/8 w - - 0 1\"]\r\n\r\n1. Bf6 Rc4 2. Re7+ Kf8 3. Rxe6 Kf7 4. Rxd6\r\n*",
     "all_moves": [
       {
-        "uci": "g1h2",
-        "san": "Kh2",
+        "uci": "d4f6",
+        "san": "Bf6",
         "color": "white"
       },
       {
-        "uci": "c1e1",
-        "san": "Rxe1",
+        "uci": "b4c4",
+        "san": "Rc4",
         "color": "black"
       },
       {
-        "uci": "e4f3",
-        "san": "Qf3",
+        "uci": "a7e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "b5e8",
-        "san": "Qe8",
+        "uci": "e8f8",
+        "san": "Kf8",
         "color": "black"
       },
       {
-        "uci": "f3c3",
-        "san": "Qxc3",
+        "uci": "e7e6",
+        "san": "Rxe6",
+        "color": "white"
+      },
+      {
+        "uci": "f8f7",
+        "san": "Kf7",
+        "color": "black"
+      },
+      {
+        "uci": "e6d6",
+        "san": "Rxd6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g1h2",
-        "san": "Kh2",
+        "uci": "d4f6",
+        "san": "Bf6",
         "color": "white"
       },
       {
-        "uci": "e4f3",
-        "san": "Qf3",
+        "uci": "a7e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "f3c3",
-        "san": "Qxc3",
+        "uci": "e7e6",
+        "san": "Rxe6",
+        "color": "white"
+      },
+      {
+        "uci": "e6d6",
+        "san": "Rxd6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-30T13:17:01.935184+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-30T13:18:25.584064+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788095821935",
+    "puzzle_id": "random_1788095905584",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543610500099870833,
+    "message_id": 1543610850948943883,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
