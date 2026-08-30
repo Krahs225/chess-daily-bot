@@ -1,81 +1,66 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-01-02",
-    "title": "Resolution Realized",
-    "fen": "6k1/p4p1p/2b1pBp1/2qP4/P1n4P/2P3P1/1r2QPB1/3R2K1 w - - 1 26",
-    "current_fen": "6k1/p4p1p/2b1pBp1/2qP4/P1n4P/2P3P1/1r2QPB1/3R2K1 w - - 1 26",
-    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/p4p1p/2b1pBp1/2qP4/P1n4P/2P3P1/1r2QPB1/3R2K1 w - - 1 26\"]\r\n\r\n26.dxc6 Rxe2 27.Rd8+ Qf8 28.c7 Nb6 29.Be7 *",
+    "url": "https://www.chess.com/daily/2011-01-18",
+    "title": "Quiet But Effective",
+    "fen": "r1nr2k1/1b2p1bp/p5p1/P2qPpB1/2p5/2P2N2/3Q1PPP/3RRNK1 w - - 0 1",
+    "current_fen": "r1nr2k1/1b2p1bp/p5p1/P2qPpB1/2p5/2P2N2/3Q1PPP/3RRNK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1nr2k1/1b2p1bp/p5p1/P2qPpB1/2p5/2P2N2/3Q1PPP/3RRNK1 w - - 0 1\"]\r\n\r\n1. Qb2 Qxd1 2. Rxd1 Rxd1 3. Qxb7\r\n*",
     "all_moves": [
       {
-        "uci": "d5c6",
-        "san": "dxc6",
+        "uci": "d2b2",
+        "san": "Qb2",
         "color": "white"
       },
       {
-        "uci": "b2e2",
-        "san": "Rxe2",
+        "uci": "d5d1",
+        "san": "Qxd1",
         "color": "black"
       },
       {
-        "uci": "d1d8",
-        "san": "Rd8+",
+        "uci": "e1d1",
+        "san": "Rxd1",
         "color": "white"
       },
       {
-        "uci": "c5f8",
-        "san": "Qf8",
+        "uci": "d8d1",
+        "san": "Rxd1",
         "color": "black"
       },
       {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "c4b6",
-        "san": "Nb6",
-        "color": "black"
-      },
-      {
-        "uci": "f6e7",
-        "san": "Be7",
+        "uci": "b2b7",
+        "san": "Qxb7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5c6",
-        "san": "dxc6",
+        "uci": "d2b2",
+        "san": "Qb2",
         "color": "white"
       },
       {
-        "uci": "d1d8",
-        "san": "Rd8+",
+        "uci": "e1d1",
+        "san": "Rxd1",
         "color": "white"
       },
       {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "f6e7",
-        "san": "Be7",
+        "uci": "b2b7",
+        "san": "Qxb7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-30T06:42:22.256018+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-30T13:16:08.855381+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788072142256",
+    "puzzle_id": "random_1788095768855",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543511180478513263,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
@@ -83,7 +68,7 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "daily",
+  "latest_puzzle_type": "random",
   "current_puzzle": {
     "url": "https://www.chess.com/daily/2026-08-30",
     "title": "Put a Cork In It",
