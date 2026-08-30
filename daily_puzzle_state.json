@@ -1,61 +1,106 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-01-20",
-    "title": "Basic Mating Pattern",
-    "fen": "2r2r1k/p2p3q/1p2p2Q/4P3/1nP5/5P2/5P1P/3R1KR1 w - - 0 1",
-    "current_fen": "2r2r2/p2p3k/1p2p3/4P3/1nPR4/5P2/5P1P/5KR1 b - - 1 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r2r1k/p2p3q/1p2p2Q/4P3/1nP5/5P2/5P1P/3R1KR1 w - - 0 1\"]\r\n\r\n1. Qxh7+ Kxh7 2. Rd4\r\n*",
+    "url": "https://www.chess.com/daily/2009-01-17",
+    "title": "Active Combinations",
+    "fen": "1rbk2nr/p1pp2b1/7p/2qP1pp1/2Bn4/2NKBP2/PP2N1PP/R2Q3R b - - 0 1",
+    "current_fen": "1r1k2nr/p1pp2b1/b6p/3P1pp1/1P6/1K2BP2/P3N1PP/R2n3R w - - 0 6",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1rbk2nr/p1pp2b1/7p/2qP1pp1/2Bn4/2NKBP2/PP2N1PP/R2Q3R b - - 0 1\"]\r\n\r\n1...Qxc4+ 2. Kxc4 Ba6+ 3. Nb5 Nxb5 4. b4 Nc3+ 5. Kb3 Nxd1\r\n*",
     "all_moves": [
       {
-        "uci": "h6h7",
-        "san": "Qxh7+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h7",
-        "san": "Kxh7",
+        "uci": "c5c4",
+        "san": "Qxc4+",
         "color": "black"
       },
       {
-        "uci": "d1d4",
-        "san": "Rd4",
+        "uci": "d3c4",
+        "san": "Kxc4",
         "color": "white"
+      },
+      {
+        "uci": "c8a6",
+        "san": "Ba6+",
+        "color": "black"
+      },
+      {
+        "uci": "c3b5",
+        "san": "Nb5",
+        "color": "white"
+      },
+      {
+        "uci": "d4b5",
+        "san": "Nxb5",
+        "color": "black"
+      },
+      {
+        "uci": "b2b4",
+        "san": "b4",
+        "color": "white"
+      },
+      {
+        "uci": "b5c3",
+        "san": "Nc3+",
+        "color": "black"
+      },
+      {
+        "uci": "c4b3",
+        "san": "Kb3",
+        "color": "white"
+      },
+      {
+        "uci": "c3d1",
+        "san": "Nxd1",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6h7",
-        "san": "Qxh7+",
-        "color": "white"
+        "uci": "c5c4",
+        "san": "Qxc4+",
+        "color": "black"
       },
       {
-        "uci": "d1d4",
-        "san": "Rd4",
-        "color": "white"
+        "uci": "c8a6",
+        "san": "Ba6+",
+        "color": "black"
+      },
+      {
+        "uci": "d4b5",
+        "san": "Nxb5",
+        "color": "black"
+      },
+      {
+        "uci": "b5c3",
+        "san": "Nc3+",
+        "color": "black"
+      },
+      {
+        "uci": "c3d1",
+        "san": "Nxd1",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-30T14:16:42.949035+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 5,
+    "posted_at": "2026-08-30T17:05:11.129747+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788099402949",
-    "next_solution_index": 3,
-    "next_player_index": 2,
+    "puzzle_id": "random_1788109511129",
+    "next_solution_index": 9,
+    "next_player_index": 5,
     "solved": true,
-    "message_id": 1543625525015216270,
+    "message_id": 1543667918808551494,
     "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rd4",
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Nxd1",
         "correct": true,
-        "timestamp": "2026-08-30T14:16:57.296808+00:00"
+        "timestamp": "2026-08-30T17:05:59.356295+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
