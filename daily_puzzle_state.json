@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-01-24",
     "title": "Laughing in the Face of Checkmate",
     "fen": "r1bq1k1r/pppp1p1p/7N/2b1pQ2/2B5/2P5/PP4PP/RNB1K2n b Q - 0 1",
-    "current_fen": "r1b2k1r/pppp1p1p/7N/2b1pQ2/2B4q/2P3P1/PP5P/RNB1K2n b Q - 0 2",
+    "current_fen": "r1b2k1r/pppp1p1p/7N/2b1pQ2/2q5/2P3P1/PP5P/RNB1K2n w Q - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"r1bq1k1r/pppp1p1p/7N/2b1pQ2/2B5/2P5/PP4PP/RNB1K2n b Q - 0 1\"]\r\n\r\n1... Qh4+ 2. g3 Qxc4 *",
     "all_moves": [
       {
@@ -42,9 +42,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788098964876",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1543623683292143741,
     "attempted_users": {
       "442597396195704832": {
@@ -52,13 +52,21 @@
         "move": "Nxg3",
         "correct": false,
         "timestamp": "2026-08-30T14:09:38.667834+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxc4",
+        "correct": true,
+        "timestamp": "2026-08-30T14:09:41.439266+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
