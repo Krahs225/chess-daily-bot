@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-08-27",
     "title": "Tight Squeeze",
     "fen": "7k/b5pp/P1p2r2/4p3/6P1/2B2b1K/2BP3P/R7 b - - 0 1",
-    "current_fen": "7k/b5pp/P1p2r2/4p3/6P1/2B2b1K/2BP3P/R7 b - - 0 1",
+    "current_fen": "7k/6pp/P1p2r2/4p1P1/8/2B2b1K/2BP1b1P/R7 b - - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"7k/b5pp/P1p2r2/4p3/6P1/2B2b1K/2BP3P/R7 b - - 0 1\"]\r\n\r\n1...Bf2 2.g5 Rf4 3.Ra4 e4 *",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788096447864",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1543613125880717332,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Bf2",
+        "correct": true,
+        "timestamp": "2026-08-30T13:27:37.562979+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
