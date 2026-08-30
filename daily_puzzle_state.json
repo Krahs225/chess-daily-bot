@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-05-23",
     "title": "Team Participation",
     "fen": "6k1/N5pp/1R2pp2/P1B4b/4P3/2n3P1/2r2PBP/6K1 b - - 0 1",
-    "current_fen": "6k1/N5pp/1R2pp2/P1B4b/4P3/2n3P1/2r2PBP/6K1 b - - 0 1",
+    "current_fen": "6k1/N5pp/1R2pp2/P1B4b/4P3/6P1/2r1nPBP/7K b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/N5pp/1R2pp2/P1B4b/4P3/2n3P1/2r2PBP/6K1 b - - 0 1\"]\r\n\r\n1...Ne2+ 2. Kh1 Rc1+ 3. Bf1 Bf3#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788099088371",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1543624200546156575,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Ne2",
+        "correct": true,
+        "timestamp": "2026-08-30T14:11:34.185169+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
