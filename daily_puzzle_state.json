@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-10-21",
     "title": "Equalize",
     "fen": "8/1b2rk1p/pR2Np2/8/2P5/1P1K2B1/P1r3PP/8 b - - 0 1",
-    "current_fen": "8/1b2rk1p/pR2Np2/8/2P5/1P1K2B1/P1r3PP/8 b - - 0 1",
+    "current_fen": "8/4rk1p/pR2Np2/8/2P1K3/1P4B1/P1r3PP/8 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1b2rk1p/pR2Np2/8/2P5/1P1K2B1/P1r3PP/8 b - - 0 1\"]\r\n\r\n1...Be4+ 2. Kxe4 Rxe6+\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788109595779",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1543668271633670196,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Be4",
+        "correct": true,
+        "timestamp": "2026-08-30T17:06:48.702563+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
