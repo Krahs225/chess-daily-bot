@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-08-25",
     "title": "E. Pogosiants 1981",
     "fen": "8/8/2k1p3/5P2/3K4/8/8/8 w KQkq - 0 1",
-    "current_fen": "8/8/2k1p3/5P2/3K4/8/8/8 w KQkq - 0 1",
+    "current_fen": "8/8/3kpP2/8/3K4/8/8/8 w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/2k1p3/5P2/3K4/8/8/8 w KQkq - 0 1\"]\r\n\r\n1. f6 Kd6 2. Ke4 Kd7 3. Ke5 Kd8 4. Kd6 Ke8 5. Kxe6 Kf8 6. f7 Kg7 7. Ke7\r\n*",
     "all_moves": [
       {
@@ -117,13 +117,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788072076912",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1543510906053328937,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "F6",
+        "correct": true,
+        "timestamp": "2026-08-30T06:41:28.498609+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
