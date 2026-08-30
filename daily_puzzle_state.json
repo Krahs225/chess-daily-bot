@@ -1,107 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2009-01-17",
-    "title": "Active Combinations",
-    "fen": "1rbk2nr/p1pp2b1/7p/2qP1pp1/2Bn4/2NKBP2/PP2N1PP/R2Q3R b - - 0 1",
-    "current_fen": "1r1k2nr/p1pp2b1/b6p/3P1pp1/1P6/1K2BP2/P3N1PP/R2n3R w - - 0 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1rbk2nr/p1pp2b1/7p/2qP1pp1/2Bn4/2NKBP2/PP2N1PP/R2Q3R b - - 0 1\"]\r\n\r\n1...Qxc4+ 2. Kxc4 Ba6+ 3. Nb5 Nxb5 4. b4 Nc3+ 5. Kb3 Nxd1\r\n*",
+    "url": "https://www.chess.com/daily/2023-03-17",
+    "title": "Finding Your Pot of Gold",
+    "fen": "5rk1/5ppp/8/8/8/4PQ2/r1q2PPP/RR4K1 b - - 0 24",
+    "current_fen": "5rk1/5ppp/8/8/8/4PQ2/r1q2PPP/RR4K1 b - - 0 24",
+    "pgn": "[Event \"HUN-ch01\"]\r\n[Site \"Budapest\"]\r\n[Date \"2023.01.24\"]\r\n[Round \"13\"]\r\n[White \"Fuster, Geza\"]\r\n[Black \"Balogh, Janos\"]\r\n[Result \"0-1\"]\r\n[FEN \"5rk1/5ppp/8/8/8/4PQ2/r1q2PPP/RR4K1 b - - 0 24\"]\r\n\r\n24... Qb2 25. h4 Rxa1 26. Rxa1 Qxa1+ *",
     "all_moves": [
       {
-        "uci": "c5c4",
-        "san": "Qxc4+",
+        "uci": "c2b2",
+        "san": "Qb2",
         "color": "black"
       },
       {
-        "uci": "d3c4",
-        "san": "Kxc4",
+        "uci": "h2h4",
+        "san": "h4",
         "color": "white"
       },
       {
-        "uci": "c8a6",
-        "san": "Ba6+",
+        "uci": "a2a1",
+        "san": "Rxa1",
         "color": "black"
       },
       {
-        "uci": "c3b5",
-        "san": "Nb5",
+        "uci": "b1a1",
+        "san": "Rxa1",
         "color": "white"
       },
       {
-        "uci": "d4b5",
-        "san": "Nxb5",
-        "color": "black"
-      },
-      {
-        "uci": "b2b4",
-        "san": "b4",
-        "color": "white"
-      },
-      {
-        "uci": "b5c3",
-        "san": "Nc3+",
-        "color": "black"
-      },
-      {
-        "uci": "c4b3",
-        "san": "Kb3",
-        "color": "white"
-      },
-      {
-        "uci": "c3d1",
-        "san": "Nxd1",
+        "uci": "b2a1",
+        "san": "Qxa1+",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5c4",
-        "san": "Qxc4+",
+        "uci": "c2b2",
+        "san": "Qb2",
         "color": "black"
       },
       {
-        "uci": "c8a6",
-        "san": "Ba6+",
+        "uci": "a2a1",
+        "san": "Rxa1",
         "color": "black"
       },
       {
-        "uci": "d4b5",
-        "san": "Nxb5",
-        "color": "black"
-      },
-      {
-        "uci": "b5c3",
-        "san": "Nc3+",
-        "color": "black"
-      },
-      {
-        "uci": "c3d1",
-        "san": "Nxd1",
+        "uci": "b2a1",
+        "san": "Qxa1+",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 5,
-    "posted_at": "2026-08-30T17:05:11.129747+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-30T17:06:13.267551+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788109511129",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1543667918808551494,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Nxd1",
-        "correct": true,
-        "timestamp": "2026-08-30T17:05:59.356295+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788109573267",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
