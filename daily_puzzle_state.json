@@ -1,98 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-12-21",
-    "title": "A Fight For Squares",
-    "fen": "2q3kr/6p1/5R1p/rpp5/p5PP/2P1QP1K/1P1R4/8 w - - 0 1",
-    "current_fen": "3q3r/5Q1k/7p/rpp5/p5PP/2P2P1K/1P6/8 b - - 1 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2q3kr/6p1/5R1p/rpp5/p5PP/2P1QP1K/1P1R4/8 w - - 0 1\"]\r\n\r\n1. Rd8+ Qxd8 2. Qe6+ Kh7 3. Rxh6+ gxh6 4. Qf7#\r\n*",
+    "url": "https://www.chess.com/daily/2024-02-28",
+    "title": "King Tipping",
+    "fen": "5rk1/pbr2p1p/1p2p3/4p3/2P5/P2QR3/1q3PPP/3R2K1 w - - 0 23",
+    "current_fen": "5rk1/pbr2p1p/1p2p3/4p3/2P5/P2QR3/1q3PPP/3R2K1 w - - 0 23",
+    "pgn": "[Event \"12th Philadelphia Int\"]\r\n[Site \"Philadelphia USA\"]\r\n[Date \"2024.01.03\"]\r\n[Round \"?\"]\r\n[White \"Alexander King\"]\r\n[Black \"Victor Mikhalevski\"]\r\n[Result \"1-0\"]\r\n[ECO \"E53\"]\r\n[FEN \"5rk1/pbr2p1p/1p2p3/4p3/2P5/P2QR3/1q3PPP/3R2K1 w - - 0 23\"]\r\n\r\n23. Rg3+ Kh8 24. Qd8 Rc8 25. Qf6# 1-0",
     "all_moves": [
       {
-        "uci": "d2d8",
-        "san": "Rd8+",
+        "uci": "e3g3",
+        "san": "Rg3+",
         "color": "white"
       },
       {
-        "uci": "c8d8",
-        "san": "Qxd8",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "e3e6",
-        "san": "Qe6+",
+        "uci": "d3d8",
+        "san": "Qd8",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "c7c8",
+        "san": "Rc8",
         "color": "black"
       },
       {
-        "uci": "f6h6",
-        "san": "Rxh6+",
-        "color": "white"
-      },
-      {
-        "uci": "g7h6",
-        "san": "gxh6",
-        "color": "black"
-      },
-      {
-        "uci": "e6f7",
-        "san": "Qf7#",
+        "uci": "d8f6",
+        "san": "Qf6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2d8",
-        "san": "Rd8+",
+        "uci": "e3g3",
+        "san": "Rg3+",
         "color": "white"
       },
       {
-        "uci": "e3e6",
-        "san": "Qe6+",
+        "uci": "d3d8",
+        "san": "Qd8",
         "color": "white"
       },
       {
-        "uci": "f6h6",
-        "san": "Rxh6+",
-        "color": "white"
-      },
-      {
-        "uci": "e6f7",
-        "san": "Qf7#",
+        "uci": "d8f6",
+        "san": "Qf6#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-30T14:12:05.825088+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-30T14:12:47.523969+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788099125825",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1543624357635694665,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rc6",
-        "correct": false,
-        "timestamp": "2026-08-30T14:12:18.931774+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qf7",
-        "correct": true,
-        "timestamp": "2026-08-30T14:12:35.431928+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788099167523",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
