@@ -1,137 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-08-25",
-    "title": "E. Pogosiants 1981",
-    "fen": "8/8/2k1p3/5P2/3K4/8/8/8 w KQkq - 0 1",
-    "current_fen": "8/4KPk1/8/8/8/8/8/8 b - - 2 7",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/2k1p3/5P2/3K4/8/8/8 w KQkq - 0 1\"]\r\n\r\n1. f6 Kd6 2. Ke4 Kd7 3. Ke5 Kd8 4. Kd6 Ke8 5. Kxe6 Kf8 6. f7 Kg7 7. Ke7\r\n*",
+    "url": "https://www.chess.com/daily/2020-01-02",
+    "title": "Resolution Realized",
+    "fen": "6k1/p4p1p/2b1pBp1/2qP4/P1n4P/2P3P1/1r2QPB1/3R2K1 w - - 1 26",
+    "current_fen": "6k1/p4p1p/2b1pBp1/2qP4/P1n4P/2P3P1/1r2QPB1/3R2K1 w - - 1 26",
+    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/p4p1p/2b1pBp1/2qP4/P1n4P/2P3P1/1r2QPB1/3R2K1 w - - 1 26\"]\r\n\r\n26.dxc6 Rxe2 27.Rd8+ Qf8 28.c7 Nb6 29.Be7 *",
     "all_moves": [
       {
-        "uci": "f5f6",
-        "san": "f6",
+        "uci": "d5c6",
+        "san": "dxc6",
         "color": "white"
       },
       {
-        "uci": "c6d6",
-        "san": "Kd6",
+        "uci": "b2e2",
+        "san": "Rxe2",
         "color": "black"
       },
       {
-        "uci": "d4e4",
-        "san": "Ke4",
+        "uci": "d1d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "d6d7",
-        "san": "Kd7",
+        "uci": "c5f8",
+        "san": "Qf8",
         "color": "black"
       },
       {
-        "uci": "e4e5",
-        "san": "Ke5",
+        "uci": "c6c7",
+        "san": "c7",
         "color": "white"
       },
       {
-        "uci": "d7d8",
-        "san": "Kd8",
+        "uci": "c4b6",
+        "san": "Nb6",
         "color": "black"
       },
       {
-        "uci": "e5d6",
-        "san": "Kd6",
-        "color": "white"
-      },
-      {
-        "uci": "d8e8",
-        "san": "Ke8",
-        "color": "black"
-      },
-      {
-        "uci": "d6e6",
-        "san": "Kxe6",
-        "color": "white"
-      },
-      {
-        "uci": "e8f8",
-        "san": "Kf8",
-        "color": "black"
-      },
-      {
-        "uci": "f6f7",
-        "san": "f7",
-        "color": "white"
-      },
-      {
-        "uci": "f8g7",
-        "san": "Kg7",
-        "color": "black"
-      },
-      {
-        "uci": "e6e7",
-        "san": "Ke7",
+        "uci": "f6e7",
+        "san": "Be7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5f6",
-        "san": "f6",
+        "uci": "d5c6",
+        "san": "dxc6",
         "color": "white"
       },
       {
-        "uci": "d4e4",
-        "san": "Ke4",
+        "uci": "d1d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "e4e5",
-        "san": "Ke5",
+        "uci": "c6c7",
+        "san": "c7",
         "color": "white"
       },
       {
-        "uci": "e5d6",
-        "san": "Kd6",
-        "color": "white"
-      },
-      {
-        "uci": "d6e6",
-        "san": "Kxe6",
-        "color": "white"
-      },
-      {
-        "uci": "f6f7",
-        "san": "f7",
-        "color": "white"
-      },
-      {
-        "uci": "e6e7",
-        "san": "Ke7",
+        "uci": "f6e7",
+        "san": "Be7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-08-30T06:41:16.912567+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-08-30T06:42:22.256018+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788072076912",
-    "next_solution_index": 13,
-    "next_player_index": 7,
-    "solved": true,
-    "message_id": 1543510906053328937,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Ke7",
-        "correct": true,
-        "timestamp": "2026-08-30T06:41:59.534182+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788072142256",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
