@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-02-28",
     "title": "King Tipping",
     "fen": "5rk1/pbr2p1p/1p2p3/4p3/2P5/P2QR3/1q3PPP/3R2K1 w - - 0 23",
-    "current_fen": "2rQ1r1k/pb3p1p/1p2p3/4p3/2P5/P5R1/1q3PPP/3R2K1 w - - 4 25",
+    "current_fen": "2r2r1k/pb3p1p/1p2pQ2/4p3/2P5/P5R1/1q3PPP/3R2K1 b - - 5 25",
     "pgn": "[Event \"12th Philadelphia Int\"]\r\n[Site \"Philadelphia USA\"]\r\n[Date \"2024.01.03\"]\r\n[Round \"?\"]\r\n[White \"Alexander King\"]\r\n[Black \"Victor Mikhalevski\"]\r\n[Result \"1-0\"]\r\n[ECO \"E53\"]\r\n[FEN \"5rk1/pbr2p1p/1p2p3/4p3/2P5/P2QR3/1q3PPP/3R2K1 w - - 0 23\"]\r\n\r\n23. Rg3+ Kh8 24. Qd8 Rc8 25. Qf6# 1-0",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788099167523",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1543624533016318143,
     "attempted_users": {
       "442597396195704832": {
@@ -70,14 +70,14 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qd8",
+        "move": "Qf6",
         "correct": true,
-        "timestamp": "2026-08-30T14:13:21.868405+00:00"
+        "timestamp": "2026-08-30T14:13:25.829675+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "601406103712170014"
