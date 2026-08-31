@@ -1,59 +1,52 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-09-16",
-    "title": "Knight After Knight",
-    "fen": "r3qbr1/pp4pp/3Qbkn1/1P6/P4p2/2NP1N2/4BPPP/R4RK1 w - - 0 1",
-    "current_fen": "r3qbr1/pp4pp/3Qbkn1/1P6/P4p2/2NP1N2/4BPPP/R4RK1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3qbr1/pp4pp/3Qbkn1/1P6/P4p2/2NP1N2/4BPPP/R4RK1 w - - 0 1\"]\r\n\r\n1. Ne4+ Kf5 2. Nd4# \r\n*",
+    "url": "https://www.chess.com/daily/2008-09-15",
+    "title": "Mating In Style",
+    "fen": "1r4rk/2q2pbp/p1p1bp2/4p2Q/Pp2P2N/6RP/BPP2PP1/3N2K1 w - - 0 1",
+    "current_fen": "1r4rk/2q2pbp/p1p1bp2/4p2Q/Pp2P2N/6RP/BPP2PP1/3N2K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r4rk/2q2pbp/p1p1bp2/4p2Q/Pp2P2N/6RP/BPP2PP1/3N2K1 w - - 0 1\"]\r\n\r\n1. Bxe6 fxe6 2. Ng6#\r\n*",
     "all_moves": [
       {
-        "uci": "c3e4",
-        "san": "Ne4+",
+        "uci": "a2e6",
+        "san": "Bxe6",
         "color": "white"
       },
       {
-        "uci": "f6f5",
-        "san": "Kf5",
+        "uci": "f7e6",
+        "san": "fxe6",
         "color": "black"
       },
       {
-        "uci": "f3d4",
-        "san": "Nd4#",
+        "uci": "h4g6",
+        "san": "Ng6#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3e4",
-        "san": "Ne4+",
+        "uci": "a2e6",
+        "san": "Bxe6",
         "color": "white"
       },
       {
-        "uci": "f3d4",
-        "san": "Nd4#",
+        "uci": "h4g6",
+        "san": "Ng6#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-08-31T14:10:06.813004+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-08-31T14:34:34.501284+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788185406813",
+    "puzzle_id": "random_1788186874501",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543986246811123833,
-    "attempted_users": {
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "Kh8",
-        "correct": false,
-        "timestamp": "2026-08-31T14:14:24.288669+00:00"
-      }
-    },
+    "message_id": 1543992402149113937,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
