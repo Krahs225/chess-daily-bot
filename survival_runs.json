@@ -326,6 +326,69 @@
         "helper_awarded": []
       },
       "history": []
+    },
+    "martin2": {
+      "name": "Martin2",
+      "best_puzzle": 1,
+      "best_difficulty": 0,
+      "best_completed_at": "2026-08-31T16:59:49.253785+00:00",
+      "current": {
+        "run_id": "martin2:1788195589",
+        "started_by_id": "1541007763931668502",
+        "captain_id": "1541007763931668502",
+        "captain_name": "Martin",
+        "mode": "coop",
+        "status": "active",
+        "started_at": "2026-08-31T16:59:49.253768+00:00",
+        "last_activity": 1788195589.2537818,
+        "paused_reason": null,
+        "puzzle_number": 1,
+        "strikes": 0,
+        "best_difficulty": 1215,
+        "used_puzzle_ids": [
+          "lZlCB"
+        ],
+        "members": {},
+        "puzzle": {
+          "id": "lZlCB",
+          "rating": 1215,
+          "themes": "crushing endgame fork master short",
+          "url": "https://lichess.org/training/lZlCB",
+          "start_fen": "6k1/p7/7p/2P1Npp1/1P2n3/7P/P1r2PP1/1R3K2 b - - 0 29",
+          "current_fen": "6k1/p7/7p/2P1Npp1/1P2n3/7P/P1r2PP1/1R3K2 b - - 0 29",
+          "solution": [
+            {
+              "uci": "e4d2",
+              "san": "Nd2+",
+              "color": "black"
+            },
+            {
+              "uci": "f1e1",
+              "san": "Ke1",
+              "color": "white"
+            },
+            {
+              "uci": "d2b1",
+              "san": "Nxb1",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
+        "helper_awarded": []
+      },
+      "history": []
     }
   }
 }
