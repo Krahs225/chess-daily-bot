@@ -340,7 +340,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-08-31T16:59:49.253768+00:00",
-        "last_activity": 1788195605.3207028,
+        "last_activity": 1788195614.9256873,
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 1,
@@ -351,7 +351,7 @@
         "members": {
           "1541007763931668502": {
             "name": "Martin",
-            "correct": 1,
+            "correct": 2,
             "wrong": 1
           }
         },
@@ -361,7 +361,7 @@
           "themes": "crushing endgame fork master short",
           "url": "https://lichess.org/training/lZlCB",
           "start_fen": "6k1/p7/7p/2P1Npp1/1P2n3/7P/P1r2PP1/1R3K2 b - - 0 29",
-          "current_fen": "6k1/p7/7p/2P1Npp1/1P6/7P/P1rn1PP1/1R2K3 b - - 2 30",
+          "current_fen": "6k1/p7/7p/2P1Npp1/1P6/7P/P1r2PP1/1n2K3 w - - 0 31",
           "solution": [
             {
               "uci": "e4d2",
@@ -380,7 +380,7 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 2,
+          "next_solution_index": 3,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -388,20 +388,26 @@
           "wrong_users": [
             "1541007763931668502"
           ],
-          "last_move_san": "Nd2+",
+          "last_move_san": "Nxb1",
           "accepted_moves": [
             {
               "san": "Nd2+",
               "uci": "e4d2",
               "accepted_at": 1788195605.3205657,
               "solver_id": "1541007763931668502"
+            },
+            {
+              "san": "Nxb1",
+              "uci": "d2b1",
+              "accepted_at": 1788195614.925607,
+              "solver_id": "1541007763931668502"
             }
           ],
-          "last_accepted_move_uci": "e4d2",
-          "last_accepted_move_san": "Nd2+",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1788195605.3205645,
-          "position_before_last_move": "6k1/p7/7p/2P1Npp1/1P2n3/7P/P1r2PP1/1R3K2 b - - 0 29"
+          "last_accepted_move_uci": "d2b1",
+          "last_accepted_move_san": "Nxb1",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1788195614.9256058,
+          "position_before_last_move": "6k1/p7/7p/2P1Npp1/1P6/7P/P1rn1PP1/1R2K3 b - - 2 30"
         },
         "first_solver_id": "1541007763931668502",
         "first_solver_name": "Martin",
