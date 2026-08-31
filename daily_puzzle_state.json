@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-09-25",
     "title": "A Little Twist",
     "fen": "4kb1r/pp3ppp/q3b3/6Q1/1n1N4/2r1B3/PPP2PPP/2KRR3 w k - 0 1",
-    "current_fen": "4kb1r/pp3ppp/q3b3/6Q1/1n1N4/2r1B3/PPP2PPP/2KRR3 w k - 0 1",
+    "current_fen": "3N1b1r/pp2k1pp/4Rp2/6B1/1n6/8/PPP2PPP/2KR4 b - - 0 6",
     "pgn": "[FEN \"4kb1r/pp3ppp/q3b3/6Q1/1n1N4/2r1B3/PPP2PPP/2KRR3 w k - 0 1\"]\r\n[PlyCount \"11\"]\r\n\r\n1. Qd8+ 1... Kxd8 2. Nxe6+ 2... Ke7 (2... Kc8 3. Rd8#) (2... Ke8 3. Nxg7+ 3...\r\nBxg7 (3... Ke7 4. Bg5#) 4. Bg5+ 4... Be5 5. Rd8#) 3. Bg5+ 3... f6 (3... Ke8 4.\r\nRd8#) 4. Nd8+ $1 4... Re3 5. Rxe3+ Qe6 6. Rxe6# *",
     "all_moves": [
       {
@@ -102,14 +102,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788200223758",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "next_solution_index": 11,
+    "next_player_index": 6,
+    "solved": true,
+    "message_id": 1544048393817432375,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rxe6",
+        "correct": true,
+        "timestamp": "2026-08-31T18:17:54.610457+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
