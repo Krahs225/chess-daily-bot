@@ -6,6 +6,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import discord
+import requests
 
 from guess_leaderboard import (
     add_points,
@@ -27,6 +28,38 @@ POLL_DURATION_MINUTES = 8
 ROUND_SLOT_MINUTES = 20
 GUESS_SLOT_OFFSET = 0
 TIME_ZONE = "Europe/Amsterdam"
+
+GITHUB_ACTION_TOKEN = os.getenv(
+    "GITHUB_ACTION_TOKEN"
+)
+GITHUB_REPOSITORY = os.getenv(
+    "GITHUB_REPOSITORY",
+    "Krahs225/chess-daily-bot",
+)
+GITHUB_REF_NAME = os.getenv(
+    "GITHUB_REF_NAME",
+    "main",
+)
+
+NEXT_ROUND_EVENT = asyncio.Event()
+ROUND_ACTIVE = False
+NEXT_REQUESTED = False
+
+ROUND_PREFIXES = {
+    "chatter": (
+        "💬 **Guess the Chatter**",
+        "🔥 **Guess the Chatter — DOUBLE POINTS**",
+        "💀 **Guess the Chatter — HARD MODE**",
+    ),
+    "chess": (
+        "♟️ **Guess the Chess Chatter** —",
+    ),
+}
+
+ROUND_MAX_AGE_MINUTES = {
+    "chatter": 10,
+    "chess": 17,
+}
 
 
 CHATTERS = {
@@ -84,7 +117,6 @@ CHATTER_ACTIVE_DATES = {
 }
 
 
-
 def chatter_active_on_date(
     username,
     date_text,
@@ -122,7 +154,6 @@ def chatter_active_on_date(
         return False
 
 
-
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -139,7 +170,6 @@ def find_chatter(
     matches = []
 
     for display_name, username in CHATTERS.items():
-
         username_lower = (
             username.casefold()
         )
@@ -147,7 +177,6 @@ def find_chatter(
         if prefix.endswith(
             username_lower
         ):
-
             matches.append(
                 (
                     len(username_lower),
@@ -181,7 +210,6 @@ def _parse_chat_file(chat_file):
         return entries
 
     for raw_line in lines:
-
         line = raw_line.strip()
 
         if not line:
@@ -193,7 +221,6 @@ def _parse_chat_file(chat_file):
         )
 
         if date_match:
-
             day, month, year = (
                 date_match.groups()
             )
@@ -257,7 +284,6 @@ def _parse_chat_file(chat_file):
 
 
 def load_chatters():
-
     chatters = {}
     all_entries = []
 
@@ -271,7 +297,6 @@ def load_chatters():
     for chat_file in sorted(
         chat_path.glob("*.txt")
     ):
-
         entries = _parse_chat_file(
             chat_file
         )
@@ -283,7 +308,6 @@ def load_chatters():
         for global_index, entry in enumerate(
             entries
         ):
-
             chatters.setdefault(
                 entry["username"],
                 []
@@ -332,9 +356,7 @@ def load_chatters():
 def display_name_for(
     username
 ):
-
     for display_name, exact_username in CHATTERS.items():
-
         if (
             exact_username.casefold()
             == username.casefold()
@@ -346,7 +368,6 @@ def display_name_for(
 
 def days_ago(date_text):
     try:
-
         date_value = datetime.strptime(
             date_text,
             "%d-%m-%Y"
@@ -369,7 +390,6 @@ def context_for_quote(
     quote_index,
     max_lines=5
 ):
-
     if not all_entries:
         return []
 
@@ -428,12 +448,10 @@ def answer_details(
     quote_date,
     quote_index
 ):
-
     correct_count = 0
     total_votes = 0
 
     if voters_by_answer:
-
         total_votes = sum(
             len(voters)
             for voters in voters_by_answer
@@ -443,7 +461,6 @@ def answer_details(
             correct_index
             < len(voters_by_answer)
         ):
-
             correct_count = len(
                 voters_by_answer[
                     correct_index
@@ -478,7 +495,6 @@ def answer_details(
     ]
 
     if context:
-
         lines.extend(
             [
                 "",
@@ -487,7 +503,6 @@ def answer_details(
         )
 
         for entry in context:
-
             lines.append(
                 f"**{entry['display_name']}:** "
                 f"{entry['message']}"
@@ -501,7 +516,6 @@ def answer_details(
 async def wait_and_finish_poll(
     poll_message
 ):
-
     await asyncio.sleep(
         POLL_DURATION_MINUTES * 60 + 3
     )
@@ -608,9 +622,158 @@ def guess_special_mode(
     return "normal"
 
 
+def _round_type_for_message(
+    message
+):
+    content = message.content or ""
+
+    for round_type, prefixes in ROUND_PREFIXES.items():
+        if any(
+            content.startswith(prefix)
+            for prefix in prefixes
+        ):
+            return round_type
+
+    return None
+
+
+async def _poll_is_open(
+    message,
+    round_type,
+):
+    if message.poll is None:
+        return False
+
+    max_age = timedelta(
+        minutes=ROUND_MAX_AGE_MINUTES[
+            round_type
+        ]
+    )
+
+    if (
+        datetime.now(timezone.utc)
+        - message.created_at
+        > max_age
+    ):
+        return False
+
+    try:
+        fresh_message = await message.channel.fetch_message(
+            message.id
+        )
+
+        if fresh_message.poll is None:
+            return False
+
+        return not fresh_message.poll.is_finalised()
+
+    except Exception as error:
+        print(
+            f"Guess round state check error: {error}",
+            flush=True,
+        )
+
+        return True
+
+
+async def active_round_exists(
+    channel,
+    round_type,
+):
+    async for recent in channel.history(
+        limit=60
+    ):
+        if (
+            client.user is not None
+            and recent.author.id
+            != client.user.id
+        ):
+            continue
+
+        if _round_type_for_message(
+            recent
+        ) != round_type:
+            continue
+
+        return await _poll_is_open(
+            recent,
+            round_type,
+        )
+
+    return False
+
+
+async def latest_active_round_type(
+    channel
+):
+    async for recent in channel.history(
+        limit=60
+    ):
+        if (
+            client.user is not None
+            and recent.author.id
+            != client.user.id
+        ):
+            continue
+
+        round_type = _round_type_for_message(
+            recent
+        )
+
+        if round_type is None:
+            continue
+
+        if await _poll_is_open(
+            recent,
+            round_type,
+        ):
+            return round_type
+
+    return None
+
+
+def dispatch_workflow(
+    workflow_file
+):
+    if not GITHUB_ACTION_TOKEN:
+        raise RuntimeError(
+            "GITHUB_ACTION_TOKEN is missing."
+        )
+
+    url = (
+        "https://api.github.com/repos/"
+        f"{GITHUB_REPOSITORY}/actions/workflows/"
+        f"{workflow_file}/dispatches"
+    )
+
+    response = requests.post(
+        url,
+        headers={
+            "Accept": "application/vnd.github+json",
+            "Authorization": (
+                f"Bearer {GITHUB_ACTION_TOKEN}"
+            ),
+            "X-GitHub-Api-Version": "2022-11-28",
+            "User-Agent": "GuessGamesNext/1.0",
+        },
+        json={
+            "ref": GITHUB_REF_NAME,
+        },
+        timeout=20,
+    )
+
+    if response.status_code != 204:
+        raise RuntimeError(
+            "Could not start next workflow: "
+            f"HTTP {response.status_code} "
+            f"{response.text[:300]}"
+        )
+
+
 async def post_guess(
     channel
 ):
+    global ROUND_ACTIVE
 
     chatters, all_entries = load_chatters()
 
@@ -636,7 +799,7 @@ async def post_guess(
             "Not enough valid chatters "
             "for this Guess Chatter mode."
         )
-        return
+        return False
 
     # Build valid candidates by the quote's EXACT date.
     # A wrong option can only appear when that chatter also has a
@@ -681,7 +844,7 @@ async def post_guess(
             "Not enough same-date valid chatters "
             "for this Guess Chatter round."
         )
-        return
+        return False
 
     (
         username,
@@ -771,12 +934,21 @@ async def post_guess(
         poll=poll,
     )
 
-    # 8-minute answering window, followed by an answer
-    # roughly 2 minutes before the next 10-minute slot.
-    await asyncio.sleep(
-        POLL_DURATION_MINUTES * 60
-        + 2
-    )
+    ROUND_ACTIVE = True
+    NEXT_ROUND_EVENT.clear()
+
+    # Normal round: 8-minute answering window.
+    # !n / !next wakes this wait immediately.
+    try:
+        await asyncio.wait_for(
+            NEXT_ROUND_EVENT.wait(),
+            timeout=(
+                POLL_DURATION_MINUTES * 60
+                + 2
+            ),
+        )
+    except asyncio.TimeoutError:
+        pass
 
     try:
         await poll_message.end_poll()
@@ -838,11 +1010,9 @@ async def post_guess(
         correct_index
         < len(voters_by_answer)
     ):
-
         for voter in voters_by_answer[
             correct_index
         ]:
-
             if voter.id in seen:
                 continue
 
@@ -885,11 +1055,15 @@ async def post_guess(
             f"🎉 {names}"
         )
 
+    ROUND_ACTIVE = False
+
+    return NEXT_REQUESTED
 
 
 async def command_handler(
     message
 ):
+    global NEXT_REQUESTED
 
     if (
         message.author.bot
@@ -905,11 +1079,38 @@ async def command_handler(
     )
 
     if command in {
+        "!next",
+        "!n",
+    }:
+        if not ROUND_ACTIVE:
+            return
+
+        active_type = await latest_active_round_type(
+            message.channel
+        )
+
+        # If both Actions overlap, only the newest active game handles !n.
+        if active_type != "chatter":
+            return
+
+        if NEXT_REQUESTED:
+            return
+
+        NEXT_REQUESTED = True
+        NEXT_ROUND_EVENT.set()
+
+        await message.channel.send(
+            "⏭️ **Next!** Ending this Guess Chatter "
+            "round now and checking the answers."
+        )
+
+        return
+
+    if command in {
         "!leaderboard",
         "!lb",
         "!l"
     }:
-
         await message.channel.send(
             full_leaderboard(
                 "🏆 **Guess Games Leaderboard**"
@@ -923,16 +1124,19 @@ async def command_handler(
         "!info",
         "!i"
     }:
-
         await message.channel.send(
             "🧠 **Games**\n\n"
             "💬 **Guess the Chatter**\n"
-                        "A quote is shown with a 5-option poll. "
+            "A quote is shown with a 5-option poll. "
             "Vote for who said it.\n\n"
             "♟️ **Guess the Chess Chatter**\n"
             "A rated Chess.com rapid/blitz game is shown. "
             "Use the ◀ ▶ buttons to look through the game, "
             "then vote for who played it.\n\n"
+            "⏭️ **Next round**\n"
+            "`!next` or `!n` — end the active round now, "
+            "reveal the answer, award points, and start the "
+            "other Guess game immediately.\n\n"
             "🏆 **Guess Games Leaderboard**\n"
             "`!leaderboard`, `!lb` or `!l` — show the leaderboard shared ONLY by Guess the Chatter and Guess the Chess Chatter.\n"
             "This leaderboard is separate from Daily/Random chess puzzle points.\n"
@@ -945,15 +1149,12 @@ async def command_handler(
 async def on_message(
     message
 ):
-
     try:
-
         await command_handler(
             message
         )
 
     except Exception as error:
-
         print(
             f"Guess Chatter command error: "
             f"{error}",
@@ -961,7 +1162,6 @@ async def on_message(
         )
 
         try:
-
             await message.channel.send(
                 "❌ **Bot error:** "
                 f"`{str(error)[:1000]}`"
@@ -973,7 +1173,6 @@ async def on_message(
 
 @client.event
 async def on_ready():
-
     if getattr(
         client,
         "_guess_round_started",
@@ -994,8 +1193,21 @@ async def on_ready():
             CHANNEL_ID
         )
 
+        # Do not start a duplicate Guess Chatter round if a previous
+        # scheduled or !next-triggered round is still active.
+        if await active_round_exists(
+            channel,
+            "chatter",
+        ):
+            print(
+                "Guess Chatter skipped: "
+                "a Guess Chatter round is already active.",
+                flush=True,
+            )
+            return
+
         # One Action run = one round.
-        await post_guess(
+        next_requested = await post_guess(
             channel
         )
 
@@ -1003,6 +1215,25 @@ async def on_ready():
             "Guess Chatter round finished.",
             flush=True,
         )
+
+        if next_requested:
+            if await active_round_exists(
+                channel,
+                "chess",
+            ):
+                await channel.send(
+                    "♟️ **Guess the Chess Chatter is already active above.** "
+                    "I won't start a duplicate round."
+                )
+            else:
+                await asyncio.to_thread(
+                    dispatch_workflow,
+                    "guess_chess_chatter.yml",
+                )
+
+                await channel.send(
+                    "⏭️ **Starting Guess the Chess Chatter now.**"
+                )
 
     except Exception as error:
         print(
