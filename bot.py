@@ -4164,16 +4164,16 @@ async def on_message(
         # IMPORTANT: claim Survival immediately from the human command itself.
         # Waiting for survival_runs.json caused a race: Daily/Random could say
         # "Wrong" while Survival correctly accepted the exact same move.
-        global _survival_command_guard
-
         if command_lower == "!survival" or command_lower.startswith("!survival "):
-            _survival_command_guard = True
+            # Give Survival time to create/load the run and persist its state.
+            # Unlike the previous version this is NOT permanent.
+            set_survival_guard(90)
             return
 
-        # The Survival bot owns this command. Daily only releases its local
+        # Survival owns this command. Daily only clears its temporary hand-off
         # guard; Survival itself performs the actual pause/save.
         if command_lower == "!stopsurvival":
-            _survival_command_guard = False
+            clear_survival_guard()
             return
 
         # Sharkmeister-only shared leaderboard correction:
@@ -4328,6 +4328,10 @@ async def on_message(
         ):
 
             if survival_guard_active():
+                await message.channel.send(
+                    "⏳ **Survival is starting.** Try `rp` again in a moment "
+                    "if no Survival run appears."
+                )
                 return
 
             if is_survival_active():
