@@ -382,9 +382,9 @@
     },
     "test5": {
       "name": "test5",
-      "best_puzzle": 2,
-      "best_difficulty": 1255,
-      "best_completed_at": "2026-08-31T17:42:58.421078+00:00",
+      "best_puzzle": 3,
+      "best_difficulty": 1262,
+      "best_completed_at": "2026-08-31T17:44:24.221926+00:00",
       "current": {
         "run_id": "test5:1788197980",
         "started_by_id": "1541007763931668502",
@@ -397,10 +397,11 @@
         "paused_reason": null,
         "puzzle_number": 3,
         "strikes": 0,
-        "best_difficulty": 1262,
+        "best_difficulty": 1316,
         "used_puzzle_ids": [
           "iL18l",
-          "lD1SZ"
+          "lD1SZ",
+          "9Z99D"
         ],
         "members": {
           "442597396195704832": {
@@ -409,7 +410,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "9Z99D",
+          "rating": 1316,
+          "themes": "crushing middlegame short",
+          "url": "https://lichess.org/training/9Z99D",
+          "start_fen": "r4r2/1p4nk/p6p/8/3pP1Q1/qP1P2P1/5PKP/2R2R2 w - - 0 32",
+          "current_fen": "r4r2/1p4nk/p6p/8/3pP1Q1/qP1P2P1/5PKP/2R2R2 w - - 0 32",
+          "solution": [
+            {
+              "uci": "c1c7",
+              "san": "Rc7",
+              "color": "white"
+            },
+            {
+              "uci": "f8f7",
+              "san": "Rf7",
+              "color": "black"
+            },
+            {
+              "uci": "c7f7",
+              "san": "Rxf7",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
