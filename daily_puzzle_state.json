@@ -1,62 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-01-03",
-    "title": "Forward Movement",
-    "fen": "3Q4/5kp1/5p2/5Q1p/4P3/5P2/PP4P1/2K5 w - - 0 1",
-    "current_fen": "3Q4/5kp1/4Pp2/5Q2/7p/5P2/PP4P1/2K5 b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3Q4/5kp1/5p2/5Q1p/4P3/5P2/PP4P1/2K5 w - - 0 1\"]\r\n\r\n1. e5 h4 2. e6#\r\n*",
+    "url": "https://www.chess.com/daily/2021-04-02",
+    "title": "Knight Endgames",
+    "fen": "8/8/5KN1/1p1k4/1P1p1P1n/3N4/4n3/8 b - - 0 1",
+    "current_fen": "8/8/5KN1/1p1k4/1P1p1P1n/3N4/4n3/8 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/8/5KN1/1p1k4/1P1p1P1n/3N4/4n3/8 b - - 0 1\"]\r\n\r\n1...Nxg6 2.Kxg6 Nxf4+ 3.Nxf4+ Ke4 4.Ne2 Ke3 5.Ng3 d3 6.Kf5 d2 *",
     "all_moves": [
       {
-        "uci": "e4e5",
-        "san": "e5",
-        "color": "white"
-      },
-      {
-        "uci": "h5h4",
-        "san": "h4",
+        "uci": "h4g6",
+        "san": "Nxg6",
         "color": "black"
       },
       {
-        "uci": "e5e6",
-        "san": "e6#",
+        "uci": "f6g6",
+        "san": "Kxg6",
         "color": "white"
+      },
+      {
+        "uci": "e2f4",
+        "san": "Nxf4+",
+        "color": "black"
+      },
+      {
+        "uci": "d3f4",
+        "san": "Nxf4+",
+        "color": "white"
+      },
+      {
+        "uci": "d5e4",
+        "san": "Ke4",
+        "color": "black"
+      },
+      {
+        "uci": "f4e2",
+        "san": "Ne2",
+        "color": "white"
+      },
+      {
+        "uci": "e4e3",
+        "san": "Ke3",
+        "color": "black"
+      },
+      {
+        "uci": "e2g3",
+        "san": "Ng3",
+        "color": "white"
+      },
+      {
+        "uci": "d4d3",
+        "san": "d3",
+        "color": "black"
+      },
+      {
+        "uci": "g6f5",
+        "san": "Kf5",
+        "color": "white"
+      },
+      {
+        "uci": "d3d2",
+        "san": "d2",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4e5",
-        "san": "e5",
-        "color": "white"
+        "uci": "h4g6",
+        "san": "Nxg6",
+        "color": "black"
       },
       {
-        "uci": "e5e6",
-        "san": "e6#",
-        "color": "white"
+        "uci": "e2f4",
+        "san": "Nxf4+",
+        "color": "black"
+      },
+      {
+        "uci": "d5e4",
+        "san": "Ke4",
+        "color": "black"
+      },
+      {
+        "uci": "e4e3",
+        "san": "Ke3",
+        "color": "black"
+      },
+      {
+        "uci": "d4d3",
+        "san": "d3",
+        "color": "black"
+      },
+      {
+        "uci": "d3d2",
+        "san": "d2",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-08-31T17:56:37.807389+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 6,
+    "posted_at": "2026-08-31T17:58:08.407373+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788198997807",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1544043250917048552,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "E6",
-        "correct": true,
-        "timestamp": "2026-08-31T17:57:38.434421+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788199088407",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
