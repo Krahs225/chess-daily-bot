@@ -1,107 +1,92 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-03-25",
-    "title": "Endgame Save",
-    "fen": "k1K5/pp6/4p3/4P3/4p2p/4P2p/N1P5/3B4 w - - 0 1",
-    "current_fen": "k1K5/p1N5/4p3/4P3/4p2p/4P3/2P5/1q6 b - - 2 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k1K5/pp6/4p3/4P3/4p2p/4P2p/N1P5/3B4 w - - 0 1\"]\r\n\r\n1. Be2 h2 2. Ba6 bxa6 3. Nb4 h1=Q 4. Nxa6 Qb1 5. Nc7#\r\n*",
+    "url": "https://www.chess.com/daily/2023-05-06",
+    "title": "Give Squares to Get Squares",
+    "fen": "2bq1rk1/4bpp1/1p5p/2p3nQ/PnPp4/1N1P3P/PB2BPP1/R3R1K1 b - - 0 1",
+    "current_fen": "2bq1rk1/4bpp1/1p5p/2p3nQ/PnPp4/1N1P3P/PB2BPP1/R3R1K1 b - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"2bq1rk1/4bpp1/1p5p/2p3nQ/PnPp4/1N1P3P/PB2BPP1/R3R1K1 b - - 0 1\"]\r\n\r\n1... g6 2. Qxh6 Nxh3+ 3. gxh3 Bg5 4. Bc1 Bxh6 *",
     "all_moves": [
       {
-        "uci": "d1e2",
-        "san": "Be2",
-        "color": "white"
-      },
-      {
-        "uci": "h3h2",
-        "san": "h2",
+        "uci": "g7g6",
+        "san": "g6",
         "color": "black"
       },
       {
-        "uci": "e2a6",
-        "san": "Ba6",
+        "uci": "h5h6",
+        "san": "Qxh6",
         "color": "white"
       },
       {
-        "uci": "b7a6",
-        "san": "bxa6",
+        "uci": "g5h3",
+        "san": "Nxh3+",
         "color": "black"
       },
       {
-        "uci": "a2b4",
-        "san": "Nb4",
+        "uci": "g2h3",
+        "san": "gxh3",
         "color": "white"
       },
       {
-        "uci": "h2h1q",
-        "san": "h1=Q",
+        "uci": "e7g5",
+        "san": "Bg5",
         "color": "black"
       },
       {
-        "uci": "b4a6",
-        "san": "Nxa6",
+        "uci": "b2c1",
+        "san": "Bc1",
         "color": "white"
       },
       {
-        "uci": "h1b1",
-        "san": "Qb1",
+        "uci": "g5h6",
+        "san": "Bxh6",
         "color": "black"
-      },
-      {
-        "uci": "a6c7",
-        "san": "Nc7#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1e2",
-        "san": "Be2",
-        "color": "white"
+        "uci": "g7g6",
+        "san": "g6",
+        "color": "black"
       },
       {
-        "uci": "e2a6",
-        "san": "Ba6",
-        "color": "white"
+        "uci": "g5h3",
+        "san": "Nxh3+",
+        "color": "black"
       },
       {
-        "uci": "a2b4",
-        "san": "Nb4",
-        "color": "white"
+        "uci": "e7g5",
+        "san": "Bg5",
+        "color": "black"
       },
       {
-        "uci": "b4a6",
-        "san": "Nxa6",
-        "color": "white"
-      },
-      {
-        "uci": "a6c7",
-        "san": "Nc7#",
-        "color": "white"
+        "uci": "g5h6",
+        "san": "Bxh6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-31T18:24:31.462399+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 4,
+    "posted_at": "2026-08-31T18:27:07.343693+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788200671462",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1544050272395989025,
+    "puzzle_id": "random_1788200827343",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1544050924983681138,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nc7",
-        "correct": true,
-        "timestamp": "2026-08-31T18:27:00.248595+00:00"
+        "move": "kh7",
+        "correct": false,
+        "timestamp": "2026-08-31T18:27:52.730828+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
