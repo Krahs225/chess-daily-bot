@@ -3,26 +3,31 @@ name: Guess Chatter
 on:
   schedule:
     - cron: "0,20,40 * * * *"
-      timezone: "Europe/Amsterdam"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  run:
+  guess-chatter:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install requirements
-        run: python -m pip install discord.py
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install discord.py
 
       - name: Run Guess Chatter
         run: python guess_chatter.py
