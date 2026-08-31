@@ -1614,9 +1614,9 @@ class SurvivalBot(
         self.bg_task = asyncio.create_task(
             self.maintenance_loop()
         )
-        self.action_task = asyncio.create_task(
-            self.action_limit_timer()
-        )
+        # Do not self-close after 5h50. The GitHub workflow controls
+        # the lifecycle and the next scheduled run takes over.
+        self.action_task = None
 
     async def on_ready(
         self
@@ -4150,24 +4150,13 @@ async def action_limit_timer(
     self
 ):
     """
-    Same runtime model as the working Daily/Random bot:
-    stay connected for 5h50m, then close cleanly. The next scheduled
-    GitHub Action run restores the saved Survival state and continues
-    listening.
+    Legacy compatibility hook.
 
-    We intentionally do NOT mark an active run as paused here.
-    The current run stays active in survival_runs.json.
+    Survival no longer closes itself after 5h50. Keeping this coroutine
+    harmless prevents an accidental future call from taking the bot offline.
     """
-    await asyncio.sleep(
-        RUN_TIME
-    )
-
-    print(
-        "Ending Survival run cleanly.",
-        flush=True,
-    )
-
-    await self.close()
+    while not self.is_closed():
+        await asyncio.sleep(60 * 60)
 
 
 SurvivalBot.action_limit_timer = (
