@@ -1,107 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-10-05",
-    "title": "Clearing the Castle",
-    "fen": "2r2rk1/p5p1/bp3pP1/3N1P1P/PP1P2p1/8/5P2/3nK2R w K - 0 1",
-    "current_fen": "2r1rk2/p3NR2/bp3pP1/5P2/PP1P2p1/8/5P2/3nK3 b - - 3 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"2r2rk1/p5p1/bp3pP1/3N1P1P/PP1P2p1/8/5P2/3nK2R w K - 0 1\"]\r\n\r\n1. Ne7+ Kh8 2. h6 Rfe8 3. hxg7+ Kxg7 4. Rh7+ Kf8 5. Rf7# *",
+    "url": "https://www.chess.com/daily/2009-04-08",
+    "title": "Consolidating",
+    "fen": "r3r1k1/1b3ppp/p7/3n1P2/Pb6/2NB2B1/1PP4P/R4R1K w - - 0 1",
+    "current_fen": "r3r1k1/1b3ppp/p7/3n1P2/Pb6/2NB2B1/1PP4P/R4R1K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3r1k1/1b3ppp/p7/3n1P2/Pb6/2NB2B1/1PP4P/R4R1K w - - 0 1\"]\r\n\r\n1. Nxd5 Bxd5+ 2. Kg1 Bc5+ 3. Bf2\r\n*",
     "all_moves": [
       {
-        "uci": "d5e7",
-        "san": "Ne7+",
+        "uci": "c3d5",
+        "san": "Nxd5",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "b7d5",
+        "san": "Bxd5+",
         "color": "black"
       },
       {
-        "uci": "h5h6",
-        "san": "h6",
+        "uci": "h1g1",
+        "san": "Kg1",
         "color": "white"
       },
       {
-        "uci": "f8e8",
-        "san": "Rfe8",
+        "uci": "b4c5",
+        "san": "Bc5+",
         "color": "black"
       },
       {
-        "uci": "h6g7",
-        "san": "hxg7+",
-        "color": "white"
-      },
-      {
-        "uci": "h8g7",
-        "san": "Kxg7",
-        "color": "black"
-      },
-      {
-        "uci": "h1h7",
-        "san": "Rh7+",
-        "color": "white"
-      },
-      {
-        "uci": "g7f8",
-        "san": "Kf8",
-        "color": "black"
-      },
-      {
-        "uci": "h7f7",
-        "san": "Rf7#",
+        "uci": "g3f2",
+        "san": "Bf2",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5e7",
-        "san": "Ne7+",
+        "uci": "c3d5",
+        "san": "Nxd5",
         "color": "white"
       },
       {
-        "uci": "h5h6",
-        "san": "h6",
+        "uci": "h1g1",
+        "san": "Kg1",
         "color": "white"
       },
       {
-        "uci": "h6g7",
-        "san": "hxg7+",
-        "color": "white"
-      },
-      {
-        "uci": "h1h7",
-        "san": "Rh7+",
-        "color": "white"
-      },
-      {
-        "uci": "h7f7",
-        "san": "Rf7#",
+        "uci": "g3f2",
+        "san": "Bf2",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-08-31T18:14:41.155282+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-08-31T18:15:07.487615+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788200081155",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1544047795122606148,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rf7",
-        "correct": true,
-        "timestamp": "2026-08-31T18:15:01.925251+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788200107487",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
