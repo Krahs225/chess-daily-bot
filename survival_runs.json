@@ -326,6 +326,59 @@
         "helper_awarded": []
       },
       "history": []
+    },
+    "test": {
+      "name": "test",
+      "best_puzzle": 1,
+      "best_difficulty": 0,
+      "best_completed_at": "2026-08-31T17:31:29.610550+00:00",
+      "current": {
+        "run_id": "test:1788197489",
+        "started_by_id": "1541007763931668502",
+        "captain_id": "1541007763931668502",
+        "captain_name": "Martin",
+        "mode": "coop",
+        "status": "active",
+        "started_at": "2026-08-31T17:31:29.610532+00:00",
+        "last_activity": 1788197489.6105444,
+        "paused_reason": null,
+        "puzzle_number": 1,
+        "strikes": 0,
+        "best_difficulty": 1376,
+        "used_puzzle_ids": [
+          "PxdAA"
+        ],
+        "members": {},
+        "puzzle": {
+          "id": "PxdAA",
+          "rating": 1376,
+          "themes": "endgame mate mateIn1 oneMove",
+          "url": "https://lichess.org/training/PxdAA",
+          "start_fen": "8/1Q3Npk/7p/3r4/5q2/7P/6R1/6K1 b - - 4 40",
+          "current_fen": "8/1Q3Npk/7p/3r4/5q2/7P/6R1/6K1 b - - 4 40",
+          "solution": [
+            {
+              "uci": "d5d1",
+              "san": "Rd1#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
+        "helper_awarded": []
+      },
+      "history": []
     }
   }
 }
