@@ -1,92 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-04-03",
-    "title": "Taking And Defending",
-    "fen": "1k3r2/1pp3pB/p1np4/8/6Pb/2NPB3/PPP3b1/1K4R1 w - - 0 1",
-    "current_fen": "1k6/1pp3pB/p2p4/6b1/3n2P1/3P4/PPP1N3/1KB2rR1 b - - 6 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1k3r2/1pp3pB/p1np4/8/6Pb/2NPB3/PPP3b1/1K4R1 w - - 0 1\"]\r\n\r\n1. Rxg2 Rf1+ 2. Bc1 Bg5 3. Ne2 Nd4 4. Rg1\r\n*",
+    "url": "https://www.chess.com/daily/2022-11-05",
+    "title": "Mating Nets and Red Herrings",
+    "fen": "r1b2k1r/1pp2p2/p4Np1/2n1P2p/7q/2P3bP/P1PQ2B1/3RR1K1 w - - 0 1",
+    "current_fen": "r1bR4/1pp1kp2/p4Npr/2n1P2p/7q/2P3bP/P1P3B1/4R1K1 w - - 2 3",
+    "pgn": "[White \"Sam Copeland Puzzle\"]\r\n[Black \"?\"]\r\n[Result \"1-0\"]\r\n[FEN \"r1b2k1r/1pp2p2/p4Np1/2n1P2p/7q/2P3bP/P1PQ2B1/3RR1K1 w - - 0 1\"]\r\n\r\n1. Qh6+ Rxh6 2. Rd8+ Ke7 3. Re8# 1-0",
     "all_moves": [
       {
-        "uci": "g1g2",
-        "san": "Rxg2",
+        "uci": "d2h6",
+        "san": "Qh6+",
         "color": "white"
       },
       {
-        "uci": "f8f1",
-        "san": "Rf1+",
+        "uci": "h8h6",
+        "san": "Rxh6",
         "color": "black"
       },
       {
-        "uci": "e3c1",
-        "san": "Bc1",
+        "uci": "d1d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "h4g5",
-        "san": "Bg5",
+        "uci": "f8e7",
+        "san": "Ke7",
         "color": "black"
       },
       {
-        "uci": "c3e2",
-        "san": "Ne2",
-        "color": "white"
-      },
-      {
-        "uci": "c6d4",
-        "san": "Nd4",
-        "color": "black"
-      },
-      {
-        "uci": "g2g1",
-        "san": "Rg1",
+        "uci": "d8e8",
+        "san": "Re8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g1g2",
-        "san": "Rxg2",
+        "uci": "d2h6",
+        "san": "Qh6+",
         "color": "white"
       },
       {
-        "uci": "e3c1",
-        "san": "Bc1",
+        "uci": "d1d8",
+        "san": "Rd8+",
         "color": "white"
       },
       {
-        "uci": "c3e2",
-        "san": "Ne2",
-        "color": "white"
-      },
-      {
-        "uci": "g2g1",
-        "san": "Rg1",
+        "uci": "d8e8",
+        "san": "Re8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-31T18:23:24.472145+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-08-31T18:23:53.642296+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788200604472",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544049993286029323,
+    "puzzle_id": "random_1788200633642",
+    "next_solution_index": 4,
+    "next_player_index": 2,
+    "solved": false,
+    "message_id": 1544050113171685396,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rg1",
+        "move": "rd8",
         "correct": true,
-        "timestamp": "2026-08-31T18:23:47.095222+00:00"
+        "timestamp": "2026-08-31T18:24:03.803332+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
