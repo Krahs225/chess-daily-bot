@@ -399,6 +399,69 @@
         "helper_awarded": []
       },
       "history": []
+    },
+    "martin3": {
+      "name": "MARTIN3",
+      "best_puzzle": 1,
+      "best_difficulty": 0,
+      "best_completed_at": "2026-08-31T17:06:55.131544+00:00",
+      "current": {
+        "run_id": "martin3:1788196015",
+        "started_by_id": "1541007763931668502",
+        "captain_id": "1541007763931668502",
+        "captain_name": "Martin",
+        "mode": "coop",
+        "status": "active",
+        "started_at": "2026-08-31T17:06:55.131526+00:00",
+        "last_activity": 1788196015.13154,
+        "paused_reason": null,
+        "puzzle_number": 1,
+        "strikes": 0,
+        "best_difficulty": 1236,
+        "used_puzzle_ids": [
+          "SMR1U"
+        ],
+        "members": {},
+        "puzzle": {
+          "id": "SMR1U",
+          "rating": 1236,
+          "themes": "kingsideAttack mate mateIn2 middlegame short",
+          "url": "https://lichess.org/training/SMR1U",
+          "start_fen": "4rbk1/1p3p2/pqnr1n1Q/3p1BN1/2pP4/P1P4P/1P3PP1/1R3RK1 w - - 3 25",
+          "current_fen": "4rbk1/1p3p2/pqnr1n1Q/3p1BN1/2pP4/P1P4P/1P3PP1/1R3RK1 w - - 3 25",
+          "solution": [
+            {
+              "uci": "f5h7",
+              "san": "Bh7+",
+              "color": "white"
+            },
+            {
+              "uci": "f6h7",
+              "san": "Nxh7",
+              "color": "black"
+            },
+            {
+              "uci": "h6h7",
+              "san": "Qxh7#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
+        "helper_awarded": []
+      },
+      "history": []
     }
   }
 }
