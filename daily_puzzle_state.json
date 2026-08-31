@@ -80,7 +80,7 @@
     "url": "https://www.chess.com/daily/2026-08-31",
     "title": "Eyes on the Grand Prize",
     "fen": "1b6/5p2/bR2n3/8/P3P3/4KN1p/6k1/6N1 b - - 0 46",
-    "current_fen": "1b6/5p2/bR2n3/8/P3P3/4KN1p/6k1/6N1 b - - 0 46",
+    "current_fen": "8/5p2/bR2n3/8/P3Pb2/4KN1p/6k1/6N1 w - - 1 47",
     "pgn": "[White \"Daily Puzzle Inspiration\"]\n[Black \"David_Goldfarb\"]\n[Result \"0-1\"]\n[FEN \"1b6/5p2/bR2n3/8/P3P3/4KN1p/6k1/6N1 b - - 0 46\"]\n\n46... Bf4# 0-1",
     "all_moves": [
       {
@@ -104,14 +104,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "daily_1788161395384",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 1,
+    "next_player_index": 1,
+    "solved": true,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Bf4",
+        "correct": true,
+        "timestamp": "2026-08-31T09:14:32.502651+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
