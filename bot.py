@@ -4155,9 +4155,15 @@ async def on_message(
         # Sharkmeister-only shared leaderboard correction:
         # !edit <name> <points>
         if command_lower.startswith("!edit "):
+            sharkmeister_user_id = os.getenv(
+                "SHARKMEISTER_USER_ID",
+                "",
+            ).strip()
+
             if (
-                message.author.display_name.casefold()
-                != "sharkmeister"
+                not sharkmeister_user_id
+                or str(message.author.id)
+                != sharkmeister_user_id
             ):
                 await message.channel.send(
                     "❌ Only **Sharkmeister** can edit the shared leaderboard."
@@ -4634,13 +4640,29 @@ async def on_ready():
         maintenance_loop(channel)
     )
 
-    asyncio.create_task(
-        run_timer()
-    )
+    # Do not intentionally close the Discord client after 5h50.
+    # discord.py reconnects automatically after transient Discord/network
+    # disconnects. The hosting workflow controls the process lifetime.
 
     print(
-        "Daily Puzzle Bot is running.",
+        "Daily Puzzle Bot is running and listening continuously.",
         flush=True
+    )
+
+
+@client.event
+async def on_disconnect():
+    print(
+        "Discord connection lost; discord.py will reconnect automatically.",
+        flush=True,
+    )
+
+
+@client.event
+async def on_resumed():
+    print(
+        "Discord connection resumed.",
+        flush=True,
     )
 
 
