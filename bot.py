@@ -36,14 +36,27 @@ _survival_check_cache = {
     "team": None,
 }
 
-# Immediate cross-bot guard. Both Discord clients see the human command in the
-# same channel. This closes the few-second race where Survival is already
-# accepting moves but survival_runs.json has not reached GitHub yet.
-_survival_command_guard = False
+# Short local hand-off window after !survival.
+# This prevents Daily/Random from consuming the same chess move while
+# Survival is starting, but it automatically expires so RP cannot get stuck.
+_survival_guard_until = 0.0
 
 
 def survival_guard_active():
-    return bool(_survival_command_guard)
+    return time.monotonic() < _survival_guard_until
+
+
+def set_survival_guard(seconds=90):
+    global _survival_guard_until
+    _survival_guard_until = max(
+        _survival_guard_until,
+        time.monotonic() + float(seconds),
+    )
+
+
+def clear_survival_guard():
+    global _survival_guard_until
+    _survival_guard_until = 0.0
 
 
 def remote_survival_status():
