@@ -36,6 +36,15 @@ _survival_check_cache = {
     "team": None,
 }
 
+# Immediate cross-bot guard. Both Discord clients see the human command in the
+# same channel. This closes the few-second race where Survival is already
+# accepting moves but survival_runs.json has not reached GitHub yet.
+_survival_command_guard = False
+
+
+def survival_guard_active():
+    return bool(_survival_command_guard)
+
 
 def remote_survival_status():
     now = time.time()
@@ -4152,6 +4161,21 @@ async def on_message(
 
         command_lower = content.casefold()
 
+        # IMPORTANT: claim Survival immediately from the human command itself.
+        # Waiting for survival_runs.json caused a race: Daily/Random could say
+        # "Wrong" while Survival correctly accepted the exact same move.
+        global _survival_command_guard
+
+        if command_lower == "!survival" or command_lower.startswith("!survival "):
+            _survival_command_guard = True
+            return
+
+        # The Survival bot owns this command. Daily only releases its local
+        # guard; Survival itself performs the actual pause/save.
+        if command_lower == "!stopsurvival":
+            _survival_command_guard = False
+            return
+
         # Sharkmeister-only shared leaderboard correction:
         # !edit <name> <points>
         if command_lower.startswith("!edit "):
@@ -4303,6 +4327,9 @@ async def on_message(
             "rp",
         ):
 
+            if survival_guard_active():
+                return
+
             if is_survival_active():
                 team = active_team() or "another team"
                 await message.channel.send(
@@ -4339,7 +4366,11 @@ async def on_message(
             return
 
         # Survival owns all chess-puzzle messages while it is active.
-        # Do this AFTER !rp so !rp can show the user why it is blocked.
+        # The local command guard is immediate; the remote state is the
+        # persistent fallback across process restarts.
+        if survival_guard_active():
+            return
+
         survival_active, survival_team = remote_survival_status()
 
         if survival_active:
