@@ -1,81 +1,59 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-11-12",
-    "title": "Preparing to Checkmate",
-    "fen": "8/kp1r4/pbn4P/5p2/2Q1p2N/2P3r1/PP2B2R/2K5 b - - 0 1",
-    "current_fen": "2Q5/kp1r4/p6P/n4p2/4p2N/2P1b3/PP2B2R/1K4r1 w - - 5 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/kp1r4/pbn4P/5p2/2Q1p2N/2P3r1/PP2B2R/2K5 b - - 0 1\"]\r\n\r\n1...Be3 2. Kb1 Na5 3. Qc8 Rg1+\r\n*",
+    "url": "https://www.chess.com/daily/2016-08-03",
+    "title": "Choosing Carefully",
+    "fen": "8/8/3k4/8/2p1p3/4K3/8/8 w - - 0 1",
+    "current_fen": "8/8/3k4/8/2p1p3/4K3/8/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/3k4/8/2p1p3/4K3/8/8 w - - 0 1\"]\r\n\r\n1. Kd4 Ke6 2. Kxe4\r\n*",
     "all_moves": [
       {
-        "uci": "b6e3",
-        "san": "Be3+",
-        "color": "black"
-      },
-      {
-        "uci": "c1b1",
-        "san": "Kb1",
+        "uci": "e3d4",
+        "san": "Kd4",
         "color": "white"
       },
       {
-        "uci": "c6a5",
-        "san": "Na5",
+        "uci": "d6e6",
+        "san": "Ke6",
         "color": "black"
       },
       {
-        "uci": "c4c8",
-        "san": "Qc8",
+        "uci": "d4e4",
+        "san": "Kxe4",
         "color": "white"
-      },
-      {
-        "uci": "g3g1",
-        "san": "Rg1+",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b6e3",
-        "san": "Be3+",
-        "color": "black"
+        "uci": "e3d4",
+        "san": "Kd4",
+        "color": "white"
       },
       {
-        "uci": "c6a5",
-        "san": "Na5",
-        "color": "black"
-      },
-      {
-        "uci": "g3g1",
-        "san": "Rg1+",
-        "color": "black"
+        "uci": "d4e4",
+        "san": "Kxe4",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-08-31T02:25:45.024665+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 2,
+    "posted_at": "2026-08-31T13:49:14.701289+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788143145024",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1543808987424759819,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rg1",
-        "correct": true,
-        "timestamp": "2026-08-31T02:27:14.248916+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788184154701",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "daily",
+  "latest_puzzle_type": "random",
   "current_puzzle": {
     "url": "https://www.chess.com/daily/2026-08-31",
     "title": "Eyes on the Grand Prize",
