@@ -1,87 +1,42 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-10-06",
-    "title": "Tactics Take Center Stage",
-    "fen": "3k3r/2r2p1p/3bpp2/qB1b4/1p3P2/1n2BN2/4Q1PP/3RR2K w - - 0 1",
-    "current_fen": "3kR3/2r2p1p/1q1b1p2/1B1p4/1p3P2/1n3N2/6PP/7K b - - 0 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"3k3r/2r2p1p/3bpp2/qB1b4/1p3P2/1n2BN2/4Q1PP/3RR2K w - - 0 1\"]\r\n\r\n1. Rxd5 exd5 2. Bb6 Qxb6 3. Qe8+ Rxe8 4. Rxe8# *",
+    "url": "https://www.chess.com/daily/2011-04-04",
+    "title": "Only Move and Good Move",
+    "fen": "k1Q5/5b2/2n2Pp1/2BpP1Pp/2pP3K/p1P5/2P1R3/r5q1 b - - 0 1",
+    "current_fen": "knQ5/5b2/5Pp1/2BpP1Pp/2pP3K/p1P5/2P1R3/r5q1 w - - 1 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k1Q5/5b2/2n2Pp1/2BpP1Pp/2pP3K/p1P5/2P1R3/r5q1 b - - 0 1\"]\r\n\r\n1...Nb8\r\n*",
     "all_moves": [
       {
-        "uci": "d1d5",
-        "san": "Rxd5",
-        "color": "white"
-      },
-      {
-        "uci": "e6d5",
-        "san": "exd5",
+        "uci": "c6b8",
+        "san": "Nb8",
         "color": "black"
-      },
-      {
-        "uci": "e3b6",
-        "san": "Bb6",
-        "color": "white"
-      },
-      {
-        "uci": "a5b6",
-        "san": "Qxb6",
-        "color": "black"
-      },
-      {
-        "uci": "e2e8",
-        "san": "Qe8+",
-        "color": "white"
-      },
-      {
-        "uci": "h8e8",
-        "san": "Rxe8",
-        "color": "black"
-      },
-      {
-        "uci": "e1e8",
-        "san": "Rxe8#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1d5",
-        "san": "Rxd5",
-        "color": "white"
-      },
-      {
-        "uci": "e3b6",
-        "san": "Bb6",
-        "color": "white"
-      },
-      {
-        "uci": "e2e8",
-        "san": "Qe8+",
-        "color": "white"
-      },
-      {
-        "uci": "e1e8",
-        "san": "Rxe8#",
-        "color": "white"
+        "uci": "c6b8",
+        "san": "Nb8",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-08-31T18:18:31.101263+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 1,
+    "posted_at": "2026-08-31T18:18:58.303596+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788200311101",
-    "next_solution_index": 7,
-    "next_player_index": 4,
+    "puzzle_id": "random_1788200338303",
+    "next_solution_index": 1,
+    "next_player_index": 1,
     "solved": true,
-    "message_id": 1544048759976108224,
+    "message_id": 1544048873427968071,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rxe8",
+        "move": "nb8",
         "correct": true,
-        "timestamp": "2026-08-31T18:18:50.386006+00:00"
+        "timestamp": "2026-08-31T18:19:35.328908+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
