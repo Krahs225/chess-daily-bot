@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2023-05-06",
     "title": "Give Squares to Get Squares",
     "fen": "2bq1rk1/4bpp1/1p5p/2p3nQ/PnPp4/1N1P3P/PB2BPP1/R3R1K1 b - - 0 1",
-    "current_fen": "2bq1rk1/4bpp1/1p5p/2p3nQ/PnPp4/1N1P3P/PB2BPP1/R3R1K1 b - - 0 1",
+    "current_fen": "2bq1rk1/5p2/1p4pb/2p5/PnPp4/1N1P3P/P3BP2/R1B1R1K1 w - - 0 5",
     "pgn": "[Result \"*\"]\r\n[FEN \"2bq1rk1/4bpp1/1p5p/2p3nQ/PnPp4/1N1P3P/PB2BPP1/R3R1K1 b - - 0 1\"]\r\n\r\n1... g6 2. Qxh6 Nxh3+ 3. gxh3 Bg5 4. Bc1 Bxh6 *",
     "all_moves": [
       {
@@ -72,9 +72,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788200827343",
-    "next_solution_index": 0,
-    "next_player_index": 0,
-    "solved": false,
+    "next_solution_index": 7,
+    "next_player_index": 4,
+    "solved": true,
     "message_id": 1544050924983681138,
     "attempted_users": {
       "601406103712170014": {
@@ -82,11 +82,17 @@
         "move": "kh7",
         "correct": false,
         "timestamp": "2026-08-31T18:27:52.730828+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Bxh6",
+        "correct": true,
+        "timestamp": "2026-08-31T18:39:08.534047+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
-    "first_move_awarded": false,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
