@@ -340,15 +340,21 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-08-31T16:59:49.253768+00:00",
-        "last_activity": 1788195589.2537818,
+        "last_activity": 1788195599.3747725,
         "paused_reason": null,
         "puzzle_number": 1,
-        "strikes": 0,
+        "strikes": 1,
         "best_difficulty": 1215,
         "used_puzzle_ids": [
           "lZlCB"
         ],
-        "members": {},
+        "members": {
+          "1541007763931668502": {
+            "name": "Martin",
+            "correct": 0,
+            "wrong": 1
+          }
+        },
         "puzzle": {
           "id": "lZlCB",
           "rating": 1215,
@@ -379,7 +385,9 @@
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
-          "wrong_users": [],
+          "wrong_users": [
+            "1541007763931668502"
+          ],
           "last_move_san": null,
           "accepted_moves": []
         },
