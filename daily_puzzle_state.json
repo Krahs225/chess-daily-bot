@@ -1,72 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-09-29",
-    "title": "Pawns Are Not Pieces",
-    "fen": "1r1q1rk1/1bp2ppp/n2bp3/p2Pn3/2P1NB2/6P1/4NPBP/R2Q1RK1 w - - 0 1",
-    "current_fen": "1r1q1rk1/1bp2ppp/n2P4/p3B3/4p3/6P1/4NPBP/R2Q1RK1 b - - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"1r1q1rk1/1bp2ppp/n2bp3/p2Pn3/2P1NB2/6P1/4NPBP/R2Q1RK1 w - - 0 1\"]\r\n\r\n1. c5 exd5 2. cxd6 dxe4 3. Bxe5 *",
+    "url": "https://www.chess.com/daily/2016-05-15",
+    "title": "Linear Mating Pattern, and Arabian Mating Pattern",
+    "fen": "6k1/R2N4/4P3/8/8/8/8/4K3 w - - 0 1",
+    "current_fen": "7k/7R/4PN2/8/8/8/8/4K3 b - - 3 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/R2N4/4P3/8/8/8/8/4K3 w - - 0 1\"]\r\n\r\n1. Nf6+ Kh8 2. Rh7#\r\n*",
     "all_moves": [
       {
-        "uci": "c4c5",
-        "san": "c5",
+        "uci": "d7f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "e6d5",
-        "san": "exd5",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "c5d6",
-        "san": "cxd6",
-        "color": "white"
-      },
-      {
-        "uci": "d5e4",
-        "san": "dxe4",
-        "color": "black"
-      },
-      {
-        "uci": "f4e5",
-        "san": "Bxe5",
+        "uci": "a7h7",
+        "san": "Rh7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c4c5",
-        "san": "c5",
+        "uci": "d7f6",
+        "san": "Nf6+",
         "color": "white"
       },
       {
-        "uci": "c5d6",
-        "san": "cxd6",
-        "color": "white"
-      },
-      {
-        "uci": "f4e5",
-        "san": "Bxe5",
+        "uci": "a7h7",
+        "san": "Rh7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-08-31T18:22:42.887979+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-31T18:23:10.414630+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788200562887",
-    "next_solution_index": 5,
-    "next_player_index": 3,
+    "puzzle_id": "random_1788200590414",
+    "next_solution_index": 3,
+    "next_player_index": 2,
     "solved": true,
-    "message_id": 1544049815392886805,
+    "message_id": 1544049931462119455,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Bxe5",
+        "move": "rh7",
         "correct": true,
-        "timestamp": "2026-08-31T18:23:04.071511+00:00"
+        "timestamp": "2026-08-31T18:23:19.271580+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
