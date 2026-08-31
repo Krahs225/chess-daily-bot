@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: survival-mode-bot
@@ -16,7 +16,7 @@ concurrency:
 jobs:
   survival:
     runs-on: ubuntu-latest
-    timeout-minutes: 355
+    timeout-minutes: 360
 
     steps:
       - uses: actions/checkout@v4
