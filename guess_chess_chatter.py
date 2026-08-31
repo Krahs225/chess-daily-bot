@@ -13,7 +13,6 @@ import discord
 import requests
 
 
-
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -1173,6 +1172,93 @@ async def post_chess_round(
             f"🎉 {names}"
         )
 
+
+async def command_handler(
+    message
+):
+
+    if (
+        message.author.bot
+        or message.channel.id
+        != CHANNEL_ID
+    ):
+        return
+
+    command = (
+        message.content
+        .strip()
+        .casefold()
+    )
+
+    if command not in {
+        "!leaderboard",
+        "!lb",
+        "!l",
+    }:
+        return
+
+    # Guess Chatter already handles these commands while it is online.
+    # Give that bot a brief chance to respond first, so overlapping
+    # GitHub Actions do not normally post the leaderboard twice.
+    await asyncio.sleep(
+        1.5
+    )
+
+    try:
+        async for recent in message.channel.history(
+            limit=8,
+            after=message.created_at,
+        ):
+            if (
+                client.user is not None
+                and recent.author.id == client.user.id
+                and recent.content.startswith(
+                    "🏆 **Guess Games Leaderboard**"
+                )
+            ):
+                return
+
+    except Exception as error:
+        print(
+            f"Guess Chess leaderboard dedupe error: "
+            f"{error}",
+            flush=True,
+        )
+
+    leaderboard_text = await asyncio.to_thread(
+        full_leaderboard,
+        "🏆 **Guess Games Leaderboard**",
+    )
+
+    await message.channel.send(
+        leaderboard_text
+    )
+
+
+@client.event
+async def on_message(
+    message
+):
+
+    try:
+        await command_handler(
+            message
+        )
+
+    except Exception as error:
+        print(
+            f"Guess Chess Chatter command error: "
+            f"{error}",
+            flush=True,
+        )
+
+        try:
+            await message.channel.send(
+                "❌ **Bot error:** "
+                f"`{str(error)[:1000]}`"
+            )
+        except Exception:
+            pass
 
 
 @client.event
