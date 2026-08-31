@@ -382,9 +382,9 @@
     },
     "test5": {
       "name": "test5",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-08-31T17:39:40.666559+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1255,
+      "best_completed_at": "2026-08-31T17:42:58.421078+00:00",
       "current": {
         "run_id": "test5:1788197980",
         "started_by_id": "1541007763931668502",
@@ -397,9 +397,10 @@
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 0,
-        "best_difficulty": 1255,
+        "best_difficulty": 1262,
         "used_puzzle_ids": [
-          "iL18l"
+          "iL18l",
+          "lD1SZ"
         ],
         "members": {
           "442597396195704832": {
@@ -408,7 +409,50 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "lD1SZ",
+          "rating": 1262,
+          "themes": "advantage discoveredAttack kingsideAttack long middlegame",
+          "url": "https://lichess.org/training/lD1SZ",
+          "start_fen": "4r1k1/1p1q1ppp/4r3/3pn3/3B4/1Q6/PP3PPP/3RR1K1 b - - 4 21",
+          "current_fen": "4r1k1/1p1q1ppp/4r3/3pn3/3B4/1Q6/PP3PPP/3RR1K1 b - - 4 21",
+          "solution": [
+            {
+              "uci": "e5f3",
+              "san": "Nf3+",
+              "color": "black"
+            },
+            {
+              "uci": "g2f3",
+              "san": "gxf3",
+              "color": "white"
+            },
+            {
+              "uci": "e6e1",
+              "san": "Rxe1+",
+              "color": "black"
+            },
+            {
+              "uci": "d1e1",
+              "san": "Rxe1",
+              "color": "white"
+            },
+            {
+              "uci": "e8e1",
+              "san": "Rxe1+",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
