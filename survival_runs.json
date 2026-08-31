@@ -340,7 +340,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-08-31T16:59:49.253768+00:00",
-        "last_activity": 1788195700.3390253,
+        "last_activity": 1788195716.5984309,
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 2,
@@ -352,7 +352,7 @@
         "members": {
           "1541007763931668502": {
             "name": "Martin",
-            "correct": 2,
+            "correct": 3,
             "wrong": 2
           }
         },
@@ -362,7 +362,7 @@
           "themes": "endgame master",
           "url": "https://lichess.org/training/FUDG9",
           "start_fen": "7k/7p/3p3P/2nPp1Q1/8/1p1q4/6B1/5K2 w - - 2 43",
-          "current_fen": "7k/7p/3p3P/2nPp1Q1/8/1p1q4/6B1/5K2 w - - 2 43",
+          "current_fen": "7k/7p/3p3P/2nPp1Q1/8/1p2q3/6B1/6K1 w - - 4 44",
           "solution": [
             {
               "uci": "f1g1",
@@ -381,7 +381,7 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -389,11 +389,23 @@
           "wrong_users": [
             "1541007763931668502"
           ],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Kg1",
+          "accepted_moves": [
+            {
+              "san": "Kg1",
+              "uci": "f1g1",
+              "accepted_at": 1788195716.5983229,
+              "solver_id": "1541007763931668502"
+            }
+          ],
+          "last_accepted_move_uci": "f1g1",
+          "last_accepted_move_san": "Kg1",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1788195716.598322,
+          "position_before_last_move": "7k/7p/3p3P/2nPp1Q1/8/1p1q4/6B1/5K2 w - - 2 43"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "1541007763931668502",
+        "first_solver_name": "Martin",
         "helper_candidates": {},
         "helper_awarded": []
       },
