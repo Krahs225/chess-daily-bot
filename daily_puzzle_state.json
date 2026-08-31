@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-08-10",
     "title": "Forward And Reverse",
     "fen": "1r4k1/5np1/5p2/8/8/1B6/4Q3/6KR w K - 0 1",
-    "current_fen": "5rk1/5np1/4Qp2/8/8/1B6/8/6KR w - - 2 2",
+    "current_fen": "1r4k1/5np1/5p2/8/8/1B5Q/8/6KR w - - 4 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r4k1/5np1/5p2/8/8/1B6/4Q3/6KR w K - 0 1\"]\r\n\r\n1. Qe6 Rf8 2. Qh3 Rb8 3. Qh8#\r\n*",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788201640355",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1544054335669936240,
     "attempted_users": {
@@ -67,13 +67,21 @@
         "move": "rh8",
         "correct": false,
         "timestamp": "2026-08-31T18:40:55.429391+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Qh3",
+        "correct": true,
+        "timestamp": "2026-08-31T18:41:01.907238+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
