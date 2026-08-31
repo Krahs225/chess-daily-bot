@@ -393,7 +393,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-08-31T17:39:40.666542+00:00",
-        "last_activity": 1788197980.6665545,
+        "last_activity": 1788198154.5942986,
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 0,
@@ -401,14 +401,20 @@
         "used_puzzle_ids": [
           "iL18l"
         ],
-        "members": {},
+        "members": {
+          "442597396195704832": {
+            "name": "Thice",
+            "correct": 1,
+            "wrong": 0
+          }
+        },
         "puzzle": {
           "id": "iL18l",
           "rating": 1255,
           "themes": "mate mateIn1 middlegame oneMove queensideAttack",
           "url": "https://lichess.org/training/iL18l",
           "start_fen": "2r1r1k1/2q3pp/1p2P3/p5P1/3Q1P2/PN6/1PP5/2KR3R b - - 0 27",
-          "current_fen": "2r1r1k1/2q3pp/1p2P3/p5P1/3Q1P2/PN6/1PP5/2KR3R b - - 0 27",
+          "current_fen": "2r1r1k1/6pp/1p2P3/p5P1/3Q1P2/PN6/1Pq5/2KR3R w - - 0 28",
           "solution": [
             {
               "uci": "c7c2",
@@ -417,17 +423,29 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 1,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qxc2#",
+          "accepted_moves": [
+            {
+              "san": "Qxc2#",
+              "uci": "c7c2",
+              "accepted_at": 1788198154.5941386,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "c7c2",
+          "last_accepted_move_san": "Qxc2#",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1788198154.5941372,
+          "position_before_last_move": "2r1r1k1/2q3pp/1p2P3/p5P1/3Q1P2/PN6/1PP5/2KR3R b - - 0 27"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       },
