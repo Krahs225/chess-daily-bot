@@ -393,9 +393,9 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-08-31T17:39:40.666542+00:00",
-        "last_activity": 1788198199.3244457,
+        "last_activity": 1788198240.6527429,
         "paused_reason": null,
-        "puzzle_number": 2,
+        "puzzle_number": 3,
         "strikes": 0,
         "best_difficulty": 1262,
         "used_puzzle_ids": [
@@ -405,74 +405,13 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 3,
+            "correct": 4,
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "lD1SZ",
-          "rating": 1262,
-          "themes": "advantage discoveredAttack kingsideAttack long middlegame",
-          "url": "https://lichess.org/training/lD1SZ",
-          "start_fen": "4r1k1/1p1q1ppp/4r3/3pn3/3B4/1Q6/PP3PPP/3RR1K1 b - - 4 21",
-          "current_fen": "4r1k1/1p1q1ppp/8/3p4/3B4/1Q3P2/PP3P1P/4R1K1 b - - 0 23",
-          "solution": [
-            {
-              "uci": "e5f3",
-              "san": "Nf3+",
-              "color": "black"
-            },
-            {
-              "uci": "g2f3",
-              "san": "gxf3",
-              "color": "white"
-            },
-            {
-              "uci": "e6e1",
-              "san": "Rxe1+",
-              "color": "black"
-            },
-            {
-              "uci": "d1e1",
-              "san": "Rxe1",
-              "color": "white"
-            },
-            {
-              "uci": "e8e1",
-              "san": "Rxe1+",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 4,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Rxe1+",
-          "accepted_moves": [
-            {
-              "san": "Nf3+",
-              "uci": "e5f3",
-              "accepted_at": 1788198187.8253033,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Rxe1+",
-              "uci": "e6e1",
-              "accepted_at": 1788198199.3243117,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "e6e1",
-          "last_accepted_move_san": "Rxe1+",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788198199.3243108,
-          "position_before_last_move": "4r1k1/1p1q1ppp/4r3/3p4/3B4/1Q3P2/PP3P1P/3RR1K1 b - - 0 22"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       },
