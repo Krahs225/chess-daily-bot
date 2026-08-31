@@ -2,6 +2,7 @@ import asyncio
 import io
 import os
 import random
+import re
 from datetime import datetime, timezone, timedelta
 
 import cairosvg
@@ -10,6 +11,8 @@ import chess.pgn
 import chess.svg
 import discord
 import requests
+
+
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -178,20 +181,23 @@ def is_qualifying_game(
     game
 ):
 
-    rated = game.get(
+    rated_value = game.get(
         "rated",
-        False,
+        False
     )
 
-    # Chess.com PubAPI returns this field as a boolean
-    # (`true` / `false`), not the string "rated".
-    # Keep compatibility with older/string-shaped responses too.
-    if not (
-        rated is True
-        or str(rated).casefold() == "rated"
-        or str(rated).casefold() == "true"
-    ):
+    is_rated = (
+        rated_value is True
+        or str(
+            rated_value
+        ).casefold() in {
+            "true",
+            "rated",
+            "1"
+        }
+    )
 
+    if not is_rated:
         return False
 
     time_class = str(
@@ -232,115 +238,171 @@ def is_qualifying_game(
     return plies >= MIN_PLIES
 
 
-def fetch_player_games(
+def allowed_archive_url(
     display_name,
-    username
+    archive_url,
 ):
+    match = re.search(
+        r"/games/(\d{4})/(\d{2})$",
+        str(archive_url),
+    )
 
-    games = []
+    if not match:
+        return False
 
-    for year, month in (
-        month_range_for_player(
-            display_name
+    year = int(
+        match.group(1)
+    )
+    month = int(
+        match.group(2)
+    )
+
+    if display_name == "Lars":
+        return (
+            year > 2024
+            or (
+                year == 2024
+                and month >= 10
+            )
         )
+
+    return year == GAME_YEAR
+
+
+def prepare_game(
+    display_name,
+    username,
+    game,
+):
+    if not is_qualifying_game(
+        game
     ):
+        return None
 
-        try:
+    pgn = game.get(
+        "pgn",
+        "",
+    )
 
-            url = (
-                "https://api.chess.com/"
-                "pub/player/"
-                f"{username}/games/"
-                f"{year}/{month:02d}"
-            )
+    game_date = game_date_from_pgn(
+        pgn
+    )
 
-            data = fetch_json(
-                url
-            )
+    if game_date is None:
+        return None
 
-        except Exception as error:
+    if display_name == "Lars":
+        if game_date < LARS_START:
+            return None
+    elif game_date.year != GAME_YEAR:
+        return None
 
-            print(
-                f"Could not load "
-                f"{username} "
-                f"{year}-{month:02d}: "
-                f"{error}",
-                flush=True
-            )
+    prepared = dict(
+        game
+    )
 
-            continue
+    prepared[
+        "_owner_display_name"
+    ] = display_name
 
-        for game in data.get(
-            "games",
-            []
-        ):
+    prepared[
+        "_owner_username"
+    ] = username
 
-            if not is_qualifying_game(
-                game
-            ):
-                continue
+    prepared[
+        "_game_date"
+    ] = game_date
 
-            pgn = game.get(
-                "pgn",
-                ""
-            )
-
-            game_date = (
-                game_date_from_pgn(
-                    pgn
-                )
-            )
-
-            if game_date is None:
-                continue
-
-            if display_name == "Lars":
-
-                if game_date < (
-                    LARS_START
-                ):
-                    continue
-
-            else:
-
-                if game_date.year != (
-                    GAME_YEAR
-                ):
-                    continue
-
-            game[
-                "_owner_display_name"
-            ] = display_name
-
-            game[
-                "_owner_username"
-            ] = username
-
-            game[
-                "_game_date"
-            ] = game_date
-
-            games.append(
-                game
-            )
-
-    return games
+    return prepared
 
 
 def collect_games():
+    """
+    Find one valid game quickly.
 
-    games = []
+    Instead of downloading every month for every player, first ask
+    Chess.com which archives exist, randomise them, and stop as soon
+    as a qualifying rated rapid/blitz game is found.
+    """
+    players = list(
+        PLAYERS
+    )
 
-    for display_name, username in PLAYERS:
+    random.shuffle(
+        players
+    )
 
-        games.extend(
-            fetch_player_games(
-                display_name,
-                username
+    for display_name, username in players:
+
+        try:
+            archive_data = fetch_json(
+                "https://api.chess.com/"
+                f"pub/player/{username}/games/archives"
             )
+
+            archives = [
+                url
+                for url in archive_data.get(
+                    "archives",
+                    [],
+                )
+                if allowed_archive_url(
+                    display_name,
+                    url,
+                )
+            ]
+
+        except Exception as error:
+            print(
+                f"Could not load archives for "
+                f"{username}: {error}",
+                flush=True,
+            )
+            continue
+
+        random.shuffle(
+            archives
         )
 
-    return games
+        for archive_url in archives[:6]:
+
+            try:
+                data = fetch_json(
+                    archive_url
+                )
+            except Exception as error:
+                print(
+                    f"Could not load archive "
+                    f"{archive_url}: {error}",
+                    flush=True,
+                )
+                continue
+
+            candidates = []
+
+            for game in data.get(
+                "games",
+                [],
+            ):
+                prepared = prepare_game(
+                    display_name,
+                    username,
+                    game,
+                )
+
+                if prepared is not None:
+                    candidates.append(
+                        prepared
+                    )
+
+            if candidates:
+                return [
+                    random.choice(
+                        candidates
+                    )
+                ]
+
+    return []
 
 
 def opponent_for_game(
@@ -421,9 +483,9 @@ def make_board_file(
         )
     )
 
-    for move in moves[
-        :move_index
-    ]:
+    played_moves = moves[:move_index]
+
+    for move in played_moves:
 
         board.push(
             move
@@ -435,11 +497,27 @@ def make_board_file(
         else chess.BLACK
     )
 
+    arrows = []
+
+    # Highlight the move that was just played directly on the board.
+    # This is drawn into the PNG/SVG itself, so it remains visible
+    # while browsing with the left/right buttons.
+    if played_moves:
+        latest_move = played_moves[-1]
+
+        arrows.append(
+            chess.svg.Arrow(
+                latest_move.from_square,
+                latest_move.to_square
+            )
+        )
+
     svg = chess.svg.board(
         board=board,
         orientation=orientation,
         coordinates=True,
-        size=600
+        size=600,
+        arrows=arrows
     )
 
     png = cairosvg.svg2png(
@@ -461,6 +539,8 @@ class ChessView(
     discord.ui.View
 ):
 
+    MOVES_PER_PAGE = 16
+
     def __init__(
         self,
         pgn,
@@ -473,17 +553,290 @@ class ChessView(
         )
 
         self.pgn = pgn
-        self.owner_is_white = (
-            owner_is_white
-        )
-
-        self.total_moves = (
-            total_moves
-        )
-
+        self.owner_is_white = owner_is_white
+        self.total_moves = total_moves
         self.move_index = 0
-
+        self.page = 0
         self.message = None
+
+        self._build_buttons()
+
+    @property
+    def page_count(self):
+        return max(
+            1,
+            (
+                self.total_moves
+                + self.MOVES_PER_PAGE
+                - 1
+            )
+            // self.MOVES_PER_PAGE
+        )
+
+    def _build_buttons(self):
+
+        self.clear_items()
+
+        # Row 0: single-move navigation + move-number page navigation.
+        previous_button = discord.ui.Button(
+            label="◀",
+            style=discord.ButtonStyle.secondary,
+            row=0
+        )
+
+        next_button = discord.ui.Button(
+            label="▶",
+            style=discord.ButtonStyle.secondary,
+            row=0
+        )
+
+        previous_page = discord.ui.Button(
+            label="◀ Page",
+            style=discord.ButtonStyle.primary,
+            row=0
+        )
+
+        next_page = discord.ui.Button(
+            label="Page ▶",
+            style=discord.ButtonStyle.primary,
+            row=0
+        )
+
+        previous_button.callback = (
+            self._previous_move
+        )
+
+        next_button.callback = (
+            self._next_move
+        )
+
+        previous_page.callback = (
+            self._previous_page
+        )
+
+        next_page.callback = (
+            self._next_page
+        )
+
+        self.add_item(
+            previous_button
+        )
+
+        self.add_item(
+            next_button
+        )
+
+        self.add_item(
+            previous_page
+        )
+
+        self.add_item(
+            next_page
+        )
+
+        # Rows 1-5: up to 20 direct move buttons.
+        start_move = (
+            self.page
+            * self.MOVES_PER_PAGE
+            + 1
+        )
+
+        end_move = min(
+            self.total_moves,
+            start_move
+            + self.MOVES_PER_PAGE
+            - 1
+        )
+
+        for move_number in range(
+            start_move,
+            end_move + 1
+        ):
+
+            button = discord.ui.Button(
+                label=str(move_number),
+                style=(
+                    discord.ButtonStyle.success
+                    if move_number == self.move_index
+                    else discord.ButtonStyle.secondary
+                ),
+                row=(
+                    1
+                    + (
+                        (
+                            move_number
+                            - start_move
+                        )
+                        // 4
+                    )
+                )
+            )
+
+            button.callback = (
+                self._make_move_callback(
+                    move_number
+                )
+            )
+
+            self.add_item(
+                button
+            )
+
+        self._sync_disabled_states()
+
+    def _sync_disabled_states(self):
+
+        # First 4 children are the navigation controls.
+        self.children[0].disabled = (
+            self.move_index <= 0
+        )
+
+        self.children[1].disabled = (
+            self.move_index >= self.total_moves
+        )
+
+        self.children[2].disabled = (
+            self.page <= 0
+        )
+
+        self.children[3].disabled = (
+            self.page >= self.page_count - 1
+        )
+
+    def _make_move_callback(
+        self,
+        move_number
+    ):
+
+        async def callback(
+            interaction
+        ):
+
+            self.move_index = move_number
+
+            self.page = (
+                (move_number - 1)
+                // self.MOVES_PER_PAGE
+            )
+
+            await self.redraw(
+                interaction
+            )
+
+        return callback
+
+    async def _previous_move(
+        self,
+        interaction
+    ):
+
+        if self.move_index > 0:
+
+            self.move_index -= 1
+
+        self.page = (
+            self.move_index
+            // self.MOVES_PER_PAGE
+        )
+
+        await self.redraw(
+            interaction
+        )
+
+    async def _next_move(
+        self,
+        interaction
+    ):
+
+        if (
+            self.move_index
+            < self.total_moves
+        ):
+
+            self.move_index += 1
+
+        self.page = (
+            max(
+                0,
+                (
+                    self.move_index
+                    - 1
+                )
+                // self.MOVES_PER_PAGE
+            )
+        )
+
+        await self.redraw(
+            interaction
+        )
+
+    async def _previous_page(
+        self,
+        interaction
+    ):
+
+        if self.page > 0:
+
+            self.page -= 1
+
+        page_first_move = (
+            self.page
+            * self.MOVES_PER_PAGE
+        )
+
+        # Keep the current position if it is still
+        # on the selected page; otherwise jump to the
+        # first move on that page.
+        page_start = (
+            page_first_move + 1
+        )
+
+        page_end = min(
+            self.total_moves,
+            page_first_move
+            + self.MOVES_PER_PAGE
+        )
+
+        if not (
+            page_start
+            <= self.move_index
+            <= page_end
+        ):
+
+            self.move_index = page_start - 1
+
+        await self.redraw(
+            interaction
+        )
+
+    async def _next_page(
+        self,
+        interaction
+    ):
+
+        if self.page < (
+            self.page_count - 1
+        ):
+
+            self.page += 1
+
+        page_start = (
+            self.page
+            * self.MOVES_PER_PAGE
+            + 1
+        )
+
+        if self.move_index < (
+            page_start - 1
+        ):
+
+            self.move_index = (
+                page_start - 1
+            )
+
+        await self.redraw(
+            interaction
+        )
 
     async def redraw(
         self,
@@ -498,29 +851,36 @@ class ChessView(
 
         self.total_moves = total
 
-        back_button = self.children[0]
-        forward_button = self.children[1]
-
-        back_button.disabled = (
-            self.move_index <= 0
-        )
-
-        forward_button.disabled = (
-            self.move_index >= total
-        )
+        self._build_buttons()
 
         embed = (
             self.message.embeds[0]
             .copy()
         )
 
+        page_start = (
+            self.page
+            * self.MOVES_PER_PAGE
+            + 1
+        )
+
+        page_end = min(
+            self.total_moves,
+            (
+                self.page + 1
+            )
+            * self.MOVES_PER_PAGE
+        )
+
         embed.description = (
-            f"**Move "
-            f"{self.move_index} / "
-            f"{total}**\n"
             f"POV: **"
             f"{'White' if self.owner_is_white else 'Black'}"
-            f"**"
+            f"**\n"
+            f"Move **"
+            f"{self.move_index} / "
+            f"{total}**\n"
+            f"Jump to move: **"
+            f"{page_start}-{page_end}**"
         )
 
         embed.set_image(
@@ -533,45 +893,6 @@ class ChessView(
             attachments=[
                 file
             ]
-        )
-
-    @discord.ui.button(
-        label="◀",
-        style=discord.ButtonStyle.secondary
-    )
-    async def back(
-        self,
-        interaction,
-        button
-    ):
-
-        if self.move_index > 0:
-
-            self.move_index -= 1
-
-        await self.redraw(
-            interaction
-        )
-
-    @discord.ui.button(
-        label="▶",
-        style=discord.ButtonStyle.secondary
-    )
-    async def forward(
-        self,
-        interaction,
-        button
-    ):
-
-        if (
-            self.move_index
-            < self.total_moves
-        ):
-
-            self.move_index += 1
-
-        await self.redraw(
-            interaction
         )
 
 
@@ -588,7 +909,7 @@ async def post_chess_round(
         await channel.send(
             "❌ **Chess Chatter:** "
             "could not find a qualifying "
-            "rated rapid/blitz game from the configured players."
+            "rated rapid/blitz game."
         )
 
         return
@@ -674,9 +995,6 @@ async def post_chess_round(
         owner
     )
 
-    # Discord native polls require a duration of at least 1 hour.
-    # We end the poll ourselves after POLL_DURATION_MINUTES, so the
-    # actual game remains 15 minutes long while the API payload is valid.
     poll = discord.Poll(
         question="Who played this game?",
         duration=timedelta(
@@ -696,10 +1014,7 @@ async def post_chess_round(
             "♟️ **Guess the Chess Chatter**"
         ),
         description=(
-            f"Opponent: **{opponent}** "
-            f"({opponent_rating or 'unknown'} Elo)\n"
-            f"Type: **{game_type}**\n"
-            f"Your POV: **"
+            f"POV: **"
             f"{'White' if owner_is_white else 'Black'}"
             f"**\n"
             f"Move **0 / {total_moves}**"
@@ -717,186 +1032,207 @@ async def post_chess_round(
         total_moves
     )
 
-    message = await channel.send(
-        embed=embed,
-        file=file,
-        view=view,
+    poll_message = await channel.send(
+        content=(
+            "♟️ **Guess the Chess Chatter** — "
+            "vote in the poll above."
+        ),
         poll=poll
     )
 
-    view.message = message
+    board_message = await channel.send(
+        embed=embed,
+        file=file,
+        view=view
+    )
+
+    view.message = board_message
 
     await asyncio.sleep(
         POLL_DURATION_MINUTES * 60 + 3
     )
 
+    # End the poll, but NEVER let a poll API problem prevent the
+    # answer message from being posted.
     try:
-        await message.end_poll()
-    except discord.HTTPException:
-        pass
-
-    try:
-
-        voters_by_answer = []
-
-        for answer in poll.answers:
-
-            answer_voters = []
-
-            async for voter in (
-                answer.voters()
-            ):
-
-                answer_voters.append(
-                    voter
-                )
-
-            voters_by_answer.append(
-                answer_voters
-            )
-
+        await poll_message.end_poll()
     except Exception as error:
-
-        voters_by_answer = []
-
         print(
-            f"Chess poll result "
-            f"error: {error}",
+            f"Chess poll end error: "
+            f"{error}",
             flush=True
         )
 
+    # Reveal the answer immediately after the poll closes.
+    # This must happen before any leaderboard/GitHub work.
+    await channel.send(
+        f"🔓 **The answer was: {owner}**"
+    )
+
+    # Fetch the finished poll again so we read the final voter state.
+    voters_by_answer = []
+
+    try:
+
+        finished_message = await channel.fetch_message(
+            poll_message.id
+        )
+
+        finished_poll = (
+            finished_message.poll
+            if finished_message.poll is not None
+            else poll
+        )
+
+        async def collect_poll_voters():
+            result = []
+
+            for answer in finished_poll.answers:
+
+                answer_voters = []
+
+                async for voter in answer.voters():
+
+                    if not voter.bot:
+                        answer_voters.append(
+                            voter
+                        )
+
+                result.append(
+                    answer_voters
+                )
+
+            return result
+
+        voters_by_answer = await asyncio.wait_for(
+            collect_poll_voters(),
+            timeout=15
+        )
+
+    except Exception as error:
+
+        print(
+            f"Chess poll result error: "
+            f"{error}",
+            flush=True
+        )
+
+    rewarded = []
+    seen = set()
+
     if (
         voters_by_answer
-        and correct_index
-        < len(voters_by_answer)
+        and correct_index < len(voters_by_answer)
     ):
-
-        seen = set()
 
         for voter in voters_by_answer[
             correct_index
         ]:
 
-            if voter.bot:
-                continue
-
-            if voter.id in seen:
+            if voter.bot or voter.id in seen:
                 continue
 
             seen.add(
                 voter.id
             )
 
-            total = add_points(
-                voter.id,
-                voter.display_name,
-                1
-            )
-
-            await channel.send(
-                f"✅ **Correct, "
-                f"{voter.display_name}!**\n"
-                f"**+1 point** — you now have "
-                f"**{total:g} points.**"
-            )
-
-            ranking = (
-                personal_ranking(
-                    voter.id
-                )
-            )
-
-            if ranking:
-                await channel.send(
-                    ranking
+            try:
+                total = add_points(
+                    voter.id,
+                    voter.display_name,
+                    1,
+                    transaction_id=(
+                        f"guess-chess:"
+                        f"{poll_message.id}:"
+                        f"{voter.id}"
+                    ),
+                    source="guess-chess-chatter",
                 )
 
-    await channel.send(
-        f"🔓 **The answer was:** "
-        f"||{owner}||"
-    )
+                rewarded.append(
+                    (
+                        voter.display_name,
+                        total,
+                    )
+                )
 
+            except Exception as error:
+                print(
+                    f"Chess leaderboard error "
+                    f"for {voter.display_name}: {error}",
+                    flush=True,
+                )
 
-@client.event
-async def on_message(
-    message
-):
-
-    if (
-        message.author.bot
-        or message.channel.id
-        != CHANNEL_ID
-    ):
-        return
-
-    command = (
-        message.content
-        .strip()
-        .casefold()
-    )
-
-    if command in {
-        "!leaderboard",
-        "!lb",
-        "!l"
-    }:
-
-        await message.channel.send(
-            full_leaderboard(
-                "🏆 **Shared Leaderboard**"
-            )
+    if rewarded:
+        names = " • ".join(
+            f"**{name} +1**"
+            for name, _ in rewarded
         )
 
-        return
-
-    if command in {
-        "!help",
-        "!info"
-    }:
-
-        await message.channel.send(
-            "**Guess the Chess Chatter**\n"
-            "`!leaderboard`, `!lb`, `!l` "
-            "— shared leaderboard\n"
-            "`!help`, `!info` — this message"
+        await channel.send(
+            f"🎉 {names}"
         )
+
 
 
 @client.event
 async def on_ready():
 
+    if getattr(
+        client,
+        "_chess_round_started",
+        False,
+    ):
+        return
+
+    client._chess_round_started = True
+
     print(
         f"Guess Chess Chatter ready as "
         f"{client.user}",
-        flush=True
+        flush=True,
     )
 
     try:
-
         channel = await client.fetch_channel(
             CHANNEL_ID
         )
 
-        # One Action run = one game.
-        # The workflow schedule starts
-        # the next one.
+        # One Action run = one round.
         await post_chess_round(
             channel
         )
 
-    except Exception as error:
+        print(
+            "Guess Chess Chatter round finished.",
+            flush=True,
+        )
 
+    except Exception as error:
         print(
             f"Guess Chess Chatter error: "
             f"{error}",
-            flush=True
+            flush=True,
         )
 
-    finally:
+        try:
+            channel = client.get_channel(
+                CHANNEL_ID
+            )
 
+            if channel is not None:
+                await channel.send(
+                    "❌ **Guess Chess Chatter error:** "
+                    f"`{str(error)[:900]}`"
+                )
+        except Exception:
+            pass
+
+    finally:
         await client.close()
 
 
 client.run(
-    TOKEN
+    TOKEN,
+    reconnect=True,
 )
