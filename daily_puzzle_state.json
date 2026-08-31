@@ -1,164 +1,52 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-04-17",
-    "title": "Riding into the Night",
-    "fen": "8/pp2pp2/kpp5/4P3/K7/N3P3/8/8 w - - 0 1",
-    "current_fen": "8/pp2pp2/kpp5/4P3/K7/N3P3/8/8 w - - 0 1",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/pp2pp2/kpp5/4P3/K7/N3P3/8/8 w - - 0 1\"]\r\n\r\n1.Nb5 cxb5+ 2.Kb4 f5 3.exf6 exf6 4.e4 f5 5.e5 f4 6.e6 f3 7.e7 f2 8.e8=N \r\nf1=Q 9.Nc7# 1-0",
+    "url": "https://www.chess.com/daily/2017-11-13",
+    "title": "Going Back To Go Forward",
+    "fen": "r5rk/p2pR2p/b4PpB/8/2q4Q/2P5/2P2PPP/2K5 w - - 0 1",
+    "current_fen": "r5rk/p2pR2p/b4PpB/8/2q4Q/2P5/2P2PPP/2K5 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r5rk/p2pR2p/b4PpB/8/2q4Q/2P5/2P2PPP/2K5 w - - 0 1\"]\r\n\r\n1. Rxh7+ Kxh7 2. Bf4#\r\n*",
     "all_moves": [
       {
-        "uci": "a3b5",
-        "san": "Nb5",
+        "uci": "e7h7",
+        "san": "Rxh7+",
         "color": "white"
       },
       {
-        "uci": "c6b5",
-        "san": "cxb5+",
+        "uci": "h8h7",
+        "san": "Kxh7",
         "color": "black"
       },
       {
-        "uci": "a4b4",
-        "san": "Kb4",
-        "color": "white"
-      },
-      {
-        "uci": "f7f5",
-        "san": "f5",
-        "color": "black"
-      },
-      {
-        "uci": "e5f6",
-        "san": "exf6",
-        "color": "white"
-      },
-      {
-        "uci": "e7f6",
-        "san": "exf6",
-        "color": "black"
-      },
-      {
-        "uci": "e3e4",
-        "san": "e4",
-        "color": "white"
-      },
-      {
-        "uci": "f6f5",
-        "san": "f5",
-        "color": "black"
-      },
-      {
-        "uci": "e4e5",
-        "san": "e5",
-        "color": "white"
-      },
-      {
-        "uci": "f5f4",
-        "san": "f4",
-        "color": "black"
-      },
-      {
-        "uci": "e5e6",
-        "san": "e6",
-        "color": "white"
-      },
-      {
-        "uci": "f4f3",
-        "san": "f3",
-        "color": "black"
-      },
-      {
-        "uci": "e6e7",
-        "san": "e7",
-        "color": "white"
-      },
-      {
-        "uci": "f3f2",
-        "san": "f2",
-        "color": "black"
-      },
-      {
-        "uci": "e7e8n",
-        "san": "e8=N",
-        "color": "white"
-      },
-      {
-        "uci": "f2f1q",
-        "san": "f1=Q",
-        "color": "black"
-      },
-      {
-        "uci": "e8c7",
-        "san": "Nc7#",
+        "uci": "h6f4",
+        "san": "Bf4#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a3b5",
-        "san": "Nb5",
+        "uci": "e7h7",
+        "san": "Rxh7+",
         "color": "white"
       },
       {
-        "uci": "a4b4",
-        "san": "Kb4",
-        "color": "white"
-      },
-      {
-        "uci": "e5f6",
-        "san": "exf6",
-        "color": "white"
-      },
-      {
-        "uci": "e3e4",
-        "san": "e4",
-        "color": "white"
-      },
-      {
-        "uci": "e4e5",
-        "san": "e5",
-        "color": "white"
-      },
-      {
-        "uci": "e5e6",
-        "san": "e6",
-        "color": "white"
-      },
-      {
-        "uci": "e6e7",
-        "san": "e7",
-        "color": "white"
-      },
-      {
-        "uci": "e7e8n",
-        "san": "e8=N",
-        "color": "white"
-      },
-      {
-        "uci": "e8c7",
-        "san": "Nc7#",
+        "uci": "h6f4",
+        "san": "Bf4#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 9,
-    "posted_at": "2026-08-31T14:35:21.868521+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-08-31T14:35:34.931028+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788186921868",
+    "puzzle_id": "random_1788186934931",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1543992600661467220,
-    "attempted_users": {
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "Kb4",
-        "correct": false,
-        "timestamp": "2026-08-31T14:35:30.115690+00:00"
-      }
-    },
+    "message_id": 1543992655443267755,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
