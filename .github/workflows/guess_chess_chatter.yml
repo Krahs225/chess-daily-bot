@@ -8,28 +8,26 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: guess-chess-chatter
-  cancel-in-progress: false
-
 jobs:
-  run:
+  guess-chess-chatter:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install requirements
+      - name: Install dependencies
         run: |
-          pip install discord.py
-          pip install python-chess
-          pip install requests
-          pip install cairosvg
+          python -m pip install --upgrade pip
+          pip install discord.py requests python-chess cairosvg
 
       - name: Run Guess Chess Chatter
         run: python guess_chess_chatter.py
