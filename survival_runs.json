@@ -329,9 +329,9 @@
     },
     "martin2": {
       "name": "Martin2",
-      "best_puzzle": 2,
-      "best_difficulty": 1215,
-      "best_completed_at": "2026-08-31T17:00:38.568622+00:00",
+      "best_puzzle": 3,
+      "best_difficulty": 1399,
+      "best_completed_at": "2026-08-31T17:02:32.229566+00:00",
       "current": {
         "run_id": "martin2:1788195589",
         "started_by_id": "1541007763931668502",
@@ -347,7 +347,8 @@
         "best_difficulty": 1399,
         "used_puzzle_ids": [
           "lZlCB",
-          "FUDG9"
+          "FUDG9",
+          "HLO13"
         ],
         "members": {
           "1541007763931668502": {
@@ -356,7 +357,40 @@
             "wrong": 2
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "HLO13",
+          "rating": 1395,
+          "themes": "crushing hangingPiece opening short",
+          "url": "https://lichess.org/training/HLO13",
+          "start_fen": "r2qk1nr/p1p2ppp/b7/3B4/8/8/PPP2bPP/RNBQ1K1R w kq - 1 10",
+          "current_fen": "r2qk1nr/p1p2ppp/b7/3B4/8/8/PPP2bPP/RNBQ1K1R w kq - 1 10",
+          "solution": [
+            {
+              "uci": "f1f2",
+              "san": "Kxf2",
+              "color": "white"
+            },
+            {
+              "uci": "d8h4",
+              "san": "Qh4+",
+              "color": "black"
+            },
+            {
+              "uci": "g2g3",
+              "san": "g3",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
