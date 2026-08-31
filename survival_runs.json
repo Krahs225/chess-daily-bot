@@ -397,10 +397,35 @@
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 0,
-        "best_difficulty": 0,
-        "used_puzzle_ids": [],
+        "best_difficulty": 1255,
+        "used_puzzle_ids": [
+          "iL18l"
+        ],
         "members": {},
-        "puzzle": null,
+        "puzzle": {
+          "id": "iL18l",
+          "rating": 1255,
+          "themes": "mate mateIn1 middlegame oneMove queensideAttack",
+          "url": "https://lichess.org/training/iL18l",
+          "start_fen": "2r1r1k1/2q3pp/1p2P3/p5P1/3Q1P2/PN6/1PP5/2KR3R b - - 0 27",
+          "current_fen": "2r1r1k1/2q3pp/1p2P3/p5P1/3Q1P2/PN6/1PP5/2KR3R b - - 0 27",
+          "solution": [
+            {
+              "uci": "c7c2",
+              "san": "Qxc2#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
