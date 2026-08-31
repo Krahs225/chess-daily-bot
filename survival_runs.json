@@ -393,7 +393,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-08-31T17:39:40.666542+00:00",
-        "last_activity": 1788198187.8254457,
+        "last_activity": 1788198199.3244457,
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 0,
@@ -405,7 +405,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 2,
+            "correct": 3,
             "wrong": 0
           }
         },
@@ -415,7 +415,7 @@
           "themes": "advantage discoveredAttack kingsideAttack long middlegame",
           "url": "https://lichess.org/training/lD1SZ",
           "start_fen": "4r1k1/1p1q1ppp/4r3/3pn3/3B4/1Q6/PP3PPP/3RR1K1 b - - 4 21",
-          "current_fen": "4r1k1/1p1q1ppp/4r3/3p4/3B4/1Q3P2/PP3P1P/3RR1K1 b - - 0 22",
+          "current_fen": "4r1k1/1p1q1ppp/8/3p4/3B4/1Q3P2/PP3P1P/4R1K1 b - - 0 23",
           "solution": [
             {
               "uci": "e5f3",
@@ -444,26 +444,32 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 2,
+          "next_solution_index": 4,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "Nf3+",
+          "last_move_san": "Rxe1+",
           "accepted_moves": [
             {
               "san": "Nf3+",
               "uci": "e5f3",
               "accepted_at": 1788198187.8253033,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Rxe1+",
+              "uci": "e6e1",
+              "accepted_at": 1788198199.3243117,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "e5f3",
-          "last_accepted_move_san": "Nf3+",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1788198187.8253021,
-          "position_before_last_move": "4r1k1/1p1q1ppp/4r3/3pn3/3B4/1Q6/PP3PPP/3RR1K1 b - - 4 21"
+          "last_accepted_move_uci": "e6e1",
+          "last_accepted_move_san": "Rxe1+",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1788198199.3243108,
+          "position_before_last_move": "4r1k1/1p1q1ppp/4r3/3p4/3B4/1Q3P2/PP3P1P/3RR1K1 b - - 0 22"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
