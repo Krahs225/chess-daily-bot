@@ -7,7 +7,7 @@ from pathlib import Path
 
 import discord
 
-from shared_leaderboard import (
+from guess_leaderboard import (
     add_points,
     full_leaderboard,
     personal_ranking,
@@ -912,7 +912,7 @@ async def command_handler(
 
         await message.channel.send(
             full_leaderboard(
-                "🏆 **Shared Leaderboard**"
+                "🏆 **Guess Games Leaderboard**"
             )
         )
 
@@ -920,7 +920,8 @@ async def command_handler(
 
     if command in {
         "!help",
-        "!info"
+        "!info",
+        "!i"
     }:
 
         await message.channel.send(
@@ -932,10 +933,11 @@ async def command_handler(
             "A rated Chess.com rapid/blitz game is shown. "
             "Use the ◀ ▶ buttons to look through the game, "
             "then vote for who played it.\n\n"
-            "🏆 **Leaderboard**\n"
-            "`!leaderboard`, `!lb` or `!l` — show the full shared leaderboard.\n"
-            "Correct guesses give **+1 point** normally. Double Points and Hard Mode give **+2 points**. Both games use the same leaderboard.\n\n"
-            "ℹ️ `!help` or `!info` — show this message."
+            "🏆 **Guess Games Leaderboard**\n"
+            "`!leaderboard`, `!lb` or `!l` — show the leaderboard shared ONLY by Guess the Chatter and Guess the Chess Chatter.\n"
+            "This leaderboard is separate from Daily/Random chess puzzle points.\n"
+            "Correct guesses give **+1 point** normally. Double Points and Hard Mode give **+2 points**.\n\n"
+            "ℹ️ `!help`, `!info` or `!i` — show this message."
         )
 
 
