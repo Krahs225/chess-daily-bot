@@ -2,7 +2,7 @@ import asyncio
 import os
 import random
 import re
-from datetime import timedelta
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import discord
@@ -232,12 +232,6 @@ def _parse_chat_file(chat_file):
         chatter = find_chatter(prefix)
 
         if not chatter:
-            continue
-
-        if not chatter_active_on_date(
-            chatter[1],
-            current_date,
-        ):
             continue
 
         if not chatter_active_on_date(
@@ -644,34 +638,67 @@ async def post_guess(
         )
         return
 
-    username = random.choice(
-        list(chatters.keys())
-    )
+    # Build valid candidates by the quote's EXACT date.
+    # A wrong option can only appear when that chatter also has a
+    # valid message on that same date.
+    users_by_date = {}
 
-    quote, date, quote_index = random.choice(
-        chatters[username]
-    )
-
-    wrong_usernames = [
-        name
-        for name, entries in chatters.items()
-        if (
-            name != username
-            and any(
-                entry_date == date
-                for _quote, entry_date, _index in entries
+    for candidate_username, entries in chatters.items():
+        for _quote, entry_date, _index in entries:
+            users_by_date.setdefault(
+                entry_date,
+                set(),
+            ).add(
+                candidate_username
             )
-        )
-    ]
 
-    if len(wrong_usernames) < (
-        option_count - 1
-    ):
+    eligible_quotes = []
+
+    for candidate_username, entries in chatters.items():
+        for candidate_quote, entry_date, candidate_index in entries:
+            same_date_users = (
+                users_by_date.get(
+                    entry_date,
+                    set(),
+                )
+                - {candidate_username}
+            )
+
+            if len(same_date_users) >= (
+                option_count - 1
+            ):
+                eligible_quotes.append(
+                    (
+                        candidate_username,
+                        candidate_quote,
+                        entry_date,
+                        candidate_index,
+                    )
+                )
+
+    if not eligible_quotes:
         await channel.send(
-            "Not enough valid chatters "
-            "for this Guess Chatter mode."
+            "Not enough same-date valid chatters "
+            "for this Guess Chatter round."
         )
         return
+
+    (
+        username,
+        quote,
+        date,
+        quote_index,
+    ) = random.choice(
+        eligible_quotes
+    )
+
+    wrong_usernames = list(
+        users_by_date.get(
+            date,
+            set(),
+        )
+        - {username}
+    )
 
     wrong_usernames = random.sample(
         wrong_usernames,
@@ -942,82 +969,64 @@ async def on_message(
             pass
 
 
-async def guess_chatter_loop():
-
-    channel = await client.fetch_channel(
-        CHANNEL_ID
-    )
-
-    while True:
-
-        target = next_guess_slot()
-
-        now = current_local_time()
-
-        wait_seconds = (
-            target - now
-        ).total_seconds()
-
-        if wait_seconds > 0:
-            print(
-                f"Next Guess Chatter round: "
-                f"{target.isoformat()}",
-                flush=True,
-            )
-            await asyncio.sleep(
-                wait_seconds
-            )
-
-        round_started = current_local_time()
-
-        try:
-            print(
-                "Starting Guess Chatter round "
-                f"({guess_special_mode(round_started)})...",
-                flush=True,
-            )
-
-            await post_guess(
-                channel
-            )
-
-            print(
-                "Guess Chatter round finished.",
-                flush=True,
-            )
-
-        except Exception as error:
-            print(
-                f"Guess Chatter round error: "
-                f"{error}",
-                flush=True,
-            )
-
-        # Do NOT sleep a fixed 20 minutes from completion.
-        # Always re-align to the next exact 20-minute Guess slot.
-
-
 @client.event
 async def on_ready():
+
+    if getattr(
+        client,
+        "_guess_round_started",
+        False,
+    ):
+        return
+
+    client._guess_round_started = True
 
     print(
         f"Guess Chatter ready as "
         f"{client.user}",
-        flush=True
+        flush=True,
     )
 
-    if not hasattr(
-        client,
-        "_guess_chatter_task"
-    ) or client._guess_chatter_task.done():
-
-        client._guess_chatter_task = (
-            asyncio.create_task(
-                guess_chatter_loop()
-            )
+    try:
+        channel = await client.fetch_channel(
+            CHANNEL_ID
         )
+
+        # One Action run = one round.
+        await post_guess(
+            channel
+        )
+
+        print(
+            "Guess Chatter round finished.",
+            flush=True,
+        )
+
+    except Exception as error:
+        print(
+            f"Guess Chatter round error: "
+            f"{error}",
+            flush=True,
+        )
+
+        try:
+            channel = client.get_channel(
+                CHANNEL_ID
+            )
+
+            if channel is not None:
+                await channel.send(
+                    "❌ **Guess Chatter error:** "
+                    f"`{str(error)[:900]}`"
+                )
+        except Exception:
+            pass
+
+    finally:
+        await client.close()
 
 
 client.run(
-    TOKEN
+    TOKEN,
+    reconnect=True,
 )
