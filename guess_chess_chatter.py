@@ -21,7 +21,7 @@ client = discord.Client(
     intents=intents
 )
 
-from shared_leaderboard import (
+from guess_leaderboard import (
     add_points,
     full_leaderboard,
     personal_ranking,
