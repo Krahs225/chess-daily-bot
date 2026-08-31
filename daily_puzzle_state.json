@@ -1,122 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-09-25",
-    "title": "A Little Twist",
-    "fen": "4kb1r/pp3ppp/q3b3/6Q1/1n1N4/2r1B3/PPP2PPP/2KRR3 w k - 0 1",
-    "current_fen": "3N1b1r/pp2k1pp/4Rp2/6B1/1n6/8/PPP2PPP/2KR4 b - - 0 6",
-    "pgn": "[FEN \"4kb1r/pp3ppp/q3b3/6Q1/1n1N4/2r1B3/PPP2PPP/2KRR3 w k - 0 1\"]\r\n[PlyCount \"11\"]\r\n\r\n1. Qd8+ 1... Kxd8 2. Nxe6+ 2... Ke7 (2... Kc8 3. Rd8#) (2... Ke8 3. Nxg7+ 3...\r\nBxg7 (3... Ke7 4. Bg5#) 4. Bg5+ 4... Be5 5. Rd8#) 3. Bg5+ 3... f6 (3... Ke8 4.\r\nRd8#) 4. Nd8+ $1 4... Re3 5. Rxe3+ Qe6 6. Rxe6# *",
+    "url": "https://www.chess.com/daily/2008-09-09",
+    "title": "Defend or Counter Threats?",
+    "fen": "r2q3k/p1p3pp/2Bb2r1/3p1p2/3P2b1/1QP5/PP1N1PPP/R1B1R1K1 b - - 0 1",
+    "current_fen": "r2q3k/p1p3pp/2Bb2r1/3p1p2/3P2b1/1QP5/PP1N1PPP/R1B1R1K1 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q3k/p1p3pp/2Bb2r1/3p1p2/3P2b1/1QP5/PP1N1PPP/R1B1R1K1 b - - 0 1\"]\r\n\r\n1...Bxh2+ 2. Kf1 Rxc6\r\n*",
     "all_moves": [
       {
-        "uci": "g5d8",
-        "san": "Qd8+",
-        "color": "white"
-      },
-      {
-        "uci": "e8d8",
-        "san": "Kxd8",
+        "uci": "d6h2",
+        "san": "Bxh2+",
         "color": "black"
       },
       {
-        "uci": "d4e6",
-        "san": "Nxe6+",
+        "uci": "g1f1",
+        "san": "Kf1",
         "color": "white"
       },
       {
-        "uci": "d8e7",
-        "san": "Ke7",
+        "uci": "g6c6",
+        "san": "Rxc6",
         "color": "black"
-      },
-      {
-        "uci": "e3g5",
-        "san": "Bg5+",
-        "color": "white"
-      },
-      {
-        "uci": "f7f6",
-        "san": "f6",
-        "color": "black"
-      },
-      {
-        "uci": "e6d8",
-        "san": "Nd8+",
-        "color": "white"
-      },
-      {
-        "uci": "c3e3",
-        "san": "Re3",
-        "color": "black"
-      },
-      {
-        "uci": "e1e3",
-        "san": "Rxe3+",
-        "color": "white"
-      },
-      {
-        "uci": "a6e6",
-        "san": "Qe6",
-        "color": "black"
-      },
-      {
-        "uci": "e3e6",
-        "san": "Rxe6#",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5d8",
-        "san": "Qd8+",
-        "color": "white"
+        "uci": "d6h2",
+        "san": "Bxh2+",
+        "color": "black"
       },
       {
-        "uci": "d4e6",
-        "san": "Nxe6+",
-        "color": "white"
-      },
-      {
-        "uci": "e3g5",
-        "san": "Bg5+",
-        "color": "white"
-      },
-      {
-        "uci": "e6d8",
-        "san": "Nd8+",
-        "color": "white"
-      },
-      {
-        "uci": "e1e3",
-        "san": "Rxe3+",
-        "color": "white"
-      },
-      {
-        "uci": "e3e6",
-        "san": "Rxe6#",
-        "color": "white"
+        "uci": "g6c6",
+        "san": "Rxc6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-08-31T18:17:03.758032+00:00",
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-08-31T18:18:00.089349+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788200223758",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1544048393817432375,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxe6",
-        "correct": true,
-        "timestamp": "2026-08-31T18:17:54.610457+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788200280089",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
