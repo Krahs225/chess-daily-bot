@@ -1031,6 +1031,16 @@ def board_fen_after_first_move(
     )
 
 
+def side_to_move_text(
+    board,
+):
+    return (
+        "White"
+        if board.turn == chess.WHITE
+        else "Black"
+    )
+
+
 def render_board(
     puzzle,
 ):
@@ -1038,12 +1048,38 @@ def render_board(
         puzzle["current_fen"]
     )
 
+    # The board POV must follow the ACTUAL side to move in current_fen.
+    # This is more reliable than trusting a stored player_color value.
     orientation = (
         chess.WHITE
-        if puzzle["player_color"]
-        == "white"
+        if board.turn == chess.WHITE
         else chess.BLACK
     )
+
+    stored_player_color = str(
+        puzzle.get(
+            "player_color",
+            "",
+        )
+    ).casefold()
+
+    actual_player_color = (
+        "white"
+        if board.turn == chess.WHITE
+        else "black"
+    )
+
+    if (
+        stored_player_color
+        and stored_player_color != actual_player_color
+    ):
+        print(
+            "Survival POV warning: stored player_color "
+            f"{stored_player_color!r} does not match "
+            f"current FEN side to move {actual_player_color!r}. "
+            "Rendering from the actual board turn.",
+            flush=True,
+        )
 
     svg = chess.svg.board(
         board=board,
@@ -1133,7 +1169,8 @@ async def send_puzzle_embed(
             f"**Puzzle #{number}**\n"
             f"Difficulty: **{puzzle['rating']}** "
             f"(target {difficulty_text})\n"
-            f"Strikes: {heart_text}\n\n"
+            f"Strikes: {heart_text}\n"
+            f"♟️ **{side_to_move_text(board)} to move.**\n\n"
             f"Everyone can answer. First correct move wins "
             f"the position."
         ),
@@ -2962,6 +2999,7 @@ class SurvivalBot(
                         else ""
                     )
                     + " remaining.**\n"
+                    + f"♟️ **{side_to_move_text(display_board)} to move.**\n"
                     + f"Strikes: "
                     f"{'❤️' * max(0, THREE_STRIKES - run['strikes'])}"
                     f"{'🖤' * run['strikes']}"
