@@ -329,9 +329,9 @@
     },
     "martin2": {
       "name": "Martin2",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-08-31T16:59:49.253785+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1215,
+      "best_completed_at": "2026-08-31T17:00:38.568622+00:00",
       "current": {
         "run_id": "martin2:1788195589",
         "started_by_id": "1541007763931668502",
@@ -344,9 +344,10 @@
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 1,
-        "best_difficulty": 1215,
+        "best_difficulty": 1399,
         "used_puzzle_ids": [
-          "lZlCB"
+          "lZlCB",
+          "FUDG9"
         ],
         "members": {
           "1541007763931668502": {
@@ -355,7 +356,40 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "FUDG9",
+          "rating": 1399,
+          "themes": "endgame master",
+          "url": "https://lichess.org/training/FUDG9",
+          "start_fen": "7k/7p/3p3P/2nPp1Q1/8/1p1q4/6B1/5K2 w - - 2 43",
+          "current_fen": "7k/7p/3p3P/2nPp1Q1/8/1p1q4/6B1/5K2 w - - 2 43",
+          "solution": [
+            {
+              "uci": "f1g1",
+              "san": "Kg1",
+              "color": "white"
+            },
+            {
+              "uci": "d3e3",
+              "san": "Qe3+",
+              "color": "black"
+            },
+            {
+              "uci": "g5e3",
+              "san": "Qxe3",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
