@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2026-06-18",
     "title": "Circle Dance",
     "fen": "3rrq1k/1p1b2p1/pn2p1Q1/3pP3/3P3P/P4N2/1P1B1PP1/4K2R w K - 0 1",
-    "current_fen": "3rr2k/1p1b2p1/pn2p1Q1/3pPqN1/3P3P/P7/1P1B1PP1/4K2R w K - 2 2",
+    "current_fen": "3rr1k1/1p1b1Np1/pn2p1Q1/3pPq2/3P3P/P7/1P1B1PP1/4K2R w K - 4 3",
     "pgn": "[Result \"*\"]\n[FEN \"3rrq1k/1p1b2p1/pn2p1Q1/3pP3/3P3P/P4N2/1P1B1PP1/4K2R w K - 0 1\"]\n\n1. Ng5 Qf5 2. Nf7+ Kg8 3. Nh6+ Kh8 4. Nxf5 *",
     "all_moves": [
       {
@@ -72,8 +72,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788264365396",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1544317422792613969,
     "attempted_users": {
@@ -85,16 +85,18 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "Ng5",
-        "correct": false,
-        "timestamp": "2026-09-01T12:06:10.025490+00:00"
+        "move": "Nf7",
+        "correct": true,
+        "timestamp": "2026-09-01T12:06:13.886342+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
