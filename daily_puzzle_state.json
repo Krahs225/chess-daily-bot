@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-05-31",
     "title": "Meeting Threats and Making Threats",
     "fen": "4k3/4P2R/3r4/8/4n1P1/5P1K/7P/8 b - - 0 1",
-    "current_fen": "4k3/4P2R/3r4/8/4n1P1/5P1K/7P/8 b - - 0 1",
+    "current_fen": "4k3/4P2R/3r4/6n1/6P1/5PK1/7P/8 b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4k3/4P2R/3r4/8/4n1P1/5P1K/7P/8 b - - 0 1\"]\r\n\r\n1...Ng5+ 2. Kg3 Nxh7\r\n*",
     "all_moves": [
       {
@@ -42,20 +42,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788288777975",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544419816755036184,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rh6",
+        "move": "ng5",
+        "correct": true,
+        "timestamp": "2026-09-01T18:53:02.741755+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Ng5",
         "correct": false,
-        "timestamp": "2026-09-01T18:53:01.612307+00:00"
+        "timestamp": "2026-09-01T18:53:03.304663+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
