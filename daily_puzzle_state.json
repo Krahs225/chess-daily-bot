@@ -1,62 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-10-17",
-    "title": "Tactical Stars Align",
-    "fen": "r4rk1/3bpp1p/1q4pQ/ppR5/3nPN2/P2B4/5PPP/2R3K1 w - - 0 1",
-    "current_fen": "r4rk1/3bpp1p/1Q6/pp5p/3nPN2/P2B4/5PPP/2R3K1 b - - 0 2",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r4rk1/3bpp1p/1q4pQ/ppR5/3nPN2/P2B4/5PPP/2R3K1 w - - 0 1\"]\r\n\r\n1. Rh5 gxh5 2. Qxb6 *",
+    "url": "https://www.chess.com/daily/2016-05-28",
+    "title": "[Smyslov - Fischer, Yugoslavia 1959",
+    "fen": "r2b1r1k/1bq2p1p/p5pN/2n3PN/1p2p3/6QB/PPP4P/1K1R3R w - - 0 1",
+    "current_fen": "r2b1r1k/1bq2p1p/p5pN/2n3PN/1p2p3/6QB/PPP4P/1K1R3R w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2b1r1k/1bq2p1p/p5pN/2n3PN/1p2p3/6QB/PPP4P/1K1R3R w - - 0 1\"]\r\n\r\n1. Rxd8 Qxg3 2. Nxf7+ Kg8 3. Nh6+ Kh8 4. Rxf8+ Rxf8 5. Nxg3\r\n*",
     "all_moves": [
       {
-        "uci": "c5h5",
-        "san": "Rh5",
+        "uci": "d1d8",
+        "san": "Rxd8",
         "color": "white"
       },
       {
-        "uci": "g6h5",
-        "san": "gxh5",
+        "uci": "c7g3",
+        "san": "Qxg3",
         "color": "black"
       },
       {
-        "uci": "h6b6",
-        "san": "Qxb6",
+        "uci": "h6f7",
+        "san": "Nxf7+",
+        "color": "white"
+      },
+      {
+        "uci": "h8g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "f7h6",
+        "san": "Nh6+",
+        "color": "white"
+      },
+      {
+        "uci": "g8h8",
+        "san": "Kh8",
+        "color": "black"
+      },
+      {
+        "uci": "d8f8",
+        "san": "Rxf8+",
+        "color": "white"
+      },
+      {
+        "uci": "a8f8",
+        "san": "Rxf8",
+        "color": "black"
+      },
+      {
+        "uci": "h5g3",
+        "san": "Nxg3",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5h5",
-        "san": "Rh5",
+        "uci": "d1d8",
+        "san": "Rxd8",
         "color": "white"
       },
       {
-        "uci": "h6b6",
-        "san": "Qxb6",
+        "uci": "h6f7",
+        "san": "Nxf7+",
+        "color": "white"
+      },
+      {
+        "uci": "f7h6",
+        "san": "Nh6+",
+        "color": "white"
+      },
+      {
+        "uci": "d8f8",
+        "san": "Rxf8+",
+        "color": "white"
+      },
+      {
+        "uci": "h5g3",
+        "san": "Nxg3",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-09-01T15:29:07.732088+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-09-01T15:29:52.006068+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788276547732",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1544368519007969357,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qxb6",
-        "correct": true,
-        "timestamp": "2026-09-01T15:29:43.091361+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788276592006",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
