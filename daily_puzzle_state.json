@@ -1,92 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-07-17",
-    "title": "GM David Navara vs GM Nigel Short, Corus B, 2009 ",
-    "fen": "4r1rk/pp2q2p/2p2bb1/3p1p2/3N2p1/1PPBnPB1/P5PP/2QRR1K1 w - - 0 1",
-    "current_fen": "6rk/pp5p/2p3b1/3p1pB1/3N2p1/1PPBrP2/P5PP/3R2K1 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1rk/pp2q2p/2p2bb1/3p1p2/3N2p1/1PPBnPB1/P5PP/2QRR1K1 w - - 0 1\"]\r\n\r\n1. Bf4 Bg5 2. Rxe3 Qxe3+ 3. Qxe3 Rxe3 4. Bxg5\r\n*",
+    "url": "https://www.chess.com/daily/2021-02-12",
+    "title": "Full Circle",
+    "fen": "1r3rk1/pbp1n1pp/1p2p3/4N1P1/3P1n2/3B4/PPP2P1R/1K1R4 w - - 0 1",
+    "current_fen": "1r3rk1/pbp1n1pp/1p2p3/4N1P1/3P1n2/3B4/PPP2P1R/1K1R4 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"1r3rk1/pbp1n1pp/1p2p3/4N1P1/3P1n2/3B4/PPP2P1R/1K1R4 w - - 0 1\"]\r\n\r\n1.Bxh7+ Kh8 2.Be4+ Kg8 3.Rdh1 Neg6 4.Rh8+ Nxh8 5.Bh7# 1-0",
     "all_moves": [
       {
-        "uci": "g3f4",
-        "san": "Bf4",
+        "uci": "d3h7",
+        "san": "Bxh7+",
         "color": "white"
       },
       {
-        "uci": "f6g5",
-        "san": "Bg5",
+        "uci": "g8h8",
+        "san": "Kh8",
         "color": "black"
       },
       {
-        "uci": "e1e3",
-        "san": "Rxe3",
+        "uci": "h7e4",
+        "san": "Be4+",
         "color": "white"
       },
       {
-        "uci": "e7e3",
-        "san": "Qxe3+",
+        "uci": "h8g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "c1e3",
-        "san": "Qxe3",
+        "uci": "d1h1",
+        "san": "Rdh1",
         "color": "white"
       },
       {
-        "uci": "e8e3",
-        "san": "Rxe3",
+        "uci": "e7g6",
+        "san": "Neg6",
         "color": "black"
       },
       {
-        "uci": "f4g5",
-        "san": "Bxg5",
+        "uci": "h2h8",
+        "san": "Rh8+",
+        "color": "white"
+      },
+      {
+        "uci": "g6h8",
+        "san": "Nxh8",
+        "color": "black"
+      },
+      {
+        "uci": "e4h7",
+        "san": "Bh7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g3f4",
-        "san": "Bf4",
+        "uci": "d3h7",
+        "san": "Bxh7+",
         "color": "white"
       },
       {
-        "uci": "e1e3",
-        "san": "Rxe3",
+        "uci": "h7e4",
+        "san": "Be4+",
         "color": "white"
       },
       {
-        "uci": "c1e3",
-        "san": "Qxe3",
+        "uci": "d1h1",
+        "san": "Rdh1",
         "color": "white"
       },
       {
-        "uci": "f4g5",
-        "san": "Bxg5",
+        "uci": "h2h8",
+        "san": "Rh8+",
+        "color": "white"
+      },
+      {
+        "uci": "e4h7",
+        "san": "Bh7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-09-01T21:07:33.484617+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-09-01T21:09:50.147640+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788296853484",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544453688595193857,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bxg5",
-        "correct": true,
-        "timestamp": "2026-09-01T21:09:41.988811+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788296990147",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
