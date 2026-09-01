@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-06-21",
     "title": "Developing With Threats",
     "fen": "r3k2r/pp1n1ppp/n1p2q2/8/PbNNb2P/5P2/1P3KP1/R1BQ1B1R w - - 0 1",
-    "current_fen": "r3k2r/pp1n1ppp/n1p2q2/8/PbNNb2P/5P2/1P3KP1/R1BQ1B1R w - - 0 1",
+    "current_fen": "r3k2r/pp1n1ppp/n1p3q1/6B1/PbNNb2P/5P2/1P3KP1/R2Q1B1R w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3k2r/pp1n1ppp/n1p2q2/8/PbNNb2P/5P2/1P3KP1/R1BQ1B1R w - - 0 1\"]\r\n\r\n1. Bg5 Qg6 2. fxe4\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788296498243",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1544452200242085939,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "bg5",
+        "correct": true,
+        "timestamp": "2026-09-01T21:01:55.005756+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
