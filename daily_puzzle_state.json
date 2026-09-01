@@ -1,62 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-06-06",
-    "title": "Lvov - Radchenko, USSR 1957",
-    "fen": "rnbq1rk1/pp1p1ppp/6n1/3p1N1Q/1b2P3/8/PBP2PPP/2KR1B1R w - - 0 1",
-    "current_fen": "rnbq1rk1/pp1p1p1p/6nN/3p4/1b2P3/8/PBP2PPP/2KR1B1R b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rnbq1rk1/pp1p1ppp/6n1/3p1N1Q/1b2P3/8/PBP2PPP/2KR1B1R w - - 0 1\"]\r\n\r\n1. Qh6 gxh6 2. Nxh6#\r\n*",
+    "url": "https://www.chess.com/daily/2026-06-13",
+    "title": "Three 🎁 for Your King",
+    "fen": "3qr1k1/5p2/2n3pB/p1nN4/6b1/b1r2N2/B4PP1/1Q3K1R w - - 0 22",
+    "current_fen": "3qr1k1/5p2/2n3pB/p1nN4/6b1/b1r2N2/B4PP1/1Q3K1R w - - 0 22",
+    "pgn": "[White \"Jeremy Kane\"]\n[Black \"Daily Puzzle Inspiration\"]\n[Result \"1-0\"]\n[FEN \"3qr1k1/5p2/2n3pB/p1nN4/6b1/b1r2N2/B4PP1/1Q3K1R w - - 0 22\"]\n\n22. Qxg6+ fxg6 23. Nf6+ Kh8 24. Bg7+ Kxg7 25. Rh7+ Kxf6 26. Rf7# 1-0",
     "all_moves": [
       {
-        "uci": "h5h6",
-        "san": "Qh6",
+        "uci": "b1g6",
+        "san": "Qxg6+",
         "color": "white"
       },
       {
-        "uci": "g7h6",
-        "san": "gxh6",
+        "uci": "f7g6",
+        "san": "fxg6",
         "color": "black"
       },
       {
-        "uci": "f5h6",
-        "san": "Nxh6#",
+        "uci": "d5f6",
+        "san": "Nf6+",
+        "color": "white"
+      },
+      {
+        "uci": "g8h8",
+        "san": "Kh8",
+        "color": "black"
+      },
+      {
+        "uci": "h6g7",
+        "san": "Bg7+",
+        "color": "white"
+      },
+      {
+        "uci": "h8g7",
+        "san": "Kxg7",
+        "color": "black"
+      },
+      {
+        "uci": "h1h7",
+        "san": "Rh7+",
+        "color": "white"
+      },
+      {
+        "uci": "g7f6",
+        "san": "Kxf6",
+        "color": "black"
+      },
+      {
+        "uci": "h7f7",
+        "san": "Rf7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5h6",
-        "san": "Qh6",
+        "uci": "b1g6",
+        "san": "Qxg6+",
         "color": "white"
       },
       {
-        "uci": "f5h6",
-        "san": "Nxh6#",
+        "uci": "d5f6",
+        "san": "Nf6+",
+        "color": "white"
+      },
+      {
+        "uci": "h6g7",
+        "san": "Bg7+",
+        "color": "white"
+      },
+      {
+        "uci": "h1h7",
+        "san": "Rh7+",
+        "color": "white"
+      },
+      {
+        "uci": "h7f7",
+        "san": "Rf7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-09-01T21:02:31.673705+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-09-01T21:02:49.960086+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788296551673",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1544452422586605590,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nxh6",
-        "correct": true,
-        "timestamp": "2026-09-01T21:02:42.860812+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788296569960",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
