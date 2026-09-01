@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-06-16",
-    "title": "Queen + Bishop Collisions",
-    "fen": "r3r1k1/pb1n1p2/1pq4Q/2p5/3P4/2PB2N1/PP3PPP/R5K1 w - - 0 1",
-    "current_fen": "r3rk2/pb1n1Q2/1pq3B1/2p5/3P4/2P3N1/PP3PPP/R5K1 b - - 0 4",
-    "pgn": "[Event \"It (open)\"]\r\n[Site \"Budapest (Hungary)\"]\r\n[Date \"1990\"]\r\n[White \"Izsak Gyula\"]\r\n[Black \"Krizsany Laszlo\"]\r\n[Result \"1-0\"]\r\n[FEN \"r3r1k1/pb1n1p2/1pq4Q/2p5/3P4/2PB2N1/PP3PPP/R5K1 w - - 0 1\"]\r\n\r\n1.Bh7+ Kh8 2.Bg6+ Kg8 3.Qh7+ Kf8 4.Qxf7# 1-0",
+    "url": "https://www.chess.com/daily/2014-08-14",
+    "title": "Oliveira Vs. Menchik Montevideo 1939",
+    "fen": "rn1k1r2/1Rpb2RQ/p3p3/3pPp2/3P4/1KPB4/5q2/8 w q - 0 1",
+    "current_fen": "rn1k1r2/1Rpb2RQ/p3p3/3pPp2/3P4/1KPB4/5q2/8 w q - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"rn1k1r2/1Rpb2RQ/p3p3/3pPp2/3P4/1KPB4/5q2/8 w q - 0 1\"]\r\n\r\n1. Bb5 Bxb5 2. Rgxc7 Bc4+ 3. Rxc4 dxc4+ 4. Ka3\r\n*",
     "all_moves": [
       {
-        "uci": "d3h7",
-        "san": "Bh7+",
+        "uci": "d3b5",
+        "san": "Bb5",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "d7b5",
+        "san": "Bxb5",
         "color": "black"
       },
       {
-        "uci": "h7g6",
-        "san": "Bg6+",
+        "uci": "g7c7",
+        "san": "Rgxc7",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "b5c4",
+        "san": "Bc4+",
         "color": "black"
       },
       {
-        "uci": "h6h7",
-        "san": "Qh7+",
+        "uci": "c7c4",
+        "san": "Rxc4",
         "color": "white"
       },
       {
-        "uci": "g8f8",
-        "san": "Kf8",
+        "uci": "d5c4",
+        "san": "dxc4+",
         "color": "black"
       },
       {
-        "uci": "h7f7",
-        "san": "Qxf7#",
+        "uci": "b3a3",
+        "san": "Ka3",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3h7",
-        "san": "Bh7+",
+        "uci": "d3b5",
+        "san": "Bb5",
         "color": "white"
       },
       {
-        "uci": "h7g6",
-        "san": "Bg6+",
+        "uci": "g7c7",
+        "san": "Rgxc7",
         "color": "white"
       },
       {
-        "uci": "h6h7",
-        "san": "Qh7+",
+        "uci": "c7c4",
+        "san": "Rxc4",
         "color": "white"
       },
       {
-        "uci": "h7f7",
-        "san": "Qxf7#",
+        "uci": "b3a3",
+        "san": "Ka3",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-09-01T15:16:58.246586+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-09-01T15:17:23.392623+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788275818246",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544365459661529111,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qxf7",
-        "correct": true,
-        "timestamp": "2026-09-01T15:17:13.508440+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788275843392",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
