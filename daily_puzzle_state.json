@@ -60,50 +60,88 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "random",
+  "latest_puzzle_type": "daily",
   "current_puzzle": {
-    "url": "https://www.chess.com/daily/2026-08-31",
-    "title": "Eyes on the Grand Prize",
-    "fen": "1b6/5p2/bR2n3/8/P3P3/4KN1p/6k1/6N1 b - - 0 46",
-    "current_fen": "8/5p2/bR2n3/8/P3Pb2/4KN1p/6k1/6N1 w - - 1 47",
-    "pgn": "[White \"Daily Puzzle Inspiration\"]\n[Black \"David_Goldfarb\"]\n[Result \"0-1\"]\n[FEN \"1b6/5p2/bR2n3/8/P3P3/4KN1p/6k1/6N1 b - - 0 46\"]\n\n46... Bf4# 0-1",
+    "url": "https://www.chess.com/daily/2026-09-01",
+    "title": "Where Did Everybody Go?",
+    "fen": "rnb1k2r/ppp2pp1/3qp2p/8/1b1P4/2B3P1/PP2PPBP/R2QK1NR w KQkq - 0 1",
+    "current_fen": "rnb1k2r/ppp2pp1/3qp2p/8/1b1P4/2B3P1/PP2PPBP/R2QK1NR w KQkq - 0 1",
+    "pgn": "[Result \"*\"]\n[FEN \"rnb1k2r/ppp2pp1/3qp2p/8/1b1P4/2B3P1/PP2PPBP/R2QK1NR w KQkq - 0 1\"]\n\n1. Qa4+ Nc6 2. Bxc6+ Qxc6 3. Qxc6+ bxc6 4. Bxb4 *",
     "all_moves": [
       {
-        "uci": "b8f4",
-        "san": "Bf4#",
+        "uci": "d1a4",
+        "san": "Qa4+",
+        "color": "white"
+      },
+      {
+        "uci": "b8c6",
+        "san": "Nc6",
         "color": "black"
+      },
+      {
+        "uci": "g2c6",
+        "san": "Bxc6+",
+        "color": "white"
+      },
+      {
+        "uci": "d6c6",
+        "san": "Qxc6",
+        "color": "black"
+      },
+      {
+        "uci": "a4c6",
+        "san": "Qxc6+",
+        "color": "white"
+      },
+      {
+        "uci": "b7c6",
+        "san": "bxc6",
+        "color": "black"
+      },
+      {
+        "uci": "c3b4",
+        "san": "Bxb4",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b8f4",
-        "san": "Bf4#",
-        "color": "black"
+        "uci": "d1a4",
+        "san": "Qa4+",
+        "color": "white"
+      },
+      {
+        "uci": "g2c6",
+        "san": "Bxc6+",
+        "color": "white"
+      },
+      {
+        "uci": "a4c6",
+        "san": "Qxc6+",
+        "color": "white"
+      },
+      {
+        "uci": "c3b4",
+        "san": "Bxb4",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 1,
-    "posted_at": "2026-08-31T07:29:55.384772+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-09-01T07:42:34.903315+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "daily_1788161395384",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
+    "puzzle_id": "daily_1788248554903",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Bf4",
-        "correct": true,
-        "timestamp": "2026-08-31T09:14:32.502651+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
