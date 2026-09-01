@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-07-31",
     "title": "Reversal of Fortune",
     "fen": "n1QBq1k1/5p1p/5KP1/p7/8/8/8/8 w - - 0 1",
-    "current_fen": "n1QBq1k1/5p1p/5KP1/p7/8/8/8/8 w - - 0 1",
+    "current_fen": "n1q3k1/2B2p1p/5KP1/p7/8/8/8/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"n1QBq1k1/5p1p/5KP1/p7/8/8/8/8 w - - 0 1\"]\r\n\r\n1. Bc7 Qxc8 2. gxf7+ Kh8 3. Be5 Qc5 4. Bb2 Nc7 5. Ba1 a4 6. Bb2 a3 7. Ba1 a2 8. Bb2 a1=Q 9. Bxa1 Ne6 10. Kxe6+ \r\n*",
     "all_moves": [
       {
@@ -162,13 +162,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788288718009",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544419564790485054,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Bc7",
+        "correct": true,
+        "timestamp": "2026-09-01T18:52:03.917058+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
