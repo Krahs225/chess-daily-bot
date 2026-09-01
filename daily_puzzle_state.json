@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-06-16",
     "title": "Queen + Bishop Collisions",
     "fen": "r3r1k1/pb1n1p2/1pq4Q/2p5/3P4/2PB2N1/PP3PPP/R5K1 w - - 0 1",
-    "current_fen": "r3r1k1/pb1n1p2/1pq4Q/2p5/3P4/2PB2N1/PP3PPP/R5K1 w - - 0 1",
+    "current_fen": "r3r2k/pb1n1p1B/1pq4Q/2p5/3P4/2P3N1/PP3PPP/R5K1 w - - 2 2",
     "pgn": "[Event \"It (open)\"]\r\n[Site \"Budapest (Hungary)\"]\r\n[Date \"1990\"]\r\n[White \"Izsak Gyula\"]\r\n[Black \"Krizsany Laszlo\"]\r\n[Result \"1-0\"]\r\n[FEN \"r3r1k1/pb1n1p2/1pq4Q/2p5/3P4/2PB2N1/PP3PPP/R5K1 w - - 0 1\"]\r\n\r\n1.Bh7+ Kh8 2.Bg6+ Kg8 3.Qh7+ Kf8 4.Qxf7# 1-0",
     "all_moves": [
       {
@@ -72,13 +72,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788275818246",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1544365459661529111,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Bh7",
+        "correct": true,
+        "timestamp": "2026-09-01T15:17:03.229708+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
