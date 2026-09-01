@@ -1,83 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-01-12",
-    "title": "Thunderclap",
-    "fen": "5k2/pb4pQ/1p3q1p/8/2Pb4/3B4/PP4PP/4R2K b - - 0 1",
-    "current_fen": "5k2/p5pQ/1p5p/8/2Pb4/3B1q1K/PP5P/4R3 w - - 3 4",
-    "pgn": "[Result \"*\"]\r\n[FEN \"5k2/pb4pQ/1p3q1p/8/2Pb4/3B4/PP4PP/4R2K b - - 0 1\"]\r\n\r\n1...Bxg2+ 2.Kxg2 Qf2+ 3.Kh3 Qf3+ *",
+    "url": "https://www.chess.com/daily/2013-06-18",
+    "title": "Tal-Starodub, Petrozavodsk 1984",
+    "fen": "4r1k1/pb2Bp1p/6p1/4Q3/2p5/4R1P1/P1q2P1P/1r2R1K1 w - - 0 1",
+    "current_fen": "4r1k1/pb2Bp1p/6p1/4Q3/2p5/4R1P1/P1q2P1P/1r2R1K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/pb2Bp1p/6p1/4Q3/2p5/4R1P1/P1q2P1P/1r2R1K1 w - - 0 1\"]\r\n\r\n1. Qh8+ Kxh8 2. Bf6+ Kg8 3. Rxe8#\r\n*",
     "all_moves": [
       {
-        "uci": "b7g2",
-        "san": "Bxg2+",
-        "color": "black"
-      },
-      {
-        "uci": "h1g2",
-        "san": "Kxg2",
+        "uci": "e5h8",
+        "san": "Qh8+",
         "color": "white"
       },
       {
-        "uci": "f6f2",
-        "san": "Qf2+",
+        "uci": "g8h8",
+        "san": "Kxh8",
         "color": "black"
       },
       {
-        "uci": "g2h3",
-        "san": "Kh3",
+        "uci": "e7f6",
+        "san": "Bf6+",
         "color": "white"
       },
       {
-        "uci": "f2f3",
-        "san": "Qf3+",
+        "uci": "h8g8",
+        "san": "Kg8",
         "color": "black"
+      },
+      {
+        "uci": "e3e8",
+        "san": "Rxe8#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b7g2",
-        "san": "Bxg2+",
-        "color": "black"
+        "uci": "e5h8",
+        "san": "Qh8+",
+        "color": "white"
       },
       {
-        "uci": "f6f2",
-        "san": "Qf2+",
-        "color": "black"
+        "uci": "e7f6",
+        "san": "Bf6+",
+        "color": "white"
       },
       {
-        "uci": "f2f3",
-        "san": "Qf3+",
-        "color": "black"
+        "uci": "e3e8",
+        "san": "Rxe8#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-09-01T12:04:09.612012+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-09-01T12:04:52.393700+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788264249612",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1544316937654239313,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qf3",
-        "correct": true,
-        "timestamp": "2026-09-01T12:04:22.083377+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qg5",
-        "correct": false,
-        "timestamp": "2026-09-01T12:04:19.049327+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788264292393",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
