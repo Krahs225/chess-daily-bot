@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-01-31",
     "title": "Bareev Blinks",
     "fen": "5k1r/4npp1/p3p2p/3nP2P/3P3Q/3N4/qB2KPP1/2R5 w - - 5 28",
-    "current_fen": "5k1r/4npp1/p3p2p/3nP2P/3P3Q/3N4/qB2KPP1/2R5 w - - 5 28",
+    "current_fen": "2n2k1r/5pp1/p3p2p/3nP2P/3P3Q/3N4/qB2KPP1/8 w - - 0 29",
     "pgn": "[Event \"Kremlin Stars Rapid\"]\r\n[Site \"Moscow RUS\"]\r\n[Date \"1996.04.27\"]\r\n[Round \"1.1\"]\r\n[White \"Judit Polgar\"]\r\n[Black \"Evgeny Ilgizovich Bareev\"]\r\n[Result \"1-0\"]\r\n[ECO \"C18\"]\r\n[PlyCount \"55\"]\r\n[FEN \"5k1r/4npp1/p3p2p/3nP2P/3P3Q/3N4/qB2KPP1/2R5 w - - 5 28\"]\r\n\r\n28.Rc8+ Nxc8 29.Qd8# 1-0",
     "all_moves": [
       {
@@ -42,8 +42,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788289006881",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544420777011576863,
     "attempted_users": {
@@ -52,10 +52,16 @@
         "move": "qd8",
         "correct": false,
         "timestamp": "2026-09-01T18:56:51.359773+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rc8",
+        "correct": true,
+        "timestamp": "2026-09-01T18:56:53.285426+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
