@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-06-23",
     "title": "Reflexive Thinking",
     "fen": "6k1/1pp3pp/p2b4/3PR3/4N3/6P1/2P2K1P/4r3 w - - 0 1",
-    "current_fen": "4R3/1pp2kpp/p2b4/3P4/4N3/6P1/2P2K1P/4r3 w - - 2 2",
+    "current_fen": "4R3/1p3kpp/p2p4/3P4/8/6P1/2P2K1P/4r3 w - - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"6k1/1pp3pp/p2b4/3PR3/4N3/6P1/2P2K1P/4r3 w - - 0 1\"]\r\n\r\n1.Re8+ Kf7 2.Nxd6+ cxd6 3.Rxe1 0-1",
     "all_moves": [
       {
@@ -57,29 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788288604915",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1544419091262083244,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nf6",
-        "correct": false,
-        "timestamp": "2026-09-01T18:50:12.056183+00:00"
+        "move": "nxd6",
+        "correct": true,
+        "timestamp": "2026-09-01T18:50:20.025351+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Re8",
-        "correct": true,
-        "timestamp": "2026-09-01T18:50:13.911580+00:00"
+        "move": "Nd6",
+        "correct": false,
+        "timestamp": "2026-09-01T18:50:15.631092+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
