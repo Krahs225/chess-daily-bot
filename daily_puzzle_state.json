@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-05-23",
-    "title": "Good Knight!",
-    "fen": "8/6pk/pN5p/4Rp1q/4nP2/2r4P/Q5P1/6RK b - - 0 1",
-    "current_fen": "8/6pk/pN5p/4Rp2/5P2/7q/5n1Q/6RK w - - 2 4",
-    "pgn": "[FEN \"8/6pk/pN5p/4Rp1q/4nP2/2r4P/Q5P1/6RK b - - 0 1\"]\r\n[PlyCount \"5\"]\r\n\r\n1... Rxh3+ 2. gxh3 Qxh3+ 3. Qh2 Nf2#",
+    "url": "https://www.chess.com/daily/2021-09-13",
+    "title": "Submarine Voyage",
+    "fen": "5rk1/1pp2pp1/2n3p1/4q3/2PN3r/1P5P/5RP1/Q4RK1 w - - 0 1",
+    "current_fen": "5rk1/1pp2pp1/2n3p1/4q3/2PN3r/1P5P/5RP1/Q4RK1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"5rk1/1pp2pp1/2n3p1/4q3/2PN3r/1P5P/5RP1/Q4RK1 w - - 0 1\"]\r\n\r\n1.Nxc6 Qxa1 2.Ne7+ Kh7 3.Rxa1 *",
     "all_moves": [
       {
-        "uci": "c3h3",
-        "san": "Rxh3+",
-        "color": "black"
-      },
-      {
-        "uci": "g2h3",
-        "san": "gxh3",
+        "uci": "d4c6",
+        "san": "Nxc6",
         "color": "white"
       },
       {
-        "uci": "h5h3",
-        "san": "Qxh3+",
+        "uci": "e5a1",
+        "san": "Qxa1",
         "color": "black"
       },
       {
-        "uci": "a2h2",
-        "san": "Qh2",
+        "uci": "c6e7",
+        "san": "Ne7+",
         "color": "white"
       },
       {
-        "uci": "e4f2",
-        "san": "Nf2#",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
+      },
+      {
+        "uci": "f1a1",
+        "san": "Rxa1",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3h3",
-        "san": "Rxh3+",
-        "color": "black"
+        "uci": "d4c6",
+        "san": "Nxc6",
+        "color": "white"
       },
       {
-        "uci": "h5h3",
-        "san": "Qxh3+",
-        "color": "black"
+        "uci": "c6e7",
+        "san": "Ne7+",
+        "color": "white"
       },
       {
-        "uci": "e4f2",
-        "san": "Nf2#",
-        "color": "black"
+        "uci": "f1a1",
+        "san": "Rxa1",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-09-01T16:28:55.318794+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-09-01T16:46:00.667891+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788280135318",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1544383566404780083,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nf2",
-        "correct": true,
-        "timestamp": "2026-09-01T16:29:08.212587+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788281160667",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
