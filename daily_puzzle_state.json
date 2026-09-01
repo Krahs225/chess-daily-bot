@@ -1,105 +1,87 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2026-06-18",
-    "title": "Circle Dance",
-    "fen": "3rrq1k/1p1b2p1/pn2p1Q1/3pP3/3P3P/P4N2/1P1B1PP1/4K2R w K - 0 1",
-    "current_fen": "3rr2k/1p1b2p1/pn2p1Q1/3pPN2/3P3P/P7/1P1B1PP1/4K2R b K - 0 4",
-    "pgn": "[Result \"*\"]\n[FEN \"3rrq1k/1p1b2p1/pn2p1Q1/3pP3/3P3P/P4N2/1P1B1PP1/4K2R w K - 0 1\"]\n\n1. Ng5 Qf5 2. Nf7+ Kg8 3. Nh6+ Kh8 4. Nxf5 *",
+    "url": "https://www.chess.com/daily/2008-08-06",
+    "title": "Advantageous Exchanges",
+    "fen": "1r2q1k1/1b3p2/p5p1/3P4/p1P1np2/3B3Q/P4bPP/1R3R1K w - - 0 1",
+    "current_fen": "1r2q1k1/1b3p2/p5p1/3P4/p1P1np2/3B3Q/P4bPP/1R3R1K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r2q1k1/1b3p2/p5p1/3P4/p1P1np2/3B3Q/P4bPP/1R3R1K w - - 0 1\"]\r\n\r\n1. Bxe4 Qxe4 2. Rxb7 Rxb7 3. Qc8+ Kg7 4. Qxb7\r\n*",
     "all_moves": [
       {
-        "uci": "f3g5",
-        "san": "Ng5",
+        "uci": "d3e4",
+        "san": "Bxe4",
         "color": "white"
       },
       {
-        "uci": "f8f5",
-        "san": "Qf5",
+        "uci": "e8e4",
+        "san": "Qxe4",
         "color": "black"
       },
       {
-        "uci": "g5f7",
-        "san": "Nf7+",
+        "uci": "b1b7",
+        "san": "Rxb7",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "b8b7",
+        "san": "Rxb7",
         "color": "black"
       },
       {
-        "uci": "f7h6",
-        "san": "Nh6+",
+        "uci": "h3c8",
+        "san": "Qc8+",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "g8g7",
+        "san": "Kg7",
         "color": "black"
       },
       {
-        "uci": "h6f5",
-        "san": "Nxf5",
+        "uci": "c8b7",
+        "san": "Qxb7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3g5",
-        "san": "Ng5",
+        "uci": "d3e4",
+        "san": "Bxe4",
         "color": "white"
       },
       {
-        "uci": "g5f7",
-        "san": "Nf7+",
+        "uci": "b1b7",
+        "san": "Rxb7",
         "color": "white"
       },
       {
-        "uci": "f7h6",
-        "san": "Nh6+",
+        "uci": "h3c8",
+        "san": "Qc8+",
         "color": "white"
       },
       {
-        "uci": "h6f5",
-        "san": "Nxf5",
+        "uci": "c8b7",
+        "san": "Qxb7",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-09-01T12:06:05.396604+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-09-01T12:07:02.017711+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788264365396",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544317422792613969,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nxf5",
-        "correct": true,
-        "timestamp": "2026-09-01T12:06:27.849303+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Nh6",
-        "correct": true,
-        "timestamp": "2026-09-01T12:06:15.489505+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1788264422017",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
