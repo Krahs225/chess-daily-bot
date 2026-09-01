@@ -1,77 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-08-01",
-    "title": "Bik's OTB \"gg\" Tactic",
-    "fen": "2r1r1k1/1p2pp2/p3b1p1/q2BQ2p/1pP2R2/1P2P1P1/P4P1P/2R3K1 w - - 0 28",
-    "current_fen": "2r1r3/1p2pk2/p5p1/Q6p/1pP5/1P2P1P1/P4P1P/2R3K1 b - - 0 30",
-    "pgn": "[White \"Wouter Bik\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"2r1r1k1/1p2pp2/p3b1p1/q2BQ2p/1pP2R2/1P2P1P1/P4P1P/2R3K1 w - - 0 28\"]\r\n\r\n28. Rxf7 Bxf7 29. Bxf7+ Kxf7 30. Qxa5 1-0",
+    "url": "https://www.chess.com/daily/2024-11-19",
+    "title": "King Around the Rosie",
+    "fen": "8/6Q1/8/8/4q3/8/1K2p3/4k3 w - - 0 85",
+    "current_fen": "8/6Q1/8/8/4q3/8/1K2p3/4k3 w - - 0 85",
+    "pgn": "[Event \"Ch URS (team)\"]\r\n[Site \"Riga (Latvia)\"]\r\n[Date \"1954.??.??\"]\r\n[Round \"?\"]\r\n[White \"Batuev Andrey Mikhailovich\"]\r\n[Black \"Vladimir P Simagin\"]\r\n[Result \"1-0\"]\r\n[FEN \"8/6Q1/8/8/4q3/8/1K2p3/4k3 w - - 0 85\"]\r\n\r\n85. Qg1+ Kd2 86. Qc1+ Kd3 87. Qc3# 1-0",
     "all_moves": [
       {
-        "uci": "f4f7",
-        "san": "Rxf7",
+        "uci": "g7g1",
+        "san": "Qg1+",
         "color": "white"
       },
       {
-        "uci": "e6f7",
-        "san": "Bxf7",
+        "uci": "e1d2",
+        "san": "Kd2",
         "color": "black"
       },
       {
-        "uci": "d5f7",
-        "san": "Bxf7+",
+        "uci": "g1c1",
+        "san": "Qc1+",
         "color": "white"
       },
       {
-        "uci": "g8f7",
-        "san": "Kxf7",
+        "uci": "d2d3",
+        "san": "Kd3",
         "color": "black"
       },
       {
-        "uci": "e5a5",
-        "san": "Qxa5",
+        "uci": "c1c3",
+        "san": "Qc3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4f7",
-        "san": "Rxf7",
+        "uci": "g7g1",
+        "san": "Qg1+",
         "color": "white"
       },
       {
-        "uci": "d5f7",
-        "san": "Bxf7+",
+        "uci": "g1c1",
+        "san": "Qc1+",
         "color": "white"
       },
       {
-        "uci": "e5a5",
-        "san": "Qxa5",
+        "uci": "c1c3",
+        "san": "Qc3#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-09-01T20:58:44.859439+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-09-01T20:59:23.103897+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788296324859",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1544451470844371038,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxa5",
-        "correct": true,
-        "timestamp": "2026-09-01T20:59:15.605379+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788296363103",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
