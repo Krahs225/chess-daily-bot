@@ -1,92 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-03-29",
-    "title": "Hidden Rook + Bishop Alignment",
-    "fen": "4k3/4r1pp/r7/2p5/b4K1P/6P1/1R1B1P2/Q7 b - - 3 23",
-    "current_fen": "4k3/3b2pp/7r/2p1r1BK/7P/6P1/1R3P2/Q7 w - - 10 27",
-    "pgn": "[White \"sethwmd\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"4k3/4r1pp/r7/2p5/b4K1P/6P1/1R1B1P2/Q7 b - - 3 23\"]\r\n\r\n23... Rf6+ 24. Kg4 Bd7+ 25. Kh5 Re5+ 26. Bg5 Rh6# 0-1",
+    "url": "https://www.chess.com/daily/2012-11-24",
+    "title": "Nunn vs Miroslaw Sarwinski, Naleczow, 1987",
+    "fen": "4r2k/4R1pp/7N/p6n/qp6/6QP/5PPK/8 w - - 0 1",
+    "current_fen": "4r2k/4R1pp/7N/p6n/qp6/6QP/5PPK/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r2k/4R1pp/7N/p6n/qp6/6QP/5PPK/8 w - - 0 1\"]\r\n\r\n1. Qb3 Nf6 2. Qg8+ Nxg8 3. Nf7#\r\n*",
     "all_moves": [
       {
-        "uci": "a6f6",
-        "san": "Rf6+",
-        "color": "black"
-      },
-      {
-        "uci": "f4g4",
-        "san": "Kg4",
+        "uci": "g3b3",
+        "san": "Qb3",
         "color": "white"
       },
       {
-        "uci": "a4d7",
-        "san": "Bd7+",
+        "uci": "h5f6",
+        "san": "Nf6",
         "color": "black"
       },
       {
-        "uci": "g4h5",
-        "san": "Kh5",
+        "uci": "b3g8",
+        "san": "Qg8+",
         "color": "white"
       },
       {
-        "uci": "e7e5",
-        "san": "Re5+",
+        "uci": "f6g8",
+        "san": "Nxg8",
         "color": "black"
       },
       {
-        "uci": "d2g5",
-        "san": "Bg5",
+        "uci": "h6f7",
+        "san": "Nf7#",
         "color": "white"
-      },
-      {
-        "uci": "f6h6",
-        "san": "Rh6#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "a6f6",
-        "san": "Rf6+",
-        "color": "black"
+        "uci": "g3b3",
+        "san": "Qb3",
+        "color": "white"
       },
       {
-        "uci": "a4d7",
-        "san": "Bd7+",
-        "color": "black"
+        "uci": "b3g8",
+        "san": "Qg8+",
+        "color": "white"
       },
       {
-        "uci": "e7e5",
-        "san": "Re5+",
-        "color": "black"
-      },
-      {
-        "uci": "f6h6",
-        "san": "Rh6#",
-        "color": "black"
+        "uci": "h6f7",
+        "san": "Nf7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-09-01T15:31:23.159517+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-09-01T15:31:59.340998+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788276683159",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544369087856119910,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rh6",
-        "correct": true,
-        "timestamp": "2026-09-01T15:31:51.935622+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788276719341",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
