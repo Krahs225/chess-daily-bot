@@ -1,105 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-12-15",
-    "title": "Leaping into the Action",
-    "fen": "4r2k/bp2r1p1/6Qp/p2PN3/Pn5P/1PN2q1n/1B4RP/2R2B1K b - - 0 1",
-    "current_fen": "4r2k/bp2r1p1/6Qp/p2PN3/Pn5P/1PN5/1B3n1P/2R2qRK w - - 2 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"4r2k/bp2r1p1/6Qp/p2PN3/Pn5P/1PN2q1n/1B4RP/2R2B1K b - - 0 1\"]\r\n\r\n1... Nf2+ 2. Kg1 Nd1+ 3. Kh1 Qxf1+ 4. Rg1 Nf2# *",
+    "url": "https://www.chess.com/daily/2010-12-26",
+    "title": "The Road to Checkmate",
+    "fen": "6k1/2b2ppp/2p5/1p1n3q/3Pr3/2P3P1/1P1B1P1P/R2R2K1 w - - 0 1",
+    "current_fen": "6k1/2b2ppp/2p5/1p1n3q/3Pr3/2P3P1/1P1B1P1P/R2R2K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/2b2ppp/2p5/1p1n3q/3Pr3/2P3P1/1P1B1P1P/R2R2K1 w - - 0 1\"]\r\n\r\n1. Ra8+ Bd8 2. Rxd8+ Re8 3. Rxe8#\r\n*",
     "all_moves": [
       {
-        "uci": "h3f2",
-        "san": "Nf2+",
-        "color": "black"
-      },
-      {
-        "uci": "h1g1",
-        "san": "Kg1",
+        "uci": "a1a8",
+        "san": "Ra8+",
         "color": "white"
       },
       {
-        "uci": "f2d1",
-        "san": "Nd1+",
+        "uci": "c7d8",
+        "san": "Bd8",
         "color": "black"
       },
       {
-        "uci": "g1h1",
-        "san": "Kh1",
+        "uci": "a8d8",
+        "san": "Rxd8+",
         "color": "white"
       },
       {
-        "uci": "f3f1",
-        "san": "Qxf1+",
+        "uci": "e4e8",
+        "san": "Re8",
         "color": "black"
       },
       {
-        "uci": "g2g1",
-        "san": "Rg1",
+        "uci": "d8e8",
+        "san": "Rxe8#",
         "color": "white"
-      },
-      {
-        "uci": "d1f2",
-        "san": "Nf2#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h3f2",
-        "san": "Nf2+",
-        "color": "black"
+        "uci": "a1a8",
+        "san": "Ra8+",
+        "color": "white"
       },
       {
-        "uci": "f2d1",
-        "san": "Nd1+",
-        "color": "black"
+        "uci": "a8d8",
+        "san": "Rxd8+",
+        "color": "white"
       },
       {
-        "uci": "f3f1",
-        "san": "Qxf1+",
-        "color": "black"
-      },
-      {
-        "uci": "d1f2",
-        "san": "Nf2#",
-        "color": "black"
+        "uci": "d8e8",
+        "san": "Rxe8#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-09-01T18:57:19.600082+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-09-01T18:57:55.725870+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788289039600",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544420913577984131,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Nf2",
-        "correct": true,
-        "timestamp": "2026-09-01T18:57:31.110972+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nf2",
-        "correct": true,
-        "timestamp": "2026-09-01T18:57:44.669450+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1788289075725",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
