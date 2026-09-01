@@ -1,62 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-06-21",
-    "title": "Developing With Threats",
-    "fen": "r3k2r/pp1n1ppp/n1p2q2/8/PbNNb2P/5P2/1P3KP1/R1BQ1B1R w - - 0 1",
-    "current_fen": "r3k2r/pp1n1ppp/n1p3q1/6B1/PbNNP2P/8/1P3KP1/R2Q1B1R b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3k2r/pp1n1ppp/n1p2q2/8/PbNNb2P/5P2/1P3KP1/R1BQ1B1R w - - 0 1\"]\r\n\r\n1. Bg5 Qg6 2. fxe4\r\n*",
+    "url": "https://www.chess.com/daily/2025-11-20",
+    "title": "Falling to Pieces",
+    "fen": "2r2r1k/b2q3p/2b3Q1/Pp2P3/3P4/PRP1B2R/5PPP/6K1 b - - 0 26",
+    "current_fen": "2r2r1k/b2q3p/2b3Q1/Pp2P3/3P4/PRP1B2R/5PPP/6K1 b - - 0 26",
+    "pgn": "[White \"Daily Puzzle Inspiration\"]\r\n[Black \"Seth_Isaac\"]\r\n[Result \"0-1\"]\r\n[FEN \"2r2r1k/b2q3p/2b3Q1/Pp2P3/3P4/PRP1B2R/5PPP/6K1 b - - 0 26\"]\r\n\r\n26... Qxh3 27. gxh3 hxg6 0-1",
     "all_moves": [
       {
-        "uci": "c1g5",
-        "san": "Bg5",
-        "color": "white"
-      },
-      {
-        "uci": "f6g6",
-        "san": "Qg6",
+        "uci": "d7h3",
+        "san": "Qxh3",
         "color": "black"
       },
       {
-        "uci": "f3e4",
-        "san": "fxe4",
+        "uci": "g2h3",
+        "san": "gxh3",
         "color": "white"
+      },
+      {
+        "uci": "h7g6",
+        "san": "hxg6",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1g5",
-        "san": "Bg5",
-        "color": "white"
+        "uci": "d7h3",
+        "san": "Qxh3",
+        "color": "black"
       },
       {
-        "uci": "f3e4",
-        "san": "fxe4",
-        "color": "white"
+        "uci": "h7g6",
+        "san": "hxg6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 2,
-    "posted_at": "2026-09-01T21:01:38.243447+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-09-01T21:02:09.660193+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788296498243",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1544452200242085939,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "fxe4",
-        "correct": true,
-        "timestamp": "2026-09-01T21:02:01.942051+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788296529660",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
