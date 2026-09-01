@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2025-08-01",
     "title": "Bik's OTB \"gg\" Tactic",
     "fen": "2r1r1k1/1p2pp2/p3b1p1/q2BQ2p/1pP2R2/1P2P1P1/P4P1P/2R3K1 w - - 0 28",
-    "current_fen": "2r1r1k1/1p2pp2/p3b1p1/q2BQ2p/1pP2R2/1P2P1P1/P4P1P/2R3K1 w - - 0 28",
+    "current_fen": "2r1r1k1/1p2pb2/p5p1/q2BQ2p/1pP5/1P2P1P1/P4P1P/2R3K1 w - - 0 29",
     "pgn": "[White \"Wouter Bik\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"2r1r1k1/1p2pp2/p3b1p1/q2BQ2p/1pP2R2/1P2P1P1/P4P1P/2R3K1 w - - 0 28\"]\r\n\r\n28. Rxf7 Bxf7 29. Bxf7+ Kxf7 30. Qxa5 1-0",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788296324859",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544451470844371038,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "bxe6",
-        "correct": false,
-        "timestamp": "2026-09-01T20:58:54.160035+00:00"
+        "move": "rxf7",
+        "correct": true,
+        "timestamp": "2026-09-01T20:59:09.724792+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
