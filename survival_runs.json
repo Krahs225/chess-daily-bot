@@ -193,7 +193,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-02T21:39:52.007352+00:00",
-        "last_activity": 1788385465.1842003,
+        "last_activity": 1788385487.765498,
         "paused_reason": null,
         "puzzle_number": 5,
         "strikes": 2,
@@ -208,7 +208,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 5,
+            "correct": 6,
             "wrong": 0
           },
           "1370434994945916940": {
@@ -223,7 +223,7 @@
           "themes": "deflection endgame exposedKing mate mateIn4 veryLong",
           "url": "https://lichess.org/training/KzaW7",
           "start_fen": "4rk2/6R1/2b2P2/3pP3/2p2K2/8/p7/1q4R1 w - - 0 50",
-          "current_fen": "4r1R1/5k2/2b2P2/3pP3/2p2K2/8/p7/1q4R1 w - - 2 51",
+          "current_fen": "4r1R1/6R1/2b1kP2/3pP3/2p2K2/8/p7/1q6 w - - 4 52",
           "solution": [
             {
               "uci": "g7g8",
@@ -262,7 +262,7 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 2,
+          "next_solution_index": 4,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -270,24 +270,32 @@
           "wrong_users": [
             "1370434994945916940"
           ],
-          "last_move_san": "Rg8+",
+          "last_move_san": "R1g7+",
           "accepted_moves": [
             {
               "san": "Rg8+",
               "uci": "g7g8",
               "accepted_at": 1788385458.0496037,
               "solver_id": "1370434994945916940"
+            },
+            {
+              "san": "R1g7+",
+              "uci": "g1g7",
+              "accepted_at": 1788385487.76535,
+              "solver_id": "601406103712170014"
             }
           ],
-          "last_accepted_move_uci": "g7g8",
-          "last_accepted_move_san": "Rg8+",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1788385458.0496025,
-          "position_before_last_move": "4rk2/6R1/2b2P2/3pP3/2p2K2/8/p7/1q4R1 w - - 0 50"
+          "last_accepted_move_uci": "g1g7",
+          "last_accepted_move_san": "R1g7+",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1788385487.7653491,
+          "position_before_last_move": "4r1R1/5k2/2b2P2/3pP3/2p2K2/8/p7/1q4R1 w - - 2 51"
         },
         "first_solver_id": "1370434994945916940",
         "first_solver_name": "Capybrawlgames2",
-        "helper_candidates": {},
+        "helper_candidates": {
+          "601406103712170014": "TheMakina"
+        },
         "helper_awarded": []
       },
       "history": []
