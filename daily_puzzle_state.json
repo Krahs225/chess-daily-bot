@@ -1,107 +1,130 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-09-01",
-    "title": "Revelation",
-    "fen": "7k/6p1/1P3bb1/p4p1p/5PP1/1Bp4P/Pq2Q2K/8 w - - 0 1",
-    "current_fen": "6Bk/6p1/5bb1/p4p1p/5PP1/7P/P6K/1Q6 b - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"7k/6p1/1P3bb1/p4p1p/5PP1/1Bp4P/Pq2Q2K/8 w - - 0 1\"]\r\n\r\n1.Qxb2 cxb2 2.b7 b1=Q 3.b8=Q+ Kh7 4.Bg8+ Kh8 5.Qxb1 *",
+    "url": "https://www.chess.com/daily/2024-07-21",
+    "title": "Lapin > The Fork",
+    "fen": "8/5n2/8/3P2PK/3k2p1/8/8/8 w - - 0 1",
+    "current_fen": "8/5n2/8/3P2PK/3k2p1/8/8/8 w - - 0 1",
+    "pgn": "[Date \"1930.??.??\"]\r\n[White \"Lapin\"]\r\n[Black \"Study\"]\r\n[Result \"*\"]\r\n[FEN \"8/5n2/8/3P2PK/3k2p1/8/8/8 w - - 0 1\"]\r\n\r\n1. g6 Nd6 2. g7 Ne8 3. g8=Q Nf6+ 4. Kg5 Nxg8 5. d6 g3 6. d7 g2 7. d8=Q+ *",
     "all_moves": [
       {
-        "uci": "e2b2",
-        "san": "Qxb2",
+        "uci": "g5g6",
+        "san": "g6",
         "color": "white"
       },
       {
-        "uci": "c3b2",
-        "san": "cxb2",
+        "uci": "f7d6",
+        "san": "Nd6",
         "color": "black"
       },
       {
-        "uci": "b6b7",
-        "san": "b7",
+        "uci": "g6g7",
+        "san": "g7",
         "color": "white"
       },
       {
-        "uci": "b2b1q",
-        "san": "b1=Q",
+        "uci": "d6e8",
+        "san": "Ne8",
         "color": "black"
       },
       {
-        "uci": "b7b8q",
-        "san": "b8=Q+",
+        "uci": "g7g8q",
+        "san": "g8=Q",
         "color": "white"
       },
       {
-        "uci": "h8h7",
-        "san": "Kh7",
+        "uci": "e8f6",
+        "san": "Nf6+",
         "color": "black"
       },
       {
-        "uci": "b3g8",
-        "san": "Bg8+",
+        "uci": "h5g5",
+        "san": "Kg5",
         "color": "white"
       },
       {
-        "uci": "h7h8",
-        "san": "Kh8",
+        "uci": "f6g8",
+        "san": "Nxg8",
         "color": "black"
       },
       {
-        "uci": "b8b1",
-        "san": "Qxb1",
+        "uci": "d5d6",
+        "san": "d6",
+        "color": "white"
+      },
+      {
+        "uci": "g4g3",
+        "san": "g3",
+        "color": "black"
+      },
+      {
+        "uci": "d6d7",
+        "san": "d7",
+        "color": "white"
+      },
+      {
+        "uci": "g3g2",
+        "san": "g2",
+        "color": "black"
+      },
+      {
+        "uci": "d7d8q",
+        "san": "d8=Q+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e2b2",
-        "san": "Qxb2",
+        "uci": "g5g6",
+        "san": "g6",
         "color": "white"
       },
       {
-        "uci": "b6b7",
-        "san": "b7",
+        "uci": "g6g7",
+        "san": "g7",
         "color": "white"
       },
       {
-        "uci": "b7b8q",
-        "san": "b8=Q+",
+        "uci": "g7g8q",
+        "san": "g8=Q",
         "color": "white"
       },
       {
-        "uci": "b3g8",
-        "san": "Bg8+",
+        "uci": "h5g5",
+        "san": "Kg5",
         "color": "white"
       },
       {
-        "uci": "b8b1",
-        "san": "Qxb1",
+        "uci": "d5d6",
+        "san": "d6",
+        "color": "white"
+      },
+      {
+        "uci": "d6d7",
+        "san": "d7",
+        "color": "white"
+      },
+      {
+        "uci": "d7d8q",
+        "san": "d8=Q+",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-09-02T16:18:22.088655+00:00",
-    "answer_posted": true,
+    "player_move_count": 7,
+    "posted_at": "2026-09-02T16:21:47.155789+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788365902088",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1544743299196391434,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxb1",
-        "correct": true,
-        "timestamp": "2026-09-02T16:19:03.321194+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788366107155",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
