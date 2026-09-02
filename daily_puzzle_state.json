@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-07-15",
     "title": "Stopping the Pawns",
     "fen": "r7/2RPPk1p/5n2/5P2/8/8/5PKP/8 b - - 0 1",
-    "current_fen": "r7/2RPPk1p/5n2/5P2/8/8/5PKP/8 b - - 0 1",
+    "current_fen": "6r1/2RPPk1p/5n2/5P2/8/5K2/5P1P/8 b - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/2RPPk1p/5n2/5P2/8/8/5PKP/8 b - - 0 1\"]\r\n\r\n1...Rg8+ 2. Kf3 Kxe7\r\n*",
     "all_moves": [
       {
@@ -42,26 +42,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788378057243",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544794280676036690,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nxd7",
+        "move": "rg8",
         "correct": false,
-        "timestamp": "2026-09-02T19:41:01.522919+00:00"
+        "timestamp": "2026-09-02T19:41:10.100287+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "kxe7",
-        "correct": false,
-        "timestamp": "2026-09-02T19:41:04.241783+00:00"
+        "move": "rg8",
+        "correct": true,
+        "timestamp": "2026-09-02T19:41:10.093702+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
