@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-05-16",
     "title": "Fluvia Poyatos - Grischuk, Oropesa 1998",
     "fen": "6k1/pp4pp/8/P3p3/3nPrbq/R7/1P1QBP2/2B2RK1 w - - 0 1",
-    "current_fen": "6k1/pp4pp/8/P3p3/3nPrbq/R7/1P1QBP2/2B2RK1 w - - 0 1",
+    "current_fen": "7k/pp4pp/8/P3p3/2BnPrbq/R7/1P1Q1P2/2B2RK1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/pp4pp/8/P3p3/3nPrbq/R7/1P1QBP2/2B2RK1 w - - 0 1\"]\r\n\r\n1. Bc4+ Kh8 2. Qxd4 Bf3 3. Qd8+ Qxd8 4. Bxf4 exf4 5. Rxf3\r\n*",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788366632462",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544746362329890906,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxd4",
-        "correct": false,
-        "timestamp": "2026-09-02T16:30:49.660511+00:00"
+        "move": "bc4",
+        "correct": true,
+        "timestamp": "2026-09-02T16:31:05.988796+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -105,8 +105,8 @@
         "timestamp": "2026-09-02T16:30:55.571718+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
