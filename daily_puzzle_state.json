@@ -1,90 +1,115 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-01-31",
-    "title": "Diagonal Overload",
-    "fen": "rn5r/1bpk1q1p/3b2pQ/2p3B1/Pp6/1P1P1N2/5PPP/2R1R1K1 w - - 0 1",
-    "current_fen": "rn2k2r/1bp1bN1p/6pQ/2p3B1/Pp6/1P1P4/5PPP/2R3K1 b - - 0 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"rn5r/1bpk1q1p/3b2pQ/2p3B1/Pp6/1P1P1N2/5PPP/2R1R1K1 w - - 0 1\"]\r\n\r\n1. Re7+ Bxe7 2. Ne5+ Ke8 3. Nxf7 *",
+    "url": "https://www.chess.com/daily/2011-07-29",
+    "title": "Blake - Hooke, London 1891",
+    "fen": "r2qkb1r/pppb2pp/2np1n2/5pN1/2BQP3/2N5/PPP2PPP/R1B1K2R w KQkq - 0 1",
+    "current_fen": "r2q1b1r/pppbkBpp/2np1n2/5pN1/3QP3/2N5/PPP2PPP/R1B1K2R w KQ - 2 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qkb1r/pppb2pp/2np1n2/5pN1/2BQP3/2N5/PPP2PPP/R1B1K2R w KQkq - 0 1\"]\r\n\r\n1. Bf7+ Ke7 2. Qxf6+ Kxf6 3. Nd5+ Ke5 4. Nf3+ Kxe4 5. Nc3#\r\n*",
     "all_moves": [
       {
-        "uci": "e1e7",
-        "san": "Re7+",
+        "uci": "c4f7",
+        "san": "Bf7+",
         "color": "white"
       },
       {
-        "uci": "d6e7",
-        "san": "Bxe7",
+        "uci": "e8e7",
+        "san": "Ke7",
         "color": "black"
       },
       {
-        "uci": "f3e5",
-        "san": "Ne5+",
+        "uci": "d4f6",
+        "san": "Qxf6+",
         "color": "white"
       },
       {
-        "uci": "d7e8",
-        "san": "Ke8",
+        "uci": "e7f6",
+        "san": "Kxf6",
         "color": "black"
       },
       {
-        "uci": "e5f7",
-        "san": "Nxf7",
+        "uci": "c3d5",
+        "san": "Nd5+",
+        "color": "white"
+      },
+      {
+        "uci": "f6e5",
+        "san": "Ke5",
+        "color": "black"
+      },
+      {
+        "uci": "g5f3",
+        "san": "Nf3+",
+        "color": "white"
+      },
+      {
+        "uci": "e5e4",
+        "san": "Kxe4",
+        "color": "black"
+      },
+      {
+        "uci": "d5c3",
+        "san": "Nc3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1e7",
-        "san": "Re7+",
+        "uci": "c4f7",
+        "san": "Bf7+",
         "color": "white"
       },
       {
-        "uci": "f3e5",
-        "san": "Ne5+",
+        "uci": "d4f6",
+        "san": "Qxf6+",
         "color": "white"
       },
       {
-        "uci": "e5f7",
-        "san": "Nxf7",
+        "uci": "c3d5",
+        "san": "Nd5+",
+        "color": "white"
+      },
+      {
+        "uci": "g5f3",
+        "san": "Nf3+",
+        "color": "white"
+      },
+      {
+        "uci": "d5c3",
+        "san": "Nc3#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-09-02T18:34:21.589563+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-09-02T18:34:41.844593+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788374061589",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1544777525543309403,
+    "puzzle_id": "random_1788374081844",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1544777606770196504,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "ne5",
+        "move": "bf7",
         "correct": true,
-        "timestamp": "2026-09-02T18:34:31.158190+00:00"
+        "timestamp": "2026-09-02T18:34:44.997112+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nxf7",
-        "correct": true,
-        "timestamp": "2026-09-02T18:34:34.022787+00:00"
+        "move": "bf7",
+        "correct": false,
+        "timestamp": "2026-09-02T18:34:45.202712+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
