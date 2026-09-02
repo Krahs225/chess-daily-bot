@@ -200,7 +200,8 @@
         "best_difficulty": 1384,
         "used_puzzle_ids": [
           "bjsbG",
-          "xQCZD"
+          "xQCZD",
+          "TixpB"
         ],
         "members": {
           "601406103712170014": {
@@ -214,7 +215,40 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "TixpB",
+          "rating": 1314,
+          "themes": "endgame mate mateIn2 short",
+          "url": "https://lichess.org/training/TixpB",
+          "start_fen": "5k2/4pp2/p2p1br1/1p6/3Pq3/P1P2N1Q/1P3P2/3K3R w - - 5 31",
+          "current_fen": "5k2/4pp2/p2p1br1/1p6/3Pq3/P1P2N1Q/1P3P2/3K3R w - - 5 31",
+          "solution": [
+            {
+              "uci": "h3c8",
+              "san": "Qc8+",
+              "color": "white"
+            },
+            {
+              "uci": "f8g7",
+              "san": "Kg7",
+              "color": "black"
+            },
+            {
+              "uci": "c8h8",
+              "san": "Qh8#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
