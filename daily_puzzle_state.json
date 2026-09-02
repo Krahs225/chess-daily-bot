@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-10-21",
     "title": "Mate in 7",
     "fen": "4r2k/5p1p/b2p4/3Pb1Q1/2pB4/pqN5/5K1P/R7 w - - 0 1",
-    "current_fen": "6R1/3krp1p/b6Q/3Pp3/2p5/pqN5/5K1P/8 w - - 10 7",
+    "current_fen": "6R1/3krp1p/b1Q5/3Pp3/2p5/pqN5/5K1P/8 b - - 11 7",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r2k/5p1p/b2p4/3Pb1Q1/2pB4/pqN5/5K1P/R7 w - - 0 1\"]\r\n\r\n1. Bxe5+ dxe5 2. Qf6+ Kg8 3. Rg1+ Kf8 4. Qd6+ Re7 5. Qh6+ Ke8 6. Rg8+ Kd7 7. Qc6#\r\n*",
     "all_moves": [
       {
@@ -117,9 +117,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788360424741",
-    "next_solution_index": 12,
-    "next_player_index": 6,
-    "solved": false,
+    "next_solution_index": 13,
+    "next_player_index": 7,
+    "solved": true,
     "message_id": 1544720325508468776,
     "attempted_users": {
       "601406103712170014": {
@@ -127,13 +127,21 @@
         "move": "Rg8",
         "correct": true,
         "timestamp": "2026-09-02T14:48:25.097640+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qc6",
+        "correct": true,
+        "timestamp": "2026-09-02T14:48:26.597578+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
