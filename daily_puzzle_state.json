@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-02-24",
     "title": "Mating Net",
     "fen": "1rb5/2R2p2/3npk1p/2N4B/5P2/8/5P2/6K1 w - - 0 1",
-    "current_fen": "1rb5/2R2p2/3npk1p/2N4B/5P2/8/5P2/6K1 w - - 0 1",
+    "current_fen": "1rb5/2R2p2/4pk1p/7B/4nP2/8/5P2/6K1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1rb5/2R2p2/3npk1p/2N4B/5P2/8/5P2/6K1 w - - 0 1\"]\r\n\r\n1. Ne4+ Nxe4 2. Rxf7#\r\n*",
     "all_moves": [
       {
@@ -42,8 +42,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788374432648",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544779077989310555,
     "attempted_users": {
@@ -55,13 +55,13 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "rxf7",
-        "correct": false,
-        "timestamp": "2026-09-02T18:40:37.296917+00:00"
+        "move": "ne4",
+        "correct": true,
+        "timestamp": "2026-09-02T18:40:40.210158+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
