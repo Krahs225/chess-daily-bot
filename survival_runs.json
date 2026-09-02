@@ -266,9 +266,9 @@
     },
     "sharkmeister": {
       "name": "sharkmeister",
-      "best_puzzle": 2,
-      "best_difficulty": 1304,
-      "best_completed_at": "2026-09-02T21:36:14.910339+00:00",
+      "best_puzzle": 3,
+      "best_difficulty": 1384,
+      "best_completed_at": "2026-09-02T21:36:56.067528+00:00",
       "current": {
         "run_id": "sharkmeister:1788384904",
         "started_by_id": "1370434994945916940",
@@ -284,7 +284,8 @@
         "best_difficulty": 1384,
         "used_puzzle_ids": [
           "lDksH",
-          "QuMxX"
+          "QuMxX",
+          "BMbtV"
         ],
         "members": {
           "601406103712170014": {
@@ -298,7 +299,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "BMbtV",
+          "rating": 1336,
+          "themes": "advantage endgame rookEndgame short trappedPiece",
+          "url": "https://lichess.org/training/BMbtV",
+          "start_fen": "6k1/p5pp/1p1r4/1R1P1r2/PP6/7P/6P1/3R2K1 b - - 1 39",
+          "current_fen": "6k1/p5pp/1p1r4/1R1P1r2/PP6/7P/6P1/3R2K1 b - - 1 39",
+          "solution": [
+            {
+              "uci": "a7a6",
+              "san": "a6",
+              "color": "black"
+            },
+            {
+              "uci": "b5b6",
+              "san": "Rxb6",
+              "color": "white"
+            },
+            {
+              "uci": "d6b6",
+              "san": "Rxb6",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
