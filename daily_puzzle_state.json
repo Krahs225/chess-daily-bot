@@ -1,65 +1,67 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2008-02-17",
-    "title": "Removing the Guard",
-    "fen": "8/1R2ppkp/3p2pb/8/2r1Pn2/P1N2P2/5BPP/6K1 b - - 0 28",
-    "current_fen": "8/1R2ppkp/3p2pb/8/2r1Pn2/P1N2P2/5BPP/6K1 b - - 0 28",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/1R2ppkp/3p2pb/8/2r1Pn2/P1N2P2/5BPP/6K1 b - - 0 28\"]\r\n\r\n28...e5 29. Be1 Nd3 \r\n*",
+    "url": "https://www.chess.com/daily/2025-12-04",
+    "title": "Outta My Way!",
+    "fen": "5qrk/pb5p/1p2pPp1/2rp2P1/3B3Q/P2n2N1/1P4PK/7R w - - 0 26",
+    "current_fen": "5qrk/pb5p/1p2pPp1/2rp2P1/3B3Q/P2n2N1/1P4PK/7R w - - 0 26",
+    "pgn": "[White \"Kara\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"5qrk/pb5p/1p2pPp1/2rp2P1/3B3Q/P2n2N1/1P4PK/7R w - - 0 26\"]\r\n\r\n26. Qxh7+ Kxh7 27. Kg1+ Qh6 28. Rxh6# 1-0",
     "all_moves": [
       {
-        "uci": "e7e5",
-        "san": "e5",
-        "color": "black"
-      },
-      {
-        "uci": "f2e1",
-        "san": "Be1",
+        "uci": "h4h7",
+        "san": "Qxh7+",
         "color": "white"
       },
       {
-        "uci": "f4d3",
-        "san": "Nd3",
+        "uci": "h8h7",
+        "san": "Kxh7",
         "color": "black"
+      },
+      {
+        "uci": "h2g1",
+        "san": "Kg1+",
+        "color": "white"
+      },
+      {
+        "uci": "f8h6",
+        "san": "Qh6",
+        "color": "black"
+      },
+      {
+        "uci": "h1h6",
+        "san": "Rxh6#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e7e5",
-        "san": "e5",
-        "color": "black"
+        "uci": "h4h7",
+        "san": "Qxh7+",
+        "color": "white"
       },
       {
-        "uci": "f4d3",
-        "san": "Nd3",
-        "color": "black"
+        "uci": "h2g1",
+        "san": "Kg1+",
+        "color": "white"
+      },
+      {
+        "uci": "h1h6",
+        "san": "Rxh6#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-09-02T19:37:30.859983+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-09-02T19:39:19.725975+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788377850859",
+    "puzzle_id": "random_1788377959725",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1544793415089266759,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nd5",
-        "correct": false,
-        "timestamp": "2026-09-02T19:39:06.122569+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nd3",
-        "correct": false,
-        "timestamp": "2026-09-02T19:37:41.810889+00:00"
-      }
-    },
+    "message_id": 1544793871697977386,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
