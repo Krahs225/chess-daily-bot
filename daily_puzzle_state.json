@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-06-05",
     "title": "Trespassing",
     "fen": "1r1q1k1r/Q4p1p/2B2npN/P7/2bp4/1P4P1/2PP1P1P/R1B1K2R b KQ - 0 1",
-    "current_fen": "4rk1r/Q4p1p/5npN/P7/2bp4/1P4P1/2PP1P1P/R1BK3R b - - 1 3",
+    "current_fen": "4rk1r/Q4p1p/5npN/P7/3p4/1P4P1/2PPbP1P/R1B1K2R b - - 3 4",
     "pgn": "[Result \"0-1\"]\r\n[FEN \"1r1q1k1r/Q4p1p/2B2npN/P7/2bp4/1P4P1/2PP1P1P/R1B1K2R b KQ - 0 1\"]\r\n\r\n1...Qe8+ 2.Bxe8 Rxe8+ 3.Kd1 Be2+ 4.Ke1 Bg4+ 5.Kf1 Bh3+ 6.Kg1 Re1# 0-1",
     "all_moves": [
       {
@@ -102,8 +102,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788366926707",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "next_solution_index": 6,
+    "next_player_index": 3,
     "solved": false,
     "message_id": 1544747595824504994,
     "attempted_users": {
@@ -115,16 +115,18 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "qe8",
+        "move": "bf3",
         "correct": false,
-        "timestamp": "2026-09-02T16:35:31.227901+00:00"
+        "timestamp": "2026-09-02T16:35:36.752323+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
