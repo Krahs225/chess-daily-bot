@@ -1,111 +1,119 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-02-12",
-    "title": "Full Circle",
-    "fen": "1r3rk1/pbp1n1pp/1p2p3/4N1P1/3P1n2/3B4/PPP2P1R/1K1R4 w - - 0 1",
-    "current_fen": "1r3r1k/pbp1n1pB/1p2p3/4N1P1/3P1n2/8/PPP2P1R/1K1R4 w - - 1 2",
-    "pgn": "[Result \"*\"]\r\n[FEN \"1r3rk1/pbp1n1pp/1p2p3/4N1P1/3P1n2/3B4/PPP2P1R/1K1R4 w - - 0 1\"]\r\n\r\n1.Bxh7+ Kh8 2.Be4+ Kg8 3.Rdh1 Neg6 4.Rh8+ Nxh8 5.Bh7# 1-0",
+    "url": "https://www.chess.com/daily/2015-07-31",
+    "title": "Slow Progression",
+    "fen": "4q3/4rr1p/7B/4Q1P1/1k6/1P2R3/P7/4K3 w - - 0 1",
+    "current_fen": "4q3/4rr1p/7B/4Q1P1/1k6/1P2R3/P7/4K3 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4q3/4rr1p/7B/4Q1P1/1k6/1P2R3/P7/4K3 w - - 0 1\"]\r\n\r\n1. Re4+ Ka3 2. Bf8 Rf1+ 3. Ke2 Rf2+ 4. Ke3 Rf3+ 5. Kxf3 Qxf8+ 6. Qf6\r\n*",
     "all_moves": [
       {
-        "uci": "d3h7",
-        "san": "Bxh7+",
+        "uci": "e3e4",
+        "san": "Re4+",
         "color": "white"
       },
       {
-        "uci": "g8h8",
-        "san": "Kh8",
+        "uci": "b4a3",
+        "san": "Ka3",
         "color": "black"
       },
       {
-        "uci": "h7e4",
-        "san": "Be4+",
+        "uci": "h6f8",
+        "san": "Bf8",
         "color": "white"
       },
       {
-        "uci": "h8g8",
-        "san": "Kg8",
+        "uci": "f7f1",
+        "san": "Rf1+",
         "color": "black"
       },
       {
-        "uci": "d1h1",
-        "san": "Rdh1",
+        "uci": "e1e2",
+        "san": "Ke2",
         "color": "white"
       },
       {
-        "uci": "e7g6",
-        "san": "Neg6",
+        "uci": "f1f2",
+        "san": "Rf2+",
         "color": "black"
       },
       {
-        "uci": "h2h8",
-        "san": "Rh8+",
+        "uci": "e2e3",
+        "san": "Ke3",
         "color": "white"
       },
       {
-        "uci": "g6h8",
-        "san": "Nxh8",
+        "uci": "f2f3",
+        "san": "Rf3+",
         "color": "black"
       },
       {
-        "uci": "e4h7",
-        "san": "Bh7#",
+        "uci": "e3f3",
+        "san": "Kxf3",
+        "color": "white"
+      },
+      {
+        "uci": "e8f8",
+        "san": "Qxf8+",
+        "color": "black"
+      },
+      {
+        "uci": "e5f6",
+        "san": "Qf6",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3h7",
-        "san": "Bxh7+",
+        "uci": "e3e4",
+        "san": "Re4+",
         "color": "white"
       },
       {
-        "uci": "h7e4",
-        "san": "Be4+",
+        "uci": "h6f8",
+        "san": "Bf8",
         "color": "white"
       },
       {
-        "uci": "d1h1",
-        "san": "Rdh1",
+        "uci": "e1e2",
+        "san": "Ke2",
         "color": "white"
       },
       {
-        "uci": "h2h8",
-        "san": "Rh8+",
+        "uci": "e2e3",
+        "san": "Ke3",
         "color": "white"
       },
       {
-        "uci": "e4h7",
-        "san": "Bh7#",
+        "uci": "e3f3",
+        "san": "Kxf3",
+        "color": "white"
+      },
+      {
+        "uci": "e5f6",
+        "san": "Qf6",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-09-01T21:09:50.147640+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-09-02T09:41:26.109648+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788296990147",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "puzzle_id": "random_1788342086109",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1544454260949917726,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bxh7",
-        "correct": true,
-        "timestamp": "2026-09-01T21:10:07.376416+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "daily",
+  "latest_puzzle_type": "random",
   "current_puzzle": {
     "url": "https://www.chess.com/daily/2026-09-02",
     "title": "Ready, Set, Push!",
