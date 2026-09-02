@@ -1,98 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-04-10",
-    "title": "Aiming Pieces in the Right Direction",
-    "fen": "r4rk1/ppq2ppp/2n2b2/2P2b2/1PB5/2Q1Pp2/PB1N1P2/2KR3R w Kq - 0 1",
-    "current_fen": "r4rk1/ppq2p2/2n2Bp1/2P5/1PB5/4Pp2/P2N1P2/2K4R b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/ppq2ppp/2n2b2/2P2b2/1PB5/2Q1Pp2/PB1N1P2/2KR3R w Kq - 0 1\"]\r\n\r\n1. Qxf6 gxf6 2. Rdg1+ Bg6 3. Rxg6+ hxg6 4. Bxf6\r\n*",
+    "url": "https://www.chess.com/daily/2014-07-11",
+    "title": "All For The Win",
+    "fen": "r3r1k1/p4p1p/5Bp1/2q5/8/8/PP1Q4/KR1R4 w - - 0 1",
+    "current_fen": "r3r1k1/p4p1p/5Bp1/2q5/8/8/PP1Q4/KR1R4 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3r1k1/p4p1p/5Bp1/2q5/8/8/PP1Q4/KR1R4 w - - 0 1\"]\r\n\r\n1. Qh6 Qf8 2. Qxh7+ Kxh7 3. Rh1+ Qh6 4. Rxh6+ Kxh6 5. Rh1#\r\n*",
     "all_moves": [
       {
-        "uci": "c3f6",
-        "san": "Qxf6",
+        "uci": "d2h6",
+        "san": "Qh6",
         "color": "white"
       },
       {
-        "uci": "g7f6",
-        "san": "gxf6",
+        "uci": "c5f8",
+        "san": "Qf8",
         "color": "black"
       },
       {
-        "uci": "d1g1",
-        "san": "Rdg1+",
+        "uci": "h6h7",
+        "san": "Qxh7+",
         "color": "white"
       },
       {
-        "uci": "f5g6",
-        "san": "Bg6",
+        "uci": "g8h7",
+        "san": "Kxh7",
         "color": "black"
       },
       {
-        "uci": "g1g6",
-        "san": "Rxg6+",
+        "uci": "d1h1",
+        "san": "Rh1+",
         "color": "white"
       },
       {
-        "uci": "h7g6",
-        "san": "hxg6",
+        "uci": "f8h6",
+        "san": "Qh6",
         "color": "black"
       },
       {
-        "uci": "b2f6",
-        "san": "Bxf6",
+        "uci": "h1h6",
+        "san": "Rxh6+",
+        "color": "white"
+      },
+      {
+        "uci": "h7h6",
+        "san": "Kxh6",
+        "color": "black"
+      },
+      {
+        "uci": "b1h1",
+        "san": "Rh1#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3f6",
-        "san": "Qxf6",
+        "uci": "d2h6",
+        "san": "Qh6",
         "color": "white"
       },
       {
-        "uci": "d1g1",
-        "san": "Rdg1+",
+        "uci": "h6h7",
+        "san": "Qxh7+",
         "color": "white"
       },
       {
-        "uci": "g1g6",
-        "san": "Rxg6+",
+        "uci": "d1h1",
+        "san": "Rh1+",
         "color": "white"
       },
       {
-        "uci": "b2f6",
-        "san": "Bxf6",
+        "uci": "h1h6",
+        "san": "Rxh6+",
+        "color": "white"
+      },
+      {
+        "uci": "b1h1",
+        "san": "Rh1#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-09-02T14:51:32.841839+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-09-02T14:52:43.514345+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788360692841",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544721449762426990,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "bxf6",
-        "correct": true,
-        "timestamp": "2026-09-02T14:51:56.280037+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Rg1",
-        "correct": false,
-        "timestamp": "2026-09-02T14:51:44.103446+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788360763514",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
