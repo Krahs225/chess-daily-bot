@@ -1,47 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-03-22",
-    "title": "Entrapment",
-    "fen": "r7/2R5/6pk/p6p/2P1N2K/6P1/n6P/8 w - - 0 1",
-    "current_fen": "r7/2R5/6pk/p5Np/2P4K/6P1/n6P/8 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/2R5/6pk/p6p/2P1N2K/6P1/n6P/8 w - - 0 1\"]\r\n\r\n1. Ng5\r\n*",
+    "url": "https://www.chess.com/daily/2008-07-15",
+    "title": "Stopping the Pawns",
+    "fen": "r7/2RPPk1p/5n2/5P2/8/8/5PKP/8 b - - 0 1",
+    "current_fen": "r7/2RPPk1p/5n2/5P2/8/8/5PKP/8 b - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r7/2RPPk1p/5n2/5P2/8/8/5PKP/8 b - - 0 1\"]\r\n\r\n1...Rg8+ 2. Kf3 Kxe7\r\n*",
     "all_moves": [
       {
-        "uci": "e4g5",
-        "san": "Ng5",
+        "uci": "a8g8",
+        "san": "Rg8+",
+        "color": "black"
+      },
+      {
+        "uci": "g2f3",
+        "san": "Kf3",
         "color": "white"
+      },
+      {
+        "uci": "f7e7",
+        "san": "Kxe7",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e4g5",
-        "san": "Ng5",
-        "color": "white"
+        "uci": "a8g8",
+        "san": "Rg8+",
+        "color": "black"
+      },
+      {
+        "uci": "f7e7",
+        "san": "Kxe7",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-09-02T19:40:41.447464+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-09-02T19:40:57.243135+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788378041447",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1544794214435524739,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "ng5",
-        "correct": true,
-        "timestamp": "2026-09-02T19:40:45.980576+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788378057243",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
