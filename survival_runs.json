@@ -193,7 +193,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-02T21:39:52.007352+00:00",
-        "last_activity": 1788385265.297721,
+        "last_activity": 1788385293.0872223,
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 0,
@@ -207,6 +207,11 @@
             "name": "TheMakina",
             "correct": 3,
             "wrong": 0
+          },
+          "1370434994945916940": {
+            "name": "Capybrawlgames2",
+            "correct": 1,
+            "wrong": 0
           }
         },
         "puzzle": {
@@ -215,7 +220,7 @@
           "themes": "clearance endgame long mate mateIn3 sacrifice",
           "url": "https://lichess.org/training/xQCZD",
           "start_fen": "5rk1/2p2ppp/8/p2Q4/2P5/P5qP/1r4P1/3R1R1K w - - 3 26",
-          "current_fen": "6k1/2p2rpp/8/p7/2P5/P5qP/1r4P1/3R1R1K w - - 0 27",
+          "current_fen": "3R1rk1/2p3pp/8/p7/2P5/P5qP/1r4P1/5R1K w - - 2 28",
           "solution": [
             {
               "uci": "d5f7",
@@ -244,30 +249,38 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 2,
+          "next_solution_index": 4,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "Qxf7+",
+          "last_move_san": "Rd8+",
           "accepted_moves": [
             {
               "san": "Qxf7+",
               "uci": "d5f7",
               "accepted_at": 1788385265.2975583,
               "solver_id": "601406103712170014"
+            },
+            {
+              "san": "Rd8+",
+              "uci": "d1d8",
+              "accepted_at": 1788385293.0870795,
+              "solver_id": "1370434994945916940"
             }
           ],
-          "last_accepted_move_uci": "d5f7",
-          "last_accepted_move_san": "Qxf7+",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1788385265.2975574,
-          "position_before_last_move": "5rk1/2p2ppp/8/p2Q4/2P5/P5qP/1r4P1/3R1R1K w - - 3 26"
+          "last_accepted_move_uci": "d1d8",
+          "last_accepted_move_san": "Rd8+",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1788385293.087078,
+          "position_before_last_move": "6k1/2p2rpp/8/p7/2P5/P5qP/1r4P1/3R1R1K w - - 0 27"
         },
         "first_solver_id": "601406103712170014",
         "first_solver_name": "TheMakina",
-        "helper_candidates": {},
+        "helper_candidates": {
+          "1370434994945916940": "Capybrawlgames2"
+        },
         "helper_awarded": []
       },
       "history": []
