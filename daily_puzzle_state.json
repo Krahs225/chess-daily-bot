@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-11-23",
     "title": "It's The Thought That Counts",
     "fen": "4Q3/6k1/3q4/4n3/P1p5/2K1B3/8/8 w - - 0 1",
-    "current_fen": "4Q3/6k1/3q4/4n3/P1p5/2K1B3/8/8 w - - 0 1",
+    "current_fen": "8/8/5k2/4q3/P1pB4/2K5/8/8 w - - 2 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"4Q3/6k1/3q4/4n3/P1p5/2K1B3/8/8 w - - 0 1\"]\r\n\r\n1. Qxe5+ Qxe5+ 2. Bd4 Kf6 3. a5 Ke6 4. Bxe5 Kd7 5. a6 Kc6 6. Bd4 Kc7 7. Ba7 *",
     "all_moves": [
       {
@@ -117,20 +117,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788367505978",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1544750025626877995,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bh6",
+        "move": "bd4",
+        "correct": true,
+        "timestamp": "2026-09-02T16:45:11.306464+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxe5",
         "correct": false,
-        "timestamp": "2026-09-02T16:45:09.549205+00:00"
+        "timestamp": "2026-09-02T16:45:12.523290+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
