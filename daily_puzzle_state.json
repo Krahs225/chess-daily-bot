@@ -1,129 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-11-07",
-    "title": "Catalan Opening Analysis",
-    "fen": "r6r/1pk1ppbp/p1n3p1/2P5/8/4P3/n1P2PPP/1R1Q1RK1 w - - 0 1",
-    "current_fen": "r1k4r/4ppbp/p5p1/2P5/1Q6/4P3/2P2PPP/5RK1 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r6r/1pk1ppbp/p1n3p1/2P5/8/4P3/n1P2PPP/1R1Q1RK1 w - - 0 1\"]\r\n\r\n1. Rxb7+ Kxb7 2. Qd7+ Kb8 3. Qxc6 Nb4 4. Qb6+ Kc8 5. Qxb4\r\n*",
+    "url": "https://www.chess.com/daily/2012-10-15",
+    "title": "Using Pieces in Conjunction",
+    "fen": "6k1/3N1rpp/p6q/2pQp3/2P5/6P1/6K1/8 w - - 0 1",
+    "current_fen": "6k1/3N1rpp/p6q/2pQp3/2P5/6P1/6K1/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/3N1rpp/p6q/2pQp3/2P5/6P1/6K1/8 w - - 0 1\"]\r\n\r\n1. Qa8+ Rf8 2. Qxf8#\r\n*",
     "all_moves": [
       {
-        "uci": "b1b7",
-        "san": "Rxb7+",
+        "uci": "d5a8",
+        "san": "Qa8+",
         "color": "white"
       },
       {
-        "uci": "c7b7",
-        "san": "Kxb7",
+        "uci": "f7f8",
+        "san": "Rf8",
         "color": "black"
       },
       {
-        "uci": "d1d7",
-        "san": "Qd7+",
-        "color": "white"
-      },
-      {
-        "uci": "b7b8",
-        "san": "Kb8",
-        "color": "black"
-      },
-      {
-        "uci": "d7c6",
-        "san": "Qxc6",
-        "color": "white"
-      },
-      {
-        "uci": "a2b4",
-        "san": "Nb4",
-        "color": "black"
-      },
-      {
-        "uci": "c6b6",
-        "san": "Qb6+",
-        "color": "white"
-      },
-      {
-        "uci": "b8c8",
-        "san": "Kc8",
-        "color": "black"
-      },
-      {
-        "uci": "b6b4",
-        "san": "Qxb4",
+        "uci": "a8f8",
+        "san": "Qxf8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b1b7",
-        "san": "Rxb7+",
+        "uci": "d5a8",
+        "san": "Qa8+",
         "color": "white"
       },
       {
-        "uci": "d1d7",
-        "san": "Qd7+",
-        "color": "white"
-      },
-      {
-        "uci": "d7c6",
-        "san": "Qxc6",
-        "color": "white"
-      },
-      {
-        "uci": "c6b6",
-        "san": "Qb6+",
-        "color": "white"
-      },
-      {
-        "uci": "b6b4",
-        "san": "Qxb4",
+        "uci": "a8f8",
+        "san": "Qxf8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-09-02T21:18:41.796674+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-09-02T21:20:53.610335+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788383921796",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1544818878805315705,
-    "attempted_users": {
-      "1370434994945916940": {
-        "name": "Capybrawlgames2",
-        "move": "rb1",
-        "correct": false,
-        "timestamp": "2026-09-02T21:20:23.552583+00:00"
-      },
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "Qxc6",
-        "correct": true,
-        "timestamp": "2026-09-02T21:20:15.688496+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qxb4",
-        "correct": true,
-        "timestamp": "2026-09-02T21:20:36.357021+00:00"
-      }
-    },
-    "first_move_user_id": "1370434994945916940",
-    "first_move_user_name": "Capybrawlgames2",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "362606514764251137",
-      "362606514764251137",
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "362606514764251137",
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1788384053610",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
