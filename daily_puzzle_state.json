@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-08-22",
     "title": "Surprise Surprise",
     "fen": "8/2Qp2pk/1p5p/p3nq2/2P5/P7/5PPP/2R3K1 b - - 0 1",
-    "current_fen": "8/2Qp2pk/1p5p/p3n3/2P2q2/P7/5PPP/1R4K1 b - - 2 2",
+    "current_fen": "8/2Qp2pk/1p5p/p7/2P2q2/P4P2/5P1P/1R4K1 b - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/2Qp2pk/1p5p/p3nq2/2P5/P7/5PPP/2R3K1 b - - 0 1\"]\r\n\r\n1...Qf4 2. Rb1 Nf3+ 3. gxf3 Qxc7\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,22 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788378213621",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1544794937747574855,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qf4",
+        "move": "nf3",
         "correct": true,
-        "timestamp": "2026-09-02T19:43:39.527703+00:00"
+        "timestamp": "2026-09-02T19:43:42.437587+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "nf3",
+        "correct": false,
+        "timestamp": "2026-09-02T19:43:42.621983+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
