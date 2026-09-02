@@ -193,7 +193,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-02T21:39:52.007352+00:00",
-        "last_activity": 1788385597.8568091,
+        "last_activity": 1788385706.3366532,
         "paused_reason": null,
         "puzzle_number": 7,
         "strikes": 2,
@@ -215,7 +215,7 @@
           },
           "1370434994945916940": {
             "name": "Capybrawlgames2",
-            "correct": 6,
+            "correct": 7,
             "wrong": 2
           }
         },
@@ -225,7 +225,7 @@
           "themes": "advantage fork middlegame short",
           "url": "https://lichess.org/training/XvRzt",
           "start_fen": "4k2r/3q1p2/p2Pp2p/2ppn1p1/P7/8/1rP1QPPP/R3K2R w KQk - 0 21",
-          "current_fen": "4k2r/3q1p2/p2Pp2p/2ppn1p1/P7/8/1rP1QPPP/R3K2R w KQk - 0 21",
+          "current_fen": "5rk1/3q1p2/p2Pp2p/2ppQ1p1/P7/8/1rP2PPP/R3K2R w KQ - 1 22",
           "solution": [
             {
               "uci": "e2e5",
@@ -244,17 +244,29 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qxe5",
+          "accepted_moves": [
+            {
+              "san": "Qxe5",
+              "uci": "e2e5",
+              "accepted_at": 1788385706.336488,
+              "solver_id": "1370434994945916940"
+            }
+          ],
+          "last_accepted_move_uci": "e2e5",
+          "last_accepted_move_san": "Qxe5",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1788385706.3364868,
+          "position_before_last_move": "4k2r/3q1p2/p2Pp2p/2ppn1p1/P7/8/1rP1QPPP/R3K2R w KQk - 0 21"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "1370434994945916940",
+        "first_solver_name": "Capybrawlgames2",
         "helper_candidates": {},
         "helper_awarded": []
       },
