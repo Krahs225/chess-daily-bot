@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-07-13",
     "title": "(K)night Time",
     "fen": "4NN2/8/8/6Pk/8/5nK1/8/8 w - - 0 1",
-    "current_fen": "4NN2/8/8/6Pk/8/5nK1/8/8 w - - 0 1",
+    "current_fen": "4NN2/8/6P1/7k/7n/6K1/8/8 w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4NN2/8/8/6Pk/8/5nK1/8/8 w - - 0 1\"]\r\n\r\n1. g6 Nh4 2. Ng7+ Kg5 3. Nge6+ Kh5 4. Nf4+ Kg5 5. Nh7+\r\n*",
     "all_moves": [
       {
@@ -87,8 +87,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788372999494",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544773066968670393,
     "attempted_users": {
@@ -97,10 +97,16 @@
         "move": "kf4",
         "correct": false,
         "timestamp": "2026-09-02T18:16:47.611506+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "g6",
+        "correct": true,
+        "timestamp": "2026-09-02T18:16:51.689616+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
