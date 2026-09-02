@@ -182,9 +182,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 6,
-      "best_difficulty": 1384,
-      "best_completed_at": "2026-09-02T21:45:49.211995+00:00",
+      "best_puzzle": 7,
+      "best_difficulty": 1393,
+      "best_completed_at": "2026-09-02T21:47:11.905468+00:00",
       "current": {
         "run_id": "thice:1788385192",
         "started_by_id": "1370434994945916940",
@@ -204,7 +204,8 @@
           "TixpB",
           "kea2I",
           "KzaW7",
-          "J8EGu"
+          "J8EGu",
+          "XvRzt"
         ],
         "members": {
           "601406103712170014": {
@@ -218,7 +219,40 @@
             "wrong": 2
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "XvRzt",
+          "rating": 1374,
+          "themes": "advantage fork middlegame short",
+          "url": "https://lichess.org/training/XvRzt",
+          "start_fen": "4k2r/3q1p2/p2Pp2p/2ppn1p1/P7/8/1rP1QPPP/R3K2R w KQk - 0 21",
+          "current_fen": "4k2r/3q1p2/p2Pp2p/2ppn1p1/P7/8/1rP1QPPP/R3K2R w KQk - 0 21",
+          "solution": [
+            {
+              "uci": "e2e5",
+              "san": "Qxe5",
+              "color": "white"
+            },
+            {
+              "uci": "e8g8",
+              "san": "O-O",
+              "color": "black"
+            },
+            {
+              "uci": "e5b2",
+              "san": "Qxb2",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
