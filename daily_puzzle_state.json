@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2012-12-20",
     "title": "Subtle But Deadly",
     "fen": "5R2/1pBR1pp1/p1r2krn/2p1p1p1/4P1P1/1P3P1P/P5K1/8 w - - 0 1",
-    "current_fen": "5R2/1pBR1pp1/p1r2krn/2p1p1p1/4P1P1/1P3P1P/P5K1/8 w - - 0 1",
+    "current_fen": "4R3/1pBR1pp1/p3rkrn/2p1p1p1/4P1P1/1P3P1P/P5K1/8 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5R2/1pBR1pp1/p1r2krn/2p1p1p1/4P1P1/1P3P1P/P5K1/8 w - - 0 1\"]\r\n\r\n1. Re8 Re6 2. Bd8+ Re7 3. Rd6#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788372232330",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1544769850742800394,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "re8",
+        "correct": true,
+        "timestamp": "2026-09-02T18:04:33.031006+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
