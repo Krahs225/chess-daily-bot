@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-02-07",
     "title": "Exposing The King",
     "fen": "2r3k1/p3pbb1/1r3nQ1/1pq1B3/5P2/P1N5/1PP3P1/1K1R3R w - - 0 1",
-    "current_fen": "2r4k/p3pbb1/1r3nQ1/1pq1B3/5P2/P1N5/1PP3P1/1K1R4 w - - 0 2",
+    "current_fen": "2r4k/p3pQb1/1r3n2/1pq1B3/5P2/P1N5/1PP3P1/1K1R4 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r3k1/p3pbb1/1r3nQ1/1pq1B3/5P2/P1N5/1PP3P1/1K1R3R w - - 0 1\"]\r\n\r\n1. Rh8+ Kxh8 2. Qxf7\r\n*",
     "all_moves": [
       {
@@ -42,9 +42,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788367774551",
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1544751152669917226,
     "attempted_users": {
       "442597396195704832": {
@@ -55,16 +55,18 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qxf6",
-        "correct": false,
-        "timestamp": "2026-09-02T16:49:47.841427+00:00"
+        "move": "qxf7",
+        "correct": true,
+        "timestamp": "2026-09-02T16:49:49.396962+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
