@@ -193,7 +193,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-02T21:39:52.007352+00:00",
-        "last_activity": 1788385341.4440312,
+        "last_activity": 1788385363.2182586,
         "paused_reason": null,
         "puzzle_number": 3,
         "strikes": 1,
@@ -206,7 +206,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 3,
+            "correct": 4,
             "wrong": 0
           },
           "1370434994945916940": {
@@ -221,7 +221,7 @@
           "themes": "endgame mate mateIn2 short",
           "url": "https://lichess.org/training/TixpB",
           "start_fen": "5k2/4pp2/p2p1br1/1p6/3Pq3/P1P2N1Q/1P3P2/3K3R w - - 5 31",
-          "current_fen": "5k2/4pp2/p2p1br1/1p6/3Pq3/P1P2N1Q/1P3P2/3K3R w - - 5 31",
+          "current_fen": "2Q5/4ppk1/p2p1br1/1p6/3Pq3/P1P2N2/1P3P2/3K3R w - - 7 32",
           "solution": [
             {
               "uci": "h3c8",
@@ -240,17 +240,29 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qc8+",
+          "accepted_moves": [
+            {
+              "san": "Qc8+",
+              "uci": "h3c8",
+              "accepted_at": 1788385363.2181284,
+              "solver_id": "601406103712170014"
+            }
+          ],
+          "last_accepted_move_uci": "h3c8",
+          "last_accepted_move_san": "Qc8+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1788385363.2181277,
+          "position_before_last_move": "5k2/4pp2/p2p1br1/1p6/3Pq3/P1P2N1Q/1P3P2/3K3R w - - 5 31"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       },
