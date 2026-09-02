@@ -182,9 +182,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 5,
+      "best_puzzle": 6,
       "best_difficulty": 1384,
-      "best_completed_at": "2026-09-02T21:43:57.820063+00:00",
+      "best_completed_at": "2026-09-02T21:45:49.211995+00:00",
       "current": {
         "run_id": "thice:1788385192",
         "started_by_id": "1370434994945916940",
@@ -197,13 +197,14 @@
         "paused_reason": null,
         "puzzle_number": 6,
         "strikes": 2,
-        "best_difficulty": 1384,
+        "best_difficulty": 1393,
         "used_puzzle_ids": [
           "bjsbG",
           "xQCZD",
           "TixpB",
           "kea2I",
-          "KzaW7"
+          "KzaW7",
+          "J8EGu"
         ],
         "members": {
           "601406103712170014": {
@@ -217,7 +218,40 @@
             "wrong": 2
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "J8EGu",
+          "rating": 1393,
+          "themes": "crushing endgame rookEndgame short",
+          "url": "https://lichess.org/training/J8EGu",
+          "start_fen": "8/6p1/4pk1p/4p3/4K1PP/P3R3/5r2/8 w - - 3 36",
+          "current_fen": "8/6p1/4pk1p/4p3/4K1PP/P3R3/5r2/8 w - - 3 36",
+          "solution": [
+            {
+              "uci": "e3f3",
+              "san": "Rf3+",
+              "color": "white"
+            },
+            {
+              "uci": "f2f3",
+              "san": "Rxf3",
+              "color": "black"
+            },
+            {
+              "uci": "e4f3",
+              "san": "Kxf3",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
