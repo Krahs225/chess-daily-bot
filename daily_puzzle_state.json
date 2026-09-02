@@ -1,47 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-02-25",
-    "title": "Discovering Rewards",
-    "fen": "r2q3r/p1ppn1np/bp2kp2/b3N2Q/8/2P5/P4PPP/RN2R1K1 w Q - 0 1",
-    "current_fen": "r2q3r/p1ppn1np/bp2kp2/b6Q/2N5/2P5/P4PPP/RN2R1K1 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2q3r/p1ppn1np/bp2kp2/b3N2Q/8/2P5/P4PPP/RN2R1K1 w Q - 0 1\"]\r\n\r\n1. Nc4#\r\n*",
+    "url": "https://www.chess.com/daily/2024-04-14",
+    "title": "Black Can't Castle - Attack the Back Rank!",
+    "fen": "r3knQ1/1p1bq3/p3p1P1/3pP3/8/2P5/PP3PP1/R3K3 w Q - 0 1",
+    "current_fen": "r3knQ1/1p1bq3/p3p1P1/3pP3/8/2P5/PP3PP1/R3K3 w Q - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"r3knQ1/1p1bq3/p3p1P1/3pP3/8/2P5/PP3PP1/R3K3 w Q - 0 1\"]\r\n\r\n1. g7 Bc6 2. Qh8 Kd7 3. g8=Q Ng6 4. Qxa8 Nxh8 5. Qxh8 *",
     "all_moves": [
       {
-        "uci": "e5c4",
-        "san": "Nc4#",
+        "uci": "g6g7",
+        "san": "g7",
+        "color": "white"
+      },
+      {
+        "uci": "d7c6",
+        "san": "Bc6",
+        "color": "black"
+      },
+      {
+        "uci": "g8h8",
+        "san": "Qh8",
+        "color": "white"
+      },
+      {
+        "uci": "e8d7",
+        "san": "Kd7",
+        "color": "black"
+      },
+      {
+        "uci": "g7g8q",
+        "san": "g8=Q",
+        "color": "white"
+      },
+      {
+        "uci": "f8g6",
+        "san": "Ng6",
+        "color": "black"
+      },
+      {
+        "uci": "g8a8",
+        "san": "Qxa8",
+        "color": "white"
+      },
+      {
+        "uci": "g6h8",
+        "san": "Nxh8",
+        "color": "black"
+      },
+      {
+        "uci": "a8h8",
+        "san": "Qxh8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "e5c4",
-        "san": "Nc4#",
+        "uci": "g6g7",
+        "san": "g7",
+        "color": "white"
+      },
+      {
+        "uci": "g8h8",
+        "san": "Qh8",
+        "color": "white"
+      },
+      {
+        "uci": "g7g8q",
+        "san": "g8=Q",
+        "color": "white"
+      },
+      {
+        "uci": "g8a8",
+        "san": "Qxa8",
+        "color": "white"
+      },
+      {
+        "uci": "a8h8",
+        "san": "Qxh8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-09-02T18:52:20.019643+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-09-02T18:53:44.496520+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788375140019",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1544782045132357633,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nc4",
-        "correct": true,
-        "timestamp": "2026-09-02T18:52:39.638928+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788375224496",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
