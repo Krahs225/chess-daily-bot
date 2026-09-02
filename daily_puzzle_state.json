@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-10-06",
     "title": "Converting in Efficient Manner",
     "fen": "2k4r/2P4P/3P3R/3K4/8/8/8/8 w k - 0 1",
-    "current_fen": "2k4r/2P4P/3P3R/3K4/8/8/8/8 w k - 0 1",
+    "current_fen": "2k5/2P4r/2KP3R/8/8/8/8/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k4r/2P4P/3P3R/3K4/8/8/8/8 w k - 0 1\"]\r\n\r\n1. Kc6 Rxh7 2. d7+ Rxd7 3. Rh8+\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788378489481",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1544796093861077072,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "kc6",
+        "correct": true,
+        "timestamp": "2026-09-02T19:48:15.985249+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
