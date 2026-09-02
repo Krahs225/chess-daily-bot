@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-04-21",
     "title": "Pogosjants, 1970",
     "fen": "3N4/7P/8/6k1/4r3/7K/r6R/8 w - - 0 1",
-    "current_fen": "7N/5N2/8/7k/r7/7K/R7/8 w - - 1 4",
+    "current_fen": "8/5N2/6N1/7k/7r/7K/R7/8 w - - 3 5",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3N4/7P/8/6k1/4r3/7K/r6R/8 w - - 0 1\"]\r\n\r\n1. Nf7+ Kg6 2. h8=N+ Kh5 3. Rxa2 Ra4 4. Ng6 Rh4+ 5. Kg3 Rg4+ 6. Kf3 Rxg6 7.\r\nRh2#\r\n*",
     "all_moves": [
       {
@@ -117,8 +117,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788367683920",
-    "next_solution_index": 6,
-    "next_player_index": 3,
+    "next_solution_index": 8,
+    "next_player_index": 4,
     "solved": false,
     "message_id": 1544750771927646271,
     "attempted_users": {
@@ -130,16 +130,18 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "rxa2",
-        "correct": false,
-        "timestamp": "2026-09-02T16:48:10.852586+00:00"
+        "move": "ng6",
+        "correct": true,
+        "timestamp": "2026-09-02T16:49:07.820964+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
