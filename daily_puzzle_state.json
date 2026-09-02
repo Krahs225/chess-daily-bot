@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2012-09-12",
     "title": "Mate in 2",
     "fen": "R3bk2/5qpp/8/2ppQNP1/5P1P/4P1K1/6B1/8 w - - 0 1",
-    "current_fen": "R3bk2/5qpp/8/2ppQNP1/5P1P/4P1K1/6B1/8 w - - 0 1",
+    "current_fen": "4qk2/6pp/8/2ppQNP1/5P1P/4P1K1/6B1/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"R3bk2/5qpp/8/2ppQNP1/5P1P/4P1K1/6B1/8 w - - 0 1\"]\r\n\r\n1. Rxe8+ Qxe8 2. Qxg7#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788383531015",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1544817239499214890,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rxe8",
+        "correct": true,
+        "timestamp": "2026-09-02T21:12:17.207335+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
