@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-07-11",
     "title": "All For The Win",
     "fen": "r3r1k1/p4p1p/5Bp1/2q5/8/8/PP1Q4/KR1R4 w - - 0 1",
-    "current_fen": "r3rq2/p4p1k/5Bp1/8/8/8/PP6/KR1R4 w - - 0 3",
+    "current_fen": "r3r3/p4p1k/5Bpq/8/8/8/PP6/KR5R w - - 2 4",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3r1k1/p4p1p/5Bp1/2q5/8/8/PP1Q4/KR1R4 w - - 0 1\"]\r\n\r\n1. Qh6 Qf8 2. Qxh7+ Kxh7 3. Rh1+ Qh6 4. Rxh6+ Kxh6 5. Rh1#\r\n*",
     "all_moves": [
       {
@@ -87,29 +87,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788360763514",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "next_solution_index": 6,
+    "next_player_index": 3,
     "solved": false,
     "message_id": 1544721746417156156,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Qxh7",
-        "correct": true,
-        "timestamp": "2026-09-02T14:52:51.961842+00:00"
+        "move": "Rh8",
+        "correct": false,
+        "timestamp": "2026-09-02T14:52:54.867809+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxh7",
-        "correct": false,
-        "timestamp": "2026-09-02T14:52:51.967121+00:00"
+        "move": "rh1",
+        "correct": true,
+        "timestamp": "2026-09-02T14:52:52.295383+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
