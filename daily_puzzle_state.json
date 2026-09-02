@@ -1,53 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-09-11",
-    "title": "Forward Motion",
-    "fen": "2k5/2P5/8/2KN1p2/8/1r4p1/8/8 w - - 0 1",
-    "current_fen": "2k5/2P5/2K5/3N1p2/8/1r4p1/8/8 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k5/2P5/8/2KN1p2/8/1r4p1/8/8 w - - 0 1\"]\r\n\r\n1. Kc6\r\n*",
+    "url": "https://www.chess.com/daily/2024-05-16",
+    "title": "Tactical Mic Drop",
+    "fen": "rnbr2k1/pp2nppp/2p5/q3P3/N3P3/2P1B3/PP4PP/R2QKBR1 w Q - 0 11",
+    "current_fen": "rnbr2k1/pp2nppp/2p5/q3P3/N3P3/2P1B3/PP4PP/R2QKBR1 w Q - 0 11",
+    "pgn": "[Event \"Groningen Chess Festival\"]\r\n[Site \"Groningen NED\"]\r\n[Date \"2013.12.23\"]\r\n[Round \"3.25\"]\r\n[White \"Thomas Beerdsen\"]\r\n[Black \"Mark A Berkovich\"]\r\n[Result \"1-0\"]\r\n[ECO \"B12\"]\r\n[WhiteElo \"2154\"]\r\n[BlackElo \"2366\"]\r\n[FEN \"rnbr2k1/pp2nppp/2p5/q3P3/N3P3/2P1B3/PP4PP/R2QKBR1 w Q - 0 11\"]\r\n\r\n11. Bb6 Rxd1+ 12. Rxd1 Qxa4 13. Rd8# 1-0",
     "all_moves": [
       {
-        "uci": "c5c6",
-        "san": "Kc6",
+        "uci": "e3b6",
+        "san": "Bb6",
+        "color": "white"
+      },
+      {
+        "uci": "d8d1",
+        "san": "Rxd1+",
+        "color": "black"
+      },
+      {
+        "uci": "a1d1",
+        "san": "Rxd1",
+        "color": "white"
+      },
+      {
+        "uci": "a5a4",
+        "san": "Qxa4",
+        "color": "black"
+      },
+      {
+        "uci": "d1d8",
+        "san": "Rd8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5c6",
-        "san": "Kc6",
+        "uci": "e3b6",
+        "san": "Bb6",
+        "color": "white"
+      },
+      {
+        "uci": "a1d1",
+        "san": "Rxd1",
+        "color": "white"
+      },
+      {
+        "uci": "d1d8",
+        "san": "Rd8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-09-02T16:43:57.511529+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-09-02T16:44:13.236314+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788367437511",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1544749739004923964,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nb6",
-        "correct": false,
-        "timestamp": "2026-09-02T16:44:02.436578+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "kc6",
-        "correct": true,
-        "timestamp": "2026-09-02T16:44:02.514060+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788367453236",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
