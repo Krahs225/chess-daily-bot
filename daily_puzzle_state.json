@@ -1,113 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-07-13",
-    "title": "(K)night Time",
-    "fen": "4NN2/8/8/6Pk/8/5nK1/8/8 w - - 0 1",
-    "current_fen": "8/7N/6P1/6k1/5N1n/6K1/8/8 b - - 8 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4NN2/8/8/6Pk/8/5nK1/8/8 w - - 0 1\"]\r\n\r\n1. g6 Nh4 2. Ng7+ Kg5 3. Nge6+ Kh5 4. Nf4+ Kg5 5. Nh7+\r\n*",
+    "url": "https://www.chess.com/daily/2023-07-11",
+    "title": "Outmaneuvering a Weary Defense",
+    "fen": "8/1B2npk1/3b1N2/R7/5P2/3Q2PP/7K/4qr2 b - - 0 1",
+    "current_fen": "8/4npk1/3b1N2/R7/5P2/3Q2PP/5qBK/5r2 b - - 2 2",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/1B2npk1/3b1N2/R7/5P2/3Q2PP/7K/4qr2 b - - 0 1\"]\r\n\r\n1... Qf2+ 2. Bg2 Qg1# *",
     "all_moves": [
       {
-        "uci": "g5g6",
-        "san": "g6",
-        "color": "white"
-      },
-      {
-        "uci": "f3h4",
-        "san": "Nh4",
+        "uci": "e1f2",
+        "san": "Qf2+",
         "color": "black"
       },
       {
-        "uci": "e8g7",
-        "san": "Ng7+",
+        "uci": "b7g2",
+        "san": "Bg2",
         "color": "white"
       },
       {
-        "uci": "h5g5",
-        "san": "Kg5",
+        "uci": "f2g1",
+        "san": "Qg1#",
         "color": "black"
-      },
-      {
-        "uci": "g7e6",
-        "san": "Nge6+",
-        "color": "white"
-      },
-      {
-        "uci": "g5h5",
-        "san": "Kh5",
-        "color": "black"
-      },
-      {
-        "uci": "e6f4",
-        "san": "Nf4+",
-        "color": "white"
-      },
-      {
-        "uci": "h5g5",
-        "san": "Kg5",
-        "color": "black"
-      },
-      {
-        "uci": "f8h7",
-        "san": "Nh7+",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "g5g6",
-        "san": "g6",
-        "color": "white"
+        "uci": "e1f2",
+        "san": "Qf2+",
+        "color": "black"
       },
       {
-        "uci": "e8g7",
-        "san": "Ng7+",
-        "color": "white"
-      },
-      {
-        "uci": "g7e6",
-        "san": "Nge6+",
-        "color": "white"
-      },
-      {
-        "uci": "e6f4",
-        "san": "Nf4+",
-        "color": "white"
-      },
-      {
-        "uci": "f8h7",
-        "san": "Nh7+",
-        "color": "white"
+        "uci": "f2g1",
+        "san": "Qg1#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-09-02T18:16:39.494031+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 2,
+    "posted_at": "2026-09-02T18:19:35.097773+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788372999494",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1544773066968670393,
+    "puzzle_id": "random_1788373175097",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1544773803706417233,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "kf4",
-        "correct": false,
-        "timestamp": "2026-09-02T18:16:47.611506+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nh7",
+        "move": "qf2",
         "correct": true,
-        "timestamp": "2026-09-02T18:19:29.288793+00:00"
+        "timestamp": "2026-09-02T18:19:38.503628+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
