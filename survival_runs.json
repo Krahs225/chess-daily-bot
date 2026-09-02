@@ -193,10 +193,10 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-02T21:39:52.007352+00:00",
-        "last_activity": 1788386472.981381,
+        "last_activity": 1788386534.0237353,
         "paused_reason": null,
         "puzzle_number": 9,
-        "strikes": 1,
+        "strikes": 2,
         "best_difficulty": 1393,
         "used_puzzle_ids": [
           "bjsbG",
@@ -222,6 +222,11 @@
           },
           "442597396195704832": {
             "name": "Thice",
+            "correct": 0,
+            "wrong": 1
+          },
+          "362606514764251137": {
+            "name": "Sharkmeister",
             "correct": 0,
             "wrong": 1
           }
@@ -257,7 +262,8 @@
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [
-            "442597396195704832"
+            "442597396195704832",
+            "362606514764251137"
           ],
           "last_move_san": null,
           "accepted_moves": []
