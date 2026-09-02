@@ -1,47 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-10-17",
-    "title": "Double Check and Mate",
-    "fen": "r1b5/pp1q2Qp/3pk1pP/2pN4/2B1PPn1/8/PPP3P1/2KR4 w - - 0 1",
-    "current_fen": "r1b5/ppNq2Qp/3pk1pP/2p5/2B1PPn1/8/PPP3P1/2KR4 b - - 1 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b5/pp1q2Qp/3pk1pP/2pN4/2B1PPn1/8/PPP3P1/2KR4 w - - 0 1\"]\r\n\r\n1. Nc7#\r\n*",
+    "url": "https://www.chess.com/daily/2018-10-13",
+    "title": "Carlsen-Cheparinov,  FIDE WorldCup 2007",
+    "fen": "8/8/8/4p3/5k2/1KP3p1/8/5B2 w - - 0 1",
+    "current_fen": "8/8/8/4p3/8/1KP1k1p1/6B1/8 w - - 2 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"8/8/8/4p3/5k2/1KP3p1/8/5B2 w - - 0 1\"]\r\n\r\n1. Bg2 Ke3 2. Kc4 e4 3. Bh1\r\n*",
     "all_moves": [
       {
-        "uci": "d5c7",
-        "san": "Nc7#",
+        "uci": "f1g2",
+        "san": "Bg2",
+        "color": "white"
+      },
+      {
+        "uci": "f4e3",
+        "san": "Ke3",
+        "color": "black"
+      },
+      {
+        "uci": "b3c4",
+        "san": "Kc4",
+        "color": "white"
+      },
+      {
+        "uci": "e5e4",
+        "san": "e4",
+        "color": "black"
+      },
+      {
+        "uci": "g2h1",
+        "san": "Bh1",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d5c7",
-        "san": "Nc7#",
+        "uci": "f1g2",
+        "san": "Bg2",
+        "color": "white"
+      },
+      {
+        "uci": "b3c4",
+        "san": "Kc4",
+        "color": "white"
+      },
+      {
+        "uci": "g2h1",
+        "san": "Bh1",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-09-02T18:43:13.387054+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-09-02T18:43:23.250978+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788374593387",
-    "next_solution_index": 1,
+    "puzzle_id": "random_1788374603250",
+    "next_solution_index": 2,
     "next_player_index": 1,
-    "solved": true,
-    "message_id": 1544779753393889501,
+    "solved": false,
+    "message_id": 1544779793533374516,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "nc7",
+        "move": "bg2",
         "correct": true,
-        "timestamp": "2026-09-02T18:43:16.853661+00:00"
+        "timestamp": "2026-09-02T18:43:27.493330+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
