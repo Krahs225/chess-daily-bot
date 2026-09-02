@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-10-12",
     "title": "Up, Up, and Away!",
     "fen": "8/1b6/1kpr1pn1/p5p1/Pn2P1Pp/1P2NP1P/4qBK1/R1R5 w - - 0 1",
-    "current_fen": "8/1b6/1kpr1pn1/p5p1/Pn2P1Pp/1P2NP1P/4qBK1/R1R5 w - - 0 1",
+    "current_fen": "8/1b6/k1pr1pn1/p2N2p1/Pn2P1Pp/1P3P1P/4qBK1/R1R5 w - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"8/1b6/1kpr1pn1/p5p1/Pn2P1Pp/1P2NP1P/4qBK1/R1R5 w - - 0 1\"]\r\n\r\n1. Nd5+ Ka6 2. Nc7# *",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788374416009",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544779008229769247,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nd5",
+        "correct": true,
+        "timestamp": "2026-09-02T18:40:21.614407+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
