@@ -277,7 +277,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-02T21:35:04.217972+00:00",
-        "last_activity": 1788384983.8904846,
+        "last_activity": 1788384992.6878295,
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 0,
@@ -289,7 +289,12 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 3,
+            "correct": 4,
+            "wrong": 0
+          },
+          "1370434994945916940": {
+            "name": "Capybrawlgames2",
+            "correct": 0,
             "wrong": 0
           }
         },
@@ -299,7 +304,7 @@
           "themes": "crushing fork middlegame short",
           "url": "https://lichess.org/training/QuMxX",
           "start_fen": "5r1k/pb6/5qp1/2p4p/3n4/PB3PQP/1PP3P1/3R1RK1 b - - 1 26",
-          "current_fen": "5r1k/pb6/5qp1/2p4p/8/PB3PQP/1PP1nKP1/3R1R2 b - - 3 27",
+          "current_fen": "5r1k/pb6/5qp1/2p4p/8/PB3PnP/1PP2KP1/3R1R2 w - - 0 28",
           "solution": [
             {
               "uci": "d4e2",
@@ -318,26 +323,32 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 2,
+          "next_solution_index": 3,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "Ne2+",
+          "last_move_san": "Nxg3",
           "accepted_moves": [
             {
               "san": "Ne2+",
               "uci": "d4e2",
               "accepted_at": 1788384983.8903134,
               "solver_id": "601406103712170014"
+            },
+            {
+              "san": "Nxg3",
+              "uci": "e2g3",
+              "accepted_at": 1788384992.6877382,
+              "solver_id": "601406103712170014"
             }
           ],
-          "last_accepted_move_uci": "d4e2",
-          "last_accepted_move_san": "Ne2+",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1788384983.8903122,
-          "position_before_last_move": "5r1k/pb6/5qp1/2p4p/3n4/PB3PQP/1PP3P1/3R1RK1 b - - 1 26"
+          "last_accepted_move_uci": "e2g3",
+          "last_accepted_move_san": "Nxg3",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1788384992.687737,
+          "position_before_last_move": "5r1k/pb6/5qp1/2p4p/8/PB3PQP/1PP1nKP1/3R1R2 b - - 3 27"
         },
         "first_solver_id": "601406103712170014",
         "first_solver_name": "TheMakina",
