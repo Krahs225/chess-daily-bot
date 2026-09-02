@@ -1,122 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2011-11-05",
-    "title": "Mate in 6",
-    "fen": "5r2/p4pk1/1p2R3/2rB2bP/4Q3/8/PPPq2p1/1K3R2 w - - 0 1",
-    "current_fen": "8/p7/1p4Qk/2rB2bP/8/8/PPPq2p1/1K6 b - - 2 6",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"5r2/p4pk1/1p2R3/2rB2bP/4Q3/8/PPPq2p1/1K3R2 w - - 0 1\"]\r\n\r\n1. Rxf7+ Rxf7 2. Rg6+ Kf8 3. Rg8+ Kxg8 4. Qe8+ Kh7 5. Qxf7+ Kh6 6. Qg6#\r\n*",
+    "url": "https://www.chess.com/daily/2014-10-16",
+    "title": "Dzindzichashvili - Oleg Dementiev , URS, 1972",
+    "fen": "6k1/6p1/2q1p1P1/4Pn1Q/8/5RB1/7K/2r5 w - - 0 1",
+    "current_fen": "6k1/6p1/2q1p1P1/4Pn1Q/8/5RB1/7K/2r5 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/6p1/2q1p1P1/4Pn1Q/8/5RB1/7K/2r5 w - - 0 1\"]\r\n\r\n1. Qh7+ Kf8 2. Qh8+ Ke7 3. Bh4+ Kd7 4. Qd8#\r\n*",
     "all_moves": [
       {
-        "uci": "f1f7",
-        "san": "Rxf7+",
+        "uci": "h5h7",
+        "san": "Qh7+",
         "color": "white"
       },
       {
-        "uci": "f8f7",
-        "san": "Rxf7",
-        "color": "black"
-      },
-      {
-        "uci": "e6g6",
-        "san": "Rg6+",
-        "color": "white"
-      },
-      {
-        "uci": "g7f8",
+        "uci": "g8f8",
         "san": "Kf8",
         "color": "black"
       },
       {
-        "uci": "g6g8",
-        "san": "Rg8+",
+        "uci": "h7h8",
+        "san": "Qh8+",
         "color": "white"
       },
       {
-        "uci": "f8g8",
-        "san": "Kxg8",
+        "uci": "f8e7",
+        "san": "Ke7",
         "color": "black"
       },
       {
-        "uci": "e4e8",
-        "san": "Qe8+",
+        "uci": "g3h4",
+        "san": "Bh4+",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "e7d7",
+        "san": "Kd7",
         "color": "black"
       },
       {
-        "uci": "e8f7",
-        "san": "Qxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "h7h6",
-        "san": "Kh6",
-        "color": "black"
-      },
-      {
-        "uci": "f7g6",
-        "san": "Qg6#",
+        "uci": "h8d8",
+        "san": "Qd8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f1f7",
-        "san": "Rxf7+",
+        "uci": "h5h7",
+        "san": "Qh7+",
         "color": "white"
       },
       {
-        "uci": "e6g6",
-        "san": "Rg6+",
+        "uci": "h7h8",
+        "san": "Qh8+",
         "color": "white"
       },
       {
-        "uci": "g6g8",
-        "san": "Rg8+",
+        "uci": "g3h4",
+        "san": "Bh4+",
         "color": "white"
       },
       {
-        "uci": "e4e8",
-        "san": "Qe8+",
-        "color": "white"
-      },
-      {
-        "uci": "e8f7",
-        "san": "Qxf7+",
-        "color": "white"
-      },
-      {
-        "uci": "f7g6",
-        "san": "Qg6#",
+        "uci": "h8d8",
+        "san": "Qd8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-09-02T20:08:43.993030+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-09-02T20:10:11.794977+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788379723993",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1544801271741943822,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qg6",
-        "correct": true,
-        "timestamp": "2026-09-02T20:10:03.602342+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788379811794",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
