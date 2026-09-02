@@ -1,62 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-09-15",
-    "title": "From All Angles",
-    "fen": "4r1k1/5pp1/7p/2pPNB2/2P1Q3/7P/1q4PK/8 w - - 0 1",
-    "current_fen": "4rk2/3N1ppB/7p/2pP4/2P1Q3/7P/1q4PK/8 b - - 3 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r1k1/5pp1/7p/2pPNB2/2P1Q3/7P/1q4PK/8 w - - 0 1\"]\r\n\r\n1. Bh7+ Kf8 2. Nd7#\r\n*",
+    "url": "https://www.chess.com/daily/2026-02-09",
+    "title": "Doing the Splits",
+    "fen": "8/3q3k/p3N3/Pp2p1p1/1P6/5PPr/4Q2P/2b3K1 w - - 0 1",
+    "current_fen": "8/3q3k/p3N3/Pp2p1p1/1P6/5PPr/4Q2P/2b3K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/3q3k/p3N3/Pp2p1p1/1P6/5PPr/4Q2P/2b3K1 w - - 0 1\"]\r\n\r\n1. Nf8+ Kg8 2. Nxd7 *",
     "all_moves": [
       {
-        "uci": "f5h7",
-        "san": "Bh7+",
+        "uci": "e6f8",
+        "san": "Nf8+",
         "color": "white"
       },
       {
-        "uci": "g8f8",
-        "san": "Kf8",
+        "uci": "h7g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "e5d7",
-        "san": "Nd7#",
+        "uci": "f8d7",
+        "san": "Nxd7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5h7",
-        "san": "Bh7+",
+        "uci": "e6f8",
+        "san": "Nf8+",
         "color": "white"
       },
       {
-        "uci": "e5d7",
-        "san": "Nd7#",
+        "uci": "f8d7",
+        "san": "Nxd7",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 2,
-    "posted_at": "2026-09-02T19:44:19.663419+00:00",
+    "posted_at": "2026-09-02T19:44:35.748781+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788378259663",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1544795129687310347,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nd7",
-        "correct": true,
-        "timestamp": "2026-09-02T19:44:29.761697+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788378275748",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
