@@ -195,7 +195,7 @@
         "started_at": "2026-09-02T21:39:52.007352+00:00",
         "last_activity": 1788385506.7491238,
         "paused_reason": null,
-        "puzzle_number": 5,
+        "puzzle_number": 6,
         "strikes": 2,
         "best_difficulty": 1384,
         "used_puzzle_ids": [
@@ -217,97 +217,10 @@
             "wrong": 2
           }
         },
-        "puzzle": {
-          "id": "KzaW7",
-          "rating": 1274,
-          "themes": "deflection endgame exposedKing mate mateIn4 veryLong",
-          "url": "https://lichess.org/training/KzaW7",
-          "start_fen": "4rk2/6R1/2b2P2/3pP3/2p2K2/8/p7/1q4R1 w - - 0 50",
-          "current_fen": "4b3/4R3/4kP2/3pP3/2p2K2/8/p7/1q6 b - - 1 53",
-          "solution": [
-            {
-              "uci": "g7g8",
-              "san": "Rg8+",
-              "color": "white"
-            },
-            {
-              "uci": "f8f7",
-              "san": "Kf7",
-              "color": "black"
-            },
-            {
-              "uci": "g1g7",
-              "san": "R1g7+",
-              "color": "white"
-            },
-            {
-              "uci": "f7e6",
-              "san": "Ke6",
-              "color": "black"
-            },
-            {
-              "uci": "g8e8",
-              "san": "Rxe8+",
-              "color": "white"
-            },
-            {
-              "uci": "c6e8",
-              "san": "Bxe8",
-              "color": "black"
-            },
-            {
-              "uci": "g7e7",
-              "san": "Re7#",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 7,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [
-            "1370434994945916940"
-          ],
-          "last_move_san": "Re7#",
-          "accepted_moves": [
-            {
-              "san": "Rg8+",
-              "uci": "g7g8",
-              "accepted_at": 1788385458.0496037,
-              "solver_id": "1370434994945916940"
-            },
-            {
-              "san": "R1g7+",
-              "uci": "g1g7",
-              "accepted_at": 1788385487.76535,
-              "solver_id": "601406103712170014"
-            },
-            {
-              "san": "Rxe8+",
-              "uci": "g8e8",
-              "accepted_at": 1788385498.9439,
-              "solver_id": "601406103712170014"
-            },
-            {
-              "san": "Re7#",
-              "uci": "g7e7",
-              "accepted_at": 1788385506.7489924,
-              "solver_id": "601406103712170014"
-            }
-          ],
-          "last_accepted_move_uci": "g7e7",
-          "last_accepted_move_san": "Re7#",
-          "last_accepted_move_index": 6,
-          "last_accepted_at": 1788385506.7489913,
-          "position_before_last_move": "4b3/6R1/4kP2/3pP3/2p2K2/8/p7/1q6 w - - 0 53"
-        },
-        "first_solver_id": "1370434994945916940",
-        "first_solver_name": "Capybrawlgames2",
-        "helper_candidates": {
-          "601406103712170014": "TheMakina"
-        },
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
         "helper_awarded": []
       },
       "history": []
