@@ -1,98 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2022-09-16",
-    "title": "Three-Part Harmony",
-    "fen": "7r/1p6/k1bB4/1p2P3/P2Q1K1P/1P1B2P1/8/3q1N2 b - - 0 1",
-    "current_fen": "4b3/1p3qK1/k2B4/1p2P2r/P2Q3P/1P1B2P1/8/5N2 w - - 7 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"7r/1p6/k1bB4/1p2P3/P2Q1K1P/1P1B2P1/8/3q1N2 b - - 0 1\"]\r\n\r\n1... Qf3+ 2. Kg5 Rh5+ 3. Kg6 Be8+ 4. Kg7 Qf7# *",
+    "url": "https://www.chess.com/daily/2019-04-10",
+    "title": "Aiming Pieces in the Right Direction",
+    "fen": "r4rk1/ppq2ppp/2n2b2/2P2b2/1PB5/2Q1Pp2/PB1N1P2/2KR3R w Kq - 0 1",
+    "current_fen": "r4rk1/ppq2ppp/2n2b2/2P2b2/1PB5/2Q1Pp2/PB1N1P2/2KR3R w Kq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/ppq2ppp/2n2b2/2P2b2/1PB5/2Q1Pp2/PB1N1P2/2KR3R w Kq - 0 1\"]\r\n\r\n1. Qxf6 gxf6 2. Rdg1+ Bg6 3. Rxg6+ hxg6 4. Bxf6\r\n*",
     "all_moves": [
       {
-        "uci": "d1f3",
-        "san": "Qf3+",
-        "color": "black"
-      },
-      {
-        "uci": "f4g5",
-        "san": "Kg5",
+        "uci": "c3f6",
+        "san": "Qxf6",
         "color": "white"
       },
       {
-        "uci": "h8h5",
-        "san": "Rh5+",
+        "uci": "g7f6",
+        "san": "gxf6",
         "color": "black"
       },
       {
-        "uci": "g5g6",
-        "san": "Kg6",
+        "uci": "d1g1",
+        "san": "Rdg1+",
         "color": "white"
       },
       {
-        "uci": "c6e8",
-        "san": "Be8+",
+        "uci": "f5g6",
+        "san": "Bg6",
         "color": "black"
       },
       {
-        "uci": "g6g7",
-        "san": "Kg7",
+        "uci": "g1g6",
+        "san": "Rxg6+",
         "color": "white"
       },
       {
-        "uci": "f3f7",
-        "san": "Qf7#",
+        "uci": "h7g6",
+        "san": "hxg6",
         "color": "black"
+      },
+      {
+        "uci": "b2f6",
+        "san": "Bxf6",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d1f3",
-        "san": "Qf3+",
-        "color": "black"
+        "uci": "c3f6",
+        "san": "Qxf6",
+        "color": "white"
       },
       {
-        "uci": "h8h5",
-        "san": "Rh5+",
-        "color": "black"
+        "uci": "d1g1",
+        "san": "Rdg1+",
+        "color": "white"
       },
       {
-        "uci": "c6e8",
-        "san": "Be8+",
-        "color": "black"
+        "uci": "g1g6",
+        "san": "Rxg6+",
+        "color": "white"
       },
       {
-        "uci": "f3f7",
-        "san": "Qf7#",
-        "color": "black"
+        "uci": "b2f6",
+        "san": "Bxf6",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-09-02T14:50:58.885872+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-09-02T14:51:32.841839+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788360658885",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544721306719752303,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qf7",
-        "correct": true,
-        "timestamp": "2026-09-02T14:51:20.776672+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Qf5",
-        "correct": false,
-        "timestamp": "2026-09-02T14:51:19.314418+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788360692841",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
