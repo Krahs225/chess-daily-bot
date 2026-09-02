@@ -279,7 +279,7 @@
         "started_at": "2026-09-02T21:35:04.217972+00:00",
         "last_activity": 1788384950.818236,
         "paused_reason": null,
-        "puzzle_number": 1,
+        "puzzle_number": 2,
         "strikes": 0,
         "best_difficulty": 1304,
         "used_puzzle_ids": [
@@ -292,60 +292,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "lDksH",
-          "rating": 1304,
-          "themes": "advantage endgame fork short",
-          "url": "https://lichess.org/training/lDksH",
-          "start_fen": "8/8/B6p/1p3R2/1Pnkpb2/P6P/2K3P1/8 b - - 4 35",
-          "current_fen": "8/8/B6p/1p3n2/1P1kpb2/PK5P/6P1/8 w - - 0 37",
-          "solution": [
-            {
-              "uci": "c4e3",
-              "san": "Ne3+",
-              "color": "black"
-            },
-            {
-              "uci": "c2b3",
-              "san": "Kb3",
-              "color": "white"
-            },
-            {
-              "uci": "e3f5",
-              "san": "Nxf5",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Nxf5",
-          "accepted_moves": [
-            {
-              "san": "Ne3+",
-              "uci": "c4e3",
-              "accepted_at": 1788384937.3022408,
-              "solver_id": "601406103712170014"
-            },
-            {
-              "san": "Nxf5",
-              "uci": "e3f5",
-              "accepted_at": 1788384950.8181484,
-              "solver_id": "601406103712170014"
-            }
-          ],
-          "last_accepted_move_uci": "e3f5",
-          "last_accepted_move_san": "Nxf5",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788384950.8181472,
-          "position_before_last_move": "8/8/B6p/1p3R2/1P1kpb2/PK2n2P/6P1/8 b - - 6 36"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       },
