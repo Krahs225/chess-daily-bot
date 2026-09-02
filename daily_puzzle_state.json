@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2024-05-16",
     "title": "Tactical Mic Drop",
     "fen": "rnbr2k1/pp2nppp/2p5/q3P3/N3P3/2P1B3/PP4PP/R2QKBR1 w Q - 0 11",
-    "current_fen": "rnb3k1/pp2nppp/1Bp5/4P3/q3P3/2P5/PP4PP/3RKBR1 w - - 0 13",
+    "current_fen": "rnbR2k1/pp2nppp/1Bp5/4P3/q3P3/2P5/PP4PP/4KBR1 b - - 1 13",
     "pgn": "[Event \"Groningen Chess Festival\"]\r\n[Site \"Groningen NED\"]\r\n[Date \"2013.12.23\"]\r\n[Round \"3.25\"]\r\n[White \"Thomas Beerdsen\"]\r\n[Black \"Mark A Berkovich\"]\r\n[Result \"1-0\"]\r\n[ECO \"B12\"]\r\n[WhiteElo \"2154\"]\r\n[BlackElo \"2366\"]\r\n[FEN \"rnbr2k1/pp2nppp/2p5/q3P3/N3P3/2P1B3/PP4PP/R2QKBR1 w Q - 0 11\"]\r\n\r\n11. Bb6 Rxd1+ 12. Rxd1 Qxa4 13. Rd8# 1-0",
     "all_moves": [
       {
@@ -57,9 +57,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788367453236",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1544749805472063610,
     "attempted_users": {
       "442597396195704832": {
@@ -70,16 +70,18 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "b5",
-        "correct": false,
-        "timestamp": "2026-09-02T16:44:18.216765+00:00"
+        "move": "rd8",
+        "correct": true,
+        "timestamp": "2026-09-02T16:44:29.004616+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
