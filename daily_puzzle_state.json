@@ -1,144 +1,102 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-09-06",
-    "title": "Give Me a Push!",
-    "fen": "6k1/rn3p1p/2p1p1p1/1P1p2P1/1QPPq3/7P/r4RPK/5R2 w - - 0 1",
-    "current_fen": "3n4/r4R1p/2pkp1p1/1PPp2P1/3Pq3/7P/r5PK/8 b - - 0 6",
-    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/rn3p1p/2p1p1p1/1P1p2P1/1QPPq3/7P/r4RPK/5R2 w - - 0 1\"]\r\n\r\n1. Qf8+ Kxf8 2. Rxf7+ Ke8 3. Rf8+ Kd7 4. R1f7+ Kd6 5. Rd8+ Nxd8 6. c5# *",
+    "url": "https://www.chess.com/daily/2015-11-07",
+    "title": "Catalan Opening Analysis",
+    "fen": "r6r/1pk1ppbp/p1n3p1/2P5/8/4P3/n1P2PPP/1R1Q1RK1 w - - 0 1",
+    "current_fen": "r6r/1pk1ppbp/p1n3p1/2P5/8/4P3/n1P2PPP/1R1Q1RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r6r/1pk1ppbp/p1n3p1/2P5/8/4P3/n1P2PPP/1R1Q1RK1 w - - 0 1\"]\r\n\r\n1. Rxb7+ Kxb7 2. Qd7+ Kb8 3. Qxc6 Nb4 4. Qb6+ Kc8 5. Qxb4\r\n*",
     "all_moves": [
       {
-        "uci": "b4f8",
-        "san": "Qf8+",
+        "uci": "b1b7",
+        "san": "Rxb7+",
         "color": "white"
       },
       {
-        "uci": "g8f8",
-        "san": "Kxf8",
+        "uci": "c7b7",
+        "san": "Kxb7",
         "color": "black"
       },
       {
-        "uci": "f2f7",
-        "san": "Rxf7+",
+        "uci": "d1d7",
+        "san": "Qd7+",
         "color": "white"
       },
       {
-        "uci": "f8e8",
-        "san": "Ke8",
+        "uci": "b7b8",
+        "san": "Kb8",
         "color": "black"
       },
       {
-        "uci": "f7f8",
-        "san": "Rf8+",
+        "uci": "d7c6",
+        "san": "Qxc6",
         "color": "white"
       },
       {
-        "uci": "e8d7",
-        "san": "Kd7",
+        "uci": "a2b4",
+        "san": "Nb4",
         "color": "black"
       },
       {
-        "uci": "f1f7",
-        "san": "R1f7+",
+        "uci": "c6b6",
+        "san": "Qb6+",
         "color": "white"
       },
       {
-        "uci": "d7d6",
-        "san": "Kd6",
+        "uci": "b8c8",
+        "san": "Kc8",
         "color": "black"
       },
       {
-        "uci": "f8d8",
-        "san": "Rd8+",
-        "color": "white"
-      },
-      {
-        "uci": "b7d8",
-        "san": "Nxd8",
-        "color": "black"
-      },
-      {
-        "uci": "c4c5",
-        "san": "c5#",
+        "uci": "b6b4",
+        "san": "Qxb4",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b4f8",
-        "san": "Qf8+",
+        "uci": "b1b7",
+        "san": "Rxb7+",
         "color": "white"
       },
       {
-        "uci": "f2f7",
-        "san": "Rxf7+",
+        "uci": "d1d7",
+        "san": "Qd7+",
         "color": "white"
       },
       {
-        "uci": "f7f8",
-        "san": "Rf8+",
+        "uci": "d7c6",
+        "san": "Qxc6",
         "color": "white"
       },
       {
-        "uci": "f1f7",
-        "san": "R1f7+",
+        "uci": "c6b6",
+        "san": "Qb6+",
         "color": "white"
       },
       {
-        "uci": "f8d8",
-        "san": "Rd8+",
-        "color": "white"
-      },
-      {
-        "uci": "c4c5",
-        "san": "c5#",
+        "uci": "b6b4",
+        "san": "Qxb4",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 6,
-    "posted_at": "2026-09-02T21:17:35.842174+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-09-02T21:18:41.796674+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788383855842",
-    "next_solution_index": 11,
-    "next_player_index": 6,
-    "solved": true,
-    "message_id": 1544818602627043339,
-    "attempted_users": {
-      "1370434994945916940": {
-        "name": "Capybrawlgames2",
-        "move": "rf8",
-        "correct": true,
-        "timestamp": "2026-09-02T21:18:09.993211+00:00"
-      },
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "R1f7",
-        "correct": true,
-        "timestamp": "2026-09-02T21:18:14.087974+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "c5",
-        "correct": true,
-        "timestamp": "2026-09-02T21:18:21.219395+00:00"
-      }
-    },
-    "first_move_user_id": "1370434994945916940",
-    "first_move_user_name": "Capybrawlgames2",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "362606514764251137",
-      "362606514764251137",
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "362606514764251137",
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1788383921796",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
