@@ -182,9 +182,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 4,
+      "best_puzzle": 5,
       "best_difficulty": 1384,
-      "best_completed_at": "2026-08-20T21:48:59.681514+00:00",
+      "best_completed_at": "2026-09-02T21:43:57.820063+00:00",
       "current": {
         "run_id": "thice:1788385192",
         "started_by_id": "1370434994945916940",
@@ -202,7 +202,8 @@
           "bjsbG",
           "xQCZD",
           "TixpB",
-          "kea2I"
+          "kea2I",
+          "KzaW7"
         ],
         "members": {
           "601406103712170014": {
@@ -216,7 +217,60 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "KzaW7",
+          "rating": 1274,
+          "themes": "deflection endgame exposedKing mate mateIn4 veryLong",
+          "url": "https://lichess.org/training/KzaW7",
+          "start_fen": "4rk2/6R1/2b2P2/3pP3/2p2K2/8/p7/1q4R1 w - - 0 50",
+          "current_fen": "4rk2/6R1/2b2P2/3pP3/2p2K2/8/p7/1q4R1 w - - 0 50",
+          "solution": [
+            {
+              "uci": "g7g8",
+              "san": "Rg8+",
+              "color": "white"
+            },
+            {
+              "uci": "f8f7",
+              "san": "Kf7",
+              "color": "black"
+            },
+            {
+              "uci": "g1g7",
+              "san": "R1g7+",
+              "color": "white"
+            },
+            {
+              "uci": "f7e6",
+              "san": "Ke6",
+              "color": "black"
+            },
+            {
+              "uci": "g8e8",
+              "san": "Rxe8+",
+              "color": "white"
+            },
+            {
+              "uci": "c6e8",
+              "san": "Bxe8",
+              "color": "black"
+            },
+            {
+              "uci": "g7e7",
+              "san": "Re7#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
