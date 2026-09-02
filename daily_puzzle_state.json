@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2021-06-29",
     "title": "Capturing the Opponent's Attention",
     "fen": "6k1/8/4K1p1/1P6/3p4/b7/1r1RP3/8 w - - 0 1",
-    "current_fen": "6k1/1P6/4K1p1/8/8/8/4p3/2b5 w - - 0 5",
+    "current_fen": "1Q4k1/8/4K1p1/8/8/8/4p3/2b5 b - - 0 5",
     "pgn": "[Result \"*\"]\r\n[FEN \"6k1/8/4K1p1/1P6/3p4/b7/1r1RP3/8 w - - 0 1\"]\r\n\r\n1.Rxb2 Bxb2 2.b6 Bc1 3.e4 dxe3 4.b7 e2 5.b8=Q+ *",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788384304611",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1544820484040826934,
     "attempted_users": {
       "1370434994945916940": {
         "name": "Capybrawlgames2",
-        "move": "ke5",
-        "correct": false,
-        "timestamp": "2026-09-02T21:27:51.161177+00:00"
+        "move": "b8=q",
+        "correct": true,
+        "timestamp": "2026-09-02T21:28:27.929269+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -107,7 +107,7 @@
     },
     "first_move_user_id": "1370434994945916940",
     "first_move_user_name": "Capybrawlgames2",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "601406103712170014"
