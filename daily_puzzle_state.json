@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-10-25",
     "title": "Imprisoned",
     "fen": "3k3r/pb1n2pp/4Q3/4B3/1p6/6P1/Pq3PP1/2R1R1K1 w - - 0 1",
-    "current_fen": "2k4r/pbBn2pp/4Q3/8/1p6/6P1/Pq3PP1/2R1R1K1 w - - 2 2",
+    "current_fen": "2k1r3/pbBn2pp/8/8/1p6/6P1/Pq3PP1/2R1R1K1 w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3k3r/pb1n2pp/4Q3/4B3/1p6/6P1/Pq3PP1/2R1R1K1 w - - 0 1\"]\r\n\r\n1. Bc7+ Kc8 2. Qe8+ Rxe8 3. Rxe8# \r\n*",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788360634582",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1544721205402271767,
     "attempted_users": {
@@ -67,13 +67,21 @@
         "move": "bb6",
         "correct": false,
         "timestamp": "2026-09-02T14:50:38.748089+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qe8",
+        "correct": true,
+        "timestamp": "2026-09-02T14:50:42.403569+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
