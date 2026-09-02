@@ -1,62 +1,40 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2023-07-11",
-    "title": "Outmaneuvering a Weary Defense",
-    "fen": "8/1B2npk1/3b1N2/R7/5P2/3Q2PP/7K/4qr2 b - - 0 1",
-    "current_fen": "8/4npk1/3b1N2/R7/5P2/3Q2PP/6BK/5rq1 w - - 3 3",
-    "pgn": "[Result \"*\"]\r\n[FEN \"8/1B2npk1/3b1N2/R7/5P2/3Q2PP/7K/4qr2 b - - 0 1\"]\r\n\r\n1... Qf2+ 2. Bg2 Qg1# *",
+    "url": "https://www.chess.com/daily/2018-07-16",
+    "title": "Taking Space and Taking Gains",
+    "fen": "r2qr1k1/pppb1pb1/3p2p1/n2P4/2P2Q2/1P3NNP/P3PPBK/4RR2 w - - 0 1",
+    "current_fen": "r2qr1k1/pppb1pb1/3p2p1/n2P4/2P2Q2/1P3NNP/P3PPBK/4RR2 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qr1k1/pppb1pb1/3p2p1/n2P4/2P2Q2/1P3NNP/P3PPBK/4RR2 w - - 0 1\"]\r\n\r\n1. b4\r\n*",
     "all_moves": [
       {
-        "uci": "e1f2",
-        "san": "Qf2+",
-        "color": "black"
-      },
-      {
-        "uci": "b7g2",
-        "san": "Bg2",
+        "uci": "b3b4",
+        "san": "b4",
         "color": "white"
-      },
-      {
-        "uci": "f2g1",
-        "san": "Qg1#",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e1f2",
-        "san": "Qf2+",
-        "color": "black"
-      },
-      {
-        "uci": "f2g1",
-        "san": "Qg1#",
-        "color": "black"
+        "uci": "b3b4",
+        "san": "b4",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-09-02T18:19:35.097773+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 1,
+    "posted_at": "2026-09-02T18:20:19.332726+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788373175097",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1544773803706417233,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qg1",
-        "correct": true,
-        "timestamp": "2026-09-02T18:19:43.002752+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788373219332",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
