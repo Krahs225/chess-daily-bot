@@ -1,107 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-04-30",
-    "title": "Finishing Strong",
-    "fen": "8/8/p5pp/k7/1p1K1p2/1P3P1P/5P2/8 w - - 0 1",
-    "current_fen": "8/8/p7/k1K5/1p3pP1/1P6/5P2/8 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/8/p5pp/k7/1p1K1p2/1P3P1P/5P2/8 w - - 0 1\"]\r\n\r\n1. Kc5 g5 2. Kc6 h5 3. Kc5 g4 4. fxg4 hxg4 5. hxg4\r\n*",
+    "url": "https://www.chess.com/daily/2023-02-23",
+    "title": "Grandmaster Overlooks King Safety",
+    "fen": "r4rk1/1bq1bp1p/p1n1p1p1/3n2N1/2N4R/2BBP3/1P2QPPP/5RK1 w - - 0 18",
+    "current_fen": "r4rk1/1bq1bp1p/p1n1p3/3n2Np/2N4R/2BBP3/1P3PPP/5RK1 w - - 0 19",
+    "pgn": "[Event \"FIDE World Rapid Chess Championship 2022\"]\r\n[Site \"Chess.com\"]\r\n[Date \"2022.12.27\"]\r\n[Round \"7\"]\r\n[White \"Dubov, Daniil\"]\r\n[Black \"Nihal, Sarin\"]\r\n[Result \"*\"]\r\n[WhiteElo \"2708\"]\r\n[BlackElo \"2670\"]\r\n[SetUp \"1\"]\r\n[FEN \"r4rk1/1bq1bp1p/p1n1p1p1/3n2N1/2N4R/2BBP3/1P2QPPP/5RK1 w - - 0 18\"]\r\n[PlyCount \"3\"]\r\n[EventDate \"2022.??.??\"]\r\n[EventType \"rapid\"]\r\n\r\n18. Qh5 gxh5 19. Bxh7# *",
     "all_moves": [
       {
-        "uci": "d4c5",
-        "san": "Kc5",
+        "uci": "e2h5",
+        "san": "Qh5",
         "color": "white"
       },
       {
-        "uci": "g6g5",
-        "san": "g5",
+        "uci": "g6h5",
+        "san": "gxh5",
         "color": "black"
       },
       {
-        "uci": "c5c6",
-        "san": "Kc6",
-        "color": "white"
-      },
-      {
-        "uci": "h6h5",
-        "san": "h5",
-        "color": "black"
-      },
-      {
-        "uci": "c6c5",
-        "san": "Kc5",
-        "color": "white"
-      },
-      {
-        "uci": "g5g4",
-        "san": "g4",
-        "color": "black"
-      },
-      {
-        "uci": "f3g4",
-        "san": "fxg4",
-        "color": "white"
-      },
-      {
-        "uci": "h5g4",
-        "san": "hxg4",
-        "color": "black"
-      },
-      {
-        "uci": "h3g4",
-        "san": "hxg4",
+        "uci": "d3h7",
+        "san": "Bxh7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4c5",
-        "san": "Kc5",
+        "uci": "e2h5",
+        "san": "Qh5",
         "color": "white"
       },
       {
-        "uci": "c5c6",
-        "san": "Kc6",
-        "color": "white"
-      },
-      {
-        "uci": "c6c5",
-        "san": "Kc5",
-        "color": "white"
-      },
-      {
-        "uci": "f3g4",
-        "san": "fxg4",
-        "color": "white"
-      },
-      {
-        "uci": "h3g4",
-        "san": "hxg4",
+        "uci": "d3h7",
+        "san": "Bxh7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-09-02T20:01:33.486697+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-09-02T20:02:07.654564+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788379293486",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1544799467029401632,
+    "puzzle_id": "random_1788379327654",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1544799609153388757,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "hxg4",
+        "move": "qh5",
         "correct": true,
-        "timestamp": "2026-09-02T20:01:57.691525+00:00"
+        "timestamp": "2026-09-02T20:02:12.308550+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
