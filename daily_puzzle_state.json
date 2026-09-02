@@ -1,92 +1,77 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-12-09",
-    "title": "Hikaru's Gift",
-    "fen": "3r2k1/ppq3p1/1n2p2p/4Np1P/P1P2P2/5Q2/6PK/3R4 w - - 1 31",
-    "current_fen": "2R5/p5pk/1n2p1Np/5p1P/P1P2P2/8/6PK/8 b - - 0 34",
-    "pgn": "[Event \"Skilling Open\"]\r\n[Site \"chess24.com INT\"]\r\n[Date \"2020.11.24\"]\r\n[Round \"14.4\"]\r\n[White \"Hikaru Nakamura\"]\r\n[Black \"Alireza Firouzja\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2736\"]\r\n[BlackElo \"2749\"]\r\n[FEN \"3r2k1/ppq3p1/1n2p2p/4Np1P/P1P2P2/5Q2/6PK/3R4 w - - 1 31\"]\r\n\r\n31.Qxb7 Qxb7 32.Rxd8+ Kh7 33.Ng6 Qc8 34.Rxc8 1-0",
+    "url": "https://www.chess.com/daily/2015-02-17",
+    "title": "Persistent Pressure",
+    "fen": "r2qk3/p4p1r/bp2pQp1/1n2P1Bp/7P/3P2N1/P1R2PP1/2R3K1 w q - 0 1",
+    "current_fen": "2rqk3/p4p1r/bp2pQp1/1n2P1Bp/7P/3P2N1/P4PP1/2R3K1 w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qk3/p4p1r/bp2pQp1/1n2P1Bp/7P/3P2N1/P1R2PP1/2R3K1 w q - 0 1\"]\r\n\r\n1. Rc8 Rxc8 2. Rxc8 Bxc8 3. Qxd8#\r\n*",
     "all_moves": [
       {
-        "uci": "f3b7",
-        "san": "Qxb7",
+        "uci": "c2c8",
+        "san": "Rc8",
         "color": "white"
       },
       {
-        "uci": "c7b7",
-        "san": "Qxb7",
-        "color": "black"
-      },
-      {
-        "uci": "d1d8",
-        "san": "Rxd8+",
-        "color": "white"
-      },
-      {
-        "uci": "g8h7",
-        "san": "Kh7",
-        "color": "black"
-      },
-      {
-        "uci": "e5g6",
-        "san": "Ng6",
-        "color": "white"
-      },
-      {
-        "uci": "b7c8",
-        "san": "Qc8",
-        "color": "black"
-      },
-      {
-        "uci": "d8c8",
+        "uci": "a8c8",
         "san": "Rxc8",
+        "color": "black"
+      },
+      {
+        "uci": "c1c8",
+        "san": "Rxc8",
+        "color": "white"
+      },
+      {
+        "uci": "a6c8",
+        "san": "Bxc8",
+        "color": "black"
+      },
+      {
+        "uci": "f6d8",
+        "san": "Qxd8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3b7",
-        "san": "Qxb7",
+        "uci": "c2c8",
+        "san": "Rc8",
         "color": "white"
       },
       {
-        "uci": "d1d8",
-        "san": "Rxd8+",
-        "color": "white"
-      },
-      {
-        "uci": "e5g6",
-        "san": "Ng6",
-        "color": "white"
-      },
-      {
-        "uci": "d8c8",
+        "uci": "c1c8",
         "san": "Rxc8",
+        "color": "white"
+      },
+      {
+        "uci": "f6d8",
+        "san": "Qxd8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-09-02T19:49:14.035944+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-09-02T19:49:37.121720+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788378554035",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544796365131874444,
+    "puzzle_id": "random_1788378577121",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1544796461735350323,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rxc8",
+        "move": "rc8",
         "correct": true,
-        "timestamp": "2026-09-02T19:49:32.286109+00:00"
+        "timestamp": "2026-09-02T19:49:43.623123+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
