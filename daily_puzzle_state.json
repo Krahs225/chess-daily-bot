@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-02-28",
     "title": "All Out for the Black King",
     "fen": "2r4k/5pbp/3Q1Np1/p7/Pn3PPn/7q/5B2/3R2KB w - - 0 1",
-    "current_fen": "2r4k/5pbp/3Q1Np1/p7/Pn3PPn/7q/5B2/3R2KB w - - 0 1",
+    "current_fen": "3R1b1k/5p1p/5Np1/p7/Pn3PPn/7q/5B2/6KB w - - 1 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r4k/5pbp/3Q1Np1/p7/Pn3PPn/7q/5B2/3R2KB w - - 0 1\"]\r\n\r\n1. Qd8+ Rxd8 2. Rxd8+ Bf8 3. Rxf8+ Kg7 4. Re8 Kxf6 5. Bd4#\r\n*",
     "all_moves": [
       {
@@ -87,23 +87,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788377484243",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1544791877520195646,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qc7",
+        "move": "rxd8",
+        "correct": true,
+        "timestamp": "2026-09-02T19:31:32.950865+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rxd8",
         "correct": false,
-        "timestamp": "2026-09-02T19:31:29.491583+00:00"
+        "timestamp": "2026-09-02T19:31:32.958266+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
