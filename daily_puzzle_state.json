@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-01-09",
     "title": "Do You Have the Time?",
     "fen": "6R1/8/7b/p2P3P/8/1Pn5/2k5/K7 b - - 0 1",
-    "current_fen": "3Q4/8/8/7P/8/pkn5/1R6/K7 b - - 0 6",
+    "current_fen": "3Q4/8/8/7P/8/1kn5/1p6/K7 w - - 0 7",
     "pgn": "[Result \"0-1\"]\r\n[FEN \"6R1/8/7b/p2P3P/8/1Pn5/2k5/K7 b - - 0 1\"]\r\n\r\n1...Bc1 2.Rg2+ Kxb3 3.d6 a4 4.d7 a3 5.d8=Q Bb2+ 6.Rxb2+ axb2# 1-0",
     "all_moves": [
       {
@@ -102,9 +102,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788367255792",
-    "next_solution_index": 10,
-    "next_player_index": 5,
-    "solved": false,
+    "next_solution_index": 11,
+    "next_player_index": 6,
+    "solved": true,
     "message_id": 1544748976614543460,
     "attempted_users": {
       "601406103712170014": {
@@ -115,14 +115,14 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "bb2",
+        "move": "axb2",
         "correct": true,
-        "timestamp": "2026-09-02T16:41:18.509327+00:00"
+        "timestamp": "2026-09-02T16:41:21.722065+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
