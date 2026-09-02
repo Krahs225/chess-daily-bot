@@ -193,10 +193,10 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-02T21:39:52.007352+00:00",
-        "last_activity": 1788385293.0872223,
+        "last_activity": 1788385301.0695453,
         "paused_reason": null,
         "puzzle_number": 2,
-        "strikes": 0,
+        "strikes": 1,
         "best_difficulty": 1384,
         "used_puzzle_ids": [
           "bjsbG",
@@ -211,7 +211,7 @@
           "1370434994945916940": {
             "name": "Capybrawlgames2",
             "correct": 1,
-            "wrong": 0
+            "wrong": 1
           }
         },
         "puzzle": {
@@ -254,7 +254,9 @@
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
-          "wrong_users": [],
+          "wrong_users": [
+            "1370434994945916940"
+          ],
           "last_move_san": "Rd8+",
           "accepted_moves": [
             {
