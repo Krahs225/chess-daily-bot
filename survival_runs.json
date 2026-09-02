@@ -277,7 +277,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-02T21:35:04.217972+00:00",
-        "last_activity": 1788385066.8448272,
+        "last_activity": 1788385072.084888,
         "paused_reason": null,
         "puzzle_number": 3,
         "strikes": 0,
@@ -290,7 +290,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 5,
+            "correct": 6,
             "wrong": 0
           },
           "1370434994945916940": {
@@ -305,7 +305,7 @@
           "themes": "advantage endgame rookEndgame short trappedPiece",
           "url": "https://lichess.org/training/BMbtV",
           "start_fen": "6k1/p5pp/1p1r4/1R1P1r2/PP6/7P/6P1/3R2K1 b - - 1 39",
-          "current_fen": "6k1/6pp/pR1r4/3P1r2/PP6/7P/6P1/3R2K1 b - - 0 40",
+          "current_fen": "6k1/6pp/pr6/3P1r2/PP6/7P/6P1/3R2K1 w - - 0 41",
           "solution": [
             {
               "uci": "a7a6",
@@ -324,26 +324,32 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 2,
+          "next_solution_index": 3,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "a6",
+          "last_move_san": "Rxb6",
           "accepted_moves": [
             {
               "san": "a6",
               "uci": "a7a6",
               "accepted_at": 1788385066.844727,
               "solver_id": "601406103712170014"
+            },
+            {
+              "san": "Rxb6",
+              "uci": "d6b6",
+              "accepted_at": 1788385072.0847766,
+              "solver_id": "601406103712170014"
             }
           ],
-          "last_accepted_move_uci": "a7a6",
-          "last_accepted_move_san": "a6",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1788385066.844726,
-          "position_before_last_move": "6k1/p5pp/1p1r4/1R1P1r2/PP6/7P/6P1/3R2K1 b - - 1 39"
+          "last_accepted_move_uci": "d6b6",
+          "last_accepted_move_san": "Rxb6",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1788385072.0847752,
+          "position_before_last_move": "6k1/6pp/pR1r4/3P1r2/PP6/7P/6P1/3R2K1 b - - 0 40"
         },
         "first_solver_id": "601406103712170014",
         "first_solver_name": "TheMakina",
