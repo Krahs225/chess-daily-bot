@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2013-07-22",
     "title": "Mate in 2",
     "fen": "3r1b1r/ppNbkp1p/2n2np1/4p3/7P/1PP5/P3PPPR/R1BK1BN1 w - - 0 1",
-    "current_fen": "3r1b1r/ppNbkp1p/2n2np1/4p3/7P/1PP5/P3PPPR/R1BK1BN1 w - - 0 1",
+    "current_fen": "3r1b1r/ppNbkp1p/5np1/4p3/1n5P/BPP5/P3PPPR/R2K1BN1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r1b1r/ppNbkp1p/2n2np1/4p3/7P/1PP5/P3PPPR/R1BK1BN1 w - - 0 1\"]\r\n\r\n1. Ba3+ Nb4 2. Bxb4# \r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788378954142",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1544798042643763301,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "ba3",
+        "correct": true,
+        "timestamp": "2026-09-02T19:56:00.780976+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
