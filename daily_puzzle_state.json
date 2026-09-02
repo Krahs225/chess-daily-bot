@@ -1,77 +1,66 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-10-08",
-    "title": "A New Discovery",
-    "fen": "r3k2r/1b1p2p1/p3pn2/2q2p2/1p2PP1p/3B1QN1/PPP3PP/R3R2K w - - 0 1",
-    "current_fen": "r6r/1Q1p1kp1/p4n2/2q2P2/1p3P1p/3B4/PPP3PP/R3R2K b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3k2r/1b1p2p1/p3pn2/2q2p2/1p2PP1p/3B1QN1/PPP3PP/R3R2K w - - 0 1\"]\r\n\r\n1. Nxf5 exf5 2. exf5+ Kf7 3. Qxb7",
+    "title": "1971 • 1NNdH",
+    "fen": "2r1k3/1p1rn1pp/5p2/8/3R4/2B1Q2P/2P1RPPK/5q2 b - - 0 28",
+    "current_fen": "2r1k3/1p1rn1pp/5p2/8/3R4/2B1Q2P/2P1RPPK/5q2 b - - 0 28",
     "all_moves": [
       {
-        "uci": "g3f5",
-        "san": "Nxf5",
-        "color": "white"
-      },
-      {
-        "uci": "e6f5",
-        "san": "exf5",
+        "uci": "c8c3",
+        "san": "Rxc3",
         "color": "black"
       },
       {
-        "uci": "e4f5",
-        "san": "exf5+",
+        "uci": "e3e6",
+        "san": "Qe6",
         "color": "white"
       },
       {
-        "uci": "e8f7",
-        "san": "Kf7",
+        "uci": "f1e2",
+        "san": "Qxe2",
         "color": "black"
       },
       {
-        "uci": "f3b7",
-        "san": "Qxb7",
+        "uci": "e6e2",
+        "san": "Qxe2",
         "color": "white"
+      },
+      {
+        "uci": "d7d4",
+        "san": "Rxd4",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "g3f5",
-        "san": "Nxf5",
-        "color": "white"
+        "uci": "c8c3",
+        "san": "Rxc3",
+        "color": "black"
       },
       {
-        "uci": "e4f5",
-        "san": "exf5+",
-        "color": "white"
+        "uci": "f1e2",
+        "san": "Qxe2",
+        "color": "black"
       },
       {
-        "uci": "f3b7",
-        "san": "Qxb7",
-        "color": "white"
+        "uci": "d7d4",
+        "san": "Rxd4",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 3,
-    "posted_at": "2026-09-02T20:55:29.754437+00:00",
-    "answer_posted": true,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_1788382529754",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1544813039826640958,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Qxb7",
-        "correct": true,
-        "timestamp": "2026-09-02T20:56:16.122938+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "pgn": "",
+    "url": "https://lichess.org/training/1NNdH",
+    "posted_at": "2026-09-02T20:57:08.261994+00:00",
+    "puzzle_id": "random_lichess_1971_1NNdH_1788382628262",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
@@ -266,6 +255,9 @@
     ],
     "2222": [
       "ouh2l"
+    ],
+    "1971": [
+      "1NNdH"
     ]
   }
 }
