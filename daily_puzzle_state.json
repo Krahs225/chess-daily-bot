@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-08-29",
     "title": "The Three Step",
     "fen": "5rkr/1p2Rppp/1qp5/8/1P6/PQ6/2B2PPP/6K1 w - - 0 1",
-    "current_fen": "5rkr/1p2Rppp/1qp5/8/1P6/PQ6/2B2PPP/6K1 w - - 0 1",
+    "current_fen": "6kr/1p2Rrpp/1qp5/8/1P6/P7/2B2PPP/6K1 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[FEN \"5rkr/1p2Rppp/1qp5/8/1P6/PQ6/2B2PPP/6K1 w - - 0 1\"]\r\n\r\n1. Qxf7+ Rxf7 2. Re8+ Rf8 3. Bb3#\r\n*",
     "all_moves": [
       {
@@ -57,13 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788376940530",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544789596909609022,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxf7",
+        "correct": true,
+        "timestamp": "2026-09-02T19:22:25.250096+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
