@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-06-30",
     "title": "A Moment of Clarity",
     "fen": "r3k2r/1pp2p2/3p2pp/p2Pp2n/1PPnP1bP/P1N1QqP1/2BKNP2/R6R b kq - 0 1",
-    "current_fen": "r3k2r/1pp2p2/3p2pp/p2Pp2n/1PPnP1bP/P1N1QqP1/2BKNP2/R6R b kq - 0 1",
+    "current_fen": "r3k2r/1pp2p2/3p2pp/p2Pp2n/1PPnP1bP/P1N1P1P1/2BKN3/R6R b kq - 0 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"r3k2r/1pp2p2/3p2pp/p2Pp2n/1PPnP1bP/P1N1QqP1/2BKNP2/R6R b kq - 0 1\"]\r\n\r\n1...Qxe3+ 2.fxe3 Nxe2 3.Nxe2 Bxe2 4.Kxe2 Nxg3+ 5.Kf3 Nxh1 *",
     "all_moves": [
       {
@@ -87,16 +87,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788382884941",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544814530239012965,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nxc2",
-        "correct": false,
-        "timestamp": "2026-09-02T21:01:40.437730+00:00"
+        "move": "qxe3",
+        "correct": true,
+        "timestamp": "2026-09-02T21:02:24.175280+00:00"
       },
       "1370434994945916940": {
         "name": "Capybrawlgames2",
@@ -105,8 +105,8 @@
         "timestamp": "2026-09-02T21:02:20.091455+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
