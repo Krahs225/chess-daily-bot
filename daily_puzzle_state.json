@@ -1,76 +1,69 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-11-12",
-    "title": "Alekhine - Sterk, Budapest 1921",
-    "fen": "r1q2rk1/pb1n1ppp/1p2p3/6B1/4n3/2bB1N2/PP2QPPP/R1R3K1 w - - 0 1",
-    "current_fen": "r1q2rk1/p4ppp/1p2p3/2n3B1/4Q3/2b2N2/PP3PPP/R1R3K1 w - - 1 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1q2rk1/pb1n1ppp/1p2p3/6B1/4n3/2bB1N2/PP2QPPP/R1R3K1 w - - 0 1\"]\r\n\r\n1. Bxe4 Bxe4 2. Qxe4 Nc5 3. Qb1\r\n*",
+    "url": "https://www.chess.com/daily/2011-10-06",
+    "title": "Converting in Efficient Manner",
+    "fen": "2k4r/2P4P/3P3R/3K4/8/8/8/8 w k - 0 1",
+    "current_fen": "2k4r/2P4P/3P3R/3K4/8/8/8/8 w k - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k4r/2P4P/3P3R/3K4/8/8/8/8 w k - 0 1\"]\r\n\r\n1. Kc6 Rxh7 2. d7+ Rxd7 3. Rh8+\r\n*",
     "all_moves": [
       {
-        "uci": "d3e4",
-        "san": "Bxe4",
+        "uci": "d5c6",
+        "san": "Kc6",
         "color": "white"
       },
       {
-        "uci": "b7e4",
-        "san": "Bxe4",
+        "uci": "h8h7",
+        "san": "Rxh7",
         "color": "black"
       },
       {
-        "uci": "e2e4",
-        "san": "Qxe4",
+        "uci": "d6d7",
+        "san": "d7+",
         "color": "white"
       },
       {
-        "uci": "d7c5",
-        "san": "Nc5",
+        "uci": "h7d7",
+        "san": "Rxd7",
         "color": "black"
       },
       {
-        "uci": "e4b1",
-        "san": "Qb1",
+        "uci": "h6h8",
+        "san": "Rh8+",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3e4",
-        "san": "Bxe4",
+        "uci": "d5c6",
+        "san": "Kc6",
         "color": "white"
       },
       {
-        "uci": "e2e4",
-        "san": "Qxe4",
+        "uci": "d6d7",
+        "san": "d7+",
         "color": "white"
       },
       {
-        "uci": "e4b1",
-        "san": "Qb1",
+        "uci": "h6h8",
+        "san": "Rh8+",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-09-02T19:46:04.609879+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-09-02T19:48:09.481429+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788378364609",
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "puzzle_id": "random_1788378489481",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1544795570609201152,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "qg4",
-        "correct": false,
-        "timestamp": "2026-09-02T19:47:28.015919+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
