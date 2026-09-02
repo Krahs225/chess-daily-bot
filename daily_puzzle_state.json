@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2022-09-16",
     "title": "Three-Part Harmony",
     "fen": "7r/1p6/k1bB4/1p2P3/P2Q1K1P/1P1B2P1/8/3q1N2 b - - 0 1",
-    "current_fen": "7r/1p6/k1bB4/1p2P3/P2Q1K1P/1P1B2P1/8/3q1N2 b - - 0 1",
+    "current_fen": "7r/1p6/k1bB4/1p2P1K1/P2Q3P/1P1B1qP1/8/5N2 b - - 2 2",
     "pgn": "[Result \"*\"]\r\n[FEN \"7r/1p6/k1bB4/1p2P3/P2Q1K1P/1P1B2P1/8/3q1N2 b - - 0 1\"]\r\n\r\n1... Qf3+ 2. Kg5 Rh5+ 3. Kg6 Be8+ 4. Kg7 Qf7# *",
     "all_moves": [
       {
@@ -72,20 +72,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788360658885",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544721306719752303,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rf8",
+        "move": "qf3",
+        "correct": true,
+        "timestamp": "2026-09-02T14:51:07.522289+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rf8",
         "correct": false,
-        "timestamp": "2026-09-02T14:51:03.096948+00:00"
+        "timestamp": "2026-09-02T14:51:03.634040+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
