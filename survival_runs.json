@@ -266,9 +266,9 @@
     },
     "sharkmeister": {
       "name": "sharkmeister",
-      "best_puzzle": 3,
+      "best_puzzle": 4,
       "best_difficulty": 1384,
-      "best_completed_at": "2026-09-02T21:36:56.067528+00:00",
+      "best_completed_at": "2026-09-02T21:38:15.724362+00:00",
       "current": {
         "run_id": "sharkmeister:1788384904",
         "started_by_id": "1370434994945916940",
@@ -285,7 +285,8 @@
         "used_puzzle_ids": [
           "lDksH",
           "QuMxX",
-          "BMbtV"
+          "BMbtV",
+          "SoLDc"
         ],
         "members": {
           "601406103712170014": {
@@ -299,7 +300,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "SoLDc",
+          "rating": 1241,
+          "themes": "crushing intermezzo middlegame short",
+          "url": "https://lichess.org/training/SoLDc",
+          "start_fen": "r2qk2r/pp3pp1/2p1pnp1/3p4/3PNb2/2PBP3/PPQ2PPP/R4RK1 w kq - 0 13",
+          "current_fen": "r2qk2r/pp3pp1/2p1pnp1/3p4/3PNb2/2PBP3/PPQ2PPP/R4RK1 w kq - 0 13",
+          "solution": [
+            {
+              "uci": "e4f6",
+              "san": "Nxf6+",
+              "color": "white"
+            },
+            {
+              "uci": "d8f6",
+              "san": "Qxf6",
+              "color": "black"
+            },
+            {
+              "uci": "e3f4",
+              "san": "exf4",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
