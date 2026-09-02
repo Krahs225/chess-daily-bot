@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-01-08",
     "title": "Long Mate",
     "fen": "r1r3k1/pp2pp1p/4b2Q/6Pp/4Nq2/3B1P2/PPP5/1K1R4 w - - 0 1",
-    "current_fen": "r1r3k1/pp2pp1p/4b2Q/6Pp/4Nq2/3B1P2/PPP5/1K1R4 w - - 0 1",
+    "current_fen": "r1r4k/pp3p1B/4bp1Q/6Pp/5q2/5P2/PPP5/1K1R4 w - - 1 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1r3k1/pp2pp1p/4b2Q/6Pp/4Nq2/3B1P2/PPP5/1K1R4 w - - 0 1\"]\r\n\r\n1. Nf6+ exf6 2. Bxh7+ Kh8 3. Bf5+ Kg8 4. Qh7+ Kf8 5. Qh8+ Ke7 6. gxf6#\r\n*",
     "all_moves": [
       {
@@ -102,8 +102,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788367356201",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1544749397592641576,
     "attempted_users": {
@@ -112,10 +112,16 @@
         "move": "qxh7",
         "correct": false,
         "timestamp": "2026-09-02T16:42:40.261058+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "bxh7",
+        "correct": true,
+        "timestamp": "2026-09-02T16:42:43.753234+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
