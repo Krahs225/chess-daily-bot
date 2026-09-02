@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2020-10-17",
     "title": "Fortress Unrealized",
     "fen": "n3K3/P7/8/8/4k3/8/7b/6R1 w - - 0 1",
-    "current_fen": "8/8/2K5/2b5/R7/3k4/8/8 w - - 3 7",
+    "current_fen": "8/8/8/2K5/R7/3k4/8/8 b - - 0 7",
     "pgn": "[White \"Kasparian,  Genrikh\"]\r\n[Black \"Study\"]\r\n[Result \"*\"]\r\n[FEN \"n3K3/P7/8/8/4k3/8/7b/6R1 w - - 0 1\"]\r\n\r\n1.Rg8 Bc7 2.Kd7 Bb6 3.Re8+ Kd4 4.Kc6 Bxa7 5.Rxa8 Bc5 6.Ra4+ Kd3 7.Kxc5 *",
     "all_moves": [
       {
@@ -117,9 +117,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788366525957",
-    "next_solution_index": 12,
-    "next_player_index": 6,
-    "solved": false,
+    "next_solution_index": 13,
+    "next_player_index": 7,
+    "solved": true,
     "message_id": 1544745915489718293,
     "attempted_users": {
       "442597396195704832": {
@@ -130,16 +130,18 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rd8",
-        "correct": false,
-        "timestamp": "2026-09-02T16:30:12.644159+00:00"
+        "move": "kxc5",
+        "correct": true,
+        "timestamp": "2026-09-02T16:30:20.132108+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
