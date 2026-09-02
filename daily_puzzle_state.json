@@ -1,91 +1,106 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-03-05",
-    "title": "E.Stoddard vs S.Sorenson, corr., 1977",
-    "fen": "r1bb1rk1/pp1p1p2/5RpQ/3p2B1/3Pq3/8/PPP3PP/5RK1 w - - 0 1",
-    "current_fen": "r1bb1R2/pp1p1R1k/6p1/3p2B1/3Pq3/8/PPP3PP/6K1 b - - 4 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bb1rk1/pp1p1p2/5RpQ/3p2B1/3Pq3/8/PPP3PP/5RK1 w - - 0 1\"]\r\n\r\n1. Qxf8+ Kxf8 2. Rxf7+ Kg8 3. Rf8+ Kh7 4. R1f7#\r\n*",
+    "url": "https://www.chess.com/daily/2022-04-08",
+    "title": "Patience",
+    "fen": "8/p4p1k/1p5p/1N2p3/P3Pn2/5pq1/1Q3RP1/5KB1 b - - 1 1",
+    "current_fen": "8/p4p1k/1p5p/1N2p3/P3P3/3q4/4n1R1/5KB1 w - - 0 6",
+    "pgn": "[Result \"*\"]\r\n[FEN \"8/p4p1k/1p5p/1N2p3/P3Pn2/5pq1/1Q3RP1/5KB1 b - - 1 1\"]\r\n\r\n1...fxg2+ 2.Rxg2 Qf3+ 3.Qf2 Qd1+ 4.Qe1 Qd3+ 5.Qe2 Nxe2 *",
     "all_moves": [
       {
-        "uci": "h6f8",
-        "san": "Qxf8+",
-        "color": "white"
-      },
-      {
-        "uci": "g8f8",
-        "san": "Kxf8",
+        "uci": "f3g2",
+        "san": "fxg2+",
         "color": "black"
       },
       {
-        "uci": "f6f7",
-        "san": "Rxf7+",
+        "uci": "f2g2",
+        "san": "Rxg2",
         "color": "white"
       },
       {
-        "uci": "f8g8",
-        "san": "Kg8",
+        "uci": "g3f3",
+        "san": "Qf3+",
         "color": "black"
       },
       {
-        "uci": "f7f8",
-        "san": "Rf8+",
+        "uci": "b2f2",
+        "san": "Qf2",
         "color": "white"
       },
       {
-        "uci": "g8h7",
-        "san": "Kh7",
+        "uci": "f3d1",
+        "san": "Qd1+",
         "color": "black"
       },
       {
-        "uci": "f1f7",
-        "san": "R1f7#",
+        "uci": "f2e1",
+        "san": "Qe1",
         "color": "white"
+      },
+      {
+        "uci": "d1d3",
+        "san": "Qd3+",
+        "color": "black"
+      },
+      {
+        "uci": "e1e2",
+        "san": "Qe2",
+        "color": "white"
+      },
+      {
+        "uci": "f4e2",
+        "san": "Nxe2",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6f8",
-        "san": "Qxf8+",
-        "color": "white"
+        "uci": "f3g2",
+        "san": "fxg2+",
+        "color": "black"
       },
       {
-        "uci": "f6f7",
-        "san": "Rxf7+",
-        "color": "white"
+        "uci": "g3f3",
+        "san": "Qf3+",
+        "color": "black"
       },
       {
-        "uci": "f7f8",
-        "san": "Rf8+",
-        "color": "white"
+        "uci": "f3d1",
+        "san": "Qd1+",
+        "color": "black"
       },
       {
-        "uci": "f1f7",
-        "san": "R1f7#",
-        "color": "white"
+        "uci": "d1d3",
+        "san": "Qd3+",
+        "color": "black"
+      },
+      {
+        "uci": "f4e2",
+        "san": "Nxe2",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-09-02T12:12:38.239023+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 5,
+    "posted_at": "2026-09-02T13:39:15.742429+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788351158239",
-    "next_solution_index": 7,
-    "next_player_index": 4,
+    "puzzle_id": "random_1788356355742",
+    "next_solution_index": 9,
+    "next_player_index": 5,
     "solved": true,
-    "message_id": 1544681458310971436,
+    "message_id": 1544703258743021750,
     "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "r1f7",
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nxe2",
         "correct": true,
-        "timestamp": "2026-09-02T12:13:08.683764+00:00"
+        "timestamp": "2026-09-02T13:40:09.237393+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
