@@ -1,105 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2013-02-09",
-    "title": "Rotlewi - Rubinstein, Lodz 1907/08",
-    "fen": "r4r1k/1b2q2p/p1n3p1/1p2bpNQ/1P2p3/PB2P3/1B3PPP/2RR2K1 w - - 0 1",
-    "current_fen": "r4r1k/1b4qp/p6R/1p2BpNp/1P2p3/PB2P3/5PPP/6K1 b - - 2 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4r1k/1b2q2p/p1n3p1/1p2bpNQ/1P2p3/PB2P3/1B3PPP/2RR2K1 w - - 0 1\"]\r\n\r\n1. Rxc6 gxh5 2. Rd7 Qxd7 3. Bxe5+ Qg7 4. Rh6\r\n*",
+    "url": "https://www.chess.com/daily/2019-05-15",
+    "title": "Shirov-Motylev, Moscow 2001 Modified",
+    "fen": "1r2kb1r/pq2pppp/Q4n2/2pPN3/P1p1P3/8/1p3PPP/1R2KB1R w Kk a6 0 1",
+    "current_fen": "1r2kb1r/pq2pppp/Q4n2/2pPN3/P1p1P3/8/1p3PPP/1R2KB1R w Kk a6 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r2kb1r/pq2pppp/Q4n2/2pPN3/P1p1P3/8/1p3PPP/1R2KB1R w Kk a6 0 1\"]\r\n\r\n1. Rxb2 Qxa6 2. Rxb8+ Qc8 3. Rxc8#\r\n*",
     "all_moves": [
       {
-        "uci": "c1c6",
-        "san": "Rxc6",
+        "uci": "b1b2",
+        "san": "Rxb2",
         "color": "white"
       },
       {
-        "uci": "g6h5",
-        "san": "gxh5",
+        "uci": "b7a6",
+        "san": "Qxa6",
         "color": "black"
       },
       {
-        "uci": "d1d7",
-        "san": "Rd7",
+        "uci": "b2b8",
+        "san": "Rxb8+",
         "color": "white"
       },
       {
-        "uci": "e7d7",
-        "san": "Qxd7",
+        "uci": "a6c8",
+        "san": "Qc8",
         "color": "black"
       },
       {
-        "uci": "b2e5",
-        "san": "Bxe5+",
-        "color": "white"
-      },
-      {
-        "uci": "d7g7",
-        "san": "Qg7",
-        "color": "black"
-      },
-      {
-        "uci": "c6h6",
-        "san": "Rh6",
+        "uci": "b8c8",
+        "san": "Rxc8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c1c6",
-        "san": "Rxc6",
+        "uci": "b1b2",
+        "san": "Rxb2",
         "color": "white"
       },
       {
-        "uci": "d1d7",
-        "san": "Rd7",
+        "uci": "b2b8",
+        "san": "Rxb8+",
         "color": "white"
       },
       {
-        "uci": "b2e5",
-        "san": "Bxe5+",
-        "color": "white"
-      },
-      {
-        "uci": "c6h6",
-        "san": "Rh6",
+        "uci": "b8c8",
+        "san": "Rxc8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-09-02T19:35:19.742523+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-09-02T19:36:02.824627+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788377719742",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544792865446690870,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "bxe5",
-        "correct": true,
-        "timestamp": "2026-09-02T19:35:42.549086+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "rh6",
-        "correct": true,
-        "timestamp": "2026-09-02T19:35:45.682229+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "442597396195704832",
-      "442597396195704832"
-    ],
-    "helper_candidate_users": [
-      "442597396195704832"
-    ]
+    "puzzle_id": "random_1788377762824",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
