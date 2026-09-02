@@ -1,47 +1,100 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2007-06-10",
-    "title": "Smothered King",
-    "fen": "r1b1kb1r/pppp1Npp/5n2/8/3nq3/2N5/PPPPBP1P/R1BQKR2 b Qkq - 0 1",
-    "current_fen": "r1b1kb1r/pppp1Npp/5n2/8/4q3/2N2n2/PPPPBP1P/R1BQKR2 w Qkq - 1 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1kb1r/pppp1Npp/5n2/8/3nq3/2N5/PPPPBP1P/R1BQKR2 b Qkq - 0 1\"]\r\n\r\n1... Nf3#\r\n*",
+    "url": "https://www.chess.com/daily/2021-06-29",
+    "title": "Capturing the Opponent's Attention",
+    "fen": "6k1/8/4K1p1/1P6/3p4/b7/1r1RP3/8 w - - 0 1",
+    "current_fen": "6k1/8/4K1p1/1P6/3p4/b7/1r1RP3/8 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/8/4K1p1/1P6/3p4/b7/1r1RP3/8 w - - 0 1\"]\r\n\r\n1.Rxb2 Bxb2 2.b6 Bc1 3.e4 dxe3 4.b7 e2 5.b8=Q+ *",
     "all_moves": [
       {
-        "uci": "d4f3",
-        "san": "Nf3#",
+        "uci": "d2b2",
+        "san": "Rxb2",
+        "color": "white"
+      },
+      {
+        "uci": "a3b2",
+        "san": "Bxb2",
         "color": "black"
+      },
+      {
+        "uci": "b5b6",
+        "san": "b6",
+        "color": "white"
+      },
+      {
+        "uci": "b2c1",
+        "san": "Bc1",
+        "color": "black"
+      },
+      {
+        "uci": "e2e4",
+        "san": "e4",
+        "color": "white"
+      },
+      {
+        "uci": "d4e3",
+        "san": "dxe3",
+        "color": "black"
+      },
+      {
+        "uci": "b6b7",
+        "san": "b7",
+        "color": "white"
+      },
+      {
+        "uci": "e3e2",
+        "san": "e2",
+        "color": "black"
+      },
+      {
+        "uci": "b7b8q",
+        "san": "b8=Q+",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d4f3",
-        "san": "Nf3#",
-        "color": "black"
+        "uci": "d2b2",
+        "san": "Rxb2",
+        "color": "white"
+      },
+      {
+        "uci": "b5b6",
+        "san": "b6",
+        "color": "white"
+      },
+      {
+        "uci": "e2e4",
+        "san": "e4",
+        "color": "white"
+      },
+      {
+        "uci": "b6b7",
+        "san": "b7",
+        "color": "white"
+      },
+      {
+        "uci": "b7b8q",
+        "san": "b8=Q+",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 1,
-    "posted_at": "2026-09-02T21:24:36.163093+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 5,
+    "posted_at": "2026-09-02T21:25:04.611915+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788384276163",
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1544820364784312341,
-    "attempted_users": {
-      "1370434994945916940": {
-        "name": "Capybrawlgames2",
-        "move": "nf3",
-        "correct": true,
-        "timestamp": "2026-09-02T21:24:50.981920+00:00"
-      }
-    },
-    "first_move_user_id": "1370434994945916940",
-    "first_move_user_name": "Capybrawlgames2",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788384304611",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
