@@ -1,92 +1,107 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-07-26",
-    "title": "Sakaev - Radulski, Dos Hermanas 2005",
-    "fen": "1krr4/p3qp1p/1p2n1p1/1pNp4/1P1P4/1QR1P2P/P4PP1/K1R5 w - - 0 1",
-    "current_fen": "2R5/p3qp1p/kp2n1p1/1p1Q4/1P1P4/4P2P/P4PP1/K7 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1krr4/p3qp1p/1p2n1p1/1pNp4/1P1P4/1QR1P2P/P4PP1/K1R5 w - - 0 1\"]\r\n\r\n1. Na6+ Kb7 2. Rxc8 Rxc8 3. Qxd5+ Kxa6 4. Rxc8\r\n*",
+    "url": "https://www.chess.com/daily/2007-09-20",
+    "title": "Really? In an Open Game?",
+    "fen": "r1bq1rk1/pppp1ppp/1n6/4P3/2B5/6Q1/P4PPP/R1B2RK1 w - - 0 1",
+    "current_fen": "r1bq1rk1/pppp1ppp/1n6/4P3/2B5/6Q1/P4PPP/R1B2RK1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1bq1rk1/pppp1ppp/1n6/4P3/2B5/6Q1/P4PPP/R1B2RK1 w - - 0 1\"]\r\n\r\n1. Bg5 Qe8 2. Bf6 g6 3. Qg5 Nxc4 4. Qh6 Nxe5 5. Qg7#\r\n*",
     "all_moves": [
       {
-        "uci": "c5a6",
-        "san": "Na6+",
+        "uci": "c1g5",
+        "san": "Bg5",
         "color": "white"
       },
       {
-        "uci": "b8b7",
-        "san": "Kb7",
+        "uci": "d8e8",
+        "san": "Qe8",
         "color": "black"
       },
       {
-        "uci": "c3c8",
-        "san": "Rxc8",
+        "uci": "g5f6",
+        "san": "Bf6",
         "color": "white"
       },
       {
-        "uci": "d8c8",
-        "san": "Rxc8",
+        "uci": "g7g6",
+        "san": "g6",
         "color": "black"
       },
       {
-        "uci": "b3d5",
-        "san": "Qxd5+",
+        "uci": "g3g5",
+        "san": "Qg5",
         "color": "white"
       },
       {
-        "uci": "b7a6",
-        "san": "Kxa6",
+        "uci": "b6c4",
+        "san": "Nxc4",
         "color": "black"
       },
       {
-        "uci": "c1c8",
-        "san": "Rxc8",
+        "uci": "g5h6",
+        "san": "Qh6",
+        "color": "white"
+      },
+      {
+        "uci": "c4e5",
+        "san": "Nxe5",
+        "color": "black"
+      },
+      {
+        "uci": "h6g7",
+        "san": "Qg7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5a6",
-        "san": "Na6+",
+        "uci": "c1g5",
+        "san": "Bg5",
         "color": "white"
       },
       {
-        "uci": "c3c8",
-        "san": "Rxc8",
+        "uci": "g5f6",
+        "san": "Bf6",
         "color": "white"
       },
       {
-        "uci": "b3d5",
-        "san": "Qxd5+",
+        "uci": "g3g5",
+        "san": "Qg5",
         "color": "white"
       },
       {
-        "uci": "c1c8",
-        "san": "Rxc8",
+        "uci": "g5h6",
+        "san": "Qh6",
+        "color": "white"
+      },
+      {
+        "uci": "h6g7",
+        "san": "Qg7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-09-02T19:51:32.801011+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-09-02T19:53:06.052984+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788378692801",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544796947179770038,
+    "puzzle_id": "random_1788378786052",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1544797338118258688,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rxc8",
-        "correct": true,
-        "timestamp": "2026-09-02T19:52:59.874753+00:00"
+        "move": "bh6",
+        "correct": false,
+        "timestamp": "2026-09-02T19:53:12.554723+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
