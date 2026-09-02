@@ -182,9 +182,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 8,
+      "best_puzzle": 9,
       "best_difficulty": 1393,
-      "best_completed_at": "2026-09-02T21:50:11.554194+00:00",
+      "best_completed_at": "2026-09-02T21:51:07.363789+00:00",
       "current": {
         "run_id": "thice:1788385192",
         "started_by_id": "1370434994945916940",
@@ -206,7 +206,8 @@
           "KzaW7",
           "J8EGu",
           "XvRzt",
-          "toRuN"
+          "toRuN",
+          "yew8h"
         ],
         "members": {
           "601406103712170014": {
@@ -220,7 +221,40 @@
             "wrong": 2
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "yew8h",
+          "rating": 1351,
+          "themes": "advantage endgame short",
+          "url": "https://lichess.org/training/yew8h",
+          "start_fen": "r6R/p5k1/1n4p1/4p3/8/4P3/PPP2rP1/2K4R w - - 2 27",
+          "current_fen": "r6R/p5k1/1n4p1/4p3/8/4P3/PPP2rP1/2K4R w - - 2 27",
+          "solution": [
+            {
+              "uci": "h1h7",
+              "san": "R1h7+",
+              "color": "white"
+            },
+            {
+              "uci": "g7f6",
+              "san": "Kf6",
+              "color": "black"
+            },
+            {
+              "uci": "h8a8",
+              "san": "Rxa8",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
