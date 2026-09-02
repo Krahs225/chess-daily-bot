@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2018-06-26",
     "title": "Tiviakov - Dzhandzhgava, Moscow 1995",
     "fen": "r2qkbnr/pb1nppp1/1p1p3p/3N2B1/3NP3/8/PPP2PPP/R2QKB1R w KQkq - 0 1",
-    "current_fen": "r1q1kbnr/pb1nppp1/1p1pN2p/3N2B1/4P3/8/PPP2PPP/R2QKB1R w KQkq - 2 2",
+    "current_fen": "r3kbnr/pbqnppp1/1p1pN2p/6B1/4P3/8/PPP2PPP/R2QKB1R w KQkq - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r2qkbnr/pb1nppp1/1p1p3p/3N2B1/3NP3/8/PPP2PPP/R2QKB1R w KQkq - 0 1\"]\r\n\r\n1. Ne6 Qc8 2. Ndc7+ Qxc7 3. Nxc7+\r\n*",
     "all_moves": [
       {
@@ -57,23 +57,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788366744128",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1544746830275936358,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "ne6",
+        "move": "nec7",
+        "correct": false,
+        "timestamp": "2026-09-02T16:32:42.045433+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "ndc7",
         "correct": true,
-        "timestamp": "2026-09-02T16:32:32.773363+00:00"
+        "timestamp": "2026-09-02T16:32:40.346190+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
