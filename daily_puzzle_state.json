@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-10-28",
     "title": "Capture-Mate",
     "fen": "r1br1k2/1p2bpp1/p1nppn1p/5P2/4P2B/qNNB2RR/P1PQ2PP/7K w - - 0 1",
-    "current_fen": "r1br4/1p2bpk1/p1nppn1p/5P2/4P2B/qNNB3R/P1PQ2PP/7K w - - 0 2",
+    "current_fen": "r1br4/1p2bp2/p1nppn1k/5P2/4P2B/qNNB3R/P1P3PP/7K w - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1br1k2/1p2bpp1/p1nppn1p/5P2/4P2B/qNNB2RR/P1PQ2PP/7K w - - 0 1\"]\r\n\r\n1. Rxg7 Kxg7 2. Qxh6+ Kxh6 3. Bxf6#\r\n*",
     "all_moves": [
       {
@@ -57,8 +57,8 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788366456937",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1544745626133332049,
     "attempted_users": {
@@ -67,13 +67,21 @@
         "move": "bxf6",
         "correct": false,
         "timestamp": "2026-09-02T16:27:54.692400+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxh6",
+        "correct": true,
+        "timestamp": "2026-09-02T16:27:56.278848+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
