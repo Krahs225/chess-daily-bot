@@ -1,107 +1,47 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-12-12",
-    "title": "A Push in the Right Direction",
-    "fen": "1r3rk1/2pb2b1/3p3p/p3p1p1/1P6/P2PP3/1BPNK1PP/R3R3 b - - 0 1",
-    "current_fen": "1r3r2/2p3k1/3p3p/p5p1/1P6/P2PPb2/2PK3P/R3R3 w - - 0 6",
-    "pgn": "[Result \"0-1\"]\r\n[FEN \"1r3rk1/2pb2b1/3p3p/p3p1p1/1P6/P2PP3/1BPNK1PP/R3R3 b - - 0 1\"]\r\n\r\n1... Bg4+ 2. Nf3 e4 3. Bxg7 exf3+ 4. gxf3 Bxf3+ 5. Kd2 Kxg7 0-1",
+    "url": "https://www.chess.com/daily/2016-09-11",
+    "title": "Forward Motion",
+    "fen": "2k5/2P5/8/2KN1p2/8/1r4p1/8/8 w - - 0 1",
+    "current_fen": "2k5/2P5/8/2KN1p2/8/1r4p1/8/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2k5/2P5/8/2KN1p2/8/1r4p1/8/8 w - - 0 1\"]\r\n\r\n1. Kc6\r\n*",
     "all_moves": [
       {
-        "uci": "d7g4",
-        "san": "Bg4+",
-        "color": "black"
-      },
-      {
-        "uci": "d2f3",
-        "san": "Nf3",
+        "uci": "c5c6",
+        "san": "Kc6",
         "color": "white"
-      },
-      {
-        "uci": "e5e4",
-        "san": "e4",
-        "color": "black"
-      },
-      {
-        "uci": "b2g7",
-        "san": "Bxg7",
-        "color": "white"
-      },
-      {
-        "uci": "e4f3",
-        "san": "exf3+",
-        "color": "black"
-      },
-      {
-        "uci": "g2f3",
-        "san": "gxf3",
-        "color": "white"
-      },
-      {
-        "uci": "g4f3",
-        "san": "Bxf3+",
-        "color": "black"
-      },
-      {
-        "uci": "e2d2",
-        "san": "Kd2",
-        "color": "white"
-      },
-      {
-        "uci": "g8g7",
-        "san": "Kxg7",
-        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "d7g4",
-        "san": "Bg4+",
-        "color": "black"
-      },
-      {
-        "uci": "e5e4",
-        "san": "e4",
-        "color": "black"
-      },
-      {
-        "uci": "e4f3",
-        "san": "exf3+",
-        "color": "black"
-      },
-      {
-        "uci": "g4f3",
-        "san": "Bxf3+",
-        "color": "black"
-      },
-      {
-        "uci": "g8g7",
-        "san": "Kxg7",
-        "color": "black"
+        "uci": "c5c6",
+        "san": "Kc6",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 5,
-    "posted_at": "2026-09-02T16:43:21.114287+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 1,
+    "posted_at": "2026-09-02T16:43:57.511529+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788367401114",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1544749585673625601,
+    "puzzle_id": "random_1788367437511",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1544749739004923964,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "kxg7",
-        "correct": true,
-        "timestamp": "2026-09-02T16:43:49.470437+00:00"
+        "move": "nb6",
+        "correct": false,
+        "timestamp": "2026-09-02T16:44:02.436578+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
