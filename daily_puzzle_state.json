@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-01-08",
     "title": "Long Mate",
     "fen": "r1r3k1/pp2pp1p/4b2Q/6Pp/4Nq2/3B1P2/PPP5/1K1R4 w - - 0 1",
-    "current_fen": "r1r4Q/pp2kp2/4bp2/5BPp/5q2/5P2/PPP5/1K1R4 w - - 7 6",
+    "current_fen": "r1r4Q/pp2kp2/4bP2/5B1p/5q2/5P2/PPP5/1K1R4 b - - 0 6",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1r3k1/pp2pp1p/4b2Q/6Pp/4Nq2/3B1P2/PPP5/1K1R4 w - - 0 1\"]\r\n\r\n1. Nf6+ exf6 2. Bxh7+ Kh8 3. Bf5+ Kg8 4. Qh7+ Kf8 5. Qh8+ Ke7 6. gxf6#\r\n*",
     "all_moves": [
       {
@@ -102,9 +102,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788367356201",
-    "next_solution_index": 10,
-    "next_player_index": 5,
-    "solved": false,
+    "next_solution_index": 11,
+    "next_player_index": 6,
+    "solved": true,
     "message_id": 1544749397592641576,
     "attempted_users": {
       "601406103712170014": {
@@ -115,14 +115,14 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "qh8",
+        "move": "gxf6",
         "correct": true,
-        "timestamp": "2026-09-02T16:43:11.592996+00:00"
+        "timestamp": "2026-09-02T16:43:12.012639+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": [
       "601406103712170014"
