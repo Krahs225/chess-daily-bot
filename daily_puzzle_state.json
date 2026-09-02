@@ -1,92 +1,130 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-02-05",
-    "title": "Fancy Prance",
-    "fen": "2r1r1k1/4qpbp/ppnQ1np1/2p1p3/1PP1P3/P1N1BBPP/5P2/3RR1K1 b - - 4 18",
-    "current_fen": "2r3k1/4rpbp/pp3np1/2p1p3/1PP1P3/P1N1B1PP/5PK1/4R3 w - - 0 22",
-    "pgn": "[White \"Bikfoot\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"0-1\"]\r\n[FEN \"2r1r1k1/4qpbp/ppnQ1np1/2p1p3/1PP1P3/P1N1BBPP/5P2/3RR1K1 b - - 4 18\"]\r\n\r\n18... Nd4 19. Qxe7 Nxf3+ 20. Kg2 Nxe1+ 21. Rxe1 Rxe7 0-1",
+    "url": "https://www.chess.com/daily/2007-10-21",
+    "title": "Mate in 7",
+    "fen": "4r2k/5p1p/b2p4/3Pb1Q1/2pB4/pqN5/5K1P/R7 w - - 0 1",
+    "current_fen": "4r2k/5p1p/b2p4/3Pb1Q1/2pB4/pqN5/5K1P/R7 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r2k/5p1p/b2p4/3Pb1Q1/2pB4/pqN5/5K1P/R7 w - - 0 1\"]\r\n\r\n1. Bxe5+ dxe5 2. Qf6+ Kg8 3. Rg1+ Kf8 4. Qd6+ Re7 5. Qh6+ Ke8 6. Rg8+ Kd7 7. Qc6#\r\n*",
     "all_moves": [
       {
-        "uci": "c6d4",
-        "san": "Nd4",
-        "color": "black"
-      },
-      {
-        "uci": "d6e7",
-        "san": "Qxe7",
+        "uci": "d4e5",
+        "san": "Bxe5+",
         "color": "white"
       },
       {
-        "uci": "d4f3",
-        "san": "Nxf3+",
+        "uci": "d6e5",
+        "san": "dxe5",
         "color": "black"
       },
       {
-        "uci": "g1g2",
-        "san": "Kg2",
+        "uci": "g5f6",
+        "san": "Qf6+",
         "color": "white"
       },
       {
-        "uci": "f3e1",
-        "san": "Nxe1+",
+        "uci": "h8g8",
+        "san": "Kg8",
         "color": "black"
       },
       {
-        "uci": "d1e1",
-        "san": "Rxe1",
+        "uci": "a1g1",
+        "san": "Rg1+",
+        "color": "white"
+      },
+      {
+        "uci": "g8f8",
+        "san": "Kf8",
+        "color": "black"
+      },
+      {
+        "uci": "f6d6",
+        "san": "Qd6+",
         "color": "white"
       },
       {
         "uci": "e8e7",
-        "san": "Rxe7",
+        "san": "Re7",
         "color": "black"
+      },
+      {
+        "uci": "d6h6",
+        "san": "Qh6+",
+        "color": "white"
+      },
+      {
+        "uci": "f8e8",
+        "san": "Ke8",
+        "color": "black"
+      },
+      {
+        "uci": "g1g8",
+        "san": "Rg8+",
+        "color": "white"
+      },
+      {
+        "uci": "e8d7",
+        "san": "Kd7",
+        "color": "black"
+      },
+      {
+        "uci": "h6c6",
+        "san": "Qc6#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c6d4",
-        "san": "Nd4",
-        "color": "black"
+        "uci": "d4e5",
+        "san": "Bxe5+",
+        "color": "white"
       },
       {
-        "uci": "d4f3",
-        "san": "Nxf3+",
-        "color": "black"
+        "uci": "g5f6",
+        "san": "Qf6+",
+        "color": "white"
       },
       {
-        "uci": "f3e1",
-        "san": "Nxe1+",
-        "color": "black"
+        "uci": "a1g1",
+        "san": "Rg1+",
+        "color": "white"
       },
       {
-        "uci": "e8e7",
-        "san": "Rxe7",
-        "color": "black"
+        "uci": "f6d6",
+        "san": "Qd6+",
+        "color": "white"
+      },
+      {
+        "uci": "d6h6",
+        "san": "Qh6+",
+        "color": "white"
+      },
+      {
+        "uci": "g1g8",
+        "san": "Rg8+",
+        "color": "white"
+      },
+      {
+        "uci": "h6c6",
+        "san": "Qc6#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-09-02T14:02:12.265175+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 7,
+    "posted_at": "2026-09-02T14:47:04.741557+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788357732265",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544709031552229517,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rxe7",
-        "correct": true,
-        "timestamp": "2026-09-02T14:02:38.081035+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788360424741",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
