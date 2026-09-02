@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2016-04-15",
     "title": "Cornered And Helpless",
     "fen": "3r3r/k2q1p2/pR1pp3/Q1n5/2Pp4/6P1/5PK1/1R6 w - - 0 1",
-    "current_fen": "3r3r/k2q1p2/pR1pp3/Q1n5/2Pp4/6P1/5PK1/1R6 w - - 0 1",
+    "current_fen": "k2r3r/3q1p2/nQ1pp3/8/2Pp4/6P1/5PK1/1R6 w - - 2 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r3r/k2q1p2/pR1pp3/Q1n5/2Pp4/6P1/5PK1/1R6 w - - 0 1\"]\r\n\r\n1. Rxa6+ Nxa6 2. Qb6+ Ka8 3. Qxa6+ Qa7 4. Qc6+ Qb7 5. Qxb7#\r\n*",
     "all_moves": [
       {
@@ -87,13 +87,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788379344093",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1544799678170800129,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qb6",
+        "correct": true,
+        "timestamp": "2026-09-02T20:02:44.581552+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
