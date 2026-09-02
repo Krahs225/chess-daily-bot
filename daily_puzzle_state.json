@@ -1,92 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2024-03-31",
-    "title": "Promotion Commotion",
-    "fen": "5k2/8/3P1K2/7b/2B5/8/8/8 w - - 0 1",
-    "current_fen": "4bk2/4BB2/5K2/8/8/8/8/8 b - - 4 4",
-    "pgn": "[Event \"Leipziger Tageblatt\"]\r\n[Date \"1921.??.??\"]\r\n[White \"Dehler, O.\"]\r\n[Black \"Study\"]\r\n[Result \"1-0\"]\r\n[FEN \"5k2/8/3P1K2/7b/2B5/8/8/8 w - - 0 1\"]\r\n\r\n1. d7 Be8 2. d8=B Ba4 3. Bf7 Be8 4. Be7# 1-0",
+    "url": "https://www.chess.com/daily/2012-09-12",
+    "title": "Mate in 2",
+    "fen": "R3bk2/5qpp/8/2ppQNP1/5P1P/4P1K1/6B1/8 w - - 0 1",
+    "current_fen": "R3bk2/5qpp/8/2ppQNP1/5P1P/4P1K1/6B1/8 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"R3bk2/5qpp/8/2ppQNP1/5P1P/4P1K1/6B1/8 w - - 0 1\"]\r\n\r\n1. Rxe8+ Qxe8 2. Qxg7#\r\n*",
     "all_moves": [
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "a8e8",
+        "san": "Rxe8+",
         "color": "white"
       },
       {
-        "uci": "h5e8",
-        "san": "Be8",
+        "uci": "f7e8",
+        "san": "Qxe8",
         "color": "black"
       },
       {
-        "uci": "d7d8b",
-        "san": "d8=B",
-        "color": "white"
-      },
-      {
-        "uci": "e8a4",
-        "san": "Ba4",
-        "color": "black"
-      },
-      {
-        "uci": "c4f7",
-        "san": "Bf7",
-        "color": "white"
-      },
-      {
-        "uci": "a4e8",
-        "san": "Be8",
-        "color": "black"
-      },
-      {
-        "uci": "d8e7",
-        "san": "Be7#",
+        "uci": "e5g7",
+        "san": "Qxg7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d6d7",
-        "san": "d7",
+        "uci": "a8e8",
+        "san": "Rxe8+",
         "color": "white"
       },
       {
-        "uci": "d7d8b",
-        "san": "d8=B",
-        "color": "white"
-      },
-      {
-        "uci": "c4f7",
-        "san": "Bf7",
-        "color": "white"
-      },
-      {
-        "uci": "d8e7",
-        "san": "Be7#",
+        "uci": "e5g7",
+        "san": "Qxg7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-09-02T21:10:50.835962+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-09-02T21:12:11.015361+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788383450835",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544816903061643305,
-    "attempted_users": {
-      "1370434994945916940": {
-        "name": "Capybrawlgames2",
-        "move": "be7",
-        "correct": true,
-        "timestamp": "2026-09-02T21:11:49.814739+00:00"
-      }
-    },
-    "first_move_user_id": "1370434994945916940",
-    "first_move_user_name": "Capybrawlgames2",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788383531015",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
