@@ -1,107 +1,122 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2016-04-15",
-    "title": "Cornered And Helpless",
-    "fen": "3r3r/k2q1p2/pR1pp3/Q1n5/2Pp4/6P1/5PK1/1R6 w - - 0 1",
-    "current_fen": "k2r3r/1Q3p2/3pp3/8/2Pp4/6P1/5PK1/1R6 b - - 0 5",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3r3r/k2q1p2/pR1pp3/Q1n5/2Pp4/6P1/5PK1/1R6 w - - 0 1\"]\r\n\r\n1. Rxa6+ Nxa6 2. Qb6+ Ka8 3. Qxa6+ Qa7 4. Qc6+ Qb7 5. Qxb7#\r\n*",
+    "url": "https://www.chess.com/daily/2012-09-15",
+    "title": "Mate in 6",
+    "fen": "1r5r/6p1/6R1/2R1p3/3pB3/1P1Pn1Pk/1P6/6K1 w - - 0 1",
+    "current_fen": "1r5r/6p1/6R1/2R1p3/3pB3/1P1Pn1Pk/1P6/6K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r5r/6p1/6R1/2R1p3/3pB3/1P1Pn1Pk/1P6/6K1 w - - 0 1\"]\r\n\r\n1. Rc2 Ng4 2. Rh2+ Kxg3 3. Rg2+ Kf4 4. R6xg4+ Ke3 5. R4g3+ Kf4 6. Rf3#\r\n*",
     "all_moves": [
       {
-        "uci": "b6a6",
-        "san": "Rxa6+",
+        "uci": "c5c2",
+        "san": "Rc2",
         "color": "white"
       },
       {
-        "uci": "c5a6",
-        "san": "Nxa6",
+        "uci": "e3g4",
+        "san": "Ng4",
         "color": "black"
       },
       {
-        "uci": "a5b6",
-        "san": "Qb6+",
+        "uci": "c2h2",
+        "san": "Rh2+",
         "color": "white"
       },
       {
-        "uci": "a7a8",
-        "san": "Ka8",
+        "uci": "h3g3",
+        "san": "Kxg3",
         "color": "black"
       },
       {
-        "uci": "b6a6",
-        "san": "Qxa6+",
+        "uci": "h2g2",
+        "san": "Rg2+",
         "color": "white"
       },
       {
-        "uci": "d7a7",
-        "san": "Qa7",
+        "uci": "g3f4",
+        "san": "Kf4",
         "color": "black"
       },
       {
-        "uci": "a6c6",
-        "san": "Qc6+",
+        "uci": "g6g4",
+        "san": "R6xg4+",
         "color": "white"
       },
       {
-        "uci": "a7b7",
-        "san": "Qb7",
+        "uci": "f4e3",
+        "san": "Ke3",
         "color": "black"
       },
       {
-        "uci": "c6b7",
-        "san": "Qxb7#",
+        "uci": "g4g3",
+        "san": "R4g3+",
+        "color": "white"
+      },
+      {
+        "uci": "e3f4",
+        "san": "Kf4",
+        "color": "black"
+      },
+      {
+        "uci": "g3f3",
+        "san": "Rf3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b6a6",
-        "san": "Rxa6+",
+        "uci": "c5c2",
+        "san": "Rc2",
         "color": "white"
       },
       {
-        "uci": "a5b6",
-        "san": "Qb6+",
+        "uci": "c2h2",
+        "san": "Rh2+",
         "color": "white"
       },
       {
-        "uci": "b6a6",
-        "san": "Qxa6+",
+        "uci": "h2g2",
+        "san": "Rg2+",
         "color": "white"
       },
       {
-        "uci": "a6c6",
-        "san": "Qc6+",
+        "uci": "g6g4",
+        "san": "R6xg4+",
         "color": "white"
       },
       {
-        "uci": "c6b7",
-        "san": "Qxb7#",
+        "uci": "g4g3",
+        "san": "R4g3+",
+        "color": "white"
+      },
+      {
+        "uci": "g3f3",
+        "san": "Rf3#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-09-02T20:02:24.093322+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-09-02T20:03:01.081113+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788379344093",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1544799678170800129,
+    "puzzle_id": "random_1788379381081",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1544799833385078795,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qxb7",
-        "correct": true,
-        "timestamp": "2026-09-02T20:02:53.699709+00:00"
+        "move": "rc1",
+        "correct": false,
+        "timestamp": "2026-09-02T20:03:14.654848+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
