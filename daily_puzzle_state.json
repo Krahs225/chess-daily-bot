@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-01-13",
     "title": "Counter Win",
     "fen": "6k1/8/3b4/3nPr1B/5P2/6PK/8/4R3 b - - 0 1",
-    "current_fen": "6k1/8/3b4/3nPr1B/5P2/6PK/8/4R3 b - - 0 1",
+    "current_fen": "6k1/8/3b4/3nP2r/5PK1/6P1/8/4R3 b - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/8/3b4/3nPr1B/5P2/6PK/8/4R3 b - - 0 1\"]\r\n\r\n1...Rxh5+ 2. Kg4 Bb4\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788374287886",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544778470796558420,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "rxh5",
+        "correct": true,
+        "timestamp": "2026-09-02T18:38:14.547701+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
