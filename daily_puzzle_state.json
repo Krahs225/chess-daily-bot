@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2015-11-07",
     "title": "Catalan Opening Analysis",
     "fen": "r6r/1pk1ppbp/p1n3p1/2P5/8/4P3/n1P2PPP/1R1Q1RK1 w - - 0 1",
-    "current_fen": "r1k4r/4ppbp/pQ4p1/2P5/1n6/4P3/2P2PPP/5RK1 w - - 3 5",
+    "current_fen": "r1k4r/4ppbp/p5p1/2P5/1Q6/4P3/2P2PPP/5RK1 b - - 0 5",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r6r/1pk1ppbp/p1n3p1/2P5/8/4P3/n1P2PPP/1R1Q1RK1 w - - 0 1\"]\r\n\r\n1. Rxb7+ Kxb7 2. Qd7+ Kb8 3. Qxc6 Nb4 4. Qb6+ Kc8 5. Qxb4\r\n*",
     "all_moves": [
       {
@@ -87,9 +87,9 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788383921796",
-    "next_solution_index": 8,
-    "next_player_index": 4,
-    "solved": false,
+    "next_solution_index": 9,
+    "next_player_index": 5,
+    "solved": true,
     "message_id": 1544818878805315705,
     "attempted_users": {
       "1370434994945916940": {
@@ -106,15 +106,19 @@
       },
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qb6",
+        "move": "qxb4",
         "correct": true,
-        "timestamp": "2026-09-02T21:20:25.812420+00:00"
+        "timestamp": "2026-09-02T21:20:36.357021+00:00"
       }
     },
     "first_move_user_id": "1370434994945916940",
     "first_move_user_name": "Capybrawlgames2",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "362606514764251137",
+      "362606514764251137",
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "362606514764251137",
       "601406103712170014"
