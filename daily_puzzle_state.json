@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2008-05-25",
     "title": "Quickly Going Wrong",
     "fen": "2r2nkr/ppq2pp1/3R4/4p1Np/8/1P5Q/P1P2PPP/R1B3K1 b - - 0 1",
-    "current_fen": "2r2nkr/ppq2pp1/3R4/4p1Np/8/1P5Q/P1P2PPP/R1B3K1 b - - 0 1",
+    "current_fen": "2Q2nkr/pp3pp1/3q4/4p1Np/8/1P6/P1P2PPP/R1B3K1 b - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2r2nkr/ppq2pp1/3R4/4p1Np/8/1P5Q/P1P2PPP/R1B3K1 b - - 0 1\"]\r\n\r\n1...Qxd6 2. Qxc8 Qd1#\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788374368689",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1544778809763692545,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxd6",
+        "correct": true,
+        "timestamp": "2026-09-02T18:39:33.189428+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
