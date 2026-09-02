@@ -1,134 +1,82 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-12-26",
-    "title": "Mating In The Midst of Defense",
-    "fen": "8/5rk1/pn3qpR/1p6/3prP2/BP5Q/P6P/6RK w - - 0 1",
-    "current_fen": "8/5rk1/pn3qpR/1p6/3prP2/BP5Q/P6P/6RK w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/5rk1/pn3qpR/1p6/3prP2/BP5Q/P6P/6RK w - - 0 1\"]\r\n\r\n1. Qh5 b4 2. Bxb4 Re6 3. Rh8 Qf5 4. Bf8+ Kf6 5. Qh4+ g5 6. Rh6+ Qg6 7. Qxg5#\r\n*",
+    "url": "https://www.chess.com/daily/2018-07-26",
+    "title": "Sakaev - Radulski, Dos Hermanas 2005",
+    "fen": "1krr4/p3qp1p/1p2n1p1/1pNp4/1P1P4/1QR1P2P/P4PP1/K1R5 w - - 0 1",
+    "current_fen": "1krr4/p3qp1p/1p2n1p1/1pNp4/1P1P4/1QR1P2P/P4PP1/K1R5 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1krr4/p3qp1p/1p2n1p1/1pNp4/1P1P4/1QR1P2P/P4PP1/K1R5 w - - 0 1\"]\r\n\r\n1. Na6+ Kb7 2. Rxc8 Rxc8 3. Qxd5+ Kxa6 4. Rxc8\r\n*",
     "all_moves": [
       {
-        "uci": "h3h5",
-        "san": "Qh5",
+        "uci": "c5a6",
+        "san": "Na6+",
         "color": "white"
       },
       {
-        "uci": "b5b4",
-        "san": "b4",
+        "uci": "b8b7",
+        "san": "Kb7",
         "color": "black"
       },
       {
-        "uci": "a3b4",
-        "san": "Bxb4",
+        "uci": "c3c8",
+        "san": "Rxc8",
         "color": "white"
       },
       {
-        "uci": "e4e6",
-        "san": "Re6",
+        "uci": "d8c8",
+        "san": "Rxc8",
         "color": "black"
       },
       {
-        "uci": "h6h8",
-        "san": "Rh8",
+        "uci": "b3d5",
+        "san": "Qxd5+",
         "color": "white"
       },
       {
-        "uci": "f6f5",
-        "san": "Qf5",
+        "uci": "b7a6",
+        "san": "Kxa6",
         "color": "black"
       },
       {
-        "uci": "b4f8",
-        "san": "Bf8+",
-        "color": "white"
-      },
-      {
-        "uci": "g7f6",
-        "san": "Kf6",
-        "color": "black"
-      },
-      {
-        "uci": "h5h4",
-        "san": "Qh4+",
-        "color": "white"
-      },
-      {
-        "uci": "g6g5",
-        "san": "g5",
-        "color": "black"
-      },
-      {
-        "uci": "h8h6",
-        "san": "Rh6+",
-        "color": "white"
-      },
-      {
-        "uci": "f5g6",
-        "san": "Qg6",
-        "color": "black"
-      },
-      {
-        "uci": "h4g5",
-        "san": "Qxg5#",
+        "uci": "c1c8",
+        "san": "Rxc8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h3h5",
-        "san": "Qh5",
+        "uci": "c5a6",
+        "san": "Na6+",
         "color": "white"
       },
       {
-        "uci": "a3b4",
-        "san": "Bxb4",
+        "uci": "c3c8",
+        "san": "Rxc8",
         "color": "white"
       },
       {
-        "uci": "h6h8",
-        "san": "Rh8",
+        "uci": "b3d5",
+        "san": "Qxd5+",
         "color": "white"
       },
       {
-        "uci": "b4f8",
-        "san": "Bf8+",
-        "color": "white"
-      },
-      {
-        "uci": "h5h4",
-        "san": "Qh4+",
-        "color": "white"
-      },
-      {
-        "uci": "h8h6",
-        "san": "Rh6+",
-        "color": "white"
-      },
-      {
-        "uci": "h4g5",
-        "san": "Qxg5#",
+        "uci": "c1c8",
+        "san": "Rxc8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 7,
-    "posted_at": "2026-09-02T19:50:46.121857+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-09-02T19:51:32.801011+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788378646121",
+    "puzzle_id": "random_1788378692801",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1544796751180079124,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rgxg6",
-        "correct": false,
-        "timestamp": "2026-09-02T19:51:22.939814+00:00"
-      }
-    },
+    "message_id": 1544796947179770038,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
