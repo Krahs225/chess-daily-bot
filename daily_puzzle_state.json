@@ -1,120 +1,57 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-06-29",
-    "title": "Capturing the Opponent's Attention",
-    "fen": "6k1/8/4K1p1/1P6/3p4/b7/1r1RP3/8 w - - 0 1",
-    "current_fen": "1Q4k1/8/4K1p1/8/8/8/4p3/2b5 b - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"6k1/8/4K1p1/1P6/3p4/b7/1r1RP3/8 w - - 0 1\"]\r\n\r\n1.Rxb2 Bxb2 2.b6 Bc1 3.e4 dxe3 4.b7 e2 5.b8=Q+ *",
+    "url": "https://www.chess.com/daily/2014-12-30",
+    "title": "Mate in 2",
+    "fen": "8/R1p1rp2/4p3/6k1/3P1Nr1/2q3pQ/6P1/7K w - - 0 1",
+    "current_fen": "8/R1p1rp2/4p3/6k1/3P1Nr1/2q3pQ/6P1/7K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/R1p1rp2/4p3/6k1/3P1Nr1/2q3pQ/6P1/7K w - - 0 1\"]\r\n\r\n1. Qh5+ Kf6 2. Qe5#\r\n*",
     "all_moves": [
       {
-        "uci": "d2b2",
-        "san": "Rxb2",
+        "uci": "h3h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "a3b2",
-        "san": "Bxb2",
+        "uci": "g5f6",
+        "san": "Kf6",
         "color": "black"
       },
       {
-        "uci": "b5b6",
-        "san": "b6",
-        "color": "white"
-      },
-      {
-        "uci": "b2c1",
-        "san": "Bc1",
-        "color": "black"
-      },
-      {
-        "uci": "e2e4",
-        "san": "e4",
-        "color": "white"
-      },
-      {
-        "uci": "d4e3",
-        "san": "dxe3",
-        "color": "black"
-      },
-      {
-        "uci": "b6b7",
-        "san": "b7",
-        "color": "white"
-      },
-      {
-        "uci": "e3e2",
-        "san": "e2",
-        "color": "black"
-      },
-      {
-        "uci": "b7b8q",
-        "san": "b8=Q+",
+        "uci": "h5e5",
+        "san": "Qe5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2b2",
-        "san": "Rxb2",
+        "uci": "h3h5",
+        "san": "Qh5+",
         "color": "white"
       },
       {
-        "uci": "b5b6",
-        "san": "b6",
-        "color": "white"
-      },
-      {
-        "uci": "e2e4",
-        "san": "e4",
-        "color": "white"
-      },
-      {
-        "uci": "b6b7",
-        "san": "b7",
-        "color": "white"
-      },
-      {
-        "uci": "b7b8q",
-        "san": "b8=Q+",
+        "uci": "h5e5",
+        "san": "Qe5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-09-02T21:25:04.611915+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-09-02T21:28:47.899359+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788384304611",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1544820484040826934,
-    "attempted_users": {
-      "1370434994945916940": {
-        "name": "Capybrawlgames2",
-        "move": "b8=q",
-        "correct": true,
-        "timestamp": "2026-09-02T21:28:27.929269+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "b7",
-        "correct": true,
-        "timestamp": "2026-09-02T21:28:10.135644+00:00"
-      }
-    },
-    "first_move_user_id": "1370434994945916940",
-    "first_move_user_name": "Capybrawlgames2",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "puzzle_id": "random_1788384527899",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
