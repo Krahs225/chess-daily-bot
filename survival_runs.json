@@ -183,7 +183,7 @@
     "thice": {
       "name": "Thice",
       "best_puzzle": 4,
-      "best_difficulty": 1371,
+      "best_difficulty": 1384,
       "best_completed_at": "2026-08-20T21:48:59.681514+00:00",
       "current": {
         "run_id": "thice:1788385192",
@@ -199,7 +199,8 @@
         "strikes": 0,
         "best_difficulty": 1384,
         "used_puzzle_ids": [
-          "bjsbG"
+          "bjsbG",
+          "xQCZD"
         ],
         "members": {
           "601406103712170014": {
@@ -208,7 +209,50 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "xQCZD",
+          "rating": 1316,
+          "themes": "clearance endgame long mate mateIn3 sacrifice",
+          "url": "https://lichess.org/training/xQCZD",
+          "start_fen": "5rk1/2p2ppp/8/p2Q4/2P5/P5qP/1r4P1/3R1R1K w - - 3 26",
+          "current_fen": "5rk1/2p2ppp/8/p2Q4/2P5/P5qP/1r4P1/3R1R1K w - - 3 26",
+          "solution": [
+            {
+              "uci": "d5f7",
+              "san": "Qxf7+",
+              "color": "white"
+            },
+            {
+              "uci": "f8f7",
+              "san": "Rxf7",
+              "color": "black"
+            },
+            {
+              "uci": "d1d8",
+              "san": "Rd8+",
+              "color": "white"
+            },
+            {
+              "uci": "f7f8",
+              "san": "Rf8",
+              "color": "black"
+            },
+            {
+              "uci": "f1f8",
+              "san": "Rfxf8#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
