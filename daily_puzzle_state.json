@@ -1,113 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2020-06-30",
-    "title": "A Moment of Clarity",
-    "fen": "r3k2r/1pp2p2/3p2pp/p2Pp2n/1PPnP1bP/P1N1QqP1/2BKNP2/R6R b kq - 0 1",
-    "current_fen": "r3k2r/1pp2p2/3p2pp/p2Pp3/1PP1P2P/P3PK2/2B5/R6n w kq - 0 6",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r3k2r/1pp2p2/3p2pp/p2Pp2n/1PPnP1bP/P1N1QqP1/2BKNP2/R6R b kq - 0 1\"]\r\n\r\n1...Qxe3+ 2.fxe3 Nxe2 3.Nxe2 Bxe2 4.Kxe2 Nxg3+ 5.Kf3 Nxh1 *",
+    "url": "https://www.chess.com/daily/2009-05-14",
+    "title": "Save the Position",
+    "fen": "Q7/5B1k/1N1b2p1/7p/4b2P/6r1/2R4K/4R3 b - - 0 1",
+    "current_fen": "Q7/5B1k/1N1b2p1/6rp/4b2P/7K/2R5/4R3 b - - 2 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"Q7/5B1k/1N1b2p1/7p/4b2P/6r1/2R4K/4R3 b - - 0 1\"]\r\n\r\n1...Rg5+ 2. Kh3 Bf5#\r\n*",
     "all_moves": [
       {
-        "uci": "f3e3",
-        "san": "Qxe3+",
+        "uci": "g3g5",
+        "san": "Rg5+",
         "color": "black"
       },
       {
-        "uci": "f2e3",
-        "san": "fxe3",
+        "uci": "h2h3",
+        "san": "Kh3",
         "color": "white"
       },
       {
-        "uci": "d4e2",
-        "san": "Nxe2",
-        "color": "black"
-      },
-      {
-        "uci": "c3e2",
-        "san": "Nxe2",
-        "color": "white"
-      },
-      {
-        "uci": "g4e2",
-        "san": "Bxe2",
-        "color": "black"
-      },
-      {
-        "uci": "d2e2",
-        "san": "Kxe2",
-        "color": "white"
-      },
-      {
-        "uci": "h5g3",
-        "san": "Nxg3+",
-        "color": "black"
-      },
-      {
-        "uci": "e2f3",
-        "san": "Kf3",
-        "color": "white"
-      },
-      {
-        "uci": "g3h1",
-        "san": "Nxh1",
+        "uci": "e4f5",
+        "san": "Bf5#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f3e3",
-        "san": "Qxe3+",
+        "uci": "g3g5",
+        "san": "Rg5+",
         "color": "black"
       },
       {
-        "uci": "d4e2",
-        "san": "Nxe2",
-        "color": "black"
-      },
-      {
-        "uci": "g4e2",
-        "san": "Bxe2",
-        "color": "black"
-      },
-      {
-        "uci": "h5g3",
-        "san": "Nxg3+",
-        "color": "black"
-      },
-      {
-        "uci": "g3h1",
-        "san": "Nxh1",
+        "uci": "e4f5",
+        "san": "Bf5#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 5,
-    "posted_at": "2026-09-02T21:01:24.941902+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-09-02T21:03:37.304424+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788382884941",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1544814530239012965,
+    "puzzle_id": "random_1788383017304",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1544815084864413759,
     "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "nxh1",
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Rg5",
         "correct": true,
-        "timestamp": "2026-09-02T21:03:30.410523+00:00"
-      },
-      "1370434994945916940": {
-        "name": "Capybrawlgames2",
-        "move": "axb4",
-        "correct": false,
-        "timestamp": "2026-09-02T21:03:06.926939+00:00"
+        "timestamp": "2026-09-02T21:03:46.977175+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
