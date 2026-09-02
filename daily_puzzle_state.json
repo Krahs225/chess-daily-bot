@@ -1,98 +1,40 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2019-10-21",
-    "title": "Doing The Dance",
-    "fen": "8/6R1/8/3k4/8/5b2/3K4/8 w - - 0 1",
-    "current_fen": "8/8/3k4/6R1/4K3/8/8/8 b - - 0 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/6R1/8/3k4/8/5b2/3K4/8 w - - 0 1\"]\r\n\r\n1. Ke3 Bh1 2. Rg1 Be4 3. Rg5+ Kd6 4. Kxe4\r\n*",
+    "url": "https://www.chess.com/daily/2007-06-10",
+    "title": "Smothered King",
+    "fen": "r1b1kb1r/pppp1Npp/5n2/8/3nq3/2N5/PPPPBP1P/R1BQKR2 b Qkq - 0 1",
+    "current_fen": "r1b1kb1r/pppp1Npp/5n2/8/3nq3/2N5/PPPPBP1P/R1BQKR2 b Qkq - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1b1kb1r/pppp1Npp/5n2/8/3nq3/2N5/PPPPBP1P/R1BQKR2 b Qkq - 0 1\"]\r\n\r\n1... Nf3#\r\n*",
     "all_moves": [
       {
-        "uci": "d2e3",
-        "san": "Ke3",
-        "color": "white"
-      },
-      {
-        "uci": "f3h1",
-        "san": "Bh1",
+        "uci": "d4f3",
+        "san": "Nf3#",
         "color": "black"
-      },
-      {
-        "uci": "g7g1",
-        "san": "Rg1",
-        "color": "white"
-      },
-      {
-        "uci": "h1e4",
-        "san": "Be4",
-        "color": "black"
-      },
-      {
-        "uci": "g1g5",
-        "san": "Rg5+",
-        "color": "white"
-      },
-      {
-        "uci": "d5d6",
-        "san": "Kd6",
-        "color": "black"
-      },
-      {
-        "uci": "e3e4",
-        "san": "Kxe4",
-        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d2e3",
-        "san": "Ke3",
-        "color": "white"
-      },
-      {
-        "uci": "g7g1",
-        "san": "Rg1",
-        "color": "white"
-      },
-      {
-        "uci": "g1g5",
-        "san": "Rg5+",
-        "color": "white"
-      },
-      {
-        "uci": "e3e4",
-        "san": "Kxe4",
-        "color": "white"
+        "uci": "d4f3",
+        "san": "Nf3#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-09-02T21:23:32.010464+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 1,
+    "posted_at": "2026-09-02T21:24:36.163093+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788384212010",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544820095950258267,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "kxe4",
-        "correct": true,
-        "timestamp": "2026-09-02T21:24:29.574864+00:00"
-      },
-      "1370434994945916940": {
-        "name": "Capybrawlgames2",
-        "move": "kf2",
-        "correct": false,
-        "timestamp": "2026-09-02T21:24:15.478628+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788384276163",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
