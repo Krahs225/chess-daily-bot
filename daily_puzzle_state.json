@@ -2,7 +2,7 @@
   "latest_random_puzzle": {
     "title": "1971 • 1NNdH",
     "fen": "2r1k3/1p1rn1pp/5p2/8/3R4/2B1Q2P/2P1RPPK/5q2 b - - 0 28",
-    "current_fen": "2r1k3/1p1rn1pp/5p2/8/3R4/2B1Q2P/2P1RPPK/5q2 b - - 0 28",
+    "current_fen": "4k3/1p1rn1pp/4Qp2/8/3R4/2r4P/2P1RPPK/5q2 b - - 1 29",
     "all_moves": [
       {
         "uci": "c8c3",
@@ -53,13 +53,20 @@
     "url": "https://lichess.org/training/1NNdH",
     "posted_at": "2026-09-02T20:57:08.261994+00:00",
     "puzzle_id": "random_lichess_1971_1NNdH_1788382628262",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "Rxc3",
+        "correct": true,
+        "timestamp": "2026-09-02T20:57:40.250224+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
