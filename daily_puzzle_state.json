@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-04-20",
     "title": "Gorgiev, 1923",
     "fen": "3K4/5p2/p7/3k4/7P/8/1P6/8 w - - 0 1",
-    "current_fen": "3K4/5p2/p7/3k4/7P/8/1P6/8 w - - 0 1",
+    "current_fen": "3K4/5p2/p3k3/7P/8/8/1P6/8 w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"3K4/5p2/p7/3k4/7P/8/1P6/8 w - - 0 1\"]\r\n\r\n1. h5 Ke6 2. h6 Kf6 3. Ke8 Kg6 4. h7 Kxh7 5. Kxf7 Kh6 6. Kf6 Kh5 7. Kf5 Kh4\r\n8. Kf4 Kh3 9. Kf3 Kh2 10. Kf2 Kh3 11. b3 Kg4 12. Ke3 Kf5 13. Kd4 Ke6 14. Kc5\r\nKe5 15. b4 Ke4 16. Kb6 Kd5 17. Kxa6\r\n*",
     "all_moves": [
       {
@@ -262,25 +262,25 @@
     "player_color": "white",
     "player_move_count": 17,
     "posted_at": "2026-09-02T18:21:29.725986+00:00",
-    "answer_posted": false,
+    "answer_posted": true,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788373289725",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544774284151488623,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "h6",
-        "correct": false,
-        "timestamp": "2026-09-02T18:21:33.349469+00:00"
+        "move": "h5",
+        "correct": true,
+        "timestamp": "2026-09-02T18:21:34.072246+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
