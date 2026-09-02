@@ -201,7 +201,8 @@
         "used_puzzle_ids": [
           "bjsbG",
           "xQCZD",
-          "TixpB"
+          "TixpB",
+          "kea2I"
         ],
         "members": {
           "601406103712170014": {
@@ -215,7 +216,30 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "kea2I",
+          "rating": 1341,
+          "themes": "mate mateIn1 middlegame oneMove",
+          "url": "https://lichess.org/training/kea2I",
+          "start_fen": "r3k2r/p4ppp/2p5/2p5/4p1n1/2PP4/PP2K1P1/RNBQR2q b kq - 7 18",
+          "current_fen": "r3k2r/p4ppp/2p5/2p5/4p1n1/2PP4/PP2K1P1/RNBQR2q b kq - 7 18",
+          "solution": [
+            {
+              "uci": "h1g2",
+              "san": "Qxg2#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
