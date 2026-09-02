@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-06-23",
     "title": "Controlling and Advancing All At Once",
     "fen": "4k3/2p5/5P2/6PP/8/3p1K2/8/4b3 w - - 0 1",
-    "current_fen": "4k3/2p5/5P1P/6P1/8/5K2/3p4/4b3 w - - 0 2",
+    "current_fen": "8/2p2k2/5P1P/6P1/8/8/3pK3/4b3 w - - 2 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4k3/2p5/5P2/6PP/8/3p1K2/8/4b3 w - - 0 1\"]\r\n\r\n1. h6 d2 2. Ke2 Kf7 3. h7\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,22 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788360852375",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1544722118317445140,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "ke1",
+        "move": "ke2",
+        "correct": true,
+        "timestamp": "2026-09-02T14:54:20.830838+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Ke2",
         "correct": false,
-        "timestamp": "2026-09-02T14:54:19.891543+00:00"
+        "timestamp": "2026-09-02T14:54:20.943029+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
