@@ -197,10 +197,45 @@
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 0,
-        "best_difficulty": 0,
-        "used_puzzle_ids": [],
+        "best_difficulty": 1384,
+        "used_puzzle_ids": [
+          "bjsbG"
+        ],
         "members": {},
-        "puzzle": null,
+        "puzzle": {
+          "id": "bjsbG",
+          "rating": 1384,
+          "themes": "advantage middlegame short",
+          "url": "https://lichess.org/training/bjsbG",
+          "start_fen": "r3k2r/1b3ppp/p3pn2/8/1bpqP3/5B2/1PPNNPPP/R2Q1RK1 b kq - 1 17",
+          "current_fen": "r3k2r/1b3ppp/p3pn2/8/1bpqP3/5B2/1PPNNPPP/R2Q1RK1 b kq - 1 17",
+          "solution": [
+            {
+              "uci": "d4d2",
+              "san": "Qxd2",
+              "color": "black"
+            },
+            {
+              "uci": "d1d2",
+              "san": "Qxd2",
+              "color": "white"
+            },
+            {
+              "uci": "b4d2",
+              "san": "Bxd2",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
