@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2007-10-21",
     "title": "Mate in 7",
     "fen": "4r2k/5p1p/b2p4/3Pb1Q1/2pB4/pqN5/5K1P/R7 w - - 0 1",
-    "current_fen": "4r2k/5p1p/b2p4/3Pb1Q1/2pB4/pqN5/5K1P/R7 w - - 0 1",
+    "current_fen": "4r2k/5p1p/b7/3Pp1Q1/2p5/pqN5/5K1P/R7 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4r2k/5p1p/b2p4/3Pb1Q1/2pB4/pqN5/5K1P/R7 w - - 0 1\"]\r\n\r\n1. Bxe5+ dxe5 2. Qf6+ Kg8 3. Rg1+ Kf8 4. Qd6+ Re7 5. Qh6+ Ke8 6. Rg8+ Kd7 7. Qc6#\r\n*",
     "all_moves": [
       {
@@ -117,13 +117,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788360424741",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1544720325508468776,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Bxe5",
+        "correct": true,
+        "timestamp": "2026-09-02T14:47:24.941390+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
