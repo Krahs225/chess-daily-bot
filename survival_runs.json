@@ -266,9 +266,9 @@
     },
     "sharkmeister": {
       "name": "sharkmeister",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-09-02T21:35:04.217993+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1304,
+      "best_completed_at": "2026-09-02T21:36:14.910339+00:00",
       "current": {
         "run_id": "sharkmeister:1788384904",
         "started_by_id": "1370434994945916940",
@@ -281,9 +281,10 @@
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 0,
-        "best_difficulty": 1304,
+        "best_difficulty": 1384,
         "used_puzzle_ids": [
-          "lDksH"
+          "lDksH",
+          "QuMxX"
         ],
         "members": {
           "601406103712170014": {
@@ -292,7 +293,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "QuMxX",
+          "rating": 1384,
+          "themes": "crushing fork middlegame short",
+          "url": "https://lichess.org/training/QuMxX",
+          "start_fen": "5r1k/pb6/5qp1/2p4p/3n4/PB3PQP/1PP3P1/3R1RK1 b - - 1 26",
+          "current_fen": "5r1k/pb6/5qp1/2p4p/3n4/PB3PQP/1PP3P1/3R1RK1 b - - 1 26",
+          "solution": [
+            {
+              "uci": "d4e2",
+              "san": "Ne2+",
+              "color": "black"
+            },
+            {
+              "uci": "g1f2",
+              "san": "Kf2",
+              "color": "white"
+            },
+            {
+              "uci": "e2g3",
+              "san": "Nxg3",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
