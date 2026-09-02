@@ -1,77 +1,137 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2010-09-16",
-    "title": "Clearing The Way For Attack",
-    "fen": "r1r5/4k3/3q2QB/2p1pp2/1p2b3/p7/1PP1n3/1K4RR w - - 0 1",
-    "current_fen": "r2k1r2/7R/3Q4/2p1pp2/1p2b3/p7/1PP1n3/1K4R1 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r1r5/4k3/3q2QB/2p1pp2/1p2b3/p7/1PP1n3/1K4RR w - - 0 1\"]\r\n\r\n1. Bf8+ Rxf8 2. Rh7+ Kd8 3. Qxd6+\r\n*",
+    "url": "https://www.chess.com/daily/2015-12-26",
+    "title": "Mating In The Midst of Defense",
+    "fen": "8/5rk1/pn3qpR/1p6/3prP2/BP5Q/P6P/6RK w - - 0 1",
+    "current_fen": "8/5rk1/pn3qpR/1p6/3prP2/BP5Q/P6P/6RK w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"8/5rk1/pn3qpR/1p6/3prP2/BP5Q/P6P/6RK w - - 0 1\"]\r\n\r\n1. Qh5 b4 2. Bxb4 Re6 3. Rh8 Qf5 4. Bf8+ Kf6 5. Qh4+ g5 6. Rh6+ Qg6 7. Qxg5#\r\n*",
     "all_moves": [
       {
-        "uci": "h6f8",
+        "uci": "h3h5",
+        "san": "Qh5",
+        "color": "white"
+      },
+      {
+        "uci": "b5b4",
+        "san": "b4",
+        "color": "black"
+      },
+      {
+        "uci": "a3b4",
+        "san": "Bxb4",
+        "color": "white"
+      },
+      {
+        "uci": "e4e6",
+        "san": "Re6",
+        "color": "black"
+      },
+      {
+        "uci": "h6h8",
+        "san": "Rh8",
+        "color": "white"
+      },
+      {
+        "uci": "f6f5",
+        "san": "Qf5",
+        "color": "black"
+      },
+      {
+        "uci": "b4f8",
         "san": "Bf8+",
         "color": "white"
       },
       {
-        "uci": "c8f8",
-        "san": "Rxf8",
+        "uci": "g7f6",
+        "san": "Kf6",
         "color": "black"
       },
       {
-        "uci": "h1h7",
-        "san": "Rh7+",
+        "uci": "h5h4",
+        "san": "Qh4+",
         "color": "white"
       },
       {
-        "uci": "e7d8",
-        "san": "Kd8",
+        "uci": "g6g5",
+        "san": "g5",
         "color": "black"
       },
       {
-        "uci": "g6d6",
-        "san": "Qxd6+",
+        "uci": "h8h6",
+        "san": "Rh6+",
+        "color": "white"
+      },
+      {
+        "uci": "f5g6",
+        "san": "Qg6",
+        "color": "black"
+      },
+      {
+        "uci": "h4g5",
+        "san": "Qxg5#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6f8",
+        "uci": "h3h5",
+        "san": "Qh5",
+        "color": "white"
+      },
+      {
+        "uci": "a3b4",
+        "san": "Bxb4",
+        "color": "white"
+      },
+      {
+        "uci": "h6h8",
+        "san": "Rh8",
+        "color": "white"
+      },
+      {
+        "uci": "b4f8",
         "san": "Bf8+",
         "color": "white"
       },
       {
-        "uci": "h1h7",
-        "san": "Rh7+",
+        "uci": "h5h4",
+        "san": "Qh4+",
         "color": "white"
       },
       {
-        "uci": "g6d6",
-        "san": "Qxd6+",
+        "uci": "h8h6",
+        "san": "Rh6+",
+        "color": "white"
+      },
+      {
+        "uci": "h4g5",
+        "san": "Qxg5#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-09-02T19:49:59.251054+00:00",
-    "answer_posted": true,
+    "player_move_count": 7,
+    "posted_at": "2026-09-02T19:50:46.121857+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788378599251",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1544796554081079418,
+    "puzzle_id": "random_1788378646121",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": 1544796751180079124,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qxd6",
-        "correct": true,
-        "timestamp": "2026-09-02T19:50:39.762984+00:00"
+        "move": "rh7",
+        "correct": false,
+        "timestamp": "2026-09-02T19:50:58.890175+00:00"
       }
     },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
