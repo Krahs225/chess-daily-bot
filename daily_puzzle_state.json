@@ -1,92 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2021-09-28",
-    "title": "One Step Back...",
-    "fen": "r1r3k1/4qpp1/5n1p/1bpp1Q2/p7/P2PP1P1/1PRN1PBP/2R3K1 b - - 0 1",
-    "current_fen": "r1r3k1/4qp2/7p/2pp2p1/p5n1/P2PP1P1/1PRN1PBP/2R3K1 w - - 0 5",
-    "pgn": "[Result \"*\"]\r\n[FEN \"r1r3k1/4qpp1/5n1p/1bpp1Q2/p7/P2PP1P1/1PRN1PBP/2R3K1 b - - 0 1\"]\r\n\r\n1...Bd7 2.Qf4 g5 3.Qf3 Bg4 4.Qxg4 Nxg4 *",
+    "url": "https://www.chess.com/daily/2024-03-31",
+    "title": "Promotion Commotion",
+    "fen": "5k2/8/3P1K2/7b/2B5/8/8/8 w - - 0 1",
+    "current_fen": "5k2/8/3P1K2/7b/2B5/8/8/8 w - - 0 1",
+    "pgn": "[Event \"Leipziger Tageblatt\"]\r\n[Date \"1921.??.??\"]\r\n[White \"Dehler, O.\"]\r\n[Black \"Study\"]\r\n[Result \"1-0\"]\r\n[FEN \"5k2/8/3P1K2/7b/2B5/8/8/8 w - - 0 1\"]\r\n\r\n1. d7 Be8 2. d8=B Ba4 3. Bf7 Be8 4. Be7# 1-0",
     "all_moves": [
       {
-        "uci": "b5d7",
-        "san": "Bd7",
-        "color": "black"
-      },
-      {
-        "uci": "f5f4",
-        "san": "Qf4",
+        "uci": "d6d7",
+        "san": "d7",
         "color": "white"
       },
       {
-        "uci": "g7g5",
-        "san": "g5",
+        "uci": "h5e8",
+        "san": "Be8",
         "color": "black"
       },
       {
-        "uci": "f4f3",
-        "san": "Qf3",
+        "uci": "d7d8b",
+        "san": "d8=B",
         "color": "white"
       },
       {
-        "uci": "d7g4",
-        "san": "Bg4",
+        "uci": "e8a4",
+        "san": "Ba4",
         "color": "black"
       },
       {
-        "uci": "f3g4",
-        "san": "Qxg4",
+        "uci": "c4f7",
+        "san": "Bf7",
         "color": "white"
       },
       {
-        "uci": "f6g4",
-        "san": "Nxg4",
+        "uci": "a4e8",
+        "san": "Be8",
         "color": "black"
+      },
+      {
+        "uci": "d8e7",
+        "san": "Be7#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b5d7",
-        "san": "Bd7",
-        "color": "black"
+        "uci": "d6d7",
+        "san": "d7",
+        "color": "white"
       },
       {
-        "uci": "g7g5",
-        "san": "g5",
-        "color": "black"
+        "uci": "d7d8b",
+        "san": "d8=B",
+        "color": "white"
       },
       {
-        "uci": "d7g4",
-        "san": "Bg4",
-        "color": "black"
+        "uci": "c4f7",
+        "san": "Bf7",
+        "color": "white"
       },
       {
-        "uci": "f6g4",
-        "san": "Nxg4",
-        "color": "black"
+        "uci": "d8e7",
+        "san": "Be7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 4,
-    "posted_at": "2026-09-02T21:08:05.008662+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-09-02T21:10:50.835962+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788383285008",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544816207658614846,
-    "attempted_users": {
-      "1370434994945916940": {
-        "name": "Capybrawlgames2",
-        "move": "nxg4",
-        "correct": true,
-        "timestamp": "2026-09-02T21:10:32.507930+00:00"
-      }
-    },
-    "first_move_user_id": "1370434994945916940",
-    "first_move_user_name": "Capybrawlgames2",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788383450835",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
