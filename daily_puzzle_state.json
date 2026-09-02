@@ -1,77 +1,85 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-04-16",
-    "title": "Mate in 3",
-    "fen": "r3Rb1r/1kp2p2/npNq3p/pQ1P2p1/8/P1N3P1/1P3PP1/R5K1 w - - 0 1",
-    "current_fen": "R4b1r/2p2p2/kp1q3p/N2P2p1/8/P1N3P1/1P3PP1/R5K1 b - - 0 3",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3Rb1r/1kp2p2/npNq3p/pQ1P2p1/8/P1N3P1/1P3PP1/R5K1 w - - 0 1\"]\r\n\r\n1. Nxa5+ Ka7 2. Qxa6+ Kxa6 3. Rxa8#\r\n*",
+    "url": "https://www.chess.com/daily/2021-12-09",
+    "title": "Hikaru's Gift",
+    "fen": "3r2k1/ppq3p1/1n2p2p/4Np1P/P1P2P2/5Q2/6PK/3R4 w - - 1 31",
+    "current_fen": "3r2k1/ppq3p1/1n2p2p/4Np1P/P1P2P2/5Q2/6PK/3R4 w - - 1 31",
+    "pgn": "[Event \"Skilling Open\"]\r\n[Site \"chess24.com INT\"]\r\n[Date \"2020.11.24\"]\r\n[Round \"14.4\"]\r\n[White \"Hikaru Nakamura\"]\r\n[Black \"Alireza Firouzja\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2736\"]\r\n[BlackElo \"2749\"]\r\n[FEN \"3r2k1/ppq3p1/1n2p2p/4Np1P/P1P2P2/5Q2/6PK/3R4 w - - 1 31\"]\r\n\r\n31.Qxb7 Qxb7 32.Rxd8+ Kh7 33.Ng6 Qc8 34.Rxc8 1-0",
     "all_moves": [
       {
-        "uci": "c6a5",
-        "san": "Nxa5+",
+        "uci": "f3b7",
+        "san": "Qxb7",
         "color": "white"
       },
       {
-        "uci": "b7a7",
-        "san": "Ka7",
+        "uci": "c7b7",
+        "san": "Qxb7",
         "color": "black"
       },
       {
-        "uci": "b5a6",
-        "san": "Qxa6+",
+        "uci": "d1d8",
+        "san": "Rxd8+",
         "color": "white"
       },
       {
-        "uci": "a7a6",
-        "san": "Kxa6",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "e8a8",
-        "san": "Rxa8#",
+        "uci": "e5g6",
+        "san": "Ng6",
+        "color": "white"
+      },
+      {
+        "uci": "b7c8",
+        "san": "Qc8",
+        "color": "black"
+      },
+      {
+        "uci": "d8c8",
+        "san": "Rxc8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c6a5",
-        "san": "Nxa5+",
+        "uci": "f3b7",
+        "san": "Qxb7",
         "color": "white"
       },
       {
-        "uci": "b5a6",
-        "san": "Qxa6+",
+        "uci": "d1d8",
+        "san": "Rxd8+",
         "color": "white"
       },
       {
-        "uci": "e8a8",
-        "san": "Rxa8#",
+        "uci": "e5g6",
+        "san": "Ng6",
+        "color": "white"
+      },
+      {
+        "uci": "d8c8",
+        "san": "Rxc8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-09-02T19:48:28.020556+00:00",
+    "player_move_count": 4,
+    "posted_at": "2026-09-02T19:49:14.035944+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788378508020",
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1544796171611148291,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "rxa8",
-        "correct": true,
-        "timestamp": "2026-09-02T19:49:06.395843+00:00"
-      }
-    },
-    "first_move_user_id": "601406103712170014",
-    "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788378554035",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
