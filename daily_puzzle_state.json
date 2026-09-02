@@ -1,74 +1,67 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2015-07-30",
-    "title": "Danger Danger",
-    "fen": "1r3r2/1b3P1p/p2pBk2/1pp4R/4P1Q1/3P4/PP4PP/6K1 w - - 0 1",
-    "current_fen": "1r3r2/1b3P1p/p2pBk2/1pp4R/4P1Q1/3P4/PP4PP/6K1 w - - 0 1",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r3r2/1b3P1p/p2pBk2/1pp4R/4P1Q1/3P4/PP4PP/6K1 w - - 0 1\"]\r\n\r\n1. Rh6+ Ke5 2. Qg7+ Kf4 3. Qg3#\r\n*",
+    "url": "https://www.chess.com/daily/2018-08-29",
+    "title": "The Three Step",
+    "fen": "5rkr/1p2Rppp/1qp5/8/1P6/PQ6/2B2PPP/6K1 w - - 0 1",
+    "current_fen": "5rkr/1p2Rppp/1qp5/8/1P6/PQ6/2B2PPP/6K1 w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"5rkr/1p2Rppp/1qp5/8/1P6/PQ6/2B2PPP/6K1 w - - 0 1\"]\r\n\r\n1. Qxf7+ Rxf7 2. Re8+ Rf8 3. Bb3#\r\n*",
     "all_moves": [
       {
-        "uci": "h5h6",
-        "san": "Rh6+",
+        "uci": "b3f7",
+        "san": "Qxf7+",
         "color": "white"
       },
       {
-        "uci": "f6e5",
-        "san": "Ke5",
+        "uci": "f8f7",
+        "san": "Rxf7",
         "color": "black"
       },
       {
-        "uci": "g4g7",
-        "san": "Qg7+",
+        "uci": "e7e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "e5f4",
-        "san": "Kf4",
+        "uci": "f7f8",
+        "san": "Rf8",
         "color": "black"
       },
       {
-        "uci": "g7g3",
-        "san": "Qg3#",
+        "uci": "c2b3",
+        "san": "Bb3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5h6",
-        "san": "Rh6+",
+        "uci": "b3f7",
+        "san": "Qxf7+",
         "color": "white"
       },
       {
-        "uci": "g4g7",
-        "san": "Qg7+",
+        "uci": "e7e8",
+        "san": "Re8+",
         "color": "white"
       },
       {
-        "uci": "g7g3",
-        "san": "Qg3#",
+        "uci": "c2b3",
+        "san": "Bb3#",
         "color": "white"
       }
     ],
     "player_color": "white",
     "player_move_count": 3,
-    "posted_at": "2026-09-02T19:21:02.741847+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-09-02T19:22:20.530343+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788376862741",
+    "puzzle_id": "random_1788376940530",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1544789271175495750,
-    "attempted_users": {
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "e5",
-        "correct": false,
-        "timestamp": "2026-09-02T19:22:16.398892+00:00"
-      }
-    },
+    "message_id": 1544789596909609022,
+    "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
