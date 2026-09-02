@@ -1,192 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-06-08",
-    "title": "E L Pogosyants, Shakhmaty v SSSR, 1964",
-    "fen": "k7/1p6/8/1P6/2K5/7p/7P/8 w - - 0 1",
-    "current_fen": "2k5/1p6/1P6/5K2/8/7p/7P/8 w - - 15 9",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"k7/1p6/8/1P6/2K5/7p/7P/8 w - - 0 1\"]\r\n\r\n1. b6 Kb8 2. Kd5 Kc8 3. Ke6 Kd8 4. Kd6 Kc8 5. Ke7 Kb8 6. Kd7 Ka8 7. Ke6 Kb8\r\n8. Kf5 Kc8 9. Kg4 Kd7 10. Kxh3\r\n*",
+    "url": "https://www.chess.com/daily/2024-01-31",
+    "title": "Diagonal Overload",
+    "fen": "rn5r/1bpk1q1p/3b2pQ/2p3B1/Pp6/1P1P1N2/5PPP/2R1R1K1 w - - 0 1",
+    "current_fen": "rn5r/1bpk1q1p/3b2pQ/2p3B1/Pp6/1P1P1N2/5PPP/2R1R1K1 w - - 0 1",
+    "pgn": "[Result \"*\"]\r\n[FEN \"rn5r/1bpk1q1p/3b2pQ/2p3B1/Pp6/1P1P1N2/5PPP/2R1R1K1 w - - 0 1\"]\r\n\r\n1. Re7+ Bxe7 2. Ne5+ Ke8 3. Nxf7 *",
     "all_moves": [
       {
-        "uci": "b5b6",
-        "san": "b6",
+        "uci": "e1e7",
+        "san": "Re7+",
         "color": "white"
-      },
-      {
-        "uci": "a8b8",
-        "san": "Kb8",
-        "color": "black"
-      },
-      {
-        "uci": "c4d5",
-        "san": "Kd5",
-        "color": "white"
-      },
-      {
-        "uci": "b8c8",
-        "san": "Kc8",
-        "color": "black"
-      },
-      {
-        "uci": "d5e6",
-        "san": "Ke6",
-        "color": "white"
-      },
-      {
-        "uci": "c8d8",
-        "san": "Kd8",
-        "color": "black"
-      },
-      {
-        "uci": "e6d6",
-        "san": "Kd6",
-        "color": "white"
-      },
-      {
-        "uci": "d8c8",
-        "san": "Kc8",
-        "color": "black"
       },
       {
         "uci": "d6e7",
-        "san": "Ke7",
-        "color": "white"
-      },
-      {
-        "uci": "c8b8",
-        "san": "Kb8",
+        "san": "Bxe7",
         "color": "black"
       },
       {
-        "uci": "e7d7",
-        "san": "Kd7",
+        "uci": "f3e5",
+        "san": "Ne5+",
         "color": "white"
       },
       {
-        "uci": "b8a8",
-        "san": "Ka8",
+        "uci": "d7e8",
+        "san": "Ke8",
         "color": "black"
       },
       {
-        "uci": "d7e6",
-        "san": "Ke6",
-        "color": "white"
-      },
-      {
-        "uci": "a8b8",
-        "san": "Kb8",
-        "color": "black"
-      },
-      {
-        "uci": "e6f5",
-        "san": "Kf5",
-        "color": "white"
-      },
-      {
-        "uci": "b8c8",
-        "san": "Kc8",
-        "color": "black"
-      },
-      {
-        "uci": "f5g4",
-        "san": "Kg4",
-        "color": "white"
-      },
-      {
-        "uci": "c8d7",
-        "san": "Kd7",
-        "color": "black"
-      },
-      {
-        "uci": "g4h3",
-        "san": "Kxh3",
+        "uci": "e5f7",
+        "san": "Nxf7",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "b5b6",
-        "san": "b6",
+        "uci": "e1e7",
+        "san": "Re7+",
         "color": "white"
       },
       {
-        "uci": "c4d5",
-        "san": "Kd5",
+        "uci": "f3e5",
+        "san": "Ne5+",
         "color": "white"
       },
       {
-        "uci": "d5e6",
-        "san": "Ke6",
-        "color": "white"
-      },
-      {
-        "uci": "e6d6",
-        "san": "Kd6",
-        "color": "white"
-      },
-      {
-        "uci": "d6e7",
-        "san": "Ke7",
-        "color": "white"
-      },
-      {
-        "uci": "e7d7",
-        "san": "Kd7",
-        "color": "white"
-      },
-      {
-        "uci": "d7e6",
-        "san": "Ke6",
-        "color": "white"
-      },
-      {
-        "uci": "e6f5",
-        "san": "Kf5",
-        "color": "white"
-      },
-      {
-        "uci": "f5g4",
-        "san": "Kg4",
-        "color": "white"
-      },
-      {
-        "uci": "g4h3",
-        "san": "Kxh3",
+        "uci": "e5f7",
+        "san": "Nxf7",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 10,
-    "posted_at": "2026-09-02T18:32:49.178423+00:00",
+    "player_move_count": 3,
+    "posted_at": "2026-09-02T18:34:21.589563+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788373969178",
-    "next_solution_index": 16,
-    "next_player_index": 8,
+    "puzzle_id": "random_1788374061589",
+    "next_solution_index": 0,
+    "next_player_index": 0,
     "solved": false,
-    "message_id": 1544777134252363877,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "kf5",
-        "correct": true,
-        "timestamp": "2026-09-02T18:34:14.051391+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "ke6",
-        "correct": true,
-        "timestamp": "2026-09-02T18:33:01.201561+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
