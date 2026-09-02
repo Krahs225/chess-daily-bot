@@ -195,7 +195,7 @@
         "started_at": "2026-09-02T21:39:52.007352+00:00",
         "last_activity": 1788385366.6811628,
         "paused_reason": null,
-        "puzzle_number": 3,
+        "puzzle_number": 4,
         "strikes": 1,
         "best_difficulty": 1384,
         "used_puzzle_ids": [
@@ -215,60 +215,9 @@
             "wrong": 1
           }
         },
-        "puzzle": {
-          "id": "TixpB",
-          "rating": 1314,
-          "themes": "endgame mate mateIn2 short",
-          "url": "https://lichess.org/training/TixpB",
-          "start_fen": "5k2/4pp2/p2p1br1/1p6/3Pq3/P1P2N1Q/1P3P2/3K3R w - - 5 31",
-          "current_fen": "7Q/4ppk1/p2p1br1/1p6/3Pq3/P1P2N2/1P3P2/3K3R b - - 8 32",
-          "solution": [
-            {
-              "uci": "h3c8",
-              "san": "Qc8+",
-              "color": "white"
-            },
-            {
-              "uci": "f8g7",
-              "san": "Kg7",
-              "color": "black"
-            },
-            {
-              "uci": "c8h8",
-              "san": "Qh8#",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Qh8#",
-          "accepted_moves": [
-            {
-              "san": "Qc8+",
-              "uci": "h3c8",
-              "accepted_at": 1788385363.2181284,
-              "solver_id": "601406103712170014"
-            },
-            {
-              "san": "Qh8#",
-              "uci": "c8h8",
-              "accepted_at": 1788385366.6810448,
-              "solver_id": "601406103712170014"
-            }
-          ],
-          "last_accepted_move_uci": "c8h8",
-          "last_accepted_move_san": "Qh8#",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788385366.6810436,
-          "position_before_last_move": "2Q5/4ppk1/p2p1br1/1p6/3Pq3/P1P2N2/1P3P2/3K3R w - - 7 32"
-        },
-        "first_solver_id": "601406103712170014",
-        "first_solver_name": "TheMakina",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       },
