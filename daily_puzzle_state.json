@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2009-02-05",
     "title": "Trading to Win",
     "fen": "2rr2k1/p3bppp/bpnqpn2/8/2PP4/5N2/PB1NQPPP/1BR1R1K1 w - - 0 1",
-    "current_fen": "2rr2k1/p4ppp/1pnbpn2/8/3P4/5N2/PB1NbPPP/1BR1R1K1 w - - 0 3",
+    "current_fen": "2rr2k1/p4ppp/1pnbpn2/8/3P4/5N2/PB1NRPPP/1BR3K1 b - - 0 3",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2rr2k1/p3bppp/bpnqpn2/8/2PP4/5N2/PB1NQPPP/1BR1R1K1 w - - 0 1\"]\r\n\r\n1. c5 Bxe2 2. cxd6 Bxd6 3. Rxe2\r\n*",
     "all_moves": [
       {
@@ -57,16 +57,16 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788361104629",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1544723176414642317,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "c5",
+        "move": "rxe2",
         "correct": true,
-        "timestamp": "2026-09-02T14:58:31.116515+00:00"
+        "timestamp": "2026-09-02T14:58:38.235382+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -77,8 +77,11 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014",
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
