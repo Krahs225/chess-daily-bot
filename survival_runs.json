@@ -193,7 +193,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-02T21:39:52.007352+00:00",
-        "last_activity": 1788385413.7402127,
+        "last_activity": 1788385458.0497625,
         "paused_reason": null,
         "puzzle_number": 5,
         "strikes": 1,
@@ -213,7 +213,7 @@
           },
           "1370434994945916940": {
             "name": "Capybrawlgames2",
-            "correct": 3,
+            "correct": 4,
             "wrong": 1
           }
         },
@@ -223,7 +223,7 @@
           "themes": "deflection endgame exposedKing mate mateIn4 veryLong",
           "url": "https://lichess.org/training/KzaW7",
           "start_fen": "4rk2/6R1/2b2P2/3pP3/2p2K2/8/p7/1q4R1 w - - 0 50",
-          "current_fen": "4rk2/6R1/2b2P2/3pP3/2p2K2/8/p7/1q4R1 w - - 0 50",
+          "current_fen": "4r1R1/5k2/2b2P2/3pP3/2p2K2/8/p7/1q4R1 w - - 2 51",
           "solution": [
             {
               "uci": "g7g8",
@@ -262,17 +262,29 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Rg8+",
+          "accepted_moves": [
+            {
+              "san": "Rg8+",
+              "uci": "g7g8",
+              "accepted_at": 1788385458.0496037,
+              "solver_id": "1370434994945916940"
+            }
+          ],
+          "last_accepted_move_uci": "g7g8",
+          "last_accepted_move_san": "Rg8+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1788385458.0496025,
+          "position_before_last_move": "4rk2/6R1/2b2P2/3pP3/2p2K2/8/p7/1q4R1 w - - 0 50"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "1370434994945916940",
+        "first_solver_name": "Capybrawlgames2",
         "helper_candidates": {},
         "helper_awarded": []
       },
