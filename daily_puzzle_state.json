@@ -1,62 +1,70 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2018-10-22",
-    "title": "Gyorgy BAKCSI, Jubilli de Finlande 1966",
-    "fen": "2b4r/6N1/4Rp2/4n1bQ/5k2/3rN2p/5P1K/6BB w k - 0 1",
-    "current_fen": "7r/8/4Np2/4n1bQ/5k2/3rN2K/5P2/6BB b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[FEN \"2b4r/6N1/4Rp2/4n1bQ/5k2/3rN2p/5P1K/6BB w k - 0 1\"]\r\n\r\n1. Kxh3 Bxe6+ 2. Nxe6#\r\n*",
+    "url": "https://www.chess.com/daily/2014-09-08",
+    "title": "Mate in 3",
+    "fen": "q3nr1k/4rp1p/2b2Pp1/2pNn1P1/3p1R1Q/1pPP3P/1P4B1/1R5K w - - 0 1",
+    "current_fen": "q3nr1k/4rp1p/2b2Pp1/2pNn1P1/3p1R1Q/1pPP3P/1P4B1/1R5K w - - 0 1",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"q3nr1k/4rp1p/2b2Pp1/2pNn1P1/3p1R1Q/1pPP3P/1P4B1/1R5K w - - 0 1\"]\r\n\r\n1. Qxh7+ Kxh7 2. Rh4+ Kg8 3. Nxe7#\r\n*",
     "all_moves": [
       {
-        "uci": "h2h3",
-        "san": "Kxh3",
+        "uci": "h4h7",
+        "san": "Qxh7+",
         "color": "white"
       },
       {
-        "uci": "c8e6",
-        "san": "Bxe6+",
+        "uci": "h8h7",
+        "san": "Kxh7",
         "color": "black"
       },
       {
-        "uci": "g7e6",
-        "san": "Nxe6#",
+        "uci": "f4h4",
+        "san": "Rh4+",
+        "color": "white"
+      },
+      {
+        "uci": "h7g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "d5e7",
+        "san": "Nxe7#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h2h3",
-        "san": "Kxh3",
+        "uci": "h4h7",
+        "san": "Qxh7+",
         "color": "white"
       },
       {
-        "uci": "g7e6",
-        "san": "Nxe6#",
+        "uci": "f4h4",
+        "san": "Rh4+",
+        "color": "white"
+      },
+      {
+        "uci": "d5e7",
+        "san": "Nxe7#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-09-02T18:05:17.081452+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-09-02T18:15:58.422119+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788372317081",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1544770204846784574,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nxe6",
-        "correct": true,
-        "timestamp": "2026-09-02T18:06:48.069593+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788372958422",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
