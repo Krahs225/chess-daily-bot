@@ -1,62 +1,55 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2017-03-27",
-    "title": "GM Ivanchuk vs GM Kamsky, Turneul Regilor 2009",
-    "fen": "7k/1p2Qbpp/1q3r2/p2P3r/4Rp2/P4P2/1P4BP/3R3K w - - 0 1",
-    "current_fen": "6bk/1p4pp/1q3r2/p2P3Q/4Rp2/P4P2/1P4BP/3R3K b - - 0 2",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"7k/1p2Qbpp/1q3r2/p2P3r/4Rp2/P4P2/1P4BP/3R3K w - - 0 1\"]\r\n\r\n1. Qe8+ Bg8 2. Qxh5\r\n*",
+    "url": "https://www.chess.com/daily/2024-07-22",
+    "title": "The Rook's Secret Admirers",
+    "fen": "3rk1r1/5p2/Q1p1pP2/8/P2q4/5bB1/1PP1B2P/3RK3 b - - 0 1",
+    "current_fen": "3rk1r1/5p2/Q1p1pP2/8/P2q4/5bB1/1PP1B2P/3RK3 b - - 0 1",
+    "pgn": "[Result \"0-1\"]\r\n[FEN \"3rk1r1/5p2/Q1p1pP2/8/P2q4/5bB1/1PP1B2P/3RK3 b - - 0 1\"]\r\n\r\n1... Qg1+ 2. Bf1 Rxd1# 0-1",
     "all_moves": [
       {
-        "uci": "e7e8",
-        "san": "Qe8+",
-        "color": "white"
-      },
-      {
-        "uci": "f7g8",
-        "san": "Bg8",
+        "uci": "d4g1",
+        "san": "Qg1+",
         "color": "black"
       },
       {
-        "uci": "e8h5",
-        "san": "Qxh5",
+        "uci": "e2f1",
+        "san": "Bf1",
         "color": "white"
+      },
+      {
+        "uci": "d8d1",
+        "san": "Rxd1#",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "e7e8",
-        "san": "Qe8+",
-        "color": "white"
+        "uci": "d4g1",
+        "san": "Qg1+",
+        "color": "black"
       },
       {
-        "uci": "e8h5",
-        "san": "Qxh5",
-        "color": "white"
+        "uci": "d8d1",
+        "san": "Rxd1#",
+        "color": "black"
       }
     ],
-    "player_color": "white",
+    "player_color": "black",
     "player_move_count": 2,
-    "posted_at": "2026-09-02T18:02:35.211667+00:00",
-    "answer_posted": true,
+    "posted_at": "2026-09-02T18:03:33.387891+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788372155211",
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1544769526309326990,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxh5",
-        "correct": true,
-        "timestamp": "2026-09-02T18:03:11.655066+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_1788372213387",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
