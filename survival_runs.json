@@ -195,7 +195,7 @@
         "started_at": "2026-09-02T21:39:52.007352+00:00",
         "last_activity": 1788385788.0469577,
         "paused_reason": null,
-        "puzzle_number": 7,
+        "puzzle_number": 8,
         "strikes": 0,
         "best_difficulty": 1393,
         "used_puzzle_ids": [
@@ -219,60 +219,9 @@
             "wrong": 2
           }
         },
-        "puzzle": {
-          "id": "XvRzt",
-          "rating": 1374,
-          "themes": "advantage fork middlegame short",
-          "url": "https://lichess.org/training/XvRzt",
-          "start_fen": "4k2r/3q1p2/p2Pp2p/2ppn1p1/P7/8/1rP1QPPP/R3K2R w KQk - 0 21",
-          "current_fen": "5rk1/3q1p2/p2Pp2p/2pp2p1/P7/8/1QP2PPP/R3K2R b KQ - 0 22",
-          "solution": [
-            {
-              "uci": "e2e5",
-              "san": "Qxe5",
-              "color": "white"
-            },
-            {
-              "uci": "e8g8",
-              "san": "O-O",
-              "color": "black"
-            },
-            {
-              "uci": "e5b2",
-              "san": "Qxb2",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Qxb2",
-          "accepted_moves": [
-            {
-              "san": "Qxe5",
-              "uci": "e2e5",
-              "accepted_at": 1788385706.336488,
-              "solver_id": "1370434994945916940"
-            },
-            {
-              "san": "Qxb2",
-              "uci": "e5b2",
-              "accepted_at": 1788385788.0468557,
-              "solver_id": "1370434994945916940"
-            }
-          ],
-          "last_accepted_move_uci": "e5b2",
-          "last_accepted_move_san": "Qxb2",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788385788.0468547,
-          "position_before_last_move": "5rk1/3q1p2/p2Pp2p/2ppQ1p1/P7/8/1rP2PPP/R3K2R w KQ - 1 22"
-        },
-        "first_solver_id": "1370434994945916940",
-        "first_solver_name": "Capybrawlgames2",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       },
