@@ -193,7 +193,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-02T21:39:52.007352+00:00",
-        "last_activity": 1788385234.3483562,
+        "last_activity": 1788385265.297721,
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 0,
@@ -205,7 +205,7 @@
         "members": {
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 2,
+            "correct": 3,
             "wrong": 0
           }
         },
@@ -215,7 +215,7 @@
           "themes": "clearance endgame long mate mateIn3 sacrifice",
           "url": "https://lichess.org/training/xQCZD",
           "start_fen": "5rk1/2p2ppp/8/p2Q4/2P5/P5qP/1r4P1/3R1R1K w - - 3 26",
-          "current_fen": "5rk1/2p2ppp/8/p2Q4/2P5/P5qP/1r4P1/3R1R1K w - - 3 26",
+          "current_fen": "6k1/2p2rpp/8/p7/2P5/P5qP/1r4P1/3R1R1K w - - 0 27",
           "solution": [
             {
               "uci": "d5f7",
@@ -244,17 +244,29 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qxf7+",
+          "accepted_moves": [
+            {
+              "san": "Qxf7+",
+              "uci": "d5f7",
+              "accepted_at": 1788385265.2975583,
+              "solver_id": "601406103712170014"
+            }
+          ],
+          "last_accepted_move_uci": "d5f7",
+          "last_accepted_move_san": "Qxf7+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1788385265.2975574,
+          "position_before_last_move": "5rk1/2p2ppp/8/p2Q4/2P5/P5qP/1r4P1/3R1R1K w - - 3 26"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       },
