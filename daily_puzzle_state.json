@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2010-03-14",
     "title": "Simplification Tactic",
     "fen": "4n3/4k2p/p2pN1p1/3P1q2/Q1P5/6P1/P5KP/8 w - - 0 1",
-    "current_fen": "4n3/4k2p/p2pN1p1/3P1q2/Q1P5/6P1/P5KP/8 w - - 0 1",
+    "current_fen": "4k3/7p/p2pN1p1/3P1q2/2P5/6P1/P5KP/8 w - - 0 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"4n3/4k2p/p2pN1p1/3P1q2/Q1P5/6P1/P5KP/8 w - - 0 1\"]\r\n\r\n1. Qxe8+ Kxe8 2. Ng7+\r\n*",
     "all_moves": [
       {
@@ -42,13 +42,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788377810413",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544793246058815659,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "qxe8",
+        "correct": true,
+        "timestamp": "2026-09-02T19:36:55.510959+00:00"
+      },
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qxe8",
+        "correct": false,
+        "timestamp": "2026-09-02T19:36:55.517418+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
