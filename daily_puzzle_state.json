@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2019-02-26",
     "title": "Detaching Connections",
     "fen": "1r4k1/3R1bpp/n4p2/8/8/Pr2PB2/5PPP/3R2K1 w - - 0 1",
-    "current_fen": "1r4k1/3R1bpp/n4p2/8/8/Pr2PB2/5PPP/3R2K1 w - - 0 1",
+    "current_fen": "1r1Rb1k1/6pp/n4p2/8/8/Pr2PB2/5PPP/3R2K1 w - - 2 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"1r4k1/3R1bpp/n4p2/8/8/Pr2PB2/5PPP/3R2K1 w - - 0 1\"]\r\n\r\n1. Rd8+ Be8 2. Rxe8+ Rxe8 3. Bd5+ Kf8 4. Bxb3\r\n*",
     "all_moves": [
       {
@@ -72,20 +72,26 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788361317785",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544724072175509564,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "re8",
+        "move": "bd5",
         "correct": false,
-        "timestamp": "2026-09-02T15:02:05.275260+00:00"
+        "timestamp": "2026-09-02T15:02:09.031605+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rd8",
+        "correct": true,
+        "timestamp": "2026-09-02T15:02:05.354055+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
