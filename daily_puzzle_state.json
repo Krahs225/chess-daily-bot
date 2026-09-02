@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-04-16",
     "title": "Mate in 3",
     "fen": "r3Rb1r/1kp2p2/npNq3p/pQ1P2p1/8/P1N3P1/1P3PP1/R5K1 w - - 0 1",
-    "current_fen": "r3Rb1r/1kp2p2/npNq3p/pQ1P2p1/8/P1N3P1/1P3PP1/R5K1 w - - 0 1",
+    "current_fen": "r3Rb1r/k1p2p2/np1q3p/NQ1P2p1/8/P1N3P1/1P3PP1/R5K1 w - - 1 2",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r3Rb1r/1kp2p2/npNq3p/pQ1P2p1/8/P1N3P1/1P3PP1/R5K1 w - - 0 1\"]\r\n\r\n1. Nxa5+ Ka7 2. Qxa6+ Kxa6 3. Rxa8#\r\n*",
     "all_moves": [
       {
@@ -57,20 +57,20 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788378508020",
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1544796171611148291,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "nxa6",
-        "correct": false,
-        "timestamp": "2026-09-02T19:48:56.250038+00:00"
+        "move": "nxa5",
+        "correct": true,
+        "timestamp": "2026-09-02T19:48:57.883751+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
