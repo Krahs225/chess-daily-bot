@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2011-09-21",
     "title": "Mate in 3",
     "fen": "rn2kbr1/p3pp2/8/1pp3p1/3qn3/P1N4Q/1P2BPPP/R3K2R w KQq - 0 1",
-    "current_fen": "r1Qqkbr1/p2npp2/8/1Bp3p1/4n3/P1N5/1P3PPP/R3K2R w KQq - 1 3",
+    "current_fen": "r1Qqkbr1/p2Bpp2/8/2p3p1/4n3/P1N5/1P3PPP/R3K2R b KQq - 0 3",
     "pgn": "[Result \"*\"]\r\n[FEN \"rn2kbr1/p3pp2/8/1pp3p1/3qn3/P1N4Q/1P2BPPP/R3K2R w KQq - 0 1\"]\r\n\r\n1. Qc8+ Qd8 2. Bxb5+ Nd7 3. Bxd7# *",
     "all_moves": [
       {
@@ -57,21 +57,21 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788342103347",
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1544643479492235315,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Bxb5",
+        "move": "Bxd7",
         "correct": true,
-        "timestamp": "2026-09-02T09:41:55.868115+00:00"
+        "timestamp": "2026-09-02T09:41:59.946630+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
