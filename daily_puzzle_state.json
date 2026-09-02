@@ -3,7 +3,7 @@
     "url": "https://www.chess.com/daily/2014-04-26",
     "title": "Spielmann - Van Den Bosch, Europe 1935",
     "fen": "2kr3r/ppp2R1p/6p1/3pq3/4P1n1/8/PPP2QPP/R1B3K1 w - - 0 1",
-    "current_fen": "2kr3r/ppp2R1p/6p1/3pq3/4PB2/8/PPP2nPP/R5K1 w - - 0 2",
+    "current_fen": "1k1rr3/ppR4p/6p1/3pB3/4P3/8/PPP2nPP/R5K1 w - - 1 4",
     "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"2kr3r/ppp2R1p/6p1/3pq3/4P1n1/8/PPP2QPP/R1B3K1 w - - 0 1\"]\r\n\r\n1. Bf4 Nxf2 2. Bxe5 Rhe8 3. Rxc7+ Kb8 4. Rd7+ Kc8 5. Rxd8+ Kxd8 6. Bf6+ Kd7 7. Kxf2 \r\n*",
     "all_moves": [
       {
@@ -117,23 +117,31 @@
     "winner_name": null,
     "latest_attempts": {},
     "puzzle_id": "random_1788366871143",
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 6,
+    "next_player_index": 3,
     "solved": false,
     "message_id": 1544747362759475252,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bf4",
+        "move": "bxe5",
         "correct": true,
-        "timestamp": "2026-09-02T16:34:34.928149+00:00"
+        "timestamp": "2026-09-02T16:34:38.624209+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "rxc7",
+        "correct": true,
+        "timestamp": "2026-09-02T16:34:38.629514+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
