@@ -1,92 +1,122 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2014-10-16",
-    "title": "Dzindzichashvili - Oleg Dementiev , URS, 1972",
-    "fen": "6k1/6p1/2q1p1P1/4Pn1Q/8/5RB1/7K/2r5 w - - 0 1",
-    "current_fen": "3Q4/3k2p1/2q1p1P1/4Pn2/7B/5R2/7K/2r5 b - - 7 4",
-    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"6k1/6p1/2q1p1P1/4Pn1Q/8/5RB1/7K/2r5 w - - 0 1\"]\r\n\r\n1. Qh7+ Kf8 2. Qh8+ Ke7 3. Bh4+ Kd7 4. Qd8#\r\n*",
+    "url": "https://www.chess.com/daily/2014-01-29",
+    "title": "Mate in 6",
+    "fen": "r4rk1/pb3pp1/4pP1B/1p6/2p5/P1P4Q/1PB2qPP/R4N1K w - - 0 1",
+    "current_fen": "r4r2/pb3ppk/4pP1B/1p6/2p5/P1P4Q/1P3qPP/R4N1K w - - 0 2",
+    "pgn": "[Date \"????.??.??\"]\r\n[Result \"*\"]\r\n[FEN \"r4rk1/pb3pp1/4pP1B/1p6/2p5/P1P4Q/1PB2qPP/R4N1K w - - 0 1\"]\r\n\r\n1. Bh7+ Kxh7 2. Bxg7+ Qh4 3. Qxh4+ Kg6 4. Qg4+ Kh7 5. Qh5+ Kg8 6. Qh8#\r\n*",
     "all_moves": [
       {
-        "uci": "h5h7",
-        "san": "Qh7+",
+        "uci": "c2h7",
+        "san": "Bh7+",
         "color": "white"
       },
       {
-        "uci": "g8f8",
-        "san": "Kf8",
+        "uci": "g8h7",
+        "san": "Kxh7",
         "color": "black"
       },
       {
-        "uci": "h7h8",
-        "san": "Qh8+",
+        "uci": "h6g7",
+        "san": "Bxg7+",
         "color": "white"
       },
       {
-        "uci": "f8e7",
-        "san": "Ke7",
+        "uci": "f2h4",
+        "san": "Qh4",
         "color": "black"
       },
       {
-        "uci": "g3h4",
-        "san": "Bh4+",
+        "uci": "h3h4",
+        "san": "Qxh4+",
         "color": "white"
       },
       {
-        "uci": "e7d7",
-        "san": "Kd7",
+        "uci": "h7g6",
+        "san": "Kg6",
         "color": "black"
       },
       {
-        "uci": "h8d8",
-        "san": "Qd8#",
+        "uci": "h4g4",
+        "san": "Qg4+",
+        "color": "white"
+      },
+      {
+        "uci": "g6h7",
+        "san": "Kh7",
+        "color": "black"
+      },
+      {
+        "uci": "g4h5",
+        "san": "Qh5+",
+        "color": "white"
+      },
+      {
+        "uci": "h7g8",
+        "san": "Kg8",
+        "color": "black"
+      },
+      {
+        "uci": "h5h8",
+        "san": "Qh8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "h5h7",
-        "san": "Qh7+",
+        "uci": "c2h7",
+        "san": "Bh7+",
         "color": "white"
       },
       {
-        "uci": "h7h8",
-        "san": "Qh8+",
+        "uci": "h6g7",
+        "san": "Bxg7+",
         "color": "white"
       },
       {
-        "uci": "g3h4",
-        "san": "Bh4+",
+        "uci": "h3h4",
+        "san": "Qxh4+",
         "color": "white"
       },
       {
-        "uci": "h8d8",
-        "san": "Qd8#",
+        "uci": "h4g4",
+        "san": "Qg4+",
+        "color": "white"
+      },
+      {
+        "uci": "g4h5",
+        "san": "Qh5+",
+        "color": "white"
+      },
+      {
+        "uci": "h5h8",
+        "san": "Qh8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 4,
-    "posted_at": "2026-09-02T20:10:11.794977+00:00",
-    "answer_posted": true,
+    "player_move_count": 6,
+    "posted_at": "2026-09-02T20:11:48.336453+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788379811794",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
-    "message_id": 1544801640039714858,
+    "puzzle_id": "random_1788379908336",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1544802046371438776,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "qd8",
+        "move": "bh7",
         "correct": true,
-        "timestamp": "2026-09-02T20:11:41.977249+00:00"
+        "timestamp": "2026-09-02T20:11:56.954794+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": true,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
