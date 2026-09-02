@@ -1,120 +1,94 @@
 {
   "latest_random_puzzle": {
-    "url": "https://www.chess.com/daily/2025-03-08",
-    "title": "Stunt Double Attack",
-    "fen": "6k1/4b1pp/p3p1q1/Pp6/3Pb3/2N4P/1P3RP1/2R3K1 w - - 0 1",
-    "current_fen": "4R1k1/6pp/p3p3/Pp6/3Pb3/7P/1P3RP1/6K1 b - - 0 5",
-    "pgn": "[White \"BryanCFB\"]\r\n[Black \"Daily Puzzle Inspiration\"]\r\n[Result \"1-0\"]\r\n[FEN \"6k1/4b1pp/p3p1q1/Pp6/3Pb3/2N4P/1P3RP1/2R3K1 w - - 0 1\"]\r\n\r\n1. Nd5 Bf6 2. Ne7+ Bxe7 3. Rc8+ Bd8 4. Rxd8+ Qe8 5. Rxe8# 1-0",
+    "url": "https://www.chess.com/daily/2021-12-09",
+    "title": "Hikaru's Gift",
+    "fen": "3r2k1/ppq3p1/1n2p2p/4Np1P/P1P2P2/5Q2/6PK/3R4 w - - 1 31",
+    "current_fen": "3r2k1/pq4p1/1n2p2p/4Np1P/P1P2P2/8/6PK/3R4 w - - 0 32",
+    "pgn": "[Event \"Skilling Open\"]\r\n[Site \"chess24.com INT\"]\r\n[Date \"2020.11.24\"]\r\n[Round \"14.4\"]\r\n[White \"Hikaru Nakamura\"]\r\n[Black \"Alireza Firouzja\"]\r\n[Result \"1-0\"]\r\n[WhiteElo \"2736\"]\r\n[BlackElo \"2749\"]\r\n[FEN \"3r2k1/ppq3p1/1n2p2p/4Np1P/P1P2P2/5Q2/6PK/3R4 w - - 1 31\"]\r\n\r\n31.Qxb7 Qxb7 32.Rxd8+ Kh7 33.Ng6 Qc8 34.Rxc8 1-0",
     "all_moves": [
       {
-        "uci": "c3d5",
-        "san": "Nd5",
+        "uci": "f3b7",
+        "san": "Qxb7",
         "color": "white"
       },
       {
-        "uci": "e7f6",
-        "san": "Bf6",
+        "uci": "c7b7",
+        "san": "Qxb7",
         "color": "black"
       },
       {
-        "uci": "d5e7",
-        "san": "Ne7+",
-        "color": "white"
-      },
-      {
-        "uci": "f6e7",
-        "san": "Bxe7",
-        "color": "black"
-      },
-      {
-        "uci": "c1c8",
-        "san": "Rc8+",
-        "color": "white"
-      },
-      {
-        "uci": "e7d8",
-        "san": "Bd8",
-        "color": "black"
-      },
-      {
-        "uci": "c8d8",
+        "uci": "d1d8",
         "san": "Rxd8+",
         "color": "white"
       },
       {
-        "uci": "g6e8",
-        "san": "Qe8",
+        "uci": "g8h7",
+        "san": "Kh7",
         "color": "black"
       },
       {
-        "uci": "d8e8",
-        "san": "Rxe8#",
+        "uci": "e5g6",
+        "san": "Ng6",
+        "color": "white"
+      },
+      {
+        "uci": "b7c8",
+        "san": "Qc8",
+        "color": "black"
+      },
+      {
+        "uci": "d8c8",
+        "san": "Rxc8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c3d5",
-        "san": "Nd5",
+        "uci": "f3b7",
+        "san": "Qxb7",
         "color": "white"
       },
       {
-        "uci": "d5e7",
-        "san": "Ne7+",
-        "color": "white"
-      },
-      {
-        "uci": "c1c8",
-        "san": "Rc8+",
-        "color": "white"
-      },
-      {
-        "uci": "c8d8",
+        "uci": "d1d8",
         "san": "Rxd8+",
         "color": "white"
       },
       {
-        "uci": "d8e8",
-        "san": "Rxe8#",
+        "uci": "e5g6",
+        "san": "Ng6",
+        "color": "white"
+      },
+      {
+        "uci": "d8c8",
+        "san": "Rxc8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-09-02T21:04:10.945199+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-09-02T21:04:54.844906+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788383050945",
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1544815225977569373,
+    "puzzle_id": "random_1788383094844",
+    "next_solution_index": 2,
+    "next_player_index": 1,
+    "solved": false,
+    "message_id": 1544815409964781649,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "rxe8",
+        "move": "qxb7",
         "correct": true,
-        "timestamp": "2026-09-02T21:04:45.012360+00:00"
-      },
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "Rxf6",
-        "correct": false,
-        "timestamp": "2026-09-02T21:04:37.640014+00:00"
+        "timestamp": "2026-09-02T21:05:05.596341+00:00"
       }
     },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014"
-    ]
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "current_puzzle": {
