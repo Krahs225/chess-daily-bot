@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1788462042.3075495,
+        "last_activity": 1788462044.834199,
         "paused_reason": "manually stopped",
         "puzzle_number": 59,
         "strikes": 1,
@@ -84,7 +84,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 44,
+            "correct": 45,
             "wrong": 5
           }
         },
@@ -94,7 +94,7 @@
           "themes": "crushing long middlegame",
           "url": "https://lichess.org/training/konbt",
           "start_fen": "1kr5/1pr3p1/2Bp3p/4p3/1Q4nP/P3P3/1B1P1q2/2RK3R b - - 5 28",
-          "current_fen": "1kr5/1p4p1/2Rp3p/4p3/1Q5P/P3P3/1B3q2/3K3R b - - 0 30",
+          "current_fen": "1k6/1p4p1/2rp3p/4p3/1Q5P/P3P3/1B3q2/3K3R w - - 0 31",
           "solution": [
             {
               "uci": "g4e3",
@@ -123,7 +123,7 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 4,
+          "next_solution_index": 5,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -142,13 +142,19 @@
               "uci": "c7c6",
               "accepted_at": 1788462040.99297,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Rxc6",
+              "uci": "c8c6",
+              "accepted_at": 1788462044.8341413,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "c7c6",
+          "last_accepted_move_uci": "c8c6",
           "last_accepted_move_san": "Rxc6",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788462040.992969,
-          "position_before_last_move": "1kr5/1pr3p1/2Bp3p/4p3/1Q5P/P3P3/1B3q2/2RK3R b - - 0 29"
+          "last_accepted_move_index": 4,
+          "last_accepted_at": 1788462044.8341408,
+          "position_before_last_move": "1kr5/1p4p1/2Rp3p/4p3/1Q5P/P3P3/1B3q2/3K3R b - - 0 30"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
