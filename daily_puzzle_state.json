@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/NOcwu",
     "title": "Lichess • 1901",
     "fen": "8/1b3pk1/4p2p/1pQ3p1/3r2q1/8/1P4P1/1B1R2K1 w - - 2 34",
-    "current_fen": "8/1b3pk1/4p2p/1pQ3p1/3r2q1/8/1P4P1/1B1R2K1 w - - 2 34",
+    "current_fen": "8/1b3pk1/4p2p/1p4p1/3q4/8/1P4P1/1B1R2K1 w - - 0 35",
     "pgn": "Qxd4+ Qxd4+ Rxd4",
     "all_moves": [
       {
@@ -44,13 +44,26 @@
     "puzzle_id": "random_NOcwu_1788458782080",
     "rating": 1901,
     "rp_band": 2,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1545132865115660499,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qe5",
+        "correct": false,
+        "timestamp": "2026-09-03T18:06:25.397773+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qxd4",
+        "correct": true,
+        "timestamp": "2026-09-03T18:06:28.329052+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
