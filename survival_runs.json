@@ -291,7 +291,7 @@
         "started_at": "2026-09-03T20:09:57.193516+00:00",
         "last_activity": 1788466234.253522,
         "paused_reason": null,
-        "puzzle_number": 1,
+        "puzzle_number": 2,
         "strikes": 1,
         "best_difficulty": 1337,
         "used_puzzle_ids": [
@@ -304,78 +304,9 @@
             "wrong": 1
           }
         },
-        "puzzle": {
-          "id": "qt8uk",
-          "rating": 1337,
-          "themes": "long advantage hangingPiece middlegame",
-          "url": "https://lichess.org/training/qt8uk",
-          "start_fen": "3r1rk1/5p1p/6p1/p7/2N5/1q3P2/R4QPP/2n1R1K1 w - - 6 39",
-          "current_fen": "5rk1/5p1p/6p1/p7/2N5/5P2/R5PP/3q1QK1 b - - 1 41",
-          "solution": [
-            {
-              "uci": "e1c1",
-              "san": "Rxc1",
-              "color": "white"
-            },
-            {
-              "uci": "d8d1",
-              "san": "Rd1+",
-              "color": "black"
-            },
-            {
-              "uci": "c1d1",
-              "san": "Rxd1",
-              "color": "white"
-            },
-            {
-              "uci": "b3d1",
-              "san": "Qxd1+",
-              "color": "black"
-            },
-            {
-              "uci": "f2f1",
-              "san": "Qf1",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 5,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [
-            "442597396195704832"
-          ],
-          "last_move_san": "Qf1",
-          "accepted_moves": [
-            {
-              "san": "Rxc1",
-              "uci": "e1c1",
-              "accepted_at": 1788466221.0054395,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Rxd1",
-              "uci": "c1d1",
-              "accepted_at": 1788466229.9290512,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Qf1",
-              "uci": "f2f1",
-              "accepted_at": 1788466234.2534637,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "f2f1",
-          "last_accepted_move_san": "Qf1",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1788466234.2534633,
-          "position_before_last_move": "5rk1/5p1p/6p1/p7/2N5/5P2/R4QPP/3q2K1 w - - 0 41"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       },
