@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/keiTk",
     "title": "Lichess • 2206",
     "fen": "6k1/R5p1/p6p/5P1K/6P1/rp6/6P1/8 w - - 0 43",
-    "current_fen": "6k1/R5p1/p6p/5P1K/6P1/rp6/6P1/8 w - - 0 43",
+    "current_fen": "5k2/R5p1/p5Kp/5P2/6P1/rp6/6P1/8 w - - 2 44",
     "pgn": "Kg6 Kf8 Ra8+ Ke7 Kxg7",
     "all_moves": [
       {
@@ -59,20 +59,26 @@
     "puzzle_id": "random_keiTk_1788461820581",
     "rating": 2206,
     "rp_band": 3,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1545145611009921054,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "ra8",
+        "move": "kg6",
+        "correct": true,
+        "timestamp": "2026-09-03T18:57:07.600948+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Ra8",
         "correct": false,
-        "timestamp": "2026-09-03T18:57:04.143973+00:00"
+        "timestamp": "2026-09-03T18:57:05.140979+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
