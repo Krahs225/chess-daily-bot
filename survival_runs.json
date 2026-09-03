@@ -367,7 +367,7 @@
         "started_at": "2026-09-03T09:20:19.715078+00:00",
         "last_activity": 1788427241.4116132,
         "paused_reason": null,
-        "puzzle_number": 1,
+        "puzzle_number": 2,
         "strikes": 0,
         "best_difficulty": 1307,
         "used_puzzle_ids": [
@@ -380,60 +380,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "7VYj2",
-          "rating": 1307,
-          "themes": "master short sacrifice endgame mateIn2",
-          "url": "https://lichess.org/training/7VYj2",
-          "start_fen": "6R1/1p3p2/1p5p/7k/1P2q2P/1KP5/3r4/6Q1 w - - 4 42",
-          "current_fen": "8/1p3p2/1p6/6Qk/1P2q2P/1KP5/3r4/8 b - - 0 43",
-          "solution": [
-            {
-              "uci": "g8g5",
-              "san": "Rg5+",
-              "color": "white"
-            },
-            {
-              "uci": "h6g5",
-              "san": "hxg5",
-              "color": "black"
-            },
-            {
-              "uci": "g1g5",
-              "san": "Qxg5#",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Qxg5#",
-          "accepted_moves": [
-            {
-              "san": "Rg5+",
-              "uci": "g8g5",
-              "accepted_at": 1788427235.140666,
-              "solver_id": "1541007763931668502"
-            },
-            {
-              "san": "Qxg5#",
-              "uci": "g1g5",
-              "accepted_at": 1788427241.4115257,
-              "solver_id": "1541007763931668502"
-            }
-          ],
-          "last_accepted_move_uci": "g1g5",
-          "last_accepted_move_san": "Qxg5#",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788427241.4115245,
-          "position_before_last_move": "8/1p3p2/1p6/6pk/1P2q2P/1KP5/3r4/6Q1 w - - 0 43"
-        },
-        "first_solver_id": "1541007763931668502",
-        "first_solver_name": "Martin",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       },
