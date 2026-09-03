@@ -1,131 +1,59 @@
 {
   "latest_random_puzzle": {
-    "url": "https://lichess.org/training/UAQ89",
-    "title": "Lichess • 2704",
-    "fen": "3N4/8/p7/PkP2p1p/3Kp2P/6P1/4b3/8 w - - 5 77",
-    "current_fen": "3N4/2P5/p7/k4P1p/6bP/4K3/8/8 b - - 0 81",
-    "pgn": "c6 Bg4 c7 f4 gxf4 e3 Kxe3 Kxa5 f5",
+    "url": "https://lichess.org/training/l9CP3",
+    "title": "Lichess • 1948",
+    "fen": "1r4k1/2qp1r2/b3p1pQ/p3b3/3B4/8/PPP2PP1/R3K2R w KQ - 0 22",
+    "current_fen": "1r4k1/2qp1r2/b3p1pQ/p3b3/3B4/8/PPP2PP1/R3K2R w KQ - 0 22",
+    "pgn": "Qh8+ Bxh8 Rxh8#",
     "all_moves": [
       {
-        "uci": "c5c6",
-        "san": "c6",
+        "uci": "h6h8",
+        "san": "Qh8+",
         "color": "white"
       },
       {
-        "uci": "e2g4",
-        "san": "Bg4",
+        "uci": "e5h8",
+        "san": "Bxh8",
         "color": "black"
       },
       {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "f5f4",
-        "san": "f4",
-        "color": "black"
-      },
-      {
-        "uci": "g3f4",
-        "san": "gxf4",
-        "color": "white"
-      },
-      {
-        "uci": "e4e3",
-        "san": "e3",
-        "color": "black"
-      },
-      {
-        "uci": "d4e3",
-        "san": "Kxe3",
-        "color": "white"
-      },
-      {
-        "uci": "b5a5",
-        "san": "Kxa5",
-        "color": "black"
-      },
-      {
-        "uci": "f4f5",
-        "san": "f5",
+        "uci": "h1h8",
+        "san": "Rxh8#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "c5c6",
-        "san": "c6",
+        "uci": "h6h8",
+        "san": "Qh8+",
         "color": "white"
       },
       {
-        "uci": "c6c7",
-        "san": "c7",
-        "color": "white"
-      },
-      {
-        "uci": "g3f4",
-        "san": "gxf4",
-        "color": "white"
-      },
-      {
-        "uci": "d4e3",
-        "san": "Kxe3",
-        "color": "white"
-      },
-      {
-        "uci": "f4f5",
-        "san": "f5",
+        "uci": "h1h8",
+        "san": "Rxh8#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 5,
-    "posted_at": "2026-09-03T18:02:23.775741+00:00",
-    "answer_posted": true,
+    "player_move_count": 2,
+    "posted_at": "2026-09-03T18:03:34.868309+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_UAQ89_1788458543775",
-    "rating": 2704,
-    "rp_band": 5,
-    "next_solution_index": 9,
-    "next_player_index": 5,
-    "solved": true,
-    "message_id": 1545131867563622490,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "c6",
-        "correct": true,
-        "timestamp": "2026-09-03T18:02:27.495794+00:00"
-      },
-      "601406103712170014": {
-        "name": "TheMakina",
-        "move": "Kxe3",
-        "correct": true,
-        "timestamp": "2026-09-03T18:03:14.472659+00:00"
-      },
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "f5",
-        "correct": true,
-        "timestamp": "2026-09-03T18:03:16.724366+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
-    "helper_awarded_users": [
-      "601406103712170014",
-      "601406103712170014",
-      "362606514764251137",
-      "362606514764251137"
-    ],
-    "helper_candidate_users": [
-      "601406103712170014",
-      "362606514764251137"
-    ]
+    "puzzle_id": "random_l9CP3_1788458614868",
+    "rating": 1948,
+    "rp_band": 2,
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
+    "helper_awarded_users": [],
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "leaderboard_last_posted_date": "2026-09-03",
