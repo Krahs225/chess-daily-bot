@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/ArgcZ",
     "title": "Lichess • 1522",
     "fen": "8/8/4p3/3k1p1p/4PK1P/5P2/8/8 b - - 0 54",
-    "current_fen": "8/8/4p3/3k1p1p/4PK1P/5P2/8/8 b - - 0 54",
+    "current_fen": "8/8/4p3/3k3p/4PK1P/8/8/8 b - - 0 55",
     "pgn": "fxe4 fxe4+ Kd4 e5 Kd5",
     "all_moves": [
       {
@@ -59,13 +59,26 @@
     "puzzle_id": "random_ArgcZ_1788458128545",
     "rating": 1522,
     "rp_band": 1,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1545130124176003134,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "kd4",
+        "correct": false,
+        "timestamp": "2026-09-03T17:55:33.427091+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "fxe4",
+        "correct": true,
+        "timestamp": "2026-09-03T17:55:38.255217+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
