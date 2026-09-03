@@ -571,7 +571,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-03T15:38:52.029622+00:00",
-        "last_activity": 1788450092.6913671,
+        "last_activity": 1788450111.2401328,
         "paused_reason": "puzzle fetch error",
         "puzzle_number": 1,
         "strikes": 0,
@@ -579,14 +579,20 @@
         "used_puzzle_ids": [
           "fKyJg"
         ],
-        "members": {},
+        "members": {
+          "362606514764251137": {
+            "name": "Sharkmeister",
+            "correct": 1,
+            "wrong": 0
+          }
+        },
         "puzzle": {
           "id": "fKyJg",
           "rating": 1276,
           "themes": "advantage long middlegame",
           "url": "https://lichess.org/training/fKyJg",
           "start_fen": "rn1q1rk1/1pp2pp1/p6p/3pNb2/2PPn3/P1PBPP2/1B4PP/R2QK2R b KQ - 0 11",
-          "current_fen": "rn1q1rk1/1pp2pp1/p6p/3pNb2/2PPn3/P1PBPP2/1B4PP/R2QK2R b KQ - 0 11",
+          "current_fen": "rn3rk1/1pp2pp1/p6p/3pNb2/2PPn2q/P1PBPPP1/1B5P/R2QK2R b KQ - 0 12",
           "solution": [
             {
               "uci": "d8h4",
@@ -615,17 +621,29 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qh4+",
+          "accepted_moves": [
+            {
+              "san": "Qh4+",
+              "uci": "d8h4",
+              "accepted_at": 1788450111.2399828,
+              "solver_id": "362606514764251137"
+            }
+          ],
+          "last_accepted_move_uci": "d8h4",
+          "last_accepted_move_san": "Qh4+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1788450111.239982,
+          "position_before_last_move": "rn1q1rk1/1pp2pp1/p6p/3pNb2/2PPn3/P1PBPP2/1B4PP/R2QK2R b KQ - 0 11"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "362606514764251137",
+        "first_solver_name": "Sharkmeister",
         "helper_candidates": {},
         "helper_awarded": []
       },
