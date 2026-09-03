@@ -351,6 +351,265 @@
         "helper_awarded": []
       },
       "history": []
+    },
+    "test6": {
+      "name": "TEST6",
+      "best_puzzle": 2,
+      "best_difficulty": 1307,
+      "best_completed_at": "2026-09-03T09:20:45.084881+00:00",
+      "current": {
+        "run_id": "test6:1788427219",
+        "started_by_id": "1541007763931668502",
+        "captain_id": "1541007763931668502",
+        "captain_name": "Martin",
+        "mode": "coop",
+        "status": "paused",
+        "started_at": "2026-09-03T09:20:19.715078+00:00",
+        "last_activity": 1788427558.4837785,
+        "paused_reason": "manually stopped",
+        "puzzle_number": 2,
+        "strikes": 0,
+        "best_difficulty": 1307,
+        "used_puzzle_ids": [
+          "7VYj2",
+          "t5vCR"
+        ],
+        "members": {
+          "1541007763931668502": {
+            "name": "Martin",
+            "correct": 2,
+            "wrong": 0
+          }
+        },
+        "puzzle": {
+          "id": "t5vCR",
+          "rating": 1271,
+          "themes": "middlegame short advantage fork discoveredAttack",
+          "url": "https://lichess.org/training/t5vCR",
+          "start_fen": "r4rk1/2p2ppp/1ppp4/4p3/4PqbR/P1NP1N2/1PP2PK1/R2Q4 b - - 5 16",
+          "current_fen": "r4rk1/2p2ppp/1ppp4/4p3/4PqbR/P1NP1N2/1PP2PK1/R2Q4 b - - 5 16",
+          "solution": [
+            {
+              "uci": "g4f3",
+              "san": "Bxf3+",
+              "color": "black"
+            },
+            {
+              "uci": "d1f3",
+              "san": "Qxf3",
+              "color": "white"
+            },
+            {
+              "uci": "f4h4",
+              "san": "Qxh4",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
+        "helper_awarded": []
+      },
+      "history": []
+    },
+    "shark": {
+      "name": "Shark",
+      "best_puzzle": 1,
+      "best_difficulty": 1283,
+      "best_completed_at": "2026-09-03T10:08:34.414722+00:00",
+      "current": {
+        "run_id": "shark:1788430114",
+        "started_by_id": "362606514764251137",
+        "captain_id": "362606514764251137",
+        "captain_name": "Sharkmeister",
+        "mode": "coop",
+        "status": "paused",
+        "started_at": "2026-09-03T10:08:34.414706+00:00",
+        "last_activity": 1788430114.4147186,
+        "paused_reason": "10-minute inactivity",
+        "puzzle_number": 1,
+        "strikes": 0,
+        "best_difficulty": 1283,
+        "used_puzzle_ids": [
+          "AVgvz"
+        ],
+        "members": {},
+        "puzzle": {
+          "id": "AVgvz",
+          "rating": 1283,
+          "themes": "crushing long pin endgame",
+          "url": "https://lichess.org/training/AVgvz",
+          "start_fen": "6k1/q5p1/p3r2p/1p1p4/4n3/2PQ4/PPB3PP/5R1K w - - 0 28",
+          "current_fen": "6k1/q5p1/p3r2p/1p1p4/4n3/2PQ4/PPB3PP/5R1K w - - 0 28",
+          "solution": [
+            {
+              "uci": "d3d5",
+              "san": "Qxd5",
+              "color": "white"
+            },
+            {
+              "uci": "e4f2",
+              "san": "Nf2+",
+              "color": "black"
+            },
+            {
+              "uci": "f1f2",
+              "san": "Rxf2",
+              "color": "white"
+            },
+            {
+              "uci": "a7f2",
+              "san": "Qxf2",
+              "color": "black"
+            },
+            {
+              "uci": "d5e6",
+              "san": "Qxe6+",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
+        "helper_awarded": []
+      },
+      "history": []
+    },
+    "thick": {
+      "name": "Thick",
+      "best_puzzle": 1,
+      "best_difficulty": 1298,
+      "best_completed_at": "2026-09-03T12:13:55.128871+00:00",
+      "current": {
+        "run_id": "thick:1788437635",
+        "started_by_id": "362606514764251137",
+        "captain_id": "362606514764251137",
+        "captain_name": "Sharkmeister",
+        "mode": "coop",
+        "status": "paused",
+        "started_at": "2026-09-03T12:13:55.128850+00:00",
+        "last_activity": 1788437649.550589,
+        "paused_reason": "manually stopped",
+        "puzzle_number": 1,
+        "strikes": 0,
+        "best_difficulty": 1298,
+        "used_puzzle_ids": [
+          "q3YnE"
+        ],
+        "members": {},
+        "puzzle": {
+          "id": "q3YnE",
+          "rating": 1298,
+          "themes": "crushing short endgame",
+          "url": "https://lichess.org/training/q3YnE",
+          "start_fen": "8/8/7p/8/2n4P/1k1K2P1/1p6/1B6 b - - 2 47",
+          "current_fen": "8/8/7p/8/2n4P/1k1K2P1/1p6/1B6 b - - 2 47",
+          "solution": [
+            {
+              "uci": "c4a3",
+              "san": "Na3",
+              "color": "black"
+            },
+            {
+              "uci": "b1a2",
+              "san": "Ba2+",
+              "color": "white"
+            },
+            {
+              "uci": "b3a2",
+              "san": "Kxa2",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
+        "helper_awarded": []
+      },
+      "history": []
+    },
+    "ok": {
+      "name": "ok",
+      "best_puzzle": 1,
+      "best_difficulty": 0,
+      "best_completed_at": "2026-09-03T18:57:56.387409+00:00",
+      "current": {
+        "run_id": "ok:1788461876",
+        "started_by_id": "442597396195704832",
+        "captain_id": "442597396195704832",
+        "captain_name": "Thice",
+        "mode": "coop",
+        "status": "active",
+        "started_at": "2026-09-03T18:57:56.387392+00:00",
+        "last_activity": 1788461879.8953037,
+        "paused_reason": null,
+        "puzzle_number": 1,
+        "strikes": 0,
+        "best_difficulty": 1271,
+        "used_puzzle_ids": [
+          "Y9Emi"
+        ],
+        "members": {},
+        "puzzle": {
+          "id": "Y9Emi",
+          "rating": 1271,
+          "themes": "mateIn1 oneMove middlegame",
+          "url": "https://lichess.org/training/Y9Emi",
+          "start_fen": "r2qrn2/pp2bk2/2p1pn2/3p2Q1/3P4/2NB1N1P/PPP2PP1/R5K1 w - - 3 16",
+          "current_fen": "r2qrn2/pp2bk2/2p1pn2/3p2Q1/3P4/2NB1N1P/PPP2PP1/R5K1 w - - 3 16",
+          "solution": [
+            {
+              "uci": "f3e5",
+              "san": "Ne5#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
+        "helper_awarded": []
+      },
+      "history": []
     }
   }
 }
