@@ -2,9 +2,9 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 62,
-      "best_difficulty": 2332,
-      "best_completed_at": "2026-09-03T19:12:13.842212+00:00",
+      "best_puzzle": 63,
+      "best_difficulty": 2354,
+      "best_completed_at": "2026-09-03T19:16:15.586644+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
@@ -77,7 +77,8 @@
           "konbt",
           "jDlBJ",
           "ZLiyV",
-          "V6E58"
+          "V6E58",
+          "NYJ5r"
         ],
         "members": {
           "601406103712170014": {
@@ -96,7 +97,60 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "NYJ5r",
+          "rating": 2315,
+          "themes": "crushing endgame quietMove veryLong",
+          "url": "https://lichess.org/training/NYJ5r",
+          "start_fen": "2r3k1/2P1R2p/6p1/8/8/1n2PPK1/4r2P/5R2 w - - 1 36",
+          "current_fen": "2r3k1/2P1R2p/6p1/8/8/1n2PPK1/4r2P/5R2 w - - 1 36",
+          "solution": [
+            {
+              "uci": "f1d1",
+              "san": "Rd1",
+              "color": "white"
+            },
+            {
+              "uci": "e2d2",
+              "san": "Rd2",
+              "color": "black"
+            },
+            {
+              "uci": "d1d2",
+              "san": "Rxd2",
+              "color": "white"
+            },
+            {
+              "uci": "b3d2",
+              "san": "Nxd2",
+              "color": "black"
+            },
+            {
+              "uci": "e7d7",
+              "san": "Rd7",
+              "color": "white"
+            },
+            {
+              "uci": "c8c7",
+              "san": "Rxc7",
+              "color": "black"
+            },
+            {
+              "uci": "d7c7",
+              "san": "Rxc7",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
