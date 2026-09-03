@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/x3Ljs",
     "title": "Lichess • 1694",
     "fen": "r4r1k/1p2R1pp/3q4/1p1b4/2p2p2/P1P2B1P/1P3QP1/4R1K1 w - - 0 34",
-    "current_fen": "r4r1k/1p2q1pp/8/1p1b4/2pQ1p2/P1P2B1P/1P4P1/4R1K1 w - - 0 35",
+    "current_fen": "r4r1k/1p2R1pp/8/1p1b4/2pQ1p2/P1P2B1P/1P4P1/6K1 b - - 0 35",
     "pgn": "Qd4 Qxe7 Rxe7",
     "all_moves": [
       {
@@ -44,9 +44,9 @@
     "puzzle_id": "random_x3Ljs_1788457652163",
     "rating": 1694,
     "rp_band": 1,
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1545128126063841504,
     "attempted_users": {
       "442597396195704832": {
@@ -54,13 +54,23 @@
         "move": "qd4",
         "correct": true,
         "timestamp": "2026-09-03T17:47:41.596726+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rxe7",
+        "correct": true,
+        "timestamp": "2026-09-03T17:47:45.876446+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "leaderboard_last_posted_date": "2026-09-03",
