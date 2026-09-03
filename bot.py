@@ -3469,6 +3469,82 @@ def personal_wrong_message(name, cores):
     ) + "**"
 
 
+
+NORMAL_WRONG_WRAPPERS = (
+    '{name}, {roast}.',
+    'Not quite, {name} — {roast}.',
+    'Close, {name}: {roast}.',
+    'Nope, {name} — {roast}.',
+    'Almost, {name}. {roast}.',
+    'Nice try, {name} — {roast}.',
+    'The board says no, {name}: {roast}.',
+    'The engine disagrees, {name} — {roast}.',
+    'Wrong move, {name}, but {roast}.',
+    'One more try, {name}: {roast}.',
+)
+
+NORMAL_WRONG_CORES = (
+    'you were only one idea away',
+    'that was a reasonable try',
+    'the right move is still hiding',
+    'you had the right kind of idea, just not the right move',
+    'the position had one small trick left',
+    'you were close enough to make the board nervous',
+    'that move looked tempting for a reason',
+    'the puzzle had a different plan',
+    'you found a good-looking move, just not the best one',
+    'the solution is a little more precise',
+    'you were on the right track',
+    'that was a very human move',
+    'the tactic needs one more look',
+    'there is a cleaner move in the position',
+    'the board is asking for a little more calculation',
+    'the idea was fine, the execution was just off',
+    'you spotted something useful, but there is more',
+    'the winning move is one step further',
+    'that was close, but the puzzle is picky',
+    'the position has a sneaky detail you missed',
+    'you almost had the tactical point',
+    'the engine prefers another route',
+    'there is a stronger continuation available',
+    'your move makes sense, but the puzzle wants something sharper',
+    'you were looking in the right area of the board',
+    'the answer is nearby, just not on that square',
+    'the puzzle managed to dodge that attempt',
+    'that move is playable-looking, but not the solution',
+    'you had part of the pattern',
+    'the final detail escaped this time',
+    'the position still has a surprise left',
+    'one extra check of the forcing moves might do it',
+    'the tactic is there, but it starts differently',
+    'you were closer than the evaluation bar makes it look',
+    'the board wants a slightly more accurate move',
+    'the idea had potential',
+    'you found a candidate move, just not the winner',
+    'the solution needs a bit more patience',
+    'that was a solid guess',
+    'the puzzle is being annoyingly specific',
+    'you saw the theme, but not the exact move order',
+    'there is one stronger move waiting',
+    'that attempt was respectable',
+    'the correct move is still within reach',
+    'you were one calculation branch away',
+    'the position rewards a different first move',
+    'that was not far off',
+    'the puzzle wants the most forcing option',
+    'you had the right instinct, just the wrong finish',
+    'the next attempt could easily be the one',
+)
+
+
+def normal_wrong_message(name):
+    # 10 mild wrappers x 50 mild chess replies = exactly 500 possibilities.
+    return "❌ **" + random.choice(NORMAL_WRONG_WRAPPERS).format(
+        name=name,
+        roast=random.choice(NORMAL_WRONG_CORES),
+    ) + "**"
+
+
 def wrong_message(user):
     name = user.display_name
     lower = name.casefold()
@@ -3608,21 +3684,7 @@ def wrong_message(user):
         ]
         return random.choice(shark_lines)
 
-    neutral_lines = [
-        f"❌ **Not quite, {name}.**",
-        f"❌ **Close, {name}. Try again.**",
-        f"❌ **Nope, {name} — not that one.**",
-        f"❌ **Almost, {name}.**",
-        f"❌ **The board says no, {name}.**",
-        f"❌ **Not this time, {name}.**",
-        f"❌ **Wrong move, {name}.**",
-        f"❌ **Nice try, {name}.**",
-        f"❌ **The engine disagrees, {name}.**",
-        f"❌ **That wasn't it, {name}.**",
-    ]
-    return random.choice(neutral_lines).format(
-        name=name
-    )
+    return normal_wrong_message(name)
 
 
 
