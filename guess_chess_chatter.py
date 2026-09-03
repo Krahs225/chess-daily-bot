@@ -17,6 +17,7 @@ from guess_leaderboard import (
     add_points,
     full_leaderboard,
     personal_ranking,
+    record_poll_votes,
 )
 
 TOKEN = os.getenv(
@@ -1143,6 +1144,38 @@ async def post_chess_round(
             f"{error}",
             flush=True
         )
+
+    # Record EVERY vote for !stats, including wrong answers.
+    vote_records = []
+    seen_vote_ids = set()
+
+    for answer_index, answer_voters in enumerate(voters_by_answer):
+        for voter in answer_voters:
+            if voter.bot or voter.id in seen_vote_ids:
+                continue
+
+            seen_vote_ids.add(voter.id)
+            vote_records.append(
+                {
+                    "user_id": voter.id,
+                    "display_name": voter.display_name,
+                    "correct": answer_index == correct_index,
+                }
+            )
+
+    if vote_records:
+        try:
+            await asyncio.to_thread(
+                record_poll_votes,
+                poll_message.id,
+                vote_records,
+                source="guess-chess-chatter",
+            )
+        except Exception as error:
+            print(
+                f"Chess stats error for poll {poll_message.id}: {error}",
+                flush=True,
+            )
 
     rewarded = []
     seen = set()
