@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/IGuio",
     "title": "Lichess • 2176",
     "fen": "3r1k1r/p1p1np1p/2Bpb1p1/2b1P3/6q1/2N5/PPPQ1P1P/R1B1KR2 w Q - 5 16",
-    "current_fen": "3r1k1r/p1p1np1p/2Bpb1p1/2b1P3/6q1/2N5/PPPQ1P1P/R1B1KR2 w Q - 5 16",
+    "current_fen": "3r2kr/p1p1np1p/2Bpb1pQ/2b1P3/6q1/2N5/PPP2P1P/R1B1KR2 w Q - 7 17",
     "pgn": "Qh6+ Kg8 Ne4",
     "all_moves": [
       {
@@ -44,13 +44,20 @@
     "puzzle_id": "random_IGuio_1788458932271",
     "rating": 2176,
     "rp_band": 3,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1545133495117152267,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qh6",
+        "correct": true,
+        "timestamp": "2026-09-03T18:08:56.108866+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
