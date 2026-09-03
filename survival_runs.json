@@ -351,6 +351,69 @@
         "helper_awarded": []
       },
       "history": []
+    },
+    "test6": {
+      "name": "TEST6",
+      "best_puzzle": 1,
+      "best_difficulty": 0,
+      "best_completed_at": "2026-09-03T09:20:19.715095+00:00",
+      "current": {
+        "run_id": "test6:1788427219",
+        "started_by_id": "1541007763931668502",
+        "captain_id": "1541007763931668502",
+        "captain_name": "Martin",
+        "mode": "coop",
+        "status": "active",
+        "started_at": "2026-09-03T09:20:19.715078+00:00",
+        "last_activity": 1788427219.7150915,
+        "paused_reason": null,
+        "puzzle_number": 1,
+        "strikes": 0,
+        "best_difficulty": 1307,
+        "used_puzzle_ids": [
+          "7VYj2"
+        ],
+        "members": {},
+        "puzzle": {
+          "id": "7VYj2",
+          "rating": 1307,
+          "themes": "master short sacrifice endgame mateIn2",
+          "url": "https://lichess.org/training/7VYj2",
+          "start_fen": "6R1/1p3p2/1p5p/7k/1P2q2P/1KP5/3r4/6Q1 w - - 4 42",
+          "current_fen": "6R1/1p3p2/1p5p/7k/1P2q2P/1KP5/3r4/6Q1 w - - 4 42",
+          "solution": [
+            {
+              "uci": "g8g5",
+              "san": "Rg5+",
+              "color": "white"
+            },
+            {
+              "uci": "h6g5",
+              "san": "hxg5",
+              "color": "black"
+            },
+            {
+              "uci": "g1g5",
+              "san": "Qxg5#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
+        "helper_awarded": []
+      },
+      "history": []
     }
   }
 }
