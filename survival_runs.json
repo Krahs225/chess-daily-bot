@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1788462040.9930522,
+        "last_activity": 1788462042.3075495,
         "paused_reason": "manually stopped",
         "puzzle_number": 59,
         "strikes": 1,
@@ -560,92 +560,6 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
-        },
-        "first_solver_id": null,
-        "first_solver_name": null,
-        "helper_candidates": {},
-        "helper_awarded": []
-      },
-      "history": []
-    },
-    "ok": {
-      "name": "ok",
-      "best_puzzle": 3,
-      "best_difficulty": 1271,
-      "best_completed_at": "2026-09-03T18:59:07.810621+00:00",
-      "current": {
-        "run_id": "ok:1788461876",
-        "started_by_id": "442597396195704832",
-        "captain_id": "442597396195704832",
-        "captain_name": "Thice",
-        "mode": "coop",
-        "status": "paused",
-        "started_at": "2026-09-03T18:57:56.387392+00:00",
-        "last_activity": 1788462020.9002106,
-        "paused_reason": "manually stopped",
-        "puzzle_number": 3,
-        "strikes": 1,
-        "best_difficulty": 1271,
-        "used_puzzle_ids": [
-          "Y9Emi",
-          "RZbrs",
-          "rrDU6"
-        ],
-        "members": {
-          "442597396195704832": {
-            "name": "Thice",
-            "correct": 2,
-            "wrong": 0
-          },
-          "601406103712170014": {
-            "name": "TheMakina",
-            "correct": 2,
-            "wrong": 1
-          }
-        },
-        "puzzle": {
-          "id": "rrDU6",
-          "rating": 1211,
-          "themes": "exposedKing middlegame advantage attraction fork long",
-          "url": "https://lichess.org/training/rrDU6",
-          "start_fen": "5rr1/1bk5/p2q3p/1p5Q/2pP2R1/2P5/PPBb2PP/R5K1 w - - 0 26",
-          "current_fen": "5rr1/1bk5/p2q3p/1p5Q/2pP2R1/2P5/PPBb2PP/R5K1 w - - 0 26",
-          "solution": [
-            {
-              "uci": "g4g8",
-              "san": "Rxg8",
-              "color": "white"
-            },
-            {
-              "uci": "f8g8",
-              "san": "Rxg8",
-              "color": "black"
-            },
-            {
-              "uci": "h5f7",
-              "san": "Qf7+",
-              "color": "white"
-            },
-            {
-              "uci": "c7b6",
-              "san": "Kb6",
-              "color": "black"
-            },
-            {
-              "uci": "f7g8",
-              "san": "Qxg8",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
           "next_solution_index": 0,
           "first_solver_id": null,
           "first_solver_name": null,
