@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/UptQQ",
     "title": "Lichess • 2634",
     "fen": "r7/R6p/6p1/3p4/3kp3/2N5/6PP/6K1 b - - 0 30",
-    "current_fen": "r7/R6p/6p1/3p4/3kp3/2N5/6PP/6K1 b - - 0 30",
+    "current_fen": "8/r6p/6p1/1N1p4/3kp3/8/6PP/6K1 b - - 1 31",
     "pgn": "Rxa7 Nb5+ Kd3 Nxa7 e3 Nc6 e2 Ne5+ Ke3",
     "all_moves": [
       {
@@ -89,13 +89,20 @@
     "puzzle_id": "random_UptQQ_1788458885284",
     "rating": 2634,
     "rp_band": 4,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1545133298857017437,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "attempted_users": {
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Rxa7",
+        "correct": true,
+        "timestamp": "2026-09-03T18:08:12.727760+00:00"
+      }
+    },
+    "first_move_user_id": "601406103712170014",
+    "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
