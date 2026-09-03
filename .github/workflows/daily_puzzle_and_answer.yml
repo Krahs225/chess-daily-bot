@@ -19,12 +19,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: Install requirements
         run: pip install -r requirements.txt
+
       - name: Run Daily Puzzle
         run: python bot.py
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          SHARKMEISTER_USER_ID: "362606514764251137"
