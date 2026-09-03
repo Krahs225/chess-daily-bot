@@ -289,7 +289,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-03T20:09:57.193516+00:00",
-        "last_activity": 1788466229.929129,
+        "last_activity": 1788466234.253522,
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 1,
@@ -300,7 +300,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 2,
+            "correct": 3,
             "wrong": 1
           }
         },
@@ -310,7 +310,7 @@
           "themes": "long advantage hangingPiece middlegame",
           "url": "https://lichess.org/training/qt8uk",
           "start_fen": "3r1rk1/5p1p/6p1/p7/2N5/1q3P2/R4QPP/2n1R1K1 w - - 6 39",
-          "current_fen": "5rk1/5p1p/6p1/p7/2N5/5P2/R4QPP/3q2K1 w - - 0 41",
+          "current_fen": "5rk1/5p1p/6p1/p7/2N5/5P2/R5PP/3q1QK1 b - - 1 41",
           "solution": [
             {
               "uci": "e1c1",
@@ -339,7 +339,7 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 4,
+          "next_solution_index": 5,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -347,7 +347,7 @@
           "wrong_users": [
             "442597396195704832"
           ],
-          "last_move_san": "Rxd1",
+          "last_move_san": "Qf1",
           "accepted_moves": [
             {
               "san": "Rxc1",
@@ -360,13 +360,19 @@
               "uci": "c1d1",
               "accepted_at": 1788466229.9290512,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Qf1",
+              "uci": "f2f1",
+              "accepted_at": 1788466234.2534637,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "c1d1",
-          "last_accepted_move_san": "Rxd1",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788466229.9290507,
-          "position_before_last_move": "5rk1/5p1p/6p1/p7/2N5/1q3P2/R4QPP/2Rr2K1 w - - 1 40"
+          "last_accepted_move_uci": "f2f1",
+          "last_accepted_move_san": "Qf1",
+          "last_accepted_move_index": 4,
+          "last_accepted_at": 1788466234.2534633,
+          "position_before_last_move": "5rk1/5p1p/6p1/p7/2N5/5P2/R4QPP/3q2K1 w - - 0 41"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
