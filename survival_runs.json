@@ -10,7 +10,7 @@
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1788463093.417697,
+        "last_activity": 1788463098.4413924,
         "paused_reason": "puzzle fetch error",
         "puzzle_number": 63,
         "strikes": 2,
@@ -88,7 +88,7 @@
           },
           "442597396195704832": {
             "name": "Thice",
-            "correct": 59,
+            "correct": 60,
             "wrong": 8
           },
           "362606514764251137": {
@@ -103,7 +103,7 @@
           "themes": "crushing endgame quietMove veryLong",
           "url": "https://lichess.org/training/NYJ5r",
           "start_fen": "2r3k1/2P1R2p/6p1/8/8/1n2PPK1/4r2P/5R2 w - - 1 36",
-          "current_fen": "2r3k1/2P1R2p/6p1/8/8/4PPK1/3n3P/8 w - - 0 38",
+          "current_fen": "6k1/2rR3p/6p1/8/8/4PPK1/3n3P/8 w - - 0 39",
           "solution": [
             {
               "uci": "f1d1",
@@ -142,13 +142,13 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 4,
+          "next_solution_index": 6,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "Rxd2",
+          "last_move_san": "Rd7",
           "accepted_moves": [
             {
               "san": "Rd1",
@@ -161,13 +161,19 @@
               "uci": "d1d2",
               "accepted_at": 1788463093.41763,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Rd7",
+              "uci": "e7d7",
+              "accepted_at": 1788463098.4413216,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "d1d2",
-          "last_accepted_move_san": "Rxd2",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788463093.4176292,
-          "position_before_last_move": "2r3k1/2P1R2p/6p1/8/8/1n2PPK1/3r3P/3R4 w - - 3 37"
+          "last_accepted_move_uci": "e7d7",
+          "last_accepted_move_san": "Rd7",
+          "last_accepted_move_index": 4,
+          "last_accepted_at": 1788463098.4413211,
+          "position_before_last_move": "2r3k1/2P1R2p/6p1/8/8/4PPK1/3n3P/8 w - - 0 38"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
