@@ -3,6 +3,7 @@ import discord
 from shared_leaderboard import (
     admin_set_points as shared_admin_set_points,
     add_points as shared_add_points,
+    adjust_points as shared_adjust_points,
     get_score as shared_get_score,
     personal_ranking as shared_personal_ranking,
     full_leaderboard as shared_full_leaderboard,
@@ -3106,8 +3107,6 @@ def help_message():
 
 **Random Puzzle**
 `rp` or `!rp` — Start a random Lichess puzzle.
-Play it one move at a time. A small number become **2600+ Boss Puzzles**.
-Boss first solver: **+2 points**. Boss helper: **+1 point**.
 
 **Lichess Rating Puzzle**
 `!400`, `!2500`, `!2552`, etc. — load a Lichess puzzle with that **exact puzzle rating**.
@@ -3116,8 +3115,6 @@ Boss first solver: **+2 points**. Boss helper: **+1 point**.
 Daily and Random use the **shared leaderboard**.
 First solver: **+1 point**
 Helper: **+0.5 point**
-Every **10th correct puzzle in a row** gives **+1 bonus point**.
-Rated Random/Boss puzzles also update your real **Puzzle Elo**.
 Your first valid attempt on each official puzzle decides your personal win/loss.
 
 **Commands**
@@ -3125,7 +3122,6 @@ Your first valid attempt on each official puzzle decides your personal win/loss.
 `!leaderboard` / `!lb` / `!l` — shared points + Top Puzzle Elo + best streaks.
 `!stats` / `!me` / `!profile` — your Puzzle profile, Elo, streaks and achievements.
 `!stats <name>` — view another player's Puzzle profile.
-`!edit <name> <points>` — Sharkmeister-only shared leaderboard correction.
 
 🔥 **Survival Mode**
 `!survival` — Start or resume a team Survival run.
@@ -3137,16 +3133,6 @@ The person who starts the run is the captain.
 `!stopsurvival` — pause and save the active run.
 `!solo <team>` — captain only; only the captain may answer.
 `!coop <team>` — captain only; everyone may answer again.
-
-Survival starts with **3 hearts**.
-A wrong answer costs 1 strike.
-At **3/3 strikes**, the run is **DEAD**.
-After 10 minutes without activity, an active run is paused.
-
-Everyone can help in co-op mode.
-Duplicate simultaneous correct answers do not cost a heart.
-Some puzzles can have multiple correct mating moves.
-Promotions such as `f1=Q`, `f1=Q+`, `f1=Q#` are accepted.
 
 The Survival leaderboard tracks **runs**, so the same team name can appear multiple times.
 Survival does **not** award shared leaderboard points.
@@ -4035,14 +4021,30 @@ async def handle_random_answer(
         )
         return
 
-    # Serialize state changes so two people cannot both
-    # advance the same shared position at exactly the same time.
-    # Capture this BEFORE advancing the shared state.
-    move_was_first = (
-        next_index == 0
-    )
+    # Serialize state changes so two people cannot both advance the shared
+    # position at exactly the same time. A short recent-move guard mirrors the
+    # Survival duplicate protection: when somebody submits the correct move just
+    # after another user already advanced the position, it is ignored instead of
+    # being counted as a wrong answer or an anti-spam penalty.
+    late_correct_duplicate = False
+    wrong_attempt_count = 0
+    wrong_penalty_due = False
 
     async with data_lock:
+
+        # Re-read the live index AFTER taking the lock. The value captured before
+        # the lock may already be stale because another solver just moved.
+        next_index = puzzle.get(
+            "next_solution_index",
+            0
+        )
+
+        if next_index >= len(all_moves):
+            return
+
+        move_was_first = (
+            next_index == 0
+        )
 
         expected = all_moves[next_index]
 
@@ -4067,73 +4069,164 @@ async def handle_random_answer(
             expected
         )
 
-        puzzle.setdefault(
-            "attempted_users",
-            {}
-        )[user_id] = {
-            "name": message.author.display_name,
-            "move": submitted,
-            "correct": correct,
-            "timestamp": datetime.now(
-                timezone.utc
-            ).isoformat()
-        }
-
+        # If the move is wrong for the CURRENT position, check whether it was the
+        # exact correct move for a position another solver advanced in the last
+        # few seconds. This is the race that used to punish a legitimate answer.
         if not correct:
-            # Do not hold the lock while sending to Discord.
-            pass
-        else:
-            # -------------------------------------------------
-            # PLAY THE USER'S CORRECT MOVE
-            # -------------------------------------------------
-
-            move = chess.Move.from_uci(
-                expected["uci"]
+            now_epoch = time.time()
+            recent_moves = puzzle.setdefault(
+                "recent_accepted_moves",
+                []
             )
 
-            if move not in board.legal_moves:
-                correct = False
-            else:
-                board.push(move)
+            kept_recent = []
+            for item in recent_moves:
+                if not isinstance(item, dict):
+                    continue
+                try:
+                    age = now_epoch - float(item.get("accepted_at", 0))
+                except Exception:
+                    continue
+                if 0 <= age <= 8.0:
+                    kept_recent.append(item)
 
-                next_index += 1
-                next_player_index = (
-                    puzzle.get(
-                        "next_player_index",
-                        0
-                    ) + 1
+            puzzle["recent_accepted_moves"] = kept_recent[-4:]
+
+            for item in reversed(puzzle["recent_accepted_moves"]):
+                previous_fen = item.get("fen_before")
+                previous_expected = item.get("expected")
+                if not previous_fen or not isinstance(previous_expected, dict):
+                    continue
+                try:
+                    previous_board = board_from_fen_safe(previous_fen)
+                    if san_matches_move(
+                        previous_board,
+                        submitted,
+                        previous_expected,
+                    ):
+                        late_correct_duplicate = True
+                        break
+                except Exception:
+                    continue
+
+        if late_correct_duplicate:
+            # Do not record an attempt, reset a streak, or increment the spam
+            # counter. The user really supplied the just-played correct move.
+            pass
+        else:
+            puzzle.setdefault(
+                "attempted_users",
+                {}
+            )[user_id] = {
+                "name": message.author.display_name,
+                "move": submitted,
+                "correct": correct,
+                "timestamp": datetime.now(
+                    timezone.utc
+                ).isoformat()
+            }
+
+            if not correct:
+                wrong_counts = puzzle.setdefault(
+                    "wrong_attempt_counts",
+                    {}
+                )
+                try:
+                    previous_wrong_count = int(
+                        wrong_counts.get(user_id, 0)
+                    )
+                except Exception:
+                    previous_wrong_count = 0
+
+                wrong_attempt_count = previous_wrong_count + 1
+                wrong_counts[user_id] = wrong_attempt_count
+
+                # Practice-only exact-rating puzzles never affect shared points.
+                wrong_penalty_due = (
+                    not practice_only
+                    and wrong_attempt_count % 2 == 0
+                )
+            else:
+                # Remember enough of the pre-move position to recognise a second
+                # user's same correct SAN/UCI after the shared board advances.
+                recent_moves = puzzle.setdefault(
+                    "recent_accepted_moves",
+                    []
+                )
+                now_epoch = time.time()
+                recent_moves.append(
+                    {
+                        "accepted_at": now_epoch,
+                        "fen_before": board.fen(),
+                        "expected": dict(expected),
+                    }
+                )
+                puzzle["recent_accepted_moves"] = [
+                    item
+                    for item in recent_moves
+                    if isinstance(item, dict)
+                    and 0 <= now_epoch - float(item.get("accepted_at", 0)) <= 8.0
+                ][-4:]
+
+                # -------------------------------------------------
+                # PLAY THE USER'S CORRECT MOVE
+                # -------------------------------------------------
+
+                move = chess.Move.from_uci(
+                    expected["uci"]
                 )
 
-                opponent_replies = []
-
-                # ---------------------------------------------
-                # AUTOMATICALLY PLAY OPPONENT REPLIES
-                # ---------------------------------------------
-
-                while next_index < len(all_moves):
-                    reply = all_moves[next_index]
-
-                    if reply["color"] == player_color:
-                        break
-
-                    reply_move = chess.Move.from_uci(
-                        reply["uci"]
-                    )
-
-                    if reply_move not in board.legal_moves:
-                        break
-
-                    board.push(reply_move)
-
-                    opponent_replies.append(
-                        reply["san"]
-                    )
+                if move not in board.legal_moves:
+                    correct = False
+                else:
+                    board.push(move)
 
                     next_index += 1
+                    next_player_index = (
+                        puzzle.get(
+                            "next_player_index",
+                            0
+                        ) + 1
+                    )
 
-                puzzle["current_fen"] = board.fen()
-                puzzle["next_solution_index"] = next_index
-                puzzle["next_player_index"] = next_player_index
+                    opponent_replies = []
+
+                    # ---------------------------------------------
+                    # AUTOMATICALLY PLAY OPPONENT REPLIES
+                    # ---------------------------------------------
+
+                    while next_index < len(all_moves):
+                        reply = all_moves[next_index]
+
+                        if reply["color"] == player_color:
+                            break
+
+                        reply_move = chess.Move.from_uci(
+                            reply["uci"]
+                        )
+
+                        if reply_move not in board.legal_moves:
+                            break
+
+                        board.push(reply_move)
+
+                        opponent_replies.append(
+                            reply["san"]
+                        )
+
+                        next_index += 1
+
+                    puzzle["current_fen"] = board.fen()
+                    puzzle["next_solution_index"] = next_index
+                    puzzle["next_player_index"] = next_player_index
+
+    if late_correct_duplicate:
+        await save_all()
+        await message.channel.send(
+            f"⏱️ **Correct move, {message.author.display_name} — "
+            "someone else played it just before you. No wrong answer or penalty.**"
+        )
+        return
 
     personal_result = await record_official_puzzle_result(
         puzzle,
@@ -4156,9 +4249,36 @@ async def handle_random_answer(
             await message.channel.send(unlock_text)
 
     if not correct:
+        penalty_text = ""
+
+        if wrong_penalty_due:
+            penalty_number = wrong_attempt_count // 2
+            try:
+                new_total = await asyncio.to_thread(
+                    shared_adjust_points,
+                    message.author.id,
+                    message.author.display_name,
+                    -1.0,
+                    (
+                        f"puzzle-wrong-penalty:{puzzle_id}:"
+                        f"{message.author.id}:{penalty_number}"
+                    ),
+                    source="puzzle-wrong-penalty",
+                )
+                penalty_text = (
+                    "\n⚠️ **2 wrong attempts on this puzzle: -1 point.** "
+                    f"You now have **{shared_format_points(new_total)} points**."
+                )
+            except Exception as error:
+                print(
+                    f"Puzzle wrong-answer penalty error for "
+                    f"{message.author.display_name}: {error}",
+                    flush=True,
+                )
+
         await save_all()
         await message.channel.send(
-            wrong_message(message.author)
+            wrong_message(message.author) + penalty_text
         )
         return
 
