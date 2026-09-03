@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/MaQxa",
     "title": "Lichess • 1633",
     "fen": "3q2k1/pp1n1pp1/2r1p2p/3pP3/N4P2/bP1QP2P/P2B2P1/2R3K1 w - - 2 22",
-    "current_fen": "3q2k1/pp1n1pp1/2r1p2p/3pP3/N4P2/bP1QP2P/P2B2P1/2R3K1 w - - 2 22",
+    "current_fen": "3q2k1/p2n1pp1/2p1p2p/3pP3/Nb3P2/3QP2P/P2B2P1/6K1 w - - 0 24",
     "pgn": "Rxc6 bxc6 b4 Bxb4 Bxb4",
     "all_moves": [
       {
@@ -59,13 +59,20 @@
     "puzzle_id": "random_MaQxa_1788451506884",
     "rating": 1633,
     "rp_band": 1,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1545102351352860823,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "b4",
+        "correct": true,
+        "timestamp": "2026-09-03T16:05:18.805924+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
