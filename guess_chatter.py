@@ -3,10 +3,10 @@ import os
 import random
 import re
 from datetime import datetime, timezone, timedelta
+from difflib import get_close_matches
 from pathlib import Path
 
 import discord
-import requests
 
 from guess_leaderboard import (
     add_points,
@@ -14,11 +14,22 @@ from guess_leaderboard import (
     personal_ranking,
 )
 
+from guess_chess_chatter import (
+    GUESS_CHESS_BUILD,
+    post_chess_round,
+)
+
 TOKEN = os.getenv(
     "DISCORD_TOKEN"
 )
 
 CHANNEL_ID = 1536769340970373241
+
+GUESS_CHATTER_BUILD = "guess-chatter-v5-persistent-controller-2026-09-03"
+GUESS_CONTROLLER_BUILD = "guess-games-v5-alternate-10m-next-2026-09-03"
+PLAYER_INFO_BUILD = "guess-player-info-status-v2-2026-09-03"
+PERSISTENT_GUESS_V5 = True
+SHARKMEISTER_DEFAULT_USER_ID = "362606514764251137"
 
 MIN_CHARACTERS = 20
 CHAT_DIR = "SOLO chats"
@@ -29,21 +40,16 @@ ROUND_SLOT_MINUTES = 20
 GUESS_SLOT_OFFSET = 0
 TIME_ZONE = "Europe/Amsterdam"
 
-GITHUB_ACTION_TOKEN = os.getenv(
-    "GITHUB_ACTION_TOKEN"
-)
-GITHUB_REPOSITORY = os.getenv(
-    "GITHUB_REPOSITORY",
-    "Krahs225/chess-daily-bot",
-)
-GITHUB_REF_NAME = os.getenv(
-    "GITHUB_REF_NAME",
-    "main",
-)
-
 NEXT_ROUND_EVENT = asyncio.Event()
 ROUND_ACTIVE = False
 NEXT_REQUESTED = False
+
+# One persistent process owns BOTH Guess games. This avoids two Discord
+# sessions with the same bot token and makes !l available between rounds.
+CURRENT_ROUND_TYPE = None
+FORCED_NEXT_TYPE = None
+ROUND_LOCK = asyncio.Lock()
+SCHEDULER_TASK = None
 
 ROUND_PREFIXES = {
     "chatter": (
@@ -58,7 +64,7 @@ ROUND_PREFIXES = {
 
 ROUND_MAX_AGE_MINUTES = {
     "chatter": 10,
-    "chess": 17,
+    "chess": 10,
 }
 
 
@@ -87,6 +93,284 @@ CHATTERS = {
     "Sushi": "isolatedsushi11",
     "Thejazzdude": "thejazzdude_",
 }
+
+
+# Short recognition guides for every current Guess the Chatter player.
+# Commands are public: !thice, !sushi, !az, etc.
+PLAYER_INFO = {
+    "az": (
+        "AZ",
+        "**How to recognize:** Very dry and sarcastic. Loves intentionally useless chess advice, says **wow** a lot, "
+        "and has recurring jokes about the **real 3D board**, random *when?* suggestions and fake-unfollowing over tiny things.\n"
+        "**Languages:** English."
+    ),
+    "ben": (
+        "Ben",
+        "**How to recognize:** The New Zealand GeoGuessr specialist. Very specific NZ regions, roads and metas; "
+        "usually concise, confident and matter-of-fact.\n"
+        "**Languages:** German, English."
+    ),
+    "geeflux": (
+        "Geeflux",
+        "**How to recognize:** Energetic and competitive, but also **rages/tilts easily**. When a chess game goes badly, "
+        "expect reasons like being tired, playing randomly, having played too much chess, or simply not having his day. "
+        "Lots of **yoo, haha, wtf, gg** and quick reactions.\n"
+        "**Languages:** English."
+    ),
+    "george": (
+        "George",
+        "**How to recognize:** Thinks out loud constantly. Lots of **maybe, I think, haha, I guess** and chains of observations "
+        "before committing to an answer.\n"
+        "**Languages:** English."
+    ),
+    "grumpymonk": (
+        "Grumpymonk",
+        "**How to recognize:** Friendly and thoughtful. Chess books, strategy, tournaments, improvement and Sweden come up regularly.\n"
+        "**Languages:** Swedish, English."
+    ),
+    "jessebrawlstars": (
+        "Jessebrawlstars",
+        "**How to recognize:** Lots of **bro, bruv, unc, tuff**, short chaotic roasts, then suddenly an actual chess move or puzzle answer.\n"
+        "**Languages:** English, some Dutch."
+    ),
+    "kurupt": (
+        "Kurupt",
+        "**How to recognize:** Short gamer-style messages, lots of **lol, xD**, CS/gambling references and quick one-line reactions.\n"
+        "**Languages:** English."
+    ),
+    "martin": (
+        "Martin",
+        "**How to recognize:** Chaotic, dramatic and loud. Lots of **nah, bruh, caps-lock**, mock outrage, wanting to play, "
+        "and the recurring **hamster** jokes.\n"
+        "**Languages:** Czech, Polish, Slovak, German, English, and some Italian."
+    ),
+    "mh": (
+        "MH",
+        "**How to recognize:** Extremely calculation-heavy in chess: move sequences, forcing lines, puzzle analysis and lots of **coz**. "
+        "Also known for watching **dubious anime**.\n"
+        "**Languages:** English."
+    ),
+    "mohammad": (
+        "Mohammad",
+        "**How to recognize:** Very recognizable **hello hello**, polite challenges, GG, asking to play, rating/tournament talk "
+        "and often **I gtg** when leaving.\n"
+        "**Languages:** Arabic, English.\n"
+        "**Chess style:** Fast and tactical, especially in **bullet/blitz**. Strong **Alien Gambit / Martian Gambit** fingerprint; "
+        "likes active gambit positions and practical complications."
+    ),
+    "mrthice": (
+        "Mr_thice",
+        "**How to recognize:** The biggest tell is **XD**. Also lots of **maybe, prob, or smt, aswell**, quick corrections, jokes "
+        "and raw chess lines. **Mr_thick / Mr_thice + XD** is a huge tell.\n"
+        "**Languages:** English.\n"
+        "**Chess style:** Tactical and calculation-heavy, strong puzzle instincts and very practical. Recurring **Dutch** and "
+        "**French Defense** talk; *move first think later XD* fits the vibe."
+    ),
+    "nairyaaa": (
+        "Nairyaaa",
+        "**How to recognize:** Expressive, curious and friendly. Lots of questions, punctuation, emojis and careful reasoning.\n"
+        "**Languages:** French, English.\n"
+        "**Chess style:** Careful and calculation-first. Wants to find the best move rather than rely purely on speed, "
+        "and is less naturally comfortable with bullet."
+    ),
+    "pabu": (
+        "Pabu",
+        "**How to recognize:** Huge **emote/repetition spam** is the tell: Clap chains, 7TV-style nonsense and repeated words, "
+        "then suddenly normal chess or Geo discussion again.\n"
+        "**Languages:** English, some Spanish."
+    ),
+    "pandarou": (
+        "Pandarou",
+        "**How to recognize:** Dry reactions, lots of **xD/xDD**, concrete move analysis and opening terminology. Often sounds "
+        "half stream-watching and half analysing a board.\n"
+        "**Languages:** English.\n"
+        "**Chess style:** Very theory-oriented. Gambits, **Alapin ideas**, concrete variations, prep and differences between "
+        "rapid/bullet come up regularly. Likes sharp practical opening ideas."
+    ),
+    "pospos": (
+        "Pospos",
+        "**How to recognize:** GeoGuessr plus proudly announcing chess Elo milestones. Often self-deprecating and excited about improvement.\n"
+        "**Languages:** English.\n"
+        "**Chess style:** Improving player strongly associated with the **London** and **Caro-Kann**, with opening knowledge "
+        "developing faster than endgame knowledge."
+    ),
+    "rubriek": (
+        "Rubriek",
+        "**How to recognize:** The 7TV/Twitch-culture person: bot commands, **EZ Clap, peepoHappy, AlienDance**, emote-set talk, etc.\n"
+        "**Languages:** English, French."
+    ),
+    "sativahibread": (
+        "Sativahibread",
+        "**How to recognize:** Practical, competitive and psychology-focused. Talks about exploiting opponents' mistakes, "
+        "playing quickly and getting inside their head; often shares chess games and ideas.\n"
+        "**Languages:** English, some Spanish."
+    ),
+    "screamingcat": (
+        "Screamingcat",
+        "**How to recognize:** Long explanations, fact dumps and technology/history/science tangents. Usually much more detailed "
+        "than the average chatter; spellings such as **definitly** and **alot** also stand out.\n"
+        "**Languages:** English."
+    ),
+    "sh4rkmateisthebest": (
+        "Sh4rkmate is the best",
+        "**How to recognize:** Distinctive spellings such as **cheack, massege, agn, broo** and lots of direct chess/CS questions.\n"
+        "**Languages:** English."
+    ),
+    "soyadelson": (
+        "Soyadelson / Adelson",
+        "**How to recognize:** Competitive, talkative, poker/rating stories, dramatic reactions and lots of challenges.\n"
+        "**Languages:** Spanish, English.\n"
+        "**Chess style:** Tactical, ambitious and streaky. Very interested in puzzles and brilliancies; capable of strong tactical "
+        "games but openly describes some normal games as getting completely thrown away."
+    ),
+    "stepu": (
+        "Stepu",
+        "**How to recognize:** **wassup, skill issue, haha**, friendly trash talk and a lot of confidence. Regularly roasts Thice/Shark.\n"
+        "**Languages:** Spanish, English.\n"
+        "**Chess style:** Strong, fast and practical. Rapid/bullet-oriented, tactical, confident and happy to challenge stronger players."
+    ),
+    "sushi": (
+        "Sushi",
+        "**How to recognize:** Calls Shark **Sharky** a lot; frequent **tho, ugh, gotta, ain't, dammit, haha**. Chess comments are "
+        "confident, direct and theory-heavy.\n"
+        "**Languages:** Dutch, English.\n"
+        "**Chess style:** **DUBOV ITALIAN** is the enormous giveaway. Loves sharp theory, opening prep, gambits, sacrifices, "
+        "attacking positions and practical clock play."
+    ),
+    "thejazzdude": (
+        "Thejazzdude",
+        "**How to recognize:** Friendly, relaxed, fuller sentences, naturally mixes Dutch and English, and unsurprisingly likes jazz.\n"
+        "**Languages:** Dutch, English."
+    ),
+    "shark": (
+        "Shark / Sharkmeister",
+        "**How to recognize:** A completely unbiased description: **chess genius, absurd calculation, suspiciously frequent "
+        "brilliancies and clearly the greatest mind ever to touch a chessboard.**\n"
+        "**Languages:** Dutch, English, **fluent Italian, fluent German**, and **a few words of Polish**.\n"
+        "**Chess style:** Creative and tactical; likes flashy moves, attacking chances and finding brilliancies."
+    ),
+    "lars": (
+        "Lars",
+        "**How to recognize:** **German and a cheater.**\n"
+        "**Languages:** German, English.\n"
+        "**Chess style:** No strong stylistic fingerprint added yet; the clearest identifiers are Lars, German, and the cheating."
+    ),
+}
+
+# Every spelling/nickname below resolves to the same profile.
+# Non-alphanumeric characters are ignored, so !mr_thice == !mrthice.
+PLAYER_INFO_ALIASES = {
+    "az3d": "az",
+    "az3d__": "az",
+    "benniru": "ben",
+    "gee": "geeflux",
+    "flux": "geeflux",
+    "georgeonzola": "george",
+    "georgeonz0la": "george",
+    "grumpy": "grumpymonk",
+    "grumpymonk147": "grumpymonk",
+    "jesse": "jessebrawlstars",
+    "jessebrawl": "jessebrawlstars",
+    "kurupttv": "kurupt",
+    "martinxploz": "martin",
+    "martin_xploz": "martin",
+    "mh050131": "mh",
+    "mh05": "mh",
+    "moh": "mohammad",
+    "moh979xx": "mohammad",
+    "mohammad768": "mohammad",
+    "mohammad_768": "mohammad",
+    "thice": "mrthice",
+    "thick": "mrthice",
+    "mr_thice": "mrthice",
+    "mrthick": "mrthice",
+    "mr_thick": "mrthice",
+    "nairya": "nairyaaa",
+    "nairaa": "nairyaaa",
+    "naiiiraaa": "nairyaaa",
+    "notpabu": "pabu",
+    "not_pabu": "pabu",
+    "pandaro": "pandarou",
+    "panda": "pandarou",
+    "iampandaro": "pandarou",
+    "pos": "pospos",
+    "pospos12": "pospos",
+    "rub": "rubriek",
+    "sativa": "sativahibread",
+    "hibread": "sativahibread",
+    "screamingcat02n7": "screamingcat",
+    "screamingcat_02n7": "screamingcat",
+    "cat": "screamingcat",
+    "sharkbest": "sh4rkmateisthebest",
+    "sh4rkbest": "sh4rkmateisthebest",
+    "sh4rkmatebest": "sh4rkmateisthebest",
+    "sh4rkmate_is_the_best": "sh4rkmateisthebest",
+    "adelson": "soyadelson",
+    "soy": "soyadelson",
+    "soyadelson7": "soyadelson",
+    "stepu6568": "stepu",
+    "tvoltios": "stepu",
+    "t_voltios": "stepu",
+    "isolatedsushi": "sushi",
+    "isolatedsushi11": "sushi",
+    "jazz": "thejazzdude",
+    "jazzdude": "thejazzdude",
+    "thejazzdude_": "thejazzdude",
+    "sharkmeister": "shark",
+    "sh4rkmate": "shark",
+    "sharky": "shark",
+    "lars11111": "lars",
+}
+
+
+def _player_info_key(value):
+    return re.sub(r"[^a-z0-9]+", "", str(value).casefold())
+
+
+# Normalize the aliases once so underscore/hyphen variants work automatically.
+_NORMALIZED_PLAYER_ALIASES = {
+    _player_info_key(alias): target
+    for alias, target in PLAYER_INFO_ALIASES.items()
+}
+
+
+def player_info_for_command(command):
+    if not command.startswith("!"):
+        return None
+
+    key = _player_info_key(command[1:])
+    if not key:
+        return None
+
+    # Exact profile/alias first.
+    exact_key = _NORMALIZED_PLAYER_ALIASES.get(key, key)
+    exact = PLAYER_INFO.get(exact_key)
+    if exact is not None:
+        return exact
+
+    # Also accept small spelling mistakes in names/nicknames. Keep very short
+    # commands exact-only so normal bot commands are never accidentally matched.
+    if len(key) < 4:
+        return None
+
+    candidates = sorted(
+        set(PLAYER_INFO) | set(_NORMALIZED_PLAYER_ALIASES)
+    )
+    close = get_close_matches(
+        key,
+        candidates,
+        n=1,
+        cutoff=0.80,
+    )
+    if not close:
+        return None
+
+    matched_key = close[0]
+    canonical = _NORMALIZED_PLAYER_ALIASES.get(
+        matched_key,
+        matched_key,
+    )
+    return PLAYER_INFO.get(canonical)
 
 
 # A quote/option is valid only inside this chatter's active window.
@@ -160,6 +444,74 @@ intents.message_content = True
 client = discord.Client(
     intents=intents
 )
+
+# /status is already registered on Discord by the Daily Puzzle bot.
+# This controller owns the same command only inside the Guess Games channel.
+# No sync is done here, so it cannot overwrite other application commands.
+command_tree = discord.app_commands.CommandTree(client)
+CURRENT_PRIVATE_GUESS = None
+
+
+def _set_private_guess_answer(round_type, answer, game_url=None):
+    global CURRENT_PRIVATE_GUESS
+    CURRENT_PRIVATE_GUESS = {
+        "type": str(round_type),
+        "answer": str(answer),
+        "game_url": str(game_url or "").strip(),
+    }
+
+
+def _clear_private_guess_answer():
+    global CURRENT_PRIVATE_GUESS
+    CURRENT_PRIVATE_GUESS = None
+
+
+@command_tree.command(
+    name="status",
+    description="Show puzzle bot status.",
+)
+async def private_guess_status_command(interaction: discord.Interaction):
+    # The Daily Puzzle process owns /status everywhere except this channel.
+    # Returning without acknowledging here lets that process answer there.
+    if interaction.channel_id != CHANNEL_ID:
+        return
+
+    await interaction.response.defer(ephemeral=True)
+
+    shark_id = os.getenv(
+        "SHARKMEISTER_USER_ID",
+        SHARKMEISTER_DEFAULT_USER_ID,
+    ).strip() or SHARKMEISTER_DEFAULT_USER_ID
+
+    if str(interaction.user.id) != shark_id:
+        await interaction.edit_original_response(
+            content="✅ **Guess bot is online.**"
+        )
+        return
+
+    active = CURRENT_PRIVATE_GUESS
+    if not active:
+        await interaction.edit_original_response(
+            content=(
+                "✅ **Guess bot is online.**\n"
+                "No active Guess answer is available right now."
+            )
+        )
+        return
+
+    title = (
+        "Guess the Chess Chatter"
+        if active.get("type") == "chess"
+        else "Guess the Chatter"
+    )
+    text = (
+        f"🤫 **{title}**\n"
+        f"**Answer:** `{active.get('answer', '')}`"
+    )
+    if active.get("game_url"):
+        text += f"\n**Game:** {active['game_url']}"
+
+    await interaction.edit_original_response(content=text)
 
 
 def find_chatter(
@@ -732,49 +1084,15 @@ async def latest_active_round_type(
     return None
 
 
-def dispatch_workflow(
-    workflow_file
-):
-    if not GITHUB_ACTION_TOKEN:
-        raise RuntimeError(
-            "GITHUB_ACTION_TOKEN is missing."
-        )
-
-    url = (
-        "https://api.github.com/repos/"
-        f"{GITHUB_REPOSITORY}/actions/workflows/"
-        f"{workflow_file}/dispatches"
-    )
-
-    response = requests.post(
-        url,
-        headers={
-            "Accept": "application/vnd.github+json",
-            "Authorization": (
-                f"Bearer {GITHUB_ACTION_TOKEN}"
-            ),
-            "X-GitHub-Api-Version": "2022-11-28",
-            "User-Agent": "GuessGamesNext/1.0",
-        },
-        json={
-            "ref": GITHUB_REF_NAME,
-        },
-        timeout=20,
-    )
-
-    if response.status_code != 204:
-        raise RuntimeError(
-            "Could not start next workflow: "
-            f"HTTP {response.status_code} "
-            f"{response.text[:300]}"
-        )
-
 
 async def post_guess(
     channel
 ):
     global ROUND_ACTIVE
+    global NEXT_REQUESTED
 
+    # Persistent controller can run many rounds in one process.
+    NEXT_REQUESTED = False
     chatters, all_entries = load_chatters()
 
     mode = guess_special_mode()
@@ -879,6 +1197,11 @@ async def post_guess(
 
     correct_index = options.index(
         username
+    )
+
+    _set_private_guess_answer(
+        "chatter",
+        display_name_for(username),
     )
 
     if mode == "hard":
@@ -1060,206 +1383,266 @@ async def post_guess(
     return NEXT_REQUESTED
 
 
-async def command_handler(
-    message
-):
+
+def scheduled_round_type(moment=None):
+    """0/20/40 = Chatter, 10/30/50 = Chess."""
+    if moment is None:
+        moment = current_local_time()
+
+    minute = moment.minute
+    if minute % 20 == 0:
+        return "chatter"
+    if minute % 20 == 10:
+        return "chess"
+    return None
+
+
+def next_ten_minute_slot():
+    now = current_local_time()
+    base = now.replace(second=0, microsecond=0)
+    minutes_to_add = 10 - (now.minute % 10)
+
+    # If the process happens to become ready exactly on a slot, use that slot.
+    if now.minute % 10 == 0 and now.second == 0 and now.microsecond == 0:
+        target = base
+    else:
+        target = base + timedelta(minutes=minutes_to_add)
+
+    return target
+
+
+async def start_round(channel, round_type, reason="schedule"):
+    global CURRENT_ROUND_TYPE
+    global FORCED_NEXT_TYPE
+
+    if round_type not in {"chatter", "chess"}:
+        return False
+
+    async with ROUND_LOCK:
+        if CURRENT_ROUND_TYPE is not None:
+            print(
+                f"Guess {round_type} skipped ({reason}): "
+                f"{CURRENT_ROUND_TYPE} is already running.",
+                flush=True,
+            )
+            return False
+
+        # After a workflow restart, an older poll may still be open for a few
+        # seconds. Never post a duplicate on top of it.
+        active_type = await latest_active_round_type(channel)
+        if active_type is not None:
+            print(
+                f"Guess {round_type} skipped ({reason}): "
+                f"Discord already has active {active_type} round.",
+                flush=True,
+            )
+            return False
+
+        CURRENT_ROUND_TYPE = round_type
+        NEXT_ROUND_EVENT.clear()
+
+        try:
+            if round_type == "chatter":
+                await post_guess(channel)
+            else:
+                await post_chess_round(
+                    channel,
+                    stop_event=NEXT_ROUND_EVENT,
+                    answer_callback=_set_private_guess_answer,
+                )
+        except Exception as error:
+            print(
+                f"Guess {round_type} round error: {error}",
+                flush=True,
+            )
+            try:
+                await channel.send(
+                    f"❌ **Guess {round_type.title()} error:** "
+                    f"`{str(error)[:900]}`"
+                )
+            except Exception:
+                pass
+        finally:
+            CURRENT_ROUND_TYPE = None
+            NEXT_ROUND_EVENT.clear()
+            _clear_private_guess_answer()
+
+        forced = FORCED_NEXT_TYPE
+        FORCED_NEXT_TYPE = None
+
+    if forced is not None:
+        # Let the answer/reward messages settle before the next poll appears.
+        await asyncio.sleep(2)
+        asyncio.create_task(
+            start_round(
+                channel,
+                forced,
+                reason="!next",
+            )
+        )
+
+    return True
+
+
+async def scheduler_loop(channel):
+    """Keep fixed 10-minute alternation for the lifetime of the Action."""
+    while not client.is_closed():
+        target = next_ten_minute_slot()
+        now = current_local_time()
+        wait_seconds = max(0.0, (target - now).total_seconds())
+
+        print(
+            f"Next Guess slot: {target.isoformat()}",
+            flush=True,
+        )
+
+        await asyncio.sleep(wait_seconds)
+
+        round_type = scheduled_round_type(target)
+        if round_type is not None:
+            asyncio.create_task(
+                start_round(
+                    channel,
+                    round_type,
+                    reason="schedule",
+                )
+            )
+
+        # Move beyond the exact boundary so the same slot is never selected twice.
+        await asyncio.sleep(1.2)
+
+
+async def command_handler(message):
     global NEXT_REQUESTED
+    global FORCED_NEXT_TYPE
 
     if (
         message.author.bot
-        or message.channel.id
-        != CHANNEL_ID
+        or message.channel.id != CHANNEL_ID
     ):
         return
 
-    command = (
-        message.content
-        .strip()
-        .casefold()
-    )
+    command = message.content.strip().casefold()
 
-    if command in {
-        "!next",
-        "!n",
-    }:
-        if not ROUND_ACTIVE:
+    if command in {"!next", "!n"}:
+        if CURRENT_ROUND_TYPE is None:
+            await message.channel.send(
+                "⏭️ **There is no active Guess round to skip.**"
+            )
             return
 
-        active_type = await latest_active_round_type(
-            message.channel
+        if FORCED_NEXT_TYPE is not None:
+            return
+
+        FORCED_NEXT_TYPE = (
+            "chess"
+            if CURRENT_ROUND_TYPE == "chatter"
+            else "chatter"
         )
-
-        # If both Actions overlap, only the newest active game handles !n.
-        if active_type != "chatter":
-            return
-
-        if NEXT_REQUESTED:
-            return
-
         NEXT_REQUESTED = True
         NEXT_ROUND_EVENT.set()
 
         await message.channel.send(
-            "⏭️ **Next!** Ending this Guess Chatter "
-            "round now and checking the answers."
+            f"⏭️ **Next!** Ending Guess the "
+            f"{'Chatter' if CURRENT_ROUND_TYPE == 'chatter' else 'Chess Chatter'} "
+            f"now. The other Guess game starts right after the answer."
         )
-
         return
 
-    if command in {
-        "!leaderboard",
-        "!lb",
-        "!l"
-    }:
-        await message.channel.send(
-            full_leaderboard(
-                "🏆 **Guess Games Leaderboard**"
-            )
+    if command in {"!leaderboard", "!lb", "!l"}:
+        leaderboard_text = await asyncio.to_thread(
+            full_leaderboard,
+            "🏆 **Guess Games Leaderboard**",
         )
-
+        await message.channel.send(leaderboard_text)
         return
 
-    if command in {
-        "!help",
-        "!info",
-        "!i"
-    }:
+    if command in {"!help", "!info", "!i"}:
         await message.channel.send(
-            "🧠 **Games**\n\n"
-            "💬 **Guess the Chatter**\n"
-            "A quote is shown with a 5-option poll. "
-            "Vote for who said it.\n\n"
-            "♟️ **Guess the Chess Chatter**\n"
-            "A rated Chess.com rapid/blitz game is shown. "
-            "Use the ◀ ▶ buttons to look through the game, "
-            "then vote for who played it.\n\n"
-            "⏭️ **Next round**\n"
-            "`!next` or `!n` — end the active round now, "
-            "reveal the answer, award points, and start the "
-            "other Guess game immediately.\n\n"
-            "🏆 **Guess Games Leaderboard**\n"
-            "`!leaderboard`, `!lb` or `!l` — show the leaderboard shared ONLY by Guess the Chatter and Guess the Chess Chatter.\n"
-            "This leaderboard is separate from Daily/Random chess puzzle points.\n"
-            "Correct guesses give **+1 point** normally. Double Points and Hard Mode give **+2 points**.\n\n"
-            "ℹ️ `!help`, `!info` or `!i` — show this message."
+            "🧠 **Guess Games**\n\n"
+            "💬 **Guess the Chatter** — :00 / :20 / :40\n"
+            "♟️ **Guess the Chess Chatter** — :10 / :30 / :50\n"
+            "Each poll is open for **8 minutes**.\n\n"
+            "⏭️ `!next` / `!n` — end the active poll, reveal/award it, "
+            "then immediately start the other Guess game.\n"
+            "🏆 `!l` / `!lb` / `!leaderboard` — leaderboard at any time.\n"
+            "👤 `!<name>` — show recognition info about a Guess Chatter / Chess Chatter player "
+            "(for example `!thice` or `!sushi`). Nicknames and small spelling mistakes also work.\n\n"
+            "Guess Chatter still has its scheduled Double Points / Hard Mode bonus rounds."
         )
+        return
+
+    info = player_info_for_command(command)
+    if info is not None:
+        display_name, description = info
+        await message.channel.send(
+            f"👤 **{display_name}**\n{description}"
+        )
+        return
 
 
 @client.event
-async def on_message(
-    message
-):
+async def on_message(message):
     try:
-        await command_handler(
-            message
-        )
-
+        await command_handler(message)
     except Exception as error:
         print(
-            f"Guess Chatter command error: "
-            f"{error}",
-            flush=True
+            f"Guess controller command error: {error}",
+            flush=True,
         )
-
         try:
             await message.channel.send(
-                "❌ **Bot error:** "
+                "❌ **Guess bot error:** "
                 f"`{str(error)[:1000]}`"
             )
-
         except Exception:
             pass
 
 
 @client.event
 async def on_ready():
-    if getattr(
-        client,
-        "_guess_round_started",
-        False,
-    ):
+    global SCHEDULER_TASK
+
+    if getattr(client, "_guess_controller_started", False):
         return
 
-    client._guess_round_started = True
+    client._guess_controller_started = True
 
     print(
-        f"Guess Chatter ready as "
-        f"{client.user}",
+        f"Guess Games controller ready as {client.user}",
+        flush=True,
+    )
+    print(f"Controller build: {GUESS_CONTROLLER_BUILD}", flush=True)
+    print(f"Chatter build: {GUESS_CHATTER_BUILD}", flush=True)
+    print(f"Chess build: {GUESS_CHESS_BUILD}", flush=True)
+
+    channel = await client.fetch_channel(CHANNEL_ID)
+
+    SCHEDULER_TASK = asyncio.create_task(
+        scheduler_loop(channel)
+    )
+
+    print(
+        "Guess Games persistent controller is running continuously.",
         flush=True,
     )
 
-    try:
-        channel = await client.fetch_channel(
-            CHANNEL_ID
-        )
 
-        # Do not start a duplicate Guess Chatter round if a previous
-        # scheduled or !next-triggered round is still active.
-        if await active_round_exists(
-            channel,
-            "chatter",
-        ):
-            print(
-                "Guess Chatter skipped: "
-                "a Guess Chatter round is already active.",
-                flush=True,
-            )
-            return
-
-        # One Action run = one round.
-        next_requested = await post_guess(
-            channel
-        )
-
-        print(
-            "Guess Chatter round finished.",
-            flush=True,
-        )
-
-        if next_requested:
-            if await active_round_exists(
-                channel,
-                "chess",
-            ):
-                await channel.send(
-                    "♟️ **Guess the Chess Chatter is already active above.** "
-                    "I won't start a duplicate round."
-                )
-            else:
-                await asyncio.to_thread(
-                    dispatch_workflow,
-                    "guess_chess_chatter.yml",
-                )
-
-                await channel.send(
-                    "⏭️ **Starting Guess the Chess Chatter now.**"
-                )
-
-    except Exception as error:
-        print(
-            f"Guess Chatter round error: "
-            f"{error}",
-            flush=True,
-        )
-
-        try:
-            channel = client.get_channel(
-                CHANNEL_ID
-            )
-
-            if channel is not None:
-                await channel.send(
-                    "❌ **Guess Chatter error:** "
-                    f"`{str(error)[:900]}`"
-                )
-        except Exception:
-            pass
-
-    finally:
-        await client.close()
+@client.event
+async def on_disconnect():
+    print(
+        "Guess Games Discord connection lost; reconnecting automatically.",
+        flush=True,
+    )
 
 
-client.run(
-    TOKEN,
-    reconnect=True,
-)
+@client.event
+async def on_resumed():
+    print(
+        "Guess Games Discord connection resumed.",
+        flush=True,
+    )
+
+
+print("Starting persistent Guess Games controller...", flush=True)
+client.run(TOKEN, reconnect=True)
