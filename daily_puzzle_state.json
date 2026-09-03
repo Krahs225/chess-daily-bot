@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/YtPbe",
     "title": "Lichess • 2929",
     "fen": "r4rk1/pp2bppp/2p1pn2/6B1/2P5/q2B1Q1P/5PP1/3RR1K1 w - - 0 17",
-    "current_fen": "r4rk1/pp2bppp/2p1pn2/6B1/2P5/q2B1Q1P/5PP1/3RR1K1 w - - 0 17",
+    "current_fen": "r4rk1/pp2bp1p/2p1pp2/8/2P5/q2B1Q1P/5PP1/3RR1K1 w - - 0 18",
     "pgn": "Bxf6 gxf6 Qg4+ Kh8 Qe4 f5 Qe5+",
     "all_moves": [
       {
@@ -74,20 +74,26 @@
     "puzzle_id": "random_YtPbe_1788459020070",
     "rating": 2929,
     "rp_band": 5,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1545133863691616398,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bxh6",
+        "move": "bxh7",
         "correct": false,
-        "timestamp": "2026-09-03T18:10:24.452893+00:00"
+        "timestamp": "2026-09-03T18:10:28.171536+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Bxh7",
+        "correct": false,
+        "timestamp": "2026-09-03T18:10:24.763629+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
