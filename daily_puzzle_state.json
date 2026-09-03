@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/UptQQ",
     "title": "Lichess • 2634",
     "fen": "r7/R6p/6p1/3p4/3kp3/2N5/6PP/6K1 b - - 0 30",
-    "current_fen": "8/N6p/6p1/3p4/4p3/3k4/6PP/6K1 b - - 0 32",
+    "current_fen": "8/7p/2N3p1/3p4/8/3kp3/6PP/6K1 b - - 1 33",
     "pgn": "Rxa7 Nb5+ Kd3 Nxa7 e3 Nc6 e2 Ne5+ Ke3",
     "all_moves": [
       {
@@ -89,29 +89,31 @@
     "puzzle_id": "random_UptQQ_1788458885284",
     "rating": 2634,
     "rp_band": 4,
-    "next_solution_index": 4,
-    "next_player_index": 2,
+    "next_solution_index": 6,
+    "next_player_index": 3,
     "solved": false,
     "message_id": 1545133298857017437,
     "attempted_users": {
       "601406103712170014": {
         "name": "TheMakina",
-        "move": "Kd3",
-        "correct": true,
-        "timestamp": "2026-09-03T18:08:21.771139+00:00"
+        "move": "e3",
+        "correct": false,
+        "timestamp": "2026-09-03T18:08:25.862003+00:00"
       },
       "442597396195704832": {
         "name": "Thice",
         "move": "e3",
-        "correct": false,
-        "timestamp": "2026-09-03T18:08:19.645565+00:00"
+        "correct": true,
+        "timestamp": "2026-09-03T18:08:25.856195+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "leaderboard_last_posted_date": "2026-09-03",
