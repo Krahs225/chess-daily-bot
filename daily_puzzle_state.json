@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/SgoGr",
     "title": "Lichess • 2289",
     "fen": "8/8/p2k3p/4pKp1/2P3P1/7P/P7/8 b - - 2 37",
-    "current_fen": "8/8/p2k3p/4pKp1/2P3P1/7P/P7/8 b - - 2 37",
+    "current_fen": "8/8/3k3p/p1P1pKp1/6P1/7P/P7/8 b - - 0 38",
     "pgn": "a5 c5+ Kxc5",
     "all_moves": [
       {
@@ -44,13 +44,20 @@
     "puzzle_id": "random_SgoGr_1788457818207",
     "rating": 2289,
     "rp_band": 3,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1545128827359854624,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "a5",
+        "correct": true,
+        "timestamp": "2026-09-03T17:50:24.729424+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
