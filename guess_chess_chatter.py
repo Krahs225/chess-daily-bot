@@ -13,13 +13,6 @@ import discord
 import requests
 
 
-intents = discord.Intents.default()
-intents.message_content = True
-
-client = discord.Client(
-    intents=intents
-)
-
 from guess_leaderboard import (
     add_points,
     full_leaderboard,
@@ -32,8 +25,11 @@ TOKEN = os.getenv(
 
 CHANNEL_ID = 1536769340970373241
 
+GUESS_CHESS_BUILD = "guess-chess-v5-persistent-helper-2026-09-03"
+PERSISTENT_GUESS_V5 = True
+
 POLL_OPTIONS = 5
-POLL_DURATION_MINUTES = 15
+POLL_DURATION_MINUTES = 8
 
 # The players supplied for Guess the Chess Chatter.
 PLAYERS = [
@@ -548,7 +544,7 @@ class ChessView(
     ):
 
         super().__init__(
-            timeout=None
+            timeout=(POLL_DURATION_MINUTES * 60 + 120)
         )
 
         self.pgn = pgn
@@ -896,7 +892,9 @@ class ChessView(
 
 
 async def post_chess_round(
-    channel
+    channel,
+    stop_event=None,
+    answer_callback=None,
 ):
 
     games = await asyncio.to_thread(
@@ -960,6 +958,20 @@ async def post_chess_round(
             "unknown"
         )
     ).title()
+
+    game_url = str(
+        game.get(
+            "url",
+            ""
+        )
+    ).strip()
+
+    if answer_callback is not None:
+        answer_callback(
+            "chess",
+            owner,
+            game_url,
+        )
 
     file, total_moves = (
         make_board_file(
@@ -1047,9 +1059,20 @@ async def post_chess_round(
 
     view.message = board_message
 
-    await asyncio.sleep(
-        POLL_DURATION_MINUTES * 60 + 3
-    )
+    # Normal round: 8-minute answering window. The persistent controller
+    # can wake this early for !next without killing the Discord client.
+    if stop_event is None:
+        await asyncio.sleep(
+            POLL_DURATION_MINUTES * 60 + 2
+        )
+    else:
+        try:
+            await asyncio.wait_for(
+                stop_event.wait(),
+                timeout=(POLL_DURATION_MINUTES * 60 + 2),
+            )
+        except asyncio.TimeoutError:
+            pass
 
     # End the poll, but NEVER let a poll API problem prevent the
     # answer message from being posted.
@@ -1064,9 +1087,13 @@ async def post_chess_round(
 
     # Reveal the answer immediately after the poll closes.
     # This must happen before any leaderboard/GitHub work.
-    await channel.send(
-        f"🔓 **The answer was: {owner}**"
-    )
+    reveal_text = f"🔓 **The answer was: {owner}**"
+    if game_url:
+        reveal_text += (
+            f"\n🔗 **Chess.com game:** {game_url}"
+        )
+
+    await channel.send(reveal_text)
 
     # Fetch the finished poll again so we read the final voter state.
     voters_by_answer = []
@@ -1172,153 +1199,15 @@ async def post_chess_round(
             f"🎉 {names}"
         )
 
-
-async def command_handler(
-    message
-):
-
-    if (
-        message.author.bot
-        or message.channel.id
-        != CHANNEL_ID
-    ):
-        return
-
-    command = (
-        message.content
-        .strip()
-        .casefold()
-    )
-
-    if command not in {
-        "!leaderboard",
-        "!lb",
-        "!l",
-    }:
-        return
-
-    # Guess Chatter already handles these commands while it is online.
-    # Give that bot a brief chance to respond first, so overlapping
-    # GitHub Actions do not normally post the leaderboard twice.
-    await asyncio.sleep(
-        1.5
-    )
-
-    try:
-        async for recent in message.channel.history(
-            limit=8,
-            after=message.created_at,
-        ):
-            if (
-                client.user is not None
-                and recent.author.id == client.user.id
-                and recent.content.startswith(
-                    "🏆 **Guess Games Leaderboard**"
-                )
-            ):
-                return
-
-    except Exception as error:
-        print(
-            f"Guess Chess leaderboard dedupe error: "
-            f"{error}",
-            flush=True,
-        )
-
-    leaderboard_text = await asyncio.to_thread(
-        full_leaderboard,
-        "🏆 **Guess Games Leaderboard**",
-    )
-
-    await message.channel.send(
-        leaderboard_text
-    )
+    view.stop()
+    return {
+        "type": "chess",
+        "poll_message_id": poll_message.id,
+        "answer": owner,
+        "game_url": game_url,
+    }
 
 
-@client.event
-async def on_message(
-    message
-):
-
-    try:
-        await command_handler(
-            message
-        )
-
-    except Exception as error:
-        print(
-            f"Guess Chess Chatter command error: "
-            f"{error}",
-            flush=True,
-        )
-
-        try:
-            await message.channel.send(
-                "❌ **Bot error:** "
-                f"`{str(error)[:1000]}`"
-            )
-        except Exception:
-            pass
-
-
-@client.event
-async def on_ready():
-
-    if getattr(
-        client,
-        "_chess_round_started",
-        False,
-    ):
-        return
-
-    client._chess_round_started = True
-
-    print(
-        f"Guess Chess Chatter ready as "
-        f"{client.user}",
-        flush=True,
-    )
-
-    try:
-        channel = await client.fetch_channel(
-            CHANNEL_ID
-        )
-
-        # One Action run = one round.
-        await post_chess_round(
-            channel
-        )
-
-        print(
-            "Guess Chess Chatter round finished.",
-            flush=True,
-        )
-
-    except Exception as error:
-        print(
-            f"Guess Chess Chatter error: "
-            f"{error}",
-            flush=True,
-        )
-
-        try:
-            channel = client.get_channel(
-                CHANNEL_ID
-            )
-
-            if channel is not None:
-                await channel.send(
-                    "❌ **Guess Chess Chatter error:** "
-                    f"`{str(error)[:900]}`"
-                )
-        except Exception:
-            pass
-
-    finally:
-        await client.close()
-
-
-client.run(
-    TOKEN,
-    reconnect=True,
-)
+# This module is intentionally a helper. The persistent Discord connection,
+# scheduler, !next and !l commands live in guess_chatter.py so only ONE
+# Gateway client owns the Guess games.
