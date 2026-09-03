@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/UAQ89",
     "title": "Lichess • 2704",
     "fen": "3N4/8/p7/PkP2p1p/3Kp2P/6P1/4b3/8 w - - 5 77",
-    "current_fen": "3N4/8/p1P5/Pk3p1p/3Kp1bP/6P1/8/8 w - - 1 78",
+    "current_fen": "3N4/2P5/p7/Pk5p/3KppbP/6P1/8/8 w - - 0 79",
     "pgn": "c6 Bg4 c7 f4 gxf4 e3 Kxe3 Kxa5 f5",
     "all_moves": [
       {
@@ -89,8 +89,8 @@
     "puzzle_id": "random_UAQ89_1788458543775",
     "rating": 2704,
     "rp_band": 5,
-    "next_solution_index": 2,
-    "next_player_index": 1,
+    "next_solution_index": 4,
+    "next_player_index": 2,
     "solved": false,
     "message_id": 1545131867563622490,
     "attempted_users": {
@@ -99,13 +99,21 @@
         "move": "c6",
         "correct": true,
         "timestamp": "2026-09-03T18:02:27.495794+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "c7",
+        "correct": true,
+        "timestamp": "2026-09-03T18:02:31.289555+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [
+      "601406103712170014"
+    ]
   },
   "latest_puzzle_type": "random",
   "leaderboard_last_posted_date": "2026-09-03",
