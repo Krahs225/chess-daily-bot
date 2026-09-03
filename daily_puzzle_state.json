@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/yIHZy",
     "title": "Lichess • 2203",
     "fen": "1r4k1/p3pr1p/q1NpNnpQ/3P4/2n1P3/5P2/Pp4P1/1K1R3R w - - 6 26",
-    "current_fen": "1r4k1/p3pr1p/q1NpNnpQ/3P4/2n1P3/5P2/Pp4P1/1K1R3R w - - 6 26",
+    "current_fen": "1N4k1/pq2pr1p/3pNnpQ/3P4/2n1P3/5P2/Pp4P1/1K1R3R w - - 1 27",
     "pgn": "Nxb8 Qb7 Rd3",
     "all_moves": [
       {
@@ -44,13 +44,20 @@
     "puzzle_id": "random_yIHZy_1788452586832",
     "rating": 2203,
     "rp_band": 3,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1545106880903254059,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nxb8",
+        "correct": true,
+        "timestamp": "2026-09-03T16:23:28.205468+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
