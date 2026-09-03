@@ -1,79 +1,87 @@
 {
   "latest_random_puzzle": {
-    "url": "https://lichess.org/training/v3Ghg",
-    "title": "Lichess • 1452",
-    "fen": "r4rk1/5pb1/2b1p1p1/pqNpPn1p/1p1P1P2/1P4PP/2PBN1B1/R2Q1R1K b - - 0 20",
-    "current_fen": "r4rk1/5pb1/2b1p1p1/p1NpP2p/1p1P1P2/1P5P/2PBn1BK/R4R2 w - - 0 23",
-    "pgn": "Qxe2 Qxe2 Nxg3+ Kh2 Nxe2",
+    "url": "https://lichess.org/training/fZMEX",
+    "title": "Lichess • 2721",
+    "fen": "6k1/2q2rbp/p1p3pB/4p3/8/2P3Pb/PP1Q3P/R3R1K1 b - - 1 23",
+    "current_fen": "6k1/2q2rbp/p1p3pB/4p3/8/2P3Pb/PP1Q3P/R3R1K1 b - - 1 23",
+    "pgn": "Bxh6 Qxh6 Qb6+ Kh1 Bg4 Qe3 Rf1+",
     "all_moves": [
       {
-        "uci": "b5e2",
-        "san": "Qxe2",
+        "uci": "g7h6",
+        "san": "Bxh6",
         "color": "black"
       },
       {
-        "uci": "d1e2",
-        "san": "Qxe2",
+        "uci": "d2h6",
+        "san": "Qxh6",
         "color": "white"
       },
       {
-        "uci": "f5g3",
-        "san": "Nxg3+",
+        "uci": "c7b6",
+        "san": "Qb6+",
         "color": "black"
       },
       {
-        "uci": "h1h2",
-        "san": "Kh2",
+        "uci": "g1h1",
+        "san": "Kh1",
         "color": "white"
       },
       {
-        "uci": "g3e2",
-        "san": "Nxe2",
+        "uci": "h3g4",
+        "san": "Bg4",
+        "color": "black"
+      },
+      {
+        "uci": "h6e3",
+        "san": "Qe3",
+        "color": "white"
+      },
+      {
+        "uci": "f7f1",
+        "san": "Rf1+",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "b5e2",
-        "san": "Qxe2",
+        "uci": "g7h6",
+        "san": "Bxh6",
         "color": "black"
       },
       {
-        "uci": "f5g3",
-        "san": "Nxg3+",
+        "uci": "c7b6",
+        "san": "Qb6+",
         "color": "black"
       },
       {
-        "uci": "g3e2",
-        "san": "Nxe2",
+        "uci": "h3g4",
+        "san": "Bg4",
+        "color": "black"
+      },
+      {
+        "uci": "f7f1",
+        "san": "Rf1+",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 3,
-    "posted_at": "2026-09-03T17:59:00.397280+00:00",
-    "answer_posted": true,
+    "player_move_count": 4,
+    "posted_at": "2026-09-03T17:59:24.330189+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_v3Ghg_1788458340397",
-    "rating": 1452,
-    "rp_band": 0,
-    "next_solution_index": 5,
-    "next_player_index": 3,
-    "solved": true,
-    "message_id": 1545131013687091211,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "nxe2",
-        "correct": true,
-        "timestamp": "2026-09-03T17:59:14.655886+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_fZMEX_1788458364330",
+    "rating": 2721,
+    "rp_band": 5,
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
