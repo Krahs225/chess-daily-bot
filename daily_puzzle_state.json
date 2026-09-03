@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/DMDZW",
     "title": "Lichess • 1904",
     "fen": "3r2k1/5p2/1p1rb1q1/p1pN3p/2P1p2P/1P2PpP1/P4P1K/2QR1B2 w - - 4 43",
-    "current_fen": "8/4Npk1/1p1rb1q1/p1p4p/2P1p2P/1P2PpP1/P4P1K/2Q2B2 w - - 0 45",
+    "current_fen": "8/5pk1/1p1rb1N1/p1p4p/2P1p2P/1P2PpP1/P4P1K/2Q2B2 b - - 0 45",
     "pgn": "Ne7+ Kg7 Rxd6 Rxd6 Nxg6",
     "all_moves": [
       {
@@ -59,21 +59,21 @@
     "puzzle_id": "random_DMDZW_1788456452195",
     "rating": 1904,
     "rp_band": 2,
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1545123100343926865,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "rxd6",
+        "move": "nxg6",
         "correct": true,
-        "timestamp": "2026-09-03T17:27:55.504322+00:00"
+        "timestamp": "2026-09-03T17:27:59.501830+00:00"
       }
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
+    "first_move_awarded": true,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
