@@ -571,7 +571,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-03T18:57:56.387392+00:00",
-        "last_activity": 1788461879.8953037,
+        "last_activity": 1788461908.2967024,
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 0,
@@ -579,14 +579,20 @@
         "used_puzzle_ids": [
           "Y9Emi"
         ],
-        "members": {},
+        "members": {
+          "442597396195704832": {
+            "name": "Thice",
+            "correct": 1,
+            "wrong": 0
+          }
+        },
         "puzzle": {
           "id": "Y9Emi",
           "rating": 1271,
           "themes": "mateIn1 oneMove middlegame",
           "url": "https://lichess.org/training/Y9Emi",
           "start_fen": "r2qrn2/pp2bk2/2p1pn2/3p2Q1/3P4/2NB1N1P/PPP2PP1/R5K1 w - - 3 16",
-          "current_fen": "r2qrn2/pp2bk2/2p1pn2/3p2Q1/3P4/2NB1N1P/PPP2PP1/R5K1 w - - 3 16",
+          "current_fen": "r2qrn2/pp2bk2/2p1pn2/3pN1Q1/3P4/2NB3P/PPP2PP1/R5K1 b - - 4 16",
           "solution": [
             {
               "uci": "f3e5",
@@ -595,17 +601,29 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 1,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Ne5#",
+          "accepted_moves": [
+            {
+              "san": "Ne5#",
+              "uci": "f3e5",
+              "accepted_at": 1788461908.296621,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "f3e5",
+          "last_accepted_move_san": "Ne5#",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1788461908.2966201,
+          "position_before_last_move": "r2qrn2/pp2bk2/2p1pn2/3p2Q1/3P4/2NB1N1P/PPP2PP1/R5K1 w - - 3 16"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       },
