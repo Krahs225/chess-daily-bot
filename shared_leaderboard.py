@@ -16,9 +16,8 @@ LEGACY_FILE = "shared_leaderboard.json"
 MIGRATION_TRANSACTION_ID = "__shared-ledger-v12-snapshot-migration__"
 MAX_RETRIES = 12
 
-# Exported for bot.py. Daily state commits and leaderboard writes in the same
-# process use one lock. Cross-process races are handled by Git fast-forward
-# retries, without resetting the running checkout.
+# Shared by bot.py so Daily state commits and leaderboard writes in the same
+# process cannot collide. Cross-process races are handled by Git push retries.
 REPOSITORY_LOCK = threading.RLock()
 _LOCK = REPOSITORY_LOCK
 
@@ -39,6 +38,10 @@ def _branch():
     return os.getenv("GITHUB_REF_NAME", "main")
 
 
+def _origin_ref():
+    return f"origin/{_branch()}"
+
+
 def _fetch():
     branch = _branch()
     result = _run([
@@ -57,10 +60,6 @@ def _fetch_retry(attempts=4):
         if attempt < attempts:
             time.sleep(min(1.5, 0.25 * attempt))
     return False
-
-
-def _origin_ref():
-    return f"origin/{_branch()}"
 
 
 def _origin_file(path):
@@ -99,18 +98,17 @@ def _normalize_snapshot(data):
     return snapshot
 
 
-def _origin_legacy_scores():
+def _origin_snapshot_file():
     raw = _origin_file(LEGACY_FILE)
     if raw is None:
         return {}
     try:
-        data = json.loads(raw)
+        return _normalize_snapshot(json.loads(raw))
     except Exception:
         return None
-    return _normalize_snapshot(data)
 
 
-def _local_legacy_scores():
+def _local_snapshot_file():
     normalized = _normalize_snapshot(_local_json(LEGACY_FILE))
     return normalized if normalized is not None else {}
 
@@ -137,7 +135,7 @@ def _local_event(transaction_id):
 
 
 def _origin_events_all():
-    """Load old immutable events only for the one-time v12 migration path."""
+    """Read old immutable events only for the one-time v12 migration."""
     result = subprocess.run(
         ["git", "archive", "--format=tar", _origin_ref(), EVENT_DIR],
         capture_output=True,
@@ -173,6 +171,7 @@ def _local_events_all():
     root = Path(EVENT_DIR)
     if not root.exists():
         return events
+
     for path in root.glob("*.json"):
         try:
             event = json.loads(path.read_text(encoding="utf-8"))
@@ -184,13 +183,15 @@ def _local_events_all():
         if tx_id:
             events[str(tx_id)] = event
     return events
-    def _historical_snapshot(events, legacy):
-    """
-    Reproduce the pre-v12 ledger exactly once.
 
-    Before v12, once event files existed, shared_leaderboard.json was ignored
-    and every event amount was summed. If no events existed, the JSON snapshot
-    was used. This preserves everybody's live score at migration time.
+
+def _historical_snapshot(events, legacy):
+    """
+    Reproduce the pre-v12 leaderboard exactly once.
+
+    Old behavior was: if immutable events exist, sum their amounts and ignore
+    shared_leaderboard.json; otherwise use shared_leaderboard.json. After the
+    migration marker exists, this reconstruction is never used again.
     """
     if not events:
         return {
@@ -212,6 +213,7 @@ def _local_events_all():
         uid = str(event.get("user_id", "")).strip()
         if not uid:
             continue
+
         try:
             amount = float(event.get("amount", 0))
         except Exception:
@@ -225,9 +227,15 @@ def _local_events_all():
         entry["points"] = round(float(entry["points"]) + amount, 3)
 
         try:
-            created = int(event.get("created_at", 0))
+            created = int(event.get("created_at_ns", 0))
         except Exception:
             created = 0
+        if created <= 0:
+            try:
+                created = int(event.get("created_at", 0)) * 1_000_000_000
+            except Exception:
+                created = 0
+
         if created >= entry["_last_created"]:
             entry["_last_created"] = created
             entry["name"] = str(
@@ -240,30 +248,29 @@ def _local_events_all():
 
 
 def _origin_state():
-    """Return (snapshot, migrated). Requires a successful fetch beforehand."""
+    """Return (snapshot, migrated). Call only after a successful fetch."""
     migrated = _origin_event(MIGRATION_TRANSACTION_ID) is not None
 
     if migrated:
-        snapshot = _origin_legacy_scores()
+        snapshot = _origin_snapshot_file()
         if snapshot is None:
             raise RuntimeError(
-                "Canonical shared_leaderboard.json is missing or invalid after v12 migration."
+                "Canonical shared_leaderboard.json is missing or invalid "
+                "after v12 migration."
             )
         return snapshot, True
 
-    legacy = _origin_legacy_scores()
+    legacy = _origin_snapshot_file()
     if legacy is None:
         legacy = {}
-    events = _origin_events_all()
-    return _historical_snapshot(events, legacy), False
+    return _historical_snapshot(_origin_events_all(), legacy), False
 
 
 def _local_state():
     migrated = _local_event(MIGRATION_TRANSACTION_ID) is not None
     if migrated:
-        snapshot = _local_legacy_scores()
-        return snapshot, True
-    return _historical_snapshot(_local_events_all(), _local_legacy_scores()), False
+        return _local_snapshot_file(), True
+    return _historical_snapshot(_local_events_all(), _local_snapshot_file()), False
 
 
 def _snapshot_json(snapshot):
@@ -302,6 +309,7 @@ def _audit_event(
         "source": str(source),
         "ledger_build": LEDGER_BUILD,
         "created_at": int(time.time()),
+        "created_at_ns": int(time.time_ns()),
     }
 
 
@@ -312,6 +320,7 @@ def _migration_event():
         "source": "v12-snapshot-migration",
         "ledger_build": LEDGER_BUILD,
         "created_at": int(time.time()),
+        "created_at_ns": int(time.time_ns()),
     }
 
 
@@ -324,17 +333,17 @@ def _git_blob(content):
 
 def _commit_snapshot(base_commit, files, message):
     """
-    Create a commit with a temporary Git index.
+    Build a commit with a temporary Git index.
 
-    This never runs git reset/checkout and never touches bot.py, the RP pool,
-    Survival state, or any other file in the running Actions checkout.
+    No reset, checkout, or worktree mutation is used, so a leaderboard write
+    cannot overwrite the running bot's Daily/Random/Survival files.
     """
     with tempfile.TemporaryDirectory(prefix="shared-ledger-index-") as temp_dir:
         index_file = os.path.join(temp_dir, "index")
-        env = os.environ.copy()
-        env["GIT_INDEX_FILE"] = index_file
+        index_env = os.environ.copy()
+        index_env["GIT_INDEX_FILE"] = index_file
 
-        read_tree = _run(["git", "read-tree", base_commit], env=env)
+        read_tree = _run(["git", "read-tree", base_commit], env=index_env)
         if read_tree.returncode != 0:
             raise RuntimeError(read_tree.stderr.strip() or "git read-tree failed")
 
@@ -350,16 +359,19 @@ def _commit_snapshot(base_commit, files, message):
                     blob,
                     path,
                 ],
-                env=env,
+                env=index_env,
             )
             if update.returncode != 0:
-                raise RuntimeError(update.stderr.strip() or "git update-index failed")
+                raise RuntimeError(
+                    update.stderr.strip() or "git update-index failed"
+                )
 
-        tree = _run(["git", "write-tree"], env=env)
+        tree = _run(["git", "write-tree"], env=index_env)
         if tree.returncode != 0:
             raise RuntimeError(tree.stderr.strip() or "git write-tree failed")
         tree_id = tree.stdout.strip()
-                commit_env = os.environ.copy()
+
+        commit_env = os.environ.copy()
         commit_env.update({
             "GIT_AUTHOR_NAME": "Shared Chatter Ledger",
             "GIT_AUTHOR_EMAIL": "shared-chatter-ledger@users.noreply.github.com",
@@ -409,9 +421,7 @@ def _verified_origin_snapshot(required_transaction_id=None):
         if _origin_event(required_transaction_id) is None:
             return snapshot, False
 
-    _CACHE_SNAPSHOT = {
-        uid: dict(entry) for uid, entry in snapshot.items()
-    }
+    _CACHE_SNAPSHOT = {uid: dict(entry) for uid, entry in snapshot.items()}
     return snapshot, True
 
 
@@ -537,7 +547,7 @@ def admin_set_points(
                 )
             else:
                 matches = []
-                                for candidate_uid, entry in snapshot.items():
+                for candidate_uid, entry in snapshot.items():
                     name = str(entry.get("name", "Unknown")).casefold().strip()
                     if name == wanted:
                         matches.append((str(candidate_uid), entry))
@@ -553,24 +563,14 @@ def admin_set_points(
                     )
 
                 uid, existing_entry = matches[0]
-                canonical_name = str(
-                    existing_entry.get("name", display_name)
-                )
+                canonical_name = str(existing_entry.get("name", display_name))
 
             if existing is not None:
-                _CACHE_SNAPSHOT = {
-                    k: dict(v) for k, v in snapshot.items()
-                }
-                return float(
-                    snapshot.get(uid, {}).get("points", 0)
-                )
+                _CACHE_SNAPSHOT = {k: dict(v) for k, v in snapshot.items()}
+                return float(snapshot.get(uid, {}).get("points", 0))
 
-            before = float(
-                snapshot.get(uid, {}).get("points", 0)
-            )
-
+            before = float(snapshot.get(uid, {}).get("points", 0))
             after = target_points
-
             snapshot[uid] = {
                 "name": canonical_name,
                 "points": after,
@@ -588,237 +588,96 @@ def admin_set_points(
             )
 
             files = {
-                LEGACY_FILE:
-                    _snapshot_json(snapshot),
-
-                _event_filename(transaction_id):
-                    _event_json(payload),
+                LEGACY_FILE: _snapshot_json(snapshot),
+                _event_filename(transaction_id): _event_json(payload),
             }
-
             if not migrated:
-                files[
-                    _event_filename(
-                        MIGRATION_TRANSACTION_ID
-                    )
-                ] = _event_json(
+                files[_event_filename(MIGRATION_TRANSACTION_ID)] = _event_json(
                     _migration_event()
                 )
 
-            if _push_files(
-                files,
-                "Set shared leaderboard score",
-            ):
-                verified_snapshot, verified = (
-                    _verified_origin_snapshot(
-                        transaction_id
-                    )
-                )
+            if _push_files(files, "Set shared leaderboard score"):
+                verified_snapshot, verified = _verified_origin_snapshot(transaction_id)
+                if verified and verified_snapshot is not None:
+                    return float(verified_snapshot.get(uid, {}).get("points", after))
 
-                if (
-                    verified
-                    and verified_snapshot is not None
-                ):
-                    return float(
-                        verified_snapshot.get(
-                            uid,
-                            {},
-                        ).get(
-                            "points",
-                            after,
-                        )
-                    )
+            time.sleep(min(2.0, 0.25 * attempt))
 
-            time.sleep(
-                min(
-                    2.0,
-                    0.25 * attempt,
-                )
-            )
-
-    raise RuntimeError(
-        "Could not safely set the shared leaderboard score."
-    )
+    raise RuntimeError("Could not safely set the shared leaderboard score.")
 
 
 def get_score(user_id):
     snapshot = _current_snapshot()
-
-    return float(
-        snapshot.get(
-            str(user_id),
-            {},
-        ).get(
-            "points",
-            0,
-        )
-    )
+    return float(snapshot.get(str(user_id), {}).get("points", 0))
 
 
 def format_points(value):
     value = float(value)
-
     if value.is_integer():
         return str(int(value))
-
-    text = (
-        f"{value:.3f}"
-        .rstrip("0")
-        .rstrip(".")
-    )
-
-    return text
+    return f"{value:.3f}".rstrip("0").rstrip(".")
 
 
 def _ordered(snapshot):
     return sorted(
         snapshot.items(),
         key=lambda item: (
-            -float(
-                item[1].get(
-                    "points",
-                    0,
-                )
-            ),
-            str(
-                item[1].get(
-                    "name",
-                    "Unknown",
-                )
-            ).casefold(),
+            -float(item[1].get("points", 0)),
+            str(item[1].get("name", "Unknown")).casefold(),
         ),
     )
 
 
 def personal_ranking(user_id):
     snapshot = _current_snapshot()
-
-    ordered = _ordered(
-        snapshot
-    )
-
+    ordered = _ordered(snapshot)
     position = next(
-        (
-            i
-            for i, (uid, _)
-            in enumerate(ordered)
-            if str(uid) == str(user_id)
-        ),
+        (i for i, (uid, _) in enumerate(ordered) if str(uid) == str(user_id)),
         None,
     )
-
     if position is None:
         return ""
 
-    start = max(
-        0,
-        position - 1,
-    )
+    start = max(0, position - 1)
+    end = min(len(ordered), position + 2)
+    lines = ["🏆 **Your ranking**"]
 
-    end = min(
-        len(ordered),
-        position + 2,
-    )
-
-    lines = [
-        "🏆 **Your ranking**"
-    ]
-
-    for i in range(
-        start,
-        end,
-    ):
+    for i in range(start, end):
         uid, entry = ordered[i]
-
-        points = float(
-            entry.get(
-                "points",
-                0,
-            )
-        )
-
-        word = (
-            "point"
-            if points == 1
-            else "points"
-        )
-
-        marker = (
-            " ← you"
-            if str(uid) == str(user_id)
-            else ""
-        )
-
+        points = float(entry.get("points", 0))
+        word = "point" if points == 1 else "points"
+        marker = " ← you" if str(uid) == str(user_id) else ""
         lines.append(
-            f"**#{i + 1} "
-            f"{entry.get('name', 'Unknown')} — "
-            f"{format_points(points)} "
-            f"{word}{marker}**"
+            f"**#{i + 1} {entry.get('name', 'Unknown')} — "
+            f"{format_points(points)} {word}{marker}**"
         )
 
-    return "\n".join(
-        lines
-    )
+    return "\n".join(lines)
 
 
-def full_leaderboard(
-    title="🏆 **Shared Leaderboard**"
-):
+def full_leaderboard(title="🏆 **Shared Leaderboard**"):
     snapshot = _current_snapshot()
-
-    ordered = _ordered(
-        snapshot
-    )
-
+    ordered = _ordered(snapshot)
     if not ordered:
-        return (
-            f"{title}\n\n"
-            "No points yet!"
-        )
+        return f"{title}\n\nNo points yet!"
 
-    lines = [
-        title,
-        "",
-    ]
-
-    for rank, (
-        _uid,
-        entry,
-    ) in enumerate(
-        ordered,
-        start=1,
-    ):
-        points = float(
-            entry.get(
-                "points",
-                0,
-            )
-        )
-
-        word = (
-            "point"
-            if points == 1
-            else "points"
-        )
+    lines = [title, ""]
+    for rank, (_uid, entry) in enumerate(ordered, start=1):
+        points = float(entry.get("points", 0))
+        word = "point" if points == 1 else "points"
 
         if rank == 1:
             prefix = "🥇"
-
         elif rank == 2:
             prefix = "🥈"
-
         elif rank == 3:
             prefix = "🥉"
-
         else:
             prefix = f"**{rank}.**"
 
         lines.append(
-            f"{prefix} "
-            f"{entry.get('name', 'Unknown')} — "
-            f"**{format_points(points)} "
-            f"{word}**"
+            f"{prefix} {entry.get('name', 'Unknown')} — "
+            f"**{format_points(points)} {word}**"
         )
 
-    return "\n".join(
-        lines
-    )
+    return "\n".join(lines)
