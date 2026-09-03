@@ -12,6 +12,12 @@ from pathlib import Path
 EVENT_DIR = "guess_leaderboard_events"
 LEGACY_FILE = "guess_leaderboard.json"
 
+# Immutable per-vote events + a compact snapshot power !stats. This is kept
+# separate from the points ledger so old leaderboard behavior stays untouched.
+STATS_EVENT_DIR = "guess_stats_events"
+STATS_FILE = "guess_stats.json"
+GUESS_STATS_BUILD = "guess-stats-v1-all-guess-games-2026-09-03"
+
 _LOCK = threading.Lock()
 MAX_RETRIES = 12
 
@@ -811,3 +817,441 @@ def full_leaderboard(
     return "\n".join(
         lines
     )
+
+# ============================================================
+# GUESS VOTE STATS
+# ============================================================
+
+
+def _empty_stats_snapshot():
+    return {
+        "version": 1,
+        "build": GUESS_STATS_BUILD,
+        "users": {},
+    }
+
+
+def _normalize_stats_snapshot(data):
+    snapshot = _empty_stats_snapshot()
+
+    if not isinstance(data, dict):
+        return snapshot
+
+    users = data.get("users", {})
+    if not isinstance(users, dict):
+        return snapshot
+
+    clean_users = {}
+
+    for uid, entry in users.items():
+        if not isinstance(entry, dict):
+            continue
+
+        try:
+            total = max(0, int(entry.get("total", 0)))
+        except Exception:
+            total = 0
+
+        try:
+            correct = max(0, int(entry.get("correct", 0)))
+        except Exception:
+            correct = 0
+
+        correct = min(correct, total)
+        wrong = total - correct
+
+        clean_users[str(uid)] = {
+            "name": str(entry.get("name", "Unknown")),
+            "total": total,
+            "correct": correct,
+            "wrong": wrong,
+            "updated_at": int(entry.get("updated_at", 0) or 0),
+        }
+
+    snapshot["users"] = clean_users
+    return snapshot
+
+
+def _origin_stats_snapshot():
+    raw = _origin_file(STATS_FILE)
+
+    if not raw:
+        return _empty_stats_snapshot()
+
+    try:
+        return _normalize_stats_snapshot(
+            json.loads(raw)
+        )
+    except Exception:
+        return _empty_stats_snapshot()
+
+
+def _local_stats_snapshot():
+    path = Path(STATS_FILE)
+
+    if not path.exists():
+        return _empty_stats_snapshot()
+
+    try:
+        return _normalize_stats_snapshot(
+            json.loads(path.read_text(encoding="utf-8"))
+        )
+    except Exception:
+        return _empty_stats_snapshot()
+
+
+def _stats_event_filename(transaction_id):
+    digest = hashlib.sha256(
+        str(transaction_id).encode("utf-8")
+    ).hexdigest()
+
+    return f"{STATS_EVENT_DIR}/{digest}.json"
+
+
+def _stats_event_payload(
+    transaction_id,
+    poll_message_id,
+    user_id,
+    display_name,
+    correct,
+    source,
+):
+    return {
+        "transaction_id": str(transaction_id),
+        "poll_message_id": str(poll_message_id),
+        "user_id": str(user_id),
+        "display_name": str(display_name),
+        "correct": bool(correct),
+        "source": str(source),
+        "stats_build": GUESS_STATS_BUILD,
+        "created_at": int(time.time()),
+    }
+
+
+def _write_json_atomic(path, payload):
+    target = Path(path)
+    target.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    temp = target.with_suffix(
+        target.suffix + ".tmp"
+    )
+
+    temp.write_text(
+        json.dumps(
+            payload,
+            indent=2,
+            ensure_ascii=False,
+            sort_keys=True,
+        ) + "\n",
+        encoding="utf-8",
+    )
+
+    temp.replace(target)
+
+
+def record_poll_votes(
+    poll_message_id,
+    votes,
+    *,
+    source="guess-games",
+):
+    """
+    Record each Discord user's vote exactly once for this poll.
+
+    votes is an iterable of dictionaries containing:
+      user_id, display_name, correct
+
+    The stats ledger is independent from Guess points. Correct and wrong votes
+    both count as one vote, while the existing points system remains unchanged.
+    """
+    normalized_votes = []
+    seen_users = set()
+
+    for vote in votes or []:
+        if not isinstance(vote, dict):
+            continue
+
+        user_id = str(vote.get("user_id", "")).strip()
+        if not user_id or user_id in seen_users:
+            continue
+
+        seen_users.add(user_id)
+        normalized_votes.append(
+            {
+                "user_id": user_id,
+                "display_name": str(
+                    vote.get("display_name", "Unknown")
+                ),
+                "correct": bool(vote.get("correct", False)),
+            }
+        )
+
+    if not normalized_votes:
+        return _current_stats_snapshot()
+
+    with _LOCK:
+        for attempt in range(1, MAX_RETRIES + 1):
+            if not _fetch():
+                time.sleep(
+                    min(2, attempt * 0.2)
+                )
+                continue
+
+            snapshot = _origin_stats_snapshot()
+            pending = []
+
+            for vote in normalized_votes:
+                transaction_id = (
+                    f"guess-stats:{poll_message_id}:"
+                    f"{vote['user_id']}"
+                )
+                event_path = _stats_event_filename(
+                    transaction_id
+                )
+
+                # This exact poll/user vote was already committed.
+                if _origin_file(event_path) is not None:
+                    continue
+
+                pending.append(
+                    (
+                        transaction_id,
+                        event_path,
+                        vote,
+                    )
+                )
+
+            if not pending:
+                return snapshot
+
+            if not _reset_to_origin():
+                time.sleep(
+                    min(2, attempt * 0.2)
+                )
+                continue
+
+            working = _normalize_stats_snapshot(
+                snapshot
+            )
+            users = working["users"]
+            commit_paths = []
+            now = int(time.time())
+
+            for transaction_id, event_path, vote in pending:
+                uid = vote["user_id"]
+                entry = users.setdefault(
+                    uid,
+                    {
+                        "name": vote["display_name"],
+                        "total": 0,
+                        "correct": 0,
+                        "wrong": 0,
+                        "updated_at": 0,
+                    },
+                )
+
+                entry["name"] = vote["display_name"]
+                entry["total"] = int(entry.get("total", 0)) + 1
+
+                if vote["correct"]:
+                    entry["correct"] = int(entry.get("correct", 0)) + 1
+
+                entry["wrong"] = (
+                    int(entry["total"])
+                    - int(entry.get("correct", 0))
+                )
+                entry["updated_at"] = now
+
+                payload = _stats_event_payload(
+                    transaction_id,
+                    poll_message_id,
+                    uid,
+                    vote["display_name"],
+                    vote["correct"],
+                    source,
+                )
+                _write_json_atomic(
+                    event_path,
+                    payload,
+                )
+                commit_paths.append(event_path)
+
+            _write_json_atomic(
+                STATS_FILE,
+                working,
+            )
+            commit_paths.append(STATS_FILE)
+
+            if _commit_push(commit_paths):
+                return working
+
+            # Another process changed origin. Retry from the newest state;
+            # immutable event filenames keep this idempotent.
+            time.sleep(
+                min(2, attempt * 0.25)
+            )
+
+        raise RuntimeError(
+            f"Could not safely record Guess stats for poll {poll_message_id}."
+        )
+
+
+def _current_stats_snapshot():
+    with _LOCK:
+        if _fetch():
+            return _origin_stats_snapshot()
+
+        return _local_stats_snapshot()
+
+
+def _stats_result(user_id, entry, fallback_name=None):
+    entry = entry if isinstance(entry, dict) else {}
+
+    total = max(0, int(entry.get("total", 0) or 0))
+    correct = max(0, int(entry.get("correct", 0) or 0))
+    correct = min(correct, total)
+    wrong = total - correct
+
+    accuracy = (
+        (correct / total) * 100.0
+        if total
+        else 0.0
+    )
+
+    return {
+        "user_id": str(user_id),
+        "name": str(
+            entry.get(
+                "name",
+                fallback_name or "Unknown",
+            )
+        ),
+        "total": total,
+        "correct": correct,
+        "wrong": wrong,
+        "accuracy": accuracy,
+    }
+
+
+def guess_stats_for_user(
+    user_id,
+    fallback_name=None,
+):
+    snapshot = _current_stats_snapshot()
+    entry = snapshot.get(
+        "users",
+        {},
+    ).get(
+        str(user_id)
+    )
+
+    return _stats_result(
+        user_id,
+        entry,
+        fallback_name=fallback_name,
+    )
+
+
+def _stats_name_key(value):
+    return "".join(
+        character
+        for character in str(value).casefold()
+        if character.isalnum()
+    )
+
+
+def guess_stats_for_name(name):
+    snapshot = _current_stats_snapshot()
+    users = snapshot.get("users", {})
+
+    query = _stats_name_key(name)
+    if not query:
+        return None
+
+    candidates = []
+
+    for uid, entry in users.items():
+        display_name = str(
+            entry.get("name", "Unknown")
+        )
+        key = _stats_name_key(display_name)
+
+        if key:
+            candidates.append(
+                (
+                    uid,
+                    entry,
+                    key,
+                )
+            )
+
+    exact = [
+        item
+        for item in candidates
+        if item[2] == query
+    ]
+
+    if exact:
+        uid, entry, _ = max(
+            exact,
+            key=lambda item: int(
+                item[1].get("total", 0)
+            ),
+        )
+        return _stats_result(uid, entry)
+
+    # Small spelling mistakes are accepted, similar to the player-info command.
+    keys = sorted(
+        set(item[2] for item in candidates)
+    )
+
+    if len(query) >= 4 and keys:
+        from difflib import get_close_matches
+
+        close = get_close_matches(
+            query,
+            keys,
+            n=1,
+            cutoff=0.80,
+        )
+
+        if close:
+            matched_key = close[0]
+            matching = [
+                item
+                for item in candidates
+                if item[2] == matched_key
+            ]
+            uid, entry, _ = max(
+                matching,
+                key=lambda item: int(
+                    item[1].get("total", 0)
+                ),
+            )
+            return _stats_result(uid, entry)
+
+    return None
+
+
+def format_guess_stats(stats):
+    stats = stats or {}
+
+    name = str(
+        stats.get("name", "Unknown")
+    )
+    total = int(stats.get("total", 0) or 0)
+    correct = int(stats.get("correct", 0) or 0)
+    wrong = int(stats.get("wrong", 0) or 0)
+    accuracy = float(stats.get("accuracy", 0.0) or 0.0)
+
+    return (
+        f"📊 **Guess Stats — {name}**\n\n"
+        f"🗳️ **Total votes:** {total}\n"
+        f"✅ **Correct:** {correct}\n"
+        f"❌ **Wrong:** {wrong}\n"
+        f"🎯 **Accuracy:** {accuracy:.1f}%"
+    )
+
