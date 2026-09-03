@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/wCyEz",
     "title": "Lichess • 1577",
     "fen": "2k5/1pp2N2/pq4p1/5pQ1/b1Prr3/P7/1P1R2PP/2K4R w - - 0 30",
-    "current_fen": "2kr4/1pp2N2/pq4p1/5p2/b1P1r3/P7/1P1R2PP/2K4R w - - 0 31",
+    "current_fen": "2kR4/1pp2N2/pq4p1/5p2/b1P1r3/P7/1P4PP/2K4R b - - 0 31",
     "pgn": "Qd8+ Rxd8 Rxd8#",
     "all_moves": [
       {
@@ -44,9 +44,9 @@
     "puzzle_id": "random_wCyEz_1788458802035",
     "rating": 1577,
     "rp_band": 1,
-    "next_solution_index": 2,
-    "next_player_index": 1,
-    "solved": false,
+    "next_solution_index": 3,
+    "next_player_index": 2,
+    "solved": true,
     "message_id": 1545132949253398599,
     "attempted_users": {
       "601406103712170014": {
@@ -57,16 +57,20 @@
       },
       "442597396195704832": {
         "name": "Thice",
-        "move": "qd8",
-        "correct": false,
-        "timestamp": "2026-09-03T18:06:46.220201+00:00"
+        "move": "rxd8",
+        "correct": true,
+        "timestamp": "2026-09-03T18:06:47.292741+00:00"
       }
     },
     "first_move_user_id": "601406103712170014",
     "first_move_user_name": "TheMakina",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "442597396195704832"
+    ],
+    "helper_candidate_users": [
+      "442597396195704832"
+    ]
   },
   "latest_puzzle_type": "random",
   "leaderboard_last_posted_date": "2026-09-03",
