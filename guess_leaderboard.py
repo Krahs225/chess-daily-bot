@@ -16,7 +16,7 @@ LEGACY_FILE = "guess_leaderboard.json"
 # separate from the points ledger so old leaderboard behavior stays untouched.
 STATS_EVENT_DIR = "guess_stats_events"
 STATS_FILE = "guess_stats.json"
-GUESS_STATS_BUILD = "guess-stats-v1-all-guess-games-2026-09-03"
+GUESS_STATS_BUILD = "guess-stats-v2-streaks-nemesis-2026-09-04"
 
 _LOCK = threading.Lock()
 MAX_RETRIES = 12
@@ -767,16 +767,13 @@ def full_leaderboard(
         snapshot
     )
 
-    if not ordered:
-        return (
-            f"{title}\n\n"
-            "No points yet!"
-        )
-
     lines = [
         title,
         "",
     ]
+
+    if not ordered:
+        lines.append("No points yet!")
 
     for rank, (
         _uid,
@@ -814,21 +811,57 @@ def full_leaderboard(
             f"**{format_points(points)} {word}**"
         )
 
-    return "\n".join(
+    points_text = "\n".join(
         lines
     )
 
+    try:
+        streak_text = guess_streak_leaderboard(limit=10)
+    except Exception as error:
+        print(
+            f"Guess streak leaderboard error: {error}",
+            flush=True,
+        )
+        streak_text = "🔥 **Best Guess Streaks**\nTemporarily unavailable."
+
+    return points_text + "\n\n" + streak_text
+
 # ============================================================
-# GUESS VOTE STATS
+# GUESS VOTE STATS / STREAKS / NEMESIS
 # ============================================================
 
 
 def _empty_stats_snapshot():
     return {
-        "version": 1,
+        "version": 2,
         "build": GUESS_STATS_BUILD,
         "users": {},
     }
+
+
+def _normalize_target_bucket(value):
+    clean = {}
+    if not isinstance(value, dict):
+        return clean
+
+    for target_name, entry in value.items():
+        if not isinstance(entry, dict):
+            continue
+        try:
+            correct = max(0, int(entry.get("correct", 0) or 0))
+        except Exception:
+            correct = 0
+        try:
+            wrong = max(0, int(entry.get("wrong", 0) or 0))
+        except Exception:
+            wrong = 0
+        total = correct + wrong
+        clean[str(target_name)] = {
+            "correct": correct,
+            "wrong": wrong,
+            "total": total,
+        }
+    return clean
 
 
 def _normalize_stats_snapshot(data):
@@ -848,23 +881,45 @@ def _normalize_stats_snapshot(data):
             continue
 
         try:
-            total = max(0, int(entry.get("total", 0)))
+            total = max(0, int(entry.get("total", 0) or 0))
         except Exception:
             total = 0
 
         try:
-            correct = max(0, int(entry.get("correct", 0)))
+            correct = max(0, int(entry.get("correct", 0) or 0))
         except Exception:
             correct = 0
 
         correct = min(correct, total)
         wrong = total - correct
 
+        try:
+            current_streak = max(0, int(entry.get("current_streak", 0) or 0))
+        except Exception:
+            current_streak = 0
+
+        try:
+            best_streak = max(0, int(entry.get("best_streak", current_streak) or 0))
+        except Exception:
+            best_streak = current_streak
+
+        best_streak = max(best_streak, current_streak)
+
+        targets = entry.get("targets", {})
+        if not isinstance(targets, dict):
+            targets = {}
+
         clean_users[str(uid)] = {
             "name": str(entry.get("name", "Unknown")),
             "total": total,
             "correct": correct,
             "wrong": wrong,
+            "current_streak": current_streak,
+            "best_streak": best_streak,
+            "targets": {
+                "chatter": _normalize_target_bucket(targets.get("chatter", {})),
+                "chess": _normalize_target_bucket(targets.get("chess", {})),
+            },
             "updated_at": int(entry.get("updated_at", 0) or 0),
         }
 
@@ -879,9 +934,7 @@ def _origin_stats_snapshot():
         return _empty_stats_snapshot()
 
     try:
-        return _normalize_stats_snapshot(
-            json.loads(raw)
-        )
+        return _normalize_stats_snapshot(json.loads(raw))
     except Exception:
         return _empty_stats_snapshot()
 
@@ -904,8 +957,14 @@ def _stats_event_filename(transaction_id):
     digest = hashlib.sha256(
         str(transaction_id).encode("utf-8")
     ).hexdigest()
-
     return f"{STATS_EVENT_DIR}/{digest}.json"
+
+
+def _stats_source_key(source):
+    source_text = str(source).casefold()
+    if "chess" in source_text:
+        return "chess"
+    return "chatter"
 
 
 def _stats_event_payload(
@@ -915,6 +974,8 @@ def _stats_event_payload(
     display_name,
     correct,
     source,
+    target_name,
+    streak_after,
 ):
     return {
         "transaction_id": str(transaction_id),
@@ -923,6 +984,9 @@ def _stats_event_payload(
         "display_name": str(display_name),
         "correct": bool(correct),
         "source": str(source),
+        "source_key": _stats_source_key(source),
+        "target_name": str(target_name or ""),
+        "streak_after": int(streak_after),
         "stats_build": GUESS_STATS_BUILD,
         "created_at": int(time.time()),
     }
@@ -930,15 +994,9 @@ def _stats_event_payload(
 
 def _write_json_atomic(path, payload):
     target = Path(path)
-    target.parent.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
+    target.parent.mkdir(parents=True, exist_ok=True)
 
-    temp = target.with_suffix(
-        target.suffix + ".tmp"
-    )
-
+    temp = target.with_suffix(target.suffix + ".tmp")
     temp.write_text(
         json.dumps(
             payload,
@@ -948,8 +1006,33 @@ def _write_json_atomic(path, payload):
         ) + "\n",
         encoding="utf-8",
     )
-
     temp.replace(target)
+
+
+def _bonus_candidate_from_event(raw_event):
+    if not raw_event:
+        return None
+    try:
+        event = json.loads(raw_event)
+    except Exception:
+        return None
+    if not isinstance(event, dict) or not event.get("correct"):
+        return None
+    try:
+        streak_after = int(event.get("streak_after", 0) or 0)
+    except Exception:
+        return None
+    if streak_after <= 0 or streak_after % 10 != 0:
+        return None
+    uid = str(event.get("user_id", "")).strip()
+    if not uid:
+        return None
+    return {
+        "user_id": uid,
+        "display_name": str(event.get("display_name", "Unknown")),
+        "streak": streak_after,
+        "new": False,
+    }
 
 
 def record_poll_votes(
@@ -957,15 +1040,12 @@ def record_poll_votes(
     votes,
     *,
     source="guess-games",
+    target_name=None,
 ):
-    """
-    Record each Discord user's vote exactly once for this poll.
+    """Record each user's Guess vote once and update streak/nemesis stats.
 
-    votes is an iterable of dictionaries containing:
-      user_id, display_name, correct
-
-    The stats ledger is independent from Guess points. Correct and wrong votes
-    both count as one vote, while the existing points system remains unchanged.
+    Every combined Guess streak milestone 10/20/30/... awards +1 Guess point.
+    The bonus uses a deterministic transaction id, so retries cannot duplicate it.
     """
     normalized_votes = []
     seen_users = set()
@@ -982,63 +1062,62 @@ def record_poll_votes(
         normalized_votes.append(
             {
                 "user_id": user_id,
-                "display_name": str(
-                    vote.get("display_name", "Unknown")
-                ),
+                "display_name": str(vote.get("display_name", "Unknown")),
                 "correct": bool(vote.get("correct", False)),
+                "target_name": str(
+                    vote.get("target_name", target_name or "") or ""
+                ),
             }
         )
 
     if not normalized_votes:
-        return _current_stats_snapshot()
+        result = _current_stats_snapshot()
+        result["_streak_bonuses"] = []
+        return result
+
+    committed_snapshot = None
+    bonus_candidates = []
+    new_bonus_keys = set()
 
     with _LOCK:
         for attempt in range(1, MAX_RETRIES + 1):
             if not _fetch():
-                time.sleep(
-                    min(2, attempt * 0.2)
-                )
+                time.sleep(min(2, attempt * 0.2))
                 continue
 
             snapshot = _origin_stats_snapshot()
             pending = []
+            bonus_candidates = []
+            new_bonus_keys = set()
 
             for vote in normalized_votes:
                 transaction_id = (
-                    f"guess-stats:{poll_message_id}:"
-                    f"{vote['user_id']}"
+                    f"guess-stats:{poll_message_id}:{vote['user_id']}"
                 )
-                event_path = _stats_event_filename(
-                    transaction_id
-                )
+                event_path = _stats_event_filename(transaction_id)
+                existing_raw = _origin_file(event_path)
 
-                # This exact poll/user vote was already committed.
-                if _origin_file(event_path) is not None:
+                if existing_raw is not None:
+                    existing_bonus = _bonus_candidate_from_event(existing_raw)
+                    if existing_bonus is not None:
+                        bonus_candidates.append(existing_bonus)
                     continue
 
-                pending.append(
-                    (
-                        transaction_id,
-                        event_path,
-                        vote,
-                    )
-                )
+                pending.append((transaction_id, event_path, vote))
 
             if not pending:
-                return snapshot
+                committed_snapshot = snapshot
+                break
 
             if not _reset_to_origin():
-                time.sleep(
-                    min(2, attempt * 0.2)
-                )
+                time.sleep(min(2, attempt * 0.2))
                 continue
 
-            working = _normalize_stats_snapshot(
-                snapshot
-            )
+            working = _normalize_stats_snapshot(snapshot)
             users = working["users"]
             commit_paths = []
             now = int(time.time())
+            source_key = _stats_source_key(source)
 
             for transaction_id, event_path, vote in pending:
                 uid = vote["user_id"]
@@ -1049,22 +1128,46 @@ def record_poll_votes(
                         "total": 0,
                         "correct": 0,
                         "wrong": 0,
+                        "current_streak": 0,
+                        "best_streak": 0,
+                        "targets": {"chatter": {}, "chess": {}},
                         "updated_at": 0,
                     },
                 )
+
+                entry.setdefault("targets", {"chatter": {}, "chess": {}})
+                entry["targets"].setdefault("chatter", {})
+                entry["targets"].setdefault("chess", {})
 
                 entry["name"] = vote["display_name"]
                 entry["total"] = int(entry.get("total", 0)) + 1
 
                 if vote["correct"]:
                     entry["correct"] = int(entry.get("correct", 0)) + 1
+                    entry["current_streak"] = int(entry.get("current_streak", 0)) + 1
+                    entry["best_streak"] = max(
+                        int(entry.get("best_streak", 0)),
+                        int(entry["current_streak"]),
+                    )
+                else:
+                    entry["current_streak"] = 0
 
-                entry["wrong"] = (
-                    int(entry["total"])
-                    - int(entry.get("correct", 0))
-                )
+                entry["wrong"] = int(entry["total"]) - int(entry.get("correct", 0))
                 entry["updated_at"] = now
 
+                target = vote["target_name"].strip()
+                if target:
+                    bucket = entry["targets"][source_key].setdefault(
+                        target,
+                        {"correct": 0, "wrong": 0, "total": 0},
+                    )
+                    if vote["correct"]:
+                        bucket["correct"] = int(bucket.get("correct", 0)) + 1
+                    else:
+                        bucket["wrong"] = int(bucket.get("wrong", 0)) + 1
+                    bucket["total"] = int(bucket.get("correct", 0)) + int(bucket.get("wrong", 0))
+
+                streak_after = int(entry.get("current_streak", 0))
                 payload = _stats_event_payload(
                     transaction_id,
                     poll_message_id,
@@ -1072,38 +1175,82 @@ def record_poll_votes(
                     vote["display_name"],
                     vote["correct"],
                     source,
+                    target,
+                    streak_after,
                 )
-                _write_json_atomic(
-                    event_path,
-                    payload,
-                )
+                _write_json_atomic(event_path, payload)
                 commit_paths.append(event_path)
 
-            _write_json_atomic(
-                STATS_FILE,
-                working,
-            )
+                if vote["correct"] and streak_after > 0 and streak_after % 10 == 0:
+                    key = (uid, streak_after)
+                    new_bonus_keys.add(key)
+                    bonus_candidates.append(
+                        {
+                            "user_id": uid,
+                            "display_name": vote["display_name"],
+                            "streak": streak_after,
+                            "new": True,
+                        }
+                    )
+
+            _write_json_atomic(STATS_FILE, working)
             commit_paths.append(STATS_FILE)
 
             if _commit_push(commit_paths):
-                return working
+                committed_snapshot = working
+                break
 
-            # Another process changed origin. Retry from the newest state;
-            # immutable event filenames keep this idempotent.
-            time.sleep(
-                min(2, attempt * 0.25)
+            time.sleep(min(2, attempt * 0.25))
+        else:
+            raise RuntimeError(
+                f"Could not safely record Guess stats for poll {poll_message_id}."
             )
 
-        raise RuntimeError(
-            f"Could not safely record Guess stats for poll {poll_message_id}."
-        )
+    # Award streak bonuses only after the stats commit is safely on origin.
+    # add_points is itself idempotent, so old/retried stats events are safe too.
+    awarded_new = []
+    seen_bonus = set()
+    for candidate in bonus_candidates:
+        uid = str(candidate["user_id"])
+        streak = int(candidate["streak"])
+        key = (uid, streak)
+        if key in seen_bonus:
+            continue
+        seen_bonus.add(key)
+
+        try:
+            add_points(
+                uid,
+                candidate["display_name"],
+                1,
+                transaction_id=(
+                    f"guess-streak:{poll_message_id}:{uid}:{streak}"
+                ),
+                source="guess-streak-bonus",
+            )
+            if key in new_bonus_keys:
+                awarded_new.append(
+                    {
+                        "user_id": uid,
+                        "display_name": candidate["display_name"],
+                        "streak": streak,
+                    }
+                )
+        except Exception as error:
+            print(
+                f"Guess streak bonus error for {candidate['display_name']}: {error}",
+                flush=True,
+            )
+
+    result = _normalize_stats_snapshot(committed_snapshot or {})
+    result["_streak_bonuses"] = awarded_new
+    return result
 
 
 def _current_stats_snapshot():
     with _LOCK:
         if _fetch():
             return _origin_stats_snapshot()
-
         return _local_stats_snapshot()
 
 
@@ -1114,45 +1261,32 @@ def _stats_result(user_id, entry, fallback_name=None):
     correct = max(0, int(entry.get("correct", 0) or 0))
     correct = min(correct, total)
     wrong = total - correct
+    accuracy = (correct / total) * 100.0 if total else 0.0
 
-    accuracy = (
-        (correct / total) * 100.0
-        if total
-        else 0.0
-    )
+    targets = entry.get("targets", {})
+    if not isinstance(targets, dict):
+        targets = {}
 
     return {
         "user_id": str(user_id),
-        "name": str(
-            entry.get(
-                "name",
-                fallback_name or "Unknown",
-            )
-        ),
+        "name": str(entry.get("name", fallback_name or "Unknown")),
         "total": total,
         "correct": correct,
         "wrong": wrong,
         "accuracy": accuracy,
+        "current_streak": max(0, int(entry.get("current_streak", 0) or 0)),
+        "best_streak": max(0, int(entry.get("best_streak", 0) or 0)),
+        "targets": {
+            "chatter": _normalize_target_bucket(targets.get("chatter", {})),
+            "chess": _normalize_target_bucket(targets.get("chess", {})),
+        },
     }
 
 
-def guess_stats_for_user(
-    user_id,
-    fallback_name=None,
-):
+def guess_stats_for_user(user_id, fallback_name=None):
     snapshot = _current_stats_snapshot()
-    entry = snapshot.get(
-        "users",
-        {},
-    ).get(
-        str(user_id)
-    )
-
-    return _stats_result(
-        user_id,
-        entry,
-        fallback_name=fallback_name,
-    )
+    entry = snapshot.get("users", {}).get(str(user_id))
+    return _stats_result(user_id, entry, fallback_name=fallback_name)
 
 
 def _stats_name_key(value):
@@ -1172,86 +1306,157 @@ def guess_stats_for_name(name):
         return None
 
     candidates = []
-
     for uid, entry in users.items():
-        display_name = str(
-            entry.get("name", "Unknown")
-        )
+        display_name = str(entry.get("name", "Unknown"))
         key = _stats_name_key(display_name)
-
         if key:
-            candidates.append(
-                (
-                    uid,
-                    entry,
-                    key,
-                )
-            )
+            candidates.append((uid, entry, key))
 
-    exact = [
-        item
-        for item in candidates
-        if item[2] == query
-    ]
-
+    exact = [item for item in candidates if item[2] == query]
     if exact:
         uid, entry, _ = max(
             exact,
-            key=lambda item: int(
-                item[1].get("total", 0)
-            ),
+            key=lambda item: int(item[1].get("total", 0)),
         )
         return _stats_result(uid, entry)
 
-    # Small spelling mistakes are accepted, similar to the player-info command.
-    keys = sorted(
-        set(item[2] for item in candidates)
-    )
-
+    keys = sorted(set(item[2] for item in candidates))
     if len(query) >= 4 and keys:
         from difflib import get_close_matches
 
-        close = get_close_matches(
-            query,
-            keys,
-            n=1,
-            cutoff=0.80,
-        )
-
+        close = get_close_matches(query, keys, n=1, cutoff=0.80)
         if close:
             matched_key = close[0]
-            matching = [
-                item
-                for item in candidates
-                if item[2] == matched_key
-            ]
+            matching = [item for item in candidates if item[2] == matched_key]
             uid, entry, _ = max(
                 matching,
-                key=lambda item: int(
-                    item[1].get("total", 0)
-                ),
+                key=lambda item: int(item[1].get("total", 0)),
             )
             return _stats_result(uid, entry)
 
     return None
 
 
+def _best_target(bucket, field):
+    if not isinstance(bucket, dict):
+        return None
+
+    candidates = []
+    for name, entry in bucket.items():
+        if not isinstance(entry, dict):
+            continue
+        try:
+            count = int(entry.get(field, 0) or 0)
+        except Exception:
+            count = 0
+        if count > 0:
+            candidates.append((count, str(name)))
+
+    if not candidates:
+        return None
+
+    count, name = sorted(
+        candidates,
+        key=lambda item: (-item[0], item[1].casefold()),
+    )[0]
+    return name, count
+
+
 def format_guess_stats(stats):
     stats = stats or {}
 
-    name = str(
-        stats.get("name", "Unknown")
-    )
+    name = str(stats.get("name", "Unknown"))
     total = int(stats.get("total", 0) or 0)
     correct = int(stats.get("correct", 0) or 0)
     wrong = int(stats.get("wrong", 0) or 0)
     accuracy = float(stats.get("accuracy", 0.0) or 0.0)
+    current_streak = int(stats.get("current_streak", 0) or 0)
+    best_streak = int(stats.get("best_streak", 0) or 0)
 
-    return (
-        f"📊 **Guess Stats — {name}**\n\n"
-        f"🗳️ **Total votes:** {total}\n"
-        f"✅ **Correct:** {correct}\n"
-        f"❌ **Wrong:** {wrong}\n"
-        f"🎯 **Accuracy:** {accuracy:.1f}%"
+    targets = stats.get("targets", {}) if isinstance(stats.get("targets", {}), dict) else {}
+    chatter_bucket = targets.get("chatter", {})
+    chess_bucket = targets.get("chess", {})
+
+    chatter_best = _best_target(chatter_bucket, "correct")
+    chatter_nemesis = _best_target(chatter_bucket, "wrong")
+    chess_best = _best_target(chess_bucket, "correct")
+    chess_nemesis = _best_target(chess_bucket, "wrong")
+
+    lines = [
+        f"📊 **Guess Stats — {name}**",
+        "",
+        f"🗳️ **Total votes:** {total}",
+        f"✅ **Correct:** {correct}",
+        f"❌ **Wrong:** {wrong}",
+        f"🎯 **Accuracy:** {accuracy:.1f}%",
+        "",
+        f"🔥 **Current streak:** {current_streak}",
+        f"🏆 **Best streak:** {best_streak}",
+        "",
+        "💬 **Guess the Chatter**",
+    ]
+
+    if chatter_best:
+        lines.append(f"✅ Best recognized: **{chatter_best[0]}** — {chatter_best[1]} correct")
+    else:
+        lines.append("✅ Best recognized: —")
+    if chatter_nemesis:
+        lines.append(f"💀 Nemesis: **{chatter_nemesis[0]}** — {chatter_nemesis[1]} wrong")
+    else:
+        lines.append("💀 Nemesis: —")
+
+    lines.extend(["", "♟️ **Guess the Chess Chatter**"])
+    if chess_best:
+        lines.append(f"✅ Best recognized: **{chess_best[0]}** — {chess_best[1]} correct")
+    else:
+        lines.append("✅ Best recognized: —")
+    if chess_nemesis:
+        lines.append(f"💀 Nemesis: **{chess_nemesis[0]}** — {chess_nemesis[1]} wrong")
+    else:
+        lines.append("💀 Nemesis: —")
+
+    return "\n".join(lines)
+
+
+def guess_streak_leaderboard(limit=10):
+    snapshot = _current_stats_snapshot()
+    users = snapshot.get("users", {})
+
+    ordered = []
+    for uid, entry in users.items():
+        best = max(0, int(entry.get("best_streak", 0) or 0))
+        current = max(0, int(entry.get("current_streak", 0) or 0))
+        if best <= 0:
+            continue
+        ordered.append((uid, entry, best, current))
+
+    ordered.sort(
+        key=lambda item: (
+            -item[2],
+            -item[3],
+            -int(item[1].get("correct", 0) or 0),
+            str(item[1].get("name", "Unknown")).casefold(),
+        )
     )
+
+    lines = ["🔥 **Best Guess Streaks**"]
+    if not ordered:
+        lines.append("No streaks yet!")
+        return "\n".join(lines)
+
+    for rank, (_uid, entry, best, current) in enumerate(ordered[:limit], start=1):
+        if rank == 1:
+            prefix = "🥇"
+        elif rank == 2:
+            prefix = "🥈"
+        elif rank == 3:
+            prefix = "🥉"
+        else:
+            prefix = f"**{rank}.**"
+        lines.append(
+            f"{prefix} {entry.get('name', 'Unknown')} — "
+            f"**{best} best** · {current} current"
+        )
+
+    return "\n".join(lines)
 
