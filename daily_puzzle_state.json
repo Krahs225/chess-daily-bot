@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/cIW9Y",
     "title": "Lichess • 1725",
     "fen": "r1bqr1k1/ppp2pbp/2np1np1/3Pp3/2P5/2NBPN2/PPQ2PPP/R1B2RK1 b - - 0 9",
-    "current_fen": "r1bqr1k1/ppp2pbp/2np1np1/3Pp3/2P5/2NBPN2/PPQ2PPP/R1B2RK1 b - - 0 9",
+    "current_fen": "r1bqr1k1/ppp2pbp/3p1np1/3Pp3/1nP5/2NBPN2/PP1Q1PPP/R1B2RK1 b - - 2 10",
     "pgn": "Nb4 Qd2 Nxd3",
     "all_moves": [
       {
@@ -44,13 +44,20 @@
     "puzzle_id": "random_cIW9Y_1788451693257",
     "rating": 1725,
     "rp_band": 1,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1545103133271793684,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nb4",
+        "correct": true,
+        "timestamp": "2026-09-03T16:08:18.995255+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
