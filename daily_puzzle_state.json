@@ -60,95 +60,73 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "random",
+  "latest_puzzle_type": "daily",
   "current_puzzle": {
-    "url": "https://www.chess.com/daily/2026-09-02",
-    "title": "Ready, Set, Push!",
-    "fen": "3r1r1k/1bp3p1/pbnp2qp/8/3BPp2/PB3P2/1P1QN1PP/3RR1K1 b - - 0 1",
-    "current_fen": "3r1r1k/1b4p1/pb1pq2p/8/2p1Pp2/PB3P2/1P1Q2PP/3RR2K w - - 0 5",
-    "pgn": "[White \"Daily Puzzle Inspiration\"]\n[Black \"JohanVA\"]\n[Result \"*\"]\n[FEN \"3r1r1k/1bp3p1/pbnp2qp/8/3BPp2/PB3P2/1P1QN1PP/3RR1K1 b - - 0 1\"]\n\n1... Nxd4 2. Nxd4 c5 3. Ne6 c4+ 4. Kh1 Qxe6 *",
+    "url": "https://www.chess.com/daily/2026-09-03",
+    "title": "Just Tap It In ⛳",
+    "fen": "2b3k1/6q1/p2pn1pp/P1pN1pPP/1r2P3/2b1BPQ1/2PRB3/2K4R b - - 0 1",
+    "current_fen": "2b3k1/6q1/p2pn1pp/P1pN1pPP/1r2P3/2b1BPQ1/2PRB3/2K4R b - - 0 1",
+    "pgn": "[White \"Daily Puzzle Collaboration\"]\n[Black \"EnPassantFork / Fischwitsch\"]\n[Result \"0-1\"]\n[FEN \"2b3k1/6q1/p2pn1pp/P1pN1pPP/1r2P3/2b1BPQ1/2PRB3/2K4R b - - 0 1\"]\n\n1... Ra4 2. Nxc3 Qxc3 3. Rd3 Ra1# 0-1",
     "all_moves": [
       {
-        "uci": "c6d4",
-        "san": "Nxd4",
+        "uci": "b4a4",
+        "san": "Ra4",
         "color": "black"
       },
       {
-        "uci": "e2d4",
-        "san": "Nxd4",
+        "uci": "d5c3",
+        "san": "Nxc3",
         "color": "white"
       },
       {
-        "uci": "c7c5",
-        "san": "c5",
+        "uci": "g7c3",
+        "san": "Qxc3",
         "color": "black"
       },
       {
-        "uci": "d4e6",
-        "san": "Ne6",
+        "uci": "d2d3",
+        "san": "Rd3",
         "color": "white"
       },
       {
-        "uci": "c5c4",
-        "san": "c4+",
-        "color": "black"
-      },
-      {
-        "uci": "g1h1",
-        "san": "Kh1",
-        "color": "white"
-      },
-      {
-        "uci": "g6e6",
-        "san": "Qxe6",
+        "uci": "a4a1",
+        "san": "Ra1#",
         "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "c6d4",
-        "san": "Nxd4",
+        "uci": "b4a4",
+        "san": "Ra4",
         "color": "black"
       },
       {
-        "uci": "c7c5",
-        "san": "c5",
+        "uci": "g7c3",
+        "san": "Qxc3",
         "color": "black"
       },
       {
-        "uci": "c5c4",
-        "san": "c4+",
-        "color": "black"
-      },
-      {
-        "uci": "g6e6",
-        "san": "Qxe6",
+        "uci": "a4a1",
+        "san": "Ra1#",
         "color": "black"
       }
     ],
     "player_color": "black",
-    "player_move_count": 4,
-    "posted_at": "2026-09-02T07:47:15.827975+00:00",
-    "answer_posted": true,
+    "player_move_count": 3,
+    "posted_at": "2026-09-03T07:54:14.618447+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "daily_1788335235827",
-    "next_solution_index": 7,
-    "next_player_index": 4,
-    "solved": true,
+    "puzzle_id": "daily_1788422054618",
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
     "message_id": null,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "qxe6",
-        "correct": true,
-        "timestamp": "2026-09-02T08:08:42.438470+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
