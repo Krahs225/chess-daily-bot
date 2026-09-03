@@ -509,6 +509,81 @@ def add_points(user_id, display_name, amount, transaction_id, source="chatter"):
     )
 
 
+def adjust_points(user_id, display_name, amount, transaction_id, source="adjustment"):
+    """Apply a signed point adjustment exactly once.
+
+    This is deliberately separate from add_points(), which continues to reject
+    negative amounts. Anti-spam penalties use this function with -1.0 and a
+    deterministic transaction ID so retries cannot deduct twice.
+    """
+    global _CACHE_SNAPSHOT
+
+    if not transaction_id:
+        raise ValueError("A unique transaction_id is required.")
+
+    amount = float(amount)
+    if amount == 0:
+        return get_score(user_id)
+
+    uid = str(user_id)
+
+    with _LOCK:
+        for attempt in range(1, MAX_RETRIES + 1):
+            if not _fetch_retry():
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            existing = _origin_event(transaction_id)
+            try:
+                snapshot, migrated = _origin_state()
+            except Exception:
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            if existing is not None:
+                _CACHE_SNAPSHOT = {k: dict(v) for k, v in snapshot.items()}
+                return float(snapshot.get(uid, {}).get("points", 0))
+
+            before = float(snapshot.get(uid, {}).get("points", 0))
+            after = round(before + amount, 3)
+            snapshot[uid] = {
+                "name": str(display_name),
+                "points": after,
+            }
+
+            payload = _audit_event(
+                transaction_id,
+                uid,
+                display_name,
+                operation="adjust",
+                source=source,
+                before_points=before,
+                after_points=after,
+                amount=amount,
+            )
+
+            files = {
+                LEGACY_FILE: _snapshot_json(snapshot),
+                _event_filename(transaction_id): _event_json(payload),
+            }
+            if not migrated:
+                files[_event_filename(MIGRATION_TRANSACTION_ID)] = _event_json(
+                    _migration_event()
+                )
+
+            if _push_files(files, "Adjust shared leaderboard snapshot"):
+                verified_snapshot, verified = _verified_origin_snapshot(transaction_id)
+                if verified and verified_snapshot is not None:
+                    return float(verified_snapshot.get(uid, {}).get("points", after))
+
+            time.sleep(min(2.0, 0.25 * attempt))
+
+    raise RuntimeError(
+        "Could not safely record shared leaderboard adjustment "
+        f"{transaction_id}."
+    )
+
+
 def admin_set_points(
     display_name,
     target_points,
