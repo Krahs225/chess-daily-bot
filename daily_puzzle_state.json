@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/DvNgg",
     "title": "Lichess • 2228",
     "fen": "2rq1rk1/5ppp/p7/1p1npP2/3bN3/P1NP4/1P2Q1PP/R4R1K w - - 0 20",
-    "current_fen": "2rq1rk1/5ppp/p7/1p1npP2/3bN3/P1NP4/1P2Q1PP/R4R1K w - - 0 20",
+    "current_fen": "2r2rk1/5ppp/p7/1p1qpP2/3bN3/P2P4/1P2Q1PP/R4R1K w - - 0 21",
     "pgn": "Nxd5 Qxd5 f6",
     "all_moves": [
       {
@@ -44,20 +44,20 @@
     "puzzle_id": "random_DvNgg_1788458664610",
     "rating": 2228,
     "rp_band": 3,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1545132376034779290,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "f6",
-        "correct": false,
-        "timestamp": "2026-09-03T18:04:29.035855+00:00"
+        "move": "nxd5",
+        "correct": true,
+        "timestamp": "2026-09-03T18:04:32.069282+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
