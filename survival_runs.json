@@ -571,7 +571,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-03T18:57:56.387392+00:00",
-        "last_activity": 1788461914.0381975,
+        "last_activity": 1788461923.262641,
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 1,
@@ -588,7 +588,7 @@
           },
           "601406103712170014": {
             "name": "TheMakina",
-            "correct": 0,
+            "correct": 1,
             "wrong": 1
           }
         },
@@ -598,7 +598,7 @@
           "themes": "endgame crushing fork long",
           "url": "https://lichess.org/training/RZbrs",
           "start_fen": "7Q/8/8/3n1pp1/6k1/6b1/6K1/4r3 w - - 38 92",
-          "current_fen": "7Q/8/8/3n1pp1/6k1/6b1/6K1/4r3 w - - 38 92",
+          "current_fen": "8/8/8/3n1pp1/5k2/6bQ/6K1/4r3 w - - 40 93",
           "solution": [
             {
               "uci": "h8h3",
@@ -627,7 +627,7 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -635,11 +635,23 @@
           "wrong_users": [
             "601406103712170014"
           ],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qh3+",
+          "accepted_moves": [
+            {
+              "san": "Qh3+",
+              "uci": "h8h3",
+              "accepted_at": 1788461923.2625406,
+              "solver_id": "601406103712170014"
+            }
+          ],
+          "last_accepted_move_uci": "h8h3",
+          "last_accepted_move_san": "Qh3+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1788461923.2625399,
+          "position_before_last_move": "7Q/8/8/3n1pp1/6k1/6b1/6K1/4r3 w - - 38 92"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "601406103712170014",
+        "first_solver_name": "TheMakina",
         "helper_candidates": {},
         "helper_awarded": []
       },
