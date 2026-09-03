@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/lR5he",
     "title": "Lichess • 2730",
     "fen": "8/6p1/2k5/5p2/3K1P2/6Pp/7P/8 w - - 2 34",
-    "current_fen": "8/6p1/2k5/5p2/3K1P2/6Pp/7P/8 w - - 2 34",
+    "current_fen": "8/8/2k3p1/4Kp2/5P2/6Pp/7P/8 w - - 0 35",
     "pgn": "Ke5 g6 Kf6 Kd5 Kg5 Kd4 Kh4",
     "all_moves": [
       {
@@ -74,13 +74,26 @@
     "puzzle_id": "random_lR5he_1788457857381",
     "rating": 2730,
     "rp_band": 5,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1545128986718376107,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "ke5",
+        "correct": true,
+        "timestamp": "2026-09-03T17:51:00.880575+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Ke5",
+        "correct": false,
+        "timestamp": "2026-09-03T17:51:01.980253+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
