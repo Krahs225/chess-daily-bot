@@ -1,794 +1,1493 @@
-import asyncio
-import io
-import json
-import os
-import random
-import re
-import subprocess
-import time
-import traceback
-import copy
-from datetime import datetime, timezone
-from pathlib import Path
+import discord
 
+from shared_leaderboard import (
+    admin_set_points as shared_admin_set_points,
+    add_points as shared_add_points,
+    get_score as shared_get_score,
+    personal_ranking as shared_personal_ranking,
+    full_leaderboard as shared_full_leaderboard,
+    format_points as shared_format_points,
+)
+import os
+import re
+import requests
 import chess
 import chess.svg
-import requests
-import discord
-from discord.ext import commands
+import chess.pgn
+from io import BytesIO, StringIO
+import cairosvg
+import asyncio
+import json
+import subprocess
+import time
+import threading
+import traceback
+import random
+from datetime import datetime, timezone
 
-from puzzle_mode_lock import (
-    active_team,
-    clear_lock,
-    get_lock,
-    is_survival_active,
-    write_lock,
-)
+from puzzle_mode_lock import is_survival_active, active_team
 
-# Shared individual leaderboard. This is intentionally NOT the
-# Survival team leaderboard.
-from shared_leaderboard import (
-    add_points,
-    format_points,
-    get_score,
-    personal_ranking,
-)
+# Direct remote Survival-state check used by Daily/Random guards.
+# This is intentionally independent of puzzle_mode_lock.py so an old/stale
+# lock file cannot allow the Daily bot to consume a Survival move.
+_survival_check_cache = {
+    "time": 0.0,
+    "active": False,
+    "team": None,
+}
 
-
-TOKEN = os.getenv(
-    "DISCORD_TOKEN"
-)
-
-CHANNEL_ID = 1468320170891022417
-
-SURVIVAL_STATE_FILE = "survival_runs.json"
-
-# The official Lichess puzzle collection is published as the
-# CC0 Lichess/chess-puzzles dataset. The Hugging Face Dataset Viewer
-# can filter that dataset server-side by the exact puzzle Rating, so
-# Survival does not need an 871 MB download on every GitHub Action run.
-HF_FILTER_URL = (
-    "https://datasets-server.huggingface.co/filter"
-)
-
-HF_DATASET = "Lichess/chess-puzzles"
-HF_CONFIG = "default"
-HF_SPLIT = "train"
-
-REQUEST_TIMEOUT = 20
-BATCH_SIZE = 25
-
-INACTIVITY_SECONDS = 10 * 60
-PENDING_TEAM_SECONDS = 60
-
-RUN_TIME = 5 * 60 * 60 + 50 * 60
-
-THREE_STRIKES = 3
-SHARK_ADMIN_NAME = "sharkmeister"
+# Short local hand-off window after !survival.
+# This prevents Daily/Random from consuming the same chess move while
+# Survival is starting, but it automatically expires so RP cannot get stuck.
+_survival_guard_until = 0.0
 
 
-# Puzzle difficulty progression.
-# Puzzle #81+ is 2600+ forever.
-DIFFICULTY_BANDS = [
-    (1, 10, 1200, 1400),
-    (11, 20, 1400, 1550),
-    (21, 30, 1550, 1700),
-    (31, 40, 1700, 1850),
-    (41, 50, 1850, 2050),
-    (51, 60, 2050, 2250),
-    (61, 70, 2250, 2400),
-    (71, 80, 2400, 2600),
-]
+def survival_guard_active():
+    return time.monotonic() < _survival_guard_until
 
 
-def normalize_team_name(
-    value
-):
-    value = " ".join(
-        str(value).strip().split()
-    )
-
-    return value.casefold()
-
-
-def valid_team_name(
-    value
-):
-    value = " ".join(
-        str(value).strip().split()
-    )
-
-    if not (
-        2 <= len(value) <= 32
-    ):
-        return False
-
-    if "\n" in value or "\r" in value:
-        return False
-
-    if value.startswith("!"):
-        return False
-
-    return True
-
-
-def utc_now():
-    return datetime.now(
-        timezone.utc
+def set_survival_guard(seconds=90):
+    global _survival_guard_until
+    _survival_guard_until = max(
+        _survival_guard_until,
+        time.monotonic() + float(seconds),
     )
 
 
-def epoch_now():
-    return time.time()
+def clear_survival_guard():
+    global _survival_guard_until
+    _survival_guard_until = 0.0
 
 
-def load_json(
-    filename,
-    default,
-):
-    path = Path(filename)
+def remote_survival_status():
+    now = time.time()
 
-    if not path.exists():
-        return default
+    # Tiny cache prevents doing git work more than once per second.
+    if now - _survival_check_cache["time"] < 1.0:
+        return (
+            _survival_check_cache["active"],
+            _survival_check_cache["team"],
+        )
 
     try:
-        data = json.loads(
-            path.read_text(
-                encoding="utf-8"
-            )
-        )
-        return data
-    except Exception:
-        return default
-
-
-def save_json(
-    filename,
-    data,
-):
-    path = Path(filename)
-    temp = path.with_suffix(
-        ".tmp"
-    )
-
-    temp.write_text(
-        json.dumps(
-            data,
-            indent=2,
-            ensure_ascii=False,
-        )
-        + "\n",
-        encoding="utf-8",
-    )
-
-    temp.replace(
-        path
-    )
-
-
-def git_run(
-    args
-):
-    return subprocess.run(
-        args,
-        capture_output=True,
-        text=True,
-    )
-
-
-def git_branch():
-    return os.getenv(
-        "GITHUB_REF_NAME",
-        "main",
-    )
-
-
-def push_state_files():
-    """
-    Commit Survival state only.
-
-    Important: individual point rewards are written by the shared
-    leaderboard event ledger separately. Survival state is therefore
-    committed before a point transaction is sent to the shared ledger.
-    """
-    branch = git_branch()
-
-    for _ in range(8):
-
-        git_run(
-            [
-                "git",
-                "config",
-                "user.name",
-                "Survival Mode Bot",
-            ]
+        branch = os.getenv(
+            "GITHUB_REF_NAME",
+            "main",
         )
 
-        git_run(
-            [
-                "git",
-                "config",
-                "user.email",
-                "survival-mode-bot@users.noreply.github.com",
-            ]
-        )
-
-        git_run(
-            [
-                "git",
-                "add",
-                SURVIVAL_STATE_FILE,
-            ]
-        )
-
-        commit = git_run(
-            [
-                "git",
-                "commit",
-                "-m",
-                "Update Survival Mode state",
-            ]
-        )
-
-        if commit.returncode != 0:
-            status = git_run(
-                [
-                    "git",
-                    "status",
-                    "--porcelain",
-                    SURVIVAL_STATE_FILE,
-                ]
-            )
-
-            if not status.stdout.strip():
-                return True
-
-            # The state file was changed but could not be committed.
-            # Try again after rebasing onto the latest main.
-            git_run(
-                [
-                    "git",
-                    "pull",
-                    "--rebase",
-                    "origin",
-                    branch,
-                ]
-            )
-
-            time.sleep(0.5)
-            continue
-
-        push = git_run(
-            [
-                "git",
-                "push",
-                "origin",
-                f"HEAD:{branch}",
-            ]
-        )
-
-        if push.returncode == 0:
-            return True
-
-        git_run(
+        subprocess.run(
             [
                 "git",
                 "fetch",
                 "origin",
                 branch,
-            ]
+            ],
+            capture_output=True,
+            text=True,
+            timeout=8,
         )
 
-        git_run(
+        result = subprocess.run(
             [
                 "git",
-                "reset",
-                "--hard",
-                f"origin/{branch}",
-            ]
+                "show",
+                f"origin/{branch}:survival_runs.json",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=8,
         )
 
-        time.sleep(0.5)
+        if result.returncode != 0:
+            raise RuntimeError(
+                "survival_runs.json not available remotely"
+            )
 
-    return False
+        data = json.loads(
+            result.stdout
+        )
+
+        if not isinstance(
+            data,
+            dict,
+        ):
+            raise RuntimeError(
+                "invalid survival_runs.json"
+            )
+
+        teams = data.get(
+            "teams",
+            {},
+        )
+
+        active_team_name = None
+
+        if isinstance(
+            teams,
+            dict,
+        ):
+            for team_data in teams.values():
+
+                if not isinstance(
+                    team_data,
+                    dict,
+                ):
+                    continue
+
+                run = team_data.get(
+                    "current"
+                )
+
+                if not isinstance(
+                    run,
+                    dict,
+                ):
+                    continue
+
+                if run.get(
+                    "status"
+                ) == "active":
+
+                    active_team_name = (
+                        team_data.get(
+                            "name",
+                            "Survival",
+                        )
+                    )
+
+                    break
+
+        active = (
+            active_team_name
+            is not None
+        )
+
+        _survival_check_cache[
+            "time"
+        ] = now
+
+        _survival_check_cache[
+            "active"
+        ] = active
+
+        _survival_check_cache[
+            "team"
+        ] = active_team_name
+
+        return (
+            active,
+            active_team_name,
+        )
+
+    except Exception as error:
+        # Fail CLOSED for chess-puzzle handling:
+        # if we cannot verify that Survival is inactive, do not let
+        # Daily/Random consume a chess move.
+        print(
+            f"Could not verify Survival state; blocking Daily/Random "
+            f"chess handling: {error}",
+            flush=True,
+        )
+
+        _survival_check_cache[
+            "time"
+        ] = now
+
+        _survival_check_cache[
+            "active"
+        ] = True
+
+        _survival_check_cache[
+            "team"
+        ] = "Survival"
+
+        return (
+            True,
+            "Survival",
+        )
 
 
-def load_runs():
-    data = load_json(
-        SURVIVAL_STATE_FILE,
-        {},
+
+
+# =========================================================
+# SETTINGS
+# =========================================================
+
+TOKEN = os.getenv("DISCORD_TOKEN")
+CHANNEL_ID = 1468320170891022417
+
+DAILY_PUZZLE_API = "https://api.chess.com/pub/puzzle"
+RANDOM_PUZZLE_API = "https://lichess.org/api/puzzle/next"
+
+STATE_FILE = "daily_puzzle_state.json"
+LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
+SCORE_EVENTS_FILE = "daily_puzzle_score_events.json"
+
+PUZZLE_CHECK_INTERVAL = 5 * 60
+LEADERBOARD_INTERVAL = 24 * 60 * 60
+
+ANSWER_WINDOW = 12 * 60 * 60
+RANDOM_ANSWER_WINDOW = 12 * 60 * 60
+
+RUN_TIME = 5 * 60 * 60 + 50 * 60
+
+
+def survival_info_text():
+    return """🔥 **SURVIVAL MODE — INFO**
+
+**Start a run**
+`!survival`
+→ The bot asks for a team name.
+
+The person who starts the run is the **captain**.
+
+**Team / run system**
+- Every new run gets its own saved run record.
+- The same team name can have multiple runs.
+- A run can be active, paused, or dead.
+- `!teamname` (for example `!thice`) lets you choose which saved run of that team you want to view.
+- Team details show the run's puzzle number, status, difficulty, hearts, captain and contributors.
+
+**Co-op / Solo**
+`!solo <team name>`
+→ Captain-only. Only the captain may answer an active run.
+
+`!coop <team name>`
+→ Captain-only. Everyone may answer again.
+
+Solo/Co-op can only be changed on an **active** run. Dead runs cannot be changed.
+
+**Stopping / resuming**
+`!stopsurvival`
+→ Saves and pauses the active run.
+
+After inactivity, Survival automatically pauses after **10 minutes without activity**.
+
+`!survival` + the same team name
+→ If that team has saved runs, choose which run to continue or start a new one.
+
+A run that died at **3/3 strikes cannot be continued** unless Sharkmeister gives it a heart first.
+
+**Hearts / strikes**
+Everyone starts with **❤️❤️❤️**.
+
+A wrong answer costs **1 strike**.
+
+At **3/3 strikes**, the run is **DEAD** and cannot continue normally.
+
+**Puzzle difficulty**
+- #1–10: 1200–1400
+- #11–20: 1400–1550
+- #21–30: 1550–1700
+- #31–40: 1700–1850
+- #41–50: 1850–2050
+- #51–60: 2050–2250
+- #61–70: 2250–2400
+- #71–80: 2400–2600
+- **#81+: 2600+**
+
+**How answering works**
+Everyone may answer in co-op mode.
+
+Send one chess move at a time, such as:
+`Qh6`
+`Qh6+`
+`f1=Q`
+`O-O`
+`!Qh6`
+
+The bot automatically plays the opponent's replies.
+
+If two people submit the same correct move at almost the same time, the duplicate is ignored and **does not cost a heart**.
+
+Some puzzles can have multiple correct mating moves; legal alternative checkmates are accepted.
+
+**Team leaderboard**
+`!survivallb`
+`!survivalboard`
+`!slb`
+
+These show **all saved Survival runs**, so the same team name can appear more than once.
+
+**Team run details**
+Use:
+`!<team name>`
+
+Example:
+`!thice`
+
+If there are multiple Thice runs, the bot lets you choose which run you want to view.
+
+You can then see:
+- puzzle number
+- status
+- mode (SOLO/CO-OP)
+- captain
+- hearts / strikes
+- best difficulty
+- contributors and how many correct/wrong answers they gave
+
+**Sharkmeister-only admin commands**
+`!delete <team name>`
+→ Permanently removes that team's saved runs.
+
+`!addheart <team name>`
+→ Adds 1 heart to that team's current/dead run so it can be resumed.
+
+Only **Sharkmeister** can use these two commands.
+
+**Shared points**
+Survival itself does **not** award points to the shared leaderboard.
+Survival is a separate team competition.
+"""
+
+
+# =========================================================
+# DISCORD
+# =========================================================
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+client = discord.Client(intents=intents)
+
+
+# =========================================================
+# GLOBAL DATA
+# =========================================================
+
+state = {}
+LICHESS_FILTER_URL = "https://datasets-server.huggingface.co/filter"
+LICHESS_DATASET = "Lichess/chess-puzzles"
+LICHESS_CONFIG = "default"
+LICHESS_SPLIT = "train"
+LICHESS_FILTER_TIMEOUT = 20
+PARQUET_LIST_URL = (
+    "https://datasets-server.huggingface.co/parquet"
+)
+PARQUET_QUERY_TIMEOUT = 45
+
+scores = {}
+
+data_lock = asyncio.Lock()
+github_push_lock = threading.Lock()
+github_sync_task = None
+score_file_lock = threading.Lock()
+
+
+# =========================================================
+# JSON
+# =========================================================
+
+def load_json(filename, default):
+
+    if not os.path.exists(filename):
+        return default
+
+    try:
+        with open(
+            filename,
+            "r",
+            encoding="utf-8"
+        ) as file:
+
+            return json.load(file)
+
+    except Exception as error:
+
+        print(
+            f"Could not load {filename}: {error}",
+            flush=True
+        )
+
+        return default
+
+
+def save_json(filename, data):
+
+    try:
+
+        with open(
+            filename,
+            "w",
+            encoding="utf-8"
+        ) as file:
+
+            json.dump(
+                data,
+                file,
+                indent=2,
+                ensure_ascii=False
+            )
+
+        return True
+
+    except Exception as error:
+
+        print(
+            f"Could not save {filename}: {error}",
+            flush=True
+        )
+
+        return False
+
+
+
+def load_score_ledger():
+    """
+    Daily-only append-only score ledger.
+
+    The existing daily_puzzle_leaderboard.json is treated as the one-time
+    starting balance. After that, every new +1 / +0.5 is recorded as a
+    unique transaction in daily_puzzle_score_events.json.
+
+    Replaying the same transaction_id never changes the score twice.
+    """
+    legacy_scores = load_json(
+        LEADERBOARD_FILE,
+        {}
     )
 
-    if not isinstance(data, dict):
-        data = {}
-
-    data.setdefault(
-        "teams",
-        {},
+    events = load_json(
+        SCORE_EVENTS_FILE,
+        []
     )
+
+    if not isinstance(events, list):
+        events = []
+
+    # Migrate the existing Daily leaderboard exactly once in memory.
+    if not events and isinstance(legacy_scores, dict):
+        for user_id, entry in legacy_scores.items():
+
+            try:
+                points = float(
+                    entry.get(
+                        "points",
+                        0
+                    )
+                )
+            except Exception:
+                points = 0.0
+
+            if points == 0:
+                continue
+
+            events.append(
+                {
+                    "transaction_id":
+                        f"baseline:{user_id}:{points:g}",
+                    "user_id":
+                        str(user_id),
+                    "name":
+                        entry.get(
+                            "name",
+                            "Unknown"
+                        ),
+                    "points":
+                        points,
+                    "source":
+                        "legacy-daily-baseline",
+                }
+            )
+
+    totals = {}
+
+    for event in events:
+
+        user_id = str(
+            event.get(
+                "user_id",
+                ""
+            )
+        )
+
+        if not user_id:
+            continue
+
+        try:
+            amount = float(
+                event.get(
+                    "points",
+                    0
+                )
+            )
+        except Exception:
+            continue
+
+        entry = totals.setdefault(
+            user_id,
+            {
+                "name":
+                    event.get(
+                        "name",
+                        "Unknown"
+                    ),
+                "points":
+                    0.0,
+            }
+        )
+
+        entry["points"] = round(
+            float(
+                entry["points"]
+            ) + amount,
+            2
+        )
+
+        if event.get("name"):
+            entry["name"] = event["name"]
+
+    return totals, events
+
+
+def append_score_transaction(
+    user_id,
+    display_name,
+    points,
+    transaction_id,
+    source,
+):
+    """
+    Add one Daily score transaction exactly once.
+    Returns (added, new_total).
+    """
+    global scores
+
+    try:
+        points = float(points)
+    except Exception as error:
+        raise ValueError(
+            f"Invalid point amount: {error}"
+        )
+
+    if points < 0:
+        raise ValueError(
+            "Negative point changes are not allowed."
+        )
+
+    with score_file_lock:
+        current_scores, events = load_score_ledger()
+
+        existing_ids = {
+            str(
+                event.get(
+                    "transaction_id",
+                    ""
+                )
+            )
+            for event in events
+        }
+
+        if str(transaction_id) in existing_ids:
+            scores = current_scores
+
+            return (
+                False,
+                float(
+                    current_scores.get(
+                        str(user_id),
+                        {}
+                    ).get(
+                        "points",
+                        0
+                    )
+                )
+            )
+
+        events.append(
+            {
+                "transaction_id":
+                    str(transaction_id),
+                "user_id":
+                    str(user_id),
+                "name":
+                    str(display_name),
+                "points":
+                    points,
+                "source":
+                    source,
+            }
+        )
+
+        totals, _ = rebuild_scores_from_events(
+            events
+        )
+
+        scores = totals
+
+        save_json(
+            SCORE_EVENTS_FILE,
+            events
+        )
+
+        save_json(
+            LEADERBOARD_FILE,
+            scores
+        )
+
+        return (
+            True,
+            float(
+                scores.get(
+                    str(user_id),
+                    {}
+                ).get(
+                    "points",
+                    0
+                )
+            )
+        )
+
+
+def rebuild_scores_from_events(
+    events
+):
+    totals = {}
+
+    for event in events:
+
+        user_id = str(
+            event.get(
+                "user_id",
+                ""
+            )
+        )
+
+        if not user_id:
+            continue
+
+        try:
+            amount = float(
+                event.get(
+                    "points",
+                    0
+                )
+            )
+        except Exception:
+            continue
+
+        entry = totals.setdefault(
+            user_id,
+            {
+                "name":
+                    event.get(
+                        "name",
+                        "Unknown"
+                    ),
+                "points":
+                    0.0,
+            }
+        )
+
+        entry["points"] = round(
+            float(
+                entry["points"]
+            ) + amount,
+            2
+        )
+
+        if event.get("name"):
+            entry["name"] = event["name"]
+
+    return totals, events
+
+
+
+# =========================================================
+# GITHUB SAVE
+# =========================================================
+
+def push_to_github():
+
+    with github_push_lock:
+
+        try:
+
+            subprocess.run(
+                [
+                    "git",
+                    "config",
+                    "user.name",
+                    "Daily Puzzle Bot"
+                ],
+                check=True,
+                capture_output=True
+            )
+
+            subprocess.run(
+                [
+                    "git",
+                    "config",
+                    "user.email",
+                    "daily-puzzle-bot@users.noreply.github.com"
+                ],
+                check=True,
+                capture_output=True
+            )
+
+            subprocess.run(
+                [
+                    "git",
+                    "add",
+                    STATE_FILE,
+                    LEADERBOARD_FILE,
+                    SCORE_EVENTS_FILE
+                ],
+                check=True,
+                capture_output=True
+            )
+
+            commit = subprocess.run(
+                [
+                    "git",
+                    "commit",
+                    "-m",
+                    "Update Daily Puzzle data"
+                ],
+                capture_output=True,
+                text=True
+            )
+
+            if commit.returncode != 0:
+                return
+
+            branch = os.getenv(
+                "GITHUB_REF_NAME",
+                "main"
+            )
+
+            subprocess.run(
+                [
+                    "git",
+                    "push",
+                    "origin",
+                    f"HEAD:{branch}"
+                ],
+                check=True,
+                capture_output=True,
+                text=True
+            )
+
+            print(
+                "Data saved to GitHub.",
+                flush=True
+            )
+
+        except Exception as error:
+
+            print(
+                f"Could not push data to GitHub: {error}",
+                flush=True
+            )
+
+
+def queue_github_sync():
+
+    global github_sync_task
+
+    if (
+        github_sync_task is not None
+        and not github_sync_task.done()
+    ):
+        return
+
+    github_sync_task = asyncio.create_task(
+        asyncio.to_thread(
+            push_to_github
+        )
+    )
+
+
+
+
+async def save_all():
+
+    save_json(
+        STATE_FILE,
+        state
+    )
+
+    save_json(
+        LEADERBOARD_FILE,
+        scores
+    )
+
+    queue_github_sync()
+
+
+
+# =========================================================
+# FETCH DAILY PUZZLE
+# =========================================================
+
+def fetch_daily_puzzle():
+
+    response = requests.get(
+        DAILY_PUZZLE_API,
+        headers={
+            "User-Agent":
+                "DailyChessPuzzleBot/1.0"
+        },
+        timeout=15
+    )
+
+    if response.status_code != 200:
+
+        raise RuntimeError(
+            f"Chess.com returned HTTP "
+            f"{response.status_code}"
+        )
+
+    data = response.json()
+
+    if not data.get("fen"):
+        raise RuntimeError(
+            "Daily puzzle has no FEN."
+        )
+
+    if not data.get("pgn"):
+        raise RuntimeError(
+            "Daily puzzle has no PGN."
+        )
 
     return data
 
 
-def team_record(
-    state,
-    team_key,
-    display_name,
-):
-    teams = state[
-        "teams"
-    ]
+# =========================================================
+# FETCH RANDOM PUZZLE
+# =========================================================
 
-    team = teams.setdefault(
-        team_key,
-        {
-            "name":
-                display_name,
-            "best_puzzle":
-                0,
-            "best_difficulty":
-                0,
-            "best_completed_at":
-                None,
-            "current":
-                None,
-            "history":
-                [],
-        },
-    )
+def fetch_random_puzzle():
+    """
+    Fetch one truly random Lichess puzzle through the official puzzle API
+    and convert it to the same FEN/PGN shape the existing RP runtime uses.
 
-    team["name"] = display_name
-    team.setdefault(
-        "history",
-        [],
-    )
+    Lichess returns the game PGN up to the opponent move that starts the
+    tactic, plus the solution as UCI moves. The board after that PGN is the
+    position the player must solve, so we convert the UCI solution to SAN
+    from that position and leave the rest of RP unchanged.
+    """
+    headers = {
+        "User-Agent": "DailyChessPuzzleBot/3.0",
+        "Accept": "application/json",
+    }
 
-    return team
+    last_error = None
 
-
-def update_best(
-    team,
-    run,
-):
-    if not run:
-        return
-
-    puzzle_number = int(
-        run.get(
-            "puzzle_number",
-            0,
-        )
-    )
-
-    difficulty = int(
-        run.get(
-            "best_difficulty",
-            0,
-        )
-    )
-
-    old_best = int(
-        team.get(
-            "best_puzzle",
-            0,
-        )
-    )
-
-    if (
-        puzzle_number
-        > old_best
-    ):
-        team[
-            "best_puzzle"
-        ] = puzzle_number
-
-        team[
-            "best_completed_at"
-        ] = (
-            utc_now().isoformat()
-        )
-
-    team[
-        "best_difficulty"
-    ] = max(
-        int(
-            team.get(
-                "best_difficulty",
-                0,
+    for attempt in range(1, 4):
+        try:
+            response = requests.get(
+                RANDOM_PUZZLE_API,
+                headers=headers,
+                timeout=15,
             )
-        ),
-        difficulty,
+
+            if response.status_code == 429:
+                # Lichess asks API clients to wait a full minute after 429.
+                # Do not hold the Discord command for a minute; report the
+                # temporary failure and let the next RP attempt try again.
+                raise RuntimeError(
+                    "Lichess puzzle API is temporarily rate-limited (HTTP 429)."
+                )
+
+            response.raise_for_status()
+            payload = response.json()
+
+            puzzle = payload.get("puzzle")
+            game_data = payload.get("game")
+
+            if not isinstance(puzzle, dict):
+                raise RuntimeError("Lichess response has no puzzle object.")
+
+            if not isinstance(game_data, dict):
+                raise RuntimeError("Lichess response has no game object.")
+
+            puzzle_id = puzzle.get("id")
+            rating = puzzle.get("rating")
+            solution = puzzle.get("solution")
+            game_pgn = game_data.get("pgn")
+
+            if not puzzle_id:
+                raise RuntimeError("Lichess puzzle has no ID.")
+
+            if not isinstance(solution, list) or not solution:
+                raise RuntimeError("Lichess puzzle has no solution moves.")
+
+            if not game_pgn:
+                raise RuntimeError("Lichess puzzle game has no PGN.")
+
+            parsed_game = chess.pgn.read_game(
+                StringIO(str(game_pgn))
+            )
+
+            if parsed_game is None:
+                raise RuntimeError("Could not parse the Lichess puzzle game PGN.")
+
+            board = parsed_game.board()
+
+            for move in parsed_game.mainline_moves():
+                if move not in board.legal_moves:
+                    raise RuntimeError(
+                        "Lichess puzzle game contains an illegal move."
+                    )
+                board.push(move)
+
+            puzzle_fen = board.fen()
+            solution_san = []
+
+            for uci in solution:
+                move = chess.Move.from_uci(str(uci))
+
+                if move not in board.legal_moves:
+                    raise RuntimeError(
+                        "Lichess puzzle solution contains an illegal move."
+                    )
+
+                solution_san.append(
+                    board.san(move)
+                )
+                board.push(move)
+
+            title = "Lichess Puzzle"
+            if rating is not None:
+                title = f"Lichess • {rating}"
+
+            return {
+                "fen": puzzle_fen,
+                "pgn": " ".join(solution_san),
+                "url": f"https://lichess.org/training/{puzzle_id}",
+                "title": title,
+                "lichess_id": str(puzzle_id),
+                "rating": rating,
+            }
+
+        except Exception as error:
+            last_error = str(error)
+
+            # A 429 should not cause rapid retry spam against Lichess.
+            if "429" in last_error:
+                break
+
+            if attempt < 3:
+                time.sleep(1.0)
+
+    raise RuntimeError(
+        f"Could not fetch random Lichess puzzle after 3 attempts: {last_error}"
     )
 
+# =========================================================
+# SAFE FEN / BOARD HELPERS
+# =========================================================
 
-def save_state(
-    state,
-    push=True,
+def sanitize_fen(fen):
+    """
+    Chess.com sometimes returns perfectly valid-looking FEN data
+    that can expose compatibility issues in older python-chess builds.
+    Normalize the six FEN fields and keep castling rights explicit.
+    """
+    parts = str(fen).strip().split()
+
+    if len(parts) < 4:
+        raise RuntimeError("Random puzzle FEN is incomplete.")
+
+    # Fill optional FEN fields.
+    while len(parts) < 6:
+        if len(parts) == 4:
+            parts.append("0")
+        elif len(parts) == 5:
+            parts.append("1")
+
+    # Castling rights must always be a string consisting of KQkq or -.
+    castling = parts[2]
+    if castling == "" or castling == "-":
+        parts[2] = "-"
+    else:
+        cleaned = "".join(
+            c for c in "KQkq"
+            if c in castling
+        )
+        parts[2] = cleaned or "-"
+
+    # Normalize active color.
+    parts[1] = "b" if parts[1].lower() == "b" else "w"
+
+    # Normalize en-passant.
+    if parts[3] == "":
+        parts[3] = "-"
+
+    try:
+        return " ".join(parts[:6])
+    except Exception as error:
+        raise RuntimeError(
+            f"Could not normalize FEN: {error}"
+        )
+
+
+def board_from_fen_safe(fen):
+    """
+    Build a board manually instead of letting python-chess parse the
+    complete FEN in one step. This avoids the str/bool XOR bug that can
+    occur in some python-chess/FEN combinations.
+    """
+    clean_fen = sanitize_fen(fen)
+    parts = clean_fen.split()
+
+    board = chess.Board(None)
+
+    # Piece placement.
+    board.set_board_fen(parts[0])
+
+    # Side to move.
+    # IMPORTANT:
+    # python-chess represents colors internally as booleans:
+    # True = White, False = Black.
+    #
+    # Use literal booleans here instead of chess.WHITE/chess.BLACK
+    # so this still works if a conflicting "chess" package exposes
+    # those names as strings.
+    board.turn = (
+        False
+        if parts[1].lower() == "b"
+        else True
+    )
+
+    # Castling rights as an integer bitboard.
+    #
+    # Square indexes are:
+    # a1=0, h1=7, a8=56, h8=63.
+    rights = 0
+
+    if parts[2] != "-":
+        if "K" in parts[2]:
+            rights |= chess.BB_SQUARES[7]   # h1
+        if "Q" in parts[2]:
+            rights |= chess.BB_SQUARES[0]   # a1
+        if "k" in parts[2]:
+            rights |= chess.BB_SQUARES[63]  # h8
+        if "q" in parts[2]:
+            rights |= chess.BB_SQUARES[56]  # a8
+
+    board.castling_rights = int(rights)
+
+    # En-passant square.
+    ep = parts[3]
+    if ep == "-":
+        board.ep_square = None
+    else:
+        board.ep_square = chess.parse_square(ep)
+
+    # Move counters.
+    try:
+        board.halfmove_clock = int(parts[4])
+    except Exception:
+        board.halfmove_clock = 0
+
+    try:
+        board.fullmove_number = int(parts[5])
+    except Exception:
+        board.fullmove_number = 1
+
+    return board
+
+
+# =========================================================
+# PARSE PUZZLE SOLUTION
+# =========================================================
+
+
+def _strip_pgn_headers_and_noise(pgn_text):
+    """
+    Extract SAN move tokens without invoking chess.pgn.read_game().
+    This avoids python-chess PGN parser compatibility issues with some
+    Chess.com puzzle FEN headers.
+    """
+    text = str(pgn_text)
+
+    # Remove tag pairs such as [FEN "..."] and [SetUp "1"].
+    text = re.sub(
+        r'(?m)^\s*\[[^\]]*\]\s*$',
+        ' ',
+        text
+    )
+
+    # Remove comments.
+    text = re.sub(
+        r'\{.*?\}',
+        ' ',
+        text,
+        flags=re.DOTALL
+    )
+
+    # Remove semicolon comments.
+    text = re.sub(
+        r';[^\n]*',
+        ' ',
+        text
+    )
+
+    # Remove recursive parenthesized variations. A small loop is enough
+    # for normal Chess.com PGNs and avoids pulling alternative lines in.
+    for _ in range(8):
+        new_text = re.sub(
+            r'\([^()]*\)',
+            ' ',
+            text
+        )
+        if new_text == text:
+            break
+        text = new_text
+
+    # Remove NAGs.
+    text = re.sub(
+        r'\$\d+',
+        ' ',
+        text
+    )
+
+    # Protect move numbers such as 1... and 12.
+    tokens = text.replace("\n", " ").split()
+
+    result = []
+
+    for token in tokens:
+        token = token.strip()
+
+        if not token:
+            continue
+
+        # Move numbers: 1. 12. 12... etc.
+        if re.fullmatch(r'\d+\.(\.\.)?', token):
+            continue
+
+        # Game results.
+        if token in {
+            "1-0",
+            "0-1",
+            "1/2-1/2",
+            "*"
+        }:
+            continue
+
+        # Occasionally a move number is attached to SAN:
+        # 12.Qxe5 or 12...Qxe5.
+        token = re.sub(
+            r'^\d+\.(\.\.)?',
+            '',
+            token
+        )
+
+        if token:
+            result.append(token)
+
+    return result
+
+
+def _parse_san_sequence(
+    board,
+    tokens
 ):
-    save_json(
-        SURVIVAL_STATE_FILE,
-        state,
+    """
+    Parse SAN tokens from a starting board and return the moves with
+    UCI/SAN/color. No PGN parser is used.
+    """
+    parsed = []
+
+    for token in tokens:
+
+        try:
+            move = board.parse_san(token)
+        except Exception:
+            return None
+
+        parsed.append(
+            {
+                "uci": move.uci(),
+                "san": board.san(move),
+                "color": (
+                    "white"
+                    if board.turn
+                    else "black"
+                )
+            }
+        )
+
+        board.push(move)
+
+    return parsed
+
+
+def _extract_header_fen(pgn_text):
+    match = re.search(
+        r'(?mi)^\s*\[FEN\s+"([^"]+)"\]\s*$',
+        str(pgn_text)
     )
 
-    if push:
-        ok = push_state_files()
+    if not match:
+        return None
 
-        if not ok:
+    return match.group(1)
+
+
+def get_solution(data):
+
+    try:
+        target_fen = sanitize_fen(
+            data["fen"]
+        )
+
+        target_board = board_from_fen_safe(
+            target_fen
+        )
+
+        tokens = _strip_pgn_headers_and_noise(
+            data["pgn"]
+        )
+
+        if not tokens:
             raise RuntimeError(
-                "Could not save Survival state to GitHub."
+                "Random puzzle PGN contains no SAN moves."
             )
 
+        # ---------------------------------------------------------
+        # MODE 1: The PGN starts directly from the puzzle FEN.
+        # This is the normal form for Chess.com puzzle API data.
+        # ---------------------------------------------------------
 
-def difficulty_target(
-    puzzle_number
-):
-    for (
-        first,
-        last,
-        minimum,
-        maximum,
-    ) in DIFFICULTY_BANDS:
+        puzzle_board = board_from_fen_safe(
+            target_fen
+        )
 
-        if (
-            first
-            <= puzzle_number
-            <= last
-        ):
-            return (
-                minimum,
-                maximum,
+        solution = _parse_san_sequence(
+            puzzle_board,
+            tokens
+        )
+
+        if solution:
+            start_index = 0
+
+        else:
+            # -----------------------------------------------------
+            # MODE 2: The PGN contains the original game from an
+            # earlier position. Replay it from the PGN header FEN
+            # (or standard chess) until the API puzzle FEN appears.
+            # -----------------------------------------------------
+
+            header_fen = _extract_header_fen(
+                data["pgn"]
             )
 
-    return (
-        2600,
-        9999,
+            if header_fen:
+                replay_board = board_from_fen_safe(
+                    sanitize_fen(header_fen)
+                )
+            else:
+                replay_board = board_from_fen_safe(
+                    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/"
+                    "RNBQKBNR w KQkq - 0 1"
+                )
+
+            parsed_before_puzzle = []
+
+            start_index = None
+
+            for index, token in enumerate(tokens):
+
+                if (
+                    replay_board.board_fen()
+                    == target_board.board_fen()
+                    and replay_board.turn
+                    == target_board.turn
+                ):
+                    start_index = index
+                    break
+
+                try:
+                    move = replay_board.parse_san(
+                        token
+                    )
+                except Exception:
+                    break
+
+                parsed_before_puzzle.append(
+                    move
+                )
+
+                replay_board.push(
+                    move
+                )
+
+            if start_index is None:
+
+                if (
+                    replay_board.board_fen()
+                    == target_board.board_fen()
+                    and replay_board.turn
+                    == target_board.turn
+                ):
+                    start_index = len(tokens)
+
+            if start_index is None:
+                raise RuntimeError(
+                    "Could not match the puzzle FEN to the "
+                    "random puzzle PGN. The PGN is neither a "
+                    "solution line starting from the puzzle "
+                    "position nor a replayable full-game line."
+                )
+
+            solution_board = board_from_fen_safe(
+                target_fen
+            )
+
+            solution = _parse_san_sequence(
+                solution_board,
+                tokens[start_index:]
+            )
+
+            if not solution:
+                raise RuntimeError(
+                    "The random puzzle PGN contains no legal "
+                    "solution moves after the puzzle position."
+                )
+
+        player_color = (
+            "white"
+            if target_board.turn
+            else "black"
+        )
+
+        player_moves = [
+            move
+            for move in solution
+            if move["color"] == player_color
+        ]
+
+        if not player_moves:
+            raise RuntimeError(
+                "Random puzzle has no moves for the side to solve."
+            )
+
+        return {
+            "all_moves": solution,
+            "player_moves": player_moves,
+            "player_color": player_color,
+            "player_move_count": len(player_moves),
+            "first_uci": solution[0]["uci"]
+        }
+
+    except RuntimeError:
+        raise
+
+    except Exception as error:
+        raise RuntimeError(
+            f"Random puzzle solution parsing failed: {error}"
+        )
+
+
+def build_puzzle(data):
+
+    solution = get_solution(
+        data
     )
 
+    return {
+        "url":
+            data.get("url"),
 
-def sanitize_puzzle(
-    item
+        "title":
+            data.get(
+                "title",
+                "Chess Puzzle"
+            ),
+
+        "fen":
+            data["fen"],
+
+        # Runtime state for interactive random puzzles.
+        # Daily puzzles continue to use the original FEN.
+        "current_fen":
+            data["fen"],
+
+        "pgn":
+            data["pgn"],
+
+        "all_moves":
+            solution["all_moves"],
+
+        "player_moves":
+            solution["player_moves"],
+
+        "player_color":
+            solution["player_color"],
+
+        "player_move_count":
+            solution["player_move_count"],
+
+        "posted_at":
+            None,
+
+        "answer_posted":
+            False,
+
+        "winner_user_id":
+            None,
+
+        "winner_name":
+            None,
+
+        "latest_attempts":
+            {},
+
+        "puzzle_id":
+            None
+    }
+
+
+
+def _extract_exact_rating_row(
+    wrapper,
+    rating,
 ):
-    """
-    Accept both the documented current batch response shape:
-    { "puzzle": {...}, "game": {...} }
-    and a direct puzzle object.
-    """
+    item = (
+        wrapper.get(
+            "row",
+            wrapper,
+        )
+        if isinstance(wrapper, dict)
+        else None
+    )
+
     if not isinstance(
         item,
         dict,
     ):
-        return None
-
-    puzzle = item.get(
-        "puzzle",
-        item,
-    )
-
-    if not isinstance(
-        puzzle,
-        dict,
-    ):
-        return None
-
-    puzzle_id = puzzle.get(
-        "id"
-    )
-
-    fen = puzzle.get(
-        "fen"
-    )
-
-    moves = puzzle.get(
-        "line"
-    ) or puzzle.get(
-        "moves"
-    )
-
-    rating = puzzle.get(
-        "rating"
-    )
-
-    if not puzzle_id:
-        return None
-
-    if not fen:
-        return None
-
-    if not moves:
-        return None
-
-    if rating is None:
-        return None
-
-    if isinstance(
-        moves,
-        str,
-    ):
-        moves = moves.split()
-
-    if not isinstance(
-        moves,
-        list,
-    ) or not moves:
         return None
 
     try:
-        rating = int(
-            rating
+        row_rating = int(
+            item.get(
+                "Rating"
+            )
         )
     except Exception:
         return None
 
-    return {
-        "id":
-            str(puzzle_id),
-        "fen":
-            str(fen),
-        "moves":
-            [
-                str(move)
-                for move in moves
-            ],
-        "rating":
-            rating,
-        "themes":
-            puzzle.get(
-                "themes",
-                "",
-            ),
-        "url":
-            puzzle.get(
-                "url",
-            ),
-    }
-
-
-def fetch_lichess_batch(
-    minimum_rating,
-    maximum_rating,
-):
-    """
-    Fetch a random slice of Lichess puzzles from the official
-    Lichess/chess-puzzles dataset through the public Dataset Viewer.
-
-    The Viewer supports server-side comparison predicates on Rating,
-    which lets Survival request exactly the desired difficulty band.
-    """
-    where = (
-        f'"Rating">={int(minimum_rating)} '
-        f'AND "Rating"<={int(maximum_rating)}'
-    )
-
-    # Randomize the offset over the known 6.05M-row train split.
-    # Hugging Face caps /filter length at 100.
-    total_rows = 6_057_356
-
-    max_offset = max(
-        0,
-        total_rows - BATCH_SIZE,
-    )
-
-    offset = random.randint(
-        0,
-        max_offset,
-    )
-
-    params = {
-        "dataset":
-            HF_DATASET,
-        "config":
-            HF_CONFIG,
-        "split":
-            HF_SPLIT,
-        "where":
-            where,
-        "offset":
-            offset,
-        "length":
-            min(BATCH_SIZE, 100),
-    }
-
-    try:
-        response = requests.get(
-            HF_FILTER_URL,
-            params=params,
-            headers={
-                "Accept":
-                    "application/json",
-                "User-Agent":
-                    "Discord-Survival-Mode/2.1",
-            },
-            timeout=REQUEST_TIMEOUT,
-        )
-
-        response.raise_for_status()
-
-        payload = response.json()
-
-        rows = payload.get(
-            "rows",
-            [],
-        )
-
-        result = []
-
-        for item in rows:
-
-            row = item.get(
-                "row",
-                item,
-            )
-
-            if not isinstance(
-                row,
-                dict,
-            ):
-                continue
-
-            result.append(
-                {
-                    "PuzzleId":
-                        row.get(
-                            "PuzzleId",
-                        ),
-                    "FEN":
-                        row.get(
-                            "FEN",
-                        ),
-                    "Moves":
-                        row.get(
-                            "Moves",
-                        ),
-                    "Rating":
-                        row.get(
-                            "Rating",
-                        ),
-                    "Themes":
-                        row.get(
-                            "Themes",
-                        ),
-                }
-            )
-
-        return result
-
-    except Exception as error:
-        print(
-            f"Lichess dataset filter error: {error}",
-            flush=True,
-        )
-
-        # Fallback: use the Dataset Viewer /rows endpoint and filter
-        # locally. This keeps Survival usable if /filter is temporarily
-        # unavailable.
-        rows_url = (
-            "https://datasets-server.huggingface.co/rows"
-        )
-
-        rows_params = {
-            "dataset":
-                HF_DATASET,
-            "config":
-                HF_CONFIG,
-            "split":
-                HF_SPLIT,
-            "offset":
-                offset,
-            "length":
-                100,
-        }
-
-        fallback = requests.get(
-            rows_url,
-            params=rows_params,
-            headers={
-                "Accept":
-                    "application/json",
-                "User-Agent":
-                    "Discord-Survival-Mode/2.1",
-            },
-            timeout=REQUEST_TIMEOUT,
-        )
-
-        fallback.raise_for_status()
-
-        payload = fallback.json()
-
-        result = []
-
-        for item in payload.get(
-            "rows",
-            [],
-        ):
-
-            row = item.get(
-                "row",
-                item,
-            )
-
-            if not isinstance(
-                row,
-                dict,
-            ):
-                continue
-
-            rating = row.get(
-                "Rating"
-            )
-
-            try:
-                rating = int(
-                    rating
-                )
-            except Exception:
-                continue
-
-            if not (
-                minimum_rating
-                <= rating
-                <= maximum_rating
-            ):
-                continue
-
-            result.append(
-                {
-                    "PuzzleId":
-                        row.get(
-                            "PuzzleId",
-                        ),
-                    "FEN":
-                        row.get(
-                            "FEN",
-                        ),
-                    "Moves":
-                        row.get(
-                            "Moves",
-                        ),
-                    "Rating":
-                        rating,
-                    "Themes":
-                        row.get(
-                            "Themes",
-                        ),
-                }
-            )
-
-        return result
-
-
-def sanitize_puzzle(
-    item
-):
-    if not isinstance(
-        item,
-        dict,
+    if row_rating != int(
+        rating
     ):
         return None
 
     puzzle_id = item.get(
-        "PuzzleId",
+        "PuzzleId"
     )
-
     fen = item.get(
-        "FEN",
+        "FEN"
     )
-
     moves = item.get(
-        "Moves",
-    )
-
-    rating = item.get(
-        "Rating",
+        "Moves"
     )
 
     if not puzzle_id or not fen or not moves:
-        return None
-
-    try:
-        rating = int(
-            rating
-        )
-    except Exception:
         return None
 
     if isinstance(
@@ -804,151 +1503,445 @@ def sanitize_puzzle(
         return None
 
     return {
-        "id":
+        "PuzzleId":
             str(puzzle_id),
-        "fen":
+        "FEN":
             str(fen),
-        "moves":
+        "Moves":
             [
                 str(move)
                 for move in moves
             ],
-        "rating":
-            rating,
-        "themes":
-            (
-                " ".join(item["Themes"])
-                if isinstance(
-                    item.get("Themes"),
-                    list,
-                )
-                else str(
-                    item.get(
-                        "Themes",
-                        "",
-                    )
-                )
-            ),
-        "url":
-            (
-                f"https://lichess.org/training/"
-                f"{puzzle_id}"
+        "Rating":
+            row_rating,
+        "Themes":
+            item.get(
+                "Themes",
+                "",
             ),
     }
 
 
-def choose_puzzle_for_number(
-    puzzle_number,
-    used_ids,
+def _request_lichess_filter(
+    where,
+    rating,
 ):
-    minimum, maximum = (
-        difficulty_target(
-            puzzle_number
-        )
+    response = requests.get(
+        LICHESS_FILTER_URL,
+        params={
+            "dataset":
+                LICHESS_DATASET,
+            "config":
+                LICHESS_CONFIG,
+            "split":
+                LICHESS_SPLIT,
+            "where":
+                where,
+            "offset":
+                0,
+            "length":
+                100,
+        },
+        headers={
+            "Accept":
+                "application/json",
+            "User-Agent":
+                "Chess-Puzzle-Bot/1.2",
+        },
+        timeout=LICHESS_FILTER_TIMEOUT,
     )
 
-    for _attempt in range(8):
+    response.raise_for_status()
 
-        items = fetch_lichess_batch(
-            minimum,
-            maximum,
+    rows = response.json().get(
+        "rows",
+        [],
+    )
+
+    for wrapper in rows:
+        row = _extract_exact_rating_row(
+            wrapper,
+            rating,
         )
 
-        candidates = []
+        if row:
+            return row
 
-        for raw in items:
+    return None
 
-            puzzle = sanitize_puzzle(
-                raw
+
+def fetch_lichess_parquet_urls():
+    response = requests.get(
+        PARQUET_LIST_URL,
+        params={
+            "dataset":
+                LICHESS_DATASET,
+        },
+        headers={
+            "Accept":
+                "application/json",
+            "User-Agent":
+                "Chess-Puzzle-Bot/1.4",
+        },
+        timeout=15,
+    )
+
+    response.raise_for_status()
+
+    payload = response.json()
+
+    urls = []
+
+    for item in payload.get(
+        "parquet_files",
+        [],
+    ):
+        if (
+            item.get("split")
+            == LICHESS_SPLIT
+            and item.get("config")
+            == LICHESS_CONFIG
+            and item.get("url")
+        ):
+            urls.append(
+                item["url"]
             )
 
-            if not puzzle:
-                continue
-
-            if puzzle["id"] in used_ids:
-                continue
-
-            if (
-                minimum
-                <= puzzle["rating"]
-                <= maximum
-            ):
-                candidates.append(
-                    puzzle
-                )
-
-        if candidates:
-            return random.choice(
-                candidates
-            )
-
-    raise RuntimeError(
-        "Could not find a fresh Lichess puzzle "
-        f"in the required {minimum}-{maximum} rating band."
-    )
-
-
-def build_runtime_puzzle(
-    puzzle
-):
-    """
-    Lichess database FEN is the position BEFORE the opponent's first
-    move. Apply the first move automatically. The remaining line starts
-    with the player's move.
-    """
-    board = chess.Board(
-        puzzle["fen"]
-    )
-
-    if len(
-        puzzle["moves"]
-    ) < 2:
+    if not urls:
         raise RuntimeError(
-            "Lichess puzzle has no player solution move."
+            "No Lichess puzzle Parquet files were returned."
         )
+
+    return urls
+
+
+def fetch_exact_lichess_puzzle(
+    rating,
+    excluded_ids=None,
+):
+    """
+    Query the current Lichess puzzle Parquet shards directly with DuckDB.
+
+    This avoids the Dataset Viewer /filter service, which has been returning
+    intermittent 500s/timeouts for the bot. DuckDB can query remote Parquet
+    files over HTTP and only returns the matching puzzle row.
+    """
+    rating = int(
+        rating
+    )
+
+    try:
+        import duckdb
+    except ImportError as error:
+        raise RuntimeError(
+            "DuckDB is not installed. Add `duckdb` to requirements.txt."
+        ) from error
+
+    urls = fetch_lichess_parquet_urls()
+
+    con = duckdb.connect(
+        database=":memory:"
+    )
+
+    try:
+        con.execute(
+            "INSTALL httpfs"
+        )
+        con.execute(
+            "LOAD httpfs"
+        )
+
+        # Query all three current shards in one statement.
+        parquet_list = ", ".join(
+            "'" + url.replace("'", "''") + "'"
+            for url in urls
+        )
+
+        excluded_ids = [
+            str(value)
+            for value in (excluded_ids or [])
+        ][-100:]
+
+        exclusion_sql = ""
+
+        if excluded_ids:
+            literals = ", ".join(
+                "'" + value.replace("'", "''") + "'"
+                for value in excluded_ids
+            )
+            exclusion_sql = (
+                f" AND PuzzleId NOT IN ({literals})"
+            )
+
+        query = f"""
+            SELECT
+                PuzzleId,
+                FEN,
+                Moves,
+                Rating,
+                Themes
+            FROM read_parquet(
+                [{parquet_list}],
+                union_by_name=true
+            )
+            WHERE Rating = ?
+            {exclusion_sql}
+            ORDER BY random()
+            LIMIT 1
+        """
+
+        result = con.execute(
+            query,
+            [rating],
+        ).fetchone()
+
+        if not result:
+            return None
+
+        puzzle_id, fen, moves, row_rating, themes = result
+
+        if isinstance(
+            moves,
+            str,
+        ):
+            moves = moves.split()
+
+        if (
+            not puzzle_id
+            or not fen
+            or not isinstance(
+                moves,
+                list,
+            )
+            or len(moves) < 2
+        ):
+            return None
+
+        return {
+            "PuzzleId":
+                str(puzzle_id),
+            "FEN":
+                str(fen),
+            "Moves":
+                [
+                    str(move)
+                    for move in moves
+                ],
+            "Rating":
+                int(row_rating),
+            "Themes":
+                themes or "",
+        }
+
+    finally:
+        con.close()
+
+
+async def post_exact_lichess_puzzle(
+    channel,
+    rating,
+):
+    try:
+        used_by_rating = state.setdefault(
+            "lichess_rating_used",
+            {}
+        )
+
+        used_ids = list(
+            used_by_rating.get(
+                str(rating),
+                []
+            )
+        )
+
+        raw = await asyncio.to_thread(
+            fetch_exact_lichess_puzzle,
+            rating,
+            used_ids,
+        )
+
+        if raw is None:
+            await channel.send(
+                f"❌ No Lichess puzzle with **exact rating {rating}** was found."
+            )
+            return
+
+        # Reuse the existing Lichess -> internal puzzle structure.
+        puzzle_source = {
+            "id": raw["PuzzleId"],
+            "fen": raw["FEN"],
+            "moves": raw["Moves"],
+            "rating": raw["Rating"],
+            "themes": (
+                " ".join(raw["Themes"])
+                if isinstance(raw["Themes"], list)
+                else str(raw["Themes"])
+            ),
+            "url": (
+                f"https://lichess.org/training/"
+                f"{raw['PuzzleId']}"
+            ),
+        }
+
+        puzzle = build_puzzle_from_lichess(
+            puzzle_source
+        )
+
+        puzzle["posted_at"] = (
+            datetime.now(timezone.utc).isoformat()
+        )
+        puzzle["puzzle_id"] = (
+            f"random_lichess_{rating}_"
+            f"{raw['PuzzleId']}_"
+            f"{int(time.time() * 1000)}"
+        )
+
+        used_ids.append(
+            str(raw["PuzzleId"])
+        )
+
+        used_by_rating[
+            str(rating)
+        ] = used_ids[-100:]
+
+        # Exact-rating puzzles use the same interactive state machine
+        # as Daily/Random.
+        puzzle["current_fen"] = sanitize_fen(
+            puzzle["fen"]
+        )
+        puzzle["next_solution_index"] = 0
+        puzzle["next_player_index"] = 0
+        puzzle["solved"] = False
+        puzzle["message_id"] = None
+        puzzle["attempted_users"] = {}
+        puzzle["first_move_user_id"] = None
+        puzzle["first_move_user_name"] = None
+        puzzle["first_move_awarded"] = False
+        puzzle["helper_awarded_users"] = []
+        puzzle["helper_candidate_users"] = []
+
+        state["latest_random_puzzle"] = puzzle
+        state["latest_puzzle_type"] = "random"
+
+        await save_all()
+
+        file, board = await make_board_file(
+            puzzle,
+            "lichess_rating_puzzle.png",
+        )
+
+        side = "White" if board.turn else "Black"
+
+        if puzzle["player_move_count"] == 1:
+            move_description = "Find the best move."
+        else:
+            move_description = (
+                f"Find the best line in **"
+                f"{puzzle['player_move_count']} "
+                f"{move_word(puzzle['player_move_count'])}**."
+            )
+
+        embed = discord.Embed(
+            title=(
+                f"♟️ Lichess Puzzle — {rating}"
+            ),
+            description=(
+                f"**{side} to move.**\n"
+                f"{move_description}\n\n"
+                f"Play one move at a time."
+            ),
+        )
+
+        embed.set_image(
+            url="attachment://lichess_rating_puzzle.png"
+        )
+
+        await channel.send(
+            embed=embed,
+            file=file,
+        )
+
+    except Exception as error:
+        print(
+            f"Exact Lichess rating puzzle error: {error}",
+            flush=True,
+        )
+
+        error_text = (
+            str(error).strip()
+            or repr(error)
+        )
+
+        if len(error_text) > 900:
+            error_text = (
+                error_text[:900]
+                + "..."
+            )
+
+        await channel.send(
+            f"❌ **Could not load Lichess rating {rating}.**\n"
+            f"`{error_text}`"
+        )
+
+
+# =========================================================
+# BUILD LICHESS PUZZLE
+# =========================================================
+
+def build_puzzle_from_lichess(
+    data,
+):
+    """
+    Lichess dataset:
+    FEN is the position before the puzzle's first (opponent) move.
+    Moves contains that first move followed by the solution line.
+    """
+    start_board = chess.Board(
+        data["fen"]
+    )
 
     first_move = chess.Move.from_uci(
-        puzzle["moves"][0]
+        data["moves"][0]
     )
 
-    if first_move not in board.legal_moves:
-        raise RuntimeError(
-            "Invalid Lichess first puzzle move."
+    if first_move not in start_board.legal_moves:
+        raise ValueError(
+            "Lichess puzzle has an illegal first move."
         )
 
-    board.push(
+    start_board.push(
         first_move
     )
 
-    solution = []
+    player_color = (
+        "white"
+        if start_board.turn
+        else "black"
+    )
 
-    for index, uci in enumerate(
-        puzzle["moves"][1:],
-        start=1,
-    ):
+    solution = []
+    board = start_board.copy()
+
+    for uci in data["moves"][1:]:
         move = chess.Move.from_uci(
             uci
         )
 
         if move not in board.legal_moves:
-            raise RuntimeError(
-                "Invalid Lichess solution line."
+            raise ValueError(
+                "Lichess puzzle solution contains "
+                "an illegal move."
             )
 
         solution.append(
             {
-                "uci":
-                    uci,
-                "san":
-                    board.san(
-                        move
-                    ),
-                "color":
-                    (
-                        "white"
-                        if board.turn
-                        else "black"
-                    ),
+                "uci": uci,
+                "san": board.san(move),
+                "color": (
+                    "white"
+                    if board.turn
+                    else "black"
+                ),
             }
         )
 
@@ -956,3258 +1949,2818 @@ def build_runtime_puzzle(
             move
         )
 
-    player_color = solution[0][
-        "color"
+    player_moves = [
+        move
+        for move in solution
+        if move["color"] == player_color
     ]
 
+    starting_fen = (
+        start_board.fen()
+    )
+
     return {
-        "id":
-            puzzle["id"],
-        "rating":
-            puzzle["rating"],
-        "themes":
-            puzzle.get(
-                "themes",
-                "",
-            ),
-        "url":
-            puzzle.get(
-                "url",
-            ),
-        "start_fen":
-            board_fen_before_solution(
-                puzzle
-            ),
+        "title":
+            f"{data['rating']} • "
+            f"{data['id']}",
+        "fen":
+            starting_fen,
         "current_fen":
-            board_fen_after_first_move(
-                puzzle
-            ),
-        "solution":
+            starting_fen,
+        "all_moves":
             solution,
+        "player_moves":
+            player_moves,
         "player_color":
             player_color,
-        "next_solution_index":
-            0,
-        "first_solver_id":
-            None,
-        "first_solver_name":
-            None,
-        "helper_candidates":
-            {},
-        "helper_awarded":
-            [],
-        "wrong_users":
-            [],
-        "last_move_san":
-            None,
-        "accepted_moves":
-            [],
+        "player_move_count":
+            len(player_moves),
+        "pgn":
+            "",
+        "url":
+            data.get(
+                "url",
+                f"https://lichess.org/training/"
+                f"{data['id']}",
+            ),
     }
 
 
-def board_fen_before_solution(
-    puzzle
+def board_fen_after_lichess_first(
+    data,
 ):
-    board = chess.Board(
-        puzzle["fen"]
-    )
-
-    move = chess.Move.from_uci(
-        puzzle["moves"][0]
-    )
-
+    board = chess.Board(data["fen"])
     board.push(
-        move
+        chess.Move.from_uci(
+            data["moves"][0]
+        )
     )
-
     return board.fen()
 
 
-def board_fen_after_first_move(
-    puzzle
-):
-    return board_fen_before_solution(
-        puzzle
-    )
+# =========================================================
+# BOARD IMAGE
+# =========================================================
 
-
-def side_to_move_text(
-    board,
-):
-    return (
-        "White"
-        if board.turn == chess.WHITE
-        else "Black"
-    )
-
-
-def render_board(
+async def make_board_file(
     puzzle,
+    filename
 ):
-    board = chess.Board(
-        puzzle["current_fen"]
+    # For interactive random puzzles, render the CURRENT position.
+    # For daily puzzles, this remains the original FEN.
+    current_fen = puzzle.get(
+        "current_fen",
+        puzzle["fen"]
     )
 
-    # The board POV must follow the ACTUAL side to move in current_fen.
-    # This is more reliable than trusting a stored player_color value.
-    orientation = (
-        chess.WHITE
-        if board.turn == chess.WHITE
-        else chess.BLACK
+    board = board_from_fen_safe(
+        current_fen
     )
 
-    stored_player_color = str(
-        puzzle.get(
+    # Random puzzle: keep the player's POV fixed even after
+    # the final move, so the board never flips when the puzzle
+    # is finished. Daily puzzles keep their normal orientation.
+    if str(puzzle.get("puzzle_id", "")).startswith("random_"):
+        player_color = puzzle.get(
             "player_color",
-            "",
+            "white"
         )
-    ).casefold()
-
-    actual_player_color = (
-        "white"
-        if board.turn == chess.WHITE
-        else "black"
-    )
-
-    if (
-        stored_player_color
-        and stored_player_color != actual_player_color
-    ):
-        print(
-            "Survival POV warning: stored player_color "
-            f"{stored_player_color!r} does not match "
-            f"current FEN side to move {actual_player_color!r}. "
-            "Rendering from the actual board turn.",
-            flush=True,
+        orientation = (
+            True
+            if str(player_color).lower() == "white"
+            else False
         )
+    else:
+        # board.turn is guaranteed to be a real bool.
+        orientation = bool(board.turn)
 
-    svg = chess.svg.board(
+    svg_board = chess.svg.board(
         board=board,
         orientation=orientation,
-        size=520,
-        coordinates=True,
+        size=500,
+        coordinates=True
     )
 
-    png = awaitable_svg_to_png(
-        svg
+    png_bytes = await asyncio.to_thread(
+        cairosvg.svg2png,
+        bytestring=svg_board.encode(
+            "utf-8"
+        )
+    )
+
+    image = BytesIO(
+        png_bytes
     )
 
     file = discord.File(
-        fp=io.BytesIO(png),
-        filename="survival.png",
+        fp=image,
+        filename=filename
     )
 
     return file, board
 
 
-def awaitable_svg_to_png(
-    svg
-):
-    import cairosvg
+# =========================================================
+# MOVE WORD
+# =========================================================
 
-    return cairosvg.svg2png(
-        bytestring=svg.encode(
-            "utf-8"
-        )
+def move_word(count):
+
+    return (
+        "move"
+        if count == 1
+        else "moves"
     )
 
 
-async def send_puzzle_embed(
+# =========================================================
+# POST DAILY PUZZLE
+# =========================================================
+
+async def post_daily_puzzle(
     channel,
-    team,
-    run,
+    puzzle
 ):
-    puzzle = run[
-        "puzzle"
+
+    file, board = await make_board_file(
+        puzzle,
+        "daily_puzzle.png"
+    )
+
+    side = (
+        "White"
+        if board.turn
+        else "Black"
+    )
+
+    count = puzzle[
+        "player_move_count"
     ]
 
-    file, board = render_board(
-        puzzle
-    )
-
-    number = run[
-        "puzzle_number"
+    title = puzzle[
+        "title"
     ]
-
-    strikes = run[
-        "strikes"
-    ]
-
-    lives = max(
-        0,
-        THREE_STRIKES - strikes,
-    )
-
-    heart_text = (
-        "❤️" * lives
-        + "🖤" * (
-            THREE_STRIKES
-            - lives
-        )
-    )
-
-    minimum, maximum = (
-        difficulty_target(
-            number
-        )
-    )
-
-    if maximum >= 9999:
-        difficulty_text = (
-            f"{minimum}+"
-        )
-    else:
-        difficulty_text = (
-            f"{minimum}–{maximum}"
-        )
 
     embed = discord.Embed(
         title=(
-            f"🔥 **SURVIVAL — {team}**"
+            f"♟️ Daily Puzzle — {title}"
         ),
         description=(
-            f"**Puzzle #{number}**\n"
-            f"Difficulty: **{puzzle['rating']}** "
-            f"(target {difficulty_text})\n"
-            f"Strikes: {heart_text}\n"
-            f"♟️ **{side_to_move_text(board)} to move.**\n\n"
-            f"Everyone can answer. First correct move wins "
-            f"the position."
+            f"**{side} to move.**\n"
+            f"Find the best line in "
+            f"**{count} {move_word(count)}**."
         ),
+        color=0x2ecc71
     )
 
     embed.set_image(
-        url="attachment://survival.png"
+        url="attachment://daily_puzzle.png"
     )
 
     await channel.send(
         embed=embed,
-        file=file,
+        file=file
+    )
+
+    print(
+        f"Daily Puzzle posted "
+        f"({count} player moves).",
+        flush=True
     )
 
 
-def current_run_for_team(
-    state,
-    team_key,
+# =========================================================
+# POST RANDOM PUZZLE
+# =========================================================
+
+async def post_random_puzzle(
+    channel
 ):
-    team = state["teams"].get(
-        team_key
-    )
+    survival_active, survival_team = remote_survival_status()
 
-    if not team:
-        return None
+    if survival_active:
+        team = survival_team or active_team() or "another team"
+        await channel.send(
+            f"⚠️ **Survival Mode is active for {team}.** "
+            "Random Puzzle is unavailable until Survival is paused."
+        )
+        return
 
-    current = team.get(
-        "current"
-    )
-
-    return current
-
-
-def active_current_run(
-    state
-):
-    for team_key, team in (
-        state["teams"].items()
-    ):
-        current = team.get(
-            "current"
+    try:
+        data = await asyncio.to_thread(
+            fetch_random_puzzle
         )
 
-        if not current:
-            continue
+        puzzle = build_puzzle(
+            data
+        )
 
-        if current.get(
-            "status"
-        ) == "active":
-            return (
-                team_key,
-                team,
+        puzzle["posted_at"] = (
+            datetime.now(
+                timezone.utc
+            ).isoformat()
+        )
+
+        puzzle["puzzle_id"] = (
+            "random_"
+            + str(
+                int(
+                    time.time() * 1000
+                )
             )
-
-    return None
-
-
-def ensure_member(
-    run,
-    user,
-):
-    members = run.setdefault(
-        "members",
-        {}
-    )
-
-    uid = str(
-        user.id
-    )
-
-    member = members.setdefault(
-        uid,
-        {
-            "name":
-                user.display_name,
-            "correct":
-                0,
-            "wrong":
-                0,
-        },
-    )
-
-    member["name"] = (
-        user.display_name
-    )
-
-    return member
-
-
-def run_is_dead(
-    run
-):
-    return (
-        isinstance(run, dict)
-        and int(run.get("strikes", 0)) >= THREE_STRIKES
-        and run.get("paused_reason") == "three strikes"
-    )
-
-
-def run_status_text(
-    team,
-    run,
-):
-    if not run:
-        return (
-            f"👥 **{team}** has no saved "
-            f"Survival run."
         )
 
-    best_difficulty = run.get(
-        "best_difficulty",
-        0,
-    )
-
-    status = run.get(
-        "status",
-        "paused",
-    )
-
-    captain = (
-        run.get(
-            "captain_name"
+        # Interactive state.
+        puzzle["current_fen"] = sanitize_fen(
+            puzzle["fen"]
         )
-        or (
-            f"<@{run.get('captain_id')}>"
-            if run.get("captain_id")
-            else "Unknown"
+        puzzle["next_solution_index"] = 0
+        puzzle["next_player_index"] = 0
+        puzzle["solved"] = False
+        puzzle["message_id"] = None
+        puzzle["attempted_users"] = {}
+
+        puzzle["first_move_user_id"] = None
+        puzzle["first_move_user_name"] = None
+        puzzle["first_move_awarded"] = False
+        puzzle["helper_awarded_users"] = []
+        puzzle["helper_candidate_users"] = []
+
+        state[
+            "latest_random_puzzle"
+        ] = puzzle
+
+        state[
+            "latest_puzzle_type"
+        ] = "random"
+
+        await save_all()
+
+        file, board = await make_board_file(
+            puzzle,
+            "random_puzzle.png"
         )
-    )
 
-    return (
-        f"🔥 **{team} — Survival**\n"
-        f"Status: **{status}**\n"
-        f"Captain: **{captain}**\n"
-        f"Puzzle: **#{run.get('puzzle_number', 0)}**\n"
-        f"Strikes: **{run.get('strikes', 0)}/{THREE_STRIKES}**\n"
-        f"Best difficulty: **{best_difficulty}**"
-    )
+        side = (
+            "White"
+            if board.turn
+            else "Black"
+        )
 
+        count = puzzle[
+            "player_move_count"
+        ]
 
-def team_saved_runs(
-    team
-):
-    runs = []
+        title = puzzle[
+            "title"
+        ]
 
-    history = team.get(
-        "history",
-        []
-    )
-
-    for run in history:
-        if isinstance(run, dict):
-            runs.append(
-                run
+        if count == 1:
+            move_description = (
+                "Find the best move."
             )
-
-    current = team.get(
-        "current"
-    )
-
-    if isinstance(current, dict):
-        runs.append(
-            current
-        )
-
-    return runs
-
-
-def survival_leaderboard(
-    state
-):
-    rows = []
-
-    for team_key, team in (
-        state["teams"].items()
-    ):
-        for run in team_saved_runs(
-            team
-        ):
-            rows.append(
-                {
-                    "team":
-                        team.get(
-                            "name",
-                            team_key,
-                        ),
-                    "run_id":
-                        run.get(
-                            "run_id",
-                            f"{team_key}:{len(rows)}",
-                        ),
-                    "puzzle":
-                        int(
-                            run.get(
-                                "puzzle_number",
-                                0,
-                            )
-                        ),
-                    "difficulty":
-                        int(
-                            run.get(
-                                "best_difficulty",
-                                0,
-                            )
-                        ),
-                    "status":
-                        run.get(
-                            "status",
-                            "paused",
-                        ),
-                    "strikes":
-                        int(
-                            run.get(
-                                "strikes",
-                                0,
-                            )
-                        ),
-                }
-            )
-
-    rows.sort(
-        key=lambda row: (
-            -row["puzzle"],
-            -row["difficulty"],
-            row["team"].casefold(),
-            row["run_id"],
-        )
-    )
-
-    if not rows:
-        return (
-            "🏆 **SURVIVAL LEADERBOARD**\n\n"
-            "No runs yet."
-        )
-
-    lines = [
-        "🏆 **SURVIVAL LEADERBOARD**",
-        "",
-    ]
-
-    for rank, row in enumerate(
-        rows,
-        start=1,
-    ):
-        if rank == 1:
-            prefix = "🥇"
-        elif rank == 2:
-            prefix = "🥈"
-        elif rank == 3:
-            prefix = "🥉"
         else:
-            prefix = f"**{rank}.**"
-
-        if row["status"] == "active":
-            status = "🟢 ACTIVE"
-        elif row["strikes"] >= THREE_STRIKES:
-            status = "💀 DEAD"
-        else:
-            status = "⏸️ PAUSED"
-
-        lines.append(
-            f"{prefix} **{row['team']}** — "
-            f"Puzzle **#{row['puzzle']}** — "
-            f"{status} — "
-            f"best difficulty **{row['difficulty']}**"
-        )
-
-    return "\n".join(
-        lines
-    )
-
-
-
-class TeamRunSelectView(
-    discord.ui.View
-):
-    def __init__(
-        self,
-        bot,
-        requester_id,
-        team_key,
-        runs,
-    ):
-        super().__init__(
-            timeout=None
-        )
-        self.bot = bot
-        self.requester_id = requester_id
-        self.team_key = team_key
-        self.runs = runs
-
-        options = []
-
-        for index, run in enumerate(
-            runs[:25]
-        ):
-            status = run.get(
-                "status",
-                "paused",
+            move_description = (
+                f"Find the best line in "
+                f"**{count} {move_word(count)}**."
             )
 
-            if run.get("strikes", 0) >= THREE_STRIKES:
-                status_text = "DEAD"
-            elif status == "active":
-                status_text = "ACTIVE"
-            else:
-                status_text = "PAUSED"
-
-            options.append(
-                discord.SelectOption(
-                    label=(
-                        f"#{run.get('puzzle_number', 0)} — "
-                        f"{status_text}"
-                    )[:100],
-                    description=(
-                        f"Best difficulty "
-                        f"{run.get('best_difficulty', 0)}"
-                    )[:100],
-                    value=str(index),
-                )
-            )
-
-        select = discord.ui.Select(
-            placeholder="Choose a Survival run...",
-            options=options,
-            min_values=1,
-            max_values=1,
+        embed = discord.Embed(
+            title=(
+                f"🎲 Random Puzzle — {title}"
+            ),
+            description=(
+                f"**{side} to move.**\n"
+                f"{move_description}\n\n"
+                f"You only enter **your own moves**. "
+                f"The opponent's replies will be played automatically."
+            ),
+            color=0x3498db
         )
 
-        async def callback(
-            interaction,
-        ):
-            if interaction.user.id != self.requester_id:
-                await interaction.response.send_message(
-                    "Only the person who requested the team info can choose.",
-                    ephemeral=True,
-                )
-                return
-
-            index = int(
-                select.values[0]
-            )
-
-            run = self.runs[
-                index
-            ]
-
-            await self.bot.show_run_details(
-                interaction,
-                self.team_key,
-                run,
-            )
-
-        select.callback = callback
-
-        self.add_item(
-            select
+        embed.set_image(
+            url="attachment://random_puzzle.png"
         )
 
-
-class ContinueOrRestartView(
-    discord.ui.View
-):
-    def __init__(
-        self,
-        bot,
-        requester_id,
-        team_key,
-    ):
-        super().__init__(
-            timeout=None
-        )
-        self.bot = bot
-        self.requester_id = (
-            requester_id
-        )
-        self.team_key = team_key
-
-    async def interaction_check(
-        self,
-        interaction,
-    ):
-        # Persistent buttons survive Action restarts. Anyone may choose
-        # Continue or Start New for a saved team run; the actual run rules
-        # are enforced by resume_team/restart_team.
-        return True
-
-    @discord.ui.button(
-        label="Continue",
-        style=discord.ButtonStyle.success,
-        custom_id="survival_continue",
-    )
-    async def continue_run(
-        self,
-        interaction,
-        button,
-    ):
-        await self.bot.resume_team(
-            interaction,
-            self.team_key,
+        message = await channel.send(
+            embed=embed,
+            file=file
         )
 
-    @discord.ui.button(
-        label="Start New",
-        style=discord.ButtonStyle.danger,
-        custom_id="survival_start_new",
-    )
-    async def restart_run(
-        self,
-        interaction,
-        button,
-    ):
-        await self.bot.restart_team(
-            interaction,
-            self.team_key,
-        )
+        puzzle["message_id"] = message.id
 
-
-class SurvivalBot(
-    commands.Bot
-):
-    def __init__(self):
-        intents = discord.Intents.default()
-        intents.message_content = True
-
-        super().__init__(
-            command_prefix="!",
-            intents=intents,
-        )
-
-        self.state = load_runs()
-        self.pending_team = None
-        self.game_lock = asyncio.Lock()
-
-    def set_pending_team(
-        self,
-        pending,
-    ):
-        # This is transient UI state, not Survival progress.
-        # Do NOT push it to GitHub: a synchronous git push here can block
-        # Discord's event loop and make the next user message appear ignored.
-        self.pending_team = pending
-
-    def clear_pending_team(
-        self,
-    ):
-        # Clear only the transient prompt. The actual Survival run is
-        # persisted by start_new_run().
-        self.pending_team = None
-
-    async def setup_hook(
-        self
-    ):
-        # Register persistent Continue / Start New buttons for every
-        # saved current run. This makes old Discord buttons keep working
-        # even after the GitHub Action restarts.
-        for team_key, team in self.state.get(
-            "teams",
-            {}
-        ).items():
-            current = team.get(
-                "current"
-            )
-
-            if (
-                isinstance(current, dict)
-                and current.get("status") != "active"
-                and current.get("strikes", 0) < THREE_STRIKES
-            ):
-                self.add_view(
-                    ContinueOrRestartView(
-                        self,
-                        0,
-                        team_key,
-                    )
-                )
-
-        self.bg_task = asyncio.create_task(
-            self.maintenance_loop()
-        )
-        # Do not self-close after 5h50. The GitHub workflow controls
-        # the lifecycle and the next scheduled run takes over.
-        self.action_task = None
-
-    async def on_ready(
-        self
-    ):
-        print(
-            f"Survival Bot ready as {self.user}",
-            flush=True,
-        )
-
-        # Recover stale lock from a dead Action.
-        if (
-            self.state
-            and get_lock()
-            is None
-        ):
-            active = active_current_run(
-                self.state
-            )
-
-            if active:
-                _, team = active
-                current = team.get(
-                    "current"
-                )
-
-                if current:
-                    current[
-                        "status"
-                    ] = "paused"
-
-                    save_state(
-                        self.state,
-                        push=True,
-                    )
-
-        active = active_current_run(
-            self.state
-        )
-
-        if active:
-            team_key, team = active
-            run = team.get(
-                "current"
-            )
-
-            if run:
-                try:
-                    write_lock(
-                        team.get(
-                            "name",
-                            team_key,
-                        ),
-                        run.get(
-                            "run_id",
-                        ),
-                        run.get(
-                            "last_activity",
-                            epoch_now(),
-                        ),
-                    )
-                except Exception as error:
-                    print(
-                        f"Could not restore Survival lock: {error}",
-                        flush=True,
-                    )
-
-    async def maintenance_loop(
-        self
-    ):
-        await self.wait_until_ready()
-
-        while not self.is_closed():
-
-            try:
-                await self.check_timeout()
-
-            except Exception as error:
-                print(
-                    f"Survival maintenance error: {error}",
-                    flush=True,
-                )
-
-            await asyncio.sleep(30)
-
-    async def check_timeout(
-        self
-    ):
-        active = active_current_run(
-            self.state
-        )
-
-        if not active:
-            return
-
-        team_key, team = active
-        run = team.get(
-            "current"
-        )
-
-        if not run:
-            return
-
-        elapsed = (
-            epoch_now()
-            - float(
-                run.get(
-                    "last_activity",
-                    epoch_now(),
-                )
-            )
-        )
-
-        if elapsed < INACTIVITY_SECONDS:
-            return
-
-        run[
-            "status"
-        ] = "paused"
-
-        run[
-            "paused_reason"
-        ] = "10-minute inactivity"
-
-        update_best(
-            team,
-            run,
-        )
-
-        save_state(
-            self.state,
-            push=True,
-        )
-
-        clear_lock()
-
-        channel = self.get_channel(
-            CHANNEL_ID
-        )
-
-        if channel:
-            await channel.send(
-                f"⏸️ **{team.get('name', team_key)} Survival paused.**\n"
-                f"Puzzle **#{run.get('puzzle_number', 0)}**\n"
-                f"Strikes **{run.get('strikes', 0)}/{THREE_STRIKES}**\n"
-                f"Best difficulty **{run.get('best_difficulty', 0)}**\n\n"
-                f"Run saved. Come back later with `!survival`."
-            )
-
-    def archive_current_run(
-        self,
-        team,
-    ):
-        current = team.get(
-            "current"
-        )
-
-        if not isinstance(
-            current,
-            dict,
-        ):
-            return
-
-        snapshot = copy.deepcopy(
-            current
-        )
-
-        team.setdefault(
-            "history",
-            []
-        ).append(
-            snapshot
-        )
-
-        team[
-            "current"
-        ] = None
-
-    async def start_new_run(
-        self,
-        team_key,
-        display_name,
-        requester,
-        force=False,
-    ):
-        requester_user = (
-            requester.author
-            if hasattr(
-                requester,
-                "author",
-            )
-            else getattr(
-                requester,
-                "user",
-                requester,
-            )
-        )
-
-        state = self.state
-
-        active = active_current_run(
+        # Persist the message ID locally.
+        # Do NOT run the GitHub push immediately after sending.
+        # The random puzzle is already successfully posted, and
+        # the extra push was causing the command to report an
+        # error after the message had appeared.
+        save_json(
+            STATE_FILE,
             state
         )
 
-        if active:
-            active_key, active_team_record = (
-                active
-            )
-
-            if active_key != team_key:
-                active_name = (
-                    active_team_record.get(
-                        "name",
-                        active_key,
-                    )
-                )
-
-                await requester.channel.send(
-                    f"⚠️ **{active_name} Survival is currently active.**\n"
-                    f"Finish or stop that run before starting another team."
-                )
-
-                return
-
-        team = team_record(
-            state,
-            team_key,
-            display_name,
+        print(
+            f"Random Puzzle posted "
+            f"({count} player moves).",
+            flush=True
         )
 
-        existing = team.get(
-            "current"
+        # IMPORTANT:
+        # A successful Discord post is a successful random-puzzle
+        # command. Do not turn a post-send persistence issue into
+        # a visible "Random Puzzle Error" message.
+        return
+
+    except Exception as error:
+        print(
+            "RANDOM PUZZLE ERROR:",
+            flush=True
+        )
+        traceback.print_exc()
+
+        # Show the real error in Discord so a failed request or
+        # PGN/FEN parsing problem can be diagnosed immediately.
+        error_text = str(error).strip() or repr(error)
+        if len(error_text) > 1400:
+            error_text = error_text[:1400] + "..."
+
+        await channel.send(
+            "❌ **Random Puzzle Error**\n"
+            f"```{error_text}```"
         )
 
-        if existing and not force:
-            if existing.get(
-                "status"
-            ) == "active":
-                await requester.channel.send(
-                    run_status_text(
-                        display_name,
-                        existing,
-                    )
-                )
-                return
 
-            view = ContinueOrRestartView(
-                self,
-                requester_user.id,
-                team_key,
+# =========================================================
+# NORMALIZE MOVE
+# =========================================================
+
+def normalize_move(text):
+
+    """
+    Case-insensitive.
+
+    + and # are optional.
+
+    Examples:
+
+        Nc6   -> nc6
+        nc6   -> nc6
+        NC6   -> nc6
+
+        Bf2+  -> bf2
+        bf2   -> bf2
+
+        Qh7#  -> qh7
+        qh7   -> qh7
+    """
+
+    text = text.strip()
+
+    text = "".join(
+        text.split()
+    )
+
+    text = text.casefold()
+
+    while (
+        text.endswith("+")
+        or text.endswith("#")
+    ):
+
+        text = text[:-1]
+
+    return text
+
+
+# =========================================================
+# MATCH ONE MOVE
+# =========================================================
+
+def san_matches_move(
+    board,
+    submitted,
+    expected_move
+):
+
+    submitted_normalized = (
+        normalize_move(submitted)
+    )
+
+    if not submitted_normalized:
+        return False
+
+    for legal_move in board.legal_moves:
+
+        san = board.san(
+            legal_move
+        )
+
+        if (
+            normalize_move(san)
+            == submitted_normalized
+        ):
+
+            return (
+                legal_move.uci()
+                == expected_move["uci"]
             )
 
-            await requester.channel.send(
-                f"♻️ **{display_name} has a saved Survival run.**\n\n"
-                f"{run_status_text(display_name, existing)}\n\n"
-                f"Continue it or start a new run?",
-                view=view,
-            )
+    # UCI support
+    try:
 
-            return
+        move = board.parse_uci(
+            submitted_normalized
+        )
 
-        if existing and force:
-            self.archive_current_run(
-                team
-            )
+        return (
+            move.uci()
+            == expected_move["uci"]
+        )
 
-        run = {
-            "run_id":
-                f"{team_key}:{int(time.time())}",
-            "started_by_id":
-                str(requester_user.id),
-            "captain_id":
-                str(requester_user.id),
-            "captain_name":
-                requester_user.display_name,
-            "mode":
-                "coop",
-            "status":
-                "active",
-            "started_at":
-                utc_now().isoformat(),
-            "last_activity":
-                epoch_now(),
-            "paused_reason":
-                None,
-            "puzzle_number":
-                1,
-            "strikes":
-                0,
-            "best_difficulty":
-                0,
-            "used_puzzle_ids":
-                [],
-            "members":
-                {},
-            "puzzle":
-                None,
-            "first_solver_id":
-                None,
-            "first_solver_name":
-                None,
-            "helper_candidates":
-                {},
-            "helper_awarded":
-                [],
+    except ValueError:
+
+        return False
+
+
+# =========================================================
+# CHECK PLAYER'S FULL LINE
+# =========================================================
+
+def solution_is_correct(
+    submitted_text,
+    puzzle
+):
+
+    """
+    IMPORTANT:
+
+    The user ONLY enters their own moves.
+
+    Example:
+
+        Puzzle starts with White.
+
+        Actual puzzle line:
+
+        White: Qh7+
+        Black: Kg8
+        White: Qh8+
+        Black: Kf7
+        White: Qg7+
+        Black: Ke6
+        White: Qe7#
+
+        User enters:
+
+        !Qh7+ Qh8+ Qg7+ Qe7#
+
+    The bot automatically plays:
+
+        Kg8
+        Kf7
+        Ke6
+
+    The user never enters Black's moves.
+    """
+
+    if not submitted_text:
+        return False
+
+    submitted_moves = (
+        submitted_text.strip().split()
+    )
+
+    player_moves = puzzle.get(
+        "player_moves",
+        []
+    )
+
+    all_moves = puzzle.get(
+        "all_moves",
+        []
+    )
+
+    # Must enter exactly the number of
+    # moves belonging to the player.
+    if len(submitted_moves) != len(
+        player_moves
+    ):
+
+        return False
+
+    board = board_from_fen_safe(
+        puzzle["fen"]
+    )
+
+    submitted_index = 0
+
+    for expected in all_moves:
+
+        # This is the user's move.
+        if (
+            expected["color"]
+            == puzzle["player_color"]
+        ):
+
+            submitted = submitted_moves[
+                submitted_index
+            ]
+
+            if not san_matches_move(
+                board,
+                submitted,
+                expected
+            ):
+
+                return False
+
+            submitted_index += 1
+
+        # This is the opponent's move.
+        #
+        # We don't ask the user for it.
+        # We simply play the exact move from
+        # the puzzle solution.
+        move = chess.Move.from_uci(
+            expected["uci"]
+        )
+
+        if move not in board.legal_moves:
+
+            return False
+
+        board.push(move)
+
+    return (
+        submitted_index
+        == len(submitted_moves)
+    )
+
+
+# =========================================================
+# PUZZLE OPEN?
+# =========================================================
+
+def puzzle_is_open(
+    puzzle,
+    window
+):
+
+    if not puzzle:
+        return False
+
+    if puzzle.get(
+        "answer_posted",
+        False
+    ):
+        return False
+
+    posted_at = puzzle.get(
+        "posted_at"
+    )
+
+    if not posted_at:
+        return False
+
+    try:
+
+        posted_time = datetime.fromisoformat(
+            posted_at
+        )
+
+    except ValueError:
+
+        return False
+
+    elapsed = (
+        datetime.now(timezone.utc)
+        - posted_time
+    ).total_seconds()
+
+    return elapsed < window
+
+
+# =========================================================
+# SCORE
+# =========================================================
+
+def get_player_score(
+    user_id
+):
+    return float(
+        shared_get_score(
+            user_id
+        )
+    )
+
+
+# =========================================================
+# PERSONAL RANKING
+# =========================================================
+
+def get_personal_ranking(
+    user_id
+):
+    return shared_personal_ranking(
+        user_id
+    )
+
+
+# =========================================================
+# SAVE ATTEMPT
+# =========================================================
+
+async def save_attempt(
+    puzzle,
+    user,
+    move_text,
+    correct
+):
+
+    user_id = str(
+        user.id
+    )
+
+    async with data_lock:
+
+        attempts = puzzle.setdefault(
+            "latest_attempts",
+            {}
+        )
+
+        attempts[user_id] = {
+            "name":
+                user.display_name,
+
+            "moves":
+                move_text,
+
+            "correct":
+                correct,
+
+            "timestamp":
+                datetime.now(
+                    timezone.utc
+                ).isoformat()
         }
 
-        team[
-            "current"
-        ] = run
-
-        update_best(
-            team,
-            run,
+        save_json(
+            STATE_FILE,
+            state
         )
 
-        save_state(
-            state,
-            push=True,
+
+# =========================================================
+# RANDOM PUZZLE SCORING
+# =========================================================
+
+async def award_random_move_points(
+    puzzle,
+    user,
+    first_move
+):
+    if str(
+        puzzle.get(
+            "puzzle_id",
+            ""
         )
-
-        # The Survival state file is the source of truth. The lock is only
-        # an auxiliary fast-path used by the other puzzle bot, so a failure
-        # writing the lock must NOT undo/fail a newly-created Survival run.
-        try:
-            write_lock(
-                display_name,
-                run["run_id"],
-                run["last_activity"],
-            )
-        except Exception as lock_error:
-            print(
-                f"Could not save puzzle mode lock; "
-                f"continuing with Survival state: {lock_error}",
-                flush=True,
-            )
-
-        await self.post_next_puzzle(
-            requester.channel,
-            team_key,
-        )
-
-    async def resume_team(
-        self,
-        interaction,
-        team_key,
+    ).startswith(
+        "random_lichess_"
     ):
-        team = self.state["teams"][
-            team_key
-        ]
+        return "none"
 
-        run = team.get(
-            "current"
+    user_id = str(user.id)
+
+    if first_move:
+        first_user_id = str(
+            puzzle.get(
+                "first_move_user_id",
+                user_id,
+            )
         )
 
-        if not run:
-            await interaction.response.send_message(
-                "No saved run.",
-                ephemeral=True,
-            )
-            return
+        if user_id != first_user_id:
+            return "none"
 
-        if run_is_dead(run):
-            await interaction.response.send_message(
-                f"💀 This run is dead at Puzzle #{run.get('puzzle_number', 0)}. "
-                "Add a heart first or start a new run.",
-                ephemeral=True,
-            )
-            return
-
-        if run.get("status") == "active":
-            await interaction.response.send_message(
-                f"✅ **{team.get('name', team_key)}** is already active.",
-                ephemeral=True,
-            )
-            return
-
-        active = active_current_run(
-            self.state
-        )
-
-        if active and active[0] != team_key:
-            await interaction.response.send_message(
-                "Another Survival team is already active.",
-                ephemeral=True,
-            )
-            return
-
-        run[
-            "status"
-        ] = "active"
-        run[
-            "last_activity"
-        ] = epoch_now()
-
-        save_state(
-            self.state,
-            push=True,
-        )
-
-        try:
-            write_lock(
-                team.get(
-                    "name",
-                    team_key,
-                ),
-                run.get(
-                    "run_id",
-                ),
-                run["last_activity"],
-            )
-        except Exception as lock_error:
-            print(
-                f"Could not save puzzle mode lock on resume; "
-                f"continuing: {lock_error}",
-                flush=True,
-            )
-
-        await interaction.response.send_message(
-            f"▶️ **{team.get('name', team_key)} resumed.**"
-        )
-
-        puzzle = run.get(
-            "puzzle"
-        )
-
-        # Some older saved runs have the position number but no serialized
-        # puzzle object. In that case, recover the run by loading a puzzle
-        # for the current number instead of silently showing nothing.
-        if isinstance(
-            puzzle,
-            dict,
-        ) and puzzle.get(
-            "current_fen"
+        if puzzle.get(
+            "first_move_awarded",
+            False,
         ):
-            await self.send_current_puzzle(
-                interaction.channel,
-                team.get(
-                    "name",
-                    team_key,
-                ),
-                run,
-            )
-        else:
-            await self.post_next_puzzle(
-                interaction.channel,
-                team_key,
-            )
+            return "none"
 
-    async def restart_team(
-        self,
-        interaction,
-        team_key,
+        transaction_id = (
+            f"puzzle:"
+            f"{puzzle.get('puzzle_id', 'unknown')}:"
+            f"first:{user_id}"
+        )
+
+        await asyncio.to_thread(
+            shared_add_points,
+            user.id,
+            user.display_name,
+            1.0,
+            transaction_id,
+            source="puzzle-first",
+        )
+
+        puzzle[
+            "first_move_awarded"
+        ] = True
+
+        await save_all()
+        return "first"
+
+    first_user_id = str(
+        puzzle.get(
+            "first_move_user_id",
+            "",
+        )
+    )
+
+    if user_id == first_user_id:
+        return "none"
+
+    helper_users = puzzle.setdefault(
+        "helper_awarded_users",
+        []
+    )
+
+    if user_id in helper_users:
+        return "none"
+
+    transaction_id = (
+        f"puzzle:"
+        f"{puzzle.get('puzzle_id', 'unknown')}:"
+        f"helper:{user_id}"
+    )
+
+    await asyncio.to_thread(
+        shared_add_points,
+        user.id,
+        user.display_name,
+        0.5,
+        transaction_id,
+        source="puzzle-helper",
+    )
+
+    helper_users.append(
+        user_id
+    )
+
+    await save_all()
+    return "helper"
+
+
+# =========================================================
+# DAILY PUZZLE +1
+# =========================================================
+
+async def award_point(
+    puzzle,
+    user
+):
+    result = await award_random_move_points(
+        puzzle,
+        user,
+        first_move=True,
+    )
+
+    if result != "first":
+        return False
+
+    puzzle[
+        "winner_user_id"
+    ] = str(user.id)
+
+    puzzle[
+        "winner_name"
+    ] = user.display_name
+
+    return True
+
+
+
+def format_points(points):
+    value = float(points)
+    return str(int(value)) if value.is_integer() else f"{value:.1f}"
+
+
+# =========================================================
+# FULL LEADERBOARD
+# =========================================================
+
+def make_leaderboard():
+    return shared_full_leaderboard(
+        "🏆 **Shared Leaderboard**"
+    )
+
+
+# =========================================================
+# HELP
+# =========================================================
+
+def help_message():
+
+    return """🧠 **Chess Puzzle Game**
+
+**Daily Puzzle**
+`!daily <move>` — Play the Chess.com Daily Puzzle one move at a time.
+`<move>` or `!<move>` works too.
+
+**Random Puzzle**
+`rp` or `!rp` — Start a random Lichess puzzle.
+Play it one move at a time.
+
+**Lichess Rating Puzzle**
+`!400`, `!2500`, `!2552`, etc. — load a Lichess puzzle with that **exact puzzle rating**.
+
+**Shared Points**
+Daily and Random use the **shared leaderboard**.
+First solver: **+1 point**
+Helper: **+0.5 point**
+
+**Commands**
+`!info` / `!help` / `!i` — show this info.
+`!leaderboard` / `!lb` / `!l` — show the shared leaderboard.
+`!edit <name> <points>` — Sharkmeister-only shared leaderboard correction.
+
+🔥 **Survival Mode**
+`!survival` — Start or resume a team Survival run.
+The person who starts the run is the captain.
+
+`!slb` / `!survivallb` / `!survivalboard` — show saved Survival runs.
+`!<team>` — choose/view a saved run.
+
+`!stopsurvival` — pause and save the active run.
+`!solo <team>` — captain only; only the captain may answer.
+`!coop <team>` — captain only; everyone may answer again.
+
+Survival starts with **3 hearts**.
+A wrong answer costs 1 strike.
+At **3/3 strikes**, the run is **DEAD**.
+After 10 minutes without activity, an active run is paused.
+
+Everyone can help in co-op mode.
+Duplicate simultaneous correct answers do not cost a heart.
+Some puzzles can have multiple correct mating moves.
+Promotions such as `f1=Q`, `f1=Q+`, `f1=Q#` are accepted.
+
+The Survival leaderboard tracks **runs**, so the same team name can appear multiple times.
+Survival does **not** award shared leaderboard points.
+"""
+
+
+
+# =========================================================
+# POST ANSWER
+# =========================================================
+
+async def post_answer(
+    channel,
+    puzzle,
+    puzzle_type
+):
+
+    player_moves = puzzle.get(
+        "player_moves",
+        []
+    )
+
+    if not player_moves:
+        return
+
+    solution_text = " ".join(
+        move["san"]
+        for move in player_moves
+    )
+
+    if puzzle_type == "daily":
+
+        title = "💡 **Daily Puzzle — Answer**"
+
+    else:
+
+        title = "💡 **Random Puzzle — Answer**"
+
+    await channel.send(
+        f"{title}\n\n"
+        f"**Your moves:** {solution_text}"
+    )
+
+
+# =========================================================
+# FINALIZE PUZZLE
+# =========================================================
+
+async def finalize_expired_puzzle(
+    channel,
+    puzzle,
+    puzzle_type
+):
+
+    if not puzzle:
+        return
+
+    if puzzle.get(
+        "answer_posted",
+        False
     ):
-        team = self.state["teams"][
-            team_key
-        ]
+        return
 
-        run = team.get(
-            "current"
-        )
-
-        if run:
-            update_best(
-                team,
-                run,
-            )
-
-        team[
-            "current"
-        ] = None
-
-        save_state(
-            self.state,
-            push=True,
-        )
-
-        await interaction.response.send_message(
-            f"🔄 **{team.get('name', team_key)}** will start a new Survival run."
-        )
-
-        await self.start_new_run(
-            team_key,
-            team.get(
-                "name",
-                team_key,
-            ),
-            interaction,
-            force=True,
-        )
-
-    async def post_next_puzzle(
-        self,
+    await post_answer(
         channel,
-        team_key,
-    ):
-        team = self.state["teams"][
-            team_key
-        ]
+        puzzle,
+        puzzle_type
+    )
 
-        run = team[
-            "current"
-        ]
+    puzzle[
+        "answer_posted"
+    ] = True
 
-        number = int(
-            run["puzzle_number"]
+    save_json(
+        STATE_FILE,
+        state
+    )
+
+    asyncio.create_task(
+        asyncio.to_thread(
+            push_to_github
+        )
+    )
+
+
+# =========================================================
+# EXPIRED PUZZLES
+# =========================================================
+
+async def check_expired_puzzles(
+    channel
+):
+
+    daily = state.get(
+        "current_puzzle"
+    )
+
+    if daily:
+
+        if not daily.get(
+            "answer_posted",
+            False
+        ):
+
+            if not puzzle_is_open(
+                daily,
+                ANSWER_WINDOW
+            ):
+
+                await finalize_expired_puzzle(
+                    channel,
+                    daily,
+                    "daily"
+                )
+
+    random_puzzle = state.get(
+        "latest_random_puzzle"
+    )
+
+    if random_puzzle:
+
+        if not random_puzzle.get(
+            "answer_posted",
+            False
+        ):
+
+            if not puzzle_is_open(
+                random_puzzle,
+                RANDOM_ANSWER_WINDOW
+            ):
+
+                await finalize_expired_puzzle(
+                    channel,
+                    random_puzzle,
+                    "random"
+                )
+
+
+# =========================================================
+# NEW DAILY PUZZLE
+# =========================================================
+
+async def check_for_new_puzzle(
+    channel
+):
+    survival_active, survival_team = remote_survival_status()
+
+    if survival_active:
+        print(
+            f"Survival Mode is active for {survival_team or 'Survival'}; "
+            "Daily Puzzle posting is paused.",
+            flush=True,
+        )
+        return
+
+        print(
+            "Survival Mode is active; Daily Puzzle posting is paused.",
+            flush=True,
+        )
+        return
+
+
+    try:
+
+        data = await asyncio.to_thread(
+            fetch_daily_puzzle
         )
 
-        used_ids = set(
-            run.get(
-                "used_puzzle_ids",
-                [],
+        puzzle = build_puzzle(
+            data
+        )
+
+    except Exception as error:
+
+        print(
+            f"Daily puzzle error: {error}",
+            flush=True
+        )
+
+        return
+
+    current = state.get(
+        "current_puzzle"
+    )
+
+    current_url = (
+        current.get("url")
+        if current
+        else None
+    )
+
+    if current_url == puzzle["url"]:
+        return
+
+    print(
+        "NEW DAILY PUZZLE DETECTED.",
+        flush=True
+    )
+
+    if current:
+
+        if not current.get(
+            "answer_posted",
+            False
+        ):
+
+            await finalize_expired_puzzle(
+                channel,
+                current,
+                "daily"
+            )
+
+    puzzle[
+        "posted_at"
+    ] = datetime.now(
+        timezone.utc
+    ).isoformat()
+
+    puzzle[
+        "puzzle_id"
+    ] = (
+        "daily_"
+        + str(
+            int(
+                time.time() * 1000
             )
         )
+    )
+
+    puzzle["current_fen"] = sanitize_fen(
+        puzzle["fen"]
+    )
+    puzzle["next_solution_index"] = 0
+    puzzle["next_player_index"] = 0
+    puzzle["solved"] = False
+    puzzle["message_id"] = None
+    puzzle["attempted_users"] = {}
+    puzzle["first_move_user_id"] = None
+    puzzle["first_move_user_name"] = None
+    puzzle["first_move_awarded"] = False
+    puzzle["helper_awarded_users"] = []
+    puzzle["helper_candidate_users"] = []
+
+    state[
+        "current_puzzle"
+    ] = puzzle
+
+    state[
+        "latest_puzzle_type"
+    ] = "daily"
+
+    await save_all()
+
+    await post_daily_puzzle(
+        channel,
+        puzzle
+    )
+
+
+# =========================================================
+# PUZZLE LOOP
+# =========================================================
+
+async def puzzle_loop(
+    channel
+):
+
+    while True:
 
         try:
-            puzzle_source = choose_puzzle_for_number(
-                number,
-                used_ids,
-            )
 
-            puzzle = build_runtime_puzzle(
-                puzzle_source
+            await check_for_new_puzzle(
+                channel
             )
 
         except Exception as error:
+
             print(
-                f"Survival puzzle fetch error: {error}",
-                flush=True,
+                f"Puzzle loop error: {error}",
+                flush=True
             )
 
-            await channel.send(
-                "❌ **Survival could not load the next Lichess puzzle.** "
-                "The run is paused so no progress is lost."
-            )
-
-            run[
-                "status"
-            ] = "paused"
-
-            run[
-                "paused_reason"
-            ] = "puzzle fetch error"
-
-            save_state(
-                self.state,
-                push=True,
-            )
-
-            clear_lock()
-            return
-
-        run[
-            "puzzle"
-        ] = puzzle
-
-        run.setdefault(
-            "used_puzzle_ids",
-            []
-        ).append(
-            puzzle["id"]
+        await asyncio.sleep(
+            PUZZLE_CHECK_INTERVAL
         )
 
-        run[
-            "first_solver_id"
-        ] = None
 
-        run[
-            "first_solver_name"
-        ] = None
+# =========================================================
+# MAINTENANCE LOOP
+# =========================================================
 
-        run[
-            "helper_candidates"
-        ] = {}
+async def maintenance_loop(
+    channel
+):
 
-        run[
-            "helper_awarded"
-        ] = []
+    while True:
 
-        update_best(
-            team,
-            run,
-        )
+        try:
 
-        run[
-            "best_difficulty"
-        ] = max(
-            int(
-                run.get(
-                    "best_difficulty",
-                    0,
+            await check_expired_puzzles(
+                channel
+            )
+
+            today = datetime.now(
+                timezone.utc
+            ).date().isoformat()
+
+            if state.get(
+                "leaderboard_last_posted_date"
+            ) != today:
+
+                await channel.send(
+                    make_leaderboard()
                 )
-            ),
-            int(
-                puzzle["rating"]
-            ),
+
+                state[
+                    "leaderboard_last_posted_date"
+                ] = today
+
+                save_json(
+                    STATE_FILE,
+                    state
+                )
+
+                queue_github_sync()
+
+        except Exception as error:
+
+            print(
+                f"Maintenance error: {error}",
+                flush=True
+            )
+
+        await asyncio.sleep(30)
+
+
+# =========================================================
+# RUN TIMER
+# =========================================================
+
+async def run_timer():
+
+    await asyncio.sleep(
+        RUN_TIME
+    )
+
+    print(
+        "Ending run cleanly.",
+        flush=True
+    )
+
+    await client.close()
+
+
+# =========================================================
+# FUN WRONG-ANSWER MESSAGES
+# =========================================================
+
+def wrong_message(user):
+    name = user.display_name
+    lower = name.casefold()
+
+    special_lines = [
+        f"❌ **Wrong, {name}. Your ego was more accurate than your move.**",
+            f"❌ **Nope, {name}. Maybe calm down with the confidence.**",
+            f"❌ **Bro has 2000 confidence and 900 calculation.**",
+            f"❌ **{name} thought he was Magnus again.**",
+            f"❌ **Your confidence is honestly more impressive than your chess.**",
+            f"❌ **{name}, Stockfish has more faith in random moves than you.**",
+            f"❌ **You played that with so much confidence. That's what makes it worse.**",
+            f"❌ **{name}'s ego just took another critical hit.**",
+            f"❌ **Bro plays like he already knows the answer. He absolutely does not.**",
+            f"❌ **{name}, you're more dangerous to your own position than your opponent.**",
+            f"❌ **That wasn't a blunder. That was a personality test.**",
+            f"❌ **{name} found another move nobody else was brave enough to play. For good reason.**",
+            f"❌ **Your rating is apparently based entirely on confidence.**",
+            f"❌ **{name}, the puzzle asked for a move, not an ego trip.**",
+            f"❌ **You have an incredible talent for being confidently wrong.**",
+            f"❌ **{name} plays chess like nobody has ever told him no.**",
+            f"❌ **That was a grandmaster move if you remove the grandmaster.**",
+            f"❌ **Bro saw the solution and personally decided to avoid it.**",
+            f"❌ **{name}, even your blunders have more character than that move.**",
+            f"❌ **You really think you're better than you are, huh?**",
+            f"❌ **{name}'s tactical vision has officially resigned.**",
+            f"❌ **Your ego somehow sees every move except the correct one.**",
+            f"❌ **{name}, maybe look at the board before trying to calculate it.**",
+            f"❌ **That move had way more confidence than substance.**",
+            f"❌ **You played that with the certainty of someone who had absolutely no idea.**",
+            f"❌ **{name} is once again the victim of his own self-image.**",
+            f"❌ **You think you're a chess monster. The board disagrees.**",
+            f"❌ **{name}, the puzzle isn't losing to you. You're losing to the puzzle.**",
+            f"❌ **Bro has a master's degree in overconfidence.**",
+            f"❌ **{name}'s biggest opponent is still {name}.**",
+            f"❌ **That was genuinely impressive. You managed to be completely wrong with confidence.**",
+            f"❌ **{name}, your chess IQ is apparently on vacation today.**",
+            f"❌ **Your move says more about your ego than your rating.**",
+            f"❌ **{name}, confidence is not a chess strategy.**",
+            f"❌ **The move was wrong. The confidence was even more wrong.**",
+            f"❌ **You don't need to be that confident about a move that makes no sense.**",
+            f"❌ **{name}, even your own pieces don't trust you anymore.**",
+            f"❌ **You play like every bad idea becomes genius just because you thought of it.**",
+            f"❌ **That was an ego move, not a chess move.**",
+            f"❌ **{name}'s rating wants to distance itself from this move.**",
+            f"❌ **You should've developed your chess skills instead of your ego.**",
+            f"❌ **Bro found another move that only makes sense inside his own head.**",
+            f"❌ **{name}, you're somehow turning every puzzle into a personal argument.**",
+            f"❌ **You really thought you saw that coming. Adorable.**",
+            f"❌ **{name}, you're not blunder-proof. You're blunder-powered.**",
+            f"❌ **That move was so bad your ego is probably still defending it.**",
+            f"❌ **You play with 2500 confidence and gambler accuracy.**",
+            f"❌ **{name}, 'I think it's good' isn't enough.**",
+            f"❌ **Bro is hallucinating tactics again.**",
+            f"❌ **{name}'s self-esteem just got checkmated.**",
+            f"❌ **You wanted to look clever. The board had other plans.**",
+            f"❌ **{name}, you're trying to outsmart the puzzle before even understanding it.**",
+            f"❌ **That was an elite-level miscalculation.**",
+            f"❌ **You just got proven wrong by everybody, including the board.**",
+            f"❌ **{name}, your confidence is literally the only thing that doesn't blunder.**",
+            f"❌ **The engine isn't even angry. It's just disappointed.**",
+            f"❌ **Bro plays like he knows a secret nobody else knows. Apparently he doesn't know the answer either.**",
+            f"❌ **{name}, you're so convinced of yourself that even the numbers can't convince you.**",
+            f"❌ **That wasn't a close miss. That was another continent.**",
+            f"❌ **Your ego says 'brilliant.' The board says 'bro what?'**",
+            f"❌ **{name}, maybe think less highly of yourself before making the move.**",
+            f"❌ **That move was about as accurate as your self-assessment.**",
+            f"❌ **You just delivered another masterpiece in the art of self-overestimation.**",
+            f"❌ **{name}, this is exactly why you can't rely on confidence.**",
+            f"❌ **Bro has officially got more confidence than calculation.**",
+            f"❌ **You played that like you were quoting theory. Unfortunately, it was the wrong book.**",
+            f"❌ **{name}'s brain found an answer. Just not the right one.**",
+            f"❌ **You're so confident you can somehow be wrong with style.**",
+            f"❌ **That was pure {name}-core.**",
+            f"❌ **{name} just defeated his own hype once again.**",
+            f"❌ **Your rating has nothing to do with this. This was just you.**",
+            f"❌ **Bro isn't playing against the puzzle. He's playing against reality.**",
+            f"❌ **{name}, even a beginner would've found that with more hesitation and better accuracy.**",
+            f"❌ **That was so confidently wrong it almost became impressive.**",
+            f"❌ **Your ego needs a rematch against reality.**",
+            f"❌ **{name}, not every move you make is secretly brilliant.**",
+            f"❌ **You thought you were a genius. The board just gave you a reality check.**",
+            f"❌ **This puzzle personally offended {name}'s ego.**",
+            f"❌ **{name}'s 'I see it' moment became an 'I saw absolutely nothing' moment.**",
+            f"❌ **You literally chose the one move you weren't supposed to play.**",
+            f"❌ **Bro wanted to prove how smart he is. Mission failed.**",
+            f"❌ **{name} is somehow better at being confidently wrong than being right.**",
+            f"❌ **That was more ego than elo.**",
+            f"❌ **{name}, your self-confidence is currently your strongest chess piece.**",
+            f"❌ **You played that like Stockfish told you to. Stockfish would fire itself.**",
+            f"❌ **That move was so arrogant it almost needed a punishment.**",
+            f"❌ **{name}, maybe admit that you don't actually see everything.**",
+            f"❌ **The best part of that move was how sure you were about it.**",
+            f"❌ **Bro found a solution that only exists in his imagination.**",
+            f"❌ **{name}'s ego played a perfect game. You didn't.**",
+            f"❌ **That wasn't a misclick. That was a fully conscious bad decision.**",
+            f"❌ **You genuinely have a talent for choosing the one move you shouldn't play.**",
+            f"❌ **{name}, even your own pieces wouldn't take you seriously right now.**",
+            f"❌ **You played that like you had something to prove. The board answered for you.**",
+            f"❌ **That was a monumental demonstration of overconfidence.**",
+            f"❌ **{name}, maybe think less about how good you are and more about the position.**",
+            f"❌ **Your ego is GM. Your moves are still waiting for the interview.**",
+            f"❌ **{name}, confidence is not a substitute for vision.**",
+            f"❌ **The puzzle gave you one job. You chose chaos.**",
+            f"❌ **{name}, congratulations — your ego is still 2500 while that move just applied for 900 elo.**"
+    ]
+
+    if "makina" in lower:
+        return random.choice(special_lines).format(
+            name=name
         )
 
-        save_state(
-            self.state,
-            push=True,
+    if lower == "thice":
+        return random.choice([
+            f"❌ **Wrong, {name}. Your ego was more accurate than your move.**",
+            f"❌ **Nope, {name}. Maybe calm down with the confidence.**",
+            f"❌ **Bro has 2000 confidence and 900 calculation.**",
+            f"❌ **{name} thought he was Magnus again.**",
+            f"❌ **Your confidence is honestly more impressive than your chess.**",
+            f"❌ **{name}, Stockfish has more faith in random moves than you.**",
+            f"❌ **You played that with so much confidence. That's what makes it worse.**",
+            f"❌ **{name}'s ego just took another critical hit.**",
+            f"❌ **Bro plays like he already knows the answer. He absolutely does not.**",
+            f"❌ **{name}, you're more dangerous to your own position than your opponent.**",
+            f"❌ **That wasn't a blunder. That was a personality test.**",
+            f"❌ **{name} found another move nobody else was brave enough to play. For good reason.**",
+            f"❌ **Your rating is apparently based entirely on confidence.**",
+            f"❌ **{name}, the puzzle asked for a move, not an ego trip.**",
+            f"❌ **You have an incredible talent for being confidently wrong.**",
+            f"❌ **{name} plays chess like nobody has ever told him no.**",
+            f"❌ **That was a grandmaster move if you remove the grandmaster.**",
+            f"❌ **Bro saw the solution and personally decided to avoid it.**",
+            f"❌ **{name}, even your blunders have more character than that move.**",
+            f"❌ **You really think you're better than you are, huh?**",
+            f"❌ **{name}'s tactical vision has officially resigned.**",
+            f"❌ **Your ego somehow sees every move except the correct one.**",
+            f"❌ **{name}, maybe look at the board before trying to calculate it.**",
+            f"❌ **That move had way more confidence than substance.**",
+            f"❌ **You played that with the certainty of someone who had absolutely no idea.**",
+            f"❌ **{name} is once again the victim of his own self-image.**",
+            f"❌ **You think you're a chess monster. The board disagrees.**",
+            f"❌ **{name}, the puzzle isn't losing to you. You're losing to the puzzle.**",
+            f"❌ **Bro has a master's degree in overconfidence.**",
+            f"❌ **{name}'s biggest opponent is still {name}.**",
+            f"❌ **That was genuinely impressive. You managed to be completely wrong with confidence.**",
+            f"❌ **{name}, your chess IQ is apparently on vacation today.**",
+            f"❌ **Your move says more about your ego than your rating.**",
+            f"❌ **{name}, confidence is not a chess strategy.**",
+            f"❌ **The move was wrong. The confidence was even more wrong.**",
+            f"❌ **You don't need to be that confident about a move that makes no sense.**",
+            f"❌ **{name}, even your own pieces don't trust you anymore.**",
+            f"❌ **You play like every bad idea becomes genius just because you thought of it.**",
+            f"❌ **That was an ego move, not a chess move.**",
+            f"❌ **{name}'s rating wants to distance itself from this move.**",
+            f"❌ **You should've developed your chess skills instead of your ego.**",
+            f"❌ **Bro found another move that only makes sense inside his own head.**",
+            f"❌ **{name}, you're somehow turning every puzzle into a personal argument.**",
+            f"❌ **You really thought you saw that coming. Adorable.**",
+            f"❌ **{name}, you're not blunder-proof. You're blunder-powered.**",
+            f"❌ **That move was so bad your ego is probably still defending it.**",
+            f"❌ **You play with 2500 confidence and gambler accuracy.**",
+            f"❌ **{name}, 'I think it's good' isn't enough.**",
+            f"❌ **Bro is hallucinating tactics again.**",
+            f"❌ **{name}'s self-esteem just got checkmated.**",
+            f"❌ **You wanted to look clever. The board had other plans.**",
+            f"❌ **{name}, you're trying to outsmart the puzzle before even understanding it.**",
+            f"❌ **That was an elite-level miscalculation.**",
+            f"❌ **You just got proven wrong by everybody, including the board.**",
+            f"❌ **{name}, your confidence is literally the only thing that doesn't blunder.**",
+            f"❌ **The engine isn't even angry. It's just disappointed.**",
+            f"❌ **Bro plays like he knows a secret nobody else knows. Apparently he doesn't know the answer either.**",
+            f"❌ **{name}, you're so convinced of yourself that even the numbers can't convince you.**",
+            f"❌ **That wasn't a close miss. That was another continent.**",
+            f"❌ **Your ego says 'brilliant.' The board says 'bro what?'**",
+            f"❌ **{name}, maybe think less highly of yourself before making the move.**",
+            f"❌ **That move was about as accurate as your self-assessment.**",
+            f"❌ **You just delivered another masterpiece in the art of self-overestimation.**",
+            f"❌ **{name}, this is exactly why you can't rely on confidence.**",
+            f"❌ **Bro has officially got more confidence than calculation.**",
+            f"❌ **You played that like you were quoting theory. Unfortunately, it was the wrong book.**",
+            f"❌ **{name}'s brain found an answer. Just not the right one.**",
+            f"❌ **You're so confident you can somehow be wrong with style.**",
+            f"❌ **That was pure {name}-core.**",
+            f"❌ **{name} just defeated his own hype once again.**",
+            f"❌ **Your rating has nothing to do with this. This was just you.**",
+            f"❌ **Bro isn't playing against the puzzle. He's playing against reality.**",
+            f"❌ **{name}, even a beginner would've found that with more hesitation and better accuracy.**",
+            f"❌ **That was so confidently wrong it almost became impressive.**",
+            f"❌ **Your ego needs a rematch against reality.**",
+            f"❌ **{name}, not every move you make is secretly brilliant.**",
+            f"❌ **You thought you were a genius. The board just gave you a reality check.**",
+            f"❌ **This puzzle personally offended {name}'s ego.**",
+            f"❌ **{name}'s 'I see it' moment became an 'I saw absolutely nothing' moment.**",
+            f"❌ **You literally chose the one move you weren't supposed to play.**",
+            f"❌ **Bro wanted to prove how smart he is. Mission failed.**",
+            f"❌ **{name} is somehow better at being confidently wrong than being right.**",
+            f"❌ **That was more ego than elo.**",
+            f"❌ **{name}, your self-confidence is currently your strongest chess piece.**",
+            f"❌ **You played that like Stockfish told you to. Stockfish would fire itself.**",
+            f"❌ **That move was so arrogant it almost needed a punishment.**",
+            f"❌ **{name}, maybe admit that you don't actually see everything.**",
+            f"❌ **The best part of that move was how sure you were about it.**",
+            f"❌ **Bro found a solution that only exists in his imagination.**",
+            f"❌ **{name}'s ego played a perfect game. You didn't.**",
+            f"❌ **That wasn't a misclick. That was a fully conscious bad decision.**",
+            f"❌ **You genuinely have a talent for choosing the one move you shouldn't play.**",
+            f"❌ **{name}, even your own pieces wouldn't take you seriously right now.**",
+            f"❌ **You played that like you had something to prove. The board answered for you.**",
+            f"❌ **That was a monumental demonstration of overconfidence.**",
+            f"❌ **{name}, maybe think less about how good you are and more about the position.**",
+            f"❌ **Your ego is GM. Your moves are still waiting for the interview.**",
+            f"❌ **{name}, confidence is not a substitute for vision.**",
+            f"❌ **The puzzle gave you one job. You chose chaos.**",
+            f"❌ **{name}, congratulations — your ego is still 2500 while that move just applied for 900 elo.**"
+        ]).format(
+            name=name
         )
 
-        await send_puzzle_embed(
-            channel,
-            team.get(
-                "name",
-                team_key,
-            ),
-            run,
+    if "sharkmeister" in lower:
+        shark_lines = [
+            f"❌ **So close, {name}... Magnus would call that a mouse slip.**",
+            f"❌ **Almost, {name}. That's the kind of miss Magnus gets once every 100 games.**",
+            f"❌ **So close, {name}. Your inner Magnus almost found it.**",
+            f"❌ **Mouse slipped, {name}? Because that was basically Magnus-level otherwise.**",
+            f"❌ **Nearly, {name}. The idea was there — one tiny Magnus moment.**",
+            f"❌ **Oof, {name}. Magnus would blame the mouse for that one.**",
+            f"❌ **Almost, {name}. Very Magnus-before-the-mouse-slip energy.**",
+            f"❌ **That was painfully close, {name}. Even Carlsen gets those.**",
+            f"❌ **One tiny detail, {name}. We'll blame the mouse.**",
+            f"❌ **Close enough to be a Magnus mouse-slip, {name}.**",
+        ]
+        return random.choice(shark_lines)
+
+    neutral_lines = [
+        f"❌ **Not quite, {name}.**",
+        f"❌ **Close, {name}. Try again.**",
+        f"❌ **Nope, {name} — not that one.**",
+        f"❌ **Almost, {name}.**",
+        f"❌ **The board says no, {name}.**",
+        f"❌ **Not this time, {name}.**",
+        f"❌ **Wrong move, {name}.**",
+        f"❌ **Nice try, {name}.**",
+        f"❌ **The engine disagrees, {name}.**",
+        f"❌ **That wasn't it, {name}.**",
+    ]
+    return random.choice(neutral_lines).format(
+        name=name
+    )
+
+
+
+# =========================================================
+# RANDOM PUZZLE — STEP BY STEP
+# =========================================================
+
+async def update_random_puzzle_message(
+    channel,
+    puzzle,
+    message_text=None
+):
+    message_id = puzzle.get(
+        "message_id"
+    )
+
+    if not message_id:
+        return
+
+    file, board = await make_board_file(
+        puzzle,
+        "random_puzzle.png"
+    )
+
+    remaining = (
+        puzzle["player_move_count"]
+        - puzzle.get("next_player_index", 0)
+    )
+
+    side = (
+        "White"
+        if puzzle.get("player_color") == "white"
+        or puzzle.get("player_color") == chess.WHITE
+        else "Black"
+    )
+
+    if puzzle.get("solved", False):
+        description = (
+            "🎉 **Puzzle solved!**"
+        )
+    elif remaining == 1:
+        description = (
+            f"**{side} to move.**\n"
+            f"**Final move.**"
+        )
+    else:
+        description = (
+            f"**{side} to move.**\n"
+            f"**{remaining} {move_word(remaining)} remaining.**"
         )
 
-    async def send_current_puzzle(
-        self,
-        channel,
-        team,
-        run,
+    if message_text:
+        description = (
+            f"{message_text}\n\n"
+            + description
+        )
+
+    embed = discord.Embed(
+        title=(
+            f"🎲 Random Puzzle — "
+            f"{puzzle['title']}"
+        ),
+        description=description,
+        color=0x3498db
+    )
+
+    embed.set_image(
+        url="attachment://random_puzzle.png"
+    )
+
+    try:
+        message = await channel.fetch_message(
+            message_id
+        )
+
+        await message.edit(
+            embed=embed,
+            attachments=[file]
+        )
+
+    except Exception as error:
+        print(
+            f"Could not update random puzzle message: {error}",
+            flush=True
+        )
+
+
+async def handle_random_answer(
+    message,
+    puzzle,
+    move_text
+):
+    if not puzzle:
+        return
+
+    if puzzle.get(
+        "answer_posted",
+        False
     ):
-        if not run.get(
-            "puzzle"
-        ):
+        return
+
+    answer_window = (
+        RANDOM_ANSWER_WINDOW
+        if str(
+            puzzle.get(
+                "puzzle_id",
+                "",
+            )
+        ).startswith("random_")
+        else ANSWER_WINDOW
+    )
+
+    if not puzzle_is_open(
+        puzzle,
+        answer_window
+    ):
+        return
+
+    if puzzle.get(
+        "solved",
+        False
+    ):
+        return
+
+    player_color = puzzle[
+        "player_color"
+    ]
+
+    is_daily = str(
+        puzzle.get(
+            "puzzle_id",
+            "",
+        )
+    ).startswith("daily_")
+
+    puzzle_label = (
+        "♟️ Daily Puzzle"
+        if is_daily
+        else "🎲 Random Puzzle"
+    )
+
+    next_index = puzzle.get(
+        "next_solution_index",
+        0
+    )
+
+    all_moves = puzzle.get(
+        "all_moves",
+        []
+    )
+
+    player_moves = puzzle.get(
+        "player_moves",
+        []
+    )
+
+    if next_index >= len(all_moves):
+        return
+
+    # -----------------------------------------------------
+    # SHARED PUZZLE:
+    # Everyone can attempt the current move. The first
+    # correct move advances the shared position.
+    # -----------------------------------------------------
+
+    user_id = str(
+        message.author.id
+    )
+
+    submitted = move_text.strip()
+
+    # One move at a time.
+    if len(submitted.split()) != 1:
+        await message.channel.send(
+            f"❌ **One move at a time, "
+            f"{message.author.display_name}.**"
+        )
+        return
+
+    # Serialize state changes so two people cannot both
+    # advance the same shared position at exactly the same time.
+    # Capture this BEFORE advancing the shared state.
+    move_was_first = (
+        next_index == 0
+    )
+
+    async with data_lock:
+
+        expected = all_moves[next_index]
+
+        board = board_from_fen_safe(
+            puzzle.get(
+                "current_fen",
+                puzzle["fen"]
+            )
+        )
+
+        # The next solution move must belong to the player.
+        if expected["color"] != player_color:
+            await message.channel.send(
+                "❌ **The puzzle state got out of sync. "
+                "Please start a new random puzzle.**"
+            )
             return
 
-        await send_puzzle_embed(
-            channel,
-            team,
-            run,
+        correct = san_matches_move(
+            board,
+            submitted,
+            expected
         )
 
-    async def score_completed_puzzle(
-        self,
-        run,
+        puzzle.setdefault(
+            "attempted_users",
+            {}
+        )[user_id] = {
+            "name": message.author.display_name,
+            "move": submitted,
+            "correct": correct,
+            "timestamp": datetime.now(
+                timezone.utc
+            ).isoformat()
+        }
+
+        if not correct:
+            # Do not hold the lock while sending to Discord.
+            pass
+        else:
+            # -------------------------------------------------
+            # PLAY THE USER'S CORRECT MOVE
+            # -------------------------------------------------
+
+            move = chess.Move.from_uci(
+                expected["uci"]
+            )
+
+            if move not in board.legal_moves:
+                correct = False
+            else:
+                board.push(move)
+
+                next_index += 1
+                next_player_index = (
+                    puzzle.get(
+                        "next_player_index",
+                        0
+                    ) + 1
+                )
+
+                opponent_replies = []
+
+                # ---------------------------------------------
+                # AUTOMATICALLY PLAY OPPONENT REPLIES
+                # ---------------------------------------------
+
+                while next_index < len(all_moves):
+                    reply = all_moves[next_index]
+
+                    if reply["color"] == player_color:
+                        break
+
+                    reply_move = chess.Move.from_uci(
+                        reply["uci"]
+                    )
+
+                    if reply_move not in board.legal_moves:
+                        break
+
+                    board.push(reply_move)
+
+                    opponent_replies.append(
+                        reply["san"]
+                    )
+
+                    next_index += 1
+
+                puzzle["current_fen"] = board.fen()
+                puzzle["next_solution_index"] = next_index
+                puzzle["next_player_index"] = next_player_index
+
+    if not correct:
+        await save_all()
+        await message.channel.send(
+            wrong_message(message.author)
+        )
+        return
+
+    # -----------------------------------------------------
+    # PUZZLE COMPLETE
+    #
+    # IMPORTANT:
+    # No points are awarded yet. We only record the first
+    # move solver and helpers while the puzzle is in progress.
+    # Points are awarded ONLY when the full puzzle is solved.
+    # -----------------------------------------------------
+
+    if move_was_first and puzzle.get(
+        "first_move_user_id"
+    ) is None:
+        puzzle["first_move_user_id"] = str(
+            message.author.id
+        )
+        puzzle["first_move_user_name"] = (
+            message.author.display_name
+        )
+
+    # Record a helper candidate after a later correct move.
+    # We only award +0.5 after the puzzle is completely solved.
+    if (
+        not move_was_first
+        and str(message.author.id)
+        != str(
+            puzzle.get(
+                "first_move_user_id"
+            )
+        )
     ):
-        """
-        Score only after the whole Lichess puzzle is solved.
-        First solver +1.
-        Each unique helper who was correct later +0.5.
-
-        Both rewards use unique transaction IDs in the same shared
-        transaction ledger as Guess Chatter / Guess Chess Chatter.
-        """
-        first_id = run.get(
-            "first_solver_id"
+        helpers = puzzle.setdefault(
+            "helper_candidate_users",
+            []
         )
 
-        if first_id:
-            first_name = run.get(
-                "first_solver_name",
-                "Unknown",
+        user_id = str(
+            message.author.id
+        )
+
+        if user_id not in helpers:
+            helpers.append(
+                user_id
             )
 
-            tx_id = (
-                f"survival:"
-                f"{run['run_id']}:"
-                f"{run['puzzle_number']}:"
-                f"first:{first_id}"
-            )
+    # -----------------------------------------------------
+    # PUZZLE COMPLETE
+    # -----------------------------------------------------
 
-            await asyncio.to_thread(
-                add_points,
-                first_id,
-                first_name,
-                1.0,
-                tx_id,
-                source="survival-first",
-            )
+    if next_player_index >= len(player_moves):
+        puzzle["solved"] = True
 
-        for helper_id, helper_name in (
-            run.get(
-                "helper_candidates",
-                {}
-            ).items()
-        ):
-            if str(helper_id) == str(
-                first_id
+        # -----------------------------------------------------
+        # NOW, AND ONLY NOW, AWARD POINTS
+        # -----------------------------------------------------
+
+        first_user_id = puzzle.get(
+            "first_move_user_id"
+        )
+
+        helper_users = [
+            uid
+            for uid in puzzle.get(
+                "helper_candidate_users",
+                []
+            )
+            if str(uid) != str(first_user_id)
+        ]
+
+        # First mover: +1
+        if first_user_id:
+            first_user = None
+
+            if str(first_user_id) == str(
+                message.author.id
+            ):
+                first_user = message.author
+
+            else:
+                # The first mover may have zero points so far and
+                # therefore may not exist in `scores` yet. Recover
+                # their display name from the puzzle's recorded move
+                # history instead of requiring a leaderboard entry.
+                first_user_name = (
+                    puzzle.get(
+                        "first_move_user_name"
+                    )
+                    or puzzle.get(
+                        "attempted_users",
+                        {}
+                    )
+                    .get(
+                        str(first_user_id),
+                        {}
+                    )
+                    .get(
+                        "name",
+                        "Unknown"
+                    )
+                )
+
+                class StoredUser:
+                    def __init__(self, user_id, name):
+                        self.id = int(user_id)
+                        self.display_name = name
+
+                first_user = StoredUser(
+                    first_user_id,
+                    first_user_name
+                )
+
+            if not puzzle.get(
+                "first_move_awarded",
+                False
+            ):
+                await award_random_move_points(
+                    puzzle,
+                    first_user,
+                    first_move=True
+                )
+
+        # Helpers: +0.5 each, max once per puzzle.
+        for helper_id in helper_users:
+            if helper_id in puzzle.get(
+                "helper_awarded_users",
+                []
             ):
                 continue
 
-            tx_id = (
-                f"survival:"
-                f"{run['run_id']}:"
-                f"{run['puzzle_number']}:"
-                f"helper:{helper_id}"
+            if helper_id == first_user_id:
+                continue
+
+            helper_name = (
+                puzzle.get(
+                    "attempted_users",
+                    {}
+                )
+                .get(
+                    helper_id,
+                    {}
+                )
+                .get(
+                    "name",
+                    "Unknown"
+                )
             )
 
-            await asyncio.to_thread(
-                add_points,
+            class StoredHelper:
+                def __init__(self, user_id, name):
+                    self.id = int(user_id)
+                    self.display_name = name
+
+            helper_user = StoredHelper(
                 helper_id,
-                helper_name,
-                0.5,
-                tx_id,
-                source="survival-helper",
+                helper_name
             )
 
-        run[
-            "first_solver_id"
-        ] = None
+            result = await award_random_move_points(
+                puzzle,
+                helper_user,
+                first_move=False
+            )
 
-        run[
-            "first_solver_name"
-        ] = None
-
-        run[
-            "helper_candidates"
-        ] = {}
-
-        run[
-            "helper_awarded"
-        ] = []
-
-    async def get_captain_display(
-        self,
-        run,
-    ):
-        captain_id = self.get_run_captain_id(
-            run
-        )
-
-        stored_name = run.get(
-            "captain_name"
-        )
-
-        if stored_name:
-            return stored_name
-
-        if captain_id:
-            try:
-                user = self.get_user(
-                    int(captain_id)
+            if result == "helper":
+                puzzle.setdefault(
+                    "helper_awarded_users",
+                    []
+                ).append(
+                    helper_id
                 )
 
-                if user:
-                    return user.display_name
+        practice_only = str(
+            puzzle.get(
+                "puzzle_id",
+                "",
+            )
+        ).startswith(
+            "random_lichess_"
+        )
 
-                user = await self.fetch_user(
-                    int(captain_id)
-                )
+        points = get_player_score(
+            message.author.id
+        )
 
-                if user:
-                    return user.display_name
-
-            except Exception:
-                pass
-
-            return f"<@{captain_id}>"
-
-        return "Unknown"
-
-
-    def get_run_captain_id(
-        self,
-        run,
-    ):
-        return str(
-            run.get(
-                "captain_id",
-                run.get("started_by_id", ""),
+        ranking = (
+            ""
+            if practice_only
+            else get_personal_ranking(
+                message.author.id
             )
         )
 
-    def is_run_captain(
-        self,
-        user,
-        run,
-    ):
-        captain_id = self.get_run_captain_id(
-            run
-        )
-        return (
-            captain_id
-            and str(user.id) == captain_id
+        embed_progress = (
+            "🎉 **Puzzle solved!**"
         )
 
-    async def set_run_mode(
-        self,
-        message,
-        team_key,
-        mode,
-    ):
-        team = self.state["teams"].get(
-            team_key
+        if opponent_replies:
+            embed_progress += (
+                "\n"
+                f"↩️ **Opponent:** "
+                f"{' '.join(opponent_replies)}"
+            )
+
+        # The final board is now a NEW message too.
+        final_file, final_board = await make_board_file(
+            puzzle,
+            "random_puzzle_final.png"
         )
 
-        if not team:
-            await message.channel.send(
-                f"❌ Team **{team_key}** does not exist."
-            )
-            return
+        final_embed = discord.Embed(
+            title=(
+                f"{puzzle_label} — "
+                f"{puzzle['title']}"
+            ),
+            description=embed_progress,
+            color=0x3498db
+        )
 
-        run = team.get("current")
+        final_embed.set_image(
+            url="attachment://random_puzzle_final.png"
+        )
 
-        if not run or run.get("status") != "active":
-            await message.channel.send(
-                f"❌ **{team.get('name', team_key)}** does not have an active run."
-            )
-            return
+        await message.channel.send(
+            embed=final_embed,
+            file=final_file
+        )
 
-        if run_is_dead(run):
-            await message.channel.send(
-                f"💀 **{team.get('name', team_key)}** is a dead run."
-            )
-            return
+        await save_all()
 
-        if not self.is_run_captain(
-            message.author,
-            run,
+        awarded_for_solver = 0.0
+
+        if (
+            not practice_only
+            and str(
+                message.author.id
+            ) == str(first_user_id)
         ):
-            await message.channel.send(
-                f"❌ Only captain **{run.get('captain_name', 'the captain')}** "
-                "can change the run mode."
+            awarded_for_solver = 1.0
+
+        elif (
+            not practice_only
+            and str(
+                message.author.id
+            ) in helper_users
+        ):
+            awarded_for_solver = 0.5
+
+        if practice_only:
+            score_message = (
+                f"✅ **Correct, {message.author.display_name}!**\n"
+                f"🎉 **Puzzle solved!**\n"
+                f"Practice puzzle — **no shared leaderboard points**."
             )
-            return
-
-        run["mode"] = mode
-        run["last_activity"] = epoch_now()
-
-        save_state(
-            self.state,
-            push=True,
-        )
-
-        if mode == "solo":
-            await message.channel.send(
-                f"🔒 **{team.get('name', team_key)} is now SOLO.** "
-                f"Only captain **{run.get('captain_name', message.author.display_name)}** "
-                "can answer."
+        elif awarded_for_solver == 1.0:
+            score_message = (
+                f"✅ **Correct, {message.author.display_name}!**\n"
+                f"🎉 **Puzzle solved!**\n"
+                f"**+1 point** — you now have "
+                f"**{format_points(points)} points.**"
+            )
+        elif awarded_for_solver == 0.5:
+            score_message = (
+                f"✅ **Correct, {message.author.display_name}!**\n"
+                f"🎉 **Puzzle solved!**\n"
+                f"**+0.5 point for helping** — "
+                f"you now have "
+                f"**{format_points(points)} points.**"
             )
         else:
-            await message.channel.send(
-                f"🤝 **{team.get('name', team_key)} is now CO-OP.** "
-                "Everyone can answer again."
+            score_message = (
+                f"✅ **Correct, {message.author.display_name}!**\n"
+                f"🎉 **Puzzle solved!**\n"
+                f"You have **{format_points(points)} points.**"
             )
 
-    async def handle_survival_move(
-        self,
-        message,
-        move_text,
-        run,
-    ):
-        if not run:
-            return
-
-        user = message.author
-
-        async with self.game_lock:
-
-            active = active_current_run(
-                self.state
-            )
-
-            if not active:
-                return
-
-            team_key, team = active
-            current_run = team.get(
-                "current"
-            )
-
-            if current_run is not run:
-                return
-
-            if run.get(
-                "status"
-            ) != "active":
-                return
-
-            if (
-                run.get("mode", "coop") == "solo"
-                and not self.is_run_captain(
-                    message.author,
-                    run,
-                )
-            ):
-                await message.channel.send(
-                    f"🔒 **Solo mode is active.** "
-                    f"Only captain **{run.get('captain_name', 'the captain')}** "
-                    "can answer."
-                )
-                return
-
-            puzzle = run.get(
-                "puzzle"
-            )
-
-            if not puzzle:
-                return
-
-            run[
-                "last_activity"
-            ] = epoch_now()
-
-            ensure_member(
-                run,
-                user,
-            )
-
-            submitted = move_text.strip()
-
-            if len(
-                submitted.split()
-            ) != 1:
-                await message.channel.send(
-                    f"❌ **One move at a time, "
-                    f"{user.display_name}.**"
-                )
-                return
-
-            next_index = int(
-                puzzle.get(
-                    "next_solution_index",
-                    0,
-                )
-            )
-
-            solution = puzzle[
-                "solution"
-            ]
-
-            if next_index >= len(
-                solution
-            ):
-                return
-
-            # Duplicate-safe handling:
-            # a move that was already accepted earlier in THIS puzzle is
-            # never a new strike when it arrives late from another player.
-            #
-            # This also survives automatic opponent replies and is safer
-            # than relying on next_solution_index, because the bot can jump
-            # several plies after a correct player move.
-            accepted_moves = puzzle.setdefault(
-                "accepted_moves",
-                []
-            )
-
-            normalized_submitted = (
-                submitted.casefold().rstrip("+#")
-            )
-
-            # First, test the move against the CURRENT position normally.
-            board = chess.Board(
-                puzzle["current_fen"]
-            )
-
-            expected = solution[
-                next_index
-            ]
-
-            correct, accepted_move = parse_survival_move(
-                board,
-                submitted,
-                expected,
-            )
-
-            if not correct:
-                for accepted in reversed(
-                    accepted_moves[-10:]
-                ):
-                    accepted_san = str(
-                        accepted.get(
-                            "san",
-                            ""
-                        )
-                    ).casefold().rstrip("+#")
-
-                    if (
-                        accepted_san
-                        == normalized_submitted
-                    ):
-                        await message.channel.send(
-                            f"✅ **That move was already accepted, "
-                            f"{user.display_name}.**"
-                        )
-                        return
-
-
-            if not correct:
-
-                wrong_users = puzzle.setdefault(
-                    "wrong_users",
-                    []
-                )
-
-                user_id = str(
-                    user.id
-                )
-
-                if user_id in wrong_users:
-                    await message.channel.send(
-                        f"❌ **That miss is already counted, "
-                        f"{user.display_name}.**"
-                    )
-                    return
-
-                wrong_users.append(
-                    user_id
-                )
-
-                member = ensure_member(
-                    run,
-                    user,
-                )
-
-                member[
-                    "wrong"
-                ] += 1
-
-                run[
-                    "strikes"
-                ] += 1
-
-                save_state(
-                    self.state,
-                    push=True,
-                )
-
-                if run[
-                    "strikes"
-                ] >= THREE_STRIKES:
-
-                    run[
-                        "status"
-                    ] = "paused"
-
-                    run[
-                        "paused_reason"
-                    ] = "three strikes"
-
-                    update_best(
-                        team,
-                        run,
-                    )
-
-                    save_state(
-                        self.state,
-                        push=True,
-                    )
-
-                    clear_lock()
-
-                    await message.channel.send(
-                        f"💀 **SURVIVAL OVER — "
-                        f"{team.get('name', team_key)}**\n"
-                        f"Reached **Puzzle "
-                        f"#{run.get('puzzle_number', 0)}**\n"
-                        f"Three strikes.\n"
-                        f"Best difficulty: "
-                        f"**{run.get('best_difficulty', 0)}**\n\n"
-                        f"Run saved."
-                    )
-
-                    return
-
-                await message.channel.send(
-                    f"❌ **Wrong! "
-                    f"Strike {run['strikes']}/"
-                    f"{THREE_STRIKES}.**\n"
-                    f"❤️ "
-                    f"{max(0, THREE_STRIKES - run['strikes'])}"
-                )
-
-                write_lock(
-                    team.get(
-                        "name",
-                        team_key,
-                    ),
-                    run.get(
-                        "run_id",
-                    ),
-                    run[
-                        "last_activity"
-                    ],
-                )
-
-                return
-
-            # Correct move.
-            member = ensure_member(
-                run,
-                user,
-            )
-
-            member[
-                "correct"
-            ] += 1
-
-            user_id = str(
-                user.id
-            )
-
-            if next_index == 0:
-                run[
-                    "first_solver_id"
-                ] = user_id
-
-                run[
-                    "first_solver_name"
-                ] = user.display_name
-
-            elif (
-                user_id
-                != str(
-                    run.get(
-                        "first_solver_id"
-                    )
-                )
-            ):
-                run.setdefault(
-                    "helper_candidates",
-                    {}
-                )[user_id] = (
-                    user.display_name
-                )
-
-            # Use the actual move the user entered. This matters for
-            # alternative valid checkmates that are not the single move
-            # stored in the Lichess principal variation.
-            move = accepted_move
-
-            if move is None:
-                return
-
-            accepted_san = board.san(
-                move
-            )
-
-            # Store the exact accepted move BEFORE advancing the position.
-            puzzle[
-                "last_accepted_move_uci"
-            ] = move.uci()
-
-            puzzle[
-                "last_accepted_move_san"
-            ] = accepted_san
-
-            puzzle[
-                "last_accepted_move_index"
-            ] = next_index
-
-            puzzle[
-                "last_accepted_at"
-            ] = epoch_now()
-
-            puzzle.setdefault(
-                "accepted_moves",
-                []
-            ).append(
-                {
-                    "san":
-                        accepted_san,
-                    "uci":
-                        move.uci(),
-                    "accepted_at":
-                        epoch_now(),
-                    "solver_id":
-                        user_id,
-                }
-            )
-
-            # Keep only the most recent accepted player moves.
-            puzzle[
-                "accepted_moves"
-            ] = puzzle[
-                "accepted_moves"
-            ][-10:]
-
-            puzzle[
-                "position_before_last_move"
-            ] = board.fen()
-
-            board.push(
-                move
-            )
-
-            # If the submitted move itself checkmates, the puzzle is
-            # solved even when Lichess stored a different mate line.
-            alternative_checkmate = board.is_checkmate()
-
-            next_index += 1
-            opponent_replies = []
-
-            if alternative_checkmate:
-                next_index = len(
-                    solution
-                )
-
-            while next_index < len(
-                solution
-            ):
-
-                reply = solution[
-                    next_index
-                ]
-
-                if reply["color"] == puzzle[
-                    "player_color"
-                ]:
-                    break
-
-                reply_move = chess.Move.from_uci(
-                    reply["uci"]
-                )
-
-                if reply_move not in board.legal_moves:
-                    break
-
-                board.push(
-                    reply_move
-                )
-
-                opponent_replies.append(
-                    reply["san"]
-                )
-
-                next_index += 1
-
-            puzzle[
-                "current_fen"
-            ] = board.fen()
-
-            puzzle[
-                "next_solution_index"
-            ] = next_index
-
-            puzzle[
-                "last_move_san"
-            ] = expected["san"]
-
-            run[
-                "last_activity"
-            ] = epoch_now()
-
-            save_state(
-                self.state,
-                push=True,
-            )
-
-            if next_index >= len(
-                solution
-            ):
-                team_key = None
-
-                for key, team_record_value in (
-                    self.state["teams"].items()
-                ):
-                    if team_record_value.get(
-                        "current"
-                    ) is run:
-                        team_key = key
-                        team = team_record_value
-                        break
-
-                if team_key is None:
-                    return
-
-                # Survival deliberately has NO shared leaderboard points.
-                puzzle_number_completed = int(
-                    run["puzzle_number"]
-                )
-
-                run[
-                    "puzzle"
-                ] = None
-
-                run[
-                    "puzzle_number"
-                ] = (
-                    puzzle_number_completed
-                    + 1
-                )
-
-                run[
-                    "first_solver_id"
-                ] = None
-
-                run[
-                    "first_solver_name"
-                ] = None
-
-                run[
-                    "helper_candidates"
-                ] = {}
-
-                save_state(
-                    self.state,
-                    push=True,
-                )
-
-                member_summary = (
-                    f"✅ **Puzzle "
-                    f"#{puzzle_number_completed} "
-                    f"solved!**"
-                )
-
-                if opponent_replies:
-                    member_summary += (
-                        "\n"
-                        f"↩️ **Opponent:** "
-                        f"{' '.join(opponent_replies)}"
-                    )
-
-                await message.channel.send(
-                    member_summary
-                    + "\n"
-                    + f"Next up: **Puzzle "
-                    f"#{run['puzzle_number']}**."
-                )
-
-                await self.post_next_puzzle(
-                    message.channel,
-                    team_key,
-                )
-
-                return
-
-            file, display_board = render_board(
-                puzzle
-            )
-
-            remaining = (
-                len(
-                    solution
-                )
-                - next_index
-            )
-
-            embed = discord.Embed(
-                title=(
-                    f"🔥 **SURVIVAL — "
-                    f"{team.get('name', team_key)}**"
-                ),
-                description=(
-                    f"✅ **{accepted_san}**\n"
-                    + (
-                        f"↩️ Opponent: "
-                        f"{' '.join(opponent_replies)}\n"
-                        if opponent_replies
-                        else ""
-                    )
-                    + f"**{remaining} move"
-                    + (
-                        "s"
-                        if remaining != 1
-                        else ""
-                    )
-                    + " remaining.**\n"
-                    + f"♟️ **{side_to_move_text(display_board)} to move.**\n"
-                    + f"Strikes: "
-                    f"{'❤️' * max(0, THREE_STRIKES - run['strikes'])}"
-                    f"{'🖤' * run['strikes']}"
-                ),
-            )
-
-            embed.set_image(
-                url="attachment://survival.png"
-            )
-
-            await message.channel.send(
-                embed=embed,
-                file=file,
-            )
-
-            write_lock(
-                team.get(
-                    "name",
-                    team_key,
-                ),
-                run.get(
-                    "run_id",
-                ),
-                run[
-                    "last_activity"
-                ],
-            )
-
-
-    def _team_name_for_run(
-        self,
-        run,
-    ):
-        for team in (
-            self.state["teams"].values()
+        await message.channel.send(
+            score_message
+        )
+
+        # If the finisher was not the first-move player, separately
+        # notify the first-move player that their +1 was awarded.
+        if (
+            not practice_only
+            and first_user_id
+            and str(message.author.id)
+            != str(first_user_id)
         ):
-            if team.get(
-                "current"
-            ) is run:
-                return team.get(
-                    "name",
-                    "Survival",
-                )
+            first_name = puzzle.get(
+                "first_move_user_name",
+                "First solver"
+            )
 
-        return "Survival"
+            await message.channel.send(
+                f"🏆 **{first_name} found the first move!** "
+                f"**+1 point**."
+            )
 
-    async def on_message(
-        self,
-        message,
+        if ranking:
+            await message.channel.send(
+                ranking
+            )
+
+        puzzle["answer_posted"] = True
+
+        await post_answer(
+            message.channel,
+            puzzle,
+            "daily" if is_daily else "random"
+        )
+
+        await save_all()
+
+        return
+
+    # -----------------------------------------------------
+    # MORE PLAYER MOVES TO GO
+    # -----------------------------------------------------
+
+    remaining = (
+        len(player_moves)
+        - next_player_index
+    )
+
+    if opponent_replies:
+        reply_text = (
+            f"↩️ **Opponent replies:** "
+            f"{' '.join(opponent_replies)}"
+        )
+    else:
+        reply_text = ""
+
+    if remaining == 1:
+        progress = (
+            "**✅ Correct! Now make your final move.**"
+        )
+    else:
+        progress = (
+            f"**✅ Correct! {remaining} "
+            f"{move_word(remaining)} remaining.**"
+        )
+
+    if reply_text:
+        progress += (
+            f"\n{reply_text}"
+        )
+
+    # -----------------------------------------------------
+    # NEW MESSAGE instead of editing the previous one.
+    # This keeps every solved step visible in chat.
+    # -----------------------------------------------------
+
+    step_file, step_board = await make_board_file(
+        puzzle,
+        "random_puzzle_step.png"
+    )
+
+    step_embed = discord.Embed(
+        title=(
+            f"{puzzle_label} — "
+            f"{puzzle['title']}"
+        ),
+        description=progress,
+        color=0x3498db
+    )
+
+    step_embed.set_image(
+        url="attachment://random_puzzle_step.png"
+    )
+
+    await message.channel.send(
+        embed=step_embed,
+        file=step_file
+    )
+
+    await save_all()
+
+
+# =========================================================
+# HANDLE ANSWER
+# =========================================================
+
+    if is_survival_active():
+        return
+
+async def handle_answer(
+    message,
+    puzzle,
+    answer_window,
+    move_text
+):
+    survival_active, _survival_team = remote_survival_status()
+
+    if survival_active:
+        return
+
+    if not puzzle:
+        return
+
+    # Random puzzles are solved interactively:
+    # one user move -> automatic opponent reply -> next user move.
+    if str(
+        puzzle.get("puzzle_id", "")
+    ).startswith((
+        "random_",
+        "daily_",
+    )):
+        await handle_random_answer(
+            message,
+            puzzle,
+            move_text
+        )
+        return
+
+    # Legacy/non-interactive fallback.
+    if puzzle.get(
+        "answer_posted",
+        False
     ):
+        return
+
+    if not puzzle_is_open(
+        puzzle,
+        answer_window
+    ):
+        return
+
+    required = puzzle.get(
+        "player_move_count",
+        1
+    )
+
+    submitted_moves = (
+        move_text.strip().split()
+    )
+
+    if len(submitted_moves) != required:
+        await message.channel.send(
+            f"❌ **Not quite, "
+            f"{message.author.display_name}.**\n"
+            f"This puzzle requires **{required} "
+            f"{move_word(required)}** from your side."
+        )
+        return
+
+    correct = solution_is_correct(
+        move_text,
+        puzzle
+    )
+
+    await save_attempt(
+        puzzle,
+        message.author,
+        move_text,
+        correct
+    )
+
+    if not correct:
+        await message.channel.send(
+            wrong_message(message.author)
+        )
+        return
+
+    got_point = await award_point(
+        puzzle,
+        message.author
+    )
+
+    current_points = get_player_score(
+        message.author.id
+    )
+
+    personal_ranking = get_personal_ranking(
+        message.author.id
+    )
+
+    if got_point:
+        response = (
+            f"✅ **Correct, "
+            f"{message.author.display_name}!**\n"
+            f"**+1 point** — you now have "
+            f"**{current_points} points**."
+        )
+    else:
+        response = (
+            f"✅ **Correct, "
+            f"{message.author.display_name}!**\n"
+            f"Someone else got the point first.\n"
+            f"You have **{current_points} points**."
+        )
+
+    await message.channel.send(response)
+
+    if personal_ranking:
+        await message.channel.send(personal_ranking)
+
+
+# =========================================================
+# MESSAGE HANDLER
+# =========================================================
+
+@client.event
+async def on_message(
+    message
+):
+
+    try:
+
+
+
         if message.author.bot:
             return
 
         if message.channel.id != CHANNEL_ID:
             return
 
-        # Every human message keeps an active Survival alive for another
-        # 10 minutes, even if it is ordinary chat.
-        active = active_current_run(
-            self.state
-        )
-
-        if active:
-            team_key, team = active
-            run = team.get(
-                "current"
-            )
-
-            if run:
-                run[
-                    "last_activity"
-                ] = epoch_now()
-
         content = message.content.strip()
 
-        if not content:
+        command_lower = content.casefold()
+
+        # IMPORTANT: claim Survival immediately from the human command itself.
+        # Waiting for survival_runs.json caused a race: Daily/Random could say
+        # "Wrong" while Survival correctly accepted the exact same move.
+        if command_lower == "!survival" or command_lower.startswith("!survival "):
+            # Give Survival time to create/load the run and persist its state.
+            # Unlike the previous version this is NOT permanent.
+            set_survival_guard(90)
             return
 
-        lower = content.casefold()
+        # Survival owns this command. Daily only clears its temporary hand-off
+        # guard; Survival itself performs the actual pause/save.
+        if command_lower == "!stopsurvival":
+            clear_survival_guard()
+            return
 
-        # Highest-priority path: after !survival the very next plain
-        # message from the same user/channel is the team name.
-        pending = self.pending_team
+        # Sharkmeister-only shared leaderboard correction:
+        # !edit <name> <points>
+        if command_lower.startswith("!edit "):
+            sharkmeister_user_id = os.getenv(
+                "SHARKMEISTER_USER_ID",
+                "",
+            ).strip()
 
-        if (
-            pending
-            and epoch_now()
-            <= float(
-                pending.get(
-                    "expires",
-                    0,
-                )
-            )
-            and str(message.author.id)
-            == str(
-                pending.get(
-                    "user_id"
-                )
-            )
-            and str(message.channel.id)
-            == str(
-                pending.get(
-                    "channel_id"
-                )
-            )
-            and not content.startswith("!")
-        ):
-            self.clear_pending_team()
-
-            team_name = " ".join(
-                content.split()
-            )
-
-            if not valid_team_name(
-                team_name
+            if (
+                not sharkmeister_user_id
+                or str(message.author.id)
+                != sharkmeister_user_id
             ):
                 await message.channel.send(
-                    "❌ Team name must be 2–32 characters."
+                    "❌ Only **Sharkmeister** can edit the shared leaderboard."
                 )
                 return
 
-            key = normalize_team_name(
-                team_name
-            )
-
-            active = active_current_run(
-                self.state
-            )
-
-            if active:
+            parts = content.split()
+            if len(parts) < 3:
                 await message.channel.send(
-                    f"⚠️ **{active[1].get('name', active[0])}** "
-                    "already has an active Survival run."
+                    "❌ Usage: `!edit <name> <points>`"
                 )
                 return
 
-            team = self.state["teams"].get(
-                key
+            points_text = parts[-1]
+            name = " ".join(
+                parts[1:-1]
+            ).strip()
+
+            try:
+                target_points = float(
+                    points_text
+                )
+
+                if target_points < 0:
+                    raise ValueError(
+                        "negative"
+                    )
+
+                if target_points.is_integer():
+                    target_points = int(
+                        target_points
+                    )
+
+            except Exception:
+                await message.channel.send(
+                    "❌ Points must be a non-negative number, "
+                    "for example `200` or `57.5`."
+                )
+                return
+
+            transaction_id = (
+                "admin-edit:"
+                f"{message.id}:"
+                f"{name.casefold()}:"
+                f"{target_points}"
+            )
+
+            try:
+                new_score = await asyncio.to_thread(
+                    shared_admin_set_points,
+                    name,
+                    target_points,
+                    transaction_id,
+                )
+
+            except Exception as error:
+                await message.channel.send(
+                    f"❌ Could not edit the shared leaderboard: "
+                    f"`{str(error)[:900]}`"
+                )
+                return
+
+            await message.channel.send(
+                f"✅ **{name}** is now on "
+                f"**{format_points(new_score)} points** "
+                "on the shared leaderboard."
+            )
+            return
+
+        # Exact Lichess puzzle rating, e.g. !400 or !2552.
+        if re.fullmatch(
+            r"!\d+",
+            command_lower,
+        ):
+            rating = int(
+                command_lower[1:]
+            )
+
+            if not (
+                100 <= rating <= 4000
+            ):
+                await message.channel.send(
+                    "❌ Lichess puzzle rating must be between **100 and 4000**."
+                )
+                return
+
+            if is_survival_active():
+                team = active_team() or "another team"
+                await message.channel.send(
+                    f"⚠️ **Survival Mode is active for {team}.** "
+                    "Lichess rating puzzles are unavailable until Survival is paused."
+                )
+                return
+
+            await post_exact_lichess_puzzle(
+                message.channel,
+                rating,
+            )
+            return
+
+        # Fast exact aliases. Handle these before any puzzle logic.
+        if command_lower in (
+            "!leaderboard",
+            "!lb",
+            "!l"
+        ):
+            await message.channel.send(
+                make_leaderboard()
+            )
+            return
+
+        # =====================================================
+        # HELP / INFO
+        # =====================================================
+
+        if command_lower in (
+            "!help",
+            "!info",
+            "!i",
+        ):
+
+            await message.channel.send(
+                help_message()
+            )
+
+            return
+
+        # =====================================================
+        # RANDOM PUZZLE
+        # =====================================================
+
+        if command_lower in (
+            "!random",
+            "!rp",
+            "!r",
+            "!randompuzzle",
+            "rp",
+        ):
+
+            if survival_guard_active():
+                await message.channel.send(
+                    "⏳ **Survival is starting.** Try `rp` again in a moment "
+                    "if no Survival run appears."
+                )
+                return
+
+            if is_survival_active():
+                team = active_team() or "another team"
+                await message.channel.send(
+                    f"⚠️ **Survival Mode is active for {team}.** "
+                    "Random Puzzle is unavailable until Survival is paused."
+                )
+                return
+
+            previous_random = state.get(
+                "latest_random_puzzle"
             )
 
             if (
-                team
-                and team.get("current")
+                previous_random
+                and not previous_random.get(
+                    "answer_posted",
+                    False
+                )
+                and not previous_random.get(
+                    "solved",
+                    False
+                )
             ):
-                view = ContinueOrRestartView(
-                    self,
-                    message.author.id,
-                    key,
-                )
-
-                captain = await self.get_captain_display(
-                    team["current"]
-                )
-
-                await message.channel.send(
-                    f"♻️ **{team.get('name', team_name)}** "
-                    "has a saved Survival run.\n"
-                    f"👑 **Captain:** {captain}\n\n"
-                    + run_status_text(
-                        team.get(
-                            "name",
-                            team_name,
-                        ),
-                        team["current"],
-                    )
-                    + "\n\n"
-                    "Continue it or start a new run?",
-                    view=view,
-                )
-                return
-
-            try:
-                await self.start_new_run(
-                    key,
-                    team_name,
-                    message,
-                )
-            except Exception as error:
-                print(
-                    f"Could not create Survival team: {error}",
-                    flush=True,
-                )
-                traceback.print_exc()
-
-                await message.channel.send(
-                    f"❌ **Could not create Survival team {team_name}.**\n"
-                    f"`{str(error)[:900]}`"
-                )
-
-            return
-
-        # Expired prompt: discard it and continue normally.
-        if (
-            pending
-            and epoch_now()
-            > float(
-                pending.get(
-                    "expires",
-                    0,
-                )
-            )
-        ):
-            self.clear_pending_team()
-
-        if await self.handle_admin_command(
-            message,
-            lower,
-            content,
-        ):
-            return
-
-        # Team information command:
-        # !THE SQUAD
-        if (
-            content.startswith("!")
-            and lower not in {
-                "!survival",
-                "!stopsurvival",
-                "!survivallb",
-                "!survivalboard",
-                "!slb",
-            }
-        ):
-            possible_team = (
-                " ".join(
-                    content[1:].split()
-                )
-            )
-
-            key = normalize_team_name(
-                possible_team
-            )
-
-            if key in self.state["teams"]:
-                await self.show_team(
-                    message,
-                    key,
-                )
-                return
-
-        if lower in {
-            "!survivallb",
-            "!survivalboard",
-            "!slb",
-        }:
-            await message.channel.send(
-                survival_leaderboard(
-                    self.state
-                )
-            )
-            return
-
-        if lower in {
-            "!repeat",
-            "repeat",
-        }:
-            active = active_current_run(
-                self.state
-            )
-
-            if active:
-                team_key, team = active
-                run = team.get(
-                    "current"
-                )
-
-                if run:
-                    if isinstance(
-                        run.get("puzzle"),
-                        dict,
-                    ) and run["puzzle"].get(
-                        "current_fen"
-                    ):
-                        await self.send_current_puzzle(
-                            message.channel,
-                            team.get(
-                                "name",
-                                team_key,
-                            ),
-                            run,
-                        )
-                    else:
-                        await self.post_next_puzzle(
-                            message.channel,
-                            team_key,
-                        )
-
-                    return
-
-            # No active run: allow repeat of a saved, non-dead current run.
-            candidates = []
-
-            for team_key, team in self.state["teams"].items():
-                run = team.get(
-                    "current"
-                )
-
-                if not isinstance(
-                    run,
-                    dict,
-                ):
-                    continue
-
-                if run_is_dead(
-                    run
-                ):
-                    continue
-
-                if isinstance(
-                    run.get("puzzle"),
-                    dict,
-                ) and run["puzzle"].get(
-                    "current_fen"
-                ):
-                    candidates.append(
-                        (
-                            int(
-                                run.get(
-                                    "puzzle_number",
-                                    0,
-                                )
-                            ),
-                            team_key,
-                            team,
-                            run,
-                        )
-                    )
-
-            if candidates:
-                candidates.sort(
-                    reverse=True
-                )
-
-                _, team_key, team, run = (
-                    candidates[0]
-                )
-
-                await message.channel.send(
-                    f"⏸️ **{team.get('name', team_key)}** is paused. "
-                    "Showing the saved puzzle."
-                )
-
-                await self.send_current_puzzle(
+                await finalize_expired_puzzle(
                     message.channel,
-                    team.get(
-                        "name",
-                        team_key,
-                    ),
-                    run,
+                    previous_random,
+                    "random"
                 )
 
-                return
-
-            await message.channel.send(
-                "❌ **No saved Survival puzzle is available to repeat.**"
+            await post_random_puzzle(
+                message.channel
             )
+
             return
 
-        if lower == "!stopsurvival":
-            await self.stop_survival(
-                message
-            )
+        # Survival owns all chess-puzzle messages while it is active.
+        # The local command guard is immediate; the remote state is the
+        # persistent fallback across process restarts.
+        if survival_guard_active():
             return
 
-        if lower.startswith(
-            "!survival "
+        survival_active, survival_team = remote_survival_status()
+
+        if survival_active:
+            return
+
+        # =====================================================
+        # RANDOM ANSWER
+        # =====================================================
+
+        if command_lower.startswith(
+            "!random "
         ):
-            direct_team = content.split(
-                None,
-                1,
-            )[1].strip()
 
-            if valid_team_name(
-                direct_team
-            ):
-                active = active_current_run(
-                    self.state
-                )
+            move_text = content[
+                len("!random "):
+            ].strip()
 
-                if active:
-                    await message.channel.send(
-                        f"⚠️ **{active[1].get('name', active[0])}** "
-                        "already has an active Survival run."
-                    )
-                    return
-
-                self.clear_pending_team()
-
-                key = normalize_team_name(
-                    direct_team
-                )
-
-                team = self.state["teams"].get(
-                    key
-                )
-
-                if (
-                    team
-                    and team.get(
-                        "current"
-                    )
-                ):
-                    view = ContinueOrRestartView(
-                        self,
-                        message.author.id,
-                        key,
-                    )
-
-                    captain = await self.get_captain_display(
-                        team["current"]
-                    )
-
-                    await message.channel.send(
-                        f"♻️ **{team.get('name', direct_team)}** "
-                        "has a saved Survival run.\n"
-                        f"👑 **Captain:** {captain}\n\n"
-                        + run_status_text(
-                            team.get(
-                                "name",
-                                direct_team,
-                            ),
-                            team["current"],
-                        )
-                        + "\n\n"
-                        "Continue it or start a new run?",
-                        view=view,
-                    )
-                else:
-                    await self.start_new_run(
-                        key,
-                        direct_team,
-                        message,
-                    )
-
+            if not move_text:
                 return
 
-        if lower == "!survival":
-            self.set_pending_team(
-                {
-                    "user_id":
-                        message.author.id,
-                    "channel_id":
-                        message.channel.id,
-                    "expires":
-                        epoch_now()
-                        + PENDING_TEAM_SECONDS,
-                }
+            puzzle = state.get(
+                "latest_random_puzzle"
             )
 
-            active = active_current_run(
-                self.state
+            await handle_answer(
+                message,
+                puzzle,
+                RANDOM_ANSWER_WINDOW,
+                move_text
             )
 
-            if active:
-                active_name = (
-                    active[1].get(
-                        "name",
-                        active[0],
-                    )
-                )
+            return
 
-                await message.channel.send(
-                    f"🔥 **Survival is currently active for "
-                    f"{active_name}.**\n"
-                    f"Use `!stopsurvival` to pause it first."
-                )
-            else:
-                await message.channel.send(
-                    "🔥 **Survival Mode**\n"
-                    "Enter a team name in your next message."
-                )
+        # =====================================================
+        # DAILY ANSWER
+        # =====================================================
+
+        if command_lower.startswith(
+            "!daily "
+        ):
+
+            move_text = content[
+                len("!daily "):
+            ].strip()
+
+            if not move_text:
+                return
+
+            puzzle = state.get(
+                "current_puzzle"
+            )
+
+            await handle_answer(
+                message,
+                puzzle,
+                ANSWER_WINDOW,
+                move_text
+            )
 
             return
 
-        # While Survival is active, route chess-like messages to Survival.
-        active = active_current_run(
-            self.state
-        )
+        # =====================================================
+        # QUICK ANSWER
+        #
+        # !Bf2
+        # !Bf2
+        # !bf2
+        # =====================================================
 
-        if not active:
-            return
-
-        team_key, team = active
-        run = team.get(
-            "current"
-        )
-
-        if not run:
-            return
-
-        # Commands used by other modes are ignored by Survival.
-        if content.startswith("!"):
-            return
-
-        candidate = (
+        # Moves accept both forms:
+        #   !Qh6
+        #   Qh6
+        candidate_move = (
             content[1:].strip()
             if content.startswith("!")
-            else content
+            else content.strip()
         )
 
-        if not chess_move_like(
-            candidate
+        if not candidate_move:
+            return
+
+        # Do NOT treat normal chat as a chess move.
+        #
+        # A move candidate must:
+        # - be short (<= 12 chars), and
+        # - consist only of chess-move-looking tokens.
+        #
+        # This keeps messages such as:
+        #   "what can the answer be?"
+        # from triggering the puzzle.
+        move_tokens = candidate_move.split()
+
+        if len(candidate_move) > 12:
+            return
+
+        chess_move_pattern = re.compile(
+            r"^(?:"
+            r"[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8][+#]?"
+            r"|[a-h](?:x[a-h])?[18]=[QRBN][+#]?"
+            r"|O-O-O[+#]?"
+            r"|O-O[+#]?"
+            r"|0-0-0[+#]?"
+            r"|0-0[+#]?"
+            r")$",
+            re.IGNORECASE,
+        )
+
+        if not move_tokens or not all(
+            chess_move_pattern.fullmatch(
+                token
+            )
+            for token in move_tokens
         ):
             return
 
-        await self.handle_survival_move(
+        # Plain chess-like text is now treated as a move.
+        latest_type = state.get(
+            "latest_puzzle_type"
+        )
+
+        if latest_type == "random":
+
+            puzzle = state.get(
+                "latest_random_puzzle"
+            )
+
+            answer_window = (
+                RANDOM_ANSWER_WINDOW
+            )
+
+        elif latest_type == "daily":
+
+            puzzle = state.get(
+                "current_puzzle"
+            )
+
+            answer_window = (
+                ANSWER_WINDOW
+            )
+
+        else:
+
+            return
+
+        await handle_answer(
             message,
-            candidate,
-            run,
+            puzzle,
+            answer_window,
+            candidate_move
         )
 
-    async def show_team(
-        self,
-        message,
-        team_key,
-    ):
-        team = self.state["teams"].get(
-            team_key
+    except Exception as error:
+        print(
+            f"COMMAND ERROR: {error}",
+            flush=True
         )
-
-        if not team:
-            await message.channel.send(
-                f"❌ Team **{team_key}** does not exist."
-            )
-            return
-
-        runs = team_saved_runs(
-            team
-        )
-
-        # Newest/highest run first.
-        runs.sort(
-            key=lambda run: (
-                -int(
-                    run.get(
-                        "puzzle_number",
-                        0,
-                    )
-                ),
-                str(
-                    run.get(
-                        "started_at",
-                        "",
-                    )
-                ),
-            )
-        )
-
-        if len(runs) == 0:
-            await message.channel.send(
-                f"👥 **{team.get('name', team_key)}** has no Survival runs."
-            )
-            return
-
-        if len(runs) == 1:
-            await self.send_run_details_message(
-                message.channel,
-                team_key,
-                runs[0],
-            )
-            return
-
-        lines = [
-            f"🔎 **Which {team.get('name', team_key)} run do you want to view?**",
-            "",
-        ]
-
-        for index, run in enumerate(
-            runs[:25],
-            start=1,
-        ):
-            status = run.get(
-                "status",
-                "paused",
-            )
-
-            if int(
-                run.get(
-                    "strikes",
-                    0,
-                )
-            ) >= THREE_STRIKES:
-                status_text = "💀 DEAD"
-            elif status == "active":
-                status_text = "🟢 ACTIVE"
-            else:
-                status_text = "⏸️ PAUSED"
-
-            lines.append(
-                f"**{index}.** Puzzle **#{run.get('puzzle_number', 0)}** "
-                f"— {status_text} "
-                f"— best difficulty **{run.get('best_difficulty', 0)}**"
-            )
-
-        view = TeamRunSelectView(
-            self,
-            message.author.id,
-            team_key,
-            runs[:25],
-        )
-
-        await message.channel.send(
-            "\n".join(lines),
-            view=view,
-        )
-
-    async def show_run_details(
-        self,
-        interaction,
-        team_key,
-        run,
-    ):
-        await interaction.response.send_message(
-            self.format_run_details(
-                team_key,
-                run,
-            )
-        )
-
-    def format_run_details(
-        self,
-        team_key,
-        run,
-    ):
-        team = self.state["teams"].get(
-            team_key,
-            {},
-        )
-
-        members = list(
-            run.get(
-                "members",
-                {}
-            ).values()
-        )
-
-        members.sort(
-            key=lambda item: (
-                -int(
-                    item.get(
-                        "correct",
-                        0,
-                    )
-                ),
-                int(
-                    item.get(
-                        "wrong",
-                        0,
-                    )
-                ),
-                str(
-                    item.get(
-                        "name",
-                        "",
-                    )
-                ).casefold(),
-            )
-        )
-
-        if int(
-            run.get(
-                "strikes",
-                0,
-            )
-        ) >= THREE_STRIKES:
-            status = "💀 DEAD"
-        elif run.get(
-            "status"
-        ) == "active":
-            status = "🟢 ACTIVE"
-        else:
-            status = "⏸️ PAUSED"
-
-        if members:
-            member_lines = []
-
-            for index, member in enumerate(
-                members,
-                start=1,
-            ):
-                member_lines.append(
-                    f"**{index}.** "
-                    f"{member.get('name', 'Unknown')} — "
-                    f"**{member.get('correct', 0)} correct** "
-                    f"/ {member.get('wrong', 0)} wrong"
-                )
-
-            members_text = "\n".join(
-                member_lines
-            )
-        else:
-            members_text = (
-                "No contributors recorded."
-            )
-
-        captain_id = self.get_run_captain_id(
-            run
-        )
-
-        captain_display = (
-            run.get(
-                "captain_name"
-            )
-            or (
-                f"<@{captain_id}>"
-                if captain_id
-                else "Unknown"
-            )
-        )
-
-        return (
-            f"👥 **{team.get('name', team_key)} — Run**\n"
-            f"**Status:** {status}\n"
-            f"**Captain:** {captain_display}\n"
-            f"**Mode:** {str(run.get('mode', 'coop')).upper()}\n"
-            f"**Puzzle:** #{run.get('puzzle_number', 0)}\n"
-            f"**Best difficulty:** {run.get('best_difficulty', 0)}\n"
-            f"**Strikes:** {run.get('strikes', 0)}/3\n\n"
-            f"**Contributors:**\n"
-            f"{members_text}"
-        )
-
-    async def send_run_details_message(
-        self,
-        channel,
-        team_key,
-        run,
-    ):
-        await channel.send(
-            self.format_run_details(
-                team_key,
-                run,
-            )
-        )
-
-
-    def is_shark_admin(
-        self,
-        user,
-    ):
-        return (
-            user.display_name.casefold()
-            == SHARK_ADMIN_NAME
-        )
-
-    async def delete_team(
-        self,
-        message,
-        team_key,
-    ):
-        if not self.is_shark_admin(
-            message.author
-        ):
-            await message.channel.send(
-                "❌ Only **Sharkmeister** can delete Survival teams."
-            )
-            return
-
-        team = self.state[
-            "teams"
-        ].get(
-            team_key
-        )
-
-        if not team:
-            await message.channel.send(
-                f"❌ Team **{team_key}** does not exist."
-            )
-            return
-
-        active = active_current_run(
-            self.state
-        )
-
-        was_active = (
-            active is not None
-            and active[0] == team_key
-        )
-
-        del self.state[
-            "teams"
-        ][
-            team_key
-        ]
-
-        save_state(
-            self.state,
-            push=True,
-        )
-
-        if was_active:
-            clear_lock()
-
-        await message.channel.send(
-            f"🗑️ **{team.get('name', team_key)}** "
-            "has been removed from the Survival team list."
-        )
-
-    async def add_heart(
-        self,
-        message,
-        team_key,
-    ):
-        if not self.is_shark_admin(
-            message.author
-        ):
-            await message.channel.send(
-                "❌ Only **Sharkmeister** can add Survival hearts."
-            )
-            return
-
-        team = self.state[
-            "teams"
-        ].get(
-            team_key
-        )
-
-        if not team:
-            await message.channel.send(
-                f"❌ Team **{team_key}** does not exist."
-            )
-            return
-
-        run = team.get(
-            "current"
-        )
-
-        if not run:
-            await message.channel.send(
-                f"❌ **{team.get('name', team_key)}** "
-                "has no saved Survival run."
-            )
-            return
-
-        old_strikes = int(
-            run.get(
-                "strikes",
-                0,
-            )
-        )
-
-        if old_strikes <= 0:
-            await message.channel.send(
-                f"❤️ **{team.get('name', team_key)}** "
-                "already has all 3 hearts."
-            )
-            return
-
-        run[
-            "strikes"
-        ] = max(
-            0,
-            old_strikes - 1,
-        )
-
-        # If the run ended specifically because of three strikes,
-        # adding a heart makes it resumable again.
-        if run.get(
-            "status"
-        ) != "active":
-            run[
-                "status"
-            ] = "paused"
-
-        run[
-            "paused_reason"
-        ] = None
-
-        run[
-            "last_activity"
-        ] = epoch_now()
-
-        save_state(
-            self.state,
-            push=True,
-        )
-
-        await message.channel.send(
-            f"❤️ **Added 1 heart to "
-            f"{team.get('name', team_key)}.**\n"
-            f"Hearts now: "
-            f"{'❤️' * (THREE_STRIKES - run['strikes'])}"
-            f"{'🖤' * run['strikes']}"
-        )
-
-    async def handle_admin_command(
-        self,
-        message,
-        lower,
-        content,
-    ):
-        if lower.startswith(
-            "!delete "
-        ):
-            team_name = content[
-                len("!delete "):
-            ].strip()
-
-            if not team_name:
-                await message.channel.send(
-                    "❌ Usage: `!delete <team name>`"
-                )
-                return True
-
-            await self.delete_team(
-                message,
-                normalize_team_name(
-                    team_name
-                ),
-            )
-            return True
-
-        if lower.startswith(
-            "!addheart "
-        ):
-            team_name = content[
-                len("!addheart "):
-            ].strip()
-
-            if not team_name:
-                await message.channel.send(
-                    "❌ Usage: `!addheart <team name>`"
-                )
-                return True
-
-            await self.add_heart(
-                message,
-                normalize_team_name(
-                    team_name
-                ),
-            )
-            return True
-
-        return False
-
-    async def stop_survival(
-        self,
-        message,
-    ):
-        async with self.game_lock:
-            return await self._stop_survival_locked(
-                message
-            )
-
-    async def _stop_survival_locked(
-        self,
-        message,
-    ):
-        active = active_current_run(
-            self.state
-        )
-
-        if not active:
-            await message.channel.send(
-                "There is no active Survival run."
-            )
-            return
-
-        team_key, team = active
-        run = team.get(
-            "current"
-        )
-
-        if not run:
-            return
-
-        # Anyone in the channel may pause an active Survival run.
-        # This is intentionally not captain-only.
-        run[
-            "status"
-        ] = "paused"
-
-        run[
-            "paused_reason"
-        ] = "manually stopped"
-        run[
-            "last_activity"
-        ] = epoch_now()
-
-        update_best(
-            team,
-            run,
-        )
+        traceback.print_exc()
 
         try:
-            save_state(
-                self.state,
-                push=True,
-            )
-            clear_lock()
-        except Exception as error:
-            # Revert local status if persistence failed; otherwise
-            # Daily/Random could see an inconsistent run state.
-            run[
-                "status"
-            ] = "active"
-            run[
-                "paused_reason"
-            ] = None
-
             await message.channel.send(
-                f"❌ Could not save the pause to GitHub: `{str(error)[:500]}`"
+                f"❌ **Bot error:** `{str(error)[:1000]}`"
             )
-            return
-
-        await message.channel.send(
-            f"⏸️ **{team.get('name', team_key)} Survival paused.**\n"
-            f"Puzzle **#{run.get('puzzle_number', 0)}**\n"
-            f"Strikes **{run.get('strikes', 0)}/3**\n"
-            f"Best difficulty **{run.get('best_difficulty', 0)}**\n\n"
-            f"Run saved."
-        )
+        except Exception:
+            pass
 
 
-def chess_move_like(
-    text
-):
-    text = text.strip()
+# =========================================================
+# READY
+# =========================================================
 
-    if not text:
-        return False
+@client.event
+async def on_ready():
 
-    if len(text) > 12:
-        return False
-
-    pattern = re.compile(
-        r"^(?:"
-        # Normal SAN/UCI-like moves.
-        r"[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8][+#]?"
-        # Pawn promotions, including captures and check/mate.
-        r"|[a-h](?:x[a-h])?[18]=[QRBN][+#]?"
-        # Castling.
-        r"|O-O-O[+#]?"
-        r"|O-O[+#]?"
-        r"|0-0-0[+#]?"
-        r"|0-0[+#]?"
-        r")$",
-        re.IGNORECASE,
-    )
-
-    return bool(
-        pattern.fullmatch(
-            text
-        )
-    )
-
-
-def parse_survival_move(
-    board,
-    submitted,
-    expected,
-):
-    """
-    Return (accepted, legal_move).
-
-    Normally the move must match the Lichess solution move.
-    Exception: if the submitted move is a legal move that immediately
-    checkmates, accept it even when Lichess supplied a different mating
-    move. This handles puzzles with multiple mate-in-one solutions.
-    """
-    submitted = submitted.strip()
-
-    if not submitted:
-        return False, None
-
-    normalized = (
-        submitted.casefold()
-    )
-
-    while normalized.endswith(
-        ("+", "#")
+    if getattr(
+        client,
+        "started",
+        False
     ):
-        normalized = normalized[:-1]
+        return
 
-    for legal_move in board.legal_moves:
+    client.started = True
 
-        san = board.san(
-            legal_move
-        )
+    global state
+    global scores
 
-        san_normalized = san.casefold()
-
-        while san_normalized.endswith(
-            ("+", "#")
-        ):
-            san_normalized = san_normalized[:-1]
-
-        if san_normalized != normalized:
-            continue
-
-        # Official solution move.
-        if legal_move.uci() == expected["uci"]:
-            return True, legal_move
-
-        # Alternative legal move that immediately checkmates.
-        test_board = board.copy()
-        test_board.push(
-            legal_move
-        )
-
-        if test_board.is_checkmate():
-            return True, legal_move
-
-        return False, None
-
-    # UCI input.
-    try:
-        move = board.parse_uci(
-            normalized
-        )
-    except Exception:
-        return False, None
-
-    if move.uci() == expected["uci"]:
-        return True, move
-
-    test_board = board.copy()
-    test_board.push(move)
-
-    if test_board.is_checkmate():
-        return True, move
-
-    return False, None
-
-
-def san_matches_move(
-    board,
-    submitted,
-    expected,
-):
-    submitted = (
-        submitted.strip()
+    state = load_json(
+        STATE_FILE,
+        {}
     )
 
-    if not submitted:
-        return False
+    global scores
 
-    normalized = (
-        submitted.casefold()
+    scores, _events = load_score_ledger()
+
+    # Keep the migrated baseline/events on disk immediately so the
+    # transition is persistent before the next point is awarded.
+    save_json(
+        SCORE_EVENTS_FILE,
+        _events
     )
 
-    while normalized.endswith(
-        ("+", "#")
-    ):
-        normalized = (
-            normalized[:-1]
+    save_json(
+        LEADERBOARD_FILE,
+        scores
+    )
+
+    state.setdefault(
+        "leaderboard_last_posted_date",
+        None
+    )
+
+    # Restore the current random puzzle position after a restart.
+    random_puzzle = state.get(
+        "latest_random_puzzle"
+    )
+
+    if random_puzzle:
+        random_puzzle.setdefault(
+            "current_fen",
+            random_puzzle.get("fen")
+        )
+        random_puzzle.setdefault(
+            "next_solution_index",
+            0
+        )
+        random_puzzle.setdefault(
+            "next_player_index",
+            0
+        )
+        random_puzzle.setdefault(
+            "solved",
+            False
+        )
+        random_puzzle.setdefault(
+            "attempted_users",
+            {}
         )
 
-    for legal_move in board.legal_moves:
-        san = board.san(
-            legal_move
+        random_puzzle.setdefault(
+            "first_move_user_id",
+            None
         )
 
-        san_normalized = (
-            san.casefold()
+        random_puzzle.setdefault(
+            "first_move_user_name",
+            None
         )
 
-        while san_normalized.endswith(
-            ("+", "#")
-        ):
-            san_normalized = (
-                san_normalized[:-1]
-            )
+        random_puzzle.setdefault(
+            "first_move_awarded",
+            False
+        )
 
-        if (
-            san_normalized
-            == normalized
-        ):
-            return (
-                legal_move.uci()
-                == expected["uci"]
-            )
+        random_puzzle.setdefault(
+            "helper_awarded_users",
+            []
+        )
+
+        random_puzzle.setdefault(
+            "helper_candidate_users",
+            []
+        )
+
+    print(
+        f"READY! Logged in as {client.user}",
+        flush=True
+    )
 
     try:
-        return (
-            board.parse_uci(
-                normalized
-            ).uci()
-            == expected["uci"]
+
+        channel = await client.fetch_channel(
+            CHANNEL_ID
         )
-    except Exception:
-        return False
+
+    except Exception as error:
+
+        print(
+            f"Could not find channel: {error}",
+            flush=True
+        )
+
+        return
+
+    print(
+        f"Channel found: {channel.name}",
+        flush=True
+    )
+
+    await check_for_new_puzzle(
+        channel
+    )
+
+    asyncio.create_task(
+        puzzle_loop(channel)
+    )
+
+    asyncio.create_task(
+        maintenance_loop(channel)
+    )
+
+    # Do not intentionally close the Discord client after 5h50.
+    # discord.py reconnects automatically after transient Discord/network
+    # disconnects. The hosting workflow controls the process lifetime.
+
+    print(
+        "Daily Puzzle Bot is running and listening continuously.",
+        flush=True
+    )
 
 
-async def action_limit_timer(
-    self
-):
-    """
-    Legacy compatibility hook.
-
-    Survival no longer closes itself after 5h50. Keeping this coroutine
-    harmless prevents an accidental future call from taking the bot offline.
-    """
-    while not self.is_closed():
-        await asyncio.sleep(60 * 60)
+@client.event
+async def on_disconnect():
+    print(
+        "Discord connection lost; discord.py will reconnect automatically.",
+        flush=True,
+    )
 
 
-SurvivalBot.action_limit_timer = (
-    action_limit_timer
-)
+@client.event
+async def on_resumed():
+    print(
+        "Discord connection resumed.",
+        flush=True,
+    )
 
-bot = SurvivalBot()
+
+# =========================================================
+# START
+# =========================================================
 
 print(
-    "Starting Survival Mode bot...",
-    flush=True,
+    "Starting Daily Chess Puzzle Bot...",
+    flush=True
 )
 
-bot.run(
-    TOKEN
-)
+client.run(TOKEN)
