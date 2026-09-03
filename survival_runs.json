@@ -291,7 +291,7 @@
         "started_at": "2026-09-03T20:09:57.193516+00:00",
         "last_activity": 1788466244.143453,
         "paused_reason": null,
-        "puzzle_number": 2,
+        "puzzle_number": 3,
         "strikes": 2,
         "best_difficulty": 1337,
         "used_puzzle_ids": [
@@ -305,46 +305,9 @@
             "wrong": 2
           }
         },
-        "puzzle": {
-          "id": "FLFvl",
-          "rating": 1334,
-          "themes": "endgame oneMove mateIn1 pillsburysMate",
-          "url": "https://lichess.org/training/FLFvl",
-          "start_fen": "6R1/8/1p6/1r5k/4BKp1/p6b/7P/8 w - - 0 53",
-          "current_fen": "7R/8/1p6/1r5k/4BKp1/p6b/7P/8 b - - 1 53",
-          "solution": [
-            {
-              "uci": "g8h8",
-              "san": "Rh8#",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 1,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [
-            "442597396195704832"
-          ],
-          "last_move_san": "Rh8#",
-          "accepted_moves": [
-            {
-              "san": "Rh8#",
-              "uci": "g8h8",
-              "accepted_at": 1788466244.1433713,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "g8h8",
-          "last_accepted_move_san": "Rh8#",
-          "last_accepted_move_index": 0,
-          "last_accepted_at": 1788466244.1433704,
-          "position_before_last_move": "6R1/8/1p6/1r5k/4BKp1/p6b/7P/8 w - - 0 53"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       },
