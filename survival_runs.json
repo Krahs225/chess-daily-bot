@@ -571,10 +571,10 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-03T18:57:56.387392+00:00",
-        "last_activity": 1788461910.7669566,
+        "last_activity": 1788461914.0381975,
         "paused_reason": null,
         "puzzle_number": 2,
-        "strikes": 0,
+        "strikes": 1,
         "best_difficulty": 1271,
         "used_puzzle_ids": [
           "Y9Emi",
@@ -585,6 +585,11 @@
             "name": "Thice",
             "correct": 1,
             "wrong": 0
+          },
+          "601406103712170014": {
+            "name": "TheMakina",
+            "correct": 0,
+            "wrong": 1
           }
         },
         "puzzle": {
@@ -627,7 +632,9 @@
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
-          "wrong_users": [],
+          "wrong_users": [
+            "601406103712170014"
+          ],
           "last_move_san": null,
           "accepted_moves": []
         },
