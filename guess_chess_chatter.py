@@ -1163,13 +1163,15 @@ async def post_chess_round(
                 }
             )
 
+    stats_result = None
     if vote_records:
         try:
-            await asyncio.to_thread(
+            stats_result = await asyncio.to_thread(
                 record_poll_votes,
                 poll_message.id,
                 vote_records,
                 source="guess-chess-chatter",
+                target_name=owner,
             )
         except Exception as error:
             print(
@@ -1231,6 +1233,20 @@ async def post_chess_round(
 
         await channel.send(
             f"🎉 {names}"
+        )
+
+    bonuses = (
+        stats_result.get("_streak_bonuses", [])
+        if isinstance(stats_result, dict)
+        else []
+    )
+    if bonuses:
+        await channel.send(
+            "🔥 **Guess streak bonus!** "
+            + " • ".join(
+                f"**{item['display_name']} +1** for a {item['streak']}-streak"
+                for item in bonuses
+            )
         )
 
     view.stop()
