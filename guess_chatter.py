@@ -132,7 +132,8 @@ PLAYER_INFO = {
     "jessebrawlstars": (
         "Jessebrawlstars",
         "**How to recognize:** Lots of **bro, bruv, unc, tuff**, short chaotic roasts, then suddenly an actual chess move or puzzle answer.\n"
-        "**Languages:** English, some Dutch."
+        "**Languages:** English, some Dutch.\n"
+        "**ELO:** **2000**."
     ),
     "kurupt": (
         "Kurupt",
@@ -156,6 +157,7 @@ PLAYER_INFO = {
         "**How to recognize:** Very recognizable **hello hello**, polite challenges, GG, asking to play, rating/tournament talk "
         "and often **I gtg** when leaving.\n"
         "**Languages:** Arabic, English.\n"
+        "**ELO:** **2200**.\n"
         "**Chess style:** Fast and tactical, especially in **bullet/blitz**. Strong **Alien Gambit / Martian Gambit** fingerprint; "
         "likes active gambit positions and practical complications."
     ),
@@ -164,6 +166,7 @@ PLAYER_INFO = {
         "**How to recognize:** The biggest tell is **XD**. Also lots of **maybe, prob, or smt, aswell**, quick corrections, jokes "
         "and raw chess lines. **Mr_thick / Mr_thice + XD** is a huge tell.\n"
         "**Languages:** English.\n"
+        "**ELO:** **2399**.\n"
         "**Chess style:** Tactical and calculation-heavy, strong puzzle instincts and very practical. Recurring **Dutch** and "
         "**French Defense** talk; *move first think later XD* fits the vibe."
     ),
@@ -171,6 +174,7 @@ PLAYER_INFO = {
         "Nairyaaa",
         "**How to recognize:** Expressive, curious and friendly. Lots of questions, punctuation, emojis and careful reasoning.\n"
         "**Languages:** French, English.\n"
+        "**ELO:** **1800**.\n"
         "**Chess style:** Careful and calculation-first. Wants to find the best move rather than rely purely on speed, "
         "and is less naturally comfortable with bullet."
     ),
@@ -185,6 +189,7 @@ PLAYER_INFO = {
         "**How to recognize:** Dry reactions, lots of **xD/xDD**, concrete move analysis and opening terminology. Often sounds "
         "half stream-watching and half analysing a board.\n"
         "**Languages:** English.\n"
+        "**ELO:** **2250**.\n"
         "**Chess style:** Very theory-oriented. Gambits, **Alapin ideas**, concrete variations, prep and differences between "
         "rapid/bullet come up regularly. Likes sharp practical opening ideas."
     ),
@@ -192,6 +197,7 @@ PLAYER_INFO = {
         "Pospos",
         "**How to recognize:** GeoGuessr plus proudly announcing chess Elo milestones. Often self-deprecating and excited about improvement.\n"
         "**Languages:** English.\n"
+        "**ELO:** **800**.\n"
         "**Chess style:** Improving player strongly associated with the **London** and **Caro-Kann**, with opening knowledge "
         "developing faster than endgame knowledge."
     ),
@@ -221,6 +227,7 @@ PLAYER_INFO = {
         "Soyadelson / Adelson",
         "**How to recognize:** Competitive, talkative, poker/rating stories, dramatic reactions and lots of challenges.\n"
         "**Languages:** Spanish, English.\n"
+        "**ELO:** **1300**.\n"
         "**Chess style:** Tactical, ambitious and streaky. Very interested in puzzles and brilliancies; capable of strong tactical "
         "games but openly describes some normal games as getting completely thrown away."
     ),
@@ -228,6 +235,7 @@ PLAYER_INFO = {
         "Stepu",
         "**How to recognize:** **wassup, skill issue, haha**, friendly trash talk and a lot of confidence. Regularly roasts Thice/Shark.\n"
         "**Languages:** Spanish, English.\n"
+        "**ELO:** **2200 on a good day**.\n"
         "**Chess style:** Strong, fast and practical. Rapid/bullet-oriented, tactical, confident and happy to challenge stronger players."
     ),
     "sushi": (
@@ -235,6 +243,7 @@ PLAYER_INFO = {
         "**How to recognize:** Calls Shark **Sharky** a lot; frequent **tho, ugh, gotta, ain't, dammit, haha**. Chess comments are "
         "confident, direct and theory-heavy.\n"
         "**Languages:** Dutch, English.\n"
+        "**ELO:** **2200**.\n"
         "**Chess style:** **DUBOV ITALIAN** is the enormous giveaway. Loves sharp theory, opening prep, gambits, sacrifices, "
         "attacking positions and practical clock play."
     ),
@@ -248,12 +257,14 @@ PLAYER_INFO = {
         "**How to recognize:** A completely unbiased description: **chess genius, absurd calculation, suspiciously frequent "
         "brilliancies and clearly the greatest mind ever to touch a chessboard.**\n"
         "**Languages:** Dutch, English, **fluent Italian, fluent German**, and **a few words of Polish**.\n"
+        "**ELO:** **2200**.\n"
         "**Chess style:** Creative and tactical; likes flashy moves, attacking chances and finding brilliancies."
     ),
     "lars": (
         "Lars",
         "**How to recognize:** **German and a cheater.**\n"
         "**Languages:** German, English.\n"
+        "**ELO:** **900–1700** *(cheater)*.\n"
         "**Chess style:** No strong stylistic fingerprint added yet; the clearest identifiers are Lars, German, and the cheating."
     ),
 }
