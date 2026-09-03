@@ -1,18 +1,22 @@
 name: Guess Chess Chatter
 
+# Chess rounds are now scheduled INSIDE guess_chatter.py by the single
+# persistent Guess controller. Keeping this workflow manual-only prevents a
+# second Discord Gateway client from posting duplicate Chess rounds.
 on:
-  schedule:
-    - cron: "10,30,50 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
-  actions: write
+
+concurrency:
+  group: guess-games-persistent-controller
+  cancel-in-progress: true
 
 jobs:
-  guess-chess-chatter:
+  restart-guess-games:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 330
 
     steps:
       - name: Checkout
@@ -30,8 +34,29 @@ jobs:
           python -m pip install --upgrade pip
           pip install discord.py requests python-chess cairosvg
 
-      - name: Run Guess Chess Chatter
-        run: python guess_chess_chatter.py
+      - name: Verify Chess helper build
+        run: |
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+
+          def constant(filename, name):
+              tree = ast.parse(Path(filename).read_text(encoding="utf-8"))
+              for node in tree.body:
+                  if isinstance(node, ast.Assign):
+                      for target in node.targets:
+                          if isinstance(target, ast.Name) and target.id == name:
+                              return ast.literal_eval(node.value)
+              raise RuntimeError(f"{name} not found in {filename}")
+
+          assert constant("guess_chatter.py", "GUESS_CONTROLLER_BUILD") == \
+              "guess-games-v5-alternate-10m-next-2026-09-03"
+          assert constant("guess_chess_chatter.py", "GUESS_CHESS_BUILD") == \
+              "guess-chess-v5-persistent-helper-2026-09-03"
+          print("Verified persistent Guess controller + Chess helper.")
+          PY
+
+      - name: Restart persistent Guess Games controller
+        run: python guess_chatter.py
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-          GITHUB_ACTION_TOKEN: ${{ github.token }}
