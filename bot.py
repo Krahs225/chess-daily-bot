@@ -30,6 +30,17 @@ from datetime import datetime, timezone
 
 from puzzle_mode_lock import is_survival_active, active_team
 
+from puzzle_stats import (
+    PUZZLE_STATS_BUILD,
+    record_puzzle_attempt,
+    record_first_solve,
+    puzzle_stats_for_user,
+    puzzle_stats_for_name,
+    format_puzzle_stats,
+    format_puzzle_leaderboards,
+    ACHIEVEMENT_BY_ID,
+)
+
 # Direct remote Survival-state check used by Daily/Random guards.
 # This is intentionally independent of puzzle_mode_lock.py so an old/stale
 # lock file cannot allow the Daily bot to consume a Survival move.
@@ -232,6 +243,9 @@ RP_BANDS = (
     (2400, 2699),
     (2700, 3199),
 )
+
+BOSS_PUZZLE_CHANCE = 0.05
+BOSS_RP_BAND_INDEX = len(RP_BANDS) - 1
 SHARKMEISTER_DEFAULT_USER_ID = "362606514764251137"
 SHARK_SPY_BUILD = "shark-spy-v1-ephemeral-status-2026-09-03"
 
@@ -1056,13 +1070,16 @@ def _next_rp_band():
     return _rp_band_bag.pop()
 
 
-def fetch_random_puzzle():
+def fetch_random_puzzle(force_band=None):
     """
     Pick one RP puzzle from the prebuilt local SQLite pool.
 
     Runtime RP performs ZERO HTTP requests. The pool is generated separately
     from the official downloadable Lichess puzzle database. Every six RP
     selections use all six rating bands exactly once in random order.
+
+    force_band is used only for Boss Puzzles and deliberately does NOT consume
+    an entry from the normal six-band shuffled bag.
     """
     global _rp_recent_ids
 
@@ -1073,7 +1090,13 @@ def fetch_random_puzzle():
         )
 
     with _rp_pool_lock:
-        band = _next_rp_band()
+        if force_band is None:
+            band = _next_rp_band()
+        else:
+            band = int(force_band)
+            if not (0 <= band < len(RP_BANDS)):
+                raise RuntimeError(f"Invalid RP band: {band}")
+
         minimum, maximum = RP_BANDS[band]
 
         con = sqlite3.connect(
@@ -2359,9 +2382,17 @@ async def post_random_puzzle(
 
     async with rp_command_lock:
         try:
-            data = await asyncio.to_thread(
-                fetch_random_puzzle
-            )
+            boss = random.random() < BOSS_PUZZLE_CHANCE
+
+            if boss:
+                data = await asyncio.to_thread(
+                    fetch_random_puzzle,
+                    BOSS_RP_BAND_INDEX,
+                )
+            else:
+                data = await asyncio.to_thread(
+                    fetch_random_puzzle
+                )
 
             puzzle = build_puzzle(
                 data
@@ -2381,6 +2412,7 @@ async def post_random_puzzle(
             )
             puzzle["rating"] = data.get("rating")
             puzzle["rp_band"] = data.get("rp_band")
+            puzzle["boss"] = bool(boss)
 
             # Interactive state.
             puzzle["current_fen"] = sanitize_fen(
@@ -2425,13 +2457,26 @@ async def post_random_puzzle(
                     f"**{count} {move_word(count)}**."
                 )
 
+            if boss:
+                embed_title = (
+                    f"☠️ BOSS PUZZLE — {data.get('rating', '?')}"
+                )
+                reward_text = (
+                    "\n\n🔥 **Boss rewards:** first solver **+2**, "
+                    "helpers **+1**."
+                )
+            else:
+                embed_title = f"🎲 Random Puzzle — {title}"
+                reward_text = ""
+
             embed = discord.Embed(
-                title=f"🎲 Random Puzzle — {title}",
+                title=embed_title,
                 description=(
                     f"**{side} to move.**\n"
                     f"{move_description}\n\n"
                     f"You only enter **your own moves**. "
                     f"The opponent's replies will be played automatically."
+                    f"{reward_text}"
                 ),
                 color=0x3498db
             )
@@ -2449,7 +2494,7 @@ async def post_random_puzzle(
             save_json(STATE_FILE, state)
 
             print(
-                f"Random Puzzle posted: rating {data.get('rating')} "
+                f"{'BOSS ' if boss else ''}Random Puzzle posted: rating {data.get('rating')} "
                 f"(band {data.get('rp_band')}, {count} player moves).",
                 flush=True
             )
@@ -2789,6 +2834,86 @@ async def save_attempt(
 
 
 # =========================================================
+# PERSONAL PUZZLE STATS / ELO / STREAK
+# =========================================================
+
+async def record_official_puzzle_result(
+    puzzle,
+    user,
+    correct,
+):
+    """Record this user's first official result for this puzzle.
+
+    Exact-rating !2500-style puzzles remain practice-only. Daily puzzles count
+    for stats/streaks but have no Elo movement because Chess.com does not expose
+    a trustworthy puzzle rating here. Random/Boss RP uses the real Lichess rating.
+    """
+    puzzle_id = str(puzzle.get("puzzle_id", ""))
+
+    if puzzle_id.startswith("random_lichess_"):
+        return None
+
+    source = "daily" if puzzle_id.startswith("daily_") else "random"
+
+    try:
+        result = await asyncio.to_thread(
+            record_puzzle_attempt,
+            puzzle_id,
+            user.id,
+            user.display_name,
+            bool(correct),
+            puzzle_rating=puzzle.get("rating"),
+            boss=bool(puzzle.get("boss", False)),
+            source=source,
+        )
+    except Exception as error:
+        print(
+            f"Puzzle stats error for {user.display_name}: {error}",
+            flush=True,
+        )
+        return None
+
+    # A 10/20/30/... correct streak gives +1 shared point. The transaction ID
+    # is deterministic, so a retry can never duplicate this bonus.
+    if result.get("streak_bonus"):
+        try:
+            await asyncio.to_thread(
+                shared_add_points,
+                user.id,
+                user.display_name,
+                1.0,
+                f"puzzle-streak-bonus:{puzzle_id}:{user.id}",
+                source="puzzle-streak-bonus",
+            )
+        except Exception as error:
+            print(
+                f"Puzzle streak bonus error for {user.display_name}: {error}",
+                flush=True,
+            )
+
+    return result
+
+
+def achievement_unlock_text(result):
+    if not result or not result.get("recorded"):
+        return ""
+
+    ids = result.get("new_achievements", [])
+    names = [
+        ACHIEVEMENT_BY_ID[item][0]
+        for item in ids
+        if item in ACHIEVEMENT_BY_ID
+    ]
+
+    if not names:
+        return ""
+
+    return "🏅 **Achievement unlocked:** " + " • ".join(
+        f"**{name}**" for name in names
+    )
+
+
+# =========================================================
 # RANDOM PUZZLE SCORING
 # =========================================================
 
@@ -2832,14 +2957,38 @@ async def award_random_move_points(
             f"first:{user_id}"
         )
 
+        first_amount = (
+            2.0
+            if puzzle.get("boss", False)
+            else 1.0
+        )
+
         await asyncio.to_thread(
             shared_add_points,
             user.id,
             user.display_name,
-            1.0,
+            first_amount,
             transaction_id,
-            source="puzzle-first",
+            source=(
+                "puzzle-boss-first"
+                if puzzle.get("boss", False)
+                else "puzzle-first"
+            ),
         )
+
+        try:
+            await asyncio.to_thread(
+                record_first_solve,
+                puzzle.get("puzzle_id", "unknown"),
+                user.id,
+                user.display_name,
+                boss=bool(puzzle.get("boss", False)),
+            )
+        except Exception as error:
+            print(
+                f"Puzzle first-solve stats error for {user.display_name}: {error}",
+                flush=True,
+            )
 
         puzzle[
             "first_move_awarded"
@@ -2872,13 +3021,23 @@ async def award_random_move_points(
         f"helper:{user_id}"
     )
 
+    helper_amount = (
+        1.0
+        if puzzle.get("boss", False)
+        else 0.5
+    )
+
     await asyncio.to_thread(
         shared_add_points,
         user.id,
         user.display_name,
-        0.5,
+        helper_amount,
         transaction_id,
-        source="puzzle-helper",
+        source=(
+            "puzzle-boss-helper"
+            if puzzle.get("boss", False)
+            else "puzzle-helper"
+        ),
     )
 
     helper_users.append(
@@ -2947,19 +3106,25 @@ def help_message():
 
 **Random Puzzle**
 `rp` or `!rp` — Start a random Lichess puzzle.
-Play it one move at a time.
+Play it one move at a time. A small number become **2600+ Boss Puzzles**.
+Boss first solver: **+2 points**. Boss helper: **+1 point**.
 
 **Lichess Rating Puzzle**
 `!400`, `!2500`, `!2552`, etc. — load a Lichess puzzle with that **exact puzzle rating**.
 
-**Shared Points**
+**Shared Points / Personal Progress**
 Daily and Random use the **shared leaderboard**.
 First solver: **+1 point**
 Helper: **+0.5 point**
+Every **10th correct puzzle in a row** gives **+1 bonus point**.
+Rated Random/Boss puzzles also update your real **Puzzle Elo**.
+Your first valid attempt on each official puzzle decides your personal win/loss.
 
 **Commands**
 `!info` / `!help` / `!i` — show this info.
-`!leaderboard` / `!lb` / `!l` — show the shared leaderboard.
+`!leaderboard` / `!lb` / `!l` — shared points + Top Puzzle Elo + best streaks.
+`!stats` / `!me` / `!profile` — your Puzzle profile, Elo, streaks and achievements.
+`!stats <name>` — view another player's Puzzle profile.
 `!edit <name> <points>` — Sharkmeister-only shared leaderboard correction.
 
 🔥 **Survival Mode**
@@ -3813,16 +3978,22 @@ async def handle_random_answer(
         "player_color"
     ]
 
-    is_daily = str(
+    puzzle_id = str(
         puzzle.get(
             "puzzle_id",
             "",
         )
-    ).startswith("daily_")
+    )
+
+    is_daily = puzzle_id.startswith("daily_")
+    practice_only = puzzle_id.startswith("random_lichess_")
+    is_boss = bool(puzzle.get("boss", False))
 
     puzzle_label = (
         "♟️ Daily Puzzle"
         if is_daily
+        else "☠️ BOSS PUZZLE"
+        if is_boss
         else "🎲 Random Puzzle"
     )
 
@@ -3964,6 +4135,26 @@ async def handle_random_answer(
                 puzzle["next_solution_index"] = next_index
                 puzzle["next_player_index"] = next_player_index
 
+    personal_result = await record_official_puzzle_result(
+        puzzle,
+        message.author,
+        correct,
+    )
+
+    if personal_result and personal_result.get("recorded"):
+        if personal_result.get("streak_bonus"):
+            streak_value = int(
+                personal_result.get("stats", {}).get("current_streak", 0)
+            )
+            await message.channel.send(
+                f"🔥 **{streak_value}-puzzle streak!** "
+                f"**{message.author.display_name} +1 bonus point.**"
+            )
+
+        unlock_text = achievement_unlock_text(personal_result)
+        if unlock_text:
+            await message.channel.send(unlock_text)
+
     if not correct:
         await save_all()
         await message.channel.send(
@@ -4039,7 +4230,7 @@ async def handle_random_answer(
             if str(uid) != str(first_user_id)
         ]
 
-        # First mover: +1
+        # First mover: normal +1, Boss +2
         if first_user_id:
             first_user = None
 
@@ -4091,7 +4282,7 @@ async def handle_random_answer(
                     first_move=True
                 )
 
-        # Helpers: +0.5 each, max once per puzzle.
+        # Helpers: normal +0.5, Boss +1 each, max once per puzzle.
         for helper_id in helper_users:
             if helper_id in puzzle.get(
                 "helper_awarded_users",
@@ -4199,6 +4390,8 @@ async def handle_random_answer(
 
         await save_all()
 
+        first_reward = 2.0 if is_boss else 1.0
+        helper_reward = 1.0 if is_boss else 0.5
         awarded_for_solver = 0.0
 
         if (
@@ -4207,7 +4400,7 @@ async def handle_random_answer(
                 message.author.id
             ) == str(first_user_id)
         ):
-            awarded_for_solver = 1.0
+            awarded_for_solver = first_reward
 
         elif (
             not practice_only
@@ -4215,7 +4408,7 @@ async def handle_random_answer(
                 message.author.id
             ) in helper_users
         ):
-            awarded_for_solver = 0.5
+            awarded_for_solver = helper_reward
 
         if practice_only:
             score_message = (
@@ -4223,20 +4416,21 @@ async def handle_random_answer(
                 f"🎉 **Puzzle solved!**\n"
                 f"Practice puzzle — **no shared leaderboard points**."
             )
-        elif awarded_for_solver == 1.0:
+        elif awarded_for_solver == first_reward and awarded_for_solver > 0:
             score_message = (
                 f"✅ **Correct, {message.author.display_name}!**\n"
                 f"🎉 **Puzzle solved!**\n"
-                f"**+1 point** — you now have "
+                f"**+{format_points(first_reward)} point"
+                f"{'s' if first_reward != 1 else ''}** — you now have "
                 f"**{format_points(points)} points.**"
             )
-        elif awarded_for_solver == 0.5:
+        elif awarded_for_solver == helper_reward and awarded_for_solver > 0:
             score_message = (
                 f"✅ **Correct, {message.author.display_name}!**\n"
                 f"🎉 **Puzzle solved!**\n"
-                f"**+0.5 point for helping** — "
-                f"you now have "
-                f"**{format_points(points)} points.**"
+                f"**+{format_points(helper_reward)} point"
+                f"{'s' if helper_reward != 1 else ''} for helping** — "
+                f"you now have **{format_points(points)} points.**"
             )
         else:
             score_message = (
@@ -4262,9 +4456,11 @@ async def handle_random_answer(
                 "First solver"
             )
 
+            first_reward = 2.0 if is_boss else 1.0
             await message.channel.send(
                 f"🏆 **{first_name} found the first move!** "
-                f"**+1 point**."
+                f"**+{format_points(first_reward)} point"
+                f"{'s' if first_reward != 1 else ''}**."
             )
 
         if ranking:
@@ -4592,6 +4788,47 @@ async def on_message(
             )
             return
 
+        # Personal Puzzle profile. !stats <name> can inspect someone else;
+        # !stats / !me / !profile are aliases for your own profile.
+        if (
+            command_lower in {"!stats", "!me", "!profile"}
+            or command_lower.startswith("!stats ")
+        ):
+            if command_lower in {"!stats", "!me", "!profile"}:
+                puzzle_profile = await asyncio.to_thread(
+                    puzzle_stats_for_user,
+                    message.author.id,
+                    message.author.display_name,
+                )
+            else:
+                requested_name = content[len("!stats"):].strip()
+
+                if message.mentions:
+                    target = message.mentions[0]
+                    puzzle_profile = await asyncio.to_thread(
+                        puzzle_stats_for_user,
+                        target.id,
+                        target.display_name,
+                    )
+                elif requested_name:
+                    puzzle_profile = await asyncio.to_thread(
+                        puzzle_stats_for_name,
+                        requested_name,
+                    )
+                else:
+                    puzzle_profile = None
+
+                if puzzle_profile is None:
+                    await message.channel.send(
+                        f"❌ **No Puzzle stats found for `{requested_name}` yet.**"
+                    )
+                    return
+
+            await message.channel.send(
+                format_puzzle_stats(puzzle_profile)
+            )
+            return
+
         # Exact Lichess puzzle rating, e.g. !400 or !2552.
         if re.fullmatch(
             r"!\d+",
@@ -4627,7 +4864,8 @@ async def on_message(
         if command_lower in ("!v", "!version"):
             await message.channel.send(
                 f"**Bot:** `{RP_BUILD}`\n"
-                f"**Ledger:** `{SHARED_LEDGER_BUILD}`"
+                f"**Ledger:** `{SHARED_LEDGER_BUILD}`\n"
+                f"**Puzzle Stats:** `{PUZZLE_STATS_BUILD}`"
             )
             return
 
@@ -4640,6 +4878,19 @@ async def on_message(
             await message.channel.send(
                 make_leaderboard()
             )
+            try:
+                puzzle_board = await asyncio.to_thread(
+                    format_puzzle_leaderboards,
+                    10,
+                )
+                await message.channel.send(
+                    puzzle_board
+                )
+            except Exception as error:
+                print(
+                    f"Puzzle leaderboard stats error: {error}",
+                    flush=True,
+                )
             return
 
         # =====================================================
