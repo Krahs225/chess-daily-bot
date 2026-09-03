@@ -2792,8 +2792,7 @@ The person who starts the run is the captain.
 `!<team>` — choose/view a saved run.
 
 `!stopsurvival` — pause and save the active run.
-`!solo <team>` — captain only; only the captain may answer.
-`!coop <team>` — captain only; everyone may answer again.
+
 
 Survival starts with **3 hearts**.
 A wrong answer costs 1 strike.
