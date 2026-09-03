@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/TWZlK",
     "title": "Lichess • 2695",
     "fen": "5k2/p4p2/1p3Qp1/2p1PnP1/2Pp1P2/3P4/q4B2/7K w - - 2 38",
-    "current_fen": "7k/p4Q2/1p2P1p1/2p2nP1/2Pp1P2/3P4/q4B2/7K w - - 1 40",
+    "current_fen": "7k/p7/1p2P1Q1/2p2nP1/2Pp1P2/3P4/q4B2/7K b - - 0 40",
     "pgn": "e6 Kg8 Qxf7+ Kh8 Qxg6",
     "all_moves": [
       {
@@ -59,16 +59,16 @@
     "puzzle_id": "random_TWZlK_1788457754714",
     "rating": 2695,
     "rp_band": 4,
-    "next_solution_index": 4,
-    "next_player_index": 2,
-    "solved": false,
+    "next_solution_index": 5,
+    "next_player_index": 3,
+    "solved": true,
     "message_id": 1545128556093509715,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qxf5",
-        "correct": false,
-        "timestamp": "2026-09-03T17:49:46.396483+00:00"
+        "move": "qxg6",
+        "correct": true,
+        "timestamp": "2026-09-03T17:50:03.525736+00:00"
       },
       "601406103712170014": {
         "name": "TheMakina",
@@ -79,8 +79,10 @@
     },
     "first_move_user_id": "442597396195704832",
     "first_move_user_name": "Thice",
-    "first_move_awarded": false,
-    "helper_awarded_users": [],
+    "first_move_awarded": true,
+    "helper_awarded_users": [
+      "601406103712170014"
+    ],
     "helper_candidate_users": [
       "601406103712170014"
     ]
