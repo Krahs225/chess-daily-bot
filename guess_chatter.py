@@ -12,6 +12,10 @@ from guess_leaderboard import (
     add_points,
     full_leaderboard,
     personal_ranking,
+    record_poll_votes,
+    guess_stats_for_user,
+    guess_stats_for_name,
+    format_guess_stats,
 )
 
 from guess_chess_chatter import (
@@ -1365,6 +1369,40 @@ async def post_guess(
         )
     )
 
+    # Record EVERY vote for !stats, including wrong answers. One poll/user
+    # combination is stored only once, so retries can never duplicate stats.
+    vote_records = []
+    seen_vote_ids = set()
+
+    for answer_index, answer_voters in enumerate(voters_by_answer):
+        for voter in answer_voters:
+            if voter.id in seen_vote_ids:
+                continue
+
+            seen_vote_ids.add(voter.id)
+            vote_records.append(
+                {
+                    "user_id": voter.id,
+                    "display_name": voter.display_name,
+                    "correct": answer_index == correct_index,
+                }
+            )
+
+    if vote_records:
+        try:
+            await asyncio.to_thread(
+                record_poll_votes,
+                poll_message.id,
+                vote_records,
+                source=f"guess-chatter-{mode}",
+            )
+        except Exception as error:
+            # Stats failure must never block the existing points/reveal flow.
+            print(
+                f"Guess stats error for poll {poll_message.id}: {error}",
+                flush=True,
+            )
+
     rewarded = []
     seen = set()
 
@@ -1639,7 +1677,8 @@ async def command_handler(message):
     ):
         return
 
-    command = message.content.strip().casefold()
+    raw_command = message.content.strip()
+    command = raw_command.casefold()
 
     if command in {"!next", "!n"}:
         if CURRENT_ROUND_TYPE is None:
@@ -1697,6 +1736,43 @@ async def command_handler(message):
         )
         return
 
+    if command == "!stats" or command.startswith("!stats "):
+        if command == "!stats":
+            stats = await asyncio.to_thread(
+                guess_stats_for_user,
+                message.author.id,
+                message.author.display_name,
+            )
+        else:
+            requested_name = raw_command[len("!stats"):].strip()
+
+            # Mentions are the most reliable way to identify another Discord user.
+            if message.mentions:
+                target = message.mentions[0]
+                stats = await asyncio.to_thread(
+                    guess_stats_for_user,
+                    target.id,
+                    target.display_name,
+                )
+            elif requested_name:
+                stats = await asyncio.to_thread(
+                    guess_stats_for_name,
+                    requested_name,
+                )
+            else:
+                stats = None
+
+            if stats is None:
+                await message.channel.send(
+                    f"❌ **No Guess stats found for `{requested_name}` yet.**"
+                )
+                return
+
+        await message.channel.send(
+            format_guess_stats(stats)
+        )
+        return
+
     if command in {"!leaderboard", "!lb", "!l"}:
         leaderboard_text = await asyncio.to_thread(
             full_leaderboard,
@@ -1713,6 +1789,7 @@ async def command_handler(message):
             "⏭️ `!next` / `!n` — end the active poll, reveal/award it, "
             "then immediately start the other Guess game.\n"
             "🏆 `!l` / `!lb` / `!leaderboard` — leaderboard at any time.\n"
+            "📊 `!stats` / `!stats <name>` — total votes, correct, wrong and accuracy.\n"
             "👤 `!<name>` — show recognition info about a Guess Chatter / Chess Chatter player "
             "(for example `!thice` or `!sushi`). Nicknames and small spelling mistakes also work.\n\n"
             "Guess Chatter still has its scheduled Double Points / Hard Mode bonus rounds."
