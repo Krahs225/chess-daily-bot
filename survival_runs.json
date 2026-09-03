@@ -2,19 +2,19 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 60,
+      "best_puzzle": 61,
       "best_difficulty": 2246,
-      "best_completed_at": "2026-09-03T19:00:50.317819+00:00",
+      "best_completed_at": "2026-09-03T19:05:28.218694+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1788462312.6374478,
+        "last_activity": 1788462322.2180629,
         "paused_reason": "puzzle fetch error",
         "puzzle_number": 61,
         "strikes": 0,
-        "best_difficulty": 2246,
+        "best_difficulty": 2332,
         "used_puzzle_ids": [
           "g6cbI",
           "c5wsm",
@@ -75,7 +75,8 @@
           "pIIbm",
           "nLGPZ",
           "konbt",
-          "jDlBJ"
+          "jDlBJ",
+          "ZLiyV"
         ],
         "members": {
           "601406103712170014": {
@@ -94,7 +95,70 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "ZLiyV",
+          "rating": 2332,
+          "themes": "advantage discoveredAttack discoveredCheck endgame master pin veryLong",
+          "url": "https://lichess.org/training/ZLiyV",
+          "start_fen": "1r5k/5pp1/7p/3Qp1bP/P3P3/KPP2P2/2qR4/3R4 b - - 4 44",
+          "current_fen": "1r5k/5pp1/7p/3Qp1bP/P3P3/KPP2P2/2qR4/3R4 b - - 4 44",
+          "solution": [
+            {
+              "uci": "g5e7",
+              "san": "Be7+",
+              "color": "black"
+            },
+            {
+              "uci": "b3b4",
+              "san": "b4",
+              "color": "white"
+            },
+            {
+              "uci": "c2c3",
+              "san": "Qxc3+",
+              "color": "black"
+            },
+            {
+              "uci": "d5b3",
+              "san": "Qb3",
+              "color": "white"
+            },
+            {
+              "uci": "e7b4",
+              "san": "Bxb4+",
+              "color": "black"
+            },
+            {
+              "uci": "a3a2",
+              "san": "Ka2",
+              "color": "white"
+            },
+            {
+              "uci": "c3b3",
+              "san": "Qxb3+",
+              "color": "black"
+            },
+            {
+              "uci": "a2b3",
+              "san": "Kxb3",
+              "color": "white"
+            },
+            {
+              "uci": "b4d2",
+              "san": "Bxd2+",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
