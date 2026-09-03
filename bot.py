@@ -217,7 +217,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1468320170891022417
 
 DAILY_PUZZLE_API = "https://api.chess.com/pub/puzzle"
-RANDOM_PUZZLE_API = "https://api.chess.com/pub/puzzle/random"
+RANDOM_PUZZLE_API = "https://lichess.org/api/puzzle/next"
 
 STATE_FILE = "daily_puzzle_state.json"
 LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
@@ -859,82 +859,122 @@ def fetch_daily_puzzle():
 # =========================================================
 
 def fetch_random_puzzle():
+    """
+    Fetch one truly random Lichess puzzle through the official puzzle API
+    and convert it to the same FEN/PGN shape the existing RP runtime uses.
 
+    Lichess returns the game PGN up to the opponent move that starts the
+    tactic, plus the solution as UCI moves. The board after that PGN is the
+    position the player must solve, so we convert the UCI solution to SAN
+    from that position and leave the rest of RP unchanged.
+    """
     headers = {
-        "User-Agent":
-            "DailyChessPuzzleBot/2.0",
-        "Accept":
-            "application/json"
+        "User-Agent": "DailyChessPuzzleBot/3.0",
+        "Accept": "application/json",
     }
 
     last_error = None
 
-    # Chess.com documents this endpoint as the random daily
-    # puzzle endpoint. Retry a few times because transient 429/5xx
-    # responses can happen, and the endpoint itself may be cached.
     for attempt in range(1, 4):
-
         try:
             response = requests.get(
                 RANDOM_PUZZLE_API,
                 headers=headers,
-                timeout=15
+                timeout=15,
             )
 
-            if response.status_code == 200:
-                data = response.json()
-
-                if not data.get("fen"):
-                    raise RuntimeError(
-                        "Random puzzle response has no FEN."
-                    )
-
-                if not data.get("pgn"):
-                    raise RuntimeError(
-                        "Random puzzle response has no PGN."
-                    )
-
-                return data
-
-            retry_after = response.headers.get(
-                "Retry-After"
-            )
-
-            body_preview = response.text.strip().replace("\n", " ")
-            if len(body_preview) > 300:
-                body_preview = body_preview[:300] + "..."
-
-            last_error = (
-                f"HTTP {response.status_code}"
-                + (
-                    f" (Retry-After {retry_after}s)"
-                    if retry_after else ""
+            if response.status_code == 429:
+                # Lichess asks API clients to wait a full minute after 429.
+                # Do not hold the Discord command for a minute; report the
+                # temporary failure and let the next RP attempt try again.
+                raise RuntimeError(
+                    "Lichess puzzle API is temporarily rate-limited (HTTP 429)."
                 )
-                + (
-                    f" | Response: {body_preview}"
-                    if body_preview else ""
-                )
+
+            response.raise_for_status()
+            payload = response.json()
+
+            puzzle = payload.get("puzzle")
+            game_data = payload.get("game")
+
+            if not isinstance(puzzle, dict):
+                raise RuntimeError("Lichess response has no puzzle object.")
+
+            if not isinstance(game_data, dict):
+                raise RuntimeError("Lichess response has no game object.")
+
+            puzzle_id = puzzle.get("id")
+            rating = puzzle.get("rating")
+            solution = puzzle.get("solution")
+            game_pgn = game_data.get("pgn")
+
+            if not puzzle_id:
+                raise RuntimeError("Lichess puzzle has no ID.")
+
+            if not isinstance(solution, list) or not solution:
+                raise RuntimeError("Lichess puzzle has no solution moves.")
+
+            if not game_pgn:
+                raise RuntimeError("Lichess puzzle game has no PGN.")
+
+            parsed_game = chess.pgn.read_game(
+                StringIO(str(game_pgn))
             )
 
-            if response.status_code == 429 and retry_after:
-                try:
-                    time.sleep(
-                        min(float(retry_after), 5.0)
+            if parsed_game is None:
+                raise RuntimeError("Could not parse the Lichess puzzle game PGN.")
+
+            board = parsed_game.board()
+
+            for move in parsed_game.mainline_moves():
+                if move not in board.legal_moves:
+                    raise RuntimeError(
+                        "Lichess puzzle game contains an illegal move."
                     )
-                except ValueError:
-                    time.sleep(2)
-            else:
-                time.sleep(1.5)
+                board.push(move)
+
+            puzzle_fen = board.fen()
+            solution_san = []
+
+            for uci in solution:
+                move = chess.Move.from_uci(str(uci))
+
+                if move not in board.legal_moves:
+                    raise RuntimeError(
+                        "Lichess puzzle solution contains an illegal move."
+                    )
+
+                solution_san.append(
+                    board.san(move)
+                )
+                board.push(move)
+
+            title = "Lichess Puzzle"
+            if rating is not None:
+                title = f"Lichess • {rating}"
+
+            return {
+                "fen": puzzle_fen,
+                "pgn": " ".join(solution_san),
+                "url": f"https://lichess.org/training/{puzzle_id}",
+                "title": title,
+                "lichess_id": str(puzzle_id),
+                "rating": rating,
+            }
 
         except Exception as error:
             last_error = str(error)
+
+            # A 429 should not cause rapid retry spam against Lichess.
+            if "429" in last_error:
+                break
+
             if attempt < 3:
-                time.sleep(1.5)
+                time.sleep(1.0)
 
     raise RuntimeError(
-        f"Could not fetch random puzzle after 3 attempts: {last_error}"
+        f"Could not fetch random Lichess puzzle after 3 attempts: {last_error}"
     )
-
 
 # =========================================================
 # SAFE FEN / BOARD HELPERS
@@ -2728,7 +2768,7 @@ def help_message():
 `<move>` or `!<move>` works too.
 
 **Random Puzzle**
-`rp` or `!rp` — Start a random Chess.com puzzle.
+`rp` or `!rp` — Start a random Lichess puzzle.
 Play it one move at a time.
 
 **Lichess Rating Puzzle**
