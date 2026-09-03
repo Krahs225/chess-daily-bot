@@ -560,9 +560,9 @@
     },
     "shark2": {
       "name": "shark2",
-      "best_puzzle": 1,
+      "best_puzzle": 2,
       "best_difficulty": 1276,
-      "best_completed_at": "2026-09-03T15:38:52.029638+00:00",
+      "best_completed_at": "2026-09-03T15:42:07.552614+00:00",
       "current": {
         "run_id": "shark2:1788449932",
         "started_by_id": "362606514764251137",
@@ -575,9 +575,10 @@
         "paused_reason": "puzzle fetch error",
         "puzzle_number": 2,
         "strikes": 0,
-        "best_difficulty": 1276,
+        "best_difficulty": 1375,
         "used_puzzle_ids": [
-          "fKyJg"
+          "fKyJg",
+          "zFgjO"
         ],
         "members": {
           "362606514764251137": {
@@ -586,7 +587,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "zFgjO",
+          "rating": 1375,
+          "themes": "advantage discoveredAttack discoveredCheck middlegame short",
+          "url": "https://lichess.org/training/zFgjO",
+          "start_fen": "r3kb1r/pp2pppp/2n5/4N2b/Q2P4/7P/P2q1PP1/R4RK1 w kq - 0 15",
+          "current_fen": "r3kb1r/pp2pppp/2n5/4N2b/Q2P4/7P/P2q1PP1/R4RK1 w kq - 0 15",
+          "solution": [
+            {
+              "uci": "e5c6",
+              "san": "Nxc6",
+              "color": "white"
+            },
+            {
+              "uci": "e7e6",
+              "san": "e6",
+              "color": "black"
+            },
+            {
+              "uci": "c6e5",
+              "san": "Ne5+",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
