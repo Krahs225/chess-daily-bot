@@ -1,36 +1,66 @@
 {
   "latest_random_puzzle": {
-    "url": "https://lichess.org/training/57Sga",
-    "title": "Lichess • 1358",
-    "fen": "r2qk2r/pp3pp1/2pp3p/2P1p3/Q1B1bnP1/2P1N2P/PP3P1N/R4RK1 b kq - 0 17",
-    "current_fen": "r2qk2r/pp3pp1/2pp3p/2P1p3/Q1B1bnP1/2P1N2P/PP3P1N/R4RK1 b kq - 0 17",
-    "pgn": "Nxh3#",
+    "url": "https://lichess.org/training/prVKO",
+    "title": "Lichess • 1401",
+    "fen": "2r2r1k/7p/2p2p1P/7b/p6P/P2q4/BPp2Q2/2K3R1 w - - 0 33",
+    "current_fen": "2r2r1k/7p/2p2p1P/7b/p6P/P2q4/BPp2Q2/2K3R1 w - - 0 33",
+    "pgn": "Rg8+ Rxg8 Qxf6+ Rg7 hxg7#",
     "all_moves": [
       {
-        "uci": "f4h3",
-        "san": "Nxh3#",
+        "uci": "g1g8",
+        "san": "Rg8+",
+        "color": "white"
+      },
+      {
+        "uci": "f8g8",
+        "san": "Rxg8",
         "color": "black"
+      },
+      {
+        "uci": "f2f6",
+        "san": "Qxf6+",
+        "color": "white"
+      },
+      {
+        "uci": "g8g7",
+        "san": "Rg7",
+        "color": "black"
+      },
+      {
+        "uci": "h6g7",
+        "san": "hxg7#",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "f4h3",
-        "san": "Nxh3#",
-        "color": "black"
+        "uci": "g1g8",
+        "san": "Rg8+",
+        "color": "white"
+      },
+      {
+        "uci": "f2f6",
+        "san": "Qxf6+",
+        "color": "white"
+      },
+      {
+        "uci": "h6g7",
+        "san": "hxg7#",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 1,
-    "posted_at": "2026-09-03T13:08:26.343632+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 3,
+    "posted_at": "2026-09-03T13:08:29.680182+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788440906343",
+    "puzzle_id": "random_1788440909680",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1545057888886587433,
+    "message_id": 1545057902845366356,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
