@@ -6,7 +6,6 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 import discord
-import requests
 
 from guess_leaderboard import (
     add_points,
@@ -14,11 +13,20 @@ from guess_leaderboard import (
     personal_ranking,
 )
 
+from guess_chess_chatter import (
+    GUESS_CHESS_BUILD,
+    post_chess_round,
+)
+
 TOKEN = os.getenv(
     "DISCORD_TOKEN"
 )
 
 CHANNEL_ID = 1536769340970373241
+
+GUESS_CHATTER_BUILD = "guess-chatter-v5-persistent-controller-2026-09-03"
+GUESS_CONTROLLER_BUILD = "guess-games-v5-alternate-10m-next-2026-09-03"
+PERSISTENT_GUESS_V5 = True
 
 MIN_CHARACTERS = 20
 CHAT_DIR = "SOLO chats"
@@ -29,21 +37,16 @@ ROUND_SLOT_MINUTES = 20
 GUESS_SLOT_OFFSET = 0
 TIME_ZONE = "Europe/Amsterdam"
 
-GITHUB_ACTION_TOKEN = os.getenv(
-    "GITHUB_ACTION_TOKEN"
-)
-GITHUB_REPOSITORY = os.getenv(
-    "GITHUB_REPOSITORY",
-    "Krahs225/chess-daily-bot",
-)
-GITHUB_REF_NAME = os.getenv(
-    "GITHUB_REF_NAME",
-    "main",
-)
-
 NEXT_ROUND_EVENT = asyncio.Event()
 ROUND_ACTIVE = False
 NEXT_REQUESTED = False
+
+# One persistent process owns BOTH Guess games. This avoids two Discord
+# sessions with the same bot token and makes !l available between rounds.
+CURRENT_ROUND_TYPE = None
+FORCED_NEXT_TYPE = None
+ROUND_LOCK = asyncio.Lock()
+SCHEDULER_TASK = None
 
 ROUND_PREFIXES = {
     "chatter": (
@@ -58,7 +61,7 @@ ROUND_PREFIXES = {
 
 ROUND_MAX_AGE_MINUTES = {
     "chatter": 10,
-    "chess": 17,
+    "chess": 10,
 }
 
 
@@ -732,49 +735,15 @@ async def latest_active_round_type(
     return None
 
 
-def dispatch_workflow(
-    workflow_file
-):
-    if not GITHUB_ACTION_TOKEN:
-        raise RuntimeError(
-            "GITHUB_ACTION_TOKEN is missing."
-        )
-
-    url = (
-        "https://api.github.com/repos/"
-        f"{GITHUB_REPOSITORY}/actions/workflows/"
-        f"{workflow_file}/dispatches"
-    )
-
-    response = requests.post(
-        url,
-        headers={
-            "Accept": "application/vnd.github+json",
-            "Authorization": (
-                f"Bearer {GITHUB_ACTION_TOKEN}"
-            ),
-            "X-GitHub-Api-Version": "2022-11-28",
-            "User-Agent": "GuessGamesNext/1.0",
-        },
-        json={
-            "ref": GITHUB_REF_NAME,
-        },
-        timeout=20,
-    )
-
-    if response.status_code != 204:
-        raise RuntimeError(
-            "Could not start next workflow: "
-            f"HTTP {response.status_code} "
-            f"{response.text[:300]}"
-        )
-
 
 async def post_guess(
     channel
 ):
     global ROUND_ACTIVE
+    global NEXT_REQUESTED
 
+    # Persistent controller can run many rounds in one process.
+    NEXT_REQUESTED = False
     chatters, all_entries = load_chatters()
 
     mode = guess_special_mode()
@@ -1060,206 +1029,262 @@ async def post_guess(
     return NEXT_REQUESTED
 
 
-async def command_handler(
-    message
-):
+
+def scheduled_round_type(moment=None):
+    """0/20/40 = Chatter, 10/30/50 = Chess."""
+    if moment is None:
+        moment = current_local_time()
+
+    minute = moment.minute
+    if minute % 20 == 0:
+        return "chatter"
+    if minute % 20 == 10:
+        return "chess"
+    return None
+
+
+def next_ten_minute_slot():
+    now = current_local_time()
+    base = now.replace(second=0, microsecond=0)
+    minutes_to_add = 10 - (now.minute % 10)
+
+    # If the process happens to become ready exactly on a slot, use that slot.
+    if now.minute % 10 == 0 and now.second == 0 and now.microsecond == 0:
+        target = base
+    else:
+        target = base + timedelta(minutes=minutes_to_add)
+
+    return target
+
+
+async def start_round(channel, round_type, reason="schedule"):
+    global CURRENT_ROUND_TYPE
+    global FORCED_NEXT_TYPE
+
+    if round_type not in {"chatter", "chess"}:
+        return False
+
+    async with ROUND_LOCK:
+        if CURRENT_ROUND_TYPE is not None:
+            print(
+                f"Guess {round_type} skipped ({reason}): "
+                f"{CURRENT_ROUND_TYPE} is already running.",
+                flush=True,
+            )
+            return False
+
+        # After a workflow restart, an older poll may still be open for a few
+        # seconds. Never post a duplicate on top of it.
+        active_type = await latest_active_round_type(channel)
+        if active_type is not None:
+            print(
+                f"Guess {round_type} skipped ({reason}): "
+                f"Discord already has active {active_type} round.",
+                flush=True,
+            )
+            return False
+
+        CURRENT_ROUND_TYPE = round_type
+        NEXT_ROUND_EVENT.clear()
+
+        try:
+            if round_type == "chatter":
+                await post_guess(channel)
+            else:
+                await post_chess_round(
+                    channel,
+                    stop_event=NEXT_ROUND_EVENT,
+                )
+        except Exception as error:
+            print(
+                f"Guess {round_type} round error: {error}",
+                flush=True,
+            )
+            try:
+                await channel.send(
+                    f"❌ **Guess {round_type.title()} error:** "
+                    f"`{str(error)[:900]}`"
+                )
+            except Exception:
+                pass
+        finally:
+            CURRENT_ROUND_TYPE = None
+            NEXT_ROUND_EVENT.clear()
+
+        forced = FORCED_NEXT_TYPE
+        FORCED_NEXT_TYPE = None
+
+    if forced is not None:
+        # Let the answer/reward messages settle before the next poll appears.
+        await asyncio.sleep(2)
+        asyncio.create_task(
+            start_round(
+                channel,
+                forced,
+                reason="!next",
+            )
+        )
+
+    return True
+
+
+async def scheduler_loop(channel):
+    """Keep fixed 10-minute alternation for the lifetime of the Action."""
+    while not client.is_closed():
+        target = next_ten_minute_slot()
+        now = current_local_time()
+        wait_seconds = max(0.0, (target - now).total_seconds())
+
+        print(
+            f"Next Guess slot: {target.isoformat()}",
+            flush=True,
+        )
+
+        await asyncio.sleep(wait_seconds)
+
+        round_type = scheduled_round_type(target)
+        if round_type is not None:
+            asyncio.create_task(
+                start_round(
+                    channel,
+                    round_type,
+                    reason="schedule",
+                )
+            )
+
+        # Move beyond the exact boundary so the same slot is never selected twice.
+        await asyncio.sleep(1.2)
+
+
+async def command_handler(message):
     global NEXT_REQUESTED
+    global FORCED_NEXT_TYPE
 
     if (
         message.author.bot
-        or message.channel.id
-        != CHANNEL_ID
+        or message.channel.id != CHANNEL_ID
     ):
         return
 
-    command = (
-        message.content
-        .strip()
-        .casefold()
-    )
+    command = message.content.strip().casefold()
 
-    if command in {
-        "!next",
-        "!n",
-    }:
-        if not ROUND_ACTIVE:
+    if command in {"!next", "!n"}:
+        if CURRENT_ROUND_TYPE is None:
+            await message.channel.send(
+                "⏭️ **There is no active Guess round to skip.**"
+            )
             return
 
-        active_type = await latest_active_round_type(
-            message.channel
+        if FORCED_NEXT_TYPE is not None:
+            return
+
+        FORCED_NEXT_TYPE = (
+            "chess"
+            if CURRENT_ROUND_TYPE == "chatter"
+            else "chatter"
         )
-
-        # If both Actions overlap, only the newest active game handles !n.
-        if active_type != "chatter":
-            return
-
-        if NEXT_REQUESTED:
-            return
-
         NEXT_REQUESTED = True
         NEXT_ROUND_EVENT.set()
 
         await message.channel.send(
-            "⏭️ **Next!** Ending this Guess Chatter "
-            "round now and checking the answers."
+            f"⏭️ **Next!** Ending Guess the "
+            f"{'Chatter' if CURRENT_ROUND_TYPE == 'chatter' else 'Chess Chatter'} "
+            f"now. The other Guess game starts right after the answer."
         )
-
         return
 
-    if command in {
-        "!leaderboard",
-        "!lb",
-        "!l"
-    }:
-        await message.channel.send(
-            full_leaderboard(
-                "🏆 **Guess Games Leaderboard**"
-            )
+    if command in {"!leaderboard", "!lb", "!l"}:
+        leaderboard_text = await asyncio.to_thread(
+            full_leaderboard,
+            "🏆 **Guess Games Leaderboard**",
         )
-
+        await message.channel.send(leaderboard_text)
         return
 
-    if command in {
-        "!help",
-        "!info",
-        "!i"
-    }:
+    if command in {"!guessv", "!gv"}:
         await message.channel.send(
-            "🧠 **Games**\n\n"
-            "💬 **Guess the Chatter**\n"
-            "A quote is shown with a 5-option poll. "
-            "Vote for who said it.\n\n"
-            "♟️ **Guess the Chess Chatter**\n"
-            "A rated Chess.com rapid/blitz game is shown. "
-            "Use the ◀ ▶ buttons to look through the game, "
-            "then vote for who played it.\n\n"
-            "⏭️ **Next round**\n"
-            "`!next` or `!n` — end the active round now, "
-            "reveal the answer, award points, and start the "
-            "other Guess game immediately.\n\n"
-            "🏆 **Guess Games Leaderboard**\n"
-            "`!leaderboard`, `!lb` or `!l` — show the leaderboard shared ONLY by Guess the Chatter and Guess the Chess Chatter.\n"
-            "This leaderboard is separate from Daily/Random chess puzzle points.\n"
-            "Correct guesses give **+1 point** normally. Double Points and Hard Mode give **+2 points**.\n\n"
-            "ℹ️ `!help`, `!info` or `!i` — show this message."
+            f"**Controller:** `{GUESS_CONTROLLER_BUILD}`\n"
+            f"**Chatter:** `{GUESS_CHATTER_BUILD}`\n"
+            f"**Chess:** `{GUESS_CHESS_BUILD}`"
+        )
+        return
+
+    if command in {"!help", "!info", "!i"}:
+        await message.channel.send(
+            "🧠 **Guess Games**\n\n"
+            "💬 **Guess the Chatter** — :00 / :20 / :40\n"
+            "♟️ **Guess the Chess Chatter** — :10 / :30 / :50\n"
+            "Each poll is open for **8 minutes**.\n\n"
+            "⏭️ `!next` / `!n` — end the active poll, reveal/award it, "
+            "then immediately start the other Guess game.\n"
+            "🏆 `!l` / `!lb` / `!leaderboard` — leaderboard at any time.\n"
+            "🔎 `!gv` / `!guessv` — show the live Guess build versions.\n\n"
+            "Guess Chatter still has its scheduled Double Points / Hard Mode bonus rounds."
         )
 
 
 @client.event
-async def on_message(
-    message
-):
+async def on_message(message):
     try:
-        await command_handler(
-            message
-        )
-
+        await command_handler(message)
     except Exception as error:
         print(
-            f"Guess Chatter command error: "
-            f"{error}",
-            flush=True
+            f"Guess controller command error: {error}",
+            flush=True,
         )
-
         try:
             await message.channel.send(
-                "❌ **Bot error:** "
+                "❌ **Guess bot error:** "
                 f"`{str(error)[:1000]}`"
             )
-
         except Exception:
             pass
 
 
 @client.event
 async def on_ready():
-    if getattr(
-        client,
-        "_guess_round_started",
-        False,
-    ):
+    global SCHEDULER_TASK
+
+    if getattr(client, "_guess_controller_started", False):
         return
 
-    client._guess_round_started = True
+    client._guess_controller_started = True
 
     print(
-        f"Guess Chatter ready as "
-        f"{client.user}",
+        f"Guess Games controller ready as {client.user}",
+        flush=True,
+    )
+    print(f"Controller build: {GUESS_CONTROLLER_BUILD}", flush=True)
+    print(f"Chatter build: {GUESS_CHATTER_BUILD}", flush=True)
+    print(f"Chess build: {GUESS_CHESS_BUILD}", flush=True)
+
+    channel = await client.fetch_channel(CHANNEL_ID)
+
+    SCHEDULER_TASK = asyncio.create_task(
+        scheduler_loop(channel)
+    )
+
+    print(
+        "Guess Games persistent controller is running continuously.",
         flush=True,
     )
 
-    try:
-        channel = await client.fetch_channel(
-            CHANNEL_ID
-        )
 
-        # Do not start a duplicate Guess Chatter round if a previous
-        # scheduled or !next-triggered round is still active.
-        if await active_round_exists(
-            channel,
-            "chatter",
-        ):
-            print(
-                "Guess Chatter skipped: "
-                "a Guess Chatter round is already active.",
-                flush=True,
-            )
-            return
-
-        # One Action run = one round.
-        next_requested = await post_guess(
-            channel
-        )
-
-        print(
-            "Guess Chatter round finished.",
-            flush=True,
-        )
-
-        if next_requested:
-            if await active_round_exists(
-                channel,
-                "chess",
-            ):
-                await channel.send(
-                    "♟️ **Guess the Chess Chatter is already active above.** "
-                    "I won't start a duplicate round."
-                )
-            else:
-                await asyncio.to_thread(
-                    dispatch_workflow,
-                    "guess_chess_chatter.yml",
-                )
-
-                await channel.send(
-                    "⏭️ **Starting Guess the Chess Chatter now.**"
-                )
-
-    except Exception as error:
-        print(
-            f"Guess Chatter round error: "
-            f"{error}",
-            flush=True,
-        )
-
-        try:
-            channel = client.get_channel(
-                CHANNEL_ID
-            )
-
-            if channel is not None:
-                await channel.send(
-                    "❌ **Guess Chatter error:** "
-                    f"`{str(error)[:900]}`"
-                )
-        except Exception:
-            pass
-
-    finally:
-        await client.close()
+@client.event
+async def on_disconnect():
+    print(
+        "Guess Games Discord connection lost; reconnecting automatically.",
+        flush=True,
+    )
 
 
-client.run(
-    TOKEN,
-    reconnect=True,
-)
+@client.event
+async def on_resumed():
+    print(
+        "Guess Games Discord connection resumed.",
+        flush=True,
+    )
+
+
+print("Starting persistent Guess Games controller...", flush=True)
+client.run(TOKEN, reconnect=True)
