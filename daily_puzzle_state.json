@@ -1,49 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://lichess.org/training/Eh248",
-    "title": "Lichess • 1366",
-    "fen": "r5rk/2p2p1p/7N/3P4/2PPp3/1P6/6RK/8 w - - 0 36",
-    "current_fen": "r5rk/2p2N1p/8/3P4/2PPp3/1P6/6RK/8 b - - 0 36",
-    "pgn": "Nxf7#",
+    "url": "https://lichess.org/training/tluGk",
+    "title": "Lichess • 1434",
+    "fen": "6k1/5pp1/p3p2p/1pP1P3/1PqN1n2/P6P/3Q2P1/6K1 b - - 2 32",
+    "current_fen": "6k1/5pp1/p3p2p/1pP1P3/1PqN1n2/P6P/3Q2P1/6K1 b - - 2 32",
+    "pgn": "Qxd4+ Qxd4 Ne2+ Kf2 Nxd4",
     "all_moves": [
       {
-        "uci": "h6f7",
-        "san": "Nxf7#",
+        "uci": "c4d4",
+        "san": "Qxd4+",
+        "color": "black"
+      },
+      {
+        "uci": "d2d4",
+        "san": "Qxd4",
         "color": "white"
+      },
+      {
+        "uci": "f4e2",
+        "san": "Ne2+",
+        "color": "black"
+      },
+      {
+        "uci": "g1f2",
+        "san": "Kf2",
+        "color": "white"
+      },
+      {
+        "uci": "e2d4",
+        "san": "Nxd4",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "h6f7",
-        "san": "Nxf7#",
-        "color": "white"
+        "uci": "c4d4",
+        "san": "Qxd4+",
+        "color": "black"
+      },
+      {
+        "uci": "f4e2",
+        "san": "Ne2+",
+        "color": "black"
+      },
+      {
+        "uci": "e2d4",
+        "san": "Nxd4",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 1,
-    "posted_at": "2026-09-03T15:37:59.628497+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-09-03T15:42:52.810471+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_Eh248_1788449879628",
-    "rating": 1366,
+    "puzzle_id": "random_tluGk_1788450172810",
+    "rating": 1434,
     "rp_band": 0,
-    "next_solution_index": 1,
-    "next_player_index": 1,
-    "solved": true,
-    "message_id": 1545095525471227986,
-    "attempted_users": {
-      "362606514764251137": {
-        "name": "Sharkmeister",
-        "move": "nxf7",
-        "correct": true,
-        "timestamp": "2026-09-03T15:38:07.114388+00:00"
-      }
-    },
-    "first_move_user_id": "362606514764251137",
-    "first_move_user_name": "Sharkmeister",
-    "first_move_awarded": true,
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
