@@ -560,9 +560,9 @@
     },
     "ok": {
       "name": "ok",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-09-03T18:57:56.387409+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1271,
+      "best_completed_at": "2026-09-03T18:58:31.873272+00:00",
       "current": {
         "run_id": "ok:1788461876",
         "started_by_id": "442597396195704832",
@@ -571,13 +571,14 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-03T18:57:56.387392+00:00",
-        "last_activity": 1788461908.2967024,
+        "last_activity": 1788461910.7669566,
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 0,
         "best_difficulty": 1271,
         "used_puzzle_ids": [
-          "Y9Emi"
+          "Y9Emi",
+          "RZbrs"
         ],
         "members": {
           "442597396195704832": {
@@ -586,7 +587,50 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "RZbrs",
+          "rating": 1249,
+          "themes": "endgame crushing fork long",
+          "url": "https://lichess.org/training/RZbrs",
+          "start_fen": "7Q/8/8/3n1pp1/6k1/6b1/6K1/4r3 w - - 38 92",
+          "current_fen": "7Q/8/8/3n1pp1/6k1/6b1/6K1/4r3 w - - 38 92",
+          "solution": [
+            {
+              "uci": "h8h3",
+              "san": "Qh3+",
+              "color": "white"
+            },
+            {
+              "uci": "g4f4",
+              "san": "Kf4",
+              "color": "black"
+            },
+            {
+              "uci": "h3g3",
+              "san": "Qxg3+",
+              "color": "white"
+            },
+            {
+              "uci": "f4e4",
+              "san": "Ke4",
+              "color": "black"
+            },
+            {
+              "uci": "g3e1",
+              "san": "Qxe1+",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
