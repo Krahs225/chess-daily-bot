@@ -49,6 +49,10 @@ NEXT_REQUESTED = False
 CURRENT_ROUND_TYPE = None
 FORCED_NEXT_TYPE = None
 LAST_ROUND_TYPE = None
+# Protect the tiny gap between an idle !next and the task actually claiming
+# CURRENT_ROUND_TYPE. Without this, two fast !next messages can queue the
+# same next round twice.
+PENDING_START_TYPE = None
 ROUND_LOCK = asyncio.Lock()
 SCHEDULER_TASK = None
 
@@ -1450,6 +1454,7 @@ async def start_round(channel, round_type, reason="schedule"):
     global CURRENT_ROUND_TYPE
     global FORCED_NEXT_TYPE
     global LAST_ROUND_TYPE
+    global PENDING_START_TYPE
 
     if round_type not in {"chatter", "chess"}:
         return False
@@ -1475,6 +1480,13 @@ async def start_round(channel, round_type, reason="schedule"):
             return False
 
         CURRENT_ROUND_TYPE = round_type
+
+        # The round has now genuinely started, so the startup-spam guard can
+        # be released. !next during the active round is handled by
+        # FORCED_NEXT_TYPE as before.
+        if PENDING_START_TYPE == round_type:
+            PENDING_START_TYPE = None
+
         NEXT_ROUND_EVENT.clear()
 
         try:
@@ -1510,12 +1522,10 @@ async def start_round(channel, round_type, reason="schedule"):
     if forced is not None:
         # Let the answer/reward messages settle before the next poll appears.
         await asyncio.sleep(2)
-        asyncio.create_task(
-            start_round_with_retry(
-                channel,
-                forced,
-                reason="!next",
-            )
+        queue_round_start(
+            channel,
+            forced,
+            reason="!next",
         )
 
     return True
@@ -1549,6 +1559,46 @@ async def start_round_with_retry(
         flush=True,
     )
     return False
+
+
+def queue_round_start(
+    channel,
+    round_type,
+    reason="!next",
+):
+    """Queue exactly one pending Guess start during the pre-start gap."""
+    global PENDING_START_TYPE
+
+    if CURRENT_ROUND_TYPE is not None:
+        return False
+
+    if PENDING_START_TYPE is not None:
+        return False
+
+    PENDING_START_TYPE = round_type
+
+    async def runner():
+        global PENDING_START_TYPE
+
+        try:
+            await start_round_with_retry(
+                channel,
+                round_type,
+                reason=reason,
+            )
+        finally:
+            # If every retry failed before a round could claim the pending
+            # start, release the guard so a later !next can try again.
+            if (
+                CURRENT_ROUND_TYPE is None
+                and PENDING_START_TYPE == round_type
+            ):
+                PENDING_START_TYPE = None
+
+    asyncio.create_task(
+        runner()
+    )
+    return True
 
 
 async def scheduler_loop(channel):
@@ -1593,6 +1643,12 @@ async def command_handler(message):
 
     if command in {"!next", "!n"}:
         if CURRENT_ROUND_TYPE is None:
+            # A previous idle !next may already have queued a start but the
+            # task has not yet reached CURRENT_ROUND_TYPE. Ignore duplicate
+            # clicks during that tiny window instead of posting/queuing twice.
+            if PENDING_START_TYPE is not None:
+                return
+
             last_type = LAST_ROUND_TYPE
             if last_type is None:
                 last_type = await latest_round_type(
@@ -1609,16 +1665,17 @@ async def command_handler(message):
                 ) or "chatter"
             )
 
+            queued = queue_round_start(
+                message.channel,
+                target_type,
+                reason="!next-idle",
+            )
+            if not queued:
+                return
+
             await message.channel.send(
                 f"⏭️ **No active Guess round — starting Guess the "
                 f"{'Chatter' if target_type == 'chatter' else 'Chess Chatter'} now.**"
-            )
-            asyncio.create_task(
-                start_round_with_retry(
-                    message.channel,
-                    target_type,
-                    reason="!next-idle",
-                )
             )
             return
 
