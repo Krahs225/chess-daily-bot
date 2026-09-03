@@ -65,6 +65,7 @@ ROUND_PREFIXES = {
         "💬 **Guess the Chatter**",
         "🔥 **Guess the Chatter — DOUBLE POINTS**",
         "💀 **Guess the Chatter — HARD MODE**",
+        "🎭 **Guess the Chatter — QUOTE HUNT**",
     ),
     "chess": (
         "♟️ **Guess the Chess Chatter** —",
@@ -75,6 +76,11 @@ ROUND_MAX_AGE_MINUTES = {
     "chatter": 10,
     "chess": 10,
 }
+
+QUOTE_HUNT_CHANCE = 0.10
+QUOTE_HUNT_MAX_LENGTH = 55
+QUOTE_HUNT_RECENT_LIMIT = 120
+QUOTE_HUNT_RECENT_KEYS = []
 
 
 CHATTERS = {
@@ -1104,6 +1110,41 @@ async def latest_active_round_type(
     return None
 
 
+async def end_latest_orphaned_round(channel):
+    """Best-effort close the newest open Guess poll after a controller restart."""
+    async for recent in channel.history(limit=60):
+        if (
+            client.user is not None
+            and recent.author.id != client.user.id
+        ):
+            continue
+
+        round_type = _round_type_for_message(recent)
+        if round_type is None or recent.poll is None:
+            continue
+
+        if not await _poll_is_open(recent, round_type):
+            continue
+
+        try:
+            await recent.end_poll()
+            print(
+                f"Closed orphaned Guess {round_type} poll {recent.id} before manual !next.",
+                flush=True,
+            )
+        except Exception as error:
+            # Manual !next still proceeds. The controller has no active in-memory
+            # round, so this poll belongs to an older/restarted process.
+            print(
+                f"Could not close orphaned Guess poll {recent.id}: {error}",
+                flush=True,
+            )
+
+        return round_type
+
+    return None
+
+
 async def latest_round_type(
     channel
 ):
@@ -1128,6 +1169,249 @@ async def latest_round_type(
 
 
 
+def _quote_hunt_text(value):
+    text = " ".join(str(value or "").split())
+    if not text:
+        return None
+    if len(text) > QUOTE_HUNT_MAX_LENGTH:
+        return None
+    return text
+
+
+def _quote_hunt_candidates(chatters, avoid_recent=True):
+    recent = set(QUOTE_HUNT_RECENT_KEYS) if avoid_recent else set()
+    result = {}
+
+    for username, entries in chatters.items():
+        choices = []
+        for quote, entry_date, quote_index in entries:
+            text = _quote_hunt_text(quote)
+            if text is None:
+                continue
+            key = f"{username}:{entry_date}:{quote_index}"
+            if key in recent:
+                continue
+            choices.append(
+                {
+                    "username": username,
+                    "text": text,
+                    "date": entry_date,
+                    "quote_index": quote_index,
+                    "key": key,
+                }
+            )
+        if choices:
+            result[username] = choices
+
+    return result
+
+
+def build_quote_hunt_round(chatters):
+    """Return a five-real-quote round or None when there is not enough data."""
+    candidates = _quote_hunt_candidates(chatters, avoid_recent=True)
+    if len(candidates) < 5:
+        candidates = _quote_hunt_candidates(chatters, avoid_recent=False)
+    if len(candidates) < 5:
+        return None
+
+    usernames = list(candidates)
+
+    for _ in range(40):
+        selected_users = random.sample(usernames, 5)
+        target_username = random.choice(selected_users)
+        selected = []
+        used_texts = set()
+        valid = True
+
+        for username in selected_users:
+            options = list(candidates[username])
+            random.shuffle(options)
+            picked = None
+            for option in options:
+                text_key = option["text"].casefold()
+                if text_key not in used_texts:
+                    picked = option
+                    used_texts.add(text_key)
+                    break
+            if picked is None:
+                valid = False
+                break
+            selected.append(picked)
+
+        if not valid:
+            continue
+
+        random.shuffle(selected)
+        correct_index = next(
+            index
+            for index, option in enumerate(selected)
+            if option["username"] == target_username
+        )
+
+        for option in selected:
+            QUOTE_HUNT_RECENT_KEYS.append(option["key"])
+        if len(QUOTE_HUNT_RECENT_KEYS) > QUOTE_HUNT_RECENT_LIMIT:
+            del QUOTE_HUNT_RECENT_KEYS[:-QUOTE_HUNT_RECENT_LIMIT]
+
+        return target_username, selected, correct_index
+
+    return None
+
+
+async def post_quote_hunt(channel, chatters):
+    global ROUND_ACTIVE
+    global NEXT_REQUESTED
+
+    built = build_quote_hunt_round(chatters)
+    if built is None:
+        return None
+
+    target_username, options, correct_index = built
+    target_name = display_name_for(target_username)
+    correct_quote = options[correct_index]["text"]
+
+    _set_private_guess_answer(
+        "chatter",
+        f"{target_name} — {correct_quote}",
+    )
+
+    poll = discord.Poll(
+        question=f"Which message was written by {target_name}?",
+        duration=timedelta(hours=1),
+        multiple=False,
+    )
+
+    for option in options:
+        poll.add_answer(text=option["text"])
+
+    poll_message = await channel.send(
+        content=(
+            "🎭 **Guess the Chatter — QUOTE HUNT**\n\n"
+            f"Which of these messages was really written by **{target_name}**?"
+        ),
+        poll=poll,
+    )
+
+    ROUND_ACTIVE = True
+    NEXT_ROUND_EVENT.clear()
+
+    try:
+        await asyncio.wait_for(
+            NEXT_ROUND_EVENT.wait(),
+            timeout=(POLL_DURATION_MINUTES * 60 + 2),
+        )
+    except asyncio.TimeoutError:
+        pass
+
+    try:
+        await poll_message.end_poll()
+    except Exception as error:
+        print(
+            f"Quote Hunt poll end error: {error}",
+            flush=True,
+        )
+
+    voters_by_answer = []
+    try:
+        finished_message = await channel.fetch_message(poll_message.id)
+        finished_poll = (
+            finished_message.poll
+            if finished_message.poll is not None
+            else poll
+        )
+        for answer in finished_poll.answers:
+            answer_voters = []
+            async for voter in answer.voters():
+                if not voter.bot:
+                    answer_voters.append(voter)
+            voters_by_answer.append(answer_voters)
+    except Exception as error:
+        print(
+            f"Quote Hunt poll result error: {error}",
+            flush=True,
+        )
+
+    await channel.send(
+        "🔓 **Quote Hunt answer**\n"
+        f"**{target_name}** wrote:\n> {correct_quote}"
+    )
+
+    vote_records = []
+    seen_vote_ids = set()
+    for answer_index, answer_voters in enumerate(voters_by_answer):
+        for voter in answer_voters:
+            if voter.id in seen_vote_ids:
+                continue
+            seen_vote_ids.add(voter.id)
+            vote_records.append(
+                {
+                    "user_id": voter.id,
+                    "display_name": voter.display_name,
+                    "correct": answer_index == correct_index,
+                }
+            )
+
+    stats_result = None
+    if vote_records:
+        try:
+            stats_result = await asyncio.to_thread(
+                record_poll_votes,
+                poll_message.id,
+                vote_records,
+                source="guess-chatter-quote-hunt",
+                target_name=target_name,
+            )
+        except Exception as error:
+            print(
+                f"Quote Hunt stats error for poll {poll_message.id}: {error}",
+                flush=True,
+            )
+
+    rewarded = []
+    seen = set()
+    if correct_index < len(voters_by_answer):
+        for voter in voters_by_answer[correct_index]:
+            if voter.bot or voter.id in seen:
+                continue
+            seen.add(voter.id)
+            try:
+                add_points(
+                    voter.id,
+                    voter.display_name,
+                    1,
+                    transaction_id=f"guess:{poll_message.id}:{voter.id}",
+                    source="guess-chatter-quote-hunt",
+                )
+                rewarded.append(voter.display_name)
+            except Exception as error:
+                print(
+                    f"Quote Hunt leaderboard error for {voter.display_name}: {error}",
+                    flush=True,
+                )
+
+    if rewarded:
+        await channel.send(
+            "🎉 " + " • ".join(f"**{name} +1**" for name in rewarded)
+        )
+
+    bonuses = (
+        stats_result.get("_streak_bonuses", [])
+        if isinstance(stats_result, dict)
+        else []
+    )
+    if bonuses:
+        await channel.send(
+            "🔥 **Guess streak bonus!** "
+            + " • ".join(
+                f"**{item['display_name']} +1** for a {item['streak']}-streak"
+                for item in bonuses
+            )
+        )
+
+    ROUND_ACTIVE = False
+    return NEXT_REQUESTED
+
+
 async def post_guess(
     channel
 ):
@@ -1139,6 +1423,16 @@ async def post_guess(
     chatters, all_entries = load_chatters()
 
     mode = guess_special_mode()
+
+    # Quote Hunt only replaces an ordinary Chatter round. Scheduled Hard and
+    # Double Points rounds always keep their original behavior.
+    if mode == "normal" and random.random() < QUOTE_HUNT_CHANCE:
+        quote_hunt_result = await post_quote_hunt(
+            channel,
+            chatters,
+        )
+        if quote_hunt_result is not None:
+            return quote_hunt_result
 
     option_count = (
         3
@@ -1388,13 +1682,15 @@ async def post_guess(
                 }
             )
 
+    stats_result = None
     if vote_records:
         try:
-            await asyncio.to_thread(
+            stats_result = await asyncio.to_thread(
                 record_poll_votes,
                 poll_message.id,
                 vote_records,
                 source=f"guess-chatter-{mode}",
+                target_name=display_name_for(username),
             )
         except Exception as error:
             # Stats failure must never block the existing points/reveal flow.
@@ -1455,6 +1751,20 @@ async def post_guess(
             f"🎉 {names}"
         )
 
+    bonuses = (
+        stats_result.get("_streak_bonuses", [])
+        if isinstance(stats_result, dict)
+        else []
+    )
+    if bonuses:
+        await channel.send(
+            "🔥 **Guess streak bonus!** "
+            + " • ".join(
+                f"**{item['display_name']} +1** for a {item['streak']}-streak"
+                for item in bonuses
+            )
+        )
+
     ROUND_ACTIVE = False
 
     return NEXT_REQUESTED
@@ -1488,7 +1798,12 @@ def next_ten_minute_slot():
     return target
 
 
-async def start_round(channel, round_type, reason="schedule"):
+async def start_round(
+    channel,
+    round_type,
+    reason="schedule",
+    ignore_discord_active=False,
+):
     global CURRENT_ROUND_TYPE
     global FORCED_NEXT_TYPE
     global LAST_ROUND_TYPE
@@ -1506,16 +1821,19 @@ async def start_round(channel, round_type, reason="schedule"):
             )
             return False
 
-        # After a workflow restart, an older poll may still be open for a few
-        # seconds. Never post a duplicate on top of it.
-        active_type = await latest_active_round_type(channel)
-        if active_type is not None:
-            print(
-                f"Guess {round_type} skipped ({reason}): "
-                f"Discord already has active {active_type} round.",
-                flush=True,
-            )
-            return False
+        # Scheduled starts stay fail-safe against a still-open Discord poll.
+        # A manual idle !next first closes an orphaned poll best-effort and then
+        # deliberately bypasses this history guard so a stale poll cannot block
+        # the requested new game forever after a workflow restart.
+        if not ignore_discord_active:
+            active_type = await latest_active_round_type(channel)
+            if active_type is not None:
+                print(
+                    f"Guess {round_type} skipped ({reason}): "
+                    f"Discord already has active {active_type} round.",
+                    flush=True,
+                )
+                return False
 
         CURRENT_ROUND_TYPE = round_type
 
@@ -1564,6 +1882,7 @@ async def start_round(channel, round_type, reason="schedule"):
             channel,
             forced,
             reason="!next",
+            ignore_discord_active=True,
         )
 
     return True
@@ -1574,6 +1893,7 @@ async def start_round_with_retry(
     round_type,
     reason="!next",
     attempts=8,
+    ignore_discord_active=False,
 ):
     """Start a requested round, retrying through brief Discord poll-state lag."""
     for attempt in range(attempts):
@@ -1585,6 +1905,7 @@ async def start_round_with_retry(
             channel,
             round_type,
             reason=reason,
+            ignore_discord_active=ignore_discord_active,
         )
         if started:
             return True
@@ -1603,6 +1924,7 @@ def queue_round_start(
     channel,
     round_type,
     reason="!next",
+    ignore_discord_active=False,
 ):
     """Queue exactly one pending Guess start during the pre-start gap."""
     global PENDING_START_TYPE
@@ -1623,6 +1945,7 @@ def queue_round_start(
                 channel,
                 round_type,
                 reason=reason,
+                ignore_discord_active=ignore_discord_active,
             )
         finally:
             # If every retry failed before a round could claim the pending
@@ -1688,7 +2011,14 @@ async def command_handler(message):
             if PENDING_START_TYPE is not None:
                 return
 
-            last_type = LAST_ROUND_TYPE
+            # After a workflow restart Discord can still contain the old poll
+            # even though this controller has no active in-memory round. Close
+            # that orphan best-effort and use it as the previous round type.
+            orphan_type = await end_latest_orphaned_round(
+                message.channel
+            )
+
+            last_type = orphan_type or LAST_ROUND_TYPE
             if last_type is None:
                 last_type = await latest_round_type(
                     message.channel
@@ -1708,14 +2038,33 @@ async def command_handler(message):
                 message.channel,
                 target_type,
                 reason="!next-idle",
+                ignore_discord_active=True,
             )
             if not queued:
                 return
 
-            await message.channel.send(
-                f"⏭️ **No active Guess round — starting Guess the "
-                f"{'Chatter' if target_type == 'chatter' else 'Chess Chatter'} now.**"
-            )
+            # Confirm only after the new round has actually claimed the
+            # controller state. This prevents the old false-positive message
+            # where the bot said it was starting but history blocking stopped it.
+            started = False
+            for _ in range(30):
+                await asyncio.sleep(0.1)
+                if CURRENT_ROUND_TYPE == target_type:
+                    started = True
+                    break
+                if PENDING_START_TYPE is None:
+                    break
+
+            if started:
+                await message.channel.send(
+                    f"⏭️ **Starting Guess the "
+                    f"{'Chatter' if target_type == 'chatter' else 'Chess Chatter'} now.**"
+                )
+            else:
+                await message.channel.send(
+                    "❌ **Could not start the requested Guess round.** "
+                    "Try `!next` once more."
+                )
             return
 
         if FORCED_NEXT_TYPE is not None:
@@ -1789,10 +2138,10 @@ async def command_handler(message):
             "⏭️ `!next` / `!n` — end the active poll, reveal/award it, "
             "then immediately start the other Guess game.\n"
             "🏆 `!l` / `!lb` / `!leaderboard` — leaderboard at any time.\n"
-            "📊 `!stats` / `!stats <name>` — total votes, correct, wrong and accuracy.\n"
+            "📊 `!stats` / `!stats <name>` — votes, accuracy, streaks and nemesis stats.\n"
             "👤 `!<name>` — show recognition info about a Guess Chatter / Chess Chatter player "
             "(for example `!thice` or `!sushi`). Nicknames and small spelling mistakes also work.\n\n"
-            "Guess Chatter still has its scheduled Double Points / Hard Mode bonus rounds."
+            "Guess Chatter still has its scheduled Double Points / Hard Mode bonus rounds, plus occasional Quote Hunt rounds."
         )
         return
 
