@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/YFFAG",
     "title": "Lichess • 2730",
     "fen": "7k/p5p1/1p3qp1/7p/8/1Qr2P1P/P5P1/4R2K w - - 1 29",
-    "current_fen": "7k/p5p1/1p3qp1/7p/8/1Qr2P1P/P5P1/4R2K w - - 1 29",
+    "current_fen": "4R3/p5pk/1p3qp1/7p/8/1Qr2P1P/P5P1/7K w - - 3 30",
     "pgn": "Re8+ Kh7 Qg8+ Kh6 Re4 Qd6 f4",
     "all_moves": [
       {
@@ -74,13 +74,20 @@
     "puzzle_id": "random_YFFAG_1788460969536",
     "rating": 2730,
     "rp_band": 5,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1545142039933485170,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "re8",
+        "correct": true,
+        "timestamp": "2026-09-03T18:42:53.101657+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
