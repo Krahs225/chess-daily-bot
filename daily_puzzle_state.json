@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/3zqhm",
     "title": "Lichess • 1409",
     "fen": "8/1pr2k1p/pq1R4/4Q1Pp/4BP2/1P6/P7/1K6 b - - 0 34",
-    "current_fen": "8/1pr2k1p/pq1R4/4Q1Pp/4BP2/1P6/P7/1K6 b - - 0 34",
+    "current_fen": "8/1pr2k1p/p7/4Q1Pp/4BP2/1P6/P7/1K1R2q1 b - - 2 35",
     "pgn": "Qg1+ Rd1 Qxd1+ Kb2 Qc1#",
     "all_moves": [
       {
@@ -59,13 +59,20 @@
     "puzzle_id": "random_3zqhm_1788458867083",
     "rating": 1409,
     "rp_band": 0,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
-    "message_id": null,
-    "attempted_users": {},
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "message_id": 1545133222122233940,
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "qg1",
+        "correct": true,
+        "timestamp": "2026-09-03T18:07:51.256761+00:00"
+      }
+    },
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
