@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/WQ5v9",
     "title": "Lichess • 2409",
     "fen": "8/5p2/6p1/4p1B1/6P1/5P2/3bk1KP/8 w - - 2 46",
-    "current_fen": "8/5p2/6p1/4p1B1/6P1/5P2/3bk1KP/8 w - - 2 46",
+    "current_fen": "8/5p2/6p1/4p3/6P1/5P2/3k2KP/8 w - - 0 47",
     "pgn": "Bxd2 Kxd2 h4 f5 h5 e4 hxg6",
     "all_moves": [
       {
@@ -74,20 +74,20 @@
     "puzzle_id": "random_WQ5v9_1788456491553",
     "rating": 2409,
     "rp_band": 4,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1545123257970065561,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "bxd4",
-        "correct": false,
-        "timestamp": "2026-09-03T17:28:17.922093+00:00"
+        "move": "bxd2",
+        "correct": true,
+        "timestamp": "2026-09-03T17:28:19.645725+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
