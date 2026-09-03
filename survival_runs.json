@@ -8,10 +8,10 @@
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
-        "status": "active",
+        "status": "paused",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1788463212.668518,
-        "paused_reason": "puzzle fetch error",
+        "last_activity": 1788463329.6929846,
+        "paused_reason": "10-minute inactivity",
         "puzzle_number": 65,
         "strikes": 2,
         "best_difficulty": 2354,
@@ -266,6 +266,79 @@
             "442597396195704832",
             "362606514764251137"
           ],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
+        "helper_awarded": []
+      },
+      "history": []
+    },
+    "rp": {
+      "name": "rp",
+      "best_puzzle": 1,
+      "best_difficulty": 0,
+      "best_completed_at": "2026-09-03T20:09:57.193533+00:00",
+      "current": {
+        "run_id": "rp:1788466197",
+        "started_by_id": "442597396195704832",
+        "captain_id": "442597396195704832",
+        "captain_name": "Thice",
+        "mode": "coop",
+        "status": "active",
+        "started_at": "2026-09-03T20:09:57.193516+00:00",
+        "last_activity": 1788466197.1935291,
+        "paused_reason": null,
+        "puzzle_number": 1,
+        "strikes": 0,
+        "best_difficulty": 1337,
+        "used_puzzle_ids": [
+          "qt8uk"
+        ],
+        "members": {},
+        "puzzle": {
+          "id": "qt8uk",
+          "rating": 1337,
+          "themes": "long advantage hangingPiece middlegame",
+          "url": "https://lichess.org/training/qt8uk",
+          "start_fen": "3r1rk1/5p1p/6p1/p7/2N5/1q3P2/R4QPP/2n1R1K1 w - - 6 39",
+          "current_fen": "3r1rk1/5p1p/6p1/p7/2N5/1q3P2/R4QPP/2n1R1K1 w - - 6 39",
+          "solution": [
+            {
+              "uci": "e1c1",
+              "san": "Rxc1",
+              "color": "white"
+            },
+            {
+              "uci": "d8d1",
+              "san": "Rd1+",
+              "color": "black"
+            },
+            {
+              "uci": "c1d1",
+              "san": "Rxd1",
+              "color": "white"
+            },
+            {
+              "uci": "b3d1",
+              "san": "Qxd1+",
+              "color": "black"
+            },
+            {
+              "uci": "f2f1",
+              "san": "Qf1",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
           "last_move_san": null,
           "accepted_moves": []
         },
