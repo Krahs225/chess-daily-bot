@@ -278,9 +278,9 @@
     },
     "rp": {
       "name": "rp",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-09-03T20:09:57.193533+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1337,
+      "best_completed_at": "2026-09-03T20:10:37.440415+00:00",
       "current": {
         "run_id": "rp:1788466197",
         "started_by_id": "442597396195704832",
@@ -295,7 +295,8 @@
         "strikes": 1,
         "best_difficulty": 1337,
         "used_puzzle_ids": [
-          "qt8uk"
+          "qt8uk",
+          "FLFvl"
         ],
         "members": {
           "442597396195704832": {
@@ -304,7 +305,30 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "FLFvl",
+          "rating": 1334,
+          "themes": "endgame oneMove mateIn1 pillsburysMate",
+          "url": "https://lichess.org/training/FLFvl",
+          "start_fen": "6R1/8/1p6/1r5k/4BKp1/p6b/7P/8 w - - 0 53",
+          "current_fen": "6R1/8/1p6/1r5k/4BKp1/p6b/7P/8 w - - 0 53",
+          "solution": [
+            {
+              "uci": "g8h8",
+              "san": "Rh8#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
