@@ -7,6 +7,8 @@ from shared_leaderboard import (
     personal_ranking as shared_personal_ranking,
     full_leaderboard as shared_full_leaderboard,
     format_points as shared_format_points,
+    LEDGER_BUILD as SHARED_LEDGER_BUILD,
+    REPOSITORY_LOCK,
 )
 import os
 import re
@@ -23,6 +25,7 @@ import time
 import threading
 import traceback
 import random
+import sqlite3
 from datetime import datetime, timezone
 
 from puzzle_mode_lock import is_survival_active, active_team
@@ -217,7 +220,19 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = 1468320170891022417
 
 DAILY_PUZZLE_API = "https://api.chess.com/pub/puzzle"
-RANDOM_PUZZLE_API = "https://lichess.org/api/puzzle/next"
+
+RP_BUILD = "daily-rp-v12-offline-pool-2026-09-03"
+RP_POOL_FILE = "rp_puzzle_pool.sqlite3"
+RP_BANDS = (
+    (1200, 1499),
+    (1500, 1799),
+    (1800, 2099),
+    (2100, 2399),
+    (2400, 2699),
+    (2700, 3199),
+)
+SHARKMEISTER_DEFAULT_USER_ID = "362606514764251137"
+SHARK_SPY_BUILD = "shark-spy-v1-ephemeral-status-2026-09-03"
 
 STATE_FILE = "daily_puzzle_state.json"
 LEADERBOARD_FILE = "daily_puzzle_leaderboard.json"
@@ -351,6 +366,177 @@ intents.message_content = True
 
 client = discord.Client(intents=intents)
 
+# Guild slash command used for a private/ephemeral puzzle status response.
+# For Sharkmeister it includes the current solution; for everyone else it is
+# just an ordinary bot-status command, so the private feature is not exposed.
+command_tree = discord.app_commands.CommandTree(client)
+
+
+# =========================================================
+# SHARKMEISTER PRIVATE PUZZLE STATUS
+# =========================================================
+
+def _san_list_from_player_moves(puzzle):
+    if not isinstance(puzzle, dict):
+        return []
+
+    result = []
+    for move in puzzle.get("player_moves", []):
+        if isinstance(move, dict):
+            san = str(move.get("san", "")).strip()
+        else:
+            san = str(move).strip()
+        if san:
+            result.append(san)
+    return result
+
+
+def _remote_active_survival_solution():
+    """Return (label, moves) for the remotely active Survival puzzle."""
+    branch = os.getenv("GITHUB_REF_NAME", "main")
+
+    subprocess.run(
+        ["git", "fetch", "origin", branch],
+        capture_output=True,
+        text=True,
+        timeout=8,
+    )
+
+    result = subprocess.run(
+        ["git", "show", f"origin/{branch}:survival_runs.json"],
+        capture_output=True,
+        text=True,
+        timeout=8,
+    )
+
+    if result.returncode != 0:
+        return None
+
+    try:
+        data = json.loads(result.stdout)
+    except Exception:
+        return None
+
+    teams = data.get("teams", {}) if isinstance(data, dict) else {}
+    if not isinstance(teams, dict):
+        return None
+
+    for team_data in teams.values():
+        if not isinstance(team_data, dict):
+            continue
+
+        run = team_data.get("current")
+        if not isinstance(run, dict) or run.get("status") != "active":
+            continue
+
+        puzzle = run.get("puzzle")
+        if not isinstance(puzzle, dict):
+            continue
+
+        player_color = str(puzzle.get("player_color", "")).casefold()
+        moves = []
+        for move in puzzle.get("solution", []):
+            if not isinstance(move, dict):
+                continue
+            if str(move.get("color", "")).casefold() != player_color:
+                continue
+            san = str(move.get("san", "")).strip()
+            if san:
+                moves.append(san)
+
+        if moves:
+            team_name = str(team_data.get("name", "Survival"))
+            number = int(run.get("puzzle_number", 0) or 0)
+            return (f"Survival — {team_name} #{number}", moves)
+
+    return None
+
+
+def _current_daily_random_solution():
+    latest_type = state.get("latest_puzzle_type")
+
+    if latest_type == "random":
+        puzzle = state.get("latest_random_puzzle")
+        label = "Random Puzzle"
+        if isinstance(puzzle, dict):
+            puzzle_id = str(puzzle.get("puzzle_id", ""))
+            if puzzle_id.startswith("random_lichess_"):
+                label = "Exact-rating Lichess Puzzle"
+            elif puzzle.get("rating") is not None:
+                label = f"Random Puzzle — {puzzle.get('rating')}"
+    elif latest_type == "daily":
+        puzzle = state.get("current_puzzle")
+        label = "Daily Puzzle"
+    else:
+        return None
+
+    if not isinstance(puzzle, dict):
+        return None
+
+    # Do not advertise an old completed puzzle as the current answer.
+    if puzzle.get("solved") or puzzle.get("answer_posted"):
+        return None
+
+    moves = _san_list_from_player_moves(puzzle)
+    if not moves:
+        return None
+
+    return (label, moves)
+
+
+def _shark_private_solution_text():
+    # Survival owns chess input while active, so it gets priority.
+    try:
+        survival = _remote_active_survival_solution()
+    except Exception as error:
+        print(
+            f"Shark private Survival lookup error: {error}",
+            flush=True,
+        )
+        survival = None
+
+    result = survival or _current_daily_random_solution()
+    if result is None:
+        return (
+            "✅ **Puzzle bot is online.**\n"
+            "No active puzzle solution is available right now."
+        )
+
+    label, moves = result
+    return (
+        f"🤫 **{label}**\n"
+        f"**Your moves only:** `{' '.join(moves)}`\n\n"
+        f"`{SHARK_SPY_BUILD}`"
+    )
+
+
+@command_tree.command(
+    name="status",
+    description="Show puzzle bot status.",
+)
+async def private_status_command(interaction: discord.Interaction):
+    # Ephemeral responses are only possible as replies to an interaction.
+    # This command therefore gives Sharkmeister the private answer without a DM.
+    await interaction.response.defer(ephemeral=True)
+
+    shark_id = os.getenv(
+        "SHARKMEISTER_USER_ID",
+        SHARKMEISTER_DEFAULT_USER_ID,
+    ).strip() or SHARKMEISTER_DEFAULT_USER_ID
+
+    if str(interaction.user.id) != shark_id:
+        await interaction.edit_original_response(
+            content="✅ **Puzzle bot is online.**"
+        )
+        return
+
+    text = await asyncio.to_thread(
+        _shark_private_solution_text
+    )
+    await interaction.edit_original_response(
+        content=text
+    )
+
 
 # =========================================================
 # GLOBAL DATA
@@ -370,9 +556,16 @@ PARQUET_QUERY_TIMEOUT = 45
 scores = {}
 
 data_lock = asyncio.Lock()
-github_push_lock = threading.Lock()
+github_push_lock = REPOSITORY_LOCK
 github_sync_task = None
 score_file_lock = threading.Lock()
+
+# Offline RP runtime state. Every six RP requests consume every rating band
+# exactly once, in a freshly shuffled order.
+rp_command_lock = asyncio.Lock()
+_rp_pool_lock = threading.Lock()
+_rp_band_bag = []
+_rp_recent_ids = []
 
 
 # =========================================================
@@ -700,87 +893,81 @@ def rebuild_scores_from_events(
 
 def push_to_github():
 
-    with github_push_lock:
-
+    # Shared leaderboard updates and Daily state updates use the same
+    # repository lock. This prevents two Git operations from colliding.
+    with REPOSITORY_LOCK:
         try:
-
             subprocess.run(
-                [
-                    "git",
-                    "config",
-                    "user.name",
-                    "Daily Puzzle Bot"
-                ],
+                ["git", "config", "user.name", "Daily Puzzle Bot"],
                 check=True,
-                capture_output=True
+                capture_output=True,
             )
-
             subprocess.run(
                 [
                     "git",
                     "config",
                     "user.email",
-                    "daily-puzzle-bot@users.noreply.github.com"
+                    "daily-puzzle-bot@users.noreply.github.com",
                 ],
                 check=True,
-                capture_output=True
+                capture_output=True,
             )
 
+            # bot.py is NOT an owner of shared leaderboard files.
+            # Only persist Daily puzzle state here.
             subprocess.run(
-                [
-                    "git",
-                    "add",
-                    STATE_FILE,
-                    LEADERBOARD_FILE,
-                    SCORE_EVENTS_FILE
-                ],
+                ["git", "add", STATE_FILE],
                 check=True,
-                capture_output=True
+                capture_output=True,
             )
 
             commit = subprocess.run(
-                [
-                    "git",
-                    "commit",
-                    "-m",
-                    "Update Daily Puzzle data"
-                ],
+                ["git", "commit", "-m", "Update Daily Puzzle state"],
                 capture_output=True,
-                text=True
+                text=True,
             )
 
             if commit.returncode != 0:
                 return
 
-            branch = os.getenv(
-                "GITHUB_REF_NAME",
-                "main"
-            )
+            branch = os.getenv("GITHUB_REF_NAME", "main")
 
-            subprocess.run(
-                [
-                    "git",
-                    "push",
-                    "origin",
-                    f"HEAD:{branch}"
-                ],
-                check=True,
-                capture_output=True,
-                text=True
-            )
+            # A leaderboard/Survival process may have advanced origin.
+            # Rebase this state-only commit before pushing.
+            for attempt in range(1, 5):
+                pull = subprocess.run(
+                    ["git", "pull", "--rebase", "origin", branch],
+                    capture_output=True,
+                    text=True,
+                )
 
-            print(
-                "Data saved to GitHub.",
-                flush=True
-            )
+                if pull.returncode != 0:
+                    subprocess.run(
+                        ["git", "rebase", "--abort"],
+                        capture_output=True,
+                    )
+                    time.sleep(0.25 * attempt)
+                    continue
+
+                push = subprocess.run(
+                    ["git", "push", "origin", f"HEAD:{branch}"],
+                    capture_output=True,
+                    text=True,
+                )
+
+                if push.returncode == 0:
+                    print("Daily puzzle state saved to GitHub.", flush=True)
+                    return
+
+                time.sleep(0.25 * attempt)
+
+            raise RuntimeError("Could not push Daily puzzle state after retries.")
 
         except Exception as error:
-
             print(
-                f"Could not push data to GitHub: {error}",
-                flush=True
+                f"Could not push Daily puzzle state to GitHub: {error}",
+                flush=True,
             )
-
 
 def queue_github_sync():
 
@@ -806,11 +993,6 @@ async def save_all():
     save_json(
         STATE_FILE,
         state
-    )
-
-    save_json(
-        LEADERBOARD_FILE,
-        scores
     )
 
     queue_github_sync()
@@ -858,123 +1040,140 @@ def fetch_daily_puzzle():
 # FETCH RANDOM PUZZLE
 # =========================================================
 
+def _next_rp_band():
+    global _rp_band_bag
+
+    if not _rp_band_bag:
+        _rp_band_bag = list(range(len(RP_BANDS)))
+        random.shuffle(_rp_band_bag)
+
+    return _rp_band_bag.pop()
+
+
 def fetch_random_puzzle():
     """
-    Fetch one truly random Lichess puzzle through the official puzzle API
-    and convert it to the same FEN/PGN shape the existing RP runtime uses.
+    Pick one RP puzzle from the prebuilt local SQLite pool.
 
-    Lichess returns the game PGN up to the opponent move that starts the
-    tactic, plus the solution as UCI moves. The board after that PGN is the
-    position the player must solve, so we convert the UCI solution to SAN
-    from that position and leave the rest of RP unchanged.
+    Runtime RP performs ZERO HTTP requests. The pool is generated separately
+    from the official downloadable Lichess puzzle database. Every six RP
+    selections use all six rating bands exactly once in random order.
     """
-    headers = {
-        "User-Agent": "DailyChessPuzzleBot/3.0",
-        "Accept": "application/json",
-    }
+    global _rp_recent_ids
 
-    last_error = None
+    if not os.path.exists(RP_POOL_FILE):
+        raise RuntimeError(
+            f"Offline RP pool '{RP_POOL_FILE}' is missing. "
+            "Run the Build RP Puzzle Pool workflow first."
+        )
 
-    for attempt in range(1, 4):
+    with _rp_pool_lock:
+        band = _next_rp_band()
+        minimum, maximum = RP_BANDS[band]
+
+        con = sqlite3.connect(
+            f"file:{RP_POOL_FILE}?mode=ro",
+            uri=True,
+            timeout=5,
+        )
+
         try:
-            response = requests.get(
-                RANDOM_PUZZLE_API,
-                headers=headers,
-                timeout=15,
+            count = int(
+                con.execute(
+                    "SELECT COUNT(*) FROM puzzles WHERE band = ?",
+                    (band,),
+                ).fetchone()[0]
             )
 
-            if response.status_code == 429:
-                # Lichess asks API clients to wait a full minute after 429.
-                # Do not hold the Discord command for a minute; report the
-                # temporary failure and let the next RP attempt try again.
+            if count <= 0:
                 raise RuntimeError(
-                    "Lichess puzzle API is temporarily rate-limited (HTTP 429)."
+                    f"Offline RP band {minimum}-{maximum} is empty."
                 )
 
-            response.raise_for_status()
-            payload = response.json()
+            row = None
+            recent = set(_rp_recent_ids[-1000:])
 
-            puzzle = payload.get("puzzle")
-            game_data = payload.get("game")
+            # A 50k band makes a repeat extremely unlikely, but retry a few
+            # offsets so recently used puzzles are explicitly avoided.
+            for _ in range(12):
+                offset = random.randrange(count)
+                candidate = con.execute(
+                    """
+                    SELECT puzzle_id, fen, moves, rating, band
+                    FROM puzzles
+                    WHERE band = ?
+                    LIMIT 1 OFFSET ?
+                    """,
+                    (band, offset),
+                ).fetchone()
 
-            if not isinstance(puzzle, dict):
-                raise RuntimeError("Lichess response has no puzzle object.")
+                if candidate and str(candidate[0]) not in recent:
+                    row = candidate
+                    break
 
-            if not isinstance(game_data, dict):
-                raise RuntimeError("Lichess response has no game object.")
+            if row is None:
+                offset = random.randrange(count)
+                row = con.execute(
+                    """
+                    SELECT puzzle_id, fen, moves, rating, band
+                    FROM puzzles
+                    WHERE band = ?
+                    LIMIT 1 OFFSET ?
+                    """,
+                    (band, offset),
+                ).fetchone()
 
-            puzzle_id = puzzle.get("id")
-            rating = puzzle.get("rating")
-            solution = puzzle.get("solution")
-            game_pgn = game_data.get("pgn")
+        finally:
+            con.close()
 
-            if not puzzle_id:
-                raise RuntimeError("Lichess puzzle has no ID.")
-
-            if not isinstance(solution, list) or not solution:
-                raise RuntimeError("Lichess puzzle has no solution moves.")
-
-            if not game_pgn:
-                raise RuntimeError("Lichess puzzle game has no PGN.")
-
-            parsed_game = chess.pgn.read_game(
-                StringIO(str(game_pgn))
+        if not row:
+            raise RuntimeError(
+                f"Could not select an offline RP puzzle in {minimum}-{maximum}."
             )
 
-            if parsed_game is None:
-                raise RuntimeError("Could not parse the Lichess puzzle game PGN.")
+        puzzle_id, raw_fen, moves_text, rating, stored_band = row
+        rating = int(rating)
+        stored_band = int(stored_band)
 
-            board = parsed_game.board()
+        if stored_band != band or not (minimum <= rating <= maximum):
+            raise RuntimeError(
+                "Offline RP pool returned a puzzle outside its rating band."
+            )
 
-            for move in parsed_game.mainline_moves():
-                if move not in board.legal_moves:
-                    raise RuntimeError(
-                        "Lichess puzzle game contains an illegal move."
-                    )
-                board.push(move)
+        moves = str(moves_text).split()
+        if len(moves) < 2:
+            raise RuntimeError("Offline RP puzzle has no solution line.")
 
-            puzzle_fen = board.fen()
-            solution_san = []
+        # Lichess database FEN is before the opponent's setup move. Play that
+        # move first; the resulting position is what Discord users must solve.
+        board = board_from_fen_safe(str(raw_fen))
+        first_move = chess.Move.from_uci(moves[0])
+        if first_move not in board.legal_moves:
+            raise RuntimeError("Offline RP puzzle has an illegal setup move.")
+        board.push(first_move)
 
-            for uci in solution:
-                move = chess.Move.from_uci(str(uci))
+        puzzle_fen = board.fen()
+        solution_san = []
 
-                if move not in board.legal_moves:
-                    raise RuntimeError(
-                        "Lichess puzzle solution contains an illegal move."
-                    )
+        for uci in moves[1:]:
+            move = chess.Move.from_uci(str(uci))
+            if move not in board.legal_moves:
+                raise RuntimeError("Offline RP puzzle has an illegal solution move.")
+            solution_san.append(board.san(move))
+            board.push(move)
 
-                solution_san.append(
-                    board.san(move)
-                )
-                board.push(move)
+        _rp_recent_ids.append(str(puzzle_id))
+        _rp_recent_ids = _rp_recent_ids[-1000:]
 
-            title = "Lichess Puzzle"
-            if rating is not None:
-                title = f"Lichess • {rating}"
+        return {
+            "fen": puzzle_fen,
+            "pgn": " ".join(solution_san),
+            "url": f"https://lichess.org/training/{puzzle_id}",
+            "title": f"Lichess • {rating}",
+            "lichess_id": str(puzzle_id),
+            "rating": rating,
+            "rp_band": band,
+        }
 
-            return {
-                "fen": puzzle_fen,
-                "pgn": " ".join(solution_san),
-                "url": f"https://lichess.org/training/{puzzle_id}",
-                "title": title,
-                "lichess_id": str(puzzle_id),
-                "rating": rating,
-            }
-
-        except Exception as error:
-            last_error = str(error)
-
-            # A 429 should not cause rapid retry spam against Lichess.
-            if "429" in last_error:
-                break
-
-            if attempt < 3:
-                time.sleep(1.0)
-
-    raise RuntimeError(
-        f"Could not fetch random Lichess puzzle after 3 attempts: {last_error}"
-    )
 
 # =========================================================
 # SAFE FEN / BOARD HELPERS
@@ -2146,148 +2345,121 @@ async def post_random_puzzle(
         )
         return
 
-    try:
-        data = await asyncio.to_thread(
-            fetch_random_puzzle
+    if rp_command_lock.locked():
+        await channel.send(
+            "⏳ **A Random Puzzle is already loading.**"
         )
-
-        puzzle = build_puzzle(
-            data
-        )
-
-        puzzle["posted_at"] = (
-            datetime.now(
-                timezone.utc
-            ).isoformat()
-        )
-
-        puzzle["puzzle_id"] = (
-            "random_"
-            + str(
-                int(
-                    time.time() * 1000
-                )
-            )
-        )
-
-        # Interactive state.
-        puzzle["current_fen"] = sanitize_fen(
-            puzzle["fen"]
-        )
-        puzzle["next_solution_index"] = 0
-        puzzle["next_player_index"] = 0
-        puzzle["solved"] = False
-        puzzle["message_id"] = None
-        puzzle["attempted_users"] = {}
-
-        puzzle["first_move_user_id"] = None
-        puzzle["first_move_user_name"] = None
-        puzzle["first_move_awarded"] = False
-        puzzle["helper_awarded_users"] = []
-        puzzle["helper_candidate_users"] = []
-
-        state[
-            "latest_random_puzzle"
-        ] = puzzle
-
-        state[
-            "latest_puzzle_type"
-        ] = "random"
-
-        await save_all()
-
-        file, board = await make_board_file(
-            puzzle,
-            "random_puzzle.png"
-        )
-
-        side = (
-            "White"
-            if board.turn
-            else "Black"
-        )
-
-        count = puzzle[
-            "player_move_count"
-        ]
-
-        title = puzzle[
-            "title"
-        ]
-
-        if count == 1:
-            move_description = (
-                "Find the best move."
-            )
-        else:
-            move_description = (
-                f"Find the best line in "
-                f"**{count} {move_word(count)}**."
-            )
-
-        embed = discord.Embed(
-            title=(
-                f"🎲 Random Puzzle — {title}"
-            ),
-            description=(
-                f"**{side} to move.**\n"
-                f"{move_description}\n\n"
-                f"You only enter **your own moves**. "
-                f"The opponent's replies will be played automatically."
-            ),
-            color=0x3498db
-        )
-
-        embed.set_image(
-            url="attachment://random_puzzle.png"
-        )
-
-        message = await channel.send(
-            embed=embed,
-            file=file
-        )
-
-        puzzle["message_id"] = message.id
-
-        # Persist the message ID locally.
-        # Do NOT run the GitHub push immediately after sending.
-        # The random puzzle is already successfully posted, and
-        # the extra push was causing the command to report an
-        # error after the message had appeared.
-        save_json(
-            STATE_FILE,
-            state
-        )
-
-        print(
-            f"Random Puzzle posted "
-            f"({count} player moves).",
-            flush=True
-        )
-
-        # IMPORTANT:
-        # A successful Discord post is a successful random-puzzle
-        # command. Do not turn a post-send persistence issue into
-        # a visible "Random Puzzle Error" message.
         return
 
-    except Exception as error:
-        print(
-            "RANDOM PUZZLE ERROR:",
-            flush=True
-        )
-        traceback.print_exc()
+    async with rp_command_lock:
+        try:
+            data = await asyncio.to_thread(
+                fetch_random_puzzle
+            )
 
-        # Show the real error in Discord so a failed request or
-        # PGN/FEN parsing problem can be diagnosed immediately.
-        error_text = str(error).strip() or repr(error)
-        if len(error_text) > 1400:
-            error_text = error_text[:1400] + "..."
+            puzzle = build_puzzle(
+                data
+            )
 
-        await channel.send(
-            "❌ **Random Puzzle Error**\n"
-            f"```{error_text}```"
-        )
+            puzzle["posted_at"] = (
+                datetime.now(
+                    timezone.utc
+                ).isoformat()
+            )
+
+            puzzle["puzzle_id"] = (
+                "random_"
+                + str(data.get("lichess_id", "offline"))
+                + "_"
+                + str(int(time.time() * 1000))
+            )
+            puzzle["rating"] = data.get("rating")
+            puzzle["rp_band"] = data.get("rp_band")
+
+            # Interactive state.
+            puzzle["current_fen"] = sanitize_fen(
+                puzzle["fen"]
+            )
+            puzzle["next_solution_index"] = 0
+            puzzle["next_player_index"] = 0
+            puzzle["solved"] = False
+            puzzle["message_id"] = None
+            puzzle["attempted_users"] = {}
+
+            puzzle["first_move_user_id"] = None
+            puzzle["first_move_user_name"] = None
+            puzzle["first_move_awarded"] = False
+            puzzle["helper_awarded_users"] = []
+            puzzle["helper_candidate_users"] = []
+
+            state["latest_random_puzzle"] = puzzle
+            state["latest_puzzle_type"] = "random"
+
+            await save_all()
+
+            file, board = await make_board_file(
+                puzzle,
+                "random_puzzle.png"
+            )
+
+            side = (
+                "White"
+                if board.turn
+                else "Black"
+            )
+
+            count = puzzle["player_move_count"]
+            title = puzzle["title"]
+
+            if count == 1:
+                move_description = "Find the best move."
+            else:
+                move_description = (
+                    f"Find the best line in "
+                    f"**{count} {move_word(count)}**."
+                )
+
+            embed = discord.Embed(
+                title=f"🎲 Random Puzzle — {title}",
+                description=(
+                    f"**{side} to move.**\n"
+                    f"{move_description}\n\n"
+                    f"You only enter **your own moves**. "
+                    f"The opponent's replies will be played automatically."
+                ),
+                color=0x3498db
+            )
+
+            embed.set_image(
+                url="attachment://random_puzzle.png"
+            )
+
+            message = await channel.send(
+                embed=embed,
+                file=file
+            )
+
+            puzzle["message_id"] = message.id
+            save_json(STATE_FILE, state)
+
+            print(
+                f"Random Puzzle posted: rating {data.get('rating')} "
+                f"(band {data.get('rp_band')}, {count} player moves).",
+                flush=True
+            )
+
+        except Exception as error:
+            print("RANDOM PUZZLE ERROR:", flush=True)
+            traceback.print_exc()
+
+            error_text = str(error).strip() or repr(error)
+            if len(error_text) > 1400:
+                error_text = error_text[:1400] + "..."
+
+            await channel.send(
+                "❌ **Random Puzzle Error**\n"
+                f"```{error_text}```"
+            )
 
 
 # =========================================================
@@ -4234,8 +4406,8 @@ async def on_message(
         if command_lower.startswith("!edit "):
             sharkmeister_user_id = os.getenv(
                 "SHARKMEISTER_USER_ID",
-                "",
-            ).strip()
+                SHARKMEISTER_DEFAULT_USER_ID,
+            ).strip() or SHARKMEISTER_DEFAULT_USER_ID
 
             if (
                 not sharkmeister_user_id
@@ -4289,11 +4461,18 @@ async def on_message(
             )
 
             try:
+                target_user_id = (
+                    SHARKMEISTER_DEFAULT_USER_ID
+                    if name.casefold().strip() == "sharkmeister"
+                    else None
+                )
+
                 new_score = await asyncio.to_thread(
                     shared_admin_set_points,
                     name,
                     target_points,
                     transaction_id,
+                    target_user_id=target_user_id,
                 )
 
             except Exception as error:
@@ -4338,6 +4517,14 @@ async def on_message(
             await post_exact_lichess_puzzle(
                 message.channel,
                 rating,
+            )
+            return
+
+        # Runtime build check. Safe for everyone; it changes no data.
+        if command_lower in ("!v", "!version"):
+            await message.channel.send(
+                f"**Bot:** `{RP_BUILD}`\n"
+                f"**Ledger:** `{SHARED_LEDGER_BUILD}`"
             )
             return
 
@@ -4611,27 +4798,10 @@ async def on_ready():
     client.started = True
 
     global state
-    global scores
 
     state = load_json(
         STATE_FILE,
         {}
-    )
-
-    global scores
-
-    scores, _events = load_score_ledger()
-
-    # Keep the migrated baseline/events on disk immediately so the
-    # transition is persistent before the next point is awarded.
-    save_json(
-        SCORE_EVENTS_FILE,
-        _events
-    )
-
-    save_json(
-        LEADERBOARD_FILE,
-        scores
     )
 
     state.setdefault(
@@ -4716,6 +4886,24 @@ async def on_ready():
         flush=True
     )
 
+    try:
+        command_tree.copy_global_to(
+            guild=channel.guild
+        )
+        synced_commands = await command_tree.sync(
+            guild=channel.guild
+        )
+        print(
+            f"Guild commands synced: {len(synced_commands)}",
+            flush=True,
+        )
+    except Exception as error:
+        # Never stop the puzzle bot just because Discord command sync failed.
+        print(
+            f"Could not sync private status command: {error}",
+            flush=True,
+        )
+
     await check_for_new_puzzle(
         channel
     )
@@ -4762,5 +4950,7 @@ print(
     "Starting Daily Chess Puzzle Bot...",
     flush=True
 )
+print(f"Daily Puzzle build: {RP_BUILD}", flush=True)
+print(f"Shared leaderboard build: {SHARED_LEDGER_BUILD}", flush=True)
 
 client.run(TOKEN)
