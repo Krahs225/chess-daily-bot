@@ -571,7 +571,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-03T15:38:52.029622+00:00",
-        "last_activity": 1788450117.580512,
+        "last_activity": 1788450123.548667,
         "paused_reason": "puzzle fetch error",
         "puzzle_number": 1,
         "strikes": 0,
@@ -582,7 +582,7 @@
         "members": {
           "362606514764251137": {
             "name": "Sharkmeister",
-            "correct": 2,
+            "correct": 3,
             "wrong": 0
           }
         },
@@ -592,7 +592,7 @@
           "themes": "advantage long middlegame",
           "url": "https://lichess.org/training/fKyJg",
           "start_fen": "rn1q1rk1/1pp2pp1/p6p/3pNb2/2PPn3/P1PBPP2/1B4PP/R2QK2R b KQ - 0 11",
-          "current_fen": "rn3rk1/1pp2pp1/p6p/3pNb2/2PP3q/P1PBPPP1/1B6/R2QK2R b KQ - 0 13",
+          "current_fen": "rn3rk1/1pp2pp1/p6p/3pNb2/2PP4/P1PBPPP1/1B6/R2QK2q w Q - 0 14",
           "solution": [
             {
               "uci": "d8h4",
@@ -621,13 +621,13 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 4,
+          "next_solution_index": 5,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": "Nxg3",
+          "last_move_san": "Qxh1+",
           "accepted_moves": [
             {
               "san": "Qh4+",
@@ -640,13 +640,19 @@
               "uci": "e4g3",
               "accepted_at": 1788450117.5803661,
               "solver_id": "362606514764251137"
+            },
+            {
+              "san": "Qxh1+",
+              "uci": "h4h1",
+              "accepted_at": 1788450123.5485435,
+              "solver_id": "362606514764251137"
             }
           ],
-          "last_accepted_move_uci": "e4g3",
-          "last_accepted_move_san": "Nxg3",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788450117.5803647,
-          "position_before_last_move": "rn3rk1/1pp2pp1/p6p/3pNb2/2PPn2q/P1PBPPP1/1B5P/R2QK2R b KQ - 0 12"
+          "last_accepted_move_uci": "h4h1",
+          "last_accepted_move_san": "Qxh1+",
+          "last_accepted_move_index": 4,
+          "last_accepted_at": 1788450123.548542,
+          "position_before_last_move": "rn3rk1/1pp2pp1/p6p/3pNb2/2PP3q/P1PBPPP1/1B6/R2QK2R b KQ - 0 13"
         },
         "first_solver_id": "362606514764251137",
         "first_solver_name": "Sharkmeister",
