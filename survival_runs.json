@@ -2,15 +2,15 @@
   "teams": {
     "makina": {
       "name": "Makina",
-      "best_puzzle": 59,
+      "best_puzzle": 60,
       "best_difficulty": 2246,
-      "best_completed_at": "2026-08-20T18:08:23.570105+00:00",
+      "best_completed_at": "2026-09-03T19:00:50.317819+00:00",
       "current": {
         "run_id": "makina:1787228543",
         "started_by_id": "1539972856476340315",
         "status": "active",
         "started_at": "2026-08-20T12:22:23.121644+00:00",
-        "last_activity": 1788462044.834199,
+        "last_activity": 1788462047.457813,
         "paused_reason": "manually stopped",
         "puzzle_number": 60,
         "strikes": 1,
@@ -74,7 +74,8 @@
           "CZ3gJ",
           "pIIbm",
           "nLGPZ",
-          "konbt"
+          "konbt",
+          "jDlBJ"
         ],
         "members": {
           "601406103712170014": {
@@ -88,7 +89,100 @@
             "wrong": 5
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "jDlBJ",
+          "rating": 2084,
+          "themes": "veryLong endgame advancedPawn crushing promotion discoveredAttack pawnEndgame",
+          "url": "https://lichess.org/training/jDlBJ",
+          "start_fen": "8/8/5pp1/7P/p1k3P1/4KP2/8/8 b - - 0 36",
+          "current_fen": "8/8/5pp1/7P/p1k3P1/4KP2/8/8 b - - 0 36",
+          "solution": [
+            {
+              "uci": "g6h5",
+              "san": "gxh5",
+              "color": "black"
+            },
+            {
+              "uci": "g4h5",
+              "san": "gxh5",
+              "color": "white"
+            },
+            {
+              "uci": "a4a3",
+              "san": "a3",
+              "color": "black"
+            },
+            {
+              "uci": "h5h6",
+              "san": "h6",
+              "color": "white"
+            },
+            {
+              "uci": "a3a2",
+              "san": "a2",
+              "color": "black"
+            },
+            {
+              "uci": "h6h7",
+              "san": "h7",
+              "color": "white"
+            },
+            {
+              "uci": "a2a1q",
+              "san": "a1=Q",
+              "color": "black"
+            },
+            {
+              "uci": "h7h8q",
+              "san": "h8=Q",
+              "color": "white"
+            },
+            {
+              "uci": "a1e1",
+              "san": "Qe1+",
+              "color": "black"
+            },
+            {
+              "uci": "e3f4",
+              "san": "Kf4",
+              "color": "white"
+            },
+            {
+              "uci": "e1e5",
+              "san": "Qe5+",
+              "color": "black"
+            },
+            {
+              "uci": "f4g4",
+              "san": "Kg4",
+              "color": "white"
+            },
+            {
+              "uci": "f6f5",
+              "san": "f5+",
+              "color": "black"
+            },
+            {
+              "uci": "g4g5",
+              "san": "Kg5",
+              "color": "white"
+            },
+            {
+              "uci": "e5h8",
+              "san": "Qxh8",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
