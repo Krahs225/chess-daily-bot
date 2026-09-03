@@ -35,4 +35,3 @@ jobs:
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
           GITHUB_ACTION_TOKEN: ${{ github.token }}
-
