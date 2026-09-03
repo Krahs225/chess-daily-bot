@@ -1707,21 +1707,15 @@ async def command_handler(message):
 
     if command in {"!help", "!info", "!i"}:
         await message.channel.send(
-            "🧠 **Guess Games**
-
-💬 **Guess the Chatter** — Guess which chatter wrote the shown message.
-
-♟️ **Guess the Chess Chatter** — Guess which player played the shown Chess.com game.
-
-⏭️ `!next` / `!n` — end the active poll, reveal/award it,
-then immediately start the other Guess game.
-
-🏆 `!l` / `!lb` / `!leaderboard` — leaderboard at any time.
-
-👤 `!<name>` — show recognition info about a Guess Chatter / Chess Chatter player
-(for example `!thice` or `!sushi`). Nicknames and small spelling mistakes also work.
-
-Guess Chatter still has its scheduled Double Points / Hard Mode bonus rounds."
+            "🧠 **Guess Games**\n\n"
+            "💬 **Guess the Chatter** — Read a real chat message and guess which chatter wrote it.\n"
+            "♟️ **Guess the Chess Chatter** — Browse a real Chess.com game and guess which player played it.\n\n"
+            "⏭️ `!next` / `!n` — end the active poll, reveal/award it, "
+            "then immediately start the other Guess game.\n"
+            "🏆 `!l` / `!lb` / `!leaderboard` — leaderboard at any time.\n"
+            "👤 `!<name>` — show recognition info about a Guess Chatter / Chess Chatter player "
+            "(for example `!thice` or `!sushi`). Nicknames and small spelling mistakes also work.\n\n"
+            "Guess Chatter still has its scheduled Double Points / Hard Mode bonus rounds."
         )
         return
 
