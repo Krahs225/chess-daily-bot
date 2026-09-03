@@ -3376,6 +3376,40 @@ class SurvivalBot(
         ):
             return
 
+        # Captain-only run-mode commands. The implementation already existed
+        # in set_run_mode(), but the old on_message router never called it.
+        if lower == "!solo" or lower.startswith("!solo "):
+            team_name = content[len("!solo"):].strip()
+
+            if not team_name:
+                await message.channel.send(
+                    "❌ Usage: `!solo <team name>`"
+                )
+                return
+
+            await self.set_run_mode(
+                message,
+                normalize_team_name(team_name),
+                "solo",
+            )
+            return
+
+        if lower == "!coop" or lower.startswith("!coop "):
+            team_name = content[len("!coop"):].strip()
+
+            if not team_name:
+                await message.channel.send(
+                    "❌ Usage: `!coop <team name>`"
+                )
+                return
+
+            await self.set_run_mode(
+                message,
+                normalize_team_name(team_name),
+                "coop",
+            )
+            return
+
         # Team information command:
         # !THE SQUAD
         if (
