@@ -3,7 +3,7 @@
     "url": "https://lichess.org/training/fZMEX",
     "title": "Lichess • 2721",
     "fen": "6k1/2q2rbp/p1p3pB/4p3/8/2P3Pb/PP1Q3P/R3R1K1 b - - 1 23",
-    "current_fen": "6k1/2q2rbp/p1p3pB/4p3/8/2P3Pb/PP1Q3P/R3R1K1 b - - 1 23",
+    "current_fen": "6k1/2q2r1p/p1p3pQ/4p3/8/2P3Pb/PP5P/R3R1K1 b - - 0 24",
     "pgn": "Bxh6 Qxh6 Qb6+ Kh1 Bg4 Qe3 Rf1+",
     "all_moves": [
       {
@@ -74,20 +74,32 @@
     "puzzle_id": "random_fZMEX_1788458364330",
     "rating": 2721,
     "rp_band": 5,
-    "next_solution_index": 0,
-    "next_player_index": 0,
+    "next_solution_index": 2,
+    "next_player_index": 1,
     "solved": false,
     "message_id": 1545131112957870162,
     "attempted_users": {
       "442597396195704832": {
         "name": "Thice",
-        "move": "qb6",
+        "move": "bxh6",
+        "correct": true,
+        "timestamp": "2026-09-03T17:59:34.363170+00:00"
+      },
+      "601406103712170014": {
+        "name": "TheMakina",
+        "move": "Qb6",
         "correct": false,
-        "timestamp": "2026-09-03T17:59:28.816108+00:00"
+        "timestamp": "2026-09-03T17:59:29.782784+00:00"
+      },
+      "362606514764251137": {
+        "name": "Sharkmeister",
+        "move": "bxh6",
+        "correct": false,
+        "timestamp": "2026-09-03T17:59:34.638026+00:00"
       }
     },
-    "first_move_user_id": null,
-    "first_move_user_name": null,
+    "first_move_user_id": "442597396195704832",
+    "first_move_user_name": "Thice",
     "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
