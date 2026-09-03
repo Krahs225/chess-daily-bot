@@ -571,7 +571,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-03T18:57:56.387392+00:00",
-        "last_activity": 1788461926.708201,
+        "last_activity": 1788461944.3071897,
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 1,
@@ -583,7 +583,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 1,
+            "correct": 2,
             "wrong": 0
           },
           "601406103712170014": {
@@ -598,7 +598,7 @@
           "themes": "endgame crushing fork long",
           "url": "https://lichess.org/training/RZbrs",
           "start_fen": "7Q/8/8/3n1pp1/6k1/6b1/6K1/4r3 w - - 38 92",
-          "current_fen": "8/8/8/3n1pp1/4k3/6Q1/6K1/4r3 w - - 1 94",
+          "current_fen": "8/8/8/3n1pp1/4k3/8/6K1/4Q3 b - - 0 94",
           "solution": [
             {
               "uci": "h8h3",
@@ -627,7 +627,7 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 4,
+          "next_solution_index": 5,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -635,7 +635,7 @@
           "wrong_users": [
             "601406103712170014"
           ],
-          "last_move_san": "Qxg3+",
+          "last_move_san": "Qxe1+",
           "accepted_moves": [
             {
               "san": "Qh3+",
@@ -648,17 +648,25 @@
               "uci": "h3g3",
               "accepted_at": 1788461926.7081177,
               "solver_id": "601406103712170014"
+            },
+            {
+              "san": "Qxe1+",
+              "uci": "g3e1",
+              "accepted_at": 1788461944.307133,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "h3g3",
-          "last_accepted_move_san": "Qxg3+",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788461926.708117,
-          "position_before_last_move": "8/8/8/3n1pp1/5k2/6bQ/6K1/4r3 w - - 40 93"
+          "last_accepted_move_uci": "g3e1",
+          "last_accepted_move_san": "Qxe1+",
+          "last_accepted_move_index": 4,
+          "last_accepted_at": 1788461944.3071325,
+          "position_before_last_move": "8/8/8/3n1pp1/4k3/6Q1/6K1/4r3 w - - 1 94"
         },
         "first_solver_id": "601406103712170014",
         "first_solver_name": "TheMakina",
-        "helper_candidates": {},
+        "helper_candidates": {
+          "442597396195704832": "Thice"
+        },
         "helper_awarded": []
       },
       "history": []
