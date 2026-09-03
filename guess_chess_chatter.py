@@ -43,6 +43,7 @@ PLAYERS = [
     ("Pospos", "pospos12"),
     ("Pandarou", "iAmPandaro"),
     ("Sushi", "IsolatedSushi"),
+    ("Jesse", "ChessKidJesse12"),
 ]
 
 LARS_START = datetime(
