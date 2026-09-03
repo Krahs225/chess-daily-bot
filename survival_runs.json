@@ -289,10 +289,10 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-03T20:09:57.193516+00:00",
-        "last_activity": 1788466234.253522,
+        "last_activity": 1788466239.642263,
         "paused_reason": null,
         "puzzle_number": 2,
-        "strikes": 1,
+        "strikes": 2,
         "best_difficulty": 1337,
         "used_puzzle_ids": [
           "qt8uk",
@@ -302,7 +302,7 @@
           "442597396195704832": {
             "name": "Thice",
             "correct": 3,
-            "wrong": 1
+            "wrong": 2
           }
         },
         "puzzle": {
@@ -325,7 +325,9 @@
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
-          "wrong_users": [],
+          "wrong_users": [
+            "442597396195704832"
+          ],
           "last_move_san": null,
           "accepted_moves": []
         },
