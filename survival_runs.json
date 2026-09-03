@@ -648,10 +648,55 @@
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 0,
-        "best_difficulty": 0,
-        "used_puzzle_ids": [],
+        "best_difficulty": 1276,
+        "used_puzzle_ids": [
+          "fKyJg"
+        ],
         "members": {},
-        "puzzle": null,
+        "puzzle": {
+          "id": "fKyJg",
+          "rating": 1276,
+          "themes": "advantage long middlegame",
+          "url": "https://lichess.org/training/fKyJg",
+          "start_fen": "rn1q1rk1/1pp2pp1/p6p/3pNb2/2PPn3/P1PBPP2/1B4PP/R2QK2R b KQ - 0 11",
+          "current_fen": "rn1q1rk1/1pp2pp1/p6p/3pNb2/2PPn3/P1PBPP2/1B4PP/R2QK2R b KQ - 0 11",
+          "solution": [
+            {
+              "uci": "d8h4",
+              "san": "Qh4+",
+              "color": "black"
+            },
+            {
+              "uci": "g2g3",
+              "san": "g3",
+              "color": "white"
+            },
+            {
+              "uci": "e4g3",
+              "san": "Nxg3",
+              "color": "black"
+            },
+            {
+              "uci": "h2g3",
+              "san": "hxg3",
+              "color": "white"
+            },
+            {
+              "uci": "h4h1",
+              "san": "Qxh1+",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
