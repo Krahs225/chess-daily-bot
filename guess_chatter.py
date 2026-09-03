@@ -48,6 +48,7 @@ NEXT_REQUESTED = False
 # sessions with the same bot token and makes !l available between rounds.
 CURRENT_ROUND_TYPE = None
 FORCED_NEXT_TYPE = None
+LAST_ROUND_TYPE = None
 ROUND_LOCK = asyncio.Lock()
 SCHEDULER_TASK = None
 
@@ -1084,6 +1085,29 @@ async def latest_active_round_type(
     return None
 
 
+async def latest_round_type(
+    channel
+):
+    """Return the newest Guess round type, even when its poll has ended."""
+    async for recent in channel.history(
+        limit=60
+    ):
+        if (
+            client.user is not None
+            and recent.author.id
+            != client.user.id
+        ):
+            continue
+
+        round_type = _round_type_for_message(
+            recent
+        )
+        if round_type is not None:
+            return round_type
+
+    return None
+
+
 
 async def post_guess(
     channel
@@ -1414,6 +1438,7 @@ def next_ten_minute_slot():
 async def start_round(channel, round_type, reason="schedule"):
     global CURRENT_ROUND_TYPE
     global FORCED_NEXT_TYPE
+    global LAST_ROUND_TYPE
 
     if round_type not in {"chatter", "chess"}:
         return False
@@ -1463,6 +1488,7 @@ async def start_round(channel, round_type, reason="schedule"):
             except Exception:
                 pass
         finally:
+            LAST_ROUND_TYPE = round_type
             CURRENT_ROUND_TYPE = None
             NEXT_ROUND_EVENT.clear()
             _clear_private_guess_answer()
@@ -1474,7 +1500,7 @@ async def start_round(channel, round_type, reason="schedule"):
         # Let the answer/reward messages settle before the next poll appears.
         await asyncio.sleep(2)
         asyncio.create_task(
-            start_round(
+            start_round_with_retry(
                 channel,
                 forced,
                 reason="!next",
@@ -1482,6 +1508,36 @@ async def start_round(channel, round_type, reason="schedule"):
         )
 
     return True
+
+
+async def start_round_with_retry(
+    channel,
+    round_type,
+    reason="!next",
+    attempts=8,
+):
+    """Start a requested round, retrying through brief Discord poll-state lag."""
+    for attempt in range(attempts):
+        # If another task already started a round, the user already got a new game.
+        if CURRENT_ROUND_TYPE is not None:
+            return True
+
+        started = await start_round(
+            channel,
+            round_type,
+            reason=reason,
+        )
+        if started:
+            return True
+
+        if attempt < attempts - 1:
+            await asyncio.sleep(2)
+
+    print(
+        f"Guess {round_type} could not start after {attempts} attempts ({reason}).",
+        flush=True,
+    )
+    return False
 
 
 async def scheduler_loop(channel):
@@ -1526,8 +1582,32 @@ async def command_handler(message):
 
     if command in {"!next", "!n"}:
         if CURRENT_ROUND_TYPE is None:
+            last_type = LAST_ROUND_TYPE
+            if last_type is None:
+                last_type = await latest_round_type(
+                    message.channel
+                )
+
+            target_type = (
+                "chess"
+                if last_type == "chatter"
+                else "chatter"
+                if last_type == "chess"
+                else scheduled_round_type(
+                    next_ten_minute_slot()
+                ) or "chatter"
+            )
+
             await message.channel.send(
-                "⏭️ **There is no active Guess round to skip.**"
+                f"⏭️ **No active Guess round — starting Guess the "
+                f"{'Chatter' if target_type == 'chatter' else 'Chess Chatter'} now.**"
+            )
+            asyncio.create_task(
+                start_round_with_retry(
+                    message.channel,
+                    target_type,
+                    reason="!next-idle",
+                )
             )
             return
 
