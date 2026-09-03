@@ -1,47 +1,62 @@
 {
   "latest_random_puzzle": {
-    "url": "https://lichess.org/training/mGAcm",
-    "title": "Lichess • 1580",
-    "fen": "r4r2/1p1b1p1p/p3p1kP/5RP1/8/4B3/P5Pn/3R2K1 w - - 0 31",
-    "current_fen": "r4r2/1p1b1p1p/p3p1kP/5RP1/8/4B3/P5Pn/3R2K1 w - - 0 31",
-    "pgn": "Rf6+ Kh5 Kxh2",
+    "url": "https://lichess.org/training/cT8X9",
+    "title": "Lichess • 1566",
+    "fen": "r2q2k1/1p3r2/2p2p1Q/p3n3/P2p1N2/3P4/1PP3PP/R4RK1 b - - 2 19",
+    "current_fen": "r2q2k1/1p3r2/2p2p1Q/p3n3/P2p1N2/3P4/1PP3PP/R4RK1 b - - 2 19",
+    "pgn": "Rh7 Ne6 Rxh6 Nxd8 Rxd8",
     "all_moves": [
       {
-        "uci": "f5f6",
-        "san": "Rf6+",
-        "color": "white"
-      },
-      {
-        "uci": "g6h5",
-        "san": "Kh5",
+        "uci": "f7h7",
+        "san": "Rh7",
         "color": "black"
       },
       {
-        "uci": "g1h2",
-        "san": "Kxh2",
+        "uci": "f4e6",
+        "san": "Ne6",
         "color": "white"
+      },
+      {
+        "uci": "h7h6",
+        "san": "Rxh6",
+        "color": "black"
+      },
+      {
+        "uci": "e6d8",
+        "san": "Nxd8",
+        "color": "white"
+      },
+      {
+        "uci": "a8d8",
+        "san": "Rxd8",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "f5f6",
-        "san": "Rf6+",
-        "color": "white"
+        "uci": "f7h7",
+        "san": "Rh7",
+        "color": "black"
       },
       {
-        "uci": "g1h2",
-        "san": "Kxh2",
-        "color": "white"
+        "uci": "h7h6",
+        "san": "Rxh6",
+        "color": "black"
+      },
+      {
+        "uci": "a8d8",
+        "san": "Rxd8",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-09-03T14:05:27.144078+00:00",
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-09-03T14:05:27.595605+00:00",
     "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_1788444327144",
+    "puzzle_id": "random_1788444327595",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
