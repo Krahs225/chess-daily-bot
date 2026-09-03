@@ -1,64 +1,87 @@
 {
   "latest_random_puzzle": {
-    "url": "https://lichess.org/training/SgoGr",
-    "title": "Lichess • 2289",
-    "fen": "8/8/p2k3p/4pKp1/2P3P1/7P/P7/8 b - - 2 37",
-    "current_fen": "8/8/7p/p1k1pKp1/6P1/7P/P7/8 w - - 0 39",
-    "pgn": "a5 c5+ Kxc5",
+    "url": "https://lichess.org/training/lR5he",
+    "title": "Lichess • 2730",
+    "fen": "8/6p1/2k5/5p2/3K1P2/6Pp/7P/8 w - - 2 34",
+    "current_fen": "8/6p1/2k5/5p2/3K1P2/6Pp/7P/8 w - - 2 34",
+    "pgn": "Ke5 g6 Kf6 Kd5 Kg5 Kd4 Kh4",
     "all_moves": [
       {
-        "uci": "a6a5",
-        "san": "a5",
-        "color": "black"
-      },
-      {
-        "uci": "c4c5",
-        "san": "c5+",
+        "uci": "d4e5",
+        "san": "Ke5",
         "color": "white"
       },
       {
-        "uci": "d6c5",
-        "san": "Kxc5",
+        "uci": "g7g6",
+        "san": "g6",
         "color": "black"
+      },
+      {
+        "uci": "e5f6",
+        "san": "Kf6",
+        "color": "white"
+      },
+      {
+        "uci": "c6d5",
+        "san": "Kd5",
+        "color": "black"
+      },
+      {
+        "uci": "f6g5",
+        "san": "Kg5",
+        "color": "white"
+      },
+      {
+        "uci": "d5d4",
+        "san": "Kd4",
+        "color": "black"
+      },
+      {
+        "uci": "g5h4",
+        "san": "Kh4",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a6a5",
-        "san": "a5",
-        "color": "black"
+        "uci": "d4e5",
+        "san": "Ke5",
+        "color": "white"
       },
       {
-        "uci": "d6c5",
-        "san": "Kxc5",
-        "color": "black"
+        "uci": "e5f6",
+        "san": "Kf6",
+        "color": "white"
+      },
+      {
+        "uci": "f6g5",
+        "san": "Kg5",
+        "color": "white"
+      },
+      {
+        "uci": "g5h4",
+        "san": "Kh4",
+        "color": "white"
       }
     ],
-    "player_color": "black",
-    "player_move_count": 2,
-    "posted_at": "2026-09-03T17:50:18.207346+00:00",
-    "answer_posted": true,
+    "player_color": "white",
+    "player_move_count": 4,
+    "posted_at": "2026-09-03T17:50:57.381917+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_SgoGr_1788457818207",
-    "rating": 2289,
-    "rp_band": 3,
-    "next_solution_index": 3,
-    "next_player_index": 2,
-    "solved": true,
-    "message_id": 1545128827359854624,
-    "attempted_users": {
-      "442597396195704832": {
-        "name": "Thice",
-        "move": "kxc5",
-        "correct": true,
-        "timestamp": "2026-09-03T17:50:31.509138+00:00"
-      }
-    },
-    "first_move_user_id": "442597396195704832",
-    "first_move_user_name": "Thice",
-    "first_move_awarded": true,
+    "puzzle_id": "random_lR5he_1788457857381",
+    "rating": 2730,
+    "rp_band": 5,
+    "next_solution_index": 0,
+    "next_player_index": 0,
+    "solved": false,
+    "message_id": null,
+    "attempted_users": {},
+    "first_move_user_id": null,
+    "first_move_user_name": null,
+    "first_move_awarded": false,
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
