@@ -1,54 +1,69 @@
 {
   "latest_random_puzzle": {
-    "url": "https://lichess.org/training/F6byS",
-    "title": "Lichess • 1315",
-    "fen": "R1b1k2r/4qn2/4Q2p/4P3/3P1P2/1P6/2r3PP/5RK1 w k - 1 32",
-    "current_fen": "R1b1k2r/4qn2/4Q2p/4P3/3P1P2/1P6/2r3PP/5RK1 w k - 1 32",
-    "pgn": "Rxc8+ Rxc8 Qxc8+",
+    "url": "https://lichess.org/training/GCEbv",
+    "title": "Lichess • 2305",
+    "fen": "r4rk1/ppq3pp/1bn4B/1B6/1PN1n1Q1/P2p4/5PPP/3R1RK1 b - - 1 17",
+    "current_fen": "r4rk1/ppq3pp/1bn4B/1B6/1PN1n1Q1/P2p4/5PPP/3R1RK1 b - - 1 17",
+    "pgn": "Nxf2 Qe6+ Kh8 Nxb6 Qxb6",
     "all_moves": [
       {
-        "uci": "a8c8",
-        "san": "Rxc8+",
-        "color": "white"
-      },
-      {
-        "uci": "c2c8",
-        "san": "Rxc8",
+        "uci": "e4f2",
+        "san": "Nxf2",
         "color": "black"
       },
       {
-        "uci": "e6c8",
-        "san": "Qxc8+",
+        "uci": "g4e6",
+        "san": "Qe6+",
         "color": "white"
+      },
+      {
+        "uci": "g8h8",
+        "san": "Kh8",
+        "color": "black"
+      },
+      {
+        "uci": "c4b6",
+        "san": "Nxb6",
+        "color": "white"
+      },
+      {
+        "uci": "c7b6",
+        "san": "Qxb6",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "a8c8",
-        "san": "Rxc8+",
-        "color": "white"
+        "uci": "e4f2",
+        "san": "Nxf2",
+        "color": "black"
       },
       {
-        "uci": "e6c8",
-        "san": "Qxc8+",
-        "color": "white"
+        "uci": "g8h8",
+        "san": "Kh8",
+        "color": "black"
+      },
+      {
+        "uci": "c7b6",
+        "san": "Qxb6",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-09-04T17:22:16.817835+00:00",
-    "answer_posted": true,
+    "player_color": "black",
+    "player_move_count": 3,
+    "posted_at": "2026-09-04T23:55:14.571523+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "random_F6byS_1788542536817",
-    "rating": 1315,
-    "rp_band": 0,
+    "puzzle_id": "random_GCEbv_1788566114571",
+    "rating": 2305,
+    "rp_band": 3,
     "boss": false,
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1545484158443327620,
+    "message_id": 1545583050539274296,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
