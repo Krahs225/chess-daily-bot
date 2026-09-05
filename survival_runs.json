@@ -302,79 +302,6 @@
       },
       "history": []
     },
-    "rp": {
-      "name": "rp",
-      "best_puzzle": 3,
-      "best_difficulty": 1337,
-      "best_completed_at": "2026-09-03T20:10:47.467328+00:00",
-      "current": {
-        "run_id": "rp:1788466197",
-        "started_by_id": "442597396195704832",
-        "captain_id": "442597396195704832",
-        "captain_name": "Thice",
-        "mode": "coop",
-        "status": "paused",
-        "started_at": "2026-09-03T20:09:57.193516+00:00",
-        "last_activity": 1788466266.7953496,
-        "paused_reason": "three strikes",
-        "puzzle_number": 3,
-        "strikes": 3,
-        "best_difficulty": 1337,
-        "used_puzzle_ids": [
-          "qt8uk",
-          "FLFvl",
-          "CrJqc"
-        ],
-        "members": {
-          "442597396195704832": {
-            "name": "Thice",
-            "correct": 4,
-            "wrong": 3
-          }
-        },
-        "puzzle": {
-          "id": "CrJqc",
-          "rating": 1315,
-          "themes": "endgame short crushing",
-          "url": "https://lichess.org/training/CrJqc",
-          "start_fen": "8/2p1qpk1/6p1/1Q6/p2P3p/P1P4P/1P3RPK/4r3 b - - 0 33",
-          "current_fen": "8/2p1qpk1/6p1/1Q6/p2P3p/P1P4P/1P3RPK/4r3 b - - 0 33",
-          "solution": [
-            {
-              "uci": "e7d6",
-              "san": "Qd6+",
-              "color": "black"
-            },
-            {
-              "uci": "b5e5",
-              "san": "Qe5+",
-              "color": "white"
-            },
-            {
-              "uci": "e1e5",
-              "san": "Rxe5",
-              "color": "black"
-            }
-          ],
-          "player_color": "black",
-          "next_solution_index": 0,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [
-            "442597396195704832"
-          ],
-          "last_move_san": null,
-          "accepted_moves": []
-        },
-        "first_solver_id": null,
-        "first_solver_name": null,
-        "helper_candidates": {},
-        "helper_awarded": []
-      },
-      "history": []
-    },
     "shark": {
       "name": "Shark",
       "best_puzzle": 4,
@@ -533,7 +460,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T19:40:31.794958+00:00",
-        "last_activity": 1788637856.6436577,
+        "last_activity": 1788637858.0810938,
         "paused_reason": null,
         "puzzle_number": 13,
         "strikes": 0,
