@@ -328,7 +328,8 @@ def game_date_from_pgn(
 
 
 def is_qualifying_game(
-    game
+    game,
+    allow_unrated=False,
 ):
 
     rated_value = game.get(
@@ -347,7 +348,7 @@ def is_qualifying_game(
         }
     )
 
-    if not is_rated:
+    if not is_rated and not allow_unrated:
         return False
 
     time_class = str(
@@ -419,7 +420,8 @@ def prepare_game(
     game,
 ):
     if not is_qualifying_game(
-        game
+        game,
+        allow_unrated=(display_name == "Thice"),
     ):
         return None
 
