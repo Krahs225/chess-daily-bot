@@ -240,7 +240,7 @@ def _positive_float_env(name, default, minimum=0.05, maximum=None):
 STOCKFISH_THREADS = _positive_int_env("STOCKFISH_THREADS", 1, 1, 4)
 STOCKFISH_HASH_MB = _positive_int_env("STOCKFISH_HASH_MB", 64, 16, 512)
 STOCKFISH_MOVE_TIME = _positive_float_env("STOCKFISH_MOVE_TIME", 1.0, 0.1, 10.0)
-STOCKFISH_ANALYSIS_TIME = _positive_float_env("STOCKFISH_ANALYSIS_TIME", 0.08, 0.05, 1.0)
+STOCKFISH_ANALYSIS_TIME = _positive_float_env("STOCKFISH_ANALYSIS_TIME", 0.15, 0.05, 2.0)
 STOCKFISH_ANALYSIS_MAX_PLIES = _positive_int_env("STOCKFISH_ANALYSIS_MAX_PLIES", 200, 20, 400)
 
 
@@ -541,6 +541,11 @@ def _engine_score_cp(info, color):
 
 
 def _classify_centipawn_loss(loss_cp):
+    """Legacy CPL bucket kept for compatibility/debug output.
+
+    User-facing Game Review classifications use expected-points / winning-chance
+    loss instead; raw centipawns are too harsh once a game is already won/lost.
+    """
     loss = max(0, int(loss_cp))
     if loss >= 200:
         return "blunder"
@@ -552,15 +557,95 @@ def _classify_centipawn_loss(loss_cp):
 
 
 def _stockfish_accuracy_from_acpl(acpl):
-    """Convert ACPL into a stable 0-100 Stockfish-based accuracy estimate.
+    """Deprecated compatibility helper for older callers.
 
-    This is intentionally *not* labelled as Chess.com's proprietary CAPS2
-    score. It is a local Discord-bot metric derived from the same Stockfish
-    centipawn-loss analysis used for ACPL.
+    New Game Review accuracy no longer uses ACPL; this wrapper remains so no
+    external import/caller breaks if it referenced the older helper.
     """
     value = max(0.0, float(acpl or 0.0))
     accuracy = 100.0 * math.exp(-value / 300.0)
     return round(max(0.0, min(100.0, accuracy)), 1)
+
+
+def _win_percent_from_cp(cp):
+    """Map Stockfish centipawns to a 0..100 winning-chance scale.
+
+    This uses Lichess' published empirical conversion.  The centipawn value is
+    capped at +/-1000 like their implementation so huge mate/won-position
+    scores do not make every later move look catastrophically different.
+    """
+    value = max(-1000.0, min(1000.0, float(cp or 0.0)))
+    return 50.0 + 50.0 * (2.0 / (1.0 + math.exp(-0.00368208 * value)) - 1.0)
+
+
+def _move_accuracy_from_win_loss(win_loss_pct):
+    """Published Lichess move-accuracy curve, clamped to 0..100."""
+    loss = max(0.0, float(win_loss_pct or 0.0))
+    accuracy = 103.1668 * math.exp(-0.04354 * loss) - 3.1669
+    return max(0.0, min(100.0, accuracy))
+
+
+def _population_stddev(values):
+    values = [float(v) for v in values]
+    if not values:
+        return 0.0
+    mean = sum(values) / len(values)
+    return math.sqrt(sum((value - mean) ** 2 for value in values) / len(values))
+
+
+def _game_accuracy_from_moves(move_rows, position_white_win_pcts, color):
+    """Lichess-style game accuracy: volatility-weighted + harmonic mean.
+
+    This avoids the old ACPL exponential that could turn one bad tactical game
+    into single-digit accuracy.  It also avoids repeatedly punishing moves in a
+    position whose practical outcome was already decided.
+    """
+    rows = list(move_rows or [])
+    if not rows:
+        return 0.0
+
+    positions = [float(v) for v in list(position_white_win_pcts or [])]
+    expected_positions = len(rows) + 1
+    if len(positions) < expected_positions:
+        # Safe fallback for malformed/truncated internal data.
+        selected = [float(r.get("move_accuracy", 0.0)) for r in rows if r.get("mover_color") == color]
+        if not selected:
+            return 0.0
+        return round(sum(selected) / len(selected), 1)
+
+    ply_count = len(rows)
+    window_size = max(2, min(8, ply_count // 10))
+    window_size = min(window_size, len(positions))
+
+    if window_size < 2:
+        weights = [1.0] * ply_count
+    else:
+        first = positions[:window_size]
+        windows = [first] * max(0, window_size - 2)
+        windows.extend(positions[i:i + window_size] for i in range(0, len(positions) - window_size + 1))
+        if len(windows) < ply_count:
+            windows.extend([positions[-window_size:]] * (ply_count - len(windows)))
+        weights = [max(0.5, min(12.0, _population_stddev(window))) for window in windows[:ply_count]]
+
+    pairs = []
+    for index, row in enumerate(rows):
+        if row.get("mover_color") != color:
+            continue
+        accuracy = max(0.0, min(100.0, float(row.get("move_accuracy", 0.0))))
+        pairs.append((accuracy, float(weights[index] if index < len(weights) else 1.0)))
+
+    if not pairs:
+        return 0.0
+
+    weight_sum = sum(weight for _, weight in pairs)
+    weighted = sum(accuracy * weight for accuracy, weight in pairs) / max(1e-9, weight_sum)
+
+    if any(accuracy <= 0.0 for accuracy, _ in pairs):
+        harmonic = 0.0
+    else:
+        harmonic = len(pairs) / sum(1.0 / accuracy for accuracy, _ in pairs)
+
+    return round(max(0.0, min(100.0, (weighted + harmonic) / 2.0)), 1)
 
 
 _REVIEW_PIECE_VALUES_CP = {
@@ -573,73 +658,101 @@ _REVIEW_PIECE_VALUES_CP = {
 }
 
 
-def _offered_material_cp(board_after, played_move, mover):
-    """Small heuristic used only for the bot's local 'Brilliant' label.
+def _captured_material_cp(board_before, played_move):
+    if board_before.is_en_passant(played_move):
+        return 100
+    captured = board_before.piece_at(played_move.to_square)
+    if captured is None:
+        return 0
+    return int(_REVIEW_PIECE_VALUES_CP.get(captured.piece_type, 0))
 
-    A move can qualify as a sacrifice candidate when the moved piece can be
-    legally captured immediately by a cheaper enemy piece. This is deliberately
-    conservative and is not presented as Chess.com's proprietary Brilliant tag.
+
+def _offered_material_cp(board_after, played_move, mover, captured_material_cp=0):
+    """Estimate *net* material intentionally offered by the played move.
+
+    The previous heuristic incorrectly called some normal trades sacrifices
+    (for example a queen exchange), because it ignored material captured by the
+    move itself.  This version subtracts that gain and only counts a piece that
+    the opponent can legally take immediately.
     """
     piece = board_after.piece_at(played_move.to_square)
-    if piece is None or piece.color != mover:
+    if piece is None or piece.color != mover or played_move.promotion:
         return 0
     offered_value = int(_REVIEW_PIECE_VALUES_CP.get(piece.piece_type, 0))
     if offered_value < 300:
         return 0
 
-    cheapest_attacker = None
+    can_be_taken = False
     for reply in list(board_after.legal_moves):
         if reply.to_square != played_move.to_square or not board_after.is_capture(reply):
             continue
         attacker = board_after.piece_at(reply.from_square)
         if attacker is None:
             continue
-        value = int(_REVIEW_PIECE_VALUES_CP.get(attacker.piece_type, 20000))
-        if cheapest_attacker is None or value < cheapest_attacker:
-            cheapest_attacker = value
+        attacker_value = int(_REVIEW_PIECE_VALUES_CP.get(attacker.piece_type, 20000))
+        if attacker_value <= offered_value:
+            can_be_taken = True
+            break
 
-    if cheapest_attacker is None:
+    if not can_be_taken:
         return 0
-    return max(0, offered_value - cheapest_attacker)
+    return max(0, offered_value - max(0, int(captured_material_cp or 0)))
 
 
-def _detailed_move_classification(loss_cp, is_best, sacrifice_cp, actual_score):
-    loss = max(0, int(loss_cp))
-    if is_best and sacrifice_cp >= 200 and actual_score >= -100:
+def _detailed_move_classification(win_loss_pct, is_best, sacrifice_cp, actual_score, second_best_score=None):
+    """Chess.com-like expected-points buckets, driven by Stockfish 19.
+
+    Chess.com's exact Expected Points model is rating-dependent and proprietary,
+    so we use Stockfish winning-chance loss on the same public threshold bands:
+    0-2 excellent, 2-5 good, 5-10 inaccuracy, 10-20 mistake, 20+ blunder.
+    """
+    loss = max(0.0, float(win_loss_pct or 0.0))
+    actual_wp = _win_percent_from_cp(actual_score)
+    second_wp = None if second_best_score is None else _win_percent_from_cp(second_best_score)
+
+    # Conservative local Brilliant: exact engine best, real net piece sacrifice,
+    # still at least equal afterwards, and the game was not already trivially won
+    # by another available move.  This removes many false-positive "brilliants".
+    brilliant_ok = (
+        bool(is_best)
+        and int(sacrifice_cp or 0) >= 250
+        and actual_wp >= 50.0
+        and (second_wp is None or second_wp < 90.0)
+    )
+    if brilliant_ok:
         return "brilliant"
     if is_best:
         return "best"
-    if loss <= 10:
+    if loss <= 2.0:
         return "excellent"
-    if loss < 50:
+    if loss <= 5.0:
         return "good"
-    if loss < 100:
+    if loss <= 10.0:
         return "inaccuracy"
-    if loss < 200:
+    if loss <= 20.0:
         return "mistake"
     return "blunder"
 
 
-def _move_review_comment(classification, loss_cp, best_san, sacrifice_cp=0):
-    loss_pawns = max(0.0, float(loss_cp) / 100.0)
+def _move_review_comment(classification, win_loss_pct, best_san, sacrifice_cp=0):
+    loss = max(0.0, float(win_loss_pct or 0.0))
     best_text = str(best_san or "the engine move")
     if classification == "brilliant":
         return (
-            f"Stockfish's top choice and a tactical material offer "
-            f"(~{max(2.0, sacrifice_cp / 100.0):.1f} pawn value)."
+            f"Stockfish's top choice and a real tactical piece sacrifice "
+            f"(~{max(2.5, sacrifice_cp / 100.0):.1f} pawn value)."
         )
     if classification == "best":
         return "Matches Stockfish's top choice."
     if classification == "excellent":
-        return f"Very close to best. Only ~{loss_pawns:.1f} pawn eval lost."
+        return f"Very close to best; winning chances changed by only ~{loss:.1f}%."
     if classification == "good":
-        return f"Solid move. Small eval loss (~{loss_pawns:.1f})."
+        return f"Solid move; only a small winning-chance drop (~{loss:.1f}%)."
     if classification == "inaccuracy":
-        return f"Slight slip (~{loss_pawns:.1f}). Better was {best_text}."
+        return f"Small slip (~{loss:.1f}% winning chance). Better was {best_text}."
     if classification == "mistake":
-        return f"Cost about {loss_pawns:.1f} pawns. Better was {best_text}."
-    return f"Big eval drop (~{loss_pawns:.1f} pawns). Best was {best_text}."
-
+        return f"A meaningful error (~{loss:.1f}% winning chance). Better was {best_text}."
+    return f"A major swing (~{loss:.1f}% winning chance). Best was {best_text}."
 
 
 def stockfish_position_eval_cp(board, pov_color=chess.WHITE, analysis_time=None):
@@ -659,14 +772,12 @@ def stockfish_position_eval_cp(board, pov_color=chess.WHITE, analysis_time=None)
         return int(_engine_score_cp(info, color))
 
 def analyse_game_moves(san_moves, max_plies=None, start_fen=None):
-    """Analyse a finished game with full-strength Stockfish.
+    """Analyse a finished game with full-strength Stockfish 19.
 
-    ``start_fen`` is optional and keeps existing standard-start callers fully
-    backward compatible while allowing ``!review`` to analyse PGNs that use a
-    custom FEN start position. Returns compact summary stats plus a per-move
-    review list used by the clickable Discord game-review viewer. 'Brilliant'
-    is a conservative local Stockfish heuristic (best move + meaningful
-    tactical material offer), not Chess.com's proprietary classification.
+    Accuracy and ordinary move classifications are based on *winning-chance
+    loss*, not raw centipawn loss.  This is materially closer to modern Game
+    Review behaviour because a move in an already-lost position is not punished
+    again as if the game were still equal.
     """
     moves = [str(item) for item in list(san_moves or [])]
     empty_side = {
@@ -699,39 +810,35 @@ def analyse_game_moves(san_moves, max_plies=None, start_fen=None):
         board = chess.Board(str(start_fen)) if start_fen else chess.Board()
     except Exception as error:
         raise ValueError(f"Invalid PGN start FEN: {error}") from error
-    side_losses = {chess.WHITE: [], chess.BLACK: []}
+
+    side_losses_cp = {chess.WHITE: [], chess.BLACK: []}
     side_counts = {
-        chess.WHITE: {
-            "brilliant": 0,
-            "best": 0,
-            "excellent": 0,
-            "good": 0,
-            "inaccuracy": 0,
-            "mistake": 0,
-            "blunder": 0,
-        },
-        chess.BLACK: {
-            "brilliant": 0,
-            "best": 0,
-            "excellent": 0,
-            "good": 0,
-            "inaccuracy": 0,
-            "mistake": 0,
-            "blunder": 0,
-        },
+        chess.WHITE: {"brilliant": 0, "best": 0, "excellent": 0, "good": 0, "inaccuracy": 0, "mistake": 0, "blunder": 0},
+        chess.BLACK: {"brilliant": 0, "best": 0, "excellent": 0, "good": 0, "inaccuracy": 0, "mistake": 0, "blunder": 0},
     }
     moments = []
+    position_white_win_pcts = []
+
+    def _as_lines(result):
+        if isinstance(result, list):
+            return [item for item in result if isinstance(item, dict)]
+        return [result] if isinstance(result, dict) else []
 
     with _STOCKFISH_LOCK:
         engine = _get_stockfish_engine()
         engine.configure(_full_strength_config(engine))
         analysis_limit = chess.engine.Limit(time=STOCKFISH_ANALYSIS_TIME)
-        before_info = engine.analyse(board, analysis_limit)
+        before_lines = _as_lines(engine.analyse(board, analysis_limit, multipv=2))
+        if not before_lines:
+            raise RuntimeError("Stockfish returned no analysis for the starting position.")
         engine_name = str(engine.id.get("name") or "Stockfish")
+        position_white_win_pcts.append(_win_percent_from_cp(_engine_score_cp(before_lines[0], chess.WHITE)))
 
         for ply_index, san in enumerate(moves):
             mover = board.turn
+            before_info = before_lines[0]
             best_score = _engine_score_cp(before_info, mover)
+            second_best_score = _engine_score_cp(before_lines[1], mover) if len(before_lines) > 1 else None
             pv = list(before_info.get("pv") or [])
             best_move = pv[0] if pv else None
             best_san = None
@@ -747,9 +854,10 @@ def analyse_game_moves(san_moves, max_plies=None, start_fen=None):
             except Exception as error:
                 raise ValueError(f"Could not parse recorded chess move {san!r}: {error}") from error
 
+            captured_cp = _captured_material_cp(board, played_move)
             is_best = best_move is not None and played_move == best_move
             board.push(played_move)
-            sacrifice_cp = _offered_material_cp(board, played_move, mover) if is_best else 0
+            sacrifice_cp = _offered_material_cp(board, played_move, mover, captured_cp) if is_best else 0
 
             if board.is_game_over(claim_draw=True):
                 outcome = board.outcome(claim_draw=True)
@@ -759,19 +867,27 @@ def analyse_game_moves(san_moves, max_plies=None, start_fen=None):
                 else:
                     actual_score = 100000 if outcome.winner == mover else -100000
                     eval_white_cp = 100000 if outcome.winner == chess.WHITE else -100000
-                after_info = None
+                after_lines = []
             else:
-                after_info = engine.analyse(board, analysis_limit)
-                actual_score = _engine_score_cp(after_info, mover)
-                eval_white_cp = _engine_score_cp(after_info, chess.WHITE)
+                after_lines = _as_lines(engine.analyse(board, analysis_limit, multipv=2))
+                if not after_lines:
+                    raise RuntimeError(f"Stockfish returned no analysis after move {ply_index + 1}.")
+                actual_score = _engine_score_cp(after_lines[0], mover)
+                eval_white_cp = _engine_score_cp(after_lines[0], chess.WHITE)
 
             loss_cp = max(0, min(10000, best_score - actual_score))
-            side_losses[mover].append(loss_cp)
+            best_wp = _win_percent_from_cp(best_score)
+            actual_wp = _win_percent_from_cp(actual_score)
+            win_loss_pct = max(0.0, min(100.0, best_wp - actual_wp))
+            move_accuracy = _move_accuracy_from_win_loss(win_loss_pct)
+            side_losses_cp[mover].append(loss_cp)
+
             classification = _detailed_move_classification(
-                loss_cp,
+                win_loss_pct,
                 is_best,
                 sacrifice_cp,
                 actual_score,
+                second_best_score,
             )
             side_counts[mover][classification] += 1
 
@@ -783,31 +899,35 @@ def analyse_game_moves(san_moves, max_plies=None, start_fen=None):
                 "played": played_san,
                 "best": best_san or played_san,
                 "loss_cp": int(loss_cp),
+                "win_loss_pct": round(win_loss_pct, 3),
+                "move_accuracy": round(move_accuracy, 2),
                 "side": "white" if mover == chess.WHITE else "black",
+                "mover_color": mover,
                 "classification": classification,
-                "category": _classify_centipawn_loss(loss_cp),
+                "category": classification if classification in {"inaccuracy", "mistake", "blunder"} else "ok",
                 "is_best": bool(is_best),
                 "sacrifice_cp": int(sacrifice_cp),
                 "eval_white_cp": int(eval_white_cp),
                 "fen": board.fen(),
                 "comment": _move_review_comment(
                     classification,
-                    loss_cp,
+                    win_loss_pct,
                     best_san or played_san,
                     sacrifice_cp,
                 ),
             })
+            position_white_win_pcts.append(_win_percent_from_cp(eval_white_cp))
 
-            if after_info is None:
+            if not after_lines:
                 break
-            before_info = after_info
+            before_lines = after_lines
 
     def side_summary(color):
-        losses = side_losses[color]
+        losses = side_losses_cp[color]
         counts = side_counts[color]
         acpl = int(round(sum(losses) / len(losses))) if losses else 0
         return {
-            "accuracy": _stockfish_accuracy_from_acpl(acpl) if losses else 0.0,
+            "accuracy": _game_accuracy_from_moves(moments, position_white_win_pcts, color),
             "acpl": acpl,
             "brilliants": int(counts["brilliant"]),
             "bests": int(counts["best"]),
@@ -818,20 +938,21 @@ def analyse_game_moves(san_moves, max_plies=None, start_fen=None):
             "blunders": int(counts["blunder"]),
         }
 
-    important = [item for item in moments if item["loss_cp"] >= 50]
-    important.sort(key=lambda item: (-item["loss_cp"], item["ply"]))
+    important = [item for item in moments if float(item.get("win_loss_pct", 0.0)) >= 5.0]
+    important.sort(key=lambda item: (-float(item.get("win_loss_pct", 0.0)), item["ply"]))
 
     return {
         "engine": engine_name,
-        "analysed_plies": sum(len(v) for v in side_losses.values()),
+        "analysed_plies": sum(len(v) for v in side_losses_cp.values()),
         "white": side_summary(chess.WHITE),
         "black": side_summary(chess.BLACK),
         "moves": moments,
         "turning_points": important[:3],
         "truncated": bool(truncated),
         "analysis_time_per_position": STOCKFISH_ANALYSIS_TIME,
-        "accuracy_model": "stockfish-acpl-v2-review",
-        "brilliant_model": "local-best-sacrifice-v1",
+        "accuracy_model": "stockfish-winprob-v3-lichess-game-curve",
+        "classification_model": "expected-points-v2-public-bands",
+        "brilliant_model": "local-net-sacrifice-v2",
     }
 
 
