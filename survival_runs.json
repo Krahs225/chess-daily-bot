@@ -345,9 +345,9 @@
     },
     "sh4rkmate": {
       "name": "Sh4rkmate",
-      "best_puzzle": 15,
+      "best_puzzle": 16,
       "best_difficulty": 1539,
-      "best_completed_at": "2026-09-05T21:11:47.927637+00:00",
+      "best_completed_at": "2026-09-05T21:12:09.923964+00:00",
       "current": {
         "run_id": "sh4rkmate:1788637231",
         "started_by_id": "442597396195704832",
@@ -358,7 +358,7 @@
         "started_at": "2026-09-05T19:40:31.794958+00:00",
         "last_activity": 1788642725.6108952,
         "paused_reason": "manually stopped",
-        "puzzle_number": 15,
+        "puzzle_number": 16,
         "strikes": 0,
         "best_difficulty": 1539,
         "used_puzzle_ids": [
@@ -376,7 +376,8 @@
           "tSDkW",
           "4I58s",
           "iQUo9",
-          "JhxW0"
+          "JhxW0",
+          "CsdbT"
         ],
         "members": {
           "442597396195704832": {
@@ -386,80 +387,44 @@
           }
         },
         "puzzle": {
-          "id": "JhxW0",
-          "rating": 1516,
-          "themes": "long crushing middlegame",
-          "url": "https://lichess.org/training/JhxW0",
-          "start_fen": "r1b1k2r/pp6/2p1p1p1/q2pPpN1/Pb1P2pP/5PP1/P1PBQ3/2KR3R b kq - 0 20",
-          "current_fen": "r1b1k2r/pp6/1q2p1p1/1p1pPpN1/P2P2pP/b4PP1/P1PB4/1K1R3R w kq - 0 23",
+          "id": "CsdbT",
+          "rating": 1425,
+          "themes": "mateIn2 middlegame short fork",
+          "url": "https://lichess.org/training/CsdbT",
+          "start_fen": "3r1k2/pp3p2/2bR1q2/7p/1Q6/1P2P1p1/P1P1BPPP/3R2K1 b - - 0 22",
+          "current_fen": "3r1k2/pp3p2/2bR1q2/7p/1Q6/1P2P1p1/P1P1BPPP/3R2K1 b - - 0 22",
           "solution": [
             {
-              "uci": "b4a3",
-              "san": "Ba3+",
+              "uci": "f6f2",
+              "san": "Qxf2+",
               "color": "black"
             },
             {
-              "uci": "c1b1",
-              "san": "Kb1",
+              "uci": "g1h1",
+              "san": "Kh1",
               "color": "white"
             },
             {
-              "uci": "a5b6",
-              "san": "Qb6+",
-              "color": "black"
-            },
-            {
-              "uci": "e2b5",
-              "san": "Qb5",
-              "color": "white"
-            },
-            {
-              "uci": "c6b5",
-              "san": "cxb5",
+              "uci": "f2g2",
+              "san": "Qxg2#",
               "color": "black"
             }
           ],
           "player_color": "black",
-          "next_solution_index": 5,
+          "next_solution_index": 0,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "rated_users": [
-            "442597396195704832"
-          ],
-          "setup_move_uci": "b3a4",
-          "last_move_uci": "c6b5",
-          "last_move_san": "cxb5",
-          "accepted_moves": [
-            {
-              "san": "Ba3+",
-              "uci": "b4a3",
-              "accepted_at": 1788642715.554549,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Qb6+",
-              "uci": "a5b6",
-              "accepted_at": 1788642718.8728204,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "cxb5",
-              "uci": "c6b5",
-              "accepted_at": 1788642725.6107779,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "c6b5",
-          "last_accepted_move_san": "cxb5",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1788642725.6107771,
-          "position_before_last_move": "r1b1k2r/pp6/1qp1p1p1/1Q1pPpN1/P2P2pP/b4PP1/P1PB4/1K1R3R b kq - 4 22"
+          "rated_users": [],
+          "setup_move_uci": "d4d6",
+          "last_move_uci": "d4d6",
+          "last_move_san": null,
+          "accepted_moves": []
         },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": [],
         "shop_heart_purchased": false
