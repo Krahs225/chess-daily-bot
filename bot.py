@@ -345,7 +345,10 @@ PUZZLE_CHECK_INTERVAL = 5 * 60
 LEADERBOARD_INTERVAL = 24 * 60 * 60
 
 ANSWER_WINDOW = 12 * 60 * 60
-RANDOM_ANSWER_WINDOW = 12 * 60 * 60
+# Random / Practice / exact-rating puzzles should not keep listening to stray
+# chess moves for hours. Five minutes of inactivity closes the interactive
+# session; each genuine move attempt refreshes this timer.
+RANDOM_ANSWER_WINDOW = 5 * 60
 
 RUN_TIME = 5 * 60 * 60 + 50 * 60
 
@@ -2266,6 +2269,7 @@ async def post_exact_lichess_puzzle(
         puzzle["posted_at"] = (
             datetime.now(timezone.utc).isoformat()
         )
+        puzzle["last_activity_at"] = puzzle["posted_at"]
         puzzle["puzzle_id"] = (
             f"random_lichess_{rating}_"
             f"{raw['PuzzleId']}_"
@@ -5180,6 +5184,7 @@ async def post_random_puzzle(
                     timezone.utc
                 ).isoformat()
             )
+            puzzle["last_activity_at"] = puzzle["posted_at"]
 
             puzzle["puzzle_id"] = (
                 "random_"
@@ -5336,6 +5341,7 @@ async def post_practice_puzzle(channel, owner):
             )
             puzzle = build_puzzle(data)
             puzzle["posted_at"] = datetime.now(timezone.utc).isoformat()
+            puzzle["last_activity_at"] = puzzle["posted_at"]
             puzzle["puzzle_id"] = (
                 "practice_"
                 + str(data.get("lichess_id", "offline"))
@@ -5644,6 +5650,26 @@ def solution_is_correct(
 # PUZZLE OPEN?
 # =========================================================
 
+def _interactive_puzzle_activity_time(puzzle):
+    """Return the timestamp that controls an interactive puzzle's idle timer."""
+    if not isinstance(puzzle, dict):
+        return None
+
+    puzzle_id = str(puzzle.get("puzzle_id", ""))
+    if puzzle_id.startswith(("random_", "practice_")):
+        return puzzle.get("last_activity_at") or puzzle.get("posted_at")
+    return puzzle.get("posted_at")
+
+
+def _touch_interactive_puzzle(puzzle):
+    """Refresh inactivity only for Random/Practice/exact-rating sessions."""
+    if not isinstance(puzzle, dict):
+        return
+    puzzle_id = str(puzzle.get("puzzle_id", ""))
+    if puzzle_id.startswith(("random_", "practice_")):
+        puzzle["last_activity_at"] = datetime.now(timezone.utc).isoformat()
+
+
 def puzzle_is_open(
     puzzle,
     window
@@ -5658,26 +5684,22 @@ def puzzle_is_open(
     ):
         return False
 
-    posted_at = puzzle.get(
-        "posted_at"
-    )
+    activity_at = _interactive_puzzle_activity_time(puzzle)
 
-    if not posted_at:
+    if not activity_at:
         return False
 
     try:
-
-        posted_time = datetime.fromisoformat(
-            posted_at
-        )
-
-    except ValueError:
-
+        activity_time = datetime.fromisoformat(activity_at)
+    except (TypeError, ValueError):
         return False
+
+    if activity_time.tzinfo is None:
+        activity_time = activity_time.replace(tzinfo=timezone.utc)
 
     elapsed = (
         datetime.now(timezone.utc)
-        - posted_time
+        - activity_time.astimezone(timezone.utc)
     ).total_seconds()
 
     return elapsed < window
@@ -7778,6 +7800,11 @@ async def handle_random_answer(
             f"🔒 **This is {puzzle.get('practice_owner_name', 'someone else')}'s personal Practice puzzle.**"
         )
         return
+
+    # A permitted puzzle move attempt counts as activity. Crucially, this is
+    # reached only AFTER the stale-session check above, so a random chess move
+    # five+ minutes later can never revive an expired puzzle or trigger a penalty.
+    _touch_interactive_puzzle(puzzle)
 
     puzzle_label = (
         "♟️ Daily Puzzle"
