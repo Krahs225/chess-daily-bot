@@ -359,14 +359,19 @@ def _guess_button_emoji(value):
 
 
 class GuessCatalogPager(discord.ui.View):
-    def __init__(self, viewer_id, kind, page=1):
+    """Clickable Guess-channel board/piece browser with instant previews."""
+
+    def __init__(self, viewer_id, kind, page=1, selected_name=None):
         super().__init__(timeout=300)
         self.viewer_id = int(viewer_id)
-        self.kind = str(kind)
-        total_items = len(BOARD_THEMES) if self.kind == "board" else len(PIECE_SETS)
-        self.page_size = 25 if self.kind == "board" else 20
-        self.total_pages = max(1, math.ceil(total_items / self.page_size))
+        self.kind = "board" if str(kind) == "board" else "piece"
+        self.names = list(BOARD_THEMES) if self.kind == "board" else list(PIECE_SETS)
+        self.page_size = 5
+        self.total_pages = max(1, math.ceil(len(self.names) / self.page_size))
         self.page = max(1, min(int(page or 1), self.total_pages))
+        page_names = self._page_names()
+        wanted = str(selected_name or "").casefold()
+        self.selected_name = wanted if wanted in page_names else page_names[0]
         self._rebuild()
 
     async def interaction_check(self, interaction):
@@ -375,28 +380,189 @@ class GuessCatalogPager(discord.ui.View):
             return False
         return True
 
-    def render(self):
-        return guess_board_catalog_message(self.page) if self.kind == "board" else guess_piece_catalog_message(self.page)
+    def _page_names(self):
+        start = (self.page - 1) * self.page_size
+        return self.names[start:start + self.page_size]
 
-    def _rebuild(self):
+    def _display_name(self, name):
+        if self.kind == "board":
+            return BOARD_DISPLAY_NAMES.get(name, name.title())
+        return PIECE_DISPLAY_NAMES.get(name, name.title())
+
+    def render(self, profile=None):
+        selected = self.selected_name
+        display = self._display_name(selected)
+        price = BOARD_COST if self.kind == "board" else PIECE_COST
+        item_word = "board" if self.kind == "board" else "piece set"
+        owned = False
+        active = False
+        if profile is not None:
+            if self.kind == "board":
+                owned = selected == "classic" or selected in profile.get("boards", [])
+                active = selected == profile.get("active_board", "classic")
+            else:
+                owned = selected == "classic" or selected in profile.get("pieces", [])
+                active = selected == profile.get("active_piece", "classic")
+        status = "Classic / free" if selected == "classic" else ("Owned" if owned else f"{shared_format_points(price)} coins")
+        if active:
+            status += " • Equipped"
+        return (
+            f"{'🎨' if self.kind == 'board' else '♟️'} **Custom {'Boards' if self.kind == 'board' else 'Piece Sets'}**\n"
+            f"Page **{self.page}/{self.total_pages}** • choose one of the 5 buttons below.\n\n"
+            f"**Preview:** {display}\n"
+            f"**Status:** {status}\n\n"
+            f"Click an option to instantly preview that {item_word}. Use **Buy selected** or **Equip selected** when ready."
+        )
+
+    async def preview_file(self, display_name):
+        profile = await asyncio.to_thread(get_cosmetic_profile, self.viewer_id, display_name)
+        if self.kind == "board":
+            board_name = self.selected_name
+            piece_name = profile.get("active_piece", "classic")
+            filename = "guess_board_shop_preview.png"
+        else:
+            board_name = profile.get("active_board", "classic")
+            piece_name = self.selected_name
+            filename = "guess_piece_shop_preview.png"
+        file = await asyncio.to_thread(
+            guess_cosmetic_preview_file,
+            board_name,
+            piece_name,
+            filename,
+        )
+        return profile, file
+
+    async def _show_selected(self, interaction):
+        await interaction.response.defer()
+        try:
+            profile, file = await self.preview_file(interaction.user.display_name)
+            self._rebuild(profile)
+            await interaction.message.edit(
+                content=self.render(profile),
+                attachments=[file],
+                view=self,
+            )
+        except Exception as error:
+            await interaction.followup.send(f"❌ Could not render preview: `{str(error)[:800]}`", ephemeral=True)
+
+    def _rebuild(self, profile=None):
         self.clear_items()
-        previous = discord.ui.Button(label="◀ Previous", style=discord.ButtonStyle.secondary, disabled=self.page <= 1)
-        indicator = discord.ui.Button(label=f"Page {self.page}/{self.total_pages}", style=discord.ButtonStyle.secondary, disabled=True)
-        next_button = discord.ui.Button(label="Next ▶", style=discord.ButtonStyle.secondary, disabled=self.page >= self.total_pages)
+        page_names = self._page_names()
+        if self.selected_name not in page_names:
+            self.selected_name = page_names[0]
+
+        for name in page_names:
+            button = discord.ui.Button(
+                label=self._display_name(name)[:80],
+                style=discord.ButtonStyle.primary if name == self.selected_name else discord.ButtonStyle.secondary,
+                row=0,
+            )
+
+            async def select_callback(interaction, selected=name):
+                self.selected_name = selected
+                await self._show_selected(interaction)
+
+            button.callback = select_callback
+            self.add_item(button)
+
+        previous = discord.ui.Button(label="◀", style=discord.ButtonStyle.secondary, disabled=self.page <= 1, row=1)
+        indicator = discord.ui.Button(label=f"{self.page}/{self.total_pages}", style=discord.ButtonStyle.secondary, disabled=True, row=1)
+        next_button = discord.ui.Button(label="▶", style=discord.ButtonStyle.secondary, disabled=self.page >= self.total_pages, row=1)
+
         async def previous_callback(interaction):
             self.page = max(1, self.page - 1)
-            self._rebuild()
-            await interaction.response.edit_message(content=self.render(), view=self)
+            self.selected_name = self._page_names()[0]
+            await self._show_selected(interaction)
+
         async def next_callback(interaction):
             self.page = min(self.total_pages, self.page + 1)
-            self._rebuild()
-            await interaction.response.edit_message(content=self.render(), view=self)
+            self.selected_name = self._page_names()[0]
+            await self._show_selected(interaction)
+
         previous.callback = previous_callback
         next_button.callback = next_callback
         self.add_item(previous)
         self.add_item(indicator)
         self.add_item(next_button)
 
+        buy = discord.ui.Button(
+            label="Buy selected",
+            style=discord.ButtonStyle.success,
+            disabled=self.selected_name == "classic",
+            row=2,
+        )
+        equip = discord.ui.Button(label="Equip selected", style=discord.ButtonStyle.primary, row=2)
+
+        async def buy_callback(interaction):
+            name = self.selected_name
+            await interaction.response.defer()
+            try:
+                if self.kind == "board":
+                    updated = await asyncio.to_thread(
+                        buy_board,
+                        interaction.user.id,
+                        interaction.user.display_name,
+                        name,
+                        f"guess-catalog-buy-board:{interaction.id}:{interaction.user.id}:{name}",
+                    )
+                    label = BOARD_DISPLAY_NAMES.get(name, name.title())
+                else:
+                    updated = await asyncio.to_thread(
+                        buy_piece,
+                        interaction.user.id,
+                        interaction.user.display_name,
+                        name,
+                        f"guess-catalog-buy-piece:{interaction.id}:{interaction.user.id}:{name}",
+                    )
+                    label = PIECE_DISPLAY_NAMES.get(name, name.title())
+                self._rebuild(updated)
+                await interaction.message.edit(content=self.render(updated), view=self)
+                await interaction.followup.send(
+                    f"✅ Bought **{label}**. 🪙 Coins left: **{shared_format_points(updated['coins'])}**",
+                    ephemeral=True,
+                )
+            except Exception as error:
+                await interaction.followup.send(f"❌ Could not buy it: `{str(error)[:800]}`", ephemeral=True)
+
+        async def equip_callback(interaction):
+            name = self.selected_name
+            await interaction.response.defer()
+            try:
+                if self.kind == "board":
+                    updated = await asyncio.to_thread(
+                        equip_board,
+                        interaction.user.id,
+                        interaction.user.display_name,
+                        name,
+                        f"guess-catalog-equip-board:{interaction.id}:{interaction.user.id}:{name}",
+                    )
+                    label = BOARD_DISPLAY_NAMES.get(updated.get("active_board", name), name.title())
+                else:
+                    updated = await asyncio.to_thread(
+                        equip_piece,
+                        interaction.user.id,
+                        interaction.user.display_name,
+                        name,
+                        f"guess-catalog-equip-piece:{interaction.id}:{interaction.user.id}:{name}",
+                    )
+                    label = PIECE_DISPLAY_NAMES.get(updated.get("active_piece", name), name.title())
+                self._rebuild(updated)
+                await interaction.message.edit(content=self.render(updated), view=self)
+                await interaction.followup.send(f"✅ Equipped **{label}**.", ephemeral=True)
+            except Exception as error:
+                await interaction.followup.send(f"❌ Could not equip it: `{str(error)[:800]}`", ephemeral=True)
+
+        buy.callback = buy_callback
+        equip.callback = equip_callback
+        self.add_item(buy)
+        self.add_item(equip)
+
+
+async def send_guess_catalog_preview(message, kind, page=1):
+    view = GuessCatalogPager(message.author.id, kind, page)
+    profile, file = await view.preview_file(message.author.display_name)
+    view._rebuild(profile)
+    await message.channel.send(view.render(profile), file=file, view=view)
 
 class GuessCosmeticProfileView(discord.ui.View):
     def __init__(self, viewer_id, target_user_id, target_name, editable=False):
@@ -2725,6 +2891,18 @@ async def _guess_parse_trade_args(message, arg_text):
     return parsed[0]
 
 
+def guess_pending_trade_message(profile):
+    pending = profile.get("pending_trade") if isinstance(profile, dict) else None
+    if not pending:
+        return "🤝 **No pending trade.**"
+    return (
+        f"🤝 **Pending trade from {pending.get('from_name', 'Unknown')}**\n"
+        f"They give you: **{shared_format_trade_asset(pending['offer'])}**\n"
+        f"They want: **{shared_format_trade_asset(pending['request'])}**\n\n"
+        "Use `!accepttrade` or `!declinetrade`."
+    )
+
+
 async def command_handler(message):
     global NEXT_REQUESTED
     global FORCED_NEXT_TYPE
@@ -2895,6 +3073,16 @@ async def command_handler(message):
         )
         return
 
+    if command in {"!pendingtrade", "!pending trade"}:
+        try:
+            profile = await asyncio.to_thread(
+                get_cosmetic_profile, message.author.id, message.author.display_name
+            )
+            await message.channel.send(guess_pending_trade_message(profile))
+        except Exception as error:
+            await message.channel.send(f"❌ **Could not read pending trade:** `{str(error)[:700]}`")
+        return
+
     if command in {"!accepttrade", "!accept trade"}:
         try:
             details = await asyncio.to_thread(
@@ -2974,11 +3162,17 @@ async def command_handler(message):
     if command == "!customboard" or command.startswith("!customboard "):
         args = raw_command.split()[1:]
         if not args:
-            await message.channel.send(guess_board_catalog_message(1), view=GuessCatalogPager(message.author.id, "board", 1))
+            try:
+                await send_guess_catalog_preview(message, "board", 1)
+            except Exception as error:
+                await message.channel.send(f"❌ **Could not open board previews:** `{str(error)[:800]}`")
             return
         if len(args) == 1 and args[0].isdigit():
             page = int(args[0])
-            await message.channel.send(guess_board_catalog_message(page), view=GuessCatalogPager(message.author.id, "board", page))
+            try:
+                await send_guess_catalog_preview(message, "board", page)
+            except Exception as error:
+                await message.channel.send(f"❌ **Could not open board previews:** `{str(error)[:800]}`")
             return
         board_name = args[0].casefold()
         if board_name == "default":
@@ -3026,11 +3220,17 @@ async def command_handler(message):
     if command == "!custompiece" or command.startswith("!custompiece "):
         args = raw_command.split()[1:]
         if not args:
-            await message.channel.send(guess_piece_catalog_message(1), view=GuessCatalogPager(message.author.id, "piece", 1))
+            try:
+                await send_guess_catalog_preview(message, "piece", 1)
+            except Exception as error:
+                await message.channel.send(f"❌ **Could not open piece previews:** `{str(error)[:800]}`")
             return
         if len(args) == 1 and args[0].isdigit():
             page = int(args[0])
-            await message.channel.send(guess_piece_catalog_message(page), view=GuessCatalogPager(message.author.id, "piece", page))
+            try:
+                await send_guess_catalog_preview(message, "piece", page)
+            except Exception as error:
+                await message.channel.send(f"❌ **Could not open piece previews:** `{str(error)[:800]}`")
             return
         piece_name = args[0].casefold()
         if piece_name == "default":
@@ -3283,7 +3483,7 @@ async def command_handler(message):
             "⏭️ `n` / `!n` / `!next` — end/reveal the current round and start the other Guess game.\n"
             "🏆 `!l` — Guess leaderboard. `!stats` / `!stats <name>` — Guess stats.\n"
             "🪙 Every Guess point also gives the same amount of shared coins. `!coins` / `!bank` shows both.\n"
-            "💸 `!donate <name> <coins|badge>` — donate coins or a badge. `!trade <name> <give> <receive>` — trade coins/badges.\n"
+            "💸 `!donate <name> <coins|badge>` — donate coins or a badge. `!trade <name> <give> <receive>` — trade coins/badges. `!pendingtrade` repeats your pending offer.\n"
             "👤 `!me` / `!profile` — clickable cosmetic profile. `!profile <name>` — view another player.\n\n"
             f"🎁 `!box` — badge box (**{shared_format_points(BADGE_BOX_COST)} coins**).\n"
             f"🎨 `!customboard` — **{len(BOARD_THEMES)}** boards (**{shared_format_points(BOARD_COST)} coins** each).\n"
