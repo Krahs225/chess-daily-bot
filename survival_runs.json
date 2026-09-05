@@ -533,7 +533,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T19:40:31.794958+00:00",
-        "last_activity": 1788637231.7949712,
+        "last_activity": 1788637248.6168616,
         "paused_reason": null,
         "puzzle_number": 1,
         "strikes": 0,
@@ -541,14 +541,20 @@
         "used_puzzle_ids": [
           "f3vzs"
         ],
-        "members": {},
+        "members": {
+          "442597396195704832": {
+            "name": "Thice",
+            "correct": 2,
+            "wrong": 0
+          }
+        },
         "puzzle": {
           "id": "f3vzs",
           "rating": 1247,
           "themes": "crushing endgame master rookEndgame short skewer",
           "url": "https://lichess.org/training/f3vzs",
           "start_fen": "8/6p1/6R1/2P1k2p/4P2P/6K1/5P2/2r5 b - - 0 35",
-          "current_fen": "8/6p1/6R1/2P1k2p/4P2P/6K1/5P2/2r5 b - - 0 35",
+          "current_fen": "8/6p1/6r1/2P1k2p/4P2P/5K2/5P2/8 w - - 0 37",
           "solution": [
             {
               "uci": "c1g1",
@@ -567,20 +573,40 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 0,
+          "next_solution_index": 3,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "rated_users": [],
+          "rated_users": [
+            "442597396195704832"
+          ],
           "setup_move_uci": "d6g6",
-          "last_move_uci": "d6g6",
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_uci": "g1g6",
+          "last_move_san": "Rxg6",
+          "accepted_moves": [
+            {
+              "san": "Rg1+",
+              "uci": "c1g1",
+              "accepted_at": 1788637244.4797459,
+              "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Rxg6",
+              "uci": "g1g6",
+              "accepted_at": 1788637248.6167831,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "g1g6",
+          "last_accepted_move_san": "Rxg6",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1788637248.6167822,
+          "position_before_last_move": "8/6p1/6R1/2P1k2p/4P2P/5K2/5P2/6r1 b - - 2 36"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": [],
         "shop_heart_purchased": false
