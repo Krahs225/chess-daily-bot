@@ -200,9 +200,9 @@
     },
     "thice": {
       "name": "Thice",
-      "best_puzzle": 9,
+      "best_puzzle": 10,
       "best_difficulty": 1393,
-      "best_completed_at": "2026-09-02T21:51:07.363789+00:00",
+      "best_completed_at": "2026-09-05T19:27:12.208050+00:00",
       "current": {
         "run_id": "thice:1788385192",
         "started_by_id": "1370434994945916940",
@@ -213,7 +213,7 @@
         "started_at": "2026-09-02T21:39:52.007352+00:00",
         "last_activity": 1788636425.9304686,
         "paused_reason": "10-minute inactivity",
-        "puzzle_number": 9,
+        "puzzle_number": 10,
         "strikes": 0,
         "best_difficulty": 1393,
         "used_puzzle_ids": [
@@ -225,7 +225,8 @@
           "J8EGu",
           "XvRzt",
           "toRuN",
-          "yew8h"
+          "yew8h",
+          "fX06U"
         ],
         "members": {
           "601406103712170014": {
@@ -250,65 +251,52 @@
           }
         },
         "puzzle": {
-          "id": "yew8h",
-          "rating": 1351,
-          "themes": "advantage endgame short",
-          "url": "https://lichess.org/training/yew8h",
-          "start_fen": "r6R/p5k1/1n4p1/4p3/8/4P3/PPP2rP1/2K4R w - - 2 27",
-          "current_fen": "R7/p6R/1n3kp1/4p3/8/4P3/PPP2rP1/2K5 b - - 0 28",
+          "id": "fX06U",
+          "rating": 1299,
+          "themes": "middlegame advantage attraction fork long",
+          "url": "https://lichess.org/training/fX06U",
+          "start_fen": "2r1r1k1/p4pp1/1p5p/4P3/6n1/1P2P1Pq/PB4QP/2R2RK1 b - - 2 27",
+          "current_fen": "2r1r1k1/p4pp1/1p5p/4P3/6n1/1P2P1Pq/PB4QP/2R2RK1 b - - 2 27",
           "solution": [
             {
-              "uci": "h1h7",
-              "san": "R1h7+",
-              "color": "white"
-            },
-            {
-              "uci": "g7f6",
-              "san": "Kf6",
+              "uci": "h3g2",
+              "san": "Qxg2+",
               "color": "black"
             },
             {
-              "uci": "h8a8",
-              "san": "Rxa8",
+              "uci": "g1g2",
+              "san": "Kxg2",
               "color": "white"
+            },
+            {
+              "uci": "g4e3",
+              "san": "Nxe3+",
+              "color": "black"
+            },
+            {
+              "uci": "g2f3",
+              "san": "Kf3",
+              "color": "white"
+            },
+            {
+              "uci": "e3f1",
+              "san": "Nxf1",
+              "color": "black"
             }
           ],
-          "player_color": "white",
-          "next_solution_index": 3,
+          "player_color": "black",
+          "next_solution_index": 0,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
-          "wrong_users": [
-            "442597396195704832",
-            "362606514764251137"
-          ],
-          "last_move_san": "Rxa8",
-          "accepted_moves": [
-            {
-              "san": "R1h7+",
-              "uci": "h1h7",
-              "accepted_at": 1788636391.9319615,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Rxa8",
-              "uci": "h8a8",
-              "accepted_at": 1788636425.93038,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "rated_users": [
-            "442597396195704832"
-          ],
-          "last_accepted_move_uci": "h8a8",
-          "last_accepted_move_san": "Rxa8",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788636425.9303784,
-          "position_before_last_move": "r6R/p6R/1n3kp1/4p3/8/4P3/PPP2rP1/2K5 w - - 4 28"
+          "wrong_users": [],
+          "rated_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
         },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Sharkmeister",
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       },
