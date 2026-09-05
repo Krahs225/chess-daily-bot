@@ -14,7 +14,9 @@ from pathlib import Path
 
 from shop_catalog import (
     BADGE_BOX_COST, BADGE_POOLS, BADGE_RARITY_WEIGHTS, BOARD_COST,
-    BOARD_THEMES, PIECE_COST, PIECE_SETS, COLOR_COST, NAME_COLORS, RARITY_LABELS,
+    BOARD_THEMES, PIECE_COST, PIECE_SETS, canonical_piece_set,
+    ARROW_COST, ARROW_COLORS, DEFAULT_ARROW_COLOR,
+    COLOR_COST, NAME_COLORS, RARITY_LABELS,
 )
 
 LEDGER_BUILD = "shared-ledger-v12-snapshot-2026-09-03"
@@ -242,18 +244,52 @@ def _normalize_entry(entry):
     if active_board != "classic" and active_board not in boards:
         active_board = "classic"
 
-    pieces = entry.get("pieces", [])
-    if not isinstance(pieces, list):
-        pieces = []
-    pieces = [
-        str(item).casefold()
-        for item in pieces
-        if str(item).casefold() in PIECE_SETS and str(item).casefold() != "classic"
-    ]
+    raw_pieces = entry.get("pieces", [])
+    if not isinstance(raw_pieces, list):
+        raw_pieces = []
+    pieces = []
+    old_paid_piece_count = 0
+    for item in raw_pieces:
+        raw_key = str(item or "").casefold().strip()
+        if raw_key and raw_key != "classic":
+            old_paid_piece_count += 1
+        canonical = canonical_piece_set(item)
+        if canonical and canonical != "classic" and canonical not in pieces:
+            pieces.append(canonical)
 
-    active_piece = str(entry.get("active_piece", "classic") or "classic").casefold()
+    # The old catalogue had many paid colour variants that now collapse onto a
+    # smaller set of genuinely different designs. Preserve how many distinct
+    # paid piece cosmetics a player owned (up to the new catalogue size) so a
+    # cleanup never silently deletes purchases they already made.
+    target_piece_count = min(old_paid_piece_count, max(0, len(PIECE_SETS) - 1))
+    if len(pieces) < target_piece_count:
+        for replacement in PIECE_SETS:
+            if replacement == "classic" or replacement in pieces:
+                continue
+            pieces.append(replacement)
+            if len(pieces) >= target_piece_count:
+                break
+
+    active_piece = canonical_piece_set(entry.get("active_piece", "classic")) or "classic"
     if active_piece != "classic" and active_piece not in pieces:
         active_piece = "classic"
+
+    arrows = entry.get("arrows", [])
+    if not isinstance(arrows, list):
+        arrows = []
+    arrows = [
+        str(item).casefold()
+        for item in arrows
+        if str(item).casefold() in ARROW_COLORS
+        and str(item).casefold() != DEFAULT_ARROW_COLOR
+    ]
+    arrows = list(dict.fromkeys(arrows))
+
+    active_arrow = str(entry.get("active_arrow", DEFAULT_ARROW_COLOR) or DEFAULT_ARROW_COLOR).casefold()
+    if active_arrow not in ARROW_COLORS:
+        active_arrow = DEFAULT_ARROW_COLOR
+    if active_arrow != DEFAULT_ARROW_COLOR and active_arrow not in arrows:
+        active_arrow = DEFAULT_ARROW_COLOR
 
     active_color = str(entry.get("active_color", "") or "").casefold()
     if active_color not in colors:
@@ -270,6 +306,8 @@ def _normalize_entry(entry):
         "active_board": active_board,
         "pieces": pieces,
         "active_piece": active_piece,
+        "arrows": arrows,
+        "active_arrow": active_arrow,
         "colors": colors,
         "active_color": active_color,
         "pending_trade": _normalize_pending_trade(entry.get("pending_trade")),
@@ -1908,7 +1946,7 @@ def equip_board(user_id, display_name, board_name, transaction_id):
 
 
 def buy_piece(user_id, display_name, piece_name, transaction_id):
-    piece_name = str(piece_name).casefold()
+    piece_name = canonical_piece_set(piece_name)
     if piece_name not in PIECE_SETS or piece_name == "classic":
         raise ValueError("Unknown or free default piece set.")
 
@@ -1929,7 +1967,7 @@ def buy_piece(user_id, display_name, piece_name, transaction_id):
 
 
 def equip_piece(user_id, display_name, piece_name, transaction_id):
-    piece_name = str(piece_name).casefold()
+    piece_name = canonical_piece_set(piece_name)
     if piece_name not in PIECE_SETS:
         raise ValueError("Unknown piece set.")
 
@@ -1940,6 +1978,44 @@ def equip_piece(user_id, display_name, piece_name, transaction_id):
         return {"piece": piece_name}
 
     entry, _ = _shop_mutation(user_id, display_name, transaction_id, "equip-piece", mutate)
+    return {"user_id": str(user_id), **entry}
+
+
+def buy_arrow(user_id, display_name, arrow_name, transaction_id):
+    arrow_name = str(arrow_name or "").casefold().strip()
+    if arrow_name not in ARROW_COLORS or arrow_name == DEFAULT_ARROW_COLOR:
+        raise ValueError("Unknown or free default arrow color.")
+
+    def mutate(entry):
+        if arrow_name in entry.get("arrows", []):
+            raise ValueError("You already own that arrow color.")
+        before = float(entry.get("coins", 0))
+        if before + 1e-9 < ARROW_COST:
+            raise ValueError(
+                f"Not enough coins. Need {format_points(ARROW_COST)}, have {format_points(before)}."
+            )
+        entry["coins"] = round(before - ARROW_COST, 3)
+        entry.setdefault("arrows", []).append(arrow_name)
+        return {"spent": ARROW_COST, "arrow": arrow_name}
+
+    entry, _ = _shop_mutation(user_id, display_name, transaction_id, "buy-arrow", mutate)
+    return {"user_id": str(user_id), **entry}
+
+
+def equip_arrow(user_id, display_name, arrow_name, transaction_id):
+    arrow_name = str(arrow_name or DEFAULT_ARROW_COLOR).casefold().strip()
+    if arrow_name in {"default", "classic"}:
+        arrow_name = DEFAULT_ARROW_COLOR
+    if arrow_name not in ARROW_COLORS:
+        raise ValueError("Unknown arrow color.")
+
+    def mutate(entry):
+        if arrow_name != DEFAULT_ARROW_COLOR and arrow_name not in entry.get("arrows", []):
+            raise ValueError("You do not own that arrow color.")
+        entry["active_arrow"] = arrow_name
+        return {"arrow": arrow_name}
+
+    entry, _ = _shop_mutation(user_id, display_name, transaction_id, "equip-arrow", mutate)
     return {"user_id": str(user_id), **entry}
 
 
