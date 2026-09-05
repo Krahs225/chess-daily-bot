@@ -754,6 +754,39 @@ def get_cosmetic_profile(user_id, fallback_name=None):
     return {"user_id": uid, **entry}
 
 
+def resolve_cosmetic_profile(display_name, target_user_id=None):
+    """Resolve a shared cosmetic-wallet player by exact display name or user id."""
+    snapshot = _current_snapshot()
+
+    if target_user_id is not None:
+        uid = str(target_user_id)
+        raw = snapshot.get(uid, {})
+        entry = _normalize_entry(raw)
+        if display_name and (not raw or entry.get("name") == "Unknown"):
+            entry["name"] = str(display_name)
+        return {"user_id": uid, **entry}
+
+    wanted = str(display_name).casefold().strip()
+    matches = []
+    for uid, raw in snapshot.items():
+        entry = _normalize_entry(raw)
+        if str(entry.get("name", "Unknown")).casefold().strip() == wanted:
+            matches.append((str(uid), entry))
+
+    if not matches:
+        raise ValueError(
+            f"No shared-leaderboard player named '{display_name}' was found."
+        )
+    if len(matches) > 1:
+        raise ValueError(
+            f"More than one shared-leaderboard player matches '{display_name}'. "
+            "Use the exact display name."
+        )
+
+    uid, entry = matches[0]
+    return {"user_id": uid, **entry}
+
+
 def badge_for_user(user_id):
     return str(get_cosmetic_profile(user_id).get("active_badge", "") or "")
 
@@ -872,6 +905,75 @@ def credit_coins(user_id, display_name, amount, transaction_id, source="coin-cre
         user_id, display_name, transaction_id, "coin-credit", mutate
     )
     return float(entry.get("coins", 0))
+
+
+def admin_set_coins(
+    display_name,
+    target_coins,
+    transaction_id,
+    source="admin-editcoins",
+    target_user_id=None,
+):
+    """Sharkmeister admin repair: set wallet coins without changing points."""
+    target_coins = round(float(target_coins), 3)
+    if target_coins < 0:
+        raise ValueError("Coins cannot be negative.")
+
+    target = resolve_cosmetic_profile(display_name, target_user_id=target_user_id)
+    uid = target["user_id"]
+    canonical_name = target.get("name", display_name)
+
+    def mutate(entry):
+        before = round(float(entry.get("coins", 0)), 3)
+        entry["coins"] = target_coins
+        return {
+            "source": str(source),
+            "before_coins": before,
+            "after_coins": target_coins,
+        }
+
+    entry, _event = _shop_mutation(
+        uid, canonical_name, transaction_id, "admin-set-coins", mutate
+    )
+    return float(entry.get("coins", 0))
+
+
+def admin_set_color(
+    display_name,
+    color_name,
+    transaction_id,
+    source="admin-editcolor",
+    target_user_id=None,
+):
+    """Sharkmeister admin repair: force a supported active shop color for a user."""
+    color_name = str(color_name or "").casefold().strip()
+    if color_name == "default":
+        color_name = ""
+    if color_name and color_name not in NAME_COLORS:
+        raise ValueError("Unknown shop color.")
+
+    target = resolve_cosmetic_profile(display_name, target_user_id=target_user_id)
+    uid = target["user_id"]
+    canonical_name = target.get("name", display_name)
+
+    def mutate(entry):
+        before = str(entry.get("active_color", "") or "")
+        granted = False
+        if color_name and color_name not in entry.get("colors", []):
+            entry.setdefault("colors", []).append(color_name)
+            granted = True
+        entry["active_color"] = color_name
+        return {
+            "source": str(source),
+            "before_color": before,
+            "after_color": color_name,
+            "granted_if_missing": granted,
+        }
+
+    entry, _event = _shop_mutation(
+        uid, canonical_name, transaction_id, "admin-set-color", mutate
+    )
+    return {"user_id": uid, **entry}
 
 
 def buy_badge_box(user_id, display_name, transaction_id):
