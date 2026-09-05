@@ -533,7 +533,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T19:40:31.794958+00:00",
-        "last_activity": 1788637342.3497612,
+        "last_activity": 1788637361.82783,
         "paused_reason": null,
         "puzzle_number": 4,
         "strikes": 0,
@@ -547,7 +547,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 7,
+            "correct": 9,
             "wrong": 0
           }
         },
@@ -557,7 +557,7 @@
           "themes": "endgame advancedPawn crushing long promotion pawnEndgame",
           "url": "https://lichess.org/training/fqfRW",
           "start_fen": "8/8/PK6/6p1/8/6kp/8/8 w - - 0 59",
-          "current_fen": "8/8/PK6/6p1/8/6kp/8/8 w - - 0 59",
+          "current_fen": "Q7/8/1K6/8/6p1/7p/7k/8 w - - 1 61",
           "solution": [
             {
               "uci": "a6a7",
@@ -586,20 +586,40 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 4,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "rated_users": [],
+          "rated_users": [
+            "442597396195704832"
+          ],
           "setup_move_uci": "h4h3",
-          "last_move_uci": "h4h3",
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_uci": "g3h2",
+          "last_move_san": "Kh2",
+          "accepted_moves": [
+            {
+              "san": "a7",
+              "uci": "a6a7",
+              "accepted_at": 1788637353.9562628,
+              "solver_id": "442597396195704832"
+            },
+            {
+              "san": "a8=Q",
+              "uci": "a7a8q",
+              "accepted_at": 1788637361.8277378,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "a7a8q",
+          "last_accepted_move_san": "a8=Q",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1788637361.8277369,
+          "position_before_last_move": "8/P7/1K6/8/6p1/6kp/8/8 w - - 0 60"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": [],
         "shop_heart_purchased": false
