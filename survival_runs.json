@@ -362,10 +362,10 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T11:06:20.019992+00:00",
-        "last_activity": 1788606637.343304,
+        "last_activity": 1788606653.0675302,
         "paused_reason": null,
         "puzzle_number": 3,
-        "strikes": 0,
+        "strikes": 1,
         "best_difficulty": 1296,
         "used_puzzle_ids": [
           "cO8wh",
@@ -376,7 +376,7 @@
           "442597396195704832": {
             "name": "Thice",
             "correct": 6,
-            "wrong": 0
+            "wrong": 1
           }
         },
         "puzzle": {
@@ -419,7 +419,9 @@
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
-          "wrong_users": [],
+          "wrong_users": [
+            "442597396195704832"
+          ],
           "last_move_san": "Rxf2+",
           "accepted_moves": [
             {
