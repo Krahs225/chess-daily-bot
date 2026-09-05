@@ -600,6 +600,65 @@
     }
   },
   "chess_challenges": {},
-  "puzzle_rush": {},
+  "puzzle_rush": {
+    "442597396195704832": {
+      "active": true,
+      "user_id": "442597396195704832",
+      "name": "Thice",
+      "started_at": 1788622401.9281652,
+      "end_at": 1788622701.9281654,
+      "score": 0,
+      "wrong": 0,
+      "base_elo": 2067.5079601572183,
+      "puzzle": {
+        "url": "https://lichess.org/training/onU8G",
+        "title": "Lichess • 1830",
+        "fen": "r6k/1R5p/6p1/pp6/2p3n1/6P1/PPP2r2/2K4R w - - 0 28",
+        "current_fen": "r6k/1R5p/6p1/pp6/2p3n1/6P1/PPP2r2/2K4R w - - 0 28",
+        "pgn": "Rbxh7+ Kg8 Rh8+",
+        "all_moves": [
+          {
+            "uci": "b7h7",
+            "san": "Rbxh7+",
+            "color": "white"
+          },
+          {
+            "uci": "h8g8",
+            "san": "Kg8",
+            "color": "black"
+          },
+          {
+            "uci": "h7h8",
+            "san": "Rh8+",
+            "color": "white"
+          }
+        ],
+        "player_moves": [
+          {
+            "uci": "b7h7",
+            "san": "Rbxh7+",
+            "color": "white"
+          },
+          {
+            "uci": "h7h8",
+            "san": "Rh8+",
+            "color": "white"
+          }
+        ],
+        "player_color": "white",
+        "player_move_count": 2,
+        "posted_at": "2026-09-05T15:33:21.935921+00:00",
+        "answer_posted": false,
+        "winner_user_id": null,
+        "winner_name": null,
+        "latest_attempts": {},
+        "puzzle_id": "practice_rush_442597396195704832_onU8G_1788622401935",
+        "rating": 1830,
+        "next_solution_index": 0,
+        "board_theme": "classic",
+        "piece_theme": "classic"
+      }
+    }
+  },
   "puzzle_rush_bests": {}
 }
