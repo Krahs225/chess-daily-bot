@@ -31,6 +31,8 @@ PERSISTENT_GUESS_V5 = True
 
 POLL_OPTIONS = 5
 POLL_DURATION_MINUTES = 8
+CLOCK_SCRAMBLE_CHANCE = 0.10
+CLOCK_SCRAMBLE_THRESHOLD_SECONDS = 10.0
 
 # The players supplied for Guess the Chess Chatter.
 PLAYERS = [
@@ -240,6 +242,56 @@ def clock_line(
     )
 
 
+def format_time_control(raw_time_control):
+    """Convert Chess.com/PGN seconds+increment into a friendly label."""
+    raw = str(raw_time_control or "").strip()
+    match = re.fullmatch(r"(\d+)(?:\+(\d+))?", raw)
+    if not match:
+        return raw or "?"
+
+    base_seconds = int(match.group(1))
+    increment = int(match.group(2) or 0)
+    if base_seconds % 60 == 0:
+        base_label = str(base_seconds // 60)
+    elif base_seconds >= 60:
+        base_label = f"{base_seconds // 60}:{base_seconds % 60:02d}"
+    else:
+        base_label = f"0:{base_seconds:02d}"
+    return f"{base_label}+{increment}"
+
+
+def clock_scramble_start_index(game):
+    """First ply after the POV player ends a move with under 10 seconds."""
+    if str(game.get("time_class", "")).casefold() != "bullet":
+        return None
+
+    pgn = str(game.get("pgn", "") or "")
+    parsed = parse_pgn(pgn)
+    if parsed is None:
+        return None
+
+    owner_username = str(game.get("_owner_username", ""))
+    owner_is_white = (
+        str(game.get("white", {}).get("username", "")).casefold()
+        == owner_username.casefold()
+    )
+    owner_color = chess.WHITE if owner_is_white else chess.BLACK
+    board = parsed.board()
+
+    for ply_index, node in enumerate(parsed.mainline(), 1):
+        moving_color = board.turn
+        move_clock = _parse_clock_seconds(node.comment)
+        if (
+            moving_color == owner_color
+            and move_clock is not None
+            and move_clock < CLOCK_SCRAMBLE_THRESHOLD_SECONDS
+        ):
+            return ply_index
+        board.push(node.move)
+
+    return None
+
+
 def game_date_from_pgn(
     pgn
 ):
@@ -411,91 +463,57 @@ def prepare_game(
     return prepared
 
 
-def collect_games():
-    """
-    Find one valid game quickly.
-
-    Instead of downloading every month for every player, first ask
-    Chess.com which archives exist, randomise them, and stop as soon
-    as a qualifying rated bullet/blitz/rapid game is found.
-    """
-    players = list(
-        PLAYERS
-    )
-
-    random.shuffle(
-        players
-    )
+def collect_games(clock_scramble=False):
+    """Find one valid game quickly; optionally require a Bullet clock scramble."""
+    players = list(PLAYERS)
+    random.shuffle(players)
 
     for display_name, username in players:
-
         try:
             archive_data = fetch_json(
                 "https://api.chess.com/"
                 f"pub/player/{username}/games/archives"
             )
-
             archives = [
                 url
-                for url in archive_data.get(
-                    "archives",
-                    [],
-                )
-                if allowed_archive_url(
-                    display_name,
-                    url,
-                )
+                for url in archive_data.get("archives", [])
+                if allowed_archive_url(display_name, url)
             ]
-
         except Exception as error:
             print(
-                f"Could not load archives for "
-                f"{username}: {error}",
+                f"Could not load archives for {username}: {error}",
                 flush=True,
             )
             continue
 
-        random.shuffle(
-            archives
-        )
+        random.shuffle(archives)
 
         for archive_url in archives[:6]:
-
             try:
-                data = fetch_json(
-                    archive_url
-                )
+                data = fetch_json(archive_url)
             except Exception as error:
                 print(
-                    f"Could not load archive "
-                    f"{archive_url}: {error}",
+                    f"Could not load archive {archive_url}: {error}",
                     flush=True,
                 )
                 continue
 
             candidates = []
+            for raw_game in data.get("games", []):
+                prepared = prepare_game(display_name, username, raw_game)
+                if prepared is None:
+                    continue
 
-            for game in data.get(
-                "games",
-                [],
-            ):
-                prepared = prepare_game(
-                    display_name,
-                    username,
-                    game,
-                )
+                if clock_scramble:
+                    start_index = clock_scramble_start_index(prepared)
+                    if start_index is None:
+                        continue
+                    prepared["_clock_scramble_start"] = int(start_index)
 
-                if prepared is not None:
-                    candidates.append(
-                        prepared
-                    )
+                candidates.append(prepared)
 
             if candidates:
-                return [
-                    random.choice(
-                        candidates
-                    )
-                ]
+                return [random.choice(candidates)]
 
     return []
 
@@ -642,6 +660,9 @@ class ChessView(
         owner_is_white,
         total_moves,
         time_control=None,
+        time_label=None,
+        start_move_index=0,
+        clock_scramble=False,
     ):
 
         super().__init__(
@@ -655,8 +676,15 @@ class ChessView(
             pgn,
             fallback_time_control=time_control,
         )
-        self.move_index = 0
-        self.page = 0
+        self.time_label = str(time_label or "?")
+        self.clock_scramble = bool(clock_scramble)
+        self.min_move_index = max(0, min(int(start_move_index), int(total_moves)))
+        self.move_index = self.min_move_index
+        self.page = (
+            max(0, (self.move_index - 1) // self.MOVES_PER_PAGE)
+            if self.move_index > 0
+            else 0
+        )
         self.message = None
 
         self._build_buttons()
@@ -672,6 +700,12 @@ class ChessView(
             )
             // self.MOVES_PER_PAGE
         )
+
+    @property
+    def min_page(self):
+        if self.min_move_index <= 0:
+            return 0
+        return max(0, (self.min_move_index - 1) // self.MOVES_PER_PAGE)
 
     def _build_buttons(self):
 
@@ -735,17 +769,14 @@ class ChessView(
         )
 
         # Rows 1-5: up to 20 direct move buttons.
-        start_move = (
-            self.page
-            * self.MOVES_PER_PAGE
-            + 1
+        start_move = max(
+            self.page * self.MOVES_PER_PAGE + 1,
+            self.min_move_index if self.min_move_index > 0 else 1,
         )
 
         end_move = min(
             self.total_moves,
-            start_move
-            + self.MOVES_PER_PAGE
-            - 1
+            (self.page + 1) * self.MOVES_PER_PAGE,
         )
 
         for move_number in range(
@@ -788,7 +819,7 @@ class ChessView(
 
         # First 4 children are the navigation controls.
         self.children[0].disabled = (
-            self.move_index <= 0
+            self.move_index <= self.min_move_index
         )
 
         self.children[1].disabled = (
@@ -796,7 +827,7 @@ class ChessView(
         )
 
         self.children[2].disabled = (
-            self.page <= 0
+            self.page <= self.min_page
         )
 
         self.children[3].disabled = (
@@ -812,7 +843,7 @@ class ChessView(
             interaction
         ):
 
-            self.move_index = move_number
+            self.move_index = max(self.min_move_index, move_number)
 
             self.page = (
                 (move_number - 1)
@@ -830,13 +861,13 @@ class ChessView(
         interaction
     ):
 
-        if self.move_index > 0:
-
+        if self.move_index > self.min_move_index:
             self.move_index -= 1
 
         self.page = (
-            self.move_index
-            // self.MOVES_PER_PAGE
+            max(0, (self.move_index - 1) // self.MOVES_PER_PAGE)
+            if self.move_index > 0
+            else 0
         )
 
         await self.redraw(
@@ -875,8 +906,7 @@ class ChessView(
         interaction
     ):
 
-        if self.page > 0:
-
+        if self.page > self.min_page:
             self.page -= 1
 
         page_first_move = (
@@ -887,8 +917,9 @@ class ChessView(
         # Keep the current position if it is still
         # on the selected page; otherwise jump to the
         # first move on that page.
-        page_start = (
-            page_first_move + 1
+        page_start = max(
+            page_first_move + 1,
+            self.min_move_index if self.min_move_index > 0 else 1,
         )
 
         page_end = min(
@@ -903,7 +934,10 @@ class ChessView(
             <= page_end
         ):
 
-            self.move_index = page_start - 1
+            self.move_index = max(
+                self.min_move_index,
+                page_start - 1,
+            )
 
         await self.redraw(
             interaction
@@ -930,8 +964,9 @@ class ChessView(
             page_start - 1
         ):
 
-            self.move_index = (
-                page_start - 1
+            self.move_index = max(
+                self.min_move_index,
+                page_start - 1,
             )
 
         await self.redraw(
@@ -958,10 +993,9 @@ class ChessView(
             .copy()
         )
 
-        page_start = (
-            self.page
-            * self.MOVES_PER_PAGE
-            + 1
+        page_start = max(
+            self.page * self.MOVES_PER_PAGE + 1,
+            self.min_move_index if self.min_move_index > 0 else 1,
         )
 
         page_end = min(
@@ -972,16 +1006,18 @@ class ChessView(
             * self.MOVES_PER_PAGE
         )
 
+        mode_line = (
+            "⚡ **CLOCK SCRAMBLE — DOUBLE POINTS**\n"
+            if self.clock_scramble
+            else ""
+        )
         embed.description = (
-            f"POV: **"
-            f"{'White' if self.owner_is_white else 'Black'}"
-            f"**\n"
-            f"Move **"
-            f"{self.move_index} / "
-            f"{total}**\n"
-            f"{clock_line(self.clock_timeline, self.move_index)}\n"
-            f"Jump to move: **"
-            f"{page_start}-{page_end}**"
+            mode_line
+            + f"POV: **{'White' if self.owner_is_white else 'Black'}**\n"
+            + f"Type: **{self.time_label}**\n"
+            + f"Move **{self.move_index} / {total}**\n"
+            + f"{clock_line(self.clock_timeline, self.move_index)}\n"
+            + f"Jump to move: **{page_start}-{page_end}**"
         )
 
         embed.set_image(
@@ -1003,18 +1039,22 @@ async def post_chess_round(
     answer_callback=None,
 ):
 
-    games = await asyncio.to_thread(
-        collect_games
-    )
+    clock_scramble = random.random() < CLOCK_SCRAMBLE_CHANCE
+    games = []
+    if clock_scramble:
+        games = await asyncio.to_thread(collect_games, True)
+
+    # Clock Scramble is opportunistic. If no eligible Bullet game with real
+    # clock tags drops under 10 seconds for the POV player, fall back safely.
+    if not games:
+        clock_scramble = False
+        games = await asyncio.to_thread(collect_games, False)
 
     if not games:
-
         await channel.send(
-            "❌ **Chess Chatter:** "
-            "could not find a qualifying "
-            "rated rapid/blitz game."
+            "❌ **Chess Chatter:** could not find a qualifying "
+            "rated bullet/blitz/rapid game."
         )
-
         return
 
     game = random.choice(
@@ -1076,6 +1116,13 @@ async def post_chess_round(
         pgn,
         fallback_time_control=time_control,
     )
+    friendly_time_control = format_time_control(time_control)
+    time_label = f"{game_type} • {friendly_time_control}"
+    start_move_index = (
+        int(game.get("_clock_scramble_start", 0))
+        if clock_scramble
+        else 0
+    )
 
     game_url = str(
         game.get(
@@ -1094,7 +1141,7 @@ async def post_chess_round(
     file, total_moves = (
         make_board_file(
             pgn,
-            0,
+            start_move_index,
             owner_is_white
         )
     )
@@ -1140,15 +1187,16 @@ async def post_chess_round(
 
     embed = discord.Embed(
         title=(
-            "♟️ **Guess the Chess Chatter**"
+            "⚡ Guess the Chess Chatter — CLOCK SCRAMBLE"
+            if clock_scramble
+            else "♟️ Guess the Chess Chatter"
         ),
         description=(
-            f"POV: **"
-            f"{'White' if owner_is_white else 'Black'}"
-            f"**\n"
-            f"Type: **{game_type}**\n"
-            f"Move **0 / {total_moves}**\n"
-            f"{clock_line(clock_timeline, 0)}"
+            ("⚡ **DOUBLE POINTS**\n" if clock_scramble else "")
+            + f"POV: **{'White' if owner_is_white else 'Black'}**\n"
+            + f"Type: **{time_label}**\n"
+            + f"Move **{start_move_index} / {total_moves}**\n"
+            + f"{clock_line(clock_timeline, start_move_index)}"
         ),
         color=0x3498db
     )
@@ -1162,12 +1210,15 @@ async def post_chess_round(
         owner_is_white,
         total_moves,
         time_control=time_control,
+        time_label=time_label,
+        start_move_index=start_move_index,
+        clock_scramble=clock_scramble,
     )
 
     poll_message = await channel.send(
         content=(
-            "♟️ **Guess the Chess Chatter** — "
-            "vote in the poll above."
+            ("⚡ **CLOCK SCRAMBLE — DOUBLE POINTS** — " if clock_scramble else "♟️ **Guess the Chess Chatter** — ")
+            + "vote in the poll above."
         ),
         poll=poll
     )
@@ -1289,7 +1340,7 @@ async def post_chess_round(
                 record_poll_votes,
                 poll_message.id,
                 vote_records,
-                source="guess-chess-chatter",
+                source=("guess-chess-clock-scramble" if clock_scramble else "guess-chess-chatter"),
                 target_name=owner,
             )
         except Exception as error:
@@ -1318,16 +1369,17 @@ async def post_chess_round(
             )
 
             try:
+                reward_points = 2 if clock_scramble else 1
                 total = add_points(
                     voter.id,
                     voter.display_name,
-                    1,
+                    reward_points,
                     transaction_id=(
-                        f"guess-chess:"
+                        f"guess-chess{'-scramble' if clock_scramble else ''}:"
                         f"{poll_message.id}:"
                         f"{voter.id}"
                     ),
-                    source="guess-chess-chatter",
+                    source=("guess-chess-clock-scramble" if clock_scramble else "guess-chess-chatter"),
                 )
 
                 rewarded.append(
@@ -1345,8 +1397,9 @@ async def post_chess_round(
                 )
 
     if rewarded:
+        reward_points = 2 if clock_scramble else 1
         names = " • ".join(
-            f"**{name} +1**"
+            f"**{name} +{reward_points}**"
             for name, _ in rewarded
         )
 
