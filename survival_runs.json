@@ -356,7 +356,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T19:40:31.794958+00:00",
-        "last_activity": 1788643656.738427,
+        "last_activity": 1788643681.0265434,
         "paused_reason": "puzzle fetch error",
         "puzzle_number": 17,
         "strikes": 0,
@@ -383,7 +383,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 40,
+            "correct": 42,
             "wrong": 0
           }
         },
@@ -393,7 +393,7 @@
           "themes": "middlegame crushing fork long",
           "url": "https://lichess.org/training/eQkre",
           "start_fen": "r4r2/2q3k1/p3R1p1/2p5/3pnbPQ/3P3P/PPP2PK1/R7 w - - 0 26",
-          "current_fen": "r4r2/2q3k1/p3R1p1/2p5/3pnbPQ/3P3P/PPP2PK1/R7 w - - 0 26",
+          "current_fen": "r7/2b2rk1/p5p1/2p5/3pn1PQ/3P3P/PPP2PK1/R7 w - - 0 28",
           "solution": [
             {
               "uci": "e6e7",
@@ -422,20 +422,40 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 4,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "rated_users": [],
+          "rated_users": [
+            "442597396195704832"
+          ],
           "setup_move_uci": "f6e4",
-          "last_move_uci": "f6e4",
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_uci": "f4c7",
+          "last_move_san": "Bxc7",
+          "accepted_moves": [
+            {
+              "san": "Re7+",
+              "uci": "e6e7",
+              "accepted_at": 1788643673.8805325,
+              "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Rxc7",
+              "uci": "e7c7",
+              "accepted_at": 1788643681.0264325,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "e7c7",
+          "last_accepted_move_san": "Rxc7",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1788643681.0264318,
+          "position_before_last_move": "r7/2q1Rrk1/p5p1/2p5/3pnbPQ/3P3P/PPP2PK1/R7 w - - 2 27"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": [],
         "shop_heart_purchased": false
