@@ -2558,7 +2558,7 @@ def _piece_overlay_svg(board, orientation, piece_theme):
     return "".join(parts)
 
 
-def render_custom_board_svg(board, *, orientation, board_theme="classic", piece_theme="classic", size=500):
+def render_custom_board_svg(board, *, orientation, board_theme="classic", piece_theme="classic", size=500, lastmove=None):
     board_theme = str(board_theme or "classic").casefold()
     piece_theme = str(piece_theme or "classic").casefold()
     light, dark = BOARD_THEMES.get(board_theme, BOARD_THEMES["classic"])
@@ -2569,6 +2569,7 @@ def render_custom_board_svg(board, *, orientation, board_theme="classic", piece_
             orientation=orientation,
             size=size,
             coordinates=True,
+            lastmove=lastmove,
             colors={"square light": light, "square dark": dark},
         )
 
@@ -2577,6 +2578,7 @@ def render_custom_board_svg(board, *, orientation, board_theme="classic", piece_
         orientation=orientation,
         size=size,
         coordinates=True,
+        lastmove=lastmove,
         colors={"square light": light, "square dark": dark},
     )
     overlay = _piece_overlay_svg(board, orientation, piece_theme)
@@ -3422,6 +3424,29 @@ async def _send_pgn_thread(channel, game, result_message=None):
     return thread
 
 
+BRILLIANT_REVIEW_EMOJI = "<:BRILLIANT:1525486133172240566>"
+BLUNDER_REVIEW_EMOJI = "<:BLUNDER:1525486089744154684>"
+
+_REVIEW_CLASSIFICATION_LABELS = {
+    "brilliant": (BRILLIANT_REVIEW_EMOJI, "Brilliant"),
+    "best": ("⭐", "Best"),
+    "excellent": ("✨", "Excellent"),
+    "good": ("✅", "Good"),
+    "inaccuracy": ("?!", "Inaccuracy"),
+    "mistake": ("?", "Mistake"),
+    "blunder": (BLUNDER_REVIEW_EMOJI, "Blunder"),
+}
+
+
+def _format_review_eval(eval_white_cp):
+    value = int(eval_white_cp or 0)
+    if value >= 90000:
+        return "White winning / mate"
+    if value <= -90000:
+        return "Black winning / mate"
+    return f"{value / 100.0:+.1f} (White POV)"
+
+
 def _format_stockfish_game_analysis(game, analysis):
     white = dict(analysis.get("white") or {})
     black = dict(analysis.get("black") or {})
@@ -3429,36 +3454,189 @@ def _format_stockfish_game_analysis(game, analysis):
 
     def side_line(icon, name, stats):
         return (
-            f"{icon} **{name}:** {float(stats.get('accuracy', 0.0)):.1f}% accuracy • "
+            f"{icon} **{name}:** {float(stats.get('accuracy', 0.0)):.1f}% • "
             f"{int(stats.get('acpl', 0))} ACPL • "
-            f"{int(stats.get('inaccuracies', 0))} inacc • "
-            f"{int(stats.get('mistakes', 0))} mistakes • "
-            f"{int(stats.get('blunders', 0))} blunders"
+            f"{BRILLIANT_REVIEW_EMOJI} {int(stats.get('brilliants', 0))} • "
+            f"{BLUNDER_REVIEW_EMOJI} {int(stats.get('blunders', 0))}"
         )
 
     lines = [
-        f"🔎 **{engine_name} analysis • SF Accuracy**",
+        f"🔎 **{engine_name} Game Review • SF Accuracy**",
         side_line("⚪", game.get("white_name", "White"), white),
         side_line("⚫", game.get("black_name", "Black"), black),
+        "🎬 Use the **Game Review** buttons below to inspect every move.",
     ]
 
     moments = list(analysis.get("turning_points") or [])[:3]
     if moments:
-        lines.append("💥 **Key moments**")
+        lines.append("💥 **Biggest eval drops**")
         for item in moments:
             loss = float(item.get("loss_cp", 0)) / 100.0
             lines.append(
-                f"• **{item.get('move', '?')}** — lost ~{loss:.1f} • "
-                f"best: **{item.get('best', '?')}**"
+                f"• **{item.get('move', '?')}** — ~{loss:.1f} • best **{item.get('best', '?')}**"
             )
-    else:
-        lines.append("✅ **No 0.5+ pawn mistakes found in this quick analysis.**")
-
     if analysis.get("truncated"):
         lines.append(
             f"ℹ️ Analysis capped at the first {int(analysis.get('analysed_plies', 0))} plies."
         )
     return "\n".join(lines)
+
+
+def _review_board_at_ply(game, ply_index):
+    moves = list(game.get("moves") or [])
+    if not moves:
+        return chess.Board(), None
+    target = max(0, min(int(ply_index), len(moves) - 1))
+    board = chess.Board()
+    last_move = None
+    for index, san in enumerate(moves[:target + 1]):
+        move = board.parse_san(str(san))
+        board.push(move)
+        if index == target:
+            last_move = move
+    return board, last_move
+
+
+async def _review_theme_for_game(game):
+    board_theme = "classic"
+    piece_theme = "classic"
+    owner_id = game.get("theme_owner_id")
+    owner_name = game.get("theme_owner_name", "Player")
+    if owner_id:
+        try:
+            profile = await asyncio.to_thread(get_cosmetic_profile, owner_id, owner_name)
+            board_theme = profile.get("active_board", "classic")
+            piece_theme = profile.get("active_piece", "classic")
+        except Exception as error:
+            print(f"Chess review cosmetics lookup failed: {error}", flush=True)
+    return board_theme, piece_theme
+
+
+async def _make_chess_review_file(game, ply_index, filename="chess_review.png"):
+    board, last_move = _review_board_at_ply(game, ply_index)
+    if game.get("mode") == "bot":
+        human_id = str(game.get("human_id"))
+        orientation = str(game.get("white_id")) == human_id
+    else:
+        orientation = True
+    board_theme, piece_theme = await _review_theme_for_game(game)
+    svg = render_custom_board_svg(
+        board,
+        orientation=orientation,
+        board_theme=board_theme,
+        piece_theme=piece_theme,
+        size=500,
+        lastmove=last_move,
+    )
+    png = await asyncio.to_thread(
+        cairosvg.svg2png,
+        bytestring=svg.encode("utf-8"),
+    )
+    return discord.File(fp=BytesIO(png), filename=filename)
+
+
+class ChessGameReviewView(discord.ui.View):
+    """Public post-game move browser, similar to Guess Chess navigation."""
+
+    def __init__(self, game, analysis):
+        super().__init__(timeout=900)
+        self.game = dict(game)
+        self.analysis = dict(analysis or {})
+        self.moves = list(self.analysis.get("moves") or [])
+        self.index = 0
+        self._rebuild()
+
+    def _current(self):
+        if not self.moves:
+            return None
+        self.index = max(0, min(self.index, len(self.moves) - 1))
+        return self.moves[self.index]
+
+    def render_embed(self):
+        item = self._current()
+        if item is None:
+            return discord.Embed(
+                title="🎬 Game Review",
+                description="No analysed moves are available.",
+                color=0x2F3136,
+            )
+        classification = str(item.get("classification") or "good")
+        icon, label = _REVIEW_CLASSIFICATION_LABELS.get(classification, ("✅", classification.title()))
+        lines = [
+            f"**{item.get('move', '?')}** — {icon} **{label}**",
+            str(item.get("comment") or ""),
+        ]
+        if classification not in {"brilliant", "best"}:
+            best = str(item.get("best") or "")
+            played = str(item.get("played") or "")
+            if best and best != played:
+                lines.append(f"🎯 **Best:** {best}")
+        lines.append(f"📈 **Eval:** {_format_review_eval(item.get('eval_white_cp', 0))}")
+        lines.append(f"📖 **Move {self.index + 1}/{len(self.moves)}**")
+        embed = discord.Embed(
+            title="🎬 Stockfish 19 Game Review",
+            description="\n".join(line for line in lines if line),
+            color=0x2F3136,
+        )
+        embed.set_image(url="attachment://chess_review.png")
+        return embed
+
+    async def _refresh(self, interaction):
+        await interaction.response.defer()
+        try:
+            file = await _make_chess_review_file(self.game, self.index)
+            self._rebuild()
+            await interaction.message.edit(
+                embed=self.render_embed(),
+                attachments=[file],
+                view=self,
+            )
+        except Exception as error:
+            await interaction.followup.send(
+                f"❌ Could not open this review position: `{str(error)[:800]}`",
+                ephemeral=True,
+            )
+
+    def _rebuild(self):
+        self.clear_items()
+        total = len(self.moves)
+        first = discord.ui.Button(label="⏮", style=discord.ButtonStyle.secondary, disabled=not total or self.index <= 0)
+        previous = discord.ui.Button(label="◀", style=discord.ButtonStyle.secondary, disabled=not total or self.index <= 0)
+        indicator = discord.ui.Button(label=f"{self.index + 1 if total else 0}/{total}", style=discord.ButtonStyle.secondary, disabled=True)
+        next_button = discord.ui.Button(label="▶", style=discord.ButtonStyle.secondary, disabled=not total or self.index >= total - 1)
+        last = discord.ui.Button(label="⏭", style=discord.ButtonStyle.secondary, disabled=not total or self.index >= total - 1)
+
+        async def first_cb(interaction):
+            self.index = 0
+            await self._refresh(interaction)
+
+        async def previous_cb(interaction):
+            self.index = max(0, self.index - 1)
+            await self._refresh(interaction)
+
+        async def next_cb(interaction):
+            self.index = min(max(0, total - 1), self.index + 1)
+            await self._refresh(interaction)
+
+        async def last_cb(interaction):
+            self.index = max(0, total - 1)
+            await self._refresh(interaction)
+
+        first.callback = first_cb
+        previous.callback = previous_cb
+        next_button.callback = next_cb
+        last.callback = last_cb
+        for button in (first, previous, indicator, next_button, last):
+            self.add_item(button)
+
+
+async def _send_chess_game_review(channel, game, analysis):
+    moves = list(analysis.get("moves") or [])
+    if not moves:
+        return None
+    view = ChessGameReviewView(game, analysis)
+    file = await _make_chess_review_file(game, 0)
+    return await channel.send(embed=view.render_embed(), file=file, view=view)
 
 
 async def _send_finished_chess_extras(channel, game, result_message=None):
@@ -3471,6 +3649,7 @@ async def _send_finished_chess_extras(channel, game, result_message=None):
     try:
         analysis = await asyncio.to_thread(analyse_game_moves, list(game.get("moves") or []))
         await channel.send(_format_stockfish_game_analysis(game, analysis))
+        await _send_chess_game_review(channel, game, analysis)
     except StockfishUnavailableError as error:
         print(f"Post-game Stockfish analysis unavailable: {error}", flush=True)
         await channel.send("⚠️ **PGN saved, but Stockfish analysis is unavailable right now.**")
@@ -8977,21 +9156,18 @@ async def on_message(
             "!lb",
             "!l"
         ):
-            leaderboard_mentions = discord.AllowedMentions.none()
             await message.channel.send(
-                format_chess_elo_leaderboard(10, use_mentions=True),
-                allowed_mentions=leaderboard_mentions,
+                format_chess_elo_leaderboard(10, use_mentions=False),
             )
             try:
                 puzzle_elo, _streaks = await asyncio.to_thread(
                     split_puzzle_leaderboards,
                     10,
-                    True,
+                    False,
                 )
                 await message.channel.send(
                     puzzle_elo
                     + "\n\n🔥 Use `!puzzlestreak` to see the **Best Puzzle Streaks** leaderboard.",
-                    allowed_mentions=leaderboard_mentions,
                 )
             except Exception as error:
                 print(
@@ -9000,8 +9176,7 @@ async def on_message(
                 )
             try:
                 await message.channel.send(
-                    format_puzzle_rush_leaderboard(10, use_mentions=True),
-                    allowed_mentions=leaderboard_mentions,
+                    format_puzzle_rush_leaderboard(10, use_mentions=False),
                 )
             except Exception as error:
                 print(
@@ -9009,8 +9184,7 @@ async def on_message(
                     flush=True,
                 )
             await message.channel.send(
-                make_leaderboard(use_mentions=True),
-                allowed_mentions=leaderboard_mentions,
+                make_leaderboard(use_mentions=False),
             )
             return
 
