@@ -607,54 +607,69 @@
       "name": "Thice",
       "started_at": 1788622401.9281652,
       "end_at": 1788622701.9281654,
-      "score": 3,
+      "score": 4,
       "wrong": 1,
       "base_elo": 2067.5079601572183,
       "puzzle": {
-        "url": "https://lichess.org/training/Yb3lP",
-        "title": "Lichess • 1983",
-        "fen": "3r2k1/6np/2qrRQ2/1p6/2p5/P6P/1P3PP1/4R1K1 w - - 1 33",
-        "current_fen": "3r2k1/6np/2q1R3/1p6/2p5/P6P/1P3PP1/4R1K1 w - - 0 34",
-        "pgn": "Qxd8+ Rxd8 Rxc6",
+        "url": "https://lichess.org/training/DQ64E",
+        "title": "Lichess • 2022",
+        "fen": "bq4k1/5rbp/1n3p2/4nPp1/3N2P1/PBP4P/1P3B2/R2Q1RK1 b - - 2 33",
+        "current_fen": "bq4k1/5rbp/1n3p2/4nPp1/3N2P1/PBP4P/1P3B2/R2Q1RK1 b - - 2 33",
+        "pgn": "Qb7 Nc6 Qxc6 Qd8+ Bf8",
         "all_moves": [
           {
-            "uci": "f6d8",
-            "san": "Qxd8+",
-            "color": "white"
-          },
-          {
-            "uci": "d6d8",
-            "san": "Rxd8",
+            "uci": "b8b7",
+            "san": "Qb7",
             "color": "black"
           },
           {
-            "uci": "e6c6",
-            "san": "Rxc6",
+            "uci": "d4c6",
+            "san": "Nc6",
             "color": "white"
+          },
+          {
+            "uci": "b7c6",
+            "san": "Qxc6",
+            "color": "black"
+          },
+          {
+            "uci": "d1d8",
+            "san": "Qd8+",
+            "color": "white"
+          },
+          {
+            "uci": "g7f8",
+            "san": "Bf8",
+            "color": "black"
           }
         ],
         "player_moves": [
           {
-            "uci": "f6d8",
-            "san": "Qxd8+",
-            "color": "white"
+            "uci": "b8b7",
+            "san": "Qb7",
+            "color": "black"
           },
           {
-            "uci": "e6c6",
-            "san": "Rxc6",
-            "color": "white"
+            "uci": "b7c6",
+            "san": "Qxc6",
+            "color": "black"
+          },
+          {
+            "uci": "g7f8",
+            "san": "Bf8",
+            "color": "black"
           }
         ],
-        "player_color": "white",
-        "player_move_count": 2,
-        "posted_at": "2026-09-05T15:34:06.389759+00:00",
+        "player_color": "black",
+        "player_move_count": 3,
+        "posted_at": "2026-09-05T15:34:17.931680+00:00",
         "answer_posted": false,
         "winner_user_id": null,
         "winner_name": null,
         "latest_attempts": {},
-        "puzzle_id": "practice_rush_442597396195704832_Yb3lP_1788622446389",
-        "rating": 1983,
-        "next_solution_index": 2,
+        "puzzle_id": "practice_rush_442597396195704832_DQ64E_1788622457931",
+        "rating": 2022,
+        "next_solution_index": 0,
         "board_theme": "classic",
         "piece_theme": "classic"
       }
