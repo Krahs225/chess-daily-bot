@@ -9,6 +9,8 @@ import threading
 import time
 from pathlib import Path
 
+from shared_leaderboard import badge_map
+
 EVENT_DIR = "guess_leaderboard_events"
 LEGACY_FILE = "guess_leaderboard.json"
 
@@ -766,6 +768,7 @@ def full_leaderboard(
     ordered = _ordered(
         snapshot
     )
+    badges = badge_map(uid for uid, _entry in ordered)
 
     lines = [
         title,
@@ -807,7 +810,7 @@ def full_leaderboard(
 
         lines.append(
             f"{prefix} "
-            f"{entry.get('name', 'Unknown')} — "
+            f"{(badges.get(str(_uid)) + ' ') if badges.get(str(_uid)) else ''}{entry.get('name', 'Unknown')} — "
             f"**{format_points(points)} {word}**"
         )
 
@@ -1366,6 +1369,9 @@ def format_guess_stats(stats):
     stats = stats or {}
 
     name = str(stats.get("name", "Unknown"))
+    badge = str(stats.get("active_badge", "") or "")
+    if badge:
+        name = f"{badge} {name}"
     total = int(stats.get("total", 0) or 0)
     correct = int(stats.get("correct", 0) or 0)
     wrong = int(stats.get("wrong", 0) or 0)
@@ -1430,6 +1436,8 @@ def guess_streak_leaderboard(limit=10):
             continue
         ordered.append((uid, entry, best, current))
 
+    badges = badge_map(uid for uid, _entry, _best, _current in ordered)
+
     ordered.sort(
         key=lambda item: (
             -item[2],
@@ -1454,7 +1462,7 @@ def guess_streak_leaderboard(limit=10):
         else:
             prefix = f"**{rank}.**"
         lines.append(
-            f"{prefix} {entry.get('name', 'Unknown')} — "
+            f"{prefix} {(badges.get(str(_uid)) + ' ') if badges.get(str(_uid)) else ''}{entry.get('name', 'Unknown')} — "
             f"**{best} best** · {current} current"
         )
 
