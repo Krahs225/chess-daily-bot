@@ -8109,6 +8109,10 @@ async def handle_random_answer(
                     correct = False
                 else:
                     board.push(move)
+                    # Keep the board arrow/highlight on the ACTUAL latest move.
+                    # The fresh puzzle starts with the Lichess setup move, but as
+                    # soon as the player moves this must advance with the position.
+                    puzzle["last_move_uci"] = move.uci()
 
                     next_index += 1
                     next_player_index = (
@@ -8138,6 +8142,9 @@ async def handle_random_answer(
                             break
 
                         board.push(reply_move)
+                        # If the puzzle auto-plays an opponent reply, that reply is
+                        # now the newest move and therefore owns the highlight/arrow.
+                        puzzle["last_move_uci"] = reply_move.uci()
 
                         opponent_replies.append(
                             reply["san"]
