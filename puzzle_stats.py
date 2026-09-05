@@ -718,7 +718,7 @@ def format_puzzle_stats(stats):
     )
 
 
-def format_puzzle_leaderboards(limit=10):
+def format_puzzle_leaderboards(limit=10, use_mentions=False):
     snapshot = _current_snapshot()
     users = [
         _result_for_user(uid, entry)
@@ -739,8 +739,9 @@ def format_puzzle_leaderboards(limit=10):
     lines = ["♟️ **Top Puzzle Elo**"]
     if elo_users:
         for index, entry in enumerate(elo_users, 1):
+            display_name = f"<@{entry['user_id']}>" if use_mentions else entry["name"]
             lines.append(
-                f"**{index}.** {(badges.get(str(entry['user_id'])) + ' ') if badges.get(str(entry['user_id'])) else ''}{entry['name']} — **{int(round(float(entry['elo'])))} Elo**"
+                f"**{index}.** {(badges.get(str(entry['user_id'])) + ' ') if badges.get(str(entry['user_id'])) else ''}{display_name} — **{int(round(float(entry['elo'])))} Elo**"
             )
     else:
         lines.append("No rated Puzzle Elo results yet.")
@@ -748,8 +749,9 @@ def format_puzzle_leaderboards(limit=10):
     lines.extend(["", "🔥 **Best Puzzle Streaks**"])
     if streak_users:
         for index, entry in enumerate(streak_users, 1):
+            display_name = f"<@{entry['user_id']}>" if use_mentions else entry["name"]
             lines.append(
-                f"**{index}.** {(badges.get(str(entry['user_id'])) + ' ') if badges.get(str(entry['user_id'])) else ''}{entry['name']} — **{int(entry['best_streak'])}** best "
+                f"**{index}.** {(badges.get(str(entry['user_id'])) + ' ') if badges.get(str(entry['user_id'])) else ''}{display_name} — **{int(entry['best_streak'])}** best "
                 f"(current {int(entry['current_streak'])})"
             )
     else:
