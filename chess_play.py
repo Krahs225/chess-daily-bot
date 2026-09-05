@@ -5,6 +5,7 @@ import random
 import re
 import shutil
 import subprocess
+import tempfile
 import threading
 
 import chess
@@ -17,6 +18,8 @@ CHESS_MIN_ELO = 100.0
 CHESS_MAX_ELO = 4000.0
 BOT_MIN_ELO = 1320
 BOT_MAX_ELO = 3190
+BOT_FULL_STRENGTH_ELO = 4000
+STOCKFISH_REQUIRED_MAJOR = 19
 
 
 def normalize_rating_entry(entry=None, name="Unknown"):
@@ -139,8 +142,13 @@ def random_bot_rating(player_elo):
 
 def clamp_bot_rating(value):
     rating = int(round(float(value)))
+    if rating == BOT_FULL_STRENGTH_ELO:
+        return rating
     if not BOT_MIN_ELO <= rating <= BOT_MAX_ELO:
-        raise ValueError(f"Bot Elo must be between {BOT_MIN_ELO} and {BOT_MAX_ELO}.")
+        raise ValueError(
+            f"Bot Elo must be between {BOT_MIN_ELO} and {BOT_MAX_ELO}, "
+            f"or exactly {BOT_FULL_STRENGTH_ELO} for full-strength Stockfish."
+        )
     return rating
 
 
@@ -264,9 +272,31 @@ def _stockfish_candidates():
     return result
 
 
+def _stockfish_major_from_text(text):
+    match = re.search(r"\bStockfish\s+(\d+)(?:\.|\b)", str(text or ""), re.IGNORECASE)
+    return int(match.group(1)) if match else None
+
+
+def _probe_stockfish_major(path):
+    try:
+        probe = subprocess.run(
+            [path],
+            input="uci\nquit\n",
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+    except Exception:
+        return None
+    return _stockfish_major_from_text((probe.stdout or "") + "\n" + (probe.stderr or ""))
+
+
 def _find_stockfish_binary():
     for path in _stockfish_candidates():
-        if os.path.isfile(path) and os.access(path, os.X_OK):
+        if not (os.path.isfile(path) and os.access(path, os.X_OK)):
+            continue
+        major = _probe_stockfish_major(path)
+        if major is not None and major >= STOCKFISH_REQUIRED_MAJOR:
             return path
     return None
 
@@ -279,7 +309,7 @@ def _github_actions_auto_install_enabled():
 
 
 def _try_install_stockfish_on_github_actions():
-    global _STOCKFISH_INSTALL_ATTEMPTED, _STOCKFISH_LAST_INSTALL_ERROR
+    global _STOCKFISH_INSTALL_ATTEMPTED, _STOCKFISH_LAST_INSTALL_ERROR, _STOCKFISH_PATH
 
     if _STOCKFISH_INSTALL_ATTEMPTED:
         return
@@ -287,38 +317,60 @@ def _try_install_stockfish_on_github_actions():
 
     if not _github_actions_auto_install_enabled():
         return
-    if shutil.which("apt-get") is None:
-        _STOCKFISH_LAST_INSTALL_ERROR = "apt-get is unavailable on this runner"
+
+    git = shutil.which("git")
+    make = shutil.which("make")
+    if git is None or make is None:
+        _STOCKFISH_LAST_INSTALL_ERROR = "git/make is unavailable on this runner"
         return
 
-    prefix = []
-    if hasattr(os, "geteuid") and os.geteuid() != 0:
-        if shutil.which("sudo") is None:
-            _STOCKFISH_LAST_INSTALL_ERROR = "sudo is unavailable on this runner"
-            return
-        prefix = ["sudo"]
+    build_root = os.path.join(tempfile.gettempdir(), "stockfish19-official")
+    source_root = os.path.join(build_root, "Stockfish")
+    binary_path = os.path.join(source_root, "src", "stockfish")
 
     try:
-        update = subprocess.run(
-            prefix + ["apt-get", "update", "-qq"],
+        if os.path.isdir(build_root):
+            shutil.rmtree(build_root, ignore_errors=True)
+        os.makedirs(build_root, exist_ok=True)
+
+        clone = subprocess.run(
+            [
+                git, "clone", "--depth", "1", "--branch", "sf_19",
+                "https://github.com/official-stockfish/Stockfish.git", source_root,
+            ],
             capture_output=True,
             text=True,
             timeout=180,
         )
-        install = subprocess.run(
-            prefix + ["apt-get", "install", "-y", "stockfish"],
+        if clone.returncode != 0:
+            detail = (clone.stderr or clone.stdout or "").strip().splitlines()
+            _STOCKFISH_LAST_INSTALL_ERROR = (
+                detail[-1] if detail else "could not clone official Stockfish sf_19 tag"
+            )
+            return
+
+        build = subprocess.run(
+            [make, "-C", os.path.join(source_root, "src"), "-j2", "build", "ARCH=x86-64-avx2"],
             capture_output=True,
             text=True,
-            timeout=180,
+            timeout=300,
         )
-        if install.returncode != 0:
-            detail = (install.stderr or install.stdout or "").strip().splitlines()
-            _STOCKFISH_LAST_INSTALL_ERROR = detail[-1] if detail else "apt-get install stockfish failed"
-        elif update.returncode != 0:
-            # The package install may still have succeeded using the runner cache.
-            detail = (update.stderr or update.stdout or "").strip().splitlines()
-            if detail:
-                print(f"Stockfish apt update warning: {detail[-1]}", flush=True)
+        if build.returncode != 0:
+            detail = (build.stderr or build.stdout or "").strip().splitlines()
+            _STOCKFISH_LAST_INSTALL_ERROR = (
+                detail[-1] if detail else "could not build Stockfish 19"
+            )
+            return
+
+        major = _probe_stockfish_major(binary_path)
+        if major is None or major < STOCKFISH_REQUIRED_MAJOR:
+            _STOCKFISH_LAST_INSTALL_ERROR = (
+                f"built engine did not identify as Stockfish {STOCKFISH_REQUIRED_MAJOR}+"
+            )
+            return
+
+        os.chmod(binary_path, 0o755)
+        _STOCKFISH_PATH = binary_path
     except Exception as error:
         _STOCKFISH_LAST_INSTALL_ERROR = str(error)
 
@@ -331,15 +383,17 @@ def _resolve_stockfish_binary():
     path = _find_stockfish_binary()
     if path is None:
         _try_install_stockfish_on_github_actions()
-        path = _find_stockfish_binary()
+        path = _STOCKFISH_PATH or _find_stockfish_binary()
 
     if path is None:
         detail = ""
         if _STOCKFISH_LAST_INSTALL_ERROR:
             detail = f" Auto-install error: {_STOCKFISH_LAST_INSTALL_ERROR}."
         raise StockfishUnavailableError(
-            "Stockfish is not installed. Set STOCKFISH_PATH to the Stockfish binary "
-            "or install the 'stockfish' package on the bot runner." + detail
+            f"Stockfish {STOCKFISH_REQUIRED_MAJOR}+ is not installed. "
+            f"Set STOCKFISH_PATH to a Stockfish {STOCKFISH_REQUIRED_MAJOR}+ binary. "
+            "On GitHub Actions the bot will try to build the official sf_19 tag automatically."
+            + detail
         )
 
     _STOCKFISH_PATH = path
@@ -373,6 +427,17 @@ def _open_stockfish_engine():
         raise StockfishUnavailableError(
             f"Could not start Stockfish at '{path}': {error}"
         ) from error
+
+    engine_name = str(engine.id.get("name") or "Stockfish")
+    engine_major = _stockfish_major_from_text(engine_name)
+    if engine_major is None or engine_major < STOCKFISH_REQUIRED_MAJOR:
+        try:
+            engine.quit()
+        except Exception:
+            pass
+        raise StockfishUnavailableError(
+            f"Stockfish {STOCKFISH_REQUIRED_MAJOR}+ is required, but this binary reports '{engine_name}'."
+        )
 
     required = {"UCI_LimitStrength", "UCI_Elo"}
     missing = sorted(required.difference(engine.options.keys()))
@@ -417,28 +482,38 @@ def stockfish_engine_info():
         name = str(engine.id.get("name") or "Stockfish")
         return {
             "name": name,
+            "major": _stockfish_major_from_text(name),
             "path": str(_STOCKFISH_PATH or ""),
             "min_elo": minimum,
             "max_elo": maximum,
+            "full_strength_elo": BOT_FULL_STRENGTH_ELO,
             "move_time": STOCKFISH_MOVE_TIME,
         }
 
 
 def _stockfish_play_once(board, rating):
     engine = _get_stockfish_engine()
+    rating = int(rating)
     elo_option = engine.options["UCI_Elo"]
     minimum = int(elo_option.min if elo_option.min is not None else BOT_MIN_ELO)
     maximum = int(elo_option.max if elo_option.max is not None else BOT_MAX_ELO)
-    if not minimum <= int(rating) <= maximum:
+
+    if rating == BOT_FULL_STRENGTH_ELO:
+        config = {"UCI_LimitStrength": False}
+        if "Skill Level" in engine.options:
+            config["Skill Level"] = int(engine.options["Skill Level"].max or 20)
+        engine.configure(config)
+    elif minimum <= rating <= maximum:
+        engine.configure({
+            "UCI_LimitStrength": True,
+            "UCI_Elo": rating,
+        })
+    else:
         raise ValueError(
-            f"This Stockfish build supports UCI Elo {minimum}-{maximum}; "
-            f"requested {rating}."
+            f"This Stockfish build supports calibrated UCI Elo {minimum}-{maximum}; "
+            f"use {BOT_FULL_STRENGTH_ELO} for full strength. Requested {rating}."
         )
 
-    engine.configure({
-        "UCI_LimitStrength": True,
-        "UCI_Elo": int(rating),
-    })
     result = engine.play(
         board,
         chess.engine.Limit(time=STOCKFISH_MOVE_TIME),
