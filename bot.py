@@ -19,6 +19,8 @@ from shared_leaderboard import (
     equip_board,
     buy_piece,
     equip_piece,
+    buy_arrow,
+    equip_arrow,
     buy_color,
     equip_color,
     transfer_coins,
@@ -38,7 +40,9 @@ from shared_leaderboard import (
 )
 from shop_catalog import (
     BADGE_BOX_COST, BADGE_POOLS, RARITY_LABELS, BOARD_COST, BOARD_THEMES, BOARD_DISPLAY_NAMES,
-    PIECE_COST, PIECE_SETS, PIECE_DISPLAY_NAMES, COLOR_COST, NAME_COLORS, SHOP_COLOR_ROLE_PREFIX, SURVIVAL_HEART_COST,
+    PIECE_COST, PIECE_SETS, PIECE_DISPLAY_NAMES,
+    ARROW_COST, ARROW_COLORS, DEFAULT_ARROW_COLOR,
+    COLOR_COST, NAME_COLORS, SHOP_COLOR_ROLE_PREFIX, SURVIVAL_HEART_COST,
 )
 import os
 import re
@@ -2371,12 +2375,15 @@ async def post_exact_lichess_puzzle(
                 )
                 puzzle["board_theme"] = cosmetic.get("active_board", "classic")
                 puzzle["piece_theme"] = cosmetic.get("active_piece", "classic")
+                puzzle["arrow_theme"] = cosmetic.get("active_arrow", DEFAULT_ARROW_COLOR)
             except Exception:
                 puzzle["board_theme"] = "classic"
                 puzzle["piece_theme"] = "classic"
+                puzzle["arrow_theme"] = DEFAULT_ARROW_COLOR
         else:
             puzzle["board_theme"] = "classic"
             puzzle["piece_theme"] = "classic"
+            puzzle["arrow_theme"] = DEFAULT_ARROW_COLOR
 
         state["latest_random_puzzle"] = puzzle
         state["latest_puzzle_type"] = "random"
@@ -2564,6 +2571,14 @@ _UNICODE_CHESS_GLYPHS = {
     "K": "♔", "Q": "♕", "R": "♖", "B": "♗", "N": "♘", "P": "♙",
     "k": "♚", "q": "♛", "r": "♜", "b": "♝", "n": "♞", "p": "♟",
 }
+_BLACK_CHESS_GLYPHS_BY_TYPE = {
+    chess.PAWN: "♟",
+    chess.KNIGHT: "♞",
+    chess.BISHOP: "♝",
+    chess.ROOK: "♜",
+    chess.QUEEN: "♛",
+    chess.KING: "♚",
+}
 
 
 def _piece_overlay_svg(board, orientation, piece_theme):
@@ -2593,7 +2608,27 @@ def _piece_overlay_svg(board, orientation, piece_theme):
         symbol = piece.symbol()
         letter = letters[piece.piece_type]
 
-        if shape == "figurine":
+        if shape == "glyph":
+            glyph = (
+                _UNICODE_CHESS_GLYPHS[symbol]
+                if style.get("glyph_variant") == "native"
+                else _BLACK_CHESS_GLYPHS_BY_TYPE[piece.piece_type]
+            )
+            font_family = style.get("font_family", "DejaVu Sans")
+            font_size = float(style.get("font_size", 40))
+            font_weight = style.get("font_weight", 700)
+            stroke_width = float(style.get("stroke_width", 0.65))
+            scale_x = float(style.get("scale_x", 1.0))
+            scale_y = float(style.get("scale_y", 1.0))
+            glyph_fill = "none" if style.get("outline_only") else fill
+            parts.append(
+                f'<g transform="translate({cx:.2f} {cy:.2f}) scale({scale_x:.3f} {scale_y:.3f})">'
+                f'<text x="0" y="1" text-anchor="middle" dominant-baseline="central" '
+                f'font-family="{font_family}" font-size="{font_size:g}" font-weight="{font_weight}" '
+                f'fill="{glyph_fill}" stroke="{stroke}" stroke-width="{stroke_width:g}" '
+                f'paint-order="stroke">{glyph}</text></g>'
+            )
+        elif shape == "figurine":
             glyph = _UNICODE_CHESS_GLYPHS[symbol]
             parts.append(
                 f'<text x="{cx:.2f}" y="{cy + 1:.2f}" text-anchor="middle" '
@@ -2697,6 +2732,8 @@ async def make_board_file(
 
     theme_name = str(puzzle.get("board_theme", "classic") or "classic").casefold()
     piece_theme = str(puzzle.get("piece_theme", "classic") or "classic").casefold()
+    arrow_theme = str(puzzle.get("arrow_theme", DEFAULT_ARROW_COLOR) or DEFAULT_ARROW_COLOR).casefold()
+    arrow_color = ARROW_COLORS.get(arrow_theme, ARROW_COLORS[DEFAULT_ARROW_COLOR])["hex"]
     light, dark = BOARD_THEMES.get(theme_name, BOARD_THEMES["classic"])
 
     last_move = None
@@ -2705,7 +2742,7 @@ async def make_board_file(
     if raw_last_move:
         try:
             last_move = chess.Move.from_uci(raw_last_move)
-            arrows.append(chess.svg.Arrow(last_move.from_square, last_move.to_square))
+            arrows.append(chess.svg.Arrow(last_move.from_square, last_move.to_square, color=arrow_color))
         except Exception:
             last_move = None
             arrows = []
@@ -3840,6 +3877,7 @@ def _review_board_at_ply(game, ply_index):
 async def _review_theme_for_game(game):
     board_theme = "classic"
     piece_theme = "classic"
+    arrow_theme = DEFAULT_ARROW_COLOR
     owner_id = game.get("theme_owner_id")
     owner_name = game.get("theme_owner_name", "Player")
     if owner_id:
@@ -3847,9 +3885,10 @@ async def _review_theme_for_game(game):
             profile = await asyncio.to_thread(get_cosmetic_profile, owner_id, owner_name)
             board_theme = profile.get("active_board", "classic")
             piece_theme = profile.get("active_piece", "classic")
+            arrow_theme = profile.get("active_arrow", DEFAULT_ARROW_COLOR)
         except Exception as error:
             print(f"Chess review cosmetics lookup failed: {error}", flush=True)
-    return board_theme, piece_theme
+    return board_theme, piece_theme, arrow_theme
 
 
 async def _make_chess_review_file(game, ply_index, filename="chess_review.png"):
@@ -3861,10 +3900,11 @@ async def _make_chess_review_file(game, ply_index, filename="chess_review.png"):
         orientation = bool(game.get("review_orientation_white", True))
     else:
         orientation = True
-    board_theme, piece_theme = await _review_theme_for_game(game)
+    board_theme, piece_theme, arrow_theme = await _review_theme_for_game(game)
+    arrow_color = ARROW_COLORS.get(str(arrow_theme).casefold(), ARROW_COLORS[DEFAULT_ARROW_COLOR])["hex"]
     arrows = []
     if last_move is not None:
-        arrows.append(chess.svg.Arrow(last_move.from_square, last_move.to_square))
+        arrows.append(chess.svg.Arrow(last_move.from_square, last_move.to_square, color=arrow_color))
     svg = render_custom_board_svg(
         board,
         orientation=orientation,
@@ -4091,6 +4131,7 @@ async def make_chess_game_file(game, filename="chess_game.png"):
     owner_name = game.get("theme_owner_name", "Player")
     board_theme = "classic"
     piece_theme = "classic"
+    arrow_theme = DEFAULT_ARROW_COLOR
     if owner_id:
         try:
             profile = await asyncio.to_thread(
@@ -4100,6 +4141,7 @@ async def make_chess_game_file(game, filename="chess_game.png"):
             )
             board_theme = profile.get("active_board", "classic")
             piece_theme = profile.get("active_piece", "classic")
+            arrow_theme = profile.get("active_arrow", DEFAULT_ARROW_COLOR)
         except Exception as error:
             print(f"Chess game cosmetics lookup failed: {error}", flush=True)
 
@@ -4110,9 +4152,10 @@ async def make_chess_game_file(game, filename="chess_game.png"):
         orientation = True
 
     last_move = _current_game_last_move(game)
+    arrow_color = ARROW_COLORS.get(str(arrow_theme).casefold(), ARROW_COLORS[DEFAULT_ARROW_COLOR])["hex"]
     arrows = []
     if last_move is not None:
-        arrows.append(chess.svg.Arrow(last_move.from_square, last_move.to_square))
+        arrows.append(chess.svg.Arrow(last_move.from_square, last_move.to_square, color=arrow_color))
 
     svg = render_custom_board_svg(
         board,
@@ -4916,9 +4959,11 @@ async def load_next_rush_puzzle(session):
         )
         puzzle["board_theme"] = profile.get("active_board", "classic")
         puzzle["piece_theme"] = profile.get("active_piece", "classic")
+        puzzle["arrow_theme"] = profile.get("active_arrow", DEFAULT_ARROW_COLOR)
     except Exception:
         puzzle["board_theme"] = "classic"
         puzzle["piece_theme"] = "classic"
+        puzzle["arrow_theme"] = DEFAULT_ARROW_COLOR
     session["puzzle"] = puzzle
 
 
@@ -5355,12 +5400,15 @@ async def post_random_puzzle(
                     )
                     puzzle["board_theme"] = cosmetic.get("active_board", "classic")
                     puzzle["piece_theme"] = cosmetic.get("active_piece", "classic")
+                    puzzle["arrow_theme"] = cosmetic.get("active_arrow", DEFAULT_ARROW_COLOR)
                 except Exception:
                     puzzle["board_theme"] = "classic"
                     puzzle["piece_theme"] = "classic"
+                    puzzle["arrow_theme"] = DEFAULT_ARROW_COLOR
             else:
                 puzzle["board_theme"] = "classic"
                 puzzle["piece_theme"] = "classic"
+                puzzle["arrow_theme"] = DEFAULT_ARROW_COLOR
 
             # Interactive state.
             puzzle["current_fen"] = sanitize_fen(
@@ -5517,9 +5565,11 @@ async def post_practice_puzzle(channel, owner):
                 )
                 puzzle["board_theme"] = cosmetic.get("active_board", "classic")
                 puzzle["piece_theme"] = cosmetic.get("active_piece", "classic")
+                puzzle["arrow_theme"] = cosmetic.get("active_arrow", DEFAULT_ARROW_COLOR)
             except Exception:
                 puzzle["board_theme"] = "classic"
                 puzzle["piece_theme"] = "classic"
+                puzzle["arrow_theme"] = DEFAULT_ARROW_COLOR
 
             puzzle["current_fen"] = sanitize_fen(puzzle["fen"])
             puzzle["next_solution_index"] = 0
@@ -6235,12 +6285,14 @@ def shop_message(user_id, display_name):
         f"🎨 **Boards — {shared_format_points(BOARD_COST)} coins each**\n"
         "`!customboard` — catalogue • `!customboard blue test` — preview • `!customboard blue buy` — buy • `!customboard blue` — equip.\n\n"
         f"♟️ **Piece Sets — {shared_format_points(PIECE_COST)} coins each**\n"
-        "`!custompiece` — catalogue • `!custompiece figurine-gold test` — preview • `!custompiece figurine-gold buy` — buy/equip.\n\n"
+        "`!custompiece` — catalogue with physical preview/buy/equip buttons.\n\n"
+        f"➡️ **Arrow Colors — {shared_format_points(ARROW_COST)} coins each**\n"
+        "`!arrow` — choose the last-move arrow color. Green is the free default.\n\n"
         f"🖌️ **Name Colors — {shared_format_points(COLOR_COST)} coins each**\n"
         f"`!color` — {color_names}. Higher protected server roles still win (owner blue / subscriber pink).\n\n"
         f"❤️ **Survival Heart — {shared_format_points(SURVIVAL_HEART_COST)} coins**\n"
         "Captain-only `!heart` while the run is active and missing a heart; max one purchased heart per run.\n\n"
-        "👤 `!me` / `!profile` — inventory, active badge, board, pieces and color."
+        "👤 `!me` / `!profile` — inventory, active badge, board, pieces, arrow and color."
     )
 
 
@@ -6249,6 +6301,7 @@ def cosmetic_profile_dashboard(user_id, display_name):
     active_badge = profile.get("active_badge") or "—"
     active_board_key = profile.get("active_board", "classic")
     active_piece_key = profile.get("active_piece", "classic")
+    active_arrow_key = profile.get("active_arrow", DEFAULT_ARROW_COLOR)
     active_color_key = profile.get("active_color", "")
     active_color = (
         NAME_COLORS.get(active_color_key, {}).get("label", active_color_key.title())
@@ -6270,14 +6323,16 @@ def cosmetic_profile_dashboard(user_id, display_name):
         f"🏅 **Active badge:** {active_badge}\n"
         f"🎨 **Active board:** {BOARD_DISPLAY_NAMES.get(active_board_key, str(active_board_key).title())}\n"
         f"♟️ **Active pieces:** {PIECE_DISPLAY_NAMES.get(active_piece_key, str(active_piece_key).title())}\n"
+        f"➡️ **Active arrow:** {ARROW_COLORS.get(active_arrow_key, ARROW_COLORS[DEFAULT_ARROW_COLOR])['label']}\n"
         f"🖌️ **Active color:** {active_color}\n\n"
         f"🏅 **Badges:** {len(unique_badges)} unique / {len(badges)} total\n"
         f"{rarity_lines}\n"
         f"🎨 **Boards owned:** {len(profile.get('boards', [])) + 1}/{len(BOARD_THEMES)}\n"
         f"♟️ **Piece sets owned:** {len(profile.get('pieces', [])) + 1}/{len(PIECE_SETS)}\n"
+        f"➡️ **Arrow colors owned:** {len(profile.get('arrows', [])) + 1}/{len(ARROW_COLORS)}\n"
         f"🖌️ **Colors owned:** {len(profile.get('colors', []))}/{len(NAME_COLORS)}\n\n"
         "**Collection**\n"
-        "Use the buttons below to browse badges, boards, pieces and colors.\n"
+        "Use the buttons below to browse badges, boards, pieces and colors. `!arrow` opens arrow colors.\n"
         "On your own profile, click an owned cosmetic to equip it. `!profile badge 0` still unequips your badge."
     )
 
@@ -6404,9 +6459,9 @@ def piece_catalog_message(page=1):
     lines.extend([
         "",
         "Use **Previous / Next** below to browse pages.",
-        "`!custompiece figurine-gold test` — preview",
-        "`!custompiece figurine-gold buy` — buy",
-        "`!custompiece figurine-gold` — equip if owned",
+        "`!custompiece staunton test` — preview",
+        "`!custompiece staunton buy` — buy",
+        "`!custompiece staunton` — equip if owned",
         "`!custompiece default` — equip Classic",
     ])
     return "\n".join(lines)
@@ -6443,13 +6498,19 @@ def _button_emoji(value):
 
 
 class CosmeticCatalogPager(discord.ui.View):
-    """Clickable board/piece shop browser with instant previews."""
+    """Clickable board/piece/arrow shop browser with instant previews."""
 
     def __init__(self, viewer_id, kind, page=1, selected_name=None):
         super().__init__(timeout=300)
         self.viewer_id = int(viewer_id)
-        self.kind = "board" if str(kind) == "board" else "piece"
-        self.names = list(BOARD_THEMES) if self.kind == "board" else list(PIECE_SETS)
+        requested = str(kind or "piece").casefold()
+        self.kind = requested if requested in {"board", "piece", "arrow"} else "piece"
+        if self.kind == "board":
+            self.names = list(BOARD_THEMES)
+        elif self.kind == "arrow":
+            self.names = list(ARROW_COLORS)
+        else:
+            self.names = list(PIECE_SETS)
         self.page_size = 5
         self.total_pages = max(1, math.ceil(len(self.names) / self.page_size))
         self.page = max(1, min(int(page or 1), self.total_pages))
@@ -6471,39 +6532,78 @@ class CosmeticCatalogPager(discord.ui.View):
     def _display_name(self, name):
         if self.kind == "board":
             return BOARD_DISPLAY_NAMES.get(name, name.title())
+        if self.kind == "arrow":
+            return ARROW_COLORS.get(name, {}).get("label", name.title())
         return PIECE_DISPLAY_NAMES.get(name, name.title())
+
+    def _price(self):
+        if self.kind == "board":
+            return BOARD_COST
+        if self.kind == "arrow":
+            return ARROW_COST
+        return PIECE_COST
+
+    def _is_free_default(self, name):
+        if self.kind == "arrow":
+            return name == DEFAULT_ARROW_COLOR
+        return name == "classic"
+
+    def _owned_active(self, profile):
+        selected = self.selected_name
+        if profile is None:
+            return self._is_free_default(selected), False
+        if self.kind == "board":
+            return (
+                selected == "classic" or selected in profile.get("boards", []),
+                selected == profile.get("active_board", "classic"),
+            )
+        if self.kind == "arrow":
+            return (
+                selected == DEFAULT_ARROW_COLOR or selected in profile.get("arrows", []),
+                selected == profile.get("active_arrow", DEFAULT_ARROW_COLOR),
+            )
+        return (
+            selected == "classic" or selected in profile.get("pieces", []),
+            selected == profile.get("active_piece", "classic"),
+        )
 
     def render(self, profile=None):
         selected = self.selected_name
         display = self._display_name(selected)
-        price = BOARD_COST if self.kind == "board" else PIECE_COST
-        item_word = "board" if self.kind == "board" else "piece set"
-        owned = False
-        active = False
-        if profile is not None:
-            if self.kind == "board":
-                owned = selected == "classic" or selected in profile.get("boards", [])
-                active = selected == profile.get("active_board", "classic")
-            else:
-                owned = selected == "classic" or selected in profile.get("pieces", [])
-                active = selected == profile.get("active_piece", "classic")
-        status = "Classic / free" if selected == "classic" else ("Owned" if owned else f"{shared_format_points(price)} coins")
+        price = self._price()
+        owned, active = self._owned_active(profile)
+        if self.kind == "board":
+            icon, title, item_word = "🎨", "Custom Boards", "board"
+        elif self.kind == "arrow":
+            icon, title, item_word = "➡️", "Arrow Colors", "arrow color"
+        else:
+            icon, title, item_word = "♟️", "Custom Piece Sets", "piece set"
+        status = "Free default" if self._is_free_default(selected) else ("Owned" if owned else "Not owned")
         if active:
             status += " • Equipped"
         return (
-            f"{'🎨' if self.kind == 'board' else '♟️'} **Custom {'Boards' if self.kind == 'board' else 'Piece Sets'}**\n"
+            f"{icon} **{title}**\n"
+            f"**Price:** {shared_format_points(price)} coins each • default is free.\n"
             f"Page **{self.page}/{self.total_pages}** • choose one of the 5 buttons below.\n\n"
             f"**Preview:** {display}\n"
             f"**Status:** {status}\n\n"
-            f"Click an option to instantly preview that {item_word}. Use **Buy selected** or **Equip selected** when ready."
+            f"Click an option to instantly preview that {item_word}. Use the physical buy/equip buttons when ready."
         )
 
     async def preview_file(self, display_name):
         profile = await asyncio.to_thread(get_cosmetic_profile, self.viewer_id, display_name)
+        arrow_theme = profile.get("active_arrow", DEFAULT_ARROW_COLOR)
+        show_arrow = False
         if self.kind == "board":
             board_name = self.selected_name
             piece_name = profile.get("active_piece", "classic")
             filename = "board_shop_preview.png"
+        elif self.kind == "arrow":
+            board_name = profile.get("active_board", "classic")
+            piece_name = profile.get("active_piece", "classic")
+            arrow_theme = self.selected_name
+            show_arrow = True
+            filename = "arrow_shop_preview.png"
         else:
             board_name = profile.get("active_board", "classic")
             piece_name = self.selected_name
@@ -6513,6 +6613,8 @@ class CosmeticCatalogPager(discord.ui.View):
             board_name,
             piece_name,
             filename,
+            arrow_theme,
+            show_arrow,
         )
         return profile, file
 
@@ -6569,13 +6671,14 @@ class CosmeticCatalogPager(discord.ui.View):
         self.add_item(indicator)
         self.add_item(next_button)
 
+        owned, _active = self._owned_active(profile)
         buy = discord.ui.Button(
-            label="Buy selected",
+            label=f"Buy selected • {shared_format_points(self._price())} coins",
             style=discord.ButtonStyle.success,
-            disabled=self.selected_name == "classic",
+            disabled=self._is_free_default(self.selected_name) or owned,
             row=2,
         )
-        equip = discord.ui.Button(label="Equip selected", style=discord.ButtonStyle.primary, row=2)
+        equip = discord.ui.Button(label="Equip selected", style=discord.ButtonStyle.primary, disabled=not owned, row=2)
 
         async def buy_callback(interaction):
             name = self.selected_name
@@ -6590,6 +6693,15 @@ class CosmeticCatalogPager(discord.ui.View):
                         f"catalog-buy-board:{interaction.id}:{interaction.user.id}:{name}",
                     )
                     label = BOARD_DISPLAY_NAMES.get(name, name.title())
+                elif self.kind == "arrow":
+                    updated = await asyncio.to_thread(
+                        buy_arrow,
+                        interaction.user.id,
+                        interaction.user.display_name,
+                        name,
+                        f"catalog-buy-arrow:{interaction.id}:{interaction.user.id}:{name}",
+                    )
+                    label = ARROW_COLORS.get(name, {}).get("label", name.title())
                 else:
                     updated = await asyncio.to_thread(
                         buy_piece,
@@ -6602,7 +6714,8 @@ class CosmeticCatalogPager(discord.ui.View):
                 self._rebuild(updated)
                 await interaction.message.edit(content=self.render(updated), view=self)
                 await interaction.followup.send(
-                    f"✅ Bought **{label}**. 🪙 Coins left: **{shared_format_points(updated['coins'])}**",
+                    f"✅ Bought **{label}** for **{shared_format_points(self._price())} coins**. "
+                    f"🪙 Coins left: **{shared_format_points(updated['coins'])}**",
                     ephemeral=True,
                 )
             except Exception as error:
@@ -6621,6 +6734,16 @@ class CosmeticCatalogPager(discord.ui.View):
                         f"catalog-equip-board:{interaction.id}:{interaction.user.id}:{name}",
                     )
                     label = BOARD_DISPLAY_NAMES.get(updated.get("active_board", name), name.title())
+                elif self.kind == "arrow":
+                    updated = await asyncio.to_thread(
+                        equip_arrow,
+                        interaction.user.id,
+                        interaction.user.display_name,
+                        name,
+                        f"catalog-equip-arrow:{interaction.id}:{interaction.user.id}:{name}",
+                    )
+                    active_name = updated.get("active_arrow", DEFAULT_ARROW_COLOR)
+                    label = ARROW_COLORS.get(active_name, ARROW_COLORS[DEFAULT_ARROW_COLOR])["label"]
                 else:
                     updated = await asyncio.to_thread(
                         equip_piece,
@@ -6676,6 +6799,7 @@ class CosmeticProfileView(discord.ui.View):
             active_badge = profile.get("active_badge") or "—"
             active_board_key = profile.get("active_board", "classic")
             active_piece_key = profile.get("active_piece", "classic")
+            active_arrow_key = profile.get("active_arrow", DEFAULT_ARROW_COLOR)
             active_color_key = profile.get("active_color", "")
             active_color = NAME_COLORS.get(active_color_key, {}).get("label", active_color_key.title()) if active_color_key else "Default"
             badges = list(profile.get("badges", []))
@@ -6690,12 +6814,14 @@ class CosmeticProfileView(discord.ui.View):
                 f"🏅 **Active badge:** {active_badge}\n"
                 f"🎨 **Active board:** {BOARD_DISPLAY_NAMES.get(active_board_key, str(active_board_key).title())}\n"
                 f"♟️ **Active pieces:** {PIECE_DISPLAY_NAMES.get(active_piece_key, str(active_piece_key).title())}\n"
+                f"➡️ **Active arrow:** {ARROW_COLORS.get(active_arrow_key, ARROW_COLORS[DEFAULT_ARROW_COLOR])['label']}\n"
                 f"🖌️ **Active color:** {active_color}\n\n"
                 f"🏅 **Badges:** {len(unique_badges)} unique / {len(badges)} total\n{rarity_lines}\n"
                 f"🎨 **Boards owned:** {len(profile.get('boards', [])) + 1}/{len(BOARD_THEMES)}\n"
                 f"♟️ **Piece sets owned:** {len(profile.get('pieces', [])) + 1}/{len(PIECE_SETS)}\n"
+                f"➡️ **Arrow colors owned:** {len(profile.get('arrows', [])) + 1}/{len(ARROW_COLORS)}\n"
                 f"🖌️ **Colors owned:** {len(profile.get('colors', []))}/{len(NAME_COLORS)}\n\n"
-                "Use the buttons below to browse the collection."
+                "Use the buttons below to browse the collection. `!arrow` opens arrow colors."
             )
         if self.mode == "badges":
             if profile is None:
@@ -6914,16 +7040,32 @@ async def resolve_cosmetic_profile_target(message, typed_name):
     return str(target["user_id"]), target.get("name", query)
 
 
-def make_cosmetic_preview_file(board_theme="classic", piece_theme="classic", filename="cosmetic_preview.png"):
+def make_cosmetic_preview_file(
+    board_theme="classic",
+    piece_theme="classic",
+    filename="cosmetic_preview.png",
+    arrow_theme=DEFAULT_ARROW_COLOR,
+    show_arrow=False,
+):
     board_theme = str(board_theme or "classic").casefold()
     piece_theme = str(piece_theme or "classic").casefold()
+    arrow_theme = str(arrow_theme or DEFAULT_ARROW_COLOR).casefold()
     board = chess.Board()
+    last_move = None
+    arrows = []
+    if show_arrow:
+        last_move = chess.Move.from_uci("e2e4")
+        board.push(last_move)
+        arrow_color = ARROW_COLORS.get(arrow_theme, ARROW_COLORS[DEFAULT_ARROW_COLOR])["hex"]
+        arrows.append(chess.svg.Arrow(last_move.from_square, last_move.to_square, color=arrow_color))
     svg = render_custom_board_svg(
         board,
         orientation=True,
         board_theme=board_theme,
         piece_theme=piece_theme,
         size=500,
+        lastmove=last_move,
+        arrows=arrows,
     )
     png = cairosvg.svg2png(bytestring=svg.encode("utf-8"))
     return discord.File(BytesIO(png), filename=filename)
@@ -7080,18 +7222,18 @@ def help_message():
 `!rush` — **5-minute Rush**; one at a time, same difficulty. `!stoprush` forfeits. Top 10 earns coins.
 
 **Rated Chess**
-`!playbot [elo]` — play Stockfish 19 at calibrated Elo (1320-3190), or `!playbot 4000` for full strength; no Elo picks within ±200 of yours. Win **+3**, draw **+2**, loss **+0** shared points + coins.
+`!playbot [elo]` — Stockfish 19 (1320-3190), or `!playbot 4000` full strength; default is about ±200 of your Elo. Win **+3**, draw **+2**, loss **+0** points + coins.
 `!play @name` — free player challenge. `!play @name 10` — both stake 10 coins; winner gets 20. `!accept` / `!decline`.
-Play normally or `!move e4`. `!draw` / `!offerdraw` offers a draw after move 30; PvP: `!acceptdraw` / `!declinedraw`. Threefold repetition auto-draws. `!resign` resigns. Finished games include PGN + Stockfish review.
+Play normally or `!move e4`. `!draw` offers after move 30; PvP: `!acceptdraw` / `!declinedraw`. Threefold auto-draws. `!resign` resigns. Finished games include PGN + review.
 `!review` — paste a PGN (or attach `.pgn`) for a free Stockfish 19 review with move-by-move buttons.
 `!stats` shows both **Puzzle Elo** and your separate **Chess Elo**.
 
 **Points / Coins / Shop**
-`!l` — Chess Elo, Puzzle Elo, 5-minute Rush, then shared points. `!puzzlestreak` — best Puzzle streaks. `!coins` / `!bank` — points + shared coins.
+`!l` — Chess Elo, Puzzle Elo, Rush, shared points. `!puzzlestreak` — best Puzzle streaks. `!coins` / `!bank` — points + shared coins.
 `!donate <name> <coins|badge>` — donate coins or a badge. `!trade <name> <give> <receive>` — trade coins/badges.
 `!me` / `!profile` — clickable inventory. `!profile <name>` — view another player. `!shop` — shop info.
-`!box` — badge box (50). `!customboard` — 100 boards (100 each).
-`!custompiece` — 97 piece sets (100 each). `!color` — name colors (500 each).
+`!box` — badge box (50 coins). `!customboard` — boards (100 coins each).
+`!custompiece` — 10 piece sets (100 coins each). `!arrow` — arrow colors (50 coins; Green free). `!color` — name colors (500 coins each).
 
 🔥 **Survival**
 `!survival` / `!stopsurvival` — start/resume or pause. `!solo <team>` / `!coop <team>` — captain mode.
@@ -9491,7 +9633,8 @@ async def on_message(
                     )
                     await message.channel.send(
                         f"🎨 **{BOARD_DISPLAY_NAMES[board_name]} preview** • Pieces: "
-                        f"**{PIECE_DISPLAY_NAMES.get(profile.get('active_piece', 'classic'), 'Classic')}**",
+                        f"**{PIECE_DISPLAY_NAMES.get(profile.get('active_piece', 'classic'), 'Classic')}**\n"
+                        f"🪙 Price: **{shared_format_points(BOARD_COST)} coins**",
                         file=preview,
                     )
                 except Exception as error:
@@ -9575,7 +9718,8 @@ async def on_message(
                     )
                     await message.channel.send(
                         f"♟️ **{PIECE_DISPLAY_NAMES[piece_name]} preview** • Board: "
-                        f"**{BOARD_DISPLAY_NAMES.get(profile.get('active_board', 'classic'), 'Classic')}**",
+                        f"**{BOARD_DISPLAY_NAMES.get(profile.get('active_board', 'classic'), 'Classic')}**\n"
+                        f"🪙 Price: **{shared_format_points(PIECE_COST)} coins**",
                         file=preview,
                     )
                 except Exception as error:
@@ -9617,6 +9761,90 @@ async def on_message(
                 )
             except Exception as error:
                 await message.channel.send(f"❌ **Could not equip piece set:** {str(error)[:800]}")
+            return
+
+        if command_lower in {"!arrow", "!arrowcolor"} or command_lower.startswith(("!arrow ", "!arrowcolor ")):
+            args = content.split()[1:]
+            if not args:
+                try:
+                    await send_cosmetic_catalog_preview(message, "arrow", 1)
+                except Exception as error:
+                    await message.channel.send(f"❌ Could not open arrow previews: `{str(error)[:800]}`")
+                return
+
+            if len(args) == 1 and args[0].isdigit():
+                try:
+                    await send_cosmetic_catalog_preview(message, "arrow", int(args[0]))
+                except Exception as error:
+                    await message.channel.send(f"❌ Could not open arrow previews: `{str(error)[:800]}`")
+                return
+
+            arrow_name = args[0].casefold()
+            if arrow_name in {"default", "classic"}:
+                arrow_name = DEFAULT_ARROW_COLOR
+            if arrow_name not in ARROW_COLORS:
+                await message.channel.send("❌ Unknown arrow color. Use `!arrow` for the catalogue.")
+                return
+
+            action = args[1].casefold() if len(args) > 1 else "equip"
+            if action == "test":
+                try:
+                    profile = await asyncio.to_thread(
+                        get_cosmetic_profile, message.author.id, message.author.display_name
+                    )
+                    preview = await asyncio.to_thread(
+                        make_cosmetic_preview_file,
+                        profile.get("active_board", "classic"),
+                        profile.get("active_piece", "classic"),
+                        "arrow_color_preview.png",
+                        arrow_name,
+                        True,
+                    )
+                    await message.channel.send(
+                        f"➡️ **{ARROW_COLORS[arrow_name]['label']} arrow preview**\n"
+                        f"🪙 Price: **{shared_format_points(ARROW_COST)} coins** • Green is free",
+                        file=preview,
+                    )
+                except Exception as error:
+                    await message.channel.send(f"❌ Could not render arrow preview: `{str(error)[:800]}`")
+                return
+
+            if action == "buy":
+                if arrow_name == DEFAULT_ARROW_COLOR:
+                    await message.channel.send("✅ **Green is the free default arrow.**")
+                    return
+                try:
+                    profile = await asyncio.to_thread(
+                        buy_arrow,
+                        message.author.id,
+                        message.author.display_name,
+                        arrow_name,
+                        f"buy-arrow:{message.id}:{message.author.id}:{arrow_name}",
+                    )
+                    await message.channel.send(
+                        f"✅ Bought **{ARROW_COLORS[arrow_name]['label']} Arrow** for "
+                        f"**{shared_format_points(ARROW_COST)} coins**.\n"
+                        f"🪙 Coins left: **{shared_format_points(profile['coins'])}**\n"
+                        f"Equip it with `!arrow {arrow_name}`."
+                    )
+                except Exception as error:
+                    await message.channel.send(f"❌ **Could not buy arrow color:** {str(error)[:800]}")
+                return
+
+            try:
+                profile = await asyncio.to_thread(
+                    equip_arrow,
+                    message.author.id,
+                    message.author.display_name,
+                    arrow_name,
+                    f"equip-arrow:{message.id}:{message.author.id}:{arrow_name}",
+                )
+                active_arrow = profile.get("active_arrow", DEFAULT_ARROW_COLOR)
+                await message.channel.send(
+                    f"➡️ **Arrow equipped:** {ARROW_COLORS.get(active_arrow, ARROW_COLORS[DEFAULT_ARROW_COLOR])['label']}"
+                )
+            except Exception as error:
+                await message.channel.send(f"❌ **Could not equip arrow color:** {str(error)[:800]}")
             return
 
         if command_lower == "!color" or command_lower.startswith("!color "):
