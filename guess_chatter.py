@@ -3471,12 +3471,9 @@ async def command_handler(message):
         leaderboard_text = await asyncio.to_thread(
             full_leaderboard,
             "🏆 **Guess Games Leaderboard**",
-            True,
+            False,
         )
-        await message.channel.send(
-            leaderboard_text,
-            allowed_mentions=discord.AllowedMentions.none(),
-        )
+        await message.channel.send(leaderboard_text)
         return
 
     if command in {"!help", "!info", "!i"}:
