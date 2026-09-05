@@ -1,16 +1,22 @@
+import atexit
 import math
+import os
 import random
 import re
+import shutil
+import subprocess
+import threading
 
 import chess
+import chess.engine
 
 CHESS_PLAY_BUILD = "chess-play-v1-elo-bot-pvp-2026-09-05"
 CHESS_START_ELO = 1500.0
 CHESS_K = 32.0
 CHESS_MIN_ELO = 100.0
 CHESS_MAX_ELO = 4000.0
-BOT_MIN_ELO = 100
-BOT_MAX_ELO = 4000
+BOT_MIN_ELO = 1320
+BOT_MAX_ELO = 3190
 
 
 def normalize_rating_entry(entry=None, name="Unknown"):
@@ -190,6 +196,257 @@ def parse_move(board, text):
     raise ValueError("Illegal move.")
 
 
+class StockfishUnavailableError(RuntimeError):
+    pass
+
+
+_STOCKFISH_LOCK = threading.RLock()
+_STOCKFISH_ENGINE = None
+_STOCKFISH_PATH = None
+_STOCKFISH_INSTALL_ATTEMPTED = False
+_STOCKFISH_LAST_INSTALL_ERROR = None
+
+
+def _positive_int_env(name, default, minimum=1, maximum=None):
+    try:
+        value = int(os.getenv(name, str(default)))
+    except Exception:
+        value = int(default)
+    value = max(int(minimum), value)
+    if maximum is not None:
+        value = min(int(maximum), value)
+    return value
+
+
+def _positive_float_env(name, default, minimum=0.05, maximum=None):
+    try:
+        value = float(os.getenv(name, str(default)))
+    except Exception:
+        value = float(default)
+    value = max(float(minimum), value)
+    if maximum is not None:
+        value = min(float(maximum), value)
+    return value
+
+
+STOCKFISH_THREADS = _positive_int_env("STOCKFISH_THREADS", 1, 1, 4)
+STOCKFISH_HASH_MB = _positive_int_env("STOCKFISH_HASH_MB", 64, 16, 512)
+STOCKFISH_MOVE_TIME = _positive_float_env("STOCKFISH_MOVE_TIME", 1.0, 0.1, 10.0)
+
+
+def _stockfish_candidates():
+    configured = str(os.getenv("STOCKFISH_PATH", "") or "").strip()
+    candidates = []
+    if configured:
+        candidates.append(configured)
+
+    found = shutil.which("stockfish")
+    if found:
+        candidates.append(found)
+
+    candidates.extend([
+        "/usr/games/stockfish",
+        "/usr/bin/stockfish",
+        "/usr/local/bin/stockfish",
+        "/opt/homebrew/bin/stockfish",
+        str(os.path.abspath("stockfish")),
+        str(os.path.abspath(os.path.join("bin", "stockfish"))),
+    ])
+
+    result = []
+    seen = set()
+    for candidate in candidates:
+        path = os.path.abspath(os.path.expanduser(str(candidate)))
+        if path in seen:
+            continue
+        seen.add(path)
+        result.append(path)
+    return result
+
+
+def _find_stockfish_binary():
+    for path in _stockfish_candidates():
+        if os.path.isfile(path) and os.access(path, os.X_OK):
+            return path
+    return None
+
+
+def _github_actions_auto_install_enabled():
+    if str(os.getenv("GITHUB_ACTIONS", "")).strip().casefold() != "true":
+        return False
+    value = str(os.getenv("STOCKFISH_AUTO_INSTALL", "1") or "1").strip().casefold()
+    return value not in {"0", "false", "no", "off"}
+
+
+def _try_install_stockfish_on_github_actions():
+    global _STOCKFISH_INSTALL_ATTEMPTED, _STOCKFISH_LAST_INSTALL_ERROR
+
+    if _STOCKFISH_INSTALL_ATTEMPTED:
+        return
+    _STOCKFISH_INSTALL_ATTEMPTED = True
+
+    if not _github_actions_auto_install_enabled():
+        return
+    if shutil.which("apt-get") is None:
+        _STOCKFISH_LAST_INSTALL_ERROR = "apt-get is unavailable on this runner"
+        return
+
+    prefix = []
+    if hasattr(os, "geteuid") and os.geteuid() != 0:
+        if shutil.which("sudo") is None:
+            _STOCKFISH_LAST_INSTALL_ERROR = "sudo is unavailable on this runner"
+            return
+        prefix = ["sudo"]
+
+    try:
+        update = subprocess.run(
+            prefix + ["apt-get", "update", "-qq"],
+            capture_output=True,
+            text=True,
+            timeout=180,
+        )
+        install = subprocess.run(
+            prefix + ["apt-get", "install", "-y", "stockfish"],
+            capture_output=True,
+            text=True,
+            timeout=180,
+        )
+        if install.returncode != 0:
+            detail = (install.stderr or install.stdout or "").strip().splitlines()
+            _STOCKFISH_LAST_INSTALL_ERROR = detail[-1] if detail else "apt-get install stockfish failed"
+        elif update.returncode != 0:
+            # The package install may still have succeeded using the runner cache.
+            detail = (update.stderr or update.stdout or "").strip().splitlines()
+            if detail:
+                print(f"Stockfish apt update warning: {detail[-1]}", flush=True)
+    except Exception as error:
+        _STOCKFISH_LAST_INSTALL_ERROR = str(error)
+
+
+def _resolve_stockfish_binary():
+    global _STOCKFISH_PATH
+    if _STOCKFISH_PATH and os.path.isfile(_STOCKFISH_PATH):
+        return _STOCKFISH_PATH
+
+    path = _find_stockfish_binary()
+    if path is None:
+        _try_install_stockfish_on_github_actions()
+        path = _find_stockfish_binary()
+
+    if path is None:
+        detail = ""
+        if _STOCKFISH_LAST_INSTALL_ERROR:
+            detail = f" Auto-install error: {_STOCKFISH_LAST_INSTALL_ERROR}."
+        raise StockfishUnavailableError(
+            "Stockfish is not installed. Set STOCKFISH_PATH to the Stockfish binary "
+            "or install the 'stockfish' package on the bot runner." + detail
+        )
+
+    _STOCKFISH_PATH = path
+    return path
+
+
+def _close_stockfish_engine():
+    global _STOCKFISH_ENGINE
+    with _STOCKFISH_LOCK:
+        engine = _STOCKFISH_ENGINE
+        _STOCKFISH_ENGINE = None
+        if engine is not None:
+            try:
+                engine.quit()
+            except Exception:
+                try:
+                    engine.close()
+                except Exception:
+                    pass
+
+
+atexit.register(_close_stockfish_engine)
+
+
+def _open_stockfish_engine():
+    global _STOCKFISH_ENGINE
+    path = _resolve_stockfish_binary()
+    try:
+        engine = chess.engine.SimpleEngine.popen_uci(path, timeout=15.0)
+    except Exception as error:
+        raise StockfishUnavailableError(
+            f"Could not start Stockfish at '{path}': {error}"
+        ) from error
+
+    required = {"UCI_LimitStrength", "UCI_Elo"}
+    missing = sorted(required.difference(engine.options.keys()))
+    if missing:
+        try:
+            engine.quit()
+        except Exception:
+            pass
+        raise StockfishUnavailableError(
+            "This Stockfish build does not expose the required UCI options: "
+            + ", ".join(missing)
+        )
+
+    config = {"UCI_LimitStrength": True}
+    if "Threads" in engine.options:
+        option = engine.options["Threads"]
+        max_threads = int(option.max or STOCKFISH_THREADS)
+        config["Threads"] = min(STOCKFISH_THREADS, max_threads)
+    if "Hash" in engine.options:
+        option = engine.options["Hash"]
+        min_hash = int(option.min or 1)
+        max_hash = int(option.max or STOCKFISH_HASH_MB)
+        config["Hash"] = min(max(STOCKFISH_HASH_MB, min_hash), max_hash)
+    engine.configure(config)
+    _STOCKFISH_ENGINE = engine
+    return engine
+
+
+def _get_stockfish_engine():
+    global _STOCKFISH_ENGINE
+    if _STOCKFISH_ENGINE is None:
+        return _open_stockfish_engine()
+    return _STOCKFISH_ENGINE
+
+
+def stockfish_engine_info():
+    with _STOCKFISH_LOCK:
+        engine = _get_stockfish_engine()
+        elo_option = engine.options["UCI_Elo"]
+        minimum = int(elo_option.min if elo_option.min is not None else BOT_MIN_ELO)
+        maximum = int(elo_option.max if elo_option.max is not None else BOT_MAX_ELO)
+        name = str(engine.id.get("name") or "Stockfish")
+        return {
+            "name": name,
+            "path": str(_STOCKFISH_PATH or ""),
+            "min_elo": minimum,
+            "max_elo": maximum,
+            "move_time": STOCKFISH_MOVE_TIME,
+        }
+
+
+def _stockfish_play_once(board, rating):
+    engine = _get_stockfish_engine()
+    elo_option = engine.options["UCI_Elo"]
+    minimum = int(elo_option.min if elo_option.min is not None else BOT_MIN_ELO)
+    maximum = int(elo_option.max if elo_option.max is not None else BOT_MAX_ELO)
+    if not minimum <= int(rating) <= maximum:
+        raise ValueError(
+            f"This Stockfish build supports UCI Elo {minimum}-{maximum}; "
+            f"requested {rating}."
+        )
+
+    engine.configure({
+        "UCI_LimitStrength": True,
+        "UCI_Elo": int(rating),
+    })
+    result = engine.play(
+        board,
+        chess.engine.Limit(time=STOCKFISH_MOVE_TIME),
+        ponder=False,
+    )
+    return result.move
+
+
 _PIECE_VALUES = {
     chess.PAWN: 100,
     chess.KNIGHT: 320,
@@ -250,40 +507,20 @@ def _candidate_score(board, move, color, depth):
 
 
 def choose_bot_move(board, target_elo):
-    legal = list(board.legal_moves)
-    if not legal:
+    if board.is_game_over(claim_draw=True):
         return None
 
     rating = clamp_bot_rating(target_elo)
-    if rating <= 650:
-        return random.choice(legal)
-
-    color = board.turn
-    depth = 2 if rating >= 1500 else 1
-    scored = []
-    for move in legal:
-        base = _candidate_score(board, move, color, depth)
-        # Lower-rated bots receive substantially more evaluation noise.
-        noise_cp = max(8.0, 300.0 - (rating - BOT_MIN_ELO) * 0.105)
-        noisy = base + random.gauss(0.0, noise_cp)
-        scored.append((noisy, move))
-
-    scored.sort(key=lambda item: item[0], reverse=True)
-
-    if rating < 900:
-        width = min(len(scored), 8)
-    elif rating < 1300:
-        width = min(len(scored), 5)
-    elif rating < 1700:
-        width = min(len(scored), 3)
-    elif rating < 2100:
-        width = min(len(scored), 2)
-    else:
-        width = 1
-
-    # Prefer better candidates but keep variety at human-like levels.
-    pool = scored[:width]
-    if len(pool) == 1:
-        return pool[0][1]
-    weights = list(range(len(pool), 0, -1))
-    return random.choices([item[1] for item in pool], weights=weights, k=1)[0]
+    with _STOCKFISH_LOCK:
+        # A persistent UCI engine is reused between moves. If the process dies,
+        # restart it once and retry the exact same position/rating.
+        try:
+            return _stockfish_play_once(board, rating)
+        except (
+            chess.engine.EngineTerminatedError,
+            chess.engine.EngineError,
+            BrokenPipeError,
+            OSError,
+        ):
+            _close_stockfish_engine()
+            return _stockfish_play_once(board, rating)
