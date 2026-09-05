@@ -83,7 +83,7 @@ PENDING_TEAM_SECONDS = 60
 RUN_TIME = 5 * 60 * 60 + 50 * 60
 
 THREE_STRIKES = 3
-SHARK_ADMIN_NAME = "sharkmeister"
+SHARKMEISTER_DEFAULT_USER_ID = "362606514764251137"
 
 
 # Puzzle difficulty progression.
@@ -4152,9 +4152,14 @@ class SurvivalBot(
         self,
         user,
     ):
+        shark_id = os.getenv(
+            "SHARKMEISTER_USER_ID",
+            SHARKMEISTER_DEFAULT_USER_ID,
+        ).strip() or SHARKMEISTER_DEFAULT_USER_ID
+
         return (
-            user.display_name.casefold()
-            == SHARK_ADMIN_NAME
+            str(getattr(user, "id", ""))
+            == shark_id
         )
 
     async def delete_team(
