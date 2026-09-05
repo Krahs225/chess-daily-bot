@@ -348,6 +348,69 @@
         "helper_awarded": []
       },
       "history": []
+    },
+    "shark": {
+      "name": "Shark",
+      "best_puzzle": 1,
+      "best_difficulty": 0,
+      "best_completed_at": "2026-09-05T11:06:20.020010+00:00",
+      "current": {
+        "run_id": "shark:1788606380",
+        "started_by_id": "362606514764251137",
+        "captain_id": "362606514764251137",
+        "captain_name": "Sharkmeister",
+        "mode": "coop",
+        "status": "active",
+        "started_at": "2026-09-05T11:06:20.019992+00:00",
+        "last_activity": 1788606380.0200057,
+        "paused_reason": null,
+        "puzzle_number": 1,
+        "strikes": 0,
+        "best_difficulty": 1296,
+        "used_puzzle_ids": [
+          "cO8wh"
+        ],
+        "members": {},
+        "puzzle": {
+          "id": "cO8wh",
+          "rating": 1296,
+          "themes": "short endgame mateIn2",
+          "url": "https://lichess.org/training/cO8wh",
+          "start_fen": "5rk1/2R3pp/4p3/3pP3/P2q4/6QP/6P1/7K b - - 2 27",
+          "current_fen": "5rk1/2R3pp/4p3/3pP3/P2q4/6QP/6P1/7K b - - 2 27",
+          "solution": [
+            {
+              "uci": "f8f1",
+              "san": "Rf1+",
+              "color": "black"
+            },
+            {
+              "uci": "h1h2",
+              "san": "Kh2",
+              "color": "white"
+            },
+            {
+              "uci": "d4g1",
+              "san": "Qg1#",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
+        "helper_awarded": []
+      },
+      "history": []
     }
   }
 }
