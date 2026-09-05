@@ -9,6 +9,7 @@ from shared_leaderboard import (
     adjust_points as shared_adjust_points,
     get_score as shared_get_score,
     get_coins as shared_get_coins,
+    credit_coins as shared_credit_coins,
     get_cosmetic_profile,
     badge_prefix,
     badge_map as shared_badge_map,
@@ -58,6 +59,7 @@ import sqlite3
 import math
 from collections import Counter
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 from puzzle_mode_lock import is_survival_active, active_team
 
@@ -351,6 +353,11 @@ PUZZLE_RUSH_SECONDS = 5 * 60
 PUZZLE_RUSH_WINDOW = 50
 PUZZLE_RUSH_START_RATING = 1200
 PUZZLE_RUSH_RATING_STEP = 40
+PUZZLE_RUSH_TIMEZONE = ZoneInfo("Europe/Amsterdam")
+PUZZLE_RUSH_WEEKLY_REWARDS = (50, 40, 30, 25, 20, 15, 12, 10, 8, 5)
+PUZZLE_RUSH_WEEKLY_STATE_KEY = "puzzle_rush_weekly_bests_universal_v1"
+PUZZLE_RUSH_WEEKLY_PAID_KEY = "puzzle_rush_weekly_paid_universal_v1"
+PUZZLE_RUSH_WEEKLY_SEED_KEY = "puzzle_rush_weekly_seeded_universal_v1"
 PUZZLE_RUSH_RULESET = "universal-1200-plus40-v1"
 
 
@@ -2678,6 +2685,153 @@ def _rush_bests_state():
     return state.setdefault("puzzle_rush_bests_universal_v1", {})
 
 
+def _rush_week_key(moment=None):
+    if moment is None:
+        local = datetime.now(PUZZLE_RUSH_TIMEZONE)
+    elif isinstance(moment, datetime):
+        if moment.tzinfo is None:
+            local = moment.replace(tzinfo=timezone.utc).astimezone(PUZZLE_RUSH_TIMEZONE)
+        else:
+            local = moment.astimezone(PUZZLE_RUSH_TIMEZONE)
+    else:
+        local = datetime.fromtimestamp(float(moment), tz=PUZZLE_RUSH_TIMEZONE)
+    iso = local.isocalendar()
+    return f"{iso.year}-W{iso.week:02d}"
+
+
+def _rush_weekly_bests_state():
+    return state.setdefault(PUZZLE_RUSH_WEEKLY_STATE_KEY, {})
+
+
+def _rush_weekly_paid_state():
+    return state.setdefault(PUZZLE_RUSH_WEEKLY_PAID_KEY, {})
+
+
+def _rush_week_bucket(week_key=None):
+    key = str(week_key or _rush_week_key())
+    weeks = _rush_weekly_bests_state()
+    bucket = weeks.setdefault(key, {})
+    if not isinstance(bucket, dict):
+        bucket = {}
+        weeks[key] = bucket
+    return key, bucket
+
+
+def _rush_week_rows(week_key=None, limit=10):
+    key = str(week_key or _rush_week_key())
+    raw_bucket = _rush_weekly_bests_state().get(key, {})
+    if not isinstance(raw_bucket, dict):
+        raw_bucket = {}
+    rows = []
+    for user_id, raw in raw_bucket.items():
+        entry = _normalize_rush_best(user_id, raw)
+        if int(entry.get("score", 0)) <= 0:
+            continue
+        achieved_at = str(
+            (raw.get("achieved_at") if isinstance(raw, dict) else None)
+            or entry.get("updated_at")
+            or "9999-12-31T23:59:59+00:00"
+        )
+        rows.append((str(user_id), entry, achieved_at))
+    rows.sort(
+        key=lambda item: (
+            -int(item[1].get("score", 0)),
+            item[2],
+            str(item[1].get("name", "Unknown")).casefold(),
+            item[0],
+        )
+    )
+    return rows[:max(1, int(limit))]
+
+
+def _seed_current_rush_week_once():
+    """Preserve fair-universal scores already earned before weekly payouts shipped."""
+    if state.get(PUZZLE_RUSH_WEEKLY_SEED_KEY):
+        return False
+    current_week, bucket = _rush_week_bucket()
+    changed = False
+    for user_id, raw in _rush_bests_state().items():
+        entry = _normalize_rush_best(user_id, raw)
+        score = int(entry.get("score", 0))
+        if score <= 0:
+            continue
+        existing = _normalize_rush_best(user_id, bucket.get(str(user_id), 0))
+        if score > int(existing.get("score", 0)):
+            when = (raw.get("updated_at") if isinstance(raw, dict) else None) or datetime.now(timezone.utc).isoformat()
+            bucket[str(user_id)] = {
+                "score": score,
+                "name": str(entry.get("name", "Player")),
+                "updated_at": str(when),
+                "achieved_at": str(when),
+            }
+            changed = True
+    state[PUZZLE_RUSH_WEEKLY_SEED_KEY] = current_week
+    return True
+
+
+async def process_due_rush_weekly_rewards(channel=None):
+    """Pay each completed ISO week exactly once. Monday starts a new week."""
+    current_week = _rush_week_key()
+    weeks = _rush_weekly_bests_state()
+    paid = _rush_weekly_paid_state()
+    completed = sorted(
+        key for key in weeks.keys()
+        if str(key) < current_week and str(key) not in paid
+    )
+    announcements = []
+    for week_key in completed:
+        rows = _rush_week_rows(week_key, len(PUZZLE_RUSH_WEEKLY_REWARDS))
+        winners = []
+        try:
+            for rank, (user_id, entry, _achieved_at) in enumerate(rows, 1):
+                reward = int(PUZZLE_RUSH_WEEKLY_REWARDS[rank - 1])
+                balance = await asyncio.to_thread(
+                    shared_credit_coins,
+                    user_id,
+                    entry.get("name", "Player"),
+                    reward,
+                    f"puzzle-rush-weekly:{week_key}:{rank}:{user_id}",
+                    "puzzle-rush-weekly",
+                )
+                winners.append({
+                    "rank": rank,
+                    "user_id": str(user_id),
+                    "name": str(entry.get("name", "Player")),
+                    "score": int(entry.get("score", 0)),
+                    "coins": reward,
+                    "balance": float(balance),
+                })
+        except Exception as error:
+            print(f"Weekly Puzzle Rush payout error for {week_key}: {error}", flush=True)
+            continue
+
+        paid[week_key] = {
+            "paid_at": datetime.now(timezone.utc).isoformat(),
+            "winners": winners,
+        }
+        if not await save_all_critical():
+            paid.pop(week_key, None)
+            print(f"Weekly Puzzle Rush payout marker could not be saved for {week_key}; will retry.", flush=True)
+            continue
+
+        if winners:
+            lines = [f"🏆 **Weekly Puzzle Rush Rewards — {week_key}**"]
+            for winner in winners:
+                lines.append(
+                    f"**{winner['rank']}.** {winner['name']} — "
+                    f"{winner['score']} solved • **+{winner['coins']} coins**"
+                )
+            announcements.append("\n".join(lines))
+
+    if channel is not None:
+        for text in announcements:
+            try:
+                await channel.send(text)
+            except Exception as error:
+                print(f"Could not post weekly Puzzle Rush rewards: {error}", flush=True)
+    return announcements
+
+
 def chess_rating_profile(user_id, display_name="Unknown"):
     raw = _chess_ratings_state().get(str(user_id))
     return normalize_chess_rating_entry(raw, display_name)
@@ -3911,32 +4065,21 @@ def _normalize_rush_best(user_id, raw):
 
 
 def format_puzzle_rush_leaderboard(limit=10):
-    rows = []
-    for user_id, raw in _rush_bests_state().items():
-        entry = _normalize_rush_best(user_id, raw)
-        if int(entry.get("score", 0)) <= 0:
-            continue
-        rows.append((str(user_id), entry))
+    week_key = _rush_week_key()
+    rows = _rush_week_rows(week_key, limit)
 
-    rows.sort(
-        key=lambda item: (
-            -int(item[1].get("score", 0)),
-            str(item[1].get("name", "Unknown")).casefold(),
-        )
-    )
-    rows = rows[:max(1, int(limit))]
-
-    lines = ["⚡ **5-Minute Puzzle Rush**"]
+    lines = [f"⚡ **5-Minute Puzzle Rush — This Week ({week_key})**"]
+    lines.append("Weekly Top 10 rewards: **50 / 40 / 30 / 25 / 20 / 15 / 12 / 10 / 8 / 5 coins**.")
     if not rows:
-        lines.append("No Puzzle Rush scores yet.")
+        lines.append("No Puzzle Rush scores this week yet.")
         return "\n".join(lines)
 
     try:
-        badges = shared_badge_map([user_id for user_id, _entry in rows])
+        badges = shared_badge_map([user_id for user_id, _entry, _achieved_at in rows])
     except Exception:
         badges = {}
 
-    for rank, (user_id, entry) in enumerate(rows, 1):
+    for rank, (user_id, entry, _achieved_at) in enumerate(rows, 1):
         badge = badges.get(str(user_id), "")
         prefix = f"{badge} " if badge else ""
         score = int(entry.get("score", 0))
@@ -4002,23 +4145,55 @@ async def end_puzzle_rush(channel, user_id, reason="Time!"):
     session["ended_at"] = time.time()
     score = int(session.get("score", 0))
     wrong = int(session.get("wrong", 0))
+    now_iso = datetime.now(timezone.utc).isoformat()
     bests = _rush_bests_state()
     previous_entry = _normalize_rush_best(user_id, bests.get(str(user_id), 0))
     previous_best = int(previous_entry.get("score", 0))
     best = max(previous_best, score)
-    bests[str(user_id)] = {
-        "score": best,
-        "name": str(session.get("name", previous_entry.get("name", "Player"))),
-        "updated_at": datetime.now(timezone.utc).isoformat(),
-    }
-    await save_all()
+    if score > previous_best:
+        bests[str(user_id)] = {
+            "score": best,
+            "name": str(session.get("name", previous_entry.get("name", "Player"))),
+            "updated_at": now_iso,
+            "achieved_at": now_iso,
+        }
+    elif str(user_id) not in bests:
+        bests[str(user_id)] = {
+            "score": best,
+            "name": str(session.get("name", previous_entry.get("name", "Player"))),
+            "updated_at": now_iso,
+            "achieved_at": now_iso,
+        }
+
+    week_key, weekly = _rush_week_bucket()
+    previous_week_entry = _normalize_rush_best(user_id, weekly.get(str(user_id), 0))
+    previous_week_best = int(previous_week_entry.get("score", 0))
+    weekly_best = max(previous_week_best, score)
+    if score > previous_week_best:
+        weekly[str(user_id)] = {
+            "score": weekly_best,
+            "name": str(session.get("name", previous_week_entry.get("name", "Player"))),
+            "updated_at": now_iso,
+            "achieved_at": now_iso,
+        }
+    elif str(user_id) not in weekly:
+        weekly[str(user_id)] = {
+            "score": weekly_best,
+            "name": str(session.get("name", previous_week_entry.get("name", "Player"))),
+            "updated_at": now_iso,
+            "achieved_at": now_iso,
+        }
+
+    await save_all_critical()
     new_best = score > previous_best
+    new_week_best = score > previous_week_best
     await channel.send(
         f"⏱️ **Puzzle Rush finished — {session.get('name', 'Player')}!**\n"
         f"{reason}\n"
         f"✅ Solved: **{score}** • ❌ Misses: **{wrong}** • "
-        f"🏆 Best: **{best}**{' — NEW BEST!' if new_best else ''}\n"
-        "Puzzle Rush is unranked: no shared points, coins or Puzzle Elo changes."
+        f"🏆 All-time best: **{best}**{' — NEW BEST!' if new_best else ''}\n"
+        f"⚡ Weekly best ({week_key}): **{weekly_best}**{' — NEW WEEKLY BEST!' if new_week_best else ''}\n"
+        "No immediate points/coins/Elo. The weekly Rush Top 10 earns coins."
     )
 
 
@@ -5966,7 +6141,7 @@ def help_message():
 **Puzzles**
 `rp` / `r` — Random Puzzle. `p` / `!practice` — rated Practice near your Puzzle Elo.
 `!daily <move>` — Daily Puzzle. `!400`, `!2500`, etc. — exact-rating practice.
-`!rush` — **5-minute Puzzle Rush**; score as many as possible (unranked).
+`!rush` — **5-minute Puzzle Rush**; same difficulty curve for everyone. Weekly Top 10 earns coins.
 
 **Rated Chess**
 `!playbot [elo]` — play Stockfish 19 at calibrated Elo (1320-3190), or `!playbot 4000` for full strength; no Elo picks within ±200 of yours. Win **+3**, draw **+2**, loss **+0** shared points + coins.
@@ -6291,6 +6466,8 @@ async def maintenance_loop(
             await check_puzzle_rush_expiry(
                 channel
             )
+
+            await process_due_rush_weekly_rewards(channel)
 
             today = datetime.now(
                 timezone.utc
@@ -9120,6 +9297,12 @@ async def on_ready():
     state.setdefault("puzzle_rush", {})
     state.setdefault("puzzle_rush_bests", {})
     state.setdefault("puzzle_rush_bests_universal_v1", {})
+    state.setdefault(PUZZLE_RUSH_WEEKLY_STATE_KEY, {})
+    state.setdefault(PUZZLE_RUSH_WEEKLY_PAID_KEY, {})
+
+    rush_week_seeded = _seed_current_rush_week_once()
+    if rush_week_seeded:
+        print("Seeded current weekly Puzzle Rush leaderboard from fair universal scores.", flush=True)
 
     if recover_chess_ratings_from_game_history():
         print("Recovered missing Chess Elo entries from finished game history.", flush=True)
@@ -9219,6 +9402,11 @@ async def on_ready():
             f"Could not sync private status command: {error}",
             flush=True,
         )
+
+    if rush_week_seeded:
+        await save_all_critical()
+
+    await process_due_rush_weekly_rewards(channel)
 
     await check_for_new_puzzle(
         channel
