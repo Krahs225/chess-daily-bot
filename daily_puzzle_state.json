@@ -51,12 +51,23 @@
     "next_player_index": 0,
     "solved": false,
     "message_id": null,
-    "attempted_users": {},
+    "attempted_users": {
+      "442597396195704832": {
+        "name": "Thice",
+        "move": "nf6",
+        "correct": false,
+        "timestamp": "2026-09-05T17:25:47.401098+00:00"
+      }
+    },
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [],
+    "recent_accepted_moves": [],
+    "wrong_attempt_counts": {
+      "442597396195704832": 1
+    }
   },
   "latest_puzzle_type": "random",
   "leaderboard_last_posted_date": "2026-09-05",
@@ -1298,7 +1309,7 @@
         "url": "https://lichess.org/training/xBLIp",
         "title": "Lichess • 1211",
         "fen": "2rqrbk1/3b1p1p/3P2p1/6P1/1p2N2P/2p3Q1/4RP2/1B2R1K1 w - - 2 32",
-        "current_fen": "2rqrbk1/3b1p1p/3P2p1/6P1/1p2N2P/2p3Q1/4RP2/1B2R1K1 w - - 2 32",
+        "current_fen": "2r1rbk1/3b1p1p/3P1qp1/6P1/1p5P/2p3Q1/4RP2/1B2R1K1 w - - 0 33",
         "pgn": "Nf6+ Qxf6 gxf6 Rxe2 Rxe2",
         "all_moves": [
           {
@@ -1353,8 +1364,8 @@
         "latest_attempts": {},
         "puzzle_id": "practice_rush_362606514764251137_xBLIp_1788629141743",
         "rating": 1211,
-        "next_solution_index": 0,
-        "last_move_uci": "b8c8",
+        "next_solution_index": 2,
+        "last_move_uci": "d8f6",
         "board_theme": "classic",
         "piece_theme": "classic"
       }
