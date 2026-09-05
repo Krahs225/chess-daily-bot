@@ -2,11 +2,17 @@ import asyncio
 import os
 import random
 import re
+import math
+from collections import Counter
 from datetime import datetime, timezone, timedelta
 from difflib import get_close_matches
 from pathlib import Path
 
 import discord
+import chess
+import chess.svg
+import cairosvg
+from io import BytesIO
 
 from guess_leaderboard import (
     add_points,
@@ -16,6 +22,8 @@ from guess_leaderboard import (
     guess_stats_for_user,
     guess_stats_for_name,
     format_guess_stats,
+    get_score as guess_get_score,
+    backfill_existing_guess_points_to_shared_coins,
 )
 
 from guess_chess_chatter import (
@@ -25,11 +33,28 @@ from guess_chess_chatter import (
 
 from shared_leaderboard import (
     get_cosmetic_profile,
+    get_coins as shared_get_coins,
     buy_badge_box,
     equip_badge,
+    buy_board,
+    equip_board,
+    buy_piece,
+    equip_piece,
+    transfer_coins,
+    transfer_badge,
+    resolve_badge as shared_resolve_badge,
+    propose_trade as shared_propose_trade,
+    accept_trade as shared_accept_trade,
+    decline_trade as shared_decline_trade,
+    format_trade_asset as shared_format_trade_asset,
+    resolve_cosmetic_profile as shared_resolve_cosmetic_profile,
     format_points as shared_format_points,
 )
-from shop_catalog import BADGE_BOX_COST, BADGE_POOLS, RARITY_LABELS
+from shop_catalog import (
+    BADGE_BOX_COST, BADGE_POOLS, RARITY_LABELS,
+    BOARD_COST, BOARD_THEMES, BOARD_DISPLAY_NAMES,
+    PIECE_COST, PIECE_SETS, PIECE_DISPLAY_NAMES,
+)
 
 TOKEN = os.getenv(
     "DISCORD_TOKEN"
@@ -136,43 +161,267 @@ def total_disaster_message():
     )
 
 
-def guess_cosmetic_profile_messages(user_id, display_name):
+def _guess_badge_rows(badges, rarity=None):
+    counts = Counter(badges)
+    first_index = {}
+    for index, badge in enumerate(badges, 1):
+        first_index.setdefault(badge, index)
+    rows = []
+    for badge, count in counts.items():
+        badge_rarity = next((r for r, pool in BADGE_POOLS.items() if badge in pool), "unknown")
+        if rarity and badge_rarity != rarity:
+            continue
+        rows.append((first_index[badge], badge, badge_rarity, count))
+    return sorted(rows, key=lambda row: row[0])
+
+
+def guess_cosmetic_profile_dashboard(user_id, display_name):
     profile = get_cosmetic_profile(user_id, display_name)
     badges = list(profile.get("badges", []))
+    unique = set(badges)
     active = profile.get("active_badge") or "—"
-    header = [
-        f"👤 **Guess Profile — {(active + ' ') if active != '—' else ''}{profile.get('name', display_name)}**",
-        f"🪙 **Coins:** {shared_format_points(profile.get('coins', 0))}",
-        f"🏅 **Active badge:** {active}",
-        "",
-        "**Owned badges**",
-    ]
-    badge_lines = []
-    if badges:
-        for index, badge in enumerate(badges, 1):
-            rarity = next(
-                (RARITY_LABELS[r] for r, pool in BADGE_POOLS.items() if badge in pool),
-                "Unknown",
-            )
-            badge_lines.append(f"`{index}.` {badge} — {rarity}")
-    else:
-        badge_lines.append("None yet — open a `!shop box`.")
+    active_board = profile.get("active_board", "classic")
+    active_piece = profile.get("active_piece", "classic")
+    counts = {
+        rarity: len({badge for badge in unique if badge in BADGE_POOLS[rarity]})
+        for rarity in BADGE_POOLS
+    }
+    rarity_line = " • ".join(
+        f"{RARITY_LABELS[r]} {counts[r]}"
+        for r in ("legendary", "epic", "rare", "uncommon", "common", "basic")
+    )
+    return (
+        f"👤 **Guess Profile — {(active + ' ') if active != '—' else ''}{profile.get('name', display_name)}**\n"
+        f"🪙 **Coins:** {shared_format_points(profile.get('coins', 0))}\n"
+        f"🏅 **Active badge:** {active}\n"
+        f"🎨 **Active board:** {BOARD_DISPLAY_NAMES.get(active_board, str(active_board).title())}\n"
+        f"♟️ **Active pieces:** {PIECE_DISPLAY_NAMES.get(active_piece, str(active_piece).title())}\n\n"
+        f"🏅 **Badges:** {len(unique)} unique / {len(badges)} total\n"
+        f"{rarity_line}\n"
+        f"🎨 **Boards owned:** {len(profile.get('boards', [])) + 1}/{len(BOARD_THEMES)}\n"
+        f"♟️ **Piece sets owned:** {len(profile.get('pieces', [])) + 1}/{len(PIECE_SETS)}\n\n"
+        "`!me badges` • `!me boards` • `!me pieces`\n"
+        "`!profile badge <number>` (`0` = none) • `!profile board <name>` • `!profile piece <name>`"
+    )
 
-    chunks = []
-    current = list(header)
-    for line in badge_lines:
-        candidate = "\n".join(current + [line])
-        if len(candidate) > 1800 and current:
-            chunks.append("\n".join(current))
-            current = ["**Owned badges (continued)**", line]
+
+def guess_badge_overview(user_id, display_name):
+    profile = get_cosmetic_profile(user_id, display_name)
+    badges = list(profile.get("badges", []))
+    unique = set(badges)
+    lines = [
+        f"🏅 **{profile.get('name', display_name)} — Badge Collection**",
+        f"**{len(unique)} unique / {len(badges)} total**",
+        "",
+    ]
+    for rarity in ("legendary", "epic", "rare", "uncommon", "common", "basic"):
+        owned = len({badge for badge in unique if badge in BADGE_POOLS[rarity]})
+        lines.append(
+            f"**{RARITY_LABELS[rarity]}:** {owned}/{len(BADGE_POOLS[rarity])} — `!me badges {rarity}`"
+        )
+    lines.extend(["", "Pages show 20 unique badges. Duplicates are shown as `×2`, `×3`, etc."])
+    return "\n".join(lines)
+
+
+def guess_badge_page(user_id, display_name, rarity, page=1):
+    rarity = str(rarity).casefold()
+    if rarity not in BADGE_POOLS:
+        raise ValueError("Unknown rarity.")
+    profile = get_cosmetic_profile(user_id, display_name)
+    rows = _guess_badge_rows(list(profile.get("badges", [])), rarity)
+    total_pages = max(1, math.ceil(len(rows) / 20))
+    page = max(1, min(int(page), total_pages))
+    rows = rows[(page - 1) * 20:page * 20]
+    lines = [
+        f"🏅 **{profile.get('name', display_name)} — {RARITY_LABELS[rarity]} Badges**",
+        f"Page **{page}/{total_pages}**",
+        "",
+    ]
+    if not rows:
+        lines.append("None owned in this rarity yet.")
+    for index, badge, _r, count in rows:
+        suffix = f" ×{count}" if count > 1 else ""
+        lines.append(f"`#{index}` {badge}{suffix}")
+    lines.extend(["", f"`!me badges {rarity} <page>` • `!profile badge <number>` to equip"])
+    return "\n".join(lines)
+
+
+def guess_cosmetic_profile_messages(user_id, display_name):
+    """Backward-compatible wrapper for the compact Guess profile."""
+    return [guess_cosmetic_profile_dashboard(user_id, display_name)]
+
+
+_GUESS_UNICODE_CHESS_GLYPHS = {
+    "K": "♔", "Q": "♕", "R": "♖", "B": "♗", "N": "♘", "P": "♙",
+    "k": "♚", "q": "♛", "r": "♜", "b": "♝", "n": "♞", "p": "♟",
+}
+
+
+def _guess_page_slice(items, page, page_size):
+    total_pages = max(1, math.ceil(len(items) / page_size))
+    try:
+        page = int(page)
+    except Exception:
+        page = 1
+    page = max(1, min(page, total_pages))
+    start = (page - 1) * page_size
+    return items[start:start + page_size], page, total_pages
+
+
+def guess_board_page(user_id, display_name, page=1):
+    profile = get_cosmetic_profile(user_id, display_name)
+    owned = ["classic"] + [name for name in profile.get("boards", []) if name in BOARD_THEMES]
+    page_items, page, total_pages = _guess_page_slice(owned, page, 20)
+    lines = [
+        f"🎨 **{profile.get('name', display_name)} — Owned Boards**",
+        f"Page **{page}/{total_pages}** • {len(owned)}/{len(BOARD_THEMES)} owned",
+        "",
+    ]
+    for name in page_items:
+        marker = " ✅" if name == profile.get("active_board", "classic") else ""
+        lines.append(f"• **{BOARD_DISPLAY_NAMES.get(name, name.title())}** (`{name}`){marker}")
+    lines.extend(["", "`!profile board <name>` — equip • `!customboard` — shop catalogue"])
+    return "\n".join(lines)
+
+
+def guess_piece_page(user_id, display_name, page=1):
+    profile = get_cosmetic_profile(user_id, display_name)
+    owned = ["classic"] + [name for name in profile.get("pieces", []) if name in PIECE_SETS]
+    page_items, page, total_pages = _guess_page_slice(owned, page, 20)
+    lines = [
+        f"♟️ **{profile.get('name', display_name)} — Owned Piece Sets**",
+        f"Page **{page}/{total_pages}** • {len(owned)}/{len(PIECE_SETS)} owned",
+        "",
+    ]
+    for name in page_items:
+        marker = " ✅" if name == profile.get("active_piece", "classic") else ""
+        lines.append(f"• **{PIECE_DISPLAY_NAMES.get(name, name.title())}** (`{name}`){marker}")
+    lines.extend(["", "`!profile piece <name>` — equip • `!custompiece` — shop catalogue"])
+    return "\n".join(lines)
+
+
+def guess_board_catalog_message(page=1):
+    names = list(BOARD_THEMES)
+    page_names, page, total_pages = _guess_page_slice(names, page, 25)
+    lines = [
+        "🎨 **Custom Boards**",
+        f"Price: **{shared_format_points(BOARD_COST)} coins** each. Classic is free.",
+        f"Page **{page}/{total_pages}** • {len(BOARD_THEMES)} themes",
+        "",
+    ]
+    for start in range(0, len(page_names), 5):
+        lines.append(" • ".join(BOARD_DISPLAY_NAMES[name] for name in page_names[start:start + 5]))
+    lines.extend([
+        "",
+        "`!customboard <page>` — catalogue page",
+        "`!customboard blue test` — preview",
+        "`!customboard blue buy` — buy",
+        "`!customboard blue` — equip if owned",
+        "`!customboard default` — equip Classic",
+    ])
+    return "\n".join(lines)
+
+
+def guess_piece_catalog_message(page=1):
+    names = list(PIECE_SETS)
+    page_names, page, total_pages = _guess_page_slice(names, page, 20)
+    lines = [
+        "♟️ **Custom Piece Sets**",
+        f"Price: **{shared_format_points(PIECE_COST)} coins** each. Classic is free.",
+        f"Page **{page}/{total_pages}** • {len(PIECE_SETS)} sets",
+        "",
+    ]
+    for name in page_names:
+        lines.append(f"• **{PIECE_DISPLAY_NAMES[name]}** (`{name}`)")
+    lines.extend([
+        "",
+        "`!custompiece <page>` — catalogue page",
+        "`!custompiece figurine-gold test` — preview",
+        "`!custompiece figurine-gold buy` — buy",
+        "`!custompiece figurine-gold` — equip if owned",
+        "`!custompiece default` — equip Classic",
+    ])
+    return "\n".join(lines)
+
+
+def _guess_piece_overlay_svg(board, orientation, piece_theme):
+    style = PIECE_SETS.get(piece_theme, PIECE_SETS["classic"])
+    shape = style.get("shape", "classic")
+    if shape == "classic":
+        return ""
+    square_size = 45.0
+    board_offset = 15.0
+    white_fill = style.get("white_fill", "#f7f7f2")
+    black_fill = style.get("black_fill", "#111111")
+    white_stroke = style.get("white_stroke", "#111111")
+    black_stroke = style.get("black_stroke", "#f7f7f2")
+    letters = {1: "P", 2: "N", 3: "B", 4: "R", 5: "Q", 6: "K"}
+    parts = ['<g class="custom-piece-set">']
+    for square, piece in board.piece_map().items():
+        file_index = chess.square_file(square)
+        rank_index = chess.square_rank(square)
+        x = (file_index if orientation else 7 - file_index) * square_size + board_offset
+        y = (7 - rank_index if orientation else rank_index) * square_size + board_offset
+        cx = x + square_size / 2
+        cy = y + square_size / 2
+        fill = white_fill if piece.color else black_fill
+        stroke = white_stroke if piece.color else black_stroke
+        symbol = piece.symbol()
+        letter = letters[piece.piece_type]
+        if shape == "figurine":
+            glyph = _GUESS_UNICODE_CHESS_GLYPHS[symbol]
+            parts.append(
+                f'<text x="{cx:.2f}" y="{cy + 1:.2f}" text-anchor="middle" dominant-baseline="central" '
+                f'font-family="DejaVu Sans, serif" font-size="38" font-weight="700" fill="{fill}" '
+                f'stroke="{stroke}" stroke-width="0.7" paint-order="stroke">{glyph}</text>'
+            )
+        elif shape in {"monogram", "minimal"}:
+            size = 29 if shape == "monogram" else 25
+            weight = 800 if shape == "monogram" else 600
+            parts.append(
+                f'<text x="{cx:.2f}" y="{cy + 1:.2f}" text-anchor="middle" dominant-baseline="central" '
+                f'font-family="DejaVu Sans, sans-serif" font-size="{size}" font-weight="{weight}" fill="{fill}" '
+                f'stroke="{stroke}" stroke-width="0.8" paint-order="stroke">{letter}</text>'
+            )
         else:
-            current.append(line)
-    current.extend(["", "Equip with `!profile badge <number>`. "])
-    if len("\n".join(current)) > 1950:
-        chunks.append("\n".join(current[:-2]))
-        current = current[-2:]
-    chunks.append("\n".join(current))
-    return chunks
+            if shape == "token":
+                parts.append(f'<circle cx="{cx:.2f}" cy="{cy:.2f}" r="17" fill="{fill}" stroke="{stroke}" stroke-width="2" />')
+            elif shape == "diamond":
+                pts = f'{cx:.2f},{cy-19:.2f} {cx+18:.2f},{cy:.2f} {cx:.2f},{cy+19:.2f} {cx-18:.2f},{cy:.2f}'
+                parts.append(f'<polygon points="{pts}" fill="{fill}" stroke="{stroke}" stroke-width="2" />')
+            else:
+                pts = f'{cx-16:.2f},{cy-17:.2f} {cx+16:.2f},{cy-17:.2f} {cx+18:.2f},{cy+5:.2f} {cx:.2f},{cy+19:.2f} {cx-18:.2f},{cy+5:.2f}'
+                parts.append(f'<polygon points="{pts}" fill="{fill}" stroke="{stroke}" stroke-width="2" />')
+            text_fill = "#111111" if piece.color else "#ffffff"
+            parts.append(
+                f'<text x="{cx:.2f}" y="{cy + 1:.2f}" text-anchor="middle" dominant-baseline="central" '
+                f'font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="800" fill="{text_fill}">{letter}</text>'
+            )
+    parts.append('</g>')
+    return "".join(parts)
+
+
+def guess_render_custom_board_svg(board, board_theme="classic", piece_theme="classic", size=500):
+    board_theme = str(board_theme or "classic").casefold()
+    piece_theme = str(piece_theme or "classic").casefold()
+    light, dark = BOARD_THEMES.get(board_theme, BOARD_THEMES["classic"])
+    if piece_theme == "classic" or piece_theme not in PIECE_SETS:
+        return chess.svg.board(
+            board=board, orientation=True, size=size, coordinates=True,
+            colors={"square light": light, "square dark": dark},
+        )
+    svg = chess.svg.board(
+        board=None, orientation=True, size=size, coordinates=True,
+        colors={"square light": light, "square dark": dark},
+    )
+    return svg.replace("</svg>", _guess_piece_overlay_svg(board, True, piece_theme) + "</svg>")
+
+
+def guess_cosmetic_preview_file(board_theme="classic", piece_theme="classic", filename="guess_cosmetic_preview.png"):
+    board = chess.Board()
+    svg = guess_render_custom_board_svg(board, board_theme, piece_theme, 500)
+    png = cairosvg.svg2png(bytestring=svg.encode("utf-8"))
+    return discord.File(BytesIO(png), filename=filename)
 
 
 CHATTERS = {
@@ -1056,7 +1305,7 @@ def guess_special_mode(
     Exactly four special Guess Chatter rounds per local day:
     two Double Points and two Hard Mode rounds.
 
-    Hard Mode uses only three poll options and is worth +2.
+    Hard Mode keeps five poll options, hides the date, and is worth +2.
     Double Points keeps the normal five options and is worth +2.
     The four slots are deterministic for the day.
     """
@@ -1530,11 +1779,9 @@ async def post_guess(
         if quote_hunt_result is not None:
             return quote_hunt_result
 
-    option_count = (
-        3
-        if mode == "hard"
-        else POLL_OPTIONS
-    )
+    # Hard Mode is difficult because the date is hidden, not because the poll
+    # has fewer answers. All standard Chatter rounds keep five options.
+    option_count = POLL_OPTIONS
 
     points_awarded = (
         2
@@ -2091,6 +2338,121 @@ async def scheduler_loop(channel):
         await asyncio.sleep(1.2)
 
 
+def _guess_shop_asset_from_text(text, owned_badges):
+    raw = str(text or "").strip()
+    try:
+        amount = round(float(raw), 3)
+        if amount > 0 and " " not in raw:
+            return {"type": "coins", "amount": amount}
+    except Exception:
+        pass
+    badge = shared_resolve_badge(raw, owned_badges)
+    return {"type": "badge", "badge": badge}
+
+
+async def _guess_target_identity(message, typed_name):
+    query = str(typed_name or "").strip()
+    if not query:
+        raise ValueError("Player name is empty.")
+    try:
+        target = await asyncio.to_thread(shared_resolve_cosmetic_profile, query)
+        return str(target["user_id"]), target.get("name", query)
+    except Exception:
+        pass
+    query_key = query.casefold()
+    for member in getattr(message.guild, "members", []):
+        names = {
+            str(getattr(member, "display_name", "")).casefold(),
+            str(getattr(member, "name", "")).casefold(),
+            str(getattr(member, "global_name", "") or "").casefold(),
+        }
+        if query_key in names:
+            return str(member.id), member.display_name
+    raise ValueError(f"No player named '{query}' was found.")
+
+
+async def _guess_parse_donation_args(message, arg_text):
+    words = str(arg_text or "").split()
+    if len(words) < 2:
+        raise ValueError("Usage: `!donate <name> <coins|badge>`")
+    sender_profile = await asyncio.to_thread(
+        get_cosmetic_profile, message.author.id, message.author.display_name
+    )
+    if message.mentions:
+        target = message.mentions[0]
+        mention_forms = {f"<@{target.id}>", f"<@!{target.id}>"}
+        remaining = [word for word in words if word not in mention_forms]
+        if not remaining:
+            raise ValueError("Add coins or a badge after the player name.")
+        asset = _guess_shop_asset_from_text(" ".join(remaining), sender_profile.get("badges", []))
+        return str(target.id), target.display_name, asset
+
+    candidates = []
+    seen = set()
+    for split in range(1, len(words)):
+        try:
+            target_id, target_name = await _guess_target_identity(message, " ".join(words[:split]))
+            asset = _guess_shop_asset_from_text(" ".join(words[split:]), sender_profile.get("badges", []))
+        except Exception:
+            continue
+        key = (str(target_id), asset["type"], str(asset.get("amount", asset.get("badge", ""))))
+        if key not in seen:
+            seen.add(key)
+            candidates.append((target_id, target_name, asset))
+    if not candidates:
+        raise ValueError("Could not match that player + coins/badge. Use the exact badge emoji/name if needed.")
+    if len(candidates) > 1:
+        raise ValueError("That donation is ambiguous. Mention the player or use the exact badge emoji.")
+    return candidates[0]
+
+
+async def _guess_parse_trade_args(message, arg_text):
+    words = str(arg_text or "").split()
+    if len(words) < 3:
+        raise ValueError("Usage: `!trade <name> <give coins/badge> <receive coins/badge>`")
+    sender_profile = await asyncio.to_thread(
+        get_cosmetic_profile, message.author.id, message.author.display_name
+    )
+    target_candidates = []
+    if message.mentions:
+        target = message.mentions[0]
+        mention_forms = {f"<@{target.id}>", f"<@!{target.id}>"}
+        remaining = [word for word in words if word not in mention_forms]
+        target_candidates.append((str(target.id), target.display_name, remaining))
+    else:
+        for target_split in range(1, len(words) - 1):
+            try:
+                target_id, target_name = await _guess_target_identity(message, " ".join(words[:target_split]))
+            except Exception:
+                continue
+            target_candidates.append((target_id, target_name, words[target_split:]))
+
+    parsed = []
+    seen = set()
+    for target_id, target_name, remaining in target_candidates:
+        if str(target_id) == str(message.author.id) or len(remaining) < 2:
+            continue
+        target_profile = await asyncio.to_thread(get_cosmetic_profile, target_id, target_name)
+        for split in range(1, len(remaining)):
+            try:
+                offer = _guess_shop_asset_from_text(" ".join(remaining[:split]), sender_profile.get("badges", []))
+                request = _guess_shop_asset_from_text(" ".join(remaining[split:]), target_profile.get("badges", []))
+            except Exception:
+                continue
+            key = (
+                str(target_id), offer["type"], str(offer.get("amount", offer.get("badge", ""))),
+                request["type"], str(request.get("amount", request.get("badge", ""))),
+            )
+            if key not in seen:
+                seen.add(key)
+                parsed.append((target_id, target_name, offer, request))
+    if not parsed:
+        raise ValueError("Could not understand that trade. Only coins and badges can be traded.")
+    if len(parsed) > 1:
+        raise ValueError("That trade is ambiguous. Mention the player and/or use exact badge emojis.")
+    return parsed[0]
+
+
 async def command_handler(message):
     global NEXT_REQUESTED
     global FORCED_NEXT_TYPE
@@ -2186,6 +2548,117 @@ async def command_handler(message):
         )
         return
 
+    if command in {"!coins", "!bank"}:
+        try:
+            points, coins = await asyncio.gather(
+                asyncio.to_thread(guess_get_score, message.author.id),
+                asyncio.to_thread(shared_get_coins, message.author.id),
+            )
+            await message.channel.send(
+                f"🏆 Guess Points: **{shared_format_points(points)}**\n"
+                f"🪙 Coins: **{shared_format_points(coins)}**"
+            )
+        except Exception as error:
+            await message.channel.send(f"❌ **Could not read your bank:** `{str(error)[:700]}`")
+        return
+
+    if command == "!donate" or command.startswith("!donate "):
+        arg_text = raw_command[len("!donate"):].strip()
+        try:
+            target_user_id, target_name, asset = await _guess_parse_donation_args(message, arg_text)
+        except ValueError as error:
+            await message.channel.send(f"❌ **{error}**")
+            return
+        if str(target_user_id) == str(message.author.id):
+            await message.channel.send("❌ You cannot donate to yourself.")
+            return
+        try:
+            if asset["type"] == "coins":
+                result = await asyncio.to_thread(
+                    transfer_coins, message.author.id, message.author.display_name,
+                    target_user_id, target_name, asset["amount"],
+                    f"coin-donate:{message.id}:{message.author.id}:{target_user_id}",
+                    source="guess-donation",
+                )
+                await message.channel.send(
+                    f"🪙 **{message.author.display_name} donated {shared_format_points(asset['amount'])} coins to {target_name}.**\n"
+                    f"Your coins: **{shared_format_points(result['sender_coins'])}**"
+                )
+            else:
+                await asyncio.to_thread(
+                    transfer_badge, message.author.id, message.author.display_name,
+                    target_user_id, target_name, asset["badge"],
+                    f"badge-donate:{message.id}:{message.author.id}:{target_user_id}",
+                    source="guess-badge-donation",
+                )
+                await message.channel.send(
+                    f"🎁 **{message.author.display_name} donated {asset['badge']} to {target_name}.**"
+                )
+        except ValueError as error:
+            await message.channel.send(f"❌ **{error}**")
+        except Exception as error:
+            await message.channel.send(f"❌ Could not safely donate: `{str(error)[:700]}`")
+        return
+
+    if command == "!trade" or command.startswith("!trade "):
+        arg_text = raw_command[len("!trade"):].strip()
+        try:
+            target_user_id, target_name, offer, request = await _guess_parse_trade_args(message, arg_text)
+            await asyncio.to_thread(
+                shared_propose_trade, message.author.id, message.author.display_name,
+                target_user_id, target_name, offer, request,
+                f"trade-propose:{message.id}:{message.author.id}:{target_user_id}",
+            )
+        except ValueError as error:
+            await message.channel.send(f"❌ **{error}**")
+            return
+        except Exception as error:
+            await message.channel.send(f"❌ Could not safely create trade: `{str(error)[:700]}`")
+            return
+        await message.channel.send(
+            f"🤝 **Trade offer for {target_name}**\n"
+            f"{message.author.display_name} gives: **{shared_format_trade_asset(offer)}**\n"
+            f"{message.author.display_name} receives: **{shared_format_trade_asset(request)}**\n"
+            f"{target_name}: use `!accepttrade` or `!declinetrade`."
+        )
+        return
+
+    if command in {"!accepttrade", "!accept trade"}:
+        try:
+            details = await asyncio.to_thread(
+                shared_accept_trade, message.author.id, message.author.display_name,
+                f"trade-accept:{message.id}:{message.author.id}",
+            )
+        except ValueError as error:
+            await message.channel.send(f"❌ **{error}**")
+            return
+        except Exception as error:
+            await message.channel.send(f"❌ Could not safely accept trade: `{str(error)[:700]}`")
+            return
+        await message.channel.send(
+            f"✅ **Trade accepted!**\n"
+            f"{message.author.display_name} received **{shared_format_trade_asset(details['offer'])}**.\n"
+            f"{details.get('from_name', 'Other player')} received **{shared_format_trade_asset(details['request'])}**."
+        )
+        return
+
+    if command in {"!declinetrade", "!decline trade"}:
+        try:
+            pending = await asyncio.to_thread(
+                shared_decline_trade, message.author.id, message.author.display_name,
+                f"trade-decline:{message.id}:{message.author.id}",
+            )
+        except ValueError as error:
+            await message.channel.send(f"❌ **{error}**")
+            return
+        except Exception as error:
+            await message.channel.send(f"❌ Could not safely decline trade: `{str(error)[:700]}`")
+            return
+        await message.channel.send(
+            f"❌ **Trade declined.** Offer from {pending.get('from_name', 'Unknown')} was removed."
+        )
+        return
+
     if command in {"!shop", "!shop badge", "!shop badges"}:
         profile = await asyncio.to_thread(
             get_cosmetic_profile,
@@ -2194,10 +2667,12 @@ async def command_handler(message):
         )
         await message.channel.send(
             "🛍️ **Guess Shop**\n"
-            f"🪙 Coins: **{shared_format_points(profile.get('coins', 0))}**\n\n"
-            f"🎁 **Mystery Badge Box — {shared_format_points(BADGE_BOX_COST)} coins**\n"
-            "Open one with `!shop box` or `!box`.\n"
-            "One random badge • duplicates are possible • no rerolls/refunds."
+            f"🪙 Coins: **{shared_format_points(profile.get('coins', 0))}**  •  `!coins` / `!bank`\n\n"
+            f"🎁 **Badge Box — {shared_format_points(BADGE_BOX_COST)} coins**: `!box`\n"
+            "💸 `!donate <name> <coins|badge>` • 🤝 `!trade <name> <give> <receive>`\n"
+            f"🎨 **Boards — {shared_format_points(BOARD_COST)} coins each**: `!customboard`\n"
+            f"♟️ **Piece Sets — {shared_format_points(PIECE_COST)} coins each**: `!custompiece`\n\n"
+            "Boards/pieces use the same shared inventory as Puzzle. They apply to your Puzzle games and, if you are captain, your Survival run."
         )
         return
 
@@ -2224,14 +2699,142 @@ async def command_handler(message):
         )
         return
 
+    if command == "!customboard" or command.startswith("!customboard "):
+        args = raw_command.split()[1:]
+        if not args:
+            await message.channel.send(guess_board_catalog_message(1))
+            return
+        if len(args) == 1 and args[0].isdigit():
+            await message.channel.send(guess_board_catalog_message(int(args[0])))
+            return
+        board_name = args[0].casefold()
+        if board_name == "default":
+            board_name = "classic"
+        if board_name not in BOARD_THEMES:
+            await message.channel.send("❌ **Unknown board theme. Use `!customboard` for the catalogue.**")
+            return
+        action = args[1].casefold() if len(args) > 1 else "equip"
+        if action == "test":
+            profile = await asyncio.to_thread(get_cosmetic_profile, message.author.id, message.author.display_name)
+            piece_name = profile.get("active_piece", "classic")
+            file = await asyncio.to_thread(guess_cosmetic_preview_file, board_name, piece_name, "guess_board_preview.png")
+            await message.channel.send(
+                f"🎨 **{BOARD_DISPLAY_NAMES[board_name]} preview** • Pieces: **{PIECE_DISPLAY_NAMES.get(piece_name, 'Classic')}**",
+                file=file,
+            )
+            return
+        if action == "buy":
+            if board_name == "classic":
+                await message.channel.send("✅ **Classic is free.**")
+                return
+            try:
+                profile = await asyncio.to_thread(
+                    buy_board, message.author.id, message.author.display_name, board_name,
+                    f"guess-buy-board:{message.id}:{message.author.id}:{board_name}",
+                )
+                await message.channel.send(
+                    f"✅ Bought **{BOARD_DISPLAY_NAMES[board_name]}** for **{shared_format_points(BOARD_COST)} coins**.\n"
+                    f"🪙 Coins left: **{shared_format_points(profile['coins'])}**\n"
+                    f"Equip it with `!customboard {board_name}`."
+                )
+            except Exception as error:
+                await message.channel.send(f"❌ **Could not buy board:** {str(error)[:800]}")
+            return
+        try:
+            profile = await asyncio.to_thread(
+                equip_board, message.author.id, message.author.display_name, board_name,
+                f"guess-equip-board:{message.id}:{message.author.id}:{board_name}",
+            )
+            await message.channel.send(f"🎨 **Board equipped:** {BOARD_DISPLAY_NAMES[profile['active_board']]}")
+        except Exception as error:
+            await message.channel.send(f"❌ **Could not equip board:** {str(error)[:800]}")
+        return
+
+    if command == "!custompiece" or command.startswith("!custompiece "):
+        args = raw_command.split()[1:]
+        if not args:
+            await message.channel.send(guess_piece_catalog_message(1))
+            return
+        if len(args) == 1 and args[0].isdigit():
+            await message.channel.send(guess_piece_catalog_message(int(args[0])))
+            return
+        piece_name = args[0].casefold()
+        if piece_name == "default":
+            piece_name = "classic"
+        if piece_name not in PIECE_SETS:
+            await message.channel.send("❌ **Unknown piece set. Use `!custompiece` for the catalogue.**")
+            return
+        action = args[1].casefold() if len(args) > 1 else "equip"
+        if action == "test":
+            profile = await asyncio.to_thread(get_cosmetic_profile, message.author.id, message.author.display_name)
+            board_name = profile.get("active_board", "classic")
+            file = await asyncio.to_thread(guess_cosmetic_preview_file, board_name, piece_name, "guess_piece_preview.png")
+            await message.channel.send(
+                f"♟️ **{PIECE_DISPLAY_NAMES[piece_name]} preview** • Board: **{BOARD_DISPLAY_NAMES.get(board_name, 'Classic')}**",
+                file=file,
+            )
+            return
+        if action == "buy":
+            if piece_name == "classic":
+                await message.channel.send("✅ **Classic is free.**")
+                return
+            try:
+                profile = await asyncio.to_thread(
+                    buy_piece, message.author.id, message.author.display_name, piece_name,
+                    f"guess-buy-piece:{message.id}:{message.author.id}:{piece_name}",
+                )
+                await message.channel.send(
+                    f"✅ Bought **{PIECE_DISPLAY_NAMES[piece_name]}** for **{shared_format_points(PIECE_COST)} coins**.\n"
+                    f"🪙 Coins left: **{shared_format_points(profile['coins'])}**\n"
+                    f"Equip it with `!custompiece {piece_name}`."
+                )
+            except Exception as error:
+                await message.channel.send(f"❌ **Could not buy piece set:** {str(error)[:800]}")
+            return
+        try:
+            profile = await asyncio.to_thread(
+                equip_piece, message.author.id, message.author.display_name, piece_name,
+                f"guess-equip-piece:{message.id}:{message.author.id}:{piece_name}",
+            )
+            await message.channel.send(f"♟️ **Piece set equipped:** {PIECE_DISPLAY_NAMES[profile['active_piece']]}")
+        except Exception as error:
+            await message.channel.send(f"❌ **Could not equip piece set:** {str(error)[:800]}")
+        return
+
     if command in {"!me", "!profile"}:
-        chunks = await asyncio.to_thread(
-            guess_cosmetic_profile_messages,
+        text = await asyncio.to_thread(
+            guess_cosmetic_profile_dashboard,
             message.author.id,
             message.author.display_name,
         )
-        for chunk in chunks:
-            await message.channel.send(chunk)
+        await message.channel.send(text)
+        return
+
+    if command in {"!me badges", "!profile badges"}:
+        text = await asyncio.to_thread(
+            guess_badge_overview,
+            message.author.id,
+            message.author.display_name,
+        )
+        await message.channel.send(text)
+        return
+
+    if command.startswith("!me badges ") or command.startswith("!profile badges "):
+        parts = raw_command.split()
+        rarity = parts[2].casefold() if len(parts) > 2 else ""
+        page = int(parts[3]) if len(parts) > 3 and parts[3].isdigit() else 1
+        try:
+            text = await asyncio.to_thread(
+                guess_badge_page,
+                message.author.id,
+                message.author.display_name,
+                rarity,
+                page,
+            )
+        except ValueError:
+            await message.channel.send("❌ **Use Legendary, Epic, Rare, Uncommon, Common or Basic.**")
+            return
+        await message.channel.send(text)
         return
 
     if command.startswith("!profile badge ") or command.startswith("!me badge "):
@@ -2248,8 +2851,20 @@ async def command_handler(message):
             message.author.display_name,
         )
         badges = list(profile.get("badges", []))
+        if index == 0:
+            try:
+                await asyncio.to_thread(
+                    equip_badge, message.author.id, message.author.display_name, "",
+                    f"guess-equip-badge:{message.id}:0",
+                )
+            except Exception as error:
+                print(f"Guess unequip badge error: {error}", flush=True)
+                await message.channel.send("❌ **Could not safely unequip your badge.**")
+                return
+            await message.channel.send("🏅 **Badge unequipped.**")
+            return
         if index < 1 or index > len(badges):
-            await message.channel.send("❌ **That badge number is not in your inventory.**")
+            await message.channel.send("❌ **That badge number is not in your inventory. Use `!profile badge 0` for no badge.**")
             return
 
         badge = badges[index - 1]
@@ -2266,6 +2881,48 @@ async def command_handler(message):
             await message.channel.send("❌ **Could not safely equip that badge.**")
             return
         await message.channel.send(f"🏅 **Equipped:** {badge}")
+        return
+
+    if command.startswith("!me boards") or command.startswith("!profile boards"):
+        parts = raw_command.split()
+        page = int(parts[-1]) if parts[-1].isdigit() else 1
+        text = await asyncio.to_thread(guess_board_page, message.author.id, message.author.display_name, page)
+        await message.channel.send(text)
+        return
+
+    if command.startswith("!me pieces") or command.startswith("!profile pieces"):
+        parts = raw_command.split()
+        page = int(parts[-1]) if parts[-1].isdigit() else 1
+        text = await asyncio.to_thread(guess_piece_page, message.author.id, message.author.display_name, page)
+        await message.channel.send(text)
+        return
+
+    if command.startswith("!profile board ") or command.startswith("!me board "):
+        board_name = raw_command.split()[-1].casefold()
+        if board_name == "default":
+            board_name = "classic"
+        try:
+            profile = await asyncio.to_thread(
+                equip_board, message.author.id, message.author.display_name, board_name,
+                f"guess-profile-board:{message.id}:{message.author.id}:{board_name}",
+            )
+            await message.channel.send(f"🎨 **Board equipped:** {BOARD_DISPLAY_NAMES[profile['active_board']]}")
+        except Exception as error:
+            await message.channel.send(f"❌ **Could not equip board:** {str(error)[:800]}")
+        return
+
+    if command.startswith("!profile piece ") or command.startswith("!me piece "):
+        piece_name = raw_command.split()[-1].casefold()
+        if piece_name == "default":
+            piece_name = "classic"
+        try:
+            profile = await asyncio.to_thread(
+                equip_piece, message.author.id, message.author.display_name, piece_name,
+                f"guess-profile-piece:{message.id}:{message.author.id}:{piece_name}",
+            )
+            await message.channel.send(f"♟️ **Piece set equipped:** {PIECE_DISPLAY_NAMES[profile['active_piece']]}")
+        except Exception as error:
+            await message.channel.send(f"❌ **Could not equip piece set:** {str(error)[:800]}")
         return
 
     if command == "!stats" or command.startswith("!stats "):
@@ -2325,19 +2982,21 @@ async def command_handler(message):
     if command in {"!help", "!info", "!i"}:
         await message.channel.send(
             "🧠 **Guess Games**\n\n"
-            "💬 **Guess the Chatter** — Read a real chat message and guess which chatter wrote it.\n"
-            "♟️ **Guess the Chess Chatter** — Browse a real Chess.com game and guess which player played it.\n\n"
-            "⏭️ `n` / `!n` / `!next` — end the active poll, reveal/award it, "
-            "then immediately start the other Guess game.\n"
-            "🏆 `!l` / `!lb` / `!leaderboard` — leaderboard at any time.\n"
-            "📊 `!stats` / `!stats <name>` — votes, accuracy, streaks and nemesis stats.\n"
-            "👤 `!me` / `!profile` — coins, owned badges and active badge.\n"
-            f"🎁 `!shop` / `!box` — Mystery Badge Box ({BADGE_BOX_COST} coins).\n"
-            "👤 `!<name>` — show recognition info about a Guess Chatter / Chess Chatter player "
-            "(for example `!thice` or `!sushi`). Nicknames and small spelling mistakes also work.\n\n"
-            "Guess Chatter still has its scheduled Double Points / Hard Mode bonus rounds, plus occasional Quote Hunt rounds."
+            "💬 **Guess the Chatter** — guess who wrote the real chat message.\n"
+            "♟️ **Guess the Chess Chatter** — browse a real Chess.com game and guess the player.\n\n"
+            "⏭️ `n` / `!n` / `!next` — end/reveal the current round and start the other Guess game.\n"
+            "🏆 `!l` — Guess leaderboard. `!stats` / `!stats <name>` — Guess stats.\n"
+            "🪙 Every Guess point also gives the same amount of shared coins. `!coins` / `!bank` shows both.\n"
+            "💸 `!donate <name> <coins|badge>` — donate coins or a badge. `!trade <name> <give> <receive>` — trade coins/badges.\n"
+            "👤 `!me` / `!profile` — badge/board/piece inventory; `!me badges`, `!me boards`, `!me pieces` open pages.\n\n"
+            f"🎁 `!box` — badge box (**{shared_format_points(BADGE_BOX_COST)} coins**).\n"
+            f"🎨 `!customboard` — **{len(BOARD_THEMES)}** boards (**{shared_format_points(BOARD_COST)} coins** each).\n"
+            f"♟️ `!custompiece` — **{len(PIECE_SETS)}** piece sets (**{shared_format_points(PIECE_COST)} coins** each).\n"
+            "🛍️ `!shop` — full Guess shop instructions.\n\n"
+            "`!<name>` — recognition info for a Guess Chatter / Chess Chatter player."
         )
         return
+
 
     info = player_info_for_command(command)
     if info is not None:
@@ -2384,6 +3043,22 @@ async def on_ready():
     print(f"Chess build: {GUESS_CHESS_BUILD}", flush=True)
 
     channel = await client.fetch_channel(CHANNEL_ID)
+
+    try:
+        migration = await asyncio.to_thread(
+            backfill_existing_guess_points_to_shared_coins
+        )
+        print(
+            "Guess shared-coin backfill: "
+            f"{migration.get('users', 0)} users, "
+            f"{migration.get('credited', 0)} coins credited.",
+            flush=True,
+        )
+    except Exception as error:
+        # Never block the Guess scheduler if the one-time wallet backfill has
+        # a temporary repository/network problem. Future point awards safely
+        # retry the per-user watermark sync.
+        print(f"Guess shared-coin backfill warning: {error}", flush=True)
 
     SCHEDULER_TASK = asyncio.create_task(
         scheduler_loop(channel)
