@@ -200,8 +200,8 @@ def guess_cosmetic_profile_dashboard(user_id, display_name):
         f"{rarity_line}\n"
         f"🎨 **Boards owned:** {len(profile.get('boards', [])) + 1}/{len(BOARD_THEMES)}\n"
         f"♟️ **Piece sets owned:** {len(profile.get('pieces', [])) + 1}/{len(PIECE_SETS)}\n\n"
-        "`!me badges` • `!me boards` • `!me pieces`\n"
-        "`!profile badge <number>` (`0` = none) • `!profile board <name>` • `!profile piece <name>`"
+        "Use the buttons below to browse badges, boards and pieces.\n"
+        "On your own profile, click an owned cosmetic to equip it. `!profile badge 0` still unequips your badge."
     )
 
 
@@ -217,9 +217,9 @@ def guess_badge_overview(user_id, display_name):
     for rarity in ("legendary", "epic", "rare", "uncommon", "common", "basic"):
         owned = len({badge for badge in unique if badge in BADGE_POOLS[rarity]})
         lines.append(
-            f"**{RARITY_LABELS[rarity]}:** {owned}/{len(BADGE_POOLS[rarity])} — `!me badges {rarity}`"
+            f"**{RARITY_LABELS[rarity]}:** {owned}/{len(BADGE_POOLS[rarity])}"
         )
-    lines.extend(["", "Pages show 20 unique badges. Duplicates are shown as `×2`, `×3`, etc."])
+    lines.extend(["", "Use the rarity buttons to browse. Pages show 20 unique badges; duplicates are shown as `×2`, `×3`, etc."])
     return "\n".join(lines)
 
 
@@ -242,7 +242,7 @@ def guess_badge_page(user_id, display_name, rarity, page=1):
     for index, badge, _r, count in rows:
         suffix = f" ×{count}" if count > 1 else ""
         lines.append(f"`#{index}` {badge}{suffix}")
-    lines.extend(["", f"`!me badges {rarity} <page>` • `!profile badge <number>` to equip"])
+    lines.extend(["", "Use the buttons below to browse. On your own profile, click a badge button to equip it."])
     return "\n".join(lines)
 
 
@@ -280,7 +280,7 @@ def guess_board_page(user_id, display_name, page=1):
     for name in page_items:
         marker = " ✅" if name == profile.get("active_board", "classic") else ""
         lines.append(f"• **{BOARD_DISPLAY_NAMES.get(name, name.title())}** (`{name}`){marker}")
-    lines.extend(["", "`!profile board <name>` — equip • `!customboard` — shop catalogue"])
+    lines.extend(["", "Use the buttons below to browse/equip owned boards. `!customboard` opens the shop catalogue."])
     return "\n".join(lines)
 
 
@@ -296,7 +296,7 @@ def guess_piece_page(user_id, display_name, page=1):
     for name in page_items:
         marker = " ✅" if name == profile.get("active_piece", "classic") else ""
         lines.append(f"• **{PIECE_DISPLAY_NAMES.get(name, name.title())}** (`{name}`){marker}")
-    lines.extend(["", "`!profile piece <name>` — equip • `!custompiece` — shop catalogue"])
+    lines.extend(["", "Use the buttons below to browse/equip owned pieces. `!custompiece` opens the shop catalogue."])
     return "\n".join(lines)
 
 
@@ -313,7 +313,7 @@ def guess_board_catalog_message(page=1):
         lines.append(" • ".join(BOARD_DISPLAY_NAMES[name] for name in page_names[start:start + 5]))
     lines.extend([
         "",
-        "`!customboard <page>` — catalogue page",
+        "Use **Previous / Next** below to browse pages.",
         "`!customboard blue test` — preview",
         "`!customboard blue buy` — buy",
         "`!customboard blue` — equip if owned",
@@ -335,13 +335,285 @@ def guess_piece_catalog_message(page=1):
         lines.append(f"• **{PIECE_DISPLAY_NAMES[name]}** (`{name}`)")
     lines.extend([
         "",
-        "`!custompiece <page>` — catalogue page",
+        "Use **Previous / Next** below to browse pages.",
         "`!custompiece figurine-gold test` — preview",
         "`!custompiece figurine-gold buy` — buy",
         "`!custompiece figurine-gold` — equip if owned",
         "`!custompiece default` — equip Classic",
     ])
     return "\n".join(lines)
+
+
+
+GUESS_PROFILE_RARITY_ORDER = ("legendary", "epic", "rare", "uncommon", "common", "basic")
+
+
+def _guess_button_emoji(value):
+    try:
+        text = str(value or "")
+        if text.startswith("<:") or text.startswith("<a:"):
+            return discord.PartialEmoji.from_str(text)
+        return text or None
+    except Exception:
+        return None
+
+
+class GuessCatalogPager(discord.ui.View):
+    def __init__(self, viewer_id, kind, page=1):
+        super().__init__(timeout=300)
+        self.viewer_id = int(viewer_id)
+        self.kind = str(kind)
+        total_items = len(BOARD_THEMES) if self.kind == "board" else len(PIECE_SETS)
+        self.page_size = 25 if self.kind == "board" else 20
+        self.total_pages = max(1, math.ceil(total_items / self.page_size))
+        self.page = max(1, min(int(page or 1), self.total_pages))
+        self._rebuild()
+
+    async def interaction_check(self, interaction):
+        if interaction.user.id != self.viewer_id:
+            await interaction.response.send_message("This catalogue belongs to another user.", ephemeral=True)
+            return False
+        return True
+
+    def render(self):
+        return guess_board_catalog_message(self.page) if self.kind == "board" else guess_piece_catalog_message(self.page)
+
+    def _rebuild(self):
+        self.clear_items()
+        previous = discord.ui.Button(label="◀ Previous", style=discord.ButtonStyle.secondary, disabled=self.page <= 1)
+        indicator = discord.ui.Button(label=f"Page {self.page}/{self.total_pages}", style=discord.ButtonStyle.secondary, disabled=True)
+        next_button = discord.ui.Button(label="Next ▶", style=discord.ButtonStyle.secondary, disabled=self.page >= self.total_pages)
+        async def previous_callback(interaction):
+            self.page = max(1, self.page - 1)
+            self._rebuild()
+            await interaction.response.edit_message(content=self.render(), view=self)
+        async def next_callback(interaction):
+            self.page = min(self.total_pages, self.page + 1)
+            self._rebuild()
+            await interaction.response.edit_message(content=self.render(), view=self)
+        previous.callback = previous_callback
+        next_button.callback = next_callback
+        self.add_item(previous)
+        self.add_item(indicator)
+        self.add_item(next_button)
+
+
+class GuessCosmeticProfileView(discord.ui.View):
+    def __init__(self, viewer_id, target_user_id, target_name, editable=False):
+        super().__init__(timeout=300)
+        self.viewer_id = int(viewer_id)
+        self.target_user_id = str(target_user_id)
+        self.target_name = str(target_name)
+        self.editable = bool(editable and str(viewer_id) == str(target_user_id))
+        self.mode = "dashboard"
+        self.rarity = None
+        self.page = 1
+        self._build_dashboard()
+
+    async def interaction_check(self, interaction):
+        if interaction.user.id != self.viewer_id:
+            await interaction.response.send_message("Open your own `!profile` to use these buttons.", ephemeral=True)
+            return False
+        return True
+
+    async def _profile(self):
+        return await asyncio.to_thread(get_cosmetic_profile, self.target_user_id, self.target_name)
+
+    def render(self, profile=None):
+        if self.mode == "dashboard":
+            if profile is None:
+                return guess_cosmetic_profile_dashboard(self.target_user_id, self.target_name)
+            active_badge = profile.get("active_badge") or "—"
+            active_board = profile.get("active_board", "classic")
+            active_piece = profile.get("active_piece", "classic")
+            badges = list(profile.get("badges", []))
+            unique = set(badges)
+            rarity_line = " • ".join(
+                f"{RARITY_LABELS[rarity]} {len({badge for badge in unique if BADGE_RARITY_BY_VALUE.get(badge) == rarity})}"
+                for rarity in GUESS_PROFILE_RARITY_ORDER
+            )
+            return (
+                f"👤 **Profile — {active_badge + ' ' if active_badge != '—' else ''}{profile.get('name', self.target_name)}**\n"
+                f"🪙 **Coins:** {shared_format_points(profile.get('coins', 0))}\n"
+                f"🏅 **Active badge:** {active_badge}\n"
+                f"🎨 **Active board:** {BOARD_DISPLAY_NAMES.get(active_board, active_board.title())}\n"
+                f"♟️ **Active pieces:** {PIECE_DISPLAY_NAMES.get(active_piece, active_piece.title())}\n\n"
+                f"🏅 **Badges:** {len(unique)} unique / {len(badges)} total\n{rarity_line}\n"
+                f"🎨 **Boards owned:** {len(profile.get('boards', [])) + 1}/{len(BOARD_THEMES)}\n"
+                f"♟️ **Piece sets owned:** {len(profile.get('pieces', [])) + 1}/{len(PIECE_SETS)}\n\n"
+                "Use the buttons below to browse the collection."
+            )
+        if self.mode == "badges":
+            if profile is None:
+                return guess_badge_page(self.target_user_id, self.target_name, self.rarity, self.page)
+            rows = _guess_badge_rows(list(profile.get("badges", [])), self.rarity)
+            page_rows, self.page, total_pages = _guess_page_slice(rows, self.page, 20)
+            lines = [
+                f"🏅 **{profile.get('name', self.target_name)} — {RARITY_LABELS[self.rarity]} Badges**",
+                f"Page **{self.page}/{total_pages}** • {len(rows)} unique owned",
+                "",
+            ]
+            if not page_rows:
+                lines.append("None owned in this rarity yet.")
+            else:
+                for index, badge, _rarity, count in page_rows:
+                    suffix = f" ×{count}" if count > 1 else ""
+                    active = " ✅" if badge == profile.get("active_badge", "") else ""
+                    lines.append(f"`#{index}` {badge}{suffix}{active}")
+            lines.extend(["", "Use the buttons below to browse. On your own profile, click a badge button to equip it."])
+            return "\n".join(lines)
+        if self.mode == "boards":
+            if profile is None:
+                return guess_board_page(self.target_user_id, self.target_name, self.page)
+            owned = ["classic"] + [name for name in profile.get("boards", []) if name in BOARD_THEMES]
+            page_items, self.page, total_pages = _guess_page_slice(owned, self.page, 20)
+            lines = [f"🎨 **{profile.get('name', self.target_name)} — Owned Boards**", f"Page **{self.page}/{total_pages}** • {len(owned)}/{len(BOARD_THEMES)} owned", ""]
+            for name in page_items:
+                marker = " ✅" if name == profile.get("active_board", "classic") else ""
+                lines.append(f"• **{BOARD_DISPLAY_NAMES.get(name, name.title())}** (`{name}`){marker}")
+            lines.extend(["", "Use the buttons below to browse/equip owned boards. `!customboard` opens the shop catalogue."])
+            return "\n".join(lines)
+        if self.mode == "pieces":
+            if profile is None:
+                return guess_piece_page(self.target_user_id, self.target_name, self.page)
+            owned = ["classic"] + [name for name in profile.get("pieces", []) if name in PIECE_SETS]
+            page_items, self.page, total_pages = _guess_page_slice(owned, self.page, 20)
+            lines = [f"♟️ **{profile.get('name', self.target_name)} — Owned Piece Sets**", f"Page **{self.page}/{total_pages}** • {len(owned)}/{len(PIECE_SETS)} owned", ""]
+            for name in page_items:
+                marker = " ✅" if name == profile.get("active_piece", "classic") else ""
+                lines.append(f"• **{PIECE_DISPLAY_NAMES.get(name, name.title())}** (`{name}`){marker}")
+            lines.extend(["", "Use the buttons below to browse/equip owned pieces. `!custompiece` opens the shop catalogue."])
+            return "\n".join(lines)
+        return guess_cosmetic_profile_dashboard(self.target_user_id, self.target_name)
+
+    def _build_dashboard(self):
+        self.clear_items()
+        self.mode = "dashboard"
+        self.rarity = None
+        self.page = 1
+        for idx, rarity in enumerate(GUESS_PROFILE_RARITY_ORDER):
+            button = discord.ui.Button(
+                label=RARITY_LABELS[rarity],
+                style=discord.ButtonStyle.primary if rarity in {"legendary", "epic", "rare"} else discord.ButtonStyle.secondary,
+                row=idx // 3,
+            )
+            async def open_rarity(interaction, rarity=rarity):
+                profile = await self._profile()
+                self.mode = "badges"
+                self.rarity = rarity
+                self.page = 1
+                self._build_badges(profile)
+                await interaction.response.edit_message(content=self.render(profile), view=self)
+            button.callback = open_rarity
+            self.add_item(button)
+        for label, mode, emoji in (("Boards", "boards", "🎨"), ("Pieces", "pieces", "♟️")):
+            button = discord.ui.Button(label=label, emoji=emoji, style=discord.ButtonStyle.secondary, row=2)
+            async def open_mode(interaction, mode=mode):
+                profile = await self._profile()
+                self.mode = mode
+                self.page = 1
+                self._build_assets(profile)
+                await interaction.response.edit_message(content=self.render(profile), view=self)
+            button.callback = open_mode
+            self.add_item(button)
+
+    def _build_badges(self, profile):
+        self.clear_items()
+        rows = _guess_badge_rows(list(profile.get("badges", [])), self.rarity)
+        page_rows, self.page, total_pages = _guess_page_slice(rows, self.page, 20)
+        if self.editable:
+            active = profile.get("active_badge", "")
+            for pos, (index, badge, _rarity, _count) in enumerate(page_rows):
+                button = discord.ui.Button(
+                    label=f"#{index}", emoji=_guess_button_emoji(badge),
+                    style=discord.ButtonStyle.success if badge == active else discord.ButtonStyle.secondary,
+                    row=pos // 5,
+                )
+                async def equip_callback(interaction, badge=badge):
+                    updated = await asyncio.to_thread(
+                        equip_badge, self.target_user_id, self.target_name, badge,
+                        f"guess-profile-button-badge:{interaction.id}:{self.target_user_id}",
+                    )
+                    self._build_badges(updated)
+                    await interaction.response.edit_message(content=self.render(updated), view=self)
+                button.callback = equip_callback
+                self.add_item(button)
+        self._add_nav(total_pages, include_none=self.editable)
+
+    def _build_assets(self, profile):
+        self.clear_items()
+        if self.mode == "boards":
+            owned = ["classic"] + [name for name in profile.get("boards", []) if name in BOARD_THEMES]
+            active = profile.get("active_board", "classic")
+            display = BOARD_DISPLAY_NAMES
+            equip_func = equip_board
+        else:
+            owned = ["classic"] + [name for name in profile.get("pieces", []) if name in PIECE_SETS]
+            active = profile.get("active_piece", "classic")
+            display = PIECE_DISPLAY_NAMES
+            equip_func = equip_piece
+        page_items, self.page, total_pages = _guess_page_slice(owned, self.page, 20)
+        if self.editable:
+            for pos, name in enumerate(page_items):
+                button = discord.ui.Button(
+                    label=display.get(name, name.title())[:80],
+                    style=discord.ButtonStyle.success if name == active else discord.ButtonStyle.secondary,
+                    row=pos // 5,
+                )
+                async def equip_callback(interaction, name=name, equip_func=equip_func):
+                    updated = await asyncio.to_thread(
+                        equip_func, self.target_user_id, self.target_name, name,
+                        f"guess-profile-button-{self.mode}:{interaction.id}:{self.target_user_id}:{name}",
+                    )
+                    self._build_assets(updated)
+                    await interaction.response.edit_message(content=self.render(updated), view=self)
+                button.callback = equip_callback
+                self.add_item(button)
+        self._add_nav(total_pages)
+
+    def _add_nav(self, total_pages, include_none=False):
+        back = discord.ui.Button(label="← Profile", style=discord.ButtonStyle.primary, row=4)
+        previous = discord.ui.Button(label="◀", style=discord.ButtonStyle.secondary, row=4, disabled=self.page <= 1)
+        indicator = discord.ui.Button(label=f"{self.page}/{max(1, total_pages)}", style=discord.ButtonStyle.secondary, row=4, disabled=True)
+        next_button = discord.ui.Button(label="▶", style=discord.ButtonStyle.secondary, row=4, disabled=self.page >= max(1, total_pages))
+        async def back_callback(interaction):
+            profile = await self._profile()
+            self._build_dashboard()
+            await interaction.response.edit_message(content=self.render(profile), view=self)
+        async def previous_callback(interaction):
+            profile = await self._profile()
+            self.page = max(1, self.page - 1)
+            if self.mode == "badges":
+                self._build_badges(profile)
+            else:
+                self._build_assets(profile)
+            await interaction.response.edit_message(content=self.render(profile), view=self)
+        async def next_callback(interaction):
+            profile = await self._profile()
+            self.page = min(max(1, total_pages), self.page + 1)
+            if self.mode == "badges":
+                self._build_badges(profile)
+            else:
+                self._build_assets(profile)
+            await interaction.response.edit_message(content=self.render(profile), view=self)
+        back.callback = back_callback
+        previous.callback = previous_callback
+        next_button.callback = next_callback
+        self.add_item(back)
+        self.add_item(previous)
+        self.add_item(indicator)
+        self.add_item(next_button)
+        if include_none:
+            none_button = discord.ui.Button(label="No badge", style=discord.ButtonStyle.danger, row=4)
+            async def none_callback(interaction):
+                updated = await asyncio.to_thread(
+                    equip_badge, self.target_user_id, self.target_name, "",
+                    f"guess-profile-button-badge:{interaction.id}:{self.target_user_id}:none",
+                )
+                self._build_badges(updated)
+                await interaction.response.edit_message(content=self.render(updated), view=self)
+            none_button.callback = none_callback
+            self.add_item(none_button)
 
 
 def _guess_piece_overlay_svg(board, orientation, piece_theme):
@@ -2702,10 +2974,11 @@ async def command_handler(message):
     if command == "!customboard" or command.startswith("!customboard "):
         args = raw_command.split()[1:]
         if not args:
-            await message.channel.send(guess_board_catalog_message(1))
+            await message.channel.send(guess_board_catalog_message(1), view=GuessCatalogPager(message.author.id, "board", 1))
             return
         if len(args) == 1 and args[0].isdigit():
-            await message.channel.send(guess_board_catalog_message(int(args[0])))
+            page = int(args[0])
+            await message.channel.send(guess_board_catalog_message(page), view=GuessCatalogPager(message.author.id, "board", page))
             return
         board_name = args[0].casefold()
         if board_name == "default":
@@ -2753,10 +3026,11 @@ async def command_handler(message):
     if command == "!custompiece" or command.startswith("!custompiece "):
         args = raw_command.split()[1:]
         if not args:
-            await message.channel.send(guess_piece_catalog_message(1))
+            await message.channel.send(guess_piece_catalog_message(1), view=GuessCatalogPager(message.author.id, "piece", 1))
             return
         if len(args) == 1 and args[0].isdigit():
-            await message.channel.send(guess_piece_catalog_message(int(args[0])))
+            page = int(args[0])
+            await message.channel.send(guess_piece_catalog_message(page), view=GuessCatalogPager(message.author.id, "piece", page))
             return
         piece_name = args[0].casefold()
         if piece_name == "default":
@@ -2807,7 +3081,9 @@ async def command_handler(message):
             message.author.id,
             message.author.display_name,
         )
-        await message.channel.send(text)
+        await message.channel.send(text, view=GuessCosmeticProfileView(
+            message.author.id, message.author.id, message.author.display_name, editable=True
+        ))
         return
 
     if command in {"!me badges", "!profile badges"}:
@@ -2816,7 +3092,9 @@ async def command_handler(message):
             message.author.id,
             message.author.display_name,
         )
-        await message.channel.send(text)
+        await message.channel.send(text, view=GuessCosmeticProfileView(
+            message.author.id, message.author.id, message.author.display_name, editable=True
+        ))
         return
 
     if command.startswith("!me badges ") or command.startswith("!profile badges "):
@@ -2834,7 +3112,7 @@ async def command_handler(message):
         except ValueError:
             await message.channel.send("❌ **Use Legendary, Epic, Rare, Uncommon, Common or Basic.**")
             return
-        await message.channel.send(text)
+        await message.channel.send(text, view=GuessCosmeticProfileView(message.author.id, message.author.id, message.author.display_name, editable=True))
         return
 
     if command.startswith("!profile badge ") or command.startswith("!me badge "):
@@ -2887,14 +3165,14 @@ async def command_handler(message):
         parts = raw_command.split()
         page = int(parts[-1]) if parts[-1].isdigit() else 1
         text = await asyncio.to_thread(guess_board_page, message.author.id, message.author.display_name, page)
-        await message.channel.send(text)
+        await message.channel.send(text, view=GuessCosmeticProfileView(message.author.id, message.author.id, message.author.display_name, editable=True))
         return
 
     if command.startswith("!me pieces") or command.startswith("!profile pieces"):
         parts = raw_command.split()
         page = int(parts[-1]) if parts[-1].isdigit() else 1
         text = await asyncio.to_thread(guess_piece_page, message.author.id, message.author.display_name, page)
-        await message.channel.send(text)
+        await message.channel.send(text, view=GuessCosmeticProfileView(message.author.id, message.author.id, message.author.display_name, editable=True))
         return
 
     if command.startswith("!profile board ") or command.startswith("!me board "):
@@ -2924,6 +3202,24 @@ async def command_handler(message):
         except Exception as error:
             await message.channel.send(f"❌ **Could not equip piece set:** {str(error)[:800]}")
         return
+
+    if command.startswith("!profile "):
+        requested_name = raw_command[len("!profile"):].strip()
+        if requested_name:
+            try:
+                if message.mentions:
+                    target = message.mentions[0]
+                    target_id, target_name = str(target.id), target.display_name
+                else:
+                    target_id, target_name = await _guess_target_identity(message, requested_name)
+                text = await asyncio.to_thread(guess_cosmetic_profile_dashboard, target_id, target_name)
+                view = GuessCosmeticProfileView(
+                    message.author.id, target_id, target_name, editable=(str(target_id) == str(message.author.id))
+                )
+                await message.channel.send(text, view=view)
+            except Exception as error:
+                await message.channel.send(f"❌ **Profile not found:** {str(error)[:800]}")
+            return
 
     if command == "!stats" or command.startswith("!stats "):
         if command == "!stats":
@@ -2988,7 +3284,7 @@ async def command_handler(message):
             "🏆 `!l` — Guess leaderboard. `!stats` / `!stats <name>` — Guess stats.\n"
             "🪙 Every Guess point also gives the same amount of shared coins. `!coins` / `!bank` shows both.\n"
             "💸 `!donate <name> <coins|badge>` — donate coins or a badge. `!trade <name> <give> <receive>` — trade coins/badges.\n"
-            "👤 `!me` / `!profile` — badge/board/piece inventory; `!me badges`, `!me boards`, `!me pieces` open pages.\n\n"
+            "👤 `!me` / `!profile` — clickable cosmetic profile. `!profile <name>` — view another player.\n\n"
             f"🎁 `!box` — badge box (**{shared_format_points(BADGE_BOX_COST)} coins**).\n"
             f"🎨 `!customboard` — **{len(BOARD_THEMES)}** boards (**{shared_format_points(BOARD_COST)} coins** each).\n"
             f"♟️ `!custompiece` — **{len(PIECE_SETS)}** piece sets (**{shared_format_points(PIECE_COST)} coins** each).\n"
