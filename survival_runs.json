@@ -533,7 +533,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T19:40:31.794958+00:00",
-        "last_activity": 1788637611.6758375,
+        "last_activity": 1788637676.053585,
         "paused_reason": null,
         "puzzle_number": 10,
         "strikes": 0,
@@ -553,7 +553,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 22,
+            "correct": 24,
             "wrong": 0
           }
         },
@@ -563,7 +563,7 @@
           "themes": "crushing deflection endgame short",
           "url": "https://lichess.org/training/MuaRA",
           "start_fen": "5r2/p3p1kp/2p3pN/8/5n2/2q5/P1P1QPPP/3R2K1 w - - 1 24",
-          "current_fen": "5r2/p3p1kp/2p3pN/8/5n2/2q5/P1P1QPPP/3R2K1 w - - 1 24",
+          "current_fen": "5Q2/p6p/2p3pk/8/5n2/2q5/P1P2PPP/3R2K1 b - - 0 25",
           "solution": [
             {
               "uci": "e2e7",
@@ -582,20 +582,40 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 3,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "rated_users": [],
+          "rated_users": [
+            "442597396195704832"
+          ],
           "setup_move_uci": "e6f4",
-          "last_move_uci": "e6f4",
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_uci": "e7f8",
+          "last_move_san": "Qxf8+",
+          "accepted_moves": [
+            {
+              "san": "Qxe7+",
+              "uci": "e2e7",
+              "accepted_at": 1788637655.4701514,
+              "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Qxf8+",
+              "uci": "e7f8",
+              "accepted_at": 1788637676.053493,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "e7f8",
+          "last_accepted_move_san": "Qxf8+",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1788637676.0534923,
+          "position_before_last_move": "5r2/p3Q2p/2p3pk/8/5n2/2q5/P1P2PPP/3R2K1 w - - 0 25"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": [],
         "shop_heart_purchased": false
