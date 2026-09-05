@@ -364,7 +364,7 @@
         "started_at": "2026-09-05T11:06:20.019992+00:00",
         "last_activity": 1788606599.4653604,
         "paused_reason": null,
-        "puzzle_number": 2,
+        "puzzle_number": 3,
         "strikes": 0,
         "best_difficulty": 1296,
         "used_puzzle_ids": [
@@ -378,60 +378,9 @@
             "wrong": 0
           }
         },
-        "puzzle": {
-          "id": "RXpE2",
-          "rating": 1203,
-          "themes": "short epauletteMate hangingPiece endgame mateIn2",
-          "url": "https://lichess.org/training/RXpE2",
-          "start_fen": "r5k1/2ppB1pp/1p2p1q1/p3P3/8/2P2Q2/PPP3PP/2K2b2 w - - 0 20",
-          "current_fen": "5Q2/2ppBkpp/1p2p1q1/p3P3/8/2P5/PPP3PP/2K2b2 b - - 2 21",
-          "solution": [
-            {
-              "uci": "f3a8",
-              "san": "Qxa8+",
-              "color": "white"
-            },
-            {
-              "uci": "g8f7",
-              "san": "Kf7",
-              "color": "black"
-            },
-            {
-              "uci": "a8f8",
-              "san": "Qf8#",
-              "color": "white"
-            }
-          ],
-          "player_color": "white",
-          "next_solution_index": 3,
-          "first_solver_id": null,
-          "first_solver_name": null,
-          "helper_candidates": {},
-          "helper_awarded": [],
-          "wrong_users": [],
-          "last_move_san": "Qf8#",
-          "accepted_moves": [
-            {
-              "san": "Qxa8+",
-              "uci": "f3a8",
-              "accepted_at": 1788606594.4622025,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Qf8#",
-              "uci": "a8f8",
-              "accepted_at": 1788606599.465216,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "a8f8",
-          "last_accepted_move_san": "Qf8#",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788606599.4652152,
-          "position_before_last_move": "Q7/2ppBkpp/1p2p1q1/p3P3/8/2P5/PPP3PP/2K2b2 w - - 1 21"
-        },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "puzzle": null,
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": []
       },
