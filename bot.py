@@ -2,6 +2,9 @@ import discord
 
 from shared_leaderboard import (
     admin_set_points as shared_admin_set_points,
+    admin_set_coins as shared_admin_set_coins,
+    admin_set_color as shared_admin_set_color,
+    resolve_cosmetic_profile as shared_resolve_cosmetic_profile,
     add_points as shared_add_points,
     adjust_points as shared_adjust_points,
     get_score as shared_get_score,
@@ -3489,8 +3492,9 @@ def color_catalog_message():
         "`!color red buy` — buy\n"
         "`!color red` — equip\n"
         "`!color default` — remove your shop color\n\n"
-        "Shop-color roles are kept separate from your existing higher-priority roles, "
-        "so Twitch subscriber pink / owner blue can continue to win when those roles are above them."
+        "An equipped shop color is positioned above your normal colored roles so it can actually show. "
+        "Using `default` removes the shop-color role, so a Twitch subscriber becomes pink again automatically. "
+        "Sharkmeister's owner-blue role stays protected above shop colors."
     )
 
 
@@ -3509,6 +3513,71 @@ def make_board_preview_file(theme_name):
     return discord.File(BytesIO(png), filename="board_theme_preview.png")
 
 
+def _highest_nonshop_colored_role(member):
+    roles = []
+    for role in getattr(member, "roles", []):
+        if getattr(role, "is_default", lambda: False)():
+            continue
+        if str(getattr(role, "name", "")).startswith(SHOP_COLOR_ROLE_PREFIX):
+            continue
+        colour = getattr(role, "colour", getattr(role, "color", None))
+        if getattr(colour, "value", 0):
+            roles.append(role)
+    return max(roles, key=lambda role: role.position, default=None)
+
+
+async def _shop_color_ceiling(guild, bot_member):
+    """Highest allowed shop-role position; keep owner/Sharkmeister blue above it."""
+    ceiling = bot_member.top_role.position - 1
+    shark_id = os.getenv(
+        "SHARKMEISTER_USER_ID", SHARKMEISTER_DEFAULT_USER_ID
+    ).strip() or SHARKMEISTER_DEFAULT_USER_ID
+
+    shark_member = None
+    try:
+        shark_member = guild.get_member(int(shark_id))
+    except Exception:
+        shark_member = None
+
+    if shark_member is None and str(getattr(guild, "owner_id", "")) == str(shark_id):
+        shark_member = getattr(guild, "owner", None)
+
+    if shark_member is not None:
+        shark_color_role = _highest_nonshop_colored_role(shark_member)
+        if shark_color_role is not None and shark_color_role < bot_member.top_role:
+            ceiling = min(ceiling, shark_color_role.position - 1)
+
+    return max(1, ceiling)
+
+
+async def _position_shop_color_role(guild, bot_member, role, member):
+    """Move the chosen shop color above the member's normal color, below owner blue."""
+    base_role = _highest_nonshop_colored_role(member)
+    ceiling = await _shop_color_ceiling(guild, bot_member)
+
+    desired = role.position
+    if base_role is not None:
+        desired = max(desired, base_role.position + 1)
+
+    if desired > ceiling:
+        if base_role is not None and base_role.position >= ceiling:
+            raise RuntimeError(
+                "The bot cannot place this shop color above the member's current colored role "
+                "without overriding a protected owner/bot role."
+            )
+        desired = ceiling
+
+    # Also repair a shop role that somehow ended up above the protected ceiling.
+    if role.position != desired:
+        roles = await guild.edit_role_positions(
+            positions={role: desired},
+            reason="Puzzle Shop color display priority",
+        )
+        role = next((item for item in roles if item.id == role.id), role)
+
+    return role
+
+
 async def apply_shop_color_role(member, color_name):
     guild = getattr(member, "guild", None)
     if guild is None:
@@ -3520,9 +3589,12 @@ async def apply_shop_color_role(member, color_name):
 
     shop_roles = [role for role in member.roles if role.name.startswith(SHOP_COLOR_ROLE_PREFIX)]
     if shop_roles:
-        removable = [role for role in shop_roles if role < bot_member.top_role]
-        if removable:
-            await member.remove_roles(*removable, reason="Puzzle Shop color change")
+        blocked = [role for role in shop_roles if not role < bot_member.top_role]
+        if blocked:
+            raise RuntimeError(
+                "A shop-color role is at or above the bot role. Move the bot role above all Shop Color roles first."
+            )
+        await member.remove_roles(*shop_roles, reason="Puzzle Shop color change")
 
     color_name = str(color_name or "").casefold()
     if not color_name:
@@ -3542,6 +3614,7 @@ async def apply_shop_color_role(member, color_name):
     if role >= bot_member.top_role:
         raise RuntimeError("The shop color role is above the bot role in the role hierarchy.")
 
+    role = await _position_shop_color_role(guild, bot_member, role, member)
     await member.add_roles(role, reason="Puzzle Shop color equipped")
     return role
 
@@ -5390,6 +5463,178 @@ async def on_message(
                 f"✅ **{name}** is now on "
                 f"**{format_points(new_score)} points** "
                 "on the shared leaderboard."
+            )
+            return
+
+        # Sharkmeister-only coin wallet repair:
+        # !editcoins <name> <new amount>
+        if command_lower == "!editcoins" or command_lower.startswith("!editcoins "):
+            sharkmeister_user_id = os.getenv(
+                "SHARKMEISTER_USER_ID", SHARKMEISTER_DEFAULT_USER_ID
+            ).strip() or SHARKMEISTER_DEFAULT_USER_ID
+
+            if str(message.author.id) != sharkmeister_user_id:
+                await message.channel.send(
+                    "❌ Only **Sharkmeister** can edit coin balances."
+                )
+                return
+
+            parts = content.split()
+            if len(parts) < 3:
+                await message.channel.send(
+                    "❌ Usage: `!editcoins <name> <coins>`"
+                )
+                return
+
+            coins_text = parts[-1]
+            typed_name = " ".join(parts[1:-1]).strip()
+            try:
+                target_coins = float(coins_text)
+                if target_coins < 0:
+                    raise ValueError("negative")
+                if target_coins.is_integer():
+                    target_coins = int(target_coins)
+            except Exception:
+                await message.channel.send(
+                    "❌ Coins must be a non-negative number, for example `200` or `57.5`."
+                )
+                return
+
+            if message.mentions:
+                target_member = message.mentions[0]
+                name = target_member.display_name
+                target_user_id = target_member.id
+            else:
+                name = typed_name
+                target_user_id = (
+                    SHARKMEISTER_DEFAULT_USER_ID
+                    if name.casefold() == "sharkmeister"
+                    else None
+                )
+
+            try:
+                new_coins = await asyncio.to_thread(
+                    shared_admin_set_coins,
+                    name,
+                    target_coins,
+                    f"admin-editcoins:{message.id}:{str(target_user_id or name).casefold()}:{target_coins}",
+                    target_user_id=target_user_id,
+                )
+            except Exception as error:
+                await message.channel.send(
+                    f"❌ Could not edit coins: `{str(error)[:900]}`"
+                )
+                return
+
+            await message.channel.send(
+                f"✅ **{name}** now has **{shared_format_points(new_coins)} coins**. "
+                "Their leaderboard points were not changed."
+            )
+            return
+
+        # Sharkmeister-only active color repair:
+        # !editcolor <name> <default|red|yellow|orange|green>
+        if command_lower == "!editcolor" or command_lower.startswith("!editcolor "):
+            sharkmeister_user_id = os.getenv(
+                "SHARKMEISTER_USER_ID", SHARKMEISTER_DEFAULT_USER_ID
+            ).strip() or SHARKMEISTER_DEFAULT_USER_ID
+
+            if str(message.author.id) != sharkmeister_user_id:
+                await message.channel.send(
+                    "❌ Only **Sharkmeister** can edit name colors."
+                )
+                return
+
+            parts = content.split()
+            if len(parts) < 3:
+                await message.channel.send(
+                    "❌ Usage: `!editcolor <name> <default|red|yellow|orange|green>`"
+                )
+                return
+
+            requested_color = parts[-1].casefold()
+            if requested_color == "default":
+                color_name = ""
+            elif requested_color in NAME_COLORS:
+                color_name = requested_color
+            else:
+                await message.channel.send(
+                    "❌ Color must be `default`, `red`, `yellow`, `orange`, or `green`."
+                )
+                return
+
+            typed_name = " ".join(parts[1:-1]).strip()
+            if message.mentions:
+                target_member = message.mentions[0]
+                name = target_member.display_name
+                target_user_id = target_member.id
+            else:
+                name = typed_name
+                target_user_id = (
+                    SHARKMEISTER_DEFAULT_USER_ID
+                    if name.casefold() == "sharkmeister"
+                    else None
+                )
+                try:
+                    target_profile = await asyncio.to_thread(
+                        shared_resolve_cosmetic_profile,
+                        name,
+                        target_user_id=target_user_id,
+                    )
+                except Exception as error:
+                    await message.channel.send(
+                        f"❌ Could not find that player: `{str(error)[:800]}`"
+                    )
+                    return
+
+                target_user_id = target_profile["user_id"]
+                target_member = message.guild.get_member(int(target_user_id))
+                if target_member is None:
+                    try:
+                        target_member = await message.guild.fetch_member(int(target_user_id))
+                    except Exception:
+                        target_member = None
+
+            if target_member is None:
+                await message.channel.send(
+                    "❌ That player exists in the wallet, but I could not find them as a current server member."
+                )
+                return
+
+            # Apply the Discord role first. If the ledger write fails, restore the old visible role.
+            previous_profile = await asyncio.to_thread(
+                get_cosmetic_profile, target_member.id, target_member.display_name
+            )
+            previous_color = str(previous_profile.get("active_color", "") or "")
+
+            try:
+                await apply_shop_color_role(target_member, color_name)
+                try:
+                    profile = await asyncio.to_thread(
+                        shared_admin_set_color,
+                        target_member.display_name,
+                        color_name,
+                        f"admin-editcolor:{message.id}:{target_member.id}:{color_name or 'default'}",
+                        target_user_id=target_member.id,
+                    )
+                except Exception:
+                    try:
+                        await apply_shop_color_role(target_member, previous_color)
+                    except Exception:
+                        pass
+                    raise
+            except Exception as error:
+                await message.channel.send(
+                    f"❌ Could not edit color: `{str(error)[:900]}`"
+                )
+                return
+
+            label = NAME_COLORS[color_name]["label"] if color_name else "Default"
+            grant_note = ""
+            if color_name and color_name not in previous_profile.get("colors", []):
+                grant_note = " The color was also added to their owned colors."
+            await message.channel.send(
+                f"✅ **{profile.get('name', target_member.display_name)}** is now using **{label}**.{grant_note}"
             )
             return
 
