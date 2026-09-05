@@ -3,6 +3,8 @@ import io
 import json
 import os
 import random
+import re
+import unicodedata
 import subprocess
 import tarfile
 import tempfile
@@ -12,10 +14,117 @@ from pathlib import Path
 
 from shop_catalog import (
     BADGE_BOX_COST, BADGE_POOLS, BADGE_RARITY_WEIGHTS, BOARD_COST,
-    BOARD_THEMES, COLOR_COST, NAME_COLORS, RARITY_LABELS,
+    BOARD_THEMES, PIECE_COST, PIECE_SETS, COLOR_COST, NAME_COLORS, RARITY_LABELS,
 )
 
 LEDGER_BUILD = "shared-ledger-v12-snapshot-2026-09-03"
+
+
+_ALL_BADGES = tuple(
+    badge
+    for rarity in BADGE_POOLS.values()
+    for badge in rarity
+)
+_CUSTOM_EMOJI_RE = re.compile(r"^<a?:([^:>]+):\d+>$")
+
+
+def _simple_key(value):
+    return "".join(ch for ch in str(value or "").casefold() if ch.isalnum())
+
+
+def badge_name(badge):
+    """Return a stable human-readable name for a stored badge."""
+    badge = str(badge or "")
+    custom = _CUSTOM_EMOJI_RE.match(badge)
+    if custom:
+        return custom.group(1).replace("_", " ")
+
+    names = []
+    for char in badge:
+        if char in {"\ufe0f", "\u200d"}:
+            continue
+        try:
+            name = unicodedata.name(char)
+        except ValueError:
+            continue
+        if "EMOJI MODIFIER FITZPATRICK" in name:
+            continue
+        names.append(name)
+    return " ".join(names).replace("_", " ").title() if names else badge
+
+
+def _badge_aliases(badge):
+    badge = str(badge or "")
+    aliases = {badge, badge_name(badge)}
+    custom = _CUSTOM_EMOJI_RE.match(badge)
+    if custom:
+        aliases.add(custom.group(1))
+        aliases.add(f":{custom.group(1)}:")
+    return {_simple_key(alias) for alias in aliases if _simple_key(alias)}
+
+
+def resolve_badge(query, badges=None):
+    """Resolve an emoji, custom emoji name, or Unicode badge name."""
+    query = str(query or "").strip()
+    if not query:
+        raise ValueError("Badge name is empty.")
+    source = badges if badges is not None else _ALL_BADGES
+    candidates = list(dict.fromkeys(str(item) for item in source))
+    if query in candidates:
+        return query
+    wanted = _simple_key(query)
+    matches = [badge for badge in candidates if wanted in _badge_aliases(badge)]
+    if not matches:
+        raise ValueError(f"Badge '{query}' was not found.")
+    if len(matches) > 1:
+        raise ValueError(f"Badge name '{query}' is ambiguous. Use the exact emoji instead.")
+    return matches[0]
+
+
+def normalize_trade_asset(asset):
+    if not isinstance(asset, dict):
+        raise ValueError("Invalid trade item.")
+    kind = str(asset.get("type", "")).casefold().strip()
+    if kind == "coins":
+        amount = round(float(asset.get("amount", 0)), 3)
+        if amount <= 0:
+            raise ValueError("Coin amount must be positive.")
+        return {"type": "coins", "amount": amount}
+    if kind == "badge":
+        badge = str(asset.get("badge", "") or "")
+        if not badge:
+            raise ValueError("Badge is missing.")
+        return {"type": "badge", "badge": badge}
+    raise ValueError("Trades only support coins and badges.")
+
+
+def format_trade_asset(asset):
+    asset = normalize_trade_asset(asset)
+    if asset["type"] == "coins":
+        return f"{format_points(asset['amount'])} coins"
+    return f"{asset['badge']} ({badge_name(asset['badge'])})"
+
+
+def _normalize_pending_trade(value):
+    if not isinstance(value, dict):
+        return None
+    try:
+        offer = normalize_trade_asset(value.get("offer"))
+        request = normalize_trade_asset(value.get("request"))
+    except Exception:
+        return None
+    trade_id = str(value.get("trade_id", "") or "")
+    from_user_id = str(value.get("from_user_id", "") or "")
+    if not trade_id or not from_user_id:
+        return None
+    return {
+        "trade_id": trade_id,
+        "from_user_id": from_user_id,
+        "from_name": str(value.get("from_name", "Unknown")),
+        "offer": offer,
+        "request": request,
+        "created_at": int(value.get("created_at", 0) or 0),
+    }
 
 EVENT_DIR = "shared_leaderboard_events"
 LEGACY_FILE = "shared_leaderboard.json"
@@ -101,6 +210,15 @@ def _normalize_entry(entry):
         coins = points
     coins = max(0.0, coins)
 
+    # Tracks how many Guess leaderboard points have already minted shared
+    # coins. This makes the Guess->coin bridge restart-safe and prevents
+    # historical/backfill rewards from ever being credited twice.
+    try:
+        guess_points_coined = round(float(entry.get("guess_points_coined", 0)), 3)
+    except Exception:
+        guess_points_coined = 0.0
+    guess_points_coined = max(0.0, guess_points_coined)
+
     badges = entry.get("badges", [])
     if not isinstance(badges, list):
         badges = []
@@ -124,6 +242,19 @@ def _normalize_entry(entry):
     if active_board != "classic" and active_board not in boards:
         active_board = "classic"
 
+    pieces = entry.get("pieces", [])
+    if not isinstance(pieces, list):
+        pieces = []
+    pieces = [
+        str(item).casefold()
+        for item in pieces
+        if str(item).casefold() in PIECE_SETS and str(item).casefold() != "classic"
+    ]
+
+    active_piece = str(entry.get("active_piece", "classic") or "classic").casefold()
+    if active_piece != "classic" and active_piece not in pieces:
+        active_piece = "classic"
+
     active_color = str(entry.get("active_color", "") or "").casefold()
     if active_color not in colors:
         active_color = ""
@@ -132,12 +263,16 @@ def _normalize_entry(entry):
         "name": str(entry.get("name", "Unknown")),
         "points": points,
         "coins": coins,
+        "guess_points_coined": guess_points_coined,
         "badges": badges,
         "active_badge": active_badge,
         "boards": boards,
         "active_board": active_board,
+        "pieces": pieces,
+        "active_piece": active_piece,
         "colors": colors,
         "active_color": active_color,
+        "pending_trade": _normalize_pending_trade(entry.get("pending_trade")),
     }
 
 
@@ -907,6 +1042,463 @@ def credit_coins(user_id, display_name, amount, transaction_id, source="coin-cre
     return float(entry.get("coins", 0))
 
 
+
+def sync_guess_points_to_coins(
+    user_id,
+    display_name,
+    guess_points,
+    transaction_id,
+    source="guess-points",
+):
+    """Mint only the not-yet-coined portion of a user's Guess score.
+
+    Puzzle points and Guess points remain separate leaderboards. Only the
+    spendable coin wallet is shared. ``guess_points_coined`` is a monotonic
+    watermark, so retries, restarts and old Guess transactions cannot mint the
+    same coins twice.
+    """
+    target = round(max(0.0, float(guess_points)), 3)
+
+    def mutate(entry):
+        already = round(max(0.0, float(entry.get("guess_points_coined", 0))), 3)
+        delta = round(max(0.0, target - already), 3)
+        if delta > 0:
+            entry["coins"] = round(float(entry.get("coins", 0)) + delta, 3)
+        entry["guess_points_coined"] = max(already, target)
+        return {
+            "source": str(source),
+            "guess_points": target,
+            "previous_guess_points_coined": already,
+            "credited": delta,
+        }
+
+    entry, _event = _shop_mutation(
+        user_id,
+        display_name,
+        transaction_id,
+        "guess-points-coin-sync",
+        mutate,
+    )
+    return {
+        "coins": float(entry.get("coins", 0)),
+        "guess_points_coined": float(entry.get("guess_points_coined", 0)),
+    }
+
+
+def backfill_guess_points_to_coins(rows, transaction_id="guess-coins-backfill-v1"):
+    """One-time atomic backfill of existing Guess points into shared coins."""
+    global _CACHE_SNAPSHOT
+
+    normalized = []
+    for row in rows or []:
+        if not isinstance(row, dict):
+            continue
+        uid = str(row.get("user_id", "") or "").strip()
+        if not uid:
+            continue
+        try:
+            points = round(max(0.0, float(row.get("points", 0) or 0)), 3)
+        except Exception:
+            continue
+        normalized.append((uid, str(row.get("display_name", "Unknown")), points))
+
+    if not normalized:
+        return {"credited": 0.0, "users": 0}
+
+    with _LOCK:
+        for attempt in range(1, MAX_RETRIES + 1):
+            if not _fetch_retry():
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            existing = _origin_event(transaction_id)
+            try:
+                snapshot, migrated = _origin_state()
+            except Exception:
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            if existing is not None:
+                _CACHE_SNAPSHOT = {k: dict(v) for k, v in snapshot.items()}
+                return {
+                    "credited": float(existing.get("credited", 0) or 0),
+                    "users": int(existing.get("users", 0) or 0),
+                }
+
+            if not _reset_to_origin():
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            total_credited = 0.0
+            changed_users = 0
+            for uid, display_name, guess_points in normalized:
+                entry = _normalize_entry(snapshot.get(uid, {
+                    "name": display_name,
+                    "points": 0,
+                }))
+                entry["name"] = display_name
+                already = round(max(0.0, float(entry.get("guess_points_coined", 0))), 3)
+                delta = round(max(0.0, guess_points - already), 3)
+                if delta > 0:
+                    entry["coins"] = round(float(entry.get("coins", 0)) + delta, 3)
+                    total_credited = round(total_credited + delta, 3)
+                    changed_users += 1
+                entry["guess_points_coined"] = max(already, guess_points)
+                snapshot[uid] = entry
+
+            payload = {
+                "transaction_id": str(transaction_id),
+                "operation": "guess-points-backfill",
+                "source": "guess-games-1.2",
+                "credited": round(total_credited, 3),
+                "users": changed_users,
+                "ledger_build": LEDGER_BUILD,
+                "created_at": int(time.time()),
+                "created_at_ns": int(time.time_ns()),
+            }
+            files = {
+                LEGACY_FILE: _snapshot_json(snapshot),
+                _event_filename(transaction_id): _event_json(payload),
+            }
+            if not migrated:
+                files[_event_filename(MIGRATION_TRANSACTION_ID)] = _event_json(
+                    _migration_event()
+                )
+
+            if _push_files(files, "Backfill Guess points into shared coins"):
+                verified_snapshot, verified = _verified_origin_snapshot(transaction_id)
+                if verified and verified_snapshot is not None:
+                    return {"credited": round(total_credited, 3), "users": changed_users}
+
+            time.sleep(min(2.0, 0.25 * attempt))
+
+    raise RuntimeError("Could not safely backfill Guess points into shared coins.")
+
+
+def transfer_coins(
+    sender_user_id,
+    sender_display_name,
+    recipient_user_id,
+    recipient_display_name,
+    amount,
+    transaction_id,
+    source="coin-donation",
+):
+    """Atomically move coins between two wallets without changing either point score."""
+    global _CACHE_SNAPSHOT
+
+    if not transaction_id:
+        raise ValueError("A unique transaction_id is required.")
+
+    amount = round(float(amount), 3)
+    if amount <= 0:
+        raise ValueError("Donation amount must be positive.")
+
+    sender_uid = str(sender_user_id)
+    recipient_uid = str(recipient_user_id)
+    if sender_uid == recipient_uid:
+        raise ValueError("You cannot donate coins to yourself.")
+
+    with _LOCK:
+        for attempt in range(1, MAX_RETRIES + 1):
+            if not _fetch_retry():
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            existing = _origin_event(transaction_id)
+            try:
+                snapshot, migrated = _origin_state()
+            except Exception:
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            if existing is not None:
+                _CACHE_SNAPSHOT = {k: dict(v) for k, v in snapshot.items()}
+                sender_entry = _normalize_entry(snapshot.get(sender_uid, {}))
+                recipient_entry = _normalize_entry(snapshot.get(recipient_uid, {}))
+                return {
+                    "sender_coins": float(sender_entry.get("coins", 0)),
+                    "recipient_coins": float(recipient_entry.get("coins", 0)),
+                    "amount": float(existing.get("amount", amount) or amount),
+                }
+
+            sender_entry = _normalize_entry(snapshot.get(sender_uid, {
+                "name": sender_display_name,
+                "points": 0,
+            }))
+            recipient_entry = _normalize_entry(snapshot.get(recipient_uid, {
+                "name": recipient_display_name,
+                "points": 0,
+            }))
+
+            sender_before = float(sender_entry.get("coins", 0))
+            recipient_before = float(recipient_entry.get("coins", 0))
+            if sender_before + 1e-9 < amount:
+                raise ValueError(
+                    f"Not enough coins. Need {format_points(amount)}, "
+                    f"have {format_points(sender_before)}."
+                )
+
+            sender_entry["name"] = str(sender_display_name)
+            recipient_entry["name"] = str(recipient_display_name)
+            sender_entry["coins"] = round(sender_before - amount, 3)
+            recipient_entry["coins"] = round(recipient_before + amount, 3)
+            snapshot[sender_uid] = sender_entry
+            snapshot[recipient_uid] = recipient_entry
+
+            payload = {
+                "transaction_id": str(transaction_id),
+                "operation": "coin-transfer",
+                "source": str(source),
+                "user_id": sender_uid,
+                "display_name": str(sender_display_name),
+                "recipient_user_id": recipient_uid,
+                "recipient_display_name": str(recipient_display_name),
+                "amount": amount,
+                "before_coins": round(sender_before, 3),
+                "after_coins": round(float(sender_entry["coins"]), 3),
+                "recipient_before_coins": round(recipient_before, 3),
+                "recipient_after_coins": round(float(recipient_entry["coins"]), 3),
+                "ledger_build": LEDGER_BUILD,
+                "created_at": int(time.time()),
+                "created_at_ns": int(time.time_ns()),
+            }
+
+            files = {
+                LEGACY_FILE: _snapshot_json(snapshot),
+                _event_filename(transaction_id): _event_json(payload),
+            }
+            if not migrated:
+                files[_event_filename(MIGRATION_TRANSACTION_ID)] = _event_json(
+                    _migration_event()
+                )
+
+            if _push_files(files, "Transfer shop coins"):
+                verified_snapshot, verified = _verified_origin_snapshot(transaction_id)
+                if verified and verified_snapshot is not None:
+                    verified_sender = _normalize_entry(verified_snapshot.get(sender_uid, sender_entry))
+                    verified_recipient = _normalize_entry(verified_snapshot.get(recipient_uid, recipient_entry))
+                    return {
+                        "sender_coins": float(verified_sender.get("coins", sender_entry["coins"])),
+                        "recipient_coins": float(verified_recipient.get("coins", recipient_entry["coins"])),
+                        "amount": amount,
+                    }
+
+            time.sleep(min(2.0, 0.25 * attempt))
+
+    raise RuntimeError(f"Could not safely transfer coins for {transaction_id}.")
+
+
+
+def _asset_available(entry, asset):
+    asset = normalize_trade_asset(asset)
+    if asset["type"] == "coins":
+        return float(entry.get("coins", 0)) + 1e-9 >= float(asset["amount"])
+    return asset["badge"] in entry.get("badges", [])
+
+
+def _move_asset(from_entry, to_entry, asset):
+    asset = normalize_trade_asset(asset)
+    if asset["type"] == "coins":
+        amount = float(asset["amount"])
+        if float(from_entry.get("coins", 0)) + 1e-9 < amount:
+            raise ValueError("Not enough coins for this transfer.")
+        from_entry["coins"] = round(float(from_entry.get("coins", 0)) - amount, 3)
+        to_entry["coins"] = round(float(to_entry.get("coins", 0)) + amount, 3)
+        return
+    badge = asset["badge"]
+    badges = list(from_entry.get("badges", []))
+    try:
+        badges.remove(badge)
+    except ValueError as exc:
+        raise ValueError("That badge is no longer in the inventory.") from exc
+    from_entry["badges"] = badges
+    if from_entry.get("active_badge") == badge and badge not in badges:
+        from_entry["active_badge"] = ""
+    to_entry.setdefault("badges", []).append(badge)
+
+
+def transfer_badge(sender_user_id, sender_name, recipient_user_id, recipient_name, badge, transaction_id, source="badge-donation"):
+    global _CACHE_SNAPSHOT
+    sender_uid = str(sender_user_id)
+    recipient_uid = str(recipient_user_id)
+    badge = str(badge or "")
+    if sender_uid == recipient_uid:
+        raise ValueError("You cannot donate a badge to yourself.")
+    if not badge:
+        raise ValueError("Badge is missing.")
+    with _LOCK:
+        for attempt in range(1, MAX_RETRIES + 1):
+            if not _fetch_retry():
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+            existing = _origin_event(transaction_id)
+            try:
+                snapshot, migrated = _origin_state()
+            except Exception:
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+            if existing is not None:
+                _CACHE_SNAPSHOT = {k: dict(v) for k, v in snapshot.items()}
+                return {
+                    "badge": badge,
+                    "sender_profile": {"user_id": sender_uid, **_normalize_entry(snapshot.get(sender_uid, {}))},
+                    "recipient_profile": {"user_id": recipient_uid, **_normalize_entry(snapshot.get(recipient_uid, {}))},
+                }
+            sender_entry = _normalize_entry(snapshot.get(sender_uid, {"name": sender_name, "points": 0}))
+            recipient_entry = _normalize_entry(snapshot.get(recipient_uid, {"name": recipient_name, "points": 0}))
+            sender_entry["name"] = str(sender_name)
+            recipient_entry["name"] = str(recipient_name)
+            if badge not in sender_entry.get("badges", []):
+                raise ValueError("You do not own that badge.")
+            _move_asset(sender_entry, recipient_entry, {"type": "badge", "badge": badge})
+            snapshot[sender_uid] = sender_entry
+            snapshot[recipient_uid] = recipient_entry
+            payload = {
+                "transaction_id": str(transaction_id), "operation": "badge-transfer",
+                "source": str(source), "user_id": sender_uid, "recipient_user_id": recipient_uid,
+                "badge": badge, "ledger_build": LEDGER_BUILD,
+                "created_at": int(time.time()), "created_at_ns": int(time.time_ns()),
+            }
+            files = {LEGACY_FILE: _snapshot_json(snapshot), _event_filename(transaction_id): _event_json(payload)}
+            if not migrated:
+                files[_event_filename(MIGRATION_TRANSACTION_ID)] = _event_json(_migration_event())
+            if _push_files(files, "Transfer shop badge"):
+                verified_snapshot, verified = _verified_origin_snapshot(transaction_id)
+                if verified and verified_snapshot is not None:
+                    _CACHE_SNAPSHOT = {k: dict(v) for k, v in verified_snapshot.items()}
+                    return {
+                        "badge": badge,
+                        "sender_profile": {"user_id": sender_uid, **_normalize_entry(verified_snapshot.get(sender_uid, sender_entry))},
+                        "recipient_profile": {"user_id": recipient_uid, **_normalize_entry(verified_snapshot.get(recipient_uid, recipient_entry))},
+                    }
+            time.sleep(min(2.0, 0.25 * attempt))
+    raise RuntimeError(f"Could not safely transfer badge for {transaction_id}.")
+
+
+def propose_trade(sender_user_id, sender_name, recipient_user_id, recipient_name, offer, request, transaction_id):
+    global _CACHE_SNAPSHOT
+    sender_uid = str(sender_user_id)
+    recipient_uid = str(recipient_user_id)
+    if sender_uid == recipient_uid:
+        raise ValueError("You cannot trade with yourself.")
+    offer = normalize_trade_asset(offer)
+    request = normalize_trade_asset(request)
+    with _LOCK:
+        for attempt in range(1, MAX_RETRIES + 1):
+            if not _fetch_retry():
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+            existing = _origin_event(transaction_id)
+            try:
+                snapshot, migrated = _origin_state()
+            except Exception:
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+            if existing is not None:
+                return _normalize_entry(snapshot.get(recipient_uid, {})).get("pending_trade") or existing.get("details")
+            sender_entry = _normalize_entry(snapshot.get(sender_uid, {"name": sender_name, "points": 0}))
+            recipient_entry = _normalize_entry(snapshot.get(recipient_uid, {"name": recipient_name, "points": 0}))
+            sender_entry["name"] = str(sender_name)
+            recipient_entry["name"] = str(recipient_name)
+            if recipient_entry.get("pending_trade"):
+                raise ValueError("That player already has a pending trade. They must accept or decline it first.")
+            if not _asset_available(sender_entry, offer):
+                raise ValueError("You no longer own/have the item you are offering.")
+            if not _asset_available(recipient_entry, request):
+                raise ValueError("That player does not currently own/have the item you requested.")
+            pending = {
+                "trade_id": str(transaction_id), "from_user_id": sender_uid, "from_name": str(sender_name),
+                "offer": offer, "request": request, "created_at": int(time.time()),
+            }
+            recipient_entry["pending_trade"] = pending
+            snapshot[sender_uid] = sender_entry
+            snapshot[recipient_uid] = recipient_entry
+            payload = {
+                "transaction_id": str(transaction_id), "operation": "trade-propose",
+                "user_id": sender_uid, "recipient_user_id": recipient_uid, "details": pending,
+                "ledger_build": LEDGER_BUILD, "created_at": int(time.time()), "created_at_ns": int(time.time_ns()),
+            }
+            files = {LEGACY_FILE: _snapshot_json(snapshot), _event_filename(transaction_id): _event_json(payload)}
+            if not migrated:
+                files[_event_filename(MIGRATION_TRANSACTION_ID)] = _event_json(_migration_event())
+            if _push_files(files, "Create shop trade"):
+                verified_snapshot, verified = _verified_origin_snapshot(transaction_id)
+                if verified and verified_snapshot is not None:
+                    _CACHE_SNAPSHOT = {k: dict(v) for k, v in verified_snapshot.items()}
+                    return _normalize_entry(verified_snapshot.get(recipient_uid, recipient_entry)).get("pending_trade")
+            time.sleep(min(2.0, 0.25 * attempt))
+    raise RuntimeError(f"Could not safely create trade {transaction_id}.")
+
+
+def decline_trade(recipient_user_id, recipient_name, transaction_id):
+    def mutate(entry):
+        pending = entry.get("pending_trade")
+        if not pending:
+            raise ValueError("You have no pending trade.")
+        entry["pending_trade"] = None
+        return {"declined_trade": pending}
+    entry, event = _shop_mutation(recipient_user_id, recipient_name, transaction_id, "trade-decline", mutate)
+    details = event.get("details", {}) if isinstance(event, dict) else {}
+    return details.get("declined_trade")
+
+
+def accept_trade(recipient_user_id, recipient_name, transaction_id):
+    global _CACHE_SNAPSHOT
+    recipient_uid = str(recipient_user_id)
+    with _LOCK:
+        for attempt in range(1, MAX_RETRIES + 1):
+            if not _fetch_retry():
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+            existing = _origin_event(transaction_id)
+            try:
+                snapshot, migrated = _origin_state()
+            except Exception:
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+            if existing is not None:
+                return existing.get("details", {}) if isinstance(existing, dict) else {}
+            recipient_entry = _normalize_entry(snapshot.get(recipient_uid, {"name": recipient_name, "points": 0}))
+            recipient_entry["name"] = str(recipient_name)
+            pending = recipient_entry.get("pending_trade")
+            if not pending:
+                raise ValueError("You have no pending trade.")
+            sender_uid = str(pending["from_user_id"])
+            sender_entry = _normalize_entry(snapshot.get(sender_uid, {"name": pending.get("from_name", "Unknown"), "points": 0}))
+            offer = normalize_trade_asset(pending["offer"])
+            request = normalize_trade_asset(pending["request"])
+            if not _asset_available(sender_entry, offer):
+                raise ValueError("Trade is no longer valid: the sender no longer has the offered item.")
+            if not _asset_available(recipient_entry, request):
+                raise ValueError("Trade is no longer valid: you no longer have the requested item.")
+            _move_asset(sender_entry, recipient_entry, offer)
+            _move_asset(recipient_entry, sender_entry, request)
+            recipient_entry["pending_trade"] = None
+            snapshot[sender_uid] = sender_entry
+            snapshot[recipient_uid] = recipient_entry
+            details = {
+                "trade_id": pending["trade_id"], "from_user_id": sender_uid,
+                "from_name": pending.get("from_name", sender_entry.get("name", "Unknown")),
+                "recipient_user_id": recipient_uid, "recipient_name": recipient_entry.get("name", recipient_name),
+                "offer": offer, "request": request,
+            }
+            payload = {
+                "transaction_id": str(transaction_id), "operation": "trade-accept",
+                "user_id": recipient_uid, "details": details, "ledger_build": LEDGER_BUILD,
+                "created_at": int(time.time()), "created_at_ns": int(time.time_ns()),
+            }
+            files = {LEGACY_FILE: _snapshot_json(snapshot), _event_filename(transaction_id): _event_json(payload)}
+            if not migrated:
+                files[_event_filename(MIGRATION_TRANSACTION_ID)] = _event_json(_migration_event())
+            if _push_files(files, "Accept shop trade"):
+                verified_snapshot, verified = _verified_origin_snapshot(transaction_id)
+                if verified and verified_snapshot is not None:
+                    _CACHE_SNAPSHOT = {k: dict(v) for k, v in verified_snapshot.items()}
+                    return details
+            time.sleep(min(2.0, 0.25 * attempt))
+    raise RuntimeError(f"Could not safely accept trade {transaction_id}.")
+
 def admin_set_coins(
     display_name,
     target_coins,
@@ -1013,12 +1605,17 @@ def buy_badge_box(user_id, display_name, transaction_id):
 
 
 def equip_badge(user_id, display_name, badge, transaction_id):
-    badge = str(badge)
+    badge = str(badge or "")
+
     def mutate(entry):
+        if not badge:
+            entry["active_badge"] = ""
+            return {"badge": "", "unequipped": True}
         if badge not in entry.get("badges", []):
             raise ValueError("You do not own that badge.")
         entry["active_badge"] = badge
-        return {"badge": badge}
+        return {"badge": badge, "unequipped": False}
+
     entry, _ = _shop_mutation(user_id, display_name, transaction_id, "equip-badge", mutate)
     return {"user_id": str(user_id), **entry}
 
@@ -1052,6 +1649,42 @@ def equip_board(user_id, display_name, board_name, transaction_id):
         entry["active_board"] = board_name
         return {"board": board_name}
     entry, _ = _shop_mutation(user_id, display_name, transaction_id, "equip-board", mutate)
+    return {"user_id": str(user_id), **entry}
+
+
+def buy_piece(user_id, display_name, piece_name, transaction_id):
+    piece_name = str(piece_name).casefold()
+    if piece_name not in PIECE_SETS or piece_name == "classic":
+        raise ValueError("Unknown or free default piece set.")
+
+    def mutate(entry):
+        if piece_name in entry.get("pieces", []):
+            raise ValueError("You already own that piece set.")
+        before = float(entry.get("coins", 0))
+        if before + 1e-9 < PIECE_COST:
+            raise ValueError(
+                f"Not enough coins. Need {format_points(PIECE_COST)}, have {format_points(before)}."
+            )
+        entry["coins"] = round(before - PIECE_COST, 3)
+        entry.setdefault("pieces", []).append(piece_name)
+        return {"spent": PIECE_COST, "piece": piece_name}
+
+    entry, _ = _shop_mutation(user_id, display_name, transaction_id, "buy-piece", mutate)
+    return {"user_id": str(user_id), **entry}
+
+
+def equip_piece(user_id, display_name, piece_name, transaction_id):
+    piece_name = str(piece_name).casefold()
+    if piece_name not in PIECE_SETS:
+        raise ValueError("Unknown piece set.")
+
+    def mutate(entry):
+        if piece_name != "classic" and piece_name not in entry.get("pieces", []):
+            raise ValueError("You do not own that piece set.")
+        entry["active_piece"] = piece_name
+        return {"piece": piece_name}
+
+    entry, _ = _shop_mutation(user_id, display_name, transaction_id, "equip-piece", mutate)
     return {"user_id": str(user_id), **entry}
 
 
