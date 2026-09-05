@@ -1,58 +1,67 @@
 {
   "latest_random_puzzle": {
-    "title": "1594 • iGVO9",
-    "fen": "8/pQ1q1p2/P2k2p1/7p/4PP1P/5K2/8/8 b - - 2 43",
-    "current_fen": "8/pQ1q1p2/P2k2p1/7p/4PP1P/5K2/8/8 b - - 2 43",
+    "url": "https://lichess.org/training/vzcdJ",
+    "title": "Lichess • 2419",
+    "fen": "n4rk1/1p3pp1/p1q1p3/P1p3P1/1nP2B1Q/3r4/1P4PP/R4RK1 w - - 0 24",
+    "current_fen": "n4rk1/1p3pp1/p1q1p3/P1p3P1/1nP2B1Q/3r4/1P4PP/R4RK1 w - - 0 24",
+    "pgn": "Be5 Rd2 Rf3 Qxf3 gxf3",
     "all_moves": [
       {
-        "uci": "d7b7",
-        "san": "Qxb7",
-        "color": "black"
-      },
-      {
-        "uci": "a6b7",
-        "san": "axb7",
+        "uci": "f4e5",
+        "san": "Be5",
         "color": "white"
       },
       {
-        "uci": "d6c7",
-        "san": "Kc7",
+        "uci": "d3d2",
+        "san": "Rd2",
         "color": "black"
       },
       {
-        "uci": "b7b8q",
-        "san": "b8=Q+",
+        "uci": "f1f3",
+        "san": "Rf3",
         "color": "white"
       },
       {
-        "uci": "c7b8",
-        "san": "Kxb8",
+        "uci": "c6f3",
+        "san": "Qxf3",
         "color": "black"
+      },
+      {
+        "uci": "g2f3",
+        "san": "gxf3",
+        "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d7b7",
-        "san": "Qxb7",
-        "color": "black"
+        "uci": "f4e5",
+        "san": "Be5",
+        "color": "white"
       },
       {
-        "uci": "d6c7",
-        "san": "Kc7",
-        "color": "black"
+        "uci": "f1f3",
+        "san": "Rf3",
+        "color": "white"
       },
       {
-        "uci": "c7b8",
-        "san": "Kxb8",
-        "color": "black"
+        "uci": "g2f3",
+        "san": "gxf3",
+        "color": "white"
       }
     ],
-    "player_color": "black",
+    "player_color": "white",
     "player_move_count": 3,
-    "pgn": "",
-    "url": "https://lichess.org/training/iGVO9",
-    "posted_at": "2026-09-05T14:59:47.514003+00:00",
-    "puzzle_id": "random_lichess_1594_iGVO9_1788620387514",
+    "posted_at": "2026-09-05T15:02:47.955742+00:00",
+    "answer_posted": false,
+    "winner_user_id": null,
+    "winner_name": null,
+    "latest_attempts": {},
+    "puzzle_id": "random_vzcdJ_1788620567955",
+    "rating": 2419,
+    "rp_band": 4,
+    "boss": false,
+    "board_theme": "classic",
+    "piece_theme": "classic",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
@@ -62,12 +71,7 @@
     "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": [],
-    "practice_only": true,
-    "rated_practice": false,
-    "board_theme": "classic",
-    "piece_theme": "classic",
-    "answer_posted": true
+    "helper_candidate_users": []
   },
   "latest_puzzle_type": "random",
   "leaderboard_last_posted_date": "2026-09-05",
