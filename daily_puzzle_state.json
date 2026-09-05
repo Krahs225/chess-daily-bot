@@ -184,10 +184,10 @@
       "name": "Thice",
       "elo": 1488.198,
       "peak_elo": 1520.226,
-      "games": 4,
+      "games": 5,
       "wins": 1,
       "draws": 0,
-      "losses": 3
+      "losses": 4
     }
   },
   "chess_games": {
@@ -421,7 +421,7 @@
     },
     "bot-1545816423165853846-442597396195704832": {
       "game_id": "bot-1545816423165853846-442597396195704832",
-      "status": "active",
+      "status": "finished",
       "mode": "bot",
       "white_id": "BOT",
       "white_name": "Stockfish 19 Full Strength",
@@ -518,7 +518,12 @@
       "started_at": 1788621772.7966228,
       "theme_owner_id": "442597396195704832",
       "theme_owner_name": "Thice",
-      "last_move_at": 1788622155.080736
+      "last_move_at": 1788622155.080736,
+      "game_reward_points": 0.0,
+      "result": "1-0",
+      "finished_at": 1788622158.95331,
+      "finish_reason": "Thice resigned",
+      "human_rating_after": 1488.197983187018
     }
   },
   "chess_challenges": {},
