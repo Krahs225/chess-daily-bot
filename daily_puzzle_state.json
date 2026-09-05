@@ -1228,55 +1228,55 @@
       "name": "Thice",
       "started_at": 1788629243.9540904,
       "end_at": 1788629543.9540906,
-      "score": 3,
+      "score": 4,
       "wrong": 0,
       "ruleset": "universal-1200-plus40-v1",
       "puzzle": {
-        "url": "https://lichess.org/training/bETo4",
-        "title": "Lichess • 1301",
-        "fen": "2k4q/2n1pBr1/pp1pP1P1/2pb4/Nr6/1P3Q1P/P7/2KR2R1 w - - 0 32",
-        "current_fen": "2k4q/4pBr1/pp1pP1P1/2pn4/Nr6/1P3Q1P/P7/2K3R1 w - - 0 33",
-        "pgn": "Rxd5 Nxd5 Qxd5",
+        "url": "https://lichess.org/training/RnbcB",
+        "title": "Lichess • 1389",
+        "fen": "k2r3r/P4p1p/5p2/1NQp4/8/5P2/5P1q/2KRR3 b - - 2 28",
+        "current_fen": "k2r3r/P4p1p/5p2/1NQp4/8/5P2/5P1q/2KRR3 b - - 2 28",
+        "pgn": "Rc8 Qxc8+ Rxc8+",
         "all_moves": [
           {
-            "uci": "d1d5",
-            "san": "Rxd5",
-            "color": "white"
-          },
-          {
-            "uci": "c7d5",
-            "san": "Nxd5",
+            "uci": "d8c8",
+            "san": "Rc8",
             "color": "black"
           },
           {
-            "uci": "f3d5",
-            "san": "Qxd5",
+            "uci": "c5c8",
+            "san": "Qxc8+",
             "color": "white"
+          },
+          {
+            "uci": "h8c8",
+            "san": "Rxc8+",
+            "color": "black"
           }
         ],
         "player_moves": [
           {
-            "uci": "d1d5",
-            "san": "Rxd5",
-            "color": "white"
+            "uci": "d8c8",
+            "san": "Rc8",
+            "color": "black"
           },
           {
-            "uci": "f3d5",
-            "san": "Qxd5",
-            "color": "white"
+            "uci": "h8c8",
+            "san": "Rxc8+",
+            "color": "black"
           }
         ],
-        "player_color": "white",
+        "player_color": "black",
         "player_move_count": 2,
-        "posted_at": "2026-09-05T17:28:10.448831+00:00",
+        "posted_at": "2026-09-05T17:28:20.011726+00:00",
         "answer_posted": false,
         "winner_user_id": null,
         "winner_name": null,
         "latest_attempts": {},
-        "puzzle_id": "practice_rush_442597396195704832_bETo4_1788629290448",
-        "rating": 1301,
-        "next_solution_index": 2,
-        "last_move_uci": "c7d5",
+        "puzzle_id": "practice_rush_442597396195704832_RnbcB_1788629300011",
+        "rating": 1389,
+        "next_solution_index": 0,
+        "last_move_uci": "c3b5",
         "board_theme": "classic",
         "piece_theme": "classic"
       }
