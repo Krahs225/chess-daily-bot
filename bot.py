@@ -3370,6 +3370,58 @@ def _chess_pgn_file(game):
     )
 
 
+def _discord_text_chunks(text, limit=1800):
+    """Split copyable text without exceeding Discord's normal message limit."""
+    raw = str(text or "")
+    if not raw:
+        return [""]
+    chunks = []
+    remaining = raw
+    while len(remaining) > limit:
+        cut = remaining.rfind("\n", 0, limit + 1)
+        if cut < limit // 2:
+            cut = remaining.rfind(" ", 0, limit + 1)
+        if cut < limit // 2:
+            cut = limit
+        chunks.append(remaining[:cut].rstrip())
+        remaining = remaining[cut:].lstrip("\n ")
+    if remaining or not chunks:
+        chunks.append(remaining)
+    return chunks
+
+
+async def _send_pgn_thread(channel, game, result_message=None):
+    """Put the full copyable PGN in a public thread attached to the result.
+
+    If the channel/permissions cannot create a thread, fall back to the .pgn
+    attachment so a finished game never loses its notation.
+    """
+    pgn_text = _build_chess_pgn_text(game)
+    white_name = str(game.get("white_name") or "White")
+    black_name = str(game.get("black_name") or "Black")
+    thread = None
+
+    if result_message is not None and isinstance(channel, discord.TextChannel):
+        try:
+            thread_name = f"PGN • {white_name} vs {black_name}"[:100]
+            thread = await result_message.create_thread(
+                name=thread_name,
+                auto_archive_duration=1440,
+                reason="Rated chess game PGN",
+            )
+        except Exception as error:
+            print(f"Chess PGN thread creation failed: {error}", flush=True)
+
+    if thread is None:
+        await channel.send("📄 **Game PGN**", file=_chess_pgn_file(game))
+        return None
+
+    await thread.send("📄 **Full PGN — copy everything inside the code blocks:**")
+    for chunk in _discord_text_chunks(pgn_text, limit=1800):
+        await thread.send(f"```pgn\n{chunk}\n```")
+    return thread
+
+
 def _format_stockfish_game_analysis(game, analysis):
     white = dict(analysis.get("white") or {})
     black = dict(analysis.get("black") or {})
@@ -3377,14 +3429,15 @@ def _format_stockfish_game_analysis(game, analysis):
 
     def side_line(icon, name, stats):
         return (
-            f"{icon} **{name}:** {int(stats.get('acpl', 0))} ACPL • "
+            f"{icon} **{name}:** {float(stats.get('accuracy', 0.0)):.1f}% accuracy • "
+            f"{int(stats.get('acpl', 0))} ACPL • "
             f"{int(stats.get('inaccuracies', 0))} inacc • "
             f"{int(stats.get('mistakes', 0))} mistakes • "
             f"{int(stats.get('blunders', 0))} blunders"
         )
 
     lines = [
-        f"🔎 **{engine_name} analysis**",
+        f"🔎 **{engine_name} analysis • SF Accuracy**",
         side_line("⚪", game.get("white_name", "White"), white),
         side_line("⚫", game.get("black_name", "Black"), black),
     ]
@@ -3408,9 +3461,9 @@ def _format_stockfish_game_analysis(game, analysis):
     return "\n".join(lines)
 
 
-async def _send_finished_chess_extras(channel, game):
+async def _send_finished_chess_extras(channel, game, result_message=None):
     try:
-        await channel.send("📄 **Game PGN**", file=_chess_pgn_file(game))
+        await _send_pgn_thread(channel, game, result_message=result_message)
     except Exception as error:
         print(f"Chess PGN export failed: {error}", flush=True)
         await channel.send("⚠️ **The game finished, but the PGN export failed.**")
@@ -3630,8 +3683,8 @@ async def finish_chess_game(channel, game, result, reason="Game finished"):
             "⚠️ **Chess Elo was saved locally, but the GitHub state sync is still failing.** "
             "The bot will retry on the next state save."
         )
-    await channel.send("\n".join(lines))
-    await _send_finished_chess_extras(channel, game)
+    result_message = await channel.send("\n".join(lines))
+    await _send_finished_chess_extras(channel, game, result_message=result_message)
 
 
 async def maybe_finish_board_game(channel, game, board, reason=None):
@@ -6149,7 +6202,7 @@ def help_message():
 **Rated Chess**
 `!playbot [elo]` — play Stockfish 19 at calibrated Elo (1320-3190), or `!playbot 4000` for full strength; no Elo picks within ±200 of yours. Win **+3**, draw **+2**, loss **+0** shared points + coins.
 `!play @name` — free player challenge. `!play @name 10` — both stake 10 coins; winner gets 20. `!accept` / `!decline`.
-Play moves normally or use `!move e4`. `!resign` resigns. `!chessboard` shows the position. Finished games include a PGN + compact Stockfish analysis.
+Play moves normally or use `!move e4`. `!resign` resigns. `!chessboard` shows the position. Finished games include a copyable PGN thread + compact Stockfish accuracy/analysis.
 `!stats` shows both **Puzzle Elo** and your separate **Chess Elo**.
 
 **Points / Coins / Shop**
