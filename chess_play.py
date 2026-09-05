@@ -240,6 +240,8 @@ def _positive_float_env(name, default, minimum=0.05, maximum=None):
 STOCKFISH_THREADS = _positive_int_env("STOCKFISH_THREADS", 1, 1, 4)
 STOCKFISH_HASH_MB = _positive_int_env("STOCKFISH_HASH_MB", 64, 16, 512)
 STOCKFISH_MOVE_TIME = _positive_float_env("STOCKFISH_MOVE_TIME", 1.0, 0.1, 10.0)
+STOCKFISH_ANALYSIS_TIME = _positive_float_env("STOCKFISH_ANALYSIS_TIME", 0.08, 0.05, 1.0)
+STOCKFISH_ANALYSIS_MAX_PLIES = _positive_int_env("STOCKFISH_ANALYSIS_MAX_PLIES", 200, 20, 400)
 
 
 def _stockfish_candidates():
@@ -520,6 +522,144 @@ def _stockfish_play_once(board, rating):
         ponder=False,
     )
     return result.move
+
+
+def _full_strength_config(engine):
+    config = {"UCI_LimitStrength": False}
+    if "Skill Level" in engine.options:
+        option = engine.options["Skill Level"]
+        config["Skill Level"] = int(option.max if option.max is not None else 20)
+    return config
+
+
+def _engine_score_cp(info, color):
+    score = info.get("score") if isinstance(info, dict) else None
+    if score is None:
+        return 0
+    value = score.pov(color).score(mate_score=100000)
+    return int(value if value is not None else 0)
+
+
+def _classify_centipawn_loss(loss_cp):
+    loss = max(0, int(loss_cp))
+    if loss >= 200:
+        return "blunder"
+    if loss >= 100:
+        return "mistake"
+    if loss >= 50:
+        return "inaccuracy"
+    return "ok"
+
+
+def analyse_game_moves(san_moves, max_plies=None):
+    """Analyse a finished standard-start game with full-strength Stockfish.
+
+    Returns compact per-side ACPL/error counts plus the largest turning points.
+    The engine is always switched to full strength for this post-game analysis.
+    """
+    moves = [str(item) for item in list(san_moves or [])]
+    if not moves:
+        return {
+            "engine": "Stockfish",
+            "analysed_plies": 0,
+            "white": {"acpl": 0, "inaccuracies": 0, "mistakes": 0, "blunders": 0},
+            "black": {"acpl": 0, "inaccuracies": 0, "mistakes": 0, "blunders": 0},
+            "turning_points": [],
+            "truncated": False,
+        }
+
+    limit_plies = int(max_plies or STOCKFISH_ANALYSIS_MAX_PLIES)
+    truncated = len(moves) > limit_plies
+    moves = moves[:limit_plies]
+
+    board = chess.Board()
+    side_losses = {chess.WHITE: [], chess.BLACK: []}
+    side_counts = {
+        chess.WHITE: {"inaccuracy": 0, "mistake": 0, "blunder": 0},
+        chess.BLACK: {"inaccuracy": 0, "mistake": 0, "blunder": 0},
+    }
+    moments = []
+
+    with _STOCKFISH_LOCK:
+        engine = _get_stockfish_engine()
+        engine.configure(_full_strength_config(engine))
+        analysis_limit = chess.engine.Limit(time=STOCKFISH_ANALYSIS_TIME)
+        before_info = engine.analyse(board, analysis_limit)
+        engine_name = str(engine.id.get("name") or "Stockfish")
+
+        for ply_index, san in enumerate(moves):
+            mover = board.turn
+            best_score = _engine_score_cp(before_info, mover)
+            pv = list(before_info.get("pv") or [])
+            best_san = None
+            if pv:
+                try:
+                    best_san = board.san(pv[0])
+                except Exception:
+                    best_san = None
+
+            try:
+                played_move = board.parse_san(san)
+                played_san = board.san(played_move)
+            except Exception as error:
+                raise ValueError(f"Could not parse recorded chess move {san!r}: {error}") from error
+
+            board.push(played_move)
+            if board.is_game_over(claim_draw=True):
+                outcome = board.outcome(claim_draw=True)
+                if outcome is None or outcome.winner is None:
+                    actual_score = 0
+                else:
+                    actual_score = 100000 if outcome.winner == mover else -100000
+                after_info = None
+            else:
+                after_info = engine.analyse(board, analysis_limit)
+                actual_score = _engine_score_cp(after_info, mover)
+
+            loss_cp = max(0, min(10000, best_score - actual_score))
+            side_losses[mover].append(loss_cp)
+            category = _classify_centipawn_loss(loss_cp)
+            if category != "ok":
+                side_counts[mover][category] += 1
+
+            move_number = ply_index // 2 + 1
+            move_label = f"{move_number}." if mover == chess.WHITE else f"{move_number}..."
+            moments.append({
+                "ply": ply_index + 1,
+                "move": f"{move_label}{played_san}",
+                "played": played_san,
+                "best": best_san or played_san,
+                "loss_cp": int(loss_cp),
+                "side": "white" if mover == chess.WHITE else "black",
+                "category": category,
+            })
+
+            if after_info is None:
+                break
+            before_info = after_info
+
+    def side_summary(color):
+        losses = side_losses[color]
+        counts = side_counts[color]
+        return {
+            "acpl": int(round(sum(losses) / len(losses))) if losses else 0,
+            "inaccuracies": int(counts["inaccuracy"]),
+            "mistakes": int(counts["mistake"]),
+            "blunders": int(counts["blunder"]),
+        }
+
+    important = [item for item in moments if item["loss_cp"] >= 50]
+    important.sort(key=lambda item: (-item["loss_cp"], item["ply"]))
+
+    return {
+        "engine": engine_name,
+        "analysed_plies": sum(len(v) for v in side_losses.values()),
+        "white": side_summary(chess.WHITE),
+        "black": side_summary(chess.BLACK),
+        "turning_points": important[:3],
+        "truncated": bool(truncated),
+        "analysis_time_per_position": STOCKFISH_ANALYSIS_TIME,
+    }
 
 
 _PIECE_VALUES = {
