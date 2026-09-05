@@ -912,7 +912,7 @@
       "bot_rating": 2000,
       "bot_engine": "Stockfish 19",
       "bot_full_strength": false,
-      "fen": "r1b2bk1/pp2pp2/7p/2n5/P1N5/5pP1/1PRBPPBP/6K1 w - - 0 19",
+      "fen": "r1b2bk1/pp2pp2/7p/2n5/P1N5/5BP1/1PRBPP1P/6K1 b - - 0 19",
       "moves": [
         "Nf3",
         "d5",
@@ -949,13 +949,14 @@
         "Bd2",
         "g4",
         "Rxc2",
-        "gxf3"
+        "gxf3",
+        "Bxf3"
       ],
-      "last_move": "gxf3",
+      "last_move": "Bxf3",
       "started_at": 1788626296.3768141,
       "theme_owner_id": "442597396195704832",
       "theme_owner_name": "Thice",
-      "last_move_at": 1788626541.687896
+      "last_move_at": 1788626547.0650322
     }
   },
   "chess_challenges": {},
