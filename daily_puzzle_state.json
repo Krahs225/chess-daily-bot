@@ -180,18 +180,18 @@
   "chess_ratings": {
     "362606514764251137": {
       "name": "Sharkmeister",
-      "elo": 1500.0,
+      "elo": 1482.622,
       "peak_elo": 1500.0,
-      "games": 0,
+      "games": 1,
       "wins": 0,
       "draws": 0,
-      "losses": 0
+      "losses": 1
     }
   },
   "chess_games": {
     "bot-1545798641644470393-362606514764251137": {
       "game_id": "bot-1545798641644470393-362606514764251137",
-      "status": "active",
+      "status": "finished",
       "mode": "bot",
       "white_id": "362606514764251137",
       "white_name": "Sharkmeister",
@@ -213,7 +213,11 @@
       "started_at": 1788617516.128437,
       "theme_owner_id": "362606514764251137",
       "theme_owner_name": "Sharkmeister",
-      "last_move_at": 1788617627.10375
+      "last_move_at": 1788617627.10375,
+      "result": "0-1",
+      "finished_at": 1788617634.4280634,
+      "finish_reason": "Sharkmeister resigned",
+      "human_rating_after": 1482.6218722552892
     }
   },
   "chess_challenges": {},
