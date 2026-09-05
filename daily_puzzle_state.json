@@ -1223,78 +1223,78 @@
   "chess_challenges": {},
   "puzzle_rush": {
     "442597396195704832": {
-      "active": false,
+      "active": true,
       "user_id": "442597396195704832",
       "name": "Thice",
-      "started_at": 1788622855.8330946,
-      "end_at": 1788623155.8330948,
+      "started_at": 1788629243.9540904,
+      "end_at": 1788629543.9540906,
       "score": 0,
       "wrong": 0,
-      "base_elo": 2067.5079601572183,
+      "ruleset": "universal-1200-plus40-v1",
       "puzzle": {
-        "url": "https://lichess.org/training/oqorz",
-        "title": "Lichess • 1747",
-        "fen": "8/pp4p1/4p3/2P2p1k/3Pp2P/P3P1K1/5P2/8 w - - 0 35",
-        "current_fen": "8/pp4p1/4p3/2P2p1k/3Pp2P/P3P1K1/5P2/8 w - - 0 35",
-        "pgn": "Kf4 Kxh4 Ke5 g5 Kxe6",
+        "url": "https://lichess.org/training/wkXHT",
+        "title": "Lichess • 1204",
+        "fen": "6r1/kr1R3p/pq2p1pb/4Pp2/1pP2P2/P3Q1P1/2K4P/3R4 w - - 0 35",
+        "current_fen": "6r1/kr1R3p/pq2p1pb/4Pp2/1pP2P2/P3Q1P1/2K4P/3R4 w - - 0 35",
+        "pgn": "Rxb7+ Kxb7 Rd7+ Kc8 Qxb6",
         "all_moves": [
           {
-            "uci": "g3f4",
-            "san": "Kf4",
+            "uci": "d7b7",
+            "san": "Rxb7+",
             "color": "white"
           },
           {
-            "uci": "h5h4",
-            "san": "Kxh4",
+            "uci": "a7b7",
+            "san": "Kxb7",
             "color": "black"
           },
           {
-            "uci": "f4e5",
-            "san": "Ke5",
+            "uci": "d1d7",
+            "san": "Rd7+",
             "color": "white"
           },
           {
-            "uci": "g7g5",
-            "san": "g5",
+            "uci": "b7c8",
+            "san": "Kc8",
             "color": "black"
           },
           {
-            "uci": "e5e6",
-            "san": "Kxe6",
+            "uci": "e3b6",
+            "san": "Qxb6",
             "color": "white"
           }
         ],
         "player_moves": [
           {
-            "uci": "g3f4",
-            "san": "Kf4",
+            "uci": "d7b7",
+            "san": "Rxb7+",
             "color": "white"
           },
           {
-            "uci": "f4e5",
-            "san": "Ke5",
+            "uci": "d1d7",
+            "san": "Rd7+",
             "color": "white"
           },
           {
-            "uci": "e5e6",
-            "san": "Kxe6",
+            "uci": "e3b6",
+            "san": "Qxb6",
             "color": "white"
           }
         ],
         "player_color": "white",
         "player_move_count": 3,
-        "posted_at": "2026-09-05T15:40:55.840962+00:00",
+        "posted_at": "2026-09-05T17:27:23.957754+00:00",
         "answer_posted": false,
         "winner_user_id": null,
         "winner_name": null,
         "latest_attempts": {},
-        "puzzle_id": "practice_rush_442597396195704832_oqorz_1788622855840",
-        "rating": 1747,
+        "puzzle_id": "practice_rush_442597396195704832_wkXHT_1788629243957",
+        "rating": 1204,
         "next_solution_index": 0,
+        "last_move_uci": "c5b4",
         "board_theme": "classic",
         "piece_theme": "classic"
-      },
-      "ended_at": 1788623524.014939
+      }
     },
     "362606514764251137": {
       "active": false,
