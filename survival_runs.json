@@ -449,9 +449,9 @@
     },
     "sharkmeister": {
       "name": "Sharkmeister",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-09-05T19:27:51.124318+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1361,
+      "best_completed_at": "2026-09-05T19:28:33.547116+00:00",
       "current": {
         "run_id": "sharkmeister:1788636471",
         "started_by_id": "442597396195704832",
@@ -462,11 +462,12 @@
         "started_at": "2026-09-05T19:27:51.124302+00:00",
         "last_activity": 1788636508.137345,
         "paused_reason": null,
-        "puzzle_number": 1,
+        "puzzle_number": 2,
         "strikes": 1,
         "best_difficulty": 1361,
         "used_puzzle_ids": [
-          "ljtW1"
+          "ljtW1",
+          "pshuh"
         ],
         "members": {
           "442597396195704832": {
@@ -476,64 +477,42 @@
           }
         },
         "puzzle": {
-          "id": "ljtW1",
-          "rating": 1361,
-          "themes": "middlegame short advantage fork",
-          "url": "https://lichess.org/training/ljtW1",
-          "start_fen": "5rk1/1p4p1/p1p2r2/4pq2/7Q/2P1B1P1/P1P1RPK1/5R2 b - - 3 30",
-          "current_fen": "5rk1/1p4p1/p1p2r2/4p3/7Q/2P1B1P1/P1P1qP2/5RK1 w - - 0 32",
+          "id": "pshuh",
+          "rating": 1204,
+          "themes": "mateIn2 middlegame short",
+          "url": "https://lichess.org/training/pshuh",
+          "start_fen": "6k1/1p2P1r1/3q4/p1p4Q/Pn6/6NP/1P5K/R3R3 b - - 0 40",
+          "current_fen": "6k1/1p2P1r1/3q4/p1p4Q/Pn6/6NP/1P5K/R3R3 b - - 0 40",
           "solution": [
             {
-              "uci": "f5f3",
-              "san": "Qf3+",
+              "uci": "d6g3",
+              "san": "Qxg3+",
               "color": "black"
             },
             {
-              "uci": "g2g1",
-              "san": "Kg1",
+              "uci": "h2h1",
+              "san": "Kh1",
               "color": "white"
             },
             {
-              "uci": "f3e2",
-              "san": "Qxe2",
+              "uci": "g3g2",
+              "san": "Qg2#",
               "color": "black"
             }
           ],
           "player_color": "black",
-          "next_solution_index": 3,
+          "next_solution_index": 0,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
-          "wrong_users": [
-            "442597396195704832"
-          ],
-          "rated_users": [
-            "442597396195704832"
-          ],
-          "last_move_san": "Qxe2",
-          "accepted_moves": [
-            {
-              "san": "Qf3+",
-              "uci": "f5f3",
-              "accepted_at": 1788636486.8548508,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Qxe2",
-              "uci": "f3e2",
-              "accepted_at": 1788636508.1372566,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "f3e2",
-          "last_accepted_move_san": "Qxe2",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788636508.1372557,
-          "position_before_last_move": "5rk1/1p4p1/p1p2r2/4p3/7Q/2P1BqP1/P1P1RP2/5RK1 b - - 5 31"
+          "wrong_users": [],
+          "rated_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
         },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Sharkmeister",
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": [],
         "shop_heart_purchased": false
