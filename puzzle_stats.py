@@ -8,7 +8,7 @@ import time
 from difflib import get_close_matches
 from pathlib import Path
 
-from shared_leaderboard import REPOSITORY_LOCK
+from shared_leaderboard import REPOSITORY_LOCK, badge_map
 
 PUZZLE_STATS_BUILD = "puzzle-stats-v1-elo-streak-achievements-2026-09-04"
 STATS_FILE = "puzzle_stats.json"
@@ -125,7 +125,10 @@ def _default_user(name="Unknown"):
         "current_wrong_streak": 0,
         "best_wrong_streak": 0,
         "elo": START_ELO,
+        "peak_elo": START_ELO,
         "elo_games": 0,
+        "rated_correct_count": 0,
+        "rated_correct_rating_sum": 0,
         "first_solves": 0,
         "boss_attempts": 0,
         "boss_correct": 0,
@@ -159,6 +162,7 @@ def _normalize_user(entry):
     integer_fields = [
         "total", "correct", "wrong", "current_streak", "best_streak",
         "current_wrong_streak", "best_wrong_streak", "elo_games",
+        "rated_correct_count", "rated_correct_rating_sum",
         "first_solves", "boss_attempts", "boss_correct", "boss_first_solves",
         "correct_2000", "correct_2400", "correct_2600", "correct_2800",
         "max_rating_solved", "current_hard_streak_2600",
@@ -174,6 +178,12 @@ def _normalize_user(entry):
         clean["elo"] = float(entry.get("elo", START_ELO))
     except Exception:
         clean["elo"] = START_ELO
+
+    try:
+        clean["peak_elo"] = float(entry.get("peak_elo", clean["elo"]))
+    except Exception:
+        clean["peak_elo"] = clean["elo"]
+    clean["peak_elo"] = max(clean["peak_elo"], clean["elo"])
 
     clean["name"] = str(entry.get("name", "Unknown"))
     clean["correct"] = min(clean["correct"], clean["total"])
@@ -444,6 +454,8 @@ def record_puzzle_attempt(
 
                 if rating is not None:
                     entry["max_rating_solved"] = max(entry["max_rating_solved"], rating)
+                    entry["rated_correct_count"] += 1
+                    entry["rated_correct_rating_sum"] += int(rating)
                     if rating >= 2000:
                         entry["correct_2000"] += 1
                     if rating >= 2400:
@@ -479,6 +491,7 @@ def record_puzzle_attempt(
             if rating is not None:
                 new_elo, elo_change = _elo_change(entry["elo"], rating, bool(correct))
                 entry["elo"] = new_elo
+                entry["peak_elo"] = max(float(entry.get("peak_elo", START_ELO)), new_elo)
                 entry["elo_games"] += 1
 
             streak_bonus = bool(correct) and entry["current_streak"] > 0 and entry["current_streak"] % 10 == 0
@@ -619,10 +632,14 @@ def _result_for_user(user_id, entry, fallback_name=None):
     correct = entry["correct"]
     accuracy = (correct / total * 100.0) if total else 0.0
     achievements = [item for item in entry.get("achievements", []) if item in ACHIEVEMENT_BY_ID]
+    rated_correct_count = int(entry.get("rated_correct_count", 0) or 0)
+    rated_correct_sum = int(entry.get("rated_correct_rating_sum", 0) or 0)
+    average_solved_rating = (rated_correct_sum / rated_correct_count) if rated_correct_count else 0.0
     return {
         "user_id": str(user_id),
         **entry,
         "accuracy": accuracy,
+        "average_solved_rating": average_solved_rating,
         "achievement_count": len(achievements),
         "achievement_total": len(ACHIEVEMENTS),
     }
@@ -688,7 +705,12 @@ def format_puzzle_stats(stats):
         f"🔥 **Current streak:** {int(stats.get('current_streak', 0))}\n"
         f"🏆 **Best streak:** {int(stats.get('best_streak', 0))}\n\n"
         f"♟️ **Puzzle Elo:** {int(round(float(stats.get('elo', START_ELO))))}"
-        f"{'' if int(stats.get('elo_games', 0)) else ' *(unrated until your first rated RP)*'}\n"
+        f"{'' if int(stats.get('elo_games', 0)) else ' *(unrated until your first rated puzzle)*'}\n"
+        f"📈 **Peak Puzzle Elo:** {int(round(float(stats.get('peak_elo', stats.get('elo', START_ELO)))))}\n"
+        f"📊 **Average solved rating:** "
+        f"{int(round(float(stats.get('average_solved_rating', 0)))) if int(stats.get('rated_correct_count', 0)) else '—'}\n"
+        f"🚀 **Highest solved rating:** "
+        f"{int(stats.get('max_rating_solved', 0)) if int(stats.get('max_rating_solved', 0)) else '—'}\n"
         f"🥇 **First solves:** {int(stats.get('first_solves', 0))}\n"
         f"☠️ **Boss solves:** {int(stats.get('boss_correct', 0))}\n\n"
         f"🏅 **Achievements:** {int(stats.get('achievement_count', 0))}/{len(ACHIEVEMENTS)}\n"
@@ -702,6 +724,7 @@ def format_puzzle_leaderboards(limit=10):
         _result_for_user(uid, entry)
         for uid, entry in snapshot.get("users", {}).items()
     ]
+    badges = badge_map(entry.get("user_id") for entry in users)
 
     elo_users = sorted(
         [entry for entry in users if int(entry.get("elo_games", 0)) > 0],
@@ -717,7 +740,7 @@ def format_puzzle_leaderboards(limit=10):
     if elo_users:
         for index, entry in enumerate(elo_users, 1):
             lines.append(
-                f"**{index}.** {entry['name']} — **{int(round(float(entry['elo'])))} Elo**"
+                f"**{index}.** {(badges.get(str(entry['user_id'])) + ' ') if badges.get(str(entry['user_id'])) else ''}{entry['name']} — **{int(round(float(entry['elo'])))} Elo**"
             )
     else:
         lines.append("No rated Puzzle Elo results yet.")
@@ -726,7 +749,7 @@ def format_puzzle_leaderboards(limit=10):
     if streak_users:
         for index, entry in enumerate(streak_users, 1):
             lines.append(
-                f"**{index}.** {entry['name']} — **{int(entry['best_streak'])}** best "
+                f"**{index}.** {(badges.get(str(entry['user_id'])) + ' ') if badges.get(str(entry['user_id'])) else ''}{entry['name']} — **{int(entry['best_streak'])}** best "
                 f"(current {int(entry['current_streak'])})"
             )
     else:
