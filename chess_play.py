@@ -551,6 +551,18 @@ def _classify_centipawn_loss(loss_cp):
     return "ok"
 
 
+def _stockfish_accuracy_from_acpl(acpl):
+    """Convert ACPL into a stable 0-100 Stockfish-based accuracy estimate.
+
+    This is intentionally *not* labelled as Chess.com's proprietary CAPS2
+    score. It is a local Discord-bot metric derived from the same Stockfish
+    centipawn-loss analysis used for ACPL.
+    """
+    value = max(0.0, float(acpl or 0.0))
+    accuracy = 100.0 * math.exp(-value / 300.0)
+    return round(max(0.0, min(100.0, accuracy)), 1)
+
+
 def analyse_game_moves(san_moves, max_plies=None):
     """Analyse a finished standard-start game with full-strength Stockfish.
 
@@ -562,8 +574,8 @@ def analyse_game_moves(san_moves, max_plies=None):
         return {
             "engine": "Stockfish",
             "analysed_plies": 0,
-            "white": {"acpl": 0, "inaccuracies": 0, "mistakes": 0, "blunders": 0},
-            "black": {"acpl": 0, "inaccuracies": 0, "mistakes": 0, "blunders": 0},
+            "white": {"accuracy": 0.0, "acpl": 0, "inaccuracies": 0, "mistakes": 0, "blunders": 0},
+            "black": {"accuracy": 0.0, "acpl": 0, "inaccuracies": 0, "mistakes": 0, "blunders": 0},
             "turning_points": [],
             "truncated": False,
         }
@@ -641,8 +653,10 @@ def analyse_game_moves(san_moves, max_plies=None):
     def side_summary(color):
         losses = side_losses[color]
         counts = side_counts[color]
+        acpl = int(round(sum(losses) / len(losses))) if losses else 0
         return {
-            "acpl": int(round(sum(losses) / len(losses))) if losses else 0,
+            "accuracy": _stockfish_accuracy_from_acpl(acpl) if losses else 0.0,
+            "acpl": acpl,
             "inaccuracies": int(counts["inaccuracy"]),
             "mistakes": int(counts["mistake"]),
             "blunders": int(counts["blunder"]),
@@ -659,6 +673,7 @@ def analyse_game_moves(san_moves, max_plies=None):
         "turning_points": important[:3],
         "truncated": bool(truncated),
         "analysis_time_per_position": STOCKFISH_ANALYSIS_TIME,
+        "accuracy_model": "stockfish-acpl-v1",
     }
 
 
