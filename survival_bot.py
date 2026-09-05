@@ -1243,6 +1243,10 @@ _SURVIVAL_UNICODE_CHESS_GLYPHS = {
     "K": "♔", "Q": "♕", "R": "♖", "B": "♗", "N": "♘", "P": "♙",
     "k": "♚", "q": "♛", "r": "♜", "b": "♝", "n": "♞", "p": "♟",
 }
+_SURVIVAL_BLACK_CHESS_GLYPHS_BY_TYPE = {
+    chess.PAWN: "♟", chess.KNIGHT: "♞", chess.BISHOP: "♝",
+    chess.ROOK: "♜", chess.QUEEN: "♛", chess.KING: "♚",
+}
 
 
 def _survival_piece_overlay_svg(board, orientation, piece_theme):
@@ -1272,7 +1276,27 @@ def _survival_piece_overlay_svg(board, orientation, piece_theme):
         symbol = piece.symbol()
         letter = letters[piece.piece_type]
 
-        if shape == "figurine":
+        if shape == "glyph":
+            glyph = (
+                _SURVIVAL_UNICODE_CHESS_GLYPHS[symbol]
+                if style.get("glyph_variant") == "native"
+                else _SURVIVAL_BLACK_CHESS_GLYPHS_BY_TYPE[piece.piece_type]
+            )
+            font_family = style.get("font_family", "DejaVu Sans")
+            font_size = float(style.get("font_size", 40))
+            font_weight = style.get("font_weight", 700)
+            stroke_width = float(style.get("stroke_width", 0.65))
+            scale_x = float(style.get("scale_x", 1.0))
+            scale_y = float(style.get("scale_y", 1.0))
+            glyph_fill = "none" if style.get("outline_only") else fill
+            parts.append(
+                f'<g transform="translate({cx:.2f} {cy:.2f}) scale({scale_x:.3f} {scale_y:.3f})">'
+                f'<text x="0" y="1" text-anchor="middle" dominant-baseline="central" '
+                f'font-family="{font_family}" font-size="{font_size:g}" font-weight="{font_weight}" '
+                f'fill="{glyph_fill}" stroke="{stroke}" stroke-width="{stroke_width:g}" '
+                f'paint-order="stroke">{glyph}</text></g>'
+            )
+        elif shape == "figurine":
             glyph = _SURVIVAL_UNICODE_CHESS_GLYPHS[symbol]
             parts.append(
                 f'<text x="{cx:.2f}" y="{cy + 1:.2f}" text-anchor="middle" dominant-baseline="central" '
