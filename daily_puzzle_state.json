@@ -602,63 +602,77 @@
   "chess_challenges": {},
   "puzzle_rush": {
     "442597396195704832": {
-      "active": false,
+      "active": true,
       "user_id": "442597396195704832",
       "name": "Thice",
-      "started_at": 1788622401.9281652,
-      "end_at": 1788622701.9281654,
-      "score": 12,
-      "wrong": 5,
+      "started_at": 1788622855.8330946,
+      "end_at": 1788623155.8330948,
+      "score": 0,
+      "wrong": 0,
       "base_elo": 2067.5079601572183,
       "puzzle": {
-        "url": "https://lichess.org/training/ACBLe",
-        "title": "Lichess • 2209",
-        "fen": "r6r/1ppk4/1p1pp1q1/7p/P2NR1p1/1PP2n2/2Q2PPP/3R2K1 w - - 7 29",
-        "current_fen": "r6r/1ppk4/1p1pp1q1/7p/P2NR1p1/1PP2n2/2Q2PPP/3R2K1 w - - 7 29",
-        "pgn": "gxf3 gxf3+ Kf1",
+        "url": "https://lichess.org/training/oqorz",
+        "title": "Lichess • 1747",
+        "fen": "8/pp4p1/4p3/2P2p1k/3Pp2P/P3P1K1/5P2/8 w - - 0 35",
+        "current_fen": "8/pp4p1/4p3/2P2p1k/3Pp2P/P3P1K1/5P2/8 w - - 0 35",
+        "pgn": "Kf4 Kxh4 Ke5 g5 Kxe6",
         "all_moves": [
           {
-            "uci": "g2f3",
-            "san": "gxf3",
+            "uci": "g3f4",
+            "san": "Kf4",
             "color": "white"
           },
           {
-            "uci": "g4f3",
-            "san": "gxf3+",
+            "uci": "h5h4",
+            "san": "Kxh4",
             "color": "black"
           },
           {
-            "uci": "g1f1",
-            "san": "Kf1",
+            "uci": "f4e5",
+            "san": "Ke5",
+            "color": "white"
+          },
+          {
+            "uci": "g7g5",
+            "san": "g5",
+            "color": "black"
+          },
+          {
+            "uci": "e5e6",
+            "san": "Kxe6",
             "color": "white"
           }
         ],
         "player_moves": [
           {
-            "uci": "g2f3",
-            "san": "gxf3",
+            "uci": "g3f4",
+            "san": "Kf4",
             "color": "white"
           },
           {
-            "uci": "g1f1",
-            "san": "Kf1",
+            "uci": "f4e5",
+            "san": "Ke5",
+            "color": "white"
+          },
+          {
+            "uci": "e5e6",
+            "san": "Kxe6",
             "color": "white"
           }
         ],
         "player_color": "white",
-        "player_move_count": 2,
-        "posted_at": "2026-09-05T15:38:14.278732+00:00",
+        "player_move_count": 3,
+        "posted_at": "2026-09-05T15:40:55.840962+00:00",
         "answer_posted": false,
         "winner_user_id": null,
         "winner_name": null,
         "latest_attempts": {},
-        "puzzle_id": "practice_rush_442597396195704832_ACBLe_1788622694278",
-        "rating": 2209,
+        "puzzle_id": "practice_rush_442597396195704832_oqorz_1788622855840",
+        "rating": 1747,
         "next_solution_index": 0,
         "board_theme": "classic",
         "piece_theme": "classic"
-      },
-      "ended_at": 1788622703.1508734
+      }
     }
   },
   "puzzle_rush_bests": {
