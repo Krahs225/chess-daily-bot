@@ -1290,6 +1290,261 @@ def transfer_coins(
 
 
 
+
+def reserve_chess_wager(
+    first_user_id,
+    first_display_name,
+    second_user_id,
+    second_display_name,
+    amount,
+    transaction_id,
+    source="chess-wager-reserve",
+):
+    """Atomically reserve the same coin stake from two players for a chess game."""
+    global _CACHE_SNAPSHOT
+
+    if not transaction_id:
+        raise ValueError("A unique transaction_id is required.")
+
+    amount = round(float(amount), 3)
+    if amount <= 0:
+        raise ValueError("Wager amount must be positive.")
+
+    first_uid = str(first_user_id)
+    second_uid = str(second_user_id)
+    if first_uid == second_uid:
+        raise ValueError("A chess wager needs two different players.")
+
+    with _LOCK:
+        for attempt in range(1, MAX_RETRIES + 1):
+            if not _fetch_retry():
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            existing = _origin_event(transaction_id)
+            try:
+                snapshot, migrated = _origin_state()
+            except Exception:
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            if existing is not None:
+                _CACHE_SNAPSHOT = {k: dict(v) for k, v in snapshot.items()}
+                first_entry = _normalize_entry(snapshot.get(first_uid, {}))
+                second_entry = _normalize_entry(snapshot.get(second_uid, {}))
+                return {
+                    "amount": float(existing.get("amount", amount) or amount),
+                    "pot": round(float(existing.get("amount", amount) or amount) * 2, 3),
+                    "first_coins": float(first_entry.get("coins", 0)),
+                    "second_coins": float(second_entry.get("coins", 0)),
+                }
+
+            first_entry = _normalize_entry(snapshot.get(first_uid, {
+                "name": first_display_name,
+                "points": 0,
+            }))
+            second_entry = _normalize_entry(snapshot.get(second_uid, {
+                "name": second_display_name,
+                "points": 0,
+            }))
+
+            first_before = float(first_entry.get("coins", 0))
+            second_before = float(second_entry.get("coins", 0))
+            if first_before + 1e-9 < amount:
+                raise ValueError(
+                    f"{first_display_name} does not have enough coins. "
+                    f"Need {format_points(amount)}, have {format_points(first_before)}."
+                )
+            if second_before + 1e-9 < amount:
+                raise ValueError(
+                    f"{second_display_name} does not have enough coins. "
+                    f"Need {format_points(amount)}, have {format_points(second_before)}."
+                )
+
+            first_entry["name"] = str(first_display_name)
+            second_entry["name"] = str(second_display_name)
+            first_entry["coins"] = round(first_before - amount, 3)
+            second_entry["coins"] = round(second_before - amount, 3)
+            snapshot[first_uid] = first_entry
+            snapshot[second_uid] = second_entry
+
+            payload = {
+                "transaction_id": str(transaction_id),
+                "operation": "chess-wager-reserve",
+                "source": str(source),
+                "user_id": first_uid,
+                "display_name": str(first_display_name),
+                "opponent_user_id": second_uid,
+                "opponent_display_name": str(second_display_name),
+                "amount": amount,
+                "pot": round(amount * 2, 3),
+                "before_coins": round(first_before, 3),
+                "after_coins": round(float(first_entry["coins"]), 3),
+                "opponent_before_coins": round(second_before, 3),
+                "opponent_after_coins": round(float(second_entry["coins"]), 3),
+                "ledger_build": LEDGER_BUILD,
+                "created_at": int(time.time()),
+                "created_at_ns": int(time.time_ns()),
+            }
+
+            files = {
+                LEGACY_FILE: _snapshot_json(snapshot),
+                _event_filename(transaction_id): _event_json(payload),
+            }
+            if not migrated:
+                files[_event_filename(MIGRATION_TRANSACTION_ID)] = _event_json(
+                    _migration_event()
+                )
+
+            if _push_files(files, "Reserve chess wager"):
+                verified_snapshot, verified = _verified_origin_snapshot(transaction_id)
+                if verified and verified_snapshot is not None:
+                    _CACHE_SNAPSHOT = {k: dict(v) for k, v in verified_snapshot.items()}
+                    verified_first = _normalize_entry(verified_snapshot.get(first_uid, first_entry))
+                    verified_second = _normalize_entry(verified_snapshot.get(second_uid, second_entry))
+                    return {
+                        "amount": amount,
+                        "pot": round(amount * 2, 3),
+                        "first_coins": float(verified_first.get("coins", first_entry["coins"])),
+                        "second_coins": float(verified_second.get("coins", second_entry["coins"])),
+                    }
+
+            time.sleep(min(2.0, 0.25 * attempt))
+
+    raise RuntimeError(f"Could not safely reserve chess wager for {transaction_id}.")
+
+
+def settle_chess_wager(
+    first_user_id,
+    first_display_name,
+    second_user_id,
+    second_display_name,
+    amount,
+    winner_user_id,
+    transaction_id,
+    source="chess-wager-settle",
+):
+    """Atomically pay a reserved chess pot to the winner, or refund both on a draw."""
+    global _CACHE_SNAPSHOT
+
+    if not transaction_id:
+        raise ValueError("A unique transaction_id is required.")
+
+    amount = round(float(amount), 3)
+    if amount <= 0:
+        raise ValueError("Wager amount must be positive.")
+
+    first_uid = str(first_user_id)
+    second_uid = str(second_user_id)
+    if first_uid == second_uid:
+        raise ValueError("A chess wager needs two different players.")
+
+    winner_uid = None if winner_user_id in (None, "", "draw") else str(winner_user_id)
+    if winner_uid is not None and winner_uid not in {first_uid, second_uid}:
+        raise ValueError("Winner is not part of this chess wager.")
+
+    with _LOCK:
+        for attempt in range(1, MAX_RETRIES + 1):
+            if not _fetch_retry():
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            existing = _origin_event(transaction_id)
+            try:
+                snapshot, migrated = _origin_state()
+            except Exception:
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            if existing is not None:
+                _CACHE_SNAPSHOT = {k: dict(v) for k, v in snapshot.items()}
+                first_entry = _normalize_entry(snapshot.get(first_uid, {}))
+                second_entry = _normalize_entry(snapshot.get(second_uid, {}))
+                return {
+                    "draw": winner_uid is None,
+                    "winner_user_id": winner_uid,
+                    "amount": amount,
+                    "pot": round(amount * 2, 3),
+                    "first_coins": float(first_entry.get("coins", 0)),
+                    "second_coins": float(second_entry.get("coins", 0)),
+                }
+
+            first_entry = _normalize_entry(snapshot.get(first_uid, {
+                "name": first_display_name,
+                "points": 0,
+            }))
+            second_entry = _normalize_entry(snapshot.get(second_uid, {
+                "name": second_display_name,
+                "points": 0,
+            }))
+            first_entry["name"] = str(first_display_name)
+            second_entry["name"] = str(second_display_name)
+
+            first_before = float(first_entry.get("coins", 0))
+            second_before = float(second_entry.get("coins", 0))
+            pot = round(amount * 2, 3)
+
+            if winner_uid is None:
+                first_entry["coins"] = round(first_before + amount, 3)
+                second_entry["coins"] = round(second_before + amount, 3)
+            elif winner_uid == first_uid:
+                first_entry["coins"] = round(first_before + pot, 3)
+            else:
+                second_entry["coins"] = round(second_before + pot, 3)
+
+            snapshot[first_uid] = first_entry
+            snapshot[second_uid] = second_entry
+
+            payload = {
+                "transaction_id": str(transaction_id),
+                "operation": "chess-wager-settle",
+                "source": str(source),
+                "user_id": first_uid,
+                "display_name": str(first_display_name),
+                "opponent_user_id": second_uid,
+                "opponent_display_name": str(second_display_name),
+                "winner_user_id": winner_uid,
+                "draw": winner_uid is None,
+                "amount": amount,
+                "pot": pot,
+                "before_coins": round(first_before, 3),
+                "after_coins": round(float(first_entry["coins"]), 3),
+                "opponent_before_coins": round(second_before, 3),
+                "opponent_after_coins": round(float(second_entry["coins"]), 3),
+                "ledger_build": LEDGER_BUILD,
+                "created_at": int(time.time()),
+                "created_at_ns": int(time.time_ns()),
+            }
+
+            files = {
+                LEGACY_FILE: _snapshot_json(snapshot),
+                _event_filename(transaction_id): _event_json(payload),
+            }
+            if not migrated:
+                files[_event_filename(MIGRATION_TRANSACTION_ID)] = _event_json(
+                    _migration_event()
+                )
+
+            if _push_files(files, "Settle chess wager"):
+                verified_snapshot, verified = _verified_origin_snapshot(transaction_id)
+                if verified and verified_snapshot is not None:
+                    _CACHE_SNAPSHOT = {k: dict(v) for k, v in verified_snapshot.items()}
+                    verified_first = _normalize_entry(verified_snapshot.get(first_uid, first_entry))
+                    verified_second = _normalize_entry(verified_snapshot.get(second_uid, second_entry))
+                    return {
+                        "draw": winner_uid is None,
+                        "winner_user_id": winner_uid,
+                        "amount": amount,
+                        "pot": pot,
+                        "first_coins": float(verified_first.get("coins", first_entry["coins"])),
+                        "second_coins": float(verified_second.get("coins", second_entry["coins"])),
+                    }
+
+            time.sleep(min(2.0, 0.25 * attempt))
+
+    raise RuntimeError(f"Could not safely settle chess wager for {transaction_id}.")
+
+
 def _asset_available(entry, asset):
     asset = normalize_trade_asset(asset)
     if asset["type"] == "coins":
