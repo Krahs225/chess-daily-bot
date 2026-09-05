@@ -362,7 +362,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T11:06:20.019992+00:00",
-        "last_activity": 1788606585.2493505,
+        "last_activity": 1788606594.4623332,
         "paused_reason": null,
         "puzzle_number": 2,
         "strikes": 0,
@@ -374,7 +374,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 2,
+            "correct": 3,
             "wrong": 0
           }
         },
@@ -384,7 +384,7 @@
           "themes": "short epauletteMate hangingPiece endgame mateIn2",
           "url": "https://lichess.org/training/RXpE2",
           "start_fen": "r5k1/2ppB1pp/1p2p1q1/p3P3/8/2P2Q2/PPP3PP/2K2b2 w - - 0 20",
-          "current_fen": "r5k1/2ppB1pp/1p2p1q1/p3P3/8/2P2Q2/PPP3PP/2K2b2 w - - 0 20",
+          "current_fen": "Q7/2ppBkpp/1p2p1q1/p3P3/8/2P5/PPP3PP/2K2b2 w - - 1 21",
           "solution": [
             {
               "uci": "f3a8",
@@ -403,17 +403,29 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 2,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_san": "Qxa8+",
+          "accepted_moves": [
+            {
+              "san": "Qxa8+",
+              "uci": "f3a8",
+              "accepted_at": 1788606594.4622025,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "f3a8",
+          "last_accepted_move_san": "Qxa8+",
+          "last_accepted_move_index": 0,
+          "last_accepted_at": 1788606594.4622018,
+          "position_before_last_move": "r5k1/2ppB1pp/1p2p1q1/p3P3/8/2P2Q2/PPP3PP/2K2b2 w - - 0 20"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": []
       },
