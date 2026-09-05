@@ -18,6 +18,8 @@ import requests
 import discord
 from discord.ext import commands
 
+from shop_catalog import SURVIVAL_HEART_COST
+
 from puzzle_mode_lock import (
     active_team,
     clear_lock,
@@ -32,6 +34,9 @@ from shared_leaderboard import (
     add_points,
     format_points,
     get_score,
+    get_coins,
+    spend_coins,
+    credit_coins,
     personal_ranking,
 )
 
@@ -319,6 +324,31 @@ def load_runs():
         {},
     )
 
+    return data
+
+
+
+def load_remote_runs():
+    """Read the latest persisted Survival state without mutating the worktree."""
+    branch = git_branch()
+    fetch = git_run([
+        "git", "fetch", "origin",
+        f"+refs/heads/{branch}:refs/remotes/origin/{branch}",
+    ])
+    if fetch.returncode != 0:
+        return None
+    result = git_run([
+        "git", "show", f"origin/{branch}:{SURVIVAL_STATE_FILE}",
+    ])
+    if result.returncode != 0:
+        return None
+    try:
+        data = json.loads(result.stdout)
+    except Exception:
+        return None
+    if not isinstance(data, dict):
+        return None
+    data.setdefault("teams", {})
     return data
 
 
@@ -2120,6 +2150,8 @@ class SurvivalBot(
                 {},
             "helper_awarded":
                 [],
+            "shop_heart_purchased":
+                False,
         }
 
         team[
@@ -2180,7 +2212,7 @@ class SurvivalBot(
         if run_is_dead(run):
             await interaction.response.send_message(
                 f"💀 This run is dead at Puzzle #{run.get('puzzle_number', 0)}. "
-                "Add a heart first or start a new run.",
+                "Dead runs cannot be revived; start a new run.",
                 ephemeral=True,
             )
             return
@@ -3376,6 +3408,10 @@ class SurvivalBot(
         ):
             return
 
+        if lower == "!heart":
+            await self.buy_shop_heart(message)
+            return
+
         # Captain-only run-mode commands. The implementation already existed
         # in set_run_mode(), but the old on_message router never called it.
         if lower == "!solo" or lower.startswith("!solo "):
@@ -3916,7 +3952,8 @@ class SurvivalBot(
             f"**Mode:** {str(run.get('mode', 'coop')).upper()}\n"
             f"**Puzzle:** #{run.get('puzzle_number', 0)}\n"
             f"**Best difficulty:** {run.get('best_difficulty', 0)}\n"
-            f"**Strikes:** {run.get('strikes', 0)}/3\n\n"
+            f"**Strikes:** {run.get('strikes', 0)}/3\n"
+            f"**Shop heart used:** {'Yes' if run.get('shop_heart_purchased', False) else 'No'}\n\n"
             f"**Contributors:**\n"
             f"{members_text}"
         )
@@ -4047,6 +4084,12 @@ class SurvivalBot(
             )
             return
 
+        if old_strikes >= THREE_STRIKES:
+            await message.channel.send(
+                "💀 **Dead Survival runs cannot be revived with a heart.**"
+            )
+            return
+
         run[
             "strikes"
         ] = max(
@@ -4083,6 +4126,122 @@ class SurvivalBot(
             f"{'❤️' * (THREE_STRIKES - run['strikes'])}"
             f"{'🖤' * run['strikes']}"
         )
+
+
+    async def buy_shop_heart(self, message):
+        async with self.game_lock:
+            active = active_current_run(self.state)
+            if not active:
+                # Local state can be stale after a restart/competing process.
+                remote = await asyncio.to_thread(load_remote_runs)
+                if remote is not None and active_current_run(remote):
+                    self.state = remote
+                    active = active_current_run(self.state)
+
+            if not active:
+                await message.channel.send("❌ **There is no active Survival run.**")
+                return
+
+            team_key, team = active
+            run = team.get("current")
+            if not isinstance(run, dict) or run.get("status") != "active":
+                await message.channel.send("❌ **There is no active Survival run.**")
+                return
+
+            if not self.is_run_captain(message.author, run):
+                await message.channel.send(
+                    f"❌ Only captain **{run.get('captain_name', 'the captain')}** can buy the Survival heart."
+                )
+                return
+
+            strikes = int(run.get("strikes", 0) or 0)
+            if strikes >= THREE_STRIKES:
+                await message.channel.send("💀 **A dead Survival run cannot be revived.**")
+                return
+            if strikes <= 0:
+                await message.channel.send("❤️ **This run already has all 3 hearts.**")
+                return
+            if bool(run.get("shop_heart_purchased", False)):
+                await message.channel.send(
+                    "❌ **This Survival run already used its one purchasable heart.**"
+                )
+                return
+
+            try:
+                coins = await asyncio.to_thread(get_coins, message.author.id)
+            except Exception as error:
+                await message.channel.send(f"❌ Could not read your coins: `{str(error)[:500]}`")
+                return
+
+            if float(coins) + 1e-9 < float(SURVIVAL_HEART_COST):
+                await message.channel.send(
+                    f"❌ **Not enough coins.** A Survival heart costs **{format_points(SURVIVAL_HEART_COST)} coins**; "
+                    f"you have **{format_points(coins)}**."
+                )
+                return
+
+            tx_id = (
+                f"survival-heart:{run.get('run_id', team_key)}:"
+                f"{message.author.id}:{message.id}"
+            )
+            try:
+                coins_left = await asyncio.to_thread(
+                    spend_coins,
+                    message.author.id,
+                    message.author.display_name,
+                    SURVIVAL_HEART_COST,
+                    tx_id,
+                    source="survival-heart",
+                )
+            except Exception as error:
+                await message.channel.send(f"❌ **Could not buy heart:** {str(error)[:700]}")
+                return
+
+            old_strikes = strikes
+            run["strikes"] = max(0, strikes - 1)
+            run["shop_heart_purchased"] = True
+            run["shop_heart_buyer_id"] = str(message.author.id)
+            run["shop_heart_buyer_name"] = message.author.display_name
+            run["shop_heart_transaction_id"] = tx_id
+            run["last_activity"] = epoch_now()
+
+            try:
+                save_state(self.state, push=True)
+                write_lock(
+                    team.get("name", team_key),
+                    run.get("run_id"),
+                    run["last_activity"],
+                )
+            except Exception as error:
+                # Best-effort compensation: restore the run locally and refund
+                # the wallet with a separate idempotent transaction.
+                run["strikes"] = old_strikes
+                run["shop_heart_purchased"] = False
+                run.pop("shop_heart_buyer_id", None)
+                run.pop("shop_heart_buyer_name", None)
+                run.pop("shop_heart_transaction_id", None)
+                try:
+                    await asyncio.to_thread(
+                        credit_coins,
+                        message.author.id,
+                        message.author.display_name,
+                        SURVIVAL_HEART_COST,
+                        f"survival-heart-refund:{run.get('run_id', team_key)}:{message.author.id}:{message.id}",
+                        source="survival-heart-refund",
+                    )
+                except Exception as refund_error:
+                    print(f"Survival heart refund failed: {refund_error}", flush=True)
+                await message.channel.send(
+                    f"❌ **Heart purchase could not be saved:** `{str(error)[:500]}`"
+                )
+                return
+
+            await message.channel.send(
+                f"❤️ **{team.get('name', team_key)} bought its one shop heart!**\n"
+                f"Hearts now: {'❤️' * (THREE_STRIKES - run['strikes'])}"
+                f"{'🖤' * run['strikes']}\n"
+                f"🪙 **{format_points(coins_left)} coins** left for {message.author.display_name}."
+            )
 
     async def handle_admin_command(
         self,
@@ -4150,6 +4309,17 @@ class SurvivalBot(
         active = active_current_run(
             self.state
         )
+
+        if not active:
+            # Reconcile from the persisted source of truth before claiming that
+            # no run exists. This fixes the stale-local-state case where RP
+            # could still see an active remote run after !stopsurvival.
+            remote_state = await asyncio.to_thread(load_remote_runs)
+            if remote_state is not None:
+                remote_active = active_current_run(remote_state)
+                if remote_active:
+                    self.state = remote_state
+                    active = remote_active
 
         if not active:
             await message.channel.send(
