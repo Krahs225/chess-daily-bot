@@ -3006,7 +3006,7 @@ async def command_handler(message):
             )
             await message.channel.send(
                 f"🏆 Guess Points: **{shared_format_points(points)}**\n"
-                f"🪙 Coins: **{shared_format_points(coins)}**"
+                f"🪙 Shared Coins: **{shared_format_points(coins)}**"
             )
         except Exception as error:
             await message.channel.send(f"❌ **Could not read your bank:** `{str(error)[:700]}`")
@@ -3471,8 +3471,12 @@ async def command_handler(message):
         leaderboard_text = await asyncio.to_thread(
             full_leaderboard,
             "🏆 **Guess Games Leaderboard**",
+            True,
         )
-        await message.channel.send(leaderboard_text)
+        await message.channel.send(
+            leaderboard_text,
+            allowed_mentions=discord.AllowedMentions.none(),
+        )
         return
 
     if command in {"!help", "!info", "!i"}:
