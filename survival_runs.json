@@ -522,9 +522,9 @@
     },
     "sh4rkmate": {
       "name": "Sh4rkmate",
-      "best_puzzle": 11,
-      "best_difficulty": 1328,
-      "best_completed_at": "2026-09-05T19:49:29.806380+00:00",
+      "best_puzzle": 12,
+      "best_difficulty": 1447,
+      "best_completed_at": "2026-09-05T19:50:09.924499+00:00",
       "current": {
         "run_id": "sh4rkmate:1788637231",
         "started_by_id": "442597396195704832",
@@ -533,9 +533,9 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T19:40:31.794958+00:00",
-        "last_activity": 1788637804.9948075,
+        "last_activity": 1788637806.7287304,
         "paused_reason": null,
-        "puzzle_number": 11,
+        "puzzle_number": 12,
         "strikes": 0,
         "best_difficulty": 1447,
         "used_puzzle_ids": [
@@ -549,7 +549,8 @@
           "OAiie",
           "t3u7i",
           "MuaRA",
-          "WArtG"
+          "WArtG",
+          "tSDkW"
         ],
         "members": {
           "442597396195704832": {
@@ -559,80 +560,44 @@
           }
         },
         "puzzle": {
-          "id": "WArtG",
-          "rating": 1447,
-          "themes": "clearance crushing long middlegame",
-          "url": "https://lichess.org/training/WArtG",
-          "start_fen": "r3k3/5pp1/p1pqpnp1/3p4/N2P2P1/5Q2/PPP2P1r/2KR3R w q - 2 16",
-          "current_fen": "r3k3/5pp1/p1p1pnp1/3p4/N2P2P1/8/PPP2P2/2K4Q b q - 0 18",
+          "id": "tSDkW",
+          "rating": 1443,
+          "themes": "advantage fork middlegame short",
+          "url": "https://lichess.org/training/tSDkW",
+          "start_fen": "2kr3r/pp3pp1/2n5/2p4p/4B1b1/1P2P1q1/PBP5/RNK3QR b - - 5 17",
+          "current_fen": "2kr3r/pp3pp1/2n5/2p4p/4B1b1/1P2P1q1/PBP5/RNK3QR b - - 5 17",
           "solution": [
             {
-              "uci": "h1h2",
-              "san": "Rxh2",
-              "color": "white"
-            },
-            {
-              "uci": "d6h2",
-              "san": "Qxh2",
+              "uci": "d8d1",
+              "san": "Rd1+",
               "color": "black"
             },
             {
-              "uci": "d1h1",
-              "san": "Rh1",
+              "uci": "g1d1",
+              "san": "Qxd1",
               "color": "white"
             },
             {
-              "uci": "h2h1",
-              "san": "Qxh1+",
+              "uci": "g4d1",
+              "san": "Bxd1",
               "color": "black"
-            },
-            {
-              "uci": "f3h1",
-              "san": "Qxh1",
-              "color": "white"
             }
           ],
-          "player_color": "white",
-          "next_solution_index": 5,
+          "player_color": "black",
+          "next_solution_index": 0,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "rated_users": [
-            "442597396195704832"
-          ],
-          "setup_move_uci": "g8f6",
-          "last_move_uci": "f3h1",
-          "last_move_san": "Qxh1",
-          "accepted_moves": [
-            {
-              "san": "Rxh2",
-              "uci": "h1h2",
-              "accepted_at": 1788637789.7153437,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Rh1",
-              "uci": "d1h1",
-              "accepted_at": 1788637794.294514,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Qxh1",
-              "uci": "f3h1",
-              "accepted_at": 1788637804.9947135,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "f3h1",
-          "last_accepted_move_san": "Qxh1",
-          "last_accepted_move_index": 4,
-          "last_accepted_at": 1788637804.9947128,
-          "position_before_last_move": "r3k3/5pp1/p1p1pnp1/3p4/N2P2P1/5Q2/PPP2P2/2K4q w q - 0 18"
+          "rated_users": [],
+          "setup_move_uci": "d2c1",
+          "last_move_uci": "d2c1",
+          "last_move_san": null,
+          "accepted_moves": []
         },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": [],
         "shop_heart_purchased": false
