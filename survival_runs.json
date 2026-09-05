@@ -356,7 +356,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T19:40:31.794958+00:00",
-        "last_activity": 1788642718.8729837,
+        "last_activity": 1788642725.6108952,
         "paused_reason": "manually stopped",
         "puzzle_number": 15,
         "strikes": 0,
@@ -381,7 +381,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 37,
+            "correct": 38,
             "wrong": 0
           }
         },
@@ -391,7 +391,7 @@
           "themes": "long crushing middlegame",
           "url": "https://lichess.org/training/JhxW0",
           "start_fen": "r1b1k2r/pp6/2p1p1p1/q2pPpN1/Pb1P2pP/5PP1/P1PBQ3/2KR3R b kq - 0 20",
-          "current_fen": "r1b1k2r/pp6/1qp1p1p1/1Q1pPpN1/P2P2pP/b4PP1/P1PB4/1K1R3R b kq - 4 22",
+          "current_fen": "r1b1k2r/pp6/1q2p1p1/1p1pPpN1/P2P2pP/b4PP1/P1PB4/1K1R3R w kq - 0 23",
           "solution": [
             {
               "uci": "b4a3",
@@ -420,7 +420,7 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 4,
+          "next_solution_index": 5,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -430,8 +430,8 @@
             "442597396195704832"
           ],
           "setup_move_uci": "b3a4",
-          "last_move_uci": "e2b5",
-          "last_move_san": "Qb5",
+          "last_move_uci": "c6b5",
+          "last_move_san": "cxb5",
           "accepted_moves": [
             {
               "san": "Ba3+",
@@ -444,13 +444,19 @@
               "uci": "a5b6",
               "accepted_at": 1788642718.8728204,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "cxb5",
+              "uci": "c6b5",
+              "accepted_at": 1788642725.6107779,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "a5b6",
-          "last_accepted_move_san": "Qb6+",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788642718.87282,
-          "position_before_last_move": "r1b1k2r/pp6/2p1p1p1/q2pPpN1/P2P2pP/b4PP1/P1PBQ3/1K1R3R b kq - 2 21"
+          "last_accepted_move_uci": "c6b5",
+          "last_accepted_move_san": "cxb5",
+          "last_accepted_move_index": 4,
+          "last_accepted_at": 1788642725.6107771,
+          "position_before_last_move": "r1b1k2r/pp6/1qp1p1p1/1Q1pPpN1/P2P2pP/b4PP1/P1PB4/1K1R3R b kq - 4 22"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
