@@ -18,7 +18,8 @@ import requests
 import discord
 from discord.ext import commands
 
-from shop_catalog import SURVIVAL_HEART_COST
+from shop_catalog import SURVIVAL_HEART_COST, BOARD_THEMES, PIECE_SETS
+from puzzle_stats import record_puzzle_attempt
 
 from puzzle_mode_lock import (
     active_team,
@@ -35,6 +36,7 @@ from shared_leaderboard import (
     format_points,
     get_score,
     get_coins,
+    get_cosmetic_profile,
     spend_coins,
     credit_coins,
     personal_ranking,
@@ -1191,6 +1193,8 @@ def build_runtime_puzzle(
             [],
         "wrong_users":
             [],
+        "rated_users":
+            [],
         "last_move_san":
             None,
         "accepted_moves":
@@ -1234,8 +1238,99 @@ def side_to_move_text(
     )
 
 
+
+_SURVIVAL_UNICODE_CHESS_GLYPHS = {
+    "K": "♔", "Q": "♕", "R": "♖", "B": "♗", "N": "♘", "P": "♙",
+    "k": "♚", "q": "♛", "r": "♜", "b": "♝", "n": "♞", "p": "♟",
+}
+
+
+def _survival_piece_overlay_svg(board, orientation, piece_theme):
+    style = PIECE_SETS.get(piece_theme, PIECE_SETS["classic"])
+    shape = style.get("shape", "classic")
+    if shape == "classic":
+        return ""
+
+    square_size = 45.0
+    board_offset = 15.0
+    white_fill = style.get("white_fill", "#f7f7f2")
+    black_fill = style.get("black_fill", "#111111")
+    white_stroke = style.get("white_stroke", "#111111")
+    black_stroke = style.get("black_stroke", "#f7f7f2")
+    letters = {1: "P", 2: "N", 3: "B", 4: "R", 5: "Q", 6: "K"}
+    parts = ['<g class="custom-piece-set">']
+
+    for square, piece in board.piece_map().items():
+        file_index = chess.square_file(square)
+        rank_index = chess.square_rank(square)
+        x = (file_index if orientation else 7 - file_index) * square_size + board_offset
+        y = (7 - rank_index if orientation else rank_index) * square_size + board_offset
+        cx = x + square_size / 2
+        cy = y + square_size / 2
+        fill = white_fill if piece.color else black_fill
+        stroke = white_stroke if piece.color else black_stroke
+        symbol = piece.symbol()
+        letter = letters[piece.piece_type]
+
+        if shape == "figurine":
+            glyph = _SURVIVAL_UNICODE_CHESS_GLYPHS[symbol]
+            parts.append(
+                f'<text x="{cx:.2f}" y="{cy + 1:.2f}" text-anchor="middle" dominant-baseline="central" '
+                f'font-family="DejaVu Sans, serif" font-size="38" font-weight="700" fill="{fill}" '
+                f'stroke="{stroke}" stroke-width="0.7" paint-order="stroke">{glyph}</text>'
+            )
+        elif shape in {"monogram", "minimal"}:
+            size = 29 if shape == "monogram" else 25
+            weight = 800 if shape == "monogram" else 600
+            parts.append(
+                f'<text x="{cx:.2f}" y="{cy + 1:.2f}" text-anchor="middle" dominant-baseline="central" '
+                f'font-family="DejaVu Sans, sans-serif" font-size="{size}" font-weight="{weight}" fill="{fill}" '
+                f'stroke="{stroke}" stroke-width="0.8" paint-order="stroke">{letter}</text>'
+            )
+        else:
+            if shape == "token":
+                parts.append(f'<circle cx="{cx:.2f}" cy="{cy:.2f}" r="17" fill="{fill}" stroke="{stroke}" stroke-width="2" />')
+            elif shape == "diamond":
+                pts = f'{cx:.2f},{cy-19:.2f} {cx+18:.2f},{cy:.2f} {cx:.2f},{cy+19:.2f} {cx-18:.2f},{cy:.2f}'
+                parts.append(f'<polygon points="{pts}" fill="{fill}" stroke="{stroke}" stroke-width="2" />')
+            else:
+                pts = f'{cx-16:.2f},{cy-17:.2f} {cx+16:.2f},{cy-17:.2f} {cx+18:.2f},{cy+5:.2f} {cx:.2f},{cy+19:.2f} {cx-18:.2f},{cy+5:.2f}'
+                parts.append(f'<polygon points="{pts}" fill="{fill}" stroke="{stroke}" stroke-width="2" />')
+            text_fill = "#111111" if piece.color else "#ffffff"
+            parts.append(
+                f'<text x="{cx:.2f}" y="{cy + 1:.2f}" text-anchor="middle" dominant-baseline="central" '
+                f'font-family="DejaVu Sans, sans-serif" font-size="22" font-weight="800" fill="{text_fill}">{letter}</text>'
+            )
+
+    parts.append('</g>')
+    return "".join(parts)
+
+
+def _survival_render_custom_svg(board, orientation, board_theme="classic", piece_theme="classic", size=520):
+    board_theme = str(board_theme or "classic").casefold()
+    piece_theme = str(piece_theme or "classic").casefold()
+    light, dark = BOARD_THEMES.get(board_theme, BOARD_THEMES["classic"])
+    if piece_theme == "classic" or piece_theme not in PIECE_SETS:
+        return chess.svg.board(
+            board=board,
+            orientation=orientation,
+            size=size,
+            coordinates=True,
+            colors={"square light": light, "square dark": dark},
+        )
+    svg = chess.svg.board(
+        board=None,
+        orientation=orientation,
+        size=size,
+        coordinates=True,
+        colors={"square light": light, "square dark": dark},
+    )
+    return svg.replace("</svg>", _survival_piece_overlay_svg(board, orientation, piece_theme) + "</svg>")
+
 def render_board(
     puzzle,
+    board_theme="classic",
+    piece_theme="classic",
 ):
     board = chess.Board(
         puzzle["current_fen"]
@@ -1274,11 +1369,12 @@ def render_board(
             flush=True,
         )
 
-    svg = chess.svg.board(
-        board=board,
-        orientation=orientation,
+    svg = _survival_render_custom_svg(
+        board,
+        orientation,
+        board_theme=board_theme,
+        piece_theme=piece_theme,
         size=520,
-        coordinates=True,
     )
 
     png = awaitable_svg_to_png(
@@ -1314,8 +1410,25 @@ async def send_puzzle_embed(
         "puzzle"
     ]
 
+    board_theme = "classic"
+    piece_theme = "classic"
+    captain_id = run.get("captain_id")
+    if captain_id:
+        try:
+            cosmetics = await asyncio.to_thread(
+                get_cosmetic_profile,
+                captain_id,
+                run.get("captain_name", "Captain"),
+            )
+            board_theme = cosmetics.get("active_board", "classic") or "classic"
+            piece_theme = cosmetics.get("active_piece", "classic") or "classic"
+        except Exception as error:
+            print(f"Survival captain cosmetics lookup failed: {error}", flush=True)
+
     file, board = render_board(
-        puzzle
+        puzzle,
+        board_theme=board_theme,
+        piece_theme=piece_theme,
     )
 
     number = run[
@@ -2479,86 +2592,94 @@ class SurvivalBot(
             run,
         )
 
+    async def record_survival_rating_attempt(
+        self,
+        run,
+        puzzle,
+        user,
+        correct,
+    ):
+        """Rate each user's first real attempt on this Survival puzzle exactly once."""
+        user_id = str(user.id)
+        rated_users = puzzle.setdefault("rated_users", [])
+        if user_id in rated_users:
+            return None
+
+        puzzle_identity = (
+            f"survival:{run.get('run_id')}:{run.get('puzzle_number')}:"
+            f"{puzzle.get('id', 'unknown')}"
+        )
+        try:
+            result = await asyncio.to_thread(
+                record_puzzle_attempt,
+                puzzle_identity,
+                user.id,
+                user.display_name,
+                bool(correct),
+                puzzle_rating=puzzle.get("rating"),
+                boss=False,
+                source="survival",
+            )
+            rated_users.append(user_id)
+            return result
+        except Exception as error:
+            # Survival gameplay must never stop because the personal stats
+            # repository is temporarily unavailable. The idempotent stats
+            # transaction can safely be retried on a later attempt.
+            print(
+                f"Survival Puzzle Elo record failed for {user.display_name}: {error}",
+                flush=True,
+            )
+            return None
+
     async def score_completed_puzzle(
         self,
         run,
     ):
-        """
-        Score only after the whole Lichess puzzle is solved.
-        First solver +1.
-        Each unique helper who was correct later +0.5.
+        """Award Survival coins without changing the shared points leaderboard.
 
-        Both rewards use unique transaction IDs in the same shared
-        transaction ledger as Guess Chatter / Guess Chess Chatter.
+        First solver earns +1 coin. Each unique later helper earns +0.5 coin.
+        Transaction IDs are deterministic so save/retry races cannot pay twice.
         """
-        first_id = run.get(
-            "first_solver_id"
-        )
+        first_id = run.get("first_solver_id")
 
         if first_id:
-            first_name = run.get(
-                "first_solver_name",
-                "Unknown",
-            )
-
+            first_name = run.get("first_solver_name", "Unknown")
             tx_id = (
-                f"survival:"
-                f"{run['run_id']}:"
-                f"{run['puzzle_number']}:"
-                f"first:{first_id}"
+                f"survival-coin:{run['run_id']}:"
+                f"{run['puzzle_number']}:first:{first_id}"
             )
+            try:
+                await asyncio.to_thread(
+                    credit_coins,
+                    first_id,
+                    first_name,
+                    1.0,
+                    tx_id,
+                    source="survival-first",
+                )
+            except Exception as error:
+                print(f"Survival first-solver coin error: {error}", flush=True)
 
-            await asyncio.to_thread(
-                add_points,
-                first_id,
-                first_name,
-                1.0,
-                tx_id,
-                source="survival-first",
-            )
-
-        for helper_id, helper_name in (
-            run.get(
-                "helper_candidates",
-                {}
-            ).items()
-        ):
-            if str(helper_id) == str(
-                first_id
-            ):
+        for helper_id, helper_name in run.get("helper_candidates", {}).items():
+            if str(helper_id) == str(first_id):
                 continue
 
             tx_id = (
-                f"survival:"
-                f"{run['run_id']}:"
-                f"{run['puzzle_number']}:"
-                f"helper:{helper_id}"
+                f"survival-coin:{run['run_id']}:"
+                f"{run['puzzle_number']}:helper:{helper_id}"
             )
-
-            await asyncio.to_thread(
-                add_points,
-                helper_id,
-                helper_name,
-                0.5,
-                tx_id,
-                source="survival-helper",
-            )
-
-        run[
-            "first_solver_id"
-        ] = None
-
-        run[
-            "first_solver_name"
-        ] = None
-
-        run[
-            "helper_candidates"
-        ] = {}
-
-        run[
-            "helper_awarded"
-        ] = []
+            try:
+                await asyncio.to_thread(
+                    credit_coins,
+                    helper_id,
+                    helper_name,
+                    0.5,
+                    tx_id,
+                    source="survival-helper",
+                )
+            except Exception as error:
+                print(f"Survival helper coin error for {helper_name}: {error}", flush=True)
 
     async def get_captain_display(
         self,
@@ -2825,6 +2946,16 @@ class SurvivalBot(
                         )
                         return
 
+
+            # Personal Puzzle Elo/stats use the user's first real attempt on
+            # this Survival puzzle. Late duplicate accepted moves never reach
+            # this point, so they cannot become a false wrong result.
+            await self.record_survival_rating_attempt(
+                run,
+                puzzle,
+                user,
+                correct,
+            )
 
             if not correct:
 
@@ -3105,10 +3236,14 @@ class SurvivalBot(
                 if team_key is None:
                     return
 
-                # Survival deliberately has NO shared leaderboard points.
+                # Survival keeps its team leaderboard separate from shared
+                # points, but successful participation now earns spendable
+                # coins (+1 first solver / +0.5 helper).
                 puzzle_number_completed = int(
                     run["puzzle_number"]
                 )
+
+                await self.score_completed_puzzle(run)
 
                 run[
                     "puzzle"
@@ -3153,7 +3288,7 @@ class SurvivalBot(
 
                 await message.channel.send(
                     member_summary
-                    + "\n"
+                    + "\n🪙 **Survival rewards:** first solver +1 coin • helpers +0.5 coin.\n"
                     + f"Next up: **Puzzle "
                     f"#{run['puzzle_number']}**."
                 )
@@ -3165,8 +3300,25 @@ class SurvivalBot(
 
                 return
 
+            board_theme = "classic"
+            piece_theme = "classic"
+            captain_id = run.get("captain_id")
+            if captain_id:
+                try:
+                    cosmetics = await asyncio.to_thread(
+                        get_cosmetic_profile,
+                        captain_id,
+                        run.get("captain_name", "Captain"),
+                    )
+                    board_theme = cosmetics.get("active_board", "classic") or "classic"
+                    piece_theme = cosmetics.get("active_piece", "classic") or "classic"
+                except Exception as error:
+                    print(f"Survival captain cosmetics lookup failed: {error}", flush=True)
+
             file, display_board = render_board(
-                puzzle
+                puzzle,
+                board_theme=board_theme,
+                piece_theme=piece_theme,
             )
 
             remaining = (
