@@ -533,7 +533,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T19:40:31.794958+00:00",
-        "last_activity": 1788637530.769984,
+        "last_activity": 1788637535.5852835,
         "paused_reason": null,
         "puzzle_number": 7,
         "strikes": 0,
@@ -550,7 +550,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 17,
+            "correct": 18,
             "wrong": 0
           }
         },
@@ -560,7 +560,7 @@
           "themes": "endgame crushing rookEndgame long",
           "url": "https://lichess.org/training/ZkHa7",
           "start_fen": "8/2p5/pr6/3K4/PkP5/1P1R4/8/8 b - - 10 52",
-          "current_fen": "8/2p5/p7/8/PkP5/1P1K4/8/8 b - - 0 54",
+          "current_fen": "8/2p5/p7/8/P1P5/1k1K4/8/8 w - - 0 55",
           "solution": [
             {
               "uci": "b6d6",
@@ -589,7 +589,7 @@
             }
           ],
           "player_color": "black",
-          "next_solution_index": 4,
+          "next_solution_index": 5,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
@@ -599,8 +599,8 @@
             "442597396195704832"
           ],
           "setup_move_uci": "e5d5",
-          "last_move_uci": "e4d3",
-          "last_move_san": "Kxd3",
+          "last_move_uci": "b4b3",
+          "last_move_san": "Kxb3",
           "accepted_moves": [
             {
               "san": "Rd6+",
@@ -613,13 +613,19 @@
               "uci": "d6d3",
               "accepted_at": 1788637530.7698526,
               "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Kxb3",
+              "uci": "b4b3",
+              "accepted_at": 1788637535.5852141,
+              "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "d6d3",
-          "last_accepted_move_san": "Rxd3",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788637530.769852,
-          "position_before_last_move": "8/2p5/p2r4/8/PkP1K3/1P1R4/8/8 b - - 12 53"
+          "last_accepted_move_uci": "b4b3",
+          "last_accepted_move_san": "Kxb3",
+          "last_accepted_move_index": 4,
+          "last_accepted_at": 1788637535.5852134,
+          "position_before_last_move": "8/2p5/p7/8/PkP5/1P1K4/8/8 b - - 0 54"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
