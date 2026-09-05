@@ -77,6 +77,7 @@ from chess_play import (
     CHESS_START_ELO,
     BOT_MIN_ELO,
     BOT_MAX_ELO,
+    BOT_FULL_STRENGTH_ELO,
     normalize_rating_entry as normalize_chess_rating_entry,
     rating_entry as chess_rating_entry,
     apply_single_result as apply_chess_single_result,
@@ -3388,9 +3389,11 @@ async def start_bot_game(message, requested_rating=None):
 
     supported_min = int(engine_info.get("min_elo", BOT_MIN_ELO))
     supported_max = int(engine_info.get("max_elo", BOT_MAX_ELO))
-    if not supported_min <= bot_elo <= supported_max:
+    full_strength = bot_elo == BOT_FULL_STRENGTH_ELO
+    if not full_strength and not supported_min <= bot_elo <= supported_max:
         await message.channel.send(
-            f"❌ This Stockfish build supports bot Elo **{supported_min}-{supported_max}**."
+            f"❌ This Stockfish build supports calibrated bot Elo **{supported_min}-{supported_max}**; "
+            f"use **{BOT_FULL_STRENGTH_ELO}** for full strength."
         )
         return
 
@@ -3401,15 +3404,20 @@ async def start_bot_game(message, requested_rating=None):
         "status": "active",
         "mode": "bot",
         "white_id": str(message.author.id) if human_white else "BOT",
-        "white_name": message.author.display_name if human_white else f"Chess Bot {bot_elo}",
+        "white_name": message.author.display_name if human_white else (
+            f"{engine_info.get('name', 'Stockfish')} Full Strength" if full_strength else f"Chess Bot {bot_elo}"
+        ),
         "black_id": "BOT" if human_white else str(message.author.id),
-        "black_name": f"Chess Bot {bot_elo}" if human_white else message.author.display_name,
+        "black_name": (
+            f"{engine_info.get('name', 'Stockfish')} Full Strength" if full_strength else f"Chess Bot {bot_elo}"
+        ) if human_white else message.author.display_name,
         "white_rating": player_elo if human_white else bot_elo,
         "black_rating": bot_elo if human_white else player_elo,
         "human_id": str(message.author.id),
         "human_name": message.author.display_name,
         "bot_rating": bot_elo,
         "bot_engine": str(engine_info.get("name") or "Stockfish"),
+        "bot_full_strength": bool(full_strength),
         "fen": chess.STARTING_FEN,
         "moves": [],
         "last_move": None,
@@ -3424,9 +3432,14 @@ async def start_bot_game(message, requested_rating=None):
     draw_after = chess_elo_after(player_elo, bot_elo, 0.5)
     loss_after = chess_elo_after(player_elo, bot_elo, 0.0)
 
+    bot_label = (
+        f"{engine_info.get('name', 'Stockfish')} **FULL STRENGTH** ({BOT_FULL_STRENGTH_ELO})"
+        if full_strength
+        else f"{engine_info.get('name', 'Stockfish')}: **{bot_elo} Elo**"
+    )
     await message.channel.send(
         f"♜ **Rated game started!** Your Chess Elo: **{int(round(player_elo))}** • "
-        f"Stockfish: **{bot_elo} Elo**\n"
+        f"{bot_label}\n"
         f"🏆 **Win:** {_signed_elo(win_after - player_elo)} Elo → **{int(round(win_after))}**\n"
         f"🤝 **Draw:** {_signed_elo(draw_after - player_elo)} Elo → **{int(round(draw_after))}**\n"
         f"❌ **Loss:** {_signed_elo(loss_after - player_elo)} Elo → **{int(round(loss_after))}**\n"
@@ -5689,7 +5702,7 @@ def help_message():
 `!rush` — **5-minute Puzzle Rush**; score as many as possible (unranked).
 
 **Rated Chess**
-`!playbot [elo]` — play Stockfish at calibrated Elo (1320-3190); no Elo picks within ±200 of yours. Win **+3**, draw **+2**, loss **+0** shared points + coins.
+`!playbot [elo]` — play Stockfish 19 at calibrated Elo (1320-3190), or `!playbot 4000` for full strength; no Elo picks within ±200 of yours. Win **+3**, draw **+2**, loss **+0** shared points + coins.
 `!play @name` — free player challenge. `!play @name 10` — both stake 10 coins; winner gets 20. `!accept` / `!decline`.
 Play moves normally or use `!move e4`. `!resign` resigns. `!chessboard` shows the position.
 `!stats` shows both **Puzzle Elo** and your separate **Chess Elo**.
@@ -7572,8 +7585,8 @@ async def on_message(
                     requested_rating = clamp_bot_rating(float(rest))
                 except Exception:
                     await message.channel.send(
-                        f"❌ Bot Elo must be between **{BOT_MIN_ELO}** and **{BOT_MAX_ELO}**. "
-                        "Example: `!playbot 1500`."
+                        f"❌ Bot Elo must be **{BOT_MIN_ELO}-{BOT_MAX_ELO}**, or **{BOT_FULL_STRENGTH_ELO}** for full-strength Stockfish 19. "
+                        "Examples: `!playbot 1500` or `!playbot 4000`."
                     )
                     return
             await start_bot_game(message, requested_rating)
