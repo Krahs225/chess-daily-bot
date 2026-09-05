@@ -2853,7 +2853,7 @@ def format_chess_profile_line(user_id, display_name="Unknown"):
     )
 
 
-def format_chess_elo_leaderboard(limit=10):
+def format_chess_elo_leaderboard(limit=10, use_mentions=False):
     rows = []
     for user_id, raw in _chess_ratings_state().items():
         entry = normalize_chess_rating_entry(raw, raw.get("name", "Unknown") if isinstance(raw, dict) else "Unknown")
@@ -2883,15 +2883,16 @@ def format_chess_elo_leaderboard(limit=10):
     for rank, (user_id, entry) in enumerate(rows, 1):
         badge = badges.get(str(user_id), "")
         prefix = f"{badge} " if badge else ""
+        display_name = f"<@{user_id}>" if use_mentions else entry.get("name", "Unknown")
         lines.append(
-            f"**{rank}.** {prefix}{entry.get('name', 'Unknown')} — "
+            f"**{rank}.** {prefix}{display_name} — "
             f"**{int(round(float(entry.get('elo', CHESS_START_ELO))))} Elo**"
         )
     return "\n".join(lines)
 
 
-def split_puzzle_leaderboards(limit=10):
-    combined = format_puzzle_leaderboards(limit)
+def split_puzzle_leaderboards(limit=10, use_mentions=False):
+    combined = format_puzzle_leaderboards(limit, use_mentions=use_mentions)
     marker = "🔥 **Best Puzzle Streaks**"
     before, found, after = combined.partition(marker)
     puzzle_elo = before.rstrip()
@@ -4064,7 +4065,7 @@ def _normalize_rush_best(user_id, raw):
     }
 
 
-def format_puzzle_rush_leaderboard(limit=10):
+def format_puzzle_rush_leaderboard(limit=10, use_mentions=False):
     week_key = _rush_week_key()
     rows = _rush_week_rows(week_key, limit)
 
@@ -4083,8 +4084,9 @@ def format_puzzle_rush_leaderboard(limit=10):
         badge = badges.get(str(user_id), "")
         prefix = f"{badge} " if badge else ""
         score = int(entry.get("score", 0))
+        display_name = f"<@{user_id}>" if use_mentions else entry.get("name", "Unknown")
         lines.append(
-            f"**{rank}.** {prefix}{entry.get('name', 'Unknown')} — "
+            f"**{rank}.** {prefix}{display_name} — "
             f"**{score} puzzle{'s' if score != 1 else ''}**"
         )
     return "\n".join(lines)
@@ -5247,9 +5249,10 @@ def format_points(points):
 # FULL LEADERBOARD
 # =========================================================
 
-def make_leaderboard():
+def make_leaderboard(use_mentions=False):
     return shared_full_leaderboard(
-        "🏆 **Shared Points**"
+        "🏆 **Shared Points**",
+        use_mentions=use_mentions,
     )
 
 
@@ -7880,8 +7883,8 @@ async def on_message(
                     asyncio.to_thread(shared_get_coins, message.author.id),
                 )
                 await message.channel.send(
-                    f"🏆 Points: **{shared_format_points(points)}**\n"
-                    f"🪙 Coins: **{shared_format_points(coins)}**"
+                    f"🏆 Puzzle Points: **{shared_format_points(points)}**\n"
+                    f"🪙 Shared Coins: **{shared_format_points(coins)}**"
                 )
             except Exception as error:
                 await message.channel.send(
@@ -8921,17 +8924,21 @@ async def on_message(
             "!lb",
             "!l"
         ):
+            leaderboard_mentions = discord.AllowedMentions.none()
             await message.channel.send(
-                format_chess_elo_leaderboard(10)
+                format_chess_elo_leaderboard(10, use_mentions=True),
+                allowed_mentions=leaderboard_mentions,
             )
             try:
                 puzzle_elo, _streaks = await asyncio.to_thread(
                     split_puzzle_leaderboards,
                     10,
+                    True,
                 )
                 await message.channel.send(
                     puzzle_elo
-                    + "\n\n🔥 Use `!puzzlestreak` to see the **Best Puzzle Streaks** leaderboard."
+                    + "\n\n🔥 Use `!puzzlestreak` to see the **Best Puzzle Streaks** leaderboard.",
+                    allowed_mentions=leaderboard_mentions,
                 )
             except Exception as error:
                 print(
@@ -8940,7 +8947,8 @@ async def on_message(
                 )
             try:
                 await message.channel.send(
-                    format_puzzle_rush_leaderboard(10)
+                    format_puzzle_rush_leaderboard(10, use_mentions=True),
+                    allowed_mentions=leaderboard_mentions,
                 )
             except Exception as error:
                 print(
@@ -8948,7 +8956,8 @@ async def on_message(
                     flush=True,
                 )
             await message.channel.send(
-                make_leaderboard()
+                make_leaderboard(use_mentions=True),
+                allowed_mentions=leaderboard_mentions,
             )
             return
 
