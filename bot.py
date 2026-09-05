@@ -87,6 +87,7 @@ from chess_play import (
     elo_after as chess_elo_after,
     choose_bot_move,
     stockfish_engine_info,
+    analyse_game_moves,
     StockfishUnavailableError,
     move_like_text as chess_game_move_like,
     parse_move as parse_chess_game_move,
@@ -347,7 +348,10 @@ RUN_TIME = 5 * 60 * 60 + 50 * 60
 
 CHESS_CHALLENGE_SECONDS = 10 * 60
 PUZZLE_RUSH_SECONDS = 5 * 60
-PUZZLE_RUSH_WINDOW = 100
+PUZZLE_RUSH_WINDOW = 50
+PUZZLE_RUSH_START_RATING = 1200
+PUZZLE_RUSH_RATING_STEP = 40
+PUZZLE_RUSH_RULESET = "universal-1200-plus40-v1"
 
 
 def survival_info_text():
@@ -2669,7 +2673,9 @@ def _rush_state():
 
 
 def _rush_bests_state():
-    return state.setdefault("puzzle_rush_bests", {})
+    # New fair leaderboard: legacy Elo-scaled Rush scores are intentionally
+    # kept in state["puzzle_rush_bests"] but do not count here.
+    return state.setdefault("puzzle_rush_bests_universal_v1", {})
 
 
 def chess_rating_profile(user_id, display_name="Unknown"):
@@ -2848,6 +2854,11 @@ def _active_chess_game_for_user(user_id):
 def _active_rush_for_user(user_id):
     session = _rush_state().get(str(user_id))
     if not isinstance(session, dict) or not session.get("active"):
+        return None
+    # Do not continue an old Elo-scaled Rush after deploying the universal
+    # ruleset; that would make the new leaderboard incomparable.
+    if session.get("ruleset") != PUZZLE_RUSH_RULESET:
+        session["active"] = False
         return None
     return session
 
@@ -3087,6 +3098,179 @@ def pending_trade_message(profile):
     )
 
 
+_CHESS_MATERIAL_VALUES = {
+    chess.PAWN: 1,
+    chess.KNIGHT: 3,
+    chess.BISHOP: 3,
+    chess.ROOK: 5,
+    chess.QUEEN: 9,
+}
+
+_CHESS_PIECE_SYMBOLS = {
+    (chess.WHITE, chess.PAWN): "♙",
+    (chess.WHITE, chess.KNIGHT): "♘",
+    (chess.WHITE, chess.BISHOP): "♗",
+    (chess.WHITE, chess.ROOK): "♖",
+    (chess.WHITE, chess.QUEEN): "♕",
+    (chess.BLACK, chess.PAWN): "♟",
+    (chess.BLACK, chess.KNIGHT): "♞",
+    (chess.BLACK, chess.BISHOP): "♝",
+    (chess.BLACK, chess.ROOK): "♜",
+    (chess.BLACK, chess.QUEEN): "♛",
+}
+
+
+def _chess_board_and_capture_history(game):
+    board = chess.Board()
+    captured_by = {chess.WHITE: [], chess.BLACK: []}
+
+    for san in list(game.get("moves") or []):
+        try:
+            move = board.parse_san(str(san))
+        except Exception:
+            break
+
+        if board.is_capture(move):
+            if board.is_en_passant(move):
+                capture_square = move.to_square - 8 if board.turn == chess.WHITE else move.to_square + 8
+            else:
+                capture_square = move.to_square
+            captured_piece = board.piece_at(capture_square)
+            if captured_piece is not None and captured_piece.piece_type != chess.KING:
+                captured_by[board.turn].append(
+                    _CHESS_PIECE_SYMBOLS.get(
+                        (captured_piece.color, captured_piece.piece_type),
+                        captured_piece.symbol(),
+                    )
+                )
+        board.push(move)
+
+    return board, captured_by
+
+
+def _chess_material_lines(game):
+    try:
+        board, captured_by = _chess_board_and_capture_history(game)
+    except Exception:
+        return ""
+
+    white_material = sum(
+        value * len(board.pieces(piece_type, chess.WHITE))
+        for piece_type, value in _CHESS_MATERIAL_VALUES.items()
+    )
+    black_material = sum(
+        value * len(board.pieces(piece_type, chess.BLACK))
+        for piece_type, value in _CHESS_MATERIAL_VALUES.items()
+    )
+    advantage = int(white_material - black_material)
+
+    white_taken = "".join(captured_by[chess.WHITE]) or "—"
+    black_taken = "".join(captured_by[chess.BLACK]) or "—"
+    white_plus = f" • **+{advantage}**" if advantage > 0 else ""
+    black_plus = f" • **+{abs(advantage)}**" if advantage < 0 else ""
+    return (
+        f"⚪ **Captured:** {white_taken}{white_plus}\n"
+        f"⚫ **Captured:** {black_taken}{black_plus}"
+    )
+
+
+def _build_chess_pgn_text(game):
+    pgn_game = chess.pgn.Game()
+    headers = pgn_game.headers
+    headers["Event"] = "Discord Rated Chess"
+    headers["Site"] = "Discord"
+    try:
+        started = datetime.fromtimestamp(float(game.get("started_at", time.time())), timezone.utc)
+        headers["Date"] = started.strftime("%Y.%m.%d")
+    except Exception:
+        headers["Date"] = datetime.now(timezone.utc).strftime("%Y.%m.%d")
+    headers["Round"] = "-"
+    headers["White"] = str(game.get("white_name") or "White")
+    headers["Black"] = str(game.get("black_name") or "Black")
+    headers["Result"] = str(game.get("result") or "*")
+    headers["Termination"] = str(game.get("finish_reason") or "Game finished")[:120]
+    if game.get("white_rating") is not None:
+        headers["WhiteElo"] = str(int(round(float(game.get("white_rating")))))
+    if game.get("black_rating") is not None:
+        headers["BlackElo"] = str(int(round(float(game.get("black_rating")))))
+    if game.get("game_id"):
+        headers["GameId"] = str(game.get("game_id"))[:120]
+
+    board = pgn_game.board()
+    node = pgn_game
+    for san in list(game.get("moves") or []):
+        move = board.parse_san(str(san))
+        node = node.add_variation(move)
+        board.push(move)
+
+    return str(pgn_game).strip() + "\n"
+
+
+def _chess_pgn_file(game):
+    pgn_text = _build_chess_pgn_text(game)
+    safe_id = re.sub(r"[^A-Za-z0-9_.-]+", "_", str(game.get("game_id") or "rated_chess"))[:80]
+    return discord.File(
+        fp=BytesIO(pgn_text.encode("utf-8")),
+        filename=f"{safe_id}.pgn",
+    )
+
+
+def _format_stockfish_game_analysis(game, analysis):
+    white = dict(analysis.get("white") or {})
+    black = dict(analysis.get("black") or {})
+    engine_name = str(analysis.get("engine") or "Stockfish 19")
+
+    def side_line(icon, name, stats):
+        return (
+            f"{icon} **{name}:** {int(stats.get('acpl', 0))} ACPL • "
+            f"{int(stats.get('inaccuracies', 0))} inacc • "
+            f"{int(stats.get('mistakes', 0))} mistakes • "
+            f"{int(stats.get('blunders', 0))} blunders"
+        )
+
+    lines = [
+        f"🔎 **{engine_name} analysis**",
+        side_line("⚪", game.get("white_name", "White"), white),
+        side_line("⚫", game.get("black_name", "Black"), black),
+    ]
+
+    moments = list(analysis.get("turning_points") or [])[:3]
+    if moments:
+        lines.append("💥 **Key moments**")
+        for item in moments:
+            loss = float(item.get("loss_cp", 0)) / 100.0
+            lines.append(
+                f"• **{item.get('move', '?')}** — lost ~{loss:.1f} • "
+                f"best: **{item.get('best', '?')}**"
+            )
+    else:
+        lines.append("✅ **No 0.5+ pawn mistakes found in this quick analysis.**")
+
+    if analysis.get("truncated"):
+        lines.append(
+            f"ℹ️ Analysis capped at the first {int(analysis.get('analysed_plies', 0))} plies."
+        )
+    return "\n".join(lines)
+
+
+async def _send_finished_chess_extras(channel, game):
+    try:
+        await channel.send("📄 **Game PGN**", file=_chess_pgn_file(game))
+    except Exception as error:
+        print(f"Chess PGN export failed: {error}", flush=True)
+        await channel.send("⚠️ **The game finished, but the PGN export failed.**")
+
+    try:
+        analysis = await asyncio.to_thread(analyse_game_moves, list(game.get("moves") or []))
+        await channel.send(_format_stockfish_game_analysis(game, analysis))
+    except StockfishUnavailableError as error:
+        print(f"Post-game Stockfish analysis unavailable: {error}", flush=True)
+        await channel.send("⚠️ **PGN saved, but Stockfish analysis is unavailable right now.**")
+    except Exception as error:
+        print(f"Post-game Stockfish analysis failed: {error}", flush=True)
+        await channel.send("⚠️ **PGN saved, but the post-game analysis could not be completed.**")
+
+
 async def make_chess_game_file(game, filename="chess_game.png"):
     board = chess.Board(game.get("fen", chess.STARTING_FEN))
     owner_id = game.get("theme_owner_id")
@@ -3148,6 +3332,9 @@ async def send_chess_game_position(channel, game, note=None):
     )
     if game.get("last_move"):
         description += f"\n♟️ **Last move:** {game['last_move']}"
+    material_lines = _chess_material_lines(game)
+    if material_lines:
+        description += f"\n{material_lines}"
     if note:
         description += f"\n\n{note}"
 
@@ -3289,6 +3476,7 @@ async def finish_chess_game(channel, game, result, reason="Game finished"):
             "The bot will retry on the next state save."
         )
     await channel.send("\n".join(lines))
+    await _send_finished_chess_extras(channel, game)
 
 
 async def maybe_finish_board_game(channel, game, board, reason=None):
@@ -3673,12 +3861,90 @@ def _rush_clock_text(seconds):
 
 
 def _rush_target_rating(session):
-    base = int(round(float(session.get("base_elo", 1500))))
-    solved = int(session.get("score", 0))
+    """Universal Rush difficulty curve: identical for every player.
+
+    Rush is a shared leaderboard mode, so personal Puzzle Elo must never make
+    one player's run easier than another's. Difficulty depends only on the
+    number of puzzles already solved in the current run.
+    """
+    solved = max(0, int(session.get("score", 0)))
+    target = PUZZLE_RUSH_START_RATING + solved * PUZZLE_RUSH_RATING_STEP
     return max(
         RP_BANDS[0][0],
-        min(RP_BANDS[-1][1], base - 300 + solved * 45),
+        min(RP_BANDS[-1][1], target),
     )
+
+
+def _normalize_rush_best(user_id, raw):
+    uid = str(user_id)
+    if isinstance(raw, dict):
+        try:
+            score = max(0, int(raw.get("score", 0) or 0))
+        except Exception:
+            score = 0
+        name = str(raw.get("name") or "").strip()
+        updated_at = raw.get("updated_at")
+    else:
+        try:
+            score = max(0, int(raw or 0))
+        except Exception:
+            score = 0
+        name = ""
+        updated_at = None
+
+    if not name:
+        session = _rush_state().get(uid)
+        if isinstance(session, dict):
+            name = str(session.get("name") or "").strip()
+    if not name:
+        rating = _chess_ratings_state().get(uid)
+        if isinstance(rating, dict):
+            name = str(rating.get("name") or "").strip()
+    if not name:
+        name = f"User {uid}"
+
+    return {
+        "score": score,
+        "name": name,
+        "updated_at": updated_at,
+    }
+
+
+def format_puzzle_rush_leaderboard(limit=10):
+    rows = []
+    for user_id, raw in _rush_bests_state().items():
+        entry = _normalize_rush_best(user_id, raw)
+        if int(entry.get("score", 0)) <= 0:
+            continue
+        rows.append((str(user_id), entry))
+
+    rows.sort(
+        key=lambda item: (
+            -int(item[1].get("score", 0)),
+            str(item[1].get("name", "Unknown")).casefold(),
+        )
+    )
+    rows = rows[:max(1, int(limit))]
+
+    lines = ["⚡ **5-Minute Puzzle Rush**"]
+    if not rows:
+        lines.append("No Puzzle Rush scores yet.")
+        return "\n".join(lines)
+
+    try:
+        badges = shared_badge_map([user_id for user_id, _entry in rows])
+    except Exception:
+        badges = {}
+
+    for rank, (user_id, entry) in enumerate(rows, 1):
+        badge = badges.get(str(user_id), "")
+        prefix = f"{badge} " if badge else ""
+        score = int(entry.get("score", 0))
+        lines.append(
+            f"**{rank}.** {prefix}{entry.get('name', 'Unknown')} — "
+            f"**{score} puzzle{'s' if score != 1 else ''}**"
+        )
+    return "\n".join(lines)
 
 
 async def load_next_rush_puzzle(session):
@@ -3737,9 +4003,14 @@ async def end_puzzle_rush(channel, user_id, reason="Time!"):
     score = int(session.get("score", 0))
     wrong = int(session.get("wrong", 0))
     bests = _rush_bests_state()
-    previous_best = int(bests.get(str(user_id), 0) or 0)
+    previous_entry = _normalize_rush_best(user_id, bests.get(str(user_id), 0))
+    previous_best = int(previous_entry.get("score", 0))
     best = max(previous_best, score)
-    bests[str(user_id)] = best
+    bests[str(user_id)] = {
+        "score": best,
+        "name": str(session.get("name", previous_entry.get("name", "Player"))),
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+    }
     await save_all()
     new_best = score > previous_best
     await channel.send(
@@ -3762,11 +4033,6 @@ async def start_puzzle_rush(message):
         await message.channel.send("❌ Finish your active chess game before starting Puzzle Rush.")
         return
 
-    stats = await asyncio.to_thread(
-        puzzle_stats_for_user,
-        message.author.id,
-        message.author.display_name,
-    )
     session = {
         "active": True,
         "user_id": str(message.author.id),
@@ -3775,7 +4041,7 @@ async def start_puzzle_rush(message):
         "end_at": time.time() + PUZZLE_RUSH_SECONDS,
         "score": 0,
         "wrong": 0,
-        "base_elo": float(stats.get("elo", 1500)),
+        "ruleset": PUZZLE_RUSH_RULESET,
         "puzzle": None,
     }
     _rush_state()[str(message.author.id)] = session
@@ -3789,6 +4055,7 @@ async def start_puzzle_rush(message):
     await save_all()
     await message.channel.send(
         "⚡ **5-minute Puzzle Rush started!** Solve as many as possible. "
+        "Everyone gets the same difficulty curve: puzzles start around 1200 and get harder as your score rises. "
         "Wrong answers skip to the next puzzle; the clock is the only limit."
     )
     await send_rush_puzzle(message.channel, session)
@@ -5704,11 +5971,11 @@ def help_message():
 **Rated Chess**
 `!playbot [elo]` — play Stockfish 19 at calibrated Elo (1320-3190), or `!playbot 4000` for full strength; no Elo picks within ±200 of yours. Win **+3**, draw **+2**, loss **+0** shared points + coins.
 `!play @name` — free player challenge. `!play @name 10` — both stake 10 coins; winner gets 20. `!accept` / `!decline`.
-Play moves normally or use `!move e4`. `!resign` resigns. `!chessboard` shows the position.
+Play moves normally or use `!move e4`. `!resign` resigns. `!chessboard` shows the position. Finished games include a PGN + compact Stockfish analysis.
 `!stats` shows both **Puzzle Elo** and your separate **Chess Elo**.
 
 **Points / Coins / Shop**
-`!l` — Chess Elo, Puzzle Elo, then shared points. `!puzzlestreak` — best Puzzle streaks. `!coins` / `!bank` — points + shared coins.
+`!l` — Chess Elo, Puzzle Elo, 5-minute Rush, then shared points. `!puzzlestreak` — best Puzzle streaks. `!coins` / `!bank` — points + shared coins.
 `!donate <name> <coins|badge>` — donate coins or a badge. `!trade <name> <give> <receive>` — trade coins/badges.
 `!me` / `!profile` — clickable inventory. `!profile <name>` — view another player. `!shop` — shop info.
 `!box` — badge box (50). `!customboard` — 100 boards (100 each).
@@ -8494,6 +8761,15 @@ async def on_message(
                     f"Puzzle Elo leaderboard error: {error}",
                     flush=True,
                 )
+            try:
+                await message.channel.send(
+                    format_puzzle_rush_leaderboard(10)
+                )
+            except Exception as error:
+                print(
+                    f"Puzzle Rush leaderboard error: {error}",
+                    flush=True,
+                )
             await message.channel.send(
                 make_leaderboard()
             )
@@ -8843,6 +9119,7 @@ async def on_ready():
     state.setdefault("chess_challenges", {})
     state.setdefault("puzzle_rush", {})
     state.setdefault("puzzle_rush_bests", {})
+    state.setdefault("puzzle_rush_bests_universal_v1", {})
 
     if recover_chess_ratings_from_game_history():
         print("Recovered missing Chess Elo entries from finished game history.", flush=True)
