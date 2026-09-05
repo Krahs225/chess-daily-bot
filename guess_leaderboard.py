@@ -9,7 +9,11 @@ import threading
 import time
 from pathlib import Path
 
-from shared_leaderboard import badge_map
+from shared_leaderboard import (
+    badge_map,
+    sync_guess_points_to_coins as shared_sync_guess_points_to_coins,
+    backfill_guess_points_to_coins as shared_backfill_guess_points_to_coins,
+)
 
 EVENT_DIR = "guess_leaderboard_events"
 LEGACY_FILE = "guess_leaderboard.json"
@@ -437,6 +441,39 @@ def _ensure_legacy_baselines(
     return paths
 
 
+def _sync_shared_guess_coins(user_id, display_name, total_points, transaction_id):
+    return shared_sync_guess_points_to_coins(
+        user_id,
+        display_name,
+        total_points,
+        transaction_id=(
+            f"guess-coin-sync:{str(user_id)}:{round(float(total_points), 3):.3f}"
+        ),
+        source="guess-games",
+    )
+
+
+def backfill_existing_guess_points_to_shared_coins():
+    """Credit every existing Guess score into the shared wallet once."""
+    snapshot = _current_snapshot()
+    rows = []
+    for uid, entry in snapshot.items():
+        try:
+            points = round(max(0.0, float(entry.get("points", 0) or 0)), 3)
+        except Exception:
+            continue
+        if points <= 0:
+            continue
+        rows.append(
+            {
+                "user_id": str(uid),
+                "display_name": str(entry.get("name", "Unknown")),
+                "points": points,
+            }
+        )
+    return shared_backfill_guess_points_to_coins(rows)
+
+
 def add_points(
     user_id,
     display_name,
@@ -521,8 +558,7 @@ def add_points(
                     events,
                     legacy,
                 )
-
-                return float(
+                total = float(
                     snapshot.get(
                         str(user_id),
                         {},
@@ -531,6 +567,13 @@ def add_points(
                         0,
                     )
                 )
+                _sync_shared_guess_coins(
+                    user_id,
+                    display_name,
+                    total,
+                    transaction_id,
+                )
+                return total
 
             # Start from the newest committed repository state.
             if not _reset_to_origin():
@@ -583,7 +626,7 @@ def add_points(
                     base,
                 )
 
-                return float(
+                total = float(
                     current.get(
                         str(user_id),
                         {},
@@ -592,6 +635,13 @@ def add_points(
                         0,
                     )
                 )
+                _sync_shared_guess_coins(
+                    user_id,
+                    display_name,
+                    total,
+                    transaction_id,
+                )
+                return total
 
             # Another bot changed origin. The same transaction is still
             # present locally; retry from newest origin.
