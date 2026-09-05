@@ -351,9 +351,9 @@
     },
     "shark": {
       "name": "Shark",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-09-05T11:06:20.020010+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1296,
+      "best_completed_at": "2026-09-05T11:09:48.465632+00:00",
       "current": {
         "run_id": "shark:1788606380",
         "started_by_id": "362606514764251137",
@@ -368,7 +368,8 @@
         "strikes": 0,
         "best_difficulty": 1296,
         "used_puzzle_ids": [
-          "cO8wh"
+          "cO8wh",
+          "RXpE2"
         ],
         "members": {
           "442597396195704832": {
@@ -377,7 +378,40 @@
             "wrong": 0
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "RXpE2",
+          "rating": 1203,
+          "themes": "short epauletteMate hangingPiece endgame mateIn2",
+          "url": "https://lichess.org/training/RXpE2",
+          "start_fen": "r5k1/2ppB1pp/1p2p1q1/p3P3/8/2P2Q2/PPP3PP/2K2b2 w - - 0 20",
+          "current_fen": "r5k1/2ppB1pp/1p2p1q1/p3P3/8/2P2Q2/PPP3PP/2K2b2 w - - 0 20",
+          "solution": [
+            {
+              "uci": "f3a8",
+              "san": "Qxa8+",
+              "color": "white"
+            },
+            {
+              "uci": "g8f7",
+              "san": "Kf7",
+              "color": "black"
+            },
+            {
+              "uci": "a8f8",
+              "san": "Qf8#",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
