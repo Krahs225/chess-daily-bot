@@ -351,9 +351,9 @@
     },
     "shark": {
       "name": "Shark",
-      "best_puzzle": 3,
+      "best_puzzle": 4,
       "best_difficulty": 1296,
-      "best_completed_at": "2026-09-05T11:10:02.403910+00:00",
+      "best_completed_at": "2026-09-05T11:11:03.917221+00:00",
       "current": {
         "run_id": "shark:1788606380",
         "started_by_id": "362606514764251137",
@@ -370,7 +370,8 @@
         "used_puzzle_ids": [
           "cO8wh",
           "RXpE2",
-          "lv8um"
+          "lv8um",
+          "sK6Js"
         ],
         "members": {
           "442597396195704832": {
@@ -379,7 +380,40 @@
             "wrong": 1
           }
         },
-        "puzzle": null,
+        "puzzle": {
+          "id": "sK6Js",
+          "rating": 1203,
+          "themes": "deflection endgame master short crushing",
+          "url": "https://lichess.org/training/sK6Js",
+          "start_fen": "5qk1/1p4p1/2p1p1Bp/p2nP3/3P3P/P4Q2/1P4P1/6K1 w - - 1 36",
+          "current_fen": "5qk1/1p4p1/2p1p1Bp/p2nP3/3P3P/P4Q2/1P4P1/6K1 w - - 1 36",
+          "solution": [
+            {
+              "uci": "g6h7",
+              "san": "Bh7+",
+              "color": "white"
+            },
+            {
+              "uci": "g8h7",
+              "san": "Kxh7",
+              "color": "black"
+            },
+            {
+              "uci": "f3f8",
+              "san": "Qxf8",
+              "color": "white"
+            }
+          ],
+          "player_color": "white",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "last_move_san": null,
+          "accepted_moves": []
+        },
         "first_solver_id": null,
         "first_solver_name": null,
         "helper_candidates": {},
