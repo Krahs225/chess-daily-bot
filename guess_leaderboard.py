@@ -813,6 +813,7 @@ def personal_ranking(
 
 def full_leaderboard(
     title="🏆 **Guess Games Leaderboard**",
+    use_mentions=False,
 ):
     snapshot = _current_snapshot()
     ordered = _ordered(
@@ -858,9 +859,10 @@ def full_leaderboard(
         else:
             prefix = f"**{rank}.**"
 
+        display_name = f"<@{_uid}>" if use_mentions else entry.get("name", "Unknown")
         lines.append(
             f"{prefix} "
-            f"{(badges.get(str(_uid)) + ' ') if badges.get(str(_uid)) else ''}{entry.get('name', 'Unknown')} — "
+            f"{(badges.get(str(_uid)) + ' ') if badges.get(str(_uid)) else ''}{display_name} — "
             f"**{format_points(points)} {word}**"
         )
 
