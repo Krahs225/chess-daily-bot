@@ -54,10 +54,37 @@ LARS_START = datetime(
     tzinfo=timezone.utc
 )
 
-GAME_YEAR = 2026
+SUSHI_START = datetime(
+    2024,
+    7,
+    1,
+    tzinfo=timezone.utc
+)
+
+GENERAL_START = datetime(
+    2025,
+    1,
+    1,
+    tzinfo=timezone.utc
+)
+
+GENERAL_END = datetime(
+    2026,
+    12,
+    31,
+    23,
+    59,
+    59,
+    tzinfo=timezone.utc
+)
 
 # At least 10 moves = 20 plies.
 MIN_PLIES = 20
+
+CLOCK_RE = re.compile(
+    r"\[%clk\s+(\d+):(\d{1,2}):(\d{1,2}(?:\.\d+)?)\]",
+    flags=re.IGNORECASE,
+)
 
 
 def fetch_json(
@@ -83,43 +110,26 @@ def month_range_for_player(
 ):
 
     if display_name == "Lars":
+        start_year, start_month = 2024, 10
+        end_year, end_month = datetime.now(timezone.utc).year, datetime.now(timezone.utc).month
+    elif display_name == "Sushi":
+        start_year, start_month = 2024, 7
+        end_year, end_month = datetime.now(timezone.utc).year, datetime.now(timezone.utc).month
+    else:
+        start_year, start_month = 2025, 1
+        end_year, end_month = 2026, 12
 
-        months = [
-            (
-                2024,
-                10
-            )
-        ]
+    months = []
+    year, month = start_year, start_month
 
-        for year in (
-            2025,
-            2026
-        ):
+    while (year, month) <= (end_year, end_month):
+        months.append((year, month))
+        month += 1
+        if month > 12:
+            month = 1
+            year += 1
 
-            for month in range(
-                1,
-                13
-            ):
-
-                months.append(
-                    (
-                        year,
-                        month
-                    )
-                )
-
-        return months
-
-    return [
-        (
-            GAME_YEAR,
-            month
-        )
-        for month in range(
-            1,
-            13
-        )
-    ]
+    return months
 
 
 def parse_pgn(
@@ -137,6 +147,97 @@ def parse_pgn(
     except Exception:
 
         return None
+
+
+def _parse_clock_seconds(comment):
+    match = CLOCK_RE.search(str(comment or ""))
+    if not match:
+        return None
+
+    hours = int(match.group(1))
+    minutes = int(match.group(2))
+    seconds = float(match.group(3))
+
+    return (hours * 3600.0) + (minutes * 60.0) + seconds
+
+
+def _initial_clock_seconds(raw_time_control):
+    raw = str(raw_time_control or "").strip()
+
+    # Chess.com live games normally use values such as 60, 60+1, 300 or 600+5.
+    match = re.fullmatch(r"(\d+)(?:\+(\d+))?", raw)
+    if not match:
+        return None
+
+    return float(match.group(1))
+
+
+def build_clock_timeline(
+    pgn,
+    fallback_time_control=None,
+):
+    game = parse_pgn(pgn)
+    if game is None:
+        return []
+
+    starting_clock = _initial_clock_seconds(
+        game.headers.get(
+            "TimeControl",
+            fallback_time_control,
+        )
+    )
+
+    white_clock = starting_clock
+    black_clock = starting_clock
+    timeline = [(white_clock, black_clock)]
+    board = game.board()
+
+    for node in game.mainline():
+        move_clock = _parse_clock_seconds(node.comment)
+
+        if board.turn == chess.WHITE:
+            if move_clock is not None:
+                white_clock = move_clock
+        else:
+            if move_clock is not None:
+                black_clock = move_clock
+
+        timeline.append((white_clock, black_clock))
+        board.push(node.move)
+
+    return timeline
+
+
+def format_clock(seconds):
+    if seconds is None:
+        return "?"
+
+    seconds = max(0.0, float(seconds))
+    whole_minutes = int(seconds // 60)
+    remainder = seconds - (whole_minutes * 60)
+
+    # Tenths matter in bullet. For 60+ seconds, keep the display compact unless
+    # Chess.com actually supplied a fractional value.
+    if seconds < 60 or abs(seconds - round(seconds)) > 0.001:
+        return f"{whole_minutes}:{remainder:04.1f}"
+
+    return f"{whole_minutes}:{int(round(remainder)):02d}"
+
+
+def clock_line(
+    timeline,
+    move_index,
+):
+    if not timeline:
+        return "⏱️ White: **?** | Black: **?**"
+
+    index = max(0, min(int(move_index), len(timeline) - 1))
+    white_clock, black_clock = timeline[index]
+
+    return (
+        f"⏱️ White: **{format_clock(white_clock)}** | "
+        f"Black: **{format_clock(black_clock)}**"
+    )
 
 
 def game_date_from_pgn(
@@ -206,7 +307,8 @@ def is_qualifying_game(
 
     if time_class not in {
         "rapid",
-        "blitz"
+        "blitz",
+        "bullet",
     }:
 
         return False
@@ -247,23 +349,16 @@ def allowed_archive_url(
     if not match:
         return False
 
-    year = int(
-        match.group(1)
-    )
-    month = int(
-        match.group(2)
-    )
+    year = int(match.group(1))
+    month = int(match.group(2))
 
     if display_name == "Lars":
-        return (
-            year > 2024
-            or (
-                year == 2024
-                and month >= 10
-            )
-        )
+        return (year, month) >= (2024, 10)
 
-    return year == GAME_YEAR
+    if display_name == "Sushi":
+        return (year, month) >= (2024, 7)
+
+    return (2025, 1) <= (year, month) <= (2026, 12)
 
 
 def prepare_game(
@@ -291,7 +386,10 @@ def prepare_game(
     if display_name == "Lars":
         if game_date < LARS_START:
             return None
-    elif game_date.year != GAME_YEAR:
+    elif display_name == "Sushi":
+        if game_date < SUSHI_START:
+            return None
+    elif not (GENERAL_START <= game_date <= GENERAL_END):
         return None
 
     prepared = dict(
@@ -319,7 +417,7 @@ def collect_games():
 
     Instead of downloading every month for every player, first ask
     Chess.com which archives exist, randomise them, and stop as soon
-    as a qualifying rated rapid/blitz game is found.
+    as a qualifying rated bullet/blitz/rapid game is found.
     """
     players = list(
         PLAYERS
@@ -542,7 +640,8 @@ class ChessView(
         self,
         pgn,
         owner_is_white,
-        total_moves
+        total_moves,
+        time_control=None,
     ):
 
         super().__init__(
@@ -552,6 +651,10 @@ class ChessView(
         self.pgn = pgn
         self.owner_is_white = owner_is_white
         self.total_moves = total_moves
+        self.clock_timeline = build_clock_timeline(
+            pgn,
+            fallback_time_control=time_control,
+        )
         self.move_index = 0
         self.page = 0
         self.message = None
@@ -876,6 +979,7 @@ class ChessView(
             f"Move **"
             f"{self.move_index} / "
             f"{total}**\n"
+            f"{clock_line(self.clock_timeline, self.move_index)}\n"
             f"Jump to move: **"
             f"{page_start}-{page_end}**"
         )
@@ -961,6 +1065,18 @@ async def post_chess_round(
         )
     ).title()
 
+    time_control = str(
+        game.get(
+            "time_control",
+            "",
+        )
+    ).strip()
+
+    clock_timeline = build_clock_timeline(
+        pgn,
+        fallback_time_control=time_control,
+    )
+
     game_url = str(
         game.get(
             "url",
@@ -1030,7 +1146,9 @@ async def post_chess_round(
             f"POV: **"
             f"{'White' if owner_is_white else 'Black'}"
             f"**\n"
-            f"Move **0 / {total_moves}**"
+            f"Type: **{game_type}**\n"
+            f"Move **0 / {total_moves}**\n"
+            f"{clock_line(clock_timeline, 0)}"
         ),
         color=0x3498db
     )
@@ -1042,7 +1160,8 @@ async def post_chess_round(
     view = ChessView(
         pgn,
         owner_is_white,
-        total_moves
+        total_moves,
+        time_control=time_control,
     )
 
     poll_message = await channel.send(
