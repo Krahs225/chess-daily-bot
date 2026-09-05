@@ -11,6 +11,7 @@ from shared_leaderboard import (
     get_coins as shared_get_coins,
     get_cosmetic_profile,
     badge_prefix,
+    badge_map as shared_badge_map,
     buy_badge_box,
     equip_badge,
     buy_board,
@@ -82,9 +83,16 @@ from chess_play import (
     apply_head_to_head_result as apply_chess_head_to_head_result,
     random_bot_rating,
     clamp_bot_rating,
+    elo_after as chess_elo_after,
     choose_bot_move,
+    stockfish_engine_info,
+    StockfishUnavailableError,
     move_like_text as chess_game_move_like,
     parse_move as parse_chess_game_move,
+)
+from chess_reactions import (
+    CHESS_REACTIONS_BUILD,
+    bot_result_reaction,
 )
 
 # Direct remote Survival-state check used by Daily/Random guards.
@@ -663,6 +671,8 @@ scores = {}
 data_lock = asyncio.Lock()
 github_push_lock = REPOSITORY_LOCK
 github_sync_task = None
+github_sync_dirty = False
+github_sync_last_ok = True
 score_file_lock = threading.Lock()
 
 # Offline RP runtime state. Every six RP requests consume every rating band
@@ -1034,8 +1044,17 @@ def push_to_github():
                 text=True,
             )
 
+            # `nothing to commit` is fine, but do NOT return here. A previous
+            # attempt may already have created a local state commit whose push
+            # failed. We must still run pull/rebase + push below.
             if commit.returncode != 0:
-                return
+                status = subprocess.run(
+                    ["git", "status", "--porcelain", "--", STATE_FILE],
+                    capture_output=True,
+                    text=True,
+                )
+                if status.returncode != 0 or status.stdout.strip():
+                    raise RuntimeError(commit.stderr.strip() or commit.stdout.strip() or "git commit failed")
 
             branch = os.getenv("GITHUB_REF_NAME", "main")
 
@@ -1064,7 +1083,7 @@ def push_to_github():
 
                 if push.returncode == 0:
                     print("Daily puzzle state saved to GitHub.", flush=True)
-                    return
+                    return True
 
                 time.sleep(0.25 * attempt)
 
@@ -1075,34 +1094,64 @@ def push_to_github():
                 f"Could not push Daily puzzle state to GitHub: {error}",
                 flush=True,
             )
+            return False
+
+
+async def _github_sync_worker():
+    global github_sync_dirty, github_sync_last_ok
+
+    # Important: state can change while a Git push is already running.
+    # Keep looping until no save happened during the previous push. This fixes
+    # Chess Elo (and any other Daily state) being visible in memory but missing
+    # again after a runner restart.
+    while True:
+        github_sync_dirty = False
+        github_sync_last_ok = bool(await asyncio.to_thread(push_to_github))
+        if github_sync_dirty:
+            continue
+        return github_sync_last_ok
+
 
 def queue_github_sync():
 
-    global github_sync_task
+    global github_sync_task, github_sync_dirty
 
+    github_sync_dirty = True
     if (
         github_sync_task is not None
         and not github_sync_task.done()
     ):
-        return
+        return github_sync_task
 
-    github_sync_task = asyncio.create_task(
-        asyncio.to_thread(
-            push_to_github
-        )
-    )
+    github_sync_task = asyncio.create_task(_github_sync_worker())
+    return github_sync_task
 
 
-
-
-async def save_all():
+async def save_all(wait_for_remote=False):
 
     save_json(
         STATE_FILE,
         state
     )
 
-    queue_github_sync()
+    task = queue_github_sync()
+    if wait_for_remote and task is not None:
+        try:
+            return bool(await asyncio.shield(task))
+        except Exception as error:
+            print(f"Could not await Daily state sync: {error}", flush=True)
+            return False
+    return True
+
+
+async def save_all_critical(attempts=3):
+    """Persist important state (especially rated Chess Elo) remotely."""
+    for attempt in range(1, max(1, int(attempts)) + 1):
+        if await save_all(wait_for_remote=True):
+            return True
+        if attempt < attempts:
+            await asyncio.sleep(0.75 * attempt)
+    return False
 
 
 
@@ -2643,6 +2692,148 @@ def format_chess_profile_line(user_id, display_name="Unknown"):
     )
 
 
+def format_chess_elo_leaderboard(limit=10):
+    rows = []
+    for user_id, raw in _chess_ratings_state().items():
+        entry = normalize_chess_rating_entry(raw, raw.get("name", "Unknown") if isinstance(raw, dict) else "Unknown")
+        if int(entry.get("games", 0)) <= 0:
+            continue
+        rows.append((str(user_id), entry))
+
+    rows.sort(
+        key=lambda item: (
+            -float(item[1].get("elo", CHESS_START_ELO)),
+            -int(item[1].get("games", 0)),
+            str(item[1].get("name", "Unknown")).casefold(),
+        )
+    )
+    rows = rows[:max(1, int(limit))]
+
+    lines = ["♜ **Top Chess Elo**"]
+    if not rows:
+        lines.append("No rated Chess Elo results yet.")
+        return "\n".join(lines)
+
+    try:
+        badges = shared_badge_map([user_id for user_id, _entry in rows])
+    except Exception:
+        badges = {}
+
+    for rank, (user_id, entry) in enumerate(rows, 1):
+        badge = badges.get(str(user_id), "")
+        prefix = f"{badge} " if badge else ""
+        lines.append(
+            f"**{rank}.** {prefix}{entry.get('name', 'Unknown')} — "
+            f"**{int(round(float(entry.get('elo', CHESS_START_ELO))))} Elo**"
+        )
+    return "\n".join(lines)
+
+
+def split_puzzle_leaderboards(limit=10):
+    combined = format_puzzle_leaderboards(limit)
+    marker = "🔥 **Best Puzzle Streaks**"
+    before, found, after = combined.partition(marker)
+    puzzle_elo = before.rstrip()
+    if found:
+        streaks = marker + after
+    else:
+        streaks = "🔥 **Best Puzzle Streaks**\nNo puzzle streaks yet."
+    return puzzle_elo, streaks
+
+
+def recover_chess_ratings_from_game_history():
+    """Recover missing Chess Elo entries from retained finished game snapshots.
+
+    Finished games already store the post-game rating. If `chess_ratings` was
+    ever lost/stale while `chess_games` survived, use those snapshots so a
+    player does not silently fall back to the 1500 default after a restart.
+    Existing rated entries are never overwritten.
+    """
+    ratings = _chess_ratings_state()
+    games = sorted(
+        (
+            game for game in _chess_games_state().values()
+            if isinstance(game, dict) and game.get("status") == "finished"
+        ),
+        key=lambda game: float(game.get("finished_at", game.get("started_at", 0)) or 0),
+    )
+    recovered = {}
+
+    def touch(user_id, name, before, after, score):
+        uid = str(user_id or "")
+        if not uid or uid == "BOT" or after is None:
+            return
+        item = recovered.setdefault(uid, {
+            "name": str(name or "Unknown"),
+            "elo": CHESS_START_ELO,
+            "peak_elo": CHESS_START_ELO,
+            "games": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+        })
+        if name:
+            item["name"] = str(name)
+        try:
+            before_value = float(before) if before is not None else float(item["elo"])
+        except Exception:
+            before_value = float(item["elo"])
+        try:
+            after_value = float(after)
+        except Exception:
+            return
+        item["elo"] = after_value
+        item["peak_elo"] = max(float(item.get("peak_elo", CHESS_START_ELO)), before_value, after_value)
+        item["games"] += 1
+        if score > 0.75:
+            item["wins"] += 1
+        elif score < 0.25:
+            item["losses"] += 1
+        else:
+            item["draws"] += 1
+
+    for game in games:
+        result = str(game.get("result") or "")
+        if result not in {"1-0", "0-1", "1/2-1/2"}:
+            continue
+        white_score = 1.0 if result == "1-0" else 0.0 if result == "0-1" else 0.5
+        if game.get("mode") == "bot":
+            human_id = str(game.get("human_id") or "")
+            human_white = str(game.get("white_id")) == human_id
+            human_score = white_score if human_white else 1.0 - white_score
+            before = game.get("white_rating") if human_white else game.get("black_rating")
+            touch(
+                human_id,
+                game.get("human_name", "Player"),
+                before,
+                game.get("human_rating_after"),
+                human_score,
+            )
+        else:
+            touch(
+                game.get("white_id"),
+                game.get("white_name", "White"),
+                game.get("white_rating"),
+                game.get("white_rating_after"),
+                white_score,
+            )
+            touch(
+                game.get("black_id"),
+                game.get("black_name", "Black"),
+                game.get("black_rating"),
+                game.get("black_rating_after"),
+                1.0 - white_score,
+            )
+
+    changed = False
+    for uid, recovered_entry in recovered.items():
+        current = normalize_chess_rating_entry(ratings.get(uid), recovered_entry["name"])
+        if uid not in ratings or int(current.get("games", 0)) <= 0:
+            ratings[uid] = normalize_chess_rating_entry(recovered_entry, recovered_entry["name"])
+            changed = True
+    return changed
+
+
 def _active_chess_game_for_user(user_id):
     uid = str(user_id)
     for game in _chess_games_state().values():
@@ -2883,6 +3074,18 @@ async def _parse_trade_args(message, arg_text):
     return target_id, target_name, offer, request
 
 
+def pending_trade_message(profile):
+    pending = profile.get("pending_trade") if isinstance(profile, dict) else None
+    if not pending:
+        return "🤝 **No pending trade.**"
+    return (
+        f"🤝 **Pending trade from {pending.get('from_name', 'Unknown')}**\n"
+        f"They give you: **{shared_format_trade_asset(pending['offer'])}**\n"
+        f"They want: **{shared_format_trade_asset(pending['request'])}**\n\n"
+        "Use `!accepttrade` or `!declinetrade`."
+    )
+
+
 async def make_chess_game_file(game, filename="chess_game.png"):
     board = chess.Board(game.get("fen", chess.STARTING_FEN))
     owner_id = game.get("theme_owner_id")
@@ -2993,6 +3196,7 @@ async def finish_chess_game(channel, game, result, reason="Game finished"):
             f"🏆 **Game reward:** +{shared_format_points(reward)} shared points • "
             f"+{shared_format_points(reward)} coins"
         )
+        lines.append(bot_result_reaction(human_name, human_score))
 
     wager_amount = round(float(game.get("wager_amount", 0) or 0), 3)
     if game.get("mode") == "pvp" and wager_amount > 0 and game.get("wager_reserved"):
@@ -3077,7 +3281,12 @@ async def finish_chess_game(channel, game, result, reason="Game finished"):
         ])
 
     _prune_chess_game_history()
-    await save_all()
+    sync_ok = await save_all_critical()
+    if not sync_ok:
+        lines.append(
+            "⚠️ **Chess Elo was saved locally, but the GitHub state sync is still failing.** "
+            "The bot will retry on the next state save."
+        )
     await channel.send("\n".join(lines))
 
 
@@ -3104,11 +3313,25 @@ async def perform_bot_turn(channel, game, opening=False):
     if board.turn != bot_color:
         return
 
-    move = await asyncio.to_thread(
-        choose_bot_move,
-        board.copy(stack=False),
-        int(game.get("bot_rating", 1500)),
-    )
+    try:
+        move = await asyncio.to_thread(
+            choose_bot_move,
+            board.copy(stack=False),
+            int(game.get("bot_rating", 1500)),
+        )
+    except StockfishUnavailableError as error:
+        await channel.send(
+            "❌ **Stockfish is unavailable, so this bot game cannot continue right now.**\n"
+            f"{error}"
+        )
+        return
+    except Exception as error:
+        print(f"Stockfish move error: {error}", flush=True)
+        await channel.send(
+            "❌ **Stockfish could not calculate a move.** Try again in a moment or use `!resign`."
+        )
+        return
+
     if move is None:
         if await maybe_finish_board_game(channel, game, board):
             return
@@ -3148,6 +3371,29 @@ async def start_bot_game(message, requested_rating=None):
     else:
         bot_elo = clamp_bot_rating(requested_rating)
 
+    try:
+        engine_info = await asyncio.to_thread(stockfish_engine_info)
+    except StockfishUnavailableError as error:
+        await message.channel.send(
+            "❌ **Stockfish is unavailable on this bot runner.**\n"
+            f"{error}"
+        )
+        return
+    except Exception as error:
+        print(f"Stockfish startup error: {error}", flush=True)
+        await message.channel.send(
+            "❌ **Stockfish could not start.** The rated bot game was not created."
+        )
+        return
+
+    supported_min = int(engine_info.get("min_elo", BOT_MIN_ELO))
+    supported_max = int(engine_info.get("max_elo", BOT_MAX_ELO))
+    if not supported_min <= bot_elo <= supported_max:
+        await message.channel.send(
+            f"❌ This Stockfish build supports bot Elo **{supported_min}-{supported_max}**."
+        )
+        return
+
     human_white = bool(random.getrandbits(1))
     game_id = f"bot-{message.id}-{message.author.id}"
     game = {
@@ -3163,6 +3409,7 @@ async def start_bot_game(message, requested_rating=None):
         "human_id": str(message.author.id),
         "human_name": message.author.display_name,
         "bot_rating": bot_elo,
+        "bot_engine": str(engine_info.get("name") or "Stockfish"),
         "fen": chess.STARTING_FEN,
         "moves": [],
         "last_move": None,
@@ -3173,9 +3420,16 @@ async def start_bot_game(message, requested_rating=None):
     _chess_games_state()[game_id] = game
     await save_all()
 
+    win_after = chess_elo_after(player_elo, bot_elo, 1.0)
+    draw_after = chess_elo_after(player_elo, bot_elo, 0.5)
+    loss_after = chess_elo_after(player_elo, bot_elo, 0.0)
+
     await message.channel.send(
         f"♜ **Rated game started!** Your Chess Elo: **{int(round(player_elo))}** • "
-        f"Bot: **{bot_elo}**\n"
+        f"Stockfish: **{bot_elo} Elo**\n"
+        f"🏆 **Win:** {_signed_elo(win_after - player_elo)} Elo → **{int(round(win_after))}**\n"
+        f"🤝 **Draw:** {_signed_elo(draw_after - player_elo)} Elo → **{int(round(draw_after))}**\n"
+        f"❌ **Loss:** {_signed_elo(loss_after - player_elo)} Elo → **{int(round(loss_after))}**\n"
         "Enter moves like `e4`, `Nf3`, `!e4`, or `!move e4`. Use `!resign` to resign."
     )
     if human_white:
@@ -4540,7 +4794,7 @@ def format_points(points):
 
 def make_leaderboard():
     return shared_full_leaderboard(
-        "🏆 **Shared Leaderboard**"
+        "🏆 **Shared Points**"
     )
 
 
@@ -4584,7 +4838,7 @@ def shop_message(user_id, display_name):
     return (
         "🛒 **Puzzle Shop**\n"
         f"🪙 **Coins:** {coins}  •  `!coins` / `!bank`\n"
-        "💸 `!donate <name> <coins|badge>` — donate coins or one badge; points never move.\n🤝 `!trade <name> <give> <receive>` — trade coins/badges; `!accepttrade` / `!declinetrade`.\n\n"
+        "💸 `!donate <name> <coins|badge>` — donate coins or one badge; points never move.\n🤝 `!trade <name> <give> <receive>` — trade coins/badges; `!pendingtrade` / `!accepttrade` / `!declinetrade`.\n\n"
         f"🎁 **Badge Box — {shared_format_points(BADGE_BOX_COST)} coins**\n"
         "`!box` or `!shop box` — open one random badge. Duplicates are possible.\n\n"
         f"🎨 **Boards — {shared_format_points(BOARD_COST)} coins each**\n"
@@ -4798,14 +5052,19 @@ def _button_emoji(value):
 
 
 class CosmeticCatalogPager(discord.ui.View):
-    def __init__(self, viewer_id, kind, page=1):
+    """Clickable board/piece shop browser with instant previews."""
+
+    def __init__(self, viewer_id, kind, page=1, selected_name=None):
         super().__init__(timeout=300)
         self.viewer_id = int(viewer_id)
-        self.kind = str(kind)
-        total_items = len(BOARD_THEMES) if self.kind == "board" else len(PIECE_SETS)
-        self.page_size = 25 if self.kind == "board" else 20
-        self.total_pages = max(1, math.ceil(total_items / self.page_size))
+        self.kind = "board" if str(kind) == "board" else "piece"
+        self.names = list(BOARD_THEMES) if self.kind == "board" else list(PIECE_SETS)
+        self.page_size = 5
+        self.total_pages = max(1, math.ceil(len(self.names) / self.page_size))
         self.page = max(1, min(int(page or 1), self.total_pages))
+        page_names = self._page_names()
+        wanted = str(selected_name or "").casefold()
+        self.selected_name = wanted if wanted in page_names else page_names[0]
         self._rebuild()
 
     async def interaction_check(self, interaction):
@@ -4814,24 +5073,104 @@ class CosmeticCatalogPager(discord.ui.View):
             return False
         return True
 
-    def render(self):
-        return board_catalog_message(self.page) if self.kind == "board" else piece_catalog_message(self.page)
+    def _page_names(self):
+        start = (self.page - 1) * self.page_size
+        return self.names[start:start + self.page_size]
 
-    def _rebuild(self):
+    def _display_name(self, name):
+        if self.kind == "board":
+            return BOARD_DISPLAY_NAMES.get(name, name.title())
+        return PIECE_DISPLAY_NAMES.get(name, name.title())
+
+    def render(self, profile=None):
+        selected = self.selected_name
+        display = self._display_name(selected)
+        price = BOARD_COST if self.kind == "board" else PIECE_COST
+        item_word = "board" if self.kind == "board" else "piece set"
+        owned = False
+        active = False
+        if profile is not None:
+            if self.kind == "board":
+                owned = selected == "classic" or selected in profile.get("boards", [])
+                active = selected == profile.get("active_board", "classic")
+            else:
+                owned = selected == "classic" or selected in profile.get("pieces", [])
+                active = selected == profile.get("active_piece", "classic")
+        status = "Classic / free" if selected == "classic" else ("Owned" if owned else f"{shared_format_points(price)} coins")
+        if active:
+            status += " • Equipped"
+        return (
+            f"{'🎨' if self.kind == 'board' else '♟️'} **Custom {'Boards' if self.kind == 'board' else 'Piece Sets'}**\n"
+            f"Page **{self.page}/{self.total_pages}** • choose one of the 5 buttons below.\n\n"
+            f"**Preview:** {display}\n"
+            f"**Status:** {status}\n\n"
+            f"Click an option to instantly preview that {item_word}. Use **Buy selected** or **Equip selected** when ready."
+        )
+
+    async def preview_file(self, display_name):
+        profile = await asyncio.to_thread(get_cosmetic_profile, self.viewer_id, display_name)
+        if self.kind == "board":
+            board_name = self.selected_name
+            piece_name = profile.get("active_piece", "classic")
+            filename = "board_shop_preview.png"
+        else:
+            board_name = profile.get("active_board", "classic")
+            piece_name = self.selected_name
+            filename = "piece_shop_preview.png"
+        file = await asyncio.to_thread(
+            make_cosmetic_preview_file,
+            board_name,
+            piece_name,
+            filename,
+        )
+        return profile, file
+
+    async def _show_selected(self, interaction):
+        await interaction.response.defer()
+        try:
+            profile, file = await self.preview_file(interaction.user.display_name)
+            self._rebuild(profile)
+            await interaction.message.edit(
+                content=self.render(profile),
+                attachments=[file],
+                view=self,
+            )
+        except Exception as error:
+            await interaction.followup.send(f"❌ Could not render preview: `{str(error)[:800]}`", ephemeral=True)
+
+    def _rebuild(self, profile=None):
         self.clear_items()
-        previous = discord.ui.Button(label="◀ Previous", style=discord.ButtonStyle.secondary, disabled=self.page <= 1)
-        indicator = discord.ui.Button(label=f"Page {self.page}/{self.total_pages}", style=discord.ButtonStyle.secondary, disabled=True)
-        next_button = discord.ui.Button(label="Next ▶", style=discord.ButtonStyle.secondary, disabled=self.page >= self.total_pages)
+        page_names = self._page_names()
+        if self.selected_name not in page_names:
+            self.selected_name = page_names[0]
+
+        for name in page_names:
+            button = discord.ui.Button(
+                label=self._display_name(name)[:80],
+                style=discord.ButtonStyle.primary if name == self.selected_name else discord.ButtonStyle.secondary,
+                row=0,
+            )
+
+            async def select_callback(interaction, selected=name):
+                self.selected_name = selected
+                await self._show_selected(interaction)
+
+            button.callback = select_callback
+            self.add_item(button)
+
+        previous = discord.ui.Button(label="◀", style=discord.ButtonStyle.secondary, disabled=self.page <= 1, row=1)
+        indicator = discord.ui.Button(label=f"{self.page}/{self.total_pages}", style=discord.ButtonStyle.secondary, disabled=True, row=1)
+        next_button = discord.ui.Button(label="▶", style=discord.ButtonStyle.secondary, disabled=self.page >= self.total_pages, row=1)
 
         async def previous_callback(interaction):
             self.page = max(1, self.page - 1)
-            self._rebuild()
-            await interaction.response.edit_message(content=self.render(), view=self)
+            self.selected_name = self._page_names()[0]
+            await self._show_selected(interaction)
 
         async def next_callback(interaction):
             self.page = min(self.total_pages, self.page + 1)
-            self._rebuild()
-            await interaction.response.edit_message(content=self.render(), view=self)
+            self.selected_name = self._page_names()[0]
+            await self._show_selected(interaction)
 
         previous.callback = previous_callback
         next_button.callback = next_callback
@@ -4839,6 +5178,84 @@ class CosmeticCatalogPager(discord.ui.View):
         self.add_item(indicator)
         self.add_item(next_button)
 
+        buy = discord.ui.Button(
+            label="Buy selected",
+            style=discord.ButtonStyle.success,
+            disabled=self.selected_name == "classic",
+            row=2,
+        )
+        equip = discord.ui.Button(label="Equip selected", style=discord.ButtonStyle.primary, row=2)
+
+        async def buy_callback(interaction):
+            name = self.selected_name
+            await interaction.response.defer()
+            try:
+                if self.kind == "board":
+                    updated = await asyncio.to_thread(
+                        buy_board,
+                        interaction.user.id,
+                        interaction.user.display_name,
+                        name,
+                        f"catalog-buy-board:{interaction.id}:{interaction.user.id}:{name}",
+                    )
+                    label = BOARD_DISPLAY_NAMES.get(name, name.title())
+                else:
+                    updated = await asyncio.to_thread(
+                        buy_piece,
+                        interaction.user.id,
+                        interaction.user.display_name,
+                        name,
+                        f"catalog-buy-piece:{interaction.id}:{interaction.user.id}:{name}",
+                    )
+                    label = PIECE_DISPLAY_NAMES.get(name, name.title())
+                self._rebuild(updated)
+                await interaction.message.edit(content=self.render(updated), view=self)
+                await interaction.followup.send(
+                    f"✅ Bought **{label}**. 🪙 Coins left: **{shared_format_points(updated['coins'])}**",
+                    ephemeral=True,
+                )
+            except Exception as error:
+                await interaction.followup.send(f"❌ Could not buy it: `{str(error)[:800]}`", ephemeral=True)
+
+        async def equip_callback(interaction):
+            name = self.selected_name
+            await interaction.response.defer()
+            try:
+                if self.kind == "board":
+                    updated = await asyncio.to_thread(
+                        equip_board,
+                        interaction.user.id,
+                        interaction.user.display_name,
+                        name,
+                        f"catalog-equip-board:{interaction.id}:{interaction.user.id}:{name}",
+                    )
+                    label = BOARD_DISPLAY_NAMES.get(updated.get("active_board", name), name.title())
+                else:
+                    updated = await asyncio.to_thread(
+                        equip_piece,
+                        interaction.user.id,
+                        interaction.user.display_name,
+                        name,
+                        f"catalog-equip-piece:{interaction.id}:{interaction.user.id}:{name}",
+                    )
+                    label = PIECE_DISPLAY_NAMES.get(updated.get("active_piece", name), name.title())
+                self._rebuild(updated)
+                await interaction.message.edit(content=self.render(updated), view=self)
+                await interaction.followup.send(f"✅ Equipped **{label}**.", ephemeral=True)
+            except Exception as error:
+                await interaction.followup.send(f"❌ Could not equip it: `{str(error)[:800]}`", ephemeral=True)
+
+        buy.callback = buy_callback
+        equip.callback = equip_callback
+        self.add_item(buy)
+        self.add_item(equip)
+
+
+async def send_cosmetic_catalog_preview(message, kind, page=1):
+    view = CosmeticCatalogPager(message.author.id, kind, page)
+    profile, file = await view.preview_file(message.author.display_name)
+    view._rebuild(profile)
+    await message.channel.send(view.render(profile), file=file, view=view)
 
 class CosmeticProfileView(discord.ui.View):
     def __init__(self, viewer_id, target_user_id, target_name, editable=False):
@@ -5272,13 +5689,13 @@ def help_message():
 `!rush` — **5-minute Puzzle Rush**; score as many as possible (unranked).
 
 **Rated Chess**
-`!playbot` — play a bot within ±200 of your Chess Elo. Win **+3**, draw **+2**, loss **+0** shared points + coins.
+`!playbot [elo]` — play Stockfish at calibrated Elo (1320-3190); no Elo picks within ±200 of yours. Win **+3**, draw **+2**, loss **+0** shared points + coins.
 `!play @name` — free player challenge. `!play @name 10` — both stake 10 coins; winner gets 20. `!accept` / `!decline`.
 Play moves normally or use `!move e4`. `!resign` resigns. `!chessboard` shows the position.
 `!stats` shows both **Puzzle Elo** and your separate **Chess Elo**.
 
 **Points / Coins / Shop**
-`!l` — shared points + Puzzle leaders. `!coins` / `!bank` — points + shared coins. Puzzle and Guess rewards both mint coins.
+`!l` — Chess Elo, Puzzle Elo, then shared points. `!puzzlestreak` — best Puzzle streaks. `!coins` / `!bank` — points + shared coins.
 `!donate <name> <coins|badge>` — donate coins or a badge. `!trade <name> <give> <receive>` — trade coins/badges.
 `!me` / `!profile` — clickable inventory. `!profile <name>` — view another player. `!shop` — shop info.
 `!box` — badge box (50). `!customboard` — 100 boards (100 each).
@@ -7080,6 +7497,16 @@ async def on_message(
             )
             return
 
+        if command_lower in {"!pendingtrade", "!pending trade"}:
+            try:
+                profile = await asyncio.to_thread(
+                    get_cosmetic_profile, message.author.id, message.author.display_name
+                )
+                await message.channel.send(pending_trade_message(profile))
+            except Exception as error:
+                await message.channel.send(f"❌ Could not read pending trade: `{str(error)[:700]}`")
+            return
+
         if command_lower in {"!accepttrade", "!accept trade"}:
             try:
                 details = await asyncio.to_thread(
@@ -7556,12 +7983,18 @@ async def on_message(
         if command_lower == "!customboard" or command_lower.startswith("!customboard "):
             args = content.split()[1:]
             if not args:
-                await message.channel.send(board_catalog_message(1), view=CosmeticCatalogPager(message.author.id, "board", 1))
+                try:
+                    await send_cosmetic_catalog_preview(message, "board", 1)
+                except Exception as error:
+                    await message.channel.send(f"❌ Could not open board previews: `{str(error)[:800]}`")
                 return
 
             if len(args) == 1 and args[0].isdigit():
                 page = int(args[0])
-                await message.channel.send(board_catalog_message(page), view=CosmeticCatalogPager(message.author.id, "board", page))
+                try:
+                    await send_cosmetic_catalog_preview(message, "board", page)
+                except Exception as error:
+                    await message.channel.send(f"❌ Could not open board previews: `{str(error)[:800]}`")
                 return
 
             board_name = args[0].casefold()
@@ -7634,12 +8067,18 @@ async def on_message(
         if command_lower == "!custompiece" or command_lower.startswith("!custompiece "):
             args = content.split()[1:]
             if not args:
-                await message.channel.send(piece_catalog_message(1), view=CosmeticCatalogPager(message.author.id, "piece", 1))
+                try:
+                    await send_cosmetic_catalog_preview(message, "piece", 1)
+                except Exception as error:
+                    await message.channel.send(f"❌ Could not open piece previews: `{str(error)[:800]}`")
                 return
 
             if len(args) == 1 and args[0].isdigit():
                 page = int(args[0])
-                await message.channel.send(piece_catalog_message(page), view=CosmeticCatalogPager(message.author.id, "piece", page))
+                try:
+                    await send_cosmetic_catalog_preview(message, "piece", page)
+                except Exception as error:
+                    await message.channel.send(f"❌ Could not open piece previews: `{str(error)[:800]}`")
                 return
 
             piece_name = args[0].casefold()
@@ -8026,20 +8465,41 @@ async def on_message(
             "!l"
         ):
             await message.channel.send(
-                make_leaderboard()
+                format_chess_elo_leaderboard(10)
             )
             try:
-                puzzle_board = await asyncio.to_thread(
-                    format_puzzle_leaderboards,
+                puzzle_elo, _streaks = await asyncio.to_thread(
+                    split_puzzle_leaderboards,
                     10,
                 )
                 await message.channel.send(
-                    puzzle_board
+                    puzzle_elo
+                    + "\n\n🔥 Use `!puzzlestreak` to see the **Best Puzzle Streaks** leaderboard."
                 )
             except Exception as error:
                 print(
-                    f"Puzzle leaderboard stats error: {error}",
+                    f"Puzzle Elo leaderboard error: {error}",
                     flush=True,
+                )
+            await message.channel.send(
+                make_leaderboard()
+            )
+            return
+
+        if command_lower == "!puzzlestreak":
+            try:
+                _puzzle_elo, streaks = await asyncio.to_thread(
+                    split_puzzle_leaderboards,
+                    10,
+                )
+                await message.channel.send(streaks)
+            except Exception as error:
+                print(
+                    f"Puzzle streak leaderboard error: {error}",
+                    flush=True,
+                )
+                await message.channel.send(
+                    "❌ Could not load the Puzzle streak leaderboard right now."
                 )
             return
 
@@ -8370,6 +8830,10 @@ async def on_ready():
     state.setdefault("chess_challenges", {})
     state.setdefault("puzzle_rush", {})
     state.setdefault("puzzle_rush_bests", {})
+
+    if recover_chess_ratings_from_game_history():
+        print("Recovered missing Chess Elo entries from finished game history.", flush=True)
+        await save_all_critical()
 
     # Restore the current random puzzle position after a restart.
     random_puzzle = state.get(
