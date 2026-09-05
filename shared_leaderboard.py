@@ -2,12 +2,18 @@ import hashlib
 import io
 import json
 import os
+import random
 import subprocess
 import tarfile
 import tempfile
 import threading
 import time
 from pathlib import Path
+
+from shop_catalog import (
+    BADGE_BOX_COST, BADGE_POOLS, BADGE_RARITY_WEIGHTS, BOARD_COST,
+    BOARD_THEMES, COLOR_COST, NAME_COLORS, RARITY_LABELS,
+)
 
 LEDGER_BUILD = "shared-ledger-v12-snapshot-2026-09-03"
 
@@ -79,6 +85,62 @@ def _local_json(path):
         return None
 
 
+def _normalize_entry(entry):
+    entry = entry if isinstance(entry, dict) else {}
+    try:
+        points = round(float(entry.get("points", 0)), 3)
+    except Exception:
+        points = 0.0
+
+    # One-time wallet migration: an old leaderboard row has no ``coins``
+    # field, so its starting wallet is exactly its current points. Once coins
+    # are persisted they are independent: purchases reduce coins, never points.
+    try:
+        coins = round(float(entry.get("coins", points)), 3)
+    except Exception:
+        coins = points
+    coins = max(0.0, coins)
+
+    badges = entry.get("badges", [])
+    if not isinstance(badges, list):
+        badges = []
+    badges = [str(item) for item in badges if str(item)]
+
+    boards = entry.get("boards", [])
+    if not isinstance(boards, list):
+        boards = []
+    boards = [str(item).casefold() for item in boards if str(item).casefold() in BOARD_THEMES and str(item).casefold() != "classic"]
+
+    colors = entry.get("colors", [])
+    if not isinstance(colors, list):
+        colors = []
+    colors = [str(item).casefold() for item in colors if str(item).casefold() in NAME_COLORS]
+
+    active_badge = str(entry.get("active_badge", "") or "")
+    if active_badge not in badges:
+        active_badge = ""
+
+    active_board = str(entry.get("active_board", "classic") or "classic").casefold()
+    if active_board != "classic" and active_board not in boards:
+        active_board = "classic"
+
+    active_color = str(entry.get("active_color", "") or "").casefold()
+    if active_color not in colors:
+        active_color = ""
+
+    return {
+        "name": str(entry.get("name", "Unknown")),
+        "points": points,
+        "coins": coins,
+        "badges": badges,
+        "active_badge": active_badge,
+        "boards": boards,
+        "active_board": active_board,
+        "colors": colors,
+        "active_color": active_color,
+    }
+
+
 def _normalize_snapshot(data):
     if not isinstance(data, dict):
         return None
@@ -87,14 +149,7 @@ def _normalize_snapshot(data):
     for uid, entry in data.items():
         if not isinstance(entry, dict):
             continue
-        try:
-            points = round(float(entry.get("points", 0)), 3)
-        except Exception:
-            points = 0.0
-        snapshot[str(uid)] = {
-            "name": str(entry.get("name", "Unknown")),
-            "points": points,
-        }
+        snapshot[str(uid)] = _normalize_entry(entry)
     return snapshot
 
 
@@ -195,10 +250,7 @@ def _historical_snapshot(events, legacy):
     """
     if not events:
         return {
-            str(uid): {
-                "name": str(entry.get("name", "Unknown")),
-                "points": round(float(entry.get("points", 0)), 3),
-            }
+            str(uid): _normalize_entry(entry)
             for uid, entry in (legacy or {}).items()
             if isinstance(entry, dict)
         }
@@ -244,7 +296,7 @@ def _historical_snapshot(events, legacy):
 
     for entry in totals.values():
         entry.pop("_last_created", None)
-    return totals
+    return {uid: _normalize_entry(entry) for uid, entry in totals.items()}
 
 
 def _origin_state():
@@ -276,10 +328,7 @@ def _local_state():
 def _snapshot_json(snapshot):
     clean = {}
     for uid, entry in snapshot.items():
-        clean[str(uid)] = {
-            "name": str(entry.get("name", "Unknown")),
-            "points": round(float(entry.get("points", 0)), 3),
-        }
+        clean[str(uid)] = _normalize_entry(entry)
     return json.dumps(clean, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
 
 
@@ -471,10 +520,11 @@ def add_points(user_id, display_name, amount, transaction_id, source="chatter"):
 
             before = float(snapshot.get(uid, {}).get("points", 0))
             after = round(before + amount, 3)
-            snapshot[uid] = {
-                "name": str(display_name),
-                "points": after,
-            }
+            entry = _normalize_entry(snapshot.get(uid, {"name": display_name, "points": before}))
+            entry["name"] = str(display_name)
+            entry["points"] = after
+            entry["coins"] = round(max(0.0, float(entry.get("coins", before)) + amount), 3)
+            snapshot[uid] = entry
 
             payload = _audit_event(
                 transaction_id,
@@ -546,10 +596,11 @@ def adjust_points(user_id, display_name, amount, transaction_id, source="adjustm
 
             before = float(snapshot.get(uid, {}).get("points", 0))
             after = round(before + amount, 3)
-            snapshot[uid] = {
-                "name": str(display_name),
-                "points": after,
-            }
+            entry = _normalize_entry(snapshot.get(uid, {"name": display_name, "points": before}))
+            entry["name"] = str(display_name)
+            entry["points"] = after
+            entry["coins"] = round(max(0.0, float(entry.get("coins", before)) + amount), 3)
+            snapshot[uid] = entry
 
             payload = _audit_event(
                 transaction_id,
@@ -646,10 +697,11 @@ def admin_set_points(
 
             before = float(snapshot.get(uid, {}).get("points", 0))
             after = target_points
-            snapshot[uid] = {
-                "name": canonical_name,
-                "points": after,
-            }
+            entry = _normalize_entry(snapshot.get(uid, {"name": canonical_name, "points": before}))
+            entry["name"] = canonical_name
+            entry["points"] = after
+            entry["coins"] = round(max(0.0, float(entry.get("coins", before)) + (after - before)), 3)
+            snapshot[uid] = entry
 
             payload = _audit_event(
                 transaction_id,
@@ -684,6 +736,253 @@ def admin_set_points(
 def get_score(user_id):
     snapshot = _current_snapshot()
     return float(snapshot.get(str(user_id), {}).get("points", 0))
+
+
+def get_coins(user_id):
+    snapshot = _current_snapshot()
+    entry = _normalize_entry(snapshot.get(str(user_id), {}))
+    return float(entry.get("coins", entry.get("points", 0)))
+
+
+def get_cosmetic_profile(user_id, fallback_name=None):
+    snapshot = _current_snapshot()
+    uid = str(user_id)
+    raw = snapshot.get(uid, {})
+    entry = _normalize_entry(raw)
+    if fallback_name and (not raw or entry.get("name") == "Unknown"):
+        entry["name"] = str(fallback_name)
+    return {"user_id": uid, **entry}
+
+
+def badge_for_user(user_id):
+    return str(get_cosmetic_profile(user_id).get("active_badge", "") or "")
+
+
+def badge_map(user_ids=None):
+    snapshot = _current_snapshot()
+    wanted = None if user_ids is None else {str(uid) for uid in user_ids}
+    result = {}
+    for uid, entry in snapshot.items():
+        if wanted is not None and str(uid) not in wanted:
+            continue
+        result[str(uid)] = str(entry.get("active_badge", "") or "")
+    return result
+
+
+def badge_prefix(user_id):
+    badge = badge_for_user(user_id)
+    return (badge + " ") if badge else ""
+
+
+def _shop_mutation(user_id, display_name, transaction_id, operation, mutate):
+    global _CACHE_SNAPSHOT
+    if not transaction_id:
+        raise ValueError("A unique transaction_id is required.")
+    uid = str(user_id)
+
+    with _LOCK:
+        for attempt in range(1, MAX_RETRIES + 1):
+            if not _fetch_retry():
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            existing = _origin_event(transaction_id)
+            try:
+                snapshot, migrated = _origin_state()
+            except Exception:
+                time.sleep(min(2.0, 0.2 * attempt))
+                continue
+
+            if existing is not None:
+                _CACHE_SNAPSHOT = {k: dict(v) for k, v in snapshot.items()}
+                return _normalize_entry(snapshot.get(uid, {})), existing
+
+            entry = _normalize_entry(snapshot.get(uid, {
+                "name": display_name,
+                "points": 0,
+            }))
+            entry["name"] = str(display_name)
+            before_coins = float(entry.get("coins", 0))
+            details = mutate(entry) or {}
+            after_coins = float(entry.get("coins", 0))
+            snapshot[uid] = entry
+
+            payload = {
+                "transaction_id": str(transaction_id),
+                "operation": str(operation),
+                "user_id": uid,
+                "display_name": str(display_name),
+                "before_coins": round(before_coins, 3),
+                "after_coins": round(after_coins, 3),
+                "details": details,
+                "ledger_build": LEDGER_BUILD,
+                "created_at": int(time.time()),
+                "created_at_ns": int(time.time_ns()),
+            }
+
+            files = {
+                LEGACY_FILE: _snapshot_json(snapshot),
+                _event_filename(transaction_id): _event_json(payload),
+            }
+            if not migrated:
+                files[_event_filename(MIGRATION_TRANSACTION_ID)] = _event_json(
+                    _migration_event()
+                )
+
+            if _push_files(files, "Update cosmetic shop state"):
+                verified_snapshot, verified = _verified_origin_snapshot(transaction_id)
+                if verified and verified_snapshot is not None:
+                    return _normalize_entry(verified_snapshot.get(uid, entry)), payload
+
+            time.sleep(min(2.0, 0.25 * attempt))
+
+    raise RuntimeError(f"Could not safely record shop transaction {transaction_id}.")
+
+
+def spend_coins(user_id, display_name, amount, transaction_id, source="shop"):
+    amount = round(float(amount), 3)
+    if amount <= 0:
+        raise ValueError("Coin spend must be positive.")
+
+    def mutate(entry):
+        before = float(entry.get("coins", 0))
+        if before + 1e-9 < amount:
+            raise ValueError(
+                f"Not enough coins. Need {format_points(amount)}, have {format_points(before)}."
+            )
+        entry["coins"] = round(before - amount, 3)
+        return {"source": str(source), "spent": amount}
+
+    entry, _event = _shop_mutation(
+        user_id, display_name, transaction_id, "coin-spend", mutate
+    )
+    return float(entry.get("coins", 0))
+
+
+def credit_coins(user_id, display_name, amount, transaction_id, source="coin-credit"):
+    amount = round(float(amount), 3)
+    if amount <= 0:
+        raise ValueError("Coin credit must be positive.")
+
+    def mutate(entry):
+        entry["coins"] = round(float(entry.get("coins", 0)) + amount, 3)
+        return {"source": str(source), "credited": amount}
+
+    entry, _event = _shop_mutation(
+        user_id, display_name, transaction_id, "coin-credit", mutate
+    )
+    return float(entry.get("coins", 0))
+
+
+def buy_badge_box(user_id, display_name, transaction_id):
+    rarity_names = list(BADGE_RARITY_WEIGHTS)
+    weights = [BADGE_RARITY_WEIGHTS[name] for name in rarity_names]
+    rarity = random.choices(rarity_names, weights=weights, k=1)[0]
+    badge = random.choice(BADGE_POOLS[rarity])
+
+    def mutate(entry):
+        before = float(entry.get("coins", 0))
+        if before + 1e-9 < BADGE_BOX_COST:
+            raise ValueError(
+                f"Not enough coins. Need {format_points(BADGE_BOX_COST)}, have {format_points(before)}."
+            )
+        entry["coins"] = round(before - BADGE_BOX_COST, 3)
+        entry.setdefault("badges", []).append(badge)
+        if not entry.get("active_badge"):
+            entry["active_badge"] = badge
+        return {
+            "spent": BADGE_BOX_COST,
+            "rarity": rarity,
+            "rarity_label": RARITY_LABELS[rarity],
+            "badge": badge,
+        }
+
+    entry, event = _shop_mutation(
+        user_id, display_name, transaction_id, "badge-box", mutate
+    )
+    details = event.get("details", {}) if isinstance(event, dict) else {}
+    return {
+        "badge": details.get("badge", badge),
+        "rarity": details.get("rarity", rarity),
+        "rarity_label": details.get("rarity_label", RARITY_LABELS.get(rarity, rarity.title())),
+        "coins": float(entry.get("coins", 0)),
+        "profile": {"user_id": str(user_id), **entry},
+    }
+
+
+def equip_badge(user_id, display_name, badge, transaction_id):
+    badge = str(badge)
+    def mutate(entry):
+        if badge not in entry.get("badges", []):
+            raise ValueError("You do not own that badge.")
+        entry["active_badge"] = badge
+        return {"badge": badge}
+    entry, _ = _shop_mutation(user_id, display_name, transaction_id, "equip-badge", mutate)
+    return {"user_id": str(user_id), **entry}
+
+
+def buy_board(user_id, display_name, board_name, transaction_id):
+    board_name = str(board_name).casefold()
+    if board_name not in BOARD_THEMES or board_name == "classic":
+        raise ValueError("Unknown or free default board theme.")
+    def mutate(entry):
+        if board_name in entry.get("boards", []):
+            raise ValueError("You already own that board theme.")
+        before = float(entry.get("coins", 0))
+        if before + 1e-9 < BOARD_COST:
+            raise ValueError(
+                f"Not enough coins. Need {format_points(BOARD_COST)}, have {format_points(before)}."
+            )
+        entry["coins"] = round(before - BOARD_COST, 3)
+        entry.setdefault("boards", []).append(board_name)
+        return {"spent": BOARD_COST, "board": board_name}
+    entry, _ = _shop_mutation(user_id, display_name, transaction_id, "buy-board", mutate)
+    return {"user_id": str(user_id), **entry}
+
+
+def equip_board(user_id, display_name, board_name, transaction_id):
+    board_name = str(board_name).casefold()
+    if board_name not in BOARD_THEMES:
+        raise ValueError("Unknown board theme.")
+    def mutate(entry):
+        if board_name != "classic" and board_name not in entry.get("boards", []):
+            raise ValueError("You do not own that board theme.")
+        entry["active_board"] = board_name
+        return {"board": board_name}
+    entry, _ = _shop_mutation(user_id, display_name, transaction_id, "equip-board", mutate)
+    return {"user_id": str(user_id), **entry}
+
+
+def buy_color(user_id, display_name, color_name, transaction_id):
+    color_name = str(color_name).casefold()
+    if color_name not in NAME_COLORS:
+        raise ValueError("Unknown shop color.")
+    def mutate(entry):
+        if color_name in entry.get("colors", []):
+            raise ValueError("You already own that color.")
+        before = float(entry.get("coins", 0))
+        if before + 1e-9 < COLOR_COST:
+            raise ValueError(
+                f"Not enough coins. Need {format_points(COLOR_COST)}, have {format_points(before)}."
+            )
+        entry["coins"] = round(before - COLOR_COST, 3)
+        entry.setdefault("colors", []).append(color_name)
+        return {"spent": COLOR_COST, "color": color_name}
+    entry, _ = _shop_mutation(user_id, display_name, transaction_id, "buy-color", mutate)
+    return {"user_id": str(user_id), **entry}
+
+
+def equip_color(user_id, display_name, color_name, transaction_id):
+    color_name = str(color_name).casefold().strip()
+    if color_name and color_name not in NAME_COLORS:
+        raise ValueError("Unknown shop color.")
+    def mutate(entry):
+        if color_name and color_name not in entry.get("colors", []):
+            raise ValueError("You do not own that color.")
+        entry["active_color"] = color_name
+        return {"color": color_name}
+    entry, _ = _shop_mutation(user_id, display_name, transaction_id, "equip-color", mutate)
+    return {"user_id": str(user_id), **entry}
 
 
 def format_points(value):
@@ -723,7 +1022,7 @@ def personal_ranking(user_id):
         word = "point" if points == 1 else "points"
         marker = " ← you" if str(uid) == str(user_id) else ""
         lines.append(
-            f"**#{i + 1} {entry.get('name', 'Unknown')} — "
+            f"**#{i + 1} {entry.get('active_badge', '') + ' ' if entry.get('active_badge') else ''}{entry.get('name', 'Unknown')} — "
             f"{format_points(points)} {word}{marker}**"
         )
 
@@ -751,7 +1050,7 @@ def full_leaderboard(title="🏆 **Shared Leaderboard**"):
             prefix = f"**{rank}.**"
 
         lines.append(
-            f"{prefix} {entry.get('name', 'Unknown')} — "
+            f"{prefix} {entry.get('active_badge', '') + ' ' if entry.get('active_badge') else ''}{entry.get('name', 'Unknown')} — "
             f"**{format_points(points)} {word}**"
         )
 
