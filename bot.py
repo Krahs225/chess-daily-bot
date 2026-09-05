@@ -61,7 +61,7 @@ from collections import Counter
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
-from puzzle_mode_lock import is_survival_active, active_team
+from puzzle_mode_lock import is_survival_active, active_team, clear_lock
 
 from puzzle_stats import (
     PUZZLE_STATS_BUILD,
@@ -161,6 +161,36 @@ async def settle_recent_survival_stop():
     _survival_check_cache["time"] = 0.0
 
 
+def _survival_run_blocks_puzzles(run):
+    """Return True only for a genuinely live Survival run.
+
+    Older saved runs can contain stale combinations such as status=active while
+    already being dead on three strikes. Those runs must never block RP,
+    Practice, exact-rating puzzles, or normal chess.
+    """
+    if not isinstance(run, dict):
+        return False
+
+    if str(run.get("status", "")).lower() != "active":
+        return False
+
+    try:
+        strikes = int(run.get("strikes", 0) or 0)
+    except (TypeError, ValueError):
+        strikes = 0
+
+    # Survival uses three strikes / zero hearts as a dead run. Some very old
+    # persisted runs were left with status=active even after reaching 3/3.
+    if strikes >= 3:
+        return False
+
+    paused_reason = str(run.get("paused_reason") or "").strip().lower()
+    if paused_reason in {"three strikes", "manually stopped", "stopped", "dead", "finished"}:
+        return False
+
+    return True
+
+
 def remote_survival_status():
     now = time.time()
 
@@ -246,17 +276,13 @@ def remote_survival_status():
                 ):
                     continue
 
-                if run.get(
-                    "status"
-                ) == "active":
-
+                if _survival_run_blocks_puzzles(run):
                     active_team_name = (
                         team_data.get(
                             "name",
                             "Survival",
                         )
                     )
-
                     break
 
         active = (
@@ -307,6 +333,35 @@ def remote_survival_status():
             True,
             "Survival",
         )
+
+
+def verified_survival_status():
+    """Use persisted Survival state as source of truth and self-heal stale locks.
+
+    The short survival_guard_active() hand-off still protects the few seconds
+    while a newly started Survival run is being persisted. Outside that window,
+    a dead/paused remote run means an old local puzzle_mode_lock is stale and
+    can be cleared safely.
+    """
+    active, team = remote_survival_status()
+    if active:
+        return True, team or active_team()
+
+    if is_survival_active():
+        stale_team = active_team()
+        try:
+            clear_lock()
+            print(
+                f"Cleared stale Survival puzzle lock"
+                f"{f' for {stale_team}' if stale_team else ''}; remote run is inactive/dead.",
+                flush=True,
+            )
+        except Exception as error:
+            # Do not re-block puzzles merely because cleanup of a stale local
+            # hand-off file failed. The persisted state is authoritative here.
+            print(f"Could not clear stale Survival lock: {error}", flush=True)
+
+    return False, None
 
 
 
@@ -9849,8 +9904,9 @@ async def on_message(
                 )
                 return
 
-            if is_survival_active():
-                team = active_team() or "another team"
+            survival_active, survival_team = verified_survival_status()
+            if survival_active:
+                team = survival_team or "another team"
                 await message.channel.send(
                     f"⚠️ **Survival Mode is active for {team}.** "
                     "Lichess rating puzzles are unavailable until Survival is paused."
@@ -9958,8 +10014,9 @@ async def on_message(
                 )
                 return
 
-            if is_survival_active():
-                team = active_team() or "another team"
+            survival_active, survival_team = verified_survival_status()
+            if survival_active:
+                team = survival_team or "another team"
                 await message.channel.send(
                     f"⚠️ **Survival Mode is active for {team}.** "
                     "Practice is unavailable until Survival is paused."
@@ -10003,8 +10060,9 @@ async def on_message(
                 )
                 return
 
-            if is_survival_active():
-                team = active_team() or "another team"
+            survival_active, survival_team = verified_survival_status()
+            if survival_active:
+                team = survival_team or "another team"
                 await message.channel.send(
                     f"⚠️ **Survival Mode is active for {team}.** "
                     "Random Puzzle is unavailable until Survival is paused."
