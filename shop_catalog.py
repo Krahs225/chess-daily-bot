@@ -359,6 +359,8 @@ def canonical_piece_set(name):
 PIECE_DISPLAY_NAMES = {name: data["label"] for name, data in PIECE_SETS.items()}
 
 ARROW_COLORS = {
+    # Green stays the free fallback so every player always has a usable arrow.
+    # Every other color is a normal 50-coin shop cosmetic via ARROW_COST.
     "green": {"label": "Green", "hex": "#15781B"},
     "red": {"label": "Red", "hex": "#C0392B"},
     "blue": {"label": "Blue", "hex": "#2980B9"},
@@ -369,6 +371,16 @@ ARROW_COLORS = {
     "pink": {"label": "Pink", "hex": "#E84393"},
     "gold": {"label": "Gold", "hex": "#D4AC0D"},
     "lime": {"label": "Lime", "hex": "#7ED957"},
+    "teal": {"label": "Teal", "hex": "#138D75"},
+    "navy": {"label": "Navy", "hex": "#1F4E8C"},
+    "sky": {"label": "Sky Blue", "hex": "#5DADE2"},
+    "indigo": {"label": "Indigo", "hex": "#4B4FA3"},
+    "violet": {"label": "Violet", "hex": "#A569BD"},
+    "magenta": {"label": "Magenta", "hex": "#C2185B"},
+    "rose": {"label": "Rose", "hex": "#E75480"},
+    "coral": {"label": "Coral", "hex": "#FF6F61"},
+    "amber": {"label": "Amber", "hex": "#F39C12"},
+    "silver": {"label": "Silver", "hex": "#AAB7B8"},
 }
 DEFAULT_ARROW_COLOR = "green"
 
