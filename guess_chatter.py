@@ -2899,8 +2899,96 @@ def guess_pending_trade_message(profile):
         f"🤝 **Pending trade from {pending.get('from_name', 'Unknown')}**\n"
         f"They give you: **{shared_format_trade_asset(pending['offer'])}**\n"
         f"They want: **{shared_format_trade_asset(pending['request'])}**\n\n"
-        "Use `!accepttrade` or `!declinetrade`."
+        "Choose **Accept** or **Decline** below."
     )
+
+
+class GuessTradeDecisionView(discord.ui.View):
+    """Physical accept/decline controls for one recipient's pending trade."""
+
+    def __init__(self, recipient_user_id, recipient_name):
+        super().__init__(timeout=900)
+        self.recipient_user_id = str(recipient_user_id)
+        self.recipient_name = str(recipient_name or "Trader")
+
+        accept_button = discord.ui.Button(
+            label="Accept",
+            emoji="✅",
+            style=discord.ButtonStyle.success,
+        )
+        decline_button = discord.ui.Button(
+            label="Decline",
+            emoji="❌",
+            style=discord.ButtonStyle.danger,
+        )
+        accept_button.callback = self._accept
+        decline_button.callback = self._decline
+        self.add_item(accept_button)
+        self.add_item(decline_button)
+
+    async def interaction_check(self, interaction: discord.Interaction) -> bool:
+        if str(interaction.user.id) != self.recipient_user_id:
+            await interaction.response.send_message(
+                "❌ Only the player receiving this trade can use these buttons.",
+                ephemeral=True,
+            )
+            return False
+        return True
+
+    async def _accept(self, interaction: discord.Interaction):
+        try:
+            details = await asyncio.to_thread(
+                shared_accept_trade,
+                interaction.user.id,
+                interaction.user.display_name,
+                f"trade-accept-button:{interaction.id}:{interaction.user.id}",
+            )
+        except ValueError as error:
+            await interaction.response.send_message(f"❌ **{error}**", ephemeral=True)
+            return
+        except Exception as error:
+            await interaction.response.send_message(
+                f"❌ Could not safely accept trade: `{str(error)[:700]}`",
+                ephemeral=True,
+            )
+            return
+
+        self.stop()
+        await interaction.response.edit_message(
+            content=(
+                "✅ **Trade accepted!**\n"
+                f"{interaction.user.display_name} received **{shared_format_trade_asset(details['offer'])}**.\n"
+                f"{details.get('from_name', 'Other player')} received **{shared_format_trade_asset(details['request'])}**."
+            ),
+            view=None,
+        )
+
+    async def _decline(self, interaction: discord.Interaction):
+        try:
+            pending = await asyncio.to_thread(
+                shared_decline_trade,
+                interaction.user.id,
+                interaction.user.display_name,
+                f"trade-decline-button:{interaction.id}:{interaction.user.id}",
+            )
+        except ValueError as error:
+            await interaction.response.send_message(f"❌ **{error}**", ephemeral=True)
+            return
+        except Exception as error:
+            await interaction.response.send_message(
+                f"❌ Could not safely decline trade: `{str(error)[:700]}`",
+                ephemeral=True,
+            )
+            return
+
+        self.stop()
+        await interaction.response.edit_message(
+            content=(
+                f"❌ **Trade declined.** Offer from "
+                f"{pending.get('from_name', 'Unknown')} was removed."
+            ),
+            view=None,
+        )
 
 
 async def command_handler(message):
@@ -3069,7 +3157,8 @@ async def command_handler(message):
             f"🤝 **Trade offer for {target_name}**\n"
             f"{message.author.display_name} gives: **{shared_format_trade_asset(offer)}**\n"
             f"{message.author.display_name} receives: **{shared_format_trade_asset(request)}**\n"
-            f"{target_name}: use `!accepttrade` or `!declinetrade`."
+            f"{target_name}: choose below.",
+            view=GuessTradeDecisionView(target_user_id, target_name),
         )
         return
 
@@ -3078,7 +3167,14 @@ async def command_handler(message):
             profile = await asyncio.to_thread(
                 get_cosmetic_profile, message.author.id, message.author.display_name
             )
-            await message.channel.send(guess_pending_trade_message(profile))
+            pending = profile.get("pending_trade") if isinstance(profile, dict) else None
+            await message.channel.send(
+                guess_pending_trade_message(profile),
+                view=(
+                    GuessTradeDecisionView(message.author.id, message.author.display_name)
+                    if pending else None
+                ),
+            )
         except Exception as error:
             await message.channel.send(f"❌ **Could not read pending trade:** `{str(error)[:700]}`")
         return
