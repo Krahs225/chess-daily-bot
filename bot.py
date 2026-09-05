@@ -1356,6 +1356,9 @@ def fetch_random_puzzle(force_band=None):
             "lichess_id": str(puzzle_id),
             "rating": rating,
             "rp_band": band,
+            # The database FEN is before the opponent's setup move. Keep that
+            # move so Random Puzzle can highlight exactly what was just played.
+            "setup_uci": first_move.uci(),
         }
 
 
@@ -1885,6 +1888,11 @@ def build_puzzle(data):
         # Daily puzzles continue to use the original FEN.
         "current_fen":
             data["fen"],
+
+        # Initial opponent setup move. make_board_file() uses this for the
+        # last-move highlight + arrow on fresh Random/Practice puzzles.
+        "last_move_uci":
+            data.get("setup_uci"),
 
         "pgn":
             data["pgn"],
