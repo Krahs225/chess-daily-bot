@@ -641,13 +641,32 @@ def _move_review_comment(classification, loss_cp, best_san, sacrifice_cp=0):
     return f"Big eval drop (~{loss_pawns:.1f} pawns). Best was {best_text}."
 
 
-def analyse_game_moves(san_moves, max_plies=None):
-    """Analyse a finished standard-start game with full-strength Stockfish.
 
-    Returns compact summary stats plus a per-move review list used by the
-    clickable Discord game-review viewer. 'Brilliant' is a conservative local
-    Stockfish heuristic (best move + meaningful tactical material offer), not
-    Chess.com's proprietary classification.
+def stockfish_position_eval_cp(board, pov_color=chess.WHITE, analysis_time=None):
+    """Return a full-strength Stockfish evaluation in centipawns for ``pov_color``.
+
+    Used for draw-offer adjudication. Mate scores are mapped to a very large
+    centipawn value so they can never be mistaken for a drawish position.
+    """
+    if not isinstance(board, chess.Board):
+        raise TypeError("board must be a chess.Board")
+    color = chess.WHITE if pov_color == chess.WHITE else chess.BLACK
+    limit_time = STOCKFISH_ANALYSIS_TIME if analysis_time is None else max(0.05, float(analysis_time))
+    with _STOCKFISH_LOCK:
+        engine = _get_stockfish_engine()
+        engine.configure(_full_strength_config(engine))
+        info = engine.analyse(board, chess.engine.Limit(time=limit_time))
+        return int(_engine_score_cp(info, color))
+
+def analyse_game_moves(san_moves, max_plies=None, start_fen=None):
+    """Analyse a finished game with full-strength Stockfish.
+
+    ``start_fen`` is optional and keeps existing standard-start callers fully
+    backward compatible while allowing ``!review`` to analyse PGNs that use a
+    custom FEN start position. Returns compact summary stats plus a per-move
+    review list used by the clickable Discord game-review viewer. 'Brilliant'
+    is a conservative local Stockfish heuristic (best move + meaningful
+    tactical material offer), not Chess.com's proprietary classification.
     """
     moves = [str(item) for item in list(san_moves or [])]
     empty_side = {
@@ -676,7 +695,10 @@ def analyse_game_moves(san_moves, max_plies=None):
     truncated = len(moves) > limit_plies
     moves = moves[:limit_plies]
 
-    board = chess.Board()
+    try:
+        board = chess.Board(str(start_fen)) if start_fen else chess.Board()
+    except Exception as error:
+        raise ValueError(f"Invalid PGN start FEN: {error}") from error
     side_losses = {chess.WHITE: [], chess.BLACK: []}
     side_counts = {
         chess.WHITE: {
