@@ -18,7 +18,10 @@ import requests
 import discord
 from discord.ext import commands
 
-from shop_catalog import SURVIVAL_HEART_COST, BOARD_THEMES, PIECE_SETS
+from shop_catalog import (
+    SURVIVAL_HEART_COST, BOARD_THEMES, PIECE_SETS,
+    ARROW_COLORS, DEFAULT_ARROW_COLOR,
+)
 from puzzle_stats import record_puzzle_attempt
 
 from puzzle_mode_lock import (
@@ -1195,6 +1198,12 @@ def build_runtime_puzzle(
             [],
         "rated_users":
             [],
+        # Keep the opponent/setup move so the very first board already shows
+        # the same last-move highlight/arrow behavior as RP and Rush.
+        "setup_move_uci":
+            str(puzzle["moves"][0]),
+        "last_move_uci":
+            str(puzzle["moves"][0]),
         "last_move_san":
             None,
         "accepted_moves":
@@ -1330,16 +1339,27 @@ def _survival_piece_overlay_svg(board, orientation, piece_theme):
     return "".join(parts)
 
 
-def _survival_render_custom_svg(board, orientation, board_theme="classic", piece_theme="classic", size=520):
+def _survival_render_custom_svg(
+    board,
+    orientation,
+    board_theme="classic",
+    piece_theme="classic",
+    size=520,
+    lastmove=None,
+    arrows=None,
+):
     board_theme = str(board_theme or "classic").casefold()
     piece_theme = str(piece_theme or "classic").casefold()
     light, dark = BOARD_THEMES.get(board_theme, BOARD_THEMES["classic"])
+    arrows = list(arrows or [])
     if piece_theme == "classic" or piece_theme not in PIECE_SETS:
         return chess.svg.board(
             board=board,
             orientation=orientation,
             size=size,
             coordinates=True,
+            lastmove=lastmove,
+            arrows=arrows,
             colors={"square light": light, "square dark": dark},
         )
     svg = chess.svg.board(
@@ -1347,14 +1367,39 @@ def _survival_render_custom_svg(board, orientation, board_theme="classic", piece
         orientation=orientation,
         size=size,
         coordinates=True,
+        lastmove=lastmove,
+        arrows=arrows,
         colors={"square light": light, "square dark": dark},
     )
     return svg.replace("</svg>", _survival_piece_overlay_svg(board, orientation, piece_theme) + "</svg>")
+
+
+def _survival_last_move(puzzle):
+    """Return the newest displayed move, including setup and opponent replies."""
+    if not isinstance(puzzle, dict):
+        return None
+
+    raw = str(puzzle.get("last_move_uci") or "").strip().casefold()
+    if not raw:
+        # Compatibility for saved runs made before last_move_uci existed.
+        next_index = int(puzzle.get("next_solution_index", 0) or 0)
+        solution = puzzle.get("solution", [])
+        if next_index > 0 and isinstance(solution, list) and next_index <= len(solution):
+            raw = str(solution[next_index - 1].get("uci", "") or "").strip().casefold()
+        elif next_index == 0:
+            raw = str(puzzle.get("setup_move_uci") or "").strip().casefold()
+
+    try:
+        return chess.Move.from_uci(raw) if raw else None
+    except Exception:
+        return None
+
 
 def render_board(
     puzzle,
     board_theme="classic",
     piece_theme="classic",
+    arrow_theme=DEFAULT_ARROW_COLOR,
 ):
     board = chess.Board(
         puzzle["current_fen"]
@@ -1393,12 +1438,30 @@ def render_board(
             flush=True,
         )
 
+    last_move = _survival_last_move(puzzle)
+    arrow_key = str(arrow_theme or DEFAULT_ARROW_COLOR).casefold()
+    arrow_color = ARROW_COLORS.get(
+        arrow_key,
+        ARROW_COLORS[DEFAULT_ARROW_COLOR],
+    )["hex"]
+    arrows = []
+    if last_move is not None:
+        arrows.append(
+            chess.svg.Arrow(
+                last_move.from_square,
+                last_move.to_square,
+                color=arrow_color,
+            )
+        )
+
     svg = _survival_render_custom_svg(
         board,
         orientation,
         board_theme=board_theme,
         piece_theme=piece_theme,
         size=520,
+        lastmove=last_move,
+        arrows=arrows,
     )
 
     png = awaitable_svg_to_png(
@@ -1436,6 +1499,7 @@ async def send_puzzle_embed(
 
     board_theme = "classic"
     piece_theme = "classic"
+    arrow_theme = DEFAULT_ARROW_COLOR
     captain_id = run.get("captain_id")
     if captain_id:
         try:
@@ -1446,6 +1510,7 @@ async def send_puzzle_embed(
             )
             board_theme = cosmetics.get("active_board", "classic") or "classic"
             piece_theme = cosmetics.get("active_piece", "classic") or "classic"
+            arrow_theme = cosmetics.get("active_arrow", DEFAULT_ARROW_COLOR) or DEFAULT_ARROW_COLOR
         except Exception as error:
             print(f"Survival captain cosmetics lookup failed: {error}", flush=True)
 
@@ -1453,6 +1518,7 @@ async def send_puzzle_embed(
         puzzle,
         board_theme=board_theme,
         piece_theme=piece_theme,
+        arrow_theme=arrow_theme,
     )
 
     number = run[
@@ -3179,6 +3245,9 @@ class SurvivalBot(
                 move
             )
 
+            puzzle["last_move_uci"] = move.uci()
+            puzzle["last_move_san"] = accepted_san
+
             # If the submitted move itself checkmates, the puzzle is
             # solved even when Lichess stored a different mate line.
             alternative_checkmate = board.is_checkmate()
@@ -3215,6 +3284,9 @@ class SurvivalBot(
                     reply_move
                 )
 
+                puzzle["last_move_uci"] = reply_move.uci()
+                puzzle["last_move_san"] = reply["san"]
+
                 opponent_replies.append(
                     reply["san"]
                 )
@@ -3228,10 +3300,6 @@ class SurvivalBot(
             puzzle[
                 "next_solution_index"
             ] = next_index
-
-            puzzle[
-                "last_move_san"
-            ] = expected["san"]
 
             run[
                 "last_activity"
@@ -3326,6 +3394,7 @@ class SurvivalBot(
 
             board_theme = "classic"
             piece_theme = "classic"
+            arrow_theme = DEFAULT_ARROW_COLOR
             captain_id = run.get("captain_id")
             if captain_id:
                 try:
@@ -3336,6 +3405,7 @@ class SurvivalBot(
                     )
                     board_theme = cosmetics.get("active_board", "classic") or "classic"
                     piece_theme = cosmetics.get("active_piece", "classic") or "classic"
+                    arrow_theme = cosmetics.get("active_arrow", DEFAULT_ARROW_COLOR) or DEFAULT_ARROW_COLOR
                 except Exception as error:
                     print(f"Survival captain cosmetics lookup failed: {error}", flush=True)
 
@@ -3343,6 +3413,7 @@ class SurvivalBot(
                 puzzle,
                 board_theme=board_theme,
                 piece_theme=piece_theme,
+                arrow_theme=arrow_theme,
             )
 
             remaining = (
