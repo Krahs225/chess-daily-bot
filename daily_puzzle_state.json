@@ -56,66 +56,96 @@
     "helper_awarded_users": [],
     "helper_candidate_users": []
   },
-  "latest_puzzle_type": "random",
+  "latest_puzzle_type": "daily",
   "leaderboard_last_posted_date": "2026-09-05",
   "current_puzzle": {
-    "url": "https://www.chess.com/daily/2026-09-04",
-    "title": "Open and Shut Case",
-    "fen": "6Q1/1K6/8/pkp5/1p6/8/P1P5/4q3 w - - 0 1",
-    "current_fen": "6Q1/1K6/8/pkp5/1p6/8/P1P5/4q3 w - - 0 1",
-    "pgn": "[Date \"2012.??.??\"]\n[White \"Kovalenko\"]\n[Black \"Study\"]\n[Result \"1-0\"]\n[FEN \"6Q1/1K6/8/pkp5/1p6/8/P1P5/4q3 w - - 0 1\"]\n\n1. a4+ bxa3 2. Qb3+ Qb4 3. c4# 1-0",
+    "url": "https://www.chess.com/daily/2026-09-05",
+    "title": "Siren's Call",
+    "fen": "r1b2rk1/2p1bp1p/2np4/8/qp1BB1PP/5PN1/PP1Q4/K6R w - - 0 1",
+    "current_fen": "r1b2rk1/2p1bp1p/2np4/8/qp1BB1PP/5PN1/PP1Q4/K6R w - - 0 1",
+    "pgn": "[White \"Matt Fletcher/Jeremy Kane\"]\n[Black \"Daily Puzzle Inspiration\"]\n[Result \"1-0\"]\n[FEN \"r1b2rk1/2p1bp1p/2np4/8/qp1BB1PP/5PN1/PP1Q4/K6R w - - 0 1\"]\n\n1. Qg5+ Bxg5 2. Bxh7+ Kxh7 3. hxg5+ Kg6 4. Rh6+ Kxg5 5. Be3# 1-0",
     "all_moves": [
       {
-        "uci": "a2a4",
-        "san": "a4+",
+        "uci": "d2g5",
+        "san": "Qg5+",
         "color": "white"
       },
       {
-        "uci": "b4a3",
-        "san": "bxa3",
+        "uci": "e7g5",
+        "san": "Bxg5",
         "color": "black"
       },
       {
-        "uci": "g8b3",
-        "san": "Qb3+",
+        "uci": "e4h7",
+        "san": "Bxh7+",
         "color": "white"
       },
       {
-        "uci": "e1b4",
-        "san": "Qb4",
+        "uci": "g8h7",
+        "san": "Kxh7",
         "color": "black"
       },
       {
-        "uci": "c2c4",
-        "san": "c4#",
+        "uci": "h4g5",
+        "san": "hxg5+",
+        "color": "white"
+      },
+      {
+        "uci": "h7g6",
+        "san": "Kg6",
+        "color": "black"
+      },
+      {
+        "uci": "h1h6",
+        "san": "Rh6+",
+        "color": "white"
+      },
+      {
+        "uci": "g6g5",
+        "san": "Kxg5",
+        "color": "black"
+      },
+      {
+        "uci": "d4e3",
+        "san": "Be3#",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "a2a4",
-        "san": "a4+",
+        "uci": "d2g5",
+        "san": "Qg5+",
         "color": "white"
       },
       {
-        "uci": "g8b3",
-        "san": "Qb3+",
+        "uci": "e4h7",
+        "san": "Bxh7+",
         "color": "white"
       },
       {
-        "uci": "c2c4",
-        "san": "c4#",
+        "uci": "h4g5",
+        "san": "hxg5+",
+        "color": "white"
+      },
+      {
+        "uci": "h1h6",
+        "san": "Rh6+",
+        "color": "white"
+      },
+      {
+        "uci": "d4e3",
+        "san": "Be3#",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 3,
-    "posted_at": "2026-09-04T11:02:44.546458+00:00",
-    "answer_posted": true,
+    "player_move_count": 5,
+    "posted_at": "2026-09-05T07:04:21.865571+00:00",
+    "answer_posted": false,
     "winner_user_id": null,
     "winner_name": null,
     "latest_attempts": {},
-    "puzzle_id": "daily_1788519764546",
+    "puzzle_id": "daily_1788591861865",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
