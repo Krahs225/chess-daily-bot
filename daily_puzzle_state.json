@@ -1,52 +1,58 @@
 {
   "latest_random_puzzle": {
-    "url": "https://lichess.org/training/UHeEc",
-    "title": "Lichess • 1360",
-    "fen": "r7/4nkpp/5p2/p4P2/RbP1p3/1P1rN1BP/5P2/R5K1 w - - 1 31",
-    "current_fen": "r7/4nkpp/5p2/p4P2/RbP1p3/1P1rN1BP/5P2/R5K1 w - - 1 31",
-    "pgn": "Rxb4 axb4 Rxa8",
+    "title": "1594 • iGVO9",
+    "fen": "8/pQ1q1p2/P2k2p1/7p/4PP1P/5K2/8/8 b - - 2 43",
+    "current_fen": "8/pQ1q1p2/P2k2p1/7p/4PP1P/5K2/8/8 b - - 2 43",
     "all_moves": [
       {
-        "uci": "a4b4",
-        "san": "Rxb4",
-        "color": "white"
-      },
-      {
-        "uci": "a5b4",
-        "san": "axb4",
+        "uci": "d7b7",
+        "san": "Qxb7",
         "color": "black"
       },
       {
-        "uci": "a1a8",
-        "san": "Rxa8",
+        "uci": "a6b7",
+        "san": "axb7",
         "color": "white"
+      },
+      {
+        "uci": "d6c7",
+        "san": "Kc7",
+        "color": "black"
+      },
+      {
+        "uci": "b7b8q",
+        "san": "b8=Q+",
+        "color": "white"
+      },
+      {
+        "uci": "c7b8",
+        "san": "Kxb8",
+        "color": "black"
       }
     ],
     "player_moves": [
       {
-        "uci": "a4b4",
-        "san": "Rxb4",
-        "color": "white"
+        "uci": "d7b7",
+        "san": "Qxb7",
+        "color": "black"
       },
       {
-        "uci": "a1a8",
-        "san": "Rxa8",
-        "color": "white"
+        "uci": "d6c7",
+        "san": "Kc7",
+        "color": "black"
+      },
+      {
+        "uci": "c7b8",
+        "san": "Kxb8",
+        "color": "black"
       }
     ],
-    "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-09-05T14:37:30.258846+00:00",
-    "answer_posted": false,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_UHeEc_1788619050258",
-    "rating": 1360,
-    "rp_band": 0,
-    "boss": false,
-    "board_theme": "classic",
-    "piece_theme": "classic",
+    "player_color": "black",
+    "player_move_count": 3,
+    "pgn": "",
+    "url": "https://lichess.org/training/iGVO9",
+    "posted_at": "2026-09-05T14:59:47.514003+00:00",
+    "puzzle_id": "random_lichess_1594_iGVO9_1788620387514",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
@@ -56,7 +62,11 @@
     "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [],
+    "practice_only": true,
+    "rated_practice": false,
+    "board_theme": "classic",
+    "piece_theme": "classic"
   },
   "latest_puzzle_type": "random",
   "leaderboard_last_posted_date": "2026-09-05",
@@ -165,6 +175,9 @@
     ],
     "400": [
       "BTdNu"
+    ],
+    "1594": [
+      "iGVO9"
     ]
   },
   "chess_ratings": {
