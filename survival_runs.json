@@ -356,7 +356,7 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T19:40:31.794958+00:00",
-        "last_activity": 1788642629.756585,
+        "last_activity": 1788642692.9663908,
         "paused_reason": "manually stopped",
         "puzzle_number": 14,
         "strikes": 0,
@@ -380,7 +380,7 @@
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 31,
+            "correct": 33,
             "wrong": 0
           }
         },
@@ -390,7 +390,7 @@
           "themes": "veryLong crushing attraction fork sacrifice master middlegame",
           "url": "https://lichess.org/training/iQUo9",
           "start_fen": "2rr2k1/pq3ppp/1p3n2/5N2/4pP2/P2nB1P1/1PQ1P1KP/2R2R2 w - - 1 24",
-          "current_fen": "2rr2k1/pq3ppp/1p3n2/5N2/4pP2/P2nB1P1/1PQ1P1KP/2R2R2 w - - 1 24",
+          "current_fen": "2q3k1/p4ppp/1p3n2/5N2/4pP2/P2nB1P1/1P2P1KP/5R2 w - - 0 26",
           "solution": [
             {
               "uci": "c2c8",
@@ -429,20 +429,40 @@
             }
           ],
           "player_color": "white",
-          "next_solution_index": 0,
+          "next_solution_index": 4,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "rated_users": [],
+          "rated_users": [
+            "442597396195704832"
+          ],
           "setup_move_uci": "c5d3",
-          "last_move_uci": "c5d3",
-          "last_move_san": null,
-          "accepted_moves": []
+          "last_move_uci": "b7c8",
+          "last_move_san": "Qxc8",
+          "accepted_moves": [
+            {
+              "san": "Qxc8",
+              "uci": "c2c8",
+              "accepted_at": 1788642651.3279586,
+              "solver_id": "442597396195704832"
+            },
+            {
+              "san": "Rxc8+",
+              "uci": "c1c8",
+              "accepted_at": 1788642692.9662628,
+              "solver_id": "442597396195704832"
+            }
+          ],
+          "last_accepted_move_uci": "c1c8",
+          "last_accepted_move_san": "Rxc8+",
+          "last_accepted_move_index": 2,
+          "last_accepted_at": 1788642692.966262,
+          "position_before_last_move": "2r3k1/pq3ppp/1p3n2/5N2/4pP2/P2nB1P1/1P2P1KP/2R2R2 w - - 0 25"
         },
-        "first_solver_id": null,
-        "first_solver_name": null,
+        "first_solver_id": "442597396195704832",
+        "first_solver_name": "Thice",
         "helper_candidates": {},
         "helper_awarded": [],
         "shop_heart_purchased": false
