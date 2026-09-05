@@ -21,6 +21,8 @@ from shared_leaderboard import (
     equip_color,
     transfer_coins,
     transfer_badge,
+    reserve_chess_wager as shared_reserve_chess_wager,
+    settle_chess_wager as shared_settle_chess_wager,
     resolve_badge as shared_resolve_badge,
     propose_trade as shared_propose_trade,
     accept_trade as shared_accept_trade,
@@ -2745,6 +2747,50 @@ def _shop_asset_from_text(text, owned_badges):
     return {"type": "badge", "badge": badge}
 
 
+async def resolve_chess_challenge_target_and_wager(message, raw_text):
+    raw_text = str(raw_text or "").strip()
+    if not raw_text:
+        return None, 0.0
+
+    if message.mentions:
+        target = message.mentions[0]
+        mention_forms = (f"<@{target.id}>", f"<@!{target.id}>")
+        remaining = raw_text
+        for form in mention_forms:
+            remaining = remaining.replace(form, " ")
+        remaining = " ".join(remaining.split())
+        if not remaining:
+            return target, 0.0
+        try:
+            wager = round(float(remaining), 3)
+        except Exception:
+            raise ValueError("After the player mention, add only the coin wager, for example `!play @Thice 10`.")
+        if wager < 0:
+            raise ValueError("Chess wager must be 0 coins or more.")
+        return target, wager
+
+    # First try the entire text as a player name. This keeps names ending in a
+    # number working as free challenges whenever they resolve exactly.
+    whole_target = await resolve_server_member(message, raw_text)
+    if whole_target is not None:
+        return whole_target, 0.0
+
+    parts = raw_text.split()
+    if len(parts) < 2:
+        return None, 0.0
+
+    try:
+        wager = round(float(parts[-1]), 3)
+    except Exception:
+        return None, 0.0
+    if wager < 0:
+        raise ValueError("Chess wager must be 0 coins or more.")
+
+    target_text = " ".join(parts[:-1]).strip()
+    target = await resolve_server_member(message, target_text)
+    return target, wager
+
+
 async def _shop_target_identity(message, typed_name):
     member = await resolve_server_member(message, typed_name)
     if member is not None:
@@ -2916,13 +2962,84 @@ async def finish_chess_game(channel, game, result, reason="Game finished"):
 
     result = str(result)
     white_score = 1.0 if result == "1-0" else 0.0 if result == "0-1" else 0.5
+    lines = [f"🏁 **{reason}** — **{result}**"]
+
+    # External coin/point transactions happen before the local game is marked
+    # finished. They use deterministic transaction IDs, so a retry cannot pay
+    # the same game twice if a later local save fails.
+    if game.get("mode") == "bot":
+        human_id = str(game.get("human_id"))
+        human_name = game.get("human_name", "Player")
+        human_is_white = str(game.get("white_id")) == human_id
+        human_score = white_score if human_is_white else 1.0 - white_score
+        reward = 3.0 if human_score >= 0.999 else 2.0 if human_score >= 0.499 else 0.0
+        if reward > 0:
+            try:
+                await asyncio.to_thread(
+                    shared_add_points,
+                    human_id,
+                    human_name,
+                    reward,
+                    f"chess-bot-game-reward:{game.get('game_id')}",
+                    "rated-chess-bot-game",
+                )
+            except Exception as error:
+                await channel.send(
+                    f"❌ Could not safely record the chess game reward yet: `{str(error)[:700]}`"
+                )
+                return
+        game["game_reward_points"] = reward
+        lines.append(
+            f"🏆 **Game reward:** +{shared_format_points(reward)} shared points • "
+            f"+{shared_format_points(reward)} coins"
+        )
+
+    wager_amount = round(float(game.get("wager_amount", 0) or 0), 3)
+    if game.get("mode") == "pvp" and wager_amount > 0 and game.get("wager_reserved"):
+        winner_user_id = None
+        winner_name = None
+        if result == "1-0":
+            winner_user_id = str(game.get("white_id"))
+            winner_name = game.get("white_name", "White")
+        elif result == "0-1":
+            winner_user_id = str(game.get("black_id"))
+            winner_name = game.get("black_name", "Black")
+
+        try:
+            await asyncio.to_thread(
+                shared_settle_chess_wager,
+                game.get("white_id"),
+                game.get("white_name", "White"),
+                game.get("black_id"),
+                game.get("black_name", "Black"),
+                wager_amount,
+                winner_user_id,
+                f"chess-wager-settle:{game.get('game_id')}",
+            )
+        except Exception as error:
+            await channel.send(
+                f"❌ Could not safely settle the chess wager yet: `{str(error)[:700]}`"
+            )
+            return
+
+        game["wager_settled"] = True
+        if winner_user_id is None:
+            lines.append(
+                f"🪙 **Wager draw:** both players get their "
+                f"{shared_format_points(wager_amount)} coins back."
+            )
+        else:
+            lines.append(
+                f"🪙 **Wager winner:** {winner_name} receives the "
+                f"**{shared_format_points(wager_amount * 2)} coin pot**."
+            )
+
     game["status"] = "finished"
     game["result"] = result
     game["finished_at"] = time.time()
     game["finish_reason"] = reason
 
     ratings = _chess_ratings_state()
-    lines = [f"🏁 **{reason}** — **{result}**"]
 
     if game.get("mode") == "bot":
         human_id = str(game.get("human_id"))
@@ -3067,7 +3184,7 @@ async def start_bot_game(message, requested_rating=None):
         await perform_bot_turn(message.channel, game, opening=True)
 
 
-async def create_player_challenge(message, target):
+async def create_player_challenge(message, target, wager_amount=0):
     if target is None:
         await message.channel.send("❌ Player not found. Mention them, for example `!play @Thice`.")
         return
@@ -3090,21 +3207,38 @@ async def create_player_challenge(message, target):
         await message.channel.send(f"❌ **{target.display_name}** is currently playing Puzzle Rush.")
         return
 
+    try:
+        wager_amount = round(float(wager_amount or 0), 3)
+    except Exception:
+        wager_amount = -1
+    if wager_amount < 0:
+        await message.channel.send("❌ Chess wager must be **0 coins or more**.")
+        return
+
     challenge = {
+        "challenge_id": f"pvp-challenge:{message.id}:{message.author.id}:{target.id}",
         "challenger_id": str(message.author.id),
         "challenger_name": message.author.display_name,
         "target_id": str(target.id),
         "target_name": target.display_name,
+        "wager_amount": wager_amount,
         "created_at": time.time(),
     }
     _chess_challenges_state()[str(target.id)] = challenge
     await save_all()
     challenger_elo = chess_rating_profile(message.author.id, message.author.display_name)["elo"]
     target_elo = chess_rating_profile(target.id, target.display_name)["elo"]
+    wager_line = (
+        f"\n🪙 **Wager:** {shared_format_points(wager_amount)} coins each • "
+        f"winner gets **{shared_format_points(wager_amount * 2)} coins** • draw = refund"
+        if wager_amount > 0
+        else "\n🪙 **Wager:** Free game (0 coins)"
+    )
     await message.channel.send(
         f"♜ <@{target.id}> **{message.author.display_name} challenged you to a rated game!**\n"
         f"{message.author.display_name}: **{int(round(challenger_elo))} Elo** • "
-        f"{target.display_name}: **{int(round(target_elo))} Elo**\n"
+        f"{target.display_name}: **{int(round(target_elo))} Elo**"
+        f"{wager_line}\n"
         "Use `!accept` or `!decline` within 10 minutes."
     )
 
@@ -3142,6 +3276,27 @@ async def accept_player_challenge(message):
         await message.channel.send("❌ The challenger is no longer available in this server.")
         return
 
+    wager_amount = round(float(challenge.get("wager_amount", 0) or 0), 3)
+    if wager_amount > 0:
+        try:
+            wager_result = await asyncio.to_thread(
+                shared_reserve_chess_wager,
+                challenger_id,
+                challenge.get("challenger_name", challenger_member.display_name),
+                message.author.id,
+                message.author.display_name,
+                wager_amount,
+                f"chess-wager-reserve:{challenge.get('challenge_id', challenger_id + ':' + str(message.author.id))}",
+            )
+        except ValueError as error:
+            await message.channel.send(f"❌ **Wager could not start:** {error}")
+            return
+        except Exception as error:
+            await message.channel.send(f"❌ Could not safely reserve the chess wager: `{str(error)[:700]}`")
+            return
+    else:
+        wager_result = None
+
     challenger_white = bool(random.getrandbits(1))
     white_member = challenger_member if challenger_white else message.author
     black_member = message.author if challenger_white else challenger_member
@@ -3164,12 +3319,22 @@ async def accept_player_challenge(message):
         "started_at": time.time(),
         "theme_owner_id": challenger_id,
         "theme_owner_name": challenge.get("challenger_name", challenger_member.display_name),
+        "wager_amount": wager_amount,
+        "wager_reserved": bool(wager_amount > 0),
+        "wager_settled": False,
     }
     _chess_games_state()[game_id] = game
     _chess_challenges_state().pop(str(message.author.id), None)
     await save_all()
+    wager_start_line = (
+        f"\n🪙 **{shared_format_points(wager_amount)} coins each are now in the pot** "
+        f"(**{shared_format_points(wager_amount * 2)} total**)."
+        if wager_amount > 0
+        else ""
+    )
     await message.channel.send(
-        f"✅ **Challenge accepted!** {white_member.display_name} is White; {black_member.display_name} is Black.\n"
+        f"✅ **Challenge accepted!** {white_member.display_name} is White; {black_member.display_name} is Black."
+        f"{wager_start_line}\n"
         "Enter moves normally (`e4`, `Nf3`, `!move e4`). `!resign` resigns the game."
     )
     await send_chess_game_position(message.channel, game, f"➡️ **{white_member.display_name} to move.**")
@@ -4466,10 +4631,9 @@ def cosmetic_profile_dashboard(user_id, display_name):
         f"🎨 **Boards owned:** {len(profile.get('boards', [])) + 1}/{len(BOARD_THEMES)}\n"
         f"♟️ **Piece sets owned:** {len(profile.get('pieces', [])) + 1}/{len(PIECE_SETS)}\n"
         f"🖌️ **Colors owned:** {len(profile.get('colors', []))}/{len(NAME_COLORS)}\n\n"
-        "**Collection pages**\n"
-        "`!me badges` • `!me badges uncommon 2` • `!me boards 2` • `!me pieces 2` • `!me colors`\n\n"
-        "**Equip**\n"
-        "`!profile badge <number>` (`0` = none) • `!profile board <name>` • `!profile piece <name>` • `!profile color <name/default>`"
+        "**Collection**\n"
+        "Use the buttons below to browse badges, boards, pieces and colors.\n"
+        "On your own profile, click an owned cosmetic to equip it. `!profile badge 0` still unequips your badge."
     )
 
 
@@ -4486,9 +4650,9 @@ def cosmetic_badge_overview(user_id, display_name):
         owned = len({badge for badge in unique if BADGE_RARITY_BY_VALUE.get(badge) == rarity})
         total = len(BADGE_POOLS[rarity])
         lines.append(
-            f"**{RARITY_LABELS[rarity]}:** {owned}/{total} — `!me badges {rarity}`"
+            f"**{RARITY_LABELS[rarity]}:** {owned}/{total}"
         )
-    lines.extend(["", "Each page shows up to 20 unique badges. Duplicates appear as `×2`, `×3`, etc."])
+    lines.extend(["", "Use the rarity buttons to open a collection. Pages show up to 20 unique badges; duplicates appear as `×2`, `×3`, etc."])
     return "\n".join(lines)
 
 
@@ -4510,11 +4674,7 @@ def cosmetic_badge_page(user_id, display_name, rarity, page=1):
         for index, badge, _badge_rarity, count in page_rows:
             suffix = f" ×{count}" if count > 1 else ""
             lines.append(f"`#{index}` {badge}{suffix}")
-    lines.extend([
-        "",
-        f"`!me badges {rarity} <page>` — another page",
-        "`!profile badge <number>` — equip that badge",
-    ])
+    lines.extend(["", "Use the buttons below to browse. On your own profile, click a badge button to equip it."])
     return "\n".join(lines)
 
 
@@ -4530,7 +4690,7 @@ def cosmetic_board_page(user_id, display_name, page=1):
     for name in page_items:
         marker = " ✅" if name == profile.get("active_board", "classic") else ""
         lines.append(f"• **{BOARD_DISPLAY_NAMES.get(name, name.title())}** (`{name}`){marker}")
-    lines.extend(["", "`!profile board <name>` — equip • `!customboard` — full shop catalogue"])
+    lines.extend(["", "Use the buttons below to browse/equip owned boards. `!customboard` opens the shop catalogue."])
     return "\n".join(lines)
 
 
@@ -4546,7 +4706,7 @@ def cosmetic_piece_page(user_id, display_name, page=1):
     for name in page_items:
         marker = " ✅" if name == profile.get("active_piece", "classic") else ""
         lines.append(f"• **{PIECE_DISPLAY_NAMES.get(name, name.title())}** (`{name}`){marker}")
-    lines.extend(["", "`!profile piece <name>` — equip • `!custompiece` — full shop catalogue"])
+    lines.extend(["", "Use the buttons below to browse/equip owned piece sets. `!custompiece` opens the shop catalogue."])
     return "\n".join(lines)
 
 
@@ -4559,7 +4719,7 @@ def cosmetic_color_page(user_id, display_name):
     for name in profile.get("colors", []):
         marker = " ✅" if name == active else ""
         lines.append(f"• **{NAME_COLORS[name]['label']}** (`{name}`){marker}")
-    lines.extend(["", "`!profile color <name>` — equip • `!profile color default` — return to normal server color"])
+    lines.extend(["", "Use `!color <name>` to equip an owned color, or `!color default` to return to your normal server color."])
     return "\n".join(lines)
 
 
@@ -4576,7 +4736,7 @@ def board_catalog_message(page=1):
         lines.append(" • ".join(BOARD_DISPLAY_NAMES[name] for name in page_names[start:start + 5]))
     lines.extend([
         "",
-        "`!customboard <page>` — catalogue page",
+        "Use **Previous / Next** below to browse pages.",
         "`!customboard blue test` — preview",
         "`!customboard blue buy` — buy",
         "`!customboard blue` — equip if owned",
@@ -4598,7 +4758,7 @@ def piece_catalog_message(page=1):
         lines.append(f"• **{PIECE_DISPLAY_NAMES[name]}** (`{name}`)")
     lines.extend([
         "",
-        "`!custompiece <page>` — catalogue page",
+        "Use **Previous / Next** below to browse pages.",
         "`!custompiece figurine-gold test` — preview",
         "`!custompiece figurine-gold buy` — buy",
         "`!custompiece figurine-gold` — equip if owned",
@@ -4621,6 +4781,329 @@ def color_catalog_message():
         "`!color default` — remove your shop color and return to your normal server color\n\n"
         "Higher existing server color roles still win, so Sharkmeister can stay blue and subscribers can stay pink."
     )
+
+
+
+PROFILE_RARITY_ORDER = ("legendary", "epic", "rare", "uncommon", "common", "basic")
+
+
+def _button_emoji(value):
+    try:
+        text = str(value or "")
+        if text.startswith("<:") or text.startswith("<a:"):
+            return discord.PartialEmoji.from_str(text)
+        return text or None
+    except Exception:
+        return None
+
+
+class CosmeticCatalogPager(discord.ui.View):
+    def __init__(self, viewer_id, kind, page=1):
+        super().__init__(timeout=300)
+        self.viewer_id = int(viewer_id)
+        self.kind = str(kind)
+        total_items = len(BOARD_THEMES) if self.kind == "board" else len(PIECE_SETS)
+        self.page_size = 25 if self.kind == "board" else 20
+        self.total_pages = max(1, math.ceil(total_items / self.page_size))
+        self.page = max(1, min(int(page or 1), self.total_pages))
+        self._rebuild()
+
+    async def interaction_check(self, interaction):
+        if interaction.user.id != self.viewer_id:
+            await interaction.response.send_message("This catalogue belongs to another user.", ephemeral=True)
+            return False
+        return True
+
+    def render(self):
+        return board_catalog_message(self.page) if self.kind == "board" else piece_catalog_message(self.page)
+
+    def _rebuild(self):
+        self.clear_items()
+        previous = discord.ui.Button(label="◀ Previous", style=discord.ButtonStyle.secondary, disabled=self.page <= 1)
+        indicator = discord.ui.Button(label=f"Page {self.page}/{self.total_pages}", style=discord.ButtonStyle.secondary, disabled=True)
+        next_button = discord.ui.Button(label="Next ▶", style=discord.ButtonStyle.secondary, disabled=self.page >= self.total_pages)
+
+        async def previous_callback(interaction):
+            self.page = max(1, self.page - 1)
+            self._rebuild()
+            await interaction.response.edit_message(content=self.render(), view=self)
+
+        async def next_callback(interaction):
+            self.page = min(self.total_pages, self.page + 1)
+            self._rebuild()
+            await interaction.response.edit_message(content=self.render(), view=self)
+
+        previous.callback = previous_callback
+        next_button.callback = next_callback
+        self.add_item(previous)
+        self.add_item(indicator)
+        self.add_item(next_button)
+
+
+class CosmeticProfileView(discord.ui.View):
+    def __init__(self, viewer_id, target_user_id, target_name, editable=False):
+        super().__init__(timeout=300)
+        self.viewer_id = int(viewer_id)
+        self.target_user_id = str(target_user_id)
+        self.target_name = str(target_name)
+        self.editable = bool(editable and str(viewer_id) == str(target_user_id))
+        self.mode = "dashboard"
+        self.rarity = None
+        self.page = 1
+        self._build_dashboard()
+
+    async def interaction_check(self, interaction):
+        if interaction.user.id != self.viewer_id:
+            await interaction.response.send_message("Open your own `!profile` to use these buttons.", ephemeral=True)
+            return False
+        return True
+
+    async def _profile(self):
+        return await asyncio.to_thread(get_cosmetic_profile, self.target_user_id, self.target_name)
+
+    def render(self, profile=None):
+        if self.mode == "dashboard":
+            if profile is None:
+                return cosmetic_profile_dashboard(self.target_user_id, self.target_name)
+            active_badge = profile.get("active_badge") or "—"
+            active_board_key = profile.get("active_board", "classic")
+            active_piece_key = profile.get("active_piece", "classic")
+            active_color_key = profile.get("active_color", "")
+            active_color = NAME_COLORS.get(active_color_key, {}).get("label", active_color_key.title()) if active_color_key else "Default"
+            badges = list(profile.get("badges", []))
+            unique_badges = set(badges)
+            rarity_lines = " • ".join(
+                f"{RARITY_LABELS[rarity]} {len({badge for badge in unique_badges if BADGE_RARITY_BY_VALUE.get(badge) == rarity})}"
+                for rarity in PROFILE_RARITY_ORDER
+            )
+            return (
+                f"👤 **Profile — {active_badge + ' ' if active_badge != '—' else ''}{profile.get('name', self.target_name)}**\n"
+                f"🪙 **Coins:** {shared_format_points(profile.get('coins', 0))}\n"
+                f"🏅 **Active badge:** {active_badge}\n"
+                f"🎨 **Active board:** {BOARD_DISPLAY_NAMES.get(active_board_key, str(active_board_key).title())}\n"
+                f"♟️ **Active pieces:** {PIECE_DISPLAY_NAMES.get(active_piece_key, str(active_piece_key).title())}\n"
+                f"🖌️ **Active color:** {active_color}\n\n"
+                f"🏅 **Badges:** {len(unique_badges)} unique / {len(badges)} total\n{rarity_lines}\n"
+                f"🎨 **Boards owned:** {len(profile.get('boards', [])) + 1}/{len(BOARD_THEMES)}\n"
+                f"♟️ **Piece sets owned:** {len(profile.get('pieces', [])) + 1}/{len(PIECE_SETS)}\n"
+                f"🖌️ **Colors owned:** {len(profile.get('colors', []))}/{len(NAME_COLORS)}\n\n"
+                "Use the buttons below to browse the collection."
+            )
+        if self.mode == "badges":
+            if profile is None:
+                return cosmetic_badge_page(self.target_user_id, self.target_name, self.rarity, self.page)
+            rows = _badge_rows(list(profile.get("badges", [])), self.rarity)
+            page_rows, current_page, total_pages = _page_slice(rows, self.page, 20)
+            self.page = current_page
+            lines = [
+                f"🏅 **{profile.get('name', self.target_name)} — {RARITY_LABELS[self.rarity]} Badges**",
+                f"Page **{self.page}/{total_pages}** • {len(rows)} unique owned",
+                "",
+            ]
+            if not page_rows:
+                lines.append("None owned in this rarity yet.")
+            else:
+                for index, badge, _badge_rarity, count in page_rows:
+                    suffix = f" ×{count}" if count > 1 else ""
+                    active = " ✅" if badge == profile.get("active_badge", "") else ""
+                    lines.append(f"`#{index}` {badge}{suffix}{active}")
+            lines.extend(["", "Use the buttons below to browse. On your own profile, click a badge button to equip it."])
+            return "\n".join(lines)
+        if self.mode == "boards":
+            if profile is None:
+                return cosmetic_board_page(self.target_user_id, self.target_name, self.page)
+            owned = ["classic"] + list(profile.get("boards", []))
+            page_items, self.page, total_pages = _page_slice(owned, self.page, 20)
+            lines = [f"🎨 **{profile.get('name', self.target_name)} — Owned Boards**", f"Page **{self.page}/{total_pages}** • {len(owned)}/{len(BOARD_THEMES)} owned", ""]
+            for name in page_items:
+                marker = " ✅" if name == profile.get("active_board", "classic") else ""
+                lines.append(f"• **{BOARD_DISPLAY_NAMES.get(name, name.title())}** (`{name}`){marker}")
+            lines.extend(["", "Use the buttons below to browse/equip owned boards. `!customboard` opens the shop catalogue."])
+            return "\n".join(lines)
+        if self.mode == "pieces":
+            if profile is None:
+                return cosmetic_piece_page(self.target_user_id, self.target_name, self.page)
+            owned = ["classic"] + list(profile.get("pieces", []))
+            page_items, self.page, total_pages = _page_slice(owned, self.page, 20)
+            lines = [f"♟️ **{profile.get('name', self.target_name)} — Owned Piece Sets**", f"Page **{self.page}/{total_pages}** • {len(owned)}/{len(PIECE_SETS)} owned", ""]
+            for name in page_items:
+                marker = " ✅" if name == profile.get("active_piece", "classic") else ""
+                lines.append(f"• **{PIECE_DISPLAY_NAMES.get(name, name.title())}** (`{name}`){marker}")
+            lines.extend(["", "Use the buttons below to browse/equip owned piece sets. `!custompiece` opens the shop catalogue."])
+            return "\n".join(lines)
+        if self.mode == "colors":
+            if profile is None:
+                return cosmetic_color_page(self.target_user_id, self.target_name)
+            active = profile.get("active_color", "")
+            lines = [f"🖌️ **{profile.get('name', self.target_name)} — Owned Colors**", ""]
+            if not profile.get("colors", []):
+                lines.append("None yet. Default/server role color is active.")
+            for name in profile.get("colors", []):
+                if name in NAME_COLORS:
+                    marker = " ✅" if name == active else ""
+                    lines.append(f"• **{NAME_COLORS[name]['label']}** (`{name}`){marker}")
+            lines.extend(["", "Use `!color <name>` to equip an owned color, or `!color default` to return to your normal server color."])
+            return "\n".join(lines)
+        return cosmetic_profile_dashboard(self.target_user_id, self.target_name)
+
+    def _build_dashboard(self):
+        self.clear_items()
+        self.mode = "dashboard"
+        self.rarity = None
+        self.page = 1
+        for idx, rarity in enumerate(PROFILE_RARITY_ORDER):
+            button = discord.ui.Button(
+                label=RARITY_LABELS[rarity],
+                style=discord.ButtonStyle.primary if rarity in {"legendary", "epic", "rare"} else discord.ButtonStyle.secondary,
+                row=idx // 3,
+            )
+            async def open_rarity(interaction, rarity=rarity):
+                profile = await self._profile()
+                self.mode = "badges"
+                self.rarity = rarity
+                self.page = 1
+                self._build_badges(profile)
+                await interaction.response.edit_message(content=self.render(profile), view=self)
+            button.callback = open_rarity
+            self.add_item(button)
+
+        for label, mode, emoji in (("Boards", "boards", "🎨"), ("Pieces", "pieces", "♟️"), ("Colors", "colors", "🖌️")):
+            button = discord.ui.Button(label=label, emoji=emoji, style=discord.ButtonStyle.secondary, row=2)
+            async def open_mode(interaction, mode=mode):
+                profile = await self._profile()
+                self.mode = mode
+                self.page = 1
+                if mode in {"boards", "pieces"}:
+                    self._build_assets(profile)
+                else:
+                    self._build_colors()
+                await interaction.response.edit_message(content=self.render(profile), view=self)
+            button.callback = open_mode
+            self.add_item(button)
+
+    def _build_badges(self, profile):
+        self.clear_items()
+        rows = _badge_rows(list(profile.get("badges", [])), self.rarity)
+        page_rows, self.page, total_pages = _page_slice(rows, self.page, 20)
+        if self.editable:
+            active = profile.get("active_badge", "")
+            for pos, (index, badge, _rarity, _count) in enumerate(page_rows):
+                button = discord.ui.Button(
+                    label=f"#{index}", emoji=_button_emoji(badge),
+                    style=discord.ButtonStyle.success if badge == active else discord.ButtonStyle.secondary,
+                    row=pos // 5,
+                )
+                async def equip_callback(interaction, badge=badge):
+                    updated = await asyncio.to_thread(
+                        equip_badge, self.target_user_id, self.target_name, badge,
+                        f"profile-button-badge:{interaction.id}:{self.target_user_id}",
+                    )
+                    self._build_badges(updated)
+                    await interaction.response.edit_message(content=self.render(updated), view=self)
+                button.callback = equip_callback
+                self.add_item(button)
+        self._add_nav(total_pages, include_none=self.editable)
+
+    def _build_assets(self, profile):
+        self.clear_items()
+        if self.mode == "boards":
+            owned = ["classic"] + list(profile.get("boards", []))
+            active = profile.get("active_board", "classic")
+            display = BOARD_DISPLAY_NAMES
+            equip_func = equip_board
+        else:
+            owned = ["classic"] + list(profile.get("pieces", []))
+            active = profile.get("active_piece", "classic")
+            display = PIECE_DISPLAY_NAMES
+            equip_func = equip_piece
+        page_items, self.page, total_pages = _page_slice(owned, self.page, 20)
+        if self.editable:
+            for pos, name in enumerate(page_items):
+                button = discord.ui.Button(
+                    label=display.get(name, name.title())[:80],
+                    style=discord.ButtonStyle.success if name == active else discord.ButtonStyle.secondary,
+                    row=pos // 5,
+                )
+                async def equip_callback(interaction, name=name, equip_func=equip_func):
+                    updated = await asyncio.to_thread(
+                        equip_func, self.target_user_id, self.target_name, name,
+                        f"profile-button-{self.mode}:{interaction.id}:{self.target_user_id}:{name}",
+                    )
+                    self._build_assets(updated)
+                    await interaction.response.edit_message(content=self.render(updated), view=self)
+                button.callback = equip_callback
+                self.add_item(button)
+        self._add_nav(total_pages)
+
+    def _build_colors(self):
+        self.clear_items()
+        back = discord.ui.Button(label="← Profile", style=discord.ButtonStyle.primary)
+        async def back_callback(interaction):
+            profile = await self._profile()
+            self._build_dashboard()
+            await interaction.response.edit_message(content=self.render(profile), view=self)
+        back.callback = back_callback
+        self.add_item(back)
+
+    def _add_nav(self, total_pages, include_none=False):
+        back = discord.ui.Button(label="← Profile", style=discord.ButtonStyle.primary, row=4)
+        previous = discord.ui.Button(label="◀", style=discord.ButtonStyle.secondary, row=4, disabled=self.page <= 1)
+        indicator = discord.ui.Button(label=f"{self.page}/{max(1, total_pages)}", style=discord.ButtonStyle.secondary, row=4, disabled=True)
+        next_button = discord.ui.Button(label="▶", style=discord.ButtonStyle.secondary, row=4, disabled=self.page >= max(1, total_pages))
+
+        async def back_callback(interaction):
+            profile = await self._profile()
+            self._build_dashboard()
+            await interaction.response.edit_message(content=self.render(profile), view=self)
+
+        async def previous_callback(interaction):
+            profile = await self._profile()
+            self.page = max(1, self.page - 1)
+            if self.mode == "badges":
+                self._build_badges(profile)
+            else:
+                self._build_assets(profile)
+            await interaction.response.edit_message(content=self.render(profile), view=self)
+
+        async def next_callback(interaction):
+            profile = await self._profile()
+            self.page = min(max(1, total_pages), self.page + 1)
+            if self.mode == "badges":
+                self._build_badges(profile)
+            else:
+                self._build_assets(profile)
+            await interaction.response.edit_message(content=self.render(profile), view=self)
+
+        back.callback = back_callback
+        previous.callback = previous_callback
+        next_button.callback = next_callback
+        self.add_item(back)
+        self.add_item(previous)
+        self.add_item(indicator)
+        self.add_item(next_button)
+
+        if include_none:
+            none_button = discord.ui.Button(label="No badge", style=discord.ButtonStyle.danger, row=4)
+            async def none_callback(interaction):
+                updated = await asyncio.to_thread(
+                    equip_badge, self.target_user_id, self.target_name, "",
+                    f"profile-button-badge:{interaction.id}:{self.target_user_id}:none",
+                )
+                self._build_badges(updated)
+                await interaction.response.edit_message(content=self.render(updated), view=self)
+            none_button.callback = none_callback
+            self.add_item(none_button)
+
+
+async def resolve_cosmetic_profile_target(message, typed_name):
+    query = str(typed_name or "").strip()
+    if message.mentions:
+        target = message.mentions[0]
+        return str(target.id), target.display_name
+    if not query:
+        return str(message.author.id), message.author.display_name
+    target = await asyncio.to_thread(shared_resolve_cosmetic_profile, query)
+    return str(target["user_id"]), target.get("name", query)
 
 
 def make_cosmetic_preview_file(board_theme="classic", piece_theme="classic", filename="cosmetic_preview.png"):
@@ -4789,15 +5272,15 @@ def help_message():
 `!rush` — **5-minute Puzzle Rush**; score as many as possible (unranked).
 
 **Rated Chess**
-`!playbot` — play a bot within ±200 of your Chess Elo. `!playbot 1500` — choose bot Elo.
-`!play @name` — challenge another player. `!accept` / `!decline` — answer a challenge.
+`!playbot` — play a bot within ±200 of your Chess Elo. Win **+3**, draw **+2**, loss **+0** shared points + coins.
+`!play @name` — free player challenge. `!play @name 10` — both stake 10 coins; winner gets 20. `!accept` / `!decline`.
 Play moves normally or use `!move e4`. `!resign` resigns. `!chessboard` shows the position.
 `!stats` shows both **Puzzle Elo** and your separate **Chess Elo**.
 
 **Points / Coins / Shop**
 `!l` — shared points + Puzzle leaders. `!coins` / `!bank` — points + shared coins. Puzzle and Guess rewards both mint coins.
 `!donate <name> <coins|badge>` — donate coins or a badge. `!trade <name> <give> <receive>` — trade coins/badges.
-`!me` / `!profile` — inventory. `!shop` — full shop instructions.
+`!me` / `!profile` — clickable inventory. `!profile <name>` — view another player. `!shop` — shop info.
 `!box` — badge box (50). `!customboard` — 100 boards (100 each).
 `!custompiece` — 97 piece sets (100 each). `!color` — name colors (500 each).
 
@@ -6679,7 +7162,7 @@ async def on_message(
             target_text = content[len("!play"):].strip()
             if not target_text:
                 await message.channel.send(
-                    "❌ Usage: `!play @name` to challenge a player, or `!playbot` to play the bot."
+                    "❌ Usage: `!play @name` for a free game, `!play @name 10` for a 10-coin wager, or `!playbot` to play the bot."
                 )
                 return
             await settle_recent_survival_stop()
@@ -6689,8 +7172,18 @@ async def on_message(
                     "⚠️ Pause Survival before starting a rated player-vs-player game."
                 )
                 return
-            target = await resolve_server_member(message, target_text)
-            await create_player_challenge(message, target)
+            try:
+                target, wager_amount = await resolve_chess_challenge_target_and_wager(message, target_text)
+            except ValueError as error:
+                await message.channel.send(f"❌ **{error}**")
+                return
+            if target is None:
+                await message.channel.send(
+                    "❌ Player not found. Use `!play @name` for a free game or "
+                    "`!play @name 10` to wager 10 coins each."
+                )
+                return
+            await create_player_challenge(message, target, wager_amount)
             return
 
         if command_lower == "!accept":
@@ -7063,11 +7556,12 @@ async def on_message(
         if command_lower == "!customboard" or command_lower.startswith("!customboard "):
             args = content.split()[1:]
             if not args:
-                await message.channel.send(board_catalog_message(1))
+                await message.channel.send(board_catalog_message(1), view=CosmeticCatalogPager(message.author.id, "board", 1))
                 return
 
             if len(args) == 1 and args[0].isdigit():
-                await message.channel.send(board_catalog_message(int(args[0])))
+                page = int(args[0])
+                await message.channel.send(board_catalog_message(page), view=CosmeticCatalogPager(message.author.id, "board", page))
                 return
 
             board_name = args[0].casefold()
@@ -7140,11 +7634,12 @@ async def on_message(
         if command_lower == "!custompiece" or command_lower.startswith("!custompiece "):
             args = content.split()[1:]
             if not args:
-                await message.channel.send(piece_catalog_message(1))
+                await message.channel.send(piece_catalog_message(1), view=CosmeticCatalogPager(message.author.id, "piece", 1))
                 return
 
             if len(args) == 1 and args[0].isdigit():
-                await message.channel.send(piece_catalog_message(int(args[0])))
+                page = int(args[0])
+                await message.channel.send(piece_catalog_message(page), view=CosmeticCatalogPager(message.author.id, "piece", page))
                 return
 
             piece_name = args[0].casefold()
@@ -7267,7 +7762,10 @@ async def on_message(
                     message.author.id,
                     message.author.display_name,
                 )
-                await message.channel.send(text)
+                view = CosmeticProfileView(
+                    message.author.id, message.author.id, message.author.display_name, editable=True
+                )
+                await message.channel.send(text, view=view)
             except Exception as error:
                 await message.channel.send(f"❌ **Profile unavailable:** `{str(error)[:800]}`")
             return
@@ -7298,7 +7796,8 @@ async def on_message(
                             rarity,
                             page,
                         )
-                    await message.channel.send(text)
+                    view = CosmeticProfileView(message.author.id, message.author.id, message.author.display_name, editable=True)
+                    await message.channel.send(text, view=view)
                     return
 
                 if kind == "boards":
@@ -7309,7 +7808,7 @@ async def on_message(
                         message.author.display_name,
                         page,
                     )
-                    await message.channel.send(text)
+                    await message.channel.send(text, view=CosmeticProfileView(message.author.id, message.author.id, message.author.display_name, editable=True))
                     return
 
                 if kind in {"pieces", "piecesets"}:
@@ -7320,7 +7819,7 @@ async def on_message(
                         message.author.display_name,
                         page,
                     )
-                    await message.channel.send(text)
+                    await message.channel.send(text, view=CosmeticProfileView(message.author.id, message.author.id, message.author.display_name, editable=True))
                     return
 
                 if kind == "colors":
@@ -7329,7 +7828,17 @@ async def on_message(
                         message.author.id,
                         message.author.display_name,
                     )
-                    await message.channel.send(text)
+                    view = CosmeticProfileView(message.author.id, message.author.id, message.author.display_name, editable=True)
+                    await message.channel.send(text, view=view)
+                    return
+
+                # `!profile <name>` opens another player's read-only cosmetic profile.
+                if prefix == "!profile" and len(args) >= 1 and kind not in {"badge", "board", "piece", "pieceset", "badges", "boards", "pieces", "piecesets", "colors", "color"}:
+                    requested_name = content[len("!profile"):].strip()
+                    target_id, target_name = await resolve_cosmetic_profile_target(message, requested_name)
+                    text = await asyncio.to_thread(cosmetic_profile_dashboard, target_id, target_name)
+                    view = CosmeticProfileView(message.author.id, target_id, target_name, editable=(str(target_id) == str(message.author.id)))
+                    await message.channel.send(text, view=view)
                     return
 
                 if len(args) < 2:
