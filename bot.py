@@ -2558,10 +2558,11 @@ def _piece_overlay_svg(board, orientation, piece_theme):
     return "".join(parts)
 
 
-def render_custom_board_svg(board, *, orientation, board_theme="classic", piece_theme="classic", size=500, lastmove=None):
+def render_custom_board_svg(board, *, orientation, board_theme="classic", piece_theme="classic", size=500, lastmove=None, arrows=None):
     board_theme = str(board_theme or "classic").casefold()
     piece_theme = str(piece_theme or "classic").casefold()
     light, dark = BOARD_THEMES.get(board_theme, BOARD_THEMES["classic"])
+    arrows = list(arrows or [])
 
     if piece_theme == "classic" or piece_theme not in PIECE_SETS:
         return chess.svg.board(
@@ -2570,6 +2571,7 @@ def render_custom_board_svg(board, *, orientation, board_theme="classic", piece_
             size=size,
             coordinates=True,
             lastmove=lastmove,
+            arrows=arrows,
             colors={"square light": light, "square dark": dark},
         )
 
@@ -2579,6 +2581,7 @@ def render_custom_board_svg(board, *, orientation, board_theme="classic", piece_
         size=size,
         coordinates=True,
         lastmove=lastmove,
+        arrows=arrows,
         colors={"square light": light, "square dark": dark},
     )
     overlay = _piece_overlay_svg(board, orientation, piece_theme)
@@ -3454,8 +3457,7 @@ def _format_stockfish_game_analysis(game, analysis):
 
     def side_line(icon, name, stats):
         return (
-            f"{icon} **{name}:** {float(stats.get('accuracy', 0.0)):.1f}% • "
-            f"{int(stats.get('acpl', 0))} ACPL • "
+            f"{icon} **{name}:** {float(stats.get('accuracy', 0.0)):.1f}% accuracy • "
             f"{BRILLIANT_REVIEW_EMOJI} {int(stats.get('brilliants', 0))} • "
             f"{BLUNDER_REVIEW_EMOJI} {int(stats.get('blunders', 0))}"
         )
@@ -3520,6 +3522,9 @@ async def _make_chess_review_file(game, ply_index, filename="chess_review.png"):
     else:
         orientation = True
     board_theme, piece_theme = await _review_theme_for_game(game)
+    arrows = []
+    if last_move is not None:
+        arrows.append(chess.svg.Arrow(last_move.from_square, last_move.to_square))
     svg = render_custom_board_svg(
         board,
         orientation=orientation,
@@ -3527,6 +3532,7 @@ async def _make_chess_review_file(game, ply_index, filename="chess_review.png"):
         piece_theme=piece_theme,
         size=500,
         lastmove=last_move,
+        arrows=arrows,
     )
     png = await asyncio.to_thread(
         cairosvg.svg2png,
@@ -3658,6 +3664,22 @@ async def _send_finished_chess_extras(channel, game, result_message=None):
         await channel.send("⚠️ **PGN saved, but the post-game analysis could not be completed.**")
 
 
+def _current_game_last_move(game):
+    """Return the most recently played move for board highlighting."""
+    moves = list(game.get("moves") or [])
+    if not moves:
+        return None
+    replay = chess.Board()
+    last_move = None
+    try:
+        for san in moves:
+            last_move = replay.parse_san(str(san))
+            replay.push(last_move)
+    except Exception:
+        return None
+    return last_move
+
+
 async def make_chess_game_file(game, filename="chess_game.png"):
     board = chess.Board(game.get("fen", chess.STARTING_FEN))
     owner_id = game.get("theme_owner_id")
@@ -3682,12 +3704,19 @@ async def make_chess_game_file(game, filename="chess_game.png"):
     else:
         orientation = True
 
+    last_move = _current_game_last_move(game)
+    arrows = []
+    if last_move is not None:
+        arrows.append(chess.svg.Arrow(last_move.from_square, last_move.to_square))
+
     svg = render_custom_board_svg(
         board,
         orientation=orientation,
         board_theme=board_theme,
         piece_theme=piece_theme,
         size=500,
+        lastmove=last_move,
+        arrows=arrows,
     )
     png = await asyncio.to_thread(
         cairosvg.svg2png,
