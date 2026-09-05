@@ -522,9 +522,9 @@
     },
     "sh4rkmate": {
       "name": "Sh4rkmate",
-      "best_puzzle": 1,
-      "best_difficulty": 0,
-      "best_completed_at": "2026-09-05T19:40:31.794975+00:00",
+      "best_puzzle": 2,
+      "best_difficulty": 1247,
+      "best_completed_at": "2026-09-05T19:41:42.227016+00:00",
       "current": {
         "run_id": "sh4rkmate:1788637231",
         "started_by_id": "442597396195704832",
@@ -533,46 +533,47 @@
         "mode": "coop",
         "status": "active",
         "started_at": "2026-09-05T19:40:31.794958+00:00",
-        "last_activity": 1788637248.6168616,
+        "last_activity": 1788637316.5750208,
         "paused_reason": null,
-        "puzzle_number": 1,
+        "puzzle_number": 2,
         "strikes": 0,
-        "best_difficulty": 1247,
+        "best_difficulty": 1284,
         "used_puzzle_ids": [
-          "f3vzs"
+          "f3vzs",
+          "D37CV"
         ],
         "members": {
           "442597396195704832": {
             "name": "Thice",
-            "correct": 2,
+            "correct": 4,
             "wrong": 0
           }
         },
         "puzzle": {
-          "id": "f3vzs",
-          "rating": 1247,
-          "themes": "crushing endgame master rookEndgame short skewer",
-          "url": "https://lichess.org/training/f3vzs",
-          "start_fen": "8/6p1/6R1/2P1k2p/4P2P/6K1/5P2/2r5 b - - 0 35",
-          "current_fen": "8/6p1/6r1/2P1k2p/4P2P/5K2/5P2/8 w - - 0 37",
+          "id": "D37CV",
+          "rating": 1284,
+          "themes": "endgame mate mateIn2 rookEndgame short",
+          "url": "https://lichess.org/training/D37CV",
+          "start_fen": "8/8/5R2/6pk/8/5P1p/5KP1/7r w - - 0 65",
+          "current_fen": "8/8/7R/6p1/6Pk/5P1p/5K2/7r b - - 2 66",
           "solution": [
             {
-              "uci": "c1g1",
-              "san": "Rg1+",
-              "color": "black"
-            },
-            {
-              "uci": "g3f3",
-              "san": "Kf3",
+              "uci": "g2g4",
+              "san": "g4+",
               "color": "white"
             },
             {
-              "uci": "g1g6",
-              "san": "Rxg6",
+              "uci": "h5h4",
+              "san": "Kh4",
               "color": "black"
+            },
+            {
+              "uci": "f6h6",
+              "san": "Rh6#",
+              "color": "white"
             }
           ],
-          "player_color": "black",
+          "player_color": "white",
           "next_solution_index": 3,
           "first_solver_id": null,
           "first_solver_name": null,
@@ -582,28 +583,28 @@
           "rated_users": [
             "442597396195704832"
           ],
-          "setup_move_uci": "d6g6",
-          "last_move_uci": "g1g6",
-          "last_move_san": "Rxg6",
+          "setup_move_uci": "h4h3",
+          "last_move_uci": "f6h6",
+          "last_move_san": "Rh6#",
           "accepted_moves": [
             {
-              "san": "Rg1+",
-              "uci": "c1g1",
-              "accepted_at": 1788637244.4797459,
+              "san": "g4+",
+              "uci": "g2g4",
+              "accepted_at": 1788637310.6516027,
               "solver_id": "442597396195704832"
             },
             {
-              "san": "Rxg6",
-              "uci": "g1g6",
-              "accepted_at": 1788637248.6167831,
+              "san": "Rh6#",
+              "uci": "f6h6",
+              "accepted_at": 1788637316.5749338,
               "solver_id": "442597396195704832"
             }
           ],
-          "last_accepted_move_uci": "g1g6",
-          "last_accepted_move_san": "Rxg6",
+          "last_accepted_move_uci": "f6h6",
+          "last_accepted_move_san": "Rh6#",
           "last_accepted_move_index": 2,
-          "last_accepted_at": 1788637248.6167822,
-          "position_before_last_move": "8/6p1/6R1/2P1k2p/4P2P/5K2/5P2/6r1 b - - 2 36"
+          "last_accepted_at": 1788637316.5749328,
+          "position_before_last_move": "8/8/5R2/6p1/6Pk/5P1p/5K2/7r w - - 1 66"
         },
         "first_solver_id": "442597396195704832",
         "first_solver_name": "Thice",
