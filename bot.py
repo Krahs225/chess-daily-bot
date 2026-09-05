@@ -90,6 +90,7 @@ from chess_play import (
     choose_bot_move,
     stockfish_engine_info,
     analyse_game_moves,
+    stockfish_position_eval_cp,
     StockfishUnavailableError,
     move_like_text as chess_game_move_like,
     parse_move as parse_chess_game_move,
@@ -349,6 +350,9 @@ RANDOM_ANSWER_WINDOW = 12 * 60 * 60
 RUN_TIME = 5 * 60 * 60 + 50 * 60
 
 CHESS_CHALLENGE_SECONDS = 10 * 60
+CHESS_DRAW_OFFER_MIN_PLIES = 60  # after Black's 30th move
+CHESS_DRAW_OFFER_SECONDS = 5 * 60
+CHESS_BOT_DRAW_ACCEPT_CP = 30  # |eval| <= 0.30 pawns at full-strength SF19
 PUZZLE_RUSH_SECONDS = 5 * 60
 PUZZLE_RUSH_WINDOW = 50
 PUZZLE_RUSH_START_RATING = 1200
@@ -1440,6 +1444,10 @@ def fetch_practice_puzzle(target_rating, window=100):
             "rating": rating,
             "rp_band": int(stored_band),
             "practice_target": target,
+            # The database FEN is before this setup move. Rush renders the
+            # resulting puzzle position, so keeping the move lets Discord
+            # highlight exactly what the opponent just played.
+            "setup_uci": first_move.uci(),
         }
 
 
@@ -2624,12 +2632,25 @@ async def make_board_file(
     piece_theme = str(puzzle.get("piece_theme", "classic") or "classic").casefold()
     light, dark = BOARD_THEMES.get(theme_name, BOARD_THEMES["classic"])
 
+    last_move = None
+    arrows = []
+    raw_last_move = str(puzzle.get("last_move_uci") or "").strip()
+    if raw_last_move:
+        try:
+            last_move = chess.Move.from_uci(raw_last_move)
+            arrows.append(chess.svg.Arrow(last_move.from_square, last_move.to_square))
+        except Exception:
+            last_move = None
+            arrows = []
+
     svg_board = render_custom_board_svg(
         board,
         orientation=orientation,
         board_theme=theme_name,
         piece_theme=piece_theme,
         size=500,
+        lastmove=last_move,
+        arrows=arrows,
     )
 
     png_bytes = await asyncio.to_thread(
@@ -2678,6 +2699,11 @@ def _chess_games_state():
 
 def _chess_challenges_state():
     return state.setdefault("chess_challenges", {})
+
+
+# In-memory only: !review waits for the user's next pasted PGN for 5 minutes.
+# This must never be persisted because a restart should simply cancel the prompt.
+_pending_pgn_reviews = {}
 
 
 def _rush_state():
@@ -3020,7 +3046,47 @@ def _active_rush_for_user(user_id):
     if session.get("ruleset") != PUZZLE_RUSH_RULESET:
         session["active"] = False
         return None
+
+    # Reconcile any already-persisted duplicate sessions from older builds.
+    # Only the earliest-started live Rush survives.
+    active_user_id, active_session = _active_rush_global()
+    if str(active_user_id or "") != str(user_id) or active_session is not session:
+        return None
     return session
+
+
+def _active_rush_global():
+    """Return (user_id, session) for the one live Rush, if any.
+
+    Rush is channel-wide gameplay. Keeping this as a global singleton prevents
+    two players from posting interleaved puzzle boards and answers. If an older
+    build persisted multiple live sessions, reconcile them deterministically.
+    """
+    active = []
+    for user_id, session in list(_rush_state().items()):
+        if not isinstance(session, dict) or not session.get("active"):
+            continue
+        if session.get("ruleset") != PUZZLE_RUSH_RULESET:
+            session["active"] = False
+            continue
+        try:
+            started_at = float(session.get("started_at", 0) or 0)
+        except Exception:
+            started_at = 0.0
+        active.append((started_at, str(user_id), session))
+
+    if not active:
+        return None, None
+
+    active.sort(key=lambda item: (item[0], item[1]))
+    _started_at, keeper_id, keeper = active[0]
+    for _other_started, other_id, other_session in active[1:]:
+        other_session["active"] = False
+        other_session["forfeited"] = True
+        other_session["ended_at"] = time.time()
+        other_session["ended_reason"] = "duplicate-rush-reconciled"
+
+    return keeper_id, keeper
 
 
 def _prune_chess_game_history(limit=200):
@@ -3484,12 +3550,129 @@ def _format_stockfish_game_analysis(game, analysis):
     return "\n".join(lines)
 
 
+def _clean_review_pgn_text(text):
+    raw = str(text or "").strip()
+    if not raw:
+        return ""
+    if raw.startswith("```"):
+        lines = raw.splitlines()
+        if lines:
+            lines = lines[1:]
+        if lines and lines[-1].strip() == "```":
+            lines = lines[:-1]
+        raw = "\n".join(lines).strip()
+    return raw
+
+
+async def _review_pgn_text_from_message(message, inline_text=""):
+    raw = _clean_review_pgn_text(inline_text)
+    if raw:
+        return raw
+
+    for attachment in list(getattr(message, "attachments", []) or []):
+        filename = str(getattr(attachment, "filename", "") or "").casefold()
+        content_type = str(getattr(attachment, "content_type", "") or "").casefold()
+        if not (filename.endswith((".pgn", ".txt")) or content_type.startswith("text/")):
+            continue
+        try:
+            data = await attachment.read()
+            raw = _clean_review_pgn_text(data.decode("utf-8-sig", errors="replace"))
+            if raw:
+                return raw
+        except Exception:
+            continue
+    return ""
+
+
+def _parse_review_pgn(pgn_text, reviewer):
+    raw = _clean_review_pgn_text(pgn_text)
+    if not raw:
+        raise ValueError("Paste a PGN or attach a .pgn/.txt file.")
+
+    try:
+        parsed = chess.pgn.read_game(StringIO(raw))
+    except Exception as error:
+        raise ValueError(f"Could not parse that PGN: {error}") from error
+    if parsed is None:
+        raise ValueError("I could not find a chess game in that PGN.")
+
+    parse_errors = list(getattr(parsed, "errors", []) or [])
+    if parse_errors:
+        raise ValueError(f"PGN contains an invalid move: {parse_errors[0]}")
+
+    board = parsed.board()
+    start_fen = board.fen()
+    san_moves = []
+    try:
+        for move in parsed.mainline_moves():
+            san_moves.append(board.san(move))
+            board.push(move)
+    except Exception as error:
+        raise ValueError(f"Could not replay that PGN: {error}") from error
+    if not san_moves:
+        raise ValueError("That PGN does not contain any moves to analyse.")
+
+    headers = parsed.headers
+    white_name = str(headers.get("White") or "White")[:80]
+    black_name = str(headers.get("Black") or "Black")[:80]
+    reviewer_name = str(getattr(reviewer, "display_name", "") or "").casefold().strip()
+    orientation_white = True
+    if reviewer_name:
+        if reviewer_name == black_name.casefold().strip():
+            orientation_white = False
+        elif reviewer_name == white_name.casefold().strip():
+            orientation_white = True
+
+    game = {
+        "mode": "review",
+        "game_id": f"review_{getattr(reviewer, 'id', 'user')}_{int(time.time())}",
+        "white_name": white_name,
+        "black_name": black_name,
+        "white_rating": headers.get("WhiteElo"),
+        "black_rating": headers.get("BlackElo"),
+        "result": str(headers.get("Result") or "*"),
+        "moves": san_moves,
+        "start_fen": start_fen,
+        "theme_owner_id": str(getattr(reviewer, "id", "") or ""),
+        "theme_owner_name": str(getattr(reviewer, "display_name", "Player") or "Player"),
+        "review_orientation_white": bool(orientation_white),
+    }
+    return game, san_moves
+
+
+async def _run_pasted_pgn_review(message, pgn_text):
+    try:
+        game, san_moves = _parse_review_pgn(pgn_text, message.author)
+    except ValueError as error:
+        await message.channel.send(f"❌ **{error}**")
+        return
+
+    status = await message.channel.send(
+        f"🔎 **Analysing {game['white_name']} vs {game['black_name']} with Stockfish 19...**"
+    )
+    try:
+        analysis = await asyncio.to_thread(
+            analyse_game_moves,
+            san_moves,
+            None,
+            game.get("start_fen"),
+        )
+        await status.edit(content=_format_stockfish_game_analysis(game, analysis))
+        await _send_chess_game_review(message.channel, game, analysis)
+    except StockfishUnavailableError as error:
+        await status.edit(content=f"❌ **Stockfish 19 analysis is unavailable:** `{str(error)[:700]}`")
+    except Exception as error:
+        print(f"Manual PGN review failed: {error}", flush=True)
+        await status.edit(content=f"❌ **Could not analyse that PGN:** `{str(error)[:700]}`")
+
+
 def _review_board_at_ply(game, ply_index):
     moves = list(game.get("moves") or [])
+    start_fen = game.get("start_fen")
+    board = chess.Board(str(start_fen)) if start_fen else chess.Board()
     if not moves:
-        return chess.Board(), None
+        return board, None
     target = max(0, min(int(ply_index), len(moves) - 1))
-    board = chess.Board()
     last_move = None
     for index, san in enumerate(moves[:target + 1]):
         move = board.parse_san(str(san))
@@ -3519,6 +3702,8 @@ async def _make_chess_review_file(game, ply_index, filename="chess_review.png"):
     if game.get("mode") == "bot":
         human_id = str(game.get("human_id"))
         orientation = str(game.get("white_id")) == human_id
+    elif game.get("mode") == "review":
+        orientation = bool(game.get("review_orientation_white", True))
     else:
         orientation = True
     board_theme, piece_theme = await _review_theme_for_game(game)
@@ -3635,6 +3820,52 @@ class ChessGameReviewView(discord.ui.View):
         for button in (first, previous, indicator, next_button, last):
             self.add_item(button)
 
+        brilliant_indices = [
+            index for index, item in enumerate(self.moves)
+            if str(item.get("classification") or "") == "brilliant"
+        ]
+        blunder_indices = [
+            index for index, item in enumerate(self.moves)
+            if str(item.get("classification") or "") == "blunder"
+        ]
+
+        async def jump_to_next(interaction, indices):
+            if not indices:
+                await interaction.response.send_message(
+                    "No moves with that classification in this game.",
+                    ephemeral=True,
+                )
+                return
+            later = [index for index in indices if index > self.index]
+            self.index = later[0] if later else indices[0]
+            await self._refresh(interaction)
+
+        brilliant_button = discord.ui.Button(
+            label=f"Brilliant ×{len(brilliant_indices)}",
+            style=discord.ButtonStyle.success,
+            emoji=discord.PartialEmoji.from_str(BRILLIANT_REVIEW_EMOJI),
+            row=1,
+            disabled=not brilliant_indices,
+        )
+        blunder_button = discord.ui.Button(
+            label=f"Blunder ×{len(blunder_indices)}",
+            style=discord.ButtonStyle.danger,
+            emoji=discord.PartialEmoji.from_str(BLUNDER_REVIEW_EMOJI),
+            row=1,
+            disabled=not blunder_indices,
+        )
+
+        async def brilliant_cb(interaction):
+            await jump_to_next(interaction, brilliant_indices)
+
+        async def blunder_cb(interaction):
+            await jump_to_next(interaction, blunder_indices)
+
+        brilliant_button.callback = brilliant_cb
+        blunder_button.callback = blunder_cb
+        self.add_item(brilliant_button)
+        self.add_item(blunder_button)
+
 
 async def _send_chess_game_review(channel, game, analysis):
     moves = list(analysis.get("moves") or [])
@@ -3662,6 +3893,25 @@ async def _send_finished_chess_extras(channel, game, result_message=None):
     except Exception as error:
         print(f"Post-game Stockfish analysis failed: {error}", flush=True)
         await channel.send("⚠️ **PGN saved, but the post-game analysis could not be completed.**")
+
+
+def _chess_board_from_game(game):
+    """Rebuild the current board with its full move stack.
+
+    Repetition and 50-move draw rules require move history. Recreating a board
+    from only the latest FEN loses that history, so rated games are replayed
+    from their saved SAN move list. Old/corrupt records safely fall back to FEN.
+    """
+    start_fen = str(game.get("initial_fen") or chess.STARTING_FEN)
+    moves = list(game.get("moves") or [])
+    try:
+        board = chess.Board(start_fen)
+        for san in moves:
+            board.push_san(str(san))
+        return board
+    except Exception as error:
+        print(f"Chess history replay failed for {game.get('game_id')}: {error}", flush=True)
+        return chess.Board(str(game.get("fen") or chess.STARTING_FEN))
 
 
 def _current_game_last_move(game):
@@ -3896,12 +4146,29 @@ async def finish_chess_game(channel, game, result, reason="Game finished"):
 
 
 async def maybe_finish_board_game(channel, game, board, reason=None):
-    if not board.is_game_over(claim_draw=True):
+    # Server rule: end immediately on the third occurrence of the same position.
+    # FIDE normally requires a claim at threefold, but this Discord bot makes it
+    # automatic to prevent endless repetition loops. python-chess compares the
+    # actual position state, including side to move, castling and en-passant rights.
+    if board.is_repetition(3):
+        await send_chess_game_position(channel, game)
+        await finish_chess_game(channel, game, "1/2-1/2", "Threefold repetition")
+        return True
+
+    # Preserve the practical 50-move claim behavior without ending one move early.
+    if board.is_fifty_moves():
+        await send_chess_game_position(channel, game)
+        await finish_chess_game(channel, game, "1/2-1/2", "50-move rule")
+        return True
+
+    # Checkmate, stalemate, insufficient material, fivefold repetition and
+    # 75-move rule are automatic under the normal Laws of Chess.
+    if not board.is_game_over(claim_draw=False):
         return False
-    result = board.result(claim_draw=True)
+    result = board.result(claim_draw=False)
     await send_chess_game_position(channel, game)
     if reason is None:
-        outcome = board.outcome(claim_draw=True)
+        outcome = board.outcome(claim_draw=False)
         if outcome is not None and outcome.termination is not None:
             reason = str(outcome.termination.name).replace("_", " ").title()
         else:
@@ -3913,7 +4180,7 @@ async def maybe_finish_board_game(channel, game, board, reason=None):
 async def perform_bot_turn(channel, game, opening=False):
     if game.get("status") != "active":
         return
-    board = chess.Board(game["fen"])
+    board = _chess_board_from_game(game)
     bot_color = chess.WHITE if str(game.get("white_id")) == "BOT" else chess.BLACK
     if board.turn != bot_color:
         return
@@ -3921,7 +4188,7 @@ async def perform_bot_turn(channel, game, opening=False):
     try:
         move = await asyncio.to_thread(
             choose_bot_move,
-            board.copy(stack=False),
+            board.copy(stack=True),
             int(game.get("bot_rating", 1500)),
         )
     except StockfishUnavailableError as error:
@@ -4022,10 +4289,12 @@ async def start_bot_game(message, requested_rating=None):
         "bot_rating": bot_elo,
         "bot_engine": str(engine_info.get("name") or "Stockfish"),
         "bot_full_strength": bool(full_strength),
+        "initial_fen": chess.STARTING_FEN,
         "fen": chess.STARTING_FEN,
         "moves": [],
         "last_move": None,
         "started_at": time.time(),
+        "draw_offer": None,
         "theme_owner_id": str(message.author.id),
         "theme_owner_name": message.author.display_name,
     }
@@ -4184,10 +4453,12 @@ async def accept_player_challenge(message):
         "black_name": black_member.display_name,
         "white_rating": float(white_entry["elo"]),
         "black_rating": float(black_entry["elo"]),
+        "initial_fen": chess.STARTING_FEN,
         "fen": chess.STARTING_FEN,
         "moves": [],
         "last_move": None,
         "started_at": time.time(),
+        "draw_offer": None,
         "theme_owner_id": challenger_id,
         "theme_owner_name": challenge.get("challenger_name", challenger_member.display_name),
         "wager_amount": wager_amount,
@@ -4215,7 +4486,7 @@ async def handle_chess_game_move(message, game, move_text):
     async with chess_game_lock:
         if game.get("status") != "active":
             return
-        board = chess.Board(game["fen"])
+        board = _chess_board_from_game(game)
         user_color = _game_side_for_user(game, message.author.id)
         if user_color is None:
             return
@@ -4227,6 +4498,11 @@ async def handle_chess_game_move(message, game, move_text):
         except ValueError:
             await message.channel.send(f"❌ **Illegal move, {message.author.display_name}.**")
             return
+
+        # Under normal draw-offer rules, making a move rejects an incoming offer.
+        offer = game.get("draw_offer") if game.get("mode") == "pvp" else None
+        if isinstance(offer, dict) and str(offer.get("from_id")) != str(message.author.id):
+            game["draw_offer"] = None
 
         board.push(move)
         game["fen"] = board.fen()
@@ -4246,6 +4522,117 @@ async def handle_chess_game_move(message, game, move_text):
                 game,
                 f"✅ **{message.author.display_name}: {san}**",
             )
+
+
+def _draw_offer_ready(game):
+    return len(list(game.get("moves") or [])) >= CHESS_DRAW_OFFER_MIN_PLIES
+
+
+def _draw_offer_move_text(game):
+    remaining = max(0, CHESS_DRAW_OFFER_MIN_PLIES - len(list(game.get("moves") or [])))
+    if remaining <= 0:
+        return ""
+    full_moves = (remaining + 1) // 2
+    return f" after about **{full_moves} more full move{'s' if full_moves != 1 else ''}**"
+
+
+async def offer_chess_draw(message):
+    game = _active_chess_game_for_user(message.author.id)
+    if not game:
+        await message.channel.send("❌ You do not have an active rated chess game.")
+        return
+
+    board = _chess_board_from_game(game)
+    if await maybe_finish_board_game(message.channel, game, board):
+        return
+
+    if not _draw_offer_ready(game):
+        await message.channel.send(
+            "🤝 **Draw offers are locked until Black has completed move 30.** "
+            "This prevents one-move draw farming." + _draw_offer_move_text(game)
+        )
+        return
+
+    # Bot games resolve the request immediately. The full-strength engine only
+    # accepts genuinely drawish positions; the displayed bot Elo does not weaken
+    # this anti-farming decision.
+    if game.get("mode") == "bot":
+        try:
+            eval_cp = await asyncio.to_thread(stockfish_position_eval_cp, board.copy(stack=True), chess.WHITE)
+        except StockfishUnavailableError as error:
+            await message.channel.send(f"❌ Stockfish cannot evaluate the draw offer right now: `{str(error)[:700]}`")
+            return
+        except Exception as error:
+            print(f"Stockfish draw-offer eval failed: {error}", flush=True)
+            await message.channel.send("❌ Stockfish could not evaluate the draw offer right now.")
+            return
+
+        if abs(int(eval_cp)) <= CHESS_BOT_DRAW_ACCEPT_CP:
+            await message.channel.send("🤝 **Stockfish accepts the draw offer.**")
+            await finish_chess_game(message.channel, game, "1/2-1/2", "Draw agreed")
+        else:
+            await message.channel.send("♟️ **Stockfish declines the draw offer.** The position is not drawish enough yet.")
+        return
+
+    existing = game.get("draw_offer")
+    if isinstance(existing, dict):
+        age = time.time() - float(existing.get("created_at", 0) or 0)
+        if age <= CHESS_DRAW_OFFER_SECONDS:
+            if str(existing.get("from_id")) == str(message.author.id):
+                await message.channel.send("🤝 You already have a pending draw offer.")
+            else:
+                await message.channel.send(
+                    "🤝 Your opponent already offered a draw. Use `!acceptdraw` or `!declinedraw`."
+                )
+            return
+
+    opponent_id = str(game.get("black_id")) if str(game.get("white_id")) == str(message.author.id) else str(game.get("white_id"))
+    opponent_name = game.get("black_name", "Black") if str(game.get("white_id")) == str(message.author.id) else game.get("white_name", "White")
+    game["draw_offer"] = {
+        "from_id": str(message.author.id),
+        "from_name": message.author.display_name,
+        "to_id": opponent_id,
+        "to_name": opponent_name,
+        "created_at": time.time(),
+    }
+    await save_all()
+    await message.channel.send(
+        f"🤝 **{message.author.display_name} offers a draw to {opponent_name}.**\n"
+        "Use `!acceptdraw` or `!declinedraw`. The offer also expires after 5 minutes or when the receiver makes a move."
+    )
+
+
+async def accept_chess_draw(message):
+    game = _active_chess_game_for_user(message.author.id)
+    if not game or game.get("mode") != "pvp":
+        await message.channel.send("❌ You do not have a pending player-vs-player draw offer.")
+        return
+    offer = game.get("draw_offer")
+    if not isinstance(offer, dict) or str(offer.get("to_id")) != str(message.author.id):
+        await message.channel.send("❌ You do not have a pending draw offer.")
+        return
+    if time.time() - float(offer.get("created_at", 0) or 0) > CHESS_DRAW_OFFER_SECONDS:
+        game["draw_offer"] = None
+        await save_all()
+        await message.channel.send("⌛ That draw offer expired.")
+        return
+    game["draw_offer"] = None
+    await message.channel.send(f"🤝 **{message.author.display_name} accepts the draw.**")
+    await finish_chess_game(message.channel, game, "1/2-1/2", "Draw agreed")
+
+
+async def decline_chess_draw(message):
+    game = _active_chess_game_for_user(message.author.id)
+    if not game or game.get("mode") != "pvp":
+        await message.channel.send("❌ You do not have a pending player-vs-player draw offer.")
+        return
+    offer = game.get("draw_offer")
+    if not isinstance(offer, dict) or str(offer.get("to_id")) != str(message.author.id):
+        await message.channel.send("❌ You do not have a pending draw offer.")
+        return
+    game["draw_offer"] = None
+    await save_all()
+    await message.channel.send(f"♟️ **{message.author.display_name} declines the draw.** Game continues.")
 
 
 async def resign_chess_game(message):
@@ -4364,6 +4751,8 @@ async def load_next_rush_puzzle(session):
     )
     puzzle["rating"] = data.get("rating")
     puzzle["next_solution_index"] = 0
+    # Show the opponent's setup move on every fresh Rush puzzle.
+    puzzle["last_move_uci"] = data.get("setup_uci")
     try:
         profile = await asyncio.to_thread(
             get_cosmetic_profile,
@@ -4400,14 +4789,28 @@ async def send_rush_puzzle(channel, session, note=None):
     await channel.send(embed=embed, file=file)
 
 
-async def end_puzzle_rush(channel, user_id, reason="Time!"):
+async def end_puzzle_rush(channel, user_id, reason="Time!", *, record_score=True, already_inactive=False):
     session = _rush_state().get(str(user_id))
-    if not session or not session.get("active"):
+    if not session or (not session.get("active") and not already_inactive):
         return
     session["active"] = False
     session["ended_at"] = time.time()
     score = int(session.get("score", 0))
     wrong = int(session.get("wrong", 0))
+
+    # A manual !stoprush is a forfeit. The partial score is intentionally not
+    # submitted to either the all-time or weekly leaderboard.
+    if not record_score:
+        session["forfeited"] = True
+        await save_all_critical()
+        await channel.send(
+            f"🏳️ **Puzzle Rush forfeited — {session.get('name', 'Player')}!**\n"
+            f"{reason}\n"
+            f"✅ Solved before stopping: **{score}** • ❌ Misses: **{wrong}**\n"
+            "This run was not submitted to the Rush leaderboards."
+        )
+        return
+
     now_iso = datetime.now(timezone.utc).isoformat()
     bests = _rush_bests_state()
     previous_entry = _normalize_rush_best(user_id, bests.get(str(user_id), 0))
@@ -4460,41 +4863,81 @@ async def end_puzzle_rush(channel, user_id, reason="Time!"):
     )
 
 
-async def start_puzzle_rush(message):
-    if _active_rush_for_user(message.author.id):
+async def stop_puzzle_rush(message):
+    # Claim the session under the same lock used by move handling so a move
+    # cannot sneak in after the player has forfeited.
+    async with rush_lock:
         session = _active_rush_for_user(message.author.id)
-        await message.channel.send(
-            f"⚡ Your Puzzle Rush is already active — **{_rush_clock_text(_rush_seconds_left(session))}** left."
-        )
-        return
+        if not session:
+            active_user_id, active_session = _active_rush_global()
+            if active_session is not None:
+                await message.channel.send(
+                    f"❌ Only **{active_session.get('name', 'the current player')}** can stop this Puzzle Rush."
+                )
+            else:
+                await message.channel.send("❌ There is no active Puzzle Rush.")
+            return
+        session["active"] = False
+        session["forfeited"] = True
+
+    await end_puzzle_rush(
+        message.channel,
+        message.author.id,
+        "You gave up the run with `!stoprush`.",
+        record_score=False,
+        already_inactive=True,
+    )
+
+
+async def start_puzzle_rush(message):
+    # Finalize an expired singleton before deciding whether a new run may start.
+    await check_puzzle_rush_expiry(message.channel)
+
     if _active_chess_game_for_user(message.author.id):
         await message.channel.send("❌ Finish your active chess game before starting Puzzle Rush.")
         return
 
-    session = {
-        "active": True,
-        "user_id": str(message.author.id),
-        "name": message.author.display_name,
-        "started_at": time.time(),
-        "end_at": time.time() + PUZZLE_RUSH_SECONDS,
-        "score": 0,
-        "wrong": 0,
-        "ruleset": PUZZLE_RUSH_RULESET,
-        "puzzle": None,
-    }
-    _rush_state()[str(message.author.id)] = session
-    try:
-        await load_next_rush_puzzle(session)
-    except Exception as error:
-        session["active"] = False
+    async with rush_lock:
+        active_user_id, active_session = _active_rush_global()
+        if active_session is not None:
+            if str(active_user_id) == str(message.author.id):
+                await message.channel.send(
+                    f"⚡ Your Puzzle Rush is already active — **{_rush_clock_text(_rush_seconds_left(active_session))}** left."
+                )
+            else:
+                await message.channel.send(
+                    f"⚡ **{active_session.get('name', 'Someone')}** already has an active Puzzle Rush "
+                    f"(**{_rush_clock_text(_rush_seconds_left(active_session))}** left). "
+                    "Only one Rush can run at a time."
+                )
+            return
+
+        session = {
+            "active": True,
+            "user_id": str(message.author.id),
+            "name": message.author.display_name,
+            "started_at": time.time(),
+            "end_at": time.time() + PUZZLE_RUSH_SECONDS,
+            "score": 0,
+            "wrong": 0,
+            "ruleset": PUZZLE_RUSH_RULESET,
+            "puzzle": None,
+        }
+        _rush_state()[str(message.author.id)] = session
+        try:
+            await load_next_rush_puzzle(session)
+        except Exception as error:
+            session["active"] = False
+            await save_all()
+            await message.channel.send(f"❌ Could not start Puzzle Rush: `{str(error)[:800]}`")
+            return
         await save_all()
-        await message.channel.send(f"❌ Could not start Puzzle Rush: `{str(error)[:800]}`")
-        return
-    await save_all()
+
     await message.channel.send(
         "⚡ **5-minute Puzzle Rush started!** Solve as many as possible. "
-        "Everyone gets the same difficulty curve: puzzles start around 1200 and get harder as your score rises. "
-        "Wrong answers skip to the next puzzle; the clock is the only limit."
+        "Only one Rush can run in the channel at a time. Everyone gets the same difficulty curve: "
+        "puzzles start around 1200 and get harder as your score rises. "
+        "Wrong answers skip to the next puzzle; use `!stoprush` to forfeit."
     )
     await send_rush_puzzle(message.channel, session)
 
@@ -4537,7 +4980,23 @@ async def handle_rush_move(message, session, submitted):
                 return
             expected = all_moves[next_index]
 
-        if not san_matches_move(board, submitted, expected):
+        submitted_move = parse_submitted_legal_move(board, submitted)
+        exact_solution_move = (
+            submitted_move is not None
+            and submitted_move.uci() == str(expected.get("uci", ""))
+        )
+
+        # Lichess stores one principal solution line. A position can still have
+        # more than one objectively correct mate. Any legal move that checkmates
+        # immediately is therefore accepted even when it differs from the stored
+        # UCI solution (e.g. two different mate-in-1 moves).
+        alternate_checkmate = False
+        if submitted_move is not None and not exact_solution_move:
+            trial = board.copy(stack=False)
+            trial.push(submitted_move)
+            alternate_checkmate = trial.is_checkmate()
+
+        if not exact_solution_move and not alternate_checkmate:
             session["wrong"] = int(session.get("wrong", 0)) + 1
             answer = expected.get("san", expected.get("uci", "?"))
             await load_next_rush_puzzle(session)
@@ -4546,9 +5005,28 @@ async def handle_rush_move(message, session, submitted):
             await send_rush_puzzle(message.channel, session)
             return
 
-        move = chess.Move.from_uci(expected["uci"])
+        move = submitted_move if alternate_checkmate else chess.Move.from_uci(expected["uci"])
         san = board.san(move)
         board.push(move)
+        puzzle["last_move_uci"] = move.uci()
+
+        if alternate_checkmate:
+            # Checkmate ends the puzzle by definition; there is no opponent reply
+            # and no need to force the stored principal variation.
+            session["score"] = int(session.get("score", 0)) + 1
+            if _rush_seconds_left(session) <= 0:
+                await save_all()
+                await end_puzzle_rush(message.channel, message.author.id, "The 5-minute clock expired.")
+                return
+            await load_next_rush_puzzle(session)
+            await save_all()
+            await message.channel.send(
+                f"✅ **Solved! +1** — score **{session['score']}**. "
+                "Alternate checkmate accepted."
+            )
+            await send_rush_puzzle(message.channel, session)
+            return
+
         next_index += 1
         opponent_replies = []
         while next_index < len(all_moves) and all_moves[next_index].get("color") != puzzle.get("player_color"):
@@ -4558,6 +5036,7 @@ async def handle_rush_move(message, session, submitted):
                 break
             opponent_replies.append(reply.get("san", reply["uci"]))
             board.push(reply_move)
+            puzzle["last_move_uci"] = reply_move.uci()
             next_index += 1
 
         puzzle["current_fen"] = board.fen()
@@ -5024,6 +5503,26 @@ def san_matches_move(
     except ValueError:
 
         return False
+
+
+def parse_submitted_legal_move(board, submitted):
+    """Return the submitted legal move, accepting SAN or UCI, or None."""
+    submitted_normalized = normalize_move(submitted)
+    if not submitted_normalized:
+        return None
+
+    for legal_move in board.legal_moves:
+        try:
+            if normalize_move(board.san(legal_move)) == submitted_normalized:
+                return legal_move
+        except Exception:
+            continue
+
+    try:
+        move = board.parse_uci(submitted_normalized)
+    except ValueError:
+        return None
+    return move if move in board.legal_moves else None
 
 
 # =========================================================
@@ -6405,12 +6904,13 @@ def help_message():
 **Puzzles**
 `rp` / `r` — Random Puzzle. `p` / `!practice` — rated Practice near your Puzzle Elo.
 `!daily <move>` — Daily Puzzle. `!400`, `!2500`, etc. — exact-rating practice.
-`!rush` — **5-minute Puzzle Rush**; same difficulty curve for everyone. Weekly Top 10 earns coins.
+`!rush` — **5-minute Rush**; one at a time, same difficulty. `!stoprush` forfeits. Top 10 earns coins.
 
 **Rated Chess**
 `!playbot [elo]` — play Stockfish 19 at calibrated Elo (1320-3190), or `!playbot 4000` for full strength; no Elo picks within ±200 of yours. Win **+3**, draw **+2**, loss **+0** shared points + coins.
 `!play @name` — free player challenge. `!play @name 10` — both stake 10 coins; winner gets 20. `!accept` / `!decline`.
-Play moves normally or use `!move e4`. `!resign` resigns. `!chessboard` shows the position. Finished games include a copyable PGN thread + compact Stockfish accuracy/analysis.
+Play normally or `!move e4`. `!draw` / `!offerdraw` offers a draw after move 30; PvP: `!acceptdraw` / `!declinedraw`. Threefold repetition auto-draws. `!resign` resigns. Finished games include PGN + Stockfish review.
+`!review` — paste a PGN (or attach `.pgn`) for a free Stockfish 19 review with move-by-move buttons.
 `!stats` shows both **Puzzle Elo** and your separate **Chess Elo**.
 
 **Points / Coins / Shop**
@@ -8121,6 +8621,33 @@ async def on_message(
 
         command_lower = content.casefold()
 
+        pending_review = _pending_pgn_reviews.get(str(message.author.id))
+        if pending_review and time.monotonic() >= float(pending_review.get("expires_at", 0)):
+            _pending_pgn_reviews.pop(str(message.author.id), None)
+            pending_review = None
+
+        if command_lower == "!cancelreview":
+            if _pending_pgn_reviews.pop(str(message.author.id), None) is None:
+                await message.channel.send("❌ You do not have a pending PGN review.")
+            else:
+                await message.channel.send("✅ PGN review cancelled.")
+            return
+
+        if (
+            pending_review
+            and int(pending_review.get("channel_id", 0)) == int(message.channel.id)
+            and not content.startswith("!")
+        ):
+            pgn_text = await _review_pgn_text_from_message(message, content)
+            if not pgn_text:
+                await message.channel.send(
+                    "❌ I am waiting for a PGN. Paste it here, attach a `.pgn`/`.txt`, or use `!cancelreview`."
+                )
+                return
+            _pending_pgn_reviews.pop(str(message.author.id), None)
+            await _run_pasted_pgn_review(message, pgn_text)
+            return
+
         # IMPORTANT: claim Survival immediately from the human command itself.
         # Waiting for survival_runs.json caused a race: Daily/Random could say
         # "Wrong" while Survival correctly accepted the exact same move.
@@ -8265,6 +8792,27 @@ async def on_message(
             return
 
         # -----------------------------------------------------
+        # MANUAL STOCKFISH PGN REVIEW
+        # -----------------------------------------------------
+        if command_lower == "!review" or command_lower.startswith("!review "):
+            inline = content[len("!review"):].strip()
+            pgn_text = await _review_pgn_text_from_message(message, inline)
+            if pgn_text:
+                _pending_pgn_reviews.pop(str(message.author.id), None)
+                await _run_pasted_pgn_review(message, pgn_text)
+                return
+
+            _pending_pgn_reviews[str(message.author.id)] = {
+                "channel_id": int(message.channel.id),
+                "expires_at": time.monotonic() + 300.0,
+            }
+            await message.channel.send(
+                "📋 **PGN Review ready.** Paste the PGN in your next message or attach a `.pgn`/`.txt` file. "
+                "I will analyse it locally with **Stockfish 19**. Use `!cancelreview` to cancel."
+            )
+            return
+
+        # -----------------------------------------------------
         # RATED NORMAL CHESS
         # -----------------------------------------------------
         if (
@@ -8354,6 +8902,18 @@ async def on_message(
                 )
             return
 
+        if command_lower in {"!draw", "!offerdraw", "!offer draw"}:
+            await offer_chess_draw(message)
+            return
+
+        if command_lower in {"!acceptdraw", "!accept draw"}:
+            await accept_chess_draw(message)
+            return
+
+        if command_lower in {"!declinedraw", "!decline draw"}:
+            await decline_chess_draw(message)
+            return
+
         if command_lower == "!resign":
             await resign_chess_game(message)
             return
@@ -8401,11 +8961,8 @@ async def on_message(
             await start_puzzle_rush(message)
             return
 
-        if command_lower in {"!rush stop", "!puzzlerush stop", "!puzzle rush stop"}:
-            if not _active_rush_for_user(message.author.id):
-                await message.channel.send("❌ You do not have an active Puzzle Rush.")
-            else:
-                await end_puzzle_rush(message.channel, message.author.id, "Stopped early.")
+        if command_lower in {"!stoprush", "!rush stop", "!puzzlerush stop", "!puzzle rush stop"}:
+            await stop_puzzle_rush(message)
             return
 
         # Sharkmeister-only shared leaderboard correction:
