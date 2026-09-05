@@ -522,9 +522,9 @@
     },
     "sh4rkmate": {
       "name": "Sh4rkmate",
-      "best_puzzle": 2,
-      "best_difficulty": 1247,
-      "best_completed_at": "2026-09-05T19:41:42.227016+00:00",
+      "best_puzzle": 3,
+      "best_difficulty": 1284,
+      "best_completed_at": "2026-09-05T19:42:01.063441+00:00",
       "current": {
         "run_id": "sh4rkmate:1788637231",
         "started_by_id": "442597396195704832",
@@ -535,12 +535,13 @@
         "started_at": "2026-09-05T19:40:31.794958+00:00",
         "last_activity": 1788637316.5750208,
         "paused_reason": null,
-        "puzzle_number": 2,
+        "puzzle_number": 3,
         "strikes": 0,
         "best_difficulty": 1284,
         "used_puzzle_ids": [
           "f3vzs",
-          "D37CV"
+          "D37CV",
+          "eJCp8"
         ],
         "members": {
           "442597396195704832": {
@@ -550,64 +551,54 @@
           }
         },
         "puzzle": {
-          "id": "D37CV",
-          "rating": 1284,
-          "themes": "endgame mate mateIn2 rookEndgame short",
-          "url": "https://lichess.org/training/D37CV",
-          "start_fen": "8/8/5R2/6pk/8/5P1p/5KP1/7r w - - 0 65",
-          "current_fen": "8/8/7R/6p1/6Pk/5P1p/5K2/7r b - - 2 66",
+          "id": "eJCp8",
+          "rating": 1210,
+          "themes": "crushing long endgame",
+          "url": "https://lichess.org/training/eJCp8",
+          "start_fen": "7B/p6k/4p1pp/1ppq4/8/2Q4P/2P2PP1/5K2 b - - 1 37",
+          "current_fen": "7B/p6k/4p1pp/1ppq4/8/2Q4P/2P2PP1/5K2 b - - 1 37",
           "solution": [
             {
-              "uci": "g2g4",
-              "san": "g4+",
-              "color": "white"
-            },
-            {
-              "uci": "h5h4",
-              "san": "Kh4",
+              "uci": "d5d1",
+              "san": "Qd1+",
               "color": "black"
             },
             {
-              "uci": "f6h6",
-              "san": "Rh6#",
+              "uci": "c3e1",
+              "san": "Qe1",
               "color": "white"
+            },
+            {
+              "uci": "d1e1",
+              "san": "Qxe1+",
+              "color": "black"
+            },
+            {
+              "uci": "f1e1",
+              "san": "Kxe1",
+              "color": "white"
+            },
+            {
+              "uci": "h7h8",
+              "san": "Kxh8",
+              "color": "black"
             }
           ],
-          "player_color": "white",
-          "next_solution_index": 3,
+          "player_color": "black",
+          "next_solution_index": 0,
           "first_solver_id": null,
           "first_solver_name": null,
           "helper_candidates": {},
           "helper_awarded": [],
           "wrong_users": [],
-          "rated_users": [
-            "442597396195704832"
-          ],
-          "setup_move_uci": "h4h3",
-          "last_move_uci": "f6h6",
-          "last_move_san": "Rh6#",
-          "accepted_moves": [
-            {
-              "san": "g4+",
-              "uci": "g2g4",
-              "accepted_at": 1788637310.6516027,
-              "solver_id": "442597396195704832"
-            },
-            {
-              "san": "Rh6#",
-              "uci": "f6h6",
-              "accepted_at": 1788637316.5749338,
-              "solver_id": "442597396195704832"
-            }
-          ],
-          "last_accepted_move_uci": "f6h6",
-          "last_accepted_move_san": "Rh6#",
-          "last_accepted_move_index": 2,
-          "last_accepted_at": 1788637316.5749328,
-          "position_before_last_move": "8/8/5R2/6p1/6Pk/5P1p/5K2/7r w - - 1 66"
+          "rated_users": [],
+          "setup_move_uci": "f6h8",
+          "last_move_uci": "f6h8",
+          "last_move_san": null,
+          "accepted_moves": []
         },
-        "first_solver_id": "442597396195704832",
-        "first_solver_name": "Thice",
+        "first_solver_id": null,
+        "first_solver_name": null,
         "helper_candidates": {},
         "helper_awarded": [],
         "shop_heart_purchased": false
