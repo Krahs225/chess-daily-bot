@@ -23,6 +23,14 @@ from guess_chess_chatter import (
     post_chess_round,
 )
 
+from shared_leaderboard import (
+    get_cosmetic_profile,
+    buy_badge_box,
+    equip_badge,
+    format_points as shared_format_points,
+)
+from shop_catalog import BADGE_BOX_COST, BADGE_POOLS, RARITY_LABELS
+
 TOKEN = os.getenv(
     "DISCORD_TOKEN"
 )
@@ -69,6 +77,7 @@ ROUND_PREFIXES = {
     ),
     "chess": (
         "♟️ **Guess the Chess Chatter** —",
+        "⚡ **CLOCK SCRAMBLE — DOUBLE POINTS** —",
     ),
 }
 
@@ -81,6 +90,89 @@ QUOTE_HUNT_CHANCE = 0.10
 QUOTE_HUNT_MAX_LENGTH = 55
 QUOTE_HUNT_RECENT_LIMIT = 120
 QUOTE_HUNT_RECENT_KEYS = []
+
+TOTAL_DISASTER_OPENERS = [
+    "The correct answer walked through the room completely unnoticed.",
+    "Every single vote managed to dodge the correct answer.",
+    "The correct option was right there and still got abandoned.",
+    "Nobody found the target. Not one brave soul.",
+    "The entire lobby collectively looked the other way.",
+    "The correct answer survived the poll without being touched.",
+    "Everyone formed a plan, and somehow the plan excluded the answer.",
+    "The right option just watched the chaos from the sidelines.",
+    "Not a single detective made it to the correct door.",
+    "The answer hid in plain sight and won easily.",
+]
+TOTAL_DISASTER_MIDDLES = [
+    "This was less a vote and more a coordinated evacuation.",
+    "The investigation has officially been classified as missing.",
+    "Accuracy has temporarily left the server.",
+    "The guessing department requests immediate reinforcements.",
+    "Several theories were tested. Reality was not among them.",
+    "The poll has asked for witness protection.",
+    "Every wrong option received more emotional support than the truth.",
+    "The evidence was present. The detectives were elsewhere.",
+    "Statistically impressive, strategically catastrophic.",
+    "The correct answer would like to file a complaint.",
+]
+TOTAL_DISASTER_ENDINGS = [
+    "Absolute cinema.",
+    "A flawless disaster.",
+    "We go again.",
+    "History has been made for all the wrong reasons.",
+    "Please pretend the replay does not exist.",
+]
+
+
+def total_disaster_message():
+    # 10 × 10 × 5 = 500 distinct combinations.
+    return (
+        "💥 **TOTAL DISASTER**\n"
+        + random.choice(TOTAL_DISASTER_OPENERS)
+        + " "
+        + random.choice(TOTAL_DISASTER_MIDDLES)
+        + " "
+        + random.choice(TOTAL_DISASTER_ENDINGS)
+    )
+
+
+def guess_cosmetic_profile_messages(user_id, display_name):
+    profile = get_cosmetic_profile(user_id, display_name)
+    badges = list(profile.get("badges", []))
+    active = profile.get("active_badge") or "—"
+    header = [
+        f"👤 **Guess Profile — {(active + ' ') if active != '—' else ''}{profile.get('name', display_name)}**",
+        f"🪙 **Coins:** {shared_format_points(profile.get('coins', 0))}",
+        f"🏅 **Active badge:** {active}",
+        "",
+        "**Owned badges**",
+    ]
+    badge_lines = []
+    if badges:
+        for index, badge in enumerate(badges, 1):
+            rarity = next(
+                (RARITY_LABELS[r] for r, pool in BADGE_POOLS.items() if badge in pool),
+                "Unknown",
+            )
+            badge_lines.append(f"`{index}.` {badge} — {rarity}")
+    else:
+        badge_lines.append("None yet — open a `!shop box`.")
+
+    chunks = []
+    current = list(header)
+    for line in badge_lines:
+        candidate = "\n".join(current + [line])
+        if len(candidate) > 1800 and current:
+            chunks.append("\n".join(current))
+            current = ["**Owned badges (continued)**", line]
+        else:
+            current.append(line)
+    current.extend(["", "Equip with `!profile badge <number>`. "])
+    if len("\n".join(current)) > 1950:
+        chunks.append("\n".join(current[:-2]))
+        current = current[-2:]
+    chunks.append("\n".join(current))
+    return chunks
 
 
 CHATTERS = {
@@ -1312,6 +1404,7 @@ async def post_quote_hunt(channel, chatters):
         )
 
     voters_by_answer = []
+    poll_results_loaded = False
     try:
         finished_message = await channel.fetch_message(poll_message.id)
         finished_poll = (
@@ -1325,6 +1418,7 @@ async def post_quote_hunt(channel, chatters):
                 if not voter.bot:
                     answer_voters.append(voter)
             voters_by_answer.append(answer_voters)
+        poll_results_loaded = True
     except Exception as error:
         print(
             f"Quote Hunt poll result error: {error}",
@@ -1393,6 +1487,8 @@ async def post_quote_hunt(channel, chatters):
         await channel.send(
             "🎉 " + " • ".join(f"**{name} +1**" for name in rewarded)
         )
+    elif poll_results_loaded:
+        await channel.send(total_disaster_message())
 
     bonuses = (
         stats_result.get("_streak_bonuses", [])
@@ -1619,8 +1715,9 @@ async def post_guess(
             flush=True,
         )
 
+    voters_by_answer = []
+    poll_results_loaded = False
     try:
-        voters_by_answer = []
 
         finished_message = await channel.fetch_message(
             poll_message.id
@@ -1644,6 +1741,8 @@ async def post_guess(
             voters_by_answer.append(
                 answer_voters
             )
+
+        poll_results_loaded = True
 
     except Exception as error:
         print(
@@ -1750,6 +1849,8 @@ async def post_guess(
         await channel.send(
             f"🎉 {names}"
         )
+    elif poll_results_loaded:
+        await channel.send(total_disaster_message())
 
     bonuses = (
         stats_result.get("_streak_bonuses", [])
@@ -2003,7 +2104,7 @@ async def command_handler(message):
     raw_command = message.content.strip()
     command = raw_command.casefold()
 
-    if command in {"!next", "!n"}:
+    if command in {"!next", "!n", "n"}:
         if CURRENT_ROUND_TYPE is None:
             # A previous idle !next may already have queued a start but the
             # task has not yet reached CURRENT_ROUND_TYPE. Ignore duplicate
@@ -2085,6 +2186,88 @@ async def command_handler(message):
         )
         return
 
+    if command in {"!shop", "!shop badge", "!shop badges"}:
+        profile = await asyncio.to_thread(
+            get_cosmetic_profile,
+            message.author.id,
+            message.author.display_name,
+        )
+        await message.channel.send(
+            "🛍️ **Guess Shop**\n"
+            f"🪙 Coins: **{shared_format_points(profile.get('coins', 0))}**\n\n"
+            f"🎁 **Mystery Badge Box — {shared_format_points(BADGE_BOX_COST)} coins**\n"
+            "Open one with `!shop box` or `!box`.\n"
+            "One random badge • duplicates are possible • no rerolls/refunds."
+        )
+        return
+
+    if command in {"!shop box", "!box"}:
+        try:
+            result = await asyncio.to_thread(
+                buy_badge_box,
+                message.author.id,
+                message.author.display_name,
+                f"guess-badge-box:{message.id}",
+            )
+        except ValueError as error:
+            await message.channel.send(f"❌ **{error}**")
+            return
+        except Exception as error:
+            print(f"Guess badge box error: {error}", flush=True)
+            await message.channel.send("❌ **Could not safely open the badge box. Try again later.**")
+            return
+
+        await message.channel.send(
+            "🎁 **Mystery Badge Box opened!**\n"
+            f"You got {result['badge']} **{result['rarity_label']}**\n"
+            f"🪙 Coins left: **{shared_format_points(result['coins'])}**"
+        )
+        return
+
+    if command in {"!me", "!profile"}:
+        chunks = await asyncio.to_thread(
+            guess_cosmetic_profile_messages,
+            message.author.id,
+            message.author.display_name,
+        )
+        for chunk in chunks:
+            await message.channel.send(chunk)
+        return
+
+    if command.startswith("!profile badge ") or command.startswith("!me badge "):
+        raw_index = raw_command.split()[-1]
+        try:
+            index = int(raw_index)
+        except ValueError:
+            await message.channel.send("❌ **Use a badge number from `!profile`.**")
+            return
+
+        profile = await asyncio.to_thread(
+            get_cosmetic_profile,
+            message.author.id,
+            message.author.display_name,
+        )
+        badges = list(profile.get("badges", []))
+        if index < 1 or index > len(badges):
+            await message.channel.send("❌ **That badge number is not in your inventory.**")
+            return
+
+        badge = badges[index - 1]
+        try:
+            await asyncio.to_thread(
+                equip_badge,
+                message.author.id,
+                message.author.display_name,
+                badge,
+                f"guess-equip-badge:{message.id}",
+            )
+        except Exception as error:
+            print(f"Guess equip badge error: {error}", flush=True)
+            await message.channel.send("❌ **Could not safely equip that badge.**")
+            return
+        await message.channel.send(f"🏅 **Equipped:** {badge}")
+        return
+
     if command == "!stats" or command.startswith("!stats "):
         if command == "!stats":
             stats = await asyncio.to_thread(
@@ -2117,9 +2300,18 @@ async def command_handler(message):
                 )
                 return
 
-        await message.channel.send(
-            format_guess_stats(stats)
-        )
+        try:
+            cosmetic = await asyncio.to_thread(
+                get_cosmetic_profile,
+                stats.get("user_id"),
+                stats.get("name", "Unknown"),
+            )
+            stats = dict(stats)
+            stats["active_badge"] = cosmetic.get("active_badge", "")
+        except Exception as error:
+            print(f"Guess stats badge lookup error: {error}", flush=True)
+
+        await message.channel.send(format_guess_stats(stats))
         return
 
     if command in {"!leaderboard", "!lb", "!l"}:
@@ -2135,10 +2327,12 @@ async def command_handler(message):
             "🧠 **Guess Games**\n\n"
             "💬 **Guess the Chatter** — Read a real chat message and guess which chatter wrote it.\n"
             "♟️ **Guess the Chess Chatter** — Browse a real Chess.com game and guess which player played it.\n\n"
-            "⏭️ `!next` / `!n` — end the active poll, reveal/award it, "
+            "⏭️ `n` / `!n` / `!next` — end the active poll, reveal/award it, "
             "then immediately start the other Guess game.\n"
             "🏆 `!l` / `!lb` / `!leaderboard` — leaderboard at any time.\n"
             "📊 `!stats` / `!stats <name>` — votes, accuracy, streaks and nemesis stats.\n"
+            "👤 `!me` / `!profile` — coins, owned badges and active badge.\n"
+            f"🎁 `!shop` / `!box` — Mystery Badge Box ({BADGE_BOX_COST} coins).\n"
             "👤 `!<name>` — show recognition info about a Guess Chatter / Chess Chatter player "
             "(for example `!thice` or `!sushi`). Nicknames and small spelling mistakes also work.\n\n"
             "Guess Chatter still has its scheduled Double Points / Hard Mode bonus rounds, plus occasional Quote Hunt rounds."
