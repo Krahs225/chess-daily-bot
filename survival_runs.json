@@ -519,6 +519,73 @@
         "shop_heart_purchased": false
       },
       "history": []
+    },
+    "sh4rkmate": {
+      "name": "Sh4rkmate",
+      "best_puzzle": 1,
+      "best_difficulty": 0,
+      "best_completed_at": "2026-09-05T19:40:31.794975+00:00",
+      "current": {
+        "run_id": "sh4rkmate:1788637231",
+        "started_by_id": "442597396195704832",
+        "captain_id": "442597396195704832",
+        "captain_name": "Thice",
+        "mode": "coop",
+        "status": "active",
+        "started_at": "2026-09-05T19:40:31.794958+00:00",
+        "last_activity": 1788637231.7949712,
+        "paused_reason": null,
+        "puzzle_number": 1,
+        "strikes": 0,
+        "best_difficulty": 1247,
+        "used_puzzle_ids": [
+          "f3vzs"
+        ],
+        "members": {},
+        "puzzle": {
+          "id": "f3vzs",
+          "rating": 1247,
+          "themes": "crushing endgame master rookEndgame short skewer",
+          "url": "https://lichess.org/training/f3vzs",
+          "start_fen": "8/6p1/6R1/2P1k2p/4P2P/6K1/5P2/2r5 b - - 0 35",
+          "current_fen": "8/6p1/6R1/2P1k2p/4P2P/6K1/5P2/2r5 b - - 0 35",
+          "solution": [
+            {
+              "uci": "c1g1",
+              "san": "Rg1+",
+              "color": "black"
+            },
+            {
+              "uci": "g3f3",
+              "san": "Kf3",
+              "color": "white"
+            },
+            {
+              "uci": "g1g6",
+              "san": "Rxg6",
+              "color": "black"
+            }
+          ],
+          "player_color": "black",
+          "next_solution_index": 0,
+          "first_solver_id": null,
+          "first_solver_name": null,
+          "helper_candidates": {},
+          "helper_awarded": [],
+          "wrong_users": [],
+          "rated_users": [],
+          "setup_move_uci": "d6g6",
+          "last_move_uci": "d6g6",
+          "last_move_san": null,
+          "accepted_moves": []
+        },
+        "first_solver_id": null,
+        "first_solver_name": null,
+        "helper_candidates": {},
+        "helper_awarded": [],
+        "shop_heart_purchased": false
+      },
+      "history": []
     }
   }
 }
