@@ -1228,85 +1228,55 @@
       "name": "Thice",
       "started_at": 1788629243.9540904,
       "end_at": 1788629543.9540906,
-      "score": 2,
+      "score": 3,
       "wrong": 0,
       "ruleset": "universal-1200-plus40-v1",
       "puzzle": {
-        "url": "https://lichess.org/training/0XpBC",
-        "title": "Lichess • 1315",
-        "fen": "6k1/P5pp/4p3/1Np2p1r/5n2/1PP2P1P/3r1PRK/R7 b - - 0 32",
-        "current_fen": "6k1/P5pp/4p3/1Np2p2/8/1PP2P2/3rnP2/R4KRr b - - 5 35",
-        "pgn": "Rxh3+ Kg1 Ne2+ Kf1 Rh1+ Rg1 Rxg1#",
+        "url": "https://lichess.org/training/bETo4",
+        "title": "Lichess • 1301",
+        "fen": "2k4q/2n1pBr1/pp1pP1P1/2pb4/Nr6/1P3Q1P/P7/2KR2R1 w - - 0 32",
+        "current_fen": "2k4q/2n1pBr1/pp1pP1P1/2pb4/Nr6/1P3Q1P/P7/2KR2R1 w - - 0 32",
+        "pgn": "Rxd5 Nxd5 Qxd5",
         "all_moves": [
           {
-            "uci": "h5h3",
-            "san": "Rxh3+",
-            "color": "black"
-          },
-          {
-            "uci": "h2g1",
-            "san": "Kg1",
+            "uci": "d1d5",
+            "san": "Rxd5",
             "color": "white"
           },
           {
-            "uci": "f4e2",
-            "san": "Ne2+",
+            "uci": "c7d5",
+            "san": "Nxd5",
             "color": "black"
           },
           {
-            "uci": "g1f1",
-            "san": "Kf1",
+            "uci": "f3d5",
+            "san": "Qxd5",
             "color": "white"
-          },
-          {
-            "uci": "h3h1",
-            "san": "Rh1+",
-            "color": "black"
-          },
-          {
-            "uci": "g2g1",
-            "san": "Rg1",
-            "color": "white"
-          },
-          {
-            "uci": "h1g1",
-            "san": "Rxg1#",
-            "color": "black"
           }
         ],
         "player_moves": [
           {
-            "uci": "h5h3",
-            "san": "Rxh3+",
-            "color": "black"
+            "uci": "d1d5",
+            "san": "Rxd5",
+            "color": "white"
           },
           {
-            "uci": "f4e2",
-            "san": "Ne2+",
-            "color": "black"
-          },
-          {
-            "uci": "h3h1",
-            "san": "Rh1+",
-            "color": "black"
-          },
-          {
-            "uci": "h1g1",
-            "san": "Rxg1#",
-            "color": "black"
+            "uci": "f3d5",
+            "san": "Qxd5",
+            "color": "white"
           }
         ],
-        "player_color": "black",
-        "player_move_count": 4,
-        "posted_at": "2026-09-05T17:27:43.092374+00:00",
+        "player_color": "white",
+        "player_move_count": 2,
+        "posted_at": "2026-09-05T17:28:10.448831+00:00",
         "answer_posted": false,
         "winner_user_id": null,
         "winner_name": null,
         "latest_attempts": {},
-        "puzzle_id": "practice_rush_442597396195704832_0XpBC_1788629263092",
-        "rating": 1315,
-        "next_solution_index": 6,
-        "last_move_uci": "g2g1",
+        "puzzle_id": "practice_rush_442597396195704832_bETo4_1788629290448",
+        "rating": 1301,
+        "next_solution_index": 0,
+        "last_move_uci": "b7d5",
         "board_theme": "classic",
         "piece_theme": "classic"
       }
