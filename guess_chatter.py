@@ -1542,6 +1542,22 @@ def days_ago(date_text):
         return 0
 
 
+def format_reveal_date(date_text):
+    """Return a human-friendly weekday + date for Guess Chatter reveals."""
+    raw = str(date_text or "").strip()
+    if not raw:
+        return "Unknown date"
+
+    for fmt in ("%d-%m-%Y", "%Y-%m-%d", "%d/%m/%Y"):
+        try:
+            value = datetime.strptime(raw, fmt)
+            return value.strftime("%A, %d %B %Y").replace(" 0", " ")
+        except ValueError:
+            pass
+
+    return raw
+
+
 def context_for_quote(
     all_entries,
     quote_index,
@@ -1645,25 +1661,28 @@ def answer_details(
 
     lines = [
         f"🔓 **The answer was: {answer_name}**",
+        f"📅 **Date:** {format_reveal_date(quote_date)}",
         "",
         f"📊 **{correct_count}/{total_votes}** "
         f"people got it right "
         f"(**{percentage}%**).",
+        "",
+        "**Context:**",
     ]
 
-    if context:
-        lines.extend(
-            [
-                "",
-                "**Context:**"
-            ]
-        )
+    # Context should always be present in the reveal. If surrounding lines
+    # are unavailable for any reason, fall back to the quote itself.
+    if not context and 0 <= quote_index < len(all_entries):
+        context = [all_entries[quote_index]]
 
+    if context:
         for entry in context:
             lines.append(
                 f"**{entry['display_name']}:** "
                 f"{entry['message']}"
             )
+    else:
+        lines.append("_No surrounding chat context was available._")
 
     return "\n".join(
         lines
@@ -2037,7 +2056,7 @@ def build_quote_hunt_round(chatters):
     return None
 
 
-async def post_quote_hunt(channel, chatters):
+async def post_quote_hunt(channel, chatters, all_entries):
     global ROUND_ACTIVE
     global NEXT_REQUESTED
 
@@ -2112,10 +2131,30 @@ async def post_quote_hunt(channel, chatters):
             flush=True,
         )
 
-    await channel.send(
-        "🔓 **Quote Hunt answer**\n"
-        f"**{target_name}** wrote:\n> {correct_quote}"
-    )
+    correct_option = options[correct_index]
+    quote_date = correct_option.get("date", "")
+    quote_index = int(correct_option.get("quote_index", -1))
+    context = context_for_quote(all_entries, quote_index)
+    if not context and 0 <= quote_index < len(all_entries):
+        context = [all_entries[quote_index]]
+
+    reveal_lines = [
+        "🔓 **Quote Hunt answer**",
+        f"**{target_name}** wrote:",
+        f"> {correct_quote}",
+        f"📅 **Date:** {format_reveal_date(quote_date)}",
+        "",
+        "**Context:**",
+    ]
+    if context:
+        for entry in context:
+            reveal_lines.append(
+                f"**{entry['display_name']}:** {entry['message']}"
+            )
+    else:
+        reveal_lines.append("_No surrounding chat context was available._")
+
+    await channel.send("\n".join(reveal_lines))
 
     vote_records = []
     seen_vote_ids = set()
@@ -2213,6 +2252,7 @@ async def post_guess(
         quote_hunt_result = await post_quote_hunt(
             channel,
             chatters,
+            all_entries,
         )
         if quote_hunt_result is not None:
             return quote_hunt_result
