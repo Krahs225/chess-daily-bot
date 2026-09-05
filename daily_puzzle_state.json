@@ -1,62 +1,72 @@
 {
   "latest_random_puzzle": {
-    "url": "https://lichess.org/training/9gOVI",
-    "title": "Lichess • 1960",
-    "fen": "r4r2/pp3pkp/3p2p1/2nNqp2/4P2Q/3P1P2/PP5P/3R1R1K w - - 4 23",
-    "current_fen": "r4r2/pp3pkp/3p2p1/2nNqp2/4P2Q/3P1P2/PP5P/3R1R1K w - - 4 23",
-    "pgn": "d4 Qxd5 exd5",
+    "title": "1499 • vHXcq",
+    "fen": "r1bR1nk1/pp4p1/5p2/3Np3/2P5/5PN1/P3K2P/b7 w - - 0 20",
+    "current_fen": "r1bR1nk1/pp4p1/5p2/3Np3/2P5/5PN1/P3K2P/b7 w - - 0 20",
     "all_moves": [
       {
-        "uci": "d3d4",
-        "san": "d4",
+        "uci": "d5e7",
+        "san": "Ne7+",
         "color": "white"
       },
       {
-        "uci": "e5d5",
-        "san": "Qxd5",
+        "uci": "g8f7",
+        "san": "Kf7",
         "color": "black"
       },
       {
-        "uci": "e4d5",
-        "san": "exd5",
+        "uci": "e7c8",
+        "san": "Nxc8",
+        "color": "white"
+      },
+      {
+        "uci": "a8c8",
+        "san": "Rxc8",
+        "color": "black"
+      },
+      {
+        "uci": "d8c8",
+        "san": "Rxc8",
         "color": "white"
       }
     ],
     "player_moves": [
       {
-        "uci": "d3d4",
-        "san": "d4",
+        "uci": "d5e7",
+        "san": "Ne7+",
         "color": "white"
       },
       {
-        "uci": "e4d5",
-        "san": "exd5",
+        "uci": "e7c8",
+        "san": "Nxc8",
+        "color": "white"
+      },
+      {
+        "uci": "d8c8",
+        "san": "Rxc8",
         "color": "white"
       }
     ],
     "player_color": "white",
-    "player_move_count": 2,
-    "posted_at": "2026-09-05T15:13:39.190058+00:00",
-    "answer_posted": false,
-    "winner_user_id": null,
-    "winner_name": null,
-    "latest_attempts": {},
-    "puzzle_id": "random_9gOVI_1788621219190",
-    "rating": 1960,
-    "rp_band": 2,
-    "boss": false,
-    "board_theme": "classic",
-    "piece_theme": "classic",
+    "player_move_count": 3,
+    "pgn": "",
+    "url": "https://lichess.org/training/vHXcq",
+    "posted_at": "2026-09-05T15:30:47.583970+00:00",
+    "puzzle_id": "random_lichess_1499_vHXcq_1788622247583",
     "next_solution_index": 0,
     "next_player_index": 0,
     "solved": false,
-    "message_id": 1545814185110278184,
+    "message_id": null,
     "attempted_users": {},
     "first_move_user_id": null,
     "first_move_user_name": null,
     "first_move_awarded": false,
     "helper_awarded_users": [],
-    "helper_candidate_users": []
+    "helper_candidate_users": [],
+    "practice_only": true,
+    "rated_practice": false,
+    "board_theme": "classic",
+    "piece_theme": "classic"
   },
   "latest_puzzle_type": "random",
   "leaderboard_last_posted_date": "2026-09-05",
@@ -168,6 +178,9 @@
     ],
     "1594": [
       "iGVO9"
+    ],
+    "1499": [
+      "vHXcq"
     ]
   },
   "chess_ratings": {
