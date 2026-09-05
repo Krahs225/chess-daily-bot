@@ -195,10 +195,10 @@
     },
     "442597396195704832": {
       "name": "Thice",
-      "elo": 1472.695,
+      "elo": 1489.031,
       "peak_elo": 1520.226,
-      "games": 8,
-      "wins": 1,
+      "games": 9,
+      "wins": 2,
       "draws": 0,
       "losses": 7
     }
@@ -776,7 +776,7 @@
     },
     "bot-1545832100895391824-442597396195704832": {
       "game_id": "bot-1545832100895391824-442597396195704832",
-      "status": "active",
+      "status": "finished",
       "mode": "bot",
       "white_id": "BOT",
       "white_name": "Chess Bot 1480",
@@ -890,7 +890,12 @@
       "started_at": 1788625532.4092605,
       "theme_owner_id": "442597396195704832",
       "theme_owner_name": "Thice",
-      "last_move_at": 1788626034.7649329
+      "last_move_at": 1788626034.7649329,
+      "game_reward_points": 3.0,
+      "result": "0-1",
+      "finished_at": 1788626038.582443,
+      "finish_reason": "Checkmate",
+      "human_rating_after": 1489.0313581188445
     }
   },
   "chess_challenges": {},
