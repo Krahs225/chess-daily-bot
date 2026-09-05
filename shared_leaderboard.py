@@ -2019,7 +2019,7 @@ def personal_ranking(user_id):
     return "\n".join(lines)
 
 
-def full_leaderboard(title="🏆 **Shared Leaderboard**"):
+def full_leaderboard(title="🏆 **Shared Leaderboard**", use_mentions=False):
     snapshot = _current_snapshot()
     ordered = _ordered(snapshot)
     if not ordered:
@@ -2039,8 +2039,9 @@ def full_leaderboard(title="🏆 **Shared Leaderboard**"):
         else:
             prefix = f"**{rank}.**"
 
+        display_name = f"<@{_uid}>" if use_mentions else entry.get("name", "Unknown")
         lines.append(
-            f"{prefix} {entry.get('active_badge', '') + ' ' if entry.get('active_badge') else ''}{entry.get('name', 'Unknown')} — "
+            f"{prefix} {entry.get('active_badge', '') + ' ' if entry.get('active_badge') else ''}{display_name} — "
             f"**{format_points(points)} {word}**"
         )
 
